@@ -84,3 +84,18 @@ tasks:
               cmd: |
                   set -e
                   {{.GO_COMMAND}} tool github.com/bufbuild/buf/cmd/buf generate --template={{.ITEM}} --path=$(dirname {{.ITEM}})
+
+    sources:
+        desc: downloads the cloudstack api list
+        vars:
+            FILES:
+                - url: https://raw.githubusercontent.com/apache/cloudstack-go/refs/heads/main/generate/listApis.json
+                  file_name: cloudstack-go-api-list.json
+                  var_name: CloudStackGoApiListJson
+        cmds:
+            - cmd: mkdir -p gen/sources
+            - cmd: echo -e "package cloudstackapilist\n\nimport _ \"embed\"\n" > gen/sources/embed.gen.go
+            - for: { var: "FILES", as: ITEM }
+              cmd: curl -sSL {{.ITEM.url}} | jq -r --tab '.' > gen/sources/{{.ITEM.file_name}}
+            - for: { var: "FILES", as: ITEM }
+              cmd: echo -e "//go:embed {{.ITEM.file_name}}\n\nvar {{.ITEM.var_name}} []byte" >> gen/sources/embed.gen.go
