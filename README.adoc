@@ -40,69 +40,96 @@ CloudStack Proxy is designed to serve three distinct but complementary purposes:
 
 Runs alongside the CloudStack Management Server to provide a modern API interface.
 
-[source,text]
-----
-┌─────────────────────────────────────────────────────┐
-│                CloudStack Management VM              │
-│                                                     │
-│  ┌───────────────┐        ┌─────────────────────┐   │
-│  │ CloudStack    │        │ CloudStack          │   │
-│  │ Proxy         │◄──────►│ Management Server   │   │
-│  │ (systemd)     │        │                     │   │
-│  └───────┬───────┘        └─────────────────────┘   │
-│          │                                          │
-└──────────┼──────────────────────────────────────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Modern API Clients  │
-└─────────────────────┘
-----
+ifdef::env-github[]
+[source,mermaid]
+endif::[]
+ifndef::env-github[]
+[mermaid]
+endif::[]
+....
+flowchart TB
+    subgraph vm["CloudStack Management VM" ]
+        style vm fill:#e0f7fa,stroke:#0097a7,stroke-width:2px
+        
+        csp["CloudStack Proxy<br/>(systemd)"]
+        style csp fill:#bbdefb,stroke:#1976d2,stroke-width:2px
+        
+        cms["CloudStack<br/>Management Server"]
+        style cms fill:#c8e6c9,stroke:#43a047,stroke-width:2px
+        
+        csp <--> cms
+    end
+    
+    clients["Modern API Clients"]
+    style clients fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    
+    vm ---> clients
+....
 
 === 2. Local Development Proxy
 
 Provides developers with a local proxy for testing and development.
 
-[source,text]
-----
-┌─────────────────────────────────────────────────────────────┐
-│              Developer Workstation                           │
-│                                                             │
-│  ┌───────────────┐                   ┌──────────────────┐   │
-│  │ Local         │                   │ Developer Tools  │   │
-│  │ CloudStack    │◄───────────┐      │ and Applications │   │
-│  │ Proxy         │            │      │                  │   │
-│  └───────┬───────┘            │      └────────▲─────────┘   │
-│          │                    └─────────────►│              │
-└──────────┼─────────────────────────────────────────────────┘
-           │
-           ▼
-┌─────────────────────────────┐
-│ Remote CloudStack           │
-│ Management Server           │
-└─────────────────────────────┘
-----
+ifdef::env-github[]
+[source,mermaid]
+endif::[]
+ifndef::env-github[]
+[mermaid]
+endif::[]
+....
+flowchart TB
+    subgraph ws["Developer Workstation"]
+        style ws fill:#e0f7fa,stroke:#0097a7,stroke-width:2px
+        
+        csp["Local<br/>CloudStack Proxy"]
+        style csp fill:#bbdefb,stroke:#1976d2,stroke-width:2px
+        
+        tools["Developer Tools<br/>and Applications"]
+        style tools fill:#d1c4e9,stroke:#7e57c2,stroke-width:2px
+        
+        csp -- "Local API calls" --> tools
+        tools -- "API requests" --> csp
+    end
+    
+    cms["Remote CloudStack<br/>Management Server"]
+    style cms fill:#c8e6c9,stroke:#43a047,stroke-width:2px
+    
+    csp --> cms
+....
 
 === 3. Enhanced Native Go SDK
 
 Provides a modern Go SDK for CloudStack without requiring a separate proxy service.
 
-[source,text]
-----
-┌───────────────────────────────────────────────────────────┐
-│              Go Application                               │
-│                                                           │
-│  ┌───────────────────────────────────────────────┐        │
-│  │                                               │        │
-│  │  ┌───────────────┐       ┌───────────────┐    │        │
-│  │  │ Application   │◄─────►│ CloudStack    │    │        │
-│  │  │ Code          │       │ Go SDK        │────┼───────►│
-│  │  └───────────────┘       └───────────────┘    │        │
-│  │                                               │        │
-│  └───────────────────────────────────────────────┘        │
-│                                                           │
-└───────────────────────────────────────────────────────────┘
-----
+ifdef::env-github[]
+[source,mermaid]
+endif::[]
+ifndef::env-github[]
+[mermaid]
+endif::[]
+....
+flowchart LR
+    subgraph app["Go Application"]
+        style app fill:#e0f7fa,stroke:#0097a7,stroke-width:2px
+        
+        subgraph code["Application Code + SDK"]
+            style code fill:#e8eaf6,stroke:#3949ab,stroke-width:1px
+            
+            appcode["Application<br/>Code"]
+            style appcode fill:#d1c4e9,stroke:#7e57c2,stroke-width:1px
+            
+            sdk["CloudStack<br/>Go SDK"]
+            style sdk fill:#bbdefb,stroke:#1976d2,stroke-width:1px
+            
+            appcode <--> sdk
+        end
+    end
+    
+    cms["CloudStack<br/>Management Server"]
+    style cms fill:#c8e6c9,stroke:#43a047,stroke-width:2px
+    
+    sdk --> cms
+....
 
 [NOTE]
 ====
@@ -133,30 +160,49 @@ CloudStack Proxy follows a modular architecture that enables all three use cases
 * Local binary for development environments
 * Embedded library for Go applications
 
+
 .Core Components
-[source,text]
-----
-┌───────────────────────────────────────────┐
-│           CloudStack Proxy                │
-│                                           │
-│  ┌─────────────────┐   ┌───────────────┐  │
-│  │  API Layer      │   │ Authentication│  │
-│  │  (ConnectRPC)   │   │ & Security    │  │
-│  └────────┬────────┘   └───────┬───────┘  │
-│           │                    │          │
-│  ┌────────▼────────────────────▼───────┐  │
-│  │                                     │  │
-│  │           Proxy Core                │  │
-│  │                                     │  │
-│  └────────┬────────────────────┬───────┘  │
-│           │                    │          │
-│  ┌────────▼────────┐   ┌───────▼───────┐  │
-│  │  CloudStack     │   │  Monitoring & │  │
-│  │  API Client     │   │  Telemetry    │  │
-│  └─────────────────┘   └───────────────┘  │
-│                                           │
-└───────────────────────────────────────────┘
-----
+ifdef::env-github[]
+[source,mermaid]
+endif::[]
+ifndef::env-github[]
+[mermaid]
+endif::[]
+....
+flowchart TB
+    subgraph csp["CloudStack Proxy"]
+        style csp fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+        
+        api["API Layer<br/>(ConnectRPC)"]
+        style api fill:#bbdefb,stroke:#1976d2,stroke-width:2px
+        
+        auth["Authentication<br/>& Security"]
+        style auth fill:#ffecb3,stroke:#ffa000,stroke-width:2px
+        
+        core["Proxy Core"]
+        style core fill:#c8e6c9,stroke:#43a047,stroke-width:2px
+        
+        client["CloudStack<br/>API Client"]
+        style client fill:#d1c4e9,stroke:#7e57c2,stroke-width:2px
+        
+        monitor["Monitoring &<br/>Telemetry"]
+        style monitor fill:#f8bbd0,stroke:#e91e63,stroke-width:2px
+        
+        api --> core
+        auth --> core
+        core --> client
+        core --> monitor
+    end
+    
+    extclients["External Clients"]
+    style extclients fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    
+    cloudstack["CloudStack<br/>Management Server"]
+    style cloudstack fill:#b2dfdb,stroke:#00796b,stroke-width:2px
+    
+    extclients --> api
+    client --> cloudstack
+....
 
 == Project Structure
 
