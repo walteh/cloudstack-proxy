@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
-	corev1 "github.com/walteh/cloudstack-proxy/gen/proto/cloudstack/core/v1"
-	"github.com/walteh/cloudstack-proxy/gen/proto/cloudstack/core/v1/corev1connect"
+	// corev1 "github.com/walteh/cloudstack-proxy/gen/proto/cloudstack/core/v1"
+	// "github.com/walteh/cloudstack-proxy/gen/proto/cloudstack/core/v1/corev1connect"
 )
 
 // Proxy is the main CloudStack proxy that implements all services
