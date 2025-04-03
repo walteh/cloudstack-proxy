@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
-	// corev1 "github.com/walteh/cloudstack-proxy/gen/proto/cloudstack/core/v1"
-	// "github.com/walteh/cloudstack-proxy/gen/proto/cloudstack/core/v1/corev1connect"
+	corev1 "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/core/v1"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/core/v1/corev1connect"
 )
 
 // Proxy is the main CloudStack proxy that implements all services
@@ -76,13 +76,13 @@ func (p *Proxy) Check(
 	req *connect.Request[corev1.HealthCheckRequest],
 ) (*connect.Response[corev1.HealthCheckResponse], error) {
 	// Check CloudStack connectivity
-	csStatus := corev1.HealthCheckResponse_SERVING
+	csStatus := corev1.HealthCheckResponse_SERVING_STATUS_NOT_SERVING
 	message := "Healthy"
 
 	// Try to ping CloudStack API
 	_, err := p.csClient.ExecuteRequest(ctx, "ping", nil)
 	if err != nil {
-		csStatus = corev1.HealthCheckResponse_NOT_SERVING
+		csStatus = corev1.HealthCheckResponse_SERVING_STATUS_NOT_SERVING
 		message = fmt.Sprintf("CloudStack API unavailable: %v", err)
 	}
 

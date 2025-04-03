@@ -38,6 +38,10 @@
 			}
 		],
 		"mcpManager.useCopilotProvider": true,
+
+		"editor.codeLens": true,
+		"editor.tokenColorCustomizations": {},
+		"editor.semanticHighlighting.enabled": true,
 		"gopls": {
 			"ui.semanticTokens": true,
 			"ui.codelenses": {
@@ -52,9 +56,6 @@
 			"ui.documentation.linksInHover": "gopls",
 			"ui.completion.experimentalPostfixCompletions": true
 		},
-		"editor.codeLens": true,
-		"editor.tokenColorCustomizations": {},
-		"editor.semanticHighlighting.enabled": true,
 		"editor.semanticTokenColorCustomizations": {
 			"enabled": true,
 			"[Cloud]": {

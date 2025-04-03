@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://json.schemastore.org/buf.gen.json
+
+version: v1
+managed:
+    enabled: true
+    go_package_prefix:
+        default: github.com/walteh/cloudstack-proxy/gen/proto/golang
+        except:
+            - buf.build/googleapis/googleapis
+plugins:
+    - name: protoc-gen-go
+      out: gen/proto/golang
+      path: ["go", "tool", "google.golang.org/protobuf/cmd/protoc-gen-go"]
+      opt:
+          - paths=source_relative
+    - name: protoc-gen-go-grpc
+      out: gen/proto/golang
+      path: ["go", "tool", "google.golang.org/grpc/cmd/protoc-gen-go-grpc"]
+      opt:
+          - paths=source_relative
+    - name: protoc-gen-connect-go
+      out: gen/proto/golang
+      path: ["go", "tool", "connectrpc.com/connect/cmd/protoc-gen-connect-go"]
+      opt:
+          - paths=source_relative

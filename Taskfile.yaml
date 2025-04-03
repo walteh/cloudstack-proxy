@@ -1,117 +1,86 @@
 version: "3"
 
 vars:
-  GO_ROOT_PKG:
-    sh: cat go.mod | grep -oE '^module[^\S]+' | cut -d' ' -f2
-  PROTO_FILES:
-    sh: find ./proto -type f -name '*.proto'
-  PROTO_GEN_FILES:
-    sh: find ./proto -type f -name '*.gen.proto'
+    GO_MODULES:
+        sh: cat go.work | grep -oEh  '\t+(\./*[^[:space:]]*)' | tr -d '\t'
+    JSONSCHEMA_FILES:
+        sh: find . -type f -name '*.schema.json'
+    GO_ROOT_PKG:
+        sh: cat go.mod | grep -oE '^module[^\S]+' | cut -d' ' -f2
+
+    GO_COMMAND: ./go
 
 env:
-  GOPRIVATE: github.com/walteh
+    COMPOSE_BAKE: true
 
 tasks:
-  default:
-    cmds:
-      - task: help
+    go-mod-tidy:
+        env: { GOPROXY: https://proxy.golang.org, GOSUMDB: sum.golang.org, GOPRIVATE: github.com/walteh }
+        cmds:
+            - for: { var: GO_MODULES }
+              cmd: cd {{.ITEM}} && go mod tidy
 
-  deps:
-    desc: Install dependencies
-    cmds:
-      - go mod download
-      - go install github.com/bufbuild/buf/cmd/buf@latest
-      - go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-      - go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
-      - go install github.com/bufbuild/protovalidate-go/cmd/protoc-gen-validate-go@latest
+    go-mod-upgrade:
+        run: once
+        env: { GOPROXY: https://proxy.golang.org, GOSUMDB: sum.golang.org, GOPRIVATE: github.com/walteh }
+        cmds:
+            - ./go tool go-mod-upgrade --force
 
-  go-mod-tidy:
-    desc: Tidy Go modules
-    env:
-      GOPROXY: https://proxy.golang.org
-      GOSUMDB: sum.golang.org
-      GOPRIVATE: github.com/walteh
-    cmds:
-      - go mod tidy
+    options:
+        desc: generates options for structs with '//go:opts' comment
+        vars:
+            OPTION_GEN_DATA:
+                sh: |
+                    grep -rl "//go:opts" --include="*.go" . | xargs -I{} bash -c 'd=$(dirname {}); d=${d#./}; awk -v d="$d {}" '\''/\/\/go:opts/ {getline; if($1=="type") print d, $2}'\'' {}'
+            OPTION_GEN_SOURCE_FILES:
+                sh: |
+                    grep -rl "//go:opts" --include="*.go" .
+        generates:
+            - "**/*_opts.gen.go"
+        sources:
+            - '{{.OPTION_GEN_SOURCE_FILES | join ","}}'
+        cmds:
+            - for: { var: OPTION_GEN_DATA, split: "\n" }
+              cmd: |
+                  set -e
+                  {{.GO_COMMAND}} tool github.com/kazhuravlev/options-gen/cmd/options-gen \
+                    -out-filename={{splitList " " .ITEM | first}}/{{ splitList " " .ITEM | last | lower | trimSuffix "opts" }}_opts.gen.go \
+                    -filename={{ splitList " " .ITEM | rest | first }} \
+                    -from-struct={{ splitList " " .ITEM | last }} \
+                    -pkg={{ splitList " " .ITEM | first | splitList "/" | last }}
 
-  gen:
-    desc: Generate code from protobuf definitions
-    deps: [build-generator]
-    cmds:
-      - bin/csp-protogen
-      - buf generate
-    sources:
-      - proto/**/*.proto
-    generates:
-      - proto/**/*.gen.proto
-      - gen/**/*.pb.go
+    mockery:
+        desc: generates mocks for interfaces with '//go:mock' comment
+        vars:
+            TMP_DIR: ./gen/config
+            MOCKERY_INTERFACE_DATA:
+                sh: |
+                    grep -rl "//go:mock" --include="*.go" . | xargs -I{} bash -c 'd=$(dirname {}); d=${d#./}; awk -v d="$d {}" '\''/\/\/go:mock/ {getline; if($1=="type") print d, $2}'\'' {}'
+            MOCKERY_SOURCE_FILES:
+                sh: |
+                    grep -rl "//go:mock" --include="*.go" .
+        sources:
+            - '{{.MOCKERY_SOURCE_FILES | join ","}}'
+            - .mockery.yaml
+        generates:
+            - ./gen/mocks/**/*_mock.gen.go
+            - ./gen/config/.mockery.yaml
+        cmds:
+            - cmd: mkdir -p {{.TMP_DIR}}
+            - cmd: cp .mockery.yaml {{.TMP_DIR}}/.mockery.yaml
+            - for: { var: "MOCKERY_INTERFACE_DATA", split: "\n", as: ITEM }
+              cmd: yq -i ".packages.\"{{ .GO_ROOT_PKG }}/{{ splitList \" \" .ITEM | first }}\".interfaces.{{ splitList \" \" .ITEM | last }} = {}" {{.TMP_DIR}}/.mockery.yaml
+            - cmd: |
+                  set -e
+                  {{.GO_COMMAND}} tool github.com/vektra/mockery/v2 --config={{.TMP_DIR}}/.mockery.yaml
 
-  build:
-    desc: Build all binaries
-    deps: [build-csp, build-systemd, build-generator]
-
-  build-csp:
-    desc: Build the local development binary
-    cmds:
-      - mkdir -p bin
-      - go build -o bin/csp ./cmd/csp
-    sources:
-      - cmd/csp/**/*.go
-      - pkg/**/*.go
-    generates:
-      - bin/csp
-
-  build-systemd:
-    desc: Build the systemd-optimized binary
-    cmds:
-      - mkdir -p bin
-      - go build -o bin/csp-systemd ./cmd/csp-systemd
-    sources:
-      - cmd/csp-systemd/**/*.go
-      - pkg/**/*.go
-    generates:
-      - bin/csp-systemd
-
-  build-generator:
-    desc: Build the protobuf generator tool
-    cmds:
-      - mkdir -p bin
-      - go build -o bin/csp-protogen ./cmd/csp-protobuf-generator
-    sources:
-      - cmd/csp-protobuf-generator/**/*.go
-      - pkg/protogen/**/*.go
-    generates:
-      - bin/csp-protogen
-
-  test:
-    desc: Run tests
-    cmds:
-      - go test -v ./...
-
-  clean:
-    desc: Clean generated files and binaries
-    cmds:
-      - rm -rf bin
-      - find ./gen -type f -name "*.pb.go" -delete
-      - find ./proto -type f -name "*.gen.proto" -delete
-
-  run:
-    desc: Run the local development server
-    deps: [build-csp]
-    cmds:
-      - bin/csp
-
-  proto:validate:
-    desc: Validate protobuf definitions
-    cmds:
-      - buf lint
-
-  proto:format:
-    desc: Format protobuf files
-    cmds:
-      - buf format -w
-
-  proto:breaking:
-    desc: Check for breaking changes in protobuf definitions
-    cmds:
-      - buf breaking --against '.git#branch=main'
+    buf:
+        desc: generates protobuf files
+        vars:
+            BUF_GEN_FILES:
+                sh: find . -type f -name 'buf.gen*.yaml'
+        cmds:
+            - for: { var: "BUF_GEN_FILES", split: "\n", as: ITEM }
+              cmd: |
+                  set -e
+                  {{.GO_COMMAND}} tool github.com/bufbuild/buf/cmd/buf generate --template={{.ITEM}} --path=$(dirname {{.ITEM}})
