@@ -1,0 +1,26 @@
+[Unit]
+Description=CloudStack Proxy Service
+After=network.target
+Wants=network.target
+After=cloudstack-management.service
+Wants=cloudstack-management.service
+
+[Service]
+Type=simple
+User=cloudstack
+Group=cloudstack
+WorkingDirectory=/opt/cloudstack
+ExecStart=/opt/cloudstack/bin/csp-systemd
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment=CSP_CONFIG_FILE=/etc/cloudstack/proxy/config.yaml
+Environment=CSP_LOG_LEVEL=info
+Environment=CSP_CLOUDSTACK_URL=http://localhost:8080/client/api
+Environment=CSP_BIND_ADDRESS=0.0.0.0:8081
+# Add additional environment variables as needed
+
+[Install]
+WantedBy=multi-user.target 

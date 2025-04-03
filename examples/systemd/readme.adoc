@@ -1,0 +1,175 @@
+= CloudStack Proxy Systemd Integration
+:toc: macro
+:toclevels: 3
+:toc-title: Table of Contents
+
+toc::[]
+
+[IMPORTANT]
+====
+This document is a work in progress. The deployment process may change as the project evolves.
+====
+
+== Overview
+
+This guide explains how to deploy CloudStack Proxy (CSP) as a systemd service alongside an existing CloudStack management server.
+
+== Prerequisites
+
+* A running CloudStack management server
+* Root access to the server
+* systemd as the init system
+
+== Installation
+
+=== 1. Create User and Group
+
+If not already available, create a dedicated user and group for running the CloudStack Proxy:
+
+[source,bash]
+----
+sudo groupadd -r cloudstack
+sudo useradd -r -g cloudstack -d /opt/cloudstack -s /sbin/nologin cloudstack
+----
+
+=== 2. Prepare Directories
+
+Create the necessary directories:
+
+[source,bash]
+----
+sudo mkdir -p /opt/cloudstack/bin
+sudo mkdir -p /etc/cloudstack/proxy
+----
+
+=== 3. Copy Binary
+
+Copy the CloudStack Proxy systemd binary to the installation directory:
+
+[source,bash]
+----
+sudo cp csp-systemd /opt/cloudstack/bin/
+sudo chmod +x /opt/cloudstack/bin/csp-systemd
+----
+
+=== 4. Create Configuration
+
+Create a configuration file:
+
+[source,bash]
+----
+sudo nano /etc/cloudstack/proxy/config.yaml
+----
+
+Add the following configuration (adjust as needed):
+
+[source,yaml]
+----
+# CloudStack Proxy Configuration
+cloudstack:
+  url: http://localhost:8080/client/api
+  apiKey: YOUR_API_KEY
+  secretKey: YOUR_SECRET_KEY
+
+server:
+  bindAddress: 0.0.0.0:8081
+  tlsEnabled: false
+  # If TLS is enabled, uncomment and set these:
+  # tlsCertFile: /etc/cloudstack/proxy/ssl/cert.pem
+  # tlsKeyFile: /etc/cloudstack/proxy/ssl/key.pem
+
+logging:
+  level: info
+  format: json
+----
+
+=== 5. Setup systemd Service
+
+Copy the service file:
+
+[source,bash]
+----
+sudo cp cloudstack-proxy.service /etc/systemd/system/
+----
+
+Reload systemd configuration:
+
+[source,bash]
+----
+sudo systemctl daemon-reload
+----
+
+=== 6. Start the Service
+
+Start and enable the service:
+
+[source,bash]
+----
+sudo systemctl start cloudstack-proxy
+sudo systemctl enable cloudstack-proxy
+----
+
+== Verification
+
+Check the service status:
+
+[source,bash]
+----
+sudo systemctl status cloudstack-proxy
+----
+
+View logs:
+
+[source,bash]
+----
+sudo journalctl -u cloudstack-proxy -f
+----
+
+Test the API:
+
+[source,bash]
+----
+curl http://localhost:8081/health
+----
+
+== Configuration Options
+
+=== Environment Variables
+
+The service can be configured using environment variables set in the systemd service file:
+
+* `CSP_CONFIG_FILE`: Path to the configuration file (default: `/etc/cloudstack/proxy/config.yaml`)
+* `CSP_LOG_LEVEL`: Logging level (default: `info`)
+* `CSP_CLOUDSTACK_URL`: URL to the CloudStack API
+* `CSP_BIND_ADDRESS`: Address and port to bind the server to
+
+=== Security Considerations
+
+* Use a dedicated API key with appropriate permissions
+* Consider using TLS for API connections
+* If exposing the API publicly, implement proper firewall rules
+
+== Troubleshooting
+
+=== Common Issues
+
+* *Service fails to start*: Check permissions and log output with `journalctl`
+* *Connection refused*: Verify binding address and port configuration
+* *Authentication failure*: Check API key and secret key configuration
+
+== Upgrading
+
+To upgrade the CloudStack Proxy:
+
+[source,bash]
+----
+# Stop the service
+sudo systemctl stop cloudstack-proxy
+
+# Replace the binary
+sudo cp new-csp-systemd /opt/cloudstack/bin/csp-systemd
+sudo chmod +x /opt/cloudstack/bin/csp-systemd
+
+# Start the service
+sudo systemctl start cloudstack-proxy
+---- 

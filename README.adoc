@@ -1,0 +1,241 @@
+ = CloudStack Proxy (CSP)
+:toc: macro
+:toclevels: 3
+:toc-title: Table of Contents
+
+toc::[]
+
+IMPORTANT: *WORK IN PROGRESS*: This project is currently in early development and not yet functional. This document outlines the vision and roadmap for the project.
+
+== Vision
+
+CloudStack Proxy aims to modernize interaction with Apache CloudStack by providing a contemporary API layer that addresses limitations in CloudStack's native API, including improved error handling, better developer experience, and modern API design patterns.
+
+== Why CloudStack Proxy?
+
+=== Current Limitations
+
+CloudStack's native API, while functional, presents several challenges:
+
+* Inconsistent error reporting and handling
+* Outdated API design patterns
+* Limited developer tooling and client library support
+* Difficulty integrating with modern infrastructure and tooling
+
+=== Solution
+
+CloudStack Proxy serves as a bridge between modern developer expectations and CloudStack's existing functionality by:
+
+* Implementing a ConnectRPC/gRPC-based API with strong typing and consistent patterns
+* Providing clear, actionable error messages
+* Enabling modern authentication flows (OAuth2, JWT)
+* Generating client libraries automatically through protobuf definitions
+* Running alongside existing CloudStack deployments without modification
+
+== Key Use Cases
+
+CloudStack Proxy is designed to serve three distinct but complementary purposes:
+
+=== 1. Systemd Process on CloudStack VM
+
+Runs alongside the CloudStack Management Server to provide a modern API interface.
+
+[source,text]
+----
+┌─────────────────────────────────────────────────────┐
+│                CloudStack Management VM              │
+│                                                     │
+│  ┌───────────────┐        ┌─────────────────────┐   │
+│  │ CloudStack    │        │ CloudStack          │   │
+│  │ Proxy         │◄──────►│ Management Server   │   │
+│  │ (systemd)     │        │                     │   │
+│  └───────┬───────┘        └─────────────────────┘   │
+│          │                                          │
+└──────────┼──────────────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Modern API Clients  │
+└─────────────────────┘
+----
+
+=== 2. Local Development Proxy
+
+Provides developers with a local proxy for testing and development.
+
+[source,text]
+----
+┌─────────────────────────────────────────────────────────────┐
+│              Developer Workstation                           │
+│                                                             │
+│  ┌───────────────┐                   ┌──────────────────┐   │
+│  │ Local         │                   │ Developer Tools  │   │
+│  │ CloudStack    │◄───────────┐      │ and Applications │   │
+│  │ Proxy         │            │      │                  │   │
+│  └───────┬───────┘            │      └────────▲─────────┘   │
+│          │                    └─────────────►│              │
+└──────────┼─────────────────────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────┐
+│ Remote CloudStack           │
+│ Management Server           │
+└─────────────────────────────┘
+----
+
+=== 3. Enhanced Native Go SDK
+
+Provides a modern Go SDK for CloudStack without requiring a separate proxy service.
+
+[source,text]
+----
+┌───────────────────────────────────────────────────────────┐
+│              Go Application                               │
+│                                                           │
+│  ┌───────────────────────────────────────────────┐        │
+│  │                                               │        │
+│  │  ┌───────────────┐       ┌───────────────┐    │        │
+│  │  │ Application   │◄─────►│ CloudStack    │    │        │
+│  │  │ Code          │       │ Go SDK        │────┼───────►│
+│  │  └───────────────┘       └───────────────┘    │        │
+│  │                                               │        │
+│  └───────────────────────────────────────────────┘        │
+│                                                           │
+└───────────────────────────────────────────────────────────┘
+----
+
+[NOTE]
+====
+While CloudStack Proxy can generate client SDKs for all languages through its protobuf definitions, this project specifically focuses on providing a native Go SDK. The Go SDK encapsulates all the proxy logic internally, allowing for direct integration without requiring a separate proxy process.
+====
+
+== Architecture
+
+CloudStack Proxy follows a modular architecture that enables all three use cases described above. The core components include:
+
+=== API Layer
+* ConnectRPC/gRPC API definitions in protobuf
+* Strong typing and consistent error handling
+* Swagger/OpenAPI documentation
+
+=== Proxy Core
+* Request transformation between modern API and CloudStack API
+* Authentication and authorization handling
+* Caching and performance optimizations
+
+=== Go SDK
+* Native Go implementation of the API
+* Can be used directly in Go applications
+* Shares code with the proxy service
+
+=== Deployment Modes
+* Systemd service for production deployment
+* Local binary for development environments
+* Embedded library for Go applications
+
+.Core Components
+[source,text]
+----
+┌───────────────────────────────────────────┐
+│           CloudStack Proxy                │
+│                                           │
+│  ┌─────────────────┐   ┌───────────────┐  │
+│  │  API Layer      │   │ Authentication│  │
+│  │  (ConnectRPC)   │   │ & Security    │  │
+│  └────────┬────────┘   └───────┬───────┘  │
+│           │                    │          │
+│  ┌────────▼────────────────────▼───────┐  │
+│  │                                     │  │
+│  │           Proxy Core                │  │
+│  │                                     │  │
+│  └────────┬────────────────────┬───────┘  │
+│           │                    │          │
+│  ┌────────▼────────┐   ┌───────▼───────┐  │
+│  │  CloudStack     │   │  Monitoring & │  │
+│  │  API Client     │   │  Telemetry    │  │
+│  └─────────────────┘   └───────────────┘  │
+│                                           │
+└───────────────────────────────────────────┘
+----
+
+== Project Structure
+
+The repository is organized to support all three use cases:
+
+[source,text]
+----
+.
+├── README.adoc                 # This file
+├── buf.yaml                    # buf configuration
+├── proto/                      # Protobuf definitions
+│   └── cloudstack/             # API group namespaces
+│       └── [api-group]/v1/     # API versions & definitions
+├── pkg/                        # Custom code and logic
+│   ├── protogen/               # Generator logic
+│   ├── proxy/                  # Proxy implementation
+│   └── sdk/                    # Go SDK implementation
+├── gen/                        # Generated Go code
+├── cmd/                        # Executable entry points
+│   ├── csp/                    # Local development proxy
+│   ├── csp-systemd/            # Production systemd proxy
+│   └── csp-protobuf-generator/ # Generator tool
+└── examples/                   # Example implementations
+    ├── systemd/                # Systemd integration examples
+    ├── go-sdk/                 # Go SDK usage examples
+    └── local-proxy/            # Local proxy usage examples
+----
+
+== Roadmap
+
+=== Phase 1: Foundation (Current)
+* [x] Repository structure and boilerplate
+* [ ] Initial protobuf definition framework
+* [ ] Basic code generation pipeline
+* [ ] Core proxy architecture implementation
+
+=== Phase 2: Core Functionality
+* [ ] Go SDK Implementation
+  * [ ] Basic CloudStack API client
+  * [ ] Type-safe API interfaces
+  * [ ] Error handling enhancements
+* [ ] Local Development Proxy
+  * [ ] Configuration framework
+  * [ ] Developer-friendly logging
+  * [ ] Hot-reload capability
+* [ ] Authentication Framework
+  * [ ] CloudStack API key support
+  * [ ] OAuth2/JWT foundation
+
+=== Phase 3: Production Readiness
+* [ ] Systemd Proxy
+  * [ ] Systemd service integration
+  * [ ] Performance optimization
+  * [ ] Production logging and monitoring
+* [ ] Comprehensive API Coverage
+  * [ ] Virtual machines and compute
+  * [ ] Networking and security
+  * [ ] Storage and templates
+* [ ] Documentation and Testing
+  * [ ] SDK usage examples
+  * [ ] Deployment guides
+  * [ ] Integration test framework
+
+=== Phase 4: Extended Features
+* [ ] Advanced Authentication
+  * [ ] Role-based access control
+  * [ ] Integration with identity providers
+* [ ] Enhanced Error Handling
+  * [ ] Contextual error messages
+  * [ ] Troubleshooting recommendations
+* [ ] Observability
+  * [ ] Metrics exporters
+  * [ ] Distributed tracing
+  * [ ] Health checks and diagnostics
+
+== Contributing
+
+As this project is in early development, we're focusing on establishing the core architecture and framework. Contributions will be welcome as the project matures.
+
+== License
+
+Apache License 2.0 - See LICENSE file for details. 

@@ -1,0 +1,22 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/walteh/cloudstack-proxy/gen/proto
+    except:
+      - buf.build/googleapis/googleapis
+      - buf.build/connectrpc/eliza
+      - buf.build/grpc/grpc
+plugins:
+  - plugin: go
+    out: gen/proto
+    opt:
+      - paths=source_relative
+  - plugin: connect-go
+    out: gen/proto
+    opt:
+      - paths=source_relative
+  - plugin: validate-go
+    out: gen/proto
+    opt:
+      - paths=source_relative 

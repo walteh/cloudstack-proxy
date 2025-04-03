@@ -1,0 +1,117 @@
+version: "3"
+
+vars:
+  GO_ROOT_PKG:
+    sh: cat go.mod | grep -oE '^module[^\S]+' | cut -d' ' -f2
+  PROTO_FILES:
+    sh: find ./proto -type f -name '*.proto'
+  PROTO_GEN_FILES:
+    sh: find ./proto -type f -name '*.gen.proto'
+
+env:
+  GOPRIVATE: github.com/walteh
+
+tasks:
+  default:
+    cmds:
+      - task: help
+
+  deps:
+    desc: Install dependencies
+    cmds:
+      - go mod download
+      - go install github.com/bufbuild/buf/cmd/buf@latest
+      - go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+      - go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
+      - go install github.com/bufbuild/protovalidate-go/cmd/protoc-gen-validate-go@latest
+
+  go-mod-tidy:
+    desc: Tidy Go modules
+    env:
+      GOPROXY: https://proxy.golang.org
+      GOSUMDB: sum.golang.org
+      GOPRIVATE: github.com/walteh
+    cmds:
+      - go mod tidy
+
+  gen:
+    desc: Generate code from protobuf definitions
+    deps: [build-generator]
+    cmds:
+      - bin/csp-protogen
+      - buf generate
+    sources:
+      - proto/**/*.proto
+    generates:
+      - proto/**/*.gen.proto
+      - gen/**/*.pb.go
+
+  build:
+    desc: Build all binaries
+    deps: [build-csp, build-systemd, build-generator]
+
+  build-csp:
+    desc: Build the local development binary
+    cmds:
+      - mkdir -p bin
+      - go build -o bin/csp ./cmd/csp
+    sources:
+      - cmd/csp/**/*.go
+      - pkg/**/*.go
+    generates:
+      - bin/csp
+
+  build-systemd:
+    desc: Build the systemd-optimized binary
+    cmds:
+      - mkdir -p bin
+      - go build -o bin/csp-systemd ./cmd/csp-systemd
+    sources:
+      - cmd/csp-systemd/**/*.go
+      - pkg/**/*.go
+    generates:
+      - bin/csp-systemd
+
+  build-generator:
+    desc: Build the protobuf generator tool
+    cmds:
+      - mkdir -p bin
+      - go build -o bin/csp-protogen ./cmd/csp-protobuf-generator
+    sources:
+      - cmd/csp-protobuf-generator/**/*.go
+      - pkg/protogen/**/*.go
+    generates:
+      - bin/csp-protogen
+
+  test:
+    desc: Run tests
+    cmds:
+      - go test -v ./...
+
+  clean:
+    desc: Clean generated files and binaries
+    cmds:
+      - rm -rf bin
+      - find ./gen -type f -name "*.pb.go" -delete
+      - find ./proto -type f -name "*.gen.proto" -delete
+
+  run:
+    desc: Run the local development server
+    deps: [build-csp]
+    cmds:
+      - bin/csp
+
+  proto:validate:
+    desc: Validate protobuf definitions
+    cmds:
+      - buf lint
+
+  proto:format:
+    desc: Format protobuf files
+    cmds:
+      - buf format -w
+
+  proto:breaking:
+    desc: Check for breaking changes in protobuf definitions
+    cmds:
+      - buf breaking --against '.git#branch=main'

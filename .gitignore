@@ -17,9 +17,50 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-# Go workspace file
-go.work
-go.work.sum
-
 # env file
 .env
+.cursor/rules
+
+# Go build artifacts
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+/vendor/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local environment variables
+.env
+.env.local
+
+# Temporary directories
+.tmp/
+tmp/
+
+# CloudStack VM image
+*.qcow2
+
+# OS specific files
+.DS_Store
+Thumbs.db
+kvmrun
+kubernetes-the-harder-way
+.archive
