@@ -3,6 +3,10 @@
 		{
 			"name": "root",
 			"path": "."
+		},
+		{
+			"name": "kotlin-generator",
+			"path": "generator/kotlin"
 		}
 	],
 	"extensions": {

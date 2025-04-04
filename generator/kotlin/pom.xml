@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.walteh.cloudstack.proxy</groupId>
+    <artifactId>generator</artifactId>
+    <version>0.1.0</version>
+
+    <properties>
+        <kotlin.version>2.1.20</kotlin.version>
+        <jackson.version>2.18.3</jackson.version>
+		<cloudstack.version>4.21.0.0-SNAPSHOT</cloudstack.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <main.class>com.github.walteh.cloudstack.proxy.generator.MainKt</main.class>
+		<cloudstack.local.path>${project.basedir}/../../../cloudstack</cloudstack.local.path>
+    </properties>
+
+
+
+    <dependencies>
+        <!-- Kotlin standard library -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+
+        <!-- Jackson for JSON processing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jsonSchema</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        
+        <!-- CloudStack API - Local project reference -->
+        <dependency>
+		<type>jar</type>
+			<systemPath>${cloudstack.local.path}/api/target/cloud-api-4.21.0.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
+            <groupId>org.apache.cloudstack</groupId>
+            <artifactId>cloud-api</artifactId>
+            <version>${cloudstack.version}</version>
+            <scope>system</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmTarget>21</jvmTarget>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>${main.class}</mainClass>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+</project> 
