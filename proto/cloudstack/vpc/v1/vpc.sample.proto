@@ -1,0 +1,196 @@
+syntax = "proto3";
+
+package cloudstack.vpc.v1;
+
+import "cloudstack/core/v1/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+
+// VPCService provides operations for managing VPCs
+service VPCService {
+	// CreateVPC creates a new VPC
+	rpc CreateVPC(CreateVPCRequest) returns (CreateVPCResponse) {}
+
+
+	// ListVPCs lists VPCs with optional filtering
+	rpc ListVPCs(ListVPCsRequest) returns (ListVPCsResponse) {}
+}
+
+// CreateVPCRequest represents the parameters for creating a VPC
+message CreateVPCRequest {
+	// The name of the VPC
+	string name = 1;
+
+	// The display text of the VPC
+	string display_text = 2;
+
+	// The CIDR of the VPC
+	string cidr = 3 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
+	];
+
+	// The CIDR size of the VPC
+	int32 cidr_size = 4;
+
+	// The ID of the VPC offering
+	string vpc_offering_id = 5 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+	];
+
+	// The ID of the availability zone
+	string zone_id = 6 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+	];
+
+	// The network domain for the VPC
+	string network_domain = 7;
+
+	// Whether to start the VPC immediately
+	optional bool start = 8;
+
+	// Whether to display the VPC to end users
+	optional bool display = 9;
+
+	// The MTU for the network VR's public facing interfaces
+	optional int32 public_mtu = 10;
+
+	// DNS servers for the VPC
+	message DNSServers {
+		string ipv4_dns1 = 1 [
+			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+		];
+		string ipv4_dns2 = 2 [
+			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+		];
+		string ipv6_dns1 = 3 [
+			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
+		];
+		string ipv6_dns2 = 4 [
+			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
+		];
+	}
+	DNSServers dns_servers = 11;
+
+	// The source NAT IP address
+	string source_nat_ip = 12 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+	];
+
+	// The AS Number for the VPC tiers
+	int64 as_number = 13;
+}
+
+// CreateVPCResponse represents the response from creating a VPC
+message CreateVPCResponse {
+	// The created VPC
+	VPC vpc = 1;
+}
+
+// ListVPCsRequest represents the parameters for listing VPCs
+message ListVPCsRequest {
+	// The ID of the VPC to list
+	string id = 1;
+
+	// The ID of the zone to list VPCs from
+	string zone_id = 2 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+	];
+
+	// The name of the VPC to list
+	string name = 3;
+
+	// The display text to filter by
+	string display_text = 4;
+
+	// The CIDR to filter by
+	string cidr = 5 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
+	];
+
+	// The ID of the VPC offering to filter by
+	string vpc_offering_id = 6 [
+		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+	];
+
+	// The state to filter by
+	string state = 7;
+
+	// Whether to filter by restart required
+	optional bool restart_required = 8;
+
+	// Whether to show resource icons
+	optional bool show_resource_icon = 9;
+
+	// The page number to list
+	optional int32 page = 10 [
+		(cloudstack.core.v1.default) = {value: "1"}
+	];
+
+	// The page size
+	optional int32 page_size = 11 [
+		(cloudstack.core.v1.default) = {value: "10"}
+	];
+}
+
+// ListVPCsResponse represents the response from listing VPCs
+message ListVPCsResponse {
+	// The list of VPCs
+	repeated VPC vpcs = 1;
+
+	// The total count of VPCs
+	int32 total_count = 2;
+}
+
+// VPC represents a Virtual Private Cloud
+message VPC {
+	// The ID of the VPC
+	string id = 1;
+
+	// The name of the VPC
+	string name = 2;
+
+	// The display text of the VPC
+	string display_text = 3;
+
+	// The CIDR of the VPC
+	string cidr = 4;
+
+	// The state of the VPC
+	string state = 5;
+
+	// The ID of the VPC offering
+	string vpc_offering_id = 6;
+
+	// The ID of the zone
+	string zone_id = 7;
+
+	// The network domain
+	string network_domain = 8;
+
+	// Whether the VPC is displayed
+	bool display = 9;
+
+	// The public MTU
+	int32 public_mtu = 10;
+
+	// DNS servers
+	message DNSServers {
+		string ipv4_dns1 = 1;
+		string ipv4_dns2 = 2;
+		string ipv6_dns1 = 3;
+		string ipv6_dns2 = 4;
+	}
+	DNSServers dns_servers = 11;
+
+	// The source NAT IP
+	string source_nat_ip = 12;
+
+	// The AS Number
+	int64 as_number = 13;
+
+	// The creation time
+	string created = 14;
+
+	// The last update time
+	string updated = 15;
+}

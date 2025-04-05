@@ -7,6 +7,10 @@
 		{
 			"name": "kotlin-generator",
 			"path": "generator/kotlin"
+		},
+		{
+			"name": "cloudstack-java-api",
+			"path": "../cloudstack/api/src/main/java/org/apache/cloudstack/api"
 		}
 	],
 	"extensions": {

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package cloudstack.core.v1;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+message Enum {
+	enum CustomStringType {
+		CUSTOM_STRING_TYPE_UNSPECIFIED   = 0;
+		CUSTOM_STRING_TYPE_DATE_TIME     = 1;
+		CUSTOM_STRING_TYPE_UUID          = 2;
+		CUSTOM_STRING_TYPE_CIDR_BLOCK    = 3;
+		CUSTOM_STRING_TYPE_MAC_ADDRESS   = 4;
+		CUSTOM_STRING_TYPE_EMAIL_ADDRESS = 5;
+		CUSTOM_STRING_TYPE_URL           = 6;
+		CUSTOM_STRING_TYPE_IP_V4_ADDRESS = 7;
+		CUSTOM_STRING_TYPE_IP_V6_ADDRESS = 8;
+	}
+	enum IDType {
+		ID_TYPE_UNSPECIFIED  = 0;
+		ID_TYPE_ZONE         = 1;
+		ID_TYPE_VPC          = 2;
+		ID_TYPE_VPC_OFFERING = 3;
+		ID_TYPE_VM           = 4;
+		ID_TYPE_VOLUME       = 5;
+		ID_TYPE_SNAPSHOT     = 6;
+		ID_TYPE_TEMPLATE     = 7;
+		ID_TYPE_ISO          = 8;
+	}
+}
+
+extend google.protobuf.FieldOptions {
+	Enum.CustomStringType str_type = 1000;
+	google.protobuf.Any   default  = 1001;
+	Enum.IDType           id_type  = 1002;
+}

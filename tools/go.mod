@@ -105,7 +105,7 @@ require (
 	github.com/anchore/quill v0.5.1 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.1 // indirect
 	github.com/apex/log v1.9.0 // indirect
-	github.com/apple/pkl-go v0.9.0 // indirect
+	github.com/apple/pkl-go v0.10.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/ashanbrown/forbidigo v1.6.0 // indirect
 	github.com/ashanbrown/makezero v1.2.0 // indirect
@@ -151,7 +151,7 @@ require (
 	github.com/breml/errchkjson v0.4.0 // indirect
 	github.com/briandowns/spinner v1.16.0 // indirect
 	github.com/bufbuild/buf v1.51.0 // indirect
-	github.com/bufbuild/plugins v0.0.0-20250402124812-161da40a9352 // indirect
+	github.com/bufbuild/plugins v0.0.0-20250404112501-427f72242be9 // indirect
 	github.com/bufbuild/protocompile v0.14.1 // indirect
 	github.com/bufbuild/protoplugin v0.0.0-20250106231243-3a819552c9d9 // indirect
 	github.com/bufbuild/protovalidate-go v0.9.3-0.20250317160558-38a17488914d // indirect
@@ -565,7 +565,7 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250224174004-546df14abb99 // indirect
 	google.golang.org/grpc v1.70.0 // indirect
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.5.1 // indirect
-	google.golang.org/protobuf v1.36.5 // indirect
+	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/mail.v2 v2.3.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect

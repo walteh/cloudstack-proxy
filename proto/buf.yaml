@@ -2,17 +2,17 @@
 
 version: v1
 breaking:
-  use:
-    - FILE
+    use:
+        - FILE
 deps:
-  - buf.build/googleapis/googleapis
+    - buf.build/googleapis/googleapis
 lint:
-  use:
-    - DEFAULT
-  except:
-    - RPC_REQUEST_RESPONSE_UNIQUE
-    - RPC_RESPONSE_STANDARD_NAME
+    use:
+        - DEFAULT
+    except:
+        - RPC_REQUEST_RESPONSE_UNIQUE
+        - RPC_RESPONSE_STANDARD_NAME
 
-  rpc_allow_same_request_response: true
-  rpc_allow_google_protobuf_empty_requests: true
-  rpc_allow_google_protobuf_empty_responses: false
+    rpc_allow_same_request_response: true
+    rpc_allow_google_protobuf_empty_requests: true
+    rpc_allow_google_protobuf_empty_responses: false
