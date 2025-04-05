@@ -457,7 +457,9 @@ class EnumMapDefinitionProvider(private val propertyNameSupplier: Function<Enum<
 		val propertiesNode = context.generatorConfig.createObjectNode()
 		customSchema.set<JsonNode>(context.getKeyword(SchemaKeyword.TAG_PROPERTIES), propertiesNode)
 		Stream.of(*(keyType.erasedType as Class<out Enum<*>?>).enumConstants)
-			.map<String>(this.propertyNameSupplier)
+			.map {
+				it?.name
+			}
 			.forEach { propertyName: String? ->
 				propertiesNode.set<JsonNode>(
 					propertyName,
