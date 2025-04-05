@@ -19,7 +19,15 @@
 		<cloudstack.local.path>${project.basedir}/../../../cloudstack</cloudstack.local.path>
     </properties>
 
-
+   <dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.jetbrains.kotlinx</groupId>
+			<artifactId>kotlinx-coroutines-bom</artifactId>
+			<version>1.10.1</version>
+		</dependency>
+	</dependencies>
+   </dependencyManagement>
 
     <dependencies>
         <!-- Kotlin standard library -->
@@ -28,6 +36,13 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+
+		<dependency>
+			<groupId>org.jetbrains.kotlinx</groupId>
+			<artifactId>kotlinx-coroutines-core</artifactId>
+			<version>1.10.1</version>
+		</dependency>
+		
 
         <!-- Jackson for JSON processing -->
         <dependency>
