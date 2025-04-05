@@ -2,9 +2,7 @@ syntax = "proto3";
 
 package cloudstack.vpc.v1;
 
-import "cloudstack/core/v1/annotations.proto";
-import "google/protobuf/empty.proto";
-import "google/protobuf/field_mask.proto";
+import "cloudstack/annotations/annotations.proto";
 
 // VPCService provides operations for managing VPCs
 service VPCService {
@@ -26,7 +24,7 @@ message CreateVPCRequest {
 
 	// The CIDR of the VPC
 	string cidr = 3 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
+		(annotations.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
 	];
 
 	// The CIDR size of the VPC
@@ -34,12 +32,12 @@ message CreateVPCRequest {
 
 	// The ID of the VPC offering
 	string vpc_offering_id = 5 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
 	];
 
 	// The ID of the availability zone
 	string zone_id = 6 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
 	];
 
 	// The network domain for the VPC
@@ -57,23 +55,23 @@ message CreateVPCRequest {
 	// DNS servers for the VPC
 	message DNSServers {
 		string ipv4_dns1 = 1 [
-			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
 		];
 		string ipv4_dns2 = 2 [
-			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
 		];
 		string ipv6_dns1 = 3 [
-			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
+			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
 		];
 		string ipv6_dns2 = 4 [
-			(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
+			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
 		];
 	}
 	DNSServers dns_servers = 11;
 
 	// The source NAT IP address
 	string source_nat_ip = 12 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+		(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
 	];
 
 	// The AS Number for the VPC tiers
@@ -93,7 +91,7 @@ message ListVPCsRequest {
 
 	// The ID of the zone to list VPCs from
 	string zone_id = 2 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
 	];
 
 	// The name of the VPC to list
@@ -104,12 +102,12 @@ message ListVPCsRequest {
 
 	// The CIDR to filter by
 	string cidr = 5 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
+		(annotations.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
 	];
 
 	// The ID of the VPC offering to filter by
 	string vpc_offering_id = 6 [
-		(cloudstack.core.v1.str_type) = CUSTOM_STRING_TYPE_UUID
+		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
 	];
 
 	// The state to filter by
@@ -123,12 +121,12 @@ message ListVPCsRequest {
 
 	// The page number to list
 	optional int32 page = 10 [
-		(cloudstack.core.v1.default) = {value: "1"}
+		(annotations.default) = {value: "1"}
 	];
 
 	// The page size
 	optional int32 page_size = 11 [
-		(cloudstack.core.v1.default) = {value: "10"}
+		(annotations.default) = {value: "10"}
 	];
 }
 
