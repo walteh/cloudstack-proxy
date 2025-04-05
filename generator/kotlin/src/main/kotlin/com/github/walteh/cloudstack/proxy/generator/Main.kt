@@ -34,17 +34,33 @@ suspend fun main(args: Array<String>) {
 
 	val userClasses = getClassesForPackage("org.apache.cloudstack.api")
 
-	val schemas = convertToJsonSchemas(userClasses) { !it.endsWith("Cmd") }
+//	val schemas = convertToJsonSchemas(userClasses) { !it.endsWith("Cmd") }
 
-	val outputDir = File("./gen/cloudstack-api-json-schemas")
-	outputDir.mkdirs()
 
-	schemas.forEach {
-		if (it.error == null) {
-			val jsonSchema = objectWriter.writeValueAsString(it.schema)
-			File(outputDir, "${it.name}.json").writeText(jsonSchema)
+
+
+	// val schemaOutputDir = File("./gen/cloudstack-api-json-schemas")
+	// schemaOutputDir.mkdirs()
+
+	// schemas.forEach {
+	// 	if (it.error == null) {
+	// 		val jsonSchema = objectWriter.writeValueAsString(it.schema)
+	// 		File(schemaOutputDir, "${it.name}.json").writeText(jsonSchema)
+	// 	}
+	// }
+
+	val cmds = generateMetadataFromPackage("org.apache.cloudstack.api")
+
+	val metadataOutputDir = File("./gen/cloudstack-api-metadata")
+	metadataOutputDir.mkdirs()
+
+	cmds.forEach { 
+		if (it != null) {
+			val json = objectWriter.writeValueAsString(it)
+			File(metadataOutputDir, "${it.name}.json").writeText(json)
 		}
 	}
+
 
 	println("\nCloudStack API Generator Completed")
 }

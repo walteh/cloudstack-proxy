@@ -25,7 +25,7 @@ import java.util.stream.Stream
 
 
 @Throws(ClassNotFoundException::class)
-fun getClassesForPackage(pckgname: String): ArrayList< java.lang.reflect.Type> {
+public fun getClassesForPackage(pckgname: String): ArrayList< java.lang.reflect.Type> {
 	val classes = ArrayList< java.lang.reflect.Type>()
 
 	try {
