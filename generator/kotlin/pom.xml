@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-jsonSchema</artifactId>
+            <artifactId>jackson-module-jsonSchema-jakarta</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
@@ -46,8 +46,20 @@
             <artifactId>jackson-module-kotlin</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        
-        <!-- CloudStack API - Local project reference -->
+
+		<dependency>
+			<groupId>com.github.victools</groupId>
+			<artifactId>jsonschema-generator</artifactId>
+			<version>[4.21.0,5.0.0)</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.kjetland</groupId>-->
+<!--			<artifactId>mbknor-jackson-jsonschema_2.12</artifactId>-->
+<!--			<version>1.0.39</version>-->
+<!--		</dependency>-->
+
+		<!-- CloudStack API - Local project reference -->
         <dependency>
 		<type>jar</type>
 			<systemPath>${cloudstack.local.path}/api/target/cloud-api-4.21.0.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
@@ -89,9 +101,23 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <configuration>
-                    <mainClass>${main.class}</mainClass>
+                    <mainClass>com.github.walteh.cloudstack.proxy.generator.MainKt</mainClass>
+                    <arguments>
+						<argument>--add-opens</argument>
+						<argument>java.base/java.lang=ALL-UNNAMED</argument>
+						<argument>${project.build.directory}/classes</argument>
+					</arguments>
+
+                    <systemProperties>
+
+                        <systemProperty>
+                            <key>java.security.manager</key>
+                            <value>allow</value>
+                        </systemProperty>
+                    </systemProperties>
+
                 </configuration>
             </plugin>
             
