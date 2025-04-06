@@ -1,16 +1,20 @@
 package com.github.walteh.cloudstack.proxy.generator
 
-import org.apache.cloudstack.api.APICommand
-import org.apache.cloudstack.api.Parameter
 import org.apache.cloudstack.api.BaseCmd.CommandType
-import org.apache.cloudstack.api.ACL
-import org.apache.cloudstack.api.Validate
+import com.cloud.serializer.Param
+import org.apache.cloudstack.acl.RoleType
+import org.apache.cloudstack.acl.SecurityChecker
+import org.apache.cloudstack.api.*
 import java.lang.reflect.Field
+import kotlin.reflect.jvm.jvmName
 
 // Data classes for metadata representation
 data class GroupMetadata(
     val name: String,
-    val commands: List<CommandMetadata>
+    val scope: String,
+    val commands: List<CommandMetadata>,
+    val responseObjects: List<ResponseObjectMetadata> = emptyList(),
+    val entityTypes: List<String> = emptyList()
 )
 
 data class CommandMetadata(
@@ -36,21 +40,48 @@ data class ParameterMetadata(
 	val name: String,
 	val fieldName: String,
 	val javaType: String,
-	val commandType: String,
-	val protoType: String,
-	val protoTypeAnnotation: String? = null,
+	val commandType: BaseCmd.CommandType,
 	val description: String,
 	val required: Boolean,
 	val since: String,
 	val entityType: String? = null,
 	val validations: List<ValidationMetadata> = emptyList(),
 	val authorization: AuthorizationInfo? = null,
-	val shouldDisplay: Boolean = true
+	val shouldDisplay: Boolean = true,
+	val acceptedOnAdminPort: Boolean = false,
+	val expose: Boolean = false,
+	val includeInApiDoc: Boolean = false,
+	val authorized: List<RoleType> = emptyList(),
+	val collectionType: BaseCmd.CommandType,
+	val length: Int,
+
+//		x = parameter.acceptedOnAdminPort,
+//	y = parameter.expose,
+//	z = parameter.includeInApiDoc,
+//	a = parameter.authorized,
+//	b = parameter.collectionType,
+//	c = parameter.length,
+//	d = parameter.validations,
+
+
 )
 
-data class ProtoTypeInfo(
-    val type: String,
-    val annotation: String? = null
+data class ResponseObjectMetadata(
+    val className: String,
+    val simpleName: String,
+    val fields: List<ResponseFieldMetadata>,
+    val entityReference: String? = null,
+    val superclass: String? = null
+)
+
+data class ResponseFieldMetadata(
+    val name: String,
+    val fieldName: String,
+    val javaType: String,
+    val description: String,
+    val since: String? = null,
+    val authorized: List<String>? = null,
+    val responseObject: String? = null
 )
 
 data class ValidationMetadata(
@@ -59,8 +90,8 @@ data class ValidationMetadata(
 )
 
 data class ACLInfo(
-    val accessType: String,
-    val roleTypes: List<String>
+	val accessType: SecurityChecker.AccessType,
+//	val roleTypes: List<String>
 )
 
 data class AuthorizationInfo(
@@ -73,58 +104,153 @@ data class AuthorizationInfo(
 fun extractCommandsToJson(commandClasses: List<Class<*>>): List<GroupMetadata?>  {
     println("Extracting metadata from ${commandClasses.size} command classes")
     
-    // Create output directory if it doesn't exist
-//    outputDir.mkdirs()
 	val commandMetadata = commandClasses.mapNotNull { extractCommandMetadata(it) }
     // Group commands by API group
     val commandsByGroup = groupCommandsByApi(commandMetadata)
     
     // Process each group
 	return commandsByGroup.map { (groupName, commands) ->
-
-        if (commandMetadata.isNotEmpty()) {
-			GroupMetadata(
-				name = groupName,
-				commands = commands
-			)
-
-
-//            // Write to JSON file
-//            val outputFile = File(outputDir, "$groupName.json")
-//            val objectMapper = ObjectMapper().registerKotlinModule()
-//            objectMapper.writerWithDefaultPrettyPrinter().writeValue(outputFile, groupMetadata)
-//            println("Generated metadata for $groupName: ${outputFile.absolutePath}")
-		} else {
-			null
-		}
+        if (commands.isNotEmpty()) {
+            // Group commands by scope (admin, user, etc.)
+            val scopedCommands = commands.groupBy { it.scopeName }
+            
+            // Process each scope group
+            scopedCommands.map { (scope, cmds) ->
+                // Collect all response objects used by commands in this group
+                val responseObjectClasses = collectResponseObjectClasses(cmds)
+                val responseObjectMetadata = responseObjectClasses.mapNotNull { extractResponseObjectMetadata(it) }
+                
+                // Collect all entity types referenced by commands in this group
+                val entityTypes = collectEntityTypes(cmds)
+                
+                GroupMetadata(
+                    name = groupName,
+                    scope = scope,
+                    commands = cmds,
+                    responseObjects = responseObjectMetadata,
+                    entityTypes = entityTypes
+                )
+            }.firstOrNull() // Return first scope group or null
+        } else {
+            null
+        }
     }
-
-
 }
 
 /**
  * Group command classes by API area
  */
 fun groupCommandsByApi(commandClasses: List<CommandMetadata>): Map<String, List<CommandMetadata>> {
-	// org.apache.cloudstack.api.command.admin.vpc.
-    return commandClasses.groupBy { clazz ->
-//        val packageName = clazz.packageName.removePrefix("org.apache.cloudstack.api.command.")
-//		var split = packageName.split(".")
-//		val userType = split.first()
-//		val rest = split.drop(1)
-//		val group = rest.joinToString(".")
-//		group
-		clazz.groupName
-//        when {
-//            packageName.contains("vpc") -> "vpc"
-//            packageName.contains("vm") -> "vm"
-//            packageName.contains("volume") -> "storage"
-//            packageName.contains("network") -> "network"
-//			packageName.contains("user") -> "user"
-//            // Add more groups as needed
-//            else -> "core"
-//        }
+    return commandClasses.groupBy { clazz -> clazz.groupName }
+}
+
+/**
+ * Collect all response object classes referenced by a list of commands
+ */
+fun collectResponseObjectClasses(commands: List<CommandMetadata>): List<Class<*>> {
+    val responseObjectNames = commands.map { it.responseObject }.distinct()
+    return responseObjectNames.mapNotNull { responseClassName ->
+        try {
+            Class.forName(responseClassName)
+        } catch (e: Exception) {
+            println("Could not load response class: $responseClassName - ${e.message}")
+            null
+        }
     }
+}
+
+/**
+ * Collect all entity types referenced by commands
+ */
+fun collectEntityTypes(commands: List<CommandMetadata>): List<String> {
+    return commands.flatMap { it.entityType }.filter { it.isNotEmpty() }.distinct()
+}
+
+/**
+ * Extract metadata from a response object class
+ */
+fun extractResponseObjectMetadata(responseClass: Class<*>): ResponseObjectMetadata? {
+    if (!BaseResponse::class.java.isAssignableFrom(responseClass)) {
+        return null
+    }
+    
+    // Get entity reference if present
+    val entityReference = responseClass.getAnnotation(EntityReference::class.java)?.value?.first()?.java?.name
+    
+    // Get superclass
+    val superclass = responseClass.superclass?.name
+    
+    // Extract fields with Param annotation
+    val fields = responseClass.declaredFields
+        .filter { it.isAnnotationPresent(Param::class.java) }
+        .map { field ->
+            val param = field.getAnnotation(Param::class.java)
+            ResponseFieldMetadata(
+                name = findSerializedName(field),
+                fieldName = field.name,
+                javaType = field.type.name,
+                description = param.description,
+                since = param.since.takeIf { it.isNotEmpty() },
+                authorized = extractAuthorizedRoles(param),
+                responseObject = findResponseObject(param)
+            )
+        }
+    
+    return ResponseObjectMetadata(
+        className = responseClass.name,
+        simpleName = responseClass.simpleName,
+        fields = fields,
+        entityReference = entityReference,
+        superclass = superclass
+    )
+}
+
+/**
+ * Find the serialized name of a field using SerializedName annotation
+ */
+fun findSerializedName(field: Field): String {
+    val serializedNameAnn = field.annotations.find { it.annotationClass.java.simpleName == "SerializedName" }
+    if (serializedNameAnn != null) {
+        try {
+            val value = serializedNameAnn.javaClass.getMethod("value").invoke(serializedNameAnn) as String
+            return value
+        } catch (e: Exception) {
+            // Couldn't get value from annotation
+        }
+    }
+    return field.name
+}
+
+/**
+ * Extract authorized roles from a Param annotation
+ */
+fun extractAuthorizedRoles(param: Param): List<String>? {
+    try {
+        val authorizedMethod = param.javaClass.getMethod("authorized")
+        val authorized = authorizedMethod.invoke(param) as Array<*>
+        if (authorized.isNotEmpty()) {
+            return authorized.map { it.toString() }
+        }
+    } catch (e: Exception) {
+        // Authorized property doesn't exist or is not accessible
+    }
+    return null
+}
+
+/**
+ * Find the response object class name from a Param annotation
+ */
+fun findResponseObject(param: Param): String? {
+    try {
+        val responseObjectMethod = param.javaClass.getMethod("responseObject")
+        val responseObject = responseObjectMethod.invoke(param) as Class<*>
+        if (responseObject != Void::class.java) {
+            return responseObject.name
+        }
+    } catch (e: Exception) {
+        // responseObject property doesn't exist or is not accessible
+    }
+    return null
 }
 
 /**
@@ -187,8 +313,8 @@ fun extractACLInfo(commandClass: Class<*>): ACLInfo? {
     val aclAnnotation = commandClass.getAnnotation(ACL::class.java) ?: return null
     
     return ACLInfo(
-        accessType = aclAnnotation.accessType.name,
-        roleTypes = emptyList()
+        accessType = aclAnnotation.accessType,
+//        roleTypes = aclAnnotation.map { it.name }
     )
 }
 
@@ -250,9 +376,6 @@ fun extractInheritedParameters(commandClass: Class<*>): List<ParameterMetadata> 
 fun extractParameterMetadata(field: Field): ParameterMetadata {
     val parameter = field.getAnnotation(Parameter::class.java)
     
-    // Determine parameter type with more specific info
-    val protoType = determineProtoType(field, parameter)
-    
     // Get validation annotations
     val validations = extractValidations(field)
     
@@ -263,74 +386,21 @@ fun extractParameterMetadata(field: Field): ParameterMetadata {
         name = parameter.name,
         fieldName = field.name,
         javaType = field.type.name,
-        commandType = parameter.type.name,
-        protoType = protoType.type,
-        protoTypeAnnotation = protoType.annotation,
+        commandType = parameter.type,
         description = parameter.description,
         required = parameter.required,
         since = parameter.since,
-        entityType = parameter.annotationClass.simpleName,
+		acceptedOnAdminPort = parameter.acceptedOnAdminPort,
+		expose = parameter.expose,
+		includeInApiDoc = parameter.includeInApiDoc,
+		authorized = parameter.authorized.toList(),
+		collectionType = parameter.collectionType,
+		length = parameter.length,
+        entityType = parameter.entityType.firstOrNull()?.javaObjectType?.typeName,
         validations = validations,
         authorization = authorizationInfo,
         shouldDisplay = true
     )
-}
-
-/**
- * Determine the appropriate protobuf type for a parameter
- */
-fun determineProtoType(field: Field, parameter: Parameter): ProtoTypeInfo {
-    val type = parameter.type
-    
-    // Basic type mapping
-    val baseType = when (type) {
-        CommandType.STRING -> "string"
-        CommandType.BOOLEAN -> "bool"
-        CommandType.INTEGER, CommandType.SHORT -> "int32"
-        CommandType.LONG -> "int64"
-        CommandType.FLOAT -> "float"
-        CommandType.DOUBLE -> "double"
-        CommandType.LIST -> "repeated string" // This is simplified
-        CommandType.MAP -> "map<string, string>" // This is simplified
-        CommandType.DATE -> "string" // Use string for dates
-        CommandType.UUID -> "string" // Use string with annotation for UUIDs
-        else -> "string"
-    }
-    
-    // Check for special field types based on name or other hints
-    val fieldName = parameter.name.lowercase()
-    val annotation = when {
-        // UUID type
-        type == CommandType.UUID -> "CUSTOM_STRING_TYPE_UUID"
-		parameter.collectionType == CommandType.STRING -> "okay"
-//		type == CommandType.STRING ->
-
-
-        
-        // IP addresses
-        fieldName.contains("ip") && !fieldName.contains("ipv6") -> "CUSTOM_STRING_TYPE_IP_V4_ADDRESS"
-        fieldName.contains("ipv6") -> "CUSTOM_STRING_TYPE_IP_V6_ADDRESS"
-        
-        // CIDR blocks
-        fieldName.contains("cidr") -> "CUSTOM_STRING_TYPE_CIDR_BLOCK"
-        
-        // MAC addresses
-        fieldName.contains("mac") -> "CUSTOM_STRING_TYPE_MAC_ADDRESS"
-        
-        // Time/Date fields
-        fieldName.contains("time") || fieldName.contains("date") -> "CUSTOM_STRING_TYPE_TIMESTAMP"
-        
-        // URLs
-        fieldName.contains("url") -> "CUSTOM_STRING_TYPE_URL"
-        
-        // Emails
-        fieldName.contains("email") -> "CUSTOM_STRING_TYPE_EMAIL"
-        
-        // Default - no annotation needed
-        else -> null
-    }
-    
-    return ProtoTypeInfo(baseType, annotation)
 }
 
 /**
