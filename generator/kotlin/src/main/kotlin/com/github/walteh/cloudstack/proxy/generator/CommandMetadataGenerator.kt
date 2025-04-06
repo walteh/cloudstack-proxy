@@ -1,6 +1,5 @@
 package com.github.walteh.cloudstack.proxy.generator
 
-import com.github.walteh.cloudstack.proxy.generator.extractor.*
 import org.apache.cloudstack.api.APICommand
 import java.io.File
 import java.net.URLClassLoader

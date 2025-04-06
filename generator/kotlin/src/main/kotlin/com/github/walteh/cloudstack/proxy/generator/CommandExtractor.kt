@@ -1,15 +1,11 @@
-package com.github.walteh.cloudstack.proxy.generator.extractor
+package com.github.walteh.cloudstack.proxy.generator
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.apache.cloudstack.api.APICommand
 import org.apache.cloudstack.api.Parameter
 import org.apache.cloudstack.api.BaseCmd.CommandType
 import org.apache.cloudstack.api.ACL
 import org.apache.cloudstack.api.Validate
-import java.io.File
 import java.lang.reflect.Field
-import java.lang.reflect.Modifier
 
 // Data classes for metadata representation
 data class GroupMetadata(
@@ -18,35 +14,35 @@ data class GroupMetadata(
 )
 
 data class CommandMetadata(
-    val className: String,
-    val simpleName: String,
-    val commandName: String,
-    val description: String,
-    val responseObject: String,
-    val responseView: String,
-    val entityType: List<String>,
-    val parameters: List<ParameterMetadata>,
-    val superclasses: List<String> = emptyList(),
-    val isAsync: Boolean = false,
-    val aclInfo: ACLInfo? = null,
-    val requestHasSensitiveInfo: Boolean = false,
-    val responseHasSensitiveInfo: Boolean = false
+	val className: String,
+	val simpleName: String,
+	val commandName: String,
+	val description: String,
+	val responseObject: String,
+	val responseView: String,
+	val entityType: List<String>,
+	val parameters: List<ParameterMetadata>,
+	val superclasses: List<String> = emptyList(),
+	val isAsync: Boolean = false,
+	val aclInfo: ACLInfo? = null,
+	val requestHasSensitiveInfo: Boolean = false,
+	val responseHasSensitiveInfo: Boolean = false
 )
 
 data class ParameterMetadata(
-    val name: String,
-    val fieldName: String,
-    val javaType: String,
-    val commandType: String,
-    val protoType: String,
-    val protoTypeAnnotation: String? = null,
-    val description: String,
-    val required: Boolean,
-    val since: String,
-    val entityType: String? = null,
-    val validations: List<ValidationMetadata> = emptyList(),
-    val authorization: AuthorizationInfo? = null,
-    val shouldDisplay: Boolean = true
+	val name: String,
+	val fieldName: String,
+	val javaType: String,
+	val commandType: String,
+	val protoType: String,
+	val protoTypeAnnotation: String? = null,
+	val description: String,
+	val required: Boolean,
+	val since: String,
+	val entityType: String? = null,
+	val validations: List<ValidationMetadata> = emptyList(),
+	val authorization: AuthorizationInfo? = null,
+	val shouldDisplay: Boolean = true
 )
 
 data class ProtoTypeInfo(
@@ -336,10 +332,12 @@ fun extractValidations(field: Field): List<ValidationMetadata> {
     if (field.isAnnotationPresent(Validate::class.java)) {
         val validate = field.getAnnotation(Validate::class.java)
         
-        validations.add(ValidationMetadata(
+        validations.add(
+			ValidationMetadata(
             type = "validate",
             value = "true"  // This is simplified
-        ))
+        )
+		)
     }
     
     // Add more validation annotations as needed
