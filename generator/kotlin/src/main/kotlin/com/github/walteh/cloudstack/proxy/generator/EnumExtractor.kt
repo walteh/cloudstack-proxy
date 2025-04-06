@@ -1,13 +1,9 @@
 package com.github.walteh.cloudstack.proxy.generator
 
-import org.reflections.Reflections
-import org.reflections.scanners.SubTypesScanner
-import org.reflections.scanners.TypeAnnotationsScanner
-import org.reflections.util.ClasspathHelper
-import org.reflections.util.ConfigurationBuilder
-import org.reflections.util.FilterBuilder
 import java.util.LinkedHashMap
 import java.lang.reflect.Method
+import java.lang.reflect.Modifier
+import java.lang.reflect.Type
 
 /**
  * Data class to represent an Enum Type
@@ -31,18 +27,11 @@ data class EnumValueMetadata(
 )
 
 /**
- * Extracts all enum types from the org.apache.cloudstack.api package
+ * Extracts all enum types from CloudStack packages
  */
 object EnumExtractor {
     
-    private val basePackages = listOf(
-        "org.apache.cloudstack.api",
-        "org.apache.cloudstack.acl",
-        "com.cloud.network",
-        "com.cloud.dc",
-        "com.cloud.user",
-        "com.cloud.vm"
-    )
+    // Base package to start scanning from
     
     // Methods to skip in extras extraction
     private val methodsToSkip = setOf(
@@ -51,50 +40,109 @@ object EnumExtractor {
     )
     
     /**
-     * Extract all enum types from the specified packages
+     * Extract all enum types from CloudStack API
      */
-    fun extractEnumTypes(): List<EnumTypeMetadata> {
+    fun extractEnumTypes(vararg packageNames: String): List<EnumTypeMetadata> {
         val enumTypes = mutableMapOf<String, EnumTypeMetadata>()
+        println("Starting enum extraction from CloudStack API...")
         
-        // Configure Reflections to scan the target packages
-        val reflections = buildReflections()
+        // First, let's get all CloudStack classes starting from the base package
+        val allClasses = packageNames.flatMap { packageName ->
+            getClassesForPackage(packageName) { true }
+                .filterIsInstance<Class<*>>()
+        }
         
-        // Get all enum classes in the packages
-        val enumClasses = reflections.getSubTypesOf(Enum::class.java)
 
         
-        // Extract metadata from each enum class
-        for (enumClass in enumClasses) {
+        // Combine all classes
+        
+        println("Found ${allClasses.size} total classes to check for enums")
+        
+        // Process each class to find enums
+        processClassesForEnums(allClasses, enumTypes)
+        
+        println("Total unique enum types found: ${enumTypes.size}")
+        return enumTypes.values.toList().sortedBy { it.className }
+    }
+    
+    /**
+     * Process all classes to find enums and nested enums
+     */
+    private fun processClassesForEnums(
+        classes: List<Class<*>>, 
+        enumTypes: MutableMap<String, EnumTypeMetadata>
+    ) {
+        // First, find all direct enum classes
+        val directEnumClasses = classes.filter { it.isEnum }
+        println("Found ${directEnumClasses.size} direct enum classes")
+        
+        // Process direct enum classes
+        directEnumClasses.forEach { enumClass ->
             try {
-                val metadata = extractEnumMetadata(enumClass)
+                val metadata = extractEnumMetadata(enumClass as Class<out Enum<*>>)
                 enumTypes[metadata.className] = metadata
             } catch (e: Exception) {
                 println("Error extracting metadata from enum class: ${enumClass.name} - ${e.message}")
             }
         }
-
-
         
-        // Also look for nested enum classes that might not be directly caught
-        val allClasses = reflections.getSubTypesOf(Any::class.java)
-
-		// add interface types to the enum types
-		// allClasses += 
-        for (clazz in allClasses) {
+        // Then find all classes that might contain nested enums
+        classes.forEach { clazz ->
             try {
-                // Check if this class has nested enum classes
-                for (nestedClass in clazz.declaredClasses) {
-                    if (nestedClass.isEnum) {
-                        val metadata = extractEnumMetadata(nestedClass as Class<out Enum<*>>)
+                // Check declared classes for nested enums
+                clazz.declaredClasses.filter { it.isEnum }.forEach { nestedEnum ->
+                    try {
+                        val metadata = extractEnumMetadata(nestedEnum as Class<out Enum<*>>)
                         enumTypes[metadata.className] = metadata
+                    } catch (e: Exception) {
+                        println("Error extracting metadata from nested enum: ${nestedEnum.name} - ${e.message}")
+                    }
+                }
+                
+                // Special handling for interface enums
+                if (clazz.isInterface) {
+                    clazz.declaredClasses.filter { it.isEnum }.forEach { nestedEnum ->
+                        try {
+                            val metadata = extractEnumMetadata(nestedEnum as Class<out Enum<*>>)
+                            enumTypes[metadata.className] = metadata
+                        } catch (e: Exception) {
+                            println("Error extracting metadata from interface enum: ${nestedEnum.name} - ${e.message}")
+                        }
+                    }
+                }
+                
+                // Check for enum fields which might be standalone enum types
+                clazz.declaredFields.filter { 
+                    Modifier.isStatic(it.modifiers) && it.type.isEnum 
+                }.forEach { field ->
+                    try {
+                        val enumClass = field.type as Class<out Enum<*>>
+                        if (!enumTypes.containsKey(enumClass.name)) {
+                            val metadata = extractEnumMetadata(enumClass)
+                            enumTypes[metadata.className] = metadata
+                        }
+                    } catch (e: Exception) {
+                        // Skip fields that cause errors
                     }
                 }
             } catch (e: Exception) {
                 // Skip classes that cause errors
             }
         }
-        
-        return enumTypes.values.toList().sortedBy { it.className }
+    }
+    
+    /**
+     * Get all classes from a package with a filter
+     */
+    private fun getClassesForPackage(packageName: String, filter: (Type) -> Boolean): List<Type> {
+        // Use the existing method from Custom.kt
+        try {
+            val allTypes = com.github.walteh.cloudstack.proxy.generator.getClassesForPackage(packageName)
+            return allTypes.filter(filter)
+        } catch (e: Exception) {
+            println("Error loading classes from package $packageName: ${e.message}")
+            return emptyList()
+        }
     }
     
     /**
@@ -102,33 +150,6 @@ object EnumExtractor {
      */
     fun groupEnumsByPackage(enums: List<EnumTypeMetadata>): Map<String, List<EnumTypeMetadata>> {
         return enums.groupBy { it.packageName }
-    }
-    
-    /**
-     * Build the Reflections object configured to scan the target packages
-     */
-    private fun buildReflections(): Reflections {
-        val classLoadersList = mutableListOf<ClassLoader>()
-        classLoadersList.add(ClasspathHelper.contextClassLoader())
-        classLoadersList.add(ClasspathHelper.staticClassLoader())
-        
-        val builder = ConfigurationBuilder()
-        
-        // Add URLs for all base packages
-        basePackages.forEach { pkg ->
-            builder.addUrls(ClasspathHelper.forPackage(pkg))
-        }
-        
-        // Set class loaders and scanners
-        builder.setClassLoaders(classLoadersList.toTypedArray())
-            .addScanners(SubTypesScanner(false), TypeAnnotationsScanner())
-        
-        // Add filter to include only classes from the specified packages
-        val filter = FilterBuilder()
-        basePackages.forEach { pkg -> filter.includePackage(pkg) }
-        builder.filterInputsBy(filter)
-        
-        return Reflections(builder)
     }
     
     /**
@@ -140,7 +161,7 @@ object EnumExtractor {
         val parentClass = if (isNested) enumClass.enclosingClass.name else null
         
         // Get all enum constants
-        val enumValues = enumClass.enumConstants
+        val enumValues = enumClass.enumConstants ?: emptyArray()
         val valueMetadata = enumValues.map { enumValue ->
             // Extract extra info from the enum constant if available
             val extraInfo = extractUsefulExtraInfo(enumValue, enumClass)
@@ -234,42 +255,34 @@ object EnumExtractor {
     }
     
     /**
-     * Write the extracted enum types to a file
-     */
-    fun writeToFile(filePath: String, enumTypes: List<EnumTypeMetadata>) {
-        // Implementation depends on your file writing requirements
-        // Could use a JSON serializer or other format
-    }
-    
-    /**
      * Main method to run the extraction
      */
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val enumTypes = extractEnumTypes()
-        println("Extracted ${enumTypes.size} enum types")
+    // @JvmStatic
+    // fun main(args: Array<String>) {
+    //     val enumTypes = extractEnumTypes()
+    //     println("Extracted ${enumTypes.size} enum types")
         
-        // Group enums by package
-        val enumsByPackage = groupEnumsByPackage(enumTypes)
-        println("\nEnums by package:")
-        enumsByPackage.forEach { (packageName, enums) ->
-            println("  $packageName: ${enums.size} enums")
-        }
+    //     // Group enums by package
+    //     val enumsByPackage = groupEnumsByPackage(enumTypes)
+    //     println("\nEnums by package:")
+    //     enumsByPackage.forEach { (packageName, enums) ->
+    //         println("  $packageName: ${enums.size} enums")
+    //     }
         
-        // Print all enum types for debugging
-        enumTypes.forEach { enumType ->
-            println("Enum: ${enumType.className}")
-            println("  Values:")
-            enumType.values.forEach { value ->
-                println("    ${value.name} (${value.ordinal})")
-                if (value.extras.isNotEmpty()) {
-                    println("      Extra Info:")
-                    value.extras.forEach { (key, extraValue) ->
-                        println("        $key: $extraValue")
-                    }
-                }
-            }
-            println()
-        }
-    }
+    //     // Print all enum types for debugging
+    //     enumTypes.forEach { enumType ->
+    //         println("Enum: ${enumType.className}")
+    //         println("  Values:")
+    //         enumType.values.forEach { value ->
+    //             println("    ${value.name} (${value.ordinal})")
+    //             if (value.extras.isNotEmpty()) {
+    //                 println("      Extra Info:")
+    //                 value.extras.forEach { (key, extraValue) ->
+    //                     println("        $key: $extraValue")
+    //                 }
+    //             }
+    //         }
+    //         println()
+    //     }
+    // }
 } 

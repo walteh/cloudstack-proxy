@@ -57,41 +57,40 @@ suspend fun main(args: Array<String>) {
 	// 	}
 	// }
 
-	val cmds = generateMetadataFromPackage("org.apache.cloudstack.api")
-
 	val outDirLoc = File(outdir)
 	outDirLoc.deleteRecursively()
 	outDirLoc.mkdirs()
 
-	File(outDirLoc, "cloudstack-api-command-metadata.json").writeText(objectWriter.writeValueAsString(cmds))
+	val (cmds, resps) = generateMetadataFromPackage("org.apache.cloudstack.api")
+
+	val enumTypes = EnumExtractor.extractEnumTypes("org.apache.cloudstack", "com.cloud")
 
 
-	// Extract enum types
-	println("\nExtracting enum types...")
-	val enumTypes = EnumExtractor.extractEnumTypes()
-	println("Found ${enumTypes.size} enum types")
+	val groupedCommands = cmds.associateBy { it.className }
+
+	val groupedResponses = resps.associateBy { it.className }
+
+	val enumgroups = enumTypes.associateBy { it.className }
 
 
-	File(outDirLoc, "cloudstack-api-enum-metadata.json").writeText(objectWriter.writeValueAsString(enumTypes))
+	File(outDirLoc, "cloudstack-api-command-metadata.json").writeText(objectWriter.writeValueAsString(groupedCommands))
 
 
-//	// Group enums by package
-//	val enumsByPackage = enumTypes.groupBy { it.packageName }
-//
-//	enumsByPackage.forEach { (packageName, enums) ->
-//		// Create a package-level JSON file
-//		val packageShortName = packageName.split(".").last()
-//		val json = objectWriter.writeValueAsString(enums)
-//		File(enumOutputDir, "$packageShortName.json").writeText(json)
-//		println("Wrote ${enums.size} enums to $packageShortName.json")
-//	}
-//
-//	// Also write a consolidated file with all enums
-//	val allEnumsJson = objectWriter.writeValueAsString(enumTypes)
-//	File(enumOutputDir, "all_enums.json").writeText(allEnumsJson)
-//	println("Wrote all ${enumTypes.size} enums to all_enums.json")
+	File(outDirLoc, "cloudstack-api-response-metadata.json").writeText(objectWriter.writeValueAsString(groupedResponses))
 
-	println("\nCloudStack API Generator Completed")
+
+	File(outDirLoc, "cloudstack-api-enum-metadata.json").writeText(objectWriter.writeValueAsString(enumgroups))
+
+	println()
+
+
+	println("\nCloudStack API Generator Completed ")
+
+	println("Output directory: ${outDirLoc.absolutePath}")
+	println("Generated files:")
+	println("  - cloudstack-api-command-metadata.json (${groupedCommands.size} commands)")
+	println("  - cloudstack-api-response-metadata.json (${groupedResponses.size} responses)")
+	println("  - cloudstack-api-enum-metadata.json (${enumgroups.size} enums)")
 }
 
 

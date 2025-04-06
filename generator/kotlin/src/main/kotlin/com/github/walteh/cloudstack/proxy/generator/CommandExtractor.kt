@@ -70,7 +70,7 @@ data class ResponseObjectMetadata(
     val simpleName: String,
     val fields: List<ResponseFieldMetadata>,
     val entityReference: String? = null,
-    val superclass: String? = null
+    val superclass: String? = null,
 )
 
 data class ResponseFieldMetadata(
@@ -80,7 +80,7 @@ data class ResponseFieldMetadata(
     val description: String,
     val since: String? = null,
     val authorized: List<String>? = null,
-    val responseObject: String? = null
+    val responseObject: String? = null,
 )
 
 data class ValidationMetadata(
@@ -97,45 +97,27 @@ data class AuthorizationInfo(
     val roleTypes: List<String>
 )
 
+fun grabResponseObjectMetadata(commands: List<CommandMetadata>): List<ResponseObjectMetadata> {
+	val responseObjectClasses = collectResponseObjectClasses(commands)
+	return commands.mapNotNull { extractResponseObjectMetadata(it) }
+
+}
+
 /**
  * Extract metadata from command classes and write to JSON files
  */
-fun extractCommandsToMetadata(commandClasses: List<Class<*>>): Map<String, List<GroupMetadata>>  {
+fun extractCommandsToMetadata(commandClasses: List<Class<*>>):  List<CommandMetadata>  {
     println("Extracting metadata from ${commandClasses.size} command classes")
-    
-	val commandMetadata = commandClasses.mapNotNull { extractCommandMetadata(it) }
-    // Group commands by API group
-    val commandsByGroup = groupCommandsByApi(commandMetadata)
-    
-    // Process each group
-	val metadataByGroup = commandsByGroup.map { (groupName, commands) ->
-        if (commands.isNotEmpty()) {
-            // Group commands by scope (admin, user, etc.)
-			val responseObjectClasses = collectResponseObjectClasses(commands)
-			val responseObjectMetadata = responseObjectClasses.mapNotNull { extractResponseObjectMetadata(it) }
-			val entityTypes = collectEntityTypes(commands)
 
-			GroupMetadata(
-				name = groupName,
-				commands = commands,
-				responseObjects = responseObjectMetadata,
-				entityTypes = entityTypes
-			)
-
-        } else {
-            null
-        }
-    }
-
-	return metadataByGroup.mapNotNull { it }.groupBy { it.name }
+	return commandClasses.mapNotNull { extractCommandMetadata(it) }
 }
 
 /**
  * Group command classes by API area
  */
-fun groupCommandsByApi(commandClasses: List<CommandMetadata>): Map<String, List<CommandMetadata>> {
-    return commandClasses.groupBy { clazz -> clazz.groupName }
-}
+//fun groupCommandsByApi(commandClasses: List<CommandMetadata>): Map<String, List<CommandMetadata>> {
+//    return commandClasses.groupBy { clazz -> clazz.groupName }
+//}
 
 /**
  * Collect all response object classes referenced by a list of commands
@@ -152,6 +134,15 @@ fun collectResponseObjectClasses(commands: List<CommandMetadata>): List<Class<*>
     }
 }
 
+fun collectResponseObjectClass(command: CommandMetadata): Class<*>? {
+	return try {
+		Class.forName(command.responseObject)
+	} catch (e: Exception) {
+		println("Could not load response class: $command.responseObject - ${e.message}")
+		null
+	}
+}
+
 /**
  * Collect all entity types referenced by commands
  */
@@ -162,8 +153,12 @@ fun collectEntityTypes(commands: List<CommandMetadata>): List<String> {
 /**
  * Extract metadata from a response object class
  */
-fun extractResponseObjectMetadata(responseClass: Class<*>): ResponseObjectMetadata? {
-    if (!BaseResponse::class.java.isAssignableFrom(responseClass)) {
+fun extractResponseObjectMetadata(meta: CommandMetadata): ResponseObjectMetadata? {
+
+	val responseClass = collectResponseObjectClass(meta) ?: return null
+
+
+	if (!BaseResponse::class.java.isAssignableFrom(responseClass)) {
         return null
     }
     
@@ -185,13 +180,13 @@ fun extractResponseObjectMetadata(responseClass: Class<*>): ResponseObjectMetada
                 description = param.description,
                 since = param.since.takeIf { it.isNotEmpty() },
                 authorized = extractAuthorizedRoles(param),
-                responseObject = findResponseObject(param)
+                responseObject = findResponseObject(param),
             )
         }
     
     return ResponseObjectMetadata(
         className = responseClass.name,
-        simpleName = responseClass.simpleName,
+		simpleName = responseClass.simpleName,
         fields = fields,
         entityReference = entityReference,
         superclass = superclass

@@ -27,7 +27,7 @@ import java.util.jar.JarFile
 /**
  * Generate metadata using classes found in a package
  */
-fun generateMetadataFromPackage(packageName: String): Map<String, List<GroupMetadata>> {
+fun generateMetadataFromPackage(packageName: String): Pair<List<CommandMetadata>, List<ResponseObjectMetadata>> {
     println("Starting command metadata extraction from package: $packageName")
     
     // Get classes from the specified package
@@ -47,10 +47,13 @@ fun generateMetadataFromPackage(packageName: String): Map<String, List<GroupMeta
     
     // Extract metadata and write JSON files
    val cmds =  extractCommandsToMetadata(commandClasses)
+
+
+	val resps = grabResponseObjectMetadata(cmds)
     
     println("Completed metadata extraction")
 
-	return cmds
+	return Pair(cmds, resps)
 }
 
 /**

@@ -1,5 +1,562 @@
-[
-	{
+{
+	"com.cloud.agent.api.Command$OnError" : {
+		"className" : "com.cloud.agent.api.Command$OnError",
+		"simpleName" : "OnError",
+		"packageName" : "com.cloud.agent.api",
+		"isNested" : true,
+		"parentClass" : "com.cloud.agent.api.Command",
+		"values" : [
+			{
+				"name" : "Continue",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Stop",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.agent.api.LogLevel$Log4jLevel" : {
+		"className" : "com.cloud.agent.api.LogLevel$Log4jLevel",
+		"simpleName" : "Log4jLevel",
+		"packageName" : "com.cloud.agent.api",
+		"isNested" : true,
+		"parentClass" : "com.cloud.agent.api.LogLevel",
+		"values" : [
+			{
+				"name" : "Off",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Trace",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Debug",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.agent.api.PvlanSetupCommand$Type" : {
+		"className" : "com.cloud.agent.api.PvlanSetupCommand$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.agent.api",
+		"isNested" : true,
+		"parentClass" : "com.cloud.agent.api.PvlanSetupCommand",
+		"values" : [
+			{
+				"name" : "DHCP",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "VM",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.agent.api.to.DataObjectType" : {
+		"className" : "com.cloud.agent.api.to.DataObjectType",
+		"simpleName" : "DataObjectType",
+		"packageName" : "com.cloud.agent.api.to",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "VOLUME",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SNAPSHOT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "TEMPLATE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "ARCHIVE",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO$CustomerVisibility" : {
+		"className" : "com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO$CustomerVisibility",
+		"simpleName" : "CustomerVisibility",
+		"packageName" : "com.cloud.agent.api.to.deployasis",
+		"isNested" : true,
+		"parentClass" : "com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO",
+		"values" : [
+			{
+				"name" : "Unknown",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "PassedThrough",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Virtualized",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "NotRepresented",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "DMTFReserved",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "VendorReserved",
+				"ordinal" : 5,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO$HardwareResourceType" : {
+		"className" : "com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO$HardwareResourceType",
+		"simpleName" : "HardwareResourceType",
+		"packageName" : "com.cloud.agent.api.to.deployasis",
+		"isNested" : true,
+		"parentClass" : "com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO",
+		"values" : [
+			{
+				"name" : "Other",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ComputerSystem",
+				"ordinal" : 1,
+				"extras" : {
+					"getName" : "Computer System"
+				}
+			},
+			{
+				"name" : "Processor",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Memory",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "IDEController",
+				"ordinal" : 4,
+				"extras" : {
+					"getName" : "IDE Controller"
+				}
+			},
+			{
+				"name" : "ParallelSCSIHBA",
+				"ordinal" : 5,
+				"extras" : {
+					"getName" : "Parallel SCSI HBA"
+				}
+			},
+			{
+				"name" : "FC_HBA",
+				"ordinal" : 6,
+				"extras" : {
+					"getName" : "FC HBA"
+				}
+			},
+			{
+				"name" : "iSCSI_HBA",
+				"ordinal" : 7,
+				"extras" : {
+					"getName" : "iSCSI HBA"
+				}
+			},
+			{
+				"name" : "IB_HCA",
+				"ordinal" : 8,
+				"extras" : {
+					"getName" : "IB HCA"
+				}
+			},
+			{
+				"name" : "EthernetAdapter",
+				"ordinal" : 9,
+				"extras" : {
+					"getName" : "Ethernet Adaptor"
+				}
+			},
+			{
+				"name" : "OtherNetworkAdapter",
+				"ordinal" : 10,
+				"extras" : {
+					"getName" : "Other Network Adaptor"
+				}
+			},
+			{
+				"name" : "IO_Slot",
+				"ordinal" : 11,
+				"extras" : {
+					"getName" : "I/O Slot"
+				}
+			},
+			{
+				"name" : "IO_Device",
+				"ordinal" : 12,
+				"extras" : {
+					"getName" : "I/O Device"
+				}
+			},
+			{
+				"name" : "FloppyDrive",
+				"ordinal" : 13,
+				"extras" : {
+					"getName" : "Floppy Drive"
+				}
+			},
+			{
+				"name" : "CD_Drive",
+				"ordinal" : 14,
+				"extras" : {
+					"getName" : "CD Drive"
+				}
+			},
+			{
+				"name" : "DVD_Drive",
+				"ordinal" : 15,
+				"extras" : {
+					"getName" : "DVD Drive"
+				}
+			},
+			{
+				"name" : "DiskDrive",
+				"ordinal" : 16,
+				"extras" : {
+					"getName" : "Disk Drive"
+				}
+			},
+			{
+				"name" : "TapeDrive",
+				"ordinal" : 17,
+				"extras" : {
+					"getName" : "Tape Drive"
+				}
+			},
+			{
+				"name" : "StorageExtent",
+				"ordinal" : 18,
+				"extras" : {
+					"getName" : "Storage Extent"
+				}
+			},
+			{
+				"name" : "OtherStorageDevice",
+				"ordinal" : 19,
+				"extras" : {
+					"getName" : "Other Storage Device"
+				}
+			},
+			{
+				"name" : "SerialPort",
+				"ordinal" : 20,
+				"extras" : {
+					"getName" : "Serial Port"
+				}
+			},
+			{
+				"name" : "ParallelPort",
+				"ordinal" : 21,
+				"extras" : {
+					"getName" : "Parallel Port"
+				}
+			},
+			{
+				"name" : "USBController",
+				"ordinal" : 22,
+				"extras" : {
+					"getName" : "USB Controller"
+				}
+			},
+			{
+				"name" : "GraphicsController",
+				"ordinal" : 23,
+				"extras" : {
+					"getName" : "Graphics Controller"
+				}
+			},
+			{
+				"name" : "IEEE_1394_Controller",
+				"ordinal" : 24,
+				"extras" : {
+					"getName" : "IEEE 1394 Controller"
+				}
+			},
+			{
+				"name" : "PartitionableUnit",
+				"ordinal" : 25,
+				"extras" : {
+					"getName" : "Partitionable Unit"
+				}
+			},
+			{
+				"name" : "BasePartitionableUnit",
+				"ordinal" : 26,
+				"extras" : {
+					"getName" : "base Partitionable Unit"
+				}
+			},
+			{
+				"name" : "PowerSupply",
+				"ordinal" : 27,
+				"extras" : {
+					"getName" : "Power"
+				}
+			},
+			{
+				"name" : "CoolingCapacity",
+				"ordinal" : 28,
+				"extras" : {
+					"getName" : "Cooling Capacity"
+				}
+			},
+			{
+				"name" : "EthernetSwitchPort",
+				"ordinal" : 29,
+				"extras" : {
+					"getName" : "Ethernet Switch Port"
+				}
+			},
+			{
+				"name" : "LogicalDisk",
+				"ordinal" : 30,
+				"extras" : {
+					"getName" : "Logical Disk"
+				}
+			},
+			{
+				"name" : "StorageVolume",
+				"ordinal" : 31,
+				"extras" : {
+					"getName" : "Storage Volume"
+				}
+			},
+			{
+				"name" : "EthernetConnection",
+				"ordinal" : 32,
+				"extras" : {
+					"getName" : "Ethernet Connection"
+				}
+			},
+			{
+				"name" : "DMTF_reserved",
+				"ordinal" : 33,
+				"extras" : {
+					"getName" : "DMTF Reserved"
+				}
+			},
+			{
+				"name" : "VendorReserved",
+				"ordinal" : 34,
+				"extras" : {
+					"getName" : "Vendor Reserved"
+				}
+			}
+		]
+	},
+	"com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO$MappingBehavior" : {
+		"className" : "com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO$MappingBehavior",
+		"simpleName" : "MappingBehavior",
+		"packageName" : "com.cloud.agent.api.to.deployasis",
+		"isNested" : true,
+		"parentClass" : "com.cloud.agent.api.to.deployasis.OVFVirtualHardwareItemTO",
+		"values" : [
+			{
+				"name" : "Unknown",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "NotSupported",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Dedicated",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "SoftAffinity",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "HardAffinity",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "DMTFReserved",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "VendorReserved",
+				"ordinal" : 6,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.capacity.CapacityState" : {
+		"className" : "com.cloud.capacity.CapacityState",
+		"simpleName" : "CapacityState",
+		"packageName" : "com.cloud.capacity",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "Enabled",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Maintenance",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.configuration.Resource$ResourceType" : {
+		"className" : "com.cloud.configuration.Resource$ResourceType",
+		"simpleName" : "ResourceType",
+		"packageName" : "com.cloud.configuration",
+		"isNested" : true,
+		"parentClass" : "com.cloud.configuration.Resource",
+		"values" : [
+			{
+				"name" : "user_vm",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "public_ip",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "volume",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "snapshot",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "template",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "project",
+				"ordinal" : 5,
+				"extras" : {
+					"getOrdinal" : "5"
+				}
+			},
+			{
+				"name" : "network",
+				"ordinal" : 6,
+				"extras" : {
+					"getOrdinal" : "6"
+				}
+			},
+			{
+				"name" : "vpc",
+				"ordinal" : 7,
+				"extras" : {
+					"getOrdinal" : "7"
+				}
+			},
+			{
+				"name" : "cpu",
+				"ordinal" : 8,
+				"extras" : {
+					"getOrdinal" : "8"
+				}
+			},
+			{
+				"name" : "memory",
+				"ordinal" : 9,
+				"extras" : {
+					"getOrdinal" : "9"
+				}
+			},
+			{
+				"name" : "primary_storage",
+				"ordinal" : 10,
+				"extras" : {
+					"getOrdinal" : "10"
+				}
+			},
+			{
+				"name" : "secondary_storage",
+				"ordinal" : 11,
+				"extras" : {
+					"getOrdinal" : "11"
+				}
+			},
+			{
+				"name" : "backup",
+				"ordinal" : 12,
+				"extras" : {
+					"getOrdinal" : "12"
+				}
+			},
+			{
+				"name" : "backup_storage",
+				"ordinal" : 13,
+				"extras" : {
+					"getOrdinal" : "13"
+				}
+			},
+			{
+				"name" : "bucket",
+				"ordinal" : 14,
+				"extras" : {
+					"getOrdinal" : "14"
+				}
+			},
+			{
+				"name" : "object_storage",
+				"ordinal" : 15,
+				"extras" : {
+					"getOrdinal" : "15"
+				}
+			}
+		]
+	},
+	"com.cloud.dc.DataCenter$NetworkType" : {
 		"className" : "com.cloud.dc.DataCenter$NetworkType",
 		"simpleName" : "NetworkType",
 		"packageName" : "com.cloud.dc",
@@ -18,7 +575,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.dc.DataCenter$Type" : {
 		"className" : "com.cloud.dc.DataCenter$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.dc",
@@ -37,7 +594,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.dc.DedicatedResources$Type" : {
 		"className" : "com.cloud.dc.DedicatedResources$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.dc",
@@ -66,7 +623,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.dc.Vlan$VlanType" : {
 		"className" : "com.cloud.dc.Vlan$VlanType",
 		"simpleName" : "VlanType",
 		"packageName" : "com.cloud.dc",
@@ -85,7 +642,1279 @@
 			}
 		]
 	},
-	{
+	"com.cloud.deploy.DeploymentPlan$HostPriorityAdjustment" : {
+		"className" : "com.cloud.deploy.DeploymentPlan$HostPriorityAdjustment",
+		"simpleName" : "HostPriorityAdjustment",
+		"packageName" : "com.cloud.deploy",
+		"isNested" : true,
+		"parentClass" : "com.cloud.deploy.DeploymentPlan",
+		"values" : [
+			{
+				"name" : "HIGHER",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "DEFAULT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "LOWER",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "PROHIBIT",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.deploy.DeploymentPlanner$AllocationAlgorithm" : {
+		"className" : "com.cloud.deploy.DeploymentPlanner$AllocationAlgorithm",
+		"simpleName" : "AllocationAlgorithm",
+		"packageName" : "com.cloud.deploy",
+		"isNested" : true,
+		"parentClass" : "com.cloud.deploy.DeploymentPlanner",
+		"values" : [
+			{
+				"name" : "random",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "firstfit",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "userdispersing",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "userconcentratedpod_random",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "userconcentratedpod_firstfit",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.deploy.DeploymentPlanner$PlannerResourceUsage" : {
+		"className" : "com.cloud.deploy.DeploymentPlanner$PlannerResourceUsage",
+		"simpleName" : "PlannerResourceUsage",
+		"packageName" : "com.cloud.deploy",
+		"isNested" : true,
+		"parentClass" : "com.cloud.deploy.DeploymentPlanner",
+		"values" : [
+			{
+				"name" : "Shared",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Dedicated",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.domain.Domain$State" : {
+		"className" : "com.cloud.domain.Domain$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.domain",
+		"isNested" : true,
+		"parentClass" : "com.cloud.domain.Domain",
+		"values" : [
+			{
+				"name" : "Active",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Inactive",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.event.Event$State" : {
+		"className" : "com.cloud.event.Event$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.event",
+		"isNested" : true,
+		"parentClass" : "com.cloud.event.Event",
+		"values" : [
+			{
+				"name" : "Created",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Scheduled",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Started",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Completed",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.gpu.GPU$GPUType" : {
+		"className" : "com.cloud.gpu.GPU$GPUType",
+		"simpleName" : "GPUType",
+		"packageName" : "com.cloud.gpu",
+		"isNested" : true,
+		"parentClass" : "com.cloud.gpu.GPU",
+		"values" : [
+			{
+				"name" : "GRID_V100D_32A",
+				"ordinal" : 0,
+				"extras" : {
+					"getType" : "GRID V100D-32A"
+				}
+			},
+			{
+				"name" : "GRID_V100D_8Q",
+				"ordinal" : 1,
+				"extras" : {
+					"getType" : "GRID V100D-8Q"
+				}
+			},
+			{
+				"name" : "GRID_V100D_4A",
+				"ordinal" : 2,
+				"extras" : {
+					"getType" : "GRID V100D-4A"
+				}
+			},
+			{
+				"name" : "GRID_V100D_1B",
+				"ordinal" : 3,
+				"extras" : {
+					"getType" : "GRID V100D-1B"
+				}
+			},
+			{
+				"name" : "GRID_V100D_2Q",
+				"ordinal" : 4,
+				"extras" : {
+					"getType" : "GRID V100D-2Q"
+				}
+			},
+			{
+				"name" : "GRID_V100D_4Q",
+				"ordinal" : 5,
+				"extras" : {
+					"getType" : "GRID V100D-4Q"
+				}
+			},
+			{
+				"name" : "GRID_V100D_2A",
+				"ordinal" : 6,
+				"extras" : {
+					"getType" : "GRID V100D-2A"
+				}
+			},
+			{
+				"name" : "GRID_V100D_2B",
+				"ordinal" : 7,
+				"extras" : {
+					"getType" : "GRID V100D-2B"
+				}
+			},
+			{
+				"name" : "GRID_V100D_32Q",
+				"ordinal" : 8,
+				"extras" : {
+					"getType" : "GRID V100D-32Q"
+				}
+			},
+			{
+				"name" : "GRID_V100D_16A",
+				"ordinal" : 9,
+				"extras" : {
+					"getType" : "GRID V100D-16A"
+				}
+			},
+			{
+				"name" : "GRID_V100D_1Q",
+				"ordinal" : 10,
+				"extras" : {
+					"getType" : "GRID V100D-1Q"
+				}
+			},
+			{
+				"name" : "GRID_V100D_2B4",
+				"ordinal" : 11,
+				"extras" : {
+					"getType" : "GRID V100D-2B4"
+				}
+			},
+			{
+				"name" : "GRID_V100D_16Q",
+				"ordinal" : 12,
+				"extras" : {
+					"getType" : "GRID V100D-16Q"
+				}
+			},
+			{
+				"name" : "GRID_V100D_8A",
+				"ordinal" : 13,
+				"extras" : {
+					"getType" : "GRID V100D-8A"
+				}
+			},
+			{
+				"name" : "GRID_V100D_1A",
+				"ordinal" : 14,
+				"extras" : {
+					"getType" : "GRID V100D-1A"
+				}
+			},
+			{
+				"name" : "GRID_T4_16A",
+				"ordinal" : 15,
+				"extras" : {
+					"getType" : "GRID T4-16A"
+				}
+			},
+			{
+				"name" : "GRID_T4_2B4",
+				"ordinal" : 16,
+				"extras" : {
+					"getType" : "GRID T4-2B4"
+				}
+			},
+			{
+				"name" : "GRID_T4_4Q",
+				"ordinal" : 17,
+				"extras" : {
+					"getType" : "GRID T4-4Q"
+				}
+			},
+			{
+				"name" : "GRID_T4_16Q",
+				"ordinal" : 18,
+				"extras" : {
+					"getType" : "GRID T4-16Q"
+				}
+			},
+			{
+				"name" : "GRID_T4_4A",
+				"ordinal" : 19,
+				"extras" : {
+					"getType" : "GRID T4-4A"
+				}
+			},
+			{
+				"name" : "GRID_T4_1A",
+				"ordinal" : 20,
+				"extras" : {
+					"getType" : "GRID T4-1A"
+				}
+			},
+			{
+				"name" : "GRID_T4_2Q",
+				"ordinal" : 21,
+				"extras" : {
+					"getType" : "GRID T4-2Q"
+				}
+			},
+			{
+				"name" : "GRID_T4_2B",
+				"ordinal" : 22,
+				"extras" : {
+					"getType" : "GRID T4-2B"
+				}
+			},
+			{
+				"name" : "GRID_T4_8Q",
+				"ordinal" : 23,
+				"extras" : {
+					"getType" : "GRID T4-8Q"
+				}
+			},
+			{
+				"name" : "GRID_T4_2A",
+				"ordinal" : 24,
+				"extras" : {
+					"getType" : "GRID T4-2A"
+				}
+			},
+			{
+				"name" : "GRID_T4_1B",
+				"ordinal" : 25,
+				"extras" : {
+					"getType" : "GRID T4-1B"
+				}
+			},
+			{
+				"name" : "GRID_T4_1Q",
+				"ordinal" : 26,
+				"extras" : {
+					"getType" : "GRID T4-1Q"
+				}
+			},
+			{
+				"name" : "GRID_T4_8A",
+				"ordinal" : 27,
+				"extras" : {
+					"getType" : "GRID T4-8A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_1A",
+				"ordinal" : 28,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-1A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_1B",
+				"ordinal" : 29,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-1B"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_1Q",
+				"ordinal" : 30,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-1Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_2A",
+				"ordinal" : 31,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-2A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_2B",
+				"ordinal" : 32,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-2B"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_2Q",
+				"ordinal" : 33,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-2Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_3A",
+				"ordinal" : 34,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-3A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_3Q",
+				"ordinal" : 35,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-3Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_4A",
+				"ordinal" : 36,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-4A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_4Q",
+				"ordinal" : 37,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-4Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_6A",
+				"ordinal" : 38,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-6A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_6Q",
+				"ordinal" : 39,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-6Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_8A",
+				"ordinal" : 40,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-8A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_8Q",
+				"ordinal" : 41,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-8Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_12A",
+				"ordinal" : 42,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-12A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_12Q",
+				"ordinal" : 43,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-12Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_24A",
+				"ordinal" : 44,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-24A"
+				}
+			},
+			{
+				"name" : "NVIDIA_RTX5500_24Q",
+				"ordinal" : 45,
+				"extras" : {
+					"getType" : "NVIDIA RTXA5500-24Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_1A",
+				"ordinal" : 46,
+				"extras" : {
+					"getType" : "NVIDIA A40-1A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_1B",
+				"ordinal" : 47,
+				"extras" : {
+					"getType" : "NVIDIA A40-1B"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_1Q",
+				"ordinal" : 48,
+				"extras" : {
+					"getType" : "NVIDIA A40-1Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_2A",
+				"ordinal" : 49,
+				"extras" : {
+					"getType" : "NVIDIA A40-2A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_2B",
+				"ordinal" : 50,
+				"extras" : {
+					"getType" : "NVIDIA A40-2B"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_2Q",
+				"ordinal" : 51,
+				"extras" : {
+					"getType" : "NVIDIA A40-2Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_3A",
+				"ordinal" : 52,
+				"extras" : {
+					"getType" : "NVIDIA A40-3A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_3Q",
+				"ordinal" : 53,
+				"extras" : {
+					"getType" : "NVIDIA A40-3Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_4A",
+				"ordinal" : 54,
+				"extras" : {
+					"getType" : "NVIDIA A40-4A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_4Q",
+				"ordinal" : 55,
+				"extras" : {
+					"getType" : "NVIDIA A40-4Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_6A",
+				"ordinal" : 56,
+				"extras" : {
+					"getType" : "NVIDIA A40-6A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_6Q",
+				"ordinal" : 57,
+				"extras" : {
+					"getType" : "NVIDIA A40-6Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_8A",
+				"ordinal" : 58,
+				"extras" : {
+					"getType" : "NVIDIA A40-8A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_8Q",
+				"ordinal" : 59,
+				"extras" : {
+					"getType" : "NVIDIA A40-8Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_12A",
+				"ordinal" : 60,
+				"extras" : {
+					"getType" : "NVIDIA A40-12A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_12Q",
+				"ordinal" : 61,
+				"extras" : {
+					"getType" : "NVIDIA A40-12Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_16A",
+				"ordinal" : 62,
+				"extras" : {
+					"getType" : "NVIDIA A40-16A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_16Q",
+				"ordinal" : 63,
+				"extras" : {
+					"getType" : "NVIDIA A40-16Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_24A",
+				"ordinal" : 64,
+				"extras" : {
+					"getType" : "NVIDIA A40-24A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_24Q",
+				"ordinal" : 65,
+				"extras" : {
+					"getType" : "NVIDIA A40-24Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_48A",
+				"ordinal" : 66,
+				"extras" : {
+					"getType" : "NVIDIA A40-48A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A40_48Q",
+				"ordinal" : 67,
+				"extras" : {
+					"getType" : "NVIDIA A40-48Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_1A",
+				"ordinal" : 68,
+				"extras" : {
+					"getType" : "NVIDIA A2-1A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_1B",
+				"ordinal" : 69,
+				"extras" : {
+					"getType" : "NVIDIA A2-1B"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_1Q",
+				"ordinal" : 70,
+				"extras" : {
+					"getType" : "NVIDIA A2-1Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_2A",
+				"ordinal" : 71,
+				"extras" : {
+					"getType" : "NVIDIA A2-2A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_2B",
+				"ordinal" : 72,
+				"extras" : {
+					"getType" : "NVIDIA A2-2B"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_2Q",
+				"ordinal" : 73,
+				"extras" : {
+					"getType" : "NVIDIA A2-2Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_4A",
+				"ordinal" : 74,
+				"extras" : {
+					"getType" : "NVIDIA A2-4A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_4Q",
+				"ordinal" : 75,
+				"extras" : {
+					"getType" : "NVIDIA A2-4Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_8A",
+				"ordinal" : 76,
+				"extras" : {
+					"getType" : "NVIDIA A2-8A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_8Q",
+				"ordinal" : 77,
+				"extras" : {
+					"getType" : "NVIDIA A2-8Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_16A",
+				"ordinal" : 78,
+				"extras" : {
+					"getType" : "NVIDIA A2-16A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A2_16Q",
+				"ordinal" : 79,
+				"extras" : {
+					"getType" : "NVIDIA A2-16Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_1A",
+				"ordinal" : 80,
+				"extras" : {
+					"getType" : "NVIDIA A10-1A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_1B",
+				"ordinal" : 81,
+				"extras" : {
+					"getType" : "NVIDIA A10-1B"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_1Q",
+				"ordinal" : 82,
+				"extras" : {
+					"getType" : "NVIDIA A10-1Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_2A",
+				"ordinal" : 83,
+				"extras" : {
+					"getType" : "NVIDIA A10-2A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_2B",
+				"ordinal" : 84,
+				"extras" : {
+					"getType" : "NVIDIA A10-2B"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_2Q",
+				"ordinal" : 85,
+				"extras" : {
+					"getType" : "NVIDIA A10-2Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_3A",
+				"ordinal" : 86,
+				"extras" : {
+					"getType" : "NVIDIA A10-3A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_3Q",
+				"ordinal" : 87,
+				"extras" : {
+					"getType" : "NVIDIA A10-3Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_4A",
+				"ordinal" : 88,
+				"extras" : {
+					"getType" : "NVIDIA A10-4A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_4Q",
+				"ordinal" : 89,
+				"extras" : {
+					"getType" : "NVIDIA A10-4Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_6A",
+				"ordinal" : 90,
+				"extras" : {
+					"getType" : "NVIDIA A10-6A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_6Q",
+				"ordinal" : 91,
+				"extras" : {
+					"getType" : "NVIDIA A10-6Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_8A",
+				"ordinal" : 92,
+				"extras" : {
+					"getType" : "NVIDIA A10-8A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_8Q",
+				"ordinal" : 93,
+				"extras" : {
+					"getType" : "NVIDIA A10-8Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_12A",
+				"ordinal" : 94,
+				"extras" : {
+					"getType" : "NVIDIA A10-12A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_12Q",
+				"ordinal" : 95,
+				"extras" : {
+					"getType" : "NVIDIA A10-12Q"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_24A",
+				"ordinal" : 96,
+				"extras" : {
+					"getType" : "NVIDIA A10-24A"
+				}
+			},
+			{
+				"name" : "NVIDIA_A10_24Q",
+				"ordinal" : 97,
+				"extras" : {
+					"getType" : "NVIDIA A10-24Q"
+				}
+			},
+			{
+				"name" : "passthrough",
+				"ordinal" : 98,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.gpu.GPU$Keys" : {
+		"className" : "com.cloud.gpu.GPU$Keys",
+		"simpleName" : "Keys",
+		"packageName" : "com.cloud.gpu",
+		"isNested" : true,
+		"parentClass" : "com.cloud.gpu.GPU",
+		"values" : [
+			{
+				"name" : "pciDevice",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "vgpuType",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.host.ControlState" : {
+		"className" : "com.cloud.host.ControlState",
+		"simpleName" : "ControlState",
+		"packageName" : "com.cloud.host",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "Enabled",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Offline",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Maintenance",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "Unknown",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.host.Host$Type" : {
+		"className" : "com.cloud.host.Host$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.host",
+		"isNested" : true,
+		"parentClass" : "com.cloud.host.Host",
+		"values" : [
+			{
+				"name" : "Storage",
+				"ordinal" : 0,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "Routing",
+				"ordinal" : 1,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "SecondaryStorage",
+				"ordinal" : 2,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "SecondaryStorageCmdExecutor",
+				"ordinal" : 3,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "ConsoleProxy",
+				"ordinal" : 4,
+				"extras" : {
+					"isVirtual" : "true"
+				}
+			},
+			{
+				"name" : "ExternalFirewall",
+				"ordinal" : 5,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "ExternalLoadBalancer",
+				"ordinal" : 6,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "ExternalVirtualSwitchSupervisor",
+				"ordinal" : 7,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "PxeServer",
+				"ordinal" : 8,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "BaremetalPxe",
+				"ordinal" : 9,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "BaremetalDhcp",
+				"ordinal" : 10,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "TrafficMonitor",
+				"ordinal" : 11,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "NetScalerControlCenter",
+				"ordinal" : 12,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "ExternalDhcp",
+				"ordinal" : 13,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "SecondaryStorageVM",
+				"ordinal" : 14,
+				"extras" : {
+					"isVirtual" : "true"
+				}
+			},
+			{
+				"name" : "LocalSecondaryStorage",
+				"ordinal" : 15,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			},
+			{
+				"name" : "L2Networking",
+				"ordinal" : 16,
+				"extras" : {
+					"isVirtual" : "false"
+				}
+			}
+		]
+	},
+	"com.cloud.host.Status" : {
+		"className" : "com.cloud.host.Status",
+		"simpleName" : "Status",
+		"packageName" : "com.cloud.host",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "Creating",
+				"ordinal" : 0,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "false",
+					"lostConnection" : "false",
+					"getPossibleEvents" : "[Error, AgentConnected]"
+				}
+			},
+			{
+				"name" : "Connecting",
+				"ordinal" : 1,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "false",
+					"lostConnection" : "false",
+					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Ping, Ready, AgentDisconnected, PingTimeout, AgentConnected, StartAgentRebalance]"
+				}
+			},
+			{
+				"name" : "Up",
+				"ordinal" : 2,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "false",
+					"lostConnection" : "false",
+					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Ping, Remove, AgentDisconnected, PingTimeout, AgentConnected, StartAgentRebalance]"
+				}
+			},
+			{
+				"name" : "Down",
+				"ordinal" : 3,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "true",
+					"lostConnection" : "true",
+					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Remove, AgentDisconnected, PingTimeout, AgentConnected]"
+				}
+			},
+			{
+				"name" : "Disconnected",
+				"ordinal" : 4,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "true",
+					"lostConnection" : "true",
+					"getPossibleEvents" : "[HostDown, ManagementServerDown, WaitedTooLong, ShutdownRequested, Ping, Remove, AgentDisconnected, PingTimeout, AgentConnected]"
+				}
+			},
+			{
+				"name" : "Alert",
+				"ordinal" : 5,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "true",
+					"lostConnection" : "true",
+					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Ping, Remove, AgentDisconnected, AgentConnected]"
+				}
+			},
+			{
+				"name" : "Removed",
+				"ordinal" : 6,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "false",
+					"lostConnection" : "true",
+					"getPossibleEvents" : "[]"
+				}
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 7,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "false",
+					"lostConnection" : "true",
+					"getPossibleEvents" : "[AgentConnected]"
+				}
+			},
+			{
+				"name" : "Rebalancing",
+				"ordinal" : 8,
+				"extras" : {
+					"updateManagementServer" : "true",
+					"checkManagementServer" : "false",
+					"lostConnection" : "true",
+					"getPossibleEvents" : "[RebalanceFailed, ManagementServerDown, ShutdownRequested, RebalanceCompleted, AgentDisconnected, AgentConnected]"
+				}
+			},
+			{
+				"name" : "Unknown",
+				"ordinal" : 9,
+				"extras" : {
+					"updateManagementServer" : "false",
+					"checkManagementServer" : "false",
+					"lostConnection" : "false"
+				}
+			}
+		]
+	},
+	"com.cloud.host.Status$Event" : {
+		"className" : "com.cloud.host.Status$Event",
+		"simpleName" : "Event",
+		"packageName" : "com.cloud.host",
+		"isNested" : true,
+		"parentClass" : "com.cloud.host.Status",
+		"values" : [
+			{
+				"name" : "AgentConnected",
+				"ordinal" : 0,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Agent connected"
+				}
+			},
+			{
+				"name" : "PingTimeout",
+				"ordinal" : 1,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Agent is behind on ping"
+				}
+			},
+			{
+				"name" : "ShutdownRequested",
+				"ordinal" : 2,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Shutdown requested by the agent"
+				}
+			},
+			{
+				"name" : "AgentDisconnected",
+				"ordinal" : 3,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Agent disconnected"
+				}
+			},
+			{
+				"name" : "HostDown",
+				"ordinal" : 4,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Host is found to be down by the investigator"
+				}
+			},
+			{
+				"name" : "Ping",
+				"ordinal" : 5,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Ping is received from the host"
+				}
+			},
+			{
+				"name" : "ManagementServerDown",
+				"ordinal" : 6,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Management Server that the agent is connected is going down"
+				}
+			},
+			{
+				"name" : "WaitedTooLong",
+				"ordinal" : 7,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Waited too long from the agent to reconnect on its own.  Time to do HA"
+				}
+			},
+			{
+				"name" : "Remove",
+				"ordinal" : 8,
+				"extras" : {
+					"isUserRequest" : "true",
+					"getDescription" : "Host is removed"
+				}
+			},
+			{
+				"name" : "Ready",
+				"ordinal" : 9,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Host is ready for commands"
+				}
+			},
+			{
+				"name" : "RequestAgentRebalance",
+				"ordinal" : 10,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Request rebalance for the certain host"
+				}
+			},
+			{
+				"name" : "StartAgentRebalance",
+				"ordinal" : 11,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Start rebalance for the certain host"
+				}
+			},
+			{
+				"name" : "RebalanceCompleted",
+				"ordinal" : 12,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Host is rebalanced successfully"
+				}
+			},
+			{
+				"name" : "RebalanceFailed",
+				"ordinal" : 13,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "Failed to rebalance the host"
+				}
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 14,
+				"extras" : {
+					"isUserRequest" : "false",
+					"getDescription" : "An internal error happened"
+				}
+			}
+		]
+	},
+	"com.cloud.hypervisor.Hypervisor$HypervisorType$Functionality" : {
+		"className" : "com.cloud.hypervisor.Hypervisor$HypervisorType$Functionality",
+		"simpleName" : "Functionality",
+		"packageName" : "com.cloud.hypervisor",
+		"isNested" : true,
+		"parentClass" : "com.cloud.hypervisor.Hypervisor$HypervisorType",
+		"values" : [
+			{
+				"name" : "DirectDownloadTemplate",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "RootDiskSizeOverride",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "VmStorageMigration",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.network.IpAddress$Purpose" : {
 		"className" : "com.cloud.network.IpAddress$Purpose",
 		"simpleName" : "Purpose",
 		"packageName" : "com.cloud.network",
@@ -104,7 +1933,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.IpAddress$State" : {
 		"className" : "com.cloud.network.IpAddress$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -138,7 +1967,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Ipv6GuestPrefixSubnetNetworkMap$State" : {
 		"className" : "com.cloud.network.Ipv6GuestPrefixSubnetNetworkMap$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -162,7 +1991,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.MonitoringService$Service" : {
 		"className" : "com.cloud.network.MonitoringService$Service",
 		"simpleName" : "Service",
 		"packageName" : "com.cloud.network",
@@ -191,7 +2020,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Network$Event" : {
 		"className" : "com.cloud.network.Network$Event",
 		"simpleName" : "Event",
 		"packageName" : "com.cloud.network",
@@ -220,7 +2049,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Network$GuestType" : {
 		"className" : "com.cloud.network.Network$GuestType",
 		"simpleName" : "GuestType",
 		"packageName" : "com.cloud.network",
@@ -244,7 +2073,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Network$NetworkFilter" : {
 		"className" : "com.cloud.network.Network$NetworkFilter",
 		"simpleName" : "NetworkFilter",
 		"packageName" : "com.cloud.network",
@@ -278,7 +2107,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Network$PVlanType" : {
 		"className" : "com.cloud.network.Network$PVlanType",
 		"simpleName" : "PVlanType",
 		"packageName" : "com.cloud.network",
@@ -302,7 +2131,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Network$Routing" : {
 		"className" : "com.cloud.network.Network$Routing",
 		"simpleName" : "Routing",
 		"packageName" : "com.cloud.network",
@@ -321,7 +2150,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Network$State" : {
 		"className" : "com.cloud.network.Network$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -360,7 +2189,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$AddressFormat" : {
 		"className" : "com.cloud.network.Networks$AddressFormat",
 		"simpleName" : "AddressFormat",
 		"packageName" : "com.cloud.network",
@@ -384,7 +2213,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$BroadcastDomainType" : {
 		"className" : "com.cloud.network.Networks$BroadcastDomainType",
 		"simpleName" : "BroadcastDomainType",
 		"packageName" : "com.cloud.network",
@@ -504,7 +2333,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$BroadcastScheme" : {
 		"className" : "com.cloud.network.Networks$BroadcastScheme",
 		"simpleName" : "BroadcastScheme",
 		"packageName" : "com.cloud.network",
@@ -523,7 +2352,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$IsolationType" : {
 		"className" : "com.cloud.network.Networks$IsolationType",
 		"simpleName" : "IsolationType",
 		"packageName" : "com.cloud.network",
@@ -574,7 +2403,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$Mode" : {
 		"className" : "com.cloud.network.Networks$Mode",
 		"simpleName" : "Mode",
 		"packageName" : "com.cloud.network",
@@ -603,7 +2432,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$RouterPrivateIpStrategy" : {
 		"className" : "com.cloud.network.Networks$RouterPrivateIpStrategy",
 		"simpleName" : "RouterPrivateIpStrategy",
 		"packageName" : "com.cloud.network",
@@ -627,7 +2456,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Networks$TrafficType" : {
 		"className" : "com.cloud.network.Networks$TrafficType",
 		"simpleName" : "TrafficType",
 		"packageName" : "com.cloud.network",
@@ -671,7 +2500,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.PhysicalNetwork$BroadcastDomainRange" : {
 		"className" : "com.cloud.network.PhysicalNetwork$BroadcastDomainRange",
 		"simpleName" : "BroadcastDomainRange",
 		"packageName" : "com.cloud.network",
@@ -690,7 +2519,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.PhysicalNetwork$State" : {
 		"className" : "com.cloud.network.PhysicalNetwork$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -709,7 +2538,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.PhysicalNetworkServiceProvider$State" : {
 		"className" : "com.cloud.network.PhysicalNetworkServiceProvider$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -733,7 +2562,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.RemoteAccessVpn$State" : {
 		"className" : "com.cloud.network.RemoteAccessVpn$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -757,7 +2586,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.Site2SiteVpnConnection$State" : {
 		"className" : "com.cloud.network.Site2SiteVpnConnection$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -791,7 +2620,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.UserIpv6Address$State" : {
 		"className" : "com.cloud.network.UserIpv6Address$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -820,7 +2649,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.VNF$AccessDetail" : {
 		"className" : "com.cloud.network.VNF$AccessDetail",
 		"simpleName" : "AccessDetail",
 		"packageName" : "com.cloud.network",
@@ -889,7 +2718,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.VNF$AccessMethod" : {
 		"className" : "com.cloud.network.VNF$AccessMethod",
 		"simpleName" : "AccessMethod",
 		"packageName" : "com.cloud.network",
@@ -923,7 +2752,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.VNF$VnfDetail" : {
 		"className" : "com.cloud.network.VNF$VnfDetail",
 		"simpleName" : "VnfDetail",
 		"packageName" : "com.cloud.network",
@@ -947,7 +2776,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.VirtualRouterProvider$Type" : {
 		"className" : "com.cloud.network.VirtualRouterProvider$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.network",
@@ -986,7 +2815,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.VpnUser$State" : {
 		"className" : "com.cloud.network.VpnUser$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network",
@@ -1010,7 +2839,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.as.AutoScalePolicy$Action" : {
 		"className" : "com.cloud.network.as.AutoScalePolicy$Action",
 		"simpleName" : "Action",
 		"packageName" : "com.cloud.network.as",
@@ -1029,7 +2858,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.as.AutoScaleVmGroup$State" : {
 		"className" : "com.cloud.network.as.AutoScaleVmGroup$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.as",
@@ -1063,7 +2892,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.as.Condition$Operator" : {
 		"className" : "com.cloud.network.as.Condition$Operator",
 		"simpleName" : "Operator",
 		"packageName" : "com.cloud.network.as",
@@ -1097,7 +2926,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.as.Counter$Source" : {
 		"className" : "com.cloud.network.as.Counter$Source",
 		"simpleName" : "Source",
 		"packageName" : "com.cloud.network.as",
@@ -1131,7 +2960,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.element.NetworkElement$Location" : {
 		"className" : "com.cloud.network.element.NetworkElement$Location",
 		"simpleName" : "Location",
 		"packageName" : "com.cloud.network.element",
@@ -1155,7 +2984,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.router.VirtualRouter$RedundantState" : {
 		"className" : "com.cloud.network.router.VirtualRouter$RedundantState",
 		"simpleName" : "RedundantState",
 		"packageName" : "com.cloud.network.router",
@@ -1184,7 +3013,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.router.VirtualRouter$Role" : {
 		"className" : "com.cloud.network.router.VirtualRouter$Role",
 		"simpleName" : "Role",
 		"packageName" : "com.cloud.network.router",
@@ -1213,7 +3042,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.router.VirtualRouter$UpdateState" : {
 		"className" : "com.cloud.network.router.VirtualRouter$UpdateState",
 		"simpleName" : "UpdateState",
 		"packageName" : "com.cloud.network.router",
@@ -1242,7 +3071,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.router.VirtualRouterAutoScale$AutoScaleValueType" : {
 		"className" : "com.cloud.network.router.VirtualRouterAutoScale$AutoScaleValueType",
 		"simpleName" : "AutoScaleValueType",
 		"packageName" : "com.cloud.network.router",
@@ -1279,7 +3108,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.router.VirtualRouterAutoScale$VirtualRouterAutoScaleCounter" : {
 		"className" : "com.cloud.network.router.VirtualRouterAutoScale$VirtualRouterAutoScaleCounter",
 		"simpleName" : "VirtualRouterAutoScaleCounter",
 		"packageName" : "com.cloud.network.router",
@@ -1309,7 +3138,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.rules.FirewallRule$FirewallRuleType" : {
 		"className" : "com.cloud.network.rules.FirewallRule$FirewallRuleType",
 		"simpleName" : "FirewallRuleType",
 		"packageName" : "com.cloud.network.rules",
@@ -1328,7 +3157,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.rules.FirewallRule$Purpose" : {
 		"className" : "com.cloud.network.rules.FirewallRule$Purpose",
 		"simpleName" : "Purpose",
 		"packageName" : "com.cloud.network.rules",
@@ -1372,7 +3201,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.rules.FirewallRule$State" : {
 		"className" : "com.cloud.network.rules.FirewallRule$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.rules",
@@ -1406,7 +3235,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.rules.FirewallRule$TrafficType" : {
 		"className" : "com.cloud.network.rules.FirewallRule$TrafficType",
 		"simpleName" : "TrafficType",
 		"packageName" : "com.cloud.network.rules",
@@ -1425,7 +3254,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.rules.LoadBalancerContainer$Scheme" : {
 		"className" : "com.cloud.network.rules.LoadBalancerContainer$Scheme",
 		"simpleName" : "Scheme",
 		"packageName" : "com.cloud.network.rules",
@@ -1444,7 +3273,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.NetworkACLItem$Action" : {
 		"className" : "com.cloud.network.vpc.NetworkACLItem$Action",
 		"simpleName" : "Action",
 		"packageName" : "com.cloud.network.vpc",
@@ -1463,7 +3292,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.NetworkACLItem$State" : {
 		"className" : "com.cloud.network.vpc.NetworkACLItem$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.vpc",
@@ -1492,7 +3321,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.NetworkACLItem$TrafficType" : {
 		"className" : "com.cloud.network.vpc.NetworkACLItem$TrafficType",
 		"simpleName" : "TrafficType",
 		"packageName" : "com.cloud.network.vpc",
@@ -1511,7 +3340,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.StaticRoute$State" : {
 		"className" : "com.cloud.network.vpc.StaticRoute$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.vpc",
@@ -1545,7 +3374,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.Vpc$State" : {
 		"className" : "com.cloud.network.vpc.Vpc$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.vpc",
@@ -1564,7 +3393,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.VpcGateway$State" : {
 		"className" : "com.cloud.network.vpc.VpcGateway$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.vpc",
@@ -1588,7 +3417,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.VpcGateway$Type" : {
 		"className" : "com.cloud.network.vpc.VpcGateway$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.network.vpc",
@@ -1612,7 +3441,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.network.vpc.VpcOffering$State" : {
 		"className" : "com.cloud.network.vpc.VpcOffering$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.network.vpc",
@@ -1631,7 +3460,2723 @@
 			}
 		]
 	},
-	{
+	"com.cloud.offering.DiskOffering$DiskCacheMode" : {
+		"className" : "com.cloud.offering.DiskOffering$DiskCacheMode",
+		"simpleName" : "DiskCacheMode",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.DiskOffering",
+		"values" : [
+			{
+				"name" : "NONE",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "WRITEBACK",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "WRITETHROUGH",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.DiskOffering$State" : {
+		"className" : "com.cloud.offering.DiskOffering$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.DiskOffering",
+		"values" : [
+			{
+				"name" : "Inactive",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Active",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.NetworkOffering$Availability" : {
+		"className" : "com.cloud.offering.NetworkOffering$Availability",
+		"simpleName" : "Availability",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.NetworkOffering",
+		"values" : [
+			{
+				"name" : "Required",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Optional",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.NetworkOffering$Detail" : {
+		"className" : "com.cloud.offering.NetworkOffering$Detail",
+		"simpleName" : "Detail",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.NetworkOffering",
+		"values" : [
+			{
+				"name" : "InternalLbProvider",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "PublicLbProvider",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "servicepackageuuid",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "servicepackagedescription",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "PromiscuousMode",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "MacAddressChanges",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "ForgedTransmits",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "MacLearning",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "RelatedNetworkOffering",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "domainid",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "zoneid",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "pvlanType",
+				"ordinal" : 11,
+				"extras" : { }
+			},
+			{
+				"name" : "internetProtocol",
+				"ordinal" : 12,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.NetworkOffering$NetworkMode" : {
+		"className" : "com.cloud.offering.NetworkOffering$NetworkMode",
+		"simpleName" : "NetworkMode",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.NetworkOffering",
+		"values" : [
+			{
+				"name" : "NATTED",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ROUTED",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.NetworkOffering$RoutingMode" : {
+		"className" : "com.cloud.offering.NetworkOffering$RoutingMode",
+		"simpleName" : "RoutingMode",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.NetworkOffering",
+		"values" : [
+			{
+				"name" : "Static",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Dynamic",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.NetworkOffering$State" : {
+		"className" : "com.cloud.offering.NetworkOffering$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.NetworkOffering",
+		"values" : [
+			{
+				"name" : "Disabled",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Enabled",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.ServiceOffering$State" : {
+		"className" : "com.cloud.offering.ServiceOffering$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.ServiceOffering",
+		"values" : [
+			{
+				"name" : "Inactive",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Active",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.offering.ServiceOffering$StorageType" : {
+		"className" : "com.cloud.offering.ServiceOffering$StorageType",
+		"simpleName" : "StorageType",
+		"packageName" : "com.cloud.offering",
+		"isNested" : true,
+		"parentClass" : "com.cloud.offering.ServiceOffering",
+		"values" : [
+			{
+				"name" : "local",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "shared",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.org.Cluster$ClusterType" : {
+		"className" : "com.cloud.org.Cluster$ClusterType",
+		"simpleName" : "ClusterType",
+		"packageName" : "com.cloud.org",
+		"isNested" : true,
+		"parentClass" : "com.cloud.org.Cluster",
+		"values" : [
+			{
+				"name" : "CloudManaged",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ExternalManaged",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.org.Grouping$AllocationState" : {
+		"className" : "com.cloud.org.Grouping$AllocationState",
+		"simpleName" : "AllocationState",
+		"packageName" : "com.cloud.org",
+		"isNested" : true,
+		"parentClass" : "com.cloud.org.Grouping",
+		"values" : [
+			{
+				"name" : "Enabled",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.org.Managed$ManagedState" : {
+		"className" : "com.cloud.org.Managed$ManagedState",
+		"simpleName" : "ManagedState",
+		"packageName" : "com.cloud.org",
+		"isNested" : true,
+		"parentClass" : "com.cloud.org.Managed",
+		"values" : [
+			{
+				"name" : "Managed",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "PrepareUnmanaged",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Unmanaged",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "PrepareUnmanagedError",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.projects.Project$ListProjectResourcesCriteria" : {
+		"className" : "com.cloud.projects.Project$ListProjectResourcesCriteria",
+		"simpleName" : "ListProjectResourcesCriteria",
+		"packageName" : "com.cloud.projects",
+		"isNested" : true,
+		"parentClass" : "com.cloud.projects.Project",
+		"values" : [
+			{
+				"name" : "ListProjectResourcesOnly",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SkipProjectResources",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "ListAllIncludingProjectResources",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.projects.Project$State" : {
+		"className" : "com.cloud.projects.Project$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.projects",
+		"isNested" : true,
+		"parentClass" : "com.cloud.projects.Project",
+		"values" : [
+			{
+				"name" : "Active",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Suspended",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.projects.ProjectAccount$Role" : {
+		"className" : "com.cloud.projects.ProjectAccount$Role",
+		"simpleName" : "Role",
+		"packageName" : "com.cloud.projects",
+		"isNested" : true,
+		"parentClass" : "com.cloud.projects.ProjectAccount",
+		"values" : [
+			{
+				"name" : "Admin",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Regular",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.projects.ProjectInvitation$State" : {
+		"className" : "com.cloud.projects.ProjectInvitation$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.projects",
+		"isNested" : true,
+		"parentClass" : "com.cloud.projects.ProjectInvitation",
+		"values" : [
+			{
+				"name" : "Pending",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Completed",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Expired",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Declined",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.region.ha.GlobalLoadBalancerRule$Algorithm" : {
+		"className" : "com.cloud.region.ha.GlobalLoadBalancerRule$Algorithm",
+		"simpleName" : "Algorithm",
+		"packageName" : "com.cloud.region.ha",
+		"isNested" : true,
+		"parentClass" : "com.cloud.region.ha.GlobalLoadBalancerRule",
+		"values" : [
+			{
+				"name" : "RoundRobin",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "LeastConn",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Proximity",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.region.ha.GlobalLoadBalancerRule$Persistence" : {
+		"className" : "com.cloud.region.ha.GlobalLoadBalancerRule$Persistence",
+		"simpleName" : "Persistence",
+		"packageName" : "com.cloud.region.ha",
+		"isNested" : true,
+		"parentClass" : "com.cloud.region.ha.GlobalLoadBalancerRule",
+		"values" : [
+			{
+				"name" : "sourceip",
+				"ordinal" : 0,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.region.ha.GlobalLoadBalancerRule$ServiceType" : {
+		"className" : "com.cloud.region.ha.GlobalLoadBalancerRule$ServiceType",
+		"simpleName" : "ServiceType",
+		"packageName" : "com.cloud.region.ha",
+		"isNested" : true,
+		"parentClass" : "com.cloud.region.ha.GlobalLoadBalancerRule",
+		"values" : [
+			{
+				"name" : "tcp",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "udp",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "http",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.region.ha.GlobalLoadBalancerRule$State" : {
+		"className" : "com.cloud.region.ha.GlobalLoadBalancerRule$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.region.ha",
+		"isNested" : true,
+		"parentClass" : "com.cloud.region.ha.GlobalLoadBalancerRule",
+		"values" : [
+			{
+				"name" : "Staged",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Add",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Active",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Revoke",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.resource.ResourceState" : {
+		"className" : "com.cloud.resource.ResourceState",
+		"simpleName" : "ResourceState",
+		"packageName" : "com.cloud.resource",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "Creating",
+				"ordinal" : 0,
+				"extras" : {
+					"getPossibleEvents" : "[Error, InternalCreated]"
+				}
+			},
+			{
+				"name" : "Enabled",
+				"ordinal" : 1,
+				"extras" : {
+					"getPossibleEvents" : "[Enable, InternalEnterMaintenance, Disable, AdminAskMaintenance, DeclareHostDegraded, DeleteHost, InternalCreated]"
+				}
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 2,
+				"extras" : {
+					"getPossibleEvents" : "[Enable, Disable, DeclareHostDegraded, DeleteHost, InternalCreated]"
+				}
+			},
+			{
+				"name" : "ErrorInPrepareForMaintenance",
+				"ordinal" : 3,
+				"extras" : {
+					"getPossibleEvents" : "[InternalEnterMaintenance, UnableToMaintain, AdminCancelMaintenance, Disable, UnableToMigrate, DeleteHost, ErrorsCorrected, InternalCreated]"
+				}
+			},
+			{
+				"name" : "PrepareForMaintenance",
+				"ordinal" : 4,
+				"extras" : {
+					"getPossibleEvents" : "[InternalEnterMaintenance, UnableToMaintain, AdminCancelMaintenance, UnableToMigrate, InternalCreated]"
+				}
+			},
+			{
+				"name" : "ErrorInMaintenance",
+				"ordinal" : 5,
+				"extras" : {
+					"getPossibleEvents" : "[AdminCancelMaintenance, Disable, AdminAskMaintenance, DeleteHost, InternalCreated]"
+				}
+			},
+			{
+				"name" : "Maintenance",
+				"ordinal" : 6,
+				"extras" : {
+					"getPossibleEvents" : "[AdminCancelMaintenance, DeleteHost, DeclareHostDegraded, InternalCreated]"
+				}
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 7,
+				"extras" : {
+					"getPossibleEvents" : "[InternalCreated]"
+				}
+			},
+			{
+				"name" : "Degraded",
+				"ordinal" : 8,
+				"extras" : {
+					"getPossibleEvents" : "[AdminAskMaintenance, DeleteHost, EnableDegradedHost]"
+				}
+			}
+		]
+	},
+	"com.cloud.resource.ResourceState$Event" : {
+		"className" : "com.cloud.resource.ResourceState$Event",
+		"simpleName" : "Event",
+		"packageName" : "com.cloud.resource",
+		"isNested" : true,
+		"parentClass" : "com.cloud.resource.ResourceState",
+		"values" : [
+			{
+				"name" : "InternalCreated",
+				"ordinal" : 0,
+				"extras" : {
+					"getDescription" : "Resource is created"
+				}
+			},
+			{
+				"name" : "Enable",
+				"ordinal" : 1,
+				"extras" : {
+					"getDescription" : "Admin enables"
+				}
+			},
+			{
+				"name" : "Disable",
+				"ordinal" : 2,
+				"extras" : {
+					"getDescription" : "Admin disables"
+				}
+			},
+			{
+				"name" : "AdminAskMaintenance",
+				"ordinal" : 3,
+				"extras" : {
+					"getDescription" : "Admin asks to enter maintenance"
+				}
+			},
+			{
+				"name" : "AdminCancelMaintenance",
+				"ordinal" : 4,
+				"extras" : {
+					"getDescription" : "Admin asks to cancel maintenance"
+				}
+			},
+			{
+				"name" : "InternalEnterMaintenance",
+				"ordinal" : 5,
+				"extras" : {
+					"getDescription" : "Resource enters maintenance"
+				}
+			},
+			{
+				"name" : "UpdatePassword",
+				"ordinal" : 6,
+				"extras" : {
+					"getDescription" : "Admin updates password of host"
+				}
+			},
+			{
+				"name" : "UnableToMigrate",
+				"ordinal" : 7,
+				"extras" : {
+					"getDescription" : "Migration of VM failed, such as from scheduled HAWork"
+				}
+			},
+			{
+				"name" : "UnableToMaintain",
+				"ordinal" : 8,
+				"extras" : {
+					"getDescription" : "Management server has exhausted all legal operations and attempts to put into maintenance has failed"
+				}
+			},
+			{
+				"name" : "ErrorsCorrected",
+				"ordinal" : 9,
+				"extras" : {
+					"getDescription" : "Errors were corrected on a resource attempting to enter maintenance but encountered errors"
+				}
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 10,
+				"extras" : {
+					"getDescription" : "An internal error happened"
+				}
+			},
+			{
+				"name" : "DeleteHost",
+				"ordinal" : 11,
+				"extras" : {
+					"getDescription" : "Admin delete a host"
+				}
+			},
+			{
+				"name" : "DeclareHostDegraded",
+				"ordinal" : 12,
+				"extras" : {
+					"getDescription" : "Admin declares host as Degraded"
+				}
+			},
+			{
+				"name" : "EnableDegradedHost",
+				"ordinal" : 13,
+				"extras" : {
+					"getDescription" : "Admin puts Degraded host into Enabled"
+				}
+			},
+			{
+				"name" : "Unmanaged",
+				"ordinal" : 14,
+				"extras" : {
+					"getDescription" : "Umanage a cluster"
+				}
+			}
+		]
+	},
+	"com.cloud.resource.RollingMaintenanceManager$ResourceType" : {
+		"className" : "com.cloud.resource.RollingMaintenanceManager$ResourceType",
+		"simpleName" : "ResourceType",
+		"packageName" : "com.cloud.resource",
+		"isNested" : true,
+		"parentClass" : "com.cloud.resource.RollingMaintenanceManager",
+		"values" : [
+			{
+				"name" : "Pod",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Cluster",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Zone",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Host",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.resource.RollingMaintenanceManager$Stage" : {
+		"className" : "com.cloud.resource.RollingMaintenanceManager$Stage",
+		"simpleName" : "Stage",
+		"packageName" : "com.cloud.resource",
+		"isNested" : true,
+		"parentClass" : "com.cloud.resource.RollingMaintenanceManager",
+		"values" : [
+			{
+				"name" : "PreFlight",
+				"ordinal" : 0,
+				"extras" : {
+					"next" : "PreMaintenance"
+				}
+			},
+			{
+				"name" : "PreMaintenance",
+				"ordinal" : 1,
+				"extras" : {
+					"next" : "Maintenance"
+				}
+			},
+			{
+				"name" : "Maintenance",
+				"ordinal" : 2,
+				"extras" : {
+					"next" : "PostMaintenance"
+				}
+			},
+			{
+				"name" : "PostMaintenance",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.server.ResourceTag$ResourceObjectType" : {
+		"className" : "com.cloud.server.ResourceTag$ResourceObjectType",
+		"simpleName" : "ResourceObjectType",
+		"packageName" : "com.cloud.server",
+		"isNested" : true,
+		"parentClass" : "com.cloud.server.ResourceTag",
+		"values" : [
+			{
+				"name" : "UserVm",
+				"ordinal" : 0,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "Template",
+				"ordinal" : 1,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "VnfTemplate",
+				"ordinal" : 2,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "ISO",
+				"ordinal" : 3,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Volume",
+				"ordinal" : 4,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "Snapshot",
+				"ordinal" : 5,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Backup",
+				"ordinal" : 6,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Network",
+				"ordinal" : 7,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "DomainRouter",
+				"ordinal" : 8,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Nic",
+				"ordinal" : 9,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "LoadBalancer",
+				"ordinal" : 10,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "PortForwardingRule",
+				"ordinal" : 11,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "FirewallRule",
+				"ordinal" : 12,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "SecurityGroup",
+				"ordinal" : 13,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "SecurityGroupRule",
+				"ordinal" : 14,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "PublicIpAddress",
+				"ordinal" : 15,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "Project",
+				"ordinal" : 16,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Account",
+				"ordinal" : 17,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Vpc",
+				"ordinal" : 18,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "NetworkACL",
+				"ordinal" : 19,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "StaticRoute",
+				"ordinal" : 20,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "VMSnapshot",
+				"ordinal" : 21,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "RemoteAccessVpn",
+				"ordinal" : 22,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "Zone",
+				"ordinal" : 23,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "ServiceOffering",
+				"ordinal" : 24,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "Storage",
+				"ordinal" : 25,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "PrivateGateway",
+				"ordinal" : 26,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "NetworkACLList",
+				"ordinal" : 27,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "VpnGateway",
+				"ordinal" : 28,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "CustomerGateway",
+				"ordinal" : 29,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "VpnConnection",
+				"ordinal" : 30,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "User",
+				"ordinal" : 31,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "DiskOffering",
+				"ordinal" : 32,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "AutoScaleVmProfile",
+				"ordinal" : 33,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "AutoScaleVmGroup",
+				"ordinal" : 34,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "LBStickinessPolicy",
+				"ordinal" : 35,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "LBHealthCheckPolicy",
+				"ordinal" : 36,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "SnapshotPolicy",
+				"ordinal" : 37,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "GuestOs",
+				"ordinal" : 38,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "NetworkOffering",
+				"ordinal" : 39,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "true"
+				}
+			},
+			{
+				"name" : "VpcOffering",
+				"ordinal" : 40,
+				"extras" : {
+					"resourceTagsSupport" : "true",
+					"resourceIconSupport" : "false",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "Domain",
+				"ordinal" : 41,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "false"
+				}
+			},
+			{
+				"name" : "ObjectStore",
+				"ordinal" : 42,
+				"extras" : {
+					"resourceTagsSupport" : "false",
+					"resourceIconSupport" : "true",
+					"resourceMetadataSupport" : "false"
+				}
+			}
+		]
+	},
+	"com.cloud.storage.DataStoreRole" : {
+		"className" : "com.cloud.storage.DataStoreRole",
+		"simpleName" : "DataStoreRole",
+		"packageName" : "com.cloud.storage",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "Primary",
+				"ordinal" : 0,
+				"extras" : {
+					"isImageStore" : "false"
+				}
+			},
+			{
+				"name" : "Image",
+				"ordinal" : 1,
+				"extras" : {
+					"isImageStore" : "true"
+				}
+			},
+			{
+				"name" : "ImageCache",
+				"ordinal" : 2,
+				"extras" : {
+					"isImageStore" : "true"
+				}
+			},
+			{
+				"name" : "Backup",
+				"ordinal" : 3,
+				"extras" : {
+					"isImageStore" : "false"
+				}
+			},
+			{
+				"name" : "Object",
+				"ordinal" : 4,
+				"extras" : {
+					"isImageStore" : "false"
+				}
+			}
+		]
+	},
+	"com.cloud.storage.MigrationOptions$Type" : {
+		"className" : "com.cloud.storage.MigrationOptions$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.MigrationOptions",
+		"values" : [
+			{
+				"name" : "LinkedClone",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "FullClone",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.ScopeType" : {
+		"className" : "com.cloud.storage.ScopeType",
+		"simpleName" : "ScopeType",
+		"packageName" : "com.cloud.storage",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "HOST",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "CLUSTER",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "ZONE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "REGION",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "GLOBAL",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Snapshot$Event" : {
+		"className" : "com.cloud.storage.Snapshot$Event",
+		"simpleName" : "Event",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Snapshot",
+		"values" : [
+			{
+				"name" : "CreateRequested",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationNotPerformed",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "BackupToSecondary",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "BackedupToSecondary",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "DestroyRequested",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "CopyingRequested",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationSucceeded",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationFailed",
+				"ordinal" : 7,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Snapshot$LocationType" : {
+		"className" : "com.cloud.storage.Snapshot$LocationType",
+		"simpleName" : "LocationType",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Snapshot",
+		"values" : [
+			{
+				"name" : "PRIMARY",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SECONDARY",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Snapshot$State" : {
+		"className" : "com.cloud.storage.Snapshot$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Snapshot",
+		"values" : [
+			{
+				"name" : "Allocated",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Creating",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "CreatedOnPrimary",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "BackingUp",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "BackedUp",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "Copying",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "Destroying",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "Destroyed",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 8,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Snapshot$Type" : {
+		"className" : "com.cloud.storage.Snapshot$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Snapshot",
+		"values" : [
+			{
+				"name" : "MANUAL",
+				"ordinal" : 0,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "RECURRING",
+				"ordinal" : 1,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "TEMPLATE",
+				"ordinal" : 2,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "HOURLY",
+				"ordinal" : 3,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "DAILY",
+				"ordinal" : 4,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "WEEKLY",
+				"ordinal" : 5,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "MONTHLY",
+				"ordinal" : 6,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "GROUP",
+				"ordinal" : 7,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "FROM_GROUP",
+				"ordinal" : 8,
+				"extras" : {
+					"getMax" : "8"
+				}
+			}
+		]
+	},
+	"com.cloud.storage.Storage$Capability" : {
+		"className" : "com.cloud.storage.Storage$Capability",
+		"simpleName" : "Capability",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "HARDWARE_ACCELERATION",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ALLOW_MIGRATE_OTHER_POOLS",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Storage$EncryptionSupport" : {
+		"className" : "com.cloud.storage.Storage$EncryptionSupport",
+		"simpleName" : "EncryptionSupport",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "Unsupported",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Hypervisor",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Storage",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Storage$FileSystem" : {
+		"className" : "com.cloud.storage.Storage$FileSystem",
+		"simpleName" : "FileSystem",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "Unknown",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ext3",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "ntfs",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "fat",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "fat32",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "ext2",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "ext4",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "cdfs",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "hpfs",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "ufs",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "hfs",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "hfsp",
+				"ordinal" : 11,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Storage$ImageFormat" : {
+		"className" : "com.cloud.storage.Storage$ImageFormat",
+		"simpleName" : "ImageFormat",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "QCOW2",
+				"ordinal" : 0,
+				"extras" : {
+					"getFileExtension" : "qcow2",
+					"supportThinProvisioning" : "true",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "true"
+				}
+			},
+			{
+				"name" : "RAW",
+				"ordinal" : 1,
+				"extras" : {
+					"getFileExtension" : "raw",
+					"supportThinProvisioning" : "false",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "false"
+				}
+			},
+			{
+				"name" : "VHD",
+				"ordinal" : 2,
+				"extras" : {
+					"getFileExtension" : "vhd",
+					"supportThinProvisioning" : "true",
+					"supportSnapshot" : "true",
+					"supportsSparse" : "true"
+				}
+			},
+			{
+				"name" : "ISO",
+				"ordinal" : 3,
+				"extras" : {
+					"getFileExtension" : "iso",
+					"supportThinProvisioning" : "false",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "false"
+				}
+			},
+			{
+				"name" : "OVA",
+				"ordinal" : 4,
+				"extras" : {
+					"getFileExtension" : "ova",
+					"supportThinProvisioning" : "true",
+					"supportSnapshot" : "true",
+					"supportsSparse" : "true"
+				}
+			},
+			{
+				"name" : "VHDX",
+				"ordinal" : 5,
+				"extras" : {
+					"getFileExtension" : "vhdx",
+					"supportThinProvisioning" : "true",
+					"supportSnapshot" : "true",
+					"supportsSparse" : "true"
+				}
+			},
+			{
+				"name" : "BAREMETAL",
+				"ordinal" : 6,
+				"extras" : {
+					"supportThinProvisioning" : "false",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "false"
+				}
+			},
+			{
+				"name" : "VMDK",
+				"ordinal" : 7,
+				"extras" : {
+					"getFileExtension" : "vmdk",
+					"supportThinProvisioning" : "true",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "true"
+				}
+			},
+			{
+				"name" : "VDI",
+				"ordinal" : 8,
+				"extras" : {
+					"getFileExtension" : "vdi",
+					"supportThinProvisioning" : "true",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "true"
+				}
+			},
+			{
+				"name" : "TAR",
+				"ordinal" : 9,
+				"extras" : {
+					"getFileExtension" : "tar",
+					"supportThinProvisioning" : "false",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "false"
+				}
+			},
+			{
+				"name" : "ZIP",
+				"ordinal" : 10,
+				"extras" : {
+					"getFileExtension" : "zip",
+					"supportThinProvisioning" : "false",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "false"
+				}
+			},
+			{
+				"name" : "DIR",
+				"ordinal" : 11,
+				"extras" : {
+					"getFileExtension" : "dir",
+					"supportThinProvisioning" : "false",
+					"supportSnapshot" : "false",
+					"supportsSparse" : "false"
+				}
+			}
+		]
+	},
+	"com.cloud.storage.Storage$ProvisioningType" : {
+		"className" : "com.cloud.storage.Storage$ProvisioningType",
+		"simpleName" : "ProvisioningType",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "THIN",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SPARSE",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "FAT",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Storage$StoragePoolType" : {
+		"className" : "com.cloud.storage.Storage$StoragePoolType",
+		"simpleName" : "StoragePoolType",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "Filesystem",
+				"ordinal" : 0,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "true",
+					"encryptionSupportMode" : "Hypervisor",
+					"isShared" : "false"
+				}
+			},
+			{
+				"name" : "NetworkFilesystem",
+				"ordinal" : 1,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "true",
+					"encryptionSupportMode" : "Hypervisor",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "IscsiLUN",
+				"ordinal" : 2,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "Iscsi",
+				"ordinal" : 3,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "ISO",
+				"ordinal" : 4,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "false"
+				}
+			},
+			{
+				"name" : "LVM",
+				"ordinal" : 5,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "false"
+				}
+			},
+			{
+				"name" : "CLVM",
+				"ordinal" : 6,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "RBD",
+				"ordinal" : 7,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "SharedMountPoint",
+				"ordinal" : 8,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "true",
+					"encryptionSupportMode" : "Hypervisor",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "VMFS",
+				"ordinal" : 9,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "PreSetup",
+				"ordinal" : 10,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "EXT",
+				"ordinal" : 11,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "false"
+				}
+			},
+			{
+				"name" : "OCFS2",
+				"ordinal" : 12,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "SMB",
+				"ordinal" : 13,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "Gluster",
+				"ordinal" : 14,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "PowerFlex",
+				"ordinal" : 15,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "true",
+					"encryptionSupportMode" : "Hypervisor",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "ManagedNFS",
+				"ordinal" : 16,
+				"extras" : {
+					"supportsOverProvisioning" : "false",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "Linstor",
+				"ordinal" : 17,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "true",
+					"encryptionSupportMode" : "Storage",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "DatastoreCluster",
+				"ordinal" : 18,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "StorPool",
+				"ordinal" : 19,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "true",
+					"encryptionSupportMode" : "Hypervisor",
+					"isShared" : "true"
+				}
+			},
+			{
+				"name" : "FiberChannel",
+				"ordinal" : 20,
+				"extras" : {
+					"supportsOverProvisioning" : "true",
+					"supportsEncryption" : "false",
+					"encryptionSupportMode" : "Unsupported",
+					"isShared" : "true"
+				}
+			}
+		]
+	},
+	"com.cloud.storage.Storage$StorageResourceType" : {
+		"className" : "com.cloud.storage.Storage$StorageResourceType",
+		"simpleName" : "StorageResourceType",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "STORAGE_POOL",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "STORAGE_HOST",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "SECONDARY_STORAGE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "LOCAL_SECONDARY_STORAGE",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Storage$TemplateType" : {
+		"className" : "com.cloud.storage.Storage$TemplateType",
+		"simpleName" : "TemplateType",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Storage",
+		"values" : [
+			{
+				"name" : "ROUTING",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SYSTEM",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "BUILTIN",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "PERHOST",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "USER",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "VNF",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "DATADISK",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "ISODISK",
+				"ordinal" : 7,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.StoragePoolStatus" : {
+		"className" : "com.cloud.storage.StoragePoolStatus",
+		"simpleName" : "StoragePoolStatus",
+		"packageName" : "com.cloud.storage",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "Initial",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Initialized",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Creating",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Attaching",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "Up",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "PrepareForMaintenance",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "ErrorInMaintenance",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "CancelMaintenance",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "Maintenance",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "Removed",
+				"ordinal" : 10,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Upload$Mode" : {
+		"className" : "com.cloud.storage.Upload$Mode",
+		"simpleName" : "Mode",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Upload",
+		"values" : [
+			{
+				"name" : "FTP_UPLOAD",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "HTTP_DOWNLOAD",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Upload$Status" : {
+		"className" : "com.cloud.storage.Upload$Status",
+		"simpleName" : "Status",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Upload",
+		"values" : [
+			{
+				"name" : "UNKNOWN",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ABANDONED",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOADED",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "NOT_UPLOADED",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOAD_ERROR",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOAD_IN_PROGRESS",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "NOT_COPIED",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "COPY_IN_PROGRESS",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "COPY_ERROR",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "COPY_COMPLETE",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "DOWNLOAD_URL_CREATED",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "DOWNLOAD_URL_NOT_CREATED",
+				"ordinal" : 11,
+				"extras" : { }
+			},
+			{
+				"name" : "ERROR",
+				"ordinal" : 12,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Upload$Type" : {
+		"className" : "com.cloud.storage.Upload$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Upload",
+		"values" : [
+			{
+				"name" : "VOLUME",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SNAPSHOT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "TEMPLATE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "ISO",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.VMTemplateStorageResourceAssoc$Status" : {
+		"className" : "com.cloud.storage.VMTemplateStorageResourceAssoc$Status",
+		"simpleName" : "Status",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.VMTemplateStorageResourceAssoc",
+		"values" : [
+			{
+				"name" : "UNKNOWN",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "DOWNLOAD_ERROR",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "NOT_DOWNLOADED",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "DOWNLOAD_IN_PROGRESS",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "DOWNLOADED",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "ABANDONED",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOADED",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "NOT_UPLOADED",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOAD_ERROR",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOAD_IN_PROGRESS",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "CREATING",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "CREATED",
+				"ordinal" : 11,
+				"extras" : { }
+			},
+			{
+				"name" : "BYPASSED",
+				"ordinal" : 12,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Volume$Event" : {
+		"className" : "com.cloud.storage.Volume$Event",
+		"simpleName" : "Event",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Volume",
+		"values" : [
+			{
+				"name" : "CreateRequested",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "CopyRequested",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "CopySucceeded",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "CopyFailed",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationFailed",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationSucceeded",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationRetry",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "UploadRequested",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "MigrationRequested",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "MigrationCopyRequested",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "MigrationCopySucceeded",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "MigrationCopyFailed",
+				"ordinal" : 11,
+				"extras" : { }
+			},
+			{
+				"name" : "SnapshotRequested",
+				"ordinal" : 12,
+				"extras" : { }
+			},
+			{
+				"name" : "RevertSnapshotRequested",
+				"ordinal" : 13,
+				"extras" : { }
+			},
+			{
+				"name" : "DestroyRequested",
+				"ordinal" : 14,
+				"extras" : { }
+			},
+			{
+				"name" : "RecoverRequested",
+				"ordinal" : 15,
+				"extras" : { }
+			},
+			{
+				"name" : "ExpungingRequested",
+				"ordinal" : 16,
+				"extras" : { }
+			},
+			{
+				"name" : "ResizeRequested",
+				"ordinal" : 17,
+				"extras" : { }
+			},
+			{
+				"name" : "AttachRequested",
+				"ordinal" : 18,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationTimeout",
+				"ordinal" : 19,
+				"extras" : { }
+			},
+			{
+				"name" : "RestoreRequested",
+				"ordinal" : 20,
+				"extras" : { }
+			},
+			{
+				"name" : "RestoreSucceeded",
+				"ordinal" : 21,
+				"extras" : { }
+			},
+			{
+				"name" : "RestoreFailed",
+				"ordinal" : 22,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.storage.Volume$State" : {
+		"className" : "com.cloud.storage.Volume$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Volume",
+		"values" : [
+			{
+				"name" : "Allocated",
+				"ordinal" : 0,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The volume is allocated but has not been created yet."
+				}
+			},
+			{
+				"name" : "Creating",
+				"ordinal" : 1,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume is being created.  getPoolId() should reflect the pool where it is being created."
+				}
+			},
+			{
+				"name" : "Ready",
+				"ordinal" : 2,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The volume is ready to be used."
+				}
+			},
+			{
+				"name" : "Migrating",
+				"ordinal" : 3,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume is migrating to other storage pool"
+				}
+			},
+			{
+				"name" : "Snapshotting",
+				"ordinal" : 4,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "There is a snapshot created on this volume, not backed up to secondary storage yet"
+				}
+			},
+			{
+				"name" : "RevertSnapshotting",
+				"ordinal" : 5,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "There is a snapshot created on this volume, the volume is being reverting from snapshot"
+				}
+			},
+			{
+				"name" : "Resizing",
+				"ordinal" : 6,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume is being resized"
+				}
+			},
+			{
+				"name" : "Expunging",
+				"ordinal" : 7,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume is being expunging"
+				}
+			},
+			{
+				"name" : "Expunged",
+				"ordinal" : 8,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The volume has been expunged, and can no longer be recovered"
+				}
+			},
+			{
+				"name" : "Destroy",
+				"ordinal" : 9,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The volume is destroyed, and can be recovered."
+				}
+			},
+			{
+				"name" : "Destroying",
+				"ordinal" : 10,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The volume is destroying, and can't be recovered."
+				}
+			},
+			{
+				"name" : "UploadOp",
+				"ordinal" : 11,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume upload operation is in progress or in short the volume is on secondary storage"
+				}
+			},
+			{
+				"name" : "Copying",
+				"ordinal" : 12,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "Volume is copying from image store to primary, in case it's an uploaded volume"
+				}
+			},
+			{
+				"name" : "Uploaded",
+				"ordinal" : 13,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "Volume is uploaded"
+				}
+			},
+			{
+				"name" : "NotUploaded",
+				"ordinal" : 14,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume entry is just created in DB, not yet uploaded"
+				}
+			},
+			{
+				"name" : "UploadInProgress",
+				"ordinal" : 15,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "Volume upload is in progress"
+				}
+			},
+			{
+				"name" : "UploadError",
+				"ordinal" : 16,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "Volume upload encountered some error"
+				}
+			},
+			{
+				"name" : "UploadAbandoned",
+				"ordinal" : 17,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "Volume upload is abandoned since the upload was never initiated within a specified time"
+				}
+			},
+			{
+				"name" : "Attaching",
+				"ordinal" : 18,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume is attaching to a VM from Ready state."
+				}
+			},
+			{
+				"name" : "Restoring",
+				"ordinal" : 19,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The volume is being restored from backup."
+				}
+			}
+		]
+	},
+	"com.cloud.storage.Volume$Type" : {
+		"className" : "com.cloud.storage.Volume$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.storage",
+		"isNested" : true,
+		"parentClass" : "com.cloud.storage.Volume",
+		"values" : [
+			{
+				"name" : "UNKNOWN",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ROOT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "SWAP",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "DATADISK",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "ISO",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.template.VirtualMachineTemplate$BootloaderType" : {
+		"className" : "com.cloud.template.VirtualMachineTemplate$BootloaderType",
+		"simpleName" : "BootloaderType",
+		"packageName" : "com.cloud.template",
+		"isNested" : true,
+		"parentClass" : "com.cloud.template.VirtualMachineTemplate",
+		"values" : [
+			{
+				"name" : "PyGrub",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "HVM",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "External",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "CD",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.template.VirtualMachineTemplate$Event" : {
+		"className" : "com.cloud.template.VirtualMachineTemplate$Event",
+		"simpleName" : "Event",
+		"packageName" : "com.cloud.template",
+		"isNested" : true,
+		"parentClass" : "com.cloud.template.VirtualMachineTemplate",
+		"values" : [
+			{
+				"name" : "OperationFailed",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationSucceeded",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "UploadRequested",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationTimeout",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.template.VirtualMachineTemplate$State" : {
+		"className" : "com.cloud.template.VirtualMachineTemplate$State",
+		"simpleName" : "State",
+		"packageName" : "com.cloud.template",
+		"isNested" : true,
+		"parentClass" : "com.cloud.template.VirtualMachineTemplate",
+		"values" : [
+			{
+				"name" : "Active",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Inactive",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "NotUploaded",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "UploadInProgress",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "UploadError",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "UploadAbandoned",
+				"ordinal" : 5,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.template.VirtualMachineTemplate$TemplateFilter" : {
+		"className" : "com.cloud.template.VirtualMachineTemplate$TemplateFilter",
+		"simpleName" : "TemplateFilter",
+		"packageName" : "com.cloud.template",
+		"isNested" : true,
+		"parentClass" : "com.cloud.template.VirtualMachineTemplate",
+		"values" : [
+			{
+				"name" : "featured",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "self",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "selfexecutable",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "shared",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "sharedexecutable",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "executable",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "community",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "all",
+				"ordinal" : 7,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.user.Account$State" : {
 		"className" : "com.cloud.user.Account$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.user",
@@ -1660,7 +6205,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.user.Account$Type" : {
 		"className" : "com.cloud.user.Account$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.user",
@@ -1704,7 +6249,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.user.User$Source" : {
 		"className" : "com.cloud.user.User$Source",
 		"simpleName" : "Source",
 		"packageName" : "com.cloud.user",
@@ -1743,7 +6288,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.user.UserData$UserDataOverridePolicy" : {
 		"className" : "com.cloud.user.UserData$UserDataOverridePolicy",
 		"simpleName" : "UserDataOverridePolicy",
 		"packageName" : "com.cloud.user",
@@ -1767,7 +6312,1573 @@
 			}
 		]
 	},
-	{
+	"com.cloud.utils.DateUtil$IntervalType" : {
+		"className" : "com.cloud.utils.DateUtil$IntervalType",
+		"simpleName" : "IntervalType",
+		"packageName" : "com.cloud.utils",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.DateUtil",
+		"values" : [
+			{
+				"name" : "HOURLY",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "DAILY",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "WEEKLY",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "MONTHLY",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.HttpUtils$ApiSessionKeyCheckOption" : {
+		"className" : "com.cloud.utils.HttpUtils$ApiSessionKeyCheckOption",
+		"simpleName" : "ApiSessionKeyCheckOption",
+		"packageName" : "com.cloud.utils",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.HttpUtils",
+		"values" : [
+			{
+				"name" : "CookieOrParameter",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ParameterOnly",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "CookieAndParameter",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.HttpUtils$ApiSessionKeySameSite" : {
+		"className" : "com.cloud.utils.HttpUtils$ApiSessionKeySameSite",
+		"simpleName" : "ApiSessionKeySameSite",
+		"packageName" : "com.cloud.utils",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.HttpUtils",
+		"values" : [
+			{
+				"name" : "Lax",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Strict",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "NoneAndSecure",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Null",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmCommand$BindingType" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand$BindingType",
+		"simpleName" : "BindingType",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand",
+		"values" : [
+			{
+				"name" : "none",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "portbindingstatic",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "portbindingdynamic",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "portbindingephermal",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmCommand$OperationType" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand$OperationType",
+		"simpleName" : "OperationType",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand",
+		"values" : [
+			{
+				"name" : "addvlanid",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "removevlanid",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmCommand$PortProfileType" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand$PortProfileType",
+		"simpleName" : "PortProfileType",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand",
+		"values" : [
+			{
+				"name" : "none",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "vethernet",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "ethernet",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmCommand$SwitchPortMode" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand$SwitchPortMode",
+		"simpleName" : "SwitchPortMode",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmCommand",
+		"values" : [
+			{
+				"name" : "none",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "access",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "trunk",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "privatevlanhost",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "privatevlanpromiscuous",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmResponse$ErrorSeverity" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmResponse$ErrorSeverity",
+		"simpleName" : "ErrorSeverity",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmResponse",
+		"values" : [
+			{
+				"name" : "error",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "warning",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmResponse$ErrorTag" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmResponse$ErrorTag",
+		"simpleName" : "ErrorTag",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmResponse",
+		"values" : [
+			{
+				"name" : "InUse",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "InvalidValue",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "TooBig",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "MissingAttribute",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "BadAttribute",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "UnknownAttribute",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "MissingElement",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "BadElement",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "UnknownElement",
+				"ordinal" : 8,
+				"extras" : { }
+			},
+			{
+				"name" : "UnknownNamespace",
+				"ordinal" : 9,
+				"extras" : { }
+			},
+			{
+				"name" : "AccessDenied",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "LockDenied",
+				"ordinal" : 11,
+				"extras" : { }
+			},
+			{
+				"name" : "ResourceDenied",
+				"ordinal" : 12,
+				"extras" : { }
+			},
+			{
+				"name" : "RollbackFailed",
+				"ordinal" : 13,
+				"extras" : { }
+			},
+			{
+				"name" : "DataExists",
+				"ordinal" : 14,
+				"extras" : { }
+			},
+			{
+				"name" : "DataMissing",
+				"ordinal" : 15,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationNotSupported",
+				"ordinal" : 16,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationFailed",
+				"ordinal" : 17,
+				"extras" : { }
+			},
+			{
+				"name" : "PartialOperation",
+				"ordinal" : 18,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.cisco.n1kv.vsm.VsmResponse$ErrorType" : {
+		"className" : "com.cloud.utils.cisco.n1kv.vsm.VsmResponse$ErrorType",
+		"simpleName" : "ErrorType",
+		"packageName" : "com.cloud.utils.cisco.n1kv.vsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.cisco.n1kv.vsm.VsmResponse",
+		"values" : [
+			{
+				"name" : "transport",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "rpc",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "protocol",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "application",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.crypt.CloudStackEncryptor$EncryptorVersion" : {
+		"className" : "com.cloud.utils.crypt.CloudStackEncryptor$EncryptorVersion",
+		"simpleName" : "EncryptorVersion",
+		"packageName" : "com.cloud.utils.crypt",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.crypt.CloudStackEncryptor",
+		"values" : [
+			{
+				"name" : "V1",
+				"ordinal" : 0,
+				"extras" : {
+					"defaultVersion" : "V2"
+				}
+			},
+			{
+				"name" : "V2",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.db.Attribute$Flag" : {
+		"className" : "com.cloud.utils.db.Attribute$Flag",
+		"simpleName" : "Flag",
+		"packageName" : "com.cloud.utils.db",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.db.Attribute",
+		"values" : [
+			{
+				"name" : "Insertable",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Updatable",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Nullable",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "DaoGenerated",
+				"ordinal" : 3,
+				"extras" : {
+					"place" : "8"
+				}
+			},
+			{
+				"name" : "DbGenerated",
+				"ordinal" : 4,
+				"extras" : {
+					"place" : "16"
+				}
+			},
+			{
+				"name" : "Embedded",
+				"ordinal" : 5,
+				"extras" : {
+					"place" : "32"
+				}
+			},
+			{
+				"name" : "Id",
+				"ordinal" : 6,
+				"extras" : {
+					"place" : "64"
+				}
+			},
+			{
+				"name" : "Selectable",
+				"ordinal" : 7,
+				"extras" : {
+					"place" : "128"
+				}
+			},
+			{
+				"name" : "Time",
+				"ordinal" : 8,
+				"extras" : {
+					"place" : "256"
+				}
+			},
+			{
+				"name" : "Date",
+				"ordinal" : 9,
+				"extras" : {
+					"place" : "512"
+				}
+			},
+			{
+				"name" : "TimeStamp",
+				"ordinal" : 10,
+				"extras" : {
+					"place" : "1024"
+				}
+			},
+			{
+				"name" : "SequenceGV",
+				"ordinal" : 11,
+				"extras" : {
+					"place" : "4096"
+				}
+			},
+			{
+				"name" : "TableGV",
+				"ordinal" : 12,
+				"extras" : {
+					"place" : "8192"
+				}
+			},
+			{
+				"name" : "AutoGV",
+				"ordinal" : 13,
+				"extras" : {
+					"place" : "16384"
+				}
+			},
+			{
+				"name" : "Created",
+				"ordinal" : 14,
+				"extras" : {
+					"place" : "65536"
+				}
+			},
+			{
+				"name" : "Removed",
+				"ordinal" : 15,
+				"extras" : {
+					"place" : "131072"
+				}
+			},
+			{
+				"name" : "DC",
+				"ordinal" : 16,
+				"extras" : {
+					"place" : "262144"
+				}
+			},
+			{
+				"name" : "CharDT",
+				"ordinal" : 17,
+				"extras" : {
+					"place" : "1048576"
+				}
+			},
+			{
+				"name" : "StringDT",
+				"ordinal" : 18,
+				"extras" : {
+					"place" : "2097152"
+				}
+			},
+			{
+				"name" : "IntegerDT",
+				"ordinal" : 19,
+				"extras" : {
+					"place" : "4194304"
+				}
+			},
+			{
+				"name" : "Encrypted",
+				"ordinal" : 20,
+				"extras" : {
+					"place" : "8388608"
+				}
+			}
+		]
+	},
+	"com.cloud.utils.db.JoinBuilder$JoinCondition" : {
+		"className" : "com.cloud.utils.db.JoinBuilder$JoinCondition",
+		"simpleName" : "JoinCondition",
+		"packageName" : "com.cloud.utils.db",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.db.JoinBuilder",
+		"values" : [
+			{
+				"name" : "AND",
+				"ordinal" : 0,
+				"extras" : {
+					"getName" : " AND "
+				}
+			},
+			{
+				"name" : "OR",
+				"ordinal" : 1,
+				"extras" : {
+					"getName" : " OR "
+				}
+			}
+		]
+	},
+	"com.cloud.utils.db.JoinBuilder$JoinType" : {
+		"className" : "com.cloud.utils.db.JoinBuilder$JoinType",
+		"simpleName" : "JoinType",
+		"packageName" : "com.cloud.utils.db",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.db.JoinBuilder",
+		"values" : [
+			{
+				"name" : "INNER",
+				"ordinal" : 0,
+				"extras" : {
+					"getName" : "INNER JOIN"
+				}
+			},
+			{
+				"name" : "LEFT",
+				"ordinal" : 1,
+				"extras" : {
+					"getName" : "LEFT JOIN"
+				}
+			},
+			{
+				"name" : "RIGHT",
+				"ordinal" : 2,
+				"extras" : {
+					"getName" : "RIGHT JOIN"
+				}
+			},
+			{
+				"name" : "RIGHTOUTER",
+				"ordinal" : 3,
+				"extras" : {
+					"getName" : "RIGHT OUTER JOIN"
+				}
+			},
+			{
+				"name" : "LEFTOUTER",
+				"ordinal" : 4,
+				"extras" : {
+					"getName" : "LEFT OUTER JOIN"
+				}
+			}
+		]
+	},
+	"com.cloud.utils.db.SearchCriteria$Func" : {
+		"className" : "com.cloud.utils.db.SearchCriteria$Func",
+		"simpleName" : "Func",
+		"packageName" : "com.cloud.utils.db",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.db.SearchCriteria",
+		"values" : [
+			{
+				"name" : "NATIVE",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "MAX",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "MIN",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "FIRST",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "LAST",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "SUM",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "COUNT",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "DISTINCT",
+				"ordinal" : 7,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.db.SearchCriteria$Op" : {
+		"className" : "com.cloud.utils.db.SearchCriteria$Op",
+		"simpleName" : "Op",
+		"packageName" : "com.cloud.utils.db",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.db.SearchCriteria",
+		"values" : [
+			{
+				"name" : "GT",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "GTEQ",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "LT",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "LTEQ",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "EQ",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "NEQ",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "BETWEEN",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "NBETWEEN",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "IN",
+				"ordinal" : 8,
+				"extras" : {
+					"getParams" : "-1"
+				}
+			},
+			{
+				"name" : "NOTIN",
+				"ordinal" : 9,
+				"extras" : {
+					"getParams" : "-1"
+				}
+			},
+			{
+				"name" : "LIKE",
+				"ordinal" : 10,
+				"extras" : { }
+			},
+			{
+				"name" : "NLIKE",
+				"ordinal" : 11,
+				"extras" : { }
+			},
+			{
+				"name" : "NIN",
+				"ordinal" : 12,
+				"extras" : {
+					"getParams" : "-1"
+				}
+			},
+			{
+				"name" : "NULL",
+				"ordinal" : 13,
+				"extras" : { }
+			},
+			{
+				"name" : "NNULL",
+				"ordinal" : 14,
+				"extras" : { }
+			},
+			{
+				"name" : "SC",
+				"ordinal" : 15,
+				"extras" : { }
+			},
+			{
+				"name" : "TEXT",
+				"ordinal" : 16,
+				"extras" : { }
+			},
+			{
+				"name" : "RP",
+				"ordinal" : 17,
+				"extras" : { }
+			},
+			{
+				"name" : "AND",
+				"ordinal" : 18,
+				"extras" : { }
+			},
+			{
+				"name" : "OR",
+				"ordinal" : 19,
+				"extras" : { }
+			},
+			{
+				"name" : "NOT",
+				"ordinal" : 20,
+				"extras" : { }
+			},
+			{
+				"name" : "FIND_IN_SET",
+				"ordinal" : 21,
+				"extras" : { }
+			},
+			{
+				"name" : "BINARY_OR",
+				"ordinal" : 22,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.db.SearchCriteria$SelectType" : {
+		"className" : "com.cloud.utils.db.SearchCriteria$SelectType",
+		"simpleName" : "SelectType",
+		"packageName" : "com.cloud.utils.db",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.db.SearchCriteria",
+		"values" : [
+			{
+				"name" : "Fields",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Entity",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Single",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Result",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.fsm.StateMachine2$Transition$Impact" : {
+		"className" : "com.cloud.utils.fsm.StateMachine2$Transition$Impact",
+		"simpleName" : "Impact",
+		"packageName" : "com.cloud.utils.fsm",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.fsm.StateMachine2$Transition",
+		"values" : [
+			{
+				"name" : "USAGE",
+				"ordinal" : 0,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.net.Dhcp$DhcpOptionCode" : {
+		"className" : "com.cloud.utils.net.Dhcp$DhcpOptionCode",
+		"simpleName" : "DhcpOptionCode",
+		"packageName" : "com.cloud.utils.net",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.net.Dhcp",
+		"values" : [
+			{
+				"name" : "NETMASK",
+				"ordinal" : 0,
+				"extras" : {
+					"getName" : "netmask"
+				}
+			},
+			{
+				"name" : "TIME_OFFSET",
+				"ordinal" : 1,
+				"extras" : {
+					"getName" : "time-offset"
+				}
+			},
+			{
+				"name" : "ROUTER",
+				"ordinal" : 2,
+				"extras" : {
+					"getName" : "router"
+				}
+			},
+			{
+				"name" : "TIME_SERVER",
+				"ordinal" : 3,
+				"extras" : {
+					"getName" : "time-server"
+				}
+			},
+			{
+				"name" : "DNS_SERVER",
+				"ordinal" : 4,
+				"extras" : {
+					"getCode" : "6",
+					"getName" : "dns-server"
+				}
+			},
+			{
+				"name" : "logger_SERVER",
+				"ordinal" : 5,
+				"extras" : {
+					"getCode" : "7",
+					"getName" : "log-server"
+				}
+			},
+			{
+				"name" : "LPR_SERVER",
+				"ordinal" : 6,
+				"extras" : {
+					"getCode" : "9",
+					"getName" : "lpr-server"
+				}
+			},
+			{
+				"name" : "HOSTNAME",
+				"ordinal" : 7,
+				"extras" : {
+					"getCode" : "12",
+					"getName" : "hostname"
+				}
+			},
+			{
+				"name" : "BOOT_FILE_SIZE",
+				"ordinal" : 8,
+				"extras" : {
+					"getCode" : "13",
+					"getName" : "boot-file-size"
+				}
+			},
+			{
+				"name" : "DOMAIN_NAME",
+				"ordinal" : 9,
+				"extras" : {
+					"getCode" : "15",
+					"getName" : "domain-name"
+				}
+			},
+			{
+				"name" : "SWAP_SERVER",
+				"ordinal" : 10,
+				"extras" : {
+					"getCode" : "16",
+					"getName" : "swap-server"
+				}
+			},
+			{
+				"name" : "ROOT_PATH",
+				"ordinal" : 11,
+				"extras" : {
+					"getCode" : "17",
+					"getName" : "root-path"
+				}
+			},
+			{
+				"name" : "EXTENSION_PATH",
+				"ordinal" : 12,
+				"extras" : {
+					"getCode" : "18",
+					"getName" : "extension-path"
+				}
+			},
+			{
+				"name" : "IP_FORWARD_ENABLE",
+				"ordinal" : 13,
+				"extras" : {
+					"getCode" : "19",
+					"getName" : "ip-forward-enable"
+				}
+			},
+			{
+				"name" : "NON_LOCAL_SOURCE_ROUTING",
+				"ordinal" : 14,
+				"extras" : {
+					"getCode" : "20",
+					"getName" : "non-local-source-routing"
+				}
+			},
+			{
+				"name" : "POLICY_FILTER",
+				"ordinal" : 15,
+				"extras" : {
+					"getCode" : "21",
+					"getName" : "policy-filter"
+				}
+			},
+			{
+				"name" : "MAX_DATAGRAM_REASSEMBLY",
+				"ordinal" : 16,
+				"extras" : {
+					"getCode" : "22",
+					"getName" : "max-datagram-reassembly"
+				}
+			},
+			{
+				"name" : "DEFAULT_TTL",
+				"ordinal" : 17,
+				"extras" : {
+					"getCode" : "23",
+					"getName" : "default-ttl"
+				}
+			},
+			{
+				"name" : "MTU",
+				"ordinal" : 18,
+				"extras" : {
+					"getCode" : "26",
+					"getName" : "mtu"
+				}
+			},
+			{
+				"name" : "ALL_SUBNETS_LOCAL",
+				"ordinal" : 19,
+				"extras" : {
+					"getCode" : "27",
+					"getName" : "all-subnets-local"
+				}
+			},
+			{
+				"name" : "BROADCAST",
+				"ordinal" : 20,
+				"extras" : {
+					"getCode" : "28",
+					"getName" : "broadcast"
+				}
+			},
+			{
+				"name" : "ROUTER_DISCOVERY",
+				"ordinal" : 21,
+				"extras" : {
+					"getCode" : "31",
+					"getName" : "router-discovery"
+				}
+			},
+			{
+				"name" : "ROUTER_SOLICITATION",
+				"ordinal" : 22,
+				"extras" : {
+					"getCode" : "32",
+					"getName" : "router-solicitation"
+				}
+			},
+			{
+				"name" : "STATIC_ROUTE",
+				"ordinal" : 23,
+				"extras" : {
+					"getCode" : "33",
+					"getName" : "static-route"
+				}
+			},
+			{
+				"name" : "TRAILER_ENCAPSULATION",
+				"ordinal" : 24,
+				"extras" : {
+					"getCode" : "34",
+					"getName" : "trailer-encapsulation"
+				}
+			},
+			{
+				"name" : "ARP_TIMEOUT",
+				"ordinal" : 25,
+				"extras" : {
+					"getCode" : "35",
+					"getName" : "arp-timeout"
+				}
+			},
+			{
+				"name" : "ETHERNET_ENCAP",
+				"ordinal" : 26,
+				"extras" : {
+					"getCode" : "36",
+					"getName" : "ethernet-encap"
+				}
+			},
+			{
+				"name" : "TCP_TTL",
+				"ordinal" : 27,
+				"extras" : {
+					"getCode" : "37",
+					"getName" : "tcp-ttl"
+				}
+			},
+			{
+				"name" : "TCP_KEEPALIVE",
+				"ordinal" : 28,
+				"extras" : {
+					"getCode" : "38",
+					"getName" : "tcp-keepalive"
+				}
+			},
+			{
+				"name" : "NIS_DOMAIN",
+				"ordinal" : 29,
+				"extras" : {
+					"getCode" : "40",
+					"getName" : "nis-domain"
+				}
+			},
+			{
+				"name" : "NIS_SERVER",
+				"ordinal" : 30,
+				"extras" : {
+					"getCode" : "41",
+					"getName" : "nis-server"
+				}
+			},
+			{
+				"name" : "NTP_SERVER",
+				"ordinal" : 31,
+				"extras" : {
+					"getCode" : "42",
+					"getName" : "ntp-server"
+				}
+			},
+			{
+				"name" : "VENDOR_ENCAP",
+				"ordinal" : 32,
+				"extras" : {
+					"getCode" : "43",
+					"getName" : "vendor-encap"
+				}
+			},
+			{
+				"name" : "NETBIOS_NS",
+				"ordinal" : 33,
+				"extras" : {
+					"getCode" : "44",
+					"getName" : "netbios-ns"
+				}
+			},
+			{
+				"name" : "NETBIOS_DD",
+				"ordinal" : 34,
+				"extras" : {
+					"getCode" : "45",
+					"getName" : "netbios-dd"
+				}
+			},
+			{
+				"name" : "NETBIOS_NODETYPE",
+				"ordinal" : 35,
+				"extras" : {
+					"getCode" : "46",
+					"getName" : "netbios-nodetype"
+				}
+			},
+			{
+				"name" : "NETBIOS_SCOPE",
+				"ordinal" : 36,
+				"extras" : {
+					"getCode" : "47",
+					"getName" : "netbios-scope"
+				}
+			},
+			{
+				"name" : "X_WINDOWS_FS",
+				"ordinal" : 37,
+				"extras" : {
+					"getCode" : "48",
+					"getName" : "x-windows-fs"
+				}
+			},
+			{
+				"name" : "X_WINDOWS_DM",
+				"ordinal" : 38,
+				"extras" : {
+					"getCode" : "49",
+					"getName" : "x-windows-dm"
+				}
+			},
+			{
+				"name" : "REQUESTED_ADDRESS",
+				"ordinal" : 39,
+				"extras" : {
+					"getCode" : "50",
+					"getName" : "requested-address"
+				}
+			},
+			{
+				"name" : "LEASE_TIME",
+				"ordinal" : 40,
+				"extras" : {
+					"getCode" : "51",
+					"getName" : "lease-time"
+				}
+			},
+			{
+				"name" : "OPTION_OVERLOAD",
+				"ordinal" : 41,
+				"extras" : {
+					"getCode" : "52",
+					"getName" : "option-overload"
+				}
+			},
+			{
+				"name" : "MESSAGE_TYPE",
+				"ordinal" : 42,
+				"extras" : {
+					"getCode" : "53",
+					"getName" : "message-type"
+				}
+			},
+			{
+				"name" : "SERVER_IDENTIFIER",
+				"ordinal" : 43,
+				"extras" : {
+					"getCode" : "54",
+					"getName" : "server-identifier"
+				}
+			},
+			{
+				"name" : "PARAMETER_REQUEST",
+				"ordinal" : 44,
+				"extras" : {
+					"getCode" : "55",
+					"getName" : "parameter-request"
+				}
+			},
+			{
+				"name" : "MESSAGE",
+				"ordinal" : 45,
+				"extras" : {
+					"getCode" : "56",
+					"getName" : "message"
+				}
+			},
+			{
+				"name" : "MAX_MESSAGE_SIZE",
+				"ordinal" : 46,
+				"extras" : {
+					"getCode" : "57",
+					"getName" : "max-message-size"
+				}
+			},
+			{
+				"name" : "T1",
+				"ordinal" : 47,
+				"extras" : {
+					"getCode" : "58"
+				}
+			},
+			{
+				"name" : "T2",
+				"ordinal" : 48,
+				"extras" : {
+					"getCode" : "59"
+				}
+			},
+			{
+				"name" : "VENDOR_CLASS",
+				"ordinal" : 49,
+				"extras" : {
+					"getCode" : "60",
+					"getName" : "vendor-class"
+				}
+			},
+			{
+				"name" : "CLIENT_ID",
+				"ordinal" : 50,
+				"extras" : {
+					"getCode" : "61",
+					"getName" : "client-id"
+				}
+			},
+			{
+				"name" : "NISPLUS_DOMAIN",
+				"ordinal" : 51,
+				"extras" : {
+					"getCode" : "64",
+					"getName" : "nis+-domain"
+				}
+			},
+			{
+				"name" : "NISPLUS_SERVER",
+				"ordinal" : 52,
+				"extras" : {
+					"getCode" : "65",
+					"getName" : "nis+-server"
+				}
+			},
+			{
+				"name" : "TFTP_SERVER",
+				"ordinal" : 53,
+				"extras" : {
+					"getCode" : "66",
+					"getName" : "tftp-server"
+				}
+			},
+			{
+				"name" : "BOOTFILE_NAME",
+				"ordinal" : 54,
+				"extras" : {
+					"getCode" : "67",
+					"getName" : "bootfile-name"
+				}
+			},
+			{
+				"name" : "MOBILE_IP_HOME",
+				"ordinal" : 55,
+				"extras" : {
+					"getCode" : "68",
+					"getName" : "mobile-ip-home"
+				}
+			},
+			{
+				"name" : "SMTP_SERVER",
+				"ordinal" : 56,
+				"extras" : {
+					"getCode" : "69",
+					"getName" : "smtp-server"
+				}
+			},
+			{
+				"name" : "POP3_SERVER",
+				"ordinal" : 57,
+				"extras" : {
+					"getCode" : "70",
+					"getName" : "pop3-server"
+				}
+			},
+			{
+				"name" : "NNTP_SERVER",
+				"ordinal" : 58,
+				"extras" : {
+					"getCode" : "71",
+					"getName" : "nntp-server"
+				}
+			},
+			{
+				"name" : "IRC_SERVER",
+				"ordinal" : 59,
+				"extras" : {
+					"getCode" : "74",
+					"getName" : "irc-server"
+				}
+			},
+			{
+				"name" : "USER_CLASS",
+				"ordinal" : 60,
+				"extras" : {
+					"getCode" : "77",
+					"getName" : "user-class"
+				}
+			},
+			{
+				"name" : "CLIENT_ARCH",
+				"ordinal" : 61,
+				"extras" : {
+					"getCode" : "93",
+					"getName" : "client-arch"
+				}
+			},
+			{
+				"name" : "CLIENT_INTERFACE_ID",
+				"ordinal" : 62,
+				"extras" : {
+					"getCode" : "94",
+					"getName" : "client-interface-id"
+				}
+			},
+			{
+				"name" : "CLIENT_MACHINE_ID",
+				"ordinal" : 63,
+				"extras" : {
+					"getCode" : "97",
+					"getName" : "client-machine-id"
+				}
+			},
+			{
+				"name" : "URL",
+				"ordinal" : 64,
+				"extras" : {
+					"getCode" : "114",
+					"getName" : "url"
+				}
+			},
+			{
+				"name" : "DOMAIN_SEARCH",
+				"ordinal" : 65,
+				"extras" : {
+					"getCode" : "119",
+					"getName" : "domain-search"
+				}
+			},
+			{
+				"name" : "SIP_SERVER",
+				"ordinal" : 66,
+				"extras" : {
+					"getCode" : "120",
+					"getName" : "sip-server"
+				}
+			},
+			{
+				"name" : "CLASSLESS_STATIC_ROUTE",
+				"ordinal" : 67,
+				"extras" : {
+					"getCode" : "121",
+					"getName" : "classless-static-route"
+				}
+			},
+			{
+				"name" : "VENDOR_ID_ENCAP",
+				"ordinal" : 68,
+				"extras" : {
+					"getCode" : "125",
+					"getName" : "vendor-id-encap"
+				}
+			},
+			{
+				"name" : "SERVER_IP_ADDRESS",
+				"ordinal" : 69,
+				"extras" : {
+					"getCode" : "255",
+					"getName" : "server-ip-address"
+				}
+			}
+		]
+	},
+	"com.cloud.utils.net.NetUtils$InternetProtocol" : {
+		"className" : "com.cloud.utils.net.NetUtils$InternetProtocol",
+		"simpleName" : "InternetProtocol",
+		"packageName" : "com.cloud.utils.net",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.net.NetUtils",
+		"values" : [
+			{
+				"name" : "IPv4",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "IPv6",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "DualStack",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.net.NetUtils$SupersetOrSubset" : {
+		"className" : "com.cloud.utils.net.NetUtils$SupersetOrSubset",
+		"simpleName" : "SupersetOrSubset",
+		"packageName" : "com.cloud.utils.net",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.net.NetUtils",
+		"values" : [
+			{
+				"name" : "isSuperset",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "isSubset",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "neitherSubetNorSuperset",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "sameSubnet",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "errorInCidrFormat",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.net.NetworkProtocols$Option" : {
+		"className" : "com.cloud.utils.net.NetworkProtocols$Option",
+		"simpleName" : "Option",
+		"packageName" : "com.cloud.utils.net",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.net.NetworkProtocols",
+		"values" : [
+			{
+				"name" : "ProtocolNumber",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "IcmpType",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.nio.Task$Type" : {
+		"className" : "com.cloud.utils.nio.Task$Type",
+		"simpleName" : "Type",
+		"packageName" : "com.cloud.utils.nio",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.nio.Task",
+		"values" : [
+			{
+				"name" : "CONNECT",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "DISCONNECT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "DATA",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "CONNECT_FAILED",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "OTHER",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.rest.HttpMethods" : {
+		"className" : "com.cloud.utils.rest.HttpMethods",
+		"simpleName" : "HttpMethods",
+		"packageName" : "com.cloud.utils.rest",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "GET",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "POST",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "PUT",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "DELETE",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.script.Script2$ParamType" : {
+		"className" : "com.cloud.utils.script.Script2$ParamType",
+		"simpleName" : "ParamType",
+		"packageName" : "com.cloud.utils.script",
+		"isNested" : true,
+		"parentClass" : "com.cloud.utils.script.Script2",
+		"values" : [
+			{
+				"name" : "NORMAL",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "PASSWORD",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.utils.storage.encoding.EncodingType" : {
+		"className" : "com.cloud.utils.storage.encoding.EncodingType",
+		"simpleName" : "EncodingType",
+		"packageName" : "com.cloud.utils.storage.encoding",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "OBJTYPE",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SIZE",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "NAME",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "PATH",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "ROLE",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "STOREUUID",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "PROVIDERNAME",
+				"ordinal" : 6,
+				"extras" : { }
+			}
+		]
+	},
+	"com.cloud.vm.Nic$Event" : {
 		"className" : "com.cloud.vm.Nic$Event",
 		"simpleName" : "Event",
 		"packageName" : "com.cloud.vm",
@@ -1801,7 +7912,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.Nic$ReservationStrategy" : {
 		"className" : "com.cloud.vm.Nic$ReservationStrategy",
 		"simpleName" : "ReservationStrategy",
 		"packageName" : "com.cloud.vm",
@@ -1830,7 +7941,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.Nic$State" : {
 		"className" : "com.cloud.vm.Nic$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.vm",
@@ -1841,49 +7952,49 @@
 				"name" : "Allocated",
 				"ordinal" : 0,
 				"extras" : {
-					"getDescription" : "Resource is allocated but not reserved",
+					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
 					"getPossibleEvents" : "[ReservationRequested]",
-					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n  --> Event: OperationFailed               ----> State: Allocated\nState: Releasing\n  --> Event: OperationCompleted            ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Reserved\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\n"
+					"getDescription" : "Resource is allocated but not reserved"
 				}
 			},
 			{
 				"name" : "Reserving",
 				"ordinal" : 1,
 				"extras" : {
-					"getDescription" : "Resource is being reserved right now",
-					"getPossibleEvents" : "[CancelRequested, OperationCompleted, OperationFailed]",
-					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n  --> Event: OperationFailed               ----> State: Allocated\nState: Releasing\n  --> Event: OperationCompleted            ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Reserved\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\n"
+					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
+					"getPossibleEvents" : "[CancelRequested, OperationFailed, OperationCompleted]",
+					"getDescription" : "Resource is being reserved right now"
 				}
 			},
 			{
 				"name" : "Reserved",
 				"ordinal" : 2,
 				"extras" : {
-					"getDescription" : "Resource has been reserved.",
+					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
 					"getPossibleEvents" : "[ReleaseRequested]",
-					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n  --> Event: OperationFailed               ----> State: Allocated\nState: Releasing\n  --> Event: OperationCompleted            ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Reserved\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\n"
+					"getDescription" : "Resource has been reserved."
 				}
 			},
 			{
 				"name" : "Releasing",
 				"ordinal" : 3,
 				"extras" : {
-					"getDescription" : "Resource is being released",
-					"getPossibleEvents" : "[OperationCompleted, OperationFailed]",
-					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n  --> Event: OperationFailed               ----> State: Allocated\nState: Releasing\n  --> Event: OperationCompleted            ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Reserved\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\n"
+					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
+					"getPossibleEvents" : "[OperationFailed, OperationCompleted]",
+					"getDescription" : "Resource is being released"
 				}
 			},
 			{
 				"name" : "Deallocating",
 				"ordinal" : 4,
 				"extras" : {
-					"getDescription" : "Resource is being deallocated",
-					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n  --> Event: OperationFailed               ----> State: Allocated\nState: Releasing\n  --> Event: OperationCompleted            ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Reserved\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\n"
+					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
+					"getDescription" : "Resource is being deallocated"
 				}
 			}
 		]
 	},
-	{
+	"com.cloud.vm.NicIpAlias$State" : {
 		"className" : "com.cloud.vm.NicIpAlias$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.vm",
@@ -1902,7 +8013,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.SecondaryStorageVm$Role" : {
 		"className" : "com.cloud.vm.SecondaryStorageVm$Role",
 		"simpleName" : "Role",
 		"packageName" : "com.cloud.vm",
@@ -1921,7 +8032,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.VirtualMachine$Event" : {
 		"className" : "com.cloud.vm.VirtualMachine$Event",
 		"simpleName" : "Event",
 		"packageName" : "com.cloud.vm",
@@ -2045,7 +8156,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.VirtualMachine$PowerState" : {
 		"className" : "com.cloud.vm.VirtualMachine$PowerState",
 		"simpleName" : "PowerState",
 		"packageName" : "com.cloud.vm",
@@ -2074,7 +8185,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.VirtualMachine$State" : {
 		"className" : "com.cloud.vm.VirtualMachine$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.vm",
@@ -2085,93 +8196,93 @@
 				"name" : "Starting",
 				"ordinal" : 0,
 				"extras" : {
-					"getDescription" : "VM is being started.  At this state, you should find host id filled which means it's being started on that host.",
-					"isTransitional" : "true"
+					"isTransitional" : "true",
+					"getDescription" : "VM is being started.  At this state, you should find host id filled which means it's being started on that host."
 				}
 			},
 			{
 				"name" : "Running",
 				"ordinal" : 1,
 				"extras" : {
-					"getDescription" : "VM is running.  host id has the host that it is running on.",
-					"isTransitional" : "false"
+					"isTransitional" : "false",
+					"getDescription" : "VM is running.  host id has the host that it is running on."
 				}
 			},
 			{
 				"name" : "Stopping",
 				"ordinal" : 2,
 				"extras" : {
-					"getDescription" : "VM is being stopped.  host id has the host that it is being stopped on.",
-					"isTransitional" : "true"
+					"isTransitional" : "true",
+					"getDescription" : "VM is being stopped.  host id has the host that it is being stopped on."
 				}
 			},
 			{
 				"name" : "Stopped",
 				"ordinal" : 3,
 				"extras" : {
-					"getDescription" : "VM is stopped.  host id should be null.",
-					"isTransitional" : "false"
+					"isTransitional" : "false",
+					"getDescription" : "VM is stopped.  host id should be null."
 				}
 			},
 			{
 				"name" : "Destroyed",
 				"ordinal" : 4,
 				"extras" : {
-					"getDescription" : "VM is marked for destroy.",
-					"isTransitional" : "false"
+					"isTransitional" : "false",
+					"getDescription" : "VM is marked for destroy."
 				}
 			},
 			{
 				"name" : "Expunging",
 				"ordinal" : 5,
 				"extras" : {
-					"getDescription" : "VM is being   expunged.",
-					"isTransitional" : "true"
+					"isTransitional" : "true",
+					"getDescription" : "VM is being   expunged."
 				}
 			},
 			{
 				"name" : "Migrating",
 				"ordinal" : 6,
 				"extras" : {
-					"getDescription" : "VM is being migrated.  host id holds to from host",
-					"isTransitional" : "true"
+					"isTransitional" : "true",
+					"getDescription" : "VM is being migrated.  host id holds to from host"
 				}
 			},
 			{
 				"name" : "Error",
 				"ordinal" : 7,
 				"extras" : {
-					"getDescription" : "VM is in error",
-					"isTransitional" : "false"
+					"isTransitional" : "false",
+					"getDescription" : "VM is in error"
 				}
 			},
 			{
 				"name" : "Unknown",
 				"ordinal" : 8,
 				"extras" : {
-					"getDescription" : "VM state is unknown.",
-					"isTransitional" : "false"
+					"isTransitional" : "false",
+					"getDescription" : "VM state is unknown."
 				}
 			},
 			{
 				"name" : "Shutdown",
 				"ordinal" : 9,
 				"extras" : {
-					"getDescription" : "VM state is shutdown from inside",
-					"isTransitional" : "false"
+					"isTransitional" : "false",
+					"getDescription" : "VM state is shutdown from inside"
 				}
 			},
 			{
 				"name" : "Restoring",
 				"ordinal" : 10,
 				"extras" : {
-					"getDescription" : "VM is being restored from backup",
-					"isTransitional" : "true"
+					"isTransitional" : "true",
+					"getDescription" : "VM is being restored from backup"
 				}
 			}
 		]
 	},
-	{
+	"com.cloud.vm.VirtualMachine$Type" : {
 		"className" : "com.cloud.vm.VirtualMachine$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.vm",
@@ -2250,7 +8361,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.snapshot.VMSnapshot$Event" : {
 		"className" : "com.cloud.vm.snapshot.VMSnapshot$Event",
 		"simpleName" : "Event",
 		"packageName" : "com.cloud.vm.snapshot",
@@ -2284,7 +8395,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.snapshot.VMSnapshot$State" : {
 		"className" : "com.cloud.vm.snapshot.VMSnapshot$State",
 		"simpleName" : "State",
 		"packageName" : "com.cloud.vm.snapshot",
@@ -2342,7 +8453,7 @@
 			}
 		]
 	},
-	{
+	"com.cloud.vm.snapshot.VMSnapshot$Type" : {
 		"className" : "com.cloud.vm.snapshot.VMSnapshot$Type",
 		"simpleName" : "Type",
 		"packageName" : "com.cloud.vm.snapshot",
@@ -2361,7 +8472,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.acl.ControlledEntity$ACLType" : {
 		"className" : "org.apache.cloudstack.acl.ControlledEntity$ACLType",
 		"simpleName" : "ACLType",
 		"packageName" : "org.apache.cloudstack.acl",
@@ -2380,7 +8491,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.acl.PermissionScope" : {
 		"className" : "org.apache.cloudstack.acl.PermissionScope",
 		"simpleName" : "PermissionScope",
 		"packageName" : "org.apache.cloudstack.acl",
@@ -2414,7 +8525,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.acl.Role$State" : {
 		"className" : "org.apache.cloudstack.acl.Role$State",
 		"simpleName" : "State",
 		"packageName" : "org.apache.cloudstack.acl",
@@ -2433,7 +8544,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.acl.RolePermissionEntity$Permission" : {
 		"className" : "org.apache.cloudstack.acl.RolePermissionEntity$Permission",
 		"simpleName" : "Permission",
 		"packageName" : "org.apache.cloudstack.acl",
@@ -2452,7 +8563,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.acl.RoleType" : {
 		"className" : "org.apache.cloudstack.acl.RoleType",
 		"simpleName" : "RoleType",
 		"packageName" : "org.apache.cloudstack.acl",
@@ -2498,7 +8609,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.acl.SecurityChecker$AccessType" : {
 		"className" : "org.apache.cloudstack.acl.SecurityChecker$AccessType",
 		"simpleName" : "AccessType",
 		"packageName" : "org.apache.cloudstack.acl",
@@ -2527,7 +8638,219 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.annotation.AnnotationService$EntityType" : {
+		"className" : "org.apache.cloudstack.annotation.AnnotationService$EntityType",
+		"simpleName" : "EntityType",
+		"packageName" : "org.apache.cloudstack.annotation",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.annotation.AnnotationService",
+		"values" : [
+			{
+				"name" : "VM",
+				"ordinal" : 0,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "VOLUME",
+				"ordinal" : 1,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "SNAPSHOT",
+				"ordinal" : 2,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "VM_SNAPSHOT",
+				"ordinal" : 3,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "INSTANCE_GROUP",
+				"ordinal" : 4,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "SSH_KEYPAIR",
+				"ordinal" : 5,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "USER_DATA",
+				"ordinal" : 6,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "NETWORK",
+				"ordinal" : 7,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "VPC",
+				"ordinal" : 8,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "PUBLIC_IP_ADDRESS",
+				"ordinal" : 9,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "VPN_CUSTOMER_GATEWAY",
+				"ordinal" : 10,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "TEMPLATE",
+				"ordinal" : 11,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "ISO",
+				"ordinal" : 12,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "KUBERNETES_CLUSTER",
+				"ordinal" : 13,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "SERVICE_OFFERING",
+				"ordinal" : 14,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "DISK_OFFERING",
+				"ordinal" : 15,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "NETWORK_OFFERING",
+				"ordinal" : 16,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "ZONE",
+				"ordinal" : 17,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "POD",
+				"ordinal" : 18,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "CLUSTER",
+				"ordinal" : 19,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "HOST",
+				"ordinal" : 20,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "DOMAIN",
+				"ordinal" : 21,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "PRIMARY_STORAGE",
+				"ordinal" : 22,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "SECONDARY_STORAGE",
+				"ordinal" : 23,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "VR",
+				"ordinal" : 24,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "SYSTEM_VM",
+				"ordinal" : 25,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "AUTOSCALE_VM_GROUP",
+				"ordinal" : 26,
+				"extras" : {
+					"isUserAllowed" : "true"
+				}
+			},
+			{
+				"name" : "MANAGEMENT_SERVER",
+				"ordinal" : 27,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			},
+			{
+				"name" : "OBJECT_STORAGE",
+				"ordinal" : 28,
+				"extras" : {
+					"isUserAllowed" : "false"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.api.ApiArgValidator" : {
 		"className" : "org.apache.cloudstack.api.ApiArgValidator",
 		"simpleName" : "ApiArgValidator",
 		"packageName" : "org.apache.cloudstack.api",
@@ -2556,7 +8879,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiCommandResourceType" : {
 		"className" : "org.apache.cloudstack.api.ApiCommandResourceType",
 		"simpleName" : "ApiCommandResourceType",
 		"packageName" : "org.apache.cloudstack.api",
@@ -2979,7 +9302,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$ApiKeyAccess" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$ApiKeyAccess",
 		"simpleName" : "ApiKeyAccess",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3007,7 +9330,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$BootMode" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$BootMode",
 		"simpleName" : "BootMode",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3026,7 +9349,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$BootType" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$BootType",
 		"simpleName" : "BootType",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3045,7 +9368,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$DomainDetails" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$DomainDetails",
 		"simpleName" : "DomainDetails",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3069,7 +9392,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$HostDetails" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$HostDetails",
 		"simpleName" : "HostDetails",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3103,7 +9426,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$IoDriverPolicy" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$IoDriverPolicy",
 		"simpleName" : "IoDriverPolicy",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3132,7 +9455,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiConstants$VMDetails" : {
 		"className" : "org.apache.cloudstack.api.ApiConstants$VMDetails",
 		"simpleName" : "VMDetails",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3211,7 +9534,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ApiErrorCode" : {
 		"className" : "org.apache.cloudstack.api.ApiErrorCode",
 		"simpleName" : "ApiErrorCode",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3332,7 +9655,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.BaseCmd$CommandType" : {
 		"className" : "org.apache.cloudstack.api.BaseCmd$CommandType",
 		"simpleName" : "CommandType",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3401,7 +9724,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.BaseCmd$HTTPMethod" : {
 		"className" : "org.apache.cloudstack.api.BaseCmd$HTTPMethod",
 		"simpleName" : "HTTPMethod",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3430,7 +9753,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.ResponseObject$ResponseView" : {
 		"className" : "org.apache.cloudstack.api.ResponseObject$ResponseView",
 		"simpleName" : "ResponseView",
 		"packageName" : "org.apache.cloudstack.api",
@@ -3449,7 +9772,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.auth.APIAuthenticationType" : {
 		"className" : "org.apache.cloudstack.api.auth.APIAuthenticationType",
 		"simpleName" : "APIAuthenticationType",
 		"packageName" : "org.apache.cloudstack.api.auth",
@@ -3483,7 +9806,7 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.api.command.user.volume.CheckAndRepairVolumeCmd$RepairValues" : {
 		"className" : "org.apache.cloudstack.api.command.user.volume.CheckAndRepairVolumeCmd$RepairValues",
 		"simpleName" : "RepairValues",
 		"packageName" : "org.apache.cloudstack.api.command.user.volume",
@@ -3502,7 +9825,661 @@
 			}
 		]
 	},
-	{
+	"org.apache.cloudstack.backup.Backup$Status" : {
+		"className" : "org.apache.cloudstack.backup.Backup$Status",
+		"simpleName" : "Status",
+		"packageName" : "org.apache.cloudstack.backup",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.backup.Backup",
+		"values" : [
+			{
+				"name" : "Allocated",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Queued",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "BackingUp",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "BackedUp",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "Failed",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "Restoring",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "Removed",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "Expunged",
+				"ordinal" : 8,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.backup.Backup$Type" : {
+		"className" : "org.apache.cloudstack.backup.Backup$Type",
+		"simpleName" : "Type",
+		"packageName" : "org.apache.cloudstack.backup",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.backup.Backup",
+		"values" : [
+			{
+				"name" : "MANUAL",
+				"ordinal" : 0,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "HOURLY",
+				"ordinal" : 1,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "DAILY",
+				"ordinal" : 2,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "WEEKLY",
+				"ordinal" : 3,
+				"extras" : {
+					"getMax" : "8"
+				}
+			},
+			{
+				"name" : "MONTHLY",
+				"ordinal" : 4,
+				"extras" : {
+					"getMax" : "8"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.cluster.ClusterDrsPlan$Status" : {
+		"className" : "org.apache.cloudstack.cluster.ClusterDrsPlan$Status",
+		"simpleName" : "Status",
+		"packageName" : "org.apache.cloudstack.cluster",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.cluster.ClusterDrsPlan",
+		"values" : [
+			{
+				"name" : "UNDER_REVIEW",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "READY",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "IN_PROGRESS",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "COMPLETED",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.cluster.ClusterDrsPlan$Type" : {
+		"className" : "org.apache.cloudstack.cluster.ClusterDrsPlan$Type",
+		"simpleName" : "Type",
+		"packageName" : "org.apache.cloudstack.cluster",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.cluster.ClusterDrsPlan",
+		"values" : [
+			{
+				"name" : "AUTOMATED",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "MANUAL",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.config.Configuration$ValueType" : {
+		"className" : "org.apache.cloudstack.config.Configuration$ValueType",
+		"simpleName" : "ValueType",
+		"packageName" : "org.apache.cloudstack.config",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.config.Configuration",
+		"values" : [
+			{
+				"name" : "Boolean",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Number",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Decimal",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Range",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "String",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "List",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "Date",
+				"ordinal" : 6,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.diagnostics.DiagnosticsType" : {
+		"className" : "org.apache.cloudstack.diagnostics.DiagnosticsType",
+		"simpleName" : "DiagnosticsType",
+		"packageName" : "org.apache.cloudstack.diagnostics",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "PING",
+				"ordinal" : 0,
+				"extras" : {
+					"getValue" : "ping"
+				}
+			},
+			{
+				"name" : "PING6",
+				"ordinal" : 1,
+				"extras" : {
+					"getValue" : "ping6"
+				}
+			},
+			{
+				"name" : "TRACEROUTE",
+				"ordinal" : 2,
+				"extras" : {
+					"getValue" : "traceroute"
+				}
+			},
+			{
+				"name" : "TRACEROUTE6",
+				"ordinal" : 3,
+				"extras" : {
+					"getValue" : "traceroute6"
+				}
+			},
+			{
+				"name" : "ARPING",
+				"ordinal" : 4,
+				"extras" : {
+					"getValue" : "arping"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.direct.download.DirectDownloadManager$HostCertificateStatus$CertificateStatus" : {
+		"className" : "org.apache.cloudstack.direct.download.DirectDownloadManager$HostCertificateStatus$CertificateStatus",
+		"simpleName" : "CertificateStatus",
+		"packageName" : "org.apache.cloudstack.direct.download",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.direct.download.DirectDownloadManager$HostCertificateStatus",
+		"values" : [
+			{
+				"name" : "REVOKED",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "FAILED",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "SKIPPED",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "UPLOADED",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.framework.config.ConfigKey$Kind" : {
+		"className" : "org.apache.cloudstack.framework.config.ConfigKey$Kind",
+		"simpleName" : "Kind",
+		"packageName" : "org.apache.cloudstack.framework.config",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.framework.config.ConfigKey",
+		"values" : [
+			{
+				"name" : "CSV",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Order",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Select",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "WhitespaceSeparatedListWithOptions",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.framework.config.ConfigKey$Scope" : {
+		"className" : "org.apache.cloudstack.framework.config.ConfigKey$Scope",
+		"simpleName" : "Scope",
+		"packageName" : "org.apache.cloudstack.framework.config",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.framework.config.ConfigKey",
+		"values" : [
+			{
+				"name" : "Global",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Zone",
+				"ordinal" : 1,
+				"extras" : {
+					"getParent" : "Global"
+				}
+			},
+			{
+				"name" : "Cluster",
+				"ordinal" : 2,
+				"extras" : {
+					"getParent" : "Zone"
+				}
+			},
+			{
+				"name" : "StoragePool",
+				"ordinal" : 3,
+				"extras" : {
+					"getBitValue" : "8",
+					"getParent" : "Cluster"
+				}
+			},
+			{
+				"name" : "ManagementServer",
+				"ordinal" : 4,
+				"extras" : {
+					"getBitValue" : "16",
+					"getParent" : "Global"
+				}
+			},
+			{
+				"name" : "ImageStore",
+				"ordinal" : 5,
+				"extras" : {
+					"getBitValue" : "32",
+					"getParent" : "Zone"
+				}
+			},
+			{
+				"name" : "Domain",
+				"ordinal" : 6,
+				"extras" : {
+					"getBitValue" : "64",
+					"getParent" : "Global"
+				}
+			},
+			{
+				"name" : "Account",
+				"ordinal" : 7,
+				"extras" : {
+					"getBitValue" : "128",
+					"getParent" : "Domain"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.ha.HAConfig$Event" : {
+		"className" : "org.apache.cloudstack.ha.HAConfig$Event",
+		"simpleName" : "Event",
+		"packageName" : "org.apache.cloudstack.ha",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.ha.HAConfig",
+		"values" : [
+			{
+				"name" : "Eligible",
+				"ordinal" : 0,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "Ineligible",
+				"ordinal" : 1,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 2,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "Enabled",
+				"ordinal" : 3,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "HealthCheckPassed",
+				"ordinal" : 4,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "HealthCheckFailed",
+				"ordinal" : 5,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "PerformActivityCheck",
+				"ordinal" : 6,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "TooFewActivityCheckSamples",
+				"ordinal" : 7,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "PeriodicRecheckResourceActivity",
+				"ordinal" : 8,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "ActivityCheckFailureOverThresholdRatio",
+				"ordinal" : 9,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "ActivityCheckFailureUnderThresholdRatio",
+				"ordinal" : 10,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "PowerCycle",
+				"ordinal" : 11,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "Recovered",
+				"ordinal" : 12,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "RetryRecovery",
+				"ordinal" : 13,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "RecoveryWaitPeriodTimeout",
+				"ordinal" : 14,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "RecoveryOperationThresholdExceeded",
+				"ordinal" : 15,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "RetryFencing",
+				"ordinal" : 16,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			},
+			{
+				"name" : "Fenced",
+				"ordinal" : 17,
+				"extras" : {
+					"getServerId" : "222771719561754"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.ha.HAConfig$HAState" : {
+		"className" : "org.apache.cloudstack.ha.HAConfig$HAState",
+		"simpleName" : "HAState",
+		"packageName" : "org.apache.cloudstack.ha",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.ha.HAConfig",
+		"values" : [
+			{
+				"name" : "Disabled",
+				"ordinal" : 0,
+				"extras" : {
+					"getDescription" : "HA Operations disabled"
+				}
+			},
+			{
+				"name" : "Available",
+				"ordinal" : 1,
+				"extras" : {
+					"getDescription" : "The resource is healthy"
+				}
+			},
+			{
+				"name" : "Ineligible",
+				"ordinal" : 2,
+				"extras" : {
+					"getDescription" : "The current state does not support HA/recovery"
+				}
+			},
+			{
+				"name" : "Suspect",
+				"ordinal" : 3,
+				"extras" : {
+					"getDescription" : "Most recent health check failed"
+				}
+			},
+			{
+				"name" : "Degraded",
+				"ordinal" : 4,
+				"extras" : {
+					"getDescription" : "The resource cannot be managed, but services end user requests"
+				}
+			},
+			{
+				"name" : "Checking",
+				"ordinal" : 5,
+				"extras" : {
+					"getDescription" : "The activity checks are currently being performed"
+				}
+			},
+			{
+				"name" : "Recovering",
+				"ordinal" : 6,
+				"extras" : {
+					"getDescription" : "The resource is undergoing recovery operation"
+				}
+			},
+			{
+				"name" : "Recovered",
+				"ordinal" : 7,
+				"extras" : {
+					"getDescription" : "The resource is recovered"
+				}
+			},
+			{
+				"name" : "Fencing",
+				"ordinal" : 8,
+				"extras" : {
+					"getDescription" : "The resource is undergoing fence operation"
+				}
+			},
+			{
+				"name" : "Fenced",
+				"ordinal" : 9,
+				"extras" : {
+					"getDescription" : "The resource is fenced"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.ha.HAResource$ResourceSubType" : {
+		"className" : "org.apache.cloudstack.ha.HAResource$ResourceSubType",
+		"simpleName" : "ResourceSubType",
+		"packageName" : "org.apache.cloudstack.ha",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.ha.HAResource",
+		"values" : [
+			{
+				"name" : "KVM",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Simulator",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Unknown",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.ha.HAResource$ResourceType" : {
+		"className" : "org.apache.cloudstack.ha.HAResource$ResourceType",
+		"simpleName" : "ResourceType",
+		"packageName" : "org.apache.cloudstack.ha",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.ha.HAResource",
+		"values" : [
+			{
+				"name" : "Host",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "VirtualMachine",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.jobs.JobInfo$Status" : {
+		"className" : "org.apache.cloudstack.jobs.JobInfo$Status",
+		"simpleName" : "Status",
+		"packageName" : "org.apache.cloudstack.jobs",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.jobs.JobInfo",
+		"values" : [
+			{
+				"name" : "IN_PROGRESS",
+				"ordinal" : 0,
+				"extras" : {
+					"done" : "false"
+				}
+			},
+			{
+				"name" : "SUCCEEDED",
+				"ordinal" : 1,
+				"extras" : {
+					"done" : "true"
+				}
+			},
+			{
+				"name" : "FAILED",
+				"ordinal" : 2,
+				"extras" : {
+					"done" : "true"
+				}
+			},
+			{
+				"name" : "CANCELLED",
+				"ordinal" : 3,
+				"extras" : {
+					"done" : "true"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.kernel.Partition$PartitionType" : {
 		"className" : "org.apache.cloudstack.kernel.Partition$PartitionType",
 		"simpleName" : "PartitionType",
 		"packageName" : "org.apache.cloudstack.kernel",
@@ -3535,5 +10512,856 @@
 				"extras" : { }
 			}
 		]
+	},
+	"org.apache.cloudstack.management.ManagementServerHost$State" : {
+		"className" : "org.apache.cloudstack.management.ManagementServerHost$State",
+		"simpleName" : "State",
+		"packageName" : "org.apache.cloudstack.management",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.management.ManagementServerHost",
+		"values" : [
+			{
+				"name" : "Up",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Down",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "PreparingForMaintenance",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Maintenance",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "PreparingForShutDown",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "ReadyToShutDown",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "ShuttingDown",
+				"ordinal" : 6,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.network.BgpPeer$Detail" : {
+		"className" : "org.apache.cloudstack.network.BgpPeer$Detail",
+		"simpleName" : "Detail",
+		"packageName" : "org.apache.cloudstack.network",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.network.BgpPeer",
+		"values" : [
+			{
+				"name" : "EBGP_MultiHop",
+				"ordinal" : 0,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.network.BgpPeer$State" : {
+		"className" : "org.apache.cloudstack.network.BgpPeer$State",
+		"simpleName" : "State",
+		"packageName" : "org.apache.cloudstack.network",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.network.BgpPeer",
+		"values" : [
+			{
+				"name" : "Active",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Add",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Revoke",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.network.Ipv4GuestSubnetNetworkMap$State" : {
+		"className" : "org.apache.cloudstack.network.Ipv4GuestSubnetNetworkMap$State",
+		"simpleName" : "State",
+		"packageName" : "org.apache.cloudstack.network",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.network.Ipv4GuestSubnetNetworkMap",
+		"values" : [
+			{
+				"name" : "Allocating",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Allocated",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Releasing",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Free",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$Option" : {
+		"className" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$Option",
+		"simpleName" : "Option",
+		"packageName" : "org.apache.cloudstack.outofbandmanagement",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement",
+		"values" : [
+			{
+				"name" : "DRIVER",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ADDRESS",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "PORT",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "USERNAME",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "PASSWORD",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerOperation" : {
+		"className" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerOperation",
+		"simpleName" : "PowerOperation",
+		"packageName" : "org.apache.cloudstack.outofbandmanagement",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement",
+		"values" : [
+			{
+				"name" : "ON",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "OFF",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "CYCLE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "RESET",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "SOFT",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "STATUS",
+				"ordinal" : 5,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerState" : {
+		"className" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerState",
+		"simpleName" : "PowerState",
+		"packageName" : "org.apache.cloudstack.outofbandmanagement",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement",
+		"values" : [
+			{
+				"name" : "On",
+				"ordinal" : 0,
+				"extras" : {
+					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), AuthError(Authentication error happened), Disabled(Out-of-band management disabled), On(Chassis Power is On)]",
+					"toEvent" : "On(Chassis Power is On)"
+				}
+			},
+			{
+				"name" : "Off",
+				"ordinal" : 1,
+				"extras" : {
+					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), AuthError(Authentication error happened), Disabled(Out-of-band management disabled), On(Chassis Power is On)]",
+					"toEvent" : "Off(Chassis Power is Off)"
+				}
+			},
+			{
+				"name" : "Unknown",
+				"ordinal" : 2,
+				"extras" : {
+					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), Disabled(Out-of-band management disabled), On(Chassis Power is On)]",
+					"toEvent" : "Unknown(An unknown error happened)"
+				}
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 3,
+				"extras" : {
+					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), AuthError(Authentication error happened), On(Chassis Power is On)]",
+					"toEvent" : "Disabled(Out-of-band management disabled)"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerState$Event" : {
+		"className" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerState$Event",
+		"simpleName" : "Event",
+		"packageName" : "org.apache.cloudstack.outofbandmanagement",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.outofbandmanagement.OutOfBandManagement$PowerState",
+		"values" : [
+			{
+				"name" : "On",
+				"ordinal" : 0,
+				"extras" : {
+					"getServerId" : "222771719561754",
+					"getDescription" : "Chassis Power is On"
+				}
+			},
+			{
+				"name" : "Off",
+				"ordinal" : 1,
+				"extras" : {
+					"getServerId" : "222771719561754",
+					"getDescription" : "Chassis Power is Off"
+				}
+			},
+			{
+				"name" : "AuthError",
+				"ordinal" : 2,
+				"extras" : {
+					"getServerId" : "222771719561754",
+					"getDescription" : "Authentication error happened"
+				}
+			},
+			{
+				"name" : "Unknown",
+				"ordinal" : 3,
+				"extras" : {
+					"getServerId" : "222771719561754",
+					"getDescription" : "An unknown error happened"
+				}
+			},
+			{
+				"name" : "Enabled",
+				"ordinal" : 4,
+				"extras" : {
+					"getServerId" : "222771719561754",
+					"getDescription" : "Out-of-band management enabled"
+				}
+			},
+			{
+				"name" : "Disabled",
+				"ordinal" : 5,
+				"extras" : {
+					"getServerId" : "222771719561754",
+					"getDescription" : "Out-of-band management disabled"
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.region.PortableIp$State" : {
+		"className" : "org.apache.cloudstack.region.PortableIp$State",
+		"simpleName" : "State",
+		"packageName" : "org.apache.cloudstack.region",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.region.PortableIp",
+		"values" : [
+			{
+				"name" : "Allocating",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Allocated",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Releasing",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "Free",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.resource.ResourceCleanupService$ResourceType" : {
+		"className" : "org.apache.cloudstack.resource.ResourceCleanupService$ResourceType",
+		"simpleName" : "ResourceType",
+		"packageName" : "org.apache.cloudstack.resource",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.resource.ResourceCleanupService",
+		"values" : [
+			{
+				"name" : "VirtualMachine",
+				"ordinal" : 0,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.secstorage.heuristics.HeuristicType" : {
+		"className" : "org.apache.cloudstack.secstorage.heuristics.HeuristicType",
+		"simpleName" : "HeuristicType",
+		"packageName" : "org.apache.cloudstack.secstorage.heuristics",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "ISO",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "SNAPSHOT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "TEMPLATE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "VOLUME",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.ImageStoreService$MigrationPolicy" : {
+		"className" : "org.apache.cloudstack.storage.ImageStoreService$MigrationPolicy",
+		"simpleName" : "MigrationPolicy",
+		"packageName" : "org.apache.cloudstack.storage",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.ImageStoreService",
+		"values" : [
+			{
+				"name" : "BALANCE",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "COMPLETE",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.object.Bucket$State" : {
+		"className" : "org.apache.cloudstack.storage.object.Bucket$State",
+		"simpleName" : "State",
+		"packageName" : "org.apache.cloudstack.storage.object",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.object.Bucket",
+		"values" : [
+			{
+				"name" : "Allocated",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Created",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "Destroyed",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.sharedfs.SharedFS$Event" : {
+		"className" : "org.apache.cloudstack.storage.sharedfs.SharedFS$Event",
+		"simpleName" : "Event",
+		"packageName" : "org.apache.cloudstack.storage.sharedfs",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.sharedfs.SharedFS",
+		"values" : [
+			{
+				"name" : "StopRequested",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "StartRequested",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "DestroyRequested",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationSucceeded",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "OperationFailed",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "ExpungeOperation",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "RecoveryRequested",
+				"ordinal" : 6,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.sharedfs.SharedFS$FileSystemType" : {
+		"className" : "org.apache.cloudstack.storage.sharedfs.SharedFS$FileSystemType",
+		"simpleName" : "FileSystemType",
+		"packageName" : "org.apache.cloudstack.storage.sharedfs",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.sharedfs.SharedFS",
+		"values" : [
+			{
+				"name" : "EXT4",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "XFS",
+				"ordinal" : 1,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.sharedfs.SharedFS$Protocol" : {
+		"className" : "org.apache.cloudstack.storage.sharedfs.SharedFS$Protocol",
+		"simpleName" : "Protocol",
+		"packageName" : "org.apache.cloudstack.storage.sharedfs",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.sharedfs.SharedFS",
+		"values" : [
+			{
+				"name" : "NFS",
+				"ordinal" : 0,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.sharedfs.SharedFS$State" : {
+		"className" : "org.apache.cloudstack.storage.sharedfs.SharedFS$State",
+		"simpleName" : "State",
+		"packageName" : "org.apache.cloudstack.storage.sharedfs",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.sharedfs.SharedFS",
+		"values" : [
+			{
+				"name" : "Allocated",
+				"ordinal" : 0,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The shared filesystem is allocated in db but hasn't been created or started yet."
+				}
+			},
+			{
+				"name" : "Ready",
+				"ordinal" : 1,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The shared filesystem is ready to use."
+				}
+			},
+			{
+				"name" : "Stopping",
+				"ordinal" : 2,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The shared filesystem is being stopped"
+				}
+			},
+			{
+				"name" : "Stopped",
+				"ordinal" : 3,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The shared filesystem is in stopped state. It can not be used but the data is still there."
+				}
+			},
+			{
+				"name" : "Starting",
+				"ordinal" : 4,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The shared filesystem is being started."
+				}
+			},
+			{
+				"name" : "Destroyed",
+				"ordinal" : 5,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The shared filesystem is destroyed."
+				}
+			},
+			{
+				"name" : "Expunging",
+				"ordinal" : 6,
+				"extras" : {
+					"isTransitional" : "true",
+					"getDescription" : "The shared filesystem is being expunged."
+				}
+			},
+			{
+				"name" : "Expunged",
+				"ordinal" : 7,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The shared filesystem has been expunged."
+				}
+			},
+			{
+				"name" : "Error",
+				"ordinal" : 8,
+				"extras" : {
+					"isTransitional" : "false",
+					"getDescription" : "The shared filesystem is in error state."
+				}
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.sharedfs.SharedFSProvider$SharedFSProviderType" : {
+		"className" : "org.apache.cloudstack.storage.sharedfs.SharedFSProvider$SharedFSProviderType",
+		"simpleName" : "SharedFSProviderType",
+		"packageName" : "org.apache.cloudstack.storage.sharedfs",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.sharedfs.SharedFSProvider",
+		"values" : [
+			{
+				"name" : "SHAREDFSVM",
+				"ordinal" : 0,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.storage.volume.VolumeOnStorageTO$Detail" : {
+		"className" : "org.apache.cloudstack.storage.volume.VolumeOnStorageTO$Detail",
+		"simpleName" : "Detail",
+		"packageName" : "org.apache.cloudstack.storage.volume",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.storage.volume.VolumeOnStorageTO",
+		"values" : [
+			{
+				"name" : "BACKING_FILE",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "BACKING_FILE_FORMAT",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "CLUSTER_SIZE",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "FILE_FORMAT",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "IS_LOCKED",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "IS_ENCRYPTED",
+				"ordinal" : 5,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.usage.UsageUnitTypes" : {
+		"className" : "org.apache.cloudstack.usage.UsageUnitTypes",
+		"simpleName" : "UsageUnitTypes",
+		"packageName" : "org.apache.cloudstack.usage",
+		"isNested" : false,
+		"parentClass" : null,
+		"values" : [
+			{
+				"name" : "COMPUTE_MONTH",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "IP_MONTH",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "GB",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "GB_MONTH",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "POLICY_MONTH",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "IOPS",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "BYTES",
+				"ordinal" : 6,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.utils.redfish.RedfishClient$RedfishCmdType" : {
+		"className" : "org.apache.cloudstack.utils.redfish.RedfishClient$RedfishCmdType",
+		"simpleName" : "RedfishCmdType",
+		"packageName" : "org.apache.cloudstack.utils.redfish",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.utils.redfish.RedfishClient",
+		"values" : [
+			{
+				"name" : "ComputerSystemReset",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "GetSystemId",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "GetPowerState",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.utils.redfish.RedfishClient$RedfishPowerState" : {
+		"className" : "org.apache.cloudstack.utils.redfish.RedfishClient$RedfishPowerState",
+		"simpleName" : "RedfishPowerState",
+		"packageName" : "org.apache.cloudstack.utils.redfish",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.utils.redfish.RedfishClient",
+		"values" : [
+			{
+				"name" : "On",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "Off",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "PoweringOn",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "PoweringOff",
+				"ordinal" : 3,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.utils.redfish.RedfishClient$RedfishResetCmd" : {
+		"className" : "org.apache.cloudstack.utils.redfish.RedfishClient$RedfishResetCmd",
+		"simpleName" : "RedfishResetCmd",
+		"packageName" : "org.apache.cloudstack.utils.redfish",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.utils.redfish.RedfishClient",
+		"values" : [
+			{
+				"name" : "ForceOff",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "ForceOn",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "ForceRestart",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "GracefulRestart",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "GracefulShutdown",
+				"ordinal" : 4,
+				"extras" : { }
+			},
+			{
+				"name" : "Nmi",
+				"ordinal" : 5,
+				"extras" : { }
+			},
+			{
+				"name" : "On",
+				"ordinal" : 6,
+				"extras" : { }
+			},
+			{
+				"name" : "PowerCycle",
+				"ordinal" : 7,
+				"extras" : { }
+			},
+			{
+				"name" : "PushPowerButton",
+				"ordinal" : 8,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.vm.UnmanagedInstanceTO$PowerState" : {
+		"className" : "org.apache.cloudstack.vm.UnmanagedInstanceTO$PowerState",
+		"simpleName" : "PowerState",
+		"packageName" : "org.apache.cloudstack.vm",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.vm.UnmanagedInstanceTO",
+		"values" : [
+			{
+				"name" : "PowerUnknown",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "PowerOn",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "PowerOff",
+				"ordinal" : 2,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.vm.VmImportService$ImportSource" : {
+		"className" : "org.apache.cloudstack.vm.VmImportService$ImportSource",
+		"simpleName" : "ImportSource",
+		"packageName" : "org.apache.cloudstack.vm",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.vm.VmImportService",
+		"values" : [
+			{
+				"name" : "UNMANAGED",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "VMWARE",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "EXTERNAL",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "SHARED",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "LOCAL",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
+	},
+	"org.apache.cloudstack.vm.schedule.VMSchedule$Action" : {
+		"className" : "org.apache.cloudstack.vm.schedule.VMSchedule$Action",
+		"simpleName" : "Action",
+		"packageName" : "org.apache.cloudstack.vm.schedule",
+		"isNested" : true,
+		"parentClass" : "org.apache.cloudstack.vm.schedule.VMSchedule",
+		"values" : [
+			{
+				"name" : "START",
+				"ordinal" : 0,
+				"extras" : { }
+			},
+			{
+				"name" : "STOP",
+				"ordinal" : 1,
+				"extras" : { }
+			},
+			{
+				"name" : "REBOOT",
+				"ordinal" : 2,
+				"extras" : { }
+			},
+			{
+				"name" : "FORCE_STOP",
+				"ordinal" : 3,
+				"extras" : { }
+			},
+			{
+				"name" : "FORCE_REBOOT",
+				"ordinal" : 4,
+				"extras" : { }
+			}
+		]
 	}
-]
+}
