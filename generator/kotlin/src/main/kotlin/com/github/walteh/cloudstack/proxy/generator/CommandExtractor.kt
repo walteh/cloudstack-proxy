@@ -170,7 +170,7 @@ fun extractCommandMetadata(commandClass: Class<*>): CommandMetadata? {
         description = apiCommand.description,
         responseObject = apiCommand.responseObject.qualifiedName ?: "",
         responseView = apiCommand.responseView.name,
-        entityType = apiCommand.entityType.map { it.simpleName ?: "" },
+        entityType = apiCommand.entityType.map { it.qualifiedName ?: "" },
         parameters = allParameters,
         superclasses = superclasses,
         isAsync = isAsync,
