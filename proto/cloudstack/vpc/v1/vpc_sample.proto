@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package cloudstack.vpc.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
+import "google/protobuf/descriptor.proto";
 
 // VPCService provides operations for managing VPCs
 service VPCService {
@@ -24,7 +26,7 @@ message CreateVPCRequest {
 
 	// The CIDR of the VPC
 	string cidr = 3 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 
 	// The CIDR size of the VPC

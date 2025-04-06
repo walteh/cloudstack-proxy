@@ -7,6 +7,7 @@
 package annotations
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
@@ -234,7 +235,7 @@ var File_cloudstack_annotations_annotations_proto protoreflect.FileDescriptor
 
 const file_cloudstack_annotations_annotations_proto_rawDesc = "" +
 	"\n" +
-	"(cloudstack/annotations/annotations.proto\x12\x16cloudstack.annotations\x1a\x19google/protobuf/any.proto\x1a google/protobuf/descriptor.proto\"\x95\x04\n" +
+	"(cloudstack/annotations/annotations.proto\x12\x16cloudstack.annotations\x1a\x1bbuf/validate/validate.proto\x1a\x19google/protobuf/any.proto\x1a google/protobuf/descriptor.proto\"\x95\x04\n" +
 	"\x04Enum\"\xca\x02\n" +
 	"\x10CustomStringType\x12\"\n" +
 	"\x1eCUSTOM_STRING_TYPE_UNSPECIFIED\x10\x00\x12 \n" +

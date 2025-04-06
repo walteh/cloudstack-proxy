@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             (unknown)
-// source: cloudstack/vpc/v1/vpc.sample.proto
+// source: cloudstack/vpc/v1/vpc_sample.proto
 
 package vpcv1
 
@@ -163,5 +163,5 @@ var VPCService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "cloudstack/vpc/v1/vpc.sample.proto",
+	Metadata: "cloudstack/vpc/v1/vpc_sample.proto",
 }

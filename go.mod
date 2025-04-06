@@ -3,6 +3,7 @@ module github.com/walteh/cloudstack-proxy
 go 1.24.2
 
 require (
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.6-20250307204501-0409229c3780.1
 	connectrpc.com/connect v1.18.1
 	google.golang.org/grpc v1.71.1
 	google.golang.org/protobuf v1.36.6

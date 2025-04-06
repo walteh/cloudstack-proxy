@@ -2,14 +2,16 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        (unknown)
-// source: cloudstack/vpc/v1/vpc.sample.proto
+// source: cloudstack/vpc/v1/vpc_sample.proto
 
 package vpcv1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/descriptorpb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -725,11 +727,11 @@ var File_cloudstack_vpc_v1_vpc_sample_proto protoreflect.FileDescriptor
 
 const file_cloudstack_vpc_v1_vpc_sample_proto_rawDesc = "" +
 	"\n" +
-	"\"cloudstack/vpc/v1/vpc.sample.proto\x12\x11cloudstack.vpc.v1\x1a(cloudstack/annotations/annotations.proto\"\xa2\x05\n" +
+	"\"cloudstack/vpc/v1/vpc_sample.proto\x12\x11cloudstack.vpc.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xa7\x05\n" +
 	"\x10CreateVPCRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x17\n" +
-	"\x04cidr\x18\x03 \x01(\tB\x03\xc0>\x03R\x04cidr\x12\x1b\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x1c\n" +
+	"\x04cidr\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xf0\x01\x01R\x04cidr\x12\x1b\n" +
 	"\tcidr_size\x18\x04 \x01(\x05R\bcidrSize\x12+\n" +
 	"\x0fvpc_offering_id\x18\x05 \x01(\tB\x03\xc0>\x02R\rvpcOfferingId\x12\x1c\n" +
 	"\azone_id\x18\x06 \x01(\tB\x03\xc0>\x02R\x06zoneId\x12%\n" +

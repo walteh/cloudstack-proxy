@@ -70,20 +70,12 @@ tasks:
             - cmd: cp .mockery.yaml {{.TMP_DIR}}/.mockery.yaml
             - for: { var: "MOCKERY_INTERFACE_DATA", split: "\n", as: ITEM }
               cmd: yq -i ".packages.\"{{ .GO_ROOT_PKG }}/{{ splitList \" \" .ITEM | first }}\".interfaces.{{ splitList \" \" .ITEM | last }} = {}" {{.TMP_DIR}}/.mockery.yaml
-            - cmd: |
-                  set -e
-                  {{.GO_COMMAND}} tool github.com/vektra/mockery/v2 --config={{.TMP_DIR}}/.mockery.yaml
+            - cmd: "{{.GO_COMMAND}} tool github.com/vektra/mockery/v2 --config={{.TMP_DIR}}/.mockery.yaml"
 
     buf:
         desc: generates protobuf files
-        vars:
-            BUF_GEN_FILES:
-                sh: find . -type f -name 'buf.gen*.yaml'
         cmds:
-            - for: { var: "BUF_GEN_FILES", split: "\n", as: ITEM }
-              cmd: |
-                  set -e
-                  {{.GO_COMMAND}} tool github.com/bufbuild/buf/cmd/buf generate --template={{.ITEM}} --path=$(dirname {{.ITEM}})
+            - "{{.GO_COMMAND}} tool github.com/bufbuild/buf/cmd/buf generate"
 
     sources:
         desc: downloads the cloudstack api list

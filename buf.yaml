@@ -1,17 +1,24 @@
 # yaml-language-server: $schema=https://json.schemastore.org/buf.json
 
-version: v1
+version: v2
+
+modules:
+    - name: github.com/walteh/cloudstack-proxy
+      path: proto
+
 breaking:
     use:
         - FILE
 deps:
     - buf.build/googleapis/googleapis
+    - buf.build/bufbuild/protovalidate
 lint:
     use:
         - DEFAULT
     except:
         - RPC_REQUEST_RESPONSE_UNIQUE
         - RPC_RESPONSE_STANDARD_NAME
+        - IMPORT_USED
 
     rpc_allow_same_request_response: true
     rpc_allow_google_protobuf_empty_requests: true
