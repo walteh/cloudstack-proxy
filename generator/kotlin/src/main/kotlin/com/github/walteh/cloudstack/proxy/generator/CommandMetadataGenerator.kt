@@ -8,26 +8,26 @@ import java.util.jar.JarFile
 /**
  * Generate command metadata JSON files from a JAR file
  */
-fun generateMetadataFromJar(cloudstackJarPath: String): List<GroupMetadata?> {
-    println("Starting command metadata extraction from: $cloudstackJarPath")
-    
-    // Load command classes from JAR
-    val commandClasses = loadCommandClasses(cloudstackJarPath)
-    
-    println("Found ${commandClasses.size} command classes")
-    
-    // Extract metadata and write JSON files
-   val cmds = extractCommandsToJson(commandClasses)
-
-    println("Completed metadata extraction")
-
-	return cmds
-}
+//fun generateMetadataFromJar(cloudstackJarPath: String): Map<String, List<GroupMetadata>> {
+//    println("Starting command metadata extraction from: $cloudstackJarPath")
+//
+//    // Load command classes from JAR
+//    val commandClasses = loadCommandClasses(cloudstackJarPath)
+//
+//    println("Found ${commandClasses.size} command classes")
+//
+//    // Extract metadata and write JSON files
+//   val cmds = generateMetadataFromPackage(commandClasses)
+//
+//    println("Completed metadata extraction")
+//
+//	return cmds
+//}
 
 /**
  * Generate metadata using classes found in a package
  */
-fun generateMetadataFromPackage(packageName: String): List<GroupMetadata?> {
+fun generateMetadataFromPackage(packageName: String): Map<String, List<GroupMetadata>> {
     println("Starting command metadata extraction from package: $packageName")
     
     // Get classes from the specified package
@@ -46,7 +46,7 @@ fun generateMetadataFromPackage(packageName: String): List<GroupMetadata?> {
     println("Found ${commandClasses.size} command classes")
     
     // Extract metadata and write JSON files
-   val cmds =  extractCommandsToJson(commandClasses)
+   val cmds =  extractCommandsToMetadata(commandClasses)
     
     println("Completed metadata extraction")
 

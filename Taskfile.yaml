@@ -99,3 +99,9 @@ tasks:
               cmd: curl -sSL {{.ITEM.url}} | jq -r --tab '.' > gen/sources/{{.ITEM.file_name}}
             - for: { var: "FILES", as: ITEM }
               cmd: echo -e "//go:embed {{.ITEM.file_name}}\n\nvar {{.ITEM.var_name}} []byte" >> gen/sources/embed.gen.go
+
+    kotlin-generator:
+        dir: generator/kotlin
+        desc: generates kotlin code from cloudstack api list
+        cmds:
+            - cmd: mvn compile exec:java -Dexec.args="--out-dir ../../gen/cloudstack-metadata"

@@ -30,6 +30,11 @@
    </dependencyManagement>
 
     <dependencies>
+	<dependency>
+    <groupId>org.jetbrains.kotlinx</groupId>
+    <artifactId>kotlinx-cli-jvm</artifactId>
+    <version>0.3.6</version>
+</dependency>
         <!-- Kotlin standard library -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -68,6 +73,13 @@
 			<version>[4.21.0,5.0.0)</version>
 		</dependency>
 
+		<!-- Reflections for scanning classes -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.10.2</version>
+		</dependency>
+
 <!--		<dependency>-->
 <!--			<groupId>com.kjetland</groupId>-->
 <!--			<artifactId>mbknor-jackson-jsonschema_2.12</artifactId>-->
@@ -76,7 +88,7 @@
 
 		<!-- CloudStack API - Local project reference -->
         <dependency>
-		<type>jar</type>
+			<type>jar</type>
 			<systemPath>${cloudstack.local.path}/api/target/cloud-api-4.21.0.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
             <groupId>org.apache.cloudstack</groupId>
             <artifactId>cloud-api</artifactId>
@@ -124,6 +136,10 @@
 						<argument>java.base/java.lang=ALL-UNNAMED</argument>
 						<argument>${project.build.directory}/classes</argument>
 					</arguments>
+					<addResourcesToClasspath>true</addResourcesToClasspath>
+					<additionalClasspathElements>
+						<additionalClasspathElement>${cloudstack.local.path}/api/target/cloud-api-4.21.0.0-SNAPSHOT-jar-with-dependencies.jar</additionalClasspathElement>
+					</additionalClasspathElements>
 
                     <systemProperties>
 

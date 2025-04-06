@@ -10,7 +10,7 @@
 		},
 		{
 			"name": "cloudstack-java-api",
-			"path": "../cloudstack/api/src/main/java/org/apache/cloudstack/api"
+			"path": "../cloudstack/api/src/main/java/org/apache/cloudstack"
 		}
 	],
 	"extensions": {
@@ -292,7 +292,7 @@
 						"bold": true
 					},
 					"type": {
-						"foreground": "#3a0ca3", // Same as defaultLibrary but not bold
+						"foreground": "#7075f7", // Same as defaultLibrary but not bold
 						"italic": true
 					},
 
@@ -619,6 +619,8 @@
 		"svg.preview.background": "transparent",
 		"align-bicep.disallowed-language-ids": ["terraform", "go"],
 		"dockerfile-tidy.formatOnSave": true,
-		"retab.use_wasm": false
+		"retab.use_wasm": false,
+		"kotlin.languageServer.enabled": true,
+		"kotlin.java.home": "/Users/dub6ix/.jenv/versions/24/bin/java"
 	}
 }

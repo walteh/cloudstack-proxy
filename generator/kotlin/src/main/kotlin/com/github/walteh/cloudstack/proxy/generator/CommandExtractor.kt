@@ -3,15 +3,15 @@ package com.github.walteh.cloudstack.proxy.generator
 import org.apache.cloudstack.api.BaseCmd.CommandType
 import com.cloud.serializer.Param
 import org.apache.cloudstack.acl.RoleType
-import org.apache.cloudstack.acl.SecurityChecker
+import org.apache.cloudstack.acl.SecurityChecker.AccessType
 import org.apache.cloudstack.api.*
 import java.lang.reflect.Field
+import java.lang.reflect.Method
 import kotlin.reflect.jvm.jvmName
 
 // Data classes for metadata representation
 data class GroupMetadata(
     val name: String,
-    val scope: String,
     val commands: List<CommandMetadata>,
     val responseObjects: List<ResponseObjectMetadata> = emptyList(),
     val entityTypes: List<String> = emptyList()
@@ -40,7 +40,7 @@ data class ParameterMetadata(
 	val name: String,
 	val fieldName: String,
 	val javaType: String,
-	val commandType: BaseCmd.CommandType,
+	val commandType: CommandType,
 	val description: String,
 	val required: Boolean,
 	val since: String,
@@ -51,19 +51,18 @@ data class ParameterMetadata(
 	val acceptedOnAdminPort: Boolean = false,
 	val expose: Boolean = false,
 	val includeInApiDoc: Boolean = false,
-	val authorized: List<RoleType> = emptyList(),
-	val collectionType: BaseCmd.CommandType,
-	val length: Int,
+	val authorized: List<String> = emptyList(),
+	val collectionType: CommandType? = null,
+	val length: Int = 0,
+	val getterMethod: GetterMethodInfo? = null,
+	val isCommaSeparatedList: Boolean = false
+)
 
-//		x = parameter.acceptedOnAdminPort,
-//	y = parameter.expose,
-//	z = parameter.includeInApiDoc,
-//	a = parameter.authorized,
-//	b = parameter.collectionType,
-//	c = parameter.length,
-//	d = parameter.validations,
-
-
+data class GetterMethodInfo(
+    val methodName: String,
+    val returnType: String,
+    val returnTypeEnum: Boolean,
+    val isList: Boolean = false
 )
 
 data class ResponseObjectMetadata(
@@ -90,8 +89,8 @@ data class ValidationMetadata(
 )
 
 data class ACLInfo(
-	val accessType: SecurityChecker.AccessType,
-//	val roleTypes: List<String>
+	val accessType: AccessType
+	// roleTypes removed as it doesn't exist
 )
 
 data class AuthorizationInfo(
@@ -101,7 +100,7 @@ data class AuthorizationInfo(
 /**
  * Extract metadata from command classes and write to JSON files
  */
-fun extractCommandsToJson(commandClasses: List<Class<*>>): List<GroupMetadata?>  {
+fun extractCommandsToMetadata(commandClasses: List<Class<*>>): Map<String, List<GroupMetadata>>  {
     println("Extracting metadata from ${commandClasses.size} command classes")
     
 	val commandMetadata = commandClasses.mapNotNull { extractCommandMetadata(it) }
@@ -109,32 +108,26 @@ fun extractCommandsToJson(commandClasses: List<Class<*>>): List<GroupMetadata?> 
     val commandsByGroup = groupCommandsByApi(commandMetadata)
     
     // Process each group
-	return commandsByGroup.map { (groupName, commands) ->
+	val metadataByGroup = commandsByGroup.map { (groupName, commands) ->
         if (commands.isNotEmpty()) {
             // Group commands by scope (admin, user, etc.)
-            val scopedCommands = commands.groupBy { it.scopeName }
-            
-            // Process each scope group
-            scopedCommands.map { (scope, cmds) ->
-                // Collect all response objects used by commands in this group
-                val responseObjectClasses = collectResponseObjectClasses(cmds)
-                val responseObjectMetadata = responseObjectClasses.mapNotNull { extractResponseObjectMetadata(it) }
-                
-                // Collect all entity types referenced by commands in this group
-                val entityTypes = collectEntityTypes(cmds)
-                
-                GroupMetadata(
-                    name = groupName,
-                    scope = scope,
-                    commands = cmds,
-                    responseObjects = responseObjectMetadata,
-                    entityTypes = entityTypes
-                )
-            }.firstOrNull() // Return first scope group or null
+			val responseObjectClasses = collectResponseObjectClasses(commands)
+			val responseObjectMetadata = responseObjectClasses.mapNotNull { extractResponseObjectMetadata(it) }
+			val entityTypes = collectEntityTypes(commands)
+
+			GroupMetadata(
+				name = groupName,
+				commands = commands,
+				responseObjects = responseObjectMetadata,
+				entityTypes = entityTypes
+			)
+
         } else {
             null
         }
     }
+
+	return metadataByGroup.mapNotNull { it }.groupBy { it.name }
 }
 
 /**
@@ -175,7 +168,7 @@ fun extractResponseObjectMetadata(responseClass: Class<*>): ResponseObjectMetada
     }
     
     // Get entity reference if present
-    val entityReference = responseClass.getAnnotation(EntityReference::class.java)?.value?.first()?.java?.name
+    val entityReference = responseClass.getAnnotation(EntityReference::class.java)?.value?.firstOrNull()?.java?.name
     
     // Get superclass
     val superclass = responseClass.superclass?.name
@@ -261,7 +254,7 @@ fun extractCommandMetadata(commandClass: Class<*>): CommandMetadata? {
     
     val parameters = commandClass.declaredFields
         .filter { it.isAnnotationPresent(Parameter::class.java) }
-        .map { extractParameterMetadata(it) }
+        .map { extractParameterMetadata(it, commandClass) }
     
     // Extract inherited command information
     val inheritedParameters = extractInheritedParameters(commandClass)
@@ -313,8 +306,8 @@ fun extractACLInfo(commandClass: Class<*>): ACLInfo? {
     val aclAnnotation = commandClass.getAnnotation(ACL::class.java) ?: return null
     
     return ACLInfo(
-        accessType = aclAnnotation.accessType,
-//        roleTypes = aclAnnotation.map { it.name }
+        accessType = aclAnnotation.accessType
+        // roleTypes removed as it doesn't exist
     )
 }
 
@@ -361,7 +354,7 @@ fun extractInheritedParameters(commandClass: Class<*>): List<ParameterMetadata> 
         // Get declared fields with Parameter annotation
         val fields = currentClass.declaredFields
             .filter { it.isAnnotationPresent(Parameter::class.java) }
-            .map { extractParameterMetadata(it) }
+            .map { extractParameterMetadata(it, currentClass!!) }
         
         inheritedParameters.addAll(fields)
         currentClass = currentClass.superclass
@@ -371,9 +364,129 @@ fun extractInheritedParameters(commandClass: Class<*>): List<ParameterMetadata> 
 }
 
 /**
+ * Find a getter method for a parameter that provides stronger typing (String→Enum) or list handling
+ */
+fun findGetterMethodForParameter(parameterName: String, parameterField: Field, parameterType: Class<*>, clazz: Class<*>): GetterMethodInfo? {
+    // Only look for special getters for String parameters (that could be enums) or list parameters
+    if (parameterType != String::class.java && 
+        parameterType != java.lang.String::class.java && 
+        !parameterType.name.contains("List") &&
+        !parameterType.isArray) {
+        return null
+    }
+    
+    // Convert parameter name to potential getter name
+    val getterPrefix = "get"
+    val capitalizedName = parameterName.replaceFirstChar { it.uppercaseChar() }
+    val getterNames = listOf(
+        "$getterPrefix$capitalizedName", 
+        "$getterPrefix${parameterField.name.replaceFirstChar { it.uppercaseChar() }}",
+        parameterName.camelToSnakeCase().camelCase(), // Handle special cases like API_KEY -> apiKey -> getApiKey
+        // Try RoleType specific patterns
+        "getRoleType", 
+        "getRoleTypes",
+        "getRole"
+    )
+    
+    // Look for matching getter methods
+    for (methodName in getterNames) {
+        try {
+            val methods = clazz.methods.filter { it.name.equals(methodName, ignoreCase = true) }
+            for (method in methods) {
+                val returnType = method.returnType
+                val isEnum = returnType.isEnum
+                val isList = returnType.name.contains("List") || returnType.isArray
+                
+                // Check if return type is an enum (for String params) or if it's a list-related getter
+                if (isEnum || (isList && (parameterType == String::class.java || parameterType == java.lang.String::class.java))) {
+                    return GetterMethodInfo(
+                        methodName = method.name,
+                        returnType = returnType.name,
+                        returnTypeEnum = isEnum,
+                        isList = isList
+                    )
+                }
+                
+                // Also look for methods that specifically handle comma-separated lists
+                if (method.name.lowercase().contains("list") || 
+                    method.returnType.simpleName.contains("List") ||
+                    (parameterName.lowercase().contains("ids") && parameterType == String::class.java)) {
+                    return GetterMethodInfo(
+                        methodName = method.name,
+                        returnType = returnType.name,
+                        returnTypeEnum = isEnum,
+                        isList = true
+                    )
+                }
+                
+                // Special check for RoleType
+                if (method.name.lowercase().contains("roletype") || 
+                    method.returnType.name.contains("RoleType")) {
+                    return GetterMethodInfo(
+                        methodName = method.name,
+                        returnType = returnType.name,
+                        returnTypeEnum = returnType.isEnum,
+                        isList = returnType.isArray || returnType.name.contains("List")
+                    )
+                }
+            }
+        } catch (e: Exception) {
+            // Method doesn't exist or can't be accessed
+        }
+    }
+    
+    // Check for common comma-separated list patterns in the parameter name or description
+    val parameter = parameterField.getAnnotation(Parameter::class.java)
+    if (parameter != null) {
+        val desc = parameter.description.lowercase()
+        if ((desc.contains("comma") && desc.contains("separat")) || 
+            desc.contains("list of") ||
+            parameterName.lowercase().contains("list") || 
+            (parameterName.lowercase().endsWith("s") && 
+             (parameterType == String::class.java || parameterType == java.lang.String::class.java))) {
+            
+            return GetterMethodInfo(
+                methodName = "",  // No actual method
+                returnType = "java.util.List",
+                returnTypeEnum = false,
+                isList = true
+            )
+        }
+        
+        // Check for role type in description
+        if (desc.contains("role") && (desc.contains("type") || desc.contains("permission"))) {
+            return GetterMethodInfo(
+                methodName = "",
+                returnType = "org.apache.cloudstack.acl.RoleType",
+                returnTypeEnum = true,
+                isList = desc.contains("list") || parameterName.lowercase().endsWith("s")
+            )
+        }
+    }
+    
+    return null
+}
+
+/**
+ * Convert camelCase to snake_case
+ */
+fun String.camelToSnakeCase(): String {
+    return replace(Regex("([a-z])([A-Z]+)"), "$1_$2").lowercase()
+}
+
+/**
+ * Convert snake_case to camelCase
+ */
+fun String.camelCase(): String {
+    return split('_').mapIndexed { index, s ->
+        if (index == 0) s.lowercase() else s.lowercase().capitalize()
+    }.joinToString("")
+}
+
+/**
  * Extract metadata from a parameter field
  */
-fun extractParameterMetadata(field: Field): ParameterMetadata {
+fun extractParameterMetadata(field: Field, commandClass: Class<*>): ParameterMetadata {
     val parameter = field.getAnnotation(Parameter::class.java)
     
     // Get validation annotations
@@ -381,6 +494,30 @@ fun extractParameterMetadata(field: Field): ParameterMetadata {
     
     // Extract authorization info if present
     val authorizationInfo = extractAuthorizationInfo(parameter)
+    
+    // Find getter method that might provide stronger typing or list handling
+    val getterInfo = findGetterMethodForParameter(parameter.name, field, field.type, commandClass)
+    
+    // Determine if this is likely a comma-separated list
+    val isCommaSeparatedList = getterInfo?.isList == true || 
+                              (parameter.description.lowercase().contains("comma") && 
+                               parameter.description.lowercase().contains("separat")) ||
+                              parameter.name.lowercase().contains("cidr") ||
+                              (parameter.type == CommandType.LIST && field.type == String::class.java)
+    
+    // Get collection type with safe handling
+    val collectionType = try {
+        parameter.collectionType
+    } catch (e: Exception) {
+        null // Default value if not available
+    }
+    
+    // Extract authorized roles with safe handling
+    val authorizedRoles = try {
+        parameter.authorized.map { it.name }
+    } catch (e: Exception) {
+        emptyList<String>()
+    }
     
     return ParameterMetadata(
         name = parameter.name,
@@ -390,16 +527,18 @@ fun extractParameterMetadata(field: Field): ParameterMetadata {
         description = parameter.description,
         required = parameter.required,
         since = parameter.since,
-		acceptedOnAdminPort = parameter.acceptedOnAdminPort,
-		expose = parameter.expose,
-		includeInApiDoc = parameter.includeInApiDoc,
-		authorized = parameter.authorized.toList(),
-		collectionType = parameter.collectionType,
-		length = parameter.length,
-        entityType = parameter.entityType.firstOrNull()?.javaObjectType?.typeName,
+        entityType = try { parameter.entityType.firstOrNull()?.qualifiedName } catch (e: Exception) { null },
+        acceptedOnAdminPort = try { parameter.acceptedOnAdminPort } catch (e: Exception) { false },
+        expose = try { parameter.expose } catch (e: Exception) { false },
+        includeInApiDoc = try { parameter.includeInApiDoc } catch (e: Exception) { false },
+        authorized = authorizedRoles,
+        collectionType = collectionType,
+        length = try { parameter.length } catch (e: Exception) { 0 },
         validations = validations,
         authorization = authorizationInfo,
-        shouldDisplay = true
+        shouldDisplay = true,
+        getterMethod = getterInfo,
+        isCommaSeparatedList = isCommaSeparatedList
     )
 }
 

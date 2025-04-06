@@ -155,7 +155,7 @@ private fun checkJarFile(
 
 		if (name.contains(pckgname)) {
 
-			println("$name, $pckgname")
+//			println("$name, $pckgname")
 
 			if (name.contains(".class")) {
 				name = name.substring(0, name.length - 6)
