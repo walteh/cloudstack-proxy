@@ -52,6 +52,7 @@ suspend fun main(args: Array<String>) {
 	val cmds = generateMetadataFromPackage("org.apache.cloudstack.api")
 
 	val metadataOutputDir = File("./gen/cloudstack-api-metadata")
+	metadataOutputDir.deleteRecursively()
 	metadataOutputDir.mkdirs()
 
 	cmds.forEach { 

@@ -14,6 +14,9 @@ data class GroupMetadata(
 )
 
 data class CommandMetadata(
+	val groupName: String,
+	val scopeName: String,
+	val scopedReplicaOf: String,
 	val className: String,
 	val simpleName: String,
 	val commandName: String,
@@ -26,7 +29,7 @@ data class CommandMetadata(
 	val isAsync: Boolean = false,
 	val aclInfo: ACLInfo? = null,
 	val requestHasSensitiveInfo: Boolean = false,
-	val responseHasSensitiveInfo: Boolean = false
+	val responseHasSensitiveInfo: Boolean = false,
 )
 
 data class ParameterMetadata(
@@ -72,18 +75,17 @@ fun extractCommandsToJson(commandClasses: List<Class<*>>): List<GroupMetadata?> 
     
     // Create output directory if it doesn't exist
 //    outputDir.mkdirs()
-    
+	val commandMetadata = commandClasses.mapNotNull { extractCommandMetadata(it) }
     // Group commands by API group
-    val commandsByGroup = groupCommandsByApi(commandClasses)
+    val commandsByGroup = groupCommandsByApi(commandMetadata)
     
     // Process each group
 	return commandsByGroup.map { (groupName, commands) ->
-        val commandMetadata = commands.mapNotNull { extractCommandMetadata(it) }
-        
+
         if (commandMetadata.isNotEmpty()) {
 			GroupMetadata(
 				name = groupName,
-				commands = commandMetadata
+				commands = commands
 			)
 
 
@@ -103,17 +105,25 @@ fun extractCommandsToJson(commandClasses: List<Class<*>>): List<GroupMetadata?> 
 /**
  * Group command classes by API area
  */
-fun groupCommandsByApi(commandClasses: List<Class<*>>): Map<String, List<Class<*>>> {
+fun groupCommandsByApi(commandClasses: List<CommandMetadata>): Map<String, List<CommandMetadata>> {
+	// org.apache.cloudstack.api.command.admin.vpc.
     return commandClasses.groupBy { clazz ->
-        val packageName = clazz.packageName
-        when {
-            packageName.contains("vpc") -> "vpc"
-            packageName.contains("vm") -> "vm"
-            packageName.contains("volume") -> "storage"
-            packageName.contains("network") -> "network"
-            // Add more groups as needed
-            else -> "core"
-        }
+//        val packageName = clazz.packageName.removePrefix("org.apache.cloudstack.api.command.")
+//		var split = packageName.split(".")
+//		val userType = split.first()
+//		val rest = split.drop(1)
+//		val group = rest.joinToString(".")
+//		group
+		clazz.groupName
+//        when {
+//            packageName.contains("vpc") -> "vpc"
+//            packageName.contains("vm") -> "vm"
+//            packageName.contains("volume") -> "storage"
+//            packageName.contains("network") -> "network"
+//			packageName.contains("user") -> "user"
+//            // Add more groups as needed
+//            else -> "core"
+//        }
     }
 }
 
@@ -137,8 +147,23 @@ fun extractCommandMetadata(commandClass: Class<*>): CommandMetadata? {
     
     // Get inheritance hierarchy
     val superclasses = getSuperclasses(commandClass)
-    
+
+	val packageName = commandClass.packageName.removePrefix("org.apache.cloudstack.api.command.")
+	var split = packageName.split(".")
+	val userType = split.first()
+	val rest = split.drop(1)
+	val group = rest.joinToString(".")
+
+	var scopedRep = ""
+
+	if (userType == "admin" && split.last().endsWith("ByAdmin") && superclasses.first().equals(commandClass.packageName.replace(".admin.", ".user.").removeSuffix("ByAdmin"))) {
+		scopedRep = superclasses.first()
+	}
+
     return CommandMetadata(
+		scopedReplicaOf = scopedRep,
+		groupName = group,
+		scopeName = userType,
         className = commandClass.name,
         simpleName = commandClass.simpleName,
         commandName = apiCommand.name,
