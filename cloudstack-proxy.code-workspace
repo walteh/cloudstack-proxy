@@ -46,7 +46,9 @@
 			}
 		],
 		"mcpManager.useCopilotProvider": true,
-
+		"protols.inlayHints": {
+			"extensionTypes": false
+		},
 		"editor.codeLens": true,
 		"editor.tokenColorCustomizations": {},
 		"editor.semanticHighlighting.enabled": true,

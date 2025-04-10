@@ -7,8 +7,8 @@
 package vpcv1
 
 import (
-	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -28,30 +28,30 @@ const (
 type CreateVPCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The name of the VPC
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	// The display text of the VPC
-	DisplayText string `protobuf:"bytes,2,opt,name=display_text,json=displayText,proto3" json:"display_text,omitempty"`
+	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
 	// The CIDR of the VPC
-	Cidr string `protobuf:"bytes,3,opt,name=cidr,proto3" json:"cidr,omitempty"`
+	Cidr *string `protobuf:"bytes,3,opt,name=cidr" json:"cidr,omitempty"`
 	// The CIDR size of the VPC
-	CidrSize int32 `protobuf:"varint,4,opt,name=cidr_size,json=cidrSize,proto3" json:"cidr_size,omitempty"`
+	CidrSize *int32 `protobuf:"varint,4,opt,name=cidr_size,json=cidrSize" json:"cidr_size,omitempty"`
 	// The ID of the VPC offering
-	VpcOfferingId string `protobuf:"bytes,5,opt,name=vpc_offering_id,json=vpcOfferingId,proto3" json:"vpc_offering_id,omitempty"`
+	VpcOfferingId *string `protobuf:"bytes,5,opt,name=vpc_offering_id,json=vpcOfferingId" json:"vpc_offering_id,omitempty"`
 	// The ID of the availability zone
-	ZoneId string `protobuf:"bytes,6,opt,name=zone_id,json=zoneId,proto3" json:"zone_id,omitempty"`
+	ZoneId *string `protobuf:"bytes,6,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
 	// The network domain for the VPC
-	NetworkDomain string `protobuf:"bytes,7,opt,name=network_domain,json=networkDomain,proto3" json:"network_domain,omitempty"`
+	NetworkDomain *string `protobuf:"bytes,7,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
 	// Whether to start the VPC immediately
-	Start *bool `protobuf:"varint,8,opt,name=start,proto3,oneof" json:"start,omitempty"`
+	Start *bool `protobuf:"varint,8,opt,name=start" json:"start,omitempty"`
 	// Whether to display the VPC to end users
-	Display *bool `protobuf:"varint,9,opt,name=display,proto3,oneof" json:"display,omitempty"`
+	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
 	// The MTU for the network VR's public facing interfaces
-	PublicMtu  *int32                       `protobuf:"varint,10,opt,name=public_mtu,json=publicMtu,proto3,oneof" json:"public_mtu,omitempty"`
-	DnsServers *CreateVPCRequest_DNSServers `protobuf:"bytes,11,opt,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
+	PublicMtu  *int32                       `protobuf:"varint,10,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
+	DnsServers *CreateVPCRequest_DNSServers `protobuf:"bytes,11,opt,name=dns_servers,json=dnsServers" json:"dns_servers,omitempty"`
 	// The source NAT IP address
-	SourceNatIp string `protobuf:"bytes,12,opt,name=source_nat_ip,json=sourceNatIp,proto3" json:"source_nat_ip,omitempty"`
+	SourceNatIp *string `protobuf:"bytes,12,opt,name=source_nat_ip,json=sourceNatIp" json:"source_nat_ip,omitempty"`
 	// The AS Number for the VPC tiers
-	AsNumber      int64 `protobuf:"varint,13,opt,name=as_number,json=asNumber,proto3" json:"as_number,omitempty"`
+	AsNumber      *int64 `protobuf:"varint,13,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -87,50 +87,50 @@ func (*CreateVPCRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *CreateVPCRequest) GetName() string {
-	if x != nil {
-		return x.Name
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest) GetDisplayText() string {
-	if x != nil {
-		return x.DisplayText
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest) GetCidr() string {
-	if x != nil {
-		return x.Cidr
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest) GetCidrSize() int32 {
-	if x != nil {
-		return x.CidrSize
+	if x != nil && x.CidrSize != nil {
+		return *x.CidrSize
 	}
 	return 0
 }
 
 func (x *CreateVPCRequest) GetVpcOfferingId() string {
-	if x != nil {
-		return x.VpcOfferingId
+	if x != nil && x.VpcOfferingId != nil {
+		return *x.VpcOfferingId
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest) GetZoneId() string {
-	if x != nil {
-		return x.ZoneId
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest) GetNetworkDomain() string {
-	if x != nil {
-		return x.NetworkDomain
+	if x != nil && x.NetworkDomain != nil {
+		return *x.NetworkDomain
 	}
 	return ""
 }
@@ -164,15 +164,15 @@ func (x *CreateVPCRequest) GetDnsServers() *CreateVPCRequest_DNSServers {
 }
 
 func (x *CreateVPCRequest) GetSourceNatIp() string {
-	if x != nil {
-		return x.SourceNatIp
+	if x != nil && x.SourceNatIp != nil {
+		return *x.SourceNatIp
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest) GetAsNumber() int64 {
-	if x != nil {
-		return x.AsNumber
+	if x != nil && x.AsNumber != nil {
+		return *x.AsNumber
 	}
 	return 0
 }
@@ -181,7 +181,7 @@ func (x *CreateVPCRequest) GetAsNumber() int64 {
 type CreateVPCResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The created VPC
-	Vpc           *VPC `protobuf:"bytes,1,opt,name=vpc,proto3" json:"vpc,omitempty"`
+	Vpc           *VPC `protobuf:"bytes,1,opt,name=vpc" json:"vpc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -227,27 +227,27 @@ func (x *CreateVPCResponse) GetVpc() *VPC {
 type ListVPCsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The ID of the VPC to list
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	// The ID of the zone to list VPCs from
-	ZoneId string `protobuf:"bytes,2,opt,name=zone_id,json=zoneId,proto3" json:"zone_id,omitempty"`
+	ZoneId *string `protobuf:"bytes,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
 	// The name of the VPC to list
-	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
 	// The display text to filter by
-	DisplayText string `protobuf:"bytes,4,opt,name=display_text,json=displayText,proto3" json:"display_text,omitempty"`
+	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
 	// The CIDR to filter by
-	Cidr string `protobuf:"bytes,5,opt,name=cidr,proto3" json:"cidr,omitempty"`
+	Cidr *string `protobuf:"bytes,5,opt,name=cidr" json:"cidr,omitempty"`
 	// The ID of the VPC offering to filter by
-	VpcOfferingId string `protobuf:"bytes,6,opt,name=vpc_offering_id,json=vpcOfferingId,proto3" json:"vpc_offering_id,omitempty"`
+	VpcOfferingId *string `protobuf:"bytes,6,opt,name=vpc_offering_id,json=vpcOfferingId" json:"vpc_offering_id,omitempty"`
 	// The state to filter by
-	State string `protobuf:"bytes,7,opt,name=state,proto3" json:"state,omitempty"`
+	State *string `protobuf:"bytes,7,opt,name=state" json:"state,omitempty"`
 	// Whether to filter by restart required
-	RestartRequired *bool `protobuf:"varint,8,opt,name=restart_required,json=restartRequired,proto3,oneof" json:"restart_required,omitempty"`
+	RestartRequired *bool `protobuf:"varint,8,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
 	// Whether to show resource icons
-	ShowResourceIcon *bool `protobuf:"varint,9,opt,name=show_resource_icon,json=showResourceIcon,proto3,oneof" json:"show_resource_icon,omitempty"`
+	ShowResourceIcon *bool `protobuf:"varint,9,opt,name=show_resource_icon,json=showResourceIcon" json:"show_resource_icon,omitempty"`
 	// The page number to list
-	Page *int32 `protobuf:"varint,10,opt,name=page,proto3,oneof" json:"page,omitempty"`
+	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
 	// The page size
-	PageSize      *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize,proto3,oneof" json:"page_size,omitempty"`
+	PageSize      *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -283,50 +283,50 @@ func (*ListVPCsRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *ListVPCsRequest) GetId() string {
-	if x != nil {
-		return x.Id
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return ""
 }
 
 func (x *ListVPCsRequest) GetZoneId() string {
-	if x != nil {
-		return x.ZoneId
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
 	}
 	return ""
 }
 
 func (x *ListVPCsRequest) GetName() string {
-	if x != nil {
-		return x.Name
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
 func (x *ListVPCsRequest) GetDisplayText() string {
-	if x != nil {
-		return x.DisplayText
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
 	}
 	return ""
 }
 
 func (x *ListVPCsRequest) GetCidr() string {
-	if x != nil {
-		return x.Cidr
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
 	}
 	return ""
 }
 
 func (x *ListVPCsRequest) GetVpcOfferingId() string {
-	if x != nil {
-		return x.VpcOfferingId
+	if x != nil && x.VpcOfferingId != nil {
+		return *x.VpcOfferingId
 	}
 	return ""
 }
 
 func (x *ListVPCsRequest) GetState() string {
-	if x != nil {
-		return x.State
+	if x != nil && x.State != nil {
+		return *x.State
 	}
 	return ""
 }
@@ -363,9 +363,9 @@ func (x *ListVPCsRequest) GetPageSize() int32 {
 type ListVPCsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The list of VPCs
-	Vpcs []*VPC `protobuf:"bytes,1,rep,name=vpcs,proto3" json:"vpcs,omitempty"`
+	Vpcs []*VPC `protobuf:"bytes,1,rep,name=vpcs" json:"vpcs,omitempty"`
 	// The total count of VPCs
-	TotalCount    int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -408,8 +408,8 @@ func (x *ListVPCsResponse) GetVpcs() []*VPC {
 }
 
 func (x *ListVPCsResponse) GetTotalCount() int32 {
-	if x != nil {
-		return x.TotalCount
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
 	}
 	return 0
 }
@@ -418,34 +418,34 @@ func (x *ListVPCsResponse) GetTotalCount() int32 {
 type VPC struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The ID of the VPC
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	// The name of the VPC
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
 	// The display text of the VPC
-	DisplayText string `protobuf:"bytes,3,opt,name=display_text,json=displayText,proto3" json:"display_text,omitempty"`
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
 	// The CIDR of the VPC
-	Cidr string `protobuf:"bytes,4,opt,name=cidr,proto3" json:"cidr,omitempty"`
+	Cidr *string `protobuf:"bytes,4,opt,name=cidr" json:"cidr,omitempty"`
 	// The state of the VPC
-	State string `protobuf:"bytes,5,opt,name=state,proto3" json:"state,omitempty"`
+	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
 	// The ID of the VPC offering
-	VpcOfferingId string `protobuf:"bytes,6,opt,name=vpc_offering_id,json=vpcOfferingId,proto3" json:"vpc_offering_id,omitempty"`
+	VpcOfferingId *string `protobuf:"bytes,6,opt,name=vpc_offering_id,json=vpcOfferingId" json:"vpc_offering_id,omitempty"`
 	// The ID of the zone
-	ZoneId string `protobuf:"bytes,7,opt,name=zone_id,json=zoneId,proto3" json:"zone_id,omitempty"`
+	ZoneId *string `protobuf:"bytes,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
 	// The network domain
-	NetworkDomain string `protobuf:"bytes,8,opt,name=network_domain,json=networkDomain,proto3" json:"network_domain,omitempty"`
+	NetworkDomain *string `protobuf:"bytes,8,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
 	// Whether the VPC is displayed
-	Display bool `protobuf:"varint,9,opt,name=display,proto3" json:"display,omitempty"`
+	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
 	// The public MTU
-	PublicMtu  int32           `protobuf:"varint,10,opt,name=public_mtu,json=publicMtu,proto3" json:"public_mtu,omitempty"`
-	DnsServers *VPC_DNSServers `protobuf:"bytes,11,opt,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
+	PublicMtu  *int32          `protobuf:"varint,10,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
+	DnsServers *VPC_DNSServers `protobuf:"bytes,11,opt,name=dns_servers,json=dnsServers" json:"dns_servers,omitempty"`
 	// The source NAT IP
-	SourceNatIp string `protobuf:"bytes,12,opt,name=source_nat_ip,json=sourceNatIp,proto3" json:"source_nat_ip,omitempty"`
+	SourceNatIp *string `protobuf:"bytes,12,opt,name=source_nat_ip,json=sourceNatIp" json:"source_nat_ip,omitempty"`
 	// The AS Number
-	AsNumber int64 `protobuf:"varint,13,opt,name=as_number,json=asNumber,proto3" json:"as_number,omitempty"`
+	AsNumber *int64 `protobuf:"varint,13,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
 	// The creation time
-	Created string `protobuf:"bytes,14,opt,name=created,proto3" json:"created,omitempty"`
+	Created *string `protobuf:"bytes,14,opt,name=created" json:"created,omitempty"`
 	// The last update time
-	Updated       string `protobuf:"bytes,15,opt,name=updated,proto3" json:"updated,omitempty"`
+	Updated       *string `protobuf:"bytes,15,opt,name=updated" json:"updated,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -481,71 +481,71 @@ func (*VPC) Descriptor() ([]byte, []int) {
 }
 
 func (x *VPC) GetId() string {
-	if x != nil {
-		return x.Id
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return ""
 }
 
 func (x *VPC) GetName() string {
-	if x != nil {
-		return x.Name
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
 func (x *VPC) GetDisplayText() string {
-	if x != nil {
-		return x.DisplayText
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
 	}
 	return ""
 }
 
 func (x *VPC) GetCidr() string {
-	if x != nil {
-		return x.Cidr
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
 	}
 	return ""
 }
 
 func (x *VPC) GetState() string {
-	if x != nil {
-		return x.State
+	if x != nil && x.State != nil {
+		return *x.State
 	}
 	return ""
 }
 
 func (x *VPC) GetVpcOfferingId() string {
-	if x != nil {
-		return x.VpcOfferingId
+	if x != nil && x.VpcOfferingId != nil {
+		return *x.VpcOfferingId
 	}
 	return ""
 }
 
 func (x *VPC) GetZoneId() string {
-	if x != nil {
-		return x.ZoneId
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
 	}
 	return ""
 }
 
 func (x *VPC) GetNetworkDomain() string {
-	if x != nil {
-		return x.NetworkDomain
+	if x != nil && x.NetworkDomain != nil {
+		return *x.NetworkDomain
 	}
 	return ""
 }
 
 func (x *VPC) GetDisplay() bool {
-	if x != nil {
-		return x.Display
+	if x != nil && x.Display != nil {
+		return *x.Display
 	}
 	return false
 }
 
 func (x *VPC) GetPublicMtu() int32 {
-	if x != nil {
-		return x.PublicMtu
+	if x != nil && x.PublicMtu != nil {
+		return *x.PublicMtu
 	}
 	return 0
 }
@@ -558,29 +558,29 @@ func (x *VPC) GetDnsServers() *VPC_DNSServers {
 }
 
 func (x *VPC) GetSourceNatIp() string {
-	if x != nil {
-		return x.SourceNatIp
+	if x != nil && x.SourceNatIp != nil {
+		return *x.SourceNatIp
 	}
 	return ""
 }
 
 func (x *VPC) GetAsNumber() int64 {
-	if x != nil {
-		return x.AsNumber
+	if x != nil && x.AsNumber != nil {
+		return *x.AsNumber
 	}
 	return 0
 }
 
 func (x *VPC) GetCreated() string {
-	if x != nil {
-		return x.Created
+	if x != nil && x.Created != nil {
+		return *x.Created
 	}
 	return ""
 }
 
 func (x *VPC) GetUpdated() string {
-	if x != nil {
-		return x.Updated
+	if x != nil && x.Updated != nil {
+		return *x.Updated
 	}
 	return ""
 }
@@ -588,10 +588,10 @@ func (x *VPC) GetUpdated() string {
 // DNS servers for the VPC
 type CreateVPCRequest_DNSServers struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ipv4Dns1      string                 `protobuf:"bytes,1,opt,name=ipv4_dns1,json=ipv4Dns1,proto3" json:"ipv4_dns1,omitempty"`
-	Ipv4Dns2      string                 `protobuf:"bytes,2,opt,name=ipv4_dns2,json=ipv4Dns2,proto3" json:"ipv4_dns2,omitempty"`
-	Ipv6Dns1      string                 `protobuf:"bytes,3,opt,name=ipv6_dns1,json=ipv6Dns1,proto3" json:"ipv6_dns1,omitempty"`
-	Ipv6Dns2      string                 `protobuf:"bytes,4,opt,name=ipv6_dns2,json=ipv6Dns2,proto3" json:"ipv6_dns2,omitempty"`
+	Ipv4Dns1      *string                `protobuf:"bytes,1,opt,name=ipv4_dns1,json=ipv4Dns1" json:"ipv4_dns1,omitempty"`
+	Ipv4Dns2      *string                `protobuf:"bytes,2,opt,name=ipv4_dns2,json=ipv4Dns2" json:"ipv4_dns2,omitempty"`
+	Ipv6Dns1      *string                `protobuf:"bytes,3,opt,name=ipv6_dns1,json=ipv6Dns1" json:"ipv6_dns1,omitempty"`
+	Ipv6Dns2      *string                `protobuf:"bytes,4,opt,name=ipv6_dns2,json=ipv6Dns2" json:"ipv6_dns2,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -627,29 +627,29 @@ func (*CreateVPCRequest_DNSServers) Descriptor() ([]byte, []int) {
 }
 
 func (x *CreateVPCRequest_DNSServers) GetIpv4Dns1() string {
-	if x != nil {
-		return x.Ipv4Dns1
+	if x != nil && x.Ipv4Dns1 != nil {
+		return *x.Ipv4Dns1
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest_DNSServers) GetIpv4Dns2() string {
-	if x != nil {
-		return x.Ipv4Dns2
+	if x != nil && x.Ipv4Dns2 != nil {
+		return *x.Ipv4Dns2
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest_DNSServers) GetIpv6Dns1() string {
-	if x != nil {
-		return x.Ipv6Dns1
+	if x != nil && x.Ipv6Dns1 != nil {
+		return *x.Ipv6Dns1
 	}
 	return ""
 }
 
 func (x *CreateVPCRequest_DNSServers) GetIpv6Dns2() string {
-	if x != nil {
-		return x.Ipv6Dns2
+	if x != nil && x.Ipv6Dns2 != nil {
+		return *x.Ipv6Dns2
 	}
 	return ""
 }
@@ -657,10 +657,10 @@ func (x *CreateVPCRequest_DNSServers) GetIpv6Dns2() string {
 // DNS servers
 type VPC_DNSServers struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ipv4Dns1      string                 `protobuf:"bytes,1,opt,name=ipv4_dns1,json=ipv4Dns1,proto3" json:"ipv4_dns1,omitempty"`
-	Ipv4Dns2      string                 `protobuf:"bytes,2,opt,name=ipv4_dns2,json=ipv4Dns2,proto3" json:"ipv4_dns2,omitempty"`
-	Ipv6Dns1      string                 `protobuf:"bytes,3,opt,name=ipv6_dns1,json=ipv6Dns1,proto3" json:"ipv6_dns1,omitempty"`
-	Ipv6Dns2      string                 `protobuf:"bytes,4,opt,name=ipv6_dns2,json=ipv6Dns2,proto3" json:"ipv6_dns2,omitempty"`
+	Ipv4Dns1      *string                `protobuf:"bytes,1,opt,name=ipv4_dns1,json=ipv4Dns1" json:"ipv4_dns1,omitempty"`
+	Ipv4Dns2      *string                `protobuf:"bytes,2,opt,name=ipv4_dns2,json=ipv4Dns2" json:"ipv4_dns2,omitempty"`
+	Ipv6Dns1      *string                `protobuf:"bytes,3,opt,name=ipv6_dns1,json=ipv6Dns1" json:"ipv6_dns1,omitempty"`
+	Ipv6Dns2      *string                `protobuf:"bytes,4,opt,name=ipv6_dns2,json=ipv6Dns2" json:"ipv6_dns2,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -696,29 +696,29 @@ func (*VPC_DNSServers) Descriptor() ([]byte, []int) {
 }
 
 func (x *VPC_DNSServers) GetIpv4Dns1() string {
-	if x != nil {
-		return x.Ipv4Dns1
+	if x != nil && x.Ipv4Dns1 != nil {
+		return *x.Ipv4Dns1
 	}
 	return ""
 }
 
 func (x *VPC_DNSServers) GetIpv4Dns2() string {
-	if x != nil {
-		return x.Ipv4Dns2
+	if x != nil && x.Ipv4Dns2 != nil {
+		return *x.Ipv4Dns2
 	}
 	return ""
 }
 
 func (x *VPC_DNSServers) GetIpv6Dns1() string {
-	if x != nil {
-		return x.Ipv6Dns1
+	if x != nil && x.Ipv6Dns1 != nil {
+		return *x.Ipv6Dns1
 	}
 	return ""
 }
 
 func (x *VPC_DNSServers) GetIpv6Dns2() string {
-	if x != nil {
-		return x.Ipv6Dns2
+	if x != nil && x.Ipv6Dns2 != nil {
+		return *x.Ipv6Dns2
 	}
 	return ""
 }
@@ -727,66 +727,58 @@ var File_cloudstack_vpc_v1_vpc_sample_proto protoreflect.FileDescriptor
 
 const file_cloudstack_vpc_v1_vpc_sample_proto_rawDesc = "" +
 	"\n" +
-	"\"cloudstack/vpc/v1/vpc_sample.proto\x12\x11cloudstack.vpc.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xa7\x05\n" +
+	"\"cloudstack/vpc/v1/vpc_sample.proto\x12\x11cloudstack.vpc.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9a\x05\n" +
 	"\x10CreateVPCRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x1c\n" +
 	"\x04cidr\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xf0\x01\x01R\x04cidr\x12\x1b\n" +
-	"\tcidr_size\x18\x04 \x01(\x05R\bcidrSize\x12+\n" +
-	"\x0fvpc_offering_id\x18\x05 \x01(\tB\x03\xc0>\x02R\rvpcOfferingId\x12\x1c\n" +
-	"\azone_id\x18\x06 \x01(\tB\x03\xc0>\x02R\x06zoneId\x12%\n" +
-	"\x0enetwork_domain\x18\a \x01(\tR\rnetworkDomain\x12\x19\n" +
-	"\x05start\x18\b \x01(\bH\x00R\x05start\x88\x01\x01\x12\x1d\n" +
-	"\adisplay\x18\t \x01(\bH\x01R\adisplay\x88\x01\x01\x12\"\n" +
+	"\tcidr_size\x18\x04 \x01(\x05R\bcidrSize\x120\n" +
+	"\x0fvpc_offering_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rvpcOfferingId\x12!\n" +
+	"\azone_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06zoneId\x12%\n" +
+	"\x0enetwork_domain\x18\a \x01(\tR\rnetworkDomain\x12\x1b\n" +
+	"\x05start\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x05start\x12\x18\n" +
+	"\adisplay\x18\t \x01(\bR\adisplay\x12\x1d\n" +
 	"\n" +
 	"public_mtu\x18\n" +
-	" \x01(\x05H\x02R\tpublicMtu\x88\x01\x01\x12O\n" +
+	" \x01(\x05R\tpublicMtu\x12O\n" +
 	"\vdns_servers\x18\v \x01(\v2..cloudstack.vpc.v1.CreateVPCRequest.DNSServersR\n" +
-	"dnsServers\x12'\n" +
-	"\rsource_nat_ip\x18\f \x01(\tB\x03\xc0>\aR\vsourceNatIp\x12\x1b\n" +
-	"\tas_number\x18\r \x01(\x03R\basNumber\x1a\x94\x01\n" +
+	"dnsServers\x12+\n" +
+	"\rsource_nat_ip\x18\f \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIp\x12\x1b\n" +
+	"\tas_number\x18\r \x01(\x03R\basNumber\x1a\xa6\x01\n" +
 	"\n" +
-	"DNSServers\x12 \n" +
-	"\tipv4_dns1\x18\x01 \x01(\tB\x03\xc0>\aR\bipv4Dns1\x12 \n" +
-	"\tipv4_dns2\x18\x02 \x01(\tB\x03\xc0>\aR\bipv4Dns2\x12 \n" +
-	"\tipv6_dns1\x18\x03 \x01(\tB\x03\xc0>\bR\bipv6Dns1\x12 \n" +
-	"\tipv6_dns2\x18\x04 \x01(\tB\x03\xc0>\bR\bipv6Dns2B\b\n" +
-	"\x06_startB\n" +
-	"\n" +
-	"\b_displayB\r\n" +
-	"\v_public_mtu\"=\n" +
+	"DNSServers\x12$\n" +
+	"\tipv4_dns1\x18\x01 \x01(\tB\a\xbaH\x04r\x02x\x01R\bipv4Dns1\x12$\n" +
+	"\tipv4_dns2\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\bipv4Dns2\x12%\n" +
+	"\tipv6_dns1\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\bipv6Dns1\x12%\n" +
+	"\tipv6_dns2\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\bipv6Dns2\"=\n" +
 	"\x11CreateVPCResponse\x12(\n" +
-	"\x03vpc\x18\x01 \x01(\v2\x16.cloudstack.vpc.v1.VPCR\x03vpc\"\xc4\x03\n" +
+	"\x03vpc\x18\x01 \x01(\v2\x16.cloudstack.vpc.v1.VPCR\x03vpc\"\x94\x03\n" +
 	"\x0fListVPCsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
-	"\azone_id\x18\x02 \x01(\tB\x03\xc0>\x02R\x06zoneId\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
+	"\azone_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x06zoneId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_text\x18\x04 \x01(\tR\vdisplayText\x12\x17\n" +
-	"\x04cidr\x18\x05 \x01(\tB\x03\xc0>\x03R\x04cidr\x12+\n" +
-	"\x0fvpc_offering_id\x18\x06 \x01(\tB\x03\xc0>\x02R\rvpcOfferingId\x12\x14\n" +
-	"\x05state\x18\a \x01(\tR\x05state\x12.\n" +
-	"\x10restart_required\x18\b \x01(\bH\x00R\x0frestartRequired\x88\x01\x01\x121\n" +
-	"\x12show_resource_icon\x18\t \x01(\bH\x01R\x10showResourceIcon\x88\x01\x01\x12\x1f\n" +
+	"\fdisplay_text\x18\x04 \x01(\tR\vdisplayText\x12\x1c\n" +
+	"\x04cidr\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xf0\x01\x01R\x04cidr\x120\n" +
+	"\x0fvpc_offering_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rvpcOfferingId\x12\x14\n" +
+	"\x05state\x18\a \x01(\tR\x05state\x120\n" +
+	"\x10restart_required\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0frestartRequired\x123\n" +
+	"\x12show_resource_icon\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x10showResourceIcon\x12\x1f\n" +
 	"\x04page\x18\n" +
-	" \x01(\x05B\x06\xca>\x03\x12\x011H\x02R\x04page\x88\x01\x01\x12)\n" +
-	"\tpage_size\x18\v \x01(\x05B\a\xca>\x04\x12\x0210H\x03R\bpageSize\x88\x01\x01B\x13\n" +
-	"\x11_restart_requiredB\x15\n" +
-	"\x13_show_resource_iconB\a\n" +
-	"\x05_pageB\f\n" +
-	"\n" +
-	"_page_size\"_\n" +
+	" \x01(\x05B\v\xca>\x03\x12\x011\xaa\x01\x02\b\x01R\x04page\x12)\n" +
+	"\tpage_size\x18\v \x01(\x05B\f\xca>\x04\x12\x0210\xaa\x01\x02\b\x01R\bpageSize\"_\n" +
 	"\x10ListVPCsResponse\x12*\n" +
 	"\x04vpcs\x18\x01 \x03(\v2\x16.cloudstack.vpc.v1.VPCR\x04vpcs\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount\"\xd3\x04\n" +
+	"totalCount\"\x9e\x05\n" +
 	"\x03VPC\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x12\n" +
 	"\x04cidr\x18\x04 \x01(\tR\x04cidr\x12\x14\n" +
 	"\x05state\x18\x05 \x01(\tR\x05state\x12&\n" +
-	"\x0fvpc_offering_id\x18\x06 \x01(\tR\rvpcOfferingId\x12\x17\n" +
-	"\azone_id\x18\a \x01(\tR\x06zoneId\x12%\n" +
+	"\x0fvpc_offering_id\x18\x06 \x01(\tR\rvpcOfferingId\x12b\n" +
+	"\azone_id\x18\a \x01(\tBI\xbaHF\xba\x01>\n" +
+	"\azone_id\x12\x1czone_id must be a valid UUID\x1a\x15value.id == 'zone_id'r\x03\xb0\x01\x01R\x06zoneId\x12%\n" +
 	"\x0enetwork_domain\x18\b \x01(\tR\rnetworkDomain\x12\x18\n" +
 	"\adisplay\x18\t \x01(\bR\adisplay\x12\x1d\n" +
 	"\n" +
@@ -808,7 +800,7 @@ const file_cloudstack_vpc_v1_vpc_sample_proto_rawDesc = "" +
 	"VPCService\x12X\n" +
 	"\tCreateVPC\x12#.cloudstack.vpc.v1.CreateVPCRequest\x1a$.cloudstack.vpc.v1.CreateVPCResponse\"\x00\x12U\n" +
 	"\bListVPCs\x12\".cloudstack.vpc.v1.ListVPCsRequest\x1a#.cloudstack.vpc.v1.ListVPCsResponse\"\x00B\xda\x01\n" +
-	"\x15com.cloudstack.vpc.v1B\x0eVpcSampleProtoP\x01ZKgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/vpc/v1;vpcv1\xa2\x02\x03CVX\xaa\x02\x11Cloudstack.Vpc.V1\xca\x02\x11Cloudstack\\Vpc\\V1\xe2\x02\x1dCloudstack\\Vpc\\V1\\GPBMetadata\xea\x02\x13Cloudstack::Vpc::V1b\x06proto3"
+	"\x15com.cloudstack.vpc.v1B\x0eVpcSampleProtoP\x01ZKgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/vpc/v1;vpcv1\xa2\x02\x03CVX\xaa\x02\x11Cloudstack.Vpc.V1\xca\x02\x11Cloudstack\\Vpc\\V1\xe2\x02\x1dCloudstack\\Vpc\\V1\\GPBMetadata\xea\x02\x13Cloudstack::Vpc::V1b\beditionsp\xe8\a"
 
 var (
 	file_cloudstack_vpc_v1_vpc_sample_proto_rawDescOnce sync.Once
@@ -853,8 +845,6 @@ func file_cloudstack_vpc_v1_vpc_sample_proto_init() {
 	if File_cloudstack_vpc_v1_vpc_sample_proto != nil {
 		return
 	}
-	file_cloudstack_vpc_v1_vpc_sample_proto_msgTypes[0].OneofWrappers = []any{}
-	file_cloudstack_vpc_v1_vpc_sample_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

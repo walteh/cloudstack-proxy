@@ -8,9 +8,9 @@ managed:
           value: github.com/walteh/cloudstack-proxy/gen/proto/golang
         #   path: .
 
-    disable:
-        - file_option: go_package
-          module: buf.build/bufbuild/protovalidate
+    # disable:
+    #     - file_option: go_package
+    #       module: buf.build/bufbuild/protovalidate
 
 plugins:
     - out: gen/proto/golang
@@ -29,6 +29,10 @@ plugins:
           - paths=source_relative
     - out: gen/proto/golang
       local: ["go", "tool", "connectrpc.com/connect/cmd/protoc-gen-connect-go"]
+      opt:
+          - paths=source_relative
+    - out: gen/proto/golang
+      local: ["go", "tool", "github.com/walteh/protovalidate-go/protoc-gen-buf-validate"]
       opt:
           - paths=source_relative
 # inputs:

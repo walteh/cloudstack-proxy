@@ -1,9 +1,9 @@
-syntax = "proto3";
+edition = "2023";
 
 package cloudstack.vpc.v1;
 
-import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VPCService provides operations for managing VPCs
@@ -26,7 +26,7 @@ message CreateVPCRequest {
 
 	// The CIDR of the VPC
 	string cidr = 3 [
-		(buf.validate.field).string.ipv4_prefix = true
+		(validate.field).string.ipv4_prefix = true
 	];
 
 	// The CIDR size of the VPC
@@ -34,46 +34,48 @@ message CreateVPCRequest {
 
 	// The ID of the VPC offering
 	string vpc_offering_id = 5 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
+		(validate.field).string.uuid = true
 	];
 
 	// The ID of the availability zone
 	string zone_id = 6 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
+		(validate.field).string.uuid = true
 	];
 
 	// The network domain for the VPC
 	string network_domain = 7;
 
 	// Whether to start the VPC immediately
-	optional bool start = 8;
+	bool start = 8 [
+		features.field_presence = EXPLICIT
+	];
 
 	// Whether to display the VPC to end users
-	optional bool display = 9;
+	bool display = 9;
 
 	// The MTU for the network VR's public facing interfaces
-	optional int32 public_mtu = 10;
+	int32 public_mtu = 10;
 
 	// DNS servers for the VPC
 	message DNSServers {
 		string ipv4_dns1 = 1 [
-			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+			(validate.field).string.ipv4 = true
 		];
 		string ipv4_dns2 = 2 [
-			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+			(validate.field).string.ipv4 = true
 		];
 		string ipv6_dns1 = 3 [
-			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
+			(validate.field).string.ipv6 = true
 		];
 		string ipv6_dns2 = 4 [
-			(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V6_ADDRESS
+			(validate.field).string.ipv6 = true
 		];
 	}
 	DNSServers dns_servers = 11;
 
 	// The source NAT IP address
 	string source_nat_ip = 12 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_IP_V4_ADDRESS
+		(validate.field).string.ipv4 = true
 	];
 
 	// The AS Number for the VPC tiers
@@ -93,7 +95,7 @@ message ListVPCsRequest {
 
 	// The ID of the zone to list VPCs from
 	string zone_id = 2 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
+		(validate.field).string.uuid = true
 	];
 
 	// The name of the VPC to list
@@ -104,31 +106,37 @@ message ListVPCsRequest {
 
 	// The CIDR to filter by
 	string cidr = 5 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_CIDR_BLOCK
+		(validate.field).string.ipv4_prefix = true
 	];
 
 	// The ID of the VPC offering to filter by
 	string vpc_offering_id = 6 [
-		(annotations.str_type) = CUSTOM_STRING_TYPE_UUID
+		(validate.field).string.uuid = true
 	];
 
 	// The state to filter by
 	string state = 7;
 
 	// Whether to filter by restart required
-	optional bool restart_required = 8;
+	bool restart_required = 8 [
+		features.field_presence = EXPLICIT
+	];
 
 	// Whether to show resource icons
-	optional bool show_resource_icon = 9;
+	bool show_resource_icon = 9 [
+		features.field_presence = EXPLICIT
+	];
 
 	// The page number to list
-	optional int32 page = 10 [
-		(annotations.default) = {value: "1"}
+	int32 page = 10 [
+		(annotations.default)   = {value: "1"},
+		features.field_presence = EXPLICIT
 	];
 
 	// The page size
-	optional int32 page_size = 11 [
-		(annotations.default) = {value: "10"}
+	int32 page_size = 11 [
+		(annotations.default)   = {value: "10"},
+		features.field_presence = EXPLICIT
 	];
 }
 
@@ -162,7 +170,14 @@ message VPC {
 	string vpc_offering_id = 6;
 
 	// The ID of the zone
-	string zone_id = 7;
+	string zone_id = 7 [
+		(validate.field).string.uuid = true,
+		(validate.field).cel         = {
+			id:                  "zone_id",
+			expression:          "value.id == 'zone_id'",
+			message:             "zone_id must be a valid UUID"
+		}
+	];
 
 	// The network domain
 	string network_domain = 8;
