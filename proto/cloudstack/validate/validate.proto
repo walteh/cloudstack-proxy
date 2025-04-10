@@ -268,8 +268,7 @@ message PredefinedConstraints {
 	reserved 24, 26;
 	reserved
 		"skipped"
-		"ignore_empty"
-;
+		"ignore_empty";
 }
 
 // Specifies how FieldConstraints.ignore behaves. See the documentation for
@@ -419,8 +418,7 @@ enum Ignore {
 
 	reserved
 		"IGNORE_EMPTY"
-		"IGNORE_DEFAULT"
-;
+		"IGNORE_DEFAULT";
 }
 
 // FloatRules describes the constraints applied to `float` values. These

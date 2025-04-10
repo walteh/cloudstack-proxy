@@ -8,19 +8,15 @@ managed:
           value: github.com/walteh/cloudstack-proxy/gen/proto/golang
         #   path: .
 
-    # disable:
-    #     - file_option: go_package
-    #       module: buf.build/bufbuild/protovalidate
+    disable:
+        - file_option: go_package
+          module: buf.build/googleapis/googleapis
 
 plugins:
     - out: gen/proto/golang
       local: ["go", "tool", "google.golang.org/protobuf/cmd/protoc-gen-go"]
       strategy: all
-      #   include_imports: false
-      #   include_wkt: true
-      #   exclude_types:
-      #       - "buf.validate"
-      #       - "google.protobuf"
+      include_imports: true
       opt:
           - paths=source_relative
     - out: gen/proto/golang
@@ -32,9 +28,12 @@ plugins:
       opt:
           - paths=source_relative
     - out: gen/proto/golang
-      local: ["go", "tool", "github.com/walteh/protovalidate-go/protoc-gen-buf-validate"]
+      #   local: ["./bin/protoc-gen-protovalidate"]
+      local: ["go", "tool", "github.com/walteh/protoc-gen-protovalidate/cmd/protoc-gen-protovalidate"]
+      include_imports: true
       opt:
           - paths=source_relative
+          - buf_validate_file=cloudstack/validate/validate.proto
 # inputs:
 # - git_repo: https://github.com/bufbuild/protovalidate
 #   subdir: proto/protovalidate
