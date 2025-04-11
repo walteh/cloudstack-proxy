@@ -28,10 +28,28 @@ message Enum {
 		ID_TYPE_TEMPLATE     = 7;
 		ID_TYPE_ISO          = 8;
 	}
+	enum Scope {
+		Scope_UNSPECIFIED = 0;
+		Scope_ADMIN       = 1;
+		Scope_USER        = 2;
+	}
 }
 
 extend google.protobuf.FieldOptions {
 	Enum.CustomStringType str_type = 1000;
 	google.protobuf.Any   default  = 1001;
 	Enum.IDType           id_type  = 1002;
+	Enum.Scope            scope    = 1003;
+}
+
+extend google.protobuf.MessageOptions {
+	Enum.Scope scope = 1000;
+}
+
+extend google.protobuf.ServiceOptions {
+	Enum.Scope scope = 1000;
+}
+
+extend google.protobuf.MethodOptions {
+	Enum.Scope scope = 1000;
 }

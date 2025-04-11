@@ -18,12 +18,15 @@ type Metadata struct {
 
 // CommandMetadata represents the metadata for a CloudStack API command
 type CommandMetadata struct {
-	ClassName    string
-	SimpleName   string
-	Description  string
-	Parameters   []ParameterMetadata
-	ResponseName string
-	Category     string // E.g., "vpc", "vm", "network"
+	ClassName        string
+	SimpleName       string
+	Description      string
+	Parameters       []ParameterMetadata
+	ResponseName     string
+	Category         string // E.g., "vpc", "vm", "network"
+	HasAdminVariant  bool   // Whether this command has an admin variant
+	AdminVariantName string // The name of the admin variant command, if any
+	IsAsync          bool   // Whether this command is asynchronous
 }
 
 // ParameterMetadata represents a parameter in a CloudStack API command
@@ -38,19 +41,26 @@ type ParameterMetadata struct {
 
 // ResponseMetadata represents the metadata for a CloudStack API response
 type ResponseMetadata struct {
-	ClassName  string
-	SimpleName string
-	Fields     []ResponseFieldMetadata
+	ClassName       string
+	SimpleName      string
+	Description     string
+	Fields          []ResponseFieldMetadata
+	IsListResponse  bool   // Whether this is a list response
+	ListElementTag  string // XML tag for list elements (e.g., "virtualmachine")
+	ListElementName string // Name of the list element if specified explicitly
+	ItemTypeName    string // Derived item type name for list responses
+	ObjectName      string // The underlying object name
 }
 
-// ResponseFieldMetadata represents a field in a CloudStack API response
+// ResponseFieldMetadata contains metadata for a field in a CloudStack API response
 type ResponseFieldMetadata struct {
 	Name           string
 	FieldName      string
 	JavaType       string
 	Description    string
 	Since          string
-	ResponseObject string
+	ResponseObject string // Type of response object for this field
+	IsDisplay      bool   // Whether this field is for display purposes
 }
 
 // EnumMetadata represents the metadata for a CloudStack API enum
@@ -102,65 +112,117 @@ func ParseMetadata(metadataDir string) (*Metadata, error) {
 
 // parseCommandMetadata parses the command metadata JSON file
 func parseCommandMetadata(filePath string, metadata *Metadata) error {
-	data, err := os.ReadFile(filePath)
+	// Read the file
+	rawData, err := os.ReadFile(filePath)
 	if err != nil {
-		return err
+		return fmt.Errorf("error reading command metadata file: %w", err)
 	}
 
-	var commandsMap map[string]json.RawMessage
-	if err := json.Unmarshal(data, &commandsMap); err != nil {
-		return err
+	// Parse the JSON
+	var commandData map[string]struct {
+		GroupName       string   `json:"groupName"`
+		ScopeName       string   `json:"scopeName"`
+		ScopedReplicaOf string   `json:"scopedReplicaOf"`
+		ClassName       string   `json:"className"`
+		SimpleName      string   `json:"simpleName"`
+		CommandName     string   `json:"commandName"`
+		Description     string   `json:"description"`
+		ResponseObject  string   `json:"responseObject"`
+		ResponseView    string   `json:"responseView"`
+		EntityType      []string `json:"entityType"`
+		Parameters      []struct {
+			Name                 string                 `json:"name"`
+			FieldName            string                 `json:"fieldName"`
+			JavaType             string                 `json:"javaType"`
+			CommandType          string                 `json:"commandType"`
+			Description          string                 `json:"description"`
+			Required             bool                   `json:"required"`
+			Since                string                 `json:"since"`
+			Validations          []interface{}          `json:"validations"`
+			AcceptedOnAdminPort  bool                   `json:"acceptedOnAdminPort"`
+			Expose               bool                   `json:"expose"`
+			IncludeInApiDoc      bool                   `json:"includeInApiDoc"`
+			Authorized           []string               `json:"authorized"`
+			CollectionType       string                 `json:"collectionType"`
+			Length               int                    `json:"length"`
+			GetterMethod         interface{}            `json:"getterMethod"`
+			IsCommaSeparatedList bool                   `json:"isCommaSeparatedList"`
+			Extras               map[string]interface{} `json:"extras"`
+		} `json:"parameters"`
+		Superclasses             []string               `json:"superclasses"`
+		IsAsync                  bool                   `json:"isAsync"`
+		RequestHasSensitiveInfo  bool                   `json:"requestHasSensitiveInfo"`
+		ResponseHasSensitiveInfo bool                   `json:"responseHasSensitiveInfo"`
+		Extras                   map[string]interface{} `json:"extras"`
 	}
 
-	for className, rawData := range commandsMap {
-		var cmdData struct {
-			ClassName    string `json:"className"`
-			SimpleName   string `json:"simpleName"`
-			Description  string `json:"description"`
-			ResponseName string `json:"responseName"`
-			Parameters   []struct {
-				Name        string `json:"name"`
-				FieldName   string `json:"fieldName"`
-				JavaType    string `json:"javaType"`
-				Description string `json:"description"`
-				Required    bool   `json:"required"`
-				Since       string `json:"since"`
-			} `json:"parameters"`
+	if err := json.Unmarshal(rawData, &commandData); err != nil {
+		return fmt.Errorf("error parsing command metadata JSON: %w", err)
+	}
+
+	// Process each command
+	for className, cmd := range commandData {
+		// Skip commands that are not meant to be exposed via the API
+		if len(cmd.Parameters) == 0 {
+			continue
 		}
 
-		if err := json.Unmarshal(rawData, &cmdData); err != nil {
-			return err
+		// Check if this is a scoped replica (admin version) of another command
+		isAdminVariant := cmd.ScopedReplicaOf != ""
+
+		// Extract base command name for admin variants
+		baseCommand := ""
+		if isAdminVariant {
+			baseCommand = cmd.ScopedReplicaOf
 		}
 
-		// Extract category from class name (e.g., ListVPCsCmd -> vpc)
-		category := extractCategory(cmdData.SimpleName)
-
-		cmd := CommandMetadata{
-			ClassName:    cmdData.ClassName,
-			SimpleName:   cmdData.SimpleName,
-			Description:  cmdData.Description,
-			ResponseName: cmdData.ResponseName,
-			Category:     category,
-			Parameters:   make([]ParameterMetadata, 0, len(cmdData.Parameters)),
+		// Extract category from command name or group
+		category := ""
+		if cmd.GroupName != "" {
+			category = cmd.GroupName
+		} else {
+			category = extractCategory(cmd.SimpleName)
 		}
 
-		for _, param := range cmdData.Parameters {
-			cmd.Parameters = append(cmd.Parameters, ParameterMetadata{
+		// Create CommandMetadata
+		command := CommandMetadata{
+			ClassName:        className,
+			SimpleName:       cmd.SimpleName,
+			Description:      cmd.Description,
+			Parameters:       make([]ParameterMetadata, 0, len(cmd.Parameters)),
+			ResponseName:     cmd.ResponseObject,
+			Category:         category,
+			HasAdminVariant:  isAdminVariant,
+			AdminVariantName: baseCommand,
+			IsAsync:          cmd.IsAsync,
+		}
+
+		// Process parameters
+		for _, param := range cmd.Parameters {
+			// Skip parameters that aren't meant to be exposed
+			if !param.Expose || !param.IncludeInApiDoc {
+				continue
+			}
+
+			parameter := ParameterMetadata{
 				Name:        param.Name,
 				FieldName:   param.FieldName,
 				JavaType:    param.JavaType,
 				Description: param.Description,
 				Required:    param.Required,
 				Since:       param.Since,
-			})
+			}
+
+			command.Parameters = append(command.Parameters, parameter)
 		}
 
-		metadata.Commands[className] = cmd
+		metadata.Commands[className] = command
 
-		// Add to category map
-		if category != "" {
-			metadata.Categories[category] = append(metadata.Categories[category], className)
+		// Add command to category map
+		if _, ok := metadata.Categories[category]; !ok {
+			metadata.Categories[category] = make([]string, 0)
 		}
+		metadata.Categories[category] = append(metadata.Categories[category], className)
 	}
 
 	return nil
@@ -168,52 +230,111 @@ func parseCommandMetadata(filePath string, metadata *Metadata) error {
 
 // parseResponseMetadata parses the response metadata JSON file
 func parseResponseMetadata(filePath string, metadata *Metadata) error {
-	data, err := os.ReadFile(filePath)
+	// Read the file
+	rawData, err := os.ReadFile(filePath)
 	if err != nil {
-		return err
+		return fmt.Errorf("error reading response metadata file: %w", err)
 	}
 
-	var responsesMap map[string]json.RawMessage
-	if err := json.Unmarshal(data, &responsesMap); err != nil {
-		return err
+	// Parse the JSON
+	var responseData map[string]struct {
+		ClassName           string `json:"className"`
+		SimpleName          string `json:"simpleName"`
+		ResponseName        string `json:"responseName"`
+		ObjectName          string `json:"objectName"`
+		Description         string `json:"description"`
+		DefaultResponseType string `json:"defaultResponseType"`
+		IsListResponse      bool   `json:"isListResponse"`
+		ListElementTag      string `json:"listElementTag"`
+		ListElementName     string `json:"listElementName"`
+		IncludeInApiDoc     bool   `json:"includeInApiDoc"`
+		Fields              []struct {
+			Name           string                 `json:"name"`
+			FieldName      string                 `json:"fieldName"`
+			Type           string                 `json:"type"`
+			Description    string                 `json:"description"`
+			ResponseObject string                 `json:"responseObject"`
+			Since          string                 `json:"since"`
+			IsDisplay      bool                   `json:"isDisplay"`
+			UsedForSorting bool                   `json:"usedForSorting"`
+			Extras         map[string]interface{} `json:"extras"`
+		} `json:"fields"`
 	}
 
-	for className, rawData := range responsesMap {
-		var respData struct {
-			ClassName  string `json:"className"`
-			SimpleName string `json:"simpleName"`
-			Fields     []struct {
-				Name           string `json:"name"`
-				FieldName      string `json:"fieldName"`
-				JavaType       string `json:"javaType"`
-				Description    string `json:"description"`
-				Since          string `json:"since"`
-				ResponseObject string `json:"responseObject"`
-			} `json:"fields"`
+	if err := json.Unmarshal(rawData, &responseData); err != nil {
+		return fmt.Errorf("error parsing response metadata JSON: %w", err)
+	}
+
+	// Process each response
+	for className, resp := range responseData {
+		// Skip irrelevant responses
+		if !resp.IncludeInApiDoc {
+			continue
 		}
 
-		if err := json.Unmarshal(rawData, &respData); err != nil {
-			return err
+		// Create ResponseMetadata
+		response := ResponseMetadata{
+			ClassName:       className,
+			SimpleName:      resp.SimpleName,
+			Description:     resp.Description,
+			IsListResponse:  resp.IsListResponse,
+			ListElementTag:  resp.ListElementTag,
+			ListElementName: resp.ListElementName,
+			ObjectName:      resp.ObjectName,
+			Fields:          make([]ResponseFieldMetadata, 0, len(resp.Fields)),
 		}
 
-		resp := ResponseMetadata{
-			ClassName:  respData.ClassName,
-			SimpleName: respData.SimpleName,
-			Fields:     make([]ResponseFieldMetadata, 0, len(respData.Fields)),
-		}
+		// Process fields
+		for _, field := range resp.Fields {
+			// Skip internal fields
+			if strings.HasPrefix(field.Name, "_") {
+				continue
+			}
 
-		for _, field := range respData.Fields {
-			resp.Fields = append(resp.Fields, ResponseFieldMetadata{
+			responseField := ResponseFieldMetadata{
 				Name:           field.Name,
 				FieldName:      field.FieldName,
-				JavaType:       field.JavaType,
+				JavaType:       field.Type,
 				Description:    field.Description,
 				Since:          field.Since,
 				ResponseObject: field.ResponseObject,
-			})
+				IsDisplay:      field.IsDisplay,
+			}
+
+			response.Fields = append(response.Fields, responseField)
 		}
 
-		metadata.Responses[className] = resp
+		// If this is a list response, try to determine the actual item type
+		if resp.IsListResponse {
+			// First check if we have ListElementName explicitly defined
+			if resp.ListElementName != "" {
+				response.ItemTypeName = resp.ListElementName
+			} else if resp.ListElementTag != "" {
+				// Try to infer from the list element tag
+				// Convert tag like "virtualmachine" to "VirtualMachine"
+				tagParts := strings.Split(resp.ListElementTag, "_")
+				for i, part := range tagParts {
+					if len(part) > 0 {
+						tagParts[i] = strings.ToUpper(part[:1]) + part[1:]
+					}
+				}
+				response.ItemTypeName = strings.Join(tagParts, "")
+			} else {
+				// As a fallback, try to infer from the response name
+				// E.g., "ListVMsResponse" -> "VM"
+				baseName := strings.TrimSuffix(resp.SimpleName, "Response")
+				if strings.HasPrefix(baseName, "List") {
+					itemName := strings.TrimPrefix(baseName, "List")
+					if strings.HasSuffix(itemName, "s") && len(itemName) > 2 {
+						response.ItemTypeName = itemName[:len(itemName)-1]
+					} else {
+						response.ItemTypeName = itemName
+					}
+				}
+			}
+		}
+
+		metadata.Responses[className] = response
 	}
 
 	return nil
