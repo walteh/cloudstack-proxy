@@ -43,7 +43,7 @@ func (g *ProtoGenerator) generateCategoryProto(category string, commandNames []s
 	}
 
 	// Create the category directory if it doesn't exist
-	categoryDir := filepath.Join(g.RootDir, "proto", "cloudstack", category, "v1")
+	categoryDir := filepath.Join(g.RootDir, "proto", "cloudstack", "management", category, "v1")
 	if err := os.MkdirAll(categoryDir, 0755); err != nil {
 		return fmt.Errorf("error creating directory: %w", err)
 	}
@@ -180,7 +180,7 @@ func (g *ProtoGenerator) writeProtoFile(filePath, serviceName string, commands [
 	// Template for the protobuf file
 	const protoTmpl = `edition = "2023";
 
-package cloudstack.{{ .Category }}.v1;
+package cloudstack.management.{{ .Category }}.v1;
 
 import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";

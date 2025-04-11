@@ -109,7 +109,7 @@ tasks:
           - cmd: |-
                 go run ./cmd/csp-protobuf-generator \
                  --metadata-dir=./gen/cloudstack-metadata \
-                 --output-dir=./tmp/proto
+                 --output-dir=./proto
         sources:
           - gen/cloudstack-metadata/*.json
         generates:
