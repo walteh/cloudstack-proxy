@@ -33,56 +33,56 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// OfferingServiceDeleteServiceOfferingProcedure is the fully-qualified name of the
-	// OfferingService's DeleteServiceOffering RPC.
-	OfferingServiceDeleteServiceOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/DeleteServiceOffering"
-	// OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure is the fully-qualified name of
-	// the OfferingService's IsAccountAllowedToCreateOfferingsWithTags RPC.
-	OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure = "/cloudstack.management.offering.v1.OfferingService/IsAccountAllowedToCreateOfferingsWithTags"
-	// OfferingServiceUpdateDiskOfferingProcedure is the fully-qualified name of the OfferingService's
-	// UpdateDiskOffering RPC.
-	OfferingServiceUpdateDiskOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/UpdateDiskOffering"
-	// OfferingServiceCreateDiskOfferingProcedure is the fully-qualified name of the OfferingService's
-	// CreateDiskOffering RPC.
-	OfferingServiceCreateDiskOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/CreateDiskOffering"
-	// OfferingServiceCreateServiceOfferingProcedure is the fully-qualified name of the
-	// OfferingService's CreateServiceOffering RPC.
-	OfferingServiceCreateServiceOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/CreateServiceOffering"
 	// OfferingServiceListDiskOfferingsProcedure is the fully-qualified name of the OfferingService's
 	// ListDiskOfferings RPC.
 	OfferingServiceListDiskOfferingsProcedure = "/cloudstack.management.offering.v1.OfferingService/ListDiskOfferings"
+	// OfferingServiceCreateDiskOfferingProcedure is the fully-qualified name of the OfferingService's
+	// CreateDiskOffering RPC.
+	OfferingServiceCreateDiskOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/CreateDiskOffering"
 	// OfferingServiceDeleteDiskOfferingProcedure is the fully-qualified name of the OfferingService's
 	// DeleteDiskOffering RPC.
 	OfferingServiceDeleteDiskOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/DeleteDiskOffering"
+	// OfferingServiceDeleteServiceOfferingProcedure is the fully-qualified name of the
+	// OfferingService's DeleteServiceOffering RPC.
+	OfferingServiceDeleteServiceOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/DeleteServiceOffering"
+	// OfferingServiceCreateServiceOfferingProcedure is the fully-qualified name of the
+	// OfferingService's CreateServiceOffering RPC.
+	OfferingServiceCreateServiceOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/CreateServiceOffering"
+	// OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure is the fully-qualified name of
+	// the OfferingService's IsAccountAllowedToCreateOfferingsWithTags RPC.
+	OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure = "/cloudstack.management.offering.v1.OfferingService/IsAccountAllowedToCreateOfferingsWithTags"
 	// OfferingServiceListServiceOfferingsProcedure is the fully-qualified name of the OfferingService's
 	// ListServiceOfferings RPC.
 	OfferingServiceListServiceOfferingsProcedure = "/cloudstack.management.offering.v1.OfferingService/ListServiceOfferings"
 	// OfferingServiceUpdateServiceOfferingProcedure is the fully-qualified name of the
 	// OfferingService's UpdateServiceOffering RPC.
 	OfferingServiceUpdateServiceOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/UpdateServiceOffering"
+	// OfferingServiceUpdateDiskOfferingProcedure is the fully-qualified name of the OfferingService's
+	// UpdateDiskOffering RPC.
+	OfferingServiceUpdateDiskOfferingProcedure = "/cloudstack.management.offering.v1.OfferingService/UpdateDiskOffering"
 )
 
 // OfferingServiceClient is a client for the cloudstack.management.offering.v1.OfferingService
 // service.
 type OfferingServiceClient interface {
-	// DeleteServiceOffering Deletes a service offering.
-	DeleteServiceOffering(context.Context, *connect.Request[v1.DeleteServiceOfferingRequest]) (*connect.Response[v1.DeleteServiceOfferingResponse], error)
-	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
-	IsAccountAllowedToCreateOfferingsWithTags(context.Context, *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error)
-	// UpdateDiskOffering Updates a disk offering.
-	UpdateDiskOffering(context.Context, *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error)
-	// CreateDiskOffering Creates a disk offering.
-	CreateDiskOffering(context.Context, *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error)
-	// CreateServiceOffering Creates a service offering.
-	CreateServiceOffering(context.Context, *connect.Request[v1.CreateServiceOfferingRequest]) (*connect.Response[v1.CreateServiceOfferingResponse], error)
 	// ListDiskOfferings Lists all available disk offerings.
 	ListDiskOfferings(context.Context, *connect.Request[v1.ListDiskOfferingsRequest]) (*connect.Response[v1.ListDiskOfferingsResponse], error)
+	// CreateDiskOffering Creates a disk offering.
+	CreateDiskOffering(context.Context, *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error)
 	// DeleteDiskOffering Updates a disk offering.
 	DeleteDiskOffering(context.Context, *connect.Request[v1.DeleteDiskOfferingRequest]) (*connect.Response[v1.DeleteDiskOfferingResponse], error)
+	// DeleteServiceOffering Deletes a service offering.
+	DeleteServiceOffering(context.Context, *connect.Request[v1.DeleteServiceOfferingRequest]) (*connect.Response[v1.DeleteServiceOfferingResponse], error)
+	// CreateServiceOffering Creates a service offering.
+	CreateServiceOffering(context.Context, *connect.Request[v1.CreateServiceOfferingRequest]) (*connect.Response[v1.CreateServiceOfferingResponse], error)
+	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
+	IsAccountAllowedToCreateOfferingsWithTags(context.Context, *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error)
 	// ListServiceOfferings Lists all available service offerings.
 	ListServiceOfferings(context.Context, *connect.Request[v1.ListServiceOfferingsRequest]) (*connect.Response[v1.ListServiceOfferingsResponse], error)
 	// UpdateServiceOffering Updates a service offering.
 	UpdateServiceOffering(context.Context, *connect.Request[v1.UpdateServiceOfferingRequest]) (*connect.Response[v1.UpdateServiceOfferingResponse], error)
+	// UpdateDiskOffering Updates a disk offering.
+	UpdateDiskOffering(context.Context, *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error)
 }
 
 // NewOfferingServiceClient constructs a client for the
@@ -97,22 +97,10 @@ func NewOfferingServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	offeringServiceMethods := v1.File_cloudstack_management_offering_v1_offering_gen_proto.Services().ByName("OfferingService").Methods()
 	return &offeringServiceClient{
-		deleteServiceOffering: connect.NewClient[v1.DeleteServiceOfferingRequest, v1.DeleteServiceOfferingResponse](
+		listDiskOfferings: connect.NewClient[v1.ListDiskOfferingsRequest, v1.ListDiskOfferingsResponse](
 			httpClient,
-			baseURL+OfferingServiceDeleteServiceOfferingProcedure,
-			connect.WithSchema(offeringServiceMethods.ByName("DeleteServiceOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		isAccountAllowedToCreateOfferingsWithTags: connect.NewClient[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest, v1.IsAccountAllowedToCreateOfferingsWithTagsResponse](
-			httpClient,
-			baseURL+OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure,
-			connect.WithSchema(offeringServiceMethods.ByName("IsAccountAllowedToCreateOfferingsWithTags")),
-			connect.WithClientOptions(opts...),
-		),
-		updateDiskOffering: connect.NewClient[v1.UpdateDiskOfferingRequest, v1.UpdateDiskOfferingResponse](
-			httpClient,
-			baseURL+OfferingServiceUpdateDiskOfferingProcedure,
-			connect.WithSchema(offeringServiceMethods.ByName("UpdateDiskOffering")),
+			baseURL+OfferingServiceListDiskOfferingsProcedure,
+			connect.WithSchema(offeringServiceMethods.ByName("ListDiskOfferings")),
 			connect.WithClientOptions(opts...),
 		),
 		createDiskOffering: connect.NewClient[v1.CreateDiskOfferingRequest, v1.CreateDiskOfferingResponse](
@@ -121,22 +109,28 @@ func NewOfferingServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(offeringServiceMethods.ByName("CreateDiskOffering")),
 			connect.WithClientOptions(opts...),
 		),
+		deleteDiskOffering: connect.NewClient[v1.DeleteDiskOfferingRequest, v1.DeleteDiskOfferingResponse](
+			httpClient,
+			baseURL+OfferingServiceDeleteDiskOfferingProcedure,
+			connect.WithSchema(offeringServiceMethods.ByName("DeleteDiskOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteServiceOffering: connect.NewClient[v1.DeleteServiceOfferingRequest, v1.DeleteServiceOfferingResponse](
+			httpClient,
+			baseURL+OfferingServiceDeleteServiceOfferingProcedure,
+			connect.WithSchema(offeringServiceMethods.ByName("DeleteServiceOffering")),
+			connect.WithClientOptions(opts...),
+		),
 		createServiceOffering: connect.NewClient[v1.CreateServiceOfferingRequest, v1.CreateServiceOfferingResponse](
 			httpClient,
 			baseURL+OfferingServiceCreateServiceOfferingProcedure,
 			connect.WithSchema(offeringServiceMethods.ByName("CreateServiceOffering")),
 			connect.WithClientOptions(opts...),
 		),
-		listDiskOfferings: connect.NewClient[v1.ListDiskOfferingsRequest, v1.ListDiskOfferingsResponse](
+		isAccountAllowedToCreateOfferingsWithTags: connect.NewClient[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest, v1.IsAccountAllowedToCreateOfferingsWithTagsResponse](
 			httpClient,
-			baseURL+OfferingServiceListDiskOfferingsProcedure,
-			connect.WithSchema(offeringServiceMethods.ByName("ListDiskOfferings")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteDiskOffering: connect.NewClient[v1.DeleteDiskOfferingRequest, v1.DeleteDiskOfferingResponse](
-			httpClient,
-			baseURL+OfferingServiceDeleteDiskOfferingProcedure,
-			connect.WithSchema(offeringServiceMethods.ByName("DeleteDiskOffering")),
+			baseURL+OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure,
+			connect.WithSchema(offeringServiceMethods.ByName("IsAccountAllowedToCreateOfferingsWithTags")),
 			connect.WithClientOptions(opts...),
 		),
 		listServiceOfferings: connect.NewClient[v1.ListServiceOfferingsRequest, v1.ListServiceOfferingsResponse](
@@ -151,20 +145,41 @@ func NewOfferingServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(offeringServiceMethods.ByName("UpdateServiceOffering")),
 			connect.WithClientOptions(opts...),
 		),
+		updateDiskOffering: connect.NewClient[v1.UpdateDiskOfferingRequest, v1.UpdateDiskOfferingResponse](
+			httpClient,
+			baseURL+OfferingServiceUpdateDiskOfferingProcedure,
+			connect.WithSchema(offeringServiceMethods.ByName("UpdateDiskOffering")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // offeringServiceClient implements OfferingServiceClient.
 type offeringServiceClient struct {
-	deleteServiceOffering                     *connect.Client[v1.DeleteServiceOfferingRequest, v1.DeleteServiceOfferingResponse]
-	isAccountAllowedToCreateOfferingsWithTags *connect.Client[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest, v1.IsAccountAllowedToCreateOfferingsWithTagsResponse]
-	updateDiskOffering                        *connect.Client[v1.UpdateDiskOfferingRequest, v1.UpdateDiskOfferingResponse]
-	createDiskOffering                        *connect.Client[v1.CreateDiskOfferingRequest, v1.CreateDiskOfferingResponse]
-	createServiceOffering                     *connect.Client[v1.CreateServiceOfferingRequest, v1.CreateServiceOfferingResponse]
 	listDiskOfferings                         *connect.Client[v1.ListDiskOfferingsRequest, v1.ListDiskOfferingsResponse]
+	createDiskOffering                        *connect.Client[v1.CreateDiskOfferingRequest, v1.CreateDiskOfferingResponse]
 	deleteDiskOffering                        *connect.Client[v1.DeleteDiskOfferingRequest, v1.DeleteDiskOfferingResponse]
+	deleteServiceOffering                     *connect.Client[v1.DeleteServiceOfferingRequest, v1.DeleteServiceOfferingResponse]
+	createServiceOffering                     *connect.Client[v1.CreateServiceOfferingRequest, v1.CreateServiceOfferingResponse]
+	isAccountAllowedToCreateOfferingsWithTags *connect.Client[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest, v1.IsAccountAllowedToCreateOfferingsWithTagsResponse]
 	listServiceOfferings                      *connect.Client[v1.ListServiceOfferingsRequest, v1.ListServiceOfferingsResponse]
 	updateServiceOffering                     *connect.Client[v1.UpdateServiceOfferingRequest, v1.UpdateServiceOfferingResponse]
+	updateDiskOffering                        *connect.Client[v1.UpdateDiskOfferingRequest, v1.UpdateDiskOfferingResponse]
+}
+
+// ListDiskOfferings calls cloudstack.management.offering.v1.OfferingService.ListDiskOfferings.
+func (c *offeringServiceClient) ListDiskOfferings(ctx context.Context, req *connect.Request[v1.ListDiskOfferingsRequest]) (*connect.Response[v1.ListDiskOfferingsResponse], error) {
+	return c.listDiskOfferings.CallUnary(ctx, req)
+}
+
+// CreateDiskOffering calls cloudstack.management.offering.v1.OfferingService.CreateDiskOffering.
+func (c *offeringServiceClient) CreateDiskOffering(ctx context.Context, req *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error) {
+	return c.createDiskOffering.CallUnary(ctx, req)
+}
+
+// DeleteDiskOffering calls cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering.
+func (c *offeringServiceClient) DeleteDiskOffering(ctx context.Context, req *connect.Request[v1.DeleteDiskOfferingRequest]) (*connect.Response[v1.DeleteDiskOfferingResponse], error) {
+	return c.deleteDiskOffering.CallUnary(ctx, req)
 }
 
 // DeleteServiceOffering calls
@@ -173,36 +188,16 @@ func (c *offeringServiceClient) DeleteServiceOffering(ctx context.Context, req *
 	return c.deleteServiceOffering.CallUnary(ctx, req)
 }
 
-// IsAccountAllowedToCreateOfferingsWithTags calls
-// cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags.
-func (c *offeringServiceClient) IsAccountAllowedToCreateOfferingsWithTags(ctx context.Context, req *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error) {
-	return c.isAccountAllowedToCreateOfferingsWithTags.CallUnary(ctx, req)
-}
-
-// UpdateDiskOffering calls cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering.
-func (c *offeringServiceClient) UpdateDiskOffering(ctx context.Context, req *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error) {
-	return c.updateDiskOffering.CallUnary(ctx, req)
-}
-
-// CreateDiskOffering calls cloudstack.management.offering.v1.OfferingService.CreateDiskOffering.
-func (c *offeringServiceClient) CreateDiskOffering(ctx context.Context, req *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error) {
-	return c.createDiskOffering.CallUnary(ctx, req)
-}
-
 // CreateServiceOffering calls
 // cloudstack.management.offering.v1.OfferingService.CreateServiceOffering.
 func (c *offeringServiceClient) CreateServiceOffering(ctx context.Context, req *connect.Request[v1.CreateServiceOfferingRequest]) (*connect.Response[v1.CreateServiceOfferingResponse], error) {
 	return c.createServiceOffering.CallUnary(ctx, req)
 }
 
-// ListDiskOfferings calls cloudstack.management.offering.v1.OfferingService.ListDiskOfferings.
-func (c *offeringServiceClient) ListDiskOfferings(ctx context.Context, req *connect.Request[v1.ListDiskOfferingsRequest]) (*connect.Response[v1.ListDiskOfferingsResponse], error) {
-	return c.listDiskOfferings.CallUnary(ctx, req)
-}
-
-// DeleteDiskOffering calls cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering.
-func (c *offeringServiceClient) DeleteDiskOffering(ctx context.Context, req *connect.Request[v1.DeleteDiskOfferingRequest]) (*connect.Response[v1.DeleteDiskOfferingResponse], error) {
-	return c.deleteDiskOffering.CallUnary(ctx, req)
+// IsAccountAllowedToCreateOfferingsWithTags calls
+// cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags.
+func (c *offeringServiceClient) IsAccountAllowedToCreateOfferingsWithTags(ctx context.Context, req *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error) {
+	return c.isAccountAllowedToCreateOfferingsWithTags.CallUnary(ctx, req)
 }
 
 // ListServiceOfferings calls
@@ -217,27 +212,32 @@ func (c *offeringServiceClient) UpdateServiceOffering(ctx context.Context, req *
 	return c.updateServiceOffering.CallUnary(ctx, req)
 }
 
+// UpdateDiskOffering calls cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering.
+func (c *offeringServiceClient) UpdateDiskOffering(ctx context.Context, req *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error) {
+	return c.updateDiskOffering.CallUnary(ctx, req)
+}
+
 // OfferingServiceHandler is an implementation of the
 // cloudstack.management.offering.v1.OfferingService service.
 type OfferingServiceHandler interface {
-	// DeleteServiceOffering Deletes a service offering.
-	DeleteServiceOffering(context.Context, *connect.Request[v1.DeleteServiceOfferingRequest]) (*connect.Response[v1.DeleteServiceOfferingResponse], error)
-	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
-	IsAccountAllowedToCreateOfferingsWithTags(context.Context, *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error)
-	// UpdateDiskOffering Updates a disk offering.
-	UpdateDiskOffering(context.Context, *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error)
-	// CreateDiskOffering Creates a disk offering.
-	CreateDiskOffering(context.Context, *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error)
-	// CreateServiceOffering Creates a service offering.
-	CreateServiceOffering(context.Context, *connect.Request[v1.CreateServiceOfferingRequest]) (*connect.Response[v1.CreateServiceOfferingResponse], error)
 	// ListDiskOfferings Lists all available disk offerings.
 	ListDiskOfferings(context.Context, *connect.Request[v1.ListDiskOfferingsRequest]) (*connect.Response[v1.ListDiskOfferingsResponse], error)
+	// CreateDiskOffering Creates a disk offering.
+	CreateDiskOffering(context.Context, *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error)
 	// DeleteDiskOffering Updates a disk offering.
 	DeleteDiskOffering(context.Context, *connect.Request[v1.DeleteDiskOfferingRequest]) (*connect.Response[v1.DeleteDiskOfferingResponse], error)
+	// DeleteServiceOffering Deletes a service offering.
+	DeleteServiceOffering(context.Context, *connect.Request[v1.DeleteServiceOfferingRequest]) (*connect.Response[v1.DeleteServiceOfferingResponse], error)
+	// CreateServiceOffering Creates a service offering.
+	CreateServiceOffering(context.Context, *connect.Request[v1.CreateServiceOfferingRequest]) (*connect.Response[v1.CreateServiceOfferingResponse], error)
+	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
+	IsAccountAllowedToCreateOfferingsWithTags(context.Context, *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error)
 	// ListServiceOfferings Lists all available service offerings.
 	ListServiceOfferings(context.Context, *connect.Request[v1.ListServiceOfferingsRequest]) (*connect.Response[v1.ListServiceOfferingsResponse], error)
 	// UpdateServiceOffering Updates a service offering.
 	UpdateServiceOffering(context.Context, *connect.Request[v1.UpdateServiceOfferingRequest]) (*connect.Response[v1.UpdateServiceOfferingResponse], error)
+	// UpdateDiskOffering Updates a disk offering.
+	UpdateDiskOffering(context.Context, *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error)
 }
 
 // NewOfferingServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -247,22 +247,10 @@ type OfferingServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewOfferingServiceHandler(svc OfferingServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	offeringServiceMethods := v1.File_cloudstack_management_offering_v1_offering_gen_proto.Services().ByName("OfferingService").Methods()
-	offeringServiceDeleteServiceOfferingHandler := connect.NewUnaryHandler(
-		OfferingServiceDeleteServiceOfferingProcedure,
-		svc.DeleteServiceOffering,
-		connect.WithSchema(offeringServiceMethods.ByName("DeleteServiceOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	offeringServiceIsAccountAllowedToCreateOfferingsWithTagsHandler := connect.NewUnaryHandler(
-		OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure,
-		svc.IsAccountAllowedToCreateOfferingsWithTags,
-		connect.WithSchema(offeringServiceMethods.ByName("IsAccountAllowedToCreateOfferingsWithTags")),
-		connect.WithHandlerOptions(opts...),
-	)
-	offeringServiceUpdateDiskOfferingHandler := connect.NewUnaryHandler(
-		OfferingServiceUpdateDiskOfferingProcedure,
-		svc.UpdateDiskOffering,
-		connect.WithSchema(offeringServiceMethods.ByName("UpdateDiskOffering")),
+	offeringServiceListDiskOfferingsHandler := connect.NewUnaryHandler(
+		OfferingServiceListDiskOfferingsProcedure,
+		svc.ListDiskOfferings,
+		connect.WithSchema(offeringServiceMethods.ByName("ListDiskOfferings")),
 		connect.WithHandlerOptions(opts...),
 	)
 	offeringServiceCreateDiskOfferingHandler := connect.NewUnaryHandler(
@@ -271,22 +259,28 @@ func NewOfferingServiceHandler(svc OfferingServiceHandler, opts ...connect.Handl
 		connect.WithSchema(offeringServiceMethods.ByName("CreateDiskOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
+	offeringServiceDeleteDiskOfferingHandler := connect.NewUnaryHandler(
+		OfferingServiceDeleteDiskOfferingProcedure,
+		svc.DeleteDiskOffering,
+		connect.WithSchema(offeringServiceMethods.ByName("DeleteDiskOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	offeringServiceDeleteServiceOfferingHandler := connect.NewUnaryHandler(
+		OfferingServiceDeleteServiceOfferingProcedure,
+		svc.DeleteServiceOffering,
+		connect.WithSchema(offeringServiceMethods.ByName("DeleteServiceOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
 	offeringServiceCreateServiceOfferingHandler := connect.NewUnaryHandler(
 		OfferingServiceCreateServiceOfferingProcedure,
 		svc.CreateServiceOffering,
 		connect.WithSchema(offeringServiceMethods.ByName("CreateServiceOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
-	offeringServiceListDiskOfferingsHandler := connect.NewUnaryHandler(
-		OfferingServiceListDiskOfferingsProcedure,
-		svc.ListDiskOfferings,
-		connect.WithSchema(offeringServiceMethods.ByName("ListDiskOfferings")),
-		connect.WithHandlerOptions(opts...),
-	)
-	offeringServiceDeleteDiskOfferingHandler := connect.NewUnaryHandler(
-		OfferingServiceDeleteDiskOfferingProcedure,
-		svc.DeleteDiskOffering,
-		connect.WithSchema(offeringServiceMethods.ByName("DeleteDiskOffering")),
+	offeringServiceIsAccountAllowedToCreateOfferingsWithTagsHandler := connect.NewUnaryHandler(
+		OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure,
+		svc.IsAccountAllowedToCreateOfferingsWithTags,
+		connect.WithSchema(offeringServiceMethods.ByName("IsAccountAllowedToCreateOfferingsWithTags")),
 		connect.WithHandlerOptions(opts...),
 	)
 	offeringServiceListServiceOfferingsHandler := connect.NewUnaryHandler(
@@ -301,26 +295,32 @@ func NewOfferingServiceHandler(svc OfferingServiceHandler, opts ...connect.Handl
 		connect.WithSchema(offeringServiceMethods.ByName("UpdateServiceOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
+	offeringServiceUpdateDiskOfferingHandler := connect.NewUnaryHandler(
+		OfferingServiceUpdateDiskOfferingProcedure,
+		svc.UpdateDiskOffering,
+		connect.WithSchema(offeringServiceMethods.ByName("UpdateDiskOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.offering.v1.OfferingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case OfferingServiceDeleteServiceOfferingProcedure:
-			offeringServiceDeleteServiceOfferingHandler.ServeHTTP(w, r)
-		case OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure:
-			offeringServiceIsAccountAllowedToCreateOfferingsWithTagsHandler.ServeHTTP(w, r)
-		case OfferingServiceUpdateDiskOfferingProcedure:
-			offeringServiceUpdateDiskOfferingHandler.ServeHTTP(w, r)
-		case OfferingServiceCreateDiskOfferingProcedure:
-			offeringServiceCreateDiskOfferingHandler.ServeHTTP(w, r)
-		case OfferingServiceCreateServiceOfferingProcedure:
-			offeringServiceCreateServiceOfferingHandler.ServeHTTP(w, r)
 		case OfferingServiceListDiskOfferingsProcedure:
 			offeringServiceListDiskOfferingsHandler.ServeHTTP(w, r)
+		case OfferingServiceCreateDiskOfferingProcedure:
+			offeringServiceCreateDiskOfferingHandler.ServeHTTP(w, r)
 		case OfferingServiceDeleteDiskOfferingProcedure:
 			offeringServiceDeleteDiskOfferingHandler.ServeHTTP(w, r)
+		case OfferingServiceDeleteServiceOfferingProcedure:
+			offeringServiceDeleteServiceOfferingHandler.ServeHTTP(w, r)
+		case OfferingServiceCreateServiceOfferingProcedure:
+			offeringServiceCreateServiceOfferingHandler.ServeHTTP(w, r)
+		case OfferingServiceIsAccountAllowedToCreateOfferingsWithTagsProcedure:
+			offeringServiceIsAccountAllowedToCreateOfferingsWithTagsHandler.ServeHTTP(w, r)
 		case OfferingServiceListServiceOfferingsProcedure:
 			offeringServiceListServiceOfferingsHandler.ServeHTTP(w, r)
 		case OfferingServiceUpdateServiceOfferingProcedure:
 			offeringServiceUpdateServiceOfferingHandler.ServeHTTP(w, r)
+		case OfferingServiceUpdateDiskOfferingProcedure:
+			offeringServiceUpdateDiskOfferingHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -330,32 +330,28 @@ func NewOfferingServiceHandler(svc OfferingServiceHandler, opts ...connect.Handl
 // UnimplementedOfferingServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedOfferingServiceHandler struct{}
 
-func (UnimplementedOfferingServiceHandler) DeleteServiceOffering(context.Context, *connect.Request[v1.DeleteServiceOfferingRequest]) (*connect.Response[v1.DeleteServiceOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.DeleteServiceOffering is not implemented"))
-}
-
-func (UnimplementedOfferingServiceHandler) IsAccountAllowedToCreateOfferingsWithTags(context.Context, *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags is not implemented"))
-}
-
-func (UnimplementedOfferingServiceHandler) UpdateDiskOffering(context.Context, *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering is not implemented"))
+func (UnimplementedOfferingServiceHandler) ListDiskOfferings(context.Context, *connect.Request[v1.ListDiskOfferingsRequest]) (*connect.Response[v1.ListDiskOfferingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.ListDiskOfferings is not implemented"))
 }
 
 func (UnimplementedOfferingServiceHandler) CreateDiskOffering(context.Context, *connect.Request[v1.CreateDiskOfferingRequest]) (*connect.Response[v1.CreateDiskOfferingResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.CreateDiskOffering is not implemented"))
 }
 
+func (UnimplementedOfferingServiceHandler) DeleteDiskOffering(context.Context, *connect.Request[v1.DeleteDiskOfferingRequest]) (*connect.Response[v1.DeleteDiskOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering is not implemented"))
+}
+
+func (UnimplementedOfferingServiceHandler) DeleteServiceOffering(context.Context, *connect.Request[v1.DeleteServiceOfferingRequest]) (*connect.Response[v1.DeleteServiceOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.DeleteServiceOffering is not implemented"))
+}
+
 func (UnimplementedOfferingServiceHandler) CreateServiceOffering(context.Context, *connect.Request[v1.CreateServiceOfferingRequest]) (*connect.Response[v1.CreateServiceOfferingResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.CreateServiceOffering is not implemented"))
 }
 
-func (UnimplementedOfferingServiceHandler) ListDiskOfferings(context.Context, *connect.Request[v1.ListDiskOfferingsRequest]) (*connect.Response[v1.ListDiskOfferingsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.ListDiskOfferings is not implemented"))
-}
-
-func (UnimplementedOfferingServiceHandler) DeleteDiskOffering(context.Context, *connect.Request[v1.DeleteDiskOfferingRequest]) (*connect.Response[v1.DeleteDiskOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering is not implemented"))
+func (UnimplementedOfferingServiceHandler) IsAccountAllowedToCreateOfferingsWithTags(context.Context, *connect.Request[v1.IsAccountAllowedToCreateOfferingsWithTagsRequest]) (*connect.Response[v1.IsAccountAllowedToCreateOfferingsWithTagsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags is not implemented"))
 }
 
 func (UnimplementedOfferingServiceHandler) ListServiceOfferings(context.Context, *connect.Request[v1.ListServiceOfferingsRequest]) (*connect.Response[v1.ListServiceOfferingsResponse], error) {
@@ -364,4 +360,8 @@ func (UnimplementedOfferingServiceHandler) ListServiceOfferings(context.Context,
 
 func (UnimplementedOfferingServiceHandler) UpdateServiceOffering(context.Context, *connect.Request[v1.UpdateServiceOfferingRequest]) (*connect.Response[v1.UpdateServiceOfferingResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.UpdateServiceOffering is not implemented"))
+}
+
+func (UnimplementedOfferingServiceHandler) UpdateDiskOffering(context.Context, *connect.Request[v1.UpdateDiskOfferingRequest]) (*connect.Response[v1.UpdateDiskOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering is not implemented"))
 }

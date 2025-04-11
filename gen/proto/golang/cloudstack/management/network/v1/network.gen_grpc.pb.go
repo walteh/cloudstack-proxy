@@ -20,69 +20,68 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	NetworkService_DedicateIpv4SubnetForZone_FullMethodName         = "/cloudstack.management.network.v1.NetworkService/DedicateIpv4SubnetForZone"
-	NetworkService_ListNetworkOfferings_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/ListNetworkOfferings"
-	NetworkService_ResetNetworkPermissions_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/ResetNetworkPermissions"
-	NetworkService_UpdateNetworkACLItem_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLItem"
-	NetworkService_DeleteNetworkACL_FullMethodName                  = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACL"
-	NetworkService_RestartNetwork_FullMethodName                    = "/cloudstack.management.network.v1.NetworkService/RestartNetwork"
-	NetworkService_CreateIpv4SubnetForZone_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/CreateIpv4SubnetForZone"
-	NetworkService_AddNetworkDevice_FullMethodName                  = "/cloudstack.management.network.v1.NetworkService/AddNetworkDevice"
-	NetworkService_UpdateNetworkACLList_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLList"
-	NetworkService_CreateNetworkACL_FullMethodName                  = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACL"
-	NetworkService_UpdatePodManagementNetworkIpRange_FullMethodName = "/cloudstack.management.network.v1.NetworkService/UpdatePodManagementNetworkIpRange"
-	NetworkService_ListGuestNetworkIpv6Prefixes_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/ListGuestNetworkIpv6Prefixes"
-	NetworkService_UpdateNetworkCmdByAdmin_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkCmdByAdmin"
-	NetworkService_CreateGuestNetworkIpv6Prefix_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/CreateGuestNetworkIpv6Prefix"
-	NetworkService_ListStorageNetworkIpRange_FullMethodName         = "/cloudstack.management.network.v1.NetworkService/ListStorageNetworkIpRange"
-	NetworkService_ListPhysicalNetworks_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/ListPhysicalNetworks"
-	NetworkService_UpdateNetwork_FullMethodName                     = "/cloudstack.management.network.v1.NetworkService/UpdateNetwork"
-	NetworkService_CreateNetworkPermissions_FullMethodName          = "/cloudstack.management.network.v1.NetworkService/CreateNetworkPermissions"
-	NetworkService_DeleteIpv4SubnetForGuestNetwork_FullMethodName   = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForGuestNetwork"
-	NetworkService_ReplaceNetworkACLList_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/ReplaceNetworkACLList"
-	NetworkService_DeletePhysicalNetwork_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/DeletePhysicalNetwork"
-	NetworkService_ListNetworkDevice_FullMethodName                 = "/cloudstack.management.network.v1.NetworkService/ListNetworkDevice"
-	NetworkService_RemoveNetworkPermissions_FullMethodName          = "/cloudstack.management.network.v1.NetworkService/RemoveNetworkPermissions"
-	NetworkService_ReleaseDedicatedIpv4SubnetForZone_FullMethodName = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedIpv4SubnetForZone"
-	NetworkService_ListNetworkACLLists_FullMethodName               = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLLists"
 	NetworkService_DeleteManagementNetworkIpRange_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/DeleteManagementNetworkIpRange"
-	NetworkService_DeleteGuestNetworkIpv6Prefix_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/DeleteGuestNetworkIpv6Prefix"
-	NetworkService_MigrateNetwork_FullMethodName                    = "/cloudstack.management.network.v1.NetworkService/MigrateNetwork"
+	NetworkService_ListDedicatedGuestVlanRanges_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/ListDedicatedGuestVlanRanges"
+	NetworkService_DeleteIpv4SubnetForZone_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForZone"
+	NetworkService_DeleteNetworkACLList_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACLList"
+	NetworkService_ReleaseDedicatedGuestVlanRange_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedGuestVlanRange"
+	NetworkService_DeletePhysicalNetwork_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/DeletePhysicalNetwork"
+	NetworkService_UpdateIpv4SubnetForZone_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/UpdateIpv4SubnetForZone"
+	NetworkService_ListNetworkIsolationMethods_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/ListNetworkIsolationMethods"
+	NetworkService_CreatePhysicalNetwork_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/CreatePhysicalNetwork"
+	NetworkService_ListNetworkProtocols_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/ListNetworkProtocols"
+	NetworkService_CreateNetworkACLList_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACLList"
 	NetworkService_DedicateGuestVlanRange_FullMethodName            = "/cloudstack.management.network.v1.NetworkService/DedicateGuestVlanRange"
-	NetworkService_UpdateStorageNetworkIpRange_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/UpdateStorageNetworkIpRange"
-	NetworkService_DeleteNetworkServiceProvider_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkServiceProvider"
-	NetworkService_MigrateVPC_FullMethodName                        = "/cloudstack.management.network.v1.NetworkService/MigrateVPC"
-	NetworkService_ListNetworkServiceProviders_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/ListNetworkServiceProviders"
-	NetworkService_ListIpv4SubnetsForZone_FullMethodName            = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForZone"
+	NetworkService_DeleteNetworkACL_FullMethodName                  = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACL"
+	NetworkService_UpdateNetworkCmdByAdmin_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkCmdByAdmin"
+	NetworkService_ListStorageNetworkIpRange_FullMethodName         = "/cloudstack.management.network.v1.NetworkService/ListStorageNetworkIpRange"
+	NetworkService_MigrateNetwork_FullMethodName                    = "/cloudstack.management.network.v1.NetworkService/MigrateNetwork"
+	NetworkService_UpdatePodManagementNetworkIpRange_FullMethodName = "/cloudstack.management.network.v1.NetworkService/UpdatePodManagementNetworkIpRange"
+	NetworkService_ReleaseDedicatedIpv4SubnetForZone_FullMethodName = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedIpv4SubnetForZone"
+	NetworkService_AddNetworkDevice_FullMethodName                  = "/cloudstack.management.network.v1.NetworkService/AddNetworkDevice"
+	NetworkService_DeleteNetworkOffering_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkOffering"
+	NetworkService_UpdatePhysicalNetwork_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/UpdatePhysicalNetwork"
+	NetworkService_CreateManagementNetworkIpRange_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/CreateManagementNetworkIpRange"
 	NetworkService_DeleteNetwork_FullMethodName                     = "/cloudstack.management.network.v1.NetworkService/DeleteNetwork"
+	NetworkService_ListNetworkServiceProviders_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/ListNetworkServiceProviders"
+	NetworkService_CreateNetworkACL_FullMethodName                  = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACL"
+	NetworkService_ListSupportedNetworkServices_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/ListSupportedNetworkServices"
+	NetworkService_ListNetworkACLLists_FullMethodName               = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLLists"
+	NetworkService_ListIpv4SubnetsForZone_FullMethodName            = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForZone"
+	NetworkService_ListNetworkDevice_FullMethodName                 = "/cloudstack.management.network.v1.NetworkService/ListNetworkDevice"
+	NetworkService_ListNetworkACLs_FullMethodName                   = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLs"
+	NetworkService_UpdateNetworkACLList_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLList"
+	NetworkService_CreateGuestNetworkIpv6Prefix_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/CreateGuestNetworkIpv6Prefix"
+	NetworkService_DeleteStorageNetworkIpRange_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/DeleteStorageNetworkIpRange"
+	NetworkService_ListNetworkPermissions_FullMethodName            = "/cloudstack.management.network.v1.NetworkService/ListNetworkPermissions"
+	NetworkService_ListGuestNetworkIpv6Prefixes_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/ListGuestNetworkIpv6Prefixes"
+	NetworkService_MoveNetworkAclItem_FullMethodName                = "/cloudstack.management.network.v1.NetworkService/MoveNetworkAclItem"
+	NetworkService_AddNetworkServiceProvider_FullMethodName         = "/cloudstack.management.network.v1.NetworkService/AddNetworkServiceProvider"
+	NetworkService_DeleteIpv4SubnetForGuestNetwork_FullMethodName   = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForGuestNetwork"
+	NetworkService_RemoveNetworkPermissions_FullMethodName          = "/cloudstack.management.network.v1.NetworkService/RemoveNetworkPermissions"
+	NetworkService_CreateNetworkOffering_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/CreateNetworkOffering"
+	NetworkService_UpdateNetworkACLItem_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLItem"
+	NetworkService_CreateNetwork_FullMethodName                     = "/cloudstack.management.network.v1.NetworkService/CreateNetwork"
+	NetworkService_DeleteNetworkServiceProvider_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkServiceProvider"
 	NetworkService_UpdateNetworkOffering_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkOffering"
 	NetworkService_CreateIpv4SubnetForGuestNetwork_FullMethodName   = "/cloudstack.management.network.v1.NetworkService/CreateIpv4SubnetForGuestNetwork"
-	NetworkService_ListNetworkIsolationMethods_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/ListNetworkIsolationMethods"
-	NetworkService_AddNetworkServiceProvider_FullMethodName         = "/cloudstack.management.network.v1.NetworkService/AddNetworkServiceProvider"
-	NetworkService_ListNetworks_FullMethodName                      = "/cloudstack.management.network.v1.NetworkService/ListNetworks"
-	NetworkService_ListNetworkACLs_FullMethodName                   = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLs"
-	NetworkService_CreateManagementNetworkIpRange_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/CreateManagementNetworkIpRange"
-	NetworkService_ListSupportedNetworkServices_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/ListSupportedNetworkServices"
-	NetworkService_UpdatePhysicalNetwork_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/UpdatePhysicalNetwork"
-	NetworkService_CreateNetworkACLList_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACLList"
-	NetworkService_CreateNetworkCmdByAdmin_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/CreateNetworkCmdByAdmin"
-	NetworkService_DeleteStorageNetworkIpRange_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/DeleteStorageNetworkIpRange"
-	NetworkService_DeleteIpv4SubnetForZone_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForZone"
-	NetworkService_ListNetworkPermissions_FullMethodName            = "/cloudstack.management.network.v1.NetworkService/ListNetworkPermissions"
-	NetworkService_ListDedicatedGuestVlanRanges_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/ListDedicatedGuestVlanRanges"
-	NetworkService_DeleteNetworkACLList_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACLList"
-	NetworkService_DeleteNetworkOffering_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkOffering"
-	NetworkService_MoveNetworkAclItem_FullMethodName                = "/cloudstack.management.network.v1.NetworkService/MoveNetworkAclItem"
-	NetworkService_ListGuestVlans_FullMethodName                    = "/cloudstack.management.network.v1.NetworkService/ListGuestVlans"
-	NetworkService_UpdateIpv4SubnetForZone_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/UpdateIpv4SubnetForZone"
-	NetworkService_CreatePhysicalNetwork_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/CreatePhysicalNetwork"
-	NetworkService_CreateNetworkOffering_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/CreateNetworkOffering"
-	NetworkService_UpdateNetworkServiceProvider_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkServiceProvider"
-	NetworkService_CreateStorageNetworkIpRange_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/CreateStorageNetworkIpRange"
-	NetworkService_ListIpv4SubnetsForGuestNetwork_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForGuestNetwork"
+	NetworkService_ResetNetworkPermissions_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/ResetNetworkPermissions"
 	NetworkService_DeleteNetworkDevice_FullMethodName               = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkDevice"
-	NetworkService_CreateNetwork_FullMethodName                     = "/cloudstack.management.network.v1.NetworkService/CreateNetwork"
-	NetworkService_ReleaseDedicatedGuestVlanRange_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedGuestVlanRange"
-	NetworkService_ListNetworkProtocols_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/ListNetworkProtocols"
+	NetworkService_ListNetworkOfferings_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/ListNetworkOfferings"
+	NetworkService_RestartNetwork_FullMethodName                    = "/cloudstack.management.network.v1.NetworkService/RestartNetwork"
+	NetworkService_DeleteGuestNetworkIpv6Prefix_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/DeleteGuestNetworkIpv6Prefix"
+	NetworkService_CreateIpv4SubnetForZone_FullMethodName           = "/cloudstack.management.network.v1.NetworkService/CreateIpv4SubnetForZone"
+	NetworkService_UpdateStorageNetworkIpRange_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/UpdateStorageNetworkIpRange"
+	NetworkService_ListNetworks_FullMethodName                      = "/cloudstack.management.network.v1.NetworkService/ListNetworks"
+	NetworkService_ReplaceNetworkACLList_FullMethodName             = "/cloudstack.management.network.v1.NetworkService/ReplaceNetworkACLList"
+	NetworkService_CreateNetworkPermissions_FullMethodName          = "/cloudstack.management.network.v1.NetworkService/CreateNetworkPermissions"
+	NetworkService_ListGuestVlans_FullMethodName                    = "/cloudstack.management.network.v1.NetworkService/ListGuestVlans"
+	NetworkService_CreateStorageNetworkIpRange_FullMethodName       = "/cloudstack.management.network.v1.NetworkService/CreateStorageNetworkIpRange"
+	NetworkService_UpdateNetwork_FullMethodName                     = "/cloudstack.management.network.v1.NetworkService/UpdateNetwork"
+	NetworkService_MigrateVPC_FullMethodName                        = "/cloudstack.management.network.v1.NetworkService/MigrateVPC"
+	NetworkService_ListPhysicalNetworks_FullMethodName              = "/cloudstack.management.network.v1.NetworkService/ListPhysicalNetworks"
+	NetworkService_ListIpv4SubnetsForGuestNetwork_FullMethodName    = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForGuestNetwork"
+	NetworkService_UpdateNetworkServiceProvider_FullMethodName      = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkServiceProvider"
 )
 
 // NetworkServiceClient is the client API for NetworkService service.
@@ -93,132 +92,130 @@ const (
 type NetworkServiceClient interface {
 	// DedicateIpv4SubnetForZone Dedicates an existing IPv4 subnet for a zone to an account or a domain.
 	DedicateIpv4SubnetForZone(ctx context.Context, in *DedicateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*DedicateIpv4SubnetForZoneResponse, error)
-	// ListNetworkOfferings Lists all available network offerings.
-	ListNetworkOfferings(ctx context.Context, in *ListNetworkOfferingsRequest, opts ...grpc.CallOption) (*ListNetworkOfferingsResponse, error)
-	// ResetNetworkPermissions Resets network permissions.
-	ResetNetworkPermissions(ctx context.Context, in *ResetNetworkPermissionsRequest, opts ...grpc.CallOption) (*ResetNetworkPermissionsResponse, error)
-	// UpdateNetworkACLItem Updates ACL item with specified ID
-	UpdateNetworkACLItem(ctx context.Context, in *UpdateNetworkACLItemRequest, opts ...grpc.CallOption) (*UpdateNetworkACLItemResponse, error)
-	// DeleteNetworkACL Deletes a network ACL
-	DeleteNetworkACL(ctx context.Context, in *DeleteNetworkACLRequest, opts ...grpc.CallOption) (*DeleteNetworkACLResponse, error)
-	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
-	RestartNetwork(ctx context.Context, in *RestartNetworkRequest, opts ...grpc.CallOption) (*RestartNetworkResponse, error)
-	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
-	CreateIpv4SubnetForZone(ctx context.Context, in *CreateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*CreateIpv4SubnetForZoneResponse, error)
-	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
-	AddNetworkDevice(ctx context.Context, in *AddNetworkDeviceRequest, opts ...grpc.CallOption) (*AddNetworkDeviceResponse, error)
-	// UpdateNetworkACLList Updates network ACL list
-	UpdateNetworkACLList(ctx context.Context, in *UpdateNetworkACLListRequest, opts ...grpc.CallOption) (*UpdateNetworkACLListResponse, error)
-	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
-	CreateNetworkACL(ctx context.Context, in *CreateNetworkACLRequest, opts ...grpc.CallOption) (*CreateNetworkACLResponse, error)
-	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
-	UpdatePodManagementNetworkIpRange(ctx context.Context, in *UpdatePodManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdatePodManagementNetworkIpRangeResponse, error)
-	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
-	ListGuestNetworkIpv6Prefixes(ctx context.Context, in *ListGuestNetworkIpv6PrefixesRequest, opts ...grpc.CallOption) (*ListGuestNetworkIpv6PrefixesResponse, error)
-	// UpdateNetworkCmdByAdmin Updates a network
-	UpdateNetworkCmdByAdmin(ctx context.Context, in *UpdateNetworkCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateNetworkCmdByAdminResponse, error)
-	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
-	CreateGuestNetworkIpv6Prefix(ctx context.Context, in *CreateGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*CreateGuestNetworkIpv6PrefixResponse, error)
-	// ListStorageNetworkIpRange List a storage network IP range.
-	ListStorageNetworkIpRange(ctx context.Context, in *ListStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*ListStorageNetworkIpRangeResponse, error)
-	// ListPhysicalNetworks Lists physical networks
-	ListPhysicalNetworks(ctx context.Context, in *ListPhysicalNetworksRequest, opts ...grpc.CallOption) (*ListPhysicalNetworksResponse, error)
-	// UpdateNetwork Updates a network
-	UpdateNetwork(ctx context.Context, in *UpdateNetworkRequest, opts ...grpc.CallOption) (*UpdateNetworkResponse, error)
-	// CreateNetworkPermissions Updates network permissions.
-	CreateNetworkPermissions(ctx context.Context, in *CreateNetworkPermissionsRequest, opts ...grpc.CallOption) (*CreateNetworkPermissionsResponse, error)
-	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
-	DeleteIpv4SubnetForGuestNetwork(ctx context.Context, in *DeleteIpv4SubnetForGuestNetworkRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForGuestNetworkResponse, error)
-	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
-	ReplaceNetworkACLList(ctx context.Context, in *ReplaceNetworkACLListRequest, opts ...grpc.CallOption) (*ReplaceNetworkACLListResponse, error)
-	// DeletePhysicalNetwork Deletes a Physical Network.
-	DeletePhysicalNetwork(ctx context.Context, in *DeletePhysicalNetworkRequest, opts ...grpc.CallOption) (*DeletePhysicalNetworkResponse, error)
-	// ListNetworkDevice List network devices
-	ListNetworkDevice(ctx context.Context, in *ListNetworkDeviceRequest, opts ...grpc.CallOption) (*ListNetworkDeviceResponse, error)
-	// RemoveNetworkPermissions Removes network permissions.
-	RemoveNetworkPermissions(ctx context.Context, in *RemoveNetworkPermissionsRequest, opts ...grpc.CallOption) (*RemoveNetworkPermissionsResponse, error)
-	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
-	ReleaseDedicatedIpv4SubnetForZone(ctx context.Context, in *ReleaseDedicatedIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error)
-	// ListNetworkACLLists Lists all network ACLs
-	ListNetworkACLLists(ctx context.Context, in *ListNetworkACLListsRequest, opts ...grpc.CallOption) (*ListNetworkACLListsResponse, error)
 	// DeleteManagementNetworkIpRange Deletes a management network IP range. This action is only allowed when no IPs in this range are allocated.
 	DeleteManagementNetworkIpRange(ctx context.Context, in *DeleteManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteManagementNetworkIpRangeResponse, error)
-	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
-	DeleteGuestNetworkIpv6Prefix(ctx context.Context, in *DeleteGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*DeleteGuestNetworkIpv6PrefixResponse, error)
-	// MigrateNetwork moves a network to another physical network
-	MigrateNetwork(ctx context.Context, in *MigrateNetworkRequest, opts ...grpc.CallOption) (*MigrateNetworkResponse, error)
+	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
+	ListDedicatedGuestVlanRanges(ctx context.Context, in *ListDedicatedGuestVlanRangesRequest, opts ...grpc.CallOption) (*ListDedicatedGuestVlanRangesResponse, error)
+	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
+	DeleteIpv4SubnetForZone(ctx context.Context, in *DeleteIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForZoneResponse, error)
+	// DeleteNetworkACLList Deletes a network ACL
+	DeleteNetworkACLList(ctx context.Context, in *DeleteNetworkACLListRequest, opts ...grpc.CallOption) (*DeleteNetworkACLListResponse, error)
+	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
+	ReleaseDedicatedGuestVlanRange(ctx context.Context, in *ReleaseDedicatedGuestVlanRangeRequest, opts ...grpc.CallOption) (*ReleaseDedicatedGuestVlanRangeResponse, error)
+	// DeletePhysicalNetwork Deletes a Physical Network.
+	DeletePhysicalNetwork(ctx context.Context, in *DeletePhysicalNetworkRequest, opts ...grpc.CallOption) (*DeletePhysicalNetworkResponse, error)
+	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
+	UpdateIpv4SubnetForZone(ctx context.Context, in *UpdateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*UpdateIpv4SubnetForZoneResponse, error)
+	// ListNetworkIsolationMethods Lists supported methods of network isolation
+	ListNetworkIsolationMethods(ctx context.Context, in *ListNetworkIsolationMethodsRequest, opts ...grpc.CallOption) (*ListNetworkIsolationMethodsResponse, error)
+	// CreatePhysicalNetwork Creates a physical network
+	CreatePhysicalNetwork(ctx context.Context, in *CreatePhysicalNetworkRequest, opts ...grpc.CallOption) (*CreatePhysicalNetworkResponse, error)
+	// ListNetworkProtocols Lists details of network protocols
+	ListNetworkProtocols(ctx context.Context, in *ListNetworkProtocolsRequest, opts ...grpc.CallOption) (*ListNetworkProtocolsResponse, error)
+	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
+	CreateNetworkACLList(ctx context.Context, in *CreateNetworkACLListRequest, opts ...grpc.CallOption) (*CreateNetworkACLListResponse, error)
 	// DedicateGuestVlanRange Dedicates a guest vlan range to an account
 	DedicateGuestVlanRange(ctx context.Context, in *DedicateGuestVlanRangeRequest, opts ...grpc.CallOption) (*DedicateGuestVlanRangeResponse, error)
-	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
-	UpdateStorageNetworkIpRange(ctx context.Context, in *UpdateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdateStorageNetworkIpRangeResponse, error)
-	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
-	DeleteNetworkServiceProvider(ctx context.Context, in *DeleteNetworkServiceProviderRequest, opts ...grpc.CallOption) (*DeleteNetworkServiceProviderResponse, error)
-	// MigrateVPC moves a vpc to another physical network
-	MigrateVPC(ctx context.Context, in *MigrateVPCRequest, opts ...grpc.CallOption) (*MigrateVPCResponse, error)
-	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
-	ListNetworkServiceProviders(ctx context.Context, in *ListNetworkServiceProvidersRequest, opts ...grpc.CallOption) (*ListNetworkServiceProvidersResponse, error)
-	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
-	ListIpv4SubnetsForZone(ctx context.Context, in *ListIpv4SubnetsForZoneRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForZoneResponse, error)
+	// DeleteNetworkACL Deletes a network ACL
+	DeleteNetworkACL(ctx context.Context, in *DeleteNetworkACLRequest, opts ...grpc.CallOption) (*DeleteNetworkACLResponse, error)
+	// UpdateNetworkCmdByAdmin Updates a network
+	UpdateNetworkCmdByAdmin(ctx context.Context, in *UpdateNetworkCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateNetworkCmdByAdminResponse, error)
+	// ListStorageNetworkIpRange List a storage network IP range.
+	ListStorageNetworkIpRange(ctx context.Context, in *ListStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*ListStorageNetworkIpRangeResponse, error)
+	// MigrateNetwork moves a network to another physical network
+	MigrateNetwork(ctx context.Context, in *MigrateNetworkRequest, opts ...grpc.CallOption) (*MigrateNetworkResponse, error)
+	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
+	UpdatePodManagementNetworkIpRange(ctx context.Context, in *UpdatePodManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdatePodManagementNetworkIpRangeResponse, error)
+	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
+	ReleaseDedicatedIpv4SubnetForZone(ctx context.Context, in *ReleaseDedicatedIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error)
+	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
+	AddNetworkDevice(ctx context.Context, in *AddNetworkDeviceRequest, opts ...grpc.CallOption) (*AddNetworkDeviceResponse, error)
+	// DeleteNetworkOffering Deletes a network offering.
+	DeleteNetworkOffering(ctx context.Context, in *DeleteNetworkOfferingRequest, opts ...grpc.CallOption) (*DeleteNetworkOfferingResponse, error)
+	// UpdatePhysicalNetwork Updates a physical network
+	UpdatePhysicalNetwork(ctx context.Context, in *UpdatePhysicalNetworkRequest, opts ...grpc.CallOption) (*UpdatePhysicalNetworkResponse, error)
+	// CreateManagementNetworkIpRange Creates a Management network IP range.
+	CreateManagementNetworkIpRange(ctx context.Context, in *CreateManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateManagementNetworkIpRangeResponse, error)
 	// DeleteNetwork Deletes a network
 	DeleteNetwork(ctx context.Context, in *DeleteNetworkRequest, opts ...grpc.CallOption) (*DeleteNetworkResponse, error)
+	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
+	ListNetworkServiceProviders(ctx context.Context, in *ListNetworkServiceProvidersRequest, opts ...grpc.CallOption) (*ListNetworkServiceProvidersResponse, error)
+	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
+	CreateNetworkACL(ctx context.Context, in *CreateNetworkACLRequest, opts ...grpc.CallOption) (*CreateNetworkACLResponse, error)
+	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
+	ListSupportedNetworkServices(ctx context.Context, in *ListSupportedNetworkServicesRequest, opts ...grpc.CallOption) (*ListSupportedNetworkServicesResponse, error)
+	// ListNetworkACLLists Lists all network ACLs
+	ListNetworkACLLists(ctx context.Context, in *ListNetworkACLListsRequest, opts ...grpc.CallOption) (*ListNetworkACLListsResponse, error)
+	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
+	ListIpv4SubnetsForZone(ctx context.Context, in *ListIpv4SubnetsForZoneRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForZoneResponse, error)
+	// ListNetworkDevice List network devices
+	ListNetworkDevice(ctx context.Context, in *ListNetworkDeviceRequest, opts ...grpc.CallOption) (*ListNetworkDeviceResponse, error)
+	// ListNetworkACLs Lists all network ACL items
+	ListNetworkACLs(ctx context.Context, in *ListNetworkACLsRequest, opts ...grpc.CallOption) (*ListNetworkACLsResponse, error)
+	// UpdateNetworkACLList Updates network ACL list
+	UpdateNetworkACLList(ctx context.Context, in *UpdateNetworkACLListRequest, opts ...grpc.CallOption) (*UpdateNetworkACLListResponse, error)
+	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
+	CreateGuestNetworkIpv6Prefix(ctx context.Context, in *CreateGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*CreateGuestNetworkIpv6PrefixResponse, error)
+	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
+	DeleteStorageNetworkIpRange(ctx context.Context, in *DeleteStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteStorageNetworkIpRangeResponse, error)
+	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
+	ListNetworkPermissions(ctx context.Context, in *ListNetworkPermissionsRequest, opts ...grpc.CallOption) (*ListNetworkPermissionsResponse, error)
+	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
+	ListGuestNetworkIpv6Prefixes(ctx context.Context, in *ListGuestNetworkIpv6PrefixesRequest, opts ...grpc.CallOption) (*ListGuestNetworkIpv6PrefixesResponse, error)
+	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
+	MoveNetworkAclItem(ctx context.Context, in *MoveNetworkAclItemRequest, opts ...grpc.CallOption) (*MoveNetworkAclItemResponse, error)
+	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
+	AddNetworkServiceProvider(ctx context.Context, in *AddNetworkServiceProviderRequest, opts ...grpc.CallOption) (*AddNetworkServiceProviderResponse, error)
+	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
+	DeleteIpv4SubnetForGuestNetwork(ctx context.Context, in *DeleteIpv4SubnetForGuestNetworkRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForGuestNetworkResponse, error)
+	// RemoveNetworkPermissions Removes network permissions.
+	RemoveNetworkPermissions(ctx context.Context, in *RemoveNetworkPermissionsRequest, opts ...grpc.CallOption) (*RemoveNetworkPermissionsResponse, error)
+	// CreateNetworkOffering Creates a network offering.
+	CreateNetworkOffering(ctx context.Context, in *CreateNetworkOfferingRequest, opts ...grpc.CallOption) (*CreateNetworkOfferingResponse, error)
+	// UpdateNetworkACLItem Updates ACL item with specified ID
+	UpdateNetworkACLItem(ctx context.Context, in *UpdateNetworkACLItemRequest, opts ...grpc.CallOption) (*UpdateNetworkACLItemResponse, error)
+	// CreateNetwork Creates a network
+	CreateNetwork(ctx context.Context, in *CreateNetworkRequest, opts ...grpc.CallOption) (*CreateNetworkResponse, error)
+	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
+	DeleteNetworkServiceProvider(ctx context.Context, in *DeleteNetworkServiceProviderRequest, opts ...grpc.CallOption) (*DeleteNetworkServiceProviderResponse, error)
 	// UpdateNetworkOffering Updates a network offering.
 	UpdateNetworkOffering(ctx context.Context, in *UpdateNetworkOfferingRequest, opts ...grpc.CallOption) (*UpdateNetworkOfferingResponse, error)
 	// CreateIpv4SubnetForGuestNetwork Creates a IPv4 subnet for guest networks.
 	CreateIpv4SubnetForGuestNetwork(ctx context.Context, in *CreateIpv4SubnetForGuestNetworkRequest, opts ...grpc.CallOption) (*CreateIpv4SubnetForGuestNetworkResponse, error)
-	// ListNetworkIsolationMethods Lists supported methods of network isolation
-	ListNetworkIsolationMethods(ctx context.Context, in *ListNetworkIsolationMethodsRequest, opts ...grpc.CallOption) (*ListNetworkIsolationMethodsResponse, error)
-	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
-	AddNetworkServiceProvider(ctx context.Context, in *AddNetworkServiceProviderRequest, opts ...grpc.CallOption) (*AddNetworkServiceProviderResponse, error)
-	// ListNetworks Lists all available networks.
-	ListNetworks(ctx context.Context, in *ListNetworksRequest, opts ...grpc.CallOption) (*ListNetworksResponse, error)
-	// ListNetworkACLs Lists all network ACL items
-	ListNetworkACLs(ctx context.Context, in *ListNetworkACLsRequest, opts ...grpc.CallOption) (*ListNetworkACLsResponse, error)
-	// CreateManagementNetworkIpRange Creates a Management network IP range.
-	CreateManagementNetworkIpRange(ctx context.Context, in *CreateManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateManagementNetworkIpRangeResponse, error)
-	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
-	ListSupportedNetworkServices(ctx context.Context, in *ListSupportedNetworkServicesRequest, opts ...grpc.CallOption) (*ListSupportedNetworkServicesResponse, error)
-	// UpdatePhysicalNetwork Updates a physical network
-	UpdatePhysicalNetwork(ctx context.Context, in *UpdatePhysicalNetworkRequest, opts ...grpc.CallOption) (*UpdatePhysicalNetworkResponse, error)
-	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
-	CreateNetworkACLList(ctx context.Context, in *CreateNetworkACLListRequest, opts ...grpc.CallOption) (*CreateNetworkACLListResponse, error)
-	// CreateNetworkCmdByAdmin Creates a network
-	CreateNetworkCmdByAdmin(ctx context.Context, in *CreateNetworkCmdByAdminRequest, opts ...grpc.CallOption) (*CreateNetworkCmdByAdminResponse, error)
-	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
-	DeleteStorageNetworkIpRange(ctx context.Context, in *DeleteStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteStorageNetworkIpRangeResponse, error)
-	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
-	DeleteIpv4SubnetForZone(ctx context.Context, in *DeleteIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForZoneResponse, error)
-	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
-	ListNetworkPermissions(ctx context.Context, in *ListNetworkPermissionsRequest, opts ...grpc.CallOption) (*ListNetworkPermissionsResponse, error)
-	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
-	ListDedicatedGuestVlanRanges(ctx context.Context, in *ListDedicatedGuestVlanRangesRequest, opts ...grpc.CallOption) (*ListDedicatedGuestVlanRangesResponse, error)
-	// DeleteNetworkACLList Deletes a network ACL
-	DeleteNetworkACLList(ctx context.Context, in *DeleteNetworkACLListRequest, opts ...grpc.CallOption) (*DeleteNetworkACLListResponse, error)
-	// DeleteNetworkOffering Deletes a network offering.
-	DeleteNetworkOffering(ctx context.Context, in *DeleteNetworkOfferingRequest, opts ...grpc.CallOption) (*DeleteNetworkOfferingResponse, error)
-	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
-	MoveNetworkAclItem(ctx context.Context, in *MoveNetworkAclItemRequest, opts ...grpc.CallOption) (*MoveNetworkAclItemResponse, error)
-	// ListGuestVlans Lists all guest vlans
-	ListGuestVlans(ctx context.Context, in *ListGuestVlansRequest, opts ...grpc.CallOption) (*ListGuestVlansResponse, error)
-	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
-	UpdateIpv4SubnetForZone(ctx context.Context, in *UpdateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*UpdateIpv4SubnetForZoneResponse, error)
-	// CreatePhysicalNetwork Creates a physical network
-	CreatePhysicalNetwork(ctx context.Context, in *CreatePhysicalNetworkRequest, opts ...grpc.CallOption) (*CreatePhysicalNetworkResponse, error)
-	// CreateNetworkOffering Creates a network offering.
-	CreateNetworkOffering(ctx context.Context, in *CreateNetworkOfferingRequest, opts ...grpc.CallOption) (*CreateNetworkOfferingResponse, error)
-	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
-	UpdateNetworkServiceProvider(ctx context.Context, in *UpdateNetworkServiceProviderRequest, opts ...grpc.CallOption) (*UpdateNetworkServiceProviderResponse, error)
-	// CreateStorageNetworkIpRange Creates a Storage network IP range.
-	CreateStorageNetworkIpRange(ctx context.Context, in *CreateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateStorageNetworkIpRangeResponse, error)
-	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
-	ListIpv4SubnetsForGuestNetwork(ctx context.Context, in *ListIpv4SubnetsForGuestNetworkRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForGuestNetworkResponse, error)
+	// ResetNetworkPermissions Resets network permissions.
+	ResetNetworkPermissions(ctx context.Context, in *ResetNetworkPermissionsRequest, opts ...grpc.CallOption) (*ResetNetworkPermissionsResponse, error)
 	// DeleteNetworkDevice Deletes network device.
 	DeleteNetworkDevice(ctx context.Context, in *DeleteNetworkDeviceRequest, opts ...grpc.CallOption) (*DeleteNetworkDeviceResponse, error)
-	// CreateNetwork Creates a network
-	CreateNetwork(ctx context.Context, in *CreateNetworkRequest, opts ...grpc.CallOption) (*CreateNetworkResponse, error)
-	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
-	ReleaseDedicatedGuestVlanRange(ctx context.Context, in *ReleaseDedicatedGuestVlanRangeRequest, opts ...grpc.CallOption) (*ReleaseDedicatedGuestVlanRangeResponse, error)
-	// ListNetworkProtocols Lists details of network protocols
-	ListNetworkProtocols(ctx context.Context, in *ListNetworkProtocolsRequest, opts ...grpc.CallOption) (*ListNetworkProtocolsResponse, error)
+	// ListNetworkOfferings Lists all available network offerings.
+	ListNetworkOfferings(ctx context.Context, in *ListNetworkOfferingsRequest, opts ...grpc.CallOption) (*ListNetworkOfferingsResponse, error)
+	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
+	RestartNetwork(ctx context.Context, in *RestartNetworkRequest, opts ...grpc.CallOption) (*RestartNetworkResponse, error)
+	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
+	DeleteGuestNetworkIpv6Prefix(ctx context.Context, in *DeleteGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*DeleteGuestNetworkIpv6PrefixResponse, error)
+	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
+	CreateIpv4SubnetForZone(ctx context.Context, in *CreateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*CreateIpv4SubnetForZoneResponse, error)
+	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
+	UpdateStorageNetworkIpRange(ctx context.Context, in *UpdateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdateStorageNetworkIpRangeResponse, error)
+	// ListNetworks Lists all available networks.
+	ListNetworks(ctx context.Context, in *ListNetworksRequest, opts ...grpc.CallOption) (*ListNetworksResponse, error)
+	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
+	ReplaceNetworkACLList(ctx context.Context, in *ReplaceNetworkACLListRequest, opts ...grpc.CallOption) (*ReplaceNetworkACLListResponse, error)
+	// CreateNetworkPermissions Updates network permissions.
+	CreateNetworkPermissions(ctx context.Context, in *CreateNetworkPermissionsRequest, opts ...grpc.CallOption) (*CreateNetworkPermissionsResponse, error)
+	// ListGuestVlans Lists all guest vlans
+	ListGuestVlans(ctx context.Context, in *ListGuestVlansRequest, opts ...grpc.CallOption) (*ListGuestVlansResponse, error)
+	// CreateStorageNetworkIpRange Creates a Storage network IP range.
+	CreateStorageNetworkIpRange(ctx context.Context, in *CreateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateStorageNetworkIpRangeResponse, error)
+	// UpdateNetwork Updates a network
+	UpdateNetwork(ctx context.Context, in *UpdateNetworkRequest, opts ...grpc.CallOption) (*UpdateNetworkResponse, error)
+	// MigrateVPC moves a vpc to another physical network
+	MigrateVPC(ctx context.Context, in *MigrateVPCRequest, opts ...grpc.CallOption) (*MigrateVPCResponse, error)
+	// ListPhysicalNetworks Lists physical networks
+	ListPhysicalNetworks(ctx context.Context, in *ListPhysicalNetworksRequest, opts ...grpc.CallOption) (*ListPhysicalNetworksResponse, error)
+	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
+	ListIpv4SubnetsForGuestNetwork(ctx context.Context, in *ListIpv4SubnetsForGuestNetworkRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForGuestNetworkResponse, error)
+	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
+	UpdateNetworkServiceProvider(ctx context.Context, in *UpdateNetworkServiceProviderRequest, opts ...grpc.CallOption) (*UpdateNetworkServiceProviderResponse, error)
 }
 
 type networkServiceClient struct {
@@ -239,190 +236,50 @@ func (c *networkServiceClient) DedicateIpv4SubnetForZone(ctx context.Context, in
 	return out, nil
 }
 
-func (c *networkServiceClient) ListNetworkOfferings(ctx context.Context, in *ListNetworkOfferingsRequest, opts ...grpc.CallOption) (*ListNetworkOfferingsResponse, error) {
+func (c *networkServiceClient) DeleteManagementNetworkIpRange(ctx context.Context, in *DeleteManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteManagementNetworkIpRangeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkOfferingsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkOfferings_FullMethodName, in, out, cOpts...)
+	out := new(DeleteManagementNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteManagementNetworkIpRange_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) ResetNetworkPermissions(ctx context.Context, in *ResetNetworkPermissionsRequest, opts ...grpc.CallOption) (*ResetNetworkPermissionsResponse, error) {
+func (c *networkServiceClient) ListDedicatedGuestVlanRanges(ctx context.Context, in *ListDedicatedGuestVlanRangesRequest, opts ...grpc.CallOption) (*ListDedicatedGuestVlanRangesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetNetworkPermissionsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ResetNetworkPermissions_FullMethodName, in, out, cOpts...)
+	out := new(ListDedicatedGuestVlanRangesResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListDedicatedGuestVlanRanges_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) UpdateNetworkACLItem(ctx context.Context, in *UpdateNetworkACLItemRequest, opts ...grpc.CallOption) (*UpdateNetworkACLItemResponse, error) {
+func (c *networkServiceClient) DeleteIpv4SubnetForZone(ctx context.Context, in *DeleteIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForZoneResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateNetworkACLItemResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkACLItem_FullMethodName, in, out, cOpts...)
+	out := new(DeleteIpv4SubnetForZoneResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) DeleteNetworkACL(ctx context.Context, in *DeleteNetworkACLRequest, opts ...grpc.CallOption) (*DeleteNetworkACLResponse, error) {
+func (c *networkServiceClient) DeleteNetworkACLList(ctx context.Context, in *DeleteNetworkACLListRequest, opts ...grpc.CallOption) (*DeleteNetworkACLListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteNetworkACLResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkACL_FullMethodName, in, out, cOpts...)
+	out := new(DeleteNetworkACLListResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkACLList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) RestartNetwork(ctx context.Context, in *RestartNetworkRequest, opts ...grpc.CallOption) (*RestartNetworkResponse, error) {
+func (c *networkServiceClient) ReleaseDedicatedGuestVlanRange(ctx context.Context, in *ReleaseDedicatedGuestVlanRangeRequest, opts ...grpc.CallOption) (*ReleaseDedicatedGuestVlanRangeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RestartNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_RestartNetwork_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateIpv4SubnetForZone(ctx context.Context, in *CreateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*CreateIpv4SubnetForZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateIpv4SubnetForZoneResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) AddNetworkDevice(ctx context.Context, in *AddNetworkDeviceRequest, opts ...grpc.CallOption) (*AddNetworkDeviceResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddNetworkDeviceResponse)
-	err := c.cc.Invoke(ctx, NetworkService_AddNetworkDevice_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdateNetworkACLList(ctx context.Context, in *UpdateNetworkACLListRequest, opts ...grpc.CallOption) (*UpdateNetworkACLListResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateNetworkACLListResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkACLList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateNetworkACL(ctx context.Context, in *CreateNetworkACLRequest, opts ...grpc.CallOption) (*CreateNetworkACLResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateNetworkACLResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkACL_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdatePodManagementNetworkIpRange(ctx context.Context, in *UpdatePodManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdatePodManagementNetworkIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdatePodManagementNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdatePodManagementNetworkIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListGuestNetworkIpv6Prefixes(ctx context.Context, in *ListGuestNetworkIpv6PrefixesRequest, opts ...grpc.CallOption) (*ListGuestNetworkIpv6PrefixesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListGuestNetworkIpv6PrefixesResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListGuestNetworkIpv6Prefixes_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdateNetworkCmdByAdmin(ctx context.Context, in *UpdateNetworkCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateNetworkCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateNetworkCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateGuestNetworkIpv6Prefix(ctx context.Context, in *CreateGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*CreateGuestNetworkIpv6PrefixResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateGuestNetworkIpv6PrefixResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateGuestNetworkIpv6Prefix_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListStorageNetworkIpRange(ctx context.Context, in *ListStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*ListStorageNetworkIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListStorageNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListPhysicalNetworks(ctx context.Context, in *ListPhysicalNetworksRequest, opts ...grpc.CallOption) (*ListPhysicalNetworksResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListPhysicalNetworksResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListPhysicalNetworks_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdateNetwork(ctx context.Context, in *UpdateNetworkRequest, opts ...grpc.CallOption) (*UpdateNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateNetwork_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateNetworkPermissions(ctx context.Context, in *CreateNetworkPermissionsRequest, opts ...grpc.CallOption) (*CreateNetworkPermissionsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateNetworkPermissionsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkPermissions_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) DeleteIpv4SubnetForGuestNetwork(ctx context.Context, in *DeleteIpv4SubnetForGuestNetworkRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForGuestNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteIpv4SubnetForGuestNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteIpv4SubnetForGuestNetwork_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ReplaceNetworkACLList(ctx context.Context, in *ReplaceNetworkACLListRequest, opts ...grpc.CallOption) (*ReplaceNetworkACLListResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReplaceNetworkACLListResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ReplaceNetworkACLList_FullMethodName, in, out, cOpts...)
+	out := new(ReleaseDedicatedGuestVlanRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ReleaseDedicatedGuestVlanRange_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -439,70 +296,50 @@ func (c *networkServiceClient) DeletePhysicalNetwork(ctx context.Context, in *De
 	return out, nil
 }
 
-func (c *networkServiceClient) ListNetworkDevice(ctx context.Context, in *ListNetworkDeviceRequest, opts ...grpc.CallOption) (*ListNetworkDeviceResponse, error) {
+func (c *networkServiceClient) UpdateIpv4SubnetForZone(ctx context.Context, in *UpdateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*UpdateIpv4SubnetForZoneResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkDeviceResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkDevice_FullMethodName, in, out, cOpts...)
+	out := new(UpdateIpv4SubnetForZoneResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) RemoveNetworkPermissions(ctx context.Context, in *RemoveNetworkPermissionsRequest, opts ...grpc.CallOption) (*RemoveNetworkPermissionsResponse, error) {
+func (c *networkServiceClient) ListNetworkIsolationMethods(ctx context.Context, in *ListNetworkIsolationMethodsRequest, opts ...grpc.CallOption) (*ListNetworkIsolationMethodsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveNetworkPermissionsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_RemoveNetworkPermissions_FullMethodName, in, out, cOpts...)
+	out := new(ListNetworkIsolationMethodsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkIsolationMethods_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) ReleaseDedicatedIpv4SubnetForZone(ctx context.Context, in *ReleaseDedicatedIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error) {
+func (c *networkServiceClient) CreatePhysicalNetwork(ctx context.Context, in *CreatePhysicalNetworkRequest, opts ...grpc.CallOption) (*CreatePhysicalNetworkResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleaseDedicatedIpv4SubnetForZoneResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ReleaseDedicatedIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
+	out := new(CreatePhysicalNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreatePhysicalNetwork_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) ListNetworkACLLists(ctx context.Context, in *ListNetworkACLListsRequest, opts ...grpc.CallOption) (*ListNetworkACLListsResponse, error) {
+func (c *networkServiceClient) ListNetworkProtocols(ctx context.Context, in *ListNetworkProtocolsRequest, opts ...grpc.CallOption) (*ListNetworkProtocolsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkACLListsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkACLLists_FullMethodName, in, out, cOpts...)
+	out := new(ListNetworkProtocolsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkProtocols_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) DeleteManagementNetworkIpRange(ctx context.Context, in *DeleteManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteManagementNetworkIpRangeResponse, error) {
+func (c *networkServiceClient) CreateNetworkACLList(ctx context.Context, in *CreateNetworkACLListRequest, opts ...grpc.CallOption) (*CreateNetworkACLListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteManagementNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteManagementNetworkIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) DeleteGuestNetworkIpv6Prefix(ctx context.Context, in *DeleteGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*DeleteGuestNetworkIpv6PrefixResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteGuestNetworkIpv6PrefixResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteGuestNetworkIpv6Prefix_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) MigrateNetwork(ctx context.Context, in *MigrateNetworkRequest, opts ...grpc.CallOption) (*MigrateNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_MigrateNetwork_FullMethodName, in, out, cOpts...)
+	out := new(CreateNetworkACLListResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkACLList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -519,30 +356,110 @@ func (c *networkServiceClient) DedicateGuestVlanRange(ctx context.Context, in *D
 	return out, nil
 }
 
-func (c *networkServiceClient) UpdateStorageNetworkIpRange(ctx context.Context, in *UpdateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdateStorageNetworkIpRangeResponse, error) {
+func (c *networkServiceClient) DeleteNetworkACL(ctx context.Context, in *DeleteNetworkACLRequest, opts ...grpc.CallOption) (*DeleteNetworkACLResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateStorageNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
+	out := new(DeleteNetworkACLResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkACL_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) DeleteNetworkServiceProvider(ctx context.Context, in *DeleteNetworkServiceProviderRequest, opts ...grpc.CallOption) (*DeleteNetworkServiceProviderResponse, error) {
+func (c *networkServiceClient) UpdateNetworkCmdByAdmin(ctx context.Context, in *UpdateNetworkCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateNetworkCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteNetworkServiceProviderResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkServiceProvider_FullMethodName, in, out, cOpts...)
+	out := new(UpdateNetworkCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) MigrateVPC(ctx context.Context, in *MigrateVPCRequest, opts ...grpc.CallOption) (*MigrateVPCResponse, error) {
+func (c *networkServiceClient) ListStorageNetworkIpRange(ctx context.Context, in *ListStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*ListStorageNetworkIpRangeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateVPCResponse)
-	err := c.cc.Invoke(ctx, NetworkService_MigrateVPC_FullMethodName, in, out, cOpts...)
+	out := new(ListStorageNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) MigrateNetwork(ctx context.Context, in *MigrateNetworkRequest, opts ...grpc.CallOption) (*MigrateNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MigrateNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_MigrateNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdatePodManagementNetworkIpRange(ctx context.Context, in *UpdatePodManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdatePodManagementNetworkIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdatePodManagementNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdatePodManagementNetworkIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ReleaseDedicatedIpv4SubnetForZone(ctx context.Context, in *ReleaseDedicatedIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReleaseDedicatedIpv4SubnetForZoneResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ReleaseDedicatedIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) AddNetworkDevice(ctx context.Context, in *AddNetworkDeviceRequest, opts ...grpc.CallOption) (*AddNetworkDeviceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddNetworkDeviceResponse)
+	err := c.cc.Invoke(ctx, NetworkService_AddNetworkDevice_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) DeleteNetworkOffering(ctx context.Context, in *DeleteNetworkOfferingRequest, opts ...grpc.CallOption) (*DeleteNetworkOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteNetworkOfferingResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdatePhysicalNetwork(ctx context.Context, in *UpdatePhysicalNetworkRequest, opts ...grpc.CallOption) (*UpdatePhysicalNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdatePhysicalNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdatePhysicalNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateManagementNetworkIpRange(ctx context.Context, in *CreateManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateManagementNetworkIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateManagementNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateManagementNetworkIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) DeleteNetwork(ctx context.Context, in *DeleteNetworkRequest, opts ...grpc.CallOption) (*DeleteNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteNetwork_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -559,6 +476,36 @@ func (c *networkServiceClient) ListNetworkServiceProviders(ctx context.Context, 
 	return out, nil
 }
 
+func (c *networkServiceClient) CreateNetworkACL(ctx context.Context, in *CreateNetworkACLRequest, opts ...grpc.CallOption) (*CreateNetworkACLResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateNetworkACLResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkACL_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListSupportedNetworkServices(ctx context.Context, in *ListSupportedNetworkServicesRequest, opts ...grpc.CallOption) (*ListSupportedNetworkServicesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSupportedNetworkServicesResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListSupportedNetworkServices_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListNetworkACLLists(ctx context.Context, in *ListNetworkACLListsRequest, opts ...grpc.CallOption) (*ListNetworkACLListsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListNetworkACLListsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkACLLists_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *networkServiceClient) ListIpv4SubnetsForZone(ctx context.Context, in *ListIpv4SubnetsForZoneRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForZoneResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIpv4SubnetsForZoneResponse)
@@ -569,10 +516,150 @@ func (c *networkServiceClient) ListIpv4SubnetsForZone(ctx context.Context, in *L
 	return out, nil
 }
 
-func (c *networkServiceClient) DeleteNetwork(ctx context.Context, in *DeleteNetworkRequest, opts ...grpc.CallOption) (*DeleteNetworkResponse, error) {
+func (c *networkServiceClient) ListNetworkDevice(ctx context.Context, in *ListNetworkDeviceRequest, opts ...grpc.CallOption) (*ListNetworkDeviceResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteNetwork_FullMethodName, in, out, cOpts...)
+	out := new(ListNetworkDeviceResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkDevice_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListNetworkACLs(ctx context.Context, in *ListNetworkACLsRequest, opts ...grpc.CallOption) (*ListNetworkACLsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListNetworkACLsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkACLs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdateNetworkACLList(ctx context.Context, in *UpdateNetworkACLListRequest, opts ...grpc.CallOption) (*UpdateNetworkACLListResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateNetworkACLListResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkACLList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateGuestNetworkIpv6Prefix(ctx context.Context, in *CreateGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*CreateGuestNetworkIpv6PrefixResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateGuestNetworkIpv6PrefixResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateGuestNetworkIpv6Prefix_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) DeleteStorageNetworkIpRange(ctx context.Context, in *DeleteStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteStorageNetworkIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteStorageNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListNetworkPermissions(ctx context.Context, in *ListNetworkPermissionsRequest, opts ...grpc.CallOption) (*ListNetworkPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListNetworkPermissionsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListGuestNetworkIpv6Prefixes(ctx context.Context, in *ListGuestNetworkIpv6PrefixesRequest, opts ...grpc.CallOption) (*ListGuestNetworkIpv6PrefixesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListGuestNetworkIpv6PrefixesResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListGuestNetworkIpv6Prefixes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) MoveNetworkAclItem(ctx context.Context, in *MoveNetworkAclItemRequest, opts ...grpc.CallOption) (*MoveNetworkAclItemResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MoveNetworkAclItemResponse)
+	err := c.cc.Invoke(ctx, NetworkService_MoveNetworkAclItem_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) AddNetworkServiceProvider(ctx context.Context, in *AddNetworkServiceProviderRequest, opts ...grpc.CallOption) (*AddNetworkServiceProviderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddNetworkServiceProviderResponse)
+	err := c.cc.Invoke(ctx, NetworkService_AddNetworkServiceProvider_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) DeleteIpv4SubnetForGuestNetwork(ctx context.Context, in *DeleteIpv4SubnetForGuestNetworkRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForGuestNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteIpv4SubnetForGuestNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteIpv4SubnetForGuestNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) RemoveNetworkPermissions(ctx context.Context, in *RemoveNetworkPermissionsRequest, opts ...grpc.CallOption) (*RemoveNetworkPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveNetworkPermissionsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_RemoveNetworkPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateNetworkOffering(ctx context.Context, in *CreateNetworkOfferingRequest, opts ...grpc.CallOption) (*CreateNetworkOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateNetworkOfferingResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdateNetworkACLItem(ctx context.Context, in *UpdateNetworkACLItemRequest, opts ...grpc.CallOption) (*UpdateNetworkACLItemResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateNetworkACLItemResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkACLItem_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateNetwork(ctx context.Context, in *CreateNetworkRequest, opts ...grpc.CallOption) (*CreateNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) DeleteNetworkServiceProvider(ctx context.Context, in *DeleteNetworkServiceProviderRequest, opts ...grpc.CallOption) (*DeleteNetworkServiceProviderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteNetworkServiceProviderResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkServiceProvider_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -599,230 +686,10 @@ func (c *networkServiceClient) CreateIpv4SubnetForGuestNetwork(ctx context.Conte
 	return out, nil
 }
 
-func (c *networkServiceClient) ListNetworkIsolationMethods(ctx context.Context, in *ListNetworkIsolationMethodsRequest, opts ...grpc.CallOption) (*ListNetworkIsolationMethodsResponse, error) {
+func (c *networkServiceClient) ResetNetworkPermissions(ctx context.Context, in *ResetNetworkPermissionsRequest, opts ...grpc.CallOption) (*ResetNetworkPermissionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkIsolationMethodsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkIsolationMethods_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) AddNetworkServiceProvider(ctx context.Context, in *AddNetworkServiceProviderRequest, opts ...grpc.CallOption) (*AddNetworkServiceProviderResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddNetworkServiceProviderResponse)
-	err := c.cc.Invoke(ctx, NetworkService_AddNetworkServiceProvider_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListNetworks(ctx context.Context, in *ListNetworksRequest, opts ...grpc.CallOption) (*ListNetworksResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworksResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworks_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListNetworkACLs(ctx context.Context, in *ListNetworkACLsRequest, opts ...grpc.CallOption) (*ListNetworkACLsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkACLsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkACLs_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateManagementNetworkIpRange(ctx context.Context, in *CreateManagementNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateManagementNetworkIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateManagementNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateManagementNetworkIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListSupportedNetworkServices(ctx context.Context, in *ListSupportedNetworkServicesRequest, opts ...grpc.CallOption) (*ListSupportedNetworkServicesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListSupportedNetworkServicesResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListSupportedNetworkServices_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdatePhysicalNetwork(ctx context.Context, in *UpdatePhysicalNetworkRequest, opts ...grpc.CallOption) (*UpdatePhysicalNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdatePhysicalNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdatePhysicalNetwork_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateNetworkACLList(ctx context.Context, in *CreateNetworkACLListRequest, opts ...grpc.CallOption) (*CreateNetworkACLListResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateNetworkACLListResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkACLList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateNetworkCmdByAdmin(ctx context.Context, in *CreateNetworkCmdByAdminRequest, opts ...grpc.CallOption) (*CreateNetworkCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateNetworkCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) DeleteStorageNetworkIpRange(ctx context.Context, in *DeleteStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*DeleteStorageNetworkIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteStorageNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) DeleteIpv4SubnetForZone(ctx context.Context, in *DeleteIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*DeleteIpv4SubnetForZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteIpv4SubnetForZoneResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListNetworkPermissions(ctx context.Context, in *ListNetworkPermissionsRequest, opts ...grpc.CallOption) (*ListNetworkPermissionsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkPermissionsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkPermissions_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListDedicatedGuestVlanRanges(ctx context.Context, in *ListDedicatedGuestVlanRangesRequest, opts ...grpc.CallOption) (*ListDedicatedGuestVlanRangesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListDedicatedGuestVlanRangesResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListDedicatedGuestVlanRanges_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) DeleteNetworkACLList(ctx context.Context, in *DeleteNetworkACLListRequest, opts ...grpc.CallOption) (*DeleteNetworkACLListResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteNetworkACLListResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkACLList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) DeleteNetworkOffering(ctx context.Context, in *DeleteNetworkOfferingRequest, opts ...grpc.CallOption) (*DeleteNetworkOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteNetworkOfferingResponse)
-	err := c.cc.Invoke(ctx, NetworkService_DeleteNetworkOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) MoveNetworkAclItem(ctx context.Context, in *MoveNetworkAclItemRequest, opts ...grpc.CallOption) (*MoveNetworkAclItemResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MoveNetworkAclItemResponse)
-	err := c.cc.Invoke(ctx, NetworkService_MoveNetworkAclItem_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListGuestVlans(ctx context.Context, in *ListGuestVlansRequest, opts ...grpc.CallOption) (*ListGuestVlansResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListGuestVlansResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListGuestVlans_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdateIpv4SubnetForZone(ctx context.Context, in *UpdateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*UpdateIpv4SubnetForZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateIpv4SubnetForZoneResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreatePhysicalNetwork(ctx context.Context, in *CreatePhysicalNetworkRequest, opts ...grpc.CallOption) (*CreatePhysicalNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreatePhysicalNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreatePhysicalNetwork_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateNetworkOffering(ctx context.Context, in *CreateNetworkOfferingRequest, opts ...grpc.CallOption) (*CreateNetworkOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateNetworkOfferingResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) UpdateNetworkServiceProvider(ctx context.Context, in *UpdateNetworkServiceProviderRequest, opts ...grpc.CallOption) (*UpdateNetworkServiceProviderResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateNetworkServiceProviderResponse)
-	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkServiceProvider_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) CreateStorageNetworkIpRange(ctx context.Context, in *CreateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateStorageNetworkIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateStorageNetworkIpRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkServiceClient) ListIpv4SubnetsForGuestNetwork(ctx context.Context, in *ListIpv4SubnetsForGuestNetworkRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForGuestNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListIpv4SubnetsForGuestNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListIpv4SubnetsForGuestNetwork_FullMethodName, in, out, cOpts...)
+	out := new(ResetNetworkPermissionsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ResetNetworkPermissions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -839,30 +706,150 @@ func (c *networkServiceClient) DeleteNetworkDevice(ctx context.Context, in *Dele
 	return out, nil
 }
 
-func (c *networkServiceClient) CreateNetwork(ctx context.Context, in *CreateNetworkRequest, opts ...grpc.CallOption) (*CreateNetworkResponse, error) {
+func (c *networkServiceClient) ListNetworkOfferings(ctx context.Context, in *ListNetworkOfferingsRequest, opts ...grpc.CallOption) (*ListNetworkOfferingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateNetworkResponse)
-	err := c.cc.Invoke(ctx, NetworkService_CreateNetwork_FullMethodName, in, out, cOpts...)
+	out := new(ListNetworkOfferingsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworkOfferings_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) ReleaseDedicatedGuestVlanRange(ctx context.Context, in *ReleaseDedicatedGuestVlanRangeRequest, opts ...grpc.CallOption) (*ReleaseDedicatedGuestVlanRangeResponse, error) {
+func (c *networkServiceClient) RestartNetwork(ctx context.Context, in *RestartNetworkRequest, opts ...grpc.CallOption) (*RestartNetworkResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleaseDedicatedGuestVlanRangeResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ReleaseDedicatedGuestVlanRange_FullMethodName, in, out, cOpts...)
+	out := new(RestartNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_RestartNetwork_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *networkServiceClient) ListNetworkProtocols(ctx context.Context, in *ListNetworkProtocolsRequest, opts ...grpc.CallOption) (*ListNetworkProtocolsResponse, error) {
+func (c *networkServiceClient) DeleteGuestNetworkIpv6Prefix(ctx context.Context, in *DeleteGuestNetworkIpv6PrefixRequest, opts ...grpc.CallOption) (*DeleteGuestNetworkIpv6PrefixResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNetworkProtocolsResponse)
-	err := c.cc.Invoke(ctx, NetworkService_ListNetworkProtocols_FullMethodName, in, out, cOpts...)
+	out := new(DeleteGuestNetworkIpv6PrefixResponse)
+	err := c.cc.Invoke(ctx, NetworkService_DeleteGuestNetworkIpv6Prefix_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateIpv4SubnetForZone(ctx context.Context, in *CreateIpv4SubnetForZoneRequest, opts ...grpc.CallOption) (*CreateIpv4SubnetForZoneResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateIpv4SubnetForZoneResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateIpv4SubnetForZone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdateStorageNetworkIpRange(ctx context.Context, in *UpdateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*UpdateStorageNetworkIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateStorageNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListNetworks(ctx context.Context, in *ListNetworksRequest, opts ...grpc.CallOption) (*ListNetworksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListNetworksResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListNetworks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ReplaceNetworkACLList(ctx context.Context, in *ReplaceNetworkACLListRequest, opts ...grpc.CallOption) (*ReplaceNetworkACLListResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReplaceNetworkACLListResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ReplaceNetworkACLList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateNetworkPermissions(ctx context.Context, in *CreateNetworkPermissionsRequest, opts ...grpc.CallOption) (*CreateNetworkPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateNetworkPermissionsResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateNetworkPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListGuestVlans(ctx context.Context, in *ListGuestVlansRequest, opts ...grpc.CallOption) (*ListGuestVlansResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListGuestVlansResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListGuestVlans_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) CreateStorageNetworkIpRange(ctx context.Context, in *CreateStorageNetworkIpRangeRequest, opts ...grpc.CallOption) (*CreateStorageNetworkIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateStorageNetworkIpRangeResponse)
+	err := c.cc.Invoke(ctx, NetworkService_CreateStorageNetworkIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdateNetwork(ctx context.Context, in *UpdateNetworkRequest, opts ...grpc.CallOption) (*UpdateNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) MigrateVPC(ctx context.Context, in *MigrateVPCRequest, opts ...grpc.CallOption) (*MigrateVPCResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MigrateVPCResponse)
+	err := c.cc.Invoke(ctx, NetworkService_MigrateVPC_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListPhysicalNetworks(ctx context.Context, in *ListPhysicalNetworksRequest, opts ...grpc.CallOption) (*ListPhysicalNetworksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPhysicalNetworksResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListPhysicalNetworks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) ListIpv4SubnetsForGuestNetwork(ctx context.Context, in *ListIpv4SubnetsForGuestNetworkRequest, opts ...grpc.CallOption) (*ListIpv4SubnetsForGuestNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListIpv4SubnetsForGuestNetworkResponse)
+	err := c.cc.Invoke(ctx, NetworkService_ListIpv4SubnetsForGuestNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *networkServiceClient) UpdateNetworkServiceProvider(ctx context.Context, in *UpdateNetworkServiceProviderRequest, opts ...grpc.CallOption) (*UpdateNetworkServiceProviderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateNetworkServiceProviderResponse)
+	err := c.cc.Invoke(ctx, NetworkService_UpdateNetworkServiceProvider_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -877,132 +864,130 @@ func (c *networkServiceClient) ListNetworkProtocols(ctx context.Context, in *Lis
 type NetworkServiceServer interface {
 	// DedicateIpv4SubnetForZone Dedicates an existing IPv4 subnet for a zone to an account or a domain.
 	DedicateIpv4SubnetForZone(context.Context, *DedicateIpv4SubnetForZoneRequest) (*DedicateIpv4SubnetForZoneResponse, error)
-	// ListNetworkOfferings Lists all available network offerings.
-	ListNetworkOfferings(context.Context, *ListNetworkOfferingsRequest) (*ListNetworkOfferingsResponse, error)
-	// ResetNetworkPermissions Resets network permissions.
-	ResetNetworkPermissions(context.Context, *ResetNetworkPermissionsRequest) (*ResetNetworkPermissionsResponse, error)
-	// UpdateNetworkACLItem Updates ACL item with specified ID
-	UpdateNetworkACLItem(context.Context, *UpdateNetworkACLItemRequest) (*UpdateNetworkACLItemResponse, error)
-	// DeleteNetworkACL Deletes a network ACL
-	DeleteNetworkACL(context.Context, *DeleteNetworkACLRequest) (*DeleteNetworkACLResponse, error)
-	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
-	RestartNetwork(context.Context, *RestartNetworkRequest) (*RestartNetworkResponse, error)
-	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
-	CreateIpv4SubnetForZone(context.Context, *CreateIpv4SubnetForZoneRequest) (*CreateIpv4SubnetForZoneResponse, error)
-	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
-	AddNetworkDevice(context.Context, *AddNetworkDeviceRequest) (*AddNetworkDeviceResponse, error)
-	// UpdateNetworkACLList Updates network ACL list
-	UpdateNetworkACLList(context.Context, *UpdateNetworkACLListRequest) (*UpdateNetworkACLListResponse, error)
-	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
-	CreateNetworkACL(context.Context, *CreateNetworkACLRequest) (*CreateNetworkACLResponse, error)
-	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
-	UpdatePodManagementNetworkIpRange(context.Context, *UpdatePodManagementNetworkIpRangeRequest) (*UpdatePodManagementNetworkIpRangeResponse, error)
-	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
-	ListGuestNetworkIpv6Prefixes(context.Context, *ListGuestNetworkIpv6PrefixesRequest) (*ListGuestNetworkIpv6PrefixesResponse, error)
-	// UpdateNetworkCmdByAdmin Updates a network
-	UpdateNetworkCmdByAdmin(context.Context, *UpdateNetworkCmdByAdminRequest) (*UpdateNetworkCmdByAdminResponse, error)
-	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
-	CreateGuestNetworkIpv6Prefix(context.Context, *CreateGuestNetworkIpv6PrefixRequest) (*CreateGuestNetworkIpv6PrefixResponse, error)
-	// ListStorageNetworkIpRange List a storage network IP range.
-	ListStorageNetworkIpRange(context.Context, *ListStorageNetworkIpRangeRequest) (*ListStorageNetworkIpRangeResponse, error)
-	// ListPhysicalNetworks Lists physical networks
-	ListPhysicalNetworks(context.Context, *ListPhysicalNetworksRequest) (*ListPhysicalNetworksResponse, error)
-	// UpdateNetwork Updates a network
-	UpdateNetwork(context.Context, *UpdateNetworkRequest) (*UpdateNetworkResponse, error)
-	// CreateNetworkPermissions Updates network permissions.
-	CreateNetworkPermissions(context.Context, *CreateNetworkPermissionsRequest) (*CreateNetworkPermissionsResponse, error)
-	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
-	DeleteIpv4SubnetForGuestNetwork(context.Context, *DeleteIpv4SubnetForGuestNetworkRequest) (*DeleteIpv4SubnetForGuestNetworkResponse, error)
-	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
-	ReplaceNetworkACLList(context.Context, *ReplaceNetworkACLListRequest) (*ReplaceNetworkACLListResponse, error)
-	// DeletePhysicalNetwork Deletes a Physical Network.
-	DeletePhysicalNetwork(context.Context, *DeletePhysicalNetworkRequest) (*DeletePhysicalNetworkResponse, error)
-	// ListNetworkDevice List network devices
-	ListNetworkDevice(context.Context, *ListNetworkDeviceRequest) (*ListNetworkDeviceResponse, error)
-	// RemoveNetworkPermissions Removes network permissions.
-	RemoveNetworkPermissions(context.Context, *RemoveNetworkPermissionsRequest) (*RemoveNetworkPermissionsResponse, error)
-	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
-	ReleaseDedicatedIpv4SubnetForZone(context.Context, *ReleaseDedicatedIpv4SubnetForZoneRequest) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error)
-	// ListNetworkACLLists Lists all network ACLs
-	ListNetworkACLLists(context.Context, *ListNetworkACLListsRequest) (*ListNetworkACLListsResponse, error)
 	// DeleteManagementNetworkIpRange Deletes a management network IP range. This action is only allowed when no IPs in this range are allocated.
 	DeleteManagementNetworkIpRange(context.Context, *DeleteManagementNetworkIpRangeRequest) (*DeleteManagementNetworkIpRangeResponse, error)
-	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
-	DeleteGuestNetworkIpv6Prefix(context.Context, *DeleteGuestNetworkIpv6PrefixRequest) (*DeleteGuestNetworkIpv6PrefixResponse, error)
-	// MigrateNetwork moves a network to another physical network
-	MigrateNetwork(context.Context, *MigrateNetworkRequest) (*MigrateNetworkResponse, error)
+	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
+	ListDedicatedGuestVlanRanges(context.Context, *ListDedicatedGuestVlanRangesRequest) (*ListDedicatedGuestVlanRangesResponse, error)
+	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
+	DeleteIpv4SubnetForZone(context.Context, *DeleteIpv4SubnetForZoneRequest) (*DeleteIpv4SubnetForZoneResponse, error)
+	// DeleteNetworkACLList Deletes a network ACL
+	DeleteNetworkACLList(context.Context, *DeleteNetworkACLListRequest) (*DeleteNetworkACLListResponse, error)
+	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
+	ReleaseDedicatedGuestVlanRange(context.Context, *ReleaseDedicatedGuestVlanRangeRequest) (*ReleaseDedicatedGuestVlanRangeResponse, error)
+	// DeletePhysicalNetwork Deletes a Physical Network.
+	DeletePhysicalNetwork(context.Context, *DeletePhysicalNetworkRequest) (*DeletePhysicalNetworkResponse, error)
+	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
+	UpdateIpv4SubnetForZone(context.Context, *UpdateIpv4SubnetForZoneRequest) (*UpdateIpv4SubnetForZoneResponse, error)
+	// ListNetworkIsolationMethods Lists supported methods of network isolation
+	ListNetworkIsolationMethods(context.Context, *ListNetworkIsolationMethodsRequest) (*ListNetworkIsolationMethodsResponse, error)
+	// CreatePhysicalNetwork Creates a physical network
+	CreatePhysicalNetwork(context.Context, *CreatePhysicalNetworkRequest) (*CreatePhysicalNetworkResponse, error)
+	// ListNetworkProtocols Lists details of network protocols
+	ListNetworkProtocols(context.Context, *ListNetworkProtocolsRequest) (*ListNetworkProtocolsResponse, error)
+	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
+	CreateNetworkACLList(context.Context, *CreateNetworkACLListRequest) (*CreateNetworkACLListResponse, error)
 	// DedicateGuestVlanRange Dedicates a guest vlan range to an account
 	DedicateGuestVlanRange(context.Context, *DedicateGuestVlanRangeRequest) (*DedicateGuestVlanRangeResponse, error)
-	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
-	UpdateStorageNetworkIpRange(context.Context, *UpdateStorageNetworkIpRangeRequest) (*UpdateStorageNetworkIpRangeResponse, error)
-	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
-	DeleteNetworkServiceProvider(context.Context, *DeleteNetworkServiceProviderRequest) (*DeleteNetworkServiceProviderResponse, error)
-	// MigrateVPC moves a vpc to another physical network
-	MigrateVPC(context.Context, *MigrateVPCRequest) (*MigrateVPCResponse, error)
-	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
-	ListNetworkServiceProviders(context.Context, *ListNetworkServiceProvidersRequest) (*ListNetworkServiceProvidersResponse, error)
-	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
-	ListIpv4SubnetsForZone(context.Context, *ListIpv4SubnetsForZoneRequest) (*ListIpv4SubnetsForZoneResponse, error)
+	// DeleteNetworkACL Deletes a network ACL
+	DeleteNetworkACL(context.Context, *DeleteNetworkACLRequest) (*DeleteNetworkACLResponse, error)
+	// UpdateNetworkCmdByAdmin Updates a network
+	UpdateNetworkCmdByAdmin(context.Context, *UpdateNetworkCmdByAdminRequest) (*UpdateNetworkCmdByAdminResponse, error)
+	// ListStorageNetworkIpRange List a storage network IP range.
+	ListStorageNetworkIpRange(context.Context, *ListStorageNetworkIpRangeRequest) (*ListStorageNetworkIpRangeResponse, error)
+	// MigrateNetwork moves a network to another physical network
+	MigrateNetwork(context.Context, *MigrateNetworkRequest) (*MigrateNetworkResponse, error)
+	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
+	UpdatePodManagementNetworkIpRange(context.Context, *UpdatePodManagementNetworkIpRangeRequest) (*UpdatePodManagementNetworkIpRangeResponse, error)
+	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
+	ReleaseDedicatedIpv4SubnetForZone(context.Context, *ReleaseDedicatedIpv4SubnetForZoneRequest) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error)
+	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
+	AddNetworkDevice(context.Context, *AddNetworkDeviceRequest) (*AddNetworkDeviceResponse, error)
+	// DeleteNetworkOffering Deletes a network offering.
+	DeleteNetworkOffering(context.Context, *DeleteNetworkOfferingRequest) (*DeleteNetworkOfferingResponse, error)
+	// UpdatePhysicalNetwork Updates a physical network
+	UpdatePhysicalNetwork(context.Context, *UpdatePhysicalNetworkRequest) (*UpdatePhysicalNetworkResponse, error)
+	// CreateManagementNetworkIpRange Creates a Management network IP range.
+	CreateManagementNetworkIpRange(context.Context, *CreateManagementNetworkIpRangeRequest) (*CreateManagementNetworkIpRangeResponse, error)
 	// DeleteNetwork Deletes a network
 	DeleteNetwork(context.Context, *DeleteNetworkRequest) (*DeleteNetworkResponse, error)
+	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
+	ListNetworkServiceProviders(context.Context, *ListNetworkServiceProvidersRequest) (*ListNetworkServiceProvidersResponse, error)
+	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
+	CreateNetworkACL(context.Context, *CreateNetworkACLRequest) (*CreateNetworkACLResponse, error)
+	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
+	ListSupportedNetworkServices(context.Context, *ListSupportedNetworkServicesRequest) (*ListSupportedNetworkServicesResponse, error)
+	// ListNetworkACLLists Lists all network ACLs
+	ListNetworkACLLists(context.Context, *ListNetworkACLListsRequest) (*ListNetworkACLListsResponse, error)
+	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
+	ListIpv4SubnetsForZone(context.Context, *ListIpv4SubnetsForZoneRequest) (*ListIpv4SubnetsForZoneResponse, error)
+	// ListNetworkDevice List network devices
+	ListNetworkDevice(context.Context, *ListNetworkDeviceRequest) (*ListNetworkDeviceResponse, error)
+	// ListNetworkACLs Lists all network ACL items
+	ListNetworkACLs(context.Context, *ListNetworkACLsRequest) (*ListNetworkACLsResponse, error)
+	// UpdateNetworkACLList Updates network ACL list
+	UpdateNetworkACLList(context.Context, *UpdateNetworkACLListRequest) (*UpdateNetworkACLListResponse, error)
+	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
+	CreateGuestNetworkIpv6Prefix(context.Context, *CreateGuestNetworkIpv6PrefixRequest) (*CreateGuestNetworkIpv6PrefixResponse, error)
+	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
+	DeleteStorageNetworkIpRange(context.Context, *DeleteStorageNetworkIpRangeRequest) (*DeleteStorageNetworkIpRangeResponse, error)
+	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
+	ListNetworkPermissions(context.Context, *ListNetworkPermissionsRequest) (*ListNetworkPermissionsResponse, error)
+	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
+	ListGuestNetworkIpv6Prefixes(context.Context, *ListGuestNetworkIpv6PrefixesRequest) (*ListGuestNetworkIpv6PrefixesResponse, error)
+	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
+	MoveNetworkAclItem(context.Context, *MoveNetworkAclItemRequest) (*MoveNetworkAclItemResponse, error)
+	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
+	AddNetworkServiceProvider(context.Context, *AddNetworkServiceProviderRequest) (*AddNetworkServiceProviderResponse, error)
+	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
+	DeleteIpv4SubnetForGuestNetwork(context.Context, *DeleteIpv4SubnetForGuestNetworkRequest) (*DeleteIpv4SubnetForGuestNetworkResponse, error)
+	// RemoveNetworkPermissions Removes network permissions.
+	RemoveNetworkPermissions(context.Context, *RemoveNetworkPermissionsRequest) (*RemoveNetworkPermissionsResponse, error)
+	// CreateNetworkOffering Creates a network offering.
+	CreateNetworkOffering(context.Context, *CreateNetworkOfferingRequest) (*CreateNetworkOfferingResponse, error)
+	// UpdateNetworkACLItem Updates ACL item with specified ID
+	UpdateNetworkACLItem(context.Context, *UpdateNetworkACLItemRequest) (*UpdateNetworkACLItemResponse, error)
+	// CreateNetwork Creates a network
+	CreateNetwork(context.Context, *CreateNetworkRequest) (*CreateNetworkResponse, error)
+	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
+	DeleteNetworkServiceProvider(context.Context, *DeleteNetworkServiceProviderRequest) (*DeleteNetworkServiceProviderResponse, error)
 	// UpdateNetworkOffering Updates a network offering.
 	UpdateNetworkOffering(context.Context, *UpdateNetworkOfferingRequest) (*UpdateNetworkOfferingResponse, error)
 	// CreateIpv4SubnetForGuestNetwork Creates a IPv4 subnet for guest networks.
 	CreateIpv4SubnetForGuestNetwork(context.Context, *CreateIpv4SubnetForGuestNetworkRequest) (*CreateIpv4SubnetForGuestNetworkResponse, error)
-	// ListNetworkIsolationMethods Lists supported methods of network isolation
-	ListNetworkIsolationMethods(context.Context, *ListNetworkIsolationMethodsRequest) (*ListNetworkIsolationMethodsResponse, error)
-	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
-	AddNetworkServiceProvider(context.Context, *AddNetworkServiceProviderRequest) (*AddNetworkServiceProviderResponse, error)
-	// ListNetworks Lists all available networks.
-	ListNetworks(context.Context, *ListNetworksRequest) (*ListNetworksResponse, error)
-	// ListNetworkACLs Lists all network ACL items
-	ListNetworkACLs(context.Context, *ListNetworkACLsRequest) (*ListNetworkACLsResponse, error)
-	// CreateManagementNetworkIpRange Creates a Management network IP range.
-	CreateManagementNetworkIpRange(context.Context, *CreateManagementNetworkIpRangeRequest) (*CreateManagementNetworkIpRangeResponse, error)
-	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
-	ListSupportedNetworkServices(context.Context, *ListSupportedNetworkServicesRequest) (*ListSupportedNetworkServicesResponse, error)
-	// UpdatePhysicalNetwork Updates a physical network
-	UpdatePhysicalNetwork(context.Context, *UpdatePhysicalNetworkRequest) (*UpdatePhysicalNetworkResponse, error)
-	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
-	CreateNetworkACLList(context.Context, *CreateNetworkACLListRequest) (*CreateNetworkACLListResponse, error)
-	// CreateNetworkCmdByAdmin Creates a network
-	CreateNetworkCmdByAdmin(context.Context, *CreateNetworkCmdByAdminRequest) (*CreateNetworkCmdByAdminResponse, error)
-	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
-	DeleteStorageNetworkIpRange(context.Context, *DeleteStorageNetworkIpRangeRequest) (*DeleteStorageNetworkIpRangeResponse, error)
-	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
-	DeleteIpv4SubnetForZone(context.Context, *DeleteIpv4SubnetForZoneRequest) (*DeleteIpv4SubnetForZoneResponse, error)
-	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
-	ListNetworkPermissions(context.Context, *ListNetworkPermissionsRequest) (*ListNetworkPermissionsResponse, error)
-	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
-	ListDedicatedGuestVlanRanges(context.Context, *ListDedicatedGuestVlanRangesRequest) (*ListDedicatedGuestVlanRangesResponse, error)
-	// DeleteNetworkACLList Deletes a network ACL
-	DeleteNetworkACLList(context.Context, *DeleteNetworkACLListRequest) (*DeleteNetworkACLListResponse, error)
-	// DeleteNetworkOffering Deletes a network offering.
-	DeleteNetworkOffering(context.Context, *DeleteNetworkOfferingRequest) (*DeleteNetworkOfferingResponse, error)
-	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
-	MoveNetworkAclItem(context.Context, *MoveNetworkAclItemRequest) (*MoveNetworkAclItemResponse, error)
-	// ListGuestVlans Lists all guest vlans
-	ListGuestVlans(context.Context, *ListGuestVlansRequest) (*ListGuestVlansResponse, error)
-	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
-	UpdateIpv4SubnetForZone(context.Context, *UpdateIpv4SubnetForZoneRequest) (*UpdateIpv4SubnetForZoneResponse, error)
-	// CreatePhysicalNetwork Creates a physical network
-	CreatePhysicalNetwork(context.Context, *CreatePhysicalNetworkRequest) (*CreatePhysicalNetworkResponse, error)
-	// CreateNetworkOffering Creates a network offering.
-	CreateNetworkOffering(context.Context, *CreateNetworkOfferingRequest) (*CreateNetworkOfferingResponse, error)
-	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
-	UpdateNetworkServiceProvider(context.Context, *UpdateNetworkServiceProviderRequest) (*UpdateNetworkServiceProviderResponse, error)
-	// CreateStorageNetworkIpRange Creates a Storage network IP range.
-	CreateStorageNetworkIpRange(context.Context, *CreateStorageNetworkIpRangeRequest) (*CreateStorageNetworkIpRangeResponse, error)
-	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
-	ListIpv4SubnetsForGuestNetwork(context.Context, *ListIpv4SubnetsForGuestNetworkRequest) (*ListIpv4SubnetsForGuestNetworkResponse, error)
+	// ResetNetworkPermissions Resets network permissions.
+	ResetNetworkPermissions(context.Context, *ResetNetworkPermissionsRequest) (*ResetNetworkPermissionsResponse, error)
 	// DeleteNetworkDevice Deletes network device.
 	DeleteNetworkDevice(context.Context, *DeleteNetworkDeviceRequest) (*DeleteNetworkDeviceResponse, error)
-	// CreateNetwork Creates a network
-	CreateNetwork(context.Context, *CreateNetworkRequest) (*CreateNetworkResponse, error)
-	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
-	ReleaseDedicatedGuestVlanRange(context.Context, *ReleaseDedicatedGuestVlanRangeRequest) (*ReleaseDedicatedGuestVlanRangeResponse, error)
-	// ListNetworkProtocols Lists details of network protocols
-	ListNetworkProtocols(context.Context, *ListNetworkProtocolsRequest) (*ListNetworkProtocolsResponse, error)
+	// ListNetworkOfferings Lists all available network offerings.
+	ListNetworkOfferings(context.Context, *ListNetworkOfferingsRequest) (*ListNetworkOfferingsResponse, error)
+	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
+	RestartNetwork(context.Context, *RestartNetworkRequest) (*RestartNetworkResponse, error)
+	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
+	DeleteGuestNetworkIpv6Prefix(context.Context, *DeleteGuestNetworkIpv6PrefixRequest) (*DeleteGuestNetworkIpv6PrefixResponse, error)
+	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
+	CreateIpv4SubnetForZone(context.Context, *CreateIpv4SubnetForZoneRequest) (*CreateIpv4SubnetForZoneResponse, error)
+	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
+	UpdateStorageNetworkIpRange(context.Context, *UpdateStorageNetworkIpRangeRequest) (*UpdateStorageNetworkIpRangeResponse, error)
+	// ListNetworks Lists all available networks.
+	ListNetworks(context.Context, *ListNetworksRequest) (*ListNetworksResponse, error)
+	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
+	ReplaceNetworkACLList(context.Context, *ReplaceNetworkACLListRequest) (*ReplaceNetworkACLListResponse, error)
+	// CreateNetworkPermissions Updates network permissions.
+	CreateNetworkPermissions(context.Context, *CreateNetworkPermissionsRequest) (*CreateNetworkPermissionsResponse, error)
+	// ListGuestVlans Lists all guest vlans
+	ListGuestVlans(context.Context, *ListGuestVlansRequest) (*ListGuestVlansResponse, error)
+	// CreateStorageNetworkIpRange Creates a Storage network IP range.
+	CreateStorageNetworkIpRange(context.Context, *CreateStorageNetworkIpRangeRequest) (*CreateStorageNetworkIpRangeResponse, error)
+	// UpdateNetwork Updates a network
+	UpdateNetwork(context.Context, *UpdateNetworkRequest) (*UpdateNetworkResponse, error)
+	// MigrateVPC moves a vpc to another physical network
+	MigrateVPC(context.Context, *MigrateVPCRequest) (*MigrateVPCResponse, error)
+	// ListPhysicalNetworks Lists physical networks
+	ListPhysicalNetworks(context.Context, *ListPhysicalNetworksRequest) (*ListPhysicalNetworksResponse, error)
+	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
+	ListIpv4SubnetsForGuestNetwork(context.Context, *ListIpv4SubnetsForGuestNetworkRequest) (*ListIpv4SubnetsForGuestNetworkResponse, error)
+	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
+	UpdateNetworkServiceProvider(context.Context, *UpdateNetworkServiceProviderRequest) (*UpdateNetworkServiceProviderResponse, error)
 	mustEmbedUnimplementedNetworkServiceServer()
 }
 
@@ -1016,107 +1001,134 @@ type UnimplementedNetworkServiceServer struct{}
 func (UnimplementedNetworkServiceServer) DedicateIpv4SubnetForZone(context.Context, *DedicateIpv4SubnetForZoneRequest) (*DedicateIpv4SubnetForZoneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DedicateIpv4SubnetForZone not implemented")
 }
-func (UnimplementedNetworkServiceServer) ListNetworkOfferings(context.Context, *ListNetworkOfferingsRequest) (*ListNetworkOfferingsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkOfferings not implemented")
+func (UnimplementedNetworkServiceServer) DeleteManagementNetworkIpRange(context.Context, *DeleteManagementNetworkIpRangeRequest) (*DeleteManagementNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteManagementNetworkIpRange not implemented")
 }
-func (UnimplementedNetworkServiceServer) ResetNetworkPermissions(context.Context, *ResetNetworkPermissionsRequest) (*ResetNetworkPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetNetworkPermissions not implemented")
+func (UnimplementedNetworkServiceServer) ListDedicatedGuestVlanRanges(context.Context, *ListDedicatedGuestVlanRangesRequest) (*ListDedicatedGuestVlanRangesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDedicatedGuestVlanRanges not implemented")
 }
-func (UnimplementedNetworkServiceServer) UpdateNetworkACLItem(context.Context, *UpdateNetworkACLItemRequest) (*UpdateNetworkACLItemResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkACLItem not implemented")
+func (UnimplementedNetworkServiceServer) DeleteIpv4SubnetForZone(context.Context, *DeleteIpv4SubnetForZoneRequest) (*DeleteIpv4SubnetForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpv4SubnetForZone not implemented")
 }
-func (UnimplementedNetworkServiceServer) DeleteNetworkACL(context.Context, *DeleteNetworkACLRequest) (*DeleteNetworkACLResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkACL not implemented")
+func (UnimplementedNetworkServiceServer) DeleteNetworkACLList(context.Context, *DeleteNetworkACLListRequest) (*DeleteNetworkACLListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkACLList not implemented")
 }
-func (UnimplementedNetworkServiceServer) RestartNetwork(context.Context, *RestartNetworkRequest) (*RestartNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RestartNetwork not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateIpv4SubnetForZone(context.Context, *CreateIpv4SubnetForZoneRequest) (*CreateIpv4SubnetForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateIpv4SubnetForZone not implemented")
-}
-func (UnimplementedNetworkServiceServer) AddNetworkDevice(context.Context, *AddNetworkDeviceRequest) (*AddNetworkDeviceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddNetworkDevice not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdateNetworkACLList(context.Context, *UpdateNetworkACLListRequest) (*UpdateNetworkACLListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkACLList not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateNetworkACL(context.Context, *CreateNetworkACLRequest) (*CreateNetworkACLResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkACL not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdatePodManagementNetworkIpRange(context.Context, *UpdatePodManagementNetworkIpRangeRequest) (*UpdatePodManagementNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdatePodManagementNetworkIpRange not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListGuestNetworkIpv6Prefixes(context.Context, *ListGuestNetworkIpv6PrefixesRequest) (*ListGuestNetworkIpv6PrefixesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListGuestNetworkIpv6Prefixes not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdateNetworkCmdByAdmin(context.Context, *UpdateNetworkCmdByAdminRequest) (*UpdateNetworkCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkCmdByAdmin not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateGuestNetworkIpv6Prefix(context.Context, *CreateGuestNetworkIpv6PrefixRequest) (*CreateGuestNetworkIpv6PrefixResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateGuestNetworkIpv6Prefix not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListStorageNetworkIpRange(context.Context, *ListStorageNetworkIpRangeRequest) (*ListStorageNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListStorageNetworkIpRange not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListPhysicalNetworks(context.Context, *ListPhysicalNetworksRequest) (*ListPhysicalNetworksResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPhysicalNetworks not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdateNetwork(context.Context, *UpdateNetworkRequest) (*UpdateNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetwork not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateNetworkPermissions(context.Context, *CreateNetworkPermissionsRequest) (*CreateNetworkPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkPermissions not implemented")
-}
-func (UnimplementedNetworkServiceServer) DeleteIpv4SubnetForGuestNetwork(context.Context, *DeleteIpv4SubnetForGuestNetworkRequest) (*DeleteIpv4SubnetForGuestNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpv4SubnetForGuestNetwork not implemented")
-}
-func (UnimplementedNetworkServiceServer) ReplaceNetworkACLList(context.Context, *ReplaceNetworkACLListRequest) (*ReplaceNetworkACLListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReplaceNetworkACLList not implemented")
+func (UnimplementedNetworkServiceServer) ReleaseDedicatedGuestVlanRange(context.Context, *ReleaseDedicatedGuestVlanRangeRequest) (*ReleaseDedicatedGuestVlanRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleaseDedicatedGuestVlanRange not implemented")
 }
 func (UnimplementedNetworkServiceServer) DeletePhysicalNetwork(context.Context, *DeletePhysicalNetworkRequest) (*DeletePhysicalNetworkResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePhysicalNetwork not implemented")
 }
-func (UnimplementedNetworkServiceServer) ListNetworkDevice(context.Context, *ListNetworkDeviceRequest) (*ListNetworkDeviceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkDevice not implemented")
+func (UnimplementedNetworkServiceServer) UpdateIpv4SubnetForZone(context.Context, *UpdateIpv4SubnetForZoneRequest) (*UpdateIpv4SubnetForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIpv4SubnetForZone not implemented")
 }
-func (UnimplementedNetworkServiceServer) RemoveNetworkPermissions(context.Context, *RemoveNetworkPermissionsRequest) (*RemoveNetworkPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveNetworkPermissions not implemented")
+func (UnimplementedNetworkServiceServer) ListNetworkIsolationMethods(context.Context, *ListNetworkIsolationMethodsRequest) (*ListNetworkIsolationMethodsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkIsolationMethods not implemented")
 }
-func (UnimplementedNetworkServiceServer) ReleaseDedicatedIpv4SubnetForZone(context.Context, *ReleaseDedicatedIpv4SubnetForZoneRequest) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleaseDedicatedIpv4SubnetForZone not implemented")
+func (UnimplementedNetworkServiceServer) CreatePhysicalNetwork(context.Context, *CreatePhysicalNetworkRequest) (*CreatePhysicalNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePhysicalNetwork not implemented")
 }
-func (UnimplementedNetworkServiceServer) ListNetworkACLLists(context.Context, *ListNetworkACLListsRequest) (*ListNetworkACLListsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkACLLists not implemented")
+func (UnimplementedNetworkServiceServer) ListNetworkProtocols(context.Context, *ListNetworkProtocolsRequest) (*ListNetworkProtocolsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkProtocols not implemented")
 }
-func (UnimplementedNetworkServiceServer) DeleteManagementNetworkIpRange(context.Context, *DeleteManagementNetworkIpRangeRequest) (*DeleteManagementNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteManagementNetworkIpRange not implemented")
-}
-func (UnimplementedNetworkServiceServer) DeleteGuestNetworkIpv6Prefix(context.Context, *DeleteGuestNetworkIpv6PrefixRequest) (*DeleteGuestNetworkIpv6PrefixResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteGuestNetworkIpv6Prefix not implemented")
-}
-func (UnimplementedNetworkServiceServer) MigrateNetwork(context.Context, *MigrateNetworkRequest) (*MigrateNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateNetwork not implemented")
+func (UnimplementedNetworkServiceServer) CreateNetworkACLList(context.Context, *CreateNetworkACLListRequest) (*CreateNetworkACLListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkACLList not implemented")
 }
 func (UnimplementedNetworkServiceServer) DedicateGuestVlanRange(context.Context, *DedicateGuestVlanRangeRequest) (*DedicateGuestVlanRangeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DedicateGuestVlanRange not implemented")
 }
-func (UnimplementedNetworkServiceServer) UpdateStorageNetworkIpRange(context.Context, *UpdateStorageNetworkIpRangeRequest) (*UpdateStorageNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateStorageNetworkIpRange not implemented")
+func (UnimplementedNetworkServiceServer) DeleteNetworkACL(context.Context, *DeleteNetworkACLRequest) (*DeleteNetworkACLResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkACL not implemented")
 }
-func (UnimplementedNetworkServiceServer) DeleteNetworkServiceProvider(context.Context, *DeleteNetworkServiceProviderRequest) (*DeleteNetworkServiceProviderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkServiceProvider not implemented")
+func (UnimplementedNetworkServiceServer) UpdateNetworkCmdByAdmin(context.Context, *UpdateNetworkCmdByAdminRequest) (*UpdateNetworkCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkCmdByAdmin not implemented")
 }
-func (UnimplementedNetworkServiceServer) MigrateVPC(context.Context, *MigrateVPCRequest) (*MigrateVPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateVPC not implemented")
+func (UnimplementedNetworkServiceServer) ListStorageNetworkIpRange(context.Context, *ListStorageNetworkIpRangeRequest) (*ListStorageNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListStorageNetworkIpRange not implemented")
+}
+func (UnimplementedNetworkServiceServer) MigrateNetwork(context.Context, *MigrateNetworkRequest) (*MigrateNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateNetwork not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdatePodManagementNetworkIpRange(context.Context, *UpdatePodManagementNetworkIpRangeRequest) (*UpdatePodManagementNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePodManagementNetworkIpRange not implemented")
+}
+func (UnimplementedNetworkServiceServer) ReleaseDedicatedIpv4SubnetForZone(context.Context, *ReleaseDedicatedIpv4SubnetForZoneRequest) (*ReleaseDedicatedIpv4SubnetForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleaseDedicatedIpv4SubnetForZone not implemented")
+}
+func (UnimplementedNetworkServiceServer) AddNetworkDevice(context.Context, *AddNetworkDeviceRequest) (*AddNetworkDeviceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddNetworkDevice not implemented")
+}
+func (UnimplementedNetworkServiceServer) DeleteNetworkOffering(context.Context, *DeleteNetworkOfferingRequest) (*DeleteNetworkOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkOffering not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdatePhysicalNetwork(context.Context, *UpdatePhysicalNetworkRequest) (*UpdatePhysicalNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePhysicalNetwork not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateManagementNetworkIpRange(context.Context, *CreateManagementNetworkIpRangeRequest) (*CreateManagementNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateManagementNetworkIpRange not implemented")
+}
+func (UnimplementedNetworkServiceServer) DeleteNetwork(context.Context, *DeleteNetworkRequest) (*DeleteNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetwork not implemented")
 }
 func (UnimplementedNetworkServiceServer) ListNetworkServiceProviders(context.Context, *ListNetworkServiceProvidersRequest) (*ListNetworkServiceProvidersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkServiceProviders not implemented")
 }
+func (UnimplementedNetworkServiceServer) CreateNetworkACL(context.Context, *CreateNetworkACLRequest) (*CreateNetworkACLResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkACL not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListSupportedNetworkServices(context.Context, *ListSupportedNetworkServicesRequest) (*ListSupportedNetworkServicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSupportedNetworkServices not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListNetworkACLLists(context.Context, *ListNetworkACLListsRequest) (*ListNetworkACLListsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkACLLists not implemented")
+}
 func (UnimplementedNetworkServiceServer) ListIpv4SubnetsForZone(context.Context, *ListIpv4SubnetsForZoneRequest) (*ListIpv4SubnetsForZoneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIpv4SubnetsForZone not implemented")
 }
-func (UnimplementedNetworkServiceServer) DeleteNetwork(context.Context, *DeleteNetworkRequest) (*DeleteNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetwork not implemented")
+func (UnimplementedNetworkServiceServer) ListNetworkDevice(context.Context, *ListNetworkDeviceRequest) (*ListNetworkDeviceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkDevice not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListNetworkACLs(context.Context, *ListNetworkACLsRequest) (*ListNetworkACLsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkACLs not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdateNetworkACLList(context.Context, *UpdateNetworkACLListRequest) (*UpdateNetworkACLListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkACLList not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateGuestNetworkIpv6Prefix(context.Context, *CreateGuestNetworkIpv6PrefixRequest) (*CreateGuestNetworkIpv6PrefixResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateGuestNetworkIpv6Prefix not implemented")
+}
+func (UnimplementedNetworkServiceServer) DeleteStorageNetworkIpRange(context.Context, *DeleteStorageNetworkIpRangeRequest) (*DeleteStorageNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorageNetworkIpRange not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListNetworkPermissions(context.Context, *ListNetworkPermissionsRequest) (*ListNetworkPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkPermissions not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListGuestNetworkIpv6Prefixes(context.Context, *ListGuestNetworkIpv6PrefixesRequest) (*ListGuestNetworkIpv6PrefixesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGuestNetworkIpv6Prefixes not implemented")
+}
+func (UnimplementedNetworkServiceServer) MoveNetworkAclItem(context.Context, *MoveNetworkAclItemRequest) (*MoveNetworkAclItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MoveNetworkAclItem not implemented")
+}
+func (UnimplementedNetworkServiceServer) AddNetworkServiceProvider(context.Context, *AddNetworkServiceProviderRequest) (*AddNetworkServiceProviderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddNetworkServiceProvider not implemented")
+}
+func (UnimplementedNetworkServiceServer) DeleteIpv4SubnetForGuestNetwork(context.Context, *DeleteIpv4SubnetForGuestNetworkRequest) (*DeleteIpv4SubnetForGuestNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpv4SubnetForGuestNetwork not implemented")
+}
+func (UnimplementedNetworkServiceServer) RemoveNetworkPermissions(context.Context, *RemoveNetworkPermissionsRequest) (*RemoveNetworkPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveNetworkPermissions not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateNetworkOffering(context.Context, *CreateNetworkOfferingRequest) (*CreateNetworkOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkOffering not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdateNetworkACLItem(context.Context, *UpdateNetworkACLItemRequest) (*UpdateNetworkACLItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkACLItem not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateNetwork(context.Context, *CreateNetworkRequest) (*CreateNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNetwork not implemented")
+}
+func (UnimplementedNetworkServiceServer) DeleteNetworkServiceProvider(context.Context, *DeleteNetworkServiceProviderRequest) (*DeleteNetworkServiceProviderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkServiceProvider not implemented")
 }
 func (UnimplementedNetworkServiceServer) UpdateNetworkOffering(context.Context, *UpdateNetworkOfferingRequest) (*UpdateNetworkOfferingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkOffering not implemented")
@@ -1124,86 +1136,56 @@ func (UnimplementedNetworkServiceServer) UpdateNetworkOffering(context.Context, 
 func (UnimplementedNetworkServiceServer) CreateIpv4SubnetForGuestNetwork(context.Context, *CreateIpv4SubnetForGuestNetworkRequest) (*CreateIpv4SubnetForGuestNetworkResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateIpv4SubnetForGuestNetwork not implemented")
 }
-func (UnimplementedNetworkServiceServer) ListNetworkIsolationMethods(context.Context, *ListNetworkIsolationMethodsRequest) (*ListNetworkIsolationMethodsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkIsolationMethods not implemented")
-}
-func (UnimplementedNetworkServiceServer) AddNetworkServiceProvider(context.Context, *AddNetworkServiceProviderRequest) (*AddNetworkServiceProviderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddNetworkServiceProvider not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListNetworks(context.Context, *ListNetworksRequest) (*ListNetworksResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworks not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListNetworkACLs(context.Context, *ListNetworkACLsRequest) (*ListNetworkACLsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkACLs not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateManagementNetworkIpRange(context.Context, *CreateManagementNetworkIpRangeRequest) (*CreateManagementNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateManagementNetworkIpRange not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListSupportedNetworkServices(context.Context, *ListSupportedNetworkServicesRequest) (*ListSupportedNetworkServicesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSupportedNetworkServices not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdatePhysicalNetwork(context.Context, *UpdatePhysicalNetworkRequest) (*UpdatePhysicalNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdatePhysicalNetwork not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateNetworkACLList(context.Context, *CreateNetworkACLListRequest) (*CreateNetworkACLListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkACLList not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateNetworkCmdByAdmin(context.Context, *CreateNetworkCmdByAdminRequest) (*CreateNetworkCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkCmdByAdmin not implemented")
-}
-func (UnimplementedNetworkServiceServer) DeleteStorageNetworkIpRange(context.Context, *DeleteStorageNetworkIpRangeRequest) (*DeleteStorageNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorageNetworkIpRange not implemented")
-}
-func (UnimplementedNetworkServiceServer) DeleteIpv4SubnetForZone(context.Context, *DeleteIpv4SubnetForZoneRequest) (*DeleteIpv4SubnetForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpv4SubnetForZone not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListNetworkPermissions(context.Context, *ListNetworkPermissionsRequest) (*ListNetworkPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkPermissions not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListDedicatedGuestVlanRanges(context.Context, *ListDedicatedGuestVlanRangesRequest) (*ListDedicatedGuestVlanRangesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListDedicatedGuestVlanRanges not implemented")
-}
-func (UnimplementedNetworkServiceServer) DeleteNetworkACLList(context.Context, *DeleteNetworkACLListRequest) (*DeleteNetworkACLListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkACLList not implemented")
-}
-func (UnimplementedNetworkServiceServer) DeleteNetworkOffering(context.Context, *DeleteNetworkOfferingRequest) (*DeleteNetworkOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkOffering not implemented")
-}
-func (UnimplementedNetworkServiceServer) MoveNetworkAclItem(context.Context, *MoveNetworkAclItemRequest) (*MoveNetworkAclItemResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MoveNetworkAclItem not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListGuestVlans(context.Context, *ListGuestVlansRequest) (*ListGuestVlansResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListGuestVlans not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdateIpv4SubnetForZone(context.Context, *UpdateIpv4SubnetForZoneRequest) (*UpdateIpv4SubnetForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateIpv4SubnetForZone not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreatePhysicalNetwork(context.Context, *CreatePhysicalNetworkRequest) (*CreatePhysicalNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePhysicalNetwork not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateNetworkOffering(context.Context, *CreateNetworkOfferingRequest) (*CreateNetworkOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkOffering not implemented")
-}
-func (UnimplementedNetworkServiceServer) UpdateNetworkServiceProvider(context.Context, *UpdateNetworkServiceProviderRequest) (*UpdateNetworkServiceProviderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkServiceProvider not implemented")
-}
-func (UnimplementedNetworkServiceServer) CreateStorageNetworkIpRange(context.Context, *CreateStorageNetworkIpRangeRequest) (*CreateStorageNetworkIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateStorageNetworkIpRange not implemented")
-}
-func (UnimplementedNetworkServiceServer) ListIpv4SubnetsForGuestNetwork(context.Context, *ListIpv4SubnetsForGuestNetworkRequest) (*ListIpv4SubnetsForGuestNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListIpv4SubnetsForGuestNetwork not implemented")
+func (UnimplementedNetworkServiceServer) ResetNetworkPermissions(context.Context, *ResetNetworkPermissionsRequest) (*ResetNetworkPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetNetworkPermissions not implemented")
 }
 func (UnimplementedNetworkServiceServer) DeleteNetworkDevice(context.Context, *DeleteNetworkDeviceRequest) (*DeleteNetworkDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteNetworkDevice not implemented")
 }
-func (UnimplementedNetworkServiceServer) CreateNetwork(context.Context, *CreateNetworkRequest) (*CreateNetworkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNetwork not implemented")
+func (UnimplementedNetworkServiceServer) ListNetworkOfferings(context.Context, *ListNetworkOfferingsRequest) (*ListNetworkOfferingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkOfferings not implemented")
 }
-func (UnimplementedNetworkServiceServer) ReleaseDedicatedGuestVlanRange(context.Context, *ReleaseDedicatedGuestVlanRangeRequest) (*ReleaseDedicatedGuestVlanRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleaseDedicatedGuestVlanRange not implemented")
+func (UnimplementedNetworkServiceServer) RestartNetwork(context.Context, *RestartNetworkRequest) (*RestartNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestartNetwork not implemented")
 }
-func (UnimplementedNetworkServiceServer) ListNetworkProtocols(context.Context, *ListNetworkProtocolsRequest) (*ListNetworkProtocolsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNetworkProtocols not implemented")
+func (UnimplementedNetworkServiceServer) DeleteGuestNetworkIpv6Prefix(context.Context, *DeleteGuestNetworkIpv6PrefixRequest) (*DeleteGuestNetworkIpv6PrefixResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGuestNetworkIpv6Prefix not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateIpv4SubnetForZone(context.Context, *CreateIpv4SubnetForZoneRequest) (*CreateIpv4SubnetForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIpv4SubnetForZone not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdateStorageNetworkIpRange(context.Context, *UpdateStorageNetworkIpRangeRequest) (*UpdateStorageNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStorageNetworkIpRange not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListNetworks(context.Context, *ListNetworksRequest) (*ListNetworksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNetworks not implemented")
+}
+func (UnimplementedNetworkServiceServer) ReplaceNetworkACLList(context.Context, *ReplaceNetworkACLListRequest) (*ReplaceNetworkACLListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReplaceNetworkACLList not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateNetworkPermissions(context.Context, *CreateNetworkPermissionsRequest) (*CreateNetworkPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNetworkPermissions not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListGuestVlans(context.Context, *ListGuestVlansRequest) (*ListGuestVlansResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGuestVlans not implemented")
+}
+func (UnimplementedNetworkServiceServer) CreateStorageNetworkIpRange(context.Context, *CreateStorageNetworkIpRangeRequest) (*CreateStorageNetworkIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStorageNetworkIpRange not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdateNetwork(context.Context, *UpdateNetworkRequest) (*UpdateNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetwork not implemented")
+}
+func (UnimplementedNetworkServiceServer) MigrateVPC(context.Context, *MigrateVPCRequest) (*MigrateVPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateVPC not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListPhysicalNetworks(context.Context, *ListPhysicalNetworksRequest) (*ListPhysicalNetworksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPhysicalNetworks not implemented")
+}
+func (UnimplementedNetworkServiceServer) ListIpv4SubnetsForGuestNetwork(context.Context, *ListIpv4SubnetsForGuestNetworkRequest) (*ListIpv4SubnetsForGuestNetworkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIpv4SubnetsForGuestNetwork not implemented")
+}
+func (UnimplementedNetworkServiceServer) UpdateNetworkServiceProvider(context.Context, *UpdateNetworkServiceProviderRequest) (*UpdateNetworkServiceProviderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNetworkServiceProvider not implemented")
 }
 func (UnimplementedNetworkServiceServer) mustEmbedUnimplementedNetworkServiceServer() {}
 func (UnimplementedNetworkServiceServer) testEmbeddedByValue()                        {}
@@ -1244,344 +1226,92 @@ func _NetworkService_DedicateIpv4SubnetForZone_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ListNetworkOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkOfferingsRequest)
+func _NetworkService_DeleteManagementNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteManagementNetworkIpRangeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkOfferings(ctx, in)
+		return srv.(NetworkServiceServer).DeleteManagementNetworkIpRange(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ListNetworkOfferings_FullMethodName,
+		FullMethod: NetworkService_DeleteManagementNetworkIpRange_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkOfferings(ctx, req.(*ListNetworkOfferingsRequest))
+		return srv.(NetworkServiceServer).DeleteManagementNetworkIpRange(ctx, req.(*DeleteManagementNetworkIpRangeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ResetNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetNetworkPermissionsRequest)
+func _NetworkService_ListDedicatedGuestVlanRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDedicatedGuestVlanRangesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ResetNetworkPermissions(ctx, in)
+		return srv.(NetworkServiceServer).ListDedicatedGuestVlanRanges(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ResetNetworkPermissions_FullMethodName,
+		FullMethod: NetworkService_ListDedicatedGuestVlanRanges_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ResetNetworkPermissions(ctx, req.(*ResetNetworkPermissionsRequest))
+		return srv.(NetworkServiceServer).ListDedicatedGuestVlanRanges(ctx, req.(*ListDedicatedGuestVlanRangesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_UpdateNetworkACLItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateNetworkACLItemRequest)
+func _NetworkService_DeleteIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteIpv4SubnetForZoneRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateNetworkACLItem(ctx, in)
+		return srv.(NetworkServiceServer).DeleteIpv4SubnetForZone(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_UpdateNetworkACLItem_FullMethodName,
+		FullMethod: NetworkService_DeleteIpv4SubnetForZone_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateNetworkACLItem(ctx, req.(*UpdateNetworkACLItemRequest))
+		return srv.(NetworkServiceServer).DeleteIpv4SubnetForZone(ctx, req.(*DeleteIpv4SubnetForZoneRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_DeleteNetworkACL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNetworkACLRequest)
+func _NetworkService_DeleteNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteNetworkACLListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteNetworkACL(ctx, in)
+		return srv.(NetworkServiceServer).DeleteNetworkACLList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_DeleteNetworkACL_FullMethodName,
+		FullMethod: NetworkService_DeleteNetworkACLList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteNetworkACL(ctx, req.(*DeleteNetworkACLRequest))
+		return srv.(NetworkServiceServer).DeleteNetworkACLList(ctx, req.(*DeleteNetworkACLListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_RestartNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RestartNetworkRequest)
+func _NetworkService_ReleaseDedicatedGuestVlanRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleaseDedicatedGuestVlanRangeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).RestartNetwork(ctx, in)
+		return srv.(NetworkServiceServer).ReleaseDedicatedGuestVlanRange(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_RestartNetwork_FullMethodName,
+		FullMethod: NetworkService_ReleaseDedicatedGuestVlanRange_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).RestartNetwork(ctx, req.(*RestartNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateIpv4SubnetForZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateIpv4SubnetForZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateIpv4SubnetForZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateIpv4SubnetForZone(ctx, req.(*CreateIpv4SubnetForZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_AddNetworkDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddNetworkDeviceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).AddNetworkDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_AddNetworkDevice_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).AddNetworkDevice(ctx, req.(*AddNetworkDeviceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdateNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateNetworkACLListRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateNetworkACLList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdateNetworkACLList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateNetworkACLList(ctx, req.(*UpdateNetworkACLListRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateNetworkACL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkACLRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateNetworkACL(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateNetworkACL_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateNetworkACL(ctx, req.(*CreateNetworkACLRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdatePodManagementNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePodManagementNetworkIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdatePodManagementNetworkIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdatePodManagementNetworkIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdatePodManagementNetworkIpRange(ctx, req.(*UpdatePodManagementNetworkIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListGuestNetworkIpv6Prefixes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListGuestNetworkIpv6PrefixesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListGuestNetworkIpv6Prefixes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListGuestNetworkIpv6Prefixes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListGuestNetworkIpv6Prefixes(ctx, req.(*ListGuestNetworkIpv6PrefixesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdateNetworkCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateNetworkCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateNetworkCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdateNetworkCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateNetworkCmdByAdmin(ctx, req.(*UpdateNetworkCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateGuestNetworkIpv6Prefix_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateGuestNetworkIpv6PrefixRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateGuestNetworkIpv6Prefix(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateGuestNetworkIpv6Prefix_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateGuestNetworkIpv6Prefix(ctx, req.(*CreateGuestNetworkIpv6PrefixRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListStorageNetworkIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListStorageNetworkIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListStorageNetworkIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListStorageNetworkIpRange(ctx, req.(*ListStorageNetworkIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListPhysicalNetworks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListPhysicalNetworksRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListPhysicalNetworks(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListPhysicalNetworks_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListPhysicalNetworks(ctx, req.(*ListPhysicalNetworksRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdateNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateNetwork(ctx, req.(*UpdateNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkPermissionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateNetworkPermissions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateNetworkPermissions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateNetworkPermissions(ctx, req.(*CreateNetworkPermissionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_DeleteIpv4SubnetForGuestNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteIpv4SubnetForGuestNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteIpv4SubnetForGuestNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_DeleteIpv4SubnetForGuestNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteIpv4SubnetForGuestNetwork(ctx, req.(*DeleteIpv4SubnetForGuestNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ReplaceNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReplaceNetworkACLListRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ReplaceNetworkACLList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ReplaceNetworkACLList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ReplaceNetworkACLList(ctx, req.(*ReplaceNetworkACLListRequest))
+		return srv.(NetworkServiceServer).ReleaseDedicatedGuestVlanRange(ctx, req.(*ReleaseDedicatedGuestVlanRangeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1604,128 +1334,92 @@ func _NetworkService_DeletePhysicalNetwork_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ListNetworkDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkDeviceRequest)
+func _NetworkService_UpdateIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateIpv4SubnetForZoneRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkDevice(ctx, in)
+		return srv.(NetworkServiceServer).UpdateIpv4SubnetForZone(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ListNetworkDevice_FullMethodName,
+		FullMethod: NetworkService_UpdateIpv4SubnetForZone_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkDevice(ctx, req.(*ListNetworkDeviceRequest))
+		return srv.(NetworkServiceServer).UpdateIpv4SubnetForZone(ctx, req.(*UpdateIpv4SubnetForZoneRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_RemoveNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveNetworkPermissionsRequest)
+func _NetworkService_ListNetworkIsolationMethods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkIsolationMethodsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).RemoveNetworkPermissions(ctx, in)
+		return srv.(NetworkServiceServer).ListNetworkIsolationMethods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_RemoveNetworkPermissions_FullMethodName,
+		FullMethod: NetworkService_ListNetworkIsolationMethods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).RemoveNetworkPermissions(ctx, req.(*RemoveNetworkPermissionsRequest))
+		return srv.(NetworkServiceServer).ListNetworkIsolationMethods(ctx, req.(*ListNetworkIsolationMethodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ReleaseDedicatedIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleaseDedicatedIpv4SubnetForZoneRequest)
+func _NetworkService_CreatePhysicalNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePhysicalNetworkRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ReleaseDedicatedIpv4SubnetForZone(ctx, in)
+		return srv.(NetworkServiceServer).CreatePhysicalNetwork(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ReleaseDedicatedIpv4SubnetForZone_FullMethodName,
+		FullMethod: NetworkService_CreatePhysicalNetwork_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ReleaseDedicatedIpv4SubnetForZone(ctx, req.(*ReleaseDedicatedIpv4SubnetForZoneRequest))
+		return srv.(NetworkServiceServer).CreatePhysicalNetwork(ctx, req.(*CreatePhysicalNetworkRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ListNetworkACLLists_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkACLListsRequest)
+func _NetworkService_ListNetworkProtocols_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkProtocolsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkACLLists(ctx, in)
+		return srv.(NetworkServiceServer).ListNetworkProtocols(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ListNetworkACLLists_FullMethodName,
+		FullMethod: NetworkService_ListNetworkProtocols_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkACLLists(ctx, req.(*ListNetworkACLListsRequest))
+		return srv.(NetworkServiceServer).ListNetworkProtocols(ctx, req.(*ListNetworkProtocolsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_DeleteManagementNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteManagementNetworkIpRangeRequest)
+func _NetworkService_CreateNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNetworkACLListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteManagementNetworkIpRange(ctx, in)
+		return srv.(NetworkServiceServer).CreateNetworkACLList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_DeleteManagementNetworkIpRange_FullMethodName,
+		FullMethod: NetworkService_CreateNetworkACLList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteManagementNetworkIpRange(ctx, req.(*DeleteManagementNetworkIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_DeleteGuestNetworkIpv6Prefix_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteGuestNetworkIpv6PrefixRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteGuestNetworkIpv6Prefix(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_DeleteGuestNetworkIpv6Prefix_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteGuestNetworkIpv6Prefix(ctx, req.(*DeleteGuestNetworkIpv6PrefixRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_MigrateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).MigrateNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_MigrateNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).MigrateNetwork(ctx, req.(*MigrateNetworkRequest))
+		return srv.(NetworkServiceServer).CreateNetworkACLList(ctx, req.(*CreateNetworkACLListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1748,56 +1442,200 @@ func _NetworkService_DedicateGuestVlanRange_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_UpdateStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateStorageNetworkIpRangeRequest)
+func _NetworkService_DeleteNetworkACL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteNetworkACLRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateStorageNetworkIpRange(ctx, in)
+		return srv.(NetworkServiceServer).DeleteNetworkACL(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_UpdateStorageNetworkIpRange_FullMethodName,
+		FullMethod: NetworkService_DeleteNetworkACL_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateStorageNetworkIpRange(ctx, req.(*UpdateStorageNetworkIpRangeRequest))
+		return srv.(NetworkServiceServer).DeleteNetworkACL(ctx, req.(*DeleteNetworkACLRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_DeleteNetworkServiceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNetworkServiceProviderRequest)
+func _NetworkService_UpdateNetworkCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNetworkCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteNetworkServiceProvider(ctx, in)
+		return srv.(NetworkServiceServer).UpdateNetworkCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_DeleteNetworkServiceProvider_FullMethodName,
+		FullMethod: NetworkService_UpdateNetworkCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteNetworkServiceProvider(ctx, req.(*DeleteNetworkServiceProviderRequest))
+		return srv.(NetworkServiceServer).UpdateNetworkCmdByAdmin(ctx, req.(*UpdateNetworkCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_MigrateVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateVPCRequest)
+func _NetworkService_ListStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListStorageNetworkIpRangeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).MigrateVPC(ctx, in)
+		return srv.(NetworkServiceServer).ListStorageNetworkIpRange(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_MigrateVPC_FullMethodName,
+		FullMethod: NetworkService_ListStorageNetworkIpRange_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).MigrateVPC(ctx, req.(*MigrateVPCRequest))
+		return srv.(NetworkServiceServer).ListStorageNetworkIpRange(ctx, req.(*ListStorageNetworkIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_MigrateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).MigrateNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_MigrateNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).MigrateNetwork(ctx, req.(*MigrateNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdatePodManagementNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePodManagementNetworkIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdatePodManagementNetworkIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdatePodManagementNetworkIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdatePodManagementNetworkIpRange(ctx, req.(*UpdatePodManagementNetworkIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ReleaseDedicatedIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleaseDedicatedIpv4SubnetForZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ReleaseDedicatedIpv4SubnetForZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ReleaseDedicatedIpv4SubnetForZone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ReleaseDedicatedIpv4SubnetForZone(ctx, req.(*ReleaseDedicatedIpv4SubnetForZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_AddNetworkDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddNetworkDeviceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).AddNetworkDevice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_AddNetworkDevice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).AddNetworkDevice(ctx, req.(*AddNetworkDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_DeleteNetworkOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteNetworkOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).DeleteNetworkOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_DeleteNetworkOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).DeleteNetworkOffering(ctx, req.(*DeleteNetworkOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdatePhysicalNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePhysicalNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdatePhysicalNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdatePhysicalNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdatePhysicalNetwork(ctx, req.(*UpdatePhysicalNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateManagementNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateManagementNetworkIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateManagementNetworkIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateManagementNetworkIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateManagementNetworkIpRange(ctx, req.(*CreateManagementNetworkIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_DeleteNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).DeleteNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_DeleteNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).DeleteNetwork(ctx, req.(*DeleteNetworkRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1820,6 +1658,60 @@ func _NetworkService_ListNetworkServiceProviders_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NetworkService_CreateNetworkACL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNetworkACLRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateNetworkACL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateNetworkACL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateNetworkACL(ctx, req.(*CreateNetworkACLRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListSupportedNetworkServices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSupportedNetworkServicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListSupportedNetworkServices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListSupportedNetworkServices_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListSupportedNetworkServices(ctx, req.(*ListSupportedNetworkServicesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListNetworkACLLists_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkACLListsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListNetworkACLLists(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListNetworkACLLists_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListNetworkACLLists(ctx, req.(*ListNetworkACLListsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _NetworkService_ListIpv4SubnetsForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIpv4SubnetsForZoneRequest)
 	if err := dec(in); err != nil {
@@ -1838,20 +1730,272 @@ func _NetworkService_ListIpv4SubnetsForZone_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_DeleteNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNetworkRequest)
+func _NetworkService_ListNetworkDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkDeviceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteNetwork(ctx, in)
+		return srv.(NetworkServiceServer).ListNetworkDevice(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_DeleteNetwork_FullMethodName,
+		FullMethod: NetworkService_ListNetworkDevice_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteNetwork(ctx, req.(*DeleteNetworkRequest))
+		return srv.(NetworkServiceServer).ListNetworkDevice(ctx, req.(*ListNetworkDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListNetworkACLs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkACLsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListNetworkACLs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListNetworkACLs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListNetworkACLs(ctx, req.(*ListNetworkACLsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdateNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNetworkACLListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdateNetworkACLList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdateNetworkACLList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdateNetworkACLList(ctx, req.(*UpdateNetworkACLListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateGuestNetworkIpv6Prefix_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateGuestNetworkIpv6PrefixRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateGuestNetworkIpv6Prefix(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateGuestNetworkIpv6Prefix_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateGuestNetworkIpv6Prefix(ctx, req.(*CreateGuestNetworkIpv6PrefixRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_DeleteStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteStorageNetworkIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).DeleteStorageNetworkIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_DeleteStorageNetworkIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).DeleteStorageNetworkIpRange(ctx, req.(*DeleteStorageNetworkIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListNetworkPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListNetworkPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListNetworkPermissions(ctx, req.(*ListNetworkPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListGuestNetworkIpv6Prefixes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListGuestNetworkIpv6PrefixesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListGuestNetworkIpv6Prefixes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListGuestNetworkIpv6Prefixes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListGuestNetworkIpv6Prefixes(ctx, req.(*ListGuestNetworkIpv6PrefixesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_MoveNetworkAclItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MoveNetworkAclItemRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).MoveNetworkAclItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_MoveNetworkAclItem_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).MoveNetworkAclItem(ctx, req.(*MoveNetworkAclItemRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_AddNetworkServiceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddNetworkServiceProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).AddNetworkServiceProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_AddNetworkServiceProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).AddNetworkServiceProvider(ctx, req.(*AddNetworkServiceProviderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_DeleteIpv4SubnetForGuestNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteIpv4SubnetForGuestNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).DeleteIpv4SubnetForGuestNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_DeleteIpv4SubnetForGuestNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).DeleteIpv4SubnetForGuestNetwork(ctx, req.(*DeleteIpv4SubnetForGuestNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_RemoveNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveNetworkPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).RemoveNetworkPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_RemoveNetworkPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).RemoveNetworkPermissions(ctx, req.(*RemoveNetworkPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateNetworkOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNetworkOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateNetworkOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateNetworkOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateNetworkOffering(ctx, req.(*CreateNetworkOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdateNetworkACLItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNetworkACLItemRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdateNetworkACLItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdateNetworkACLItem_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdateNetworkACLItem(ctx, req.(*UpdateNetworkACLItemRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateNetwork(ctx, req.(*CreateNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_DeleteNetworkServiceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteNetworkServiceProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).DeleteNetworkServiceProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_DeleteNetworkServiceProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).DeleteNetworkServiceProvider(ctx, req.(*DeleteNetworkServiceProviderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1892,416 +2036,20 @@ func _NetworkService_CreateIpv4SubnetForGuestNetwork_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ListNetworkIsolationMethods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkIsolationMethodsRequest)
+func _NetworkService_ResetNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetNetworkPermissionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkIsolationMethods(ctx, in)
+		return srv.(NetworkServiceServer).ResetNetworkPermissions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ListNetworkIsolationMethods_FullMethodName,
+		FullMethod: NetworkService_ResetNetworkPermissions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkIsolationMethods(ctx, req.(*ListNetworkIsolationMethodsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_AddNetworkServiceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddNetworkServiceProviderRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).AddNetworkServiceProvider(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_AddNetworkServiceProvider_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).AddNetworkServiceProvider(ctx, req.(*AddNetworkServiceProviderRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListNetworks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworksRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworks(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListNetworks_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworks(ctx, req.(*ListNetworksRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListNetworkACLs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkACLsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkACLs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListNetworkACLs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkACLs(ctx, req.(*ListNetworkACLsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateManagementNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateManagementNetworkIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateManagementNetworkIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateManagementNetworkIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateManagementNetworkIpRange(ctx, req.(*CreateManagementNetworkIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListSupportedNetworkServices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSupportedNetworkServicesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListSupportedNetworkServices(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListSupportedNetworkServices_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListSupportedNetworkServices(ctx, req.(*ListSupportedNetworkServicesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdatePhysicalNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePhysicalNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdatePhysicalNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdatePhysicalNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdatePhysicalNetwork(ctx, req.(*UpdatePhysicalNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkACLListRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateNetworkACLList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateNetworkACLList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateNetworkACLList(ctx, req.(*CreateNetworkACLListRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateNetworkCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateNetworkCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateNetworkCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateNetworkCmdByAdmin(ctx, req.(*CreateNetworkCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_DeleteStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteStorageNetworkIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteStorageNetworkIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_DeleteStorageNetworkIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteStorageNetworkIpRange(ctx, req.(*DeleteStorageNetworkIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_DeleteIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteIpv4SubnetForZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteIpv4SubnetForZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_DeleteIpv4SubnetForZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteIpv4SubnetForZone(ctx, req.(*DeleteIpv4SubnetForZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkPermissionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkPermissions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListNetworkPermissions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkPermissions(ctx, req.(*ListNetworkPermissionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListDedicatedGuestVlanRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListDedicatedGuestVlanRangesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListDedicatedGuestVlanRanges(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListDedicatedGuestVlanRanges_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListDedicatedGuestVlanRanges(ctx, req.(*ListDedicatedGuestVlanRangesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_DeleteNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNetworkACLListRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteNetworkACLList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_DeleteNetworkACLList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteNetworkACLList(ctx, req.(*DeleteNetworkACLListRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_DeleteNetworkOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteNetworkOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).DeleteNetworkOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_DeleteNetworkOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).DeleteNetworkOffering(ctx, req.(*DeleteNetworkOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_MoveNetworkAclItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MoveNetworkAclItemRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).MoveNetworkAclItem(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_MoveNetworkAclItem_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).MoveNetworkAclItem(ctx, req.(*MoveNetworkAclItemRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListGuestVlans_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListGuestVlansRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListGuestVlans(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListGuestVlans_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListGuestVlans(ctx, req.(*ListGuestVlansRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdateIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateIpv4SubnetForZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateIpv4SubnetForZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdateIpv4SubnetForZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateIpv4SubnetForZone(ctx, req.(*UpdateIpv4SubnetForZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreatePhysicalNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePhysicalNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreatePhysicalNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreatePhysicalNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreatePhysicalNetwork(ctx, req.(*CreatePhysicalNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateNetworkOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateNetworkOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateNetworkOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateNetworkOffering(ctx, req.(*CreateNetworkOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_UpdateNetworkServiceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateNetworkServiceProviderRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).UpdateNetworkServiceProvider(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_UpdateNetworkServiceProvider_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).UpdateNetworkServiceProvider(ctx, req.(*UpdateNetworkServiceProviderRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_CreateStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateStorageNetworkIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateStorageNetworkIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_CreateStorageNetworkIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateStorageNetworkIpRange(ctx, req.(*CreateStorageNetworkIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkService_ListIpv4SubnetsForGuestNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListIpv4SubnetsForGuestNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListIpv4SubnetsForGuestNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NetworkService_ListIpv4SubnetsForGuestNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListIpv4SubnetsForGuestNetwork(ctx, req.(*ListIpv4SubnetsForGuestNetworkRequest))
+		return srv.(NetworkServiceServer).ResetNetworkPermissions(ctx, req.(*ResetNetworkPermissionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2324,56 +2072,272 @@ func _NetworkService_DeleteNetworkDevice_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_CreateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateNetworkRequest)
+func _NetworkService_ListNetworkOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworkOfferingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).CreateNetwork(ctx, in)
+		return srv.(NetworkServiceServer).ListNetworkOfferings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_CreateNetwork_FullMethodName,
+		FullMethod: NetworkService_ListNetworkOfferings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).CreateNetwork(ctx, req.(*CreateNetworkRequest))
+		return srv.(NetworkServiceServer).ListNetworkOfferings(ctx, req.(*ListNetworkOfferingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ReleaseDedicatedGuestVlanRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleaseDedicatedGuestVlanRangeRequest)
+func _NetworkService_RestartNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestartNetworkRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ReleaseDedicatedGuestVlanRange(ctx, in)
+		return srv.(NetworkServiceServer).RestartNetwork(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ReleaseDedicatedGuestVlanRange_FullMethodName,
+		FullMethod: NetworkService_RestartNetwork_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ReleaseDedicatedGuestVlanRange(ctx, req.(*ReleaseDedicatedGuestVlanRangeRequest))
+		return srv.(NetworkServiceServer).RestartNetwork(ctx, req.(*RestartNetworkRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkService_ListNetworkProtocols_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNetworkProtocolsRequest)
+func _NetworkService_DeleteGuestNetworkIpv6Prefix_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteGuestNetworkIpv6PrefixRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NetworkServiceServer).ListNetworkProtocols(ctx, in)
+		return srv.(NetworkServiceServer).DeleteGuestNetworkIpv6Prefix(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NetworkService_ListNetworkProtocols_FullMethodName,
+		FullMethod: NetworkService_DeleteGuestNetworkIpv6Prefix_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServiceServer).ListNetworkProtocols(ctx, req.(*ListNetworkProtocolsRequest))
+		return srv.(NetworkServiceServer).DeleteGuestNetworkIpv6Prefix(ctx, req.(*DeleteGuestNetworkIpv6PrefixRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateIpv4SubnetForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateIpv4SubnetForZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateIpv4SubnetForZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateIpv4SubnetForZone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateIpv4SubnetForZone(ctx, req.(*CreateIpv4SubnetForZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdateStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStorageNetworkIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdateStorageNetworkIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdateStorageNetworkIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdateStorageNetworkIpRange(ctx, req.(*UpdateStorageNetworkIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListNetworks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNetworksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListNetworks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListNetworks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListNetworks(ctx, req.(*ListNetworksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ReplaceNetworkACLList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReplaceNetworkACLListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ReplaceNetworkACLList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ReplaceNetworkACLList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ReplaceNetworkACLList(ctx, req.(*ReplaceNetworkACLListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateNetworkPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNetworkPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateNetworkPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateNetworkPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateNetworkPermissions(ctx, req.(*CreateNetworkPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListGuestVlans_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListGuestVlansRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListGuestVlans(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListGuestVlans_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListGuestVlans(ctx, req.(*ListGuestVlansRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_CreateStorageNetworkIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateStorageNetworkIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).CreateStorageNetworkIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_CreateStorageNetworkIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).CreateStorageNetworkIpRange(ctx, req.(*CreateStorageNetworkIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdateNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdateNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdateNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdateNetwork(ctx, req.(*UpdateNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_MigrateVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateVPCRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).MigrateVPC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_MigrateVPC_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).MigrateVPC(ctx, req.(*MigrateVPCRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListPhysicalNetworks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPhysicalNetworksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListPhysicalNetworks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListPhysicalNetworks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListPhysicalNetworks(ctx, req.(*ListPhysicalNetworksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_ListIpv4SubnetsForGuestNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListIpv4SubnetsForGuestNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).ListIpv4SubnetsForGuestNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_ListIpv4SubnetsForGuestNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).ListIpv4SubnetsForGuestNetwork(ctx, req.(*ListIpv4SubnetsForGuestNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NetworkService_UpdateNetworkServiceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNetworkServiceProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NetworkServiceServer).UpdateNetworkServiceProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NetworkService_UpdateNetworkServiceProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NetworkServiceServer).UpdateNetworkServiceProvider(ctx, req.(*UpdateNetworkServiceProviderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2390,140 +2354,176 @@ var NetworkService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _NetworkService_DedicateIpv4SubnetForZone_Handler,
 		},
 		{
-			MethodName: "ListNetworkOfferings",
-			Handler:    _NetworkService_ListNetworkOfferings_Handler,
+			MethodName: "DeleteManagementNetworkIpRange",
+			Handler:    _NetworkService_DeleteManagementNetworkIpRange_Handler,
 		},
 		{
-			MethodName: "ResetNetworkPermissions",
-			Handler:    _NetworkService_ResetNetworkPermissions_Handler,
+			MethodName: "ListDedicatedGuestVlanRanges",
+			Handler:    _NetworkService_ListDedicatedGuestVlanRanges_Handler,
 		},
 		{
-			MethodName: "UpdateNetworkACLItem",
-			Handler:    _NetworkService_UpdateNetworkACLItem_Handler,
+			MethodName: "DeleteIpv4SubnetForZone",
+			Handler:    _NetworkService_DeleteIpv4SubnetForZone_Handler,
 		},
 		{
-			MethodName: "DeleteNetworkACL",
-			Handler:    _NetworkService_DeleteNetworkACL_Handler,
+			MethodName: "DeleteNetworkACLList",
+			Handler:    _NetworkService_DeleteNetworkACLList_Handler,
 		},
 		{
-			MethodName: "RestartNetwork",
-			Handler:    _NetworkService_RestartNetwork_Handler,
-		},
-		{
-			MethodName: "CreateIpv4SubnetForZone",
-			Handler:    _NetworkService_CreateIpv4SubnetForZone_Handler,
-		},
-		{
-			MethodName: "AddNetworkDevice",
-			Handler:    _NetworkService_AddNetworkDevice_Handler,
-		},
-		{
-			MethodName: "UpdateNetworkACLList",
-			Handler:    _NetworkService_UpdateNetworkACLList_Handler,
-		},
-		{
-			MethodName: "CreateNetworkACL",
-			Handler:    _NetworkService_CreateNetworkACL_Handler,
-		},
-		{
-			MethodName: "UpdatePodManagementNetworkIpRange",
-			Handler:    _NetworkService_UpdatePodManagementNetworkIpRange_Handler,
-		},
-		{
-			MethodName: "ListGuestNetworkIpv6Prefixes",
-			Handler:    _NetworkService_ListGuestNetworkIpv6Prefixes_Handler,
-		},
-		{
-			MethodName: "UpdateNetworkCmdByAdmin",
-			Handler:    _NetworkService_UpdateNetworkCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "CreateGuestNetworkIpv6Prefix",
-			Handler:    _NetworkService_CreateGuestNetworkIpv6Prefix_Handler,
-		},
-		{
-			MethodName: "ListStorageNetworkIpRange",
-			Handler:    _NetworkService_ListStorageNetworkIpRange_Handler,
-		},
-		{
-			MethodName: "ListPhysicalNetworks",
-			Handler:    _NetworkService_ListPhysicalNetworks_Handler,
-		},
-		{
-			MethodName: "UpdateNetwork",
-			Handler:    _NetworkService_UpdateNetwork_Handler,
-		},
-		{
-			MethodName: "CreateNetworkPermissions",
-			Handler:    _NetworkService_CreateNetworkPermissions_Handler,
-		},
-		{
-			MethodName: "DeleteIpv4SubnetForGuestNetwork",
-			Handler:    _NetworkService_DeleteIpv4SubnetForGuestNetwork_Handler,
-		},
-		{
-			MethodName: "ReplaceNetworkACLList",
-			Handler:    _NetworkService_ReplaceNetworkACLList_Handler,
+			MethodName: "ReleaseDedicatedGuestVlanRange",
+			Handler:    _NetworkService_ReleaseDedicatedGuestVlanRange_Handler,
 		},
 		{
 			MethodName: "DeletePhysicalNetwork",
 			Handler:    _NetworkService_DeletePhysicalNetwork_Handler,
 		},
 		{
-			MethodName: "ListNetworkDevice",
-			Handler:    _NetworkService_ListNetworkDevice_Handler,
+			MethodName: "UpdateIpv4SubnetForZone",
+			Handler:    _NetworkService_UpdateIpv4SubnetForZone_Handler,
 		},
 		{
-			MethodName: "RemoveNetworkPermissions",
-			Handler:    _NetworkService_RemoveNetworkPermissions_Handler,
+			MethodName: "ListNetworkIsolationMethods",
+			Handler:    _NetworkService_ListNetworkIsolationMethods_Handler,
 		},
 		{
-			MethodName: "ReleaseDedicatedIpv4SubnetForZone",
-			Handler:    _NetworkService_ReleaseDedicatedIpv4SubnetForZone_Handler,
+			MethodName: "CreatePhysicalNetwork",
+			Handler:    _NetworkService_CreatePhysicalNetwork_Handler,
 		},
 		{
-			MethodName: "ListNetworkACLLists",
-			Handler:    _NetworkService_ListNetworkACLLists_Handler,
+			MethodName: "ListNetworkProtocols",
+			Handler:    _NetworkService_ListNetworkProtocols_Handler,
 		},
 		{
-			MethodName: "DeleteManagementNetworkIpRange",
-			Handler:    _NetworkService_DeleteManagementNetworkIpRange_Handler,
-		},
-		{
-			MethodName: "DeleteGuestNetworkIpv6Prefix",
-			Handler:    _NetworkService_DeleteGuestNetworkIpv6Prefix_Handler,
-		},
-		{
-			MethodName: "MigrateNetwork",
-			Handler:    _NetworkService_MigrateNetwork_Handler,
+			MethodName: "CreateNetworkACLList",
+			Handler:    _NetworkService_CreateNetworkACLList_Handler,
 		},
 		{
 			MethodName: "DedicateGuestVlanRange",
 			Handler:    _NetworkService_DedicateGuestVlanRange_Handler,
 		},
 		{
-			MethodName: "UpdateStorageNetworkIpRange",
-			Handler:    _NetworkService_UpdateStorageNetworkIpRange_Handler,
+			MethodName: "DeleteNetworkACL",
+			Handler:    _NetworkService_DeleteNetworkACL_Handler,
 		},
 		{
-			MethodName: "DeleteNetworkServiceProvider",
-			Handler:    _NetworkService_DeleteNetworkServiceProvider_Handler,
+			MethodName: "UpdateNetworkCmdByAdmin",
+			Handler:    _NetworkService_UpdateNetworkCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "MigrateVPC",
-			Handler:    _NetworkService_MigrateVPC_Handler,
+			MethodName: "ListStorageNetworkIpRange",
+			Handler:    _NetworkService_ListStorageNetworkIpRange_Handler,
+		},
+		{
+			MethodName: "MigrateNetwork",
+			Handler:    _NetworkService_MigrateNetwork_Handler,
+		},
+		{
+			MethodName: "UpdatePodManagementNetworkIpRange",
+			Handler:    _NetworkService_UpdatePodManagementNetworkIpRange_Handler,
+		},
+		{
+			MethodName: "ReleaseDedicatedIpv4SubnetForZone",
+			Handler:    _NetworkService_ReleaseDedicatedIpv4SubnetForZone_Handler,
+		},
+		{
+			MethodName: "AddNetworkDevice",
+			Handler:    _NetworkService_AddNetworkDevice_Handler,
+		},
+		{
+			MethodName: "DeleteNetworkOffering",
+			Handler:    _NetworkService_DeleteNetworkOffering_Handler,
+		},
+		{
+			MethodName: "UpdatePhysicalNetwork",
+			Handler:    _NetworkService_UpdatePhysicalNetwork_Handler,
+		},
+		{
+			MethodName: "CreateManagementNetworkIpRange",
+			Handler:    _NetworkService_CreateManagementNetworkIpRange_Handler,
+		},
+		{
+			MethodName: "DeleteNetwork",
+			Handler:    _NetworkService_DeleteNetwork_Handler,
 		},
 		{
 			MethodName: "ListNetworkServiceProviders",
 			Handler:    _NetworkService_ListNetworkServiceProviders_Handler,
 		},
 		{
+			MethodName: "CreateNetworkACL",
+			Handler:    _NetworkService_CreateNetworkACL_Handler,
+		},
+		{
+			MethodName: "ListSupportedNetworkServices",
+			Handler:    _NetworkService_ListSupportedNetworkServices_Handler,
+		},
+		{
+			MethodName: "ListNetworkACLLists",
+			Handler:    _NetworkService_ListNetworkACLLists_Handler,
+		},
+		{
 			MethodName: "ListIpv4SubnetsForZone",
 			Handler:    _NetworkService_ListIpv4SubnetsForZone_Handler,
 		},
 		{
-			MethodName: "DeleteNetwork",
-			Handler:    _NetworkService_DeleteNetwork_Handler,
+			MethodName: "ListNetworkDevice",
+			Handler:    _NetworkService_ListNetworkDevice_Handler,
+		},
+		{
+			MethodName: "ListNetworkACLs",
+			Handler:    _NetworkService_ListNetworkACLs_Handler,
+		},
+		{
+			MethodName: "UpdateNetworkACLList",
+			Handler:    _NetworkService_UpdateNetworkACLList_Handler,
+		},
+		{
+			MethodName: "CreateGuestNetworkIpv6Prefix",
+			Handler:    _NetworkService_CreateGuestNetworkIpv6Prefix_Handler,
+		},
+		{
+			MethodName: "DeleteStorageNetworkIpRange",
+			Handler:    _NetworkService_DeleteStorageNetworkIpRange_Handler,
+		},
+		{
+			MethodName: "ListNetworkPermissions",
+			Handler:    _NetworkService_ListNetworkPermissions_Handler,
+		},
+		{
+			MethodName: "ListGuestNetworkIpv6Prefixes",
+			Handler:    _NetworkService_ListGuestNetworkIpv6Prefixes_Handler,
+		},
+		{
+			MethodName: "MoveNetworkAclItem",
+			Handler:    _NetworkService_MoveNetworkAclItem_Handler,
+		},
+		{
+			MethodName: "AddNetworkServiceProvider",
+			Handler:    _NetworkService_AddNetworkServiceProvider_Handler,
+		},
+		{
+			MethodName: "DeleteIpv4SubnetForGuestNetwork",
+			Handler:    _NetworkService_DeleteIpv4SubnetForGuestNetwork_Handler,
+		},
+		{
+			MethodName: "RemoveNetworkPermissions",
+			Handler:    _NetworkService_RemoveNetworkPermissions_Handler,
+		},
+		{
+			MethodName: "CreateNetworkOffering",
+			Handler:    _NetworkService_CreateNetworkOffering_Handler,
+		},
+		{
+			MethodName: "UpdateNetworkACLItem",
+			Handler:    _NetworkService_UpdateNetworkACLItem_Handler,
+		},
+		{
+			MethodName: "CreateNetwork",
+			Handler:    _NetworkService_CreateNetwork_Handler,
+		},
+		{
+			MethodName: "DeleteNetworkServiceProvider",
+			Handler:    _NetworkService_DeleteNetworkServiceProvider_Handler,
 		},
 		{
 			MethodName: "UpdateNetworkOffering",
@@ -2534,112 +2534,72 @@ var NetworkService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _NetworkService_CreateIpv4SubnetForGuestNetwork_Handler,
 		},
 		{
-			MethodName: "ListNetworkIsolationMethods",
-			Handler:    _NetworkService_ListNetworkIsolationMethods_Handler,
-		},
-		{
-			MethodName: "AddNetworkServiceProvider",
-			Handler:    _NetworkService_AddNetworkServiceProvider_Handler,
-		},
-		{
-			MethodName: "ListNetworks",
-			Handler:    _NetworkService_ListNetworks_Handler,
-		},
-		{
-			MethodName: "ListNetworkACLs",
-			Handler:    _NetworkService_ListNetworkACLs_Handler,
-		},
-		{
-			MethodName: "CreateManagementNetworkIpRange",
-			Handler:    _NetworkService_CreateManagementNetworkIpRange_Handler,
-		},
-		{
-			MethodName: "ListSupportedNetworkServices",
-			Handler:    _NetworkService_ListSupportedNetworkServices_Handler,
-		},
-		{
-			MethodName: "UpdatePhysicalNetwork",
-			Handler:    _NetworkService_UpdatePhysicalNetwork_Handler,
-		},
-		{
-			MethodName: "CreateNetworkACLList",
-			Handler:    _NetworkService_CreateNetworkACLList_Handler,
-		},
-		{
-			MethodName: "CreateNetworkCmdByAdmin",
-			Handler:    _NetworkService_CreateNetworkCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "DeleteStorageNetworkIpRange",
-			Handler:    _NetworkService_DeleteStorageNetworkIpRange_Handler,
-		},
-		{
-			MethodName: "DeleteIpv4SubnetForZone",
-			Handler:    _NetworkService_DeleteIpv4SubnetForZone_Handler,
-		},
-		{
-			MethodName: "ListNetworkPermissions",
-			Handler:    _NetworkService_ListNetworkPermissions_Handler,
-		},
-		{
-			MethodName: "ListDedicatedGuestVlanRanges",
-			Handler:    _NetworkService_ListDedicatedGuestVlanRanges_Handler,
-		},
-		{
-			MethodName: "DeleteNetworkACLList",
-			Handler:    _NetworkService_DeleteNetworkACLList_Handler,
-		},
-		{
-			MethodName: "DeleteNetworkOffering",
-			Handler:    _NetworkService_DeleteNetworkOffering_Handler,
-		},
-		{
-			MethodName: "MoveNetworkAclItem",
-			Handler:    _NetworkService_MoveNetworkAclItem_Handler,
-		},
-		{
-			MethodName: "ListGuestVlans",
-			Handler:    _NetworkService_ListGuestVlans_Handler,
-		},
-		{
-			MethodName: "UpdateIpv4SubnetForZone",
-			Handler:    _NetworkService_UpdateIpv4SubnetForZone_Handler,
-		},
-		{
-			MethodName: "CreatePhysicalNetwork",
-			Handler:    _NetworkService_CreatePhysicalNetwork_Handler,
-		},
-		{
-			MethodName: "CreateNetworkOffering",
-			Handler:    _NetworkService_CreateNetworkOffering_Handler,
-		},
-		{
-			MethodName: "UpdateNetworkServiceProvider",
-			Handler:    _NetworkService_UpdateNetworkServiceProvider_Handler,
-		},
-		{
-			MethodName: "CreateStorageNetworkIpRange",
-			Handler:    _NetworkService_CreateStorageNetworkIpRange_Handler,
-		},
-		{
-			MethodName: "ListIpv4SubnetsForGuestNetwork",
-			Handler:    _NetworkService_ListIpv4SubnetsForGuestNetwork_Handler,
+			MethodName: "ResetNetworkPermissions",
+			Handler:    _NetworkService_ResetNetworkPermissions_Handler,
 		},
 		{
 			MethodName: "DeleteNetworkDevice",
 			Handler:    _NetworkService_DeleteNetworkDevice_Handler,
 		},
 		{
-			MethodName: "CreateNetwork",
-			Handler:    _NetworkService_CreateNetwork_Handler,
+			MethodName: "ListNetworkOfferings",
+			Handler:    _NetworkService_ListNetworkOfferings_Handler,
 		},
 		{
-			MethodName: "ReleaseDedicatedGuestVlanRange",
-			Handler:    _NetworkService_ReleaseDedicatedGuestVlanRange_Handler,
+			MethodName: "RestartNetwork",
+			Handler:    _NetworkService_RestartNetwork_Handler,
 		},
 		{
-			MethodName: "ListNetworkProtocols",
-			Handler:    _NetworkService_ListNetworkProtocols_Handler,
+			MethodName: "DeleteGuestNetworkIpv6Prefix",
+			Handler:    _NetworkService_DeleteGuestNetworkIpv6Prefix_Handler,
+		},
+		{
+			MethodName: "CreateIpv4SubnetForZone",
+			Handler:    _NetworkService_CreateIpv4SubnetForZone_Handler,
+		},
+		{
+			MethodName: "UpdateStorageNetworkIpRange",
+			Handler:    _NetworkService_UpdateStorageNetworkIpRange_Handler,
+		},
+		{
+			MethodName: "ListNetworks",
+			Handler:    _NetworkService_ListNetworks_Handler,
+		},
+		{
+			MethodName: "ReplaceNetworkACLList",
+			Handler:    _NetworkService_ReplaceNetworkACLList_Handler,
+		},
+		{
+			MethodName: "CreateNetworkPermissions",
+			Handler:    _NetworkService_CreateNetworkPermissions_Handler,
+		},
+		{
+			MethodName: "ListGuestVlans",
+			Handler:    _NetworkService_ListGuestVlans_Handler,
+		},
+		{
+			MethodName: "CreateStorageNetworkIpRange",
+			Handler:    _NetworkService_CreateStorageNetworkIpRange_Handler,
+		},
+		{
+			MethodName: "UpdateNetwork",
+			Handler:    _NetworkService_UpdateNetwork_Handler,
+		},
+		{
+			MethodName: "MigrateVPC",
+			Handler:    _NetworkService_MigrateVPC_Handler,
+		},
+		{
+			MethodName: "ListPhysicalNetworks",
+			Handler:    _NetworkService_ListPhysicalNetworks_Handler,
+		},
+		{
+			MethodName: "ListIpv4SubnetsForGuestNetwork",
+			Handler:    _NetworkService_ListIpv4SubnetsForGuestNetwork_Handler,
+		},
+		{
+			MethodName: "UpdateNetworkServiceProvider",
+			Handler:    _NetworkService_UpdateNetworkServiceProvider_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

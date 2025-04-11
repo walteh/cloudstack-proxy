@@ -21,8 +21,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	SshService_ListSSHKeyPairs_FullMethodName    = "/cloudstack.management.ssh.v1.SshService/ListSSHKeyPairs"
 	SshService_CreateSSHKeyPair_FullMethodName   = "/cloudstack.management.ssh.v1.SshService/CreateSSHKeyPair"
-	SshService_DeleteSSHKeyPair_FullMethodName   = "/cloudstack.management.ssh.v1.SshService/DeleteSSHKeyPair"
 	SshService_RegisterSSHKeyPair_FullMethodName = "/cloudstack.management.ssh.v1.SshService/RegisterSSHKeyPair"
+	SshService_DeleteSSHKeyPair_FullMethodName   = "/cloudstack.management.ssh.v1.SshService/DeleteSSHKeyPair"
 )
 
 // SshServiceClient is the client API for SshService service.
@@ -35,10 +35,10 @@ type SshServiceClient interface {
 	ListSSHKeyPairs(ctx context.Context, in *ListSSHKeyPairsRequest, opts ...grpc.CallOption) (*ListSSHKeyPairsResponse, error)
 	// CreateSSHKeyPair Create a new keypair and returns the private key
 	CreateSSHKeyPair(ctx context.Context, in *CreateSSHKeyPairRequest, opts ...grpc.CallOption) (*CreateSSHKeyPairResponse, error)
-	// DeleteSSHKeyPair Deletes a keypair by name
-	DeleteSSHKeyPair(ctx context.Context, in *DeleteSSHKeyPairRequest, opts ...grpc.CallOption) (*DeleteSSHKeyPairResponse, error)
 	// RegisterSSHKeyPair Register a public key in a keypair under a certain name
 	RegisterSSHKeyPair(ctx context.Context, in *RegisterSSHKeyPairRequest, opts ...grpc.CallOption) (*RegisterSSHKeyPairResponse, error)
+	// DeleteSSHKeyPair Deletes a keypair by name
+	DeleteSSHKeyPair(ctx context.Context, in *DeleteSSHKeyPairRequest, opts ...grpc.CallOption) (*DeleteSSHKeyPairResponse, error)
 }
 
 type sshServiceClient struct {
@@ -69,20 +69,20 @@ func (c *sshServiceClient) CreateSSHKeyPair(ctx context.Context, in *CreateSSHKe
 	return out, nil
 }
 
-func (c *sshServiceClient) DeleteSSHKeyPair(ctx context.Context, in *DeleteSSHKeyPairRequest, opts ...grpc.CallOption) (*DeleteSSHKeyPairResponse, error) {
+func (c *sshServiceClient) RegisterSSHKeyPair(ctx context.Context, in *RegisterSSHKeyPairRequest, opts ...grpc.CallOption) (*RegisterSSHKeyPairResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteSSHKeyPairResponse)
-	err := c.cc.Invoke(ctx, SshService_DeleteSSHKeyPair_FullMethodName, in, out, cOpts...)
+	out := new(RegisterSSHKeyPairResponse)
+	err := c.cc.Invoke(ctx, SshService_RegisterSSHKeyPair_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sshServiceClient) RegisterSSHKeyPair(ctx context.Context, in *RegisterSSHKeyPairRequest, opts ...grpc.CallOption) (*RegisterSSHKeyPairResponse, error) {
+func (c *sshServiceClient) DeleteSSHKeyPair(ctx context.Context, in *DeleteSSHKeyPairRequest, opts ...grpc.CallOption) (*DeleteSSHKeyPairResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterSSHKeyPairResponse)
-	err := c.cc.Invoke(ctx, SshService_RegisterSSHKeyPair_FullMethodName, in, out, cOpts...)
+	out := new(DeleteSSHKeyPairResponse)
+	err := c.cc.Invoke(ctx, SshService_DeleteSSHKeyPair_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,10 +99,10 @@ type SshServiceServer interface {
 	ListSSHKeyPairs(context.Context, *ListSSHKeyPairsRequest) (*ListSSHKeyPairsResponse, error)
 	// CreateSSHKeyPair Create a new keypair and returns the private key
 	CreateSSHKeyPair(context.Context, *CreateSSHKeyPairRequest) (*CreateSSHKeyPairResponse, error)
-	// DeleteSSHKeyPair Deletes a keypair by name
-	DeleteSSHKeyPair(context.Context, *DeleteSSHKeyPairRequest) (*DeleteSSHKeyPairResponse, error)
 	// RegisterSSHKeyPair Register a public key in a keypair under a certain name
 	RegisterSSHKeyPair(context.Context, *RegisterSSHKeyPairRequest) (*RegisterSSHKeyPairResponse, error)
+	// DeleteSSHKeyPair Deletes a keypair by name
+	DeleteSSHKeyPair(context.Context, *DeleteSSHKeyPairRequest) (*DeleteSSHKeyPairResponse, error)
 	mustEmbedUnimplementedSshServiceServer()
 }
 
@@ -119,11 +119,11 @@ func (UnimplementedSshServiceServer) ListSSHKeyPairs(context.Context, *ListSSHKe
 func (UnimplementedSshServiceServer) CreateSSHKeyPair(context.Context, *CreateSSHKeyPairRequest) (*CreateSSHKeyPairResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSSHKeyPair not implemented")
 }
-func (UnimplementedSshServiceServer) DeleteSSHKeyPair(context.Context, *DeleteSSHKeyPairRequest) (*DeleteSSHKeyPairResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteSSHKeyPair not implemented")
-}
 func (UnimplementedSshServiceServer) RegisterSSHKeyPair(context.Context, *RegisterSSHKeyPairRequest) (*RegisterSSHKeyPairResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterSSHKeyPair not implemented")
+}
+func (UnimplementedSshServiceServer) DeleteSSHKeyPair(context.Context, *DeleteSSHKeyPairRequest) (*DeleteSSHKeyPairResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSSHKeyPair not implemented")
 }
 func (UnimplementedSshServiceServer) mustEmbedUnimplementedSshServiceServer() {}
 func (UnimplementedSshServiceServer) testEmbeddedByValue()                    {}
@@ -182,24 +182,6 @@ func _SshService_CreateSSHKeyPair_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SshService_DeleteSSHKeyPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteSSHKeyPairRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SshServiceServer).DeleteSSHKeyPair(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SshService_DeleteSSHKeyPair_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SshServiceServer).DeleteSSHKeyPair(ctx, req.(*DeleteSSHKeyPairRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SshService_RegisterSSHKeyPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterSSHKeyPairRequest)
 	if err := dec(in); err != nil {
@@ -214,6 +196,24 @@ func _SshService_RegisterSSHKeyPair_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SshServiceServer).RegisterSSHKeyPair(ctx, req.(*RegisterSSHKeyPairRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SshService_DeleteSSHKeyPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteSSHKeyPairRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SshServiceServer).DeleteSSHKeyPair(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SshService_DeleteSSHKeyPair_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SshServiceServer).DeleteSSHKeyPair(ctx, req.(*DeleteSSHKeyPairRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -234,12 +234,12 @@ var SshService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SshService_CreateSSHKeyPair_Handler,
 		},
 		{
-			MethodName: "DeleteSSHKeyPair",
-			Handler:    _SshService_DeleteSSHKeyPair_Handler,
-		},
-		{
 			MethodName: "RegisterSSHKeyPair",
 			Handler:    _SshService_RegisterSSHKeyPair_Handler,
+		},
+		{
+			MethodName: "DeleteSSHKeyPair",
+			Handler:    _SshService_DeleteSSHKeyPair_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

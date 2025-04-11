@@ -24,86 +24,90 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ListBackupScheduleRequest represents the parameters for list backup schedule of a vm
-type ListBackupScheduleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the VM
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
+// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+type IntervalType int32
 
-func (x *ListBackupScheduleRequest) Reset() {
-	*x = ListBackupScheduleRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+const (
+	// Default unspecified value
+	IntervalType_INTERVAL_TYPE_UNSPECIFIED IntervalType = 0
+	// HOURLY value
+	IntervalType_INTERVAL_TYPE_HOURLY IntervalType = 1
+	// DAILY value
+	IntervalType_INTERVAL_TYPE_DAILY IntervalType = 2
+	// WEEKLY value
+	IntervalType_INTERVAL_TYPE_WEEKLY IntervalType = 3
+)
 
-func (x *ListBackupScheduleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListBackupScheduleRequest) ProtoMessage() {}
-
-func (x *ListBackupScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+// Enum value maps for IntervalType.
+var (
+	IntervalType_name = map[int32]string{
+		0: "INTERVAL_TYPE_UNSPECIFIED",
+		1: "INTERVAL_TYPE_HOURLY",
+		2: "INTERVAL_TYPE_DAILY",
+		3: "INTERVAL_TYPE_WEEKLY",
 	}
-	return mi.MessageOf(x)
+	IntervalType_value = map[string]int32{
+		"INTERVAL_TYPE_UNSPECIFIED": 0,
+		"INTERVAL_TYPE_HOURLY":      1,
+		"INTERVAL_TYPE_DAILY":       2,
+		"INTERVAL_TYPE_WEEKLY":      3,
+	}
+)
+
+func (x IntervalType) Enum() *IntervalType {
+	p := new(IntervalType)
+	*p = x
+	return p
 }
 
-// Deprecated: Use ListBackupScheduleRequest.ProtoReflect.Descriptor instead.
-func (*ListBackupScheduleRequest) Descriptor() ([]byte, []int) {
+func (x IntervalType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (IntervalType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (IntervalType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_backup_v1_backup_gen_proto_enumTypes[0]
+}
+
+func (x IntervalType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use IntervalType.Descriptor instead.
+func (IntervalType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ListBackupScheduleRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *ListBackupScheduleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListBackupScheduleResponse represents the response from list backup schedule of a vm
-type ListBackupScheduleResponse struct {
+// RestoreBackupRequest represents the parameters for restores an existing stopped or deleted vm using a vm backup
+type RestoreBackupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of BackupSchedules
-	Items []*BackupSchedule `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of BackupSchedules
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// ID of the backup
+	BackupId *int64 `protobuf:"varint,1,opt,name=backup_id,json=backupId" json:"backup_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListBackupScheduleResponse) Reset() {
-	*x = ListBackupScheduleResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[1]
+func (x *RestoreBackupRequest) Reset() {
+	*x = RestoreBackupRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListBackupScheduleResponse) String() string {
+func (x *RestoreBackupRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListBackupScheduleResponse) ProtoMessage() {}
+func (*RestoreBackupRequest) ProtoMessage() {}
 
-func (x *ListBackupScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[1]
+func (x *RestoreBackupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -114,133 +118,41 @@ func (x *ListBackupScheduleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListBackupScheduleResponse.ProtoReflect.Descriptor instead.
-func (*ListBackupScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use RestoreBackupRequest.ProtoReflect.Descriptor instead.
+func (*RestoreBackupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ListBackupScheduleResponse) GetItems() []*BackupSchedule {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListBackupScheduleResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
+func (x *RestoreBackupRequest) GetBackupId() int64 {
+	if x != nil && x.BackupId != nil {
+		return *x.BackupId
 	}
 	return 0
 }
 
-// ImportBackupOfferingRequest represents the parameters for imports a backup offering using a backup provider
-type ImportBackupOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the backup offering
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// the description of the backup offering
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// The backup offering ID (from backup provider side)
-	ExternalId *string `protobuf:"bytes,3,opt,name=external_id,json=externalId" json:"external_id,omitempty"`
-	// The zone ID
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// Whether users are allowed to create adhoc backups and backup schedules
-	UserDrivenBackups *bool `protobuf:"varint,5,opt,name=user_driven_backups,json=userDrivenBackups" json:"user_driven_backups,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImportBackupOfferingRequest) Reset() {
-	*x = ImportBackupOfferingRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportBackupOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportBackupOfferingRequest) ProtoMessage() {}
-
-func (x *ImportBackupOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportBackupOfferingRequest.ProtoReflect.Descriptor instead.
-func (*ImportBackupOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ImportBackupOfferingRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ImportBackupOfferingRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *ImportBackupOfferingRequest) GetExternalId() string {
-	if x != nil && x.ExternalId != nil {
-		return *x.ExternalId
-	}
-	return ""
-}
-
-func (x *ImportBackupOfferingRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ImportBackupOfferingRequest) GetUserDrivenBackups() bool {
-	if x != nil && x.UserDrivenBackups != nil {
-		return *x.UserDrivenBackups
-	}
-	return false
-}
-
-func (x *ImportBackupOfferingRequest) GetStartEventId() int64 {
+func (x *RestoreBackupRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ImportBackupOfferingRequest) GetInjectedJobId() string {
+func (x *RestoreBackupRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ImportBackupOfferingRequest) GetResponseType() string {
+func (x *RestoreBackupRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ImportBackupOfferingResponse represents the response from imports a backup offering using a backup provider
-type ImportBackupOfferingResponse struct {
+// RestoreBackupResponse represents the response from restores an existing stopped or deleted vm using a vm backup
+type RestoreBackupResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -248,20 +160,147 @@ type ImportBackupOfferingResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ImportBackupOfferingResponse) Reset() {
-	*x = ImportBackupOfferingResponse{}
+func (x *RestoreBackupResponse) Reset() {
+	*x = RestoreBackupResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestoreBackupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestoreBackupResponse) ProtoMessage() {}
+
+func (x *RestoreBackupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestoreBackupResponse.ProtoReflect.Descriptor instead.
+func (*RestoreBackupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *RestoreBackupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateBackupOfferingRequest represents the parameters for updates a backup offering.
+type UpdateBackupOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Backup Offering to be updated
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The description of the Backup Offering to be updated
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// The name of the Backup Offering to be updated
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// Whether to allow user driven backups or not
+	AllowUserDrivenBackups *bool `protobuf:"varint,4,opt,name=allow_user_driven_backups,json=allowUserDrivenBackups" json:"allow_user_driven_backups,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateBackupOfferingRequest) Reset() {
+	*x = UpdateBackupOfferingRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateBackupOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateBackupOfferingRequest) ProtoMessage() {}
+
+func (x *UpdateBackupOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateBackupOfferingRequest.ProtoReflect.Descriptor instead.
+func (*UpdateBackupOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UpdateBackupOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateBackupOfferingRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UpdateBackupOfferingRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateBackupOfferingRequest) GetAllowUserDrivenBackups() bool {
+	if x != nil && x.AllowUserDrivenBackups != nil {
+		return *x.AllowUserDrivenBackups
+	}
+	return false
+}
+
+func (x *UpdateBackupOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateBackupOfferingResponse represents the response from updates a backup offering.
+type UpdateBackupOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateBackupOfferingResponse) Reset() {
+	*x = UpdateBackupOfferingResponse{}
 	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ImportBackupOfferingResponse) String() string {
+func (x *UpdateBackupOfferingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ImportBackupOfferingResponse) ProtoMessage() {}
+func (*UpdateBackupOfferingResponse) ProtoMessage() {}
 
-func (x *ImportBackupOfferingResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateBackupOfferingResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -273,221 +312,12 @@ func (x *ImportBackupOfferingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ImportBackupOfferingResponse.ProtoReflect.Descriptor instead.
-func (*ImportBackupOfferingResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateBackupOfferingResponse.ProtoReflect.Descriptor instead.
+func (*UpdateBackupOfferingResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ImportBackupOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteBackupOfferingRequest represents the parameters for deletes a backup offering
-type DeleteBackupOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the backup offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupOfferingRequest) Reset() {
-	*x = DeleteBackupOfferingRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupOfferingRequest) ProtoMessage() {}
-
-func (x *DeleteBackupOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupOfferingRequest.ProtoReflect.Descriptor instead.
-func (*DeleteBackupOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteBackupOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteBackupOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteBackupOfferingResponse represents the response from deletes a backup offering
-type DeleteBackupOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupOfferingResponse) Reset() {
-	*x = DeleteBackupOfferingResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupOfferingResponse) ProtoMessage() {}
-
-func (x *DeleteBackupOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupOfferingResponse.ProtoReflect.Descriptor instead.
-func (*DeleteBackupOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteBackupOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteBackupScheduleRequest represents the parameters for deletes the backup schedule of a vm
-type DeleteBackupScheduleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the VM
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// ID of the schedule
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupScheduleRequest) Reset() {
-	*x = DeleteBackupScheduleRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupScheduleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupScheduleRequest) ProtoMessage() {}
-
-func (x *DeleteBackupScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupScheduleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteBackupScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteBackupScheduleRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *DeleteBackupScheduleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteBackupScheduleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteBackupScheduleResponse represents the response from deletes the backup schedule of a vm
-type DeleteBackupScheduleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupScheduleResponse) Reset() {
-	*x = DeleteBackupScheduleResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupScheduleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupScheduleResponse) ProtoMessage() {}
-
-func (x *DeleteBackupScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupScheduleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteBackupScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DeleteBackupScheduleResponse) GetResult() *Result {
+func (x *UpdateBackupOfferingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -510,7 +340,7 @@ type AssignVirtualMachineToBackupOfferingRequest struct {
 
 func (x *AssignVirtualMachineToBackupOfferingRequest) Reset() {
 	*x = AssignVirtualMachineToBackupOfferingRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -522,7 +352,7 @@ func (x *AssignVirtualMachineToBackupOfferingRequest) String() string {
 func (*AssignVirtualMachineToBackupOfferingRequest) ProtoMessage() {}
 
 func (x *AssignVirtualMachineToBackupOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -535,7 +365,7 @@ func (x *AssignVirtualMachineToBackupOfferingRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use AssignVirtualMachineToBackupOfferingRequest.ProtoReflect.Descriptor instead.
 func (*AssignVirtualMachineToBackupOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AssignVirtualMachineToBackupOfferingRequest) GetVmId() int64 {
@@ -584,7 +414,7 @@ type AssignVirtualMachineToBackupOfferingResponse struct {
 
 func (x *AssignVirtualMachineToBackupOfferingResponse) Reset() {
 	*x = AssignVirtualMachineToBackupOfferingResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -596,7 +426,7 @@ func (x *AssignVirtualMachineToBackupOfferingResponse) String() string {
 func (*AssignVirtualMachineToBackupOfferingResponse) ProtoMessage() {}
 
 func (x *AssignVirtualMachineToBackupOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -609,10 +439,721 @@ func (x *AssignVirtualMachineToBackupOfferingResponse) ProtoReflect() protorefle
 
 // Deprecated: Use AssignVirtualMachineToBackupOfferingResponse.ProtoReflect.Descriptor instead.
 func (*AssignVirtualMachineToBackupOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AssignVirtualMachineToBackupOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteBackupOfferingRequest represents the parameters for deletes a backup offering
+type DeleteBackupOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the backup offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupOfferingRequest) Reset() {
+	*x = DeleteBackupOfferingRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupOfferingRequest) ProtoMessage() {}
+
+func (x *DeleteBackupOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupOfferingRequest.ProtoReflect.Descriptor instead.
+func (*DeleteBackupOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteBackupOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteBackupOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteBackupOfferingResponse represents the response from deletes a backup offering
+type DeleteBackupOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupOfferingResponse) Reset() {
+	*x = DeleteBackupOfferingResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupOfferingResponse) ProtoMessage() {}
+
+func (x *DeleteBackupOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupOfferingResponse.ProtoReflect.Descriptor instead.
+func (*DeleteBackupOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteBackupOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListBackupProvidersRequest represents the parameters for lists backup and recovery providers
+type ListBackupProvidersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List Backup and Recovery provider by name
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBackupProvidersRequest) Reset() {
+	*x = ListBackupProvidersRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBackupProvidersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBackupProvidersRequest) ProtoMessage() {}
+
+func (x *ListBackupProvidersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBackupProvidersRequest.ProtoReflect.Descriptor instead.
+func (*ListBackupProvidersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListBackupProvidersRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListBackupProvidersRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListBackupProvidersResponse represents the response from lists backup and recovery providers
+type ListBackupProvidersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of BackupProviders
+	Items []*BackupProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of BackupProviders
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBackupProvidersResponse) Reset() {
+	*x = ListBackupProvidersResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBackupProvidersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBackupProvidersResponse) ProtoMessage() {}
+
+func (x *ListBackupProvidersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBackupProvidersResponse.ProtoReflect.Descriptor instead.
+func (*ListBackupProvidersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListBackupProvidersResponse) GetItems() []*BackupProvider {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListBackupProvidersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// DeleteBackupScheduleRequest represents the parameters for deletes the backup schedule of a vm
+type DeleteBackupScheduleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the VM
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// ID of the schedule
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupScheduleRequest) Reset() {
+	*x = DeleteBackupScheduleRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupScheduleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupScheduleRequest) ProtoMessage() {}
+
+func (x *DeleteBackupScheduleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupScheduleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteBackupScheduleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteBackupScheduleRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *DeleteBackupScheduleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteBackupScheduleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteBackupScheduleResponse represents the response from deletes the backup schedule of a vm
+type DeleteBackupScheduleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupScheduleResponse) Reset() {
+	*x = DeleteBackupScheduleResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupScheduleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupScheduleResponse) ProtoMessage() {}
+
+func (x *DeleteBackupScheduleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupScheduleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteBackupScheduleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteBackupScheduleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateBackupRequest represents the parameters for create vm backup
+type CreateBackupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the VM
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// backup schedule ID of the VM, if this is null, it indicates that it is a manual backup.
+	ScheduleId *int64 `protobuf:"varint,2,opt,name=schedule_id,json=scheduleId" json:"schedule_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateBackupRequest) Reset() {
+	*x = CreateBackupRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateBackupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateBackupRequest) ProtoMessage() {}
+
+func (x *CreateBackupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateBackupRequest.ProtoReflect.Descriptor instead.
+func (*CreateBackupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CreateBackupRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *CreateBackupRequest) GetScheduleId() int64 {
+	if x != nil && x.ScheduleId != nil {
+		return *x.ScheduleId
+	}
+	return 0
+}
+
+func (x *CreateBackupRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateBackupRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateBackupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateBackupResponse represents the response from create vm backup
+type CreateBackupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateBackupResponse) Reset() {
+	*x = CreateBackupResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateBackupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateBackupResponse) ProtoMessage() {}
+
+func (x *CreateBackupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateBackupResponse.ProtoReflect.Descriptor instead.
+func (*CreateBackupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *CreateBackupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListBackupProviderOfferingsRequest represents the parameters for lists external backup offerings of the provider
+type ListBackupProviderOfferingsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The zone ID
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBackupProviderOfferingsRequest) Reset() {
+	*x = ListBackupProviderOfferingsRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBackupProviderOfferingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBackupProviderOfferingsRequest) ProtoMessage() {}
+
+func (x *ListBackupProviderOfferingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBackupProviderOfferingsRequest.ProtoReflect.Descriptor instead.
+func (*ListBackupProviderOfferingsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ListBackupProviderOfferingsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListBackupProviderOfferingsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListBackupProviderOfferingsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListBackupProviderOfferingsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListBackupProviderOfferingsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListBackupProviderOfferingsResponse represents the response from lists external backup offerings of the provider
+type ListBackupProviderOfferingsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of BackupOfferings
+	Items []*BackupOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of BackupOfferings
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBackupProviderOfferingsResponse) Reset() {
+	*x = ListBackupProviderOfferingsResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBackupProviderOfferingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBackupProviderOfferingsResponse) ProtoMessage() {}
+
+func (x *ListBackupProviderOfferingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBackupProviderOfferingsResponse.ProtoReflect.Descriptor instead.
+func (*ListBackupProviderOfferingsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListBackupProviderOfferingsResponse) GetItems() []*BackupOffering {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListBackupProviderOfferingsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// RestoreVolumeFromBackupAndAttachToVMRequest represents the parameters for restore and attach a backed up volume to vm
+type RestoreVolumeFromBackupAndAttachToVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the VM backup
+	BackupId *int64 `protobuf:"varint,1,opt,name=backup_id,json=backupId" json:"backup_id,omitempty"`
+	// ID of the volume backed up
+	VolumeUuid *string `protobuf:"bytes,2,opt,name=volume_uuid,json=volumeUuid" json:"volume_uuid,omitempty"`
+	// id of the VM where to attach the restored volume
+	VmId *int64 `protobuf:"varint,3,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) Reset() {
+	*x = RestoreVolumeFromBackupAndAttachToVMRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestoreVolumeFromBackupAndAttachToVMRequest) ProtoMessage() {}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestoreVolumeFromBackupAndAttachToVMRequest.ProtoReflect.Descriptor instead.
+func (*RestoreVolumeFromBackupAndAttachToVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetBackupId() int64 {
+	if x != nil && x.BackupId != nil {
+		return *x.BackupId
+	}
+	return 0
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetVolumeUuid() string {
+	if x != nil && x.VolumeUuid != nil {
+		return *x.VolumeUuid
+	}
+	return ""
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RestoreVolumeFromBackupAndAttachToVMResponse represents the response from restore and attach a backed up volume to vm
+type RestoreVolumeFromBackupAndAttachToVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMResponse) Reset() {
+	*x = RestoreVolumeFromBackupAndAttachToVMResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestoreVolumeFromBackupAndAttachToVMResponse) ProtoMessage() {}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestoreVolumeFromBackupAndAttachToVMResponse.ProtoReflect.Descriptor instead.
+func (*RestoreVolumeFromBackupAndAttachToVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *RestoreVolumeFromBackupAndAttachToVMResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -639,7 +1180,7 @@ type CreateBackupScheduleRequest struct {
 
 func (x *CreateBackupScheduleRequest) Reset() {
 	*x = CreateBackupScheduleRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -651,7 +1192,7 @@ func (x *CreateBackupScheduleRequest) String() string {
 func (*CreateBackupScheduleRequest) ProtoMessage() {}
 
 func (x *CreateBackupScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -664,7 +1205,7 @@ func (x *CreateBackupScheduleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBackupScheduleRequest.ProtoReflect.Descriptor instead.
 func (*CreateBackupScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CreateBackupScheduleRequest) GetVmId() int64 {
@@ -720,7 +1261,7 @@ type CreateBackupScheduleResponse struct {
 
 func (x *CreateBackupScheduleResponse) Reset() {
 	*x = CreateBackupScheduleResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -732,7 +1273,7 @@ func (x *CreateBackupScheduleResponse) String() string {
 func (*CreateBackupScheduleResponse) ProtoMessage() {}
 
 func (x *CreateBackupScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -745,7 +1286,7 @@ func (x *CreateBackupScheduleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBackupScheduleResponse.ProtoReflect.Descriptor instead.
 func (*CreateBackupScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CreateBackupScheduleResponse) GetResult() *Result {
@@ -753,6 +1294,240 @@ func (x *CreateBackupScheduleResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// DeleteBackupRequest represents the parameters for delete vm backup
+type DeleteBackupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the VM backup
+	BackupId *int64 `protobuf:"varint,1,opt,name=backup_id,json=backupId" json:"backup_id,omitempty"`
+	// force the deletion of backup which removes the entire backup chain but keep VM in Backup Offering
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupRequest) Reset() {
+	*x = DeleteBackupRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupRequest) ProtoMessage() {}
+
+func (x *DeleteBackupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupRequest.ProtoReflect.Descriptor instead.
+func (*DeleteBackupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *DeleteBackupRequest) GetBackupId() int64 {
+	if x != nil && x.BackupId != nil {
+		return *x.BackupId
+	}
+	return 0
+}
+
+func (x *DeleteBackupRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DeleteBackupRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteBackupRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteBackupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteBackupResponse represents the response from delete vm backup
+type DeleteBackupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupResponse) Reset() {
+	*x = DeleteBackupResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupResponse) ProtoMessage() {}
+
+func (x *DeleteBackupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupResponse.ProtoReflect.Descriptor instead.
+func (*DeleteBackupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *DeleteBackupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListBackupScheduleRequest represents the parameters for list backup schedule of a vm
+type ListBackupScheduleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the VM
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBackupScheduleRequest) Reset() {
+	*x = ListBackupScheduleRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBackupScheduleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBackupScheduleRequest) ProtoMessage() {}
+
+func (x *ListBackupScheduleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBackupScheduleRequest.ProtoReflect.Descriptor instead.
+func (*ListBackupScheduleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *ListBackupScheduleRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *ListBackupScheduleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListBackupScheduleResponse represents the response from list backup schedule of a vm
+type ListBackupScheduleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of BackupSchedules
+	Items []*BackupSchedule `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of BackupSchedules
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBackupScheduleResponse) Reset() {
+	*x = ListBackupScheduleResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBackupScheduleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBackupScheduleResponse) ProtoMessage() {}
+
+func (x *ListBackupScheduleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBackupScheduleResponse.ProtoReflect.Descriptor instead.
+func (*ListBackupScheduleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *ListBackupScheduleResponse) GetItems() []*BackupSchedule {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListBackupScheduleResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListBackupsRequest represents the parameters for lists vm backups
@@ -785,7 +1560,7 @@ type ListBackupsRequest struct {
 
 func (x *ListBackupsRequest) Reset() {
 	*x = ListBackupsRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -797,7 +1572,7 @@ func (x *ListBackupsRequest) String() string {
 func (*ListBackupsRequest) ProtoMessage() {}
 
 func (x *ListBackupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -810,7 +1585,7 @@ func (x *ListBackupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBackupsRequest.ProtoReflect.Descriptor instead.
 func (*ListBackupsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListBackupsRequest) GetId() int64 {
@@ -910,7 +1685,7 @@ type ListBackupsResponse struct {
 
 func (x *ListBackupsResponse) Reset() {
 	*x = ListBackupsResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -922,7 +1697,7 @@ func (x *ListBackupsResponse) String() string {
 func (*ListBackupsResponse) ProtoMessage() {}
 
 func (x *ListBackupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -935,7 +1710,7 @@ func (x *ListBackupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBackupsResponse.ProtoReflect.Descriptor instead.
 func (*ListBackupsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListBackupsResponse) GetItems() []*Backup {
@@ -952,31 +1727,41 @@ func (x *ListBackupsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ListBackupProvidersRequest represents the parameters for lists backup and recovery providers
-type ListBackupProvidersRequest struct {
+// ImportBackupOfferingRequest represents the parameters for imports a backup offering using a backup provider
+type ImportBackupOfferingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// List Backup and Recovery provider by name
+	// the name of the backup offering
 	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the description of the backup offering
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// The backup offering ID (from backup provider side)
+	ExternalId *string `protobuf:"bytes,3,opt,name=external_id,json=externalId" json:"external_id,omitempty"`
+	// The zone ID
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// Whether users are allowed to create adhoc backups and backup schedules
+	UserDrivenBackups *bool `protobuf:"varint,5,opt,name=user_driven_backups,json=userDrivenBackups" json:"user_driven_backups,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListBackupProvidersRequest) Reset() {
-	*x = ListBackupProvidersRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[14]
+func (x *ImportBackupOfferingRequest) Reset() {
+	*x = ImportBackupOfferingRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListBackupProvidersRequest) String() string {
+func (x *ImportBackupOfferingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListBackupProvidersRequest) ProtoMessage() {}
+func (*ImportBackupOfferingRequest) ProtoMessage() {}
 
-func (x *ListBackupProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[14]
+func (x *ImportBackupOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -987,674 +1772,69 @@ func (x *ListBackupProvidersRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListBackupProvidersRequest.ProtoReflect.Descriptor instead.
-func (*ListBackupProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{14}
+// Deprecated: Use ImportBackupOfferingRequest.ProtoReflect.Descriptor instead.
+func (*ImportBackupOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *ListBackupProvidersRequest) GetName() string {
+func (x *ImportBackupOfferingRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *ListBackupProvidersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListBackupProvidersResponse represents the response from lists backup and recovery providers
-type ListBackupProvidersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of BackupProviders
-	Items []*BackupProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of BackupProviders
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListBackupProvidersResponse) Reset() {
-	*x = ListBackupProvidersResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListBackupProvidersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListBackupProvidersResponse) ProtoMessage() {}
-
-func (x *ListBackupProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListBackupProvidersResponse.ProtoReflect.Descriptor instead.
-func (*ListBackupProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *ListBackupProvidersResponse) GetItems() []*BackupProvider {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListBackupProvidersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ListBackupProviderOfferingsRequest represents the parameters for lists external backup offerings of the provider
-type ListBackupProviderOfferingsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The zone ID
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListBackupProviderOfferingsRequest) Reset() {
-	*x = ListBackupProviderOfferingsRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListBackupProviderOfferingsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListBackupProviderOfferingsRequest) ProtoMessage() {}
-
-func (x *ListBackupProviderOfferingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListBackupProviderOfferingsRequest.ProtoReflect.Descriptor instead.
-func (*ListBackupProviderOfferingsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *ListBackupProviderOfferingsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListBackupProviderOfferingsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListBackupProviderOfferingsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListBackupProviderOfferingsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListBackupProviderOfferingsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListBackupProviderOfferingsResponse represents the response from lists external backup offerings of the provider
-type ListBackupProviderOfferingsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of BackupOfferings
-	Items []*BackupOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of BackupOfferings
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListBackupProviderOfferingsResponse) Reset() {
-	*x = ListBackupProviderOfferingsResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListBackupProviderOfferingsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListBackupProviderOfferingsResponse) ProtoMessage() {}
-
-func (x *ListBackupProviderOfferingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListBackupProviderOfferingsResponse.ProtoReflect.Descriptor instead.
-func (*ListBackupProviderOfferingsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ListBackupProviderOfferingsResponse) GetItems() []*BackupOffering {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListBackupProviderOfferingsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// RestoreBackupRequest represents the parameters for restores an existing stopped or deleted vm using a vm backup
-type RestoreBackupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the backup
-	BackupId *int64 `protobuf:"varint,1,opt,name=backup_id,json=backupId" json:"backup_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreBackupRequest) Reset() {
-	*x = RestoreBackupRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreBackupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreBackupRequest) ProtoMessage() {}
-
-func (x *RestoreBackupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreBackupRequest.ProtoReflect.Descriptor instead.
-func (*RestoreBackupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *RestoreBackupRequest) GetBackupId() int64 {
-	if x != nil && x.BackupId != nil {
-		return *x.BackupId
-	}
-	return 0
-}
-
-func (x *RestoreBackupRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestoreBackupRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestoreBackupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestoreBackupResponse represents the response from restores an existing stopped or deleted vm using a vm backup
-type RestoreBackupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreBackupResponse) Reset() {
-	*x = RestoreBackupResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreBackupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreBackupResponse) ProtoMessage() {}
-
-func (x *RestoreBackupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreBackupResponse.ProtoReflect.Descriptor instead.
-func (*RestoreBackupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *RestoreBackupResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateBackupScheduleRequest represents the parameters for updates a user-defined vm backup schedule
-type UpdateBackupScheduleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the VM for which schedule is to be defined
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
-	IntervalType *string `protobuf:"bytes,2,opt,name=interval_type,json=intervalType" json:"interval_type,omitempty"`
-	// custom backup schedule, the format is:for HOURLY MM*, for DAILY MM:HH*, for WEEKLY MM:HH:DD (1-7)*, for MONTHLY MM:HH:DD (1-28)
-	Schedule *string `protobuf:"bytes,3,opt,name=schedule" json:"schedule,omitempty"`
-	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
-	Timezone *string `protobuf:"bytes,4,opt,name=timezone" json:"timezone,omitempty"`
-	// maximum number of backups to retain
-	MaxBackups *int32 `protobuf:"varint,5,opt,name=max_backups,json=maxBackups" json:"max_backups,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateBackupScheduleRequest) Reset() {
-	*x = UpdateBackupScheduleRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateBackupScheduleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateBackupScheduleRequest) ProtoMessage() {}
-
-func (x *UpdateBackupScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateBackupScheduleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateBackupScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *UpdateBackupScheduleRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *UpdateBackupScheduleRequest) GetIntervalType() string {
-	if x != nil && x.IntervalType != nil {
-		return *x.IntervalType
-	}
-	return ""
-}
-
-func (x *UpdateBackupScheduleRequest) GetSchedule() string {
-	if x != nil && x.Schedule != nil {
-		return *x.Schedule
-	}
-	return ""
-}
-
-func (x *UpdateBackupScheduleRequest) GetTimezone() string {
-	if x != nil && x.Timezone != nil {
-		return *x.Timezone
-	}
-	return ""
-}
-
-func (x *UpdateBackupScheduleRequest) GetMaxBackups() int32 {
-	if x != nil && x.MaxBackups != nil {
-		return *x.MaxBackups
-	}
-	return 0
-}
-
-func (x *UpdateBackupScheduleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateBackupScheduleResponse represents the response from updates a user-defined vm backup schedule
-type UpdateBackupScheduleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateBackupScheduleResponse) Reset() {
-	*x = UpdateBackupScheduleResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateBackupScheduleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateBackupScheduleResponse) ProtoMessage() {}
-
-func (x *UpdateBackupScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateBackupScheduleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateBackupScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *UpdateBackupScheduleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteBackupRequest represents the parameters for delete vm backup
-type DeleteBackupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the VM backup
-	BackupId *int64 `protobuf:"varint,1,opt,name=backup_id,json=backupId" json:"backup_id,omitempty"`
-	// force the deletion of backup which removes the entire backup chain but keep VM in Backup Offering
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupRequest) Reset() {
-	*x = DeleteBackupRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupRequest) ProtoMessage() {}
-
-func (x *DeleteBackupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupRequest.ProtoReflect.Descriptor instead.
-func (*DeleteBackupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *DeleteBackupRequest) GetBackupId() int64 {
-	if x != nil && x.BackupId != nil {
-		return *x.BackupId
-	}
-	return 0
-}
-
-func (x *DeleteBackupRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DeleteBackupRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteBackupRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteBackupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteBackupResponse represents the response from delete vm backup
-type DeleteBackupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupResponse) Reset() {
-	*x = DeleteBackupResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupResponse) ProtoMessage() {}
-
-func (x *DeleteBackupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupResponse.ProtoReflect.Descriptor instead.
-func (*DeleteBackupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *DeleteBackupResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateBackupOfferingRequest represents the parameters for updates a backup offering.
-type UpdateBackupOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Backup Offering to be updated
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The description of the Backup Offering to be updated
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// The name of the Backup Offering to be updated
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// Whether to allow user driven backups or not
-	AllowUserDrivenBackups *bool `protobuf:"varint,4,opt,name=allow_user_driven_backups,json=allowUserDrivenBackups" json:"allow_user_driven_backups,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateBackupOfferingRequest) Reset() {
-	*x = UpdateBackupOfferingRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateBackupOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateBackupOfferingRequest) ProtoMessage() {}
-
-func (x *UpdateBackupOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateBackupOfferingRequest.ProtoReflect.Descriptor instead.
-func (*UpdateBackupOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *UpdateBackupOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateBackupOfferingRequest) GetDescription() string {
+func (x *ImportBackupOfferingRequest) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *UpdateBackupOfferingRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ImportBackupOfferingRequest) GetExternalId() string {
+	if x != nil && x.ExternalId != nil {
+		return *x.ExternalId
 	}
 	return ""
 }
 
-func (x *UpdateBackupOfferingRequest) GetAllowUserDrivenBackups() bool {
-	if x != nil && x.AllowUserDrivenBackups != nil {
-		return *x.AllowUserDrivenBackups
+func (x *ImportBackupOfferingRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ImportBackupOfferingRequest) GetUserDrivenBackups() bool {
+	if x != nil && x.UserDrivenBackups != nil {
+		return *x.UserDrivenBackups
 	}
 	return false
 }
 
-func (x *UpdateBackupOfferingRequest) GetResponseType() string {
+func (x *ImportBackupOfferingRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ImportBackupOfferingRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ImportBackupOfferingRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateBackupOfferingResponse represents the response from updates a backup offering.
-type UpdateBackupOfferingResponse struct {
+// ImportBackupOfferingResponse represents the response from imports a backup offering using a backup provider
+type ImportBackupOfferingResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1662,21 +1842,21 @@ type UpdateBackupOfferingResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateBackupOfferingResponse) Reset() {
-	*x = UpdateBackupOfferingResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[25]
+func (x *ImportBackupOfferingResponse) Reset() {
+	*x = ImportBackupOfferingResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateBackupOfferingResponse) String() string {
+func (x *ImportBackupOfferingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateBackupOfferingResponse) ProtoMessage() {}
+func (*ImportBackupOfferingResponse) ProtoMessage() {}
 
-func (x *UpdateBackupOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[25]
+func (x *ImportBackupOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1687,12 +1867,12 @@ func (x *UpdateBackupOfferingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateBackupOfferingResponse.ProtoReflect.Descriptor instead.
-func (*UpdateBackupOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{25}
+// Deprecated: Use ImportBackupOfferingResponse.ProtoReflect.Descriptor instead.
+func (*ImportBackupOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{27}
 }
 
-func (x *UpdateBackupOfferingResponse) GetResult() *Result {
+func (x *ImportBackupOfferingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1715,7 +1895,7 @@ type RemoveVirtualMachineFromBackupOfferingRequest struct {
 
 func (x *RemoveVirtualMachineFromBackupOfferingRequest) Reset() {
 	*x = RemoveVirtualMachineFromBackupOfferingRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1727,7 +1907,7 @@ func (x *RemoveVirtualMachineFromBackupOfferingRequest) String() string {
 func (*RemoveVirtualMachineFromBackupOfferingRequest) ProtoMessage() {}
 
 func (x *RemoveVirtualMachineFromBackupOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1740,7 +1920,7 @@ func (x *RemoveVirtualMachineFromBackupOfferingRequest) ProtoReflect() protorefl
 
 // Deprecated: Use RemoveVirtualMachineFromBackupOfferingRequest.ProtoReflect.Descriptor instead.
 func (*RemoveVirtualMachineFromBackupOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{26}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *RemoveVirtualMachineFromBackupOfferingRequest) GetVmId() int64 {
@@ -1789,7 +1969,7 @@ type RemoveVirtualMachineFromBackupOfferingResponse struct {
 
 func (x *RemoveVirtualMachineFromBackupOfferingResponse) Reset() {
 	*x = RemoveVirtualMachineFromBackupOfferingResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[27]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1801,7 +1981,7 @@ func (x *RemoveVirtualMachineFromBackupOfferingResponse) String() string {
 func (*RemoveVirtualMachineFromBackupOfferingResponse) ProtoMessage() {}
 
 func (x *RemoveVirtualMachineFromBackupOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[27]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1814,269 +1994,10 @@ func (x *RemoveVirtualMachineFromBackupOfferingResponse) ProtoReflect() protoref
 
 // Deprecated: Use RemoveVirtualMachineFromBackupOfferingResponse.ProtoReflect.Descriptor instead.
 func (*RemoveVirtualMachineFromBackupOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *RemoveVirtualMachineFromBackupOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RestoreVolumeFromBackupAndAttachToVMRequest represents the parameters for restore and attach a backed up volume to vm
-type RestoreVolumeFromBackupAndAttachToVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the VM backup
-	BackupId *int64 `protobuf:"varint,1,opt,name=backup_id,json=backupId" json:"backup_id,omitempty"`
-	// ID of the volume backed up
-	VolumeUuid *string `protobuf:"bytes,2,opt,name=volume_uuid,json=volumeUuid" json:"volume_uuid,omitempty"`
-	// id of the VM where to attach the restored volume
-	VmId *int64 `protobuf:"varint,3,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) Reset() {
-	*x = RestoreVolumeFromBackupAndAttachToVMRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreVolumeFromBackupAndAttachToVMRequest) ProtoMessage() {}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreVolumeFromBackupAndAttachToVMRequest.ProtoReflect.Descriptor instead.
-func (*RestoreVolumeFromBackupAndAttachToVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetBackupId() int64 {
-	if x != nil && x.BackupId != nil {
-		return *x.BackupId
-	}
-	return 0
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetVolumeUuid() string {
-	if x != nil && x.VolumeUuid != nil {
-		return *x.VolumeUuid
-	}
-	return ""
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestoreVolumeFromBackupAndAttachToVMResponse represents the response from restore and attach a backed up volume to vm
-type RestoreVolumeFromBackupAndAttachToVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMResponse) Reset() {
-	*x = RestoreVolumeFromBackupAndAttachToVMResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreVolumeFromBackupAndAttachToVMResponse) ProtoMessage() {}
-
-func (x *RestoreVolumeFromBackupAndAttachToVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreVolumeFromBackupAndAttachToVMResponse.ProtoReflect.Descriptor instead.
-func (*RestoreVolumeFromBackupAndAttachToVMResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{29}
 }
 
-func (x *RestoreVolumeFromBackupAndAttachToVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateBackupRequest represents the parameters for create vm backup
-type CreateBackupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the VM
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// backup schedule ID of the VM, if this is null, it indicates that it is a manual backup.
-	ScheduleId *int64 `protobuf:"varint,2,opt,name=schedule_id,json=scheduleId" json:"schedule_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateBackupRequest) Reset() {
-	*x = CreateBackupRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateBackupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateBackupRequest) ProtoMessage() {}
-
-func (x *CreateBackupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateBackupRequest.ProtoReflect.Descriptor instead.
-func (*CreateBackupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *CreateBackupRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *CreateBackupRequest) GetScheduleId() int64 {
-	if x != nil && x.ScheduleId != nil {
-		return *x.ScheduleId
-	}
-	return 0
-}
-
-func (x *CreateBackupRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateBackupRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateBackupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateBackupResponse represents the response from create vm backup
-type CreateBackupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateBackupResponse) Reset() {
-	*x = CreateBackupResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateBackupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateBackupResponse) ProtoMessage() {}
-
-func (x *CreateBackupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateBackupResponse.ProtoReflect.Descriptor instead.
-func (*CreateBackupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *CreateBackupResponse) GetResult() *Result {
+func (x *RemoveVirtualMachineFromBackupOfferingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2101,7 +2022,7 @@ type ListBackupOfferingsRequest struct {
 
 func (x *ListBackupOfferingsRequest) Reset() {
 	*x = ListBackupOfferingsRequest{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2113,7 +2034,7 @@ func (x *ListBackupOfferingsRequest) String() string {
 func (*ListBackupOfferingsRequest) ProtoMessage() {}
 
 func (x *ListBackupOfferingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2126,7 +2047,7 @@ func (x *ListBackupOfferingsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBackupOfferingsRequest.ProtoReflect.Descriptor instead.
 func (*ListBackupOfferingsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{32}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ListBackupOfferingsRequest) GetOfferingId() int64 {
@@ -2184,7 +2105,7 @@ type ListBackupOfferingsResponse struct {
 
 func (x *ListBackupOfferingsResponse) Reset() {
 	*x = ListBackupOfferingsResponse{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2196,7 +2117,7 @@ func (x *ListBackupOfferingsResponse) String() string {
 func (*ListBackupOfferingsResponse) ProtoMessage() {}
 
 func (x *ListBackupOfferingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2209,7 +2130,7 @@ func (x *ListBackupOfferingsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBackupOfferingsResponse.ProtoReflect.Descriptor instead.
 func (*ListBackupOfferingsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{33}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListBackupOfferingsResponse) GetItems() []*BackupOffering {
@@ -2226,38 +2147,39 @@ func (x *ListBackupOfferingsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// BackupSchedule represents a BackupSchedule Item
-type BackupSchedule struct {
+// UpdateBackupScheduleRequest represents the parameters for updates a user-defined vm backup schedule
+type UpdateBackupScheduleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the BackupSchedule
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the BackupSchedule
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the BackupSchedule
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the BackupSchedule
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// ID of the VM for which schedule is to be defined
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+	IntervalType *string `protobuf:"bytes,2,opt,name=interval_type,json=intervalType" json:"interval_type,omitempty"`
+	// custom backup schedule, the format is:for HOURLY MM*, for DAILY MM:HH*, for WEEKLY MM:HH:DD (1-7)*, for MONTHLY MM:HH:DD (1-28)
+	Schedule *string `protobuf:"bytes,3,opt,name=schedule" json:"schedule,omitempty"`
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	Timezone *string `protobuf:"bytes,4,opt,name=timezone" json:"timezone,omitempty"`
+	// maximum number of backups to retain
+	MaxBackups *int32 `protobuf:"varint,5,opt,name=max_backups,json=maxBackups" json:"max_backups,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BackupSchedule) Reset() {
-	*x = BackupSchedule{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[34]
+func (x *UpdateBackupScheduleRequest) Reset() {
+	*x = UpdateBackupScheduleRequest{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *BackupSchedule) String() string {
+func (x *UpdateBackupScheduleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*BackupSchedule) ProtoMessage() {}
+func (*UpdateBackupScheduleRequest) ProtoMessage() {}
 
-func (x *BackupSchedule) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[34]
+func (x *UpdateBackupScheduleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2268,78 +2190,77 @@ func (x *BackupSchedule) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use BackupSchedule.ProtoReflect.Descriptor instead.
-func (*BackupSchedule) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{34}
+// Deprecated: Use UpdateBackupScheduleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateBackupScheduleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{32}
 }
 
-func (x *BackupSchedule) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *UpdateBackupScheduleRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *UpdateBackupScheduleRequest) GetIntervalType() string {
+	if x != nil && x.IntervalType != nil {
+		return *x.IntervalType
 	}
 	return ""
 }
 
-func (x *BackupSchedule) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *UpdateBackupScheduleRequest) GetSchedule() string {
+	if x != nil && x.Schedule != nil {
+		return *x.Schedule
 	}
 	return ""
 }
 
-func (x *BackupSchedule) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *UpdateBackupScheduleRequest) GetTimezone() string {
+	if x != nil && x.Timezone != nil {
+		return *x.Timezone
 	}
 	return ""
 }
 
-func (x *BackupSchedule) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *UpdateBackupScheduleRequest) GetMaxBackups() int32 {
+	if x != nil && x.MaxBackups != nil {
+		return *x.MaxBackups
+	}
+	return 0
+}
+
+func (x *UpdateBackupScheduleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *BackupSchedule) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// Backup represents a Backup Item
-type Backup struct {
+// UpdateBackupScheduleResponse represents the response from updates a user-defined vm backup schedule
+type UpdateBackupScheduleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Backup
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Backup
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Backup
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Backup
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Backup) Reset() {
-	*x = Backup{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[35]
+func (x *UpdateBackupScheduleResponse) Reset() {
+	*x = UpdateBackupScheduleResponse{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Backup) String() string {
+func (x *UpdateBackupScheduleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Backup) ProtoMessage() {}
+func (*UpdateBackupScheduleResponse) ProtoMessage() {}
 
-func (x *Backup) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[35]
+func (x *UpdateBackupScheduleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2350,44 +2271,16 @@ func (x *Backup) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Backup.ProtoReflect.Descriptor instead.
-func (*Backup) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{35}
+// Deprecated: Use UpdateBackupScheduleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateBackupScheduleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *Backup) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *UpdateBackupScheduleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
-}
-
-func (x *Backup) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Backup) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Backup) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Backup) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
+	return nil
 }
 
 // BackupProvider represents a BackupProvider Item
@@ -2409,7 +2302,7 @@ type BackupProvider struct {
 
 func (x *BackupProvider) Reset() {
 	*x = BackupProvider{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[36]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2421,7 +2314,7 @@ func (x *BackupProvider) String() string {
 func (*BackupProvider) ProtoMessage() {}
 
 func (x *BackupProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[36]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2434,7 +2327,7 @@ func (x *BackupProvider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BackupProvider.ProtoReflect.Descriptor instead.
 func (*BackupProvider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{36}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *BackupProvider) GetId() string {
@@ -2491,7 +2384,7 @@ type BackupOffering struct {
 
 func (x *BackupOffering) Reset() {
 	*x = BackupOffering{}
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[37]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2503,7 +2396,7 @@ func (x *BackupOffering) String() string {
 func (*BackupOffering) ProtoMessage() {}
 
 func (x *BackupOffering) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[37]
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2516,7 +2409,7 @@ func (x *BackupOffering) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BackupOffering.ProtoReflect.Descriptor instead.
 func (*BackupOffering) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{37}
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *BackupOffering) GetId() string {
@@ -2548,6 +2441,170 @@ func (x *BackupOffering) GetDescription() string {
 }
 
 func (x *BackupOffering) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// BackupSchedule represents a BackupSchedule Item
+type BackupSchedule struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the BackupSchedule
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the BackupSchedule
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the BackupSchedule
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the BackupSchedule
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BackupSchedule) Reset() {
+	*x = BackupSchedule{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BackupSchedule) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BackupSchedule) ProtoMessage() {}
+
+func (x *BackupSchedule) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BackupSchedule.ProtoReflect.Descriptor instead.
+func (*BackupSchedule) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *BackupSchedule) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *BackupSchedule) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *BackupSchedule) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *BackupSchedule) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *BackupSchedule) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Backup represents a Backup Item
+type Backup struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Backup
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Backup
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Backup
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Backup
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Backup) Reset() {
+	*x = Backup{}
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Backup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Backup) ProtoMessage() {}
+
+func (x *Backup) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Backup.ProtoReflect.Descriptor instead.
+func (*Backup) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *Backup) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Backup) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Backup) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Backup) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Backup) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -2840,38 +2897,23 @@ var File_cloudstack_management_backup_v1_backup_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/backup/v1/backup.gen.proto\x12\x1fcloudstack.management.backup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"]\n" +
-	"\x19ListBackupScheduleRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x8b\x01\n" +
-	"\x1aListBackupScheduleResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupScheduleR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xfa\x02\n" +
-	"\x1bImportBackupOfferingRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
-	"\vdescription\x18\x02 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\x80\bR\vdescription\x12,\n" +
-	"\vexternal_id\x18\x03 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
-	"externalId\x12\x1f\n" +
-	"\azone_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12;\n" +
-	"\x13user_driven_backups\x18\x05 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\x11userDrivenBackups\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"_\n" +
-	"\x1cImportBackupOfferingResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"Z\n" +
-	"\x1bDeleteBackupOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
-	"\x1cDeleteBackupOfferingResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"g\n" +
-	"\x1bDeleteBackupScheduleRequest\x12\x13\n" +
-	"\x05vm_id\x18\x01 \x01(\x03R\x04vmId\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"_\n" +
-	"\x1cDeleteBackupScheduleResponse\x12?\n" +
+	"0cloudstack/management/backup/v1/backup.gen.proto\x12\x1fcloudstack.management.backup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb8\x01\n" +
+	"\x14RestoreBackupRequest\x12#\n" +
+	"\tbackup_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bbackupId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
+	"\x15RestoreBackupResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xea\x01\n" +
+	"\x1bUpdateBackupOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1e\n" +
+	"\x04name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12@\n" +
+	"\x19allow_user_driven_backups\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x16allowUserDrivenBackups\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"_\n" +
+	"\x1cUpdateBackupOfferingResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xf0\x01\n" +
 	"+AssignVirtualMachineToBackupOfferingRequest\x12\x1b\n" +
 	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12'\n" +
@@ -2881,6 +2923,54 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"o\n" +
 	",AssignVirtualMachineToBackupOfferingResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"Z\n" +
+	"\x1bDeleteBackupOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
+	"\x1cDeleteBackupOfferingResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"a\n" +
+	"\x1aListBackupProvidersRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x8c\x01\n" +
+	"\x1bListBackupProvidersResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupProviderR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"g\n" +
+	"\x1bDeleteBackupScheduleRequest\x12\x13\n" +
+	"\x05vm_id\x18\x01 \x01(\x03R\x04vmId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"_\n" +
+	"\x1cDeleteBackupScheduleResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xd0\x01\n" +
+	"\x13CreateBackupRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1f\n" +
+	"\vschedule_id\x18\x02 \x01(\x03R\n" +
+	"scheduleId\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
+	"\x14CreateBackupResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xb5\x01\n" +
+	"\"ListBackupProviderOfferingsRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x94\x01\n" +
+	"#ListBackupProviderOfferingsResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupOfferingR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9a\x02\n" +
+	"+RestoreVolumeFromBackupAndAttachToVMRequest\x12#\n" +
+	"\tbackup_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bbackupId\x12,\n" +
+	"\vvolume_uuid\x18\x02 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
+	"volumeUuid\x12\x1b\n" +
+	"\x05vm_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"o\n" +
+	",RestoreVolumeFromBackupAndAttachToVMResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xf5\x01\n" +
 	"\x1bCreateBackupScheduleRequest\x12\x1b\n" +
 	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12+\n" +
@@ -2891,7 +2981,22 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"maxBackups\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
 	"\x1cCreateBackupScheduleResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xe8\x03\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xd6\x01\n" +
+	"\x13DeleteBackupRequest\x12#\n" +
+	"\tbackup_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bbackupId\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
+	"\x14DeleteBackupResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"]\n" +
+	"\x19ListBackupScheduleRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x8b\x01\n" +
+	"\x1aListBackupScheduleResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupScheduleR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe8\x03\n" +
 	"\x12ListBackupsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x13\n" +
 	"\x05vm_id\x18\x02 \x01(\x03R\x04vmId\x12\x17\n" +
@@ -2911,59 +3016,20 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\x13ListBackupsResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.backup.v1.BackupR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"a\n" +
-	"\x1aListBackupProvidersRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x8c\x01\n" +
-	"\x1bListBackupProvidersResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupProviderR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x01\n" +
-	"\"ListBackupProviderOfferingsRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x18\n" +
-	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x94\x01\n" +
-	"#ListBackupProviderOfferingsResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupOfferingR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb8\x01\n" +
-	"\x14RestoreBackupRequest\x12#\n" +
-	"\tbackup_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bbackupId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
-	"\x15RestoreBackupResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xf5\x01\n" +
-	"\x1bUpdateBackupScheduleRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12+\n" +
-	"\rinterval_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fintervalType\x12\"\n" +
-	"\bschedule\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bschedule\x12\"\n" +
-	"\btimezone\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\btimezone\x12\x1f\n" +
-	"\vmax_backups\x18\x05 \x01(\x05R\n" +
-	"maxBackups\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
-	"\x1cUpdateBackupScheduleResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xd6\x01\n" +
-	"\x13DeleteBackupRequest\x12#\n" +
-	"\tbackup_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bbackupId\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
-	"\x14DeleteBackupResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xea\x01\n" +
-	"\x1bUpdateBackupOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1e\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12@\n" +
-	"\x19allow_user_driven_backups\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x16allowUserDrivenBackups\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"_\n" +
-	"\x1cUpdateBackupOfferingResponse\x12?\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xfa\x02\n" +
+	"\x1bImportBackupOfferingRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
+	"\vdescription\x18\x02 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\x80\bR\vdescription\x12,\n" +
+	"\vexternal_id\x18\x03 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
+	"externalId\x12\x1f\n" +
+	"\azone_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12;\n" +
+	"\x13user_driven_backups\x18\x05 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\x11userDrivenBackups\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"_\n" +
+	"\x1cImportBackupOfferingResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xe8\x01\n" +
 	"-RemoveVirtualMachineFromBackupOfferingRequest\x12\x1b\n" +
 	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
@@ -2972,25 +3038,6 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"q\n" +
 	".RemoveVirtualMachineFromBackupOfferingResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\x9a\x02\n" +
-	"+RestoreVolumeFromBackupAndAttachToVMRequest\x12#\n" +
-	"\tbackup_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bbackupId\x12,\n" +
-	"\vvolume_uuid\x18\x02 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
-	"volumeUuid\x12\x1b\n" +
-	"\x05vm_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"o\n" +
-	",RestoreVolumeFromBackupAndAttachToVMResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xd0\x01\n" +
-	"\x13CreateBackupRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1f\n" +
-	"\vschedule_id\x18\x02 \x01(\x03R\n" +
-	"scheduleId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
-	"\x14CreateBackupResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\xc6\x01\n" +
 	"\x1aListBackupOfferingsRequest\x12\x1f\n" +
 	"\voffering_id\x18\x01 \x01(\x03R\n" +
@@ -3003,19 +3050,17 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\x1bListBackupOfferingsResponse\x12E\n" +
 	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.backup.v1.BackupOfferingR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9d\x01\n" +
-	"\x0eBackupSchedule\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x95\x01\n" +
-	"\x06Backup\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf5\x01\n" +
+	"\x1bUpdateBackupScheduleRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12+\n" +
+	"\rinterval_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fintervalType\x12\"\n" +
+	"\bschedule\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bschedule\x12\"\n" +
+	"\btimezone\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\btimezone\x12\x1f\n" +
+	"\vmax_backups\x18\x05 \x01(\x05R\n" +
+	"maxBackups\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
+	"\x1cUpdateBackupScheduleResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.backup.v1.ResultR\x06result\"\x9d\x01\n" +
 	"\x0eBackupProvider\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -3023,6 +3068,18 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
 	"\x0eBackupOffering\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
+	"\x0eBackupSchedule\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x95\x01\n" +
+	"\x06Backup\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -3056,25 +3113,30 @@ const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xeb\x14\n" +
-	"\rBackupService\x12\x8f\x01\n" +
-	"\x12ListBackupSchedule\x12:.cloudstack.management.backup.v1.ListBackupScheduleRequest\x1a;.cloudstack.management.backup.v1.ListBackupScheduleResponse\"\x00\x12\x95\x01\n" +
-	"\x14ImportBackupOffering\x12<.cloudstack.management.backup.v1.ImportBackupOfferingRequest\x1a=.cloudstack.management.backup.v1.ImportBackupOfferingResponse\"\x00\x12\x95\x01\n" +
-	"\x14DeleteBackupOffering\x12<.cloudstack.management.backup.v1.DeleteBackupOfferingRequest\x1a=.cloudstack.management.backup.v1.DeleteBackupOfferingResponse\"\x00\x12\x95\x01\n" +
-	"\x14DeleteBackupSchedule\x12<.cloudstack.management.backup.v1.DeleteBackupScheduleRequest\x1a=.cloudstack.management.backup.v1.DeleteBackupScheduleResponse\"\x00\x12\xc5\x01\n" +
-	"$AssignVirtualMachineToBackupOffering\x12L.cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingRequest\x1aM.cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse\"\x00\x12\x95\x01\n" +
-	"\x14CreateBackupSchedule\x12<.cloudstack.management.backup.v1.CreateBackupScheduleRequest\x1a=.cloudstack.management.backup.v1.CreateBackupScheduleResponse\"\x00\x12z\n" +
-	"\vListBackups\x123.cloudstack.management.backup.v1.ListBackupsRequest\x1a4.cloudstack.management.backup.v1.ListBackupsResponse\"\x00\x12\x92\x01\n" +
-	"\x13ListBackupProviders\x12;.cloudstack.management.backup.v1.ListBackupProvidersRequest\x1a<.cloudstack.management.backup.v1.ListBackupProvidersResponse\"\x00\x12\xaa\x01\n" +
-	"\x1bListBackupProviderOfferings\x12C.cloudstack.management.backup.v1.ListBackupProviderOfferingsRequest\x1aD.cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse\"\x00\x12\x80\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*z\n" +
+	"\fIntervalType\x12\x1d\n" +
+	"\x19INTERVAL_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
+	"\x14INTERVAL_TYPE_HOURLY\x10\x01\x12\x17\n" +
+	"\x13INTERVAL_TYPE_DAILY\x10\x02\x12\x18\n" +
+	"\x14INTERVAL_TYPE_WEEKLY\x10\x032\xeb\x14\n" +
+	"\rBackupService\x12\x80\x01\n" +
 	"\rRestoreBackup\x125.cloudstack.management.backup.v1.RestoreBackupRequest\x1a6.cloudstack.management.backup.v1.RestoreBackupResponse\"\x00\x12\x95\x01\n" +
-	"\x14UpdateBackupSchedule\x12<.cloudstack.management.backup.v1.UpdateBackupScheduleRequest\x1a=.cloudstack.management.backup.v1.UpdateBackupScheduleResponse\"\x00\x12}\n" +
-	"\fDeleteBackup\x124.cloudstack.management.backup.v1.DeleteBackupRequest\x1a5.cloudstack.management.backup.v1.DeleteBackupResponse\"\x00\x12\x95\x01\n" +
-	"\x14UpdateBackupOffering\x12<.cloudstack.management.backup.v1.UpdateBackupOfferingRequest\x1a=.cloudstack.management.backup.v1.UpdateBackupOfferingResponse\"\x00\x12\xcb\x01\n" +
-	"&RemoveVirtualMachineFromBackupOffering\x12N.cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingRequest\x1aO.cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse\"\x00\x12\xc5\x01\n" +
-	"$RestoreVolumeFromBackupAndAttachToVM\x12L.cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMRequest\x1aM.cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse\"\x00\x12}\n" +
-	"\fCreateBackup\x124.cloudstack.management.backup.v1.CreateBackupRequest\x1a5.cloudstack.management.backup.v1.CreateBackupResponse\"\x00\x12\x92\x01\n" +
-	"\x13ListBackupOfferings\x12;.cloudstack.management.backup.v1.ListBackupOfferingsRequest\x1a<.cloudstack.management.backup.v1.ListBackupOfferingsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
+	"\x14UpdateBackupOffering\x12<.cloudstack.management.backup.v1.UpdateBackupOfferingRequest\x1a=.cloudstack.management.backup.v1.UpdateBackupOfferingResponse\"\x00\x12\xc5\x01\n" +
+	"$AssignVirtualMachineToBackupOffering\x12L.cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingRequest\x1aM.cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse\"\x00\x12\x95\x01\n" +
+	"\x14DeleteBackupOffering\x12<.cloudstack.management.backup.v1.DeleteBackupOfferingRequest\x1a=.cloudstack.management.backup.v1.DeleteBackupOfferingResponse\"\x00\x12\x92\x01\n" +
+	"\x13ListBackupProviders\x12;.cloudstack.management.backup.v1.ListBackupProvidersRequest\x1a<.cloudstack.management.backup.v1.ListBackupProvidersResponse\"\x00\x12\x95\x01\n" +
+	"\x14DeleteBackupSchedule\x12<.cloudstack.management.backup.v1.DeleteBackupScheduleRequest\x1a=.cloudstack.management.backup.v1.DeleteBackupScheduleResponse\"\x00\x12}\n" +
+	"\fCreateBackup\x124.cloudstack.management.backup.v1.CreateBackupRequest\x1a5.cloudstack.management.backup.v1.CreateBackupResponse\"\x00\x12\xaa\x01\n" +
+	"\x1bListBackupProviderOfferings\x12C.cloudstack.management.backup.v1.ListBackupProviderOfferingsRequest\x1aD.cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse\"\x00\x12\xc5\x01\n" +
+	"$RestoreVolumeFromBackupAndAttachToVM\x12L.cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMRequest\x1aM.cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse\"\x00\x12\x95\x01\n" +
+	"\x14CreateBackupSchedule\x12<.cloudstack.management.backup.v1.CreateBackupScheduleRequest\x1a=.cloudstack.management.backup.v1.CreateBackupScheduleResponse\"\x00\x12}\n" +
+	"\fDeleteBackup\x124.cloudstack.management.backup.v1.DeleteBackupRequest\x1a5.cloudstack.management.backup.v1.DeleteBackupResponse\"\x00\x12\x8f\x01\n" +
+	"\x12ListBackupSchedule\x12:.cloudstack.management.backup.v1.ListBackupScheduleRequest\x1a;.cloudstack.management.backup.v1.ListBackupScheduleResponse\"\x00\x12z\n" +
+	"\vListBackups\x123.cloudstack.management.backup.v1.ListBackupsRequest\x1a4.cloudstack.management.backup.v1.ListBackupsResponse\"\x00\x12\x95\x01\n" +
+	"\x14ImportBackupOffering\x12<.cloudstack.management.backup.v1.ImportBackupOfferingRequest\x1a=.cloudstack.management.backup.v1.ImportBackupOfferingResponse\"\x00\x12\xcb\x01\n" +
+	"&RemoveVirtualMachineFromBackupOffering\x12N.cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingRequest\x1aO.cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse\"\x00\x12\x92\x01\n" +
+	"\x13ListBackupOfferings\x12;.cloudstack.management.backup.v1.ListBackupOfferingsRequest\x1a<.cloudstack.management.backup.v1.ListBackupOfferingsResponse\"\x00\x12\x95\x01\n" +
+	"\x14UpdateBackupSchedule\x12<.cloudstack.management.backup.v1.UpdateBackupScheduleRequest\x1a=.cloudstack.management.backup.v1.UpdateBackupScheduleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.backup.v1B\x0eBackupGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/backup/v1;backupv1\xa2\x02\x03CMB\xaa\x02\x1fCloudstack.Management.Backup.V1\xca\x02\x1fCloudstack\\Management\\Backup\\V1\xe2\x02+Cloudstack\\Management\\Backup\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Backup::V1b\beditionsp\xe8\a"
 
 var (
@@ -3089,104 +3151,106 @@ func file_cloudstack_management_backup_v1_backup_gen_proto_rawDescGZIP() []byte 
 	return file_cloudstack_management_backup_v1_backup_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_backup_v1_backup_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_cloudstack_management_backup_v1_backup_gen_proto_goTypes = []any{
-	(*ListBackupScheduleRequest)(nil),                      // 0: cloudstack.management.backup.v1.ListBackupScheduleRequest
-	(*ListBackupScheduleResponse)(nil),                     // 1: cloudstack.management.backup.v1.ListBackupScheduleResponse
-	(*ImportBackupOfferingRequest)(nil),                    // 2: cloudstack.management.backup.v1.ImportBackupOfferingRequest
-	(*ImportBackupOfferingResponse)(nil),                   // 3: cloudstack.management.backup.v1.ImportBackupOfferingResponse
-	(*DeleteBackupOfferingRequest)(nil),                    // 4: cloudstack.management.backup.v1.DeleteBackupOfferingRequest
-	(*DeleteBackupOfferingResponse)(nil),                   // 5: cloudstack.management.backup.v1.DeleteBackupOfferingResponse
-	(*DeleteBackupScheduleRequest)(nil),                    // 6: cloudstack.management.backup.v1.DeleteBackupScheduleRequest
-	(*DeleteBackupScheduleResponse)(nil),                   // 7: cloudstack.management.backup.v1.DeleteBackupScheduleResponse
-	(*AssignVirtualMachineToBackupOfferingRequest)(nil),    // 8: cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingRequest
-	(*AssignVirtualMachineToBackupOfferingResponse)(nil),   // 9: cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse
-	(*CreateBackupScheduleRequest)(nil),                    // 10: cloudstack.management.backup.v1.CreateBackupScheduleRequest
-	(*CreateBackupScheduleResponse)(nil),                   // 11: cloudstack.management.backup.v1.CreateBackupScheduleResponse
-	(*ListBackupsRequest)(nil),                             // 12: cloudstack.management.backup.v1.ListBackupsRequest
-	(*ListBackupsResponse)(nil),                            // 13: cloudstack.management.backup.v1.ListBackupsResponse
-	(*ListBackupProvidersRequest)(nil),                     // 14: cloudstack.management.backup.v1.ListBackupProvidersRequest
-	(*ListBackupProvidersResponse)(nil),                    // 15: cloudstack.management.backup.v1.ListBackupProvidersResponse
-	(*ListBackupProviderOfferingsRequest)(nil),             // 16: cloudstack.management.backup.v1.ListBackupProviderOfferingsRequest
-	(*ListBackupProviderOfferingsResponse)(nil),            // 17: cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse
-	(*RestoreBackupRequest)(nil),                           // 18: cloudstack.management.backup.v1.RestoreBackupRequest
-	(*RestoreBackupResponse)(nil),                          // 19: cloudstack.management.backup.v1.RestoreBackupResponse
-	(*UpdateBackupScheduleRequest)(nil),                    // 20: cloudstack.management.backup.v1.UpdateBackupScheduleRequest
-	(*UpdateBackupScheduleResponse)(nil),                   // 21: cloudstack.management.backup.v1.UpdateBackupScheduleResponse
-	(*DeleteBackupRequest)(nil),                            // 22: cloudstack.management.backup.v1.DeleteBackupRequest
-	(*DeleteBackupResponse)(nil),                           // 23: cloudstack.management.backup.v1.DeleteBackupResponse
-	(*UpdateBackupOfferingRequest)(nil),                    // 24: cloudstack.management.backup.v1.UpdateBackupOfferingRequest
-	(*UpdateBackupOfferingResponse)(nil),                   // 25: cloudstack.management.backup.v1.UpdateBackupOfferingResponse
-	(*RemoveVirtualMachineFromBackupOfferingRequest)(nil),  // 26: cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingRequest
-	(*RemoveVirtualMachineFromBackupOfferingResponse)(nil), // 27: cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse
-	(*RestoreVolumeFromBackupAndAttachToVMRequest)(nil),    // 28: cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMRequest
-	(*RestoreVolumeFromBackupAndAttachToVMResponse)(nil),   // 29: cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse
-	(*CreateBackupRequest)(nil),                            // 30: cloudstack.management.backup.v1.CreateBackupRequest
-	(*CreateBackupResponse)(nil),                           // 31: cloudstack.management.backup.v1.CreateBackupResponse
-	(*ListBackupOfferingsRequest)(nil),                     // 32: cloudstack.management.backup.v1.ListBackupOfferingsRequest
-	(*ListBackupOfferingsResponse)(nil),                    // 33: cloudstack.management.backup.v1.ListBackupOfferingsResponse
-	(*BackupSchedule)(nil),                                 // 34: cloudstack.management.backup.v1.BackupSchedule
-	(*Backup)(nil),                                         // 35: cloudstack.management.backup.v1.Backup
-	(*BackupProvider)(nil),                                 // 36: cloudstack.management.backup.v1.BackupProvider
-	(*BackupOffering)(nil),                                 // 37: cloudstack.management.backup.v1.BackupOffering
-	(*Success)(nil),                                        // 38: cloudstack.management.backup.v1.Success
-	(*Item)(nil),                                           // 39: cloudstack.management.backup.v1.Item
-	(*Result)(nil),                                         // 40: cloudstack.management.backup.v1.Result
-	nil,                                                    // 41: cloudstack.management.backup.v1.Item.DetailsEntry
+	(IntervalType)(0),                                      // 0: cloudstack.management.backup.v1.IntervalType
+	(*RestoreBackupRequest)(nil),                           // 1: cloudstack.management.backup.v1.RestoreBackupRequest
+	(*RestoreBackupResponse)(nil),                          // 2: cloudstack.management.backup.v1.RestoreBackupResponse
+	(*UpdateBackupOfferingRequest)(nil),                    // 3: cloudstack.management.backup.v1.UpdateBackupOfferingRequest
+	(*UpdateBackupOfferingResponse)(nil),                   // 4: cloudstack.management.backup.v1.UpdateBackupOfferingResponse
+	(*AssignVirtualMachineToBackupOfferingRequest)(nil),    // 5: cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingRequest
+	(*AssignVirtualMachineToBackupOfferingResponse)(nil),   // 6: cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse
+	(*DeleteBackupOfferingRequest)(nil),                    // 7: cloudstack.management.backup.v1.DeleteBackupOfferingRequest
+	(*DeleteBackupOfferingResponse)(nil),                   // 8: cloudstack.management.backup.v1.DeleteBackupOfferingResponse
+	(*ListBackupProvidersRequest)(nil),                     // 9: cloudstack.management.backup.v1.ListBackupProvidersRequest
+	(*ListBackupProvidersResponse)(nil),                    // 10: cloudstack.management.backup.v1.ListBackupProvidersResponse
+	(*DeleteBackupScheduleRequest)(nil),                    // 11: cloudstack.management.backup.v1.DeleteBackupScheduleRequest
+	(*DeleteBackupScheduleResponse)(nil),                   // 12: cloudstack.management.backup.v1.DeleteBackupScheduleResponse
+	(*CreateBackupRequest)(nil),                            // 13: cloudstack.management.backup.v1.CreateBackupRequest
+	(*CreateBackupResponse)(nil),                           // 14: cloudstack.management.backup.v1.CreateBackupResponse
+	(*ListBackupProviderOfferingsRequest)(nil),             // 15: cloudstack.management.backup.v1.ListBackupProviderOfferingsRequest
+	(*ListBackupProviderOfferingsResponse)(nil),            // 16: cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse
+	(*RestoreVolumeFromBackupAndAttachToVMRequest)(nil),    // 17: cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMRequest
+	(*RestoreVolumeFromBackupAndAttachToVMResponse)(nil),   // 18: cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse
+	(*CreateBackupScheduleRequest)(nil),                    // 19: cloudstack.management.backup.v1.CreateBackupScheduleRequest
+	(*CreateBackupScheduleResponse)(nil),                   // 20: cloudstack.management.backup.v1.CreateBackupScheduleResponse
+	(*DeleteBackupRequest)(nil),                            // 21: cloudstack.management.backup.v1.DeleteBackupRequest
+	(*DeleteBackupResponse)(nil),                           // 22: cloudstack.management.backup.v1.DeleteBackupResponse
+	(*ListBackupScheduleRequest)(nil),                      // 23: cloudstack.management.backup.v1.ListBackupScheduleRequest
+	(*ListBackupScheduleResponse)(nil),                     // 24: cloudstack.management.backup.v1.ListBackupScheduleResponse
+	(*ListBackupsRequest)(nil),                             // 25: cloudstack.management.backup.v1.ListBackupsRequest
+	(*ListBackupsResponse)(nil),                            // 26: cloudstack.management.backup.v1.ListBackupsResponse
+	(*ImportBackupOfferingRequest)(nil),                    // 27: cloudstack.management.backup.v1.ImportBackupOfferingRequest
+	(*ImportBackupOfferingResponse)(nil),                   // 28: cloudstack.management.backup.v1.ImportBackupOfferingResponse
+	(*RemoveVirtualMachineFromBackupOfferingRequest)(nil),  // 29: cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingRequest
+	(*RemoveVirtualMachineFromBackupOfferingResponse)(nil), // 30: cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse
+	(*ListBackupOfferingsRequest)(nil),                     // 31: cloudstack.management.backup.v1.ListBackupOfferingsRequest
+	(*ListBackupOfferingsResponse)(nil),                    // 32: cloudstack.management.backup.v1.ListBackupOfferingsResponse
+	(*UpdateBackupScheduleRequest)(nil),                    // 33: cloudstack.management.backup.v1.UpdateBackupScheduleRequest
+	(*UpdateBackupScheduleResponse)(nil),                   // 34: cloudstack.management.backup.v1.UpdateBackupScheduleResponse
+	(*BackupProvider)(nil),                                 // 35: cloudstack.management.backup.v1.BackupProvider
+	(*BackupOffering)(nil),                                 // 36: cloudstack.management.backup.v1.BackupOffering
+	(*BackupSchedule)(nil),                                 // 37: cloudstack.management.backup.v1.BackupSchedule
+	(*Backup)(nil),                                         // 38: cloudstack.management.backup.v1.Backup
+	(*Success)(nil),                                        // 39: cloudstack.management.backup.v1.Success
+	(*Item)(nil),                                           // 40: cloudstack.management.backup.v1.Item
+	(*Result)(nil),                                         // 41: cloudstack.management.backup.v1.Result
+	nil,                                                    // 42: cloudstack.management.backup.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_backup_v1_backup_gen_proto_depIdxs = []int32{
-	34, // 0: cloudstack.management.backup.v1.ListBackupScheduleResponse.items:type_name -> cloudstack.management.backup.v1.BackupSchedule
-	40, // 1: cloudstack.management.backup.v1.ImportBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 2: cloudstack.management.backup.v1.DeleteBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 3: cloudstack.management.backup.v1.DeleteBackupScheduleResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 4: cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 5: cloudstack.management.backup.v1.CreateBackupScheduleResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	35, // 6: cloudstack.management.backup.v1.ListBackupsResponse.items:type_name -> cloudstack.management.backup.v1.Backup
-	36, // 7: cloudstack.management.backup.v1.ListBackupProvidersResponse.items:type_name -> cloudstack.management.backup.v1.BackupProvider
-	37, // 8: cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse.items:type_name -> cloudstack.management.backup.v1.BackupOffering
-	40, // 9: cloudstack.management.backup.v1.RestoreBackupResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 10: cloudstack.management.backup.v1.UpdateBackupScheduleResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 11: cloudstack.management.backup.v1.DeleteBackupResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 12: cloudstack.management.backup.v1.UpdateBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 13: cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 14: cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	40, // 15: cloudstack.management.backup.v1.CreateBackupResponse.result:type_name -> cloudstack.management.backup.v1.Result
-	37, // 16: cloudstack.management.backup.v1.ListBackupOfferingsResponse.items:type_name -> cloudstack.management.backup.v1.BackupOffering
-	41, // 17: cloudstack.management.backup.v1.Item.details:type_name -> cloudstack.management.backup.v1.Item.DetailsEntry
-	0,  // 18: cloudstack.management.backup.v1.BackupService.ListBackupSchedule:input_type -> cloudstack.management.backup.v1.ListBackupScheduleRequest
-	2,  // 19: cloudstack.management.backup.v1.BackupService.ImportBackupOffering:input_type -> cloudstack.management.backup.v1.ImportBackupOfferingRequest
-	4,  // 20: cloudstack.management.backup.v1.BackupService.DeleteBackupOffering:input_type -> cloudstack.management.backup.v1.DeleteBackupOfferingRequest
-	6,  // 21: cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule:input_type -> cloudstack.management.backup.v1.DeleteBackupScheduleRequest
-	8,  // 22: cloudstack.management.backup.v1.BackupService.AssignVirtualMachineToBackupOffering:input_type -> cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingRequest
-	10, // 23: cloudstack.management.backup.v1.BackupService.CreateBackupSchedule:input_type -> cloudstack.management.backup.v1.CreateBackupScheduleRequest
-	12, // 24: cloudstack.management.backup.v1.BackupService.ListBackups:input_type -> cloudstack.management.backup.v1.ListBackupsRequest
-	14, // 25: cloudstack.management.backup.v1.BackupService.ListBackupProviders:input_type -> cloudstack.management.backup.v1.ListBackupProvidersRequest
-	16, // 26: cloudstack.management.backup.v1.BackupService.ListBackupProviderOfferings:input_type -> cloudstack.management.backup.v1.ListBackupProviderOfferingsRequest
-	18, // 27: cloudstack.management.backup.v1.BackupService.RestoreBackup:input_type -> cloudstack.management.backup.v1.RestoreBackupRequest
-	20, // 28: cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule:input_type -> cloudstack.management.backup.v1.UpdateBackupScheduleRequest
-	22, // 29: cloudstack.management.backup.v1.BackupService.DeleteBackup:input_type -> cloudstack.management.backup.v1.DeleteBackupRequest
-	24, // 30: cloudstack.management.backup.v1.BackupService.UpdateBackupOffering:input_type -> cloudstack.management.backup.v1.UpdateBackupOfferingRequest
-	26, // 31: cloudstack.management.backup.v1.BackupService.RemoveVirtualMachineFromBackupOffering:input_type -> cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingRequest
-	28, // 32: cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM:input_type -> cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMRequest
-	30, // 33: cloudstack.management.backup.v1.BackupService.CreateBackup:input_type -> cloudstack.management.backup.v1.CreateBackupRequest
-	32, // 34: cloudstack.management.backup.v1.BackupService.ListBackupOfferings:input_type -> cloudstack.management.backup.v1.ListBackupOfferingsRequest
-	1,  // 35: cloudstack.management.backup.v1.BackupService.ListBackupSchedule:output_type -> cloudstack.management.backup.v1.ListBackupScheduleResponse
-	3,  // 36: cloudstack.management.backup.v1.BackupService.ImportBackupOffering:output_type -> cloudstack.management.backup.v1.ImportBackupOfferingResponse
-	5,  // 37: cloudstack.management.backup.v1.BackupService.DeleteBackupOffering:output_type -> cloudstack.management.backup.v1.DeleteBackupOfferingResponse
-	7,  // 38: cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule:output_type -> cloudstack.management.backup.v1.DeleteBackupScheduleResponse
-	9,  // 39: cloudstack.management.backup.v1.BackupService.AssignVirtualMachineToBackupOffering:output_type -> cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse
-	11, // 40: cloudstack.management.backup.v1.BackupService.CreateBackupSchedule:output_type -> cloudstack.management.backup.v1.CreateBackupScheduleResponse
-	13, // 41: cloudstack.management.backup.v1.BackupService.ListBackups:output_type -> cloudstack.management.backup.v1.ListBackupsResponse
-	15, // 42: cloudstack.management.backup.v1.BackupService.ListBackupProviders:output_type -> cloudstack.management.backup.v1.ListBackupProvidersResponse
-	17, // 43: cloudstack.management.backup.v1.BackupService.ListBackupProviderOfferings:output_type -> cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse
-	19, // 44: cloudstack.management.backup.v1.BackupService.RestoreBackup:output_type -> cloudstack.management.backup.v1.RestoreBackupResponse
-	21, // 45: cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule:output_type -> cloudstack.management.backup.v1.UpdateBackupScheduleResponse
-	23, // 46: cloudstack.management.backup.v1.BackupService.DeleteBackup:output_type -> cloudstack.management.backup.v1.DeleteBackupResponse
-	25, // 47: cloudstack.management.backup.v1.BackupService.UpdateBackupOffering:output_type -> cloudstack.management.backup.v1.UpdateBackupOfferingResponse
-	27, // 48: cloudstack.management.backup.v1.BackupService.RemoveVirtualMachineFromBackupOffering:output_type -> cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse
-	29, // 49: cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM:output_type -> cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse
-	31, // 50: cloudstack.management.backup.v1.BackupService.CreateBackup:output_type -> cloudstack.management.backup.v1.CreateBackupResponse
-	33, // 51: cloudstack.management.backup.v1.BackupService.ListBackupOfferings:output_type -> cloudstack.management.backup.v1.ListBackupOfferingsResponse
+	41, // 0: cloudstack.management.backup.v1.RestoreBackupResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 1: cloudstack.management.backup.v1.UpdateBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 2: cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 3: cloudstack.management.backup.v1.DeleteBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	35, // 4: cloudstack.management.backup.v1.ListBackupProvidersResponse.items:type_name -> cloudstack.management.backup.v1.BackupProvider
+	41, // 5: cloudstack.management.backup.v1.DeleteBackupScheduleResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 6: cloudstack.management.backup.v1.CreateBackupResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	36, // 7: cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse.items:type_name -> cloudstack.management.backup.v1.BackupOffering
+	41, // 8: cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 9: cloudstack.management.backup.v1.CreateBackupScheduleResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 10: cloudstack.management.backup.v1.DeleteBackupResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	37, // 11: cloudstack.management.backup.v1.ListBackupScheduleResponse.items:type_name -> cloudstack.management.backup.v1.BackupSchedule
+	38, // 12: cloudstack.management.backup.v1.ListBackupsResponse.items:type_name -> cloudstack.management.backup.v1.Backup
+	41, // 13: cloudstack.management.backup.v1.ImportBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	41, // 14: cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	36, // 15: cloudstack.management.backup.v1.ListBackupOfferingsResponse.items:type_name -> cloudstack.management.backup.v1.BackupOffering
+	41, // 16: cloudstack.management.backup.v1.UpdateBackupScheduleResponse.result:type_name -> cloudstack.management.backup.v1.Result
+	42, // 17: cloudstack.management.backup.v1.Item.details:type_name -> cloudstack.management.backup.v1.Item.DetailsEntry
+	1,  // 18: cloudstack.management.backup.v1.BackupService.RestoreBackup:input_type -> cloudstack.management.backup.v1.RestoreBackupRequest
+	3,  // 19: cloudstack.management.backup.v1.BackupService.UpdateBackupOffering:input_type -> cloudstack.management.backup.v1.UpdateBackupOfferingRequest
+	5,  // 20: cloudstack.management.backup.v1.BackupService.AssignVirtualMachineToBackupOffering:input_type -> cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingRequest
+	7,  // 21: cloudstack.management.backup.v1.BackupService.DeleteBackupOffering:input_type -> cloudstack.management.backup.v1.DeleteBackupOfferingRequest
+	9,  // 22: cloudstack.management.backup.v1.BackupService.ListBackupProviders:input_type -> cloudstack.management.backup.v1.ListBackupProvidersRequest
+	11, // 23: cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule:input_type -> cloudstack.management.backup.v1.DeleteBackupScheduleRequest
+	13, // 24: cloudstack.management.backup.v1.BackupService.CreateBackup:input_type -> cloudstack.management.backup.v1.CreateBackupRequest
+	15, // 25: cloudstack.management.backup.v1.BackupService.ListBackupProviderOfferings:input_type -> cloudstack.management.backup.v1.ListBackupProviderOfferingsRequest
+	17, // 26: cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM:input_type -> cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMRequest
+	19, // 27: cloudstack.management.backup.v1.BackupService.CreateBackupSchedule:input_type -> cloudstack.management.backup.v1.CreateBackupScheduleRequest
+	21, // 28: cloudstack.management.backup.v1.BackupService.DeleteBackup:input_type -> cloudstack.management.backup.v1.DeleteBackupRequest
+	23, // 29: cloudstack.management.backup.v1.BackupService.ListBackupSchedule:input_type -> cloudstack.management.backup.v1.ListBackupScheduleRequest
+	25, // 30: cloudstack.management.backup.v1.BackupService.ListBackups:input_type -> cloudstack.management.backup.v1.ListBackupsRequest
+	27, // 31: cloudstack.management.backup.v1.BackupService.ImportBackupOffering:input_type -> cloudstack.management.backup.v1.ImportBackupOfferingRequest
+	29, // 32: cloudstack.management.backup.v1.BackupService.RemoveVirtualMachineFromBackupOffering:input_type -> cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingRequest
+	31, // 33: cloudstack.management.backup.v1.BackupService.ListBackupOfferings:input_type -> cloudstack.management.backup.v1.ListBackupOfferingsRequest
+	33, // 34: cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule:input_type -> cloudstack.management.backup.v1.UpdateBackupScheduleRequest
+	2,  // 35: cloudstack.management.backup.v1.BackupService.RestoreBackup:output_type -> cloudstack.management.backup.v1.RestoreBackupResponse
+	4,  // 36: cloudstack.management.backup.v1.BackupService.UpdateBackupOffering:output_type -> cloudstack.management.backup.v1.UpdateBackupOfferingResponse
+	6,  // 37: cloudstack.management.backup.v1.BackupService.AssignVirtualMachineToBackupOffering:output_type -> cloudstack.management.backup.v1.AssignVirtualMachineToBackupOfferingResponse
+	8,  // 38: cloudstack.management.backup.v1.BackupService.DeleteBackupOffering:output_type -> cloudstack.management.backup.v1.DeleteBackupOfferingResponse
+	10, // 39: cloudstack.management.backup.v1.BackupService.ListBackupProviders:output_type -> cloudstack.management.backup.v1.ListBackupProvidersResponse
+	12, // 40: cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule:output_type -> cloudstack.management.backup.v1.DeleteBackupScheduleResponse
+	14, // 41: cloudstack.management.backup.v1.BackupService.CreateBackup:output_type -> cloudstack.management.backup.v1.CreateBackupResponse
+	16, // 42: cloudstack.management.backup.v1.BackupService.ListBackupProviderOfferings:output_type -> cloudstack.management.backup.v1.ListBackupProviderOfferingsResponse
+	18, // 43: cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM:output_type -> cloudstack.management.backup.v1.RestoreVolumeFromBackupAndAttachToVMResponse
+	20, // 44: cloudstack.management.backup.v1.BackupService.CreateBackupSchedule:output_type -> cloudstack.management.backup.v1.CreateBackupScheduleResponse
+	22, // 45: cloudstack.management.backup.v1.BackupService.DeleteBackup:output_type -> cloudstack.management.backup.v1.DeleteBackupResponse
+	24, // 46: cloudstack.management.backup.v1.BackupService.ListBackupSchedule:output_type -> cloudstack.management.backup.v1.ListBackupScheduleResponse
+	26, // 47: cloudstack.management.backup.v1.BackupService.ListBackups:output_type -> cloudstack.management.backup.v1.ListBackupsResponse
+	28, // 48: cloudstack.management.backup.v1.BackupService.ImportBackupOffering:output_type -> cloudstack.management.backup.v1.ImportBackupOfferingResponse
+	30, // 49: cloudstack.management.backup.v1.BackupService.RemoveVirtualMachineFromBackupOffering:output_type -> cloudstack.management.backup.v1.RemoveVirtualMachineFromBackupOfferingResponse
+	32, // 50: cloudstack.management.backup.v1.BackupService.ListBackupOfferings:output_type -> cloudstack.management.backup.v1.ListBackupOfferingsResponse
+	34, // 51: cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule:output_type -> cloudstack.management.backup.v1.UpdateBackupScheduleResponse
 	35, // [35:52] is the sub-list for method output_type
 	18, // [18:35] is the sub-list for method input_type
 	18, // [18:18] is the sub-list for extension type_name
@@ -3204,13 +3268,14 @@ func file_cloudstack_management_backup_v1_backup_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc), len(file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_backup_v1_backup_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_backup_v1_backup_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_backup_v1_backup_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_backup_v1_backup_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_backup_v1_backup_gen_proto = out.File

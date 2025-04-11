@@ -24,36 +24,30 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// RevokeCertificateRequest represents the parameters for revokes certificate using configured ca plugin
-type RevokeCertificateRequest struct {
+// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
+type ListCaCertificateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The certificate serial number, as a hex value
-	Serial *string `protobuf:"bytes,1,opt,name=serial" json:"serial,omitempty"`
-	// The certificate CN
-	Cn *string `protobuf:"bytes,2,opt,name=cn" json:"cn,omitempty"`
 	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	Provider *string `protobuf:"bytes,3,opt,name=provider" json:"provider,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	Provider *string `protobuf:"bytes,1,opt,name=provider" json:"provider,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RevokeCertificateRequest) Reset() {
-	*x = RevokeCertificateRequest{}
+func (x *ListCaCertificateRequest) Reset() {
+	*x = ListCaCertificateRequest{}
 	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RevokeCertificateRequest) String() string {
+func (x *ListCaCertificateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RevokeCertificateRequest) ProtoMessage() {}
+func (*ListCaCertificateRequest) ProtoMessage() {}
 
-func (x *RevokeCertificateRequest) ProtoReflect() protoreflect.Message {
+func (x *ListCaCertificateRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -65,76 +59,50 @@ func (x *RevokeCertificateRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RevokeCertificateRequest.ProtoReflect.Descriptor instead.
-func (*RevokeCertificateRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListCaCertificateRequest.ProtoReflect.Descriptor instead.
+func (*ListCaCertificateRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RevokeCertificateRequest) GetSerial() string {
-	if x != nil && x.Serial != nil {
-		return *x.Serial
-	}
-	return ""
-}
-
-func (x *RevokeCertificateRequest) GetCn() string {
-	if x != nil && x.Cn != nil {
-		return *x.Cn
-	}
-	return ""
-}
-
-func (x *RevokeCertificateRequest) GetProvider() string {
+func (x *ListCaCertificateRequest) GetProvider() string {
 	if x != nil && x.Provider != nil {
 		return *x.Provider
 	}
 	return ""
 }
 
-func (x *RevokeCertificateRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RevokeCertificateRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RevokeCertificateRequest) GetResponseType() string {
+func (x *ListCaCertificateRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RevokeCertificateResponse represents the response from revokes certificate using configured ca plugin
-type RevokeCertificateResponse struct {
+// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
+type ListCaCertificateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of Certificates
+	Items []*Certificate `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Certificates
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RevokeCertificateResponse) Reset() {
-	*x = RevokeCertificateResponse{}
+func (x *ListCaCertificateResponse) Reset() {
+	*x = ListCaCertificateResponse{}
 	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RevokeCertificateResponse) String() string {
+func (x *ListCaCertificateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RevokeCertificateResponse) ProtoMessage() {}
+func (*ListCaCertificateResponse) ProtoMessage() {}
 
-func (x *RevokeCertificateResponse) ProtoReflect() protoreflect.Message {
+func (x *ListCaCertificateResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -146,16 +114,132 @@ func (x *RevokeCertificateResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RevokeCertificateResponse.ProtoReflect.Descriptor instead.
-func (*RevokeCertificateResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListCaCertificateResponse.ProtoReflect.Descriptor instead.
+func (*ListCaCertificateResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RevokeCertificateResponse) GetResult() *Result {
+func (x *ListCaCertificateResponse) GetItems() []*Certificate {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
+}
+
+func (x *ListCaCertificateResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
+type ListCAProvidersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List CA service provider by name
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCAProvidersRequest) Reset() {
+	*x = ListCAProvidersRequest{}
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCAProvidersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCAProvidersRequest) ProtoMessage() {}
+
+func (x *ListCAProvidersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCAProvidersRequest.ProtoReflect.Descriptor instead.
+func (*ListCAProvidersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListCAProvidersRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListCAProvidersRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
+type ListCAProvidersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of CAProviders
+	Items []*CAProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of CAProviders
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCAProvidersResponse) Reset() {
+	*x = ListCAProvidersResponse{}
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCAProvidersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCAProvidersResponse) ProtoMessage() {}
+
+func (x *ListCAProvidersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCAProvidersResponse.ProtoReflect.Descriptor instead.
+func (*ListCAProvidersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListCAProvidersResponse) GetItems() []*CAProvider {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListCAProvidersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ProvisionCertificateRequest represents the parameters for issues and propagates client certificate on a connected host/agent using configured ca plugin
@@ -176,7 +260,7 @@ type ProvisionCertificateRequest struct {
 
 func (x *ProvisionCertificateRequest) Reset() {
 	*x = ProvisionCertificateRequest{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -188,7 +272,7 @@ func (x *ProvisionCertificateRequest) String() string {
 func (*ProvisionCertificateRequest) ProtoMessage() {}
 
 func (x *ProvisionCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -201,7 +285,7 @@ func (x *ProvisionCertificateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProvisionCertificateRequest.ProtoReflect.Descriptor instead.
 func (*ProvisionCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ProvisionCertificateRequest) GetHostId() int64 {
@@ -257,7 +341,7 @@ type ProvisionCertificateResponse struct {
 
 func (x *ProvisionCertificateResponse) Reset() {
 	*x = ProvisionCertificateResponse{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -269,7 +353,7 @@ func (x *ProvisionCertificateResponse) String() string {
 func (*ProvisionCertificateResponse) ProtoMessage() {}
 
 func (x *ProvisionCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -282,7 +366,7 @@ func (x *ProvisionCertificateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProvisionCertificateResponse.ProtoReflect.Descriptor instead.
 func (*ProvisionCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ProvisionCertificateResponse) GetResult() *Result {
@@ -292,31 +376,37 @@ func (x *ProvisionCertificateResponse) GetResult() *Result {
 	return nil
 }
 
-// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
-type ListCAProvidersRequest struct {
+// RevokeCertificateRequest represents the parameters for revokes certificate using configured ca plugin
+type RevokeCertificateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// List CA service provider by name
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The certificate serial number, as a hex value
+	Serial *string `protobuf:"bytes,1,opt,name=serial" json:"serial,omitempty"`
+	// The certificate CN
+	Cn *string `protobuf:"bytes,2,opt,name=cn" json:"cn,omitempty"`
+	// Name of the CA service provider, otherwise the default configured provider plugin will be used
+	Provider *string `protobuf:"bytes,3,opt,name=provider" json:"provider,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListCAProvidersRequest) Reset() {
-	*x = ListCAProvidersRequest{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[4]
+func (x *RevokeCertificateRequest) Reset() {
+	*x = RevokeCertificateRequest{}
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListCAProvidersRequest) String() string {
+func (x *RevokeCertificateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListCAProvidersRequest) ProtoMessage() {}
+func (*RevokeCertificateRequest) ProtoMessage() {}
 
-func (x *ListCAProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[4]
+func (x *RevokeCertificateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,51 +417,77 @@ func (x *ListCAProvidersRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListCAProvidersRequest.ProtoReflect.Descriptor instead.
-func (*ListCAProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use RevokeCertificateRequest.ProtoReflect.Descriptor instead.
+func (*RevokeCertificateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *ListCAProvidersRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *RevokeCertificateRequest) GetSerial() string {
+	if x != nil && x.Serial != nil {
+		return *x.Serial
 	}
 	return ""
 }
 
-func (x *ListCAProvidersRequest) GetResponseType() string {
+func (x *RevokeCertificateRequest) GetCn() string {
+	if x != nil && x.Cn != nil {
+		return *x.Cn
+	}
+	return ""
+}
+
+func (x *RevokeCertificateRequest) GetProvider() string {
+	if x != nil && x.Provider != nil {
+		return *x.Provider
+	}
+	return ""
+}
+
+func (x *RevokeCertificateRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RevokeCertificateRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RevokeCertificateRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
-type ListCAProvidersResponse struct {
+// RevokeCertificateResponse represents the response from revokes certificate using configured ca plugin
+type RevokeCertificateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of CAProviders
-	Items []*CAProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of CAProviders
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListCAProvidersResponse) Reset() {
-	*x = ListCAProvidersResponse{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[5]
+func (x *RevokeCertificateResponse) Reset() {
+	*x = RevokeCertificateResponse{}
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListCAProvidersResponse) String() string {
+func (x *RevokeCertificateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListCAProvidersResponse) ProtoMessage() {}
+func (*RevokeCertificateResponse) ProtoMessage() {}
 
-func (x *ListCAProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[5]
+func (x *RevokeCertificateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -382,23 +498,16 @@ func (x *ListCAProvidersResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListCAProvidersResponse.ProtoReflect.Descriptor instead.
-func (*ListCAProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use RevokeCertificateResponse.ProtoReflect.Descriptor instead.
+func (*RevokeCertificateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ListCAProvidersResponse) GetItems() []*CAProvider {
+func (x *RevokeCertificateResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListCAProvidersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // IssueCertificateRequest represents the parameters for issues a client certificate using configured or provided ca plugin
@@ -423,7 +532,7 @@ type IssueCertificateRequest struct {
 
 func (x *IssueCertificateRequest) Reset() {
 	*x = IssueCertificateRequest{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -435,7 +544,7 @@ func (x *IssueCertificateRequest) String() string {
 func (*IssueCertificateRequest) ProtoMessage() {}
 
 func (x *IssueCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -448,7 +557,7 @@ func (x *IssueCertificateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueCertificateRequest.ProtoReflect.Descriptor instead.
 func (*IssueCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *IssueCertificateRequest) GetCsr() string {
@@ -518,7 +627,7 @@ type IssueCertificateResponse struct {
 
 func (x *IssueCertificateResponse) Reset() {
 	*x = IssueCertificateResponse{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -530,7 +639,7 @@ func (x *IssueCertificateResponse) String() string {
 func (*IssueCertificateResponse) ProtoMessage() {}
 
 func (x *IssueCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -543,7 +652,7 @@ func (x *IssueCertificateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueCertificateResponse.ProtoReflect.Descriptor instead.
 func (*IssueCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *IssueCertificateResponse) GetResult() *Result {
@@ -551,197 +660,6 @@ func (x *IssueCertificateResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
-type ListCaCertificateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	Provider *string `protobuf:"bytes,1,opt,name=provider" json:"provider,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCaCertificateRequest) Reset() {
-	*x = ListCaCertificateRequest{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCaCertificateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCaCertificateRequest) ProtoMessage() {}
-
-func (x *ListCaCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCaCertificateRequest.ProtoReflect.Descriptor instead.
-func (*ListCaCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ListCaCertificateRequest) GetProvider() string {
-	if x != nil && x.Provider != nil {
-		return *x.Provider
-	}
-	return ""
-}
-
-func (x *ListCaCertificateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
-type ListCaCertificateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Certificates
-	Items []*Certificate `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Certificates
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCaCertificateResponse) Reset() {
-	*x = ListCaCertificateResponse{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCaCertificateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCaCertificateResponse) ProtoMessage() {}
-
-func (x *ListCaCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCaCertificateResponse.ProtoReflect.Descriptor instead.
-func (*ListCaCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ListCaCertificateResponse) GetItems() []*Certificate {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListCaCertificateResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// CAProvider represents a CAProvider Item
-type CAProvider struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the CAProvider
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the CAProvider
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the CAProvider
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the CAProvider
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CAProvider) Reset() {
-	*x = CAProvider{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CAProvider) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CAProvider) ProtoMessage() {}
-
-func (x *CAProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CAProvider.ProtoReflect.Descriptor instead.
-func (*CAProvider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *CAProvider) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *CAProvider) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *CAProvider) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *CAProvider) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CAProvider) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
 }
 
 // Certificate represents a Certificate Item
@@ -763,7 +681,7 @@ type Certificate struct {
 
 func (x *Certificate) Reset() {
 	*x = Certificate{}
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -775,7 +693,7 @@ func (x *Certificate) String() string {
 func (*Certificate) ProtoMessage() {}
 
 func (x *Certificate) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -788,7 +706,7 @@ func (x *Certificate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Certificate.ProtoReflect.Descriptor instead.
 func (*Certificate) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Certificate) GetId() string {
@@ -820,6 +738,88 @@ func (x *Certificate) GetDescription() string {
 }
 
 func (x *Certificate) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// CAProvider represents a CAProvider Item
+type CAProvider struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the CAProvider
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the CAProvider
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the CAProvider
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the CAProvider
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CAProvider) Reset() {
+	*x = CAProvider{}
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CAProvider) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CAProvider) ProtoMessage() {}
+
+func (x *CAProvider) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CAProvider.ProtoReflect.Descriptor instead.
+func (*CAProvider) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CAProvider) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *CAProvider) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CAProvider) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *CAProvider) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CAProvider) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -1112,16 +1112,22 @@ var File_cloudstack_management_ca_v1_ca_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_ca_v1_ca_gen_proto_rawDesc = "" +
 	"\n" +
-	"(cloudstack/management/ca/v1/ca.gen.proto\x12\x1bcloudstack.management.ca.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xed\x01\n" +
-	"\x18RevokeCertificateRequest\x12\x1e\n" +
-	"\x06serial\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06serial\x12\x0e\n" +
-	"\x02cn\x18\x02 \x01(\tR\x02cn\x12$\n" +
-	"\bprovider\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
-	"\x19RevokeCertificateResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ca.v1.ResultR\x06result\"\x86\x02\n" +
+	"(cloudstack/management/ca/v1/ca.gen.proto\x12\x1bcloudstack.management.ca.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"e\n" +
+	"\x18ListCaCertificateRequest\x12$\n" +
+	"\bprovider\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x83\x01\n" +
+	"\x19ListCaCertificateResponse\x12>\n" +
+	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.ca.v1.CertificateR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"]\n" +
+	"\x16ListCAProvidersRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x80\x01\n" +
+	"\x17ListCAProvidersResponse\x12=\n" +
+	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.ca.v1.CAProviderR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x86\x02\n" +
 	"\x1bProvisionCertificateRequest\x12\x1f\n" +
 	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12#\n" +
 	"\treconnect\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\treconnect\x12$\n" +
@@ -1130,15 +1136,16 @@ const file_cloudstack_management_ca_v1_ca_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"[\n" +
 	"\x1cProvisionCertificateResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ca.v1.ResultR\x06result\"]\n" +
-	"\x16ListCAProvidersRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x80\x01\n" +
-	"\x17ListCAProvidersResponse\x12=\n" +
-	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.ca.v1.CAProviderR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xbc\x02\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ca.v1.ResultR\x06result\"\xed\x01\n" +
+	"\x18RevokeCertificateRequest\x12\x1e\n" +
+	"\x06serial\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06serial\x12\x0e\n" +
+	"\x02cn\x18\x02 \x01(\tR\x02cn\x12$\n" +
+	"\bprovider\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
+	"\x19RevokeCertificateResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ca.v1.ResultR\x06result\"\xbc\x02\n" +
 	"\x17IssueCertificateRequest\x12\x10\n" +
 	"\x03csr\x18\x01 \x01(\tR\x03csr\x12\x18\n" +
 	"\adomains\x18\x02 \x01(\tR\adomains\x12%\n" +
@@ -1149,22 +1156,15 @@ const file_cloudstack_management_ca_v1_ca_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\b \x01(\tR\fresponseType\"W\n" +
 	"\x18IssueCertificateResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ca.v1.ResultR\x06result\"e\n" +
-	"\x18ListCaCertificateRequest\x12$\n" +
-	"\bprovider\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x83\x01\n" +
-	"\x19ListCaCertificateResponse\x12>\n" +
-	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.ca.v1.CertificateR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x99\x01\n" +
-	"\n" +
-	"CAProvider\x12\x18\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ca.v1.ResultR\x06result\"\x9a\x01\n" +
+	"\vCertificate\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
-	"\vCertificate\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x99\x01\n" +
+	"\n" +
+	"CAProvider\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -1200,11 +1200,11 @@ const file_cloudstack_management_ca_v1_ca_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb5\x05\n" +
 	"\tCaService\x12\x84\x01\n" +
-	"\x11RevokeCertificate\x125.cloudstack.management.ca.v1.RevokeCertificateRequest\x1a6.cloudstack.management.ca.v1.RevokeCertificateResponse\"\x00\x12\x8d\x01\n" +
-	"\x14ProvisionCertificate\x128.cloudstack.management.ca.v1.ProvisionCertificateRequest\x1a9.cloudstack.management.ca.v1.ProvisionCertificateResponse\"\x00\x12~\n" +
-	"\x0fListCAProviders\x123.cloudstack.management.ca.v1.ListCAProvidersRequest\x1a4.cloudstack.management.ca.v1.ListCAProvidersResponse\"\x00\x12\x81\x01\n" +
-	"\x10IssueCertificate\x124.cloudstack.management.ca.v1.IssueCertificateRequest\x1a5.cloudstack.management.ca.v1.IssueCertificateResponse\"\x00\x12\x84\x01\n" +
-	"\x11ListCaCertificate\x125.cloudstack.management.ca.v1.ListCaCertificateRequest\x1a6.cloudstack.management.ca.v1.ListCaCertificateResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x92\x02\n" +
+	"\x11ListCaCertificate\x125.cloudstack.management.ca.v1.ListCaCertificateRequest\x1a6.cloudstack.management.ca.v1.ListCaCertificateResponse\"\x00\x12~\n" +
+	"\x0fListCAProviders\x123.cloudstack.management.ca.v1.ListCAProvidersRequest\x1a4.cloudstack.management.ca.v1.ListCAProvidersResponse\"\x00\x12\x8d\x01\n" +
+	"\x14ProvisionCertificate\x128.cloudstack.management.ca.v1.ProvisionCertificateRequest\x1a9.cloudstack.management.ca.v1.ProvisionCertificateResponse\"\x00\x12\x84\x01\n" +
+	"\x11RevokeCertificate\x125.cloudstack.management.ca.v1.RevokeCertificateRequest\x1a6.cloudstack.management.ca.v1.RevokeCertificateResponse\"\x00\x12\x81\x01\n" +
+	"\x10IssueCertificate\x124.cloudstack.management.ca.v1.IssueCertificateRequest\x1a5.cloudstack.management.ca.v1.IssueCertificateResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x92\x02\n" +
 	"\x1fcom.cloudstack.management.ca.v1B\n" +
 	"CaGenProtoP\x01ZTgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/ca/v1;cav1\xa2\x02\x03CMC\xaa\x02\x1bCloudstack.Management.Ca.V1\xca\x02\x1bCloudstack\\Management\\Ca\\V1\xe2\x02'Cloudstack\\Management\\Ca\\V1\\GPBMetadata\xea\x02\x1eCloudstack::Management::Ca::V1b\beditionsp\xe8\a"
 
@@ -1222,40 +1222,40 @@ func file_cloudstack_management_ca_v1_ca_gen_proto_rawDescGZIP() []byte {
 
 var file_cloudstack_management_ca_v1_ca_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_cloudstack_management_ca_v1_ca_gen_proto_goTypes = []any{
-	(*RevokeCertificateRequest)(nil),     // 0: cloudstack.management.ca.v1.RevokeCertificateRequest
-	(*RevokeCertificateResponse)(nil),    // 1: cloudstack.management.ca.v1.RevokeCertificateResponse
-	(*ProvisionCertificateRequest)(nil),  // 2: cloudstack.management.ca.v1.ProvisionCertificateRequest
-	(*ProvisionCertificateResponse)(nil), // 3: cloudstack.management.ca.v1.ProvisionCertificateResponse
-	(*ListCAProvidersRequest)(nil),       // 4: cloudstack.management.ca.v1.ListCAProvidersRequest
-	(*ListCAProvidersResponse)(nil),      // 5: cloudstack.management.ca.v1.ListCAProvidersResponse
-	(*IssueCertificateRequest)(nil),      // 6: cloudstack.management.ca.v1.IssueCertificateRequest
-	(*IssueCertificateResponse)(nil),     // 7: cloudstack.management.ca.v1.IssueCertificateResponse
-	(*ListCaCertificateRequest)(nil),     // 8: cloudstack.management.ca.v1.ListCaCertificateRequest
-	(*ListCaCertificateResponse)(nil),    // 9: cloudstack.management.ca.v1.ListCaCertificateResponse
-	(*CAProvider)(nil),                   // 10: cloudstack.management.ca.v1.CAProvider
-	(*Certificate)(nil),                  // 11: cloudstack.management.ca.v1.Certificate
+	(*ListCaCertificateRequest)(nil),     // 0: cloudstack.management.ca.v1.ListCaCertificateRequest
+	(*ListCaCertificateResponse)(nil),    // 1: cloudstack.management.ca.v1.ListCaCertificateResponse
+	(*ListCAProvidersRequest)(nil),       // 2: cloudstack.management.ca.v1.ListCAProvidersRequest
+	(*ListCAProvidersResponse)(nil),      // 3: cloudstack.management.ca.v1.ListCAProvidersResponse
+	(*ProvisionCertificateRequest)(nil),  // 4: cloudstack.management.ca.v1.ProvisionCertificateRequest
+	(*ProvisionCertificateResponse)(nil), // 5: cloudstack.management.ca.v1.ProvisionCertificateResponse
+	(*RevokeCertificateRequest)(nil),     // 6: cloudstack.management.ca.v1.RevokeCertificateRequest
+	(*RevokeCertificateResponse)(nil),    // 7: cloudstack.management.ca.v1.RevokeCertificateResponse
+	(*IssueCertificateRequest)(nil),      // 8: cloudstack.management.ca.v1.IssueCertificateRequest
+	(*IssueCertificateResponse)(nil),     // 9: cloudstack.management.ca.v1.IssueCertificateResponse
+	(*Certificate)(nil),                  // 10: cloudstack.management.ca.v1.Certificate
+	(*CAProvider)(nil),                   // 11: cloudstack.management.ca.v1.CAProvider
 	(*Success)(nil),                      // 12: cloudstack.management.ca.v1.Success
 	(*Item)(nil),                         // 13: cloudstack.management.ca.v1.Item
 	(*Result)(nil),                       // 14: cloudstack.management.ca.v1.Result
 	nil,                                  // 15: cloudstack.management.ca.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_ca_v1_ca_gen_proto_depIdxs = []int32{
-	14, // 0: cloudstack.management.ca.v1.RevokeCertificateResponse.result:type_name -> cloudstack.management.ca.v1.Result
-	14, // 1: cloudstack.management.ca.v1.ProvisionCertificateResponse.result:type_name -> cloudstack.management.ca.v1.Result
-	10, // 2: cloudstack.management.ca.v1.ListCAProvidersResponse.items:type_name -> cloudstack.management.ca.v1.CAProvider
-	14, // 3: cloudstack.management.ca.v1.IssueCertificateResponse.result:type_name -> cloudstack.management.ca.v1.Result
-	11, // 4: cloudstack.management.ca.v1.ListCaCertificateResponse.items:type_name -> cloudstack.management.ca.v1.Certificate
+	10, // 0: cloudstack.management.ca.v1.ListCaCertificateResponse.items:type_name -> cloudstack.management.ca.v1.Certificate
+	11, // 1: cloudstack.management.ca.v1.ListCAProvidersResponse.items:type_name -> cloudstack.management.ca.v1.CAProvider
+	14, // 2: cloudstack.management.ca.v1.ProvisionCertificateResponse.result:type_name -> cloudstack.management.ca.v1.Result
+	14, // 3: cloudstack.management.ca.v1.RevokeCertificateResponse.result:type_name -> cloudstack.management.ca.v1.Result
+	14, // 4: cloudstack.management.ca.v1.IssueCertificateResponse.result:type_name -> cloudstack.management.ca.v1.Result
 	15, // 5: cloudstack.management.ca.v1.Item.details:type_name -> cloudstack.management.ca.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.ca.v1.CaService.RevokeCertificate:input_type -> cloudstack.management.ca.v1.RevokeCertificateRequest
-	2,  // 7: cloudstack.management.ca.v1.CaService.ProvisionCertificate:input_type -> cloudstack.management.ca.v1.ProvisionCertificateRequest
-	4,  // 8: cloudstack.management.ca.v1.CaService.ListCAProviders:input_type -> cloudstack.management.ca.v1.ListCAProvidersRequest
-	6,  // 9: cloudstack.management.ca.v1.CaService.IssueCertificate:input_type -> cloudstack.management.ca.v1.IssueCertificateRequest
-	8,  // 10: cloudstack.management.ca.v1.CaService.ListCaCertificate:input_type -> cloudstack.management.ca.v1.ListCaCertificateRequest
-	1,  // 11: cloudstack.management.ca.v1.CaService.RevokeCertificate:output_type -> cloudstack.management.ca.v1.RevokeCertificateResponse
-	3,  // 12: cloudstack.management.ca.v1.CaService.ProvisionCertificate:output_type -> cloudstack.management.ca.v1.ProvisionCertificateResponse
-	5,  // 13: cloudstack.management.ca.v1.CaService.ListCAProviders:output_type -> cloudstack.management.ca.v1.ListCAProvidersResponse
-	7,  // 14: cloudstack.management.ca.v1.CaService.IssueCertificate:output_type -> cloudstack.management.ca.v1.IssueCertificateResponse
-	9,  // 15: cloudstack.management.ca.v1.CaService.ListCaCertificate:output_type -> cloudstack.management.ca.v1.ListCaCertificateResponse
+	0,  // 6: cloudstack.management.ca.v1.CaService.ListCaCertificate:input_type -> cloudstack.management.ca.v1.ListCaCertificateRequest
+	2,  // 7: cloudstack.management.ca.v1.CaService.ListCAProviders:input_type -> cloudstack.management.ca.v1.ListCAProvidersRequest
+	4,  // 8: cloudstack.management.ca.v1.CaService.ProvisionCertificate:input_type -> cloudstack.management.ca.v1.ProvisionCertificateRequest
+	6,  // 9: cloudstack.management.ca.v1.CaService.RevokeCertificate:input_type -> cloudstack.management.ca.v1.RevokeCertificateRequest
+	8,  // 10: cloudstack.management.ca.v1.CaService.IssueCertificate:input_type -> cloudstack.management.ca.v1.IssueCertificateRequest
+	1,  // 11: cloudstack.management.ca.v1.CaService.ListCaCertificate:output_type -> cloudstack.management.ca.v1.ListCaCertificateResponse
+	3,  // 12: cloudstack.management.ca.v1.CaService.ListCAProviders:output_type -> cloudstack.management.ca.v1.ListCAProvidersResponse
+	5,  // 13: cloudstack.management.ca.v1.CaService.ProvisionCertificate:output_type -> cloudstack.management.ca.v1.ProvisionCertificateResponse
+	7,  // 14: cloudstack.management.ca.v1.CaService.RevokeCertificate:output_type -> cloudstack.management.ca.v1.RevokeCertificateResponse
+	9,  // 15: cloudstack.management.ca.v1.CaService.IssueCertificate:output_type -> cloudstack.management.ca.v1.IssueCertificateResponse
 	11, // [11:16] is the sub-list for method output_type
 	6,  // [6:11] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name

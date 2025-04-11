@@ -33,31 +33,31 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// HeuristicsServiceRemoveSecondaryStorageSelectorProcedure is the fully-qualified name of the
-	// HeuristicsService's RemoveSecondaryStorageSelector RPC.
-	HeuristicsServiceRemoveSecondaryStorageSelectorProcedure = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/RemoveSecondaryStorageSelector"
-	// HeuristicsServiceCreateSecondaryStorageSelectorProcedure is the fully-qualified name of the
-	// HeuristicsService's CreateSecondaryStorageSelector RPC.
-	HeuristicsServiceCreateSecondaryStorageSelectorProcedure = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/CreateSecondaryStorageSelector"
 	// HeuristicsServiceUpdateSecondaryStorageSelectorProcedure is the fully-qualified name of the
 	// HeuristicsService's UpdateSecondaryStorageSelector RPC.
 	HeuristicsServiceUpdateSecondaryStorageSelectorProcedure = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/UpdateSecondaryStorageSelector"
+	// HeuristicsServiceRemoveSecondaryStorageSelectorProcedure is the fully-qualified name of the
+	// HeuristicsService's RemoveSecondaryStorageSelector RPC.
+	HeuristicsServiceRemoveSecondaryStorageSelectorProcedure = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/RemoveSecondaryStorageSelector"
 	// HeuristicsServiceListSecondaryStorageSelectorsProcedure is the fully-qualified name of the
 	// HeuristicsService's ListSecondaryStorageSelectors RPC.
 	HeuristicsServiceListSecondaryStorageSelectorsProcedure = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/ListSecondaryStorageSelectors"
+	// HeuristicsServiceCreateSecondaryStorageSelectorProcedure is the fully-qualified name of the
+	// HeuristicsService's CreateSecondaryStorageSelector RPC.
+	HeuristicsServiceCreateSecondaryStorageSelectorProcedure = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/CreateSecondaryStorageSelector"
 )
 
 // HeuristicsServiceClient is a client for the
 // cloudstack.management.storage.heuristics.v1.HeuristicsService service.
 type HeuristicsServiceClient interface {
-	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
-	RemoveSecondaryStorageSelector(context.Context, *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error)
-	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
-	CreateSecondaryStorageSelector(context.Context, *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error)
 	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
 	UpdateSecondaryStorageSelector(context.Context, *connect.Request[v1.UpdateSecondaryStorageSelectorRequest]) (*connect.Response[v1.UpdateSecondaryStorageSelectorResponse], error)
+	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
+	RemoveSecondaryStorageSelector(context.Context, *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error)
 	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
 	ListSecondaryStorageSelectors(context.Context, *connect.Request[v1.ListSecondaryStorageSelectorsRequest]) (*connect.Response[v1.ListSecondaryStorageSelectorsResponse], error)
+	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
+	CreateSecondaryStorageSelector(context.Context, *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error)
 }
 
 // NewHeuristicsServiceClient constructs a client for the
@@ -72,22 +72,16 @@ func NewHeuristicsServiceClient(httpClient connect.HTTPClient, baseURL string, o
 	baseURL = strings.TrimRight(baseURL, "/")
 	heuristicsServiceMethods := v1.File_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto.Services().ByName("HeuristicsService").Methods()
 	return &heuristicsServiceClient{
-		removeSecondaryStorageSelector: connect.NewClient[v1.RemoveSecondaryStorageSelectorRequest, v1.RemoveSecondaryStorageSelectorResponse](
-			httpClient,
-			baseURL+HeuristicsServiceRemoveSecondaryStorageSelectorProcedure,
-			connect.WithSchema(heuristicsServiceMethods.ByName("RemoveSecondaryStorageSelector")),
-			connect.WithClientOptions(opts...),
-		),
-		createSecondaryStorageSelector: connect.NewClient[v1.CreateSecondaryStorageSelectorRequest, v1.CreateSecondaryStorageSelectorResponse](
-			httpClient,
-			baseURL+HeuristicsServiceCreateSecondaryStorageSelectorProcedure,
-			connect.WithSchema(heuristicsServiceMethods.ByName("CreateSecondaryStorageSelector")),
-			connect.WithClientOptions(opts...),
-		),
 		updateSecondaryStorageSelector: connect.NewClient[v1.UpdateSecondaryStorageSelectorRequest, v1.UpdateSecondaryStorageSelectorResponse](
 			httpClient,
 			baseURL+HeuristicsServiceUpdateSecondaryStorageSelectorProcedure,
 			connect.WithSchema(heuristicsServiceMethods.ByName("UpdateSecondaryStorageSelector")),
+			connect.WithClientOptions(opts...),
+		),
+		removeSecondaryStorageSelector: connect.NewClient[v1.RemoveSecondaryStorageSelectorRequest, v1.RemoveSecondaryStorageSelectorResponse](
+			httpClient,
+			baseURL+HeuristicsServiceRemoveSecondaryStorageSelectorProcedure,
+			connect.WithSchema(heuristicsServiceMethods.ByName("RemoveSecondaryStorageSelector")),
 			connect.WithClientOptions(opts...),
 		),
 		listSecondaryStorageSelectors: connect.NewClient[v1.ListSecondaryStorageSelectorsRequest, v1.ListSecondaryStorageSelectorsResponse](
@@ -96,27 +90,21 @@ func NewHeuristicsServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(heuristicsServiceMethods.ByName("ListSecondaryStorageSelectors")),
 			connect.WithClientOptions(opts...),
 		),
+		createSecondaryStorageSelector: connect.NewClient[v1.CreateSecondaryStorageSelectorRequest, v1.CreateSecondaryStorageSelectorResponse](
+			httpClient,
+			baseURL+HeuristicsServiceCreateSecondaryStorageSelectorProcedure,
+			connect.WithSchema(heuristicsServiceMethods.ByName("CreateSecondaryStorageSelector")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // heuristicsServiceClient implements HeuristicsServiceClient.
 type heuristicsServiceClient struct {
-	removeSecondaryStorageSelector *connect.Client[v1.RemoveSecondaryStorageSelectorRequest, v1.RemoveSecondaryStorageSelectorResponse]
-	createSecondaryStorageSelector *connect.Client[v1.CreateSecondaryStorageSelectorRequest, v1.CreateSecondaryStorageSelectorResponse]
 	updateSecondaryStorageSelector *connect.Client[v1.UpdateSecondaryStorageSelectorRequest, v1.UpdateSecondaryStorageSelectorResponse]
+	removeSecondaryStorageSelector *connect.Client[v1.RemoveSecondaryStorageSelectorRequest, v1.RemoveSecondaryStorageSelectorResponse]
 	listSecondaryStorageSelectors  *connect.Client[v1.ListSecondaryStorageSelectorsRequest, v1.ListSecondaryStorageSelectorsResponse]
-}
-
-// RemoveSecondaryStorageSelector calls
-// cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector.
-func (c *heuristicsServiceClient) RemoveSecondaryStorageSelector(ctx context.Context, req *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error) {
-	return c.removeSecondaryStorageSelector.CallUnary(ctx, req)
-}
-
-// CreateSecondaryStorageSelector calls
-// cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector.
-func (c *heuristicsServiceClient) CreateSecondaryStorageSelector(ctx context.Context, req *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error) {
-	return c.createSecondaryStorageSelector.CallUnary(ctx, req)
+	createSecondaryStorageSelector *connect.Client[v1.CreateSecondaryStorageSelectorRequest, v1.CreateSecondaryStorageSelectorResponse]
 }
 
 // UpdateSecondaryStorageSelector calls
@@ -125,23 +113,35 @@ func (c *heuristicsServiceClient) UpdateSecondaryStorageSelector(ctx context.Con
 	return c.updateSecondaryStorageSelector.CallUnary(ctx, req)
 }
 
+// RemoveSecondaryStorageSelector calls
+// cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector.
+func (c *heuristicsServiceClient) RemoveSecondaryStorageSelector(ctx context.Context, req *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error) {
+	return c.removeSecondaryStorageSelector.CallUnary(ctx, req)
+}
+
 // ListSecondaryStorageSelectors calls
 // cloudstack.management.storage.heuristics.v1.HeuristicsService.ListSecondaryStorageSelectors.
 func (c *heuristicsServiceClient) ListSecondaryStorageSelectors(ctx context.Context, req *connect.Request[v1.ListSecondaryStorageSelectorsRequest]) (*connect.Response[v1.ListSecondaryStorageSelectorsResponse], error) {
 	return c.listSecondaryStorageSelectors.CallUnary(ctx, req)
 }
 
+// CreateSecondaryStorageSelector calls
+// cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector.
+func (c *heuristicsServiceClient) CreateSecondaryStorageSelector(ctx context.Context, req *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error) {
+	return c.createSecondaryStorageSelector.CallUnary(ctx, req)
+}
+
 // HeuristicsServiceHandler is an implementation of the
 // cloudstack.management.storage.heuristics.v1.HeuristicsService service.
 type HeuristicsServiceHandler interface {
-	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
-	RemoveSecondaryStorageSelector(context.Context, *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error)
-	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
-	CreateSecondaryStorageSelector(context.Context, *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error)
 	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
 	UpdateSecondaryStorageSelector(context.Context, *connect.Request[v1.UpdateSecondaryStorageSelectorRequest]) (*connect.Response[v1.UpdateSecondaryStorageSelectorResponse], error)
+	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
+	RemoveSecondaryStorageSelector(context.Context, *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error)
 	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
 	ListSecondaryStorageSelectors(context.Context, *connect.Request[v1.ListSecondaryStorageSelectorsRequest]) (*connect.Response[v1.ListSecondaryStorageSelectorsResponse], error)
+	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
+	CreateSecondaryStorageSelector(context.Context, *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error)
 }
 
 // NewHeuristicsServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -151,22 +151,16 @@ type HeuristicsServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewHeuristicsServiceHandler(svc HeuristicsServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	heuristicsServiceMethods := v1.File_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto.Services().ByName("HeuristicsService").Methods()
-	heuristicsServiceRemoveSecondaryStorageSelectorHandler := connect.NewUnaryHandler(
-		HeuristicsServiceRemoveSecondaryStorageSelectorProcedure,
-		svc.RemoveSecondaryStorageSelector,
-		connect.WithSchema(heuristicsServiceMethods.ByName("RemoveSecondaryStorageSelector")),
-		connect.WithHandlerOptions(opts...),
-	)
-	heuristicsServiceCreateSecondaryStorageSelectorHandler := connect.NewUnaryHandler(
-		HeuristicsServiceCreateSecondaryStorageSelectorProcedure,
-		svc.CreateSecondaryStorageSelector,
-		connect.WithSchema(heuristicsServiceMethods.ByName("CreateSecondaryStorageSelector")),
-		connect.WithHandlerOptions(opts...),
-	)
 	heuristicsServiceUpdateSecondaryStorageSelectorHandler := connect.NewUnaryHandler(
 		HeuristicsServiceUpdateSecondaryStorageSelectorProcedure,
 		svc.UpdateSecondaryStorageSelector,
 		connect.WithSchema(heuristicsServiceMethods.ByName("UpdateSecondaryStorageSelector")),
+		connect.WithHandlerOptions(opts...),
+	)
+	heuristicsServiceRemoveSecondaryStorageSelectorHandler := connect.NewUnaryHandler(
+		HeuristicsServiceRemoveSecondaryStorageSelectorProcedure,
+		svc.RemoveSecondaryStorageSelector,
+		connect.WithSchema(heuristicsServiceMethods.ByName("RemoveSecondaryStorageSelector")),
 		connect.WithHandlerOptions(opts...),
 	)
 	heuristicsServiceListSecondaryStorageSelectorsHandler := connect.NewUnaryHandler(
@@ -175,16 +169,22 @@ func NewHeuristicsServiceHandler(svc HeuristicsServiceHandler, opts ...connect.H
 		connect.WithSchema(heuristicsServiceMethods.ByName("ListSecondaryStorageSelectors")),
 		connect.WithHandlerOptions(opts...),
 	)
+	heuristicsServiceCreateSecondaryStorageSelectorHandler := connect.NewUnaryHandler(
+		HeuristicsServiceCreateSecondaryStorageSelectorProcedure,
+		svc.CreateSecondaryStorageSelector,
+		connect.WithSchema(heuristicsServiceMethods.ByName("CreateSecondaryStorageSelector")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.storage.heuristics.v1.HeuristicsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case HeuristicsServiceRemoveSecondaryStorageSelectorProcedure:
-			heuristicsServiceRemoveSecondaryStorageSelectorHandler.ServeHTTP(w, r)
-		case HeuristicsServiceCreateSecondaryStorageSelectorProcedure:
-			heuristicsServiceCreateSecondaryStorageSelectorHandler.ServeHTTP(w, r)
 		case HeuristicsServiceUpdateSecondaryStorageSelectorProcedure:
 			heuristicsServiceUpdateSecondaryStorageSelectorHandler.ServeHTTP(w, r)
+		case HeuristicsServiceRemoveSecondaryStorageSelectorProcedure:
+			heuristicsServiceRemoveSecondaryStorageSelectorHandler.ServeHTTP(w, r)
 		case HeuristicsServiceListSecondaryStorageSelectorsProcedure:
 			heuristicsServiceListSecondaryStorageSelectorsHandler.ServeHTTP(w, r)
+		case HeuristicsServiceCreateSecondaryStorageSelectorProcedure:
+			heuristicsServiceCreateSecondaryStorageSelectorHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -194,18 +194,18 @@ func NewHeuristicsServiceHandler(svc HeuristicsServiceHandler, opts ...connect.H
 // UnimplementedHeuristicsServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedHeuristicsServiceHandler struct{}
 
-func (UnimplementedHeuristicsServiceHandler) RemoveSecondaryStorageSelector(context.Context, *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector is not implemented"))
-}
-
-func (UnimplementedHeuristicsServiceHandler) CreateSecondaryStorageSelector(context.Context, *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector is not implemented"))
-}
-
 func (UnimplementedHeuristicsServiceHandler) UpdateSecondaryStorageSelector(context.Context, *connect.Request[v1.UpdateSecondaryStorageSelectorRequest]) (*connect.Response[v1.UpdateSecondaryStorageSelectorResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.heuristics.v1.HeuristicsService.UpdateSecondaryStorageSelector is not implemented"))
 }
 
+func (UnimplementedHeuristicsServiceHandler) RemoveSecondaryStorageSelector(context.Context, *connect.Request[v1.RemoveSecondaryStorageSelectorRequest]) (*connect.Response[v1.RemoveSecondaryStorageSelectorResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector is not implemented"))
+}
+
 func (UnimplementedHeuristicsServiceHandler) ListSecondaryStorageSelectors(context.Context, *connect.Request[v1.ListSecondaryStorageSelectorsRequest]) (*connect.Response[v1.ListSecondaryStorageSelectorsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.heuristics.v1.HeuristicsService.ListSecondaryStorageSelectors is not implemented"))
+}
+
+func (UnimplementedHeuristicsServiceHandler) CreateSecondaryStorageSelector(context.Context, *connect.Request[v1.CreateSecondaryStorageSelectorRequest]) (*connect.Response[v1.CreateSecondaryStorageSelectorResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector is not implemented"))
 }

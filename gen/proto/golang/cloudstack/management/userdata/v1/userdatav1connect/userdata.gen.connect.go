@@ -36,15 +36,15 @@ const (
 	// UserdataServiceDeleteUserDataProcedure is the fully-qualified name of the UserdataService's
 	// DeleteUserData RPC.
 	UserdataServiceDeleteUserDataProcedure = "/cloudstack.management.userdata.v1.UserdataService/DeleteUserData"
-	// UserdataServiceListUserDataProcedure is the fully-qualified name of the UserdataService's
-	// ListUserData RPC.
-	UserdataServiceListUserDataProcedure = "/cloudstack.management.userdata.v1.UserdataService/ListUserData"
-	// UserdataServiceLinkUserDataToTemplateProcedure is the fully-qualified name of the
-	// UserdataService's LinkUserDataToTemplate RPC.
-	UserdataServiceLinkUserDataToTemplateProcedure = "/cloudstack.management.userdata.v1.UserdataService/LinkUserDataToTemplate"
 	// UserdataServiceRegisterUserDataProcedure is the fully-qualified name of the UserdataService's
 	// RegisterUserData RPC.
 	UserdataServiceRegisterUserDataProcedure = "/cloudstack.management.userdata.v1.UserdataService/RegisterUserData"
+	// UserdataServiceLinkUserDataToTemplateProcedure is the fully-qualified name of the
+	// UserdataService's LinkUserDataToTemplate RPC.
+	UserdataServiceLinkUserDataToTemplateProcedure = "/cloudstack.management.userdata.v1.UserdataService/LinkUserDataToTemplate"
+	// UserdataServiceListUserDataProcedure is the fully-qualified name of the UserdataService's
+	// ListUserData RPC.
+	UserdataServiceListUserDataProcedure = "/cloudstack.management.userdata.v1.UserdataService/ListUserData"
 )
 
 // UserdataServiceClient is a client for the cloudstack.management.userdata.v1.UserdataService
@@ -52,12 +52,12 @@ const (
 type UserdataServiceClient interface {
 	// DeleteUserData Deletes a userdata
 	DeleteUserData(context.Context, *connect.Request[v1.DeleteUserDataRequest]) (*connect.Response[v1.DeleteUserDataResponse], error)
-	// ListUserData List registered userdatas
-	ListUserData(context.Context, *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error)
-	// LinkUserDataToTemplate Link or unlink a userdata to a template.
-	LinkUserDataToTemplate(context.Context, *connect.Request[v1.LinkUserDataToTemplateRequest]) (*connect.Response[v1.LinkUserDataToTemplateResponse], error)
 	// RegisterUserData Register a new userdata.
 	RegisterUserData(context.Context, *connect.Request[v1.RegisterUserDataRequest]) (*connect.Response[v1.RegisterUserDataResponse], error)
+	// LinkUserDataToTemplate Link or unlink a userdata to a template.
+	LinkUserDataToTemplate(context.Context, *connect.Request[v1.LinkUserDataToTemplateRequest]) (*connect.Response[v1.LinkUserDataToTemplateResponse], error)
+	// ListUserData List registered userdatas
+	ListUserData(context.Context, *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error)
 }
 
 // NewUserdataServiceClient constructs a client for the
@@ -78,10 +78,10 @@ func NewUserdataServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(userdataServiceMethods.ByName("DeleteUserData")),
 			connect.WithClientOptions(opts...),
 		),
-		listUserData: connect.NewClient[v1.ListUserDataRequest, v1.ListUserDataResponse](
+		registerUserData: connect.NewClient[v1.RegisterUserDataRequest, v1.RegisterUserDataResponse](
 			httpClient,
-			baseURL+UserdataServiceListUserDataProcedure,
-			connect.WithSchema(userdataServiceMethods.ByName("ListUserData")),
+			baseURL+UserdataServiceRegisterUserDataProcedure,
+			connect.WithSchema(userdataServiceMethods.ByName("RegisterUserData")),
 			connect.WithClientOptions(opts...),
 		),
 		linkUserDataToTemplate: connect.NewClient[v1.LinkUserDataToTemplateRequest, v1.LinkUserDataToTemplateResponse](
@@ -90,10 +90,10 @@ func NewUserdataServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(userdataServiceMethods.ByName("LinkUserDataToTemplate")),
 			connect.WithClientOptions(opts...),
 		),
-		registerUserData: connect.NewClient[v1.RegisterUserDataRequest, v1.RegisterUserDataResponse](
+		listUserData: connect.NewClient[v1.ListUserDataRequest, v1.ListUserDataResponse](
 			httpClient,
-			baseURL+UserdataServiceRegisterUserDataProcedure,
-			connect.WithSchema(userdataServiceMethods.ByName("RegisterUserData")),
+			baseURL+UserdataServiceListUserDataProcedure,
+			connect.WithSchema(userdataServiceMethods.ByName("ListUserData")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -102,9 +102,9 @@ func NewUserdataServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 // userdataServiceClient implements UserdataServiceClient.
 type userdataServiceClient struct {
 	deleteUserData         *connect.Client[v1.DeleteUserDataRequest, v1.DeleteUserDataResponse]
-	listUserData           *connect.Client[v1.ListUserDataRequest, v1.ListUserDataResponse]
-	linkUserDataToTemplate *connect.Client[v1.LinkUserDataToTemplateRequest, v1.LinkUserDataToTemplateResponse]
 	registerUserData       *connect.Client[v1.RegisterUserDataRequest, v1.RegisterUserDataResponse]
+	linkUserDataToTemplate *connect.Client[v1.LinkUserDataToTemplateRequest, v1.LinkUserDataToTemplateResponse]
+	listUserData           *connect.Client[v1.ListUserDataRequest, v1.ListUserDataResponse]
 }
 
 // DeleteUserData calls cloudstack.management.userdata.v1.UserdataService.DeleteUserData.
@@ -112,9 +112,9 @@ func (c *userdataServiceClient) DeleteUserData(ctx context.Context, req *connect
 	return c.deleteUserData.CallUnary(ctx, req)
 }
 
-// ListUserData calls cloudstack.management.userdata.v1.UserdataService.ListUserData.
-func (c *userdataServiceClient) ListUserData(ctx context.Context, req *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error) {
-	return c.listUserData.CallUnary(ctx, req)
+// RegisterUserData calls cloudstack.management.userdata.v1.UserdataService.RegisterUserData.
+func (c *userdataServiceClient) RegisterUserData(ctx context.Context, req *connect.Request[v1.RegisterUserDataRequest]) (*connect.Response[v1.RegisterUserDataResponse], error) {
+	return c.registerUserData.CallUnary(ctx, req)
 }
 
 // LinkUserDataToTemplate calls
@@ -123,9 +123,9 @@ func (c *userdataServiceClient) LinkUserDataToTemplate(ctx context.Context, req 
 	return c.linkUserDataToTemplate.CallUnary(ctx, req)
 }
 
-// RegisterUserData calls cloudstack.management.userdata.v1.UserdataService.RegisterUserData.
-func (c *userdataServiceClient) RegisterUserData(ctx context.Context, req *connect.Request[v1.RegisterUserDataRequest]) (*connect.Response[v1.RegisterUserDataResponse], error) {
-	return c.registerUserData.CallUnary(ctx, req)
+// ListUserData calls cloudstack.management.userdata.v1.UserdataService.ListUserData.
+func (c *userdataServiceClient) ListUserData(ctx context.Context, req *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error) {
+	return c.listUserData.CallUnary(ctx, req)
 }
 
 // UserdataServiceHandler is an implementation of the
@@ -133,12 +133,12 @@ func (c *userdataServiceClient) RegisterUserData(ctx context.Context, req *conne
 type UserdataServiceHandler interface {
 	// DeleteUserData Deletes a userdata
 	DeleteUserData(context.Context, *connect.Request[v1.DeleteUserDataRequest]) (*connect.Response[v1.DeleteUserDataResponse], error)
-	// ListUserData List registered userdatas
-	ListUserData(context.Context, *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error)
-	// LinkUserDataToTemplate Link or unlink a userdata to a template.
-	LinkUserDataToTemplate(context.Context, *connect.Request[v1.LinkUserDataToTemplateRequest]) (*connect.Response[v1.LinkUserDataToTemplateResponse], error)
 	// RegisterUserData Register a new userdata.
 	RegisterUserData(context.Context, *connect.Request[v1.RegisterUserDataRequest]) (*connect.Response[v1.RegisterUserDataResponse], error)
+	// LinkUserDataToTemplate Link or unlink a userdata to a template.
+	LinkUserDataToTemplate(context.Context, *connect.Request[v1.LinkUserDataToTemplateRequest]) (*connect.Response[v1.LinkUserDataToTemplateResponse], error)
+	// ListUserData List registered userdatas
+	ListUserData(context.Context, *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error)
 }
 
 // NewUserdataServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -154,10 +154,10 @@ func NewUserdataServiceHandler(svc UserdataServiceHandler, opts ...connect.Handl
 		connect.WithSchema(userdataServiceMethods.ByName("DeleteUserData")),
 		connect.WithHandlerOptions(opts...),
 	)
-	userdataServiceListUserDataHandler := connect.NewUnaryHandler(
-		UserdataServiceListUserDataProcedure,
-		svc.ListUserData,
-		connect.WithSchema(userdataServiceMethods.ByName("ListUserData")),
+	userdataServiceRegisterUserDataHandler := connect.NewUnaryHandler(
+		UserdataServiceRegisterUserDataProcedure,
+		svc.RegisterUserData,
+		connect.WithSchema(userdataServiceMethods.ByName("RegisterUserData")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userdataServiceLinkUserDataToTemplateHandler := connect.NewUnaryHandler(
@@ -166,22 +166,22 @@ func NewUserdataServiceHandler(svc UserdataServiceHandler, opts ...connect.Handl
 		connect.WithSchema(userdataServiceMethods.ByName("LinkUserDataToTemplate")),
 		connect.WithHandlerOptions(opts...),
 	)
-	userdataServiceRegisterUserDataHandler := connect.NewUnaryHandler(
-		UserdataServiceRegisterUserDataProcedure,
-		svc.RegisterUserData,
-		connect.WithSchema(userdataServiceMethods.ByName("RegisterUserData")),
+	userdataServiceListUserDataHandler := connect.NewUnaryHandler(
+		UserdataServiceListUserDataProcedure,
+		svc.ListUserData,
+		connect.WithSchema(userdataServiceMethods.ByName("ListUserData")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.userdata.v1.UserdataService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UserdataServiceDeleteUserDataProcedure:
 			userdataServiceDeleteUserDataHandler.ServeHTTP(w, r)
-		case UserdataServiceListUserDataProcedure:
-			userdataServiceListUserDataHandler.ServeHTTP(w, r)
-		case UserdataServiceLinkUserDataToTemplateProcedure:
-			userdataServiceLinkUserDataToTemplateHandler.ServeHTTP(w, r)
 		case UserdataServiceRegisterUserDataProcedure:
 			userdataServiceRegisterUserDataHandler.ServeHTTP(w, r)
+		case UserdataServiceLinkUserDataToTemplateProcedure:
+			userdataServiceLinkUserDataToTemplateHandler.ServeHTTP(w, r)
+		case UserdataServiceListUserDataProcedure:
+			userdataServiceListUserDataHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -195,14 +195,14 @@ func (UnimplementedUserdataServiceHandler) DeleteUserData(context.Context, *conn
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.userdata.v1.UserdataService.DeleteUserData is not implemented"))
 }
 
-func (UnimplementedUserdataServiceHandler) ListUserData(context.Context, *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.userdata.v1.UserdataService.ListUserData is not implemented"))
+func (UnimplementedUserdataServiceHandler) RegisterUserData(context.Context, *connect.Request[v1.RegisterUserDataRequest]) (*connect.Response[v1.RegisterUserDataResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.userdata.v1.UserdataService.RegisterUserData is not implemented"))
 }
 
 func (UnimplementedUserdataServiceHandler) LinkUserDataToTemplate(context.Context, *connect.Request[v1.LinkUserDataToTemplateRequest]) (*connect.Response[v1.LinkUserDataToTemplateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.userdata.v1.UserdataService.LinkUserDataToTemplate is not implemented"))
 }
 
-func (UnimplementedUserdataServiceHandler) RegisterUserData(context.Context, *connect.Request[v1.RegisterUserDataRequest]) (*connect.Response[v1.RegisterUserDataResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.userdata.v1.UserdataService.RegisterUserData is not implemented"))
+func (UnimplementedUserdataServiceHandler) ListUserData(context.Context, *connect.Request[v1.ListUserDataRequest]) (*connect.Response[v1.ListUserDataResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.userdata.v1.UserdataService.ListUserData is not implemented"))
 }

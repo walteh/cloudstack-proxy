@@ -33,30 +33,30 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VmgroupServiceCreateVMGroupProcedure is the fully-qualified name of the VmgroupService's
-	// CreateVMGroup RPC.
-	VmgroupServiceCreateVMGroupProcedure = "/cloudstack.management.vmgroup.v1.VmgroupService/CreateVMGroup"
-	// VmgroupServiceListVMGroupsProcedure is the fully-qualified name of the VmgroupService's
-	// ListVMGroups RPC.
-	VmgroupServiceListVMGroupsProcedure = "/cloudstack.management.vmgroup.v1.VmgroupService/ListVMGroups"
 	// VmgroupServiceDeleteVMGroupProcedure is the fully-qualified name of the VmgroupService's
 	// DeleteVMGroup RPC.
 	VmgroupServiceDeleteVMGroupProcedure = "/cloudstack.management.vmgroup.v1.VmgroupService/DeleteVMGroup"
 	// VmgroupServiceUpdateVMGroupProcedure is the fully-qualified name of the VmgroupService's
 	// UpdateVMGroup RPC.
 	VmgroupServiceUpdateVMGroupProcedure = "/cloudstack.management.vmgroup.v1.VmgroupService/UpdateVMGroup"
+	// VmgroupServiceCreateVMGroupProcedure is the fully-qualified name of the VmgroupService's
+	// CreateVMGroup RPC.
+	VmgroupServiceCreateVMGroupProcedure = "/cloudstack.management.vmgroup.v1.VmgroupService/CreateVMGroup"
+	// VmgroupServiceListVMGroupsProcedure is the fully-qualified name of the VmgroupService's
+	// ListVMGroups RPC.
+	VmgroupServiceListVMGroupsProcedure = "/cloudstack.management.vmgroup.v1.VmgroupService/ListVMGroups"
 )
 
 // VmgroupServiceClient is a client for the cloudstack.management.vmgroup.v1.VmgroupService service.
 type VmgroupServiceClient interface {
-	// CreateVMGroup Creates a vm group
-	CreateVMGroup(context.Context, *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error)
-	// ListVMGroups Lists vm groups
-	ListVMGroups(context.Context, *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error)
 	// DeleteVMGroup Deletes a vm group
 	DeleteVMGroup(context.Context, *connect.Request[v1.DeleteVMGroupRequest]) (*connect.Response[v1.DeleteVMGroupResponse], error)
 	// UpdateVMGroup Updates a vm group
 	UpdateVMGroup(context.Context, *connect.Request[v1.UpdateVMGroupRequest]) (*connect.Response[v1.UpdateVMGroupResponse], error)
+	// CreateVMGroup Creates a vm group
+	CreateVMGroup(context.Context, *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error)
+	// ListVMGroups Lists vm groups
+	ListVMGroups(context.Context, *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error)
 }
 
 // NewVmgroupServiceClient constructs a client for the
@@ -71,18 +71,6 @@ func NewVmgroupServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	vmgroupServiceMethods := v1.File_cloudstack_management_vmgroup_v1_vmgroup_gen_proto.Services().ByName("VmgroupService").Methods()
 	return &vmgroupServiceClient{
-		createVMGroup: connect.NewClient[v1.CreateVMGroupRequest, v1.CreateVMGroupResponse](
-			httpClient,
-			baseURL+VmgroupServiceCreateVMGroupProcedure,
-			connect.WithSchema(vmgroupServiceMethods.ByName("CreateVMGroup")),
-			connect.WithClientOptions(opts...),
-		),
-		listVMGroups: connect.NewClient[v1.ListVMGroupsRequest, v1.ListVMGroupsResponse](
-			httpClient,
-			baseURL+VmgroupServiceListVMGroupsProcedure,
-			connect.WithSchema(vmgroupServiceMethods.ByName("ListVMGroups")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteVMGroup: connect.NewClient[v1.DeleteVMGroupRequest, v1.DeleteVMGroupResponse](
 			httpClient,
 			baseURL+VmgroupServiceDeleteVMGroupProcedure,
@@ -95,25 +83,27 @@ func NewVmgroupServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(vmgroupServiceMethods.ByName("UpdateVMGroup")),
 			connect.WithClientOptions(opts...),
 		),
+		createVMGroup: connect.NewClient[v1.CreateVMGroupRequest, v1.CreateVMGroupResponse](
+			httpClient,
+			baseURL+VmgroupServiceCreateVMGroupProcedure,
+			connect.WithSchema(vmgroupServiceMethods.ByName("CreateVMGroup")),
+			connect.WithClientOptions(opts...),
+		),
+		listVMGroups: connect.NewClient[v1.ListVMGroupsRequest, v1.ListVMGroupsResponse](
+			httpClient,
+			baseURL+VmgroupServiceListVMGroupsProcedure,
+			connect.WithSchema(vmgroupServiceMethods.ByName("ListVMGroups")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // vmgroupServiceClient implements VmgroupServiceClient.
 type vmgroupServiceClient struct {
-	createVMGroup *connect.Client[v1.CreateVMGroupRequest, v1.CreateVMGroupResponse]
-	listVMGroups  *connect.Client[v1.ListVMGroupsRequest, v1.ListVMGroupsResponse]
 	deleteVMGroup *connect.Client[v1.DeleteVMGroupRequest, v1.DeleteVMGroupResponse]
 	updateVMGroup *connect.Client[v1.UpdateVMGroupRequest, v1.UpdateVMGroupResponse]
-}
-
-// CreateVMGroup calls cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup.
-func (c *vmgroupServiceClient) CreateVMGroup(ctx context.Context, req *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error) {
-	return c.createVMGroup.CallUnary(ctx, req)
-}
-
-// ListVMGroups calls cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups.
-func (c *vmgroupServiceClient) ListVMGroups(ctx context.Context, req *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error) {
-	return c.listVMGroups.CallUnary(ctx, req)
+	createVMGroup *connect.Client[v1.CreateVMGroupRequest, v1.CreateVMGroupResponse]
+	listVMGroups  *connect.Client[v1.ListVMGroupsRequest, v1.ListVMGroupsResponse]
 }
 
 // DeleteVMGroup calls cloudstack.management.vmgroup.v1.VmgroupService.DeleteVMGroup.
@@ -126,17 +116,27 @@ func (c *vmgroupServiceClient) UpdateVMGroup(ctx context.Context, req *connect.R
 	return c.updateVMGroup.CallUnary(ctx, req)
 }
 
+// CreateVMGroup calls cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup.
+func (c *vmgroupServiceClient) CreateVMGroup(ctx context.Context, req *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error) {
+	return c.createVMGroup.CallUnary(ctx, req)
+}
+
+// ListVMGroups calls cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups.
+func (c *vmgroupServiceClient) ListVMGroups(ctx context.Context, req *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error) {
+	return c.listVMGroups.CallUnary(ctx, req)
+}
+
 // VmgroupServiceHandler is an implementation of the cloudstack.management.vmgroup.v1.VmgroupService
 // service.
 type VmgroupServiceHandler interface {
-	// CreateVMGroup Creates a vm group
-	CreateVMGroup(context.Context, *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error)
-	// ListVMGroups Lists vm groups
-	ListVMGroups(context.Context, *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error)
 	// DeleteVMGroup Deletes a vm group
 	DeleteVMGroup(context.Context, *connect.Request[v1.DeleteVMGroupRequest]) (*connect.Response[v1.DeleteVMGroupResponse], error)
 	// UpdateVMGroup Updates a vm group
 	UpdateVMGroup(context.Context, *connect.Request[v1.UpdateVMGroupRequest]) (*connect.Response[v1.UpdateVMGroupResponse], error)
+	// CreateVMGroup Creates a vm group
+	CreateVMGroup(context.Context, *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error)
+	// ListVMGroups Lists vm groups
+	ListVMGroups(context.Context, *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error)
 }
 
 // NewVmgroupServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -146,18 +146,6 @@ type VmgroupServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVmgroupServiceHandler(svc VmgroupServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vmgroupServiceMethods := v1.File_cloudstack_management_vmgroup_v1_vmgroup_gen_proto.Services().ByName("VmgroupService").Methods()
-	vmgroupServiceCreateVMGroupHandler := connect.NewUnaryHandler(
-		VmgroupServiceCreateVMGroupProcedure,
-		svc.CreateVMGroup,
-		connect.WithSchema(vmgroupServiceMethods.ByName("CreateVMGroup")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmgroupServiceListVMGroupsHandler := connect.NewUnaryHandler(
-		VmgroupServiceListVMGroupsProcedure,
-		svc.ListVMGroups,
-		connect.WithSchema(vmgroupServiceMethods.ByName("ListVMGroups")),
-		connect.WithHandlerOptions(opts...),
-	)
 	vmgroupServiceDeleteVMGroupHandler := connect.NewUnaryHandler(
 		VmgroupServiceDeleteVMGroupProcedure,
 		svc.DeleteVMGroup,
@@ -170,16 +158,28 @@ func NewVmgroupServiceHandler(svc VmgroupServiceHandler, opts ...connect.Handler
 		connect.WithSchema(vmgroupServiceMethods.ByName("UpdateVMGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vmgroupServiceCreateVMGroupHandler := connect.NewUnaryHandler(
+		VmgroupServiceCreateVMGroupProcedure,
+		svc.CreateVMGroup,
+		connect.WithSchema(vmgroupServiceMethods.ByName("CreateVMGroup")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmgroupServiceListVMGroupsHandler := connect.NewUnaryHandler(
+		VmgroupServiceListVMGroupsProcedure,
+		svc.ListVMGroups,
+		connect.WithSchema(vmgroupServiceMethods.ByName("ListVMGroups")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.vmgroup.v1.VmgroupService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VmgroupServiceCreateVMGroupProcedure:
-			vmgroupServiceCreateVMGroupHandler.ServeHTTP(w, r)
-		case VmgroupServiceListVMGroupsProcedure:
-			vmgroupServiceListVMGroupsHandler.ServeHTTP(w, r)
 		case VmgroupServiceDeleteVMGroupProcedure:
 			vmgroupServiceDeleteVMGroupHandler.ServeHTTP(w, r)
 		case VmgroupServiceUpdateVMGroupProcedure:
 			vmgroupServiceUpdateVMGroupHandler.ServeHTTP(w, r)
+		case VmgroupServiceCreateVMGroupProcedure:
+			vmgroupServiceCreateVMGroupHandler.ServeHTTP(w, r)
+		case VmgroupServiceListVMGroupsProcedure:
+			vmgroupServiceListVMGroupsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -189,18 +189,18 @@ func NewVmgroupServiceHandler(svc VmgroupServiceHandler, opts ...connect.Handler
 // UnimplementedVmgroupServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVmgroupServiceHandler struct{}
 
-func (UnimplementedVmgroupServiceHandler) CreateVMGroup(context.Context, *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup is not implemented"))
-}
-
-func (UnimplementedVmgroupServiceHandler) ListVMGroups(context.Context, *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups is not implemented"))
-}
-
 func (UnimplementedVmgroupServiceHandler) DeleteVMGroup(context.Context, *connect.Request[v1.DeleteVMGroupRequest]) (*connect.Response[v1.DeleteVMGroupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmgroup.v1.VmgroupService.DeleteVMGroup is not implemented"))
 }
 
 func (UnimplementedVmgroupServiceHandler) UpdateVMGroup(context.Context, *connect.Request[v1.UpdateVMGroupRequest]) (*connect.Response[v1.UpdateVMGroupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmgroup.v1.VmgroupService.UpdateVMGroup is not implemented"))
+}
+
+func (UnimplementedVmgroupServiceHandler) CreateVMGroup(context.Context, *connect.Request[v1.CreateVMGroupRequest]) (*connect.Response[v1.CreateVMGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup is not implemented"))
+}
+
+func (UnimplementedVmgroupServiceHandler) ListVMGroups(context.Context, *connect.Request[v1.ListVMGroupsRequest]) (*connect.Response[v1.ListVMGroupsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups is not implemented"))
 }

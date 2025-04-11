@@ -24,194 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ListDomainsCmdByAdminRequest represents the parameters for lists domains and provides detailed information for listed domains
-type ListDomainsCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List domain by domain ID.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// List domains by domain level.
-	Level *int32 `protobuf:"varint,2,opt,name=level" json:"level,omitempty"`
-	// List domain by domain name.
-	DomainName *string `protobuf:"bytes,3,opt,name=domain_name,json=domainName" json:"domain_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
-	ListAll *bool `protobuf:"varint,4,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// comma separated list of domain details requested, value can be a list of [ all, resource, min]
-	ViewDetails []string `protobuf:"bytes,5,rep,name=view_details,json=viewDetails" json:"view_details,omitempty"`
-	// flag to display the resource icon for domains
-	ShowIcon *bool `protobuf:"varint,6,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// Tag for resource type to return usage
-	Tag *string `protobuf:"bytes,7,opt,name=tag" json:"tag,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDomainsCmdByAdminRequest) Reset() {
-	*x = ListDomainsCmdByAdminRequest{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDomainsCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDomainsCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ListDomainsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDomainsCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ListDomainsCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetLevel() int32 {
-	if x != nil && x.Level != nil {
-		return *x.Level
-	}
-	return 0
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetDomainName() string {
-	if x != nil && x.DomainName != nil {
-		return *x.DomainName
-	}
-	return ""
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetViewDetails() []string {
-	if x != nil {
-		return x.ViewDetails
-	}
-	return nil
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetTag() string {
-	if x != nil && x.Tag != nil {
-		return *x.Tag
-	}
-	return ""
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListDomainsCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListDomainsCmdByAdminResponse represents the response from lists domains and provides detailed information for listed domains
-type ListDomainsCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Domains
-	Items []*Domain `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Domains
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDomainsCmdByAdminResponse) Reset() {
-	*x = ListDomainsCmdByAdminResponse{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDomainsCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDomainsCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ListDomainsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDomainsCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ListDomainsCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ListDomainsCmdByAdminResponse) GetItems() []*Domain {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListDomainsCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
 // DeleteDomainRequest represents the parameters for deletes a specified domain
 type DeleteDomainRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -228,7 +40,7 @@ type DeleteDomainRequest struct {
 
 func (x *DeleteDomainRequest) Reset() {
 	*x = DeleteDomainRequest{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -240,7 +52,7 @@ func (x *DeleteDomainRequest) String() string {
 func (*DeleteDomainRequest) ProtoMessage() {}
 
 func (x *DeleteDomainRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -253,7 +65,7 @@ func (x *DeleteDomainRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDomainRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDomainRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *DeleteDomainRequest) GetId() int64 {
@@ -302,7 +114,7 @@ type DeleteDomainResponse struct {
 
 func (x *DeleteDomainResponse) Reset() {
 	*x = DeleteDomainResponse{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +126,7 @@ func (x *DeleteDomainResponse) String() string {
 func (*DeleteDomainResponse) ProtoMessage() {}
 
 func (x *DeleteDomainResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +139,7 @@ func (x *DeleteDomainResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDomainResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDomainResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *DeleteDomainResponse) GetResult() *Result {
@@ -337,33 +149,35 @@ func (x *DeleteDomainResponse) GetResult() *Result {
 	return nil
 }
 
-// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
-type MoveDomainRequest struct {
+// UpdateDomainRequest represents the parameters for updates a domain with a new name
+type UpdateDomainRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the domain to be moved.
-	DomainId *int64 `protobuf:"varint,1,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The ID of the new parent domain of the domain to be moved.
-	ParentDomainId *int64 `protobuf:"varint,2,opt,name=parent_domain_id,json=parentDomainId" json:"parent_domain_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// ID of domain to update
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// updates domain with this name
+	DomainName *string `protobuf:"bytes,2,opt,name=domain_name,json=domainName" json:"domain_name,omitempty"`
+	// Network domain for the domain's networks; empty string will update domainName with NULL value
+	NetworkDomain *string `protobuf:"bytes,3,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MoveDomainRequest) Reset() {
-	*x = MoveDomainRequest{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[4]
+func (x *UpdateDomainRequest) Reset() {
+	*x = UpdateDomainRequest{}
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MoveDomainRequest) String() string {
+func (x *UpdateDomainRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MoveDomainRequest) ProtoMessage() {}
+func (*UpdateDomainRequest) ProtoMessage() {}
 
-func (x *MoveDomainRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[4]
+func (x *UpdateDomainRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -374,34 +188,41 @@ func (x *MoveDomainRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MoveDomainRequest.ProtoReflect.Descriptor instead.
-func (*MoveDomainRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use UpdateDomainRequest.ProtoReflect.Descriptor instead.
+func (*UpdateDomainRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MoveDomainRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *UpdateDomainRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *MoveDomainRequest) GetParentDomainId() int64 {
-	if x != nil && x.ParentDomainId != nil {
-		return *x.ParentDomainId
+func (x *UpdateDomainRequest) GetDomainName() string {
+	if x != nil && x.DomainName != nil {
+		return *x.DomainName
 	}
-	return 0
+	return ""
 }
 
-func (x *MoveDomainRequest) GetResponseType() string {
+func (x *UpdateDomainRequest) GetNetworkDomain() string {
+	if x != nil && x.NetworkDomain != nil {
+		return *x.NetworkDomain
+	}
+	return ""
+}
+
+func (x *UpdateDomainRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
-type MoveDomainResponse struct {
+// UpdateDomainResponse represents the response from updates a domain with a new name
+type UpdateDomainResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -409,21 +230,21 @@ type MoveDomainResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MoveDomainResponse) Reset() {
-	*x = MoveDomainResponse{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[5]
+func (x *UpdateDomainResponse) Reset() {
+	*x = UpdateDomainResponse{}
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MoveDomainResponse) String() string {
+func (x *UpdateDomainResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MoveDomainResponse) ProtoMessage() {}
+func (*UpdateDomainResponse) ProtoMessage() {}
 
-func (x *MoveDomainResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[5]
+func (x *UpdateDomainResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -434,12 +255,12 @@ func (x *MoveDomainResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MoveDomainResponse.ProtoReflect.Descriptor instead.
-func (*MoveDomainResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use UpdateDomainResponse.ProtoReflect.Descriptor instead.
+func (*UpdateDomainResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *MoveDomainResponse) GetResult() *Result {
+func (x *UpdateDomainResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -464,7 +285,7 @@ type CreateDomainRequest struct {
 
 func (x *CreateDomainRequest) Reset() {
 	*x = CreateDomainRequest{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -476,7 +297,7 @@ func (x *CreateDomainRequest) String() string {
 func (*CreateDomainRequest) ProtoMessage() {}
 
 func (x *CreateDomainRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -489,7 +310,7 @@ func (x *CreateDomainRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDomainRequest.ProtoReflect.Descriptor instead.
 func (*CreateDomainRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateDomainRequest) GetDomainName() string {
@@ -538,7 +359,7 @@ type CreateDomainResponse struct {
 
 func (x *CreateDomainResponse) Reset() {
 	*x = CreateDomainResponse{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -550,7 +371,7 @@ func (x *CreateDomainResponse) String() string {
 func (*CreateDomainResponse) ProtoMessage() {}
 
 func (x *CreateDomainResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -563,10 +384,119 @@ func (x *CreateDomainResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDomainResponse.ProtoReflect.Descriptor instead.
 func (*CreateDomainResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateDomainResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
+type MoveDomainRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the domain to be moved.
+	DomainId *int64 `protobuf:"varint,1,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// The ID of the new parent domain of the domain to be moved.
+	ParentDomainId *int64 `protobuf:"varint,2,opt,name=parent_domain_id,json=parentDomainId" json:"parent_domain_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MoveDomainRequest) Reset() {
+	*x = MoveDomainRequest{}
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MoveDomainRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MoveDomainRequest) ProtoMessage() {}
+
+func (x *MoveDomainRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MoveDomainRequest.ProtoReflect.Descriptor instead.
+func (*MoveDomainRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *MoveDomainRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *MoveDomainRequest) GetParentDomainId() int64 {
+	if x != nil && x.ParentDomainId != nil {
+		return *x.ParentDomainId
+	}
+	return 0
+}
+
+func (x *MoveDomainRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
+type MoveDomainResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MoveDomainResponse) Reset() {
+	*x = MoveDomainResponse{}
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MoveDomainResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MoveDomainResponse) ProtoMessage() {}
+
+func (x *MoveDomainResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MoveDomainResponse.ProtoReflect.Descriptor instead.
+func (*MoveDomainResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *MoveDomainResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -940,124 +870,6 @@ func (x *ListDomainChildrenResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// UpdateDomainRequest represents the parameters for updates a domain with a new name
-type UpdateDomainRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of domain to update
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// updates domain with this name
-	DomainName *string `protobuf:"bytes,2,opt,name=domain_name,json=domainName" json:"domain_name,omitempty"`
-	// Network domain for the domain's networks; empty string will update domainName with NULL value
-	NetworkDomain *string `protobuf:"bytes,3,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateDomainRequest) Reset() {
-	*x = UpdateDomainRequest{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateDomainRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateDomainRequest) ProtoMessage() {}
-
-func (x *UpdateDomainRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateDomainRequest.ProtoReflect.Descriptor instead.
-func (*UpdateDomainRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *UpdateDomainRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateDomainRequest) GetDomainName() string {
-	if x != nil && x.DomainName != nil {
-		return *x.DomainName
-	}
-	return ""
-}
-
-func (x *UpdateDomainRequest) GetNetworkDomain() string {
-	if x != nil && x.NetworkDomain != nil {
-		return *x.NetworkDomain
-	}
-	return ""
-}
-
-func (x *UpdateDomainRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateDomainResponse represents the response from updates a domain with a new name
-type UpdateDomainResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateDomainResponse) Reset() {
-	*x = UpdateDomainResponse{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateDomainResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateDomainResponse) ProtoMessage() {}
-
-func (x *UpdateDomainResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateDomainResponse.ProtoReflect.Descriptor instead.
-func (*UpdateDomainResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *UpdateDomainResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // Domain represents a Domain Item
 type Domain struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1077,7 +889,7 @@ type Domain struct {
 
 func (x *Domain) Reset() {
 	*x = Domain{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1089,7 +901,7 @@ func (x *Domain) String() string {
 func (*Domain) ProtoMessage() {}
 
 func (x *Domain) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1102,7 +914,7 @@ func (x *Domain) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Domain.ProtoReflect.Descriptor instead.
 func (*Domain) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Domain) GetId() string {
@@ -1153,7 +965,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1165,7 +977,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1178,7 +990,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -1228,7 +1040,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1240,7 +1052,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1253,7 +1065,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{16}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Item) GetId() string {
@@ -1359,7 +1171,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1371,7 +1183,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1384,7 +1196,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{17}
+	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1426,26 +1238,7 @@ var File_cloudstack_management_domain_v1_domain_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/domain/v1/domain.gen.proto\x12\x1fcloudstack.management.domain.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xdc\x02\n" +
-	"\x1cListDomainsCmdByAdminRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05level\x18\x02 \x01(\x05R\x05level\x12+\n" +
-	"\vdomain_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"domainName\x12 \n" +
-	"\blist_all\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12!\n" +
-	"\fview_details\x18\x05 \x03(\tR\vviewDetails\x12\"\n" +
-	"\tshow_icon\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x10\n" +
-	"\x03tag\x18\a \x01(\tR\x03tag\x12\x18\n" +
-	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\n" +
-	" \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x86\x01\n" +
-	"\x1dListDomainsCmdByAdminResponse\x12=\n" +
-	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.domain.v1.DomainR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xcb\x01\n" +
+	"0cloudstack/management/domain/v1/domain.gen.proto\x12\x1fcloudstack.management.domain.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xcb\x01\n" +
 	"\x13DeleteDomainRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
 	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
@@ -1453,12 +1246,15 @@ const file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
 	"\x14DeleteDomainResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.domain.v1.ResultR\x06result\"\x8f\x01\n" +
-	"\x11MoveDomainRequest\x12#\n" +
-	"\tdomain_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x120\n" +
-	"\x10parent_domain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x0eparentDomainId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"U\n" +
-	"\x12MoveDomainResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.domain.v1.ResultR\x06result\"\xa6\x01\n" +
+	"\x13UpdateDomainRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12+\n" +
+	"\vdomain_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
+	"domainName\x12%\n" +
+	"\x0enetwork_domain\x18\x03 \x01(\tR\rnetworkDomain\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
+	"\x14UpdateDomainResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.domain.v1.ResultR\x06result\"\xe8\x01\n" +
 	"\x13CreateDomainRequest\x12.\n" +
 	"\vdomain_name\x18\x01 \x01(\tB\r\xbaH\n" +
@@ -1470,6 +1266,12 @@ const file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc = "" +
 	"domainUUId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
 	"\x14CreateDomainResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.domain.v1.ResultR\x06result\"\x8f\x01\n" +
+	"\x11MoveDomainRequest\x12#\n" +
+	"\tdomain_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x120\n" +
+	"\x10parent_domain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x0eparentDomainId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"U\n" +
+	"\x12MoveDomainResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.domain.v1.ResultR\x06result\"\xf4\x02\n" +
 	"\x12ListDomainsRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -1507,16 +1309,7 @@ const file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc = "" +
 	"\x1aListDomainChildrenResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.domain.v1.DomainR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa6\x01\n" +
-	"\x13UpdateDomainRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12+\n" +
-	"\vdomain_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"domainName\x12%\n" +
-	"\x0enetwork_domain\x18\x03 \x01(\tR\rnetworkDomain\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
-	"\x14UpdateDomainResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.domain.v1.ResultR\x06result\"\x95\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x95\x01\n" +
 	"\x06Domain\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1551,16 +1344,15 @@ const file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xbd\a\n" +
-	"\rDomainService\x12\x98\x01\n" +
-	"\x15ListDomainsCmdByAdmin\x12=.cloudstack.management.domain.v1.ListDomainsCmdByAdminRequest\x1a>.cloudstack.management.domain.v1.ListDomainsCmdByAdminResponse\"\x00\x12}\n" +
-	"\fDeleteDomain\x124.cloudstack.management.domain.v1.DeleteDomainRequest\x1a5.cloudstack.management.domain.v1.DeleteDomainResponse\"\x00\x12w\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa2\x06\n" +
+	"\rDomainService\x12}\n" +
+	"\fDeleteDomain\x124.cloudstack.management.domain.v1.DeleteDomainRequest\x1a5.cloudstack.management.domain.v1.DeleteDomainResponse\"\x00\x12}\n" +
+	"\fUpdateDomain\x124.cloudstack.management.domain.v1.UpdateDomainRequest\x1a5.cloudstack.management.domain.v1.UpdateDomainResponse\"\x00\x12}\n" +
+	"\fCreateDomain\x124.cloudstack.management.domain.v1.CreateDomainRequest\x1a5.cloudstack.management.domain.v1.CreateDomainResponse\"\x00\x12w\n" +
 	"\n" +
-	"MoveDomain\x122.cloudstack.management.domain.v1.MoveDomainRequest\x1a3.cloudstack.management.domain.v1.MoveDomainResponse\"\x00\x12}\n" +
-	"\fCreateDomain\x124.cloudstack.management.domain.v1.CreateDomainRequest\x1a5.cloudstack.management.domain.v1.CreateDomainResponse\"\x00\x12\x80\x01\n" +
+	"MoveDomain\x122.cloudstack.management.domain.v1.MoveDomainRequest\x1a3.cloudstack.management.domain.v1.MoveDomainResponse\"\x00\x12\x80\x01\n" +
 	"\vListDomains\x123.cloudstack.management.domain.v1.ListDomainsRequest\x1a4.cloudstack.management.domain.v1.ListDomainsResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8f\x01\n" +
-	"\x12ListDomainChildren\x12:.cloudstack.management.domain.v1.ListDomainChildrenRequest\x1a;.cloudstack.management.domain.v1.ListDomainChildrenResponse\"\x00\x12}\n" +
-	"\fUpdateDomain\x124.cloudstack.management.domain.v1.UpdateDomainRequest\x1a5.cloudstack.management.domain.v1.UpdateDomainResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
+	"\x12ListDomainChildren\x12:.cloudstack.management.domain.v1.ListDomainChildrenRequest\x1a;.cloudstack.management.domain.v1.ListDomainChildrenResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.domain.v1B\x0eDomainGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/domain/v1;domainv1\xa2\x02\x03CMD\xaa\x02\x1fCloudstack.Management.Domain.V1\xca\x02\x1fCloudstack\\Management\\Domain\\V1\xe2\x02+Cloudstack\\Management\\Domain\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Domain::V1b\beditionsp\xe8\a"
 
 var (
@@ -1575,56 +1367,51 @@ func file_cloudstack_management_domain_v1_domain_gen_proto_rawDescGZIP() []byte 
 	return file_cloudstack_management_domain_v1_domain_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_cloudstack_management_domain_v1_domain_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_cloudstack_management_domain_v1_domain_gen_proto_goTypes = []any{
-	(*ListDomainsCmdByAdminRequest)(nil),  // 0: cloudstack.management.domain.v1.ListDomainsCmdByAdminRequest
-	(*ListDomainsCmdByAdminResponse)(nil), // 1: cloudstack.management.domain.v1.ListDomainsCmdByAdminResponse
-	(*DeleteDomainRequest)(nil),           // 2: cloudstack.management.domain.v1.DeleteDomainRequest
-	(*DeleteDomainResponse)(nil),          // 3: cloudstack.management.domain.v1.DeleteDomainResponse
-	(*MoveDomainRequest)(nil),             // 4: cloudstack.management.domain.v1.MoveDomainRequest
-	(*MoveDomainResponse)(nil),            // 5: cloudstack.management.domain.v1.MoveDomainResponse
-	(*CreateDomainRequest)(nil),           // 6: cloudstack.management.domain.v1.CreateDomainRequest
-	(*CreateDomainResponse)(nil),          // 7: cloudstack.management.domain.v1.CreateDomainResponse
-	(*ListDomainsRequest)(nil),            // 8: cloudstack.management.domain.v1.ListDomainsRequest
-	(*ListDomainsResponse)(nil),           // 9: cloudstack.management.domain.v1.ListDomainsResponse
-	(*ListDomainChildrenRequest)(nil),     // 10: cloudstack.management.domain.v1.ListDomainChildrenRequest
-	(*ListDomainChildrenResponse)(nil),    // 11: cloudstack.management.domain.v1.ListDomainChildrenResponse
-	(*UpdateDomainRequest)(nil),           // 12: cloudstack.management.domain.v1.UpdateDomainRequest
-	(*UpdateDomainResponse)(nil),          // 13: cloudstack.management.domain.v1.UpdateDomainResponse
-	(*Domain)(nil),                        // 14: cloudstack.management.domain.v1.Domain
-	(*Success)(nil),                       // 15: cloudstack.management.domain.v1.Success
-	(*Item)(nil),                          // 16: cloudstack.management.domain.v1.Item
-	(*Result)(nil),                        // 17: cloudstack.management.domain.v1.Result
-	nil,                                   // 18: cloudstack.management.domain.v1.Item.DetailsEntry
+	(*DeleteDomainRequest)(nil),        // 0: cloudstack.management.domain.v1.DeleteDomainRequest
+	(*DeleteDomainResponse)(nil),       // 1: cloudstack.management.domain.v1.DeleteDomainResponse
+	(*UpdateDomainRequest)(nil),        // 2: cloudstack.management.domain.v1.UpdateDomainRequest
+	(*UpdateDomainResponse)(nil),       // 3: cloudstack.management.domain.v1.UpdateDomainResponse
+	(*CreateDomainRequest)(nil),        // 4: cloudstack.management.domain.v1.CreateDomainRequest
+	(*CreateDomainResponse)(nil),       // 5: cloudstack.management.domain.v1.CreateDomainResponse
+	(*MoveDomainRequest)(nil),          // 6: cloudstack.management.domain.v1.MoveDomainRequest
+	(*MoveDomainResponse)(nil),         // 7: cloudstack.management.domain.v1.MoveDomainResponse
+	(*ListDomainsRequest)(nil),         // 8: cloudstack.management.domain.v1.ListDomainsRequest
+	(*ListDomainsResponse)(nil),        // 9: cloudstack.management.domain.v1.ListDomainsResponse
+	(*ListDomainChildrenRequest)(nil),  // 10: cloudstack.management.domain.v1.ListDomainChildrenRequest
+	(*ListDomainChildrenResponse)(nil), // 11: cloudstack.management.domain.v1.ListDomainChildrenResponse
+	(*Domain)(nil),                     // 12: cloudstack.management.domain.v1.Domain
+	(*Success)(nil),                    // 13: cloudstack.management.domain.v1.Success
+	(*Item)(nil),                       // 14: cloudstack.management.domain.v1.Item
+	(*Result)(nil),                     // 15: cloudstack.management.domain.v1.Result
+	nil,                                // 16: cloudstack.management.domain.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_domain_v1_domain_gen_proto_depIdxs = []int32{
-	14, // 0: cloudstack.management.domain.v1.ListDomainsCmdByAdminResponse.items:type_name -> cloudstack.management.domain.v1.Domain
-	17, // 1: cloudstack.management.domain.v1.DeleteDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
-	17, // 2: cloudstack.management.domain.v1.MoveDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
-	17, // 3: cloudstack.management.domain.v1.CreateDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
-	14, // 4: cloudstack.management.domain.v1.ListDomainsResponse.items:type_name -> cloudstack.management.domain.v1.Domain
-	14, // 5: cloudstack.management.domain.v1.ListDomainChildrenResponse.items:type_name -> cloudstack.management.domain.v1.Domain
-	17, // 6: cloudstack.management.domain.v1.UpdateDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
-	18, // 7: cloudstack.management.domain.v1.Item.details:type_name -> cloudstack.management.domain.v1.Item.DetailsEntry
-	0,  // 8: cloudstack.management.domain.v1.DomainService.ListDomainsCmdByAdmin:input_type -> cloudstack.management.domain.v1.ListDomainsCmdByAdminRequest
-	2,  // 9: cloudstack.management.domain.v1.DomainService.DeleteDomain:input_type -> cloudstack.management.domain.v1.DeleteDomainRequest
-	4,  // 10: cloudstack.management.domain.v1.DomainService.MoveDomain:input_type -> cloudstack.management.domain.v1.MoveDomainRequest
-	6,  // 11: cloudstack.management.domain.v1.DomainService.CreateDomain:input_type -> cloudstack.management.domain.v1.CreateDomainRequest
-	8,  // 12: cloudstack.management.domain.v1.DomainService.ListDomains:input_type -> cloudstack.management.domain.v1.ListDomainsRequest
-	10, // 13: cloudstack.management.domain.v1.DomainService.ListDomainChildren:input_type -> cloudstack.management.domain.v1.ListDomainChildrenRequest
-	12, // 14: cloudstack.management.domain.v1.DomainService.UpdateDomain:input_type -> cloudstack.management.domain.v1.UpdateDomainRequest
-	1,  // 15: cloudstack.management.domain.v1.DomainService.ListDomainsCmdByAdmin:output_type -> cloudstack.management.domain.v1.ListDomainsCmdByAdminResponse
-	3,  // 16: cloudstack.management.domain.v1.DomainService.DeleteDomain:output_type -> cloudstack.management.domain.v1.DeleteDomainResponse
-	5,  // 17: cloudstack.management.domain.v1.DomainService.MoveDomain:output_type -> cloudstack.management.domain.v1.MoveDomainResponse
-	7,  // 18: cloudstack.management.domain.v1.DomainService.CreateDomain:output_type -> cloudstack.management.domain.v1.CreateDomainResponse
-	9,  // 19: cloudstack.management.domain.v1.DomainService.ListDomains:output_type -> cloudstack.management.domain.v1.ListDomainsResponse
-	11, // 20: cloudstack.management.domain.v1.DomainService.ListDomainChildren:output_type -> cloudstack.management.domain.v1.ListDomainChildrenResponse
-	13, // 21: cloudstack.management.domain.v1.DomainService.UpdateDomain:output_type -> cloudstack.management.domain.v1.UpdateDomainResponse
-	15, // [15:22] is the sub-list for method output_type
-	8,  // [8:15] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	15, // 0: cloudstack.management.domain.v1.DeleteDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
+	15, // 1: cloudstack.management.domain.v1.UpdateDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
+	15, // 2: cloudstack.management.domain.v1.CreateDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
+	15, // 3: cloudstack.management.domain.v1.MoveDomainResponse.result:type_name -> cloudstack.management.domain.v1.Result
+	12, // 4: cloudstack.management.domain.v1.ListDomainsResponse.items:type_name -> cloudstack.management.domain.v1.Domain
+	12, // 5: cloudstack.management.domain.v1.ListDomainChildrenResponse.items:type_name -> cloudstack.management.domain.v1.Domain
+	16, // 6: cloudstack.management.domain.v1.Item.details:type_name -> cloudstack.management.domain.v1.Item.DetailsEntry
+	0,  // 7: cloudstack.management.domain.v1.DomainService.DeleteDomain:input_type -> cloudstack.management.domain.v1.DeleteDomainRequest
+	2,  // 8: cloudstack.management.domain.v1.DomainService.UpdateDomain:input_type -> cloudstack.management.domain.v1.UpdateDomainRequest
+	4,  // 9: cloudstack.management.domain.v1.DomainService.CreateDomain:input_type -> cloudstack.management.domain.v1.CreateDomainRequest
+	6,  // 10: cloudstack.management.domain.v1.DomainService.MoveDomain:input_type -> cloudstack.management.domain.v1.MoveDomainRequest
+	8,  // 11: cloudstack.management.domain.v1.DomainService.ListDomains:input_type -> cloudstack.management.domain.v1.ListDomainsRequest
+	10, // 12: cloudstack.management.domain.v1.DomainService.ListDomainChildren:input_type -> cloudstack.management.domain.v1.ListDomainChildrenRequest
+	1,  // 13: cloudstack.management.domain.v1.DomainService.DeleteDomain:output_type -> cloudstack.management.domain.v1.DeleteDomainResponse
+	3,  // 14: cloudstack.management.domain.v1.DomainService.UpdateDomain:output_type -> cloudstack.management.domain.v1.UpdateDomainResponse
+	5,  // 15: cloudstack.management.domain.v1.DomainService.CreateDomain:output_type -> cloudstack.management.domain.v1.CreateDomainResponse
+	7,  // 16: cloudstack.management.domain.v1.DomainService.MoveDomain:output_type -> cloudstack.management.domain.v1.MoveDomainResponse
+	9,  // 17: cloudstack.management.domain.v1.DomainService.ListDomains:output_type -> cloudstack.management.domain.v1.ListDomainsResponse
+	11, // 18: cloudstack.management.domain.v1.DomainService.ListDomainChildren:output_type -> cloudstack.management.domain.v1.ListDomainChildrenResponse
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_domain_v1_domain_gen_proto_init() }
@@ -1638,7 +1425,7 @@ func file_cloudstack_management_domain_v1_domain_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc), len(file_cloudstack_management_domain_v1_domain_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

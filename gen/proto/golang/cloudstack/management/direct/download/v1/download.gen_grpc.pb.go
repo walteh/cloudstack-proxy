@@ -20,9 +20,9 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	DownloadService_RevokeTemplateDirectDownloadCertificate_FullMethodName    = "/cloudstack.management.direct.download.v1.DownloadService/RevokeTemplateDirectDownloadCertificate"
-	DownloadService_ProvisionTemplateDirectDownloadCertificate_FullMethodName = "/cloudstack.management.direct.download.v1.DownloadService/ProvisionTemplateDirectDownloadCertificate"
-	DownloadService_ListTemplateDirectDownloadCertificates_FullMethodName     = "/cloudstack.management.direct.download.v1.DownloadService/ListTemplateDirectDownloadCertificates"
 	DownloadService_UploadTemplateDirectDownloadCertificate_FullMethodName    = "/cloudstack.management.direct.download.v1.DownloadService/UploadTemplateDirectDownloadCertificate"
+	DownloadService_ListTemplateDirectDownloadCertificates_FullMethodName     = "/cloudstack.management.direct.download.v1.DownloadService/ListTemplateDirectDownloadCertificates"
+	DownloadService_ProvisionTemplateDirectDownloadCertificate_FullMethodName = "/cloudstack.management.direct.download.v1.DownloadService/ProvisionTemplateDirectDownloadCertificate"
 )
 
 // DownloadServiceClient is the client API for DownloadService service.
@@ -33,12 +33,12 @@ const (
 type DownloadServiceClient interface {
 	// RevokeTemplateDirectDownloadCertificate Revoke a direct download certificate from hosts in a zone
 	RevokeTemplateDirectDownloadCertificate(ctx context.Context, in *RevokeTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*RevokeTemplateDirectDownloadCertificateResponse, error)
-	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
-	ProvisionTemplateDirectDownloadCertificate(ctx context.Context, in *ProvisionTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*ProvisionTemplateDirectDownloadCertificateResponse, error)
-	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
-	ListTemplateDirectDownloadCertificates(ctx context.Context, in *ListTemplateDirectDownloadCertificatesRequest, opts ...grpc.CallOption) (*ListTemplateDirectDownloadCertificatesResponse, error)
 	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
 	UploadTemplateDirectDownloadCertificate(ctx context.Context, in *UploadTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*UploadTemplateDirectDownloadCertificateResponse, error)
+	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
+	ListTemplateDirectDownloadCertificates(ctx context.Context, in *ListTemplateDirectDownloadCertificatesRequest, opts ...grpc.CallOption) (*ListTemplateDirectDownloadCertificatesResponse, error)
+	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
+	ProvisionTemplateDirectDownloadCertificate(ctx context.Context, in *ProvisionTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*ProvisionTemplateDirectDownloadCertificateResponse, error)
 }
 
 type downloadServiceClient struct {
@@ -59,10 +59,10 @@ func (c *downloadServiceClient) RevokeTemplateDirectDownloadCertificate(ctx cont
 	return out, nil
 }
 
-func (c *downloadServiceClient) ProvisionTemplateDirectDownloadCertificate(ctx context.Context, in *ProvisionTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*ProvisionTemplateDirectDownloadCertificateResponse, error) {
+func (c *downloadServiceClient) UploadTemplateDirectDownloadCertificate(ctx context.Context, in *UploadTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*UploadTemplateDirectDownloadCertificateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ProvisionTemplateDirectDownloadCertificateResponse)
-	err := c.cc.Invoke(ctx, DownloadService_ProvisionTemplateDirectDownloadCertificate_FullMethodName, in, out, cOpts...)
+	out := new(UploadTemplateDirectDownloadCertificateResponse)
+	err := c.cc.Invoke(ctx, DownloadService_UploadTemplateDirectDownloadCertificate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,10 +79,10 @@ func (c *downloadServiceClient) ListTemplateDirectDownloadCertificates(ctx conte
 	return out, nil
 }
 
-func (c *downloadServiceClient) UploadTemplateDirectDownloadCertificate(ctx context.Context, in *UploadTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*UploadTemplateDirectDownloadCertificateResponse, error) {
+func (c *downloadServiceClient) ProvisionTemplateDirectDownloadCertificate(ctx context.Context, in *ProvisionTemplateDirectDownloadCertificateRequest, opts ...grpc.CallOption) (*ProvisionTemplateDirectDownloadCertificateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UploadTemplateDirectDownloadCertificateResponse)
-	err := c.cc.Invoke(ctx, DownloadService_UploadTemplateDirectDownloadCertificate_FullMethodName, in, out, cOpts...)
+	out := new(ProvisionTemplateDirectDownloadCertificateResponse)
+	err := c.cc.Invoke(ctx, DownloadService_ProvisionTemplateDirectDownloadCertificate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,12 +97,12 @@ func (c *downloadServiceClient) UploadTemplateDirectDownloadCertificate(ctx cont
 type DownloadServiceServer interface {
 	// RevokeTemplateDirectDownloadCertificate Revoke a direct download certificate from hosts in a zone
 	RevokeTemplateDirectDownloadCertificate(context.Context, *RevokeTemplateDirectDownloadCertificateRequest) (*RevokeTemplateDirectDownloadCertificateResponse, error)
-	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
-	ProvisionTemplateDirectDownloadCertificate(context.Context, *ProvisionTemplateDirectDownloadCertificateRequest) (*ProvisionTemplateDirectDownloadCertificateResponse, error)
-	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
-	ListTemplateDirectDownloadCertificates(context.Context, *ListTemplateDirectDownloadCertificatesRequest) (*ListTemplateDirectDownloadCertificatesResponse, error)
 	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
 	UploadTemplateDirectDownloadCertificate(context.Context, *UploadTemplateDirectDownloadCertificateRequest) (*UploadTemplateDirectDownloadCertificateResponse, error)
+	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
+	ListTemplateDirectDownloadCertificates(context.Context, *ListTemplateDirectDownloadCertificatesRequest) (*ListTemplateDirectDownloadCertificatesResponse, error)
+	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
+	ProvisionTemplateDirectDownloadCertificate(context.Context, *ProvisionTemplateDirectDownloadCertificateRequest) (*ProvisionTemplateDirectDownloadCertificateResponse, error)
 	mustEmbedUnimplementedDownloadServiceServer()
 }
 
@@ -116,14 +116,14 @@ type UnimplementedDownloadServiceServer struct{}
 func (UnimplementedDownloadServiceServer) RevokeTemplateDirectDownloadCertificate(context.Context, *RevokeTemplateDirectDownloadCertificateRequest) (*RevokeTemplateDirectDownloadCertificateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevokeTemplateDirectDownloadCertificate not implemented")
 }
-func (UnimplementedDownloadServiceServer) ProvisionTemplateDirectDownloadCertificate(context.Context, *ProvisionTemplateDirectDownloadCertificateRequest) (*ProvisionTemplateDirectDownloadCertificateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProvisionTemplateDirectDownloadCertificate not implemented")
+func (UnimplementedDownloadServiceServer) UploadTemplateDirectDownloadCertificate(context.Context, *UploadTemplateDirectDownloadCertificateRequest) (*UploadTemplateDirectDownloadCertificateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadTemplateDirectDownloadCertificate not implemented")
 }
 func (UnimplementedDownloadServiceServer) ListTemplateDirectDownloadCertificates(context.Context, *ListTemplateDirectDownloadCertificatesRequest) (*ListTemplateDirectDownloadCertificatesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTemplateDirectDownloadCertificates not implemented")
 }
-func (UnimplementedDownloadServiceServer) UploadTemplateDirectDownloadCertificate(context.Context, *UploadTemplateDirectDownloadCertificateRequest) (*UploadTemplateDirectDownloadCertificateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UploadTemplateDirectDownloadCertificate not implemented")
+func (UnimplementedDownloadServiceServer) ProvisionTemplateDirectDownloadCertificate(context.Context, *ProvisionTemplateDirectDownloadCertificateRequest) (*ProvisionTemplateDirectDownloadCertificateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProvisionTemplateDirectDownloadCertificate not implemented")
 }
 func (UnimplementedDownloadServiceServer) mustEmbedUnimplementedDownloadServiceServer() {}
 func (UnimplementedDownloadServiceServer) testEmbeddedByValue()                         {}
@@ -164,20 +164,20 @@ func _DownloadService_RevokeTemplateDirectDownloadCertificate_Handler(srv interf
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DownloadService_ProvisionTemplateDirectDownloadCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProvisionTemplateDirectDownloadCertificateRequest)
+func _DownloadService_UploadTemplateDirectDownloadCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadTemplateDirectDownloadCertificateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DownloadServiceServer).ProvisionTemplateDirectDownloadCertificate(ctx, in)
+		return srv.(DownloadServiceServer).UploadTemplateDirectDownloadCertificate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: DownloadService_ProvisionTemplateDirectDownloadCertificate_FullMethodName,
+		FullMethod: DownloadService_UploadTemplateDirectDownloadCertificate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DownloadServiceServer).ProvisionTemplateDirectDownloadCertificate(ctx, req.(*ProvisionTemplateDirectDownloadCertificateRequest))
+		return srv.(DownloadServiceServer).UploadTemplateDirectDownloadCertificate(ctx, req.(*UploadTemplateDirectDownloadCertificateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -200,20 +200,20 @@ func _DownloadService_ListTemplateDirectDownloadCertificates_Handler(srv interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DownloadService_UploadTemplateDirectDownloadCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadTemplateDirectDownloadCertificateRequest)
+func _DownloadService_ProvisionTemplateDirectDownloadCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProvisionTemplateDirectDownloadCertificateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DownloadServiceServer).UploadTemplateDirectDownloadCertificate(ctx, in)
+		return srv.(DownloadServiceServer).ProvisionTemplateDirectDownloadCertificate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: DownloadService_UploadTemplateDirectDownloadCertificate_FullMethodName,
+		FullMethod: DownloadService_ProvisionTemplateDirectDownloadCertificate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DownloadServiceServer).UploadTemplateDirectDownloadCertificate(ctx, req.(*UploadTemplateDirectDownloadCertificateRequest))
+		return srv.(DownloadServiceServer).ProvisionTemplateDirectDownloadCertificate(ctx, req.(*ProvisionTemplateDirectDownloadCertificateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -230,16 +230,16 @@ var DownloadService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _DownloadService_RevokeTemplateDirectDownloadCertificate_Handler,
 		},
 		{
-			MethodName: "ProvisionTemplateDirectDownloadCertificate",
-			Handler:    _DownloadService_ProvisionTemplateDirectDownloadCertificate_Handler,
+			MethodName: "UploadTemplateDirectDownloadCertificate",
+			Handler:    _DownloadService_UploadTemplateDirectDownloadCertificate_Handler,
 		},
 		{
 			MethodName: "ListTemplateDirectDownloadCertificates",
 			Handler:    _DownloadService_ListTemplateDirectDownloadCertificates_Handler,
 		},
 		{
-			MethodName: "UploadTemplateDirectDownloadCertificate",
-			Handler:    _DownloadService_UploadTemplateDirectDownloadCertificate_Handler,
+			MethodName: "ProvisionTemplateDirectDownloadCertificate",
+			Handler:    _DownloadService_ProvisionTemplateDirectDownloadCertificate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

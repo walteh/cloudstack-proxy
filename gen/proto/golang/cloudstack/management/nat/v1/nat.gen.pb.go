@@ -24,6 +24,59 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ProtocolType represents the possible values for the protocol for the rule. Valid values are TCP or UDP.
+type ProtocolType int32
+
+const (
+	// Default unspecified value
+	ProtocolType_PROTOCOL_TYPE_UNSPECIFIED ProtocolType = 0
+	// TCP value
+	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 1
+	// UDP value
+	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 2
+)
+
+// Enum value maps for ProtocolType.
+var (
+	ProtocolType_name = map[int32]string{
+		0: "PROTOCOL_TYPE_UNSPECIFIED",
+		1: "PROTOCOL_TYPE_TCP",
+		2: "PROTOCOL_TYPE_UDP",
+	}
+	ProtocolType_value = map[string]int32{
+		"PROTOCOL_TYPE_UNSPECIFIED": 0,
+		"PROTOCOL_TYPE_TCP":         1,
+		"PROTOCOL_TYPE_UDP":         2,
+	}
+)
+
+func (x ProtocolType) Enum() *ProtocolType {
+	p := new(ProtocolType)
+	*p = x
+	return p
+}
+
+func (x ProtocolType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProtocolType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_nat_v1_nat_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ProtocolType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_nat_v1_nat_gen_proto_enumTypes[0]
+}
+
+func (x ProtocolType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProtocolType.Descriptor instead.
+func (ProtocolType) EnumDescriptor() ([]byte, []int) {
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{0}
+}
+
 // ListIpForwardingRulesRequest represents the parameters for list the ip forwarding rules
 type ListIpForwardingRulesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -221,122 +274,6 @@ func (x *ListIpForwardingRulesResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
-type DisableStaticNatRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the public IP address ID for which static NAT feature is being disabled
-	IpAddressId *int64 `protobuf:"varint,1,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableStaticNatRequest) Reset() {
-	*x = DisableStaticNatRequest{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableStaticNatRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableStaticNatRequest) ProtoMessage() {}
-
-func (x *DisableStaticNatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableStaticNatRequest.ProtoReflect.Descriptor instead.
-func (*DisableStaticNatRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DisableStaticNatRequest) GetIpAddressId() int64 {
-	if x != nil && x.IpAddressId != nil {
-		return *x.IpAddressId
-	}
-	return 0
-}
-
-func (x *DisableStaticNatRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DisableStaticNatRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DisableStaticNatRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DisableStaticNatResponse represents the response from disables static rule for given ip address
-type DisableStaticNatResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableStaticNatResponse) Reset() {
-	*x = DisableStaticNatResponse{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableStaticNatResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableStaticNatResponse) ProtoMessage() {}
-
-func (x *DisableStaticNatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableStaticNatResponse.ProtoReflect.Descriptor instead.
-func (*DisableStaticNatResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DisableStaticNatResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
 type DeleteIpForwardingRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -351,7 +288,7 @@ type DeleteIpForwardingRuleRequest struct {
 
 func (x *DeleteIpForwardingRuleRequest) Reset() {
 	*x = DeleteIpForwardingRuleRequest{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -363,7 +300,7 @@ func (x *DeleteIpForwardingRuleRequest) String() string {
 func (*DeleteIpForwardingRuleRequest) ProtoMessage() {}
 
 func (x *DeleteIpForwardingRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -376,7 +313,7 @@ func (x *DeleteIpForwardingRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteIpForwardingRuleRequest.ProtoReflect.Descriptor instead.
 func (*DeleteIpForwardingRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DeleteIpForwardingRuleRequest) GetId() int64 {
@@ -418,7 +355,7 @@ type DeleteIpForwardingRuleResponse struct {
 
 func (x *DeleteIpForwardingRuleResponse) Reset() {
 	*x = DeleteIpForwardingRuleResponse{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -430,7 +367,7 @@ func (x *DeleteIpForwardingRuleResponse) String() string {
 func (*DeleteIpForwardingRuleResponse) ProtoMessage() {}
 
 func (x *DeleteIpForwardingRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -443,10 +380,126 @@ func (x *DeleteIpForwardingRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteIpForwardingRuleResponse.ProtoReflect.Descriptor instead.
 func (*DeleteIpForwardingRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DeleteIpForwardingRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
+type DisableStaticNatRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the public IP address ID for which static NAT feature is being disabled
+	IpAddressId *int64 `protobuf:"varint,1,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableStaticNatRequest) Reset() {
+	*x = DisableStaticNatRequest{}
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableStaticNatRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableStaticNatRequest) ProtoMessage() {}
+
+func (x *DisableStaticNatRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableStaticNatRequest.ProtoReflect.Descriptor instead.
+func (*DisableStaticNatRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DisableStaticNatRequest) GetIpAddressId() int64 {
+	if x != nil && x.IpAddressId != nil {
+		return *x.IpAddressId
+	}
+	return 0
+}
+
+func (x *DisableStaticNatRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisableStaticNatRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisableStaticNatRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisableStaticNatResponse represents the response from disables static rule for given ip address
+type DisableStaticNatResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableStaticNatResponse) Reset() {
+	*x = DisableStaticNatResponse{}
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableStaticNatResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableStaticNatResponse) ProtoMessage() {}
+
+func (x *DisableStaticNatResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableStaticNatResponse.ProtoReflect.Descriptor instead.
+func (*DisableStaticNatResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DisableStaticNatResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1129,20 +1182,20 @@ const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\x1dListIpForwardingRulesResponse\x12@\n" +
 	"\x05items\x18\x01 \x03(\v2*.cloudstack.management.nat.v1.FirewallRuleR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc2\x01\n" +
-	"\x17DisableStaticNatRequest\x12*\n" +
-	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
-	"\x18DisableStaticNatResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xb4\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb4\x01\n" +
 	"\x1dDeleteIpForwardingRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
 	"\x1eDeleteIpForwardingRuleResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xc2\x01\n" +
+	"\x17DisableStaticNatRequest\x12*\n" +
+	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
+	"\x18DisableStaticNatResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\x8b\x03\n" +
 	"\x1dCreateIpForwardingRuleRequest\x12*\n" +
 	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12-\n" +
@@ -1200,12 +1253,16 @@ const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xe2\x05\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*[\n" +
+	"\fProtocolType\x12\x1d\n" +
+	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x022\xe2\x05\n" +
 	"\n" +
 	"NatService\x12\x92\x01\n" +
-	"\x15ListIpForwardingRules\x12:.cloudstack.management.nat.v1.ListIpForwardingRulesRequest\x1a;.cloudstack.management.nat.v1.ListIpForwardingRulesResponse\"\x00\x12\x83\x01\n" +
+	"\x15ListIpForwardingRules\x12:.cloudstack.management.nat.v1.ListIpForwardingRulesRequest\x1a;.cloudstack.management.nat.v1.ListIpForwardingRulesResponse\"\x00\x12\x95\x01\n" +
+	"\x16DeleteIpForwardingRule\x12;.cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse\"\x00\x12\x83\x01\n" +
 	"\x10DisableStaticNat\x125.cloudstack.management.nat.v1.DisableStaticNatRequest\x1a6.cloudstack.management.nat.v1.DisableStaticNatResponse\"\x00\x12\x95\x01\n" +
-	"\x16DeleteIpForwardingRule\x12;.cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse\"\x00\x12\x95\x01\n" +
 	"\x16CreateIpForwardingRule\x12;.cloudstack.management.nat.v1.CreateIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.CreateIpForwardingRuleResponse\"\x00\x12\x80\x01\n" +
 	"\x0fEnableStaticNat\x124.cloudstack.management.nat.v1.EnableStaticNatRequest\x1a5.cloudstack.management.nat.v1.EnableStaticNatResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
 	" com.cloudstack.management.nat.v1B\vNatGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/nat/v1;natv1\xa2\x02\x03CMN\xaa\x02\x1cCloudstack.Management.Nat.V1\xca\x02\x1cCloudstack\\Management\\Nat\\V1\xe2\x02(Cloudstack\\Management\\Nat\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Nat::V1b\beditionsp\xe8\a"
@@ -1222,41 +1279,43 @@ func file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_nat_v1_nat_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_cloudstack_management_nat_v1_nat_gen_proto_goTypes = []any{
-	(*ListIpForwardingRulesRequest)(nil),   // 0: cloudstack.management.nat.v1.ListIpForwardingRulesRequest
-	(*ListIpForwardingRulesResponse)(nil),  // 1: cloudstack.management.nat.v1.ListIpForwardingRulesResponse
-	(*DisableStaticNatRequest)(nil),        // 2: cloudstack.management.nat.v1.DisableStaticNatRequest
-	(*DisableStaticNatResponse)(nil),       // 3: cloudstack.management.nat.v1.DisableStaticNatResponse
-	(*DeleteIpForwardingRuleRequest)(nil),  // 4: cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
-	(*DeleteIpForwardingRuleResponse)(nil), // 5: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
-	(*CreateIpForwardingRuleRequest)(nil),  // 6: cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
-	(*CreateIpForwardingRuleResponse)(nil), // 7: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
-	(*EnableStaticNatRequest)(nil),         // 8: cloudstack.management.nat.v1.EnableStaticNatRequest
-	(*EnableStaticNatResponse)(nil),        // 9: cloudstack.management.nat.v1.EnableStaticNatResponse
-	(*FirewallRule)(nil),                   // 10: cloudstack.management.nat.v1.FirewallRule
-	(*Success)(nil),                        // 11: cloudstack.management.nat.v1.Success
-	(*Item)(nil),                           // 12: cloudstack.management.nat.v1.Item
-	(*Result)(nil),                         // 13: cloudstack.management.nat.v1.Result
-	nil,                                    // 14: cloudstack.management.nat.v1.Item.DetailsEntry
+	(ProtocolType)(0),                      // 0: cloudstack.management.nat.v1.ProtocolType
+	(*ListIpForwardingRulesRequest)(nil),   // 1: cloudstack.management.nat.v1.ListIpForwardingRulesRequest
+	(*ListIpForwardingRulesResponse)(nil),  // 2: cloudstack.management.nat.v1.ListIpForwardingRulesResponse
+	(*DeleteIpForwardingRuleRequest)(nil),  // 3: cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
+	(*DeleteIpForwardingRuleResponse)(nil), // 4: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
+	(*DisableStaticNatRequest)(nil),        // 5: cloudstack.management.nat.v1.DisableStaticNatRequest
+	(*DisableStaticNatResponse)(nil),       // 6: cloudstack.management.nat.v1.DisableStaticNatResponse
+	(*CreateIpForwardingRuleRequest)(nil),  // 7: cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
+	(*CreateIpForwardingRuleResponse)(nil), // 8: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
+	(*EnableStaticNatRequest)(nil),         // 9: cloudstack.management.nat.v1.EnableStaticNatRequest
+	(*EnableStaticNatResponse)(nil),        // 10: cloudstack.management.nat.v1.EnableStaticNatResponse
+	(*FirewallRule)(nil),                   // 11: cloudstack.management.nat.v1.FirewallRule
+	(*Success)(nil),                        // 12: cloudstack.management.nat.v1.Success
+	(*Item)(nil),                           // 13: cloudstack.management.nat.v1.Item
+	(*Result)(nil),                         // 14: cloudstack.management.nat.v1.Result
+	nil,                                    // 15: cloudstack.management.nat.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_nat_v1_nat_gen_proto_depIdxs = []int32{
-	10, // 0: cloudstack.management.nat.v1.ListIpForwardingRulesResponse.items:type_name -> cloudstack.management.nat.v1.FirewallRule
-	13, // 1: cloudstack.management.nat.v1.DisableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	13, // 2: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	13, // 3: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	13, // 4: cloudstack.management.nat.v1.EnableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	14, // 5: cloudstack.management.nat.v1.Item.details:type_name -> cloudstack.management.nat.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:input_type -> cloudstack.management.nat.v1.ListIpForwardingRulesRequest
-	2,  // 7: cloudstack.management.nat.v1.NatService.DisableStaticNat:input_type -> cloudstack.management.nat.v1.DisableStaticNatRequest
-	4,  // 8: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:input_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
-	6,  // 9: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:input_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
-	8,  // 10: cloudstack.management.nat.v1.NatService.EnableStaticNat:input_type -> cloudstack.management.nat.v1.EnableStaticNatRequest
-	1,  // 11: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:output_type -> cloudstack.management.nat.v1.ListIpForwardingRulesResponse
-	3,  // 12: cloudstack.management.nat.v1.NatService.DisableStaticNat:output_type -> cloudstack.management.nat.v1.DisableStaticNatResponse
-	5,  // 13: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:output_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
-	7,  // 14: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:output_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
-	9,  // 15: cloudstack.management.nat.v1.NatService.EnableStaticNat:output_type -> cloudstack.management.nat.v1.EnableStaticNatResponse
+	11, // 0: cloudstack.management.nat.v1.ListIpForwardingRulesResponse.items:type_name -> cloudstack.management.nat.v1.FirewallRule
+	14, // 1: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	14, // 2: cloudstack.management.nat.v1.DisableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	14, // 3: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	14, // 4: cloudstack.management.nat.v1.EnableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	15, // 5: cloudstack.management.nat.v1.Item.details:type_name -> cloudstack.management.nat.v1.Item.DetailsEntry
+	1,  // 6: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:input_type -> cloudstack.management.nat.v1.ListIpForwardingRulesRequest
+	3,  // 7: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:input_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
+	5,  // 8: cloudstack.management.nat.v1.NatService.DisableStaticNat:input_type -> cloudstack.management.nat.v1.DisableStaticNatRequest
+	7,  // 9: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:input_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
+	9,  // 10: cloudstack.management.nat.v1.NatService.EnableStaticNat:input_type -> cloudstack.management.nat.v1.EnableStaticNatRequest
+	2,  // 11: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:output_type -> cloudstack.management.nat.v1.ListIpForwardingRulesResponse
+	4,  // 12: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:output_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
+	6,  // 13: cloudstack.management.nat.v1.NatService.DisableStaticNat:output_type -> cloudstack.management.nat.v1.DisableStaticNatResponse
+	8,  // 14: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:output_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
+	10, // 15: cloudstack.management.nat.v1.NatService.EnableStaticNat:output_type -> cloudstack.management.nat.v1.EnableStaticNatResponse
 	11, // [11:16] is the sub-list for method output_type
 	6,  // [6:11] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
@@ -1274,13 +1333,14 @@ func file_cloudstack_management_nat_v1_nat_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc), len(file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_nat_v1_nat_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_nat_v1_nat_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_nat_v1_nat_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_nat_v1_nat_gen_proto = out.File

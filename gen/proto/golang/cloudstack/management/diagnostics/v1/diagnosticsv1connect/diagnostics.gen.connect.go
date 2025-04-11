@@ -33,21 +33,21 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// DiagnosticsServiceRunDiagnosticsProcedure is the fully-qualified name of the DiagnosticsService's
-	// RunDiagnostics RPC.
-	DiagnosticsServiceRunDiagnosticsProcedure = "/cloudstack.management.diagnostics.v1.DiagnosticsService/RunDiagnostics"
 	// DiagnosticsServiceGetDiagnosticsDataProcedure is the fully-qualified name of the
 	// DiagnosticsService's GetDiagnosticsData RPC.
 	DiagnosticsServiceGetDiagnosticsDataProcedure = "/cloudstack.management.diagnostics.v1.DiagnosticsService/GetDiagnosticsData"
+	// DiagnosticsServiceRunDiagnosticsProcedure is the fully-qualified name of the DiagnosticsService's
+	// RunDiagnostics RPC.
+	DiagnosticsServiceRunDiagnosticsProcedure = "/cloudstack.management.diagnostics.v1.DiagnosticsService/RunDiagnostics"
 )
 
 // DiagnosticsServiceClient is a client for the
 // cloudstack.management.diagnostics.v1.DiagnosticsService service.
 type DiagnosticsServiceClient interface {
-	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	RunDiagnostics(context.Context, *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error)
 	// GetDiagnosticsData Get diagnostics and files from system VMs
 	GetDiagnosticsData(context.Context, *connect.Request[v1.GetDiagnosticsDataRequest]) (*connect.Response[v1.GetDiagnosticsDataResponse], error)
+	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
+	RunDiagnostics(context.Context, *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error)
 }
 
 // NewDiagnosticsServiceClient constructs a client for the
@@ -62,16 +62,16 @@ func NewDiagnosticsServiceClient(httpClient connect.HTTPClient, baseURL string, 
 	baseURL = strings.TrimRight(baseURL, "/")
 	diagnosticsServiceMethods := v1.File_cloudstack_management_diagnostics_v1_diagnostics_gen_proto.Services().ByName("DiagnosticsService").Methods()
 	return &diagnosticsServiceClient{
-		runDiagnostics: connect.NewClient[v1.RunDiagnosticsRequest, v1.RunDiagnosticsResponse](
-			httpClient,
-			baseURL+DiagnosticsServiceRunDiagnosticsProcedure,
-			connect.WithSchema(diagnosticsServiceMethods.ByName("RunDiagnostics")),
-			connect.WithClientOptions(opts...),
-		),
 		getDiagnosticsData: connect.NewClient[v1.GetDiagnosticsDataRequest, v1.GetDiagnosticsDataResponse](
 			httpClient,
 			baseURL+DiagnosticsServiceGetDiagnosticsDataProcedure,
 			connect.WithSchema(diagnosticsServiceMethods.ByName("GetDiagnosticsData")),
+			connect.WithClientOptions(opts...),
+		),
+		runDiagnostics: connect.NewClient[v1.RunDiagnosticsRequest, v1.RunDiagnosticsResponse](
+			httpClient,
+			baseURL+DiagnosticsServiceRunDiagnosticsProcedure,
+			connect.WithSchema(diagnosticsServiceMethods.ByName("RunDiagnostics")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -79,13 +79,8 @@ func NewDiagnosticsServiceClient(httpClient connect.HTTPClient, baseURL string, 
 
 // diagnosticsServiceClient implements DiagnosticsServiceClient.
 type diagnosticsServiceClient struct {
-	runDiagnostics     *connect.Client[v1.RunDiagnosticsRequest, v1.RunDiagnosticsResponse]
 	getDiagnosticsData *connect.Client[v1.GetDiagnosticsDataRequest, v1.GetDiagnosticsDataResponse]
-}
-
-// RunDiagnostics calls cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics.
-func (c *diagnosticsServiceClient) RunDiagnostics(ctx context.Context, req *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error) {
-	return c.runDiagnostics.CallUnary(ctx, req)
+	runDiagnostics     *connect.Client[v1.RunDiagnosticsRequest, v1.RunDiagnosticsResponse]
 }
 
 // GetDiagnosticsData calls
@@ -94,13 +89,18 @@ func (c *diagnosticsServiceClient) GetDiagnosticsData(ctx context.Context, req *
 	return c.getDiagnosticsData.CallUnary(ctx, req)
 }
 
+// RunDiagnostics calls cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics.
+func (c *diagnosticsServiceClient) RunDiagnostics(ctx context.Context, req *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error) {
+	return c.runDiagnostics.CallUnary(ctx, req)
+}
+
 // DiagnosticsServiceHandler is an implementation of the
 // cloudstack.management.diagnostics.v1.DiagnosticsService service.
 type DiagnosticsServiceHandler interface {
-	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	RunDiagnostics(context.Context, *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error)
 	// GetDiagnosticsData Get diagnostics and files from system VMs
 	GetDiagnosticsData(context.Context, *connect.Request[v1.GetDiagnosticsDataRequest]) (*connect.Response[v1.GetDiagnosticsDataResponse], error)
+	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
+	RunDiagnostics(context.Context, *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error)
 }
 
 // NewDiagnosticsServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -110,24 +110,24 @@ type DiagnosticsServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewDiagnosticsServiceHandler(svc DiagnosticsServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	diagnosticsServiceMethods := v1.File_cloudstack_management_diagnostics_v1_diagnostics_gen_proto.Services().ByName("DiagnosticsService").Methods()
-	diagnosticsServiceRunDiagnosticsHandler := connect.NewUnaryHandler(
-		DiagnosticsServiceRunDiagnosticsProcedure,
-		svc.RunDiagnostics,
-		connect.WithSchema(diagnosticsServiceMethods.ByName("RunDiagnostics")),
-		connect.WithHandlerOptions(opts...),
-	)
 	diagnosticsServiceGetDiagnosticsDataHandler := connect.NewUnaryHandler(
 		DiagnosticsServiceGetDiagnosticsDataProcedure,
 		svc.GetDiagnosticsData,
 		connect.WithSchema(diagnosticsServiceMethods.ByName("GetDiagnosticsData")),
 		connect.WithHandlerOptions(opts...),
 	)
+	diagnosticsServiceRunDiagnosticsHandler := connect.NewUnaryHandler(
+		DiagnosticsServiceRunDiagnosticsProcedure,
+		svc.RunDiagnostics,
+		connect.WithSchema(diagnosticsServiceMethods.ByName("RunDiagnostics")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.diagnostics.v1.DiagnosticsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case DiagnosticsServiceRunDiagnosticsProcedure:
-			diagnosticsServiceRunDiagnosticsHandler.ServeHTTP(w, r)
 		case DiagnosticsServiceGetDiagnosticsDataProcedure:
 			diagnosticsServiceGetDiagnosticsDataHandler.ServeHTTP(w, r)
+		case DiagnosticsServiceRunDiagnosticsProcedure:
+			diagnosticsServiceRunDiagnosticsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -137,10 +137,10 @@ func NewDiagnosticsServiceHandler(svc DiagnosticsServiceHandler, opts ...connect
 // UnimplementedDiagnosticsServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedDiagnosticsServiceHandler struct{}
 
-func (UnimplementedDiagnosticsServiceHandler) RunDiagnostics(context.Context, *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics is not implemented"))
-}
-
 func (UnimplementedDiagnosticsServiceHandler) GetDiagnosticsData(context.Context, *connect.Request[v1.GetDiagnosticsDataRequest]) (*connect.Response[v1.GetDiagnosticsDataResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.diagnostics.v1.DiagnosticsService.GetDiagnosticsData is not implemented"))
+}
+
+func (UnimplementedDiagnosticsServiceHandler) RunDiagnostics(context.Context, *connect.Request[v1.RunDiagnosticsRequest]) (*connect.Response[v1.RunDiagnosticsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics is not implemented"))
 }

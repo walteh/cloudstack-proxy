@@ -24,34 +24,38 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateObjectStoragePoolRequest represents the parameters for updates object storage pool
-type UpdateObjectStoragePoolRequest struct {
+// MigrateResourcesToAnotherSecondaryStorageRequest represents the parameters for migrates resources from one secondary storage to destination image store
+type MigrateResourcesToAnotherSecondaryStorageRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Object Store ID
+	// id of the image store from where the data is to be migrated
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name for the object store
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// the url for the object store
-	Url *string `protobuf:"bytes,3,opt,name=url" json:"url,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// id of the destination secondary storage pool to which the resources are to be migrated
+	DestStoreId *int64 `protobuf:"varint,2,opt,name=dest_store_id,json=destStoreId" json:"dest_store_id,omitempty"`
+	// id(s) of the templates to be migrated
+	TemplateIdList []string `protobuf:"bytes,3,rep,name=template_id_list,json=templateIdList" json:"template_id_list,omitempty"`
+	// id(s) of the snapshots to be migrated
+	SnapshotIdList []string `protobuf:"bytes,4,rep,name=snapshot_id_list,json=snapshotIdList" json:"snapshot_id_list,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateObjectStoragePoolRequest) Reset() {
-	*x = UpdateObjectStoragePoolRequest{}
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) Reset() {
+	*x = MigrateResourcesToAnotherSecondaryStorageRequest{}
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateObjectStoragePoolRequest) String() string {
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateObjectStoragePoolRequest) ProtoMessage() {}
+func (*MigrateResourcesToAnotherSecondaryStorageRequest) ProtoMessage() {}
 
-func (x *UpdateObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -63,41 +67,62 @@ func (x *UpdateObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateObjectStoragePoolRequest.ProtoReflect.Descriptor instead.
-func (*UpdateObjectStoragePoolRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use MigrateResourcesToAnotherSecondaryStorageRequest.ProtoReflect.Descriptor instead.
+func (*MigrateResourcesToAnotherSecondaryStorageRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UpdateObjectStoragePoolRequest) GetId() int64 {
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateObjectStoragePoolRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetDestStoreId() int64 {
+	if x != nil && x.DestStoreId != nil {
+		return *x.DestStoreId
+	}
+	return 0
+}
+
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetTemplateIdList() []string {
+	if x != nil {
+		return x.TemplateIdList
+	}
+	return nil
+}
+
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetSnapshotIdList() []string {
+	if x != nil {
+		return x.SnapshotIdList
+	}
+	return nil
+}
+
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateObjectStoragePoolRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *UpdateObjectStoragePoolRequest) GetResponseType() string {
+func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateObjectStoragePoolResponse represents the response from updates object storage pool
-type UpdateObjectStoragePoolResponse struct {
+// MigrateResourcesToAnotherSecondaryStorageResponse represents the response from migrates resources from one secondary storage to destination image store
+type MigrateResourcesToAnotherSecondaryStorageResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -105,20 +130,20 @@ type UpdateObjectStoragePoolResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateObjectStoragePoolResponse) Reset() {
-	*x = UpdateObjectStoragePoolResponse{}
+func (x *MigrateResourcesToAnotherSecondaryStorageResponse) Reset() {
+	*x = MigrateResourcesToAnotherSecondaryStorageResponse{}
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateObjectStoragePoolResponse) String() string {
+func (x *MigrateResourcesToAnotherSecondaryStorageResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateObjectStoragePoolResponse) ProtoMessage() {}
+func (*MigrateResourcesToAnotherSecondaryStorageResponse) ProtoMessage() {}
 
-func (x *UpdateObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
+func (x *MigrateResourcesToAnotherSecondaryStorageResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -130,42 +155,44 @@ func (x *UpdateObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateObjectStoragePoolResponse.ProtoReflect.Descriptor instead.
-func (*UpdateObjectStoragePoolResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MigrateResourcesToAnotherSecondaryStorageResponse.ProtoReflect.Descriptor instead.
+func (*MigrateResourcesToAnotherSecondaryStorageResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateObjectStoragePoolResponse) GetResult() *Result {
+func (x *MigrateResourcesToAnotherSecondaryStorageResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// UpdateStorageCapabilitiesRequest represents the parameters for syncs capabilities of storage pools
-type UpdateStorageCapabilitiesRequest struct {
+// DeletePoolRequest represents the parameters for deletes a storage pool.
+type DeletePoolRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Storage pool id
-	PoolId *int64 `protobuf:"varint,1,opt,name=pool_id,json=poolId" json:"pool_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Force destroy storage pool (force expunge volumes in Destroyed state as a part of pool removal)
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateStorageCapabilitiesRequest) Reset() {
-	*x = UpdateStorageCapabilitiesRequest{}
+func (x *DeletePoolRequest) Reset() {
+	*x = DeletePoolRequest{}
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateStorageCapabilitiesRequest) String() string {
+func (x *DeletePoolRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateStorageCapabilitiesRequest) ProtoMessage() {}
+func (*DeletePoolRequest) ProtoMessage() {}
 
-func (x *UpdateStorageCapabilitiesRequest) ProtoReflect() protoreflect.Message {
+func (x *DeletePoolRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -177,27 +204,150 @@ func (x *UpdateStorageCapabilitiesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateStorageCapabilitiesRequest.ProtoReflect.Descriptor instead.
-func (*UpdateStorageCapabilitiesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeletePoolRequest.ProtoReflect.Descriptor instead.
+func (*DeletePoolRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateStorageCapabilitiesRequest) GetPoolId() int64 {
+func (x *DeletePoolRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeletePoolRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DeletePoolRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeletePoolResponse represents the response from deletes a storage pool.
+type DeletePoolResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePoolResponse) Reset() {
+	*x = DeletePoolResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePoolResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePoolResponse) ProtoMessage() {}
+
+func (x *DeletePoolResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePoolResponse.ProtoReflect.Descriptor instead.
+func (*DeletePoolResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeletePoolResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// SyncStoragePoolRequest represents the parameters for sync storage pool with management server (currently supported for datastore cluster in vmware and syncs the datastores in it)
+type SyncStoragePoolRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Storage pool id
+	PoolId *int64 `protobuf:"varint,1,opt,name=pool_id,json=poolId" json:"pool_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SyncStoragePoolRequest) Reset() {
+	*x = SyncStoragePoolRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SyncStoragePoolRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SyncStoragePoolRequest) ProtoMessage() {}
+
+func (x *SyncStoragePoolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SyncStoragePoolRequest.ProtoReflect.Descriptor instead.
+func (*SyncStoragePoolRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SyncStoragePoolRequest) GetPoolId() int64 {
 	if x != nil && x.PoolId != nil {
 		return *x.PoolId
 	}
 	return 0
 }
 
-func (x *UpdateStorageCapabilitiesRequest) GetResponseType() string {
+func (x *SyncStoragePoolRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *SyncStoragePoolRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *SyncStoragePoolRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateStorageCapabilitiesResponse represents the response from syncs capabilities of storage pools
-type UpdateStorageCapabilitiesResponse struct {
+// SyncStoragePoolResponse represents the response from sync storage pool with management server (currently supported for datastore cluster in vmware and syncs the datastores in it)
+type SyncStoragePoolResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -205,21 +355,21 @@ type UpdateStorageCapabilitiesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateStorageCapabilitiesResponse) Reset() {
-	*x = UpdateStorageCapabilitiesResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[3]
+func (x *SyncStoragePoolResponse) Reset() {
+	*x = SyncStoragePoolResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateStorageCapabilitiesResponse) String() string {
+func (x *SyncStoragePoolResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateStorageCapabilitiesResponse) ProtoMessage() {}
+func (*SyncStoragePoolResponse) ProtoMessage() {}
 
-func (x *UpdateStorageCapabilitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[3]
+func (x *SyncStoragePoolResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -230,43 +380,59 @@ func (x *UpdateStorageCapabilitiesResponse) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateStorageCapabilitiesResponse.ProtoReflect.Descriptor instead.
-func (*UpdateStorageCapabilitiesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{3}
+// Deprecated: Use SyncStoragePoolResponse.ProtoReflect.Descriptor instead.
+func (*SyncStoragePoolResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateStorageCapabilitiesResponse) GetResult() *Result {
+func (x *SyncStoragePoolResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// DeleteObjectStoragePoolRequest represents the parameters for deletes an object storage pool
-type DeleteObjectStoragePoolRequest struct {
+// UpdateStoragePoolRequest represents the parameters for updates a storage pool.
+type UpdateStoragePoolRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Object Storage ID.
+	// the Id of the storage pool
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Change the name of the storage pool
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// comma-separated list of tags for the storage pool
+	Tags []string `protobuf:"bytes,3,rep,name=tags" json:"tags,omitempty"`
+	// IOPS CloudStack can provision from this storage pool
+	CapacityIops *int64 `protobuf:"varint,4,opt,name=capacity_iops,json=capacityIops" json:"capacity_iops,omitempty"`
+	// bytes CloudStack can provision from this storage pool
+	CapacityBytes *int64 `protobuf:"varint,5,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
+	// false to disable the pool for allocation of new volumes, true to enable it back.
+	Enabled *bool `protobuf:"varint,6,opt,name=enabled" json:"enabled,omitempty"`
+	// the details for the storage pool
+	Details map[string]string `protobuf:"bytes,7,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// the URL of the storage pool
+	Url *string `protobuf:"bytes,8,opt,name=url" json:"url,omitempty"`
+	// Whether the informed tag is a JS interpretable rule or not.
+	IsTagARule *bool `protobuf:"varint,9,opt,name=is_tag_a_rule,json=isTagARule" json:"is_tag_a_rule,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteObjectStoragePoolRequest) Reset() {
-	*x = DeleteObjectStoragePoolRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[4]
+func (x *UpdateStoragePoolRequest) Reset() {
+	*x = UpdateStoragePoolRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteObjectStoragePoolRequest) String() string {
+func (x *UpdateStoragePoolRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteObjectStoragePoolRequest) ProtoMessage() {}
+func (*UpdateStoragePoolRequest) ProtoMessage() {}
 
-func (x *DeleteObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[4]
+func (x *UpdateStoragePoolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,27 +443,83 @@ func (x *DeleteObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteObjectStoragePoolRequest.ProtoReflect.Descriptor instead.
-func (*DeleteObjectStoragePoolRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use UpdateStoragePoolRequest.ProtoReflect.Descriptor instead.
+func (*UpdateStoragePoolRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeleteObjectStoragePoolRequest) GetId() int64 {
+func (x *UpdateStoragePoolRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteObjectStoragePoolRequest) GetResponseType() string {
+func (x *UpdateStoragePoolRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateStoragePoolRequest) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *UpdateStoragePoolRequest) GetCapacityIops() int64 {
+	if x != nil && x.CapacityIops != nil {
+		return *x.CapacityIops
+	}
+	return 0
+}
+
+func (x *UpdateStoragePoolRequest) GetCapacityBytes() int64 {
+	if x != nil && x.CapacityBytes != nil {
+		return *x.CapacityBytes
+	}
+	return 0
+}
+
+func (x *UpdateStoragePoolRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *UpdateStoragePoolRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateStoragePoolRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *UpdateStoragePoolRequest) GetIsTagARule() bool {
+	if x != nil && x.IsTagARule != nil {
+		return *x.IsTagARule
+	}
+	return false
+}
+
+func (x *UpdateStoragePoolRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteObjectStoragePoolResponse represents the response from deletes an object storage pool
-type DeleteObjectStoragePoolResponse struct {
+// UpdateStoragePoolResponse represents the response from updates a storage pool.
+type UpdateStoragePoolResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -305,21 +527,21 @@ type DeleteObjectStoragePoolResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteObjectStoragePoolResponse) Reset() {
-	*x = DeleteObjectStoragePoolResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[5]
+func (x *UpdateStoragePoolResponse) Reset() {
+	*x = UpdateStoragePoolResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteObjectStoragePoolResponse) String() string {
+func (x *UpdateStoragePoolResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteObjectStoragePoolResponse) ProtoMessage() {}
+func (*UpdateStoragePoolResponse) ProtoMessage() {}
 
-func (x *DeleteObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[5]
+func (x *UpdateStoragePoolResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -330,12 +552,693 @@ func (x *DeleteObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteObjectStoragePoolResponse.ProtoReflect.Descriptor instead.
-func (*DeleteObjectStoragePoolResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use UpdateStoragePoolResponse.ProtoReflect.Descriptor instead.
+func (*UpdateStoragePoolResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DeleteObjectStoragePoolResponse) GetResult() *Result {
+func (x *UpdateStoragePoolResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListSecondaryStagingStoresRequest represents the parameters for lists secondary staging stores.
+type ListSecondaryStagingStoresRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the staging store
+	StoreName *string `protobuf:"bytes,1,opt,name=store_name,json=storeName" json:"store_name,omitempty"`
+	// the staging store protocol
+	Protocol *string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
+	// the staging store provider
+	Provider *string `protobuf:"bytes,3,opt,name=provider" json:"provider,omitempty"`
+	// the Zone ID for the staging store
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the ID of the staging store
+	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,6,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,7,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,8,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSecondaryStagingStoresRequest) Reset() {
+	*x = ListSecondaryStagingStoresRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSecondaryStagingStoresRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSecondaryStagingStoresRequest) ProtoMessage() {}
+
+func (x *ListSecondaryStagingStoresRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSecondaryStagingStoresRequest.ProtoReflect.Descriptor instead.
+func (*ListSecondaryStagingStoresRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetStoreName() string {
+	if x != nil && x.StoreName != nil {
+		return *x.StoreName
+	}
+	return ""
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetProvider() string {
+	if x != nil && x.Provider != nil {
+		return *x.Provider
+	}
+	return ""
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListSecondaryStagingStoresRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListSecondaryStagingStoresResponse represents the response from lists secondary staging stores.
+type ListSecondaryStagingStoresResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of ImageStores
+	Items []*ImageStore `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of ImageStores
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSecondaryStagingStoresResponse) Reset() {
+	*x = ListSecondaryStagingStoresResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSecondaryStagingStoresResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSecondaryStagingStoresResponse) ProtoMessage() {}
+
+func (x *ListSecondaryStagingStoresResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSecondaryStagingStoresResponse.ProtoReflect.Descriptor instead.
+func (*ListSecondaryStagingStoresResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListSecondaryStagingStoresResponse) GetItems() []*ImageStore {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListSecondaryStagingStoresResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// MigrateSecondaryStorageDataRequest represents the parameters for migrates data objects from one secondary storage to destination image store(s)
+type MigrateSecondaryStorageDataRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the image store from where the data is to be migrated
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// id(s) of the destination secondary storage pool(s) to which the templates are to be migrated
+	MigrateTo []string `protobuf:"bytes,2,rep,name=migrate_to,json=migrateTo" json:"migrate_to,omitempty"`
+	// Balance: if you want data to be distributed evenly among the destination stores, Complete: If you want to migrate the entire data from source image store to the destination store(s). Default: Complete
+	MigrationType *string `protobuf:"bytes,3,opt,name=migration_type,json=migrationType" json:"migration_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateSecondaryStorageDataRequest) Reset() {
+	*x = MigrateSecondaryStorageDataRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateSecondaryStorageDataRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateSecondaryStorageDataRequest) ProtoMessage() {}
+
+func (x *MigrateSecondaryStorageDataRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateSecondaryStorageDataRequest.ProtoReflect.Descriptor instead.
+func (*MigrateSecondaryStorageDataRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *MigrateSecondaryStorageDataRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *MigrateSecondaryStorageDataRequest) GetMigrateTo() []string {
+	if x != nil {
+		return x.MigrateTo
+	}
+	return nil
+}
+
+func (x *MigrateSecondaryStorageDataRequest) GetMigrationType() string {
+	if x != nil && x.MigrationType != nil {
+		return *x.MigrationType
+	}
+	return ""
+}
+
+func (x *MigrateSecondaryStorageDataRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MigrateSecondaryStorageDataRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *MigrateSecondaryStorageDataRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MigrateSecondaryStorageDataResponse represents the response from migrates data objects from one secondary storage to destination image store(s)
+type MigrateSecondaryStorageDataResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateSecondaryStorageDataResponse) Reset() {
+	*x = MigrateSecondaryStorageDataResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateSecondaryStorageDataResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateSecondaryStorageDataResponse) ProtoMessage() {}
+
+func (x *MigrateSecondaryStorageDataResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateSecondaryStorageDataResponse.ProtoReflect.Descriptor instead.
+func (*MigrateSecondaryStorageDataResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *MigrateSecondaryStorageDataResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateCloudToUseObjectStoreRequest represents the parameters for migrate current nfs secondary storages to use object store.
+type UpdateCloudToUseObjectStoreRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name for the image store
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// the URL for the image store
+	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
+	// the image store provider name
+	ProviderName *string `protobuf:"bytes,3,opt,name=provider_name,json=providerName" json:"provider_name,omitempty"`
+	// the details for the image store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
+	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) Reset() {
+	*x = UpdateCloudToUseObjectStoreRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCloudToUseObjectStoreRequest) ProtoMessage() {}
+
+func (x *UpdateCloudToUseObjectStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCloudToUseObjectStoreRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCloudToUseObjectStoreRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) GetProviderName() string {
+	if x != nil && x.ProviderName != nil {
+		return *x.ProviderName
+	}
+	return ""
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateCloudToUseObjectStoreRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateCloudToUseObjectStoreResponse represents the response from migrate current nfs secondary storages to use object store.
+type UpdateCloudToUseObjectStoreResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCloudToUseObjectStoreResponse) Reset() {
+	*x = UpdateCloudToUseObjectStoreResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCloudToUseObjectStoreResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCloudToUseObjectStoreResponse) ProtoMessage() {}
+
+func (x *UpdateCloudToUseObjectStoreResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCloudToUseObjectStoreResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCloudToUseObjectStoreResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *UpdateCloudToUseObjectStoreResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DownloadImageStoreObjectRequest represents the parameters for download object at a specified path on an image store.
+type DownloadImageStoreObjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the image store
+	StoreId *int64 `protobuf:"varint,1,opt,name=store_id,json=storeId" json:"store_id,omitempty"`
+	// path to download on image store
+	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DownloadImageStoreObjectRequest) Reset() {
+	*x = DownloadImageStoreObjectRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DownloadImageStoreObjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DownloadImageStoreObjectRequest) ProtoMessage() {}
+
+func (x *DownloadImageStoreObjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DownloadImageStoreObjectRequest.ProtoReflect.Descriptor instead.
+func (*DownloadImageStoreObjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *DownloadImageStoreObjectRequest) GetStoreId() int64 {
+	if x != nil && x.StoreId != nil {
+		return *x.StoreId
+	}
+	return 0
+}
+
+func (x *DownloadImageStoreObjectRequest) GetPath() string {
+	if x != nil && x.Path != nil {
+		return *x.Path
+	}
+	return ""
+}
+
+func (x *DownloadImageStoreObjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DownloadImageStoreObjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DownloadImageStoreObjectRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DownloadImageStoreObjectResponse represents the response from download object at a specified path on an image store.
+type DownloadImageStoreObjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DownloadImageStoreObjectResponse) Reset() {
+	*x = DownloadImageStoreObjectResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DownloadImageStoreObjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DownloadImageStoreObjectResponse) ProtoMessage() {}
+
+func (x *DownloadImageStoreObjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DownloadImageStoreObjectResponse.ProtoReflect.Descriptor instead.
+func (*DownloadImageStoreObjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *DownloadImageStoreObjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// FindStoragePoolsForMigrationRequest represents the parameters for lists storage pools available for migration of a volume.
+type FindStoragePoolsForMigrationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FindStoragePoolsForMigrationRequest) Reset() {
+	*x = FindStoragePoolsForMigrationRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FindStoragePoolsForMigrationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FindStoragePoolsForMigrationRequest) ProtoMessage() {}
+
+func (x *FindStoragePoolsForMigrationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FindStoragePoolsForMigrationRequest.ProtoReflect.Descriptor instead.
+func (*FindStoragePoolsForMigrationRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *FindStoragePoolsForMigrationRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *FindStoragePoolsForMigrationRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *FindStoragePoolsForMigrationRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *FindStoragePoolsForMigrationRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *FindStoragePoolsForMigrationRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// FindStoragePoolsForMigrationResponse represents the response from lists storage pools available for migration of a volume.
+type FindStoragePoolsForMigrationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FindStoragePoolsForMigrationResponse) Reset() {
+	*x = FindStoragePoolsForMigrationResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FindStoragePoolsForMigrationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FindStoragePoolsForMigrationResponse) ProtoMessage() {}
+
+func (x *FindStoragePoolsForMigrationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FindStoragePoolsForMigrationResponse.ProtoReflect.Descriptor instead.
+func (*FindStoragePoolsForMigrationResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *FindStoragePoolsForMigrationResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -362,7 +1265,7 @@ type AddImageStoreRequest struct {
 
 func (x *AddImageStoreRequest) Reset() {
 	*x = AddImageStoreRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -374,7 +1277,7 @@ func (x *AddImageStoreRequest) String() string {
 func (*AddImageStoreRequest) ProtoMessage() {}
 
 func (x *AddImageStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +1290,7 @@ func (x *AddImageStoreRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddImageStoreRequest.ProtoReflect.Descriptor instead.
 func (*AddImageStoreRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *AddImageStoreRequest) GetName() string {
@@ -443,7 +1346,7 @@ type AddImageStoreResponse struct {
 
 func (x *AddImageStoreResponse) Reset() {
 	*x = AddImageStoreResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -455,7 +1358,7 @@ func (x *AddImageStoreResponse) String() string {
 func (*AddImageStoreResponse) ProtoMessage() {}
 
 func (x *AddImageStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -468,7 +1371,7 @@ func (x *AddImageStoreResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddImageStoreResponse.ProtoReflect.Descriptor instead.
 func (*AddImageStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AddImageStoreResponse) GetResult() *Result {
@@ -478,37 +1381,33 @@ func (x *AddImageStoreResponse) GetResult() *Result {
 	return nil
 }
 
-// ChangeStoragePoolScopeRequest represents the parameters for changes the scope of a storage pool when the pool is in disabled state.this feature is officially tested and supported for hypervisors: kvm and vmware, protocols: nfs and ceph, and storage provider: defaultprimary. there might be extra steps involved to make this work for other hypervisors and storage options.
-type ChangeStoragePoolScopeRequest struct {
+// CancelPrimaryStorageMaintenanceRequest represents the parameters for cancels maintenance for primary storage
+type CancelPrimaryStorageMaintenanceRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Id of the storage pool
+	// the primary storage ID
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the scope of the storage: cluster or zone
-	Scope *string `protobuf:"bytes,2,opt,name=scope" json:"scope,omitempty"`
-	// the Id of the cluster to use if scope is being set to Cluster
-	ClusterId *int64 `protobuf:"varint,3,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeStoragePoolScopeRequest) Reset() {
-	*x = ChangeStoragePoolScopeRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[8]
+func (x *CancelPrimaryStorageMaintenanceRequest) Reset() {
+	*x = CancelPrimaryStorageMaintenanceRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeStoragePoolScopeRequest) String() string {
+func (x *CancelPrimaryStorageMaintenanceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeStoragePoolScopeRequest) ProtoMessage() {}
+func (*CancelPrimaryStorageMaintenanceRequest) ProtoMessage() {}
 
-func (x *ChangeStoragePoolScopeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[8]
+func (x *CancelPrimaryStorageMaintenanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -519,55 +1418,41 @@ func (x *ChangeStoragePoolScopeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeStoragePoolScopeRequest.ProtoReflect.Descriptor instead.
-func (*ChangeStoragePoolScopeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{8}
+// Deprecated: Use CancelPrimaryStorageMaintenanceRequest.ProtoReflect.Descriptor instead.
+func (*CancelPrimaryStorageMaintenanceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *ChangeStoragePoolScopeRequest) GetId() int64 {
+func (x *CancelPrimaryStorageMaintenanceRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ChangeStoragePoolScopeRequest) GetScope() string {
-	if x != nil && x.Scope != nil {
-		return *x.Scope
-	}
-	return ""
-}
-
-func (x *ChangeStoragePoolScopeRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *ChangeStoragePoolScopeRequest) GetStartEventId() int64 {
+func (x *CancelPrimaryStorageMaintenanceRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ChangeStoragePoolScopeRequest) GetInjectedJobId() string {
+func (x *CancelPrimaryStorageMaintenanceRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ChangeStoragePoolScopeRequest) GetResponseType() string {
+func (x *CancelPrimaryStorageMaintenanceRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ChangeStoragePoolScopeResponse represents the response from changes the scope of a storage pool when the pool is in disabled state.this feature is officially tested and supported for hypervisors: kvm and vmware, protocols: nfs and ceph, and storage provider: defaultprimary. there might be extra steps involved to make this work for other hypervisors and storage options.
-type ChangeStoragePoolScopeResponse struct {
+// CancelPrimaryStorageMaintenanceResponse represents the response from cancels maintenance for primary storage
+type CancelPrimaryStorageMaintenanceResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -575,21 +1460,21 @@ type ChangeStoragePoolScopeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeStoragePoolScopeResponse) Reset() {
-	*x = ChangeStoragePoolScopeResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[9]
+func (x *CancelPrimaryStorageMaintenanceResponse) Reset() {
+	*x = CancelPrimaryStorageMaintenanceResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeStoragePoolScopeResponse) String() string {
+func (x *CancelPrimaryStorageMaintenanceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeStoragePoolScopeResponse) ProtoMessage() {}
+func (*CancelPrimaryStorageMaintenanceResponse) ProtoMessage() {}
 
-func (x *ChangeStoragePoolScopeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[9]
+func (x *CancelPrimaryStorageMaintenanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -600,43 +1485,49 @@ func (x *ChangeStoragePoolScopeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeStoragePoolScopeResponse.ProtoReflect.Descriptor instead.
-func (*ChangeStoragePoolScopeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{9}
+// Deprecated: Use CancelPrimaryStorageMaintenanceResponse.ProtoReflect.Descriptor instead.
+func (*CancelPrimaryStorageMaintenanceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *ChangeStoragePoolScopeResponse) GetResult() *Result {
+func (x *CancelPrimaryStorageMaintenanceResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// DeleteSecondaryStagingStoreRequest represents the parameters for deletes a secondary staging store .
-type DeleteSecondaryStagingStoreRequest struct {
+// ListImageStoreObjectsRequest represents the parameters for lists objects at specified path on an image store.
+type ListImageStoreObjectsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the staging store ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// id of the image store
+	StoreId *int64 `protobuf:"varint,1,opt,name=store_id,json=storeId" json:"store_id,omitempty"`
+	// path to list on image store
+	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteSecondaryStagingStoreRequest) Reset() {
-	*x = DeleteSecondaryStagingStoreRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[10]
+func (x *ListImageStoreObjectsRequest) Reset() {
+	*x = ListImageStoreObjectsRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteSecondaryStagingStoreRequest) String() string {
+func (x *ListImageStoreObjectsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteSecondaryStagingStoreRequest) ProtoMessage() {}
+func (*ListImageStoreObjectsRequest) ProtoMessage() {}
 
-func (x *DeleteSecondaryStagingStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[10]
+func (x *ListImageStoreObjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -647,167 +1538,79 @@ func (x *DeleteSecondaryStagingStoreRequest) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteSecondaryStagingStoreRequest.ProtoReflect.Descriptor instead.
-func (*DeleteSecondaryStagingStoreRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{10}
+// Deprecated: Use ListImageStoreObjectsRequest.ProtoReflect.Descriptor instead.
+func (*ListImageStoreObjectsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *DeleteSecondaryStagingStoreRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *ListImageStoreObjectsRequest) GetStoreId() int64 {
+	if x != nil && x.StoreId != nil {
+		return *x.StoreId
 	}
 	return 0
 }
 
-func (x *DeleteSecondaryStagingStoreRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *ListImageStoreObjectsRequest) GetPath() string {
+	if x != nil && x.Path != nil {
+		return *x.Path
 	}
 	return ""
 }
 
-// DeleteSecondaryStagingStoreResponse represents the response from deletes a secondary staging store .
-type DeleteSecondaryStagingStoreResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteSecondaryStagingStoreResponse) Reset() {
-	*x = DeleteSecondaryStagingStoreResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteSecondaryStagingStoreResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteSecondaryStagingStoreResponse) ProtoMessage() {}
-
-func (x *DeleteSecondaryStagingStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteSecondaryStagingStoreResponse.ProtoReflect.Descriptor instead.
-func (*DeleteSecondaryStagingStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *DeleteSecondaryStagingStoreResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListStorageTagsRequest represents the parameters for lists storage tags
-type ListStorageTagsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListStorageTagsRequest) Reset() {
-	*x = ListStorageTagsRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListStorageTagsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListStorageTagsRequest) ProtoMessage() {}
-
-func (x *ListStorageTagsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListStorageTagsRequest.ProtoReflect.Descriptor instead.
-func (*ListStorageTagsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *ListStorageTagsRequest) GetKeyword() string {
+func (x *ListImageStoreObjectsRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListStorageTagsRequest) GetPage() int32 {
+func (x *ListImageStoreObjectsRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListStorageTagsRequest) GetPageSize() int32 {
+func (x *ListImageStoreObjectsRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListStorageTagsRequest) GetResponseType() string {
+func (x *ListImageStoreObjectsRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListStorageTagsResponse represents the response from lists storage tags
-type ListStorageTagsResponse struct {
+// ListImageStoreObjectsResponse represents the response from lists objects at specified path on an image store.
+type ListImageStoreObjectsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of StorageTags
-	Items []*StorageTag `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of StorageTags
+	// The list of DataStoreObjects
+	Items []*DataStoreObject `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of DataStoreObjects
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListStorageTagsResponse) Reset() {
-	*x = ListStorageTagsResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[13]
+func (x *ListImageStoreObjectsResponse) Reset() {
+	*x = ListImageStoreObjectsResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListStorageTagsResponse) String() string {
+func (x *ListImageStoreObjectsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListStorageTagsResponse) ProtoMessage() {}
+func (*ListImageStoreObjectsResponse) ProtoMessage() {}
 
-func (x *ListStorageTagsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[13]
+func (x *ListImageStoreObjectsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -818,123 +1621,23 @@ func (x *ListStorageTagsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListStorageTagsResponse.ProtoReflect.Descriptor instead.
-func (*ListStorageTagsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{13}
+// Deprecated: Use ListImageStoreObjectsResponse.ProtoReflect.Descriptor instead.
+func (*ListImageStoreObjectsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{23}
 }
 
-func (x *ListStorageTagsResponse) GetItems() []*StorageTag {
+func (x *ListImageStoreObjectsResponse) GetItems() []*DataStoreObject {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListStorageTagsResponse) GetTotalCount() int32 {
+func (x *ListImageStoreObjectsResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// DeleteImageStoreRequest represents the parameters for deletes an image store or secondary storage.
-type DeleteImageStoreRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The image store ID or Secondary Storage ID.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteImageStoreRequest) Reset() {
-	*x = DeleteImageStoreRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteImageStoreRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteImageStoreRequest) ProtoMessage() {}
-
-func (x *DeleteImageStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteImageStoreRequest.ProtoReflect.Descriptor instead.
-func (*DeleteImageStoreRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *DeleteImageStoreRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteImageStoreRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteImageStoreResponse represents the response from deletes an image store or secondary storage.
-type DeleteImageStoreResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteImageStoreResponse) Reset() {
-	*x = DeleteImageStoreResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteImageStoreResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteImageStoreResponse) ProtoMessage() {}
-
-func (x *DeleteImageStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteImageStoreResponse.ProtoReflect.Descriptor instead.
-func (*DeleteImageStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *DeleteImageStoreResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListStorageProvidersRequest represents the parameters for lists storage providers.
@@ -953,7 +1656,7 @@ type ListStorageProvidersRequest struct {
 
 func (x *ListStorageProvidersRequest) Reset() {
 	*x = ListStorageProvidersRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -965,7 +1668,7 @@ func (x *ListStorageProvidersRequest) String() string {
 func (*ListStorageProvidersRequest) ProtoMessage() {}
 
 func (x *ListStorageProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -978,7 +1681,7 @@ func (x *ListStorageProvidersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStorageProvidersRequest.ProtoReflect.Descriptor instead.
 func (*ListStorageProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{16}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListStorageProvidersRequest) GetType() string {
@@ -1029,7 +1732,7 @@ type ListStorageProvidersResponse struct {
 
 func (x *ListStorageProvidersResponse) Reset() {
 	*x = ListStorageProvidersResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1041,7 +1744,7 @@ func (x *ListStorageProvidersResponse) String() string {
 func (*ListStorageProvidersResponse) ProtoMessage() {}
 
 func (x *ListStorageProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1054,7 +1757,7 @@ func (x *ListStorageProvidersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStorageProvidersResponse.ProtoReflect.Descriptor instead.
 func (*ListStorageProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{17}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListStorageProvidersResponse) GetItems() []*StorageProvider {
@@ -1069,650 +1772,6 @@ func (x *ListStorageProvidersResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// AddImageStoreS3CMDRequest represents the parameters for adds s3 image store
-type AddImageStoreS3CMDRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// S3 access key
-	AccessKey *string `protobuf:"bytes,1,opt,name=access_key,json=accessKey" json:"access_key,omitempty"`
-	// S3 secret key
-	SecretKey *string `protobuf:"bytes,2,opt,name=secret_key,json=secretKey" json:"secret_key,omitempty"`
-	// S3 endpoint
-	EndPoint *string `protobuf:"bytes,3,opt,name=end_point,json=endPoint" json:"end_point,omitempty"`
-	// Name of the storage bucket
-	BucketName *string `protobuf:"bytes,4,opt,name=bucket_name,json=bucketName" json:"bucket_name,omitempty"`
-	// Signer Algorithm to use, either S3SignerType or AWSS3V4SignerType
-	Signer *string `protobuf:"bytes,5,opt,name=signer" json:"signer,omitempty"`
-	// Use HTTPS instead of HTTP
-	HttpsFlag *bool `protobuf:"varint,6,opt,name=https_flag,json=httpsFlag" json:"https_flag,omitempty"`
-	// Connection timeout (milliseconds)
-	ConnectionTimeout *int32 `protobuf:"varint,7,opt,name=connection_timeout,json=connectionTimeout" json:"connection_timeout,omitempty"`
-	// Maximum number of times to retry on error
-	MaxErrorRetry *int32 `protobuf:"varint,8,opt,name=max_error_retry,json=maxErrorRetry" json:"max_error_retry,omitempty"`
-	// Socket timeout (milliseconds)
-	SocketTimeout *int32 `protobuf:"varint,9,opt,name=socket_timeout,json=socketTimeout" json:"socket_timeout,omitempty"`
-	// Connection TTL (milliseconds)
-	ConnectionTtl *int32 `protobuf:"varint,10,opt,name=connection_ttl,json=connectionTtl" json:"connection_ttl,omitempty"`
-	// Whether TCP keep-alive is used
-	UseTCPKeepAlive *bool `protobuf:"varint,11,opt,name=use_t_c_p_keep_alive,json=useTCPKeepAlive" json:"use_t_c_p_keep_alive,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddImageStoreS3CMDRequest) Reset() {
-	*x = AddImageStoreS3CMDRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddImageStoreS3CMDRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddImageStoreS3CMDRequest) ProtoMessage() {}
-
-func (x *AddImageStoreS3CMDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddImageStoreS3CMDRequest.ProtoReflect.Descriptor instead.
-func (*AddImageStoreS3CMDRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *AddImageStoreS3CMDRequest) GetAccessKey() string {
-	if x != nil && x.AccessKey != nil {
-		return *x.AccessKey
-	}
-	return ""
-}
-
-func (x *AddImageStoreS3CMDRequest) GetSecretKey() string {
-	if x != nil && x.SecretKey != nil {
-		return *x.SecretKey
-	}
-	return ""
-}
-
-func (x *AddImageStoreS3CMDRequest) GetEndPoint() string {
-	if x != nil && x.EndPoint != nil {
-		return *x.EndPoint
-	}
-	return ""
-}
-
-func (x *AddImageStoreS3CMDRequest) GetBucketName() string {
-	if x != nil && x.BucketName != nil {
-		return *x.BucketName
-	}
-	return ""
-}
-
-func (x *AddImageStoreS3CMDRequest) GetSigner() string {
-	if x != nil && x.Signer != nil {
-		return *x.Signer
-	}
-	return ""
-}
-
-func (x *AddImageStoreS3CMDRequest) GetHttpsFlag() bool {
-	if x != nil && x.HttpsFlag != nil {
-		return *x.HttpsFlag
-	}
-	return false
-}
-
-func (x *AddImageStoreS3CMDRequest) GetConnectionTimeout() int32 {
-	if x != nil && x.ConnectionTimeout != nil {
-		return *x.ConnectionTimeout
-	}
-	return 0
-}
-
-func (x *AddImageStoreS3CMDRequest) GetMaxErrorRetry() int32 {
-	if x != nil && x.MaxErrorRetry != nil {
-		return *x.MaxErrorRetry
-	}
-	return 0
-}
-
-func (x *AddImageStoreS3CMDRequest) GetSocketTimeout() int32 {
-	if x != nil && x.SocketTimeout != nil {
-		return *x.SocketTimeout
-	}
-	return 0
-}
-
-func (x *AddImageStoreS3CMDRequest) GetConnectionTtl() int32 {
-	if x != nil && x.ConnectionTtl != nil {
-		return *x.ConnectionTtl
-	}
-	return 0
-}
-
-func (x *AddImageStoreS3CMDRequest) GetUseTCPKeepAlive() bool {
-	if x != nil && x.UseTCPKeepAlive != nil {
-		return *x.UseTCPKeepAlive
-	}
-	return false
-}
-
-func (x *AddImageStoreS3CMDRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddImageStoreS3CMDResponse represents the response from adds s3 image store
-type AddImageStoreS3CMDResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddImageStoreS3CMDResponse) Reset() {
-	*x = AddImageStoreS3CMDResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddImageStoreS3CMDResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddImageStoreS3CMDResponse) ProtoMessage() {}
-
-func (x *AddImageStoreS3CMDResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddImageStoreS3CMDResponse.ProtoReflect.Descriptor instead.
-func (*AddImageStoreS3CMDResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *AddImageStoreS3CMDResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateImageStoreRequest represents the parameters for updates image store read-only status
-type UpdateImageStoreRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image Store UUID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The new name for the Image Store.
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// If set to true, it designates the corresponding image store to read-only, hence not considering them during storage migration
-	Readonly *bool `protobuf:"varint,3,opt,name=readonly" json:"readonly,omitempty"`
-	// The number of bytes CloudStack can use on this image storage.
-	// NOTE: this will be overwritten by the StatsCollector as soon as there is a SSVM to query the storage.
-	CapacityBytes *int64 `protobuf:"varint,4,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateImageStoreRequest) Reset() {
-	*x = UpdateImageStoreRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateImageStoreRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateImageStoreRequest) ProtoMessage() {}
-
-func (x *UpdateImageStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateImageStoreRequest.ProtoReflect.Descriptor instead.
-func (*UpdateImageStoreRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *UpdateImageStoreRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateImageStoreRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateImageStoreRequest) GetReadonly() bool {
-	if x != nil && x.Readonly != nil {
-		return *x.Readonly
-	}
-	return false
-}
-
-func (x *UpdateImageStoreRequest) GetCapacityBytes() int64 {
-	if x != nil && x.CapacityBytes != nil {
-		return *x.CapacityBytes
-	}
-	return 0
-}
-
-func (x *UpdateImageStoreRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateImageStoreResponse represents the response from updates image store read-only status
-type UpdateImageStoreResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateImageStoreResponse) Reset() {
-	*x = UpdateImageStoreResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateImageStoreResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateImageStoreResponse) ProtoMessage() {}
-
-func (x *UpdateImageStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateImageStoreResponse.ProtoReflect.Descriptor instead.
-func (*UpdateImageStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *UpdateImageStoreResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeletePoolRequest represents the parameters for deletes a storage pool.
-type DeletePoolRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Storage pool id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force destroy storage pool (force expunge volumes in Destroyed state as a part of pool removal)
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePoolRequest) Reset() {
-	*x = DeletePoolRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePoolRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePoolRequest) ProtoMessage() {}
-
-func (x *DeletePoolRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePoolRequest.ProtoReflect.Descriptor instead.
-func (*DeletePoolRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *DeletePoolRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeletePoolRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DeletePoolRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeletePoolResponse represents the response from deletes a storage pool.
-type DeletePoolResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePoolResponse) Reset() {
-	*x = DeletePoolResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePoolResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePoolResponse) ProtoMessage() {}
-
-func (x *DeletePoolResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePoolResponse.ProtoReflect.Descriptor instead.
-func (*DeletePoolResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *DeletePoolResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateStoragePoolRequest represents the parameters for creates a storage pool.
-type CreateStoragePoolRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the cluster ID for the storage pool
-	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// the details for the storage pool
-	Details map[string]string `protobuf:"bytes,2,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// the name for the storage pool
-	StoragePoolName *string `protobuf:"bytes,3,opt,name=storage_pool_name,json=storagePoolName" json:"storage_pool_name,omitempty"`
-	// the Pod ID for the storage pool
-	PodId *int64 `protobuf:"varint,4,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// the tags for the storage pool
-	Tags *string `protobuf:"bytes,5,opt,name=tags" json:"tags,omitempty"`
-	// the URL of the storage pool
-	Url *string `protobuf:"bytes,6,opt,name=url" json:"url,omitempty"`
-	// the Zone ID for the storage pool
-	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the storage provider name
-	StorageProviderName *string `protobuf:"bytes,8,opt,name=storage_provider_name,json=storageProviderName" json:"storage_provider_name,omitempty"`
-	// the scope of the storage: cluster or zone
-	Scope *string `protobuf:"bytes,9,opt,name=scope" json:"scope,omitempty"`
-	// whether the storage should be managed by CloudStack
-	Managed *bool `protobuf:"varint,10,opt,name=managed" json:"managed,omitempty"`
-	// IOPS CloudStack can provision from this storage pool
-	CapacityIops *int64 `protobuf:"varint,11,opt,name=capacity_iops,json=capacityIops" json:"capacity_iops,omitempty"`
-	// bytes CloudStack can provision from this storage pool
-	CapacityBytes *int64 `protobuf:"varint,12,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
-	// hypervisor type of the hosts in zone that will be attached to this storage pool. KVM, VMware supported as of now.
-	Hypervisor *string `protobuf:"bytes,13,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// Whether the informed tag is a JS interpretable rule or not.
-	IsTagARule *bool `protobuf:"varint,14,opt,name=is_tag_a_rule,json=isTagARule" json:"is_tag_a_rule,omitempty"`
-	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateStoragePoolRequest) Reset() {
-	*x = CreateStoragePoolRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateStoragePoolRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateStoragePoolRequest) ProtoMessage() {}
-
-func (x *CreateStoragePoolRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateStoragePoolRequest.ProtoReflect.Descriptor instead.
-func (*CreateStoragePoolRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *CreateStoragePoolRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *CreateStoragePoolRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *CreateStoragePoolRequest) GetStoragePoolName() string {
-	if x != nil && x.StoragePoolName != nil {
-		return *x.StoragePoolName
-	}
-	return ""
-}
-
-func (x *CreateStoragePoolRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *CreateStoragePoolRequest) GetTags() string {
-	if x != nil && x.Tags != nil {
-		return *x.Tags
-	}
-	return ""
-}
-
-func (x *CreateStoragePoolRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *CreateStoragePoolRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *CreateStoragePoolRequest) GetStorageProviderName() string {
-	if x != nil && x.StorageProviderName != nil {
-		return *x.StorageProviderName
-	}
-	return ""
-}
-
-func (x *CreateStoragePoolRequest) GetScope() string {
-	if x != nil && x.Scope != nil {
-		return *x.Scope
-	}
-	return ""
-}
-
-func (x *CreateStoragePoolRequest) GetManaged() bool {
-	if x != nil && x.Managed != nil {
-		return *x.Managed
-	}
-	return false
-}
-
-func (x *CreateStoragePoolRequest) GetCapacityIops() int64 {
-	if x != nil && x.CapacityIops != nil {
-		return *x.CapacityIops
-	}
-	return 0
-}
-
-func (x *CreateStoragePoolRequest) GetCapacityBytes() int64 {
-	if x != nil && x.CapacityBytes != nil {
-		return *x.CapacityBytes
-	}
-	return 0
-}
-
-func (x *CreateStoragePoolRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *CreateStoragePoolRequest) GetIsTagARule() bool {
-	if x != nil && x.IsTagARule != nil {
-		return *x.IsTagARule
-	}
-	return false
-}
-
-func (x *CreateStoragePoolRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateStoragePoolResponse represents the response from creates a storage pool.
-type CreateStoragePoolResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateStoragePoolResponse) Reset() {
-	*x = CreateStoragePoolResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateStoragePoolResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateStoragePoolResponse) ProtoMessage() {}
-
-func (x *CreateStoragePoolResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateStoragePoolResponse.ProtoReflect.Descriptor instead.
-func (*CreateStoragePoolResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *CreateStoragePoolResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListImageStoresRequest represents the parameters for lists image stores.
@@ -1894,42 +1953,50 @@ func (x *ListImageStoresResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ListSecondaryStagingStoresRequest represents the parameters for lists secondary staging stores.
-type ListSecondaryStagingStoresRequest struct {
+// AddImageStoreS3CMDRequest represents the parameters for adds s3 image store
+type AddImageStoreS3CMDRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the staging store
-	StoreName *string `protobuf:"bytes,1,opt,name=store_name,json=storeName" json:"store_name,omitempty"`
-	// the staging store protocol
-	Protocol *string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
-	// the staging store provider
-	Provider *string `protobuf:"bytes,3,opt,name=provider" json:"provider,omitempty"`
-	// the Zone ID for the staging store
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the ID of the staging store
-	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,6,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,7,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,8,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// S3 access key
+	AccessKey *string `protobuf:"bytes,1,opt,name=access_key,json=accessKey" json:"access_key,omitempty"`
+	// S3 secret key
+	SecretKey *string `protobuf:"bytes,2,opt,name=secret_key,json=secretKey" json:"secret_key,omitempty"`
+	// S3 endpoint
+	EndPoint *string `protobuf:"bytes,3,opt,name=end_point,json=endPoint" json:"end_point,omitempty"`
+	// Name of the storage bucket
+	BucketName *string `protobuf:"bytes,4,opt,name=bucket_name,json=bucketName" json:"bucket_name,omitempty"`
+	// Signer Algorithm to use, either S3SignerType or AWSS3V4SignerType
+	Signer *string `protobuf:"bytes,5,opt,name=signer" json:"signer,omitempty"`
+	// Use HTTPS instead of HTTP
+	HttpsFlag *bool `protobuf:"varint,6,opt,name=https_flag,json=httpsFlag" json:"https_flag,omitempty"`
+	// Connection timeout (milliseconds)
+	ConnectionTimeout *int32 `protobuf:"varint,7,opt,name=connection_timeout,json=connectionTimeout" json:"connection_timeout,omitempty"`
+	// Maximum number of times to retry on error
+	MaxErrorRetry *int32 `protobuf:"varint,8,opt,name=max_error_retry,json=maxErrorRetry" json:"max_error_retry,omitempty"`
+	// Socket timeout (milliseconds)
+	SocketTimeout *int32 `protobuf:"varint,9,opt,name=socket_timeout,json=socketTimeout" json:"socket_timeout,omitempty"`
+	// Connection TTL (milliseconds)
+	ConnectionTtl *int32 `protobuf:"varint,10,opt,name=connection_ttl,json=connectionTtl" json:"connection_ttl,omitempty"`
+	// Whether TCP keep-alive is used
+	UseTCPKeepAlive *bool `protobuf:"varint,11,opt,name=use_t_c_p_keep_alive,json=useTCPKeepAlive" json:"use_t_c_p_keep_alive,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListSecondaryStagingStoresRequest) Reset() {
-	*x = ListSecondaryStagingStoresRequest{}
+func (x *AddImageStoreS3CMDRequest) Reset() {
+	*x = AddImageStoreS3CMDRequest{}
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListSecondaryStagingStoresRequest) String() string {
+func (x *AddImageStoreS3CMDRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListSecondaryStagingStoresRequest) ProtoMessage() {}
+func (*AddImageStoreS3CMDRequest) ProtoMessage() {}
 
-func (x *ListSecondaryStagingStoresRequest) ProtoReflect() protoreflect.Message {
+func (x *AddImageStoreS3CMDRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1941,257 +2008,97 @@ func (x *ListSecondaryStagingStoresRequest) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListSecondaryStagingStoresRequest.ProtoReflect.Descriptor instead.
-func (*ListSecondaryStagingStoresRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddImageStoreS3CMDRequest.ProtoReflect.Descriptor instead.
+func (*AddImageStoreS3CMDRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{28}
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetStoreName() string {
-	if x != nil && x.StoreName != nil {
-		return *x.StoreName
+func (x *AddImageStoreS3CMDRequest) GetAccessKey() string {
+	if x != nil && x.AccessKey != nil {
+		return *x.AccessKey
 	}
 	return ""
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
+func (x *AddImageStoreS3CMDRequest) GetSecretKey() string {
+	if x != nil && x.SecretKey != nil {
+		return *x.SecretKey
 	}
 	return ""
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetProvider() string {
-	if x != nil && x.Provider != nil {
-		return *x.Provider
+func (x *AddImageStoreS3CMDRequest) GetEndPoint() string {
+	if x != nil && x.EndPoint != nil {
+		return *x.EndPoint
 	}
 	return ""
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListSecondaryStagingStoresRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListSecondaryStagingStoresRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *AddImageStoreS3CMDRequest) GetBucketName() string {
+	if x != nil && x.BucketName != nil {
+		return *x.BucketName
 	}
 	return ""
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
+func (x *AddImageStoreS3CMDRequest) GetSigner() string {
+	if x != nil && x.Signer != nil {
+		return *x.Signer
+	}
+	return ""
+}
+
+func (x *AddImageStoreS3CMDRequest) GetHttpsFlag() bool {
+	if x != nil && x.HttpsFlag != nil {
+		return *x.HttpsFlag
+	}
+	return false
+}
+
+func (x *AddImageStoreS3CMDRequest) GetConnectionTimeout() int32 {
+	if x != nil && x.ConnectionTimeout != nil {
+		return *x.ConnectionTimeout
 	}
 	return 0
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
+func (x *AddImageStoreS3CMDRequest) GetMaxErrorRetry() int32 {
+	if x != nil && x.MaxErrorRetry != nil {
+		return *x.MaxErrorRetry
 	}
 	return 0
 }
 
-func (x *ListSecondaryStagingStoresRequest) GetResponseType() string {
+func (x *AddImageStoreS3CMDRequest) GetSocketTimeout() int32 {
+	if x != nil && x.SocketTimeout != nil {
+		return *x.SocketTimeout
+	}
+	return 0
+}
+
+func (x *AddImageStoreS3CMDRequest) GetConnectionTtl() int32 {
+	if x != nil && x.ConnectionTtl != nil {
+		return *x.ConnectionTtl
+	}
+	return 0
+}
+
+func (x *AddImageStoreS3CMDRequest) GetUseTCPKeepAlive() bool {
+	if x != nil && x.UseTCPKeepAlive != nil {
+		return *x.UseTCPKeepAlive
+	}
+	return false
+}
+
+func (x *AddImageStoreS3CMDRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListSecondaryStagingStoresResponse represents the response from lists secondary staging stores.
-type ListSecondaryStagingStoresResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of ImageStores
-	Items []*ImageStore `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of ImageStores
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSecondaryStagingStoresResponse) Reset() {
-	*x = ListSecondaryStagingStoresResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSecondaryStagingStoresResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSecondaryStagingStoresResponse) ProtoMessage() {}
-
-func (x *ListSecondaryStagingStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSecondaryStagingStoresResponse.ProtoReflect.Descriptor instead.
-func (*ListSecondaryStagingStoresResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *ListSecondaryStagingStoresResponse) GetItems() []*ImageStore {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListSecondaryStagingStoresResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateStoragePoolRequest represents the parameters for updates a storage pool.
-type UpdateStoragePoolRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Id of the storage pool
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Change the name of the storage pool
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// comma-separated list of tags for the storage pool
-	Tags []string `protobuf:"bytes,3,rep,name=tags" json:"tags,omitempty"`
-	// IOPS CloudStack can provision from this storage pool
-	CapacityIops *int64 `protobuf:"varint,4,opt,name=capacity_iops,json=capacityIops" json:"capacity_iops,omitempty"`
-	// bytes CloudStack can provision from this storage pool
-	CapacityBytes *int64 `protobuf:"varint,5,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
-	// false to disable the pool for allocation of new volumes, true to enable it back.
-	Enabled *bool `protobuf:"varint,6,opt,name=enabled" json:"enabled,omitempty"`
-	// the details for the storage pool
-	Details map[string]string `protobuf:"bytes,7,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// the URL of the storage pool
-	Url *string `protobuf:"bytes,8,opt,name=url" json:"url,omitempty"`
-	// Whether the informed tag is a JS interpretable rule or not.
-	IsTagARule *bool `protobuf:"varint,9,opt,name=is_tag_a_rule,json=isTagARule" json:"is_tag_a_rule,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateStoragePoolRequest) Reset() {
-	*x = UpdateStoragePoolRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateStoragePoolRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateStoragePoolRequest) ProtoMessage() {}
-
-func (x *UpdateStoragePoolRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateStoragePoolRequest.ProtoReflect.Descriptor instead.
-func (*UpdateStoragePoolRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *UpdateStoragePoolRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateStoragePoolRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateStoragePoolRequest) GetTags() []string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *UpdateStoragePoolRequest) GetCapacityIops() int64 {
-	if x != nil && x.CapacityIops != nil {
-		return *x.CapacityIops
-	}
-	return 0
-}
-
-func (x *UpdateStoragePoolRequest) GetCapacityBytes() int64 {
-	if x != nil && x.CapacityBytes != nil {
-		return *x.CapacityBytes
-	}
-	return 0
-}
-
-func (x *UpdateStoragePoolRequest) GetEnabled() bool {
-	if x != nil && x.Enabled != nil {
-		return *x.Enabled
-	}
-	return false
-}
-
-func (x *UpdateStoragePoolRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpdateStoragePoolRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *UpdateStoragePoolRequest) GetIsTagARule() bool {
-	if x != nil && x.IsTagARule != nil {
-		return *x.IsTagARule
-	}
-	return false
-}
-
-func (x *UpdateStoragePoolRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateStoragePoolResponse represents the response from updates a storage pool.
-type UpdateStoragePoolResponse struct {
+// AddImageStoreS3CMDResponse represents the response from adds s3 image store
+type AddImageStoreS3CMDResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2199,20 +2106,120 @@ type UpdateStoragePoolResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateStoragePoolResponse) Reset() {
-	*x = UpdateStoragePoolResponse{}
+func (x *AddImageStoreS3CMDResponse) Reset() {
+	*x = AddImageStoreS3CMDResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddImageStoreS3CMDResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddImageStoreS3CMDResponse) ProtoMessage() {}
+
+func (x *AddImageStoreS3CMDResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddImageStoreS3CMDResponse.ProtoReflect.Descriptor instead.
+func (*AddImageStoreS3CMDResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *AddImageStoreS3CMDResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteObjectStoragePoolRequest represents the parameters for deletes an object storage pool
+type DeleteObjectStoragePoolRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Object Storage ID.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteObjectStoragePoolRequest) Reset() {
+	*x = DeleteObjectStoragePoolRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteObjectStoragePoolRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteObjectStoragePoolRequest) ProtoMessage() {}
+
+func (x *DeleteObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteObjectStoragePoolRequest.ProtoReflect.Descriptor instead.
+func (*DeleteObjectStoragePoolRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *DeleteObjectStoragePoolRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteObjectStoragePoolRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteObjectStoragePoolResponse represents the response from deletes an object storage pool
+type DeleteObjectStoragePoolResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteObjectStoragePoolResponse) Reset() {
+	*x = DeleteObjectStoragePoolResponse{}
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateStoragePoolResponse) String() string {
+func (x *DeleteObjectStoragePoolResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateStoragePoolResponse) ProtoMessage() {}
+func (*DeleteObjectStoragePoolResponse) ProtoMessage() {}
 
-func (x *UpdateStoragePoolResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2224,16 +2231,638 @@ func (x *UpdateStoragePoolResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateStoragePoolResponse.ProtoReflect.Descriptor instead.
-func (*UpdateStoragePoolResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteObjectStoragePoolResponse.ProtoReflect.Descriptor instead.
+func (*DeleteObjectStoragePoolResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{31}
 }
 
-func (x *UpdateStoragePoolResponse) GetResult() *Result {
+func (x *DeleteObjectStoragePoolResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
+}
+
+// UpdateStorageCapabilitiesRequest represents the parameters for syncs capabilities of storage pools
+type UpdateStorageCapabilitiesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Storage pool id
+	PoolId *int64 `protobuf:"varint,1,opt,name=pool_id,json=poolId" json:"pool_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateStorageCapabilitiesRequest) Reset() {
+	*x = UpdateStorageCapabilitiesRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateStorageCapabilitiesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateStorageCapabilitiesRequest) ProtoMessage() {}
+
+func (x *UpdateStorageCapabilitiesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateStorageCapabilitiesRequest.ProtoReflect.Descriptor instead.
+func (*UpdateStorageCapabilitiesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *UpdateStorageCapabilitiesRequest) GetPoolId() int64 {
+	if x != nil && x.PoolId != nil {
+		return *x.PoolId
+	}
+	return 0
+}
+
+func (x *UpdateStorageCapabilitiesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateStorageCapabilitiesResponse represents the response from syncs capabilities of storage pools
+type UpdateStorageCapabilitiesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateStorageCapabilitiesResponse) Reset() {
+	*x = UpdateStorageCapabilitiesResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateStorageCapabilitiesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateStorageCapabilitiesResponse) ProtoMessage() {}
+
+func (x *UpdateStorageCapabilitiesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateStorageCapabilitiesResponse.ProtoReflect.Descriptor instead.
+func (*UpdateStorageCapabilitiesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *UpdateStorageCapabilitiesResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListStoragePoolObjectsRequest represents the parameters for lists objects at specified path on a storage pool.
+type ListStoragePoolObjectsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the storage pool
+	StoreId *int64 `protobuf:"varint,1,opt,name=store_id,json=storeId" json:"store_id,omitempty"`
+	// path to list on storage pool
+	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListStoragePoolObjectsRequest) Reset() {
+	*x = ListStoragePoolObjectsRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListStoragePoolObjectsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStoragePoolObjectsRequest) ProtoMessage() {}
+
+func (x *ListStoragePoolObjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStoragePoolObjectsRequest.ProtoReflect.Descriptor instead.
+func (*ListStoragePoolObjectsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *ListStoragePoolObjectsRequest) GetStoreId() int64 {
+	if x != nil && x.StoreId != nil {
+		return *x.StoreId
+	}
+	return 0
+}
+
+func (x *ListStoragePoolObjectsRequest) GetPath() string {
+	if x != nil && x.Path != nil {
+		return *x.Path
+	}
+	return ""
+}
+
+func (x *ListStoragePoolObjectsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListStoragePoolObjectsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListStoragePoolObjectsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListStoragePoolObjectsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListStoragePoolObjectsResponse represents the response from lists objects at specified path on a storage pool.
+type ListStoragePoolObjectsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of DataStoreObjects
+	Items []*DataStoreObject `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of DataStoreObjects
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListStoragePoolObjectsResponse) Reset() {
+	*x = ListStoragePoolObjectsResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListStoragePoolObjectsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStoragePoolObjectsResponse) ProtoMessage() {}
+
+func (x *ListStoragePoolObjectsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStoragePoolObjectsResponse.ProtoReflect.Descriptor instead.
+func (*ListStoragePoolObjectsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *ListStoragePoolObjectsResponse) GetItems() []*DataStoreObject {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListStoragePoolObjectsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateObjectStoragePoolRequest represents the parameters for updates object storage pool
+type UpdateObjectStoragePoolRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Object Store ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the name for the object store
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// the url for the object store
+	Url *string `protobuf:"bytes,3,opt,name=url" json:"url,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateObjectStoragePoolRequest) Reset() {
+	*x = UpdateObjectStoragePoolRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateObjectStoragePoolRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateObjectStoragePoolRequest) ProtoMessage() {}
+
+func (x *UpdateObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateObjectStoragePoolRequest.ProtoReflect.Descriptor instead.
+func (*UpdateObjectStoragePoolRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *UpdateObjectStoragePoolRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateObjectStoragePoolRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateObjectStoragePoolRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *UpdateObjectStoragePoolRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateObjectStoragePoolResponse represents the response from updates object storage pool
+type UpdateObjectStoragePoolResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateObjectStoragePoolResponse) Reset() {
+	*x = UpdateObjectStoragePoolResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateObjectStoragePoolResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateObjectStoragePoolResponse) ProtoMessage() {}
+
+func (x *UpdateObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateObjectStoragePoolResponse.ProtoReflect.Descriptor instead.
+func (*UpdateObjectStoragePoolResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *UpdateObjectStoragePoolResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateSecondaryStagingStoreRequest represents the parameters for create secondary staging store.
+type CreateSecondaryStagingStoreRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the URL for the staging store
+	Url *string `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
+	// the Zone ID for the staging store
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the details for the staging store
+	Details map[string]string `protobuf:"bytes,3,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// the scope of the staging store: zone only for now
+	Scope *string `protobuf:"bytes,4,opt,name=scope" json:"scope,omitempty"`
+	// the staging store provider name
+	ProviderName *string `protobuf:"bytes,5,opt,name=provider_name,json=providerName" json:"provider_name,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSecondaryStagingStoreRequest) Reset() {
+	*x = CreateSecondaryStagingStoreRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSecondaryStagingStoreRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSecondaryStagingStoreRequest) ProtoMessage() {}
+
+func (x *CreateSecondaryStagingStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSecondaryStagingStoreRequest.ProtoReflect.Descriptor instead.
+func (*CreateSecondaryStagingStoreRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *CreateSecondaryStagingStoreRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *CreateSecondaryStagingStoreRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateSecondaryStagingStoreRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *CreateSecondaryStagingStoreRequest) GetScope() string {
+	if x != nil && x.Scope != nil {
+		return *x.Scope
+	}
+	return ""
+}
+
+func (x *CreateSecondaryStagingStoreRequest) GetProviderName() string {
+	if x != nil && x.ProviderName != nil {
+		return *x.ProviderName
+	}
+	return ""
+}
+
+func (x *CreateSecondaryStagingStoreRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateSecondaryStagingStoreResponse represents the response from create secondary staging store.
+type CreateSecondaryStagingStoreResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSecondaryStagingStoreResponse) Reset() {
+	*x = CreateSecondaryStagingStoreResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSecondaryStagingStoreResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSecondaryStagingStoreResponse) ProtoMessage() {}
+
+func (x *CreateSecondaryStagingStoreResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSecondaryStagingStoreResponse.ProtoReflect.Descriptor instead.
+func (*CreateSecondaryStagingStoreResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *CreateSecondaryStagingStoreResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListStorageTagsRequest represents the parameters for lists storage tags
+type ListStorageTagsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListStorageTagsRequest) Reset() {
+	*x = ListStorageTagsRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListStorageTagsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStorageTagsRequest) ProtoMessage() {}
+
+func (x *ListStorageTagsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStorageTagsRequest.ProtoReflect.Descriptor instead.
+func (*ListStorageTagsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *ListStorageTagsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListStorageTagsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListStorageTagsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListStorageTagsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListStorageTagsResponse represents the response from lists storage tags
+type ListStorageTagsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of StorageTags
+	Items []*StorageTag `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of StorageTags
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListStorageTagsResponse) Reset() {
+	*x = ListStorageTagsResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListStorageTagsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStorageTagsResponse) ProtoMessage() {}
+
+func (x *ListStorageTagsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStorageTagsResponse.ProtoReflect.Descriptor instead.
+func (*ListStorageTagsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *ListStorageTagsResponse) GetItems() []*StorageTag {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListStorageTagsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListObjectStoragePoolsRequest represents the parameters for lists object storage pools.
@@ -2256,7 +2885,7 @@ type ListObjectStoragePoolsRequest struct {
 
 func (x *ListObjectStoragePoolsRequest) Reset() {
 	*x = ListObjectStoragePoolsRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2268,7 +2897,7 @@ func (x *ListObjectStoragePoolsRequest) String() string {
 func (*ListObjectStoragePoolsRequest) ProtoMessage() {}
 
 func (x *ListObjectStoragePoolsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2281,7 +2910,7 @@ func (x *ListObjectStoragePoolsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListObjectStoragePoolsRequest.ProtoReflect.Descriptor instead.
 func (*ListObjectStoragePoolsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{32}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *ListObjectStoragePoolsRequest) GetStoreName() string {
@@ -2346,7 +2975,7 @@ type ListObjectStoragePoolsResponse struct {
 
 func (x *ListObjectStoragePoolsResponse) Reset() {
 	*x = ListObjectStoragePoolsResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2358,7 +2987,7 @@ func (x *ListObjectStoragePoolsResponse) String() string {
 func (*ListObjectStoragePoolsResponse) ProtoMessage() {}
 
 func (x *ListObjectStoragePoolsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2371,7 +3000,7 @@ func (x *ListObjectStoragePoolsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListObjectStoragePoolsResponse.ProtoReflect.Descriptor instead.
 func (*ListObjectStoragePoolsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{33}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *ListObjectStoragePoolsResponse) GetItems() []*ObjectStore {
@@ -2388,325 +3017,31 @@ func (x *ListObjectStoragePoolsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ListImageStoreObjectsRequest represents the parameters for lists objects at specified path on an image store.
-type ListImageStoreObjectsRequest struct {
+// DeleteImageStoreRequest represents the parameters for deletes an image store or secondary storage.
+type DeleteImageStoreRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the image store
-	StoreId *int64 `protobuf:"varint,1,opt,name=store_id,json=storeId" json:"store_id,omitempty"`
-	// path to list on image store
-	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListImageStoreObjectsRequest) Reset() {
-	*x = ListImageStoreObjectsRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListImageStoreObjectsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListImageStoreObjectsRequest) ProtoMessage() {}
-
-func (x *ListImageStoreObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListImageStoreObjectsRequest.ProtoReflect.Descriptor instead.
-func (*ListImageStoreObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *ListImageStoreObjectsRequest) GetStoreId() int64 {
-	if x != nil && x.StoreId != nil {
-		return *x.StoreId
-	}
-	return 0
-}
-
-func (x *ListImageStoreObjectsRequest) GetPath() string {
-	if x != nil && x.Path != nil {
-		return *x.Path
-	}
-	return ""
-}
-
-func (x *ListImageStoreObjectsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListImageStoreObjectsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListImageStoreObjectsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListImageStoreObjectsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListImageStoreObjectsResponse represents the response from lists objects at specified path on an image store.
-type ListImageStoreObjectsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of DataStoreObjects
-	Items []*DataStoreObject `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of DataStoreObjects
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListImageStoreObjectsResponse) Reset() {
-	*x = ListImageStoreObjectsResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListImageStoreObjectsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListImageStoreObjectsResponse) ProtoMessage() {}
-
-func (x *ListImageStoreObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListImageStoreObjectsResponse.ProtoReflect.Descriptor instead.
-func (*ListImageStoreObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *ListImageStoreObjectsResponse) GetItems() []*DataStoreObject {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListImageStoreObjectsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ListStoragePoolObjectsRequest represents the parameters for lists objects at specified path on a storage pool.
-type ListStoragePoolObjectsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the storage pool
-	StoreId *int64 `protobuf:"varint,1,opt,name=store_id,json=storeId" json:"store_id,omitempty"`
-	// path to list on storage pool
-	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListStoragePoolObjectsRequest) Reset() {
-	*x = ListStoragePoolObjectsRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListStoragePoolObjectsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListStoragePoolObjectsRequest) ProtoMessage() {}
-
-func (x *ListStoragePoolObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListStoragePoolObjectsRequest.ProtoReflect.Descriptor instead.
-func (*ListStoragePoolObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{36}
-}
-
-func (x *ListStoragePoolObjectsRequest) GetStoreId() int64 {
-	if x != nil && x.StoreId != nil {
-		return *x.StoreId
-	}
-	return 0
-}
-
-func (x *ListStoragePoolObjectsRequest) GetPath() string {
-	if x != nil && x.Path != nil {
-		return *x.Path
-	}
-	return ""
-}
-
-func (x *ListStoragePoolObjectsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListStoragePoolObjectsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListStoragePoolObjectsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListStoragePoolObjectsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListStoragePoolObjectsResponse represents the response from lists objects at specified path on a storage pool.
-type ListStoragePoolObjectsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of DataStoreObjects
-	Items []*DataStoreObject `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of DataStoreObjects
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListStoragePoolObjectsResponse) Reset() {
-	*x = ListStoragePoolObjectsResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListStoragePoolObjectsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListStoragePoolObjectsResponse) ProtoMessage() {}
-
-func (x *ListStoragePoolObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListStoragePoolObjectsResponse.ProtoReflect.Descriptor instead.
-func (*ListStoragePoolObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{37}
-}
-
-func (x *ListStoragePoolObjectsResponse) GetItems() []*DataStoreObject {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListStoragePoolObjectsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// MigrateResourcesToAnotherSecondaryStorageRequest represents the parameters for migrates resources from one secondary storage to destination image store
-type MigrateResourcesToAnotherSecondaryStorageRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the image store from where the data is to be migrated
+	// The image store ID or Secondary Storage ID.
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// id of the destination secondary storage pool to which the resources are to be migrated
-	DestStoreId *int64 `protobuf:"varint,2,opt,name=dest_store_id,json=destStoreId" json:"dest_store_id,omitempty"`
-	// id(s) of the templates to be migrated
-	TemplateIdList []string `protobuf:"bytes,3,rep,name=template_id_list,json=templateIdList" json:"template_id_list,omitempty"`
-	// id(s) of the snapshots to be migrated
-	SnapshotIdList []string `protobuf:"bytes,4,rep,name=snapshot_id_list,json=snapshotIdList" json:"snapshot_id_list,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) Reset() {
-	*x = MigrateResourcesToAnotherSecondaryStorageRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[38]
+func (x *DeleteImageStoreRequest) Reset() {
+	*x = DeleteImageStoreRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) String() string {
+func (x *DeleteImageStoreRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MigrateResourcesToAnotherSecondaryStorageRequest) ProtoMessage() {}
+func (*DeleteImageStoreRequest) ProtoMessage() {}
 
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[38]
+func (x *DeleteImageStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2717,62 +3052,27 @@ func (x *MigrateResourcesToAnotherSecondaryStorageRequest) ProtoReflect() protor
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MigrateResourcesToAnotherSecondaryStorageRequest.ProtoReflect.Descriptor instead.
-func (*MigrateResourcesToAnotherSecondaryStorageRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{38}
+// Deprecated: Use DeleteImageStoreRequest.ProtoReflect.Descriptor instead.
+func (*DeleteImageStoreRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{44}
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetId() int64 {
+func (x *DeleteImageStoreRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetDestStoreId() int64 {
-	if x != nil && x.DestStoreId != nil {
-		return *x.DestStoreId
-	}
-	return 0
-}
-
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetTemplateIdList() []string {
-	if x != nil {
-		return x.TemplateIdList
-	}
-	return nil
-}
-
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetSnapshotIdList() []string {
-	if x != nil {
-		return x.SnapshotIdList
-	}
-	return nil
-}
-
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MigrateResourcesToAnotherSecondaryStorageRequest) GetResponseType() string {
+func (x *DeleteImageStoreRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// MigrateResourcesToAnotherSecondaryStorageResponse represents the response from migrates resources from one secondary storage to destination image store
-type MigrateResourcesToAnotherSecondaryStorageResponse struct {
+// DeleteImageStoreResponse represents the response from deletes an image store or secondary storage.
+type DeleteImageStoreResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2780,21 +3080,21 @@ type MigrateResourcesToAnotherSecondaryStorageResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageResponse) Reset() {
-	*x = MigrateResourcesToAnotherSecondaryStorageResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[39]
+func (x *DeleteImageStoreResponse) Reset() {
+	*x = DeleteImageStoreResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageResponse) String() string {
+func (x *DeleteImageStoreResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MigrateResourcesToAnotherSecondaryStorageResponse) ProtoMessage() {}
+func (*DeleteImageStoreResponse) ProtoMessage() {}
 
-func (x *MigrateResourcesToAnotherSecondaryStorageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[39]
+func (x *DeleteImageStoreResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2805,12 +3105,329 @@ func (x *MigrateResourcesToAnotherSecondaryStorageResponse) ProtoReflect() proto
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MigrateResourcesToAnotherSecondaryStorageResponse.ProtoReflect.Descriptor instead.
-func (*MigrateResourcesToAnotherSecondaryStorageResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{39}
+// Deprecated: Use DeleteImageStoreResponse.ProtoReflect.Descriptor instead.
+func (*DeleteImageStoreResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{45}
 }
 
-func (x *MigrateResourcesToAnotherSecondaryStorageResponse) GetResult() *Result {
+func (x *DeleteImageStoreResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateStoragePoolRequest represents the parameters for creates a storage pool.
+type CreateStoragePoolRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the cluster ID for the storage pool
+	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// the details for the storage pool
+	Details map[string]string `protobuf:"bytes,2,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// the name for the storage pool
+	StoragePoolName *string `protobuf:"bytes,3,opt,name=storage_pool_name,json=storagePoolName" json:"storage_pool_name,omitempty"`
+	// the Pod ID for the storage pool
+	PodId *int64 `protobuf:"varint,4,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// the tags for the storage pool
+	Tags *string `protobuf:"bytes,5,opt,name=tags" json:"tags,omitempty"`
+	// the URL of the storage pool
+	Url *string `protobuf:"bytes,6,opt,name=url" json:"url,omitempty"`
+	// the Zone ID for the storage pool
+	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the storage provider name
+	StorageProviderName *string `protobuf:"bytes,8,opt,name=storage_provider_name,json=storageProviderName" json:"storage_provider_name,omitempty"`
+	// the scope of the storage: cluster or zone
+	Scope *string `protobuf:"bytes,9,opt,name=scope" json:"scope,omitempty"`
+	// whether the storage should be managed by CloudStack
+	Managed *bool `protobuf:"varint,10,opt,name=managed" json:"managed,omitempty"`
+	// IOPS CloudStack can provision from this storage pool
+	CapacityIops *int64 `protobuf:"varint,11,opt,name=capacity_iops,json=capacityIops" json:"capacity_iops,omitempty"`
+	// bytes CloudStack can provision from this storage pool
+	CapacityBytes *int64 `protobuf:"varint,12,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
+	// hypervisor type of the hosts in zone that will be attached to this storage pool. KVM, VMware supported as of now.
+	Hypervisor *string `protobuf:"bytes,13,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// Whether the informed tag is a JS interpretable rule or not.
+	IsTagARule *bool `protobuf:"varint,14,opt,name=is_tag_a_rule,json=isTagARule" json:"is_tag_a_rule,omitempty"`
+	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateStoragePoolRequest) Reset() {
+	*x = CreateStoragePoolRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateStoragePoolRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateStoragePoolRequest) ProtoMessage() {}
+
+func (x *CreateStoragePoolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateStoragePoolRequest.ProtoReflect.Descriptor instead.
+func (*CreateStoragePoolRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *CreateStoragePoolRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *CreateStoragePoolRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *CreateStoragePoolRequest) GetStoragePoolName() string {
+	if x != nil && x.StoragePoolName != nil {
+		return *x.StoragePoolName
+	}
+	return ""
+}
+
+func (x *CreateStoragePoolRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *CreateStoragePoolRequest) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
+func (x *CreateStoragePoolRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *CreateStoragePoolRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateStoragePoolRequest) GetStorageProviderName() string {
+	if x != nil && x.StorageProviderName != nil {
+		return *x.StorageProviderName
+	}
+	return ""
+}
+
+func (x *CreateStoragePoolRequest) GetScope() string {
+	if x != nil && x.Scope != nil {
+		return *x.Scope
+	}
+	return ""
+}
+
+func (x *CreateStoragePoolRequest) GetManaged() bool {
+	if x != nil && x.Managed != nil {
+		return *x.Managed
+	}
+	return false
+}
+
+func (x *CreateStoragePoolRequest) GetCapacityIops() int64 {
+	if x != nil && x.CapacityIops != nil {
+		return *x.CapacityIops
+	}
+	return 0
+}
+
+func (x *CreateStoragePoolRequest) GetCapacityBytes() int64 {
+	if x != nil && x.CapacityBytes != nil {
+		return *x.CapacityBytes
+	}
+	return 0
+}
+
+func (x *CreateStoragePoolRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *CreateStoragePoolRequest) GetIsTagARule() bool {
+	if x != nil && x.IsTagARule != nil {
+		return *x.IsTagARule
+	}
+	return false
+}
+
+func (x *CreateStoragePoolRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateStoragePoolResponse represents the response from creates a storage pool.
+type CreateStoragePoolResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateStoragePoolResponse) Reset() {
+	*x = CreateStoragePoolResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateStoragePoolResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateStoragePoolResponse) ProtoMessage() {}
+
+func (x *CreateStoragePoolResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateStoragePoolResponse.ProtoReflect.Descriptor instead.
+func (*CreateStoragePoolResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *CreateStoragePoolResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteSecondaryStagingStoreRequest represents the parameters for deletes a secondary staging store .
+type DeleteSecondaryStagingStoreRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the staging store ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSecondaryStagingStoreRequest) Reset() {
+	*x = DeleteSecondaryStagingStoreRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSecondaryStagingStoreRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSecondaryStagingStoreRequest) ProtoMessage() {}
+
+func (x *DeleteSecondaryStagingStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSecondaryStagingStoreRequest.ProtoReflect.Descriptor instead.
+func (*DeleteSecondaryStagingStoreRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *DeleteSecondaryStagingStoreRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteSecondaryStagingStoreRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteSecondaryStagingStoreResponse represents the response from deletes a secondary staging store .
+type DeleteSecondaryStagingStoreResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSecondaryStagingStoreResponse) Reset() {
+	*x = DeleteSecondaryStagingStoreResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSecondaryStagingStoreResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSecondaryStagingStoreResponse) ProtoMessage() {}
+
+func (x *DeleteSecondaryStagingStoreResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSecondaryStagingStoreResponse.ProtoReflect.Descriptor instead.
+func (*DeleteSecondaryStagingStoreResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *DeleteSecondaryStagingStoreResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2837,7 +3454,7 @@ type AddObjectStoragePoolRequest struct {
 
 func (x *AddObjectStoragePoolRequest) Reset() {
 	*x = AddObjectStoragePoolRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[40]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2849,7 +3466,7 @@ func (x *AddObjectStoragePoolRequest) String() string {
 func (*AddObjectStoragePoolRequest) ProtoMessage() {}
 
 func (x *AddObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[40]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2862,7 +3479,7 @@ func (x *AddObjectStoragePoolRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddObjectStoragePoolRequest.ProtoReflect.Descriptor instead.
 func (*AddObjectStoragePoolRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{40}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *AddObjectStoragePoolRequest) GetName() string {
@@ -2918,7 +3535,7 @@ type AddObjectStoragePoolResponse struct {
 
 func (x *AddObjectStoragePoolResponse) Reset() {
 	*x = AddObjectStoragePoolResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[41]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2930,7 +3547,7 @@ func (x *AddObjectStoragePoolResponse) String() string {
 func (*AddObjectStoragePoolResponse) ProtoMessage() {}
 
 func (x *AddObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[41]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2943,7 +3560,7 @@ func (x *AddObjectStoragePoolResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddObjectStoragePoolResponse.ProtoReflect.Descriptor instead.
 func (*AddObjectStoragePoolResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{41}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *AddObjectStoragePoolResponse) GetResult() *Result {
@@ -2953,267 +3570,15 @@ func (x *AddObjectStoragePoolResponse) GetResult() *Result {
 	return nil
 }
 
-// UpdateCloudToUseObjectStoreRequest represents the parameters for migrate current nfs secondary storages to use object store.
-type UpdateCloudToUseObjectStoreRequest struct {
+// ChangeStoragePoolScopeRequest represents the parameters for changes the scope of a storage pool when the pool is in disabled state.this feature is officially tested and supported for hypervisors: kvm and vmware, protocols: nfs and ceph, and storage provider: defaultprimary. there might be extra steps involved to make this work for other hypervisors and storage options.
+type ChangeStoragePoolScopeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name for the image store
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// the URL for the image store
-	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
-	// the image store provider name
-	ProviderName *string `protobuf:"bytes,3,opt,name=provider_name,json=providerName" json:"provider_name,omitempty"`
-	// the details for the image store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
-	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) Reset() {
-	*x = UpdateCloudToUseObjectStoreRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[42]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateCloudToUseObjectStoreRequest) ProtoMessage() {}
-
-func (x *UpdateCloudToUseObjectStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[42]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateCloudToUseObjectStoreRequest.ProtoReflect.Descriptor instead.
-func (*UpdateCloudToUseObjectStoreRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{42}
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) GetProviderName() string {
-	if x != nil && x.ProviderName != nil {
-		return *x.ProviderName
-	}
-	return ""
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpdateCloudToUseObjectStoreRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateCloudToUseObjectStoreResponse represents the response from migrate current nfs secondary storages to use object store.
-type UpdateCloudToUseObjectStoreResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateCloudToUseObjectStoreResponse) Reset() {
-	*x = UpdateCloudToUseObjectStoreResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[43]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateCloudToUseObjectStoreResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateCloudToUseObjectStoreResponse) ProtoMessage() {}
-
-func (x *UpdateCloudToUseObjectStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[43]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateCloudToUseObjectStoreResponse.ProtoReflect.Descriptor instead.
-func (*UpdateCloudToUseObjectStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{43}
-}
-
-func (x *UpdateCloudToUseObjectStoreResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DownloadImageStoreObjectRequest represents the parameters for download object at a specified path on an image store.
-type DownloadImageStoreObjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the image store
-	StoreId *int64 `protobuf:"varint,1,opt,name=store_id,json=storeId" json:"store_id,omitempty"`
-	// path to download on image store
-	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DownloadImageStoreObjectRequest) Reset() {
-	*x = DownloadImageStoreObjectRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DownloadImageStoreObjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DownloadImageStoreObjectRequest) ProtoMessage() {}
-
-func (x *DownloadImageStoreObjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DownloadImageStoreObjectRequest.ProtoReflect.Descriptor instead.
-func (*DownloadImageStoreObjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{44}
-}
-
-func (x *DownloadImageStoreObjectRequest) GetStoreId() int64 {
-	if x != nil && x.StoreId != nil {
-		return *x.StoreId
-	}
-	return 0
-}
-
-func (x *DownloadImageStoreObjectRequest) GetPath() string {
-	if x != nil && x.Path != nil {
-		return *x.Path
-	}
-	return ""
-}
-
-func (x *DownloadImageStoreObjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DownloadImageStoreObjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DownloadImageStoreObjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DownloadImageStoreObjectResponse represents the response from download object at a specified path on an image store.
-type DownloadImageStoreObjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DownloadImageStoreObjectResponse) Reset() {
-	*x = DownloadImageStoreObjectResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[45]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DownloadImageStoreObjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DownloadImageStoreObjectResponse) ProtoMessage() {}
-
-func (x *DownloadImageStoreObjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[45]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DownloadImageStoreObjectResponse.ProtoReflect.Descriptor instead.
-func (*DownloadImageStoreObjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{45}
-}
-
-func (x *DownloadImageStoreObjectResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// MigrateSecondaryStorageDataRequest represents the parameters for migrates data objects from one secondary storage to destination image store(s)
-type MigrateSecondaryStorageDataRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the image store from where the data is to be migrated
+	// the Id of the storage pool
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// id(s) of the destination secondary storage pool(s) to which the templates are to be migrated
-	MigrateTo []string `protobuf:"bytes,2,rep,name=migrate_to,json=migrateTo" json:"migrate_to,omitempty"`
-	// Balance: if you want data to be distributed evenly among the destination stores, Complete: If you want to migrate the entire data from source image store to the destination store(s). Default: Complete
-	MigrationType *string `protobuf:"bytes,3,opt,name=migration_type,json=migrationType" json:"migration_type,omitempty"`
+	// the scope of the storage: cluster or zone
+	Scope *string `protobuf:"bytes,2,opt,name=scope" json:"scope,omitempty"`
+	// the Id of the cluster to use if scope is being set to Cluster
+	ClusterId *int64 `protobuf:"varint,3,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -3221,391 +3586,20 @@ type MigrateSecondaryStorageDataRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateSecondaryStorageDataRequest) Reset() {
-	*x = MigrateSecondaryStorageDataRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[46]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateSecondaryStorageDataRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateSecondaryStorageDataRequest) ProtoMessage() {}
-
-func (x *MigrateSecondaryStorageDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[46]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateSecondaryStorageDataRequest.ProtoReflect.Descriptor instead.
-func (*MigrateSecondaryStorageDataRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{46}
-}
-
-func (x *MigrateSecondaryStorageDataRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *MigrateSecondaryStorageDataRequest) GetMigrateTo() []string {
-	if x != nil {
-		return x.MigrateTo
-	}
-	return nil
-}
-
-func (x *MigrateSecondaryStorageDataRequest) GetMigrationType() string {
-	if x != nil && x.MigrationType != nil {
-		return *x.MigrationType
-	}
-	return ""
-}
-
-func (x *MigrateSecondaryStorageDataRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MigrateSecondaryStorageDataRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MigrateSecondaryStorageDataRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// MigrateSecondaryStorageDataResponse represents the response from migrates data objects from one secondary storage to destination image store(s)
-type MigrateSecondaryStorageDataResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateSecondaryStorageDataResponse) Reset() {
-	*x = MigrateSecondaryStorageDataResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[47]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateSecondaryStorageDataResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateSecondaryStorageDataResponse) ProtoMessage() {}
-
-func (x *MigrateSecondaryStorageDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[47]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateSecondaryStorageDataResponse.ProtoReflect.Descriptor instead.
-func (*MigrateSecondaryStorageDataResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{47}
-}
-
-func (x *MigrateSecondaryStorageDataResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// PreparePrimaryStorageForMaintenanceRequest represents the parameters for puts storage pool into maintenance state
-type PreparePrimaryStorageForMaintenanceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Primary storage ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) Reset() {
-	*x = PreparePrimaryStorageForMaintenanceRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[48]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PreparePrimaryStorageForMaintenanceRequest) ProtoMessage() {}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[48]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PreparePrimaryStorageForMaintenanceRequest.ProtoReflect.Descriptor instead.
-func (*PreparePrimaryStorageForMaintenanceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{48}
-}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *PreparePrimaryStorageForMaintenanceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// PreparePrimaryStorageForMaintenanceResponse represents the response from puts storage pool into maintenance state
-type PreparePrimaryStorageForMaintenanceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PreparePrimaryStorageForMaintenanceResponse) Reset() {
-	*x = PreparePrimaryStorageForMaintenanceResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[49]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PreparePrimaryStorageForMaintenanceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PreparePrimaryStorageForMaintenanceResponse) ProtoMessage() {}
-
-func (x *PreparePrimaryStorageForMaintenanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[49]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PreparePrimaryStorageForMaintenanceResponse.ProtoReflect.Descriptor instead.
-func (*PreparePrimaryStorageForMaintenanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{49}
-}
-
-func (x *PreparePrimaryStorageForMaintenanceResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// FindStoragePoolsForMigrationRequest represents the parameters for lists storage pools available for migration of a volume.
-type FindStoragePoolsForMigrationRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the volume
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FindStoragePoolsForMigrationRequest) Reset() {
-	*x = FindStoragePoolsForMigrationRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[50]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FindStoragePoolsForMigrationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FindStoragePoolsForMigrationRequest) ProtoMessage() {}
-
-func (x *FindStoragePoolsForMigrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[50]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FindStoragePoolsForMigrationRequest.ProtoReflect.Descriptor instead.
-func (*FindStoragePoolsForMigrationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{50}
-}
-
-func (x *FindStoragePoolsForMigrationRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *FindStoragePoolsForMigrationRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *FindStoragePoolsForMigrationRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *FindStoragePoolsForMigrationRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *FindStoragePoolsForMigrationRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// FindStoragePoolsForMigrationResponse represents the response from lists storage pools available for migration of a volume.
-type FindStoragePoolsForMigrationResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FindStoragePoolsForMigrationResponse) Reset() {
-	*x = FindStoragePoolsForMigrationResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[51]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FindStoragePoolsForMigrationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FindStoragePoolsForMigrationResponse) ProtoMessage() {}
-
-func (x *FindStoragePoolsForMigrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[51]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FindStoragePoolsForMigrationResponse.ProtoReflect.Descriptor instead.
-func (*FindStoragePoolsForMigrationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{51}
-}
-
-func (x *FindStoragePoolsForMigrationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CancelPrimaryStorageMaintenanceRequest represents the parameters for cancels maintenance for primary storage
-type CancelPrimaryStorageMaintenanceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the primary storage ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CancelPrimaryStorageMaintenanceRequest) Reset() {
-	*x = CancelPrimaryStorageMaintenanceRequest{}
+func (x *ChangeStoragePoolScopeRequest) Reset() {
+	*x = ChangeStoragePoolScopeRequest{}
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CancelPrimaryStorageMaintenanceRequest) String() string {
+func (x *ChangeStoragePoolScopeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CancelPrimaryStorageMaintenanceRequest) ProtoMessage() {}
+func (*ChangeStoragePoolScopeRequest) ProtoMessage() {}
 
-func (x *CancelPrimaryStorageMaintenanceRequest) ProtoReflect() protoreflect.Message {
+func (x *ChangeStoragePoolScopeRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3617,177 +3611,55 @@ func (x *CancelPrimaryStorageMaintenanceRequest) ProtoReflect() protoreflect.Mes
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CancelPrimaryStorageMaintenanceRequest.ProtoReflect.Descriptor instead.
-func (*CancelPrimaryStorageMaintenanceRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ChangeStoragePoolScopeRequest.ProtoReflect.Descriptor instead.
+func (*ChangeStoragePoolScopeRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{52}
 }
 
-func (x *CancelPrimaryStorageMaintenanceRequest) GetId() int64 {
+func (x *ChangeStoragePoolScopeRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *CancelPrimaryStorageMaintenanceRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CancelPrimaryStorageMaintenanceRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CancelPrimaryStorageMaintenanceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CancelPrimaryStorageMaintenanceResponse represents the response from cancels maintenance for primary storage
-type CancelPrimaryStorageMaintenanceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CancelPrimaryStorageMaintenanceResponse) Reset() {
-	*x = CancelPrimaryStorageMaintenanceResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[53]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CancelPrimaryStorageMaintenanceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CancelPrimaryStorageMaintenanceResponse) ProtoMessage() {}
-
-func (x *CancelPrimaryStorageMaintenanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[53]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CancelPrimaryStorageMaintenanceResponse.ProtoReflect.Descriptor instead.
-func (*CancelPrimaryStorageMaintenanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{53}
-}
-
-func (x *CancelPrimaryStorageMaintenanceResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateSecondaryStagingStoreRequest represents the parameters for create secondary staging store.
-type CreateSecondaryStagingStoreRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the URL for the staging store
-	Url *string `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
-	// the Zone ID for the staging store
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the details for the staging store
-	Details map[string]string `protobuf:"bytes,3,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// the scope of the staging store: zone only for now
-	Scope *string `protobuf:"bytes,4,opt,name=scope" json:"scope,omitempty"`
-	// the staging store provider name
-	ProviderName *string `protobuf:"bytes,5,opt,name=provider_name,json=providerName" json:"provider_name,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateSecondaryStagingStoreRequest) Reset() {
-	*x = CreateSecondaryStagingStoreRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[54]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateSecondaryStagingStoreRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateSecondaryStagingStoreRequest) ProtoMessage() {}
-
-func (x *CreateSecondaryStagingStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[54]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateSecondaryStagingStoreRequest.ProtoReflect.Descriptor instead.
-func (*CreateSecondaryStagingStoreRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{54}
-}
-
-func (x *CreateSecondaryStagingStoreRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *CreateSecondaryStagingStoreRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *CreateSecondaryStagingStoreRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *CreateSecondaryStagingStoreRequest) GetScope() string {
+func (x *ChangeStoragePoolScopeRequest) GetScope() string {
 	if x != nil && x.Scope != nil {
 		return *x.Scope
 	}
 	return ""
 }
 
-func (x *CreateSecondaryStagingStoreRequest) GetProviderName() string {
-	if x != nil && x.ProviderName != nil {
-		return *x.ProviderName
+func (x *ChangeStoragePoolScopeRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *ChangeStoragePoolScopeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ChangeStoragePoolScopeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreateSecondaryStagingStoreRequest) GetResponseType() string {
+func (x *ChangeStoragePoolScopeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateSecondaryStagingStoreResponse represents the response from create secondary staging store.
-type CreateSecondaryStagingStoreResponse struct {
+// ChangeStoragePoolScopeResponse represents the response from changes the scope of a storage pool when the pool is in disabled state.this feature is officially tested and supported for hypervisors: kvm and vmware, protocols: nfs and ceph, and storage provider: defaultprimary. there might be extra steps involved to make this work for other hypervisors and storage options.
+type ChangeStoragePoolScopeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3795,21 +3667,21 @@ type CreateSecondaryStagingStoreResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateSecondaryStagingStoreResponse) Reset() {
-	*x = CreateSecondaryStagingStoreResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[55]
+func (x *ChangeStoragePoolScopeResponse) Reset() {
+	*x = ChangeStoragePoolScopeResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateSecondaryStagingStoreResponse) String() string {
+func (x *ChangeStoragePoolScopeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateSecondaryStagingStoreResponse) ProtoMessage() {}
+func (*ChangeStoragePoolScopeResponse) ProtoMessage() {}
 
-func (x *CreateSecondaryStagingStoreResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[55]
+func (x *ChangeStoragePoolScopeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3820,12 +3692,12 @@ func (x *CreateSecondaryStagingStoreResponse) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateSecondaryStagingStoreResponse.ProtoReflect.Descriptor instead.
-func (*CreateSecondaryStagingStoreResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{55}
+// Deprecated: Use ChangeStoragePoolScopeResponse.ProtoReflect.Descriptor instead.
+func (*ChangeStoragePoolScopeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{53}
 }
 
-func (x *CreateSecondaryStagingStoreResponse) GetResult() *Result {
+func (x *ChangeStoragePoolScopeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -3868,7 +3740,7 @@ type ListStoragePoolsRequest struct {
 
 func (x *ListStoragePoolsRequest) Reset() {
 	*x = ListStoragePoolsRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[56]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3880,7 +3752,7 @@ func (x *ListStoragePoolsRequest) String() string {
 func (*ListStoragePoolsRequest) ProtoMessage() {}
 
 func (x *ListStoragePoolsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[56]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3893,7 +3765,7 @@ func (x *ListStoragePoolsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStoragePoolsRequest.ProtoReflect.Descriptor instead.
 func (*ListStoragePoolsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{56}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *ListStoragePoolsRequest) GetClusterId() int64 {
@@ -4014,7 +3886,7 @@ type ListStoragePoolsResponse struct {
 
 func (x *ListStoragePoolsResponse) Reset() {
 	*x = ListStoragePoolsResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[57]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4026,7 +3898,7 @@ func (x *ListStoragePoolsResponse) String() string {
 func (*ListStoragePoolsResponse) ProtoMessage() {}
 
 func (x *ListStoragePoolsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[57]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4039,7 +3911,7 @@ func (x *ListStoragePoolsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStoragePoolsResponse.ProtoReflect.Descriptor instead.
 func (*ListStoragePoolsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{57}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *ListStoragePoolsResponse) GetItems() []*StoragePool {
@@ -4056,33 +3928,38 @@ func (x *ListStoragePoolsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// SyncStoragePoolRequest represents the parameters for sync storage pool with management server (currently supported for datastore cluster in vmware and syncs the datastores in it)
-type SyncStoragePoolRequest struct {
+// UpdateImageStoreRequest represents the parameters for updates image store read-only status
+type UpdateImageStoreRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Storage pool id
-	PoolId *int64 `protobuf:"varint,1,opt,name=pool_id,json=poolId" json:"pool_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Image Store UUID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The new name for the Image Store.
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// If set to true, it designates the corresponding image store to read-only, hence not considering them during storage migration
+	Readonly *bool `protobuf:"varint,3,opt,name=readonly" json:"readonly,omitempty"`
+	// The number of bytes CloudStack can use on this image storage.
+	// NOTE: this will be overwritten by the StatsCollector as soon as there is a SSVM to query the storage.
+	CapacityBytes *int64 `protobuf:"varint,4,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SyncStoragePoolRequest) Reset() {
-	*x = SyncStoragePoolRequest{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[58]
+func (x *UpdateImageStoreRequest) Reset() {
+	*x = UpdateImageStoreRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SyncStoragePoolRequest) String() string {
+func (x *UpdateImageStoreRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SyncStoragePoolRequest) ProtoMessage() {}
+func (*UpdateImageStoreRequest) ProtoMessage() {}
 
-func (x *SyncStoragePoolRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[58]
+func (x *UpdateImageStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4093,41 +3970,48 @@ func (x *SyncStoragePoolRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SyncStoragePoolRequest.ProtoReflect.Descriptor instead.
-func (*SyncStoragePoolRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{58}
+// Deprecated: Use UpdateImageStoreRequest.ProtoReflect.Descriptor instead.
+func (*UpdateImageStoreRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{56}
 }
 
-func (x *SyncStoragePoolRequest) GetPoolId() int64 {
-	if x != nil && x.PoolId != nil {
-		return *x.PoolId
+func (x *UpdateImageStoreRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *SyncStoragePoolRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *SyncStoragePoolRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *UpdateImageStoreRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-func (x *SyncStoragePoolRequest) GetResponseType() string {
+func (x *UpdateImageStoreRequest) GetReadonly() bool {
+	if x != nil && x.Readonly != nil {
+		return *x.Readonly
+	}
+	return false
+}
+
+func (x *UpdateImageStoreRequest) GetCapacityBytes() int64 {
+	if x != nil && x.CapacityBytes != nil {
+		return *x.CapacityBytes
+	}
+	return 0
+}
+
+func (x *UpdateImageStoreRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// SyncStoragePoolResponse represents the response from sync storage pool with management server (currently supported for datastore cluster in vmware and syncs the datastores in it)
-type SyncStoragePoolResponse struct {
+// UpdateImageStoreResponse represents the response from updates image store read-only status
+type UpdateImageStoreResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -4135,21 +4019,21 @@ type SyncStoragePoolResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SyncStoragePoolResponse) Reset() {
-	*x = SyncStoragePoolResponse{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[59]
+func (x *UpdateImageStoreResponse) Reset() {
+	*x = UpdateImageStoreResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SyncStoragePoolResponse) String() string {
+func (x *UpdateImageStoreResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SyncStoragePoolResponse) ProtoMessage() {}
+func (*UpdateImageStoreResponse) ProtoMessage() {}
 
-func (x *SyncStoragePoolResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[59]
+func (x *UpdateImageStoreResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4160,50 +4044,45 @@ func (x *SyncStoragePoolResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SyncStoragePoolResponse.ProtoReflect.Descriptor instead.
-func (*SyncStoragePoolResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{59}
+// Deprecated: Use UpdateImageStoreResponse.ProtoReflect.Descriptor instead.
+func (*UpdateImageStoreResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{57}
 }
 
-func (x *SyncStoragePoolResponse) GetResult() *Result {
+func (x *UpdateImageStoreResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// StorageTag represents a StorageTag Item
-type StorageTag struct {
+// PreparePrimaryStorageForMaintenanceRequest represents the parameters for puts storage pool into maintenance state
+type PreparePrimaryStorageForMaintenanceRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the StorageTag
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the StorageTag
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the StorageTag
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the StorageTag
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// Primary storage ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StorageTag) Reset() {
-	*x = StorageTag{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[60]
+func (x *PreparePrimaryStorageForMaintenanceRequest) Reset() {
+	*x = PreparePrimaryStorageForMaintenanceRequest{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StorageTag) String() string {
+func (x *PreparePrimaryStorageForMaintenanceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StorageTag) ProtoMessage() {}
+func (*PreparePrimaryStorageForMaintenanceRequest) ProtoMessage() {}
 
-func (x *StorageTag) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[60]
+func (x *PreparePrimaryStorageForMaintenanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4214,78 +4093,63 @@ func (x *StorageTag) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StorageTag.ProtoReflect.Descriptor instead.
-func (*StorageTag) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{60}
+// Deprecated: Use PreparePrimaryStorageForMaintenanceRequest.ProtoReflect.Descriptor instead.
+func (*PreparePrimaryStorageForMaintenanceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{58}
 }
 
-func (x *StorageTag) GetId() string {
+func (x *PreparePrimaryStorageForMaintenanceRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *StorageTag) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *PreparePrimaryStorageForMaintenanceRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *PreparePrimaryStorageForMaintenanceRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *StorageTag) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *PreparePrimaryStorageForMaintenanceRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *StorageTag) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *StorageTag) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// StorageProvider represents a StorageProvider Item
-type StorageProvider struct {
+// PreparePrimaryStorageForMaintenanceResponse represents the response from puts storage pool into maintenance state
+type PreparePrimaryStorageForMaintenanceResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the StorageProvider
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the StorageProvider
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the StorageProvider
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the StorageProvider
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StorageProvider) Reset() {
-	*x = StorageProvider{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[61]
+func (x *PreparePrimaryStorageForMaintenanceResponse) Reset() {
+	*x = PreparePrimaryStorageForMaintenanceResponse{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StorageProvider) String() string {
+func (x *PreparePrimaryStorageForMaintenanceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StorageProvider) ProtoMessage() {}
+func (*PreparePrimaryStorageForMaintenanceResponse) ProtoMessage() {}
 
-func (x *StorageProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[61]
+func (x *PreparePrimaryStorageForMaintenanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4296,44 +4160,16 @@ func (x *StorageProvider) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StorageProvider.ProtoReflect.Descriptor instead.
-func (*StorageProvider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{61}
+// Deprecated: Use PreparePrimaryStorageForMaintenanceResponse.ProtoReflect.Descriptor instead.
+func (*PreparePrimaryStorageForMaintenanceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{59}
 }
 
-func (x *StorageProvider) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *PreparePrimaryStorageForMaintenanceResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
-}
-
-func (x *StorageProvider) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *StorageProvider) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *StorageProvider) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *StorageProvider) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
+	return nil
 }
 
 // ImageStore represents a ImageStore Item
@@ -4355,7 +4191,7 @@ type ImageStore struct {
 
 func (x *ImageStore) Reset() {
 	*x = ImageStore{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[62]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4367,7 +4203,7 @@ func (x *ImageStore) String() string {
 func (*ImageStore) ProtoMessage() {}
 
 func (x *ImageStore) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[62]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4380,7 +4216,7 @@ func (x *ImageStore) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImageStore.ProtoReflect.Descriptor instead.
 func (*ImageStore) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{62}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *ImageStore) GetId() string {
@@ -4418,88 +4254,6 @@ func (x *ImageStore) GetCreated() string {
 	return ""
 }
 
-// ObjectStore represents a ObjectStore Item
-type ObjectStore struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the ObjectStore
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the ObjectStore
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the ObjectStore
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the ObjectStore
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ObjectStore) Reset() {
-	*x = ObjectStore{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[63]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ObjectStore) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ObjectStore) ProtoMessage() {}
-
-func (x *ObjectStore) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[63]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ObjectStore.ProtoReflect.Descriptor instead.
-func (*ObjectStore) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{63}
-}
-
-func (x *ObjectStore) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *ObjectStore) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ObjectStore) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *ObjectStore) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *ObjectStore) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // DataStoreObject represents a DataStoreObject Item
 type DataStoreObject struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4519,7 +4273,7 @@ type DataStoreObject struct {
 
 func (x *DataStoreObject) Reset() {
 	*x = DataStoreObject{}
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[64]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4531,7 +4285,7 @@ func (x *DataStoreObject) String() string {
 func (*DataStoreObject) ProtoMessage() {}
 
 func (x *DataStoreObject) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[64]
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4544,7 +4298,7 @@ func (x *DataStoreObject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataStoreObject.ProtoReflect.Descriptor instead.
 func (*DataStoreObject) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{64}
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *DataStoreObject) GetId() string {
@@ -4576,6 +4330,252 @@ func (x *DataStoreObject) GetDescription() string {
 }
 
 func (x *DataStoreObject) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// StorageProvider represents a StorageProvider Item
+type StorageProvider struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the StorageProvider
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the StorageProvider
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the StorageProvider
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the StorageProvider
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StorageProvider) Reset() {
+	*x = StorageProvider{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StorageProvider) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StorageProvider) ProtoMessage() {}
+
+func (x *StorageProvider) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StorageProvider.ProtoReflect.Descriptor instead.
+func (*StorageProvider) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *StorageProvider) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *StorageProvider) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *StorageProvider) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *StorageProvider) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *StorageProvider) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// StorageTag represents a StorageTag Item
+type StorageTag struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the StorageTag
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the StorageTag
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the StorageTag
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the StorageTag
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StorageTag) Reset() {
+	*x = StorageTag{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StorageTag) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StorageTag) ProtoMessage() {}
+
+func (x *StorageTag) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StorageTag.ProtoReflect.Descriptor instead.
+func (*StorageTag) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *StorageTag) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *StorageTag) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *StorageTag) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *StorageTag) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *StorageTag) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// ObjectStore represents a ObjectStore Item
+type ObjectStore struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the ObjectStore
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the ObjectStore
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the ObjectStore
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the ObjectStore
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ObjectStore) Reset() {
+	*x = ObjectStore{}
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ObjectStore) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ObjectStore) ProtoMessage() {}
+
+func (x *ObjectStore) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ObjectStore.ProtoReflect.Descriptor instead.
+func (*ObjectStore) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *ObjectStore) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *ObjectStore) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ObjectStore) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *ObjectStore) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ObjectStore) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -4950,24 +4950,102 @@ var File_cloudstack_management_storage_v1_storage_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/storage/v1/storage.gen.proto\x12 cloudstack.management.storage.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8f\x01\n" +
-	"\x1eUpdateObjectStoragePoolRequest\x12\x16\n" +
+	"2cloudstack/management/storage/v1/storage.gen.proto\x12 cloudstack.management.storage.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc7\x02\n" +
+	"0MigrateResourcesToAnotherSecondaryStorageRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12*\n" +
+	"\rdest_store_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vdestStoreId\x12(\n" +
+	"\x10template_id_list\x18\x03 \x03(\tR\x0etemplateIdList\x12(\n" +
+	"\x10snapshot_id_list\x18\x04 \x03(\tR\x0esnapshotIdList\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"u\n" +
+	"1MigrateResourcesToAnotherSecondaryStorageResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"o\n" +
+	"\x11DeletePoolRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"V\n" +
+	"\x12DeletePoolResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xb6\x01\n" +
+	"\x16SyncStoragePoolRequest\x12\x1f\n" +
+	"\apool_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06poolId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
+	"\x17SyncStoragePoolResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xd3\x03\n" +
+	"\x18UpdateStoragePoolRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x12\n" +
+	"\x04tags\x18\x03 \x03(\tR\x04tags\x12#\n" +
+	"\rcapacity_iops\x18\x04 \x01(\x03R\fcapacityIops\x12%\n" +
+	"\x0ecapacity_bytes\x18\x05 \x01(\x03R\rcapacityBytes\x12\x1f\n" +
+	"\aenabled\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12a\n" +
+	"\adetails\x18\a \x03(\v2G.cloudstack.management.storage.v1.UpdateStoragePoolRequest.DetailsEntryR\adetails\x12\x10\n" +
+	"\x03url\x18\b \x01(\tR\x03url\x12(\n" +
+	"\ris_tag_a_rule\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"isTagARule\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
+	"\x19UpdateStoragePoolResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xa9\x02\n" +
+	"!ListSecondaryStagingStoresRequest\x12)\n" +
+	"\n" +
+	"store_name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tstoreName\x12\x1a\n" +
+	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x12$\n" +
+	"\bprovider\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x17\n" +
+	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x0e\n" +
+	"\x02id\x18\x05 \x01(\x03R\x02id\x12\x18\n" +
+	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x90\x01\n" +
+	"\"ListSecondaryStagingStoresResponse\x12B\n" +
+	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.storage.v1.ImageStoreR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x87\x02\n" +
+	"\"MigrateSecondaryStorageDataRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\n" +
+	"migrate_to\x18\x02 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\tmigrateTo\x12%\n" +
+	"\x0emigration_type\x18\x03 \x01(\tR\rmigrationType\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"g\n" +
+	"#MigrateSecondaryStorageDataResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xd6\x02\n" +
+	"\"UpdateCloudToUseObjectStoreRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
-	"\x1fUpdateObjectStoragePoolResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"h\n" +
-	" UpdateStorageCapabilitiesRequest\x12\x1f\n" +
-	"\apool_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06poolId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"e\n" +
-	"!UpdateStorageCapabilitiesResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"]\n" +
-	"\x1eDeleteObjectStoragePoolRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"c\n" +
-	"\x1fDeleteObjectStoragePoolResponse\x12@\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\x120\n" +
+	"\rprovider_name\x18\x03 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\fproviderName\x12k\n" +
+	"\adetails\x18\x04 \x03(\v2Q.cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.DetailsEntryR\adetails\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"g\n" +
+	"#UpdateCloudToUseObjectStoreResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xd5\x01\n" +
+	"\x1fDownloadImageStoreObjectRequest\x12!\n" +
+	"\bstore_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\astoreId\x12\x12\n" +
+	"\x04path\x18\x02 \x01(\tR\x04path\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	" DownloadImageStoreObjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xad\x01\n" +
+	"#FindStoragePoolsForMigrationRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
+	"$FindStoragePoolsForMigrationResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xd3\x02\n" +
 	"\x14AddImageStoreRequest\x12\x1e\n" +
 	"\x04name\x18\x01 \x01(\tB\n" +
@@ -4981,36 +5059,25 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
 	"\x15AddImageStoreResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xf1\x01\n" +
-	"\x1dChangeStoragePoolScopeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1c\n" +
-	"\x05scope\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05scope\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x03 \x01(\x03R\tclusterId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"b\n" +
-	"\x1eChangeStoragePoolScopeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"a\n" +
-	"\"DeleteSecondaryStagingStoreRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"g\n" +
-	"#DeleteSecondaryStagingStoreResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\x88\x01\n" +
-	"\x16ListStorageTagsRequest\x12\x18\n" +
-	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\x85\x01\n" +
-	"\x17ListStorageTagsResponse\x12B\n" +
-	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.storage.v1.StorageTagR\x05items\x12\x1f\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xbd\x01\n" +
+	"&CancelPrimaryStorageMaintenanceRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
+	"'CancelPrimaryStorageMaintenanceResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xc5\x01\n" +
+	"\x1cListImageStoreObjectsRequest\x12!\n" +
+	"\bstore_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\astoreId\x12\x12\n" +
+	"\x04path\x18\x02 \x01(\tR\x04path\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x90\x01\n" +
+	"\x1dListImageStoreObjectsResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.storage.v1.DataStoreObjectR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"V\n" +
-	"\x17DeleteImageStoreRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\\\n" +
-	"\x18DeleteImageStoreResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xa9\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa9\x01\n" +
 	"\x1bListStorageProvidersRequest\x12\x1a\n" +
 	"\x04type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04type\x12\x18\n" +
 	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
@@ -5019,6 +5086,24 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x8f\x01\n" +
 	"\x1cListStorageProvidersResponse\x12G\n" +
 	"\x05items\x18\x01 \x03(\v21.cloudstack.management.storage.v1.StorageProviderR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc1\x02\n" +
+	"\x16ListImageStoresRequest\x12)\n" +
+	"\n" +
+	"store_name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tstoreName\x12\x1a\n" +
+	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x12$\n" +
+	"\bprovider\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x17\n" +
+	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x0e\n" +
+	"\x02id\x18\x05 \x01(\x03R\x02id\x12!\n" +
+	"\breadonly\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\breadonly\x12\x18\n" +
+	"\akeyword\x18\a \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\b \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\t \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"\x85\x01\n" +
+	"\x17ListImageStoresResponse\x12B\n" +
+	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.storage.v1.ImageStoreR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xf5\x03\n" +
 	"\x19AddImageStoreS3CMDRequest\x12%\n" +
@@ -5040,21 +5125,75 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\x14use_t_c_p_keep_alive\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fuseTCPKeepAlive\x12#\n" +
 	"\rresponse_type\x18\f \x01(\tR\fresponseType\"^\n" +
 	"\x1aAddImageStoreS3CMDResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xc0\x01\n" +
-	"\x17UpdateImageStoreRequest\x12\x16\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"]\n" +
+	"\x1eDeleteObjectStoragePoolRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"c\n" +
+	"\x1fDeleteObjectStoragePoolResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"h\n" +
+	" UpdateStorageCapabilitiesRequest\x12\x1f\n" +
+	"\apool_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06poolId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"e\n" +
+	"!UpdateStorageCapabilitiesResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xc6\x01\n" +
+	"\x1dListStoragePoolObjectsRequest\x12!\n" +
+	"\bstore_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\astoreId\x12\x12\n" +
+	"\x04path\x18\x02 \x01(\tR\x04path\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x91\x01\n" +
+	"\x1eListStoragePoolObjectsResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.storage.v1.DataStoreObjectR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8f\x01\n" +
+	"\x1eUpdateObjectStoragePoolRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\breadonly\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\breadonly\x12%\n" +
-	"\x0ecapacity_bytes\x18\x04 \x01(\x03R\rcapacityBytes\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
-	"\x18UpdateImageStoreResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"o\n" +
-	"\x11DeletePoolRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"V\n" +
-	"\x12DeletePoolResponse\x12@\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x10\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
+	"\x1fUpdateObjectStoragePoolResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xea\x02\n" +
+	"\"CreateSecondaryStagingStoreRequest\x12\x18\n" +
+	"\x03url\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12k\n" +
+	"\adetails\x18\x03 \x03(\v2Q.cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.DetailsEntryR\adetails\x12\x14\n" +
+	"\x05scope\x18\x04 \x01(\tR\x05scope\x12-\n" +
+	"\rprovider_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fproviderName\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"g\n" +
+	"#CreateSecondaryStagingStoreResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\x88\x01\n" +
+	"\x16ListStorageTagsRequest\x12\x18\n" +
+	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\x85\x01\n" +
+	"\x17ListStorageTagsResponse\x12B\n" +
+	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.storage.v1.StorageTagR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf0\x01\n" +
+	"\x1dListObjectStoragePoolsRequest\x12)\n" +
+	"\n" +
+	"store_name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tstoreName\x12$\n" +
+	"\bprovider\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x0e\n" +
+	"\x02id\x18\x03 \x01(\x03R\x02id\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x8d\x01\n" +
+	"\x1eListObjectStoragePoolsResponse\x12C\n" +
+	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.storage.v1.ObjectStoreR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"V\n" +
+	"\x17DeleteImageStoreRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\\\n" +
+	"\x18DeleteImageStoreResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xa9\x05\n" +
 	"\x18CreateStoragePoolRequest\x12\x1d\n" +
 	"\n" +
@@ -5082,105 +5221,11 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
 	"\x19CreateStoragePoolResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xc1\x02\n" +
-	"\x16ListImageStoresRequest\x12)\n" +
-	"\n" +
-	"store_name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tstoreName\x12\x1a\n" +
-	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x12$\n" +
-	"\bprovider\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x17\n" +
-	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x0e\n" +
-	"\x02id\x18\x05 \x01(\x03R\x02id\x12!\n" +
-	"\breadonly\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\breadonly\x12\x18\n" +
-	"\akeyword\x18\a \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\b \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\t \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"\x85\x01\n" +
-	"\x17ListImageStoresResponse\x12B\n" +
-	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.storage.v1.ImageStoreR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa9\x02\n" +
-	"!ListSecondaryStagingStoresRequest\x12)\n" +
-	"\n" +
-	"store_name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tstoreName\x12\x1a\n" +
-	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x12$\n" +
-	"\bprovider\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x17\n" +
-	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x0e\n" +
-	"\x02id\x18\x05 \x01(\x03R\x02id\x12\x18\n" +
-	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x90\x01\n" +
-	"\"ListSecondaryStagingStoresResponse\x12B\n" +
-	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.storage.v1.ImageStoreR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xd3\x03\n" +
-	"\x18UpdateStoragePoolRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x12\n" +
-	"\x04tags\x18\x03 \x03(\tR\x04tags\x12#\n" +
-	"\rcapacity_iops\x18\x04 \x01(\x03R\fcapacityIops\x12%\n" +
-	"\x0ecapacity_bytes\x18\x05 \x01(\x03R\rcapacityBytes\x12\x1f\n" +
-	"\aenabled\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12a\n" +
-	"\adetails\x18\a \x03(\v2G.cloudstack.management.storage.v1.UpdateStoragePoolRequest.DetailsEntryR\adetails\x12\x10\n" +
-	"\x03url\x18\b \x01(\tR\x03url\x12(\n" +
-	"\ris_tag_a_rule\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"isTagARule\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
-	"\x19UpdateStoragePoolResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xf0\x01\n" +
-	"\x1dListObjectStoragePoolsRequest\x12)\n" +
-	"\n" +
-	"store_name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tstoreName\x12$\n" +
-	"\bprovider\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\x03R\x02id\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x8d\x01\n" +
-	"\x1eListObjectStoragePoolsResponse\x12C\n" +
-	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.storage.v1.ObjectStoreR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc5\x01\n" +
-	"\x1cListImageStoreObjectsRequest\x12!\n" +
-	"\bstore_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\astoreId\x12\x12\n" +
-	"\x04path\x18\x02 \x01(\tR\x04path\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x90\x01\n" +
-	"\x1dListImageStoreObjectsResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.storage.v1.DataStoreObjectR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc6\x01\n" +
-	"\x1dListStoragePoolObjectsRequest\x12!\n" +
-	"\bstore_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\astoreId\x12\x12\n" +
-	"\x04path\x18\x02 \x01(\tR\x04path\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x91\x01\n" +
-	"\x1eListStoragePoolObjectsResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.storage.v1.DataStoreObjectR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc7\x02\n" +
-	"0MigrateResourcesToAnotherSecondaryStorageRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12*\n" +
-	"\rdest_store_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vdestStoreId\x12(\n" +
-	"\x10template_id_list\x18\x03 \x03(\tR\x0etemplateIdList\x12(\n" +
-	"\x10snapshot_id_list\x18\x04 \x03(\tR\x0esnapshotIdList\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"u\n" +
-	"1MigrateResourcesToAnotherSecondaryStorageResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"a\n" +
+	"\"DeleteSecondaryStagingStoreRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"g\n" +
+	"#DeleteSecondaryStagingStoreResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xe7\x02\n" +
 	"\x1bAddObjectStoragePoolRequest\x12!\n" +
 	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
@@ -5194,70 +5239,16 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"`\n" +
 	"\x1cAddObjectStoragePoolResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xd6\x02\n" +
-	"\"UpdateCloudToUseObjectStoreRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x10\n" +
-	"\x03url\x18\x02 \x01(\tR\x03url\x120\n" +
-	"\rprovider_name\x18\x03 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\fproviderName\x12k\n" +
-	"\adetails\x18\x04 \x03(\v2Q.cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.DetailsEntryR\adetails\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"g\n" +
-	"#UpdateCloudToUseObjectStoreResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xd5\x01\n" +
-	"\x1fDownloadImageStoreObjectRequest\x12!\n" +
-	"\bstore_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\astoreId\x12\x12\n" +
-	"\x04path\x18\x02 \x01(\tR\x04path\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	" DownloadImageStoreObjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\x87\x02\n" +
-	"\"MigrateSecondaryStorageDataRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xf1\x01\n" +
+	"\x1dChangeStoragePoolScopeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1c\n" +
+	"\x05scope\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05scope\x12\x1d\n" +
 	"\n" +
-	"migrate_to\x18\x02 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\tmigrateTo\x12%\n" +
-	"\x0emigration_type\x18\x03 \x01(\tR\rmigrationType\x12$\n" +
+	"cluster_id\x18\x03 \x01(\x03R\tclusterId\x12$\n" +
 	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"g\n" +
-	"#MigrateSecondaryStorageDataResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xc1\x01\n" +
-	"*PreparePrimaryStorageForMaintenanceRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"o\n" +
-	"+PreparePrimaryStorageForMaintenanceResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xad\x01\n" +
-	"#FindStoragePoolsForMigrationRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x18\n" +
-	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
-	"$FindStoragePoolsForMigrationResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xbd\x01\n" +
-	"&CancelPrimaryStorageMaintenanceRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
-	"'CancelPrimaryStorageMaintenanceResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xea\x02\n" +
-	"\"CreateSecondaryStagingStoreRequest\x12\x18\n" +
-	"\x03url\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12k\n" +
-	"\adetails\x18\x03 \x03(\v2Q.cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.DetailsEntryR\adetails\x12\x14\n" +
-	"\x05scope\x18\x04 \x01(\tR\x05scope\x12-\n" +
-	"\rprovider_name\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fproviderName\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"g\n" +
-	"#CreateSecondaryStagingStoreResponse\x12@\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"b\n" +
+	"\x1eChangeStoragePoolScopeResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xcd\x03\n" +
 	"\x17ListStoragePoolsRequest\x12\x1d\n" +
 	"\n" +
@@ -5282,16 +5273,31 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\x18ListStoragePoolsResponse\x12C\n" +
 	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.storage.v1.StoragePoolR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb6\x01\n" +
-	"\x16SyncStoragePoolRequest\x12\x1f\n" +
-	"\apool_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06poolId\x12$\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc0\x01\n" +
+	"\x17UpdateImageStoreRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\breadonly\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\breadonly\x12%\n" +
+	"\x0ecapacity_bytes\x18\x04 \x01(\x03R\rcapacityBytes\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
+	"\x18UpdateImageStoreResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\xc1\x01\n" +
+	"*PreparePrimaryStorageForMaintenanceRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
-	"\x17SyncStoragePoolResponse\x12@\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"o\n" +
+	"+PreparePrimaryStorageForMaintenanceResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.storage.v1.ResultR\x06result\"\x99\x01\n" +
 	"\n" +
-	"StorageTag\x12\x18\n" +
+	"ImageStore\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
+	"\x0fDataStoreObject\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -5304,19 +5310,13 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x99\x01\n" +
 	"\n" +
-	"ImageStore\x12\x18\n" +
+	"StorageTag\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
 	"\vObjectStore\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
-	"\x0fDataStoreObject\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -5357,38 +5357,38 @@ const file_cloudstack_management_storage_v1_storage_gen_proto_rawDesc = "" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd4%\n" +
-	"\x0eStorageService\x12\xa0\x01\n" +
-	"\x17UpdateObjectStoragePool\x12@.cloudstack.management.storage.v1.UpdateObjectStoragePoolRequest\x1aA.cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse\"\x00\x12\xa6\x01\n" +
-	"\x19UpdateStorageCapabilities\x12B.cloudstack.management.storage.v1.UpdateStorageCapabilitiesRequest\x1aC.cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse\"\x00\x12\xa0\x01\n" +
-	"\x17DeleteObjectStoragePool\x12@.cloudstack.management.storage.v1.DeleteObjectStoragePoolRequest\x1aA.cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse\"\x00\x12\x82\x01\n" +
-	"\rAddImageStore\x126.cloudstack.management.storage.v1.AddImageStoreRequest\x1a7.cloudstack.management.storage.v1.AddImageStoreResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ChangeStoragePoolScope\x12?.cloudstack.management.storage.v1.ChangeStoragePoolScopeRequest\x1a@.cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse\"\x00\x12\xac\x01\n" +
-	"\x1bDeleteSecondaryStagingStore\x12D.cloudstack.management.storage.v1.DeleteSecondaryStagingStoreRequest\x1aE.cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse\"\x00\x12\x88\x01\n" +
-	"\x0fListStorageTags\x128.cloudstack.management.storage.v1.ListStorageTagsRequest\x1a9.cloudstack.management.storage.v1.ListStorageTagsResponse\"\x00\x12\x8b\x01\n" +
-	"\x10DeleteImageStore\x129.cloudstack.management.storage.v1.DeleteImageStoreRequest\x1a:.cloudstack.management.storage.v1.DeleteImageStoreResponse\"\x00\x12\x97\x01\n" +
-	"\x14ListStorageProviders\x12=.cloudstack.management.storage.v1.ListStorageProvidersRequest\x1a>.cloudstack.management.storage.v1.ListStorageProvidersResponse\"\x00\x12\x91\x01\n" +
-	"\x12AddImageStoreS3CMD\x12;.cloudstack.management.storage.v1.AddImageStoreS3CMDRequest\x1a<.cloudstack.management.storage.v1.AddImageStoreS3CMDResponse\"\x00\x12\x8b\x01\n" +
-	"\x10UpdateImageStore\x129.cloudstack.management.storage.v1.UpdateImageStoreRequest\x1a:.cloudstack.management.storage.v1.UpdateImageStoreResponse\"\x00\x12y\n" +
+	"\x0eStorageService\x12\xd6\x01\n" +
+	")MigrateResourcesToAnotherSecondaryStorage\x12R.cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageRequest\x1aS.cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse\"\x00\x12y\n" +
 	"\n" +
-	"DeletePool\x123.cloudstack.management.storage.v1.DeletePoolRequest\x1a4.cloudstack.management.storage.v1.DeletePoolResponse\"\x00\x12\x8e\x01\n" +
-	"\x11CreateStoragePool\x12:.cloudstack.management.storage.v1.CreateStoragePoolRequest\x1a;.cloudstack.management.storage.v1.CreateStoragePoolResponse\"\x00\x12\x88\x01\n" +
-	"\x0fListImageStores\x128.cloudstack.management.storage.v1.ListImageStoresRequest\x1a9.cloudstack.management.storage.v1.ListImageStoresResponse\"\x00\x12\xa9\x01\n" +
-	"\x1aListSecondaryStagingStores\x12C.cloudstack.management.storage.v1.ListSecondaryStagingStoresRequest\x1aD.cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse\"\x00\x12\x8e\x01\n" +
-	"\x11UpdateStoragePool\x12:.cloudstack.management.storage.v1.UpdateStoragePoolRequest\x1a;.cloudstack.management.storage.v1.UpdateStoragePoolResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ListObjectStoragePools\x12?.cloudstack.management.storage.v1.ListObjectStoragePoolsRequest\x1a@.cloudstack.management.storage.v1.ListObjectStoragePoolsResponse\"\x00\x12\x9a\x01\n" +
-	"\x15ListImageStoreObjects\x12>.cloudstack.management.storage.v1.ListImageStoreObjectsRequest\x1a?.cloudstack.management.storage.v1.ListImageStoreObjectsResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ListStoragePoolObjects\x12?.cloudstack.management.storage.v1.ListStoragePoolObjectsRequest\x1a@.cloudstack.management.storage.v1.ListStoragePoolObjectsResponse\"\x00\x12\xd6\x01\n" +
-	")MigrateResourcesToAnotherSecondaryStorage\x12R.cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageRequest\x1aS.cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse\"\x00\x12\x97\x01\n" +
-	"\x14AddObjectStoragePool\x12=.cloudstack.management.storage.v1.AddObjectStoragePoolRequest\x1a>.cloudstack.management.storage.v1.AddObjectStoragePoolResponse\"\x00\x12\xac\x01\n" +
+	"DeletePool\x123.cloudstack.management.storage.v1.DeletePoolRequest\x1a4.cloudstack.management.storage.v1.DeletePoolResponse\"\x00\x12\x88\x01\n" +
+	"\x0fSyncStoragePool\x128.cloudstack.management.storage.v1.SyncStoragePoolRequest\x1a9.cloudstack.management.storage.v1.SyncStoragePoolResponse\"\x00\x12\x8e\x01\n" +
+	"\x11UpdateStoragePool\x12:.cloudstack.management.storage.v1.UpdateStoragePoolRequest\x1a;.cloudstack.management.storage.v1.UpdateStoragePoolResponse\"\x00\x12\xa9\x01\n" +
+	"\x1aListSecondaryStagingStores\x12C.cloudstack.management.storage.v1.ListSecondaryStagingStoresRequest\x1aD.cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse\"\x00\x12\xac\x01\n" +
+	"\x1bMigrateSecondaryStorageData\x12D.cloudstack.management.storage.v1.MigrateSecondaryStorageDataRequest\x1aE.cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse\"\x00\x12\xac\x01\n" +
 	"\x1bUpdateCloudToUseObjectStore\x12D.cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest\x1aE.cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse\"\x00\x12\xa3\x01\n" +
-	"\x18DownloadImageStoreObject\x12A.cloudstack.management.storage.v1.DownloadImageStoreObjectRequest\x1aB.cloudstack.management.storage.v1.DownloadImageStoreObjectResponse\"\x00\x12\xac\x01\n" +
-	"\x1bMigrateSecondaryStorageData\x12D.cloudstack.management.storage.v1.MigrateSecondaryStorageDataRequest\x1aE.cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse\"\x00\x12\xc4\x01\n" +
-	"#PreparePrimaryStorageForMaintenance\x12L.cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceRequest\x1aM.cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cFindStoragePoolsForMigration\x12E.cloudstack.management.storage.v1.FindStoragePoolsForMigrationRequest\x1aF.cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse\"\x00\x12\xb8\x01\n" +
-	"\x1fCancelPrimaryStorageMaintenance\x12H.cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceRequest\x1aI.cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse\"\x00\x12\xac\x01\n" +
-	"\x1bCreateSecondaryStagingStore\x12D.cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest\x1aE.cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse\"\x00\x12\x8b\x01\n" +
-	"\x10ListStoragePools\x129.cloudstack.management.storage.v1.ListStoragePoolsRequest\x1a:.cloudstack.management.storage.v1.ListStoragePoolsResponse\"\x00\x12\x88\x01\n" +
-	"\x0fSyncStoragePool\x128.cloudstack.management.storage.v1.SyncStoragePoolRequest\x1a9.cloudstack.management.storage.v1.SyncStoragePoolResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x01B\xba\x02\n" +
+	"\x18DownloadImageStoreObject\x12A.cloudstack.management.storage.v1.DownloadImageStoreObjectRequest\x1aB.cloudstack.management.storage.v1.DownloadImageStoreObjectResponse\"\x00\x12\xaf\x01\n" +
+	"\x1cFindStoragePoolsForMigration\x12E.cloudstack.management.storage.v1.FindStoragePoolsForMigrationRequest\x1aF.cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse\"\x00\x12\x82\x01\n" +
+	"\rAddImageStore\x126.cloudstack.management.storage.v1.AddImageStoreRequest\x1a7.cloudstack.management.storage.v1.AddImageStoreResponse\"\x00\x12\xb8\x01\n" +
+	"\x1fCancelPrimaryStorageMaintenance\x12H.cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceRequest\x1aI.cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse\"\x00\x12\x9a\x01\n" +
+	"\x15ListImageStoreObjects\x12>.cloudstack.management.storage.v1.ListImageStoreObjectsRequest\x1a?.cloudstack.management.storage.v1.ListImageStoreObjectsResponse\"\x00\x12\x97\x01\n" +
+	"\x14ListStorageProviders\x12=.cloudstack.management.storage.v1.ListStorageProvidersRequest\x1a>.cloudstack.management.storage.v1.ListStorageProvidersResponse\"\x00\x12\x88\x01\n" +
+	"\x0fListImageStores\x128.cloudstack.management.storage.v1.ListImageStoresRequest\x1a9.cloudstack.management.storage.v1.ListImageStoresResponse\"\x00\x12\x91\x01\n" +
+	"\x12AddImageStoreS3CMD\x12;.cloudstack.management.storage.v1.AddImageStoreS3CMDRequest\x1a<.cloudstack.management.storage.v1.AddImageStoreS3CMDResponse\"\x00\x12\xa0\x01\n" +
+	"\x17DeleteObjectStoragePool\x12@.cloudstack.management.storage.v1.DeleteObjectStoragePoolRequest\x1aA.cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse\"\x00\x12\xa6\x01\n" +
+	"\x19UpdateStorageCapabilities\x12B.cloudstack.management.storage.v1.UpdateStorageCapabilitiesRequest\x1aC.cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse\"\x00\x12\x9d\x01\n" +
+	"\x16ListStoragePoolObjects\x12?.cloudstack.management.storage.v1.ListStoragePoolObjectsRequest\x1a@.cloudstack.management.storage.v1.ListStoragePoolObjectsResponse\"\x00\x12\xa0\x01\n" +
+	"\x17UpdateObjectStoragePool\x12@.cloudstack.management.storage.v1.UpdateObjectStoragePoolRequest\x1aA.cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse\"\x00\x12\xac\x01\n" +
+	"\x1bCreateSecondaryStagingStore\x12D.cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest\x1aE.cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse\"\x00\x12\x88\x01\n" +
+	"\x0fListStorageTags\x128.cloudstack.management.storage.v1.ListStorageTagsRequest\x1a9.cloudstack.management.storage.v1.ListStorageTagsResponse\"\x00\x12\x9d\x01\n" +
+	"\x16ListObjectStoragePools\x12?.cloudstack.management.storage.v1.ListObjectStoragePoolsRequest\x1a@.cloudstack.management.storage.v1.ListObjectStoragePoolsResponse\"\x00\x12\x8b\x01\n" +
+	"\x10DeleteImageStore\x129.cloudstack.management.storage.v1.DeleteImageStoreRequest\x1a:.cloudstack.management.storage.v1.DeleteImageStoreResponse\"\x00\x12\x8e\x01\n" +
+	"\x11CreateStoragePool\x12:.cloudstack.management.storage.v1.CreateStoragePoolRequest\x1a;.cloudstack.management.storage.v1.CreateStoragePoolResponse\"\x00\x12\xac\x01\n" +
+	"\x1bDeleteSecondaryStagingStore\x12D.cloudstack.management.storage.v1.DeleteSecondaryStagingStoreRequest\x1aE.cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse\"\x00\x12\x97\x01\n" +
+	"\x14AddObjectStoragePool\x12=.cloudstack.management.storage.v1.AddObjectStoragePoolRequest\x1a>.cloudstack.management.storage.v1.AddObjectStoragePoolResponse\"\x00\x12\x9d\x01\n" +
+	"\x16ChangeStoragePoolScope\x12?.cloudstack.management.storage.v1.ChangeStoragePoolScopeRequest\x1a@.cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse\"\x00\x12\x8b\x01\n" +
+	"\x10ListStoragePools\x129.cloudstack.management.storage.v1.ListStoragePoolsRequest\x1a:.cloudstack.management.storage.v1.ListStoragePoolsResponse\"\x00\x12\x8b\x01\n" +
+	"\x10UpdateImageStore\x129.cloudstack.management.storage.v1.UpdateImageStoreRequest\x1a:.cloudstack.management.storage.v1.UpdateImageStoreResponse\"\x00\x12\xc4\x01\n" +
+	"#PreparePrimaryStorageForMaintenance\x12L.cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceRequest\x1aM.cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x01B\xba\x02\n" +
 	"$com.cloudstack.management.storage.v1B\x0fStorageGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/storage/v1;storagev1\xa2\x02\x03CMS\xaa\x02 Cloudstack.Management.Storage.V1\xca\x02 Cloudstack\\Management\\Storage\\V1\xe2\x02,Cloudstack\\Management\\Storage\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Storage::V1b\beditionsp\xe8\a"
 
 var (
@@ -5405,181 +5405,181 @@ func file_cloudstack_management_storage_v1_storage_gen_proto_rawDescGZIP() []byt
 
 var file_cloudstack_management_storage_v1_storage_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 76)
 var file_cloudstack_management_storage_v1_storage_gen_proto_goTypes = []any{
-	(*UpdateObjectStoragePoolRequest)(nil),                    // 0: cloudstack.management.storage.v1.UpdateObjectStoragePoolRequest
-	(*UpdateObjectStoragePoolResponse)(nil),                   // 1: cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse
-	(*UpdateStorageCapabilitiesRequest)(nil),                  // 2: cloudstack.management.storage.v1.UpdateStorageCapabilitiesRequest
-	(*UpdateStorageCapabilitiesResponse)(nil),                 // 3: cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse
-	(*DeleteObjectStoragePoolRequest)(nil),                    // 4: cloudstack.management.storage.v1.DeleteObjectStoragePoolRequest
-	(*DeleteObjectStoragePoolResponse)(nil),                   // 5: cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse
-	(*AddImageStoreRequest)(nil),                              // 6: cloudstack.management.storage.v1.AddImageStoreRequest
-	(*AddImageStoreResponse)(nil),                             // 7: cloudstack.management.storage.v1.AddImageStoreResponse
-	(*ChangeStoragePoolScopeRequest)(nil),                     // 8: cloudstack.management.storage.v1.ChangeStoragePoolScopeRequest
-	(*ChangeStoragePoolScopeResponse)(nil),                    // 9: cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse
-	(*DeleteSecondaryStagingStoreRequest)(nil),                // 10: cloudstack.management.storage.v1.DeleteSecondaryStagingStoreRequest
-	(*DeleteSecondaryStagingStoreResponse)(nil),               // 11: cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse
-	(*ListStorageTagsRequest)(nil),                            // 12: cloudstack.management.storage.v1.ListStorageTagsRequest
-	(*ListStorageTagsResponse)(nil),                           // 13: cloudstack.management.storage.v1.ListStorageTagsResponse
-	(*DeleteImageStoreRequest)(nil),                           // 14: cloudstack.management.storage.v1.DeleteImageStoreRequest
-	(*DeleteImageStoreResponse)(nil),                          // 15: cloudstack.management.storage.v1.DeleteImageStoreResponse
-	(*ListStorageProvidersRequest)(nil),                       // 16: cloudstack.management.storage.v1.ListStorageProvidersRequest
-	(*ListStorageProvidersResponse)(nil),                      // 17: cloudstack.management.storage.v1.ListStorageProvidersResponse
-	(*AddImageStoreS3CMDRequest)(nil),                         // 18: cloudstack.management.storage.v1.AddImageStoreS3CMDRequest
-	(*AddImageStoreS3CMDResponse)(nil),                        // 19: cloudstack.management.storage.v1.AddImageStoreS3CMDResponse
-	(*UpdateImageStoreRequest)(nil),                           // 20: cloudstack.management.storage.v1.UpdateImageStoreRequest
-	(*UpdateImageStoreResponse)(nil),                          // 21: cloudstack.management.storage.v1.UpdateImageStoreResponse
-	(*DeletePoolRequest)(nil),                                 // 22: cloudstack.management.storage.v1.DeletePoolRequest
-	(*DeletePoolResponse)(nil),                                // 23: cloudstack.management.storage.v1.DeletePoolResponse
-	(*CreateStoragePoolRequest)(nil),                          // 24: cloudstack.management.storage.v1.CreateStoragePoolRequest
-	(*CreateStoragePoolResponse)(nil),                         // 25: cloudstack.management.storage.v1.CreateStoragePoolResponse
+	(*MigrateResourcesToAnotherSecondaryStorageRequest)(nil),  // 0: cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageRequest
+	(*MigrateResourcesToAnotherSecondaryStorageResponse)(nil), // 1: cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse
+	(*DeletePoolRequest)(nil),                                 // 2: cloudstack.management.storage.v1.DeletePoolRequest
+	(*DeletePoolResponse)(nil),                                // 3: cloudstack.management.storage.v1.DeletePoolResponse
+	(*SyncStoragePoolRequest)(nil),                            // 4: cloudstack.management.storage.v1.SyncStoragePoolRequest
+	(*SyncStoragePoolResponse)(nil),                           // 5: cloudstack.management.storage.v1.SyncStoragePoolResponse
+	(*UpdateStoragePoolRequest)(nil),                          // 6: cloudstack.management.storage.v1.UpdateStoragePoolRequest
+	(*UpdateStoragePoolResponse)(nil),                         // 7: cloudstack.management.storage.v1.UpdateStoragePoolResponse
+	(*ListSecondaryStagingStoresRequest)(nil),                 // 8: cloudstack.management.storage.v1.ListSecondaryStagingStoresRequest
+	(*ListSecondaryStagingStoresResponse)(nil),                // 9: cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse
+	(*MigrateSecondaryStorageDataRequest)(nil),                // 10: cloudstack.management.storage.v1.MigrateSecondaryStorageDataRequest
+	(*MigrateSecondaryStorageDataResponse)(nil),               // 11: cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse
+	(*UpdateCloudToUseObjectStoreRequest)(nil),                // 12: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest
+	(*UpdateCloudToUseObjectStoreResponse)(nil),               // 13: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse
+	(*DownloadImageStoreObjectRequest)(nil),                   // 14: cloudstack.management.storage.v1.DownloadImageStoreObjectRequest
+	(*DownloadImageStoreObjectResponse)(nil),                  // 15: cloudstack.management.storage.v1.DownloadImageStoreObjectResponse
+	(*FindStoragePoolsForMigrationRequest)(nil),               // 16: cloudstack.management.storage.v1.FindStoragePoolsForMigrationRequest
+	(*FindStoragePoolsForMigrationResponse)(nil),              // 17: cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse
+	(*AddImageStoreRequest)(nil),                              // 18: cloudstack.management.storage.v1.AddImageStoreRequest
+	(*AddImageStoreResponse)(nil),                             // 19: cloudstack.management.storage.v1.AddImageStoreResponse
+	(*CancelPrimaryStorageMaintenanceRequest)(nil),            // 20: cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceRequest
+	(*CancelPrimaryStorageMaintenanceResponse)(nil),           // 21: cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse
+	(*ListImageStoreObjectsRequest)(nil),                      // 22: cloudstack.management.storage.v1.ListImageStoreObjectsRequest
+	(*ListImageStoreObjectsResponse)(nil),                     // 23: cloudstack.management.storage.v1.ListImageStoreObjectsResponse
+	(*ListStorageProvidersRequest)(nil),                       // 24: cloudstack.management.storage.v1.ListStorageProvidersRequest
+	(*ListStorageProvidersResponse)(nil),                      // 25: cloudstack.management.storage.v1.ListStorageProvidersResponse
 	(*ListImageStoresRequest)(nil),                            // 26: cloudstack.management.storage.v1.ListImageStoresRequest
 	(*ListImageStoresResponse)(nil),                           // 27: cloudstack.management.storage.v1.ListImageStoresResponse
-	(*ListSecondaryStagingStoresRequest)(nil),                 // 28: cloudstack.management.storage.v1.ListSecondaryStagingStoresRequest
-	(*ListSecondaryStagingStoresResponse)(nil),                // 29: cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse
-	(*UpdateStoragePoolRequest)(nil),                          // 30: cloudstack.management.storage.v1.UpdateStoragePoolRequest
-	(*UpdateStoragePoolResponse)(nil),                         // 31: cloudstack.management.storage.v1.UpdateStoragePoolResponse
-	(*ListObjectStoragePoolsRequest)(nil),                     // 32: cloudstack.management.storage.v1.ListObjectStoragePoolsRequest
-	(*ListObjectStoragePoolsResponse)(nil),                    // 33: cloudstack.management.storage.v1.ListObjectStoragePoolsResponse
-	(*ListImageStoreObjectsRequest)(nil),                      // 34: cloudstack.management.storage.v1.ListImageStoreObjectsRequest
-	(*ListImageStoreObjectsResponse)(nil),                     // 35: cloudstack.management.storage.v1.ListImageStoreObjectsResponse
-	(*ListStoragePoolObjectsRequest)(nil),                     // 36: cloudstack.management.storage.v1.ListStoragePoolObjectsRequest
-	(*ListStoragePoolObjectsResponse)(nil),                    // 37: cloudstack.management.storage.v1.ListStoragePoolObjectsResponse
-	(*MigrateResourcesToAnotherSecondaryStorageRequest)(nil),  // 38: cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageRequest
-	(*MigrateResourcesToAnotherSecondaryStorageResponse)(nil), // 39: cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse
-	(*AddObjectStoragePoolRequest)(nil),                       // 40: cloudstack.management.storage.v1.AddObjectStoragePoolRequest
-	(*AddObjectStoragePoolResponse)(nil),                      // 41: cloudstack.management.storage.v1.AddObjectStoragePoolResponse
-	(*UpdateCloudToUseObjectStoreRequest)(nil),                // 42: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest
-	(*UpdateCloudToUseObjectStoreResponse)(nil),               // 43: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse
-	(*DownloadImageStoreObjectRequest)(nil),                   // 44: cloudstack.management.storage.v1.DownloadImageStoreObjectRequest
-	(*DownloadImageStoreObjectResponse)(nil),                  // 45: cloudstack.management.storage.v1.DownloadImageStoreObjectResponse
-	(*MigrateSecondaryStorageDataRequest)(nil),                // 46: cloudstack.management.storage.v1.MigrateSecondaryStorageDataRequest
-	(*MigrateSecondaryStorageDataResponse)(nil),               // 47: cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse
-	(*PreparePrimaryStorageForMaintenanceRequest)(nil),        // 48: cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceRequest
-	(*PreparePrimaryStorageForMaintenanceResponse)(nil),       // 49: cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse
-	(*FindStoragePoolsForMigrationRequest)(nil),               // 50: cloudstack.management.storage.v1.FindStoragePoolsForMigrationRequest
-	(*FindStoragePoolsForMigrationResponse)(nil),              // 51: cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse
-	(*CancelPrimaryStorageMaintenanceRequest)(nil),            // 52: cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceRequest
-	(*CancelPrimaryStorageMaintenanceResponse)(nil),           // 53: cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse
-	(*CreateSecondaryStagingStoreRequest)(nil),                // 54: cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest
-	(*CreateSecondaryStagingStoreResponse)(nil),               // 55: cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse
-	(*ListStoragePoolsRequest)(nil),                           // 56: cloudstack.management.storage.v1.ListStoragePoolsRequest
-	(*ListStoragePoolsResponse)(nil),                          // 57: cloudstack.management.storage.v1.ListStoragePoolsResponse
-	(*SyncStoragePoolRequest)(nil),                            // 58: cloudstack.management.storage.v1.SyncStoragePoolRequest
-	(*SyncStoragePoolResponse)(nil),                           // 59: cloudstack.management.storage.v1.SyncStoragePoolResponse
-	(*StorageTag)(nil),                                        // 60: cloudstack.management.storage.v1.StorageTag
-	(*StorageProvider)(nil),                                   // 61: cloudstack.management.storage.v1.StorageProvider
-	(*ImageStore)(nil),                                        // 62: cloudstack.management.storage.v1.ImageStore
-	(*ObjectStore)(nil),                                       // 63: cloudstack.management.storage.v1.ObjectStore
-	(*DataStoreObject)(nil),                                   // 64: cloudstack.management.storage.v1.DataStoreObject
+	(*AddImageStoreS3CMDRequest)(nil),                         // 28: cloudstack.management.storage.v1.AddImageStoreS3CMDRequest
+	(*AddImageStoreS3CMDResponse)(nil),                        // 29: cloudstack.management.storage.v1.AddImageStoreS3CMDResponse
+	(*DeleteObjectStoragePoolRequest)(nil),                    // 30: cloudstack.management.storage.v1.DeleteObjectStoragePoolRequest
+	(*DeleteObjectStoragePoolResponse)(nil),                   // 31: cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse
+	(*UpdateStorageCapabilitiesRequest)(nil),                  // 32: cloudstack.management.storage.v1.UpdateStorageCapabilitiesRequest
+	(*UpdateStorageCapabilitiesResponse)(nil),                 // 33: cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse
+	(*ListStoragePoolObjectsRequest)(nil),                     // 34: cloudstack.management.storage.v1.ListStoragePoolObjectsRequest
+	(*ListStoragePoolObjectsResponse)(nil),                    // 35: cloudstack.management.storage.v1.ListStoragePoolObjectsResponse
+	(*UpdateObjectStoragePoolRequest)(nil),                    // 36: cloudstack.management.storage.v1.UpdateObjectStoragePoolRequest
+	(*UpdateObjectStoragePoolResponse)(nil),                   // 37: cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse
+	(*CreateSecondaryStagingStoreRequest)(nil),                // 38: cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest
+	(*CreateSecondaryStagingStoreResponse)(nil),               // 39: cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse
+	(*ListStorageTagsRequest)(nil),                            // 40: cloudstack.management.storage.v1.ListStorageTagsRequest
+	(*ListStorageTagsResponse)(nil),                           // 41: cloudstack.management.storage.v1.ListStorageTagsResponse
+	(*ListObjectStoragePoolsRequest)(nil),                     // 42: cloudstack.management.storage.v1.ListObjectStoragePoolsRequest
+	(*ListObjectStoragePoolsResponse)(nil),                    // 43: cloudstack.management.storage.v1.ListObjectStoragePoolsResponse
+	(*DeleteImageStoreRequest)(nil),                           // 44: cloudstack.management.storage.v1.DeleteImageStoreRequest
+	(*DeleteImageStoreResponse)(nil),                          // 45: cloudstack.management.storage.v1.DeleteImageStoreResponse
+	(*CreateStoragePoolRequest)(nil),                          // 46: cloudstack.management.storage.v1.CreateStoragePoolRequest
+	(*CreateStoragePoolResponse)(nil),                         // 47: cloudstack.management.storage.v1.CreateStoragePoolResponse
+	(*DeleteSecondaryStagingStoreRequest)(nil),                // 48: cloudstack.management.storage.v1.DeleteSecondaryStagingStoreRequest
+	(*DeleteSecondaryStagingStoreResponse)(nil),               // 49: cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse
+	(*AddObjectStoragePoolRequest)(nil),                       // 50: cloudstack.management.storage.v1.AddObjectStoragePoolRequest
+	(*AddObjectStoragePoolResponse)(nil),                      // 51: cloudstack.management.storage.v1.AddObjectStoragePoolResponse
+	(*ChangeStoragePoolScopeRequest)(nil),                     // 52: cloudstack.management.storage.v1.ChangeStoragePoolScopeRequest
+	(*ChangeStoragePoolScopeResponse)(nil),                    // 53: cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse
+	(*ListStoragePoolsRequest)(nil),                           // 54: cloudstack.management.storage.v1.ListStoragePoolsRequest
+	(*ListStoragePoolsResponse)(nil),                          // 55: cloudstack.management.storage.v1.ListStoragePoolsResponse
+	(*UpdateImageStoreRequest)(nil),                           // 56: cloudstack.management.storage.v1.UpdateImageStoreRequest
+	(*UpdateImageStoreResponse)(nil),                          // 57: cloudstack.management.storage.v1.UpdateImageStoreResponse
+	(*PreparePrimaryStorageForMaintenanceRequest)(nil),        // 58: cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceRequest
+	(*PreparePrimaryStorageForMaintenanceResponse)(nil),       // 59: cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse
+	(*ImageStore)(nil),                                        // 60: cloudstack.management.storage.v1.ImageStore
+	(*DataStoreObject)(nil),                                   // 61: cloudstack.management.storage.v1.DataStoreObject
+	(*StorageProvider)(nil),                                   // 62: cloudstack.management.storage.v1.StorageProvider
+	(*StorageTag)(nil),                                        // 63: cloudstack.management.storage.v1.StorageTag
+	(*ObjectStore)(nil),                                       // 64: cloudstack.management.storage.v1.ObjectStore
 	(*StoragePool)(nil),                                       // 65: cloudstack.management.storage.v1.StoragePool
 	(*Success)(nil),                                           // 66: cloudstack.management.storage.v1.Success
 	(*Item)(nil),                                              // 67: cloudstack.management.storage.v1.Item
 	(*Result)(nil),                                            // 68: cloudstack.management.storage.v1.Result
-	nil,                                                       // 69: cloudstack.management.storage.v1.AddImageStoreRequest.DetailsEntry
-	nil,                                                       // 70: cloudstack.management.storage.v1.CreateStoragePoolRequest.DetailsEntry
-	nil,                                                       // 71: cloudstack.management.storage.v1.UpdateStoragePoolRequest.DetailsEntry
-	nil,                                                       // 72: cloudstack.management.storage.v1.AddObjectStoragePoolRequest.DetailsEntry
-	nil,                                                       // 73: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.DetailsEntry
-	nil,                                                       // 74: cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.DetailsEntry
+	nil,                                                       // 69: cloudstack.management.storage.v1.UpdateStoragePoolRequest.DetailsEntry
+	nil,                                                       // 70: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.DetailsEntry
+	nil,                                                       // 71: cloudstack.management.storage.v1.AddImageStoreRequest.DetailsEntry
+	nil,                                                       // 72: cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.DetailsEntry
+	nil,                                                       // 73: cloudstack.management.storage.v1.CreateStoragePoolRequest.DetailsEntry
+	nil,                                                       // 74: cloudstack.management.storage.v1.AddObjectStoragePoolRequest.DetailsEntry
 	nil,                                                       // 75: cloudstack.management.storage.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_storage_v1_storage_gen_proto_depIdxs = []int32{
-	68, // 0: cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 1: cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 2: cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	69, // 3: cloudstack.management.storage.v1.AddImageStoreRequest.details:type_name -> cloudstack.management.storage.v1.AddImageStoreRequest.DetailsEntry
-	68, // 4: cloudstack.management.storage.v1.AddImageStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 5: cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 6: cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	60, // 7: cloudstack.management.storage.v1.ListStorageTagsResponse.items:type_name -> cloudstack.management.storage.v1.StorageTag
-	68, // 8: cloudstack.management.storage.v1.DeleteImageStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	61, // 9: cloudstack.management.storage.v1.ListStorageProvidersResponse.items:type_name -> cloudstack.management.storage.v1.StorageProvider
-	68, // 10: cloudstack.management.storage.v1.AddImageStoreS3CMDResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 11: cloudstack.management.storage.v1.UpdateImageStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 12: cloudstack.management.storage.v1.DeletePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	70, // 13: cloudstack.management.storage.v1.CreateStoragePoolRequest.details:type_name -> cloudstack.management.storage.v1.CreateStoragePoolRequest.DetailsEntry
-	68, // 14: cloudstack.management.storage.v1.CreateStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	62, // 15: cloudstack.management.storage.v1.ListImageStoresResponse.items:type_name -> cloudstack.management.storage.v1.ImageStore
-	62, // 16: cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse.items:type_name -> cloudstack.management.storage.v1.ImageStore
-	71, // 17: cloudstack.management.storage.v1.UpdateStoragePoolRequest.details:type_name -> cloudstack.management.storage.v1.UpdateStoragePoolRequest.DetailsEntry
-	68, // 18: cloudstack.management.storage.v1.UpdateStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	63, // 19: cloudstack.management.storage.v1.ListObjectStoragePoolsResponse.items:type_name -> cloudstack.management.storage.v1.ObjectStore
-	64, // 20: cloudstack.management.storage.v1.ListImageStoreObjectsResponse.items:type_name -> cloudstack.management.storage.v1.DataStoreObject
-	64, // 21: cloudstack.management.storage.v1.ListStoragePoolObjectsResponse.items:type_name -> cloudstack.management.storage.v1.DataStoreObject
-	68, // 22: cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	72, // 23: cloudstack.management.storage.v1.AddObjectStoragePoolRequest.details:type_name -> cloudstack.management.storage.v1.AddObjectStoragePoolRequest.DetailsEntry
-	68, // 24: cloudstack.management.storage.v1.AddObjectStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	73, // 25: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.details:type_name -> cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.DetailsEntry
-	68, // 26: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 27: cloudstack.management.storage.v1.DownloadImageStoreObjectResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 28: cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 29: cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 30: cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	68, // 31: cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	74, // 32: cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.details:type_name -> cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.DetailsEntry
-	68, // 33: cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
-	65, // 34: cloudstack.management.storage.v1.ListStoragePoolsResponse.items:type_name -> cloudstack.management.storage.v1.StoragePool
-	68, // 35: cloudstack.management.storage.v1.SyncStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 0: cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 1: cloudstack.management.storage.v1.DeletePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 2: cloudstack.management.storage.v1.SyncStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	69, // 3: cloudstack.management.storage.v1.UpdateStoragePoolRequest.details:type_name -> cloudstack.management.storage.v1.UpdateStoragePoolRequest.DetailsEntry
+	68, // 4: cloudstack.management.storage.v1.UpdateStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	60, // 5: cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse.items:type_name -> cloudstack.management.storage.v1.ImageStore
+	68, // 6: cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	70, // 7: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.details:type_name -> cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest.DetailsEntry
+	68, // 8: cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 9: cloudstack.management.storage.v1.DownloadImageStoreObjectResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 10: cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	71, // 11: cloudstack.management.storage.v1.AddImageStoreRequest.details:type_name -> cloudstack.management.storage.v1.AddImageStoreRequest.DetailsEntry
+	68, // 12: cloudstack.management.storage.v1.AddImageStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 13: cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	61, // 14: cloudstack.management.storage.v1.ListImageStoreObjectsResponse.items:type_name -> cloudstack.management.storage.v1.DataStoreObject
+	62, // 15: cloudstack.management.storage.v1.ListStorageProvidersResponse.items:type_name -> cloudstack.management.storage.v1.StorageProvider
+	60, // 16: cloudstack.management.storage.v1.ListImageStoresResponse.items:type_name -> cloudstack.management.storage.v1.ImageStore
+	68, // 17: cloudstack.management.storage.v1.AddImageStoreS3CMDResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 18: cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 19: cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	61, // 20: cloudstack.management.storage.v1.ListStoragePoolObjectsResponse.items:type_name -> cloudstack.management.storage.v1.DataStoreObject
+	68, // 21: cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	72, // 22: cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.details:type_name -> cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest.DetailsEntry
+	68, // 23: cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	63, // 24: cloudstack.management.storage.v1.ListStorageTagsResponse.items:type_name -> cloudstack.management.storage.v1.StorageTag
+	64, // 25: cloudstack.management.storage.v1.ListObjectStoragePoolsResponse.items:type_name -> cloudstack.management.storage.v1.ObjectStore
+	68, // 26: cloudstack.management.storage.v1.DeleteImageStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	73, // 27: cloudstack.management.storage.v1.CreateStoragePoolRequest.details:type_name -> cloudstack.management.storage.v1.CreateStoragePoolRequest.DetailsEntry
+	68, // 28: cloudstack.management.storage.v1.CreateStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 29: cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	74, // 30: cloudstack.management.storage.v1.AddObjectStoragePoolRequest.details:type_name -> cloudstack.management.storage.v1.AddObjectStoragePoolRequest.DetailsEntry
+	68, // 31: cloudstack.management.storage.v1.AddObjectStoragePoolResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 32: cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	65, // 33: cloudstack.management.storage.v1.ListStoragePoolsResponse.items:type_name -> cloudstack.management.storage.v1.StoragePool
+	68, // 34: cloudstack.management.storage.v1.UpdateImageStoreResponse.result:type_name -> cloudstack.management.storage.v1.Result
+	68, // 35: cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse.result:type_name -> cloudstack.management.storage.v1.Result
 	75, // 36: cloudstack.management.storage.v1.Item.details:type_name -> cloudstack.management.storage.v1.Item.DetailsEntry
-	0,  // 37: cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool:input_type -> cloudstack.management.storage.v1.UpdateObjectStoragePoolRequest
-	2,  // 38: cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities:input_type -> cloudstack.management.storage.v1.UpdateStorageCapabilitiesRequest
-	4,  // 39: cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool:input_type -> cloudstack.management.storage.v1.DeleteObjectStoragePoolRequest
-	6,  // 40: cloudstack.management.storage.v1.StorageService.AddImageStore:input_type -> cloudstack.management.storage.v1.AddImageStoreRequest
-	8,  // 41: cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope:input_type -> cloudstack.management.storage.v1.ChangeStoragePoolScopeRequest
-	10, // 42: cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore:input_type -> cloudstack.management.storage.v1.DeleteSecondaryStagingStoreRequest
-	12, // 43: cloudstack.management.storage.v1.StorageService.ListStorageTags:input_type -> cloudstack.management.storage.v1.ListStorageTagsRequest
-	14, // 44: cloudstack.management.storage.v1.StorageService.DeleteImageStore:input_type -> cloudstack.management.storage.v1.DeleteImageStoreRequest
-	16, // 45: cloudstack.management.storage.v1.StorageService.ListStorageProviders:input_type -> cloudstack.management.storage.v1.ListStorageProvidersRequest
-	18, // 46: cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD:input_type -> cloudstack.management.storage.v1.AddImageStoreS3CMDRequest
-	20, // 47: cloudstack.management.storage.v1.StorageService.UpdateImageStore:input_type -> cloudstack.management.storage.v1.UpdateImageStoreRequest
-	22, // 48: cloudstack.management.storage.v1.StorageService.DeletePool:input_type -> cloudstack.management.storage.v1.DeletePoolRequest
-	24, // 49: cloudstack.management.storage.v1.StorageService.CreateStoragePool:input_type -> cloudstack.management.storage.v1.CreateStoragePoolRequest
+	0,  // 37: cloudstack.management.storage.v1.StorageService.MigrateResourcesToAnotherSecondaryStorage:input_type -> cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageRequest
+	2,  // 38: cloudstack.management.storage.v1.StorageService.DeletePool:input_type -> cloudstack.management.storage.v1.DeletePoolRequest
+	4,  // 39: cloudstack.management.storage.v1.StorageService.SyncStoragePool:input_type -> cloudstack.management.storage.v1.SyncStoragePoolRequest
+	6,  // 40: cloudstack.management.storage.v1.StorageService.UpdateStoragePool:input_type -> cloudstack.management.storage.v1.UpdateStoragePoolRequest
+	8,  // 41: cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores:input_type -> cloudstack.management.storage.v1.ListSecondaryStagingStoresRequest
+	10, // 42: cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData:input_type -> cloudstack.management.storage.v1.MigrateSecondaryStorageDataRequest
+	12, // 43: cloudstack.management.storage.v1.StorageService.UpdateCloudToUseObjectStore:input_type -> cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest
+	14, // 44: cloudstack.management.storage.v1.StorageService.DownloadImageStoreObject:input_type -> cloudstack.management.storage.v1.DownloadImageStoreObjectRequest
+	16, // 45: cloudstack.management.storage.v1.StorageService.FindStoragePoolsForMigration:input_type -> cloudstack.management.storage.v1.FindStoragePoolsForMigrationRequest
+	18, // 46: cloudstack.management.storage.v1.StorageService.AddImageStore:input_type -> cloudstack.management.storage.v1.AddImageStoreRequest
+	20, // 47: cloudstack.management.storage.v1.StorageService.CancelPrimaryStorageMaintenance:input_type -> cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceRequest
+	22, // 48: cloudstack.management.storage.v1.StorageService.ListImageStoreObjects:input_type -> cloudstack.management.storage.v1.ListImageStoreObjectsRequest
+	24, // 49: cloudstack.management.storage.v1.StorageService.ListStorageProviders:input_type -> cloudstack.management.storage.v1.ListStorageProvidersRequest
 	26, // 50: cloudstack.management.storage.v1.StorageService.ListImageStores:input_type -> cloudstack.management.storage.v1.ListImageStoresRequest
-	28, // 51: cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores:input_type -> cloudstack.management.storage.v1.ListSecondaryStagingStoresRequest
-	30, // 52: cloudstack.management.storage.v1.StorageService.UpdateStoragePool:input_type -> cloudstack.management.storage.v1.UpdateStoragePoolRequest
-	32, // 53: cloudstack.management.storage.v1.StorageService.ListObjectStoragePools:input_type -> cloudstack.management.storage.v1.ListObjectStoragePoolsRequest
-	34, // 54: cloudstack.management.storage.v1.StorageService.ListImageStoreObjects:input_type -> cloudstack.management.storage.v1.ListImageStoreObjectsRequest
-	36, // 55: cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects:input_type -> cloudstack.management.storage.v1.ListStoragePoolObjectsRequest
-	38, // 56: cloudstack.management.storage.v1.StorageService.MigrateResourcesToAnotherSecondaryStorage:input_type -> cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageRequest
-	40, // 57: cloudstack.management.storage.v1.StorageService.AddObjectStoragePool:input_type -> cloudstack.management.storage.v1.AddObjectStoragePoolRequest
-	42, // 58: cloudstack.management.storage.v1.StorageService.UpdateCloudToUseObjectStore:input_type -> cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreRequest
-	44, // 59: cloudstack.management.storage.v1.StorageService.DownloadImageStoreObject:input_type -> cloudstack.management.storage.v1.DownloadImageStoreObjectRequest
-	46, // 60: cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData:input_type -> cloudstack.management.storage.v1.MigrateSecondaryStorageDataRequest
-	48, // 61: cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance:input_type -> cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceRequest
-	50, // 62: cloudstack.management.storage.v1.StorageService.FindStoragePoolsForMigration:input_type -> cloudstack.management.storage.v1.FindStoragePoolsForMigrationRequest
-	52, // 63: cloudstack.management.storage.v1.StorageService.CancelPrimaryStorageMaintenance:input_type -> cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceRequest
-	54, // 64: cloudstack.management.storage.v1.StorageService.CreateSecondaryStagingStore:input_type -> cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest
-	56, // 65: cloudstack.management.storage.v1.StorageService.ListStoragePools:input_type -> cloudstack.management.storage.v1.ListStoragePoolsRequest
-	58, // 66: cloudstack.management.storage.v1.StorageService.SyncStoragePool:input_type -> cloudstack.management.storage.v1.SyncStoragePoolRequest
-	1,  // 67: cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool:output_type -> cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse
-	3,  // 68: cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities:output_type -> cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse
-	5,  // 69: cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool:output_type -> cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse
-	7,  // 70: cloudstack.management.storage.v1.StorageService.AddImageStore:output_type -> cloudstack.management.storage.v1.AddImageStoreResponse
-	9,  // 71: cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope:output_type -> cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse
-	11, // 72: cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore:output_type -> cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse
-	13, // 73: cloudstack.management.storage.v1.StorageService.ListStorageTags:output_type -> cloudstack.management.storage.v1.ListStorageTagsResponse
-	15, // 74: cloudstack.management.storage.v1.StorageService.DeleteImageStore:output_type -> cloudstack.management.storage.v1.DeleteImageStoreResponse
-	17, // 75: cloudstack.management.storage.v1.StorageService.ListStorageProviders:output_type -> cloudstack.management.storage.v1.ListStorageProvidersResponse
-	19, // 76: cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD:output_type -> cloudstack.management.storage.v1.AddImageStoreS3CMDResponse
-	21, // 77: cloudstack.management.storage.v1.StorageService.UpdateImageStore:output_type -> cloudstack.management.storage.v1.UpdateImageStoreResponse
-	23, // 78: cloudstack.management.storage.v1.StorageService.DeletePool:output_type -> cloudstack.management.storage.v1.DeletePoolResponse
-	25, // 79: cloudstack.management.storage.v1.StorageService.CreateStoragePool:output_type -> cloudstack.management.storage.v1.CreateStoragePoolResponse
+	28, // 51: cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD:input_type -> cloudstack.management.storage.v1.AddImageStoreS3CMDRequest
+	30, // 52: cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool:input_type -> cloudstack.management.storage.v1.DeleteObjectStoragePoolRequest
+	32, // 53: cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities:input_type -> cloudstack.management.storage.v1.UpdateStorageCapabilitiesRequest
+	34, // 54: cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects:input_type -> cloudstack.management.storage.v1.ListStoragePoolObjectsRequest
+	36, // 55: cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool:input_type -> cloudstack.management.storage.v1.UpdateObjectStoragePoolRequest
+	38, // 56: cloudstack.management.storage.v1.StorageService.CreateSecondaryStagingStore:input_type -> cloudstack.management.storage.v1.CreateSecondaryStagingStoreRequest
+	40, // 57: cloudstack.management.storage.v1.StorageService.ListStorageTags:input_type -> cloudstack.management.storage.v1.ListStorageTagsRequest
+	42, // 58: cloudstack.management.storage.v1.StorageService.ListObjectStoragePools:input_type -> cloudstack.management.storage.v1.ListObjectStoragePoolsRequest
+	44, // 59: cloudstack.management.storage.v1.StorageService.DeleteImageStore:input_type -> cloudstack.management.storage.v1.DeleteImageStoreRequest
+	46, // 60: cloudstack.management.storage.v1.StorageService.CreateStoragePool:input_type -> cloudstack.management.storage.v1.CreateStoragePoolRequest
+	48, // 61: cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore:input_type -> cloudstack.management.storage.v1.DeleteSecondaryStagingStoreRequest
+	50, // 62: cloudstack.management.storage.v1.StorageService.AddObjectStoragePool:input_type -> cloudstack.management.storage.v1.AddObjectStoragePoolRequest
+	52, // 63: cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope:input_type -> cloudstack.management.storage.v1.ChangeStoragePoolScopeRequest
+	54, // 64: cloudstack.management.storage.v1.StorageService.ListStoragePools:input_type -> cloudstack.management.storage.v1.ListStoragePoolsRequest
+	56, // 65: cloudstack.management.storage.v1.StorageService.UpdateImageStore:input_type -> cloudstack.management.storage.v1.UpdateImageStoreRequest
+	58, // 66: cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance:input_type -> cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceRequest
+	1,  // 67: cloudstack.management.storage.v1.StorageService.MigrateResourcesToAnotherSecondaryStorage:output_type -> cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse
+	3,  // 68: cloudstack.management.storage.v1.StorageService.DeletePool:output_type -> cloudstack.management.storage.v1.DeletePoolResponse
+	5,  // 69: cloudstack.management.storage.v1.StorageService.SyncStoragePool:output_type -> cloudstack.management.storage.v1.SyncStoragePoolResponse
+	7,  // 70: cloudstack.management.storage.v1.StorageService.UpdateStoragePool:output_type -> cloudstack.management.storage.v1.UpdateStoragePoolResponse
+	9,  // 71: cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores:output_type -> cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse
+	11, // 72: cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData:output_type -> cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse
+	13, // 73: cloudstack.management.storage.v1.StorageService.UpdateCloudToUseObjectStore:output_type -> cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse
+	15, // 74: cloudstack.management.storage.v1.StorageService.DownloadImageStoreObject:output_type -> cloudstack.management.storage.v1.DownloadImageStoreObjectResponse
+	17, // 75: cloudstack.management.storage.v1.StorageService.FindStoragePoolsForMigration:output_type -> cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse
+	19, // 76: cloudstack.management.storage.v1.StorageService.AddImageStore:output_type -> cloudstack.management.storage.v1.AddImageStoreResponse
+	21, // 77: cloudstack.management.storage.v1.StorageService.CancelPrimaryStorageMaintenance:output_type -> cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse
+	23, // 78: cloudstack.management.storage.v1.StorageService.ListImageStoreObjects:output_type -> cloudstack.management.storage.v1.ListImageStoreObjectsResponse
+	25, // 79: cloudstack.management.storage.v1.StorageService.ListStorageProviders:output_type -> cloudstack.management.storage.v1.ListStorageProvidersResponse
 	27, // 80: cloudstack.management.storage.v1.StorageService.ListImageStores:output_type -> cloudstack.management.storage.v1.ListImageStoresResponse
-	29, // 81: cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores:output_type -> cloudstack.management.storage.v1.ListSecondaryStagingStoresResponse
-	31, // 82: cloudstack.management.storage.v1.StorageService.UpdateStoragePool:output_type -> cloudstack.management.storage.v1.UpdateStoragePoolResponse
-	33, // 83: cloudstack.management.storage.v1.StorageService.ListObjectStoragePools:output_type -> cloudstack.management.storage.v1.ListObjectStoragePoolsResponse
-	35, // 84: cloudstack.management.storage.v1.StorageService.ListImageStoreObjects:output_type -> cloudstack.management.storage.v1.ListImageStoreObjectsResponse
-	37, // 85: cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects:output_type -> cloudstack.management.storage.v1.ListStoragePoolObjectsResponse
-	39, // 86: cloudstack.management.storage.v1.StorageService.MigrateResourcesToAnotherSecondaryStorage:output_type -> cloudstack.management.storage.v1.MigrateResourcesToAnotherSecondaryStorageResponse
-	41, // 87: cloudstack.management.storage.v1.StorageService.AddObjectStoragePool:output_type -> cloudstack.management.storage.v1.AddObjectStoragePoolResponse
-	43, // 88: cloudstack.management.storage.v1.StorageService.UpdateCloudToUseObjectStore:output_type -> cloudstack.management.storage.v1.UpdateCloudToUseObjectStoreResponse
-	45, // 89: cloudstack.management.storage.v1.StorageService.DownloadImageStoreObject:output_type -> cloudstack.management.storage.v1.DownloadImageStoreObjectResponse
-	47, // 90: cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData:output_type -> cloudstack.management.storage.v1.MigrateSecondaryStorageDataResponse
-	49, // 91: cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance:output_type -> cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse
-	51, // 92: cloudstack.management.storage.v1.StorageService.FindStoragePoolsForMigration:output_type -> cloudstack.management.storage.v1.FindStoragePoolsForMigrationResponse
-	53, // 93: cloudstack.management.storage.v1.StorageService.CancelPrimaryStorageMaintenance:output_type -> cloudstack.management.storage.v1.CancelPrimaryStorageMaintenanceResponse
-	55, // 94: cloudstack.management.storage.v1.StorageService.CreateSecondaryStagingStore:output_type -> cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse
-	57, // 95: cloudstack.management.storage.v1.StorageService.ListStoragePools:output_type -> cloudstack.management.storage.v1.ListStoragePoolsResponse
-	59, // 96: cloudstack.management.storage.v1.StorageService.SyncStoragePool:output_type -> cloudstack.management.storage.v1.SyncStoragePoolResponse
+	29, // 81: cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD:output_type -> cloudstack.management.storage.v1.AddImageStoreS3CMDResponse
+	31, // 82: cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool:output_type -> cloudstack.management.storage.v1.DeleteObjectStoragePoolResponse
+	33, // 83: cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities:output_type -> cloudstack.management.storage.v1.UpdateStorageCapabilitiesResponse
+	35, // 84: cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects:output_type -> cloudstack.management.storage.v1.ListStoragePoolObjectsResponse
+	37, // 85: cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool:output_type -> cloudstack.management.storage.v1.UpdateObjectStoragePoolResponse
+	39, // 86: cloudstack.management.storage.v1.StorageService.CreateSecondaryStagingStore:output_type -> cloudstack.management.storage.v1.CreateSecondaryStagingStoreResponse
+	41, // 87: cloudstack.management.storage.v1.StorageService.ListStorageTags:output_type -> cloudstack.management.storage.v1.ListStorageTagsResponse
+	43, // 88: cloudstack.management.storage.v1.StorageService.ListObjectStoragePools:output_type -> cloudstack.management.storage.v1.ListObjectStoragePoolsResponse
+	45, // 89: cloudstack.management.storage.v1.StorageService.DeleteImageStore:output_type -> cloudstack.management.storage.v1.DeleteImageStoreResponse
+	47, // 90: cloudstack.management.storage.v1.StorageService.CreateStoragePool:output_type -> cloudstack.management.storage.v1.CreateStoragePoolResponse
+	49, // 91: cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore:output_type -> cloudstack.management.storage.v1.DeleteSecondaryStagingStoreResponse
+	51, // 92: cloudstack.management.storage.v1.StorageService.AddObjectStoragePool:output_type -> cloudstack.management.storage.v1.AddObjectStoragePoolResponse
+	53, // 93: cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope:output_type -> cloudstack.management.storage.v1.ChangeStoragePoolScopeResponse
+	55, // 94: cloudstack.management.storage.v1.StorageService.ListStoragePools:output_type -> cloudstack.management.storage.v1.ListStoragePoolsResponse
+	57, // 95: cloudstack.management.storage.v1.StorageService.UpdateImageStore:output_type -> cloudstack.management.storage.v1.UpdateImageStoreResponse
+	59, // 96: cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance:output_type -> cloudstack.management.storage.v1.PreparePrimaryStorageForMaintenanceResponse
 	67, // [67:97] is the sub-list for method output_type
 	37, // [37:67] is the sub-list for method input_type
 	37, // [37:37] is the sub-list for extension type_name

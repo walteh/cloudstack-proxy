@@ -13,17 +13,17 @@ service GslbService {
 	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
 	rpc CreateGlobalLoadBalancerRule(CreateGlobalLoadBalancerRuleRequest) returns (CreateGlobalLoadBalancerRuleResponse) {}
 
-	// UpdateGlobalLoadBalancerRule update global load balancer rules.
-	rpc UpdateGlobalLoadBalancerRule(UpdateGlobalLoadBalancerRuleRequest) returns (UpdateGlobalLoadBalancerRuleResponse) {}
-
 	// ListGlobalLoadBalancerRule Lists load balancer rules.
 	rpc ListGlobalLoadBalancerRule(ListGlobalLoadBalancerRuleRequest) returns (ListGlobalLoadBalancerRuleResponse) {}
 
-	// DeleteGlobalLoadBalancerRule Deletes a global load balancer rule.
-	rpc DeleteGlobalLoadBalancerRule(DeleteGlobalLoadBalancerRuleRequest) returns (DeleteGlobalLoadBalancerRuleResponse) {}
+	// UpdateGlobalLoadBalancerRule update global load balancer rules.
+	rpc UpdateGlobalLoadBalancerRule(UpdateGlobalLoadBalancerRuleRequest) returns (UpdateGlobalLoadBalancerRuleResponse) {}
 
 	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
 	rpc AssignToGlobalLoadBalancerRule(AssignToGlobalLoadBalancerRuleRequest) returns (AssignToGlobalLoadBalancerRuleResponse) {}
+
+	// DeleteGlobalLoadBalancerRule Deletes a global load balancer rule.
+	rpc DeleteGlobalLoadBalancerRule(DeleteGlobalLoadBalancerRuleRequest) returns (DeleteGlobalLoadBalancerRuleResponse) {}
 
 	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
 	rpc RemoveFromGlobalLoadBalancerRule(RemoveFromGlobalLoadBalancerRuleRequest) returns (RemoveFromGlobalLoadBalancerRuleResponse) {}
@@ -100,46 +100,6 @@ message CreateGlobalLoadBalancerRuleResponse {
 	Result result = 1;
 }
 
-// UpdateGlobalLoadBalancerRuleRequest represents the parameters for update global load balancer rules.
-message UpdateGlobalLoadBalancerRuleRequest {
-	// the ID of the global load balancer rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the description of the load balancer rule
-	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// load balancer algorithm (roundrobin, leastconn, proximity) that is used to distributed traffic across the zones participating in global server load balancing, if not specified defaults to 'round robin'
-	string algorithm = 3;
-
-	// session sticky method (sourceip) if not specified defaults to sourceip
-	string sticky_method = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// UpdateGlobalLoadBalancerRuleResponse represents the response from update global load balancer rules.
-message UpdateGlobalLoadBalancerRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListGlobalLoadBalancerRuleRequest represents the parameters for lists load balancer rules.
 message ListGlobalLoadBalancerRuleRequest {
 	// the ID of the global load balancer rule
@@ -199,27 +159,42 @@ message ListGlobalLoadBalancerRuleResponse {
 	int32 total_count = 2;
 }
 
-// DeleteGlobalLoadBalancerRuleRequest represents the parameters for deletes a global load balancer rule.
-message DeleteGlobalLoadBalancerRuleRequest {
+// UpdateGlobalLoadBalancerRuleRequest represents the parameters for update global load balancer rules.
+message UpdateGlobalLoadBalancerRuleRequest {
 	// the ID of the global load balancer rule
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
+	// the description of the load balancer rule
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// load balancer algorithm (roundrobin, leastconn, proximity) that is used to distributed traffic across the zones participating in global server load balancing, if not specified defaults to 'round robin'
+	string algorithm = 3;
+
+	// session sticky method (sourceip) if not specified defaults to sourceip
+	string sticky_method = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
 
 	//
-	string injected_job_id = 3 [
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 7;
 }
 
-// DeleteGlobalLoadBalancerRuleResponse represents the response from deletes a global load balancer rule.
-message DeleteGlobalLoadBalancerRuleResponse {
+// UpdateGlobalLoadBalancerRuleResponse represents the response from update global load balancer rules.
+message UpdateGlobalLoadBalancerRuleResponse {
 	// The Result
 	Result result = 1;
 }
@@ -253,6 +228,31 @@ message AssignToGlobalLoadBalancerRuleRequest {
 
 // AssignToGlobalLoadBalancerRuleResponse represents the response from assign load balancer rule or list of load balancer rules to a global load balancer rules.
 message AssignToGlobalLoadBalancerRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteGlobalLoadBalancerRuleRequest represents the parameters for deletes a global load balancer rule.
+message DeleteGlobalLoadBalancerRuleRequest {
+	// the ID of the global load balancer rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteGlobalLoadBalancerRuleResponse represents the response from deletes a global load balancer rule.
+message DeleteGlobalLoadBalancerRuleResponse {
 	// The Result
 	Result result = 1;
 }

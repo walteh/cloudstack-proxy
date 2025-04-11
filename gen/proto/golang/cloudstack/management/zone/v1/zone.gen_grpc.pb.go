@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ZoneService_UpdateZone_FullMethodName                = "/cloudstack.management.zone.v1.ZoneService/UpdateZone"
-	ZoneService_MarkDefaultZoneForAccount_FullMethodName = "/cloudstack.management.zone.v1.ZoneService/MarkDefaultZoneForAccount"
 	ZoneService_CreateZone_FullMethodName                = "/cloudstack.management.zone.v1.ZoneService/CreateZone"
+	ZoneService_UpdateZone_FullMethodName                = "/cloudstack.management.zone.v1.ZoneService/UpdateZone"
+	ZoneService_ListZonesCmdByAdmin_FullMethodName       = "/cloudstack.management.zone.v1.ZoneService/ListZonesCmdByAdmin"
 	ZoneService_DeleteZone_FullMethodName                = "/cloudstack.management.zone.v1.ZoneService/DeleteZone"
+	ZoneService_MarkDefaultZoneForAccount_FullMethodName = "/cloudstack.management.zone.v1.ZoneService/MarkDefaultZoneForAccount"
 	ZoneService_ListZones_FullMethodName                 = "/cloudstack.management.zone.v1.ZoneService/ListZones"
 )
 
@@ -32,14 +33,16 @@ const (
 //
 // ZoneService provides operations for managing Zones
 type ZoneServiceClient interface {
-	// UpdateZone Updates a Zone.
-	UpdateZone(ctx context.Context, in *UpdateZoneRequest, opts ...grpc.CallOption) (*UpdateZoneResponse, error)
-	// MarkDefaultZoneForAccount Marks a default zone for this account
-	MarkDefaultZoneForAccount(ctx context.Context, in *MarkDefaultZoneForAccountRequest, opts ...grpc.CallOption) (*MarkDefaultZoneForAccountResponse, error)
 	// CreateZone Creates a Zone.
 	CreateZone(ctx context.Context, in *CreateZoneRequest, opts ...grpc.CallOption) (*CreateZoneResponse, error)
+	// UpdateZone Updates a Zone.
+	UpdateZone(ctx context.Context, in *UpdateZoneRequest, opts ...grpc.CallOption) (*UpdateZoneResponse, error)
+	// ListZonesCmdByAdmin Lists zones
+	ListZonesCmdByAdmin(ctx context.Context, in *ListZonesCmdByAdminRequest, opts ...grpc.CallOption) (*ListZonesCmdByAdminResponse, error)
 	// DeleteZone Deletes a Zone.
 	DeleteZone(ctx context.Context, in *DeleteZoneRequest, opts ...grpc.CallOption) (*DeleteZoneResponse, error)
+	// MarkDefaultZoneForAccount Marks a default zone for this account
+	MarkDefaultZoneForAccount(ctx context.Context, in *MarkDefaultZoneForAccountRequest, opts ...grpc.CallOption) (*MarkDefaultZoneForAccountResponse, error)
 	// ListZones Lists zones
 	ListZones(ctx context.Context, in *ListZonesRequest, opts ...grpc.CallOption) (*ListZonesResponse, error)
 }
@@ -52,26 +55,6 @@ func NewZoneServiceClient(cc grpc.ClientConnInterface) ZoneServiceClient {
 	return &zoneServiceClient{cc}
 }
 
-func (c *zoneServiceClient) UpdateZone(ctx context.Context, in *UpdateZoneRequest, opts ...grpc.CallOption) (*UpdateZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateZoneResponse)
-	err := c.cc.Invoke(ctx, ZoneService_UpdateZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *zoneServiceClient) MarkDefaultZoneForAccount(ctx context.Context, in *MarkDefaultZoneForAccountRequest, opts ...grpc.CallOption) (*MarkDefaultZoneForAccountResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MarkDefaultZoneForAccountResponse)
-	err := c.cc.Invoke(ctx, ZoneService_MarkDefaultZoneForAccount_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *zoneServiceClient) CreateZone(ctx context.Context, in *CreateZoneRequest, opts ...grpc.CallOption) (*CreateZoneResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateZoneResponse)
@@ -82,10 +65,40 @@ func (c *zoneServiceClient) CreateZone(ctx context.Context, in *CreateZoneReques
 	return out, nil
 }
 
+func (c *zoneServiceClient) UpdateZone(ctx context.Context, in *UpdateZoneRequest, opts ...grpc.CallOption) (*UpdateZoneResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateZoneResponse)
+	err := c.cc.Invoke(ctx, ZoneService_UpdateZone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zoneServiceClient) ListZonesCmdByAdmin(ctx context.Context, in *ListZonesCmdByAdminRequest, opts ...grpc.CallOption) (*ListZonesCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListZonesCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, ZoneService_ListZonesCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *zoneServiceClient) DeleteZone(ctx context.Context, in *DeleteZoneRequest, opts ...grpc.CallOption) (*DeleteZoneResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteZoneResponse)
 	err := c.cc.Invoke(ctx, ZoneService_DeleteZone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zoneServiceClient) MarkDefaultZoneForAccount(ctx context.Context, in *MarkDefaultZoneForAccountRequest, opts ...grpc.CallOption) (*MarkDefaultZoneForAccountResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MarkDefaultZoneForAccountResponse)
+	err := c.cc.Invoke(ctx, ZoneService_MarkDefaultZoneForAccount_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,14 +121,16 @@ func (c *zoneServiceClient) ListZones(ctx context.Context, in *ListZonesRequest,
 //
 // ZoneService provides operations for managing Zones
 type ZoneServiceServer interface {
-	// UpdateZone Updates a Zone.
-	UpdateZone(context.Context, *UpdateZoneRequest) (*UpdateZoneResponse, error)
-	// MarkDefaultZoneForAccount Marks a default zone for this account
-	MarkDefaultZoneForAccount(context.Context, *MarkDefaultZoneForAccountRequest) (*MarkDefaultZoneForAccountResponse, error)
 	// CreateZone Creates a Zone.
 	CreateZone(context.Context, *CreateZoneRequest) (*CreateZoneResponse, error)
+	// UpdateZone Updates a Zone.
+	UpdateZone(context.Context, *UpdateZoneRequest) (*UpdateZoneResponse, error)
+	// ListZonesCmdByAdmin Lists zones
+	ListZonesCmdByAdmin(context.Context, *ListZonesCmdByAdminRequest) (*ListZonesCmdByAdminResponse, error)
 	// DeleteZone Deletes a Zone.
 	DeleteZone(context.Context, *DeleteZoneRequest) (*DeleteZoneResponse, error)
+	// MarkDefaultZoneForAccount Marks a default zone for this account
+	MarkDefaultZoneForAccount(context.Context, *MarkDefaultZoneForAccountRequest) (*MarkDefaultZoneForAccountResponse, error)
 	// ListZones Lists zones
 	ListZones(context.Context, *ListZonesRequest) (*ListZonesResponse, error)
 	mustEmbedUnimplementedZoneServiceServer()
@@ -128,17 +143,20 @@ type ZoneServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedZoneServiceServer struct{}
 
-func (UnimplementedZoneServiceServer) UpdateZone(context.Context, *UpdateZoneRequest) (*UpdateZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateZone not implemented")
-}
-func (UnimplementedZoneServiceServer) MarkDefaultZoneForAccount(context.Context, *MarkDefaultZoneForAccountRequest) (*MarkDefaultZoneForAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MarkDefaultZoneForAccount not implemented")
-}
 func (UnimplementedZoneServiceServer) CreateZone(context.Context, *CreateZoneRequest) (*CreateZoneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateZone not implemented")
 }
+func (UnimplementedZoneServiceServer) UpdateZone(context.Context, *UpdateZoneRequest) (*UpdateZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateZone not implemented")
+}
+func (UnimplementedZoneServiceServer) ListZonesCmdByAdmin(context.Context, *ListZonesCmdByAdminRequest) (*ListZonesCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListZonesCmdByAdmin not implemented")
+}
 func (UnimplementedZoneServiceServer) DeleteZone(context.Context, *DeleteZoneRequest) (*DeleteZoneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteZone not implemented")
+}
+func (UnimplementedZoneServiceServer) MarkDefaultZoneForAccount(context.Context, *MarkDefaultZoneForAccountRequest) (*MarkDefaultZoneForAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MarkDefaultZoneForAccount not implemented")
 }
 func (UnimplementedZoneServiceServer) ListZones(context.Context, *ListZonesRequest) (*ListZonesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListZones not implemented")
@@ -164,42 +182,6 @@ func RegisterZoneServiceServer(s grpc.ServiceRegistrar, srv ZoneServiceServer) {
 	s.RegisterService(&ZoneService_ServiceDesc, srv)
 }
 
-func _ZoneService_UpdateZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ZoneServiceServer).UpdateZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ZoneService_UpdateZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ZoneServiceServer).UpdateZone(ctx, req.(*UpdateZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ZoneService_MarkDefaultZoneForAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MarkDefaultZoneForAccountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ZoneServiceServer).MarkDefaultZoneForAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ZoneService_MarkDefaultZoneForAccount_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ZoneServiceServer).MarkDefaultZoneForAccount(ctx, req.(*MarkDefaultZoneForAccountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ZoneService_CreateZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateZoneRequest)
 	if err := dec(in); err != nil {
@@ -218,6 +200,42 @@ func _ZoneService_CreateZone_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ZoneService_UpdateZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZoneServiceServer).UpdateZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ZoneService_UpdateZone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZoneServiceServer).UpdateZone(ctx, req.(*UpdateZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZoneService_ListZonesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListZonesCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZoneServiceServer).ListZonesCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ZoneService_ListZonesCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZoneServiceServer).ListZonesCmdByAdmin(ctx, req.(*ListZonesCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ZoneService_DeleteZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteZoneRequest)
 	if err := dec(in); err != nil {
@@ -232,6 +250,24 @@ func _ZoneService_DeleteZone_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ZoneServiceServer).DeleteZone(ctx, req.(*DeleteZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZoneService_MarkDefaultZoneForAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MarkDefaultZoneForAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZoneServiceServer).MarkDefaultZoneForAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ZoneService_MarkDefaultZoneForAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZoneServiceServer).MarkDefaultZoneForAccount(ctx, req.(*MarkDefaultZoneForAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -262,20 +298,24 @@ var ZoneService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ZoneServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdateZone",
-			Handler:    _ZoneService_UpdateZone_Handler,
-		},
-		{
-			MethodName: "MarkDefaultZoneForAccount",
-			Handler:    _ZoneService_MarkDefaultZoneForAccount_Handler,
-		},
-		{
 			MethodName: "CreateZone",
 			Handler:    _ZoneService_CreateZone_Handler,
 		},
 		{
+			MethodName: "UpdateZone",
+			Handler:    _ZoneService_UpdateZone_Handler,
+		},
+		{
+			MethodName: "ListZonesCmdByAdmin",
+			Handler:    _ZoneService_ListZonesCmdByAdmin_Handler,
+		},
+		{
 			MethodName: "DeleteZone",
 			Handler:    _ZoneService_DeleteZone_Handler,
+		},
+		{
+			MethodName: "MarkDefaultZoneForAccount",
+			Handler:    _ZoneService_MarkDefaultZoneForAccount_Handler,
 		},
 		{
 			MethodName: "ListZones",

@@ -33,108 +33,108 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VpnServiceDeleteVpnCustomerGatewayProcedure is the fully-qualified name of the VpnService's
-	// DeleteVpnCustomerGateway RPC.
-	VpnServiceDeleteVpnCustomerGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnCustomerGateway"
-	// VpnServiceCreateVpnConnectionProcedure is the fully-qualified name of the VpnService's
-	// CreateVpnConnection RPC.
-	VpnServiceCreateVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/CreateVpnConnection"
-	// VpnServiceListVpnUsersProcedure is the fully-qualified name of the VpnService's ListVpnUsers RPC.
-	VpnServiceListVpnUsersProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnUsers"
-	// VpnServiceUpdateVpnCustomerGatewayProcedure is the fully-qualified name of the VpnService's
-	// UpdateVpnCustomerGateway RPC.
-	VpnServiceUpdateVpnCustomerGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnCustomerGateway"
-	// VpnServiceDeleteVpnConnectionProcedure is the fully-qualified name of the VpnService's
-	// DeleteVpnConnection RPC.
-	VpnServiceDeleteVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnConnection"
+	// VpnServiceListVpnCustomerGatewaysProcedure is the fully-qualified name of the VpnService's
+	// ListVpnCustomerGateways RPC.
+	VpnServiceListVpnCustomerGatewaysProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnCustomerGateways"
 	// VpnServiceListVpnConnectionsProcedure is the fully-qualified name of the VpnService's
 	// ListVpnConnections RPC.
 	VpnServiceListVpnConnectionsProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnConnections"
 	// VpnServiceUpdateRemoteAccessVpnProcedure is the fully-qualified name of the VpnService's
 	// UpdateRemoteAccessVpn RPC.
 	VpnServiceUpdateRemoteAccessVpnProcedure = "/cloudstack.management.vpn.v1.VpnService/UpdateRemoteAccessVpn"
-	// VpnServiceRemoveVpnUserProcedure is the fully-qualified name of the VpnService's RemoveVpnUser
-	// RPC.
-	VpnServiceRemoveVpnUserProcedure = "/cloudstack.management.vpn.v1.VpnService/RemoveVpnUser"
-	// VpnServiceCreateRemoteAccessVpnProcedure is the fully-qualified name of the VpnService's
-	// CreateRemoteAccessVpn RPC.
-	VpnServiceCreateRemoteAccessVpnProcedure = "/cloudstack.management.vpn.v1.VpnService/CreateRemoteAccessVpn"
-	// VpnServiceListRemoteAccessVpnsProcedure is the fully-qualified name of the VpnService's
-	// ListRemoteAccessVpns RPC.
-	VpnServiceListRemoteAccessVpnsProcedure = "/cloudstack.management.vpn.v1.VpnService/ListRemoteAccessVpns"
 	// VpnServiceCreateVpnCustomerGatewayProcedure is the fully-qualified name of the VpnService's
 	// CreateVpnCustomerGateway RPC.
 	VpnServiceCreateVpnCustomerGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/CreateVpnCustomerGateway"
-	// VpnServiceResetVpnConnectionProcedure is the fully-qualified name of the VpnService's
-	// ResetVpnConnection RPC.
-	VpnServiceResetVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/ResetVpnConnection"
-	// VpnServiceDeleteVpnGatewayProcedure is the fully-qualified name of the VpnService's
-	// DeleteVpnGateway RPC.
-	VpnServiceDeleteVpnGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnGateway"
-	// VpnServiceListVpnCustomerGatewaysProcedure is the fully-qualified name of the VpnService's
-	// ListVpnCustomerGateways RPC.
-	VpnServiceListVpnCustomerGatewaysProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnCustomerGateways"
-	// VpnServiceListVpnGatewaysProcedure is the fully-qualified name of the VpnService's
-	// ListVpnGateways RPC.
-	VpnServiceListVpnGatewaysProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnGateways"
+	// VpnServiceCreateRemoteAccessVpnProcedure is the fully-qualified name of the VpnService's
+	// CreateRemoteAccessVpn RPC.
+	VpnServiceCreateRemoteAccessVpnProcedure = "/cloudstack.management.vpn.v1.VpnService/CreateRemoteAccessVpn"
+	// VpnServiceUpdateVpnCustomerGatewayProcedure is the fully-qualified name of the VpnService's
+	// UpdateVpnCustomerGateway RPC.
+	VpnServiceUpdateVpnCustomerGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnCustomerGateway"
+	// VpnServiceListRemoteAccessVpnsProcedure is the fully-qualified name of the VpnService's
+	// ListRemoteAccessVpns RPC.
+	VpnServiceListRemoteAccessVpnsProcedure = "/cloudstack.management.vpn.v1.VpnService/ListRemoteAccessVpns"
 	// VpnServiceDeleteRemoteAccessVpnProcedure is the fully-qualified name of the VpnService's
 	// DeleteRemoteAccessVpn RPC.
 	VpnServiceDeleteRemoteAccessVpnProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteRemoteAccessVpn"
+	// VpnServiceCreateVpnConnectionProcedure is the fully-qualified name of the VpnService's
+	// CreateVpnConnection RPC.
+	VpnServiceCreateVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/CreateVpnConnection"
+	// VpnServiceDeleteVpnCustomerGatewayProcedure is the fully-qualified name of the VpnService's
+	// DeleteVpnCustomerGateway RPC.
+	VpnServiceDeleteVpnCustomerGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnCustomerGateway"
 	// VpnServiceUpdateVpnConnectionProcedure is the fully-qualified name of the VpnService's
 	// UpdateVpnConnection RPC.
 	VpnServiceUpdateVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnConnection"
+	// VpnServiceDeleteVpnGatewayProcedure is the fully-qualified name of the VpnService's
+	// DeleteVpnGateway RPC.
+	VpnServiceDeleteVpnGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnGateway"
+	// VpnServiceDeleteVpnConnectionProcedure is the fully-qualified name of the VpnService's
+	// DeleteVpnConnection RPC.
+	VpnServiceDeleteVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnConnection"
+	// VpnServiceRemoveVpnUserProcedure is the fully-qualified name of the VpnService's RemoveVpnUser
+	// RPC.
+	VpnServiceRemoveVpnUserProcedure = "/cloudstack.management.vpn.v1.VpnService/RemoveVpnUser"
+	// VpnServiceResetVpnConnectionProcedure is the fully-qualified name of the VpnService's
+	// ResetVpnConnection RPC.
+	VpnServiceResetVpnConnectionProcedure = "/cloudstack.management.vpn.v1.VpnService/ResetVpnConnection"
+	// VpnServiceAddVpnUserProcedure is the fully-qualified name of the VpnService's AddVpnUser RPC.
+	VpnServiceAddVpnUserProcedure = "/cloudstack.management.vpn.v1.VpnService/AddVpnUser"
 	// VpnServiceCreateVpnGatewayProcedure is the fully-qualified name of the VpnService's
 	// CreateVpnGateway RPC.
 	VpnServiceCreateVpnGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/CreateVpnGateway"
-	// VpnServiceAddVpnUserProcedure is the fully-qualified name of the VpnService's AddVpnUser RPC.
-	VpnServiceAddVpnUserProcedure = "/cloudstack.management.vpn.v1.VpnService/AddVpnUser"
 	// VpnServiceUpdateVpnGatewayProcedure is the fully-qualified name of the VpnService's
 	// UpdateVpnGateway RPC.
 	VpnServiceUpdateVpnGatewayProcedure = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnGateway"
+	// VpnServiceListVpnGatewaysProcedure is the fully-qualified name of the VpnService's
+	// ListVpnGateways RPC.
+	VpnServiceListVpnGatewaysProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnGateways"
+	// VpnServiceListVpnUsersProcedure is the fully-qualified name of the VpnService's ListVpnUsers RPC.
+	VpnServiceListVpnUsersProcedure = "/cloudstack.management.vpn.v1.VpnService/ListVpnUsers"
 )
 
 // VpnServiceClient is a client for the cloudstack.management.vpn.v1.VpnService service.
 type VpnServiceClient interface {
-	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
-	DeleteVpnCustomerGateway(context.Context, *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error)
-	// CreateVpnConnection Create site to site vpn connection
-	CreateVpnConnection(context.Context, *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error)
-	// ListVpnUsers Lists vpn users
-	ListVpnUsers(context.Context, *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error)
-	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
-	UpdateVpnCustomerGateway(context.Context, *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error)
-	// DeleteVpnConnection Delete site to site vpn connection
-	DeleteVpnConnection(context.Context, *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error)
+	// ListVpnCustomerGateways Lists site to site vpn customer gateways
+	ListVpnCustomerGateways(context.Context, *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error)
 	// ListVpnConnections Lists site to site vpn connection gateways
 	ListVpnConnections(context.Context, *connect.Request[v1.ListVpnConnectionsRequest]) (*connect.Response[v1.ListVpnConnectionsResponse], error)
 	// UpdateRemoteAccessVpn Updates remote access vpn
 	UpdateRemoteAccessVpn(context.Context, *connect.Request[v1.UpdateRemoteAccessVpnRequest]) (*connect.Response[v1.UpdateRemoteAccessVpnResponse], error)
-	// RemoveVpnUser Removes vpn user
-	RemoveVpnUser(context.Context, *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error)
-	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
-	CreateRemoteAccessVpn(context.Context, *connect.Request[v1.CreateRemoteAccessVpnRequest]) (*connect.Response[v1.CreateRemoteAccessVpnResponse], error)
-	// ListRemoteAccessVpns Lists remote access vpns
-	ListRemoteAccessVpns(context.Context, *connect.Request[v1.ListRemoteAccessVpnsRequest]) (*connect.Response[v1.ListRemoteAccessVpnsResponse], error)
 	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
 	CreateVpnCustomerGateway(context.Context, *connect.Request[v1.CreateVpnCustomerGatewayRequest]) (*connect.Response[v1.CreateVpnCustomerGatewayResponse], error)
-	// ResetVpnConnection Reset site to site vpn connection
-	ResetVpnConnection(context.Context, *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error)
-	// DeleteVpnGateway Delete site to site vpn gateway
-	DeleteVpnGateway(context.Context, *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error)
-	// ListVpnCustomerGateways Lists site to site vpn customer gateways
-	ListVpnCustomerGateways(context.Context, *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error)
-	// ListVpnGateways Lists site 2 site vpn gateways
-	ListVpnGateways(context.Context, *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error)
+	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
+	CreateRemoteAccessVpn(context.Context, *connect.Request[v1.CreateRemoteAccessVpnRequest]) (*connect.Response[v1.CreateRemoteAccessVpnResponse], error)
+	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
+	UpdateVpnCustomerGateway(context.Context, *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error)
+	// ListRemoteAccessVpns Lists remote access vpns
+	ListRemoteAccessVpns(context.Context, *connect.Request[v1.ListRemoteAccessVpnsRequest]) (*connect.Response[v1.ListRemoteAccessVpnsResponse], error)
 	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
 	DeleteRemoteAccessVpn(context.Context, *connect.Request[v1.DeleteRemoteAccessVpnRequest]) (*connect.Response[v1.DeleteRemoteAccessVpnResponse], error)
+	// CreateVpnConnection Create site to site vpn connection
+	CreateVpnConnection(context.Context, *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error)
+	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
+	DeleteVpnCustomerGateway(context.Context, *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error)
 	// UpdateVpnConnection Updates site to site vpn connection
 	UpdateVpnConnection(context.Context, *connect.Request[v1.UpdateVpnConnectionRequest]) (*connect.Response[v1.UpdateVpnConnectionResponse], error)
-	// CreateVpnGateway Creates site to site vpn local gateway
-	CreateVpnGateway(context.Context, *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error)
+	// DeleteVpnGateway Delete site to site vpn gateway
+	DeleteVpnGateway(context.Context, *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error)
+	// DeleteVpnConnection Delete site to site vpn connection
+	DeleteVpnConnection(context.Context, *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error)
+	// RemoveVpnUser Removes vpn user
+	RemoveVpnUser(context.Context, *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error)
+	// ResetVpnConnection Reset site to site vpn connection
+	ResetVpnConnection(context.Context, *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error)
 	// AddVpnUser Adds vpn users
 	AddVpnUser(context.Context, *connect.Request[v1.AddVpnUserRequest]) (*connect.Response[v1.AddVpnUserResponse], error)
+	// CreateVpnGateway Creates site to site vpn local gateway
+	CreateVpnGateway(context.Context, *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error)
 	// UpdateVpnGateway Updates site to site vpn local gateway
 	UpdateVpnGateway(context.Context, *connect.Request[v1.UpdateVpnGatewayRequest]) (*connect.Response[v1.UpdateVpnGatewayResponse], error)
+	// ListVpnGateways Lists site 2 site vpn gateways
+	ListVpnGateways(context.Context, *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error)
+	// ListVpnUsers Lists vpn users
+	ListVpnUsers(context.Context, *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error)
 }
 
 // NewVpnServiceClient constructs a client for the cloudstack.management.vpn.v1.VpnService service.
@@ -148,34 +148,10 @@ func NewVpnServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	vpnServiceMethods := v1.File_cloudstack_management_vpn_v1_vpn_gen_proto.Services().ByName("VpnService").Methods()
 	return &vpnServiceClient{
-		deleteVpnCustomerGateway: connect.NewClient[v1.DeleteVpnCustomerGatewayRequest, v1.DeleteVpnCustomerGatewayResponse](
+		listVpnCustomerGateways: connect.NewClient[v1.ListVpnCustomerGatewaysRequest, v1.ListVpnCustomerGatewaysResponse](
 			httpClient,
-			baseURL+VpnServiceDeleteVpnCustomerGatewayProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnCustomerGateway")),
-			connect.WithClientOptions(opts...),
-		),
-		createVpnConnection: connect.NewClient[v1.CreateVpnConnectionRequest, v1.CreateVpnConnectionResponse](
-			httpClient,
-			baseURL+VpnServiceCreateVpnConnectionProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("CreateVpnConnection")),
-			connect.WithClientOptions(opts...),
-		),
-		listVpnUsers: connect.NewClient[v1.ListVpnUsersRequest, v1.ListVpnUsersResponse](
-			httpClient,
-			baseURL+VpnServiceListVpnUsersProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("ListVpnUsers")),
-			connect.WithClientOptions(opts...),
-		),
-		updateVpnCustomerGateway: connect.NewClient[v1.UpdateVpnCustomerGatewayRequest, v1.UpdateVpnCustomerGatewayResponse](
-			httpClient,
-			baseURL+VpnServiceUpdateVpnCustomerGatewayProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnCustomerGateway")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVpnConnection: connect.NewClient[v1.DeleteVpnConnectionRequest, v1.DeleteVpnConnectionResponse](
-			httpClient,
-			baseURL+VpnServiceDeleteVpnConnectionProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnConnection")),
+			baseURL+VpnServiceListVpnCustomerGatewaysProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("ListVpnCustomerGateways")),
 			connect.WithClientOptions(opts...),
 		),
 		listVpnConnections: connect.NewClient[v1.ListVpnConnectionsRequest, v1.ListVpnConnectionsResponse](
@@ -190,10 +166,10 @@ func NewVpnServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(vpnServiceMethods.ByName("UpdateRemoteAccessVpn")),
 			connect.WithClientOptions(opts...),
 		),
-		removeVpnUser: connect.NewClient[v1.RemoveVpnUserRequest, v1.RemoveVpnUserResponse](
+		createVpnCustomerGateway: connect.NewClient[v1.CreateVpnCustomerGatewayRequest, v1.CreateVpnCustomerGatewayResponse](
 			httpClient,
-			baseURL+VpnServiceRemoveVpnUserProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("RemoveVpnUser")),
+			baseURL+VpnServiceCreateVpnCustomerGatewayProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("CreateVpnCustomerGateway")),
 			connect.WithClientOptions(opts...),
 		),
 		createRemoteAccessVpn: connect.NewClient[v1.CreateRemoteAccessVpnRequest, v1.CreateRemoteAccessVpnResponse](
@@ -202,40 +178,16 @@ func NewVpnServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(vpnServiceMethods.ByName("CreateRemoteAccessVpn")),
 			connect.WithClientOptions(opts...),
 		),
+		updateVpnCustomerGateway: connect.NewClient[v1.UpdateVpnCustomerGatewayRequest, v1.UpdateVpnCustomerGatewayResponse](
+			httpClient,
+			baseURL+VpnServiceUpdateVpnCustomerGatewayProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnCustomerGateway")),
+			connect.WithClientOptions(opts...),
+		),
 		listRemoteAccessVpns: connect.NewClient[v1.ListRemoteAccessVpnsRequest, v1.ListRemoteAccessVpnsResponse](
 			httpClient,
 			baseURL+VpnServiceListRemoteAccessVpnsProcedure,
 			connect.WithSchema(vpnServiceMethods.ByName("ListRemoteAccessVpns")),
-			connect.WithClientOptions(opts...),
-		),
-		createVpnCustomerGateway: connect.NewClient[v1.CreateVpnCustomerGatewayRequest, v1.CreateVpnCustomerGatewayResponse](
-			httpClient,
-			baseURL+VpnServiceCreateVpnCustomerGatewayProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("CreateVpnCustomerGateway")),
-			connect.WithClientOptions(opts...),
-		),
-		resetVpnConnection: connect.NewClient[v1.ResetVpnConnectionRequest, v1.ResetVpnConnectionResponse](
-			httpClient,
-			baseURL+VpnServiceResetVpnConnectionProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("ResetVpnConnection")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVpnGateway: connect.NewClient[v1.DeleteVpnGatewayRequest, v1.DeleteVpnGatewayResponse](
-			httpClient,
-			baseURL+VpnServiceDeleteVpnGatewayProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnGateway")),
-			connect.WithClientOptions(opts...),
-		),
-		listVpnCustomerGateways: connect.NewClient[v1.ListVpnCustomerGatewaysRequest, v1.ListVpnCustomerGatewaysResponse](
-			httpClient,
-			baseURL+VpnServiceListVpnCustomerGatewaysProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("ListVpnCustomerGateways")),
-			connect.WithClientOptions(opts...),
-		),
-		listVpnGateways: connect.NewClient[v1.ListVpnGatewaysRequest, v1.ListVpnGatewaysResponse](
-			httpClient,
-			baseURL+VpnServiceListVpnGatewaysProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("ListVpnGateways")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteRemoteAccessVpn: connect.NewClient[v1.DeleteRemoteAccessVpnRequest, v1.DeleteRemoteAccessVpnResponse](
@@ -244,16 +196,46 @@ func NewVpnServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(vpnServiceMethods.ByName("DeleteRemoteAccessVpn")),
 			connect.WithClientOptions(opts...),
 		),
+		createVpnConnection: connect.NewClient[v1.CreateVpnConnectionRequest, v1.CreateVpnConnectionResponse](
+			httpClient,
+			baseURL+VpnServiceCreateVpnConnectionProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("CreateVpnConnection")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteVpnCustomerGateway: connect.NewClient[v1.DeleteVpnCustomerGatewayRequest, v1.DeleteVpnCustomerGatewayResponse](
+			httpClient,
+			baseURL+VpnServiceDeleteVpnCustomerGatewayProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnCustomerGateway")),
+			connect.WithClientOptions(opts...),
+		),
 		updateVpnConnection: connect.NewClient[v1.UpdateVpnConnectionRequest, v1.UpdateVpnConnectionResponse](
 			httpClient,
 			baseURL+VpnServiceUpdateVpnConnectionProcedure,
 			connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnConnection")),
 			connect.WithClientOptions(opts...),
 		),
-		createVpnGateway: connect.NewClient[v1.CreateVpnGatewayRequest, v1.CreateVpnGatewayResponse](
+		deleteVpnGateway: connect.NewClient[v1.DeleteVpnGatewayRequest, v1.DeleteVpnGatewayResponse](
 			httpClient,
-			baseURL+VpnServiceCreateVpnGatewayProcedure,
-			connect.WithSchema(vpnServiceMethods.ByName("CreateVpnGateway")),
+			baseURL+VpnServiceDeleteVpnGatewayProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnGateway")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteVpnConnection: connect.NewClient[v1.DeleteVpnConnectionRequest, v1.DeleteVpnConnectionResponse](
+			httpClient,
+			baseURL+VpnServiceDeleteVpnConnectionProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnConnection")),
+			connect.WithClientOptions(opts...),
+		),
+		removeVpnUser: connect.NewClient[v1.RemoveVpnUserRequest, v1.RemoveVpnUserResponse](
+			httpClient,
+			baseURL+VpnServiceRemoveVpnUserProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("RemoveVpnUser")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVpnConnection: connect.NewClient[v1.ResetVpnConnectionRequest, v1.ResetVpnConnectionResponse](
+			httpClient,
+			baseURL+VpnServiceResetVpnConnectionProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("ResetVpnConnection")),
 			connect.WithClientOptions(opts...),
 		),
 		addVpnUser: connect.NewClient[v1.AddVpnUserRequest, v1.AddVpnUserResponse](
@@ -262,10 +244,28 @@ func NewVpnServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(vpnServiceMethods.ByName("AddVpnUser")),
 			connect.WithClientOptions(opts...),
 		),
+		createVpnGateway: connect.NewClient[v1.CreateVpnGatewayRequest, v1.CreateVpnGatewayResponse](
+			httpClient,
+			baseURL+VpnServiceCreateVpnGatewayProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("CreateVpnGateway")),
+			connect.WithClientOptions(opts...),
+		),
 		updateVpnGateway: connect.NewClient[v1.UpdateVpnGatewayRequest, v1.UpdateVpnGatewayResponse](
 			httpClient,
 			baseURL+VpnServiceUpdateVpnGatewayProcedure,
 			connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnGateway")),
+			connect.WithClientOptions(opts...),
+		),
+		listVpnGateways: connect.NewClient[v1.ListVpnGatewaysRequest, v1.ListVpnGatewaysResponse](
+			httpClient,
+			baseURL+VpnServiceListVpnGatewaysProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("ListVpnGateways")),
+			connect.WithClientOptions(opts...),
+		),
+		listVpnUsers: connect.NewClient[v1.ListVpnUsersRequest, v1.ListVpnUsersResponse](
+			httpClient,
+			baseURL+VpnServiceListVpnUsersProcedure,
+			connect.WithSchema(vpnServiceMethods.ByName("ListVpnUsers")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -273,51 +273,31 @@ func NewVpnServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 
 // vpnServiceClient implements VpnServiceClient.
 type vpnServiceClient struct {
-	deleteVpnCustomerGateway *connect.Client[v1.DeleteVpnCustomerGatewayRequest, v1.DeleteVpnCustomerGatewayResponse]
-	createVpnConnection      *connect.Client[v1.CreateVpnConnectionRequest, v1.CreateVpnConnectionResponse]
-	listVpnUsers             *connect.Client[v1.ListVpnUsersRequest, v1.ListVpnUsersResponse]
-	updateVpnCustomerGateway *connect.Client[v1.UpdateVpnCustomerGatewayRequest, v1.UpdateVpnCustomerGatewayResponse]
-	deleteVpnConnection      *connect.Client[v1.DeleteVpnConnectionRequest, v1.DeleteVpnConnectionResponse]
+	listVpnCustomerGateways  *connect.Client[v1.ListVpnCustomerGatewaysRequest, v1.ListVpnCustomerGatewaysResponse]
 	listVpnConnections       *connect.Client[v1.ListVpnConnectionsRequest, v1.ListVpnConnectionsResponse]
 	updateRemoteAccessVpn    *connect.Client[v1.UpdateRemoteAccessVpnRequest, v1.UpdateRemoteAccessVpnResponse]
-	removeVpnUser            *connect.Client[v1.RemoveVpnUserRequest, v1.RemoveVpnUserResponse]
-	createRemoteAccessVpn    *connect.Client[v1.CreateRemoteAccessVpnRequest, v1.CreateRemoteAccessVpnResponse]
-	listRemoteAccessVpns     *connect.Client[v1.ListRemoteAccessVpnsRequest, v1.ListRemoteAccessVpnsResponse]
 	createVpnCustomerGateway *connect.Client[v1.CreateVpnCustomerGatewayRequest, v1.CreateVpnCustomerGatewayResponse]
-	resetVpnConnection       *connect.Client[v1.ResetVpnConnectionRequest, v1.ResetVpnConnectionResponse]
-	deleteVpnGateway         *connect.Client[v1.DeleteVpnGatewayRequest, v1.DeleteVpnGatewayResponse]
-	listVpnCustomerGateways  *connect.Client[v1.ListVpnCustomerGatewaysRequest, v1.ListVpnCustomerGatewaysResponse]
-	listVpnGateways          *connect.Client[v1.ListVpnGatewaysRequest, v1.ListVpnGatewaysResponse]
+	createRemoteAccessVpn    *connect.Client[v1.CreateRemoteAccessVpnRequest, v1.CreateRemoteAccessVpnResponse]
+	updateVpnCustomerGateway *connect.Client[v1.UpdateVpnCustomerGatewayRequest, v1.UpdateVpnCustomerGatewayResponse]
+	listRemoteAccessVpns     *connect.Client[v1.ListRemoteAccessVpnsRequest, v1.ListRemoteAccessVpnsResponse]
 	deleteRemoteAccessVpn    *connect.Client[v1.DeleteRemoteAccessVpnRequest, v1.DeleteRemoteAccessVpnResponse]
+	createVpnConnection      *connect.Client[v1.CreateVpnConnectionRequest, v1.CreateVpnConnectionResponse]
+	deleteVpnCustomerGateway *connect.Client[v1.DeleteVpnCustomerGatewayRequest, v1.DeleteVpnCustomerGatewayResponse]
 	updateVpnConnection      *connect.Client[v1.UpdateVpnConnectionRequest, v1.UpdateVpnConnectionResponse]
-	createVpnGateway         *connect.Client[v1.CreateVpnGatewayRequest, v1.CreateVpnGatewayResponse]
+	deleteVpnGateway         *connect.Client[v1.DeleteVpnGatewayRequest, v1.DeleteVpnGatewayResponse]
+	deleteVpnConnection      *connect.Client[v1.DeleteVpnConnectionRequest, v1.DeleteVpnConnectionResponse]
+	removeVpnUser            *connect.Client[v1.RemoveVpnUserRequest, v1.RemoveVpnUserResponse]
+	resetVpnConnection       *connect.Client[v1.ResetVpnConnectionRequest, v1.ResetVpnConnectionResponse]
 	addVpnUser               *connect.Client[v1.AddVpnUserRequest, v1.AddVpnUserResponse]
+	createVpnGateway         *connect.Client[v1.CreateVpnGatewayRequest, v1.CreateVpnGatewayResponse]
 	updateVpnGateway         *connect.Client[v1.UpdateVpnGatewayRequest, v1.UpdateVpnGatewayResponse]
+	listVpnGateways          *connect.Client[v1.ListVpnGatewaysRequest, v1.ListVpnGatewaysResponse]
+	listVpnUsers             *connect.Client[v1.ListVpnUsersRequest, v1.ListVpnUsersResponse]
 }
 
-// DeleteVpnCustomerGateway calls cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway.
-func (c *vpnServiceClient) DeleteVpnCustomerGateway(ctx context.Context, req *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error) {
-	return c.deleteVpnCustomerGateway.CallUnary(ctx, req)
-}
-
-// CreateVpnConnection calls cloudstack.management.vpn.v1.VpnService.CreateVpnConnection.
-func (c *vpnServiceClient) CreateVpnConnection(ctx context.Context, req *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error) {
-	return c.createVpnConnection.CallUnary(ctx, req)
-}
-
-// ListVpnUsers calls cloudstack.management.vpn.v1.VpnService.ListVpnUsers.
-func (c *vpnServiceClient) ListVpnUsers(ctx context.Context, req *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error) {
-	return c.listVpnUsers.CallUnary(ctx, req)
-}
-
-// UpdateVpnCustomerGateway calls cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway.
-func (c *vpnServiceClient) UpdateVpnCustomerGateway(ctx context.Context, req *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error) {
-	return c.updateVpnCustomerGateway.CallUnary(ctx, req)
-}
-
-// DeleteVpnConnection calls cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection.
-func (c *vpnServiceClient) DeleteVpnConnection(ctx context.Context, req *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error) {
-	return c.deleteVpnConnection.CallUnary(ctx, req)
+// ListVpnCustomerGateways calls cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways.
+func (c *vpnServiceClient) ListVpnCustomerGateways(ctx context.Context, req *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error) {
+	return c.listVpnCustomerGateways.CallUnary(ctx, req)
 }
 
 // ListVpnConnections calls cloudstack.management.vpn.v1.VpnService.ListVpnConnections.
@@ -330,9 +310,9 @@ func (c *vpnServiceClient) UpdateRemoteAccessVpn(ctx context.Context, req *conne
 	return c.updateRemoteAccessVpn.CallUnary(ctx, req)
 }
 
-// RemoveVpnUser calls cloudstack.management.vpn.v1.VpnService.RemoveVpnUser.
-func (c *vpnServiceClient) RemoveVpnUser(ctx context.Context, req *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error) {
-	return c.removeVpnUser.CallUnary(ctx, req)
+// CreateVpnCustomerGateway calls cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway.
+func (c *vpnServiceClient) CreateVpnCustomerGateway(ctx context.Context, req *connect.Request[v1.CreateVpnCustomerGatewayRequest]) (*connect.Response[v1.CreateVpnCustomerGatewayResponse], error) {
+	return c.createVpnCustomerGateway.CallUnary(ctx, req)
 }
 
 // CreateRemoteAccessVpn calls cloudstack.management.vpn.v1.VpnService.CreateRemoteAccessVpn.
@@ -340,34 +320,14 @@ func (c *vpnServiceClient) CreateRemoteAccessVpn(ctx context.Context, req *conne
 	return c.createRemoteAccessVpn.CallUnary(ctx, req)
 }
 
+// UpdateVpnCustomerGateway calls cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway.
+func (c *vpnServiceClient) UpdateVpnCustomerGateway(ctx context.Context, req *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error) {
+	return c.updateVpnCustomerGateway.CallUnary(ctx, req)
+}
+
 // ListRemoteAccessVpns calls cloudstack.management.vpn.v1.VpnService.ListRemoteAccessVpns.
 func (c *vpnServiceClient) ListRemoteAccessVpns(ctx context.Context, req *connect.Request[v1.ListRemoteAccessVpnsRequest]) (*connect.Response[v1.ListRemoteAccessVpnsResponse], error) {
 	return c.listRemoteAccessVpns.CallUnary(ctx, req)
-}
-
-// CreateVpnCustomerGateway calls cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway.
-func (c *vpnServiceClient) CreateVpnCustomerGateway(ctx context.Context, req *connect.Request[v1.CreateVpnCustomerGatewayRequest]) (*connect.Response[v1.CreateVpnCustomerGatewayResponse], error) {
-	return c.createVpnCustomerGateway.CallUnary(ctx, req)
-}
-
-// ResetVpnConnection calls cloudstack.management.vpn.v1.VpnService.ResetVpnConnection.
-func (c *vpnServiceClient) ResetVpnConnection(ctx context.Context, req *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error) {
-	return c.resetVpnConnection.CallUnary(ctx, req)
-}
-
-// DeleteVpnGateway calls cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway.
-func (c *vpnServiceClient) DeleteVpnGateway(ctx context.Context, req *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error) {
-	return c.deleteVpnGateway.CallUnary(ctx, req)
-}
-
-// ListVpnCustomerGateways calls cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways.
-func (c *vpnServiceClient) ListVpnCustomerGateways(ctx context.Context, req *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error) {
-	return c.listVpnCustomerGateways.CallUnary(ctx, req)
-}
-
-// ListVpnGateways calls cloudstack.management.vpn.v1.VpnService.ListVpnGateways.
-func (c *vpnServiceClient) ListVpnGateways(ctx context.Context, req *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error) {
-	return c.listVpnGateways.CallUnary(ctx, req)
 }
 
 // DeleteRemoteAccessVpn calls cloudstack.management.vpn.v1.VpnService.DeleteRemoteAccessVpn.
@@ -375,14 +335,39 @@ func (c *vpnServiceClient) DeleteRemoteAccessVpn(ctx context.Context, req *conne
 	return c.deleteRemoteAccessVpn.CallUnary(ctx, req)
 }
 
+// CreateVpnConnection calls cloudstack.management.vpn.v1.VpnService.CreateVpnConnection.
+func (c *vpnServiceClient) CreateVpnConnection(ctx context.Context, req *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error) {
+	return c.createVpnConnection.CallUnary(ctx, req)
+}
+
+// DeleteVpnCustomerGateway calls cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway.
+func (c *vpnServiceClient) DeleteVpnCustomerGateway(ctx context.Context, req *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error) {
+	return c.deleteVpnCustomerGateway.CallUnary(ctx, req)
+}
+
 // UpdateVpnConnection calls cloudstack.management.vpn.v1.VpnService.UpdateVpnConnection.
 func (c *vpnServiceClient) UpdateVpnConnection(ctx context.Context, req *connect.Request[v1.UpdateVpnConnectionRequest]) (*connect.Response[v1.UpdateVpnConnectionResponse], error) {
 	return c.updateVpnConnection.CallUnary(ctx, req)
 }
 
-// CreateVpnGateway calls cloudstack.management.vpn.v1.VpnService.CreateVpnGateway.
-func (c *vpnServiceClient) CreateVpnGateway(ctx context.Context, req *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error) {
-	return c.createVpnGateway.CallUnary(ctx, req)
+// DeleteVpnGateway calls cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway.
+func (c *vpnServiceClient) DeleteVpnGateway(ctx context.Context, req *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error) {
+	return c.deleteVpnGateway.CallUnary(ctx, req)
+}
+
+// DeleteVpnConnection calls cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection.
+func (c *vpnServiceClient) DeleteVpnConnection(ctx context.Context, req *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error) {
+	return c.deleteVpnConnection.CallUnary(ctx, req)
+}
+
+// RemoveVpnUser calls cloudstack.management.vpn.v1.VpnService.RemoveVpnUser.
+func (c *vpnServiceClient) RemoveVpnUser(ctx context.Context, req *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error) {
+	return c.removeVpnUser.CallUnary(ctx, req)
+}
+
+// ResetVpnConnection calls cloudstack.management.vpn.v1.VpnService.ResetVpnConnection.
+func (c *vpnServiceClient) ResetVpnConnection(ctx context.Context, req *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error) {
+	return c.resetVpnConnection.CallUnary(ctx, req)
 }
 
 // AddVpnUser calls cloudstack.management.vpn.v1.VpnService.AddVpnUser.
@@ -390,53 +375,68 @@ func (c *vpnServiceClient) AddVpnUser(ctx context.Context, req *connect.Request[
 	return c.addVpnUser.CallUnary(ctx, req)
 }
 
+// CreateVpnGateway calls cloudstack.management.vpn.v1.VpnService.CreateVpnGateway.
+func (c *vpnServiceClient) CreateVpnGateway(ctx context.Context, req *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error) {
+	return c.createVpnGateway.CallUnary(ctx, req)
+}
+
 // UpdateVpnGateway calls cloudstack.management.vpn.v1.VpnService.UpdateVpnGateway.
 func (c *vpnServiceClient) UpdateVpnGateway(ctx context.Context, req *connect.Request[v1.UpdateVpnGatewayRequest]) (*connect.Response[v1.UpdateVpnGatewayResponse], error) {
 	return c.updateVpnGateway.CallUnary(ctx, req)
 }
 
+// ListVpnGateways calls cloudstack.management.vpn.v1.VpnService.ListVpnGateways.
+func (c *vpnServiceClient) ListVpnGateways(ctx context.Context, req *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error) {
+	return c.listVpnGateways.CallUnary(ctx, req)
+}
+
+// ListVpnUsers calls cloudstack.management.vpn.v1.VpnService.ListVpnUsers.
+func (c *vpnServiceClient) ListVpnUsers(ctx context.Context, req *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error) {
+	return c.listVpnUsers.CallUnary(ctx, req)
+}
+
 // VpnServiceHandler is an implementation of the cloudstack.management.vpn.v1.VpnService service.
 type VpnServiceHandler interface {
-	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
-	DeleteVpnCustomerGateway(context.Context, *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error)
-	// CreateVpnConnection Create site to site vpn connection
-	CreateVpnConnection(context.Context, *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error)
-	// ListVpnUsers Lists vpn users
-	ListVpnUsers(context.Context, *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error)
-	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
-	UpdateVpnCustomerGateway(context.Context, *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error)
-	// DeleteVpnConnection Delete site to site vpn connection
-	DeleteVpnConnection(context.Context, *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error)
+	// ListVpnCustomerGateways Lists site to site vpn customer gateways
+	ListVpnCustomerGateways(context.Context, *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error)
 	// ListVpnConnections Lists site to site vpn connection gateways
 	ListVpnConnections(context.Context, *connect.Request[v1.ListVpnConnectionsRequest]) (*connect.Response[v1.ListVpnConnectionsResponse], error)
 	// UpdateRemoteAccessVpn Updates remote access vpn
 	UpdateRemoteAccessVpn(context.Context, *connect.Request[v1.UpdateRemoteAccessVpnRequest]) (*connect.Response[v1.UpdateRemoteAccessVpnResponse], error)
-	// RemoveVpnUser Removes vpn user
-	RemoveVpnUser(context.Context, *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error)
-	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
-	CreateRemoteAccessVpn(context.Context, *connect.Request[v1.CreateRemoteAccessVpnRequest]) (*connect.Response[v1.CreateRemoteAccessVpnResponse], error)
-	// ListRemoteAccessVpns Lists remote access vpns
-	ListRemoteAccessVpns(context.Context, *connect.Request[v1.ListRemoteAccessVpnsRequest]) (*connect.Response[v1.ListRemoteAccessVpnsResponse], error)
 	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
 	CreateVpnCustomerGateway(context.Context, *connect.Request[v1.CreateVpnCustomerGatewayRequest]) (*connect.Response[v1.CreateVpnCustomerGatewayResponse], error)
-	// ResetVpnConnection Reset site to site vpn connection
-	ResetVpnConnection(context.Context, *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error)
-	// DeleteVpnGateway Delete site to site vpn gateway
-	DeleteVpnGateway(context.Context, *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error)
-	// ListVpnCustomerGateways Lists site to site vpn customer gateways
-	ListVpnCustomerGateways(context.Context, *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error)
-	// ListVpnGateways Lists site 2 site vpn gateways
-	ListVpnGateways(context.Context, *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error)
+	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
+	CreateRemoteAccessVpn(context.Context, *connect.Request[v1.CreateRemoteAccessVpnRequest]) (*connect.Response[v1.CreateRemoteAccessVpnResponse], error)
+	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
+	UpdateVpnCustomerGateway(context.Context, *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error)
+	// ListRemoteAccessVpns Lists remote access vpns
+	ListRemoteAccessVpns(context.Context, *connect.Request[v1.ListRemoteAccessVpnsRequest]) (*connect.Response[v1.ListRemoteAccessVpnsResponse], error)
 	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
 	DeleteRemoteAccessVpn(context.Context, *connect.Request[v1.DeleteRemoteAccessVpnRequest]) (*connect.Response[v1.DeleteRemoteAccessVpnResponse], error)
+	// CreateVpnConnection Create site to site vpn connection
+	CreateVpnConnection(context.Context, *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error)
+	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
+	DeleteVpnCustomerGateway(context.Context, *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error)
 	// UpdateVpnConnection Updates site to site vpn connection
 	UpdateVpnConnection(context.Context, *connect.Request[v1.UpdateVpnConnectionRequest]) (*connect.Response[v1.UpdateVpnConnectionResponse], error)
-	// CreateVpnGateway Creates site to site vpn local gateway
-	CreateVpnGateway(context.Context, *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error)
+	// DeleteVpnGateway Delete site to site vpn gateway
+	DeleteVpnGateway(context.Context, *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error)
+	// DeleteVpnConnection Delete site to site vpn connection
+	DeleteVpnConnection(context.Context, *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error)
+	// RemoveVpnUser Removes vpn user
+	RemoveVpnUser(context.Context, *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error)
+	// ResetVpnConnection Reset site to site vpn connection
+	ResetVpnConnection(context.Context, *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error)
 	// AddVpnUser Adds vpn users
 	AddVpnUser(context.Context, *connect.Request[v1.AddVpnUserRequest]) (*connect.Response[v1.AddVpnUserResponse], error)
+	// CreateVpnGateway Creates site to site vpn local gateway
+	CreateVpnGateway(context.Context, *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error)
 	// UpdateVpnGateway Updates site to site vpn local gateway
 	UpdateVpnGateway(context.Context, *connect.Request[v1.UpdateVpnGatewayRequest]) (*connect.Response[v1.UpdateVpnGatewayResponse], error)
+	// ListVpnGateways Lists site 2 site vpn gateways
+	ListVpnGateways(context.Context, *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error)
+	// ListVpnUsers Lists vpn users
+	ListVpnUsers(context.Context, *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error)
 }
 
 // NewVpnServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -446,34 +446,10 @@ type VpnServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVpnServiceHandler(svc VpnServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vpnServiceMethods := v1.File_cloudstack_management_vpn_v1_vpn_gen_proto.Services().ByName("VpnService").Methods()
-	vpnServiceDeleteVpnCustomerGatewayHandler := connect.NewUnaryHandler(
-		VpnServiceDeleteVpnCustomerGatewayProcedure,
-		svc.DeleteVpnCustomerGateway,
-		connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnCustomerGateway")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceCreateVpnConnectionHandler := connect.NewUnaryHandler(
-		VpnServiceCreateVpnConnectionProcedure,
-		svc.CreateVpnConnection,
-		connect.WithSchema(vpnServiceMethods.ByName("CreateVpnConnection")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceListVpnUsersHandler := connect.NewUnaryHandler(
-		VpnServiceListVpnUsersProcedure,
-		svc.ListVpnUsers,
-		connect.WithSchema(vpnServiceMethods.ByName("ListVpnUsers")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceUpdateVpnCustomerGatewayHandler := connect.NewUnaryHandler(
-		VpnServiceUpdateVpnCustomerGatewayProcedure,
-		svc.UpdateVpnCustomerGateway,
-		connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnCustomerGateway")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceDeleteVpnConnectionHandler := connect.NewUnaryHandler(
-		VpnServiceDeleteVpnConnectionProcedure,
-		svc.DeleteVpnConnection,
-		connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnConnection")),
+	vpnServiceListVpnCustomerGatewaysHandler := connect.NewUnaryHandler(
+		VpnServiceListVpnCustomerGatewaysProcedure,
+		svc.ListVpnCustomerGateways,
+		connect.WithSchema(vpnServiceMethods.ByName("ListVpnCustomerGateways")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vpnServiceListVpnConnectionsHandler := connect.NewUnaryHandler(
@@ -488,10 +464,10 @@ func NewVpnServiceHandler(svc VpnServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(vpnServiceMethods.ByName("UpdateRemoteAccessVpn")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vpnServiceRemoveVpnUserHandler := connect.NewUnaryHandler(
-		VpnServiceRemoveVpnUserProcedure,
-		svc.RemoveVpnUser,
-		connect.WithSchema(vpnServiceMethods.ByName("RemoveVpnUser")),
+	vpnServiceCreateVpnCustomerGatewayHandler := connect.NewUnaryHandler(
+		VpnServiceCreateVpnCustomerGatewayProcedure,
+		svc.CreateVpnCustomerGateway,
+		connect.WithSchema(vpnServiceMethods.ByName("CreateVpnCustomerGateway")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vpnServiceCreateRemoteAccessVpnHandler := connect.NewUnaryHandler(
@@ -500,40 +476,16 @@ func NewVpnServiceHandler(svc VpnServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(vpnServiceMethods.ByName("CreateRemoteAccessVpn")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vpnServiceUpdateVpnCustomerGatewayHandler := connect.NewUnaryHandler(
+		VpnServiceUpdateVpnCustomerGatewayProcedure,
+		svc.UpdateVpnCustomerGateway,
+		connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnCustomerGateway")),
+		connect.WithHandlerOptions(opts...),
+	)
 	vpnServiceListRemoteAccessVpnsHandler := connect.NewUnaryHandler(
 		VpnServiceListRemoteAccessVpnsProcedure,
 		svc.ListRemoteAccessVpns,
 		connect.WithSchema(vpnServiceMethods.ByName("ListRemoteAccessVpns")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceCreateVpnCustomerGatewayHandler := connect.NewUnaryHandler(
-		VpnServiceCreateVpnCustomerGatewayProcedure,
-		svc.CreateVpnCustomerGateway,
-		connect.WithSchema(vpnServiceMethods.ByName("CreateVpnCustomerGateway")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceResetVpnConnectionHandler := connect.NewUnaryHandler(
-		VpnServiceResetVpnConnectionProcedure,
-		svc.ResetVpnConnection,
-		connect.WithSchema(vpnServiceMethods.ByName("ResetVpnConnection")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceDeleteVpnGatewayHandler := connect.NewUnaryHandler(
-		VpnServiceDeleteVpnGatewayProcedure,
-		svc.DeleteVpnGateway,
-		connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnGateway")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceListVpnCustomerGatewaysHandler := connect.NewUnaryHandler(
-		VpnServiceListVpnCustomerGatewaysProcedure,
-		svc.ListVpnCustomerGateways,
-		connect.WithSchema(vpnServiceMethods.ByName("ListVpnCustomerGateways")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpnServiceListVpnGatewaysHandler := connect.NewUnaryHandler(
-		VpnServiceListVpnGatewaysProcedure,
-		svc.ListVpnGateways,
-		connect.WithSchema(vpnServiceMethods.ByName("ListVpnGateways")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vpnServiceDeleteRemoteAccessVpnHandler := connect.NewUnaryHandler(
@@ -542,16 +494,46 @@ func NewVpnServiceHandler(svc VpnServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(vpnServiceMethods.ByName("DeleteRemoteAccessVpn")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vpnServiceCreateVpnConnectionHandler := connect.NewUnaryHandler(
+		VpnServiceCreateVpnConnectionProcedure,
+		svc.CreateVpnConnection,
+		connect.WithSchema(vpnServiceMethods.ByName("CreateVpnConnection")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpnServiceDeleteVpnCustomerGatewayHandler := connect.NewUnaryHandler(
+		VpnServiceDeleteVpnCustomerGatewayProcedure,
+		svc.DeleteVpnCustomerGateway,
+		connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnCustomerGateway")),
+		connect.WithHandlerOptions(opts...),
+	)
 	vpnServiceUpdateVpnConnectionHandler := connect.NewUnaryHandler(
 		VpnServiceUpdateVpnConnectionProcedure,
 		svc.UpdateVpnConnection,
 		connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnConnection")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vpnServiceCreateVpnGatewayHandler := connect.NewUnaryHandler(
-		VpnServiceCreateVpnGatewayProcedure,
-		svc.CreateVpnGateway,
-		connect.WithSchema(vpnServiceMethods.ByName("CreateVpnGateway")),
+	vpnServiceDeleteVpnGatewayHandler := connect.NewUnaryHandler(
+		VpnServiceDeleteVpnGatewayProcedure,
+		svc.DeleteVpnGateway,
+		connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnGateway")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpnServiceDeleteVpnConnectionHandler := connect.NewUnaryHandler(
+		VpnServiceDeleteVpnConnectionProcedure,
+		svc.DeleteVpnConnection,
+		connect.WithSchema(vpnServiceMethods.ByName("DeleteVpnConnection")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpnServiceRemoveVpnUserHandler := connect.NewUnaryHandler(
+		VpnServiceRemoveVpnUserProcedure,
+		svc.RemoveVpnUser,
+		connect.WithSchema(vpnServiceMethods.ByName("RemoveVpnUser")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpnServiceResetVpnConnectionHandler := connect.NewUnaryHandler(
+		VpnServiceResetVpnConnectionProcedure,
+		svc.ResetVpnConnection,
+		connect.WithSchema(vpnServiceMethods.ByName("ResetVpnConnection")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vpnServiceAddVpnUserHandler := connect.NewUnaryHandler(
@@ -560,54 +542,72 @@ func NewVpnServiceHandler(svc VpnServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(vpnServiceMethods.ByName("AddVpnUser")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vpnServiceCreateVpnGatewayHandler := connect.NewUnaryHandler(
+		VpnServiceCreateVpnGatewayProcedure,
+		svc.CreateVpnGateway,
+		connect.WithSchema(vpnServiceMethods.ByName("CreateVpnGateway")),
+		connect.WithHandlerOptions(opts...),
+	)
 	vpnServiceUpdateVpnGatewayHandler := connect.NewUnaryHandler(
 		VpnServiceUpdateVpnGatewayProcedure,
 		svc.UpdateVpnGateway,
 		connect.WithSchema(vpnServiceMethods.ByName("UpdateVpnGateway")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vpnServiceListVpnGatewaysHandler := connect.NewUnaryHandler(
+		VpnServiceListVpnGatewaysProcedure,
+		svc.ListVpnGateways,
+		connect.WithSchema(vpnServiceMethods.ByName("ListVpnGateways")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpnServiceListVpnUsersHandler := connect.NewUnaryHandler(
+		VpnServiceListVpnUsersProcedure,
+		svc.ListVpnUsers,
+		connect.WithSchema(vpnServiceMethods.ByName("ListVpnUsers")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.vpn.v1.VpnService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VpnServiceDeleteVpnCustomerGatewayProcedure:
-			vpnServiceDeleteVpnCustomerGatewayHandler.ServeHTTP(w, r)
-		case VpnServiceCreateVpnConnectionProcedure:
-			vpnServiceCreateVpnConnectionHandler.ServeHTTP(w, r)
-		case VpnServiceListVpnUsersProcedure:
-			vpnServiceListVpnUsersHandler.ServeHTTP(w, r)
-		case VpnServiceUpdateVpnCustomerGatewayProcedure:
-			vpnServiceUpdateVpnCustomerGatewayHandler.ServeHTTP(w, r)
-		case VpnServiceDeleteVpnConnectionProcedure:
-			vpnServiceDeleteVpnConnectionHandler.ServeHTTP(w, r)
+		case VpnServiceListVpnCustomerGatewaysProcedure:
+			vpnServiceListVpnCustomerGatewaysHandler.ServeHTTP(w, r)
 		case VpnServiceListVpnConnectionsProcedure:
 			vpnServiceListVpnConnectionsHandler.ServeHTTP(w, r)
 		case VpnServiceUpdateRemoteAccessVpnProcedure:
 			vpnServiceUpdateRemoteAccessVpnHandler.ServeHTTP(w, r)
-		case VpnServiceRemoveVpnUserProcedure:
-			vpnServiceRemoveVpnUserHandler.ServeHTTP(w, r)
-		case VpnServiceCreateRemoteAccessVpnProcedure:
-			vpnServiceCreateRemoteAccessVpnHandler.ServeHTTP(w, r)
-		case VpnServiceListRemoteAccessVpnsProcedure:
-			vpnServiceListRemoteAccessVpnsHandler.ServeHTTP(w, r)
 		case VpnServiceCreateVpnCustomerGatewayProcedure:
 			vpnServiceCreateVpnCustomerGatewayHandler.ServeHTTP(w, r)
-		case VpnServiceResetVpnConnectionProcedure:
-			vpnServiceResetVpnConnectionHandler.ServeHTTP(w, r)
-		case VpnServiceDeleteVpnGatewayProcedure:
-			vpnServiceDeleteVpnGatewayHandler.ServeHTTP(w, r)
-		case VpnServiceListVpnCustomerGatewaysProcedure:
-			vpnServiceListVpnCustomerGatewaysHandler.ServeHTTP(w, r)
-		case VpnServiceListVpnGatewaysProcedure:
-			vpnServiceListVpnGatewaysHandler.ServeHTTP(w, r)
+		case VpnServiceCreateRemoteAccessVpnProcedure:
+			vpnServiceCreateRemoteAccessVpnHandler.ServeHTTP(w, r)
+		case VpnServiceUpdateVpnCustomerGatewayProcedure:
+			vpnServiceUpdateVpnCustomerGatewayHandler.ServeHTTP(w, r)
+		case VpnServiceListRemoteAccessVpnsProcedure:
+			vpnServiceListRemoteAccessVpnsHandler.ServeHTTP(w, r)
 		case VpnServiceDeleteRemoteAccessVpnProcedure:
 			vpnServiceDeleteRemoteAccessVpnHandler.ServeHTTP(w, r)
+		case VpnServiceCreateVpnConnectionProcedure:
+			vpnServiceCreateVpnConnectionHandler.ServeHTTP(w, r)
+		case VpnServiceDeleteVpnCustomerGatewayProcedure:
+			vpnServiceDeleteVpnCustomerGatewayHandler.ServeHTTP(w, r)
 		case VpnServiceUpdateVpnConnectionProcedure:
 			vpnServiceUpdateVpnConnectionHandler.ServeHTTP(w, r)
-		case VpnServiceCreateVpnGatewayProcedure:
-			vpnServiceCreateVpnGatewayHandler.ServeHTTP(w, r)
+		case VpnServiceDeleteVpnGatewayProcedure:
+			vpnServiceDeleteVpnGatewayHandler.ServeHTTP(w, r)
+		case VpnServiceDeleteVpnConnectionProcedure:
+			vpnServiceDeleteVpnConnectionHandler.ServeHTTP(w, r)
+		case VpnServiceRemoveVpnUserProcedure:
+			vpnServiceRemoveVpnUserHandler.ServeHTTP(w, r)
+		case VpnServiceResetVpnConnectionProcedure:
+			vpnServiceResetVpnConnectionHandler.ServeHTTP(w, r)
 		case VpnServiceAddVpnUserProcedure:
 			vpnServiceAddVpnUserHandler.ServeHTTP(w, r)
+		case VpnServiceCreateVpnGatewayProcedure:
+			vpnServiceCreateVpnGatewayHandler.ServeHTTP(w, r)
 		case VpnServiceUpdateVpnGatewayProcedure:
 			vpnServiceUpdateVpnGatewayHandler.ServeHTTP(w, r)
+		case VpnServiceListVpnGatewaysProcedure:
+			vpnServiceListVpnGatewaysHandler.ServeHTTP(w, r)
+		case VpnServiceListVpnUsersProcedure:
+			vpnServiceListVpnUsersHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -617,24 +617,8 @@ func NewVpnServiceHandler(svc VpnServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedVpnServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVpnServiceHandler struct{}
 
-func (UnimplementedVpnServiceHandler) DeleteVpnCustomerGateway(context.Context, *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) CreateVpnConnection(context.Context, *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateVpnConnection is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) ListVpnUsers(context.Context, *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListVpnUsers is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) UpdateVpnCustomerGateway(context.Context, *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) DeleteVpnConnection(context.Context, *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection is not implemented"))
+func (UnimplementedVpnServiceHandler) ListVpnCustomerGateways(context.Context, *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways is not implemented"))
 }
 
 func (UnimplementedVpnServiceHandler) ListVpnConnections(context.Context, *connect.Request[v1.ListVpnConnectionsRequest]) (*connect.Response[v1.ListVpnConnectionsResponse], error) {
@@ -645,54 +629,70 @@ func (UnimplementedVpnServiceHandler) UpdateRemoteAccessVpn(context.Context, *co
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.UpdateRemoteAccessVpn is not implemented"))
 }
 
-func (UnimplementedVpnServiceHandler) RemoveVpnUser(context.Context, *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.RemoveVpnUser is not implemented"))
+func (UnimplementedVpnServiceHandler) CreateVpnCustomerGateway(context.Context, *connect.Request[v1.CreateVpnCustomerGatewayRequest]) (*connect.Response[v1.CreateVpnCustomerGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway is not implemented"))
 }
 
 func (UnimplementedVpnServiceHandler) CreateRemoteAccessVpn(context.Context, *connect.Request[v1.CreateRemoteAccessVpnRequest]) (*connect.Response[v1.CreateRemoteAccessVpnResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateRemoteAccessVpn is not implemented"))
 }
 
+func (UnimplementedVpnServiceHandler) UpdateVpnCustomerGateway(context.Context, *connect.Request[v1.UpdateVpnCustomerGatewayRequest]) (*connect.Response[v1.UpdateVpnCustomerGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway is not implemented"))
+}
+
 func (UnimplementedVpnServiceHandler) ListRemoteAccessVpns(context.Context, *connect.Request[v1.ListRemoteAccessVpnsRequest]) (*connect.Response[v1.ListRemoteAccessVpnsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListRemoteAccessVpns is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) CreateVpnCustomerGateway(context.Context, *connect.Request[v1.CreateVpnCustomerGatewayRequest]) (*connect.Response[v1.CreateVpnCustomerGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) ResetVpnConnection(context.Context, *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ResetVpnConnection is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) DeleteVpnGateway(context.Context, *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) ListVpnCustomerGateways(context.Context, *connect.Request[v1.ListVpnCustomerGatewaysRequest]) (*connect.Response[v1.ListVpnCustomerGatewaysResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways is not implemented"))
-}
-
-func (UnimplementedVpnServiceHandler) ListVpnGateways(context.Context, *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListVpnGateways is not implemented"))
 }
 
 func (UnimplementedVpnServiceHandler) DeleteRemoteAccessVpn(context.Context, *connect.Request[v1.DeleteRemoteAccessVpnRequest]) (*connect.Response[v1.DeleteRemoteAccessVpnResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteRemoteAccessVpn is not implemented"))
 }
 
+func (UnimplementedVpnServiceHandler) CreateVpnConnection(context.Context, *connect.Request[v1.CreateVpnConnectionRequest]) (*connect.Response[v1.CreateVpnConnectionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateVpnConnection is not implemented"))
+}
+
+func (UnimplementedVpnServiceHandler) DeleteVpnCustomerGateway(context.Context, *connect.Request[v1.DeleteVpnCustomerGatewayRequest]) (*connect.Response[v1.DeleteVpnCustomerGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway is not implemented"))
+}
+
 func (UnimplementedVpnServiceHandler) UpdateVpnConnection(context.Context, *connect.Request[v1.UpdateVpnConnectionRequest]) (*connect.Response[v1.UpdateVpnConnectionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.UpdateVpnConnection is not implemented"))
 }
 
-func (UnimplementedVpnServiceHandler) CreateVpnGateway(context.Context, *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateVpnGateway is not implemented"))
+func (UnimplementedVpnServiceHandler) DeleteVpnGateway(context.Context, *connect.Request[v1.DeleteVpnGatewayRequest]) (*connect.Response[v1.DeleteVpnGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway is not implemented"))
+}
+
+func (UnimplementedVpnServiceHandler) DeleteVpnConnection(context.Context, *connect.Request[v1.DeleteVpnConnectionRequest]) (*connect.Response[v1.DeleteVpnConnectionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection is not implemented"))
+}
+
+func (UnimplementedVpnServiceHandler) RemoveVpnUser(context.Context, *connect.Request[v1.RemoveVpnUserRequest]) (*connect.Response[v1.RemoveVpnUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.RemoveVpnUser is not implemented"))
+}
+
+func (UnimplementedVpnServiceHandler) ResetVpnConnection(context.Context, *connect.Request[v1.ResetVpnConnectionRequest]) (*connect.Response[v1.ResetVpnConnectionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ResetVpnConnection is not implemented"))
 }
 
 func (UnimplementedVpnServiceHandler) AddVpnUser(context.Context, *connect.Request[v1.AddVpnUserRequest]) (*connect.Response[v1.AddVpnUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.AddVpnUser is not implemented"))
 }
 
+func (UnimplementedVpnServiceHandler) CreateVpnGateway(context.Context, *connect.Request[v1.CreateVpnGatewayRequest]) (*connect.Response[v1.CreateVpnGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.CreateVpnGateway is not implemented"))
+}
+
 func (UnimplementedVpnServiceHandler) UpdateVpnGateway(context.Context, *connect.Request[v1.UpdateVpnGatewayRequest]) (*connect.Response[v1.UpdateVpnGatewayResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.UpdateVpnGateway is not implemented"))
+}
+
+func (UnimplementedVpnServiceHandler) ListVpnGateways(context.Context, *connect.Request[v1.ListVpnGatewaysRequest]) (*connect.Response[v1.ListVpnGatewaysResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListVpnGateways is not implemented"))
+}
+
+func (UnimplementedVpnServiceHandler) ListVpnUsers(context.Context, *connect.Request[v1.ListVpnUsersRequest]) (*connect.Response[v1.ListVpnUsersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpn.v1.VpnService.ListVpnUsers is not implemented"))
 }

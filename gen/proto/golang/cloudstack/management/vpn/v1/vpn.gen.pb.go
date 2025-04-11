@@ -24,32 +24,44 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteVpnCustomerGatewayRequest represents the parameters for delete site to site vpn customer gateway
-type DeleteVpnCustomerGatewayRequest struct {
+// ListVpnCustomerGatewaysRequest represents the parameters for lists site to site vpn customer gateways
+type ListVpnCustomerGatewaysRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of customer gateway
+	// id of the customer gateway
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,4,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,6,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,7,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,8,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,9,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteVpnCustomerGatewayRequest) Reset() {
-	*x = DeleteVpnCustomerGatewayRequest{}
+func (x *ListVpnCustomerGatewaysRequest) Reset() {
+	*x = ListVpnCustomerGatewaysRequest{}
 	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteVpnCustomerGatewayRequest) String() string {
+func (x *ListVpnCustomerGatewaysRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteVpnCustomerGatewayRequest) ProtoMessage() {}
+func (*ListVpnCustomerGatewaysRequest) ProtoMessage() {}
 
-func (x *DeleteVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
+func (x *ListVpnCustomerGatewaysRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,387 +73,107 @@ func (x *DeleteVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteVpnCustomerGatewayRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVpnCustomerGatewayRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListVpnCustomerGatewaysRequest.ProtoReflect.Descriptor instead.
+func (*ListVpnCustomerGatewaysRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *DeleteVpnCustomerGatewayRequest) GetId() int64 {
+func (x *ListVpnCustomerGatewaysRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteVpnCustomerGatewayRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteVpnCustomerGatewayRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteVpnCustomerGatewayRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVpnCustomerGatewayResponse represents the response from delete site to site vpn customer gateway
-type DeleteVpnCustomerGatewayResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVpnCustomerGatewayResponse) Reset() {
-	*x = DeleteVpnCustomerGatewayResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVpnCustomerGatewayResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVpnCustomerGatewayResponse) ProtoMessage() {}
-
-func (x *DeleteVpnCustomerGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVpnCustomerGatewayResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVpnCustomerGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DeleteVpnCustomerGatewayResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateVpnConnectionRequest represents the parameters for create site to site vpn connection
-type CreateVpnConnectionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the vpn gateway
-	VpnGatewayId *int64 `protobuf:"varint,1,opt,name=vpn_gateway_id,json=vpnGatewayId" json:"vpn_gateway_id,omitempty"`
-	// id of the customer gateway
-	CustomerGatewayId *int64 `protobuf:"varint,2,opt,name=customer_gateway_id,json=customerGatewayId" json:"customer_gateway_id,omitempty"`
-	// connection is passive or not
-	Passive *bool `protobuf:"varint,3,opt,name=passive" json:"passive,omitempty"`
-	// an optional field, whether to the display the vpn to the end user or not
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVpnConnectionRequest) Reset() {
-	*x = CreateVpnConnectionRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVpnConnectionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVpnConnectionRequest) ProtoMessage() {}
-
-func (x *CreateVpnConnectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVpnConnectionRequest.ProtoReflect.Descriptor instead.
-func (*CreateVpnConnectionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CreateVpnConnectionRequest) GetVpnGatewayId() int64 {
-	if x != nil && x.VpnGatewayId != nil {
-		return *x.VpnGatewayId
-	}
-	return 0
-}
-
-func (x *CreateVpnConnectionRequest) GetCustomerGatewayId() int64 {
-	if x != nil && x.CustomerGatewayId != nil {
-		return *x.CustomerGatewayId
-	}
-	return 0
-}
-
-func (x *CreateVpnConnectionRequest) GetPassive() bool {
-	if x != nil && x.Passive != nil {
-		return *x.Passive
-	}
-	return false
-}
-
-func (x *CreateVpnConnectionRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateVpnConnectionRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateVpnConnectionRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateVpnConnectionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateVpnConnectionResponse represents the response from create site to site vpn connection
-type CreateVpnConnectionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVpnConnectionResponse) Reset() {
-	*x = CreateVpnConnectionResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVpnConnectionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVpnConnectionResponse) ProtoMessage() {}
-
-func (x *CreateVpnConnectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVpnConnectionResponse.ProtoReflect.Descriptor instead.
-func (*CreateVpnConnectionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *CreateVpnConnectionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListVpnUsersRequest represents the parameters for lists vpn users
-type ListVpnUsersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The uuid of the Vpn user
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the username of the vpn user.
-	UserName *string `protobuf:"bytes,2,opt,name=user_name,json=userName" json:"user_name,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,5,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,7,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVpnUsersRequest) Reset() {
-	*x = ListVpnUsersRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVpnUsersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVpnUsersRequest) ProtoMessage() {}
-
-func (x *ListVpnUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVpnUsersRequest.ProtoReflect.Descriptor instead.
-func (*ListVpnUsersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ListVpnUsersRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVpnUsersRequest) GetUserName() string {
-	if x != nil && x.UserName != nil {
-		return *x.UserName
-	}
-	return ""
-}
-
-func (x *ListVpnUsersRequest) GetProjectId() int64 {
+func (x *ListVpnCustomerGatewaysRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *ListVpnUsersRequest) GetAccountName() string {
+func (x *ListVpnCustomerGatewaysRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *ListVpnUsersRequest) GetListAll() bool {
+func (x *ListVpnCustomerGatewaysRequest) GetListAll() bool {
 	if x != nil && x.ListAll != nil {
 		return *x.ListAll
 	}
 	return false
 }
 
-func (x *ListVpnUsersRequest) GetDomainId() int64 {
+func (x *ListVpnCustomerGatewaysRequest) GetDomainId() int64 {
 	if x != nil && x.DomainId != nil {
 		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *ListVpnUsersRequest) GetRecursive() bool {
+func (x *ListVpnCustomerGatewaysRequest) GetRecursive() bool {
 	if x != nil && x.Recursive != nil {
 		return *x.Recursive
 	}
 	return false
 }
 
-func (x *ListVpnUsersRequest) GetKeyword() string {
+func (x *ListVpnCustomerGatewaysRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListVpnUsersRequest) GetPage() int32 {
+func (x *ListVpnCustomerGatewaysRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListVpnUsersRequest) GetPageSize() int32 {
+func (x *ListVpnCustomerGatewaysRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListVpnUsersRequest) GetResponseType() string {
+func (x *ListVpnCustomerGatewaysRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListVpnUsersResponse represents the response from lists vpn users
-type ListVpnUsersResponse struct {
+// ListVpnCustomerGatewaysResponse represents the response from lists site to site vpn customer gateways
+type ListVpnCustomerGatewaysResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of VpnUserss
-	Items []*VpnUsers `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of VpnUserss
+	// The list of Site2SiteCustomerGateways
+	Items []*Site2SiteCustomerGateway `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Site2SiteCustomerGateways
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListVpnUsersResponse) Reset() {
-	*x = ListVpnUsersResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[5]
+func (x *ListVpnCustomerGatewaysResponse) Reset() {
+	*x = ListVpnCustomerGatewaysResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListVpnUsersResponse) String() string {
+func (x *ListVpnCustomerGatewaysResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListVpnUsersResponse) ProtoMessage() {}
+func (*ListVpnCustomerGatewaysResponse) ProtoMessage() {}
 
-func (x *ListVpnUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[5]
+func (x *ListVpnCustomerGatewaysResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -452,381 +184,23 @@ func (x *ListVpnUsersResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListVpnUsersResponse.ProtoReflect.Descriptor instead.
-func (*ListVpnUsersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use ListVpnCustomerGatewaysResponse.ProtoReflect.Descriptor instead.
+func (*ListVpnCustomerGatewaysResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ListVpnUsersResponse) GetItems() []*VpnUsers {
+func (x *ListVpnCustomerGatewaysResponse) GetItems() []*Site2SiteCustomerGateway {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListVpnUsersResponse) GetTotalCount() int32 {
+func (x *ListVpnCustomerGatewaysResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// UpdateVpnCustomerGatewayRequest represents the parameters for update site to site vpn customer gateway
-type UpdateVpnCustomerGatewayRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of customer gateway
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// name of this customer gateway
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// public ip address id of the customer gateway
-	GatewayIp *string `protobuf:"bytes,3,opt,name=gateway_ip,json=gatewayIp" json:"gateway_ip,omitempty"`
-	// guest cidr of the customer gateway. Multiple entries must be separated by a single comma character (,).
-	GuestCidrList *string `protobuf:"bytes,4,opt,name=guest_cidr_list,json=guestCidrList" json:"guest_cidr_list,omitempty"`
-	// IPsec Preshared-Key of the customer gateway. Cannot contain newline or double quotes.
-	IpsecPsk *string `protobuf:"bytes,5,opt,name=ipsec_psk,json=ipsecPsk" json:"ipsec_psk,omitempty"`
-	// IKE policy of the customer gateway
-	IkePolicy *string `protobuf:"bytes,6,opt,name=ike_policy,json=ikePolicy" json:"ike_policy,omitempty"`
-	// ESP policy of the customer gateway
-	EspPolicy *string `protobuf:"bytes,7,opt,name=esp_policy,json=espPolicy" json:"esp_policy,omitempty"`
-	// Lifetime of phase 1 VPN connection to the customer gateway, in seconds
-	IkeLifetime *int64 `protobuf:"varint,8,opt,name=ike_lifetime,json=ikeLifetime" json:"ike_lifetime,omitempty"`
-	// Lifetime of phase 2 VPN connection to the customer gateway, in seconds
-	EspLifetime *int64 `protobuf:"varint,9,opt,name=esp_lifetime,json=espLifetime" json:"esp_lifetime,omitempty"`
-	// If DPD is enabled for VPN connection
-	Dpd *bool `protobuf:"varint,10,opt,name=dpd" json:"dpd,omitempty"`
-	// Force encapsulation for Nat Traversal
-	Encap *bool `protobuf:"varint,11,opt,name=encap" json:"encap,omitempty"`
-	// the account associated with the gateway. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,12,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the domain ID associated with the gateway. If used with the account parameter returns the gateway associated with the account for the specified domain.
-	DomainId *int64 `protobuf:"varint,13,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// For IKEv2, whether to split multiple right subnet cidrs into multiple connection statements.
-	SplitConnections *bool `protobuf:"varint,14,opt,name=split_connections,json=splitConnections" json:"split_connections,omitempty"`
-	// Which IKE Version to use, one of ike (autoselect), ikev1, or ikev2.Connections marked with 'ike' will use 'ikev2' when initiating, but accept any protocol version when responding. Defaults to ike
-	IkeVersion *string `protobuf:"bytes,15,opt,name=ike_version,json=ikeVersion" json:"ike_version,omitempty"`
-	StartEventId *int64 `protobuf:"varint,16,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,17,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) Reset() {
-	*x = UpdateVpnCustomerGatewayRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVpnCustomerGatewayRequest) ProtoMessage() {}
-
-func (x *UpdateVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVpnCustomerGatewayRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVpnCustomerGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetGatewayIp() string {
-	if x != nil && x.GatewayIp != nil {
-		return *x.GatewayIp
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetGuestCidrList() string {
-	if x != nil && x.GuestCidrList != nil {
-		return *x.GuestCidrList
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetIpsecPsk() string {
-	if x != nil && x.IpsecPsk != nil {
-		return *x.IpsecPsk
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetIkePolicy() string {
-	if x != nil && x.IkePolicy != nil {
-		return *x.IkePolicy
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetEspPolicy() string {
-	if x != nil && x.EspPolicy != nil {
-		return *x.EspPolicy
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetIkeLifetime() int64 {
-	if x != nil && x.IkeLifetime != nil {
-		return *x.IkeLifetime
-	}
-	return 0
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetEspLifetime() int64 {
-	if x != nil && x.EspLifetime != nil {
-		return *x.EspLifetime
-	}
-	return 0
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetDpd() bool {
-	if x != nil && x.Dpd != nil {
-		return *x.Dpd
-	}
-	return false
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetEncap() bool {
-	if x != nil && x.Encap != nil {
-		return *x.Encap
-	}
-	return false
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetSplitConnections() bool {
-	if x != nil && x.SplitConnections != nil {
-		return *x.SplitConnections
-	}
-	return false
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetIkeVersion() string {
-	if x != nil && x.IkeVersion != nil {
-		return *x.IkeVersion
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVpnCustomerGatewayRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVpnCustomerGatewayResponse represents the response from update site to site vpn customer gateway
-type UpdateVpnCustomerGatewayResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVpnCustomerGatewayResponse) Reset() {
-	*x = UpdateVpnCustomerGatewayResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVpnCustomerGatewayResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVpnCustomerGatewayResponse) ProtoMessage() {}
-
-func (x *UpdateVpnCustomerGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVpnCustomerGatewayResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVpnCustomerGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *UpdateVpnCustomerGatewayResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteVpnConnectionRequest represents the parameters for delete site to site vpn connection
-type DeleteVpnConnectionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of vpn connection
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVpnConnectionRequest) Reset() {
-	*x = DeleteVpnConnectionRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVpnConnectionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVpnConnectionRequest) ProtoMessage() {}
-
-func (x *DeleteVpnConnectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVpnConnectionRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVpnConnectionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DeleteVpnConnectionRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVpnConnectionRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteVpnConnectionRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteVpnConnectionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVpnConnectionResponse represents the response from delete site to site vpn connection
-type DeleteVpnConnectionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVpnConnectionResponse) Reset() {
-	*x = DeleteVpnConnectionResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVpnConnectionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVpnConnectionResponse) ProtoMessage() {}
-
-func (x *DeleteVpnConnectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVpnConnectionResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVpnConnectionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *DeleteVpnConnectionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListVpnConnectionsRequest represents the parameters for lists site to site vpn connection gateways
@@ -859,7 +233,7 @@ type ListVpnConnectionsRequest struct {
 
 func (x *ListVpnConnectionsRequest) Reset() {
 	*x = ListVpnConnectionsRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -871,7 +245,7 @@ func (x *ListVpnConnectionsRequest) String() string {
 func (*ListVpnConnectionsRequest) ProtoMessage() {}
 
 func (x *ListVpnConnectionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -884,7 +258,7 @@ func (x *ListVpnConnectionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVpnConnectionsRequest.ProtoReflect.Descriptor instead.
 func (*ListVpnConnectionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListVpnConnectionsRequest) GetId() int64 {
@@ -984,7 +358,7 @@ type ListVpnConnectionsResponse struct {
 
 func (x *ListVpnConnectionsResponse) Reset() {
 	*x = ListVpnConnectionsResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -996,7 +370,7 @@ func (x *ListVpnConnectionsResponse) String() string {
 func (*ListVpnConnectionsResponse) ProtoMessage() {}
 
 func (x *ListVpnConnectionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1009,7 +383,7 @@ func (x *ListVpnConnectionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVpnConnectionsResponse.ProtoReflect.Descriptor instead.
 func (*ListVpnConnectionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListVpnConnectionsResponse) GetItems() []*Site2SiteVpnConnection {
@@ -1044,7 +418,7 @@ type UpdateRemoteAccessVpnRequest struct {
 
 func (x *UpdateRemoteAccessVpnRequest) Reset() {
 	*x = UpdateRemoteAccessVpnRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1056,7 +430,7 @@ func (x *UpdateRemoteAccessVpnRequest) String() string {
 func (*UpdateRemoteAccessVpnRequest) ProtoMessage() {}
 
 func (x *UpdateRemoteAccessVpnRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1069,7 +443,7 @@ func (x *UpdateRemoteAccessVpnRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRemoteAccessVpnRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRemoteAccessVpnRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UpdateRemoteAccessVpnRequest) GetId() int64 {
@@ -1125,7 +499,7 @@ type UpdateRemoteAccessVpnResponse struct {
 
 func (x *UpdateRemoteAccessVpnResponse) Reset() {
 	*x = UpdateRemoteAccessVpnResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1137,7 +511,7 @@ func (x *UpdateRemoteAccessVpnResponse) String() string {
 func (*UpdateRemoteAccessVpnResponse) ProtoMessage() {}
 
 func (x *UpdateRemoteAccessVpnResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1150,7 +524,7 @@ func (x *UpdateRemoteAccessVpnResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRemoteAccessVpnResponse.ProtoReflect.Descriptor instead.
 func (*UpdateRemoteAccessVpnResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdateRemoteAccessVpnResponse) GetResult() *Result {
@@ -1158,516 +532,6 @@ func (x *UpdateRemoteAccessVpnResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// RemoveVpnUserRequest represents the parameters for removes vpn user
-type RemoveVpnUserRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// username for the vpn user
-	UserName *string `protobuf:"bytes,1,opt,name=user_name,json=userName" json:"user_name,omitempty"`
-	// an optional account for the vpn user. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// remove vpn user from the project
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// an optional domainId for the vpn user. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveVpnUserRequest) Reset() {
-	*x = RemoveVpnUserRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveVpnUserRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveVpnUserRequest) ProtoMessage() {}
-
-func (x *RemoveVpnUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveVpnUserRequest.ProtoReflect.Descriptor instead.
-func (*RemoveVpnUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *RemoveVpnUserRequest) GetUserName() string {
-	if x != nil && x.UserName != nil {
-		return *x.UserName
-	}
-	return ""
-}
-
-func (x *RemoveVpnUserRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *RemoveVpnUserRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *RemoveVpnUserRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *RemoveVpnUserRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveVpnUserRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveVpnUserRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveVpnUserResponse represents the response from removes vpn user
-type RemoveVpnUserResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveVpnUserResponse) Reset() {
-	*x = RemoveVpnUserResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveVpnUserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveVpnUserResponse) ProtoMessage() {}
-
-func (x *RemoveVpnUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveVpnUserResponse.ProtoReflect.Descriptor instead.
-func (*RemoveVpnUserResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *RemoveVpnUserResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateRemoteAccessVpnRequest represents the parameters for creates a l2tp/ipsec remote access vpn
-type CreateRemoteAccessVpnRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// public ip address id of the vpn server
-	PublicIpId *int64 `protobuf:"varint,1,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
-	// the range of ip addresses to allocate to vpn clients. The first ip in the range will be taken by the vpn server
-	IpRange *string `protobuf:"bytes,2,opt,name=ip_range,json=ipRange" json:"ip_range,omitempty"`
-	// an optional account for the VPN. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the VPN. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
-	OpenFirewall *bool `protobuf:"varint,5,opt,name=open_firewall,json=openFirewall" json:"open_firewall,omitempty"`
-	// an optional field, whether to the display the vpn to the end user or not
-	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateRemoteAccessVpnRequest) Reset() {
-	*x = CreateRemoteAccessVpnRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateRemoteAccessVpnRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRemoteAccessVpnRequest) ProtoMessage() {}
-
-func (x *CreateRemoteAccessVpnRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateRemoteAccessVpnRequest.ProtoReflect.Descriptor instead.
-func (*CreateRemoteAccessVpnRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetPublicIpId() int64 {
-	if x != nil && x.PublicIpId != nil {
-		return *x.PublicIpId
-	}
-	return 0
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetIpRange() string {
-	if x != nil && x.IpRange != nil {
-		return *x.IpRange
-	}
-	return ""
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetOpenFirewall() bool {
-	if x != nil && x.OpenFirewall != nil {
-		return *x.OpenFirewall
-	}
-	return false
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateRemoteAccessVpnRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateRemoteAccessVpnResponse represents the response from creates a l2tp/ipsec remote access vpn
-type CreateRemoteAccessVpnResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateRemoteAccessVpnResponse) Reset() {
-	*x = CreateRemoteAccessVpnResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateRemoteAccessVpnResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRemoteAccessVpnResponse) ProtoMessage() {}
-
-func (x *CreateRemoteAccessVpnResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateRemoteAccessVpnResponse.ProtoReflect.Descriptor instead.
-func (*CreateRemoteAccessVpnResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *CreateRemoteAccessVpnResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListRemoteAccessVpnsRequest represents the parameters for lists remote access vpns
-type ListRemoteAccessVpnsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// public ip address id of the vpn server
-	PublicIpId *int64 `protobuf:"varint,1,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
-	// Lists remote access vpn rule with the specified ID
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// list remote access VPNs for certain network
-	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,6,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,7,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,9,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListRemoteAccessVpnsRequest) Reset() {
-	*x = ListRemoteAccessVpnsRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListRemoteAccessVpnsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListRemoteAccessVpnsRequest) ProtoMessage() {}
-
-func (x *ListRemoteAccessVpnsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListRemoteAccessVpnsRequest.ProtoReflect.Descriptor instead.
-func (*ListRemoteAccessVpnsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetPublicIpId() int64 {
-	if x != nil && x.PublicIpId != nil {
-		return *x.PublicIpId
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListRemoteAccessVpnsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListRemoteAccessVpnsResponse represents the response from lists remote access vpns
-type ListRemoteAccessVpnsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of RemoteAccessVpns
-	Items []*RemoteAccessVpn `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of RemoteAccessVpns
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListRemoteAccessVpnsResponse) Reset() {
-	*x = ListRemoteAccessVpnsResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListRemoteAccessVpnsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListRemoteAccessVpnsResponse) ProtoMessage() {}
-
-func (x *ListRemoteAccessVpnsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListRemoteAccessVpnsResponse.ProtoReflect.Descriptor instead.
-func (*ListRemoteAccessVpnsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *ListRemoteAccessVpnsResponse) GetItems() []*RemoteAccessVpn {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListRemoteAccessVpnsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // CreateVpnCustomerGatewayRequest represents the parameters for creates site to site vpn customer gateway
@@ -1712,7 +576,7 @@ type CreateVpnCustomerGatewayRequest struct {
 
 func (x *CreateVpnCustomerGatewayRequest) Reset() {
 	*x = CreateVpnCustomerGatewayRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1724,7 +588,7 @@ func (x *CreateVpnCustomerGatewayRequest) String() string {
 func (*CreateVpnCustomerGatewayRequest) ProtoMessage() {}
 
 func (x *CreateVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1737,7 +601,7 @@ func (x *CreateVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVpnCustomerGatewayRequest.ProtoReflect.Descriptor instead.
 func (*CreateVpnCustomerGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{20}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateVpnCustomerGatewayRequest) GetName() string {
@@ -1877,7 +741,7 @@ type CreateVpnCustomerGatewayResponse struct {
 
 func (x *CreateVpnCustomerGatewayResponse) Reset() {
 	*x = CreateVpnCustomerGatewayResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1889,7 +753,7 @@ func (x *CreateVpnCustomerGatewayResponse) String() string {
 func (*CreateVpnCustomerGatewayResponse) ProtoMessage() {}
 
 func (x *CreateVpnCustomerGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1902,10 +766,1503 @@ func (x *CreateVpnCustomerGatewayResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVpnCustomerGatewayResponse.ProtoReflect.Descriptor instead.
 func (*CreateVpnCustomerGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{21}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateVpnCustomerGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateRemoteAccessVpnRequest represents the parameters for creates a l2tp/ipsec remote access vpn
+type CreateRemoteAccessVpnRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// public ip address id of the vpn server
+	PublicIpId *int64 `protobuf:"varint,1,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
+	// the range of ip addresses to allocate to vpn clients. The first ip in the range will be taken by the vpn server
+	IpRange *string `protobuf:"bytes,2,opt,name=ip_range,json=ipRange" json:"ip_range,omitempty"`
+	// an optional account for the VPN. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the VPN. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
+	OpenFirewall *bool `protobuf:"varint,5,opt,name=open_firewall,json=openFirewall" json:"open_firewall,omitempty"`
+	// an optional field, whether to the display the vpn to the end user or not
+	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateRemoteAccessVpnRequest) Reset() {
+	*x = CreateRemoteAccessVpnRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateRemoteAccessVpnRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRemoteAccessVpnRequest) ProtoMessage() {}
+
+func (x *CreateRemoteAccessVpnRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRemoteAccessVpnRequest.ProtoReflect.Descriptor instead.
+func (*CreateRemoteAccessVpnRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetPublicIpId() int64 {
+	if x != nil && x.PublicIpId != nil {
+		return *x.PublicIpId
+	}
+	return 0
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetIpRange() string {
+	if x != nil && x.IpRange != nil {
+		return *x.IpRange
+	}
+	return ""
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetOpenFirewall() bool {
+	if x != nil && x.OpenFirewall != nil {
+		return *x.OpenFirewall
+	}
+	return false
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateRemoteAccessVpnRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateRemoteAccessVpnResponse represents the response from creates a l2tp/ipsec remote access vpn
+type CreateRemoteAccessVpnResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateRemoteAccessVpnResponse) Reset() {
+	*x = CreateRemoteAccessVpnResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateRemoteAccessVpnResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRemoteAccessVpnResponse) ProtoMessage() {}
+
+func (x *CreateRemoteAccessVpnResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRemoteAccessVpnResponse.ProtoReflect.Descriptor instead.
+func (*CreateRemoteAccessVpnResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CreateRemoteAccessVpnResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateVpnCustomerGatewayRequest represents the parameters for update site to site vpn customer gateway
+type UpdateVpnCustomerGatewayRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of customer gateway
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// name of this customer gateway
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// public ip address id of the customer gateway
+	GatewayIp *string `protobuf:"bytes,3,opt,name=gateway_ip,json=gatewayIp" json:"gateway_ip,omitempty"`
+	// guest cidr of the customer gateway. Multiple entries must be separated by a single comma character (,).
+	GuestCidrList *string `protobuf:"bytes,4,opt,name=guest_cidr_list,json=guestCidrList" json:"guest_cidr_list,omitempty"`
+	// IPsec Preshared-Key of the customer gateway. Cannot contain newline or double quotes.
+	IpsecPsk *string `protobuf:"bytes,5,opt,name=ipsec_psk,json=ipsecPsk" json:"ipsec_psk,omitempty"`
+	// IKE policy of the customer gateway
+	IkePolicy *string `protobuf:"bytes,6,opt,name=ike_policy,json=ikePolicy" json:"ike_policy,omitempty"`
+	// ESP policy of the customer gateway
+	EspPolicy *string `protobuf:"bytes,7,opt,name=esp_policy,json=espPolicy" json:"esp_policy,omitempty"`
+	// Lifetime of phase 1 VPN connection to the customer gateway, in seconds
+	IkeLifetime *int64 `protobuf:"varint,8,opt,name=ike_lifetime,json=ikeLifetime" json:"ike_lifetime,omitempty"`
+	// Lifetime of phase 2 VPN connection to the customer gateway, in seconds
+	EspLifetime *int64 `protobuf:"varint,9,opt,name=esp_lifetime,json=espLifetime" json:"esp_lifetime,omitempty"`
+	// If DPD is enabled for VPN connection
+	Dpd *bool `protobuf:"varint,10,opt,name=dpd" json:"dpd,omitempty"`
+	// Force encapsulation for Nat Traversal
+	Encap *bool `protobuf:"varint,11,opt,name=encap" json:"encap,omitempty"`
+	// the account associated with the gateway. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,12,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the domain ID associated with the gateway. If used with the account parameter returns the gateway associated with the account for the specified domain.
+	DomainId *int64 `protobuf:"varint,13,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// For IKEv2, whether to split multiple right subnet cidrs into multiple connection statements.
+	SplitConnections *bool `protobuf:"varint,14,opt,name=split_connections,json=splitConnections" json:"split_connections,omitempty"`
+	// Which IKE Version to use, one of ike (autoselect), ikev1, or ikev2.Connections marked with 'ike' will use 'ikev2' when initiating, but accept any protocol version when responding. Defaults to ike
+	IkeVersion *string `protobuf:"bytes,15,opt,name=ike_version,json=ikeVersion" json:"ike_version,omitempty"`
+	StartEventId *int64 `protobuf:"varint,16,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,17,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) Reset() {
+	*x = UpdateVpnCustomerGatewayRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVpnCustomerGatewayRequest) ProtoMessage() {}
+
+func (x *UpdateVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVpnCustomerGatewayRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVpnCustomerGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetGatewayIp() string {
+	if x != nil && x.GatewayIp != nil {
+		return *x.GatewayIp
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetGuestCidrList() string {
+	if x != nil && x.GuestCidrList != nil {
+		return *x.GuestCidrList
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetIpsecPsk() string {
+	if x != nil && x.IpsecPsk != nil {
+		return *x.IpsecPsk
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetIkePolicy() string {
+	if x != nil && x.IkePolicy != nil {
+		return *x.IkePolicy
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetEspPolicy() string {
+	if x != nil && x.EspPolicy != nil {
+		return *x.EspPolicy
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetIkeLifetime() int64 {
+	if x != nil && x.IkeLifetime != nil {
+		return *x.IkeLifetime
+	}
+	return 0
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetEspLifetime() int64 {
+	if x != nil && x.EspLifetime != nil {
+		return *x.EspLifetime
+	}
+	return 0
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetDpd() bool {
+	if x != nil && x.Dpd != nil {
+		return *x.Dpd
+	}
+	return false
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetEncap() bool {
+	if x != nil && x.Encap != nil {
+		return *x.Encap
+	}
+	return false
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetSplitConnections() bool {
+	if x != nil && x.SplitConnections != nil {
+		return *x.SplitConnections
+	}
+	return false
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetIkeVersion() string {
+	if x != nil && x.IkeVersion != nil {
+		return *x.IkeVersion
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVpnCustomerGatewayRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVpnCustomerGatewayResponse represents the response from update site to site vpn customer gateway
+type UpdateVpnCustomerGatewayResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVpnCustomerGatewayResponse) Reset() {
+	*x = UpdateVpnCustomerGatewayResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVpnCustomerGatewayResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVpnCustomerGatewayResponse) ProtoMessage() {}
+
+func (x *UpdateVpnCustomerGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVpnCustomerGatewayResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVpnCustomerGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateVpnCustomerGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListRemoteAccessVpnsRequest represents the parameters for lists remote access vpns
+type ListRemoteAccessVpnsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// public ip address id of the vpn server
+	PublicIpId *int64 `protobuf:"varint,1,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
+	// Lists remote access vpn rule with the specified ID
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// list remote access VPNs for certain network
+	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,6,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,7,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,9,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListRemoteAccessVpnsRequest) Reset() {
+	*x = ListRemoteAccessVpnsRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListRemoteAccessVpnsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRemoteAccessVpnsRequest) ProtoMessage() {}
+
+func (x *ListRemoteAccessVpnsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRemoteAccessVpnsRequest.ProtoReflect.Descriptor instead.
+func (*ListRemoteAccessVpnsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetPublicIpId() int64 {
+	if x != nil && x.PublicIpId != nil {
+		return *x.PublicIpId
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListRemoteAccessVpnsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListRemoteAccessVpnsResponse represents the response from lists remote access vpns
+type ListRemoteAccessVpnsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of RemoteAccessVpns
+	Items []*RemoteAccessVpn `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of RemoteAccessVpns
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListRemoteAccessVpnsResponse) Reset() {
+	*x = ListRemoteAccessVpnsResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListRemoteAccessVpnsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRemoteAccessVpnsResponse) ProtoMessage() {}
+
+func (x *ListRemoteAccessVpnsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRemoteAccessVpnsResponse.ProtoReflect.Descriptor instead.
+func (*ListRemoteAccessVpnsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ListRemoteAccessVpnsResponse) GetItems() []*RemoteAccessVpn {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListRemoteAccessVpnsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// DeleteRemoteAccessVpnRequest represents the parameters for destroys a l2tp/ipsec remote access vpn
+type DeleteRemoteAccessVpnRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// public ip address id of the vpn server
+	PublicIpId *int64 `protobuf:"varint,1,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRemoteAccessVpnRequest) Reset() {
+	*x = DeleteRemoteAccessVpnRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRemoteAccessVpnRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRemoteAccessVpnRequest) ProtoMessage() {}
+
+func (x *DeleteRemoteAccessVpnRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRemoteAccessVpnRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRemoteAccessVpnRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *DeleteRemoteAccessVpnRequest) GetPublicIpId() int64 {
+	if x != nil && x.PublicIpId != nil {
+		return *x.PublicIpId
+	}
+	return 0
+}
+
+func (x *DeleteRemoteAccessVpnRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteRemoteAccessVpnRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteRemoteAccessVpnRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteRemoteAccessVpnResponse represents the response from destroys a l2tp/ipsec remote access vpn
+type DeleteRemoteAccessVpnResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRemoteAccessVpnResponse) Reset() {
+	*x = DeleteRemoteAccessVpnResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRemoteAccessVpnResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRemoteAccessVpnResponse) ProtoMessage() {}
+
+func (x *DeleteRemoteAccessVpnResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRemoteAccessVpnResponse.ProtoReflect.Descriptor instead.
+func (*DeleteRemoteAccessVpnResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *DeleteRemoteAccessVpnResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVpnConnectionRequest represents the parameters for create site to site vpn connection
+type CreateVpnConnectionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the vpn gateway
+	VpnGatewayId *int64 `protobuf:"varint,1,opt,name=vpn_gateway_id,json=vpnGatewayId" json:"vpn_gateway_id,omitempty"`
+	// id of the customer gateway
+	CustomerGatewayId *int64 `protobuf:"varint,2,opt,name=customer_gateway_id,json=customerGatewayId" json:"customer_gateway_id,omitempty"`
+	// connection is passive or not
+	Passive *bool `protobuf:"varint,3,opt,name=passive" json:"passive,omitempty"`
+	// an optional field, whether to the display the vpn to the end user or not
+	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVpnConnectionRequest) Reset() {
+	*x = CreateVpnConnectionRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVpnConnectionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVpnConnectionRequest) ProtoMessage() {}
+
+func (x *CreateVpnConnectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVpnConnectionRequest.ProtoReflect.Descriptor instead.
+func (*CreateVpnConnectionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *CreateVpnConnectionRequest) GetVpnGatewayId() int64 {
+	if x != nil && x.VpnGatewayId != nil {
+		return *x.VpnGatewayId
+	}
+	return 0
+}
+
+func (x *CreateVpnConnectionRequest) GetCustomerGatewayId() int64 {
+	if x != nil && x.CustomerGatewayId != nil {
+		return *x.CustomerGatewayId
+	}
+	return 0
+}
+
+func (x *CreateVpnConnectionRequest) GetPassive() bool {
+	if x != nil && x.Passive != nil {
+		return *x.Passive
+	}
+	return false
+}
+
+func (x *CreateVpnConnectionRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateVpnConnectionRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateVpnConnectionRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateVpnConnectionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVpnConnectionResponse represents the response from create site to site vpn connection
+type CreateVpnConnectionResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVpnConnectionResponse) Reset() {
+	*x = CreateVpnConnectionResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVpnConnectionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVpnConnectionResponse) ProtoMessage() {}
+
+func (x *CreateVpnConnectionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVpnConnectionResponse.ProtoReflect.Descriptor instead.
+func (*CreateVpnConnectionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *CreateVpnConnectionResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteVpnCustomerGatewayRequest represents the parameters for delete site to site vpn customer gateway
+type DeleteVpnCustomerGatewayRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of customer gateway
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVpnCustomerGatewayRequest) Reset() {
+	*x = DeleteVpnCustomerGatewayRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVpnCustomerGatewayRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVpnCustomerGatewayRequest) ProtoMessage() {}
+
+func (x *DeleteVpnCustomerGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVpnCustomerGatewayRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVpnCustomerGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *DeleteVpnCustomerGatewayRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVpnCustomerGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteVpnCustomerGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteVpnCustomerGatewayRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVpnCustomerGatewayResponse represents the response from delete site to site vpn customer gateway
+type DeleteVpnCustomerGatewayResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVpnCustomerGatewayResponse) Reset() {
+	*x = DeleteVpnCustomerGatewayResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVpnCustomerGatewayResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVpnCustomerGatewayResponse) ProtoMessage() {}
+
+func (x *DeleteVpnCustomerGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVpnCustomerGatewayResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVpnCustomerGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *DeleteVpnCustomerGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateVpnConnectionRequest represents the parameters for updates site to site vpn connection
+type UpdateVpnConnectionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of vpn connection
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// an optional field, whether to the display the vpn to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVpnConnectionRequest) Reset() {
+	*x = UpdateVpnConnectionRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVpnConnectionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVpnConnectionRequest) ProtoMessage() {}
+
+func (x *UpdateVpnConnectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVpnConnectionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVpnConnectionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *UpdateVpnConnectionRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVpnConnectionRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateVpnConnectionRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateVpnConnectionRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVpnConnectionRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVpnConnectionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVpnConnectionResponse represents the response from updates site to site vpn connection
+type UpdateVpnConnectionResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVpnConnectionResponse) Reset() {
+	*x = UpdateVpnConnectionResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVpnConnectionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVpnConnectionResponse) ProtoMessage() {}
+
+func (x *UpdateVpnConnectionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVpnConnectionResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVpnConnectionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UpdateVpnConnectionResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteVpnGatewayRequest represents the parameters for delete site to site vpn gateway
+type DeleteVpnGatewayRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of customer gateway
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVpnGatewayRequest) Reset() {
+	*x = DeleteVpnGatewayRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVpnGatewayRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVpnGatewayRequest) ProtoMessage() {}
+
+func (x *DeleteVpnGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVpnGatewayRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVpnGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *DeleteVpnGatewayRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVpnGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteVpnGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteVpnGatewayRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVpnGatewayResponse represents the response from delete site to site vpn gateway
+type DeleteVpnGatewayResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVpnGatewayResponse) Reset() {
+	*x = DeleteVpnGatewayResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVpnGatewayResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVpnGatewayResponse) ProtoMessage() {}
+
+func (x *DeleteVpnGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVpnGatewayResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVpnGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *DeleteVpnGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteVpnConnectionRequest represents the parameters for delete site to site vpn connection
+type DeleteVpnConnectionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of vpn connection
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVpnConnectionRequest) Reset() {
+	*x = DeleteVpnConnectionRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVpnConnectionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVpnConnectionRequest) ProtoMessage() {}
+
+func (x *DeleteVpnConnectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVpnConnectionRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVpnConnectionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *DeleteVpnConnectionRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVpnConnectionRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteVpnConnectionRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteVpnConnectionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVpnConnectionResponse represents the response from delete site to site vpn connection
+type DeleteVpnConnectionResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVpnConnectionResponse) Reset() {
+	*x = DeleteVpnConnectionResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVpnConnectionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVpnConnectionResponse) ProtoMessage() {}
+
+func (x *DeleteVpnConnectionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVpnConnectionResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVpnConnectionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *DeleteVpnConnectionResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveVpnUserRequest represents the parameters for removes vpn user
+type RemoveVpnUserRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// username for the vpn user
+	UserName *string `protobuf:"bytes,1,opt,name=user_name,json=userName" json:"user_name,omitempty"`
+	// an optional account for the vpn user. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// remove vpn user from the project
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// an optional domainId for the vpn user. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveVpnUserRequest) Reset() {
+	*x = RemoveVpnUserRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveVpnUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveVpnUserRequest) ProtoMessage() {}
+
+func (x *RemoveVpnUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveVpnUserRequest.ProtoReflect.Descriptor instead.
+func (*RemoveVpnUserRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *RemoveVpnUserRequest) GetUserName() string {
+	if x != nil && x.UserName != nil {
+		return *x.UserName
+	}
+	return ""
+}
+
+func (x *RemoveVpnUserRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *RemoveVpnUserRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *RemoveVpnUserRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *RemoveVpnUserRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveVpnUserRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveVpnUserRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveVpnUserResponse represents the response from removes vpn user
+type RemoveVpnUserResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveVpnUserResponse) Reset() {
+	*x = RemoveVpnUserResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveVpnUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveVpnUserResponse) ProtoMessage() {}
+
+func (x *RemoveVpnUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveVpnUserResponse.ProtoReflect.Descriptor instead.
+func (*RemoveVpnUserResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *RemoveVpnUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1930,7 +2287,7 @@ type ResetVpnConnectionRequest struct {
 
 func (x *ResetVpnConnectionRequest) Reset() {
 	*x = ResetVpnConnectionRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1942,7 +2299,7 @@ func (x *ResetVpnConnectionRequest) String() string {
 func (*ResetVpnConnectionRequest) ProtoMessage() {}
 
 func (x *ResetVpnConnectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1955,7 +2312,7 @@ func (x *ResetVpnConnectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetVpnConnectionRequest.ProtoReflect.Descriptor instead.
 func (*ResetVpnConnectionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{22}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ResetVpnConnectionRequest) GetId() int64 {
@@ -2011,7 +2368,7 @@ type ResetVpnConnectionResponse struct {
 
 func (x *ResetVpnConnectionResponse) Reset() {
 	*x = ResetVpnConnectionResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[23]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2023,7 +2380,7 @@ func (x *ResetVpnConnectionResponse) String() string {
 func (*ResetVpnConnectionResponse) ProtoMessage() {}
 
 func (x *ResetVpnConnectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[23]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2036,7 +2393,7 @@ func (x *ResetVpnConnectionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetVpnConnectionResponse.ProtoReflect.Descriptor instead.
 func (*ResetVpnConnectionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{23}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ResetVpnConnectionResponse) GetResult() *Result {
@@ -2046,33 +2403,41 @@ func (x *ResetVpnConnectionResponse) GetResult() *Result {
 	return nil
 }
 
-// DeleteVpnGatewayRequest represents the parameters for delete site to site vpn gateway
-type DeleteVpnGatewayRequest struct {
+// AddVpnUserRequest represents the parameters for adds vpn users
+type AddVpnUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of customer gateway
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// username for the vpn user
+	UserName *string `protobuf:"bytes,1,opt,name=user_name,json=userName" json:"user_name,omitempty"`
+	// password for the username
+	Password *string `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
+	// an optional account for the vpn user. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// add vpn user to the specific project
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// an optional domainId for the vpn user. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteVpnGatewayRequest) Reset() {
-	*x = DeleteVpnGatewayRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[24]
+func (x *AddVpnUserRequest) Reset() {
+	*x = AddVpnUserRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteVpnGatewayRequest) String() string {
+func (x *AddVpnUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteVpnGatewayRequest) ProtoMessage() {}
+func (*AddVpnUserRequest) ProtoMessage() {}
 
-func (x *DeleteVpnGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[24]
+func (x *AddVpnUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2083,41 +2448,69 @@ func (x *DeleteVpnGatewayRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteVpnGatewayRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVpnGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{24}
+// Deprecated: Use AddVpnUserRequest.ProtoReflect.Descriptor instead.
+func (*AddVpnUserRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *DeleteVpnGatewayRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *AddVpnUserRequest) GetUserName() string {
+	if x != nil && x.UserName != nil {
+		return *x.UserName
+	}
+	return ""
+}
+
+func (x *AddVpnUserRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *AddVpnUserRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *AddVpnUserRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *DeleteVpnGatewayRequest) GetStartEventId() int64 {
+func (x *AddVpnUserRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *AddVpnUserRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeleteVpnGatewayRequest) GetInjectedJobId() string {
+func (x *AddVpnUserRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteVpnGatewayRequest) GetResponseType() string {
+func (x *AddVpnUserRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteVpnGatewayResponse represents the response from delete site to site vpn gateway
-type DeleteVpnGatewayResponse struct {
+// AddVpnUserResponse represents the response from adds vpn users
+type AddVpnUserResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2125,21 +2518,21 @@ type DeleteVpnGatewayResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteVpnGatewayResponse) Reset() {
-	*x = DeleteVpnGatewayResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[25]
+func (x *AddVpnUserResponse) Reset() {
+	*x = AddVpnUserResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteVpnGatewayResponse) String() string {
+func (x *AddVpnUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteVpnGatewayResponse) ProtoMessage() {}
+func (*AddVpnUserResponse) ProtoMessage() {}
 
-func (x *DeleteVpnGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[25]
+func (x *AddVpnUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2150,57 +2543,47 @@ func (x *DeleteVpnGatewayResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteVpnGatewayResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVpnGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{25}
+// Deprecated: Use AddVpnUserResponse.ProtoReflect.Descriptor instead.
+func (*AddVpnUserResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{31}
 }
 
-func (x *DeleteVpnGatewayResponse) GetResult() *Result {
+func (x *AddVpnUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// ListVpnCustomerGatewaysRequest represents the parameters for lists site to site vpn customer gateways
-type ListVpnCustomerGatewaysRequest struct {
+// CreateVpnGatewayRequest represents the parameters for creates site to site vpn local gateway
+type CreateVpnGatewayRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the customer gateway
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,4,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,6,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,7,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,8,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,9,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// public ip address id of the vpn gateway
+	VpcId *int64 `protobuf:"varint,1,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// an optional field, whether to the display the vpn to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListVpnCustomerGatewaysRequest) Reset() {
-	*x = ListVpnCustomerGatewaysRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[26]
+func (x *CreateVpnGatewayRequest) Reset() {
+	*x = CreateVpnGatewayRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListVpnCustomerGatewaysRequest) String() string {
+func (x *CreateVpnGatewayRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListVpnCustomerGatewaysRequest) ProtoMessage() {}
+func (*CreateVpnGatewayRequest) ProtoMessage() {}
 
-func (x *ListVpnCustomerGatewaysRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[26]
+func (x *CreateVpnGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2211,107 +2594,70 @@ func (x *ListVpnCustomerGatewaysRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListVpnCustomerGatewaysRequest.ProtoReflect.Descriptor instead.
-func (*ListVpnCustomerGatewaysRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{26}
+// Deprecated: Use CreateVpnGatewayRequest.ProtoReflect.Descriptor instead.
+func (*CreateVpnGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{32}
 }
 
-func (x *ListVpnCustomerGatewaysRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateVpnGatewayRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
 	}
 	return 0
 }
 
-func (x *ListVpnCustomerGatewaysRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListVpnCustomerGatewaysRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListVpnCustomerGatewaysRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
+func (x *CreateVpnGatewayRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
 	}
 	return false
 }
 
-func (x *ListVpnCustomerGatewaysRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *CreateVpnGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ListVpnCustomerGatewaysRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListVpnCustomerGatewaysRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *CreateVpnGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ListVpnCustomerGatewaysRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVpnCustomerGatewaysRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVpnCustomerGatewaysRequest) GetResponseType() string {
+func (x *CreateVpnGatewayRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListVpnCustomerGatewaysResponse represents the response from lists site to site vpn customer gateways
-type ListVpnCustomerGatewaysResponse struct {
+// CreateVpnGatewayResponse represents the response from creates site to site vpn local gateway
+type CreateVpnGatewayResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Site2SiteCustomerGateways
-	Items []*Site2SiteCustomerGateway `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Site2SiteCustomerGateways
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListVpnCustomerGatewaysResponse) Reset() {
-	*x = ListVpnCustomerGatewaysResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[27]
+func (x *CreateVpnGatewayResponse) Reset() {
+	*x = CreateVpnGatewayResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListVpnCustomerGatewaysResponse) String() string {
+func (x *CreateVpnGatewayResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListVpnCustomerGatewaysResponse) ProtoMessage() {}
+func (*CreateVpnGatewayResponse) ProtoMessage() {}
 
-func (x *ListVpnCustomerGatewaysResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[27]
+func (x *CreateVpnGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2322,23 +2668,150 @@ func (x *ListVpnCustomerGatewaysResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListVpnCustomerGatewaysResponse.ProtoReflect.Descriptor instead.
-func (*ListVpnCustomerGatewaysResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{27}
+// Deprecated: Use CreateVpnGatewayResponse.ProtoReflect.Descriptor instead.
+func (*CreateVpnGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *ListVpnCustomerGatewaysResponse) GetItems() []*Site2SiteCustomerGateway {
+func (x *CreateVpnGatewayResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
 }
 
-func (x *ListVpnCustomerGatewaysResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
+// UpdateVpnGatewayRequest represents the parameters for updates site to site vpn local gateway
+type UpdateVpnGatewayRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of customer gateway
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// an optional field, whether to the display the vpn to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVpnGatewayRequest) Reset() {
+	*x = UpdateVpnGatewayRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVpnGatewayRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVpnGatewayRequest) ProtoMessage() {}
+
+func (x *UpdateVpnGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVpnGatewayRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVpnGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *UpdateVpnGatewayRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
+}
+
+func (x *UpdateVpnGatewayRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateVpnGatewayRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateVpnGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVpnGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVpnGatewayRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVpnGatewayResponse represents the response from updates site to site vpn local gateway
+type UpdateVpnGatewayResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVpnGatewayResponse) Reset() {
+	*x = UpdateVpnGatewayResponse{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVpnGatewayResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVpnGatewayResponse) ProtoMessage() {}
+
+func (x *UpdateVpnGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVpnGatewayResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVpnGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *UpdateVpnGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // ListVpnGatewaysRequest represents the parameters for lists site 2 site vpn gateways
@@ -2371,7 +2844,7 @@ type ListVpnGatewaysRequest struct {
 
 func (x *ListVpnGatewaysRequest) Reset() {
 	*x = ListVpnGatewaysRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2383,7 +2856,7 @@ func (x *ListVpnGatewaysRequest) String() string {
 func (*ListVpnGatewaysRequest) ProtoMessage() {}
 
 func (x *ListVpnGatewaysRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2396,7 +2869,7 @@ func (x *ListVpnGatewaysRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVpnGatewaysRequest.ProtoReflect.Descriptor instead.
 func (*ListVpnGatewaysRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ListVpnGatewaysRequest) GetId() int64 {
@@ -2496,7 +2969,7 @@ type ListVpnGatewaysResponse struct {
 
 func (x *ListVpnGatewaysResponse) Reset() {
 	*x = ListVpnGatewaysResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2508,7 +2981,7 @@ func (x *ListVpnGatewaysResponse) String() string {
 func (*ListVpnGatewaysResponse) ProtoMessage() {}
 
 func (x *ListVpnGatewaysResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2521,7 +2994,7 @@ func (x *ListVpnGatewaysResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVpnGatewaysResponse.ProtoReflect.Descriptor instead.
 func (*ListVpnGatewaysResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{29}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ListVpnGatewaysResponse) GetItems() []*Site2SiteVpnGateway {
@@ -2538,153 +3011,47 @@ func (x *ListVpnGatewaysResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// DeleteRemoteAccessVpnRequest represents the parameters for destroys a l2tp/ipsec remote access vpn
-type DeleteRemoteAccessVpnRequest struct {
+// ListVpnUsersRequest represents the parameters for lists vpn users
+type ListVpnUsersRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// public ip address id of the vpn server
-	PublicIpId *int64 `protobuf:"varint,1,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteRemoteAccessVpnRequest) Reset() {
-	*x = DeleteRemoteAccessVpnRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteRemoteAccessVpnRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteRemoteAccessVpnRequest) ProtoMessage() {}
-
-func (x *DeleteRemoteAccessVpnRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteRemoteAccessVpnRequest.ProtoReflect.Descriptor instead.
-func (*DeleteRemoteAccessVpnRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *DeleteRemoteAccessVpnRequest) GetPublicIpId() int64 {
-	if x != nil && x.PublicIpId != nil {
-		return *x.PublicIpId
-	}
-	return 0
-}
-
-func (x *DeleteRemoteAccessVpnRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteRemoteAccessVpnRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteRemoteAccessVpnRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteRemoteAccessVpnResponse represents the response from destroys a l2tp/ipsec remote access vpn
-type DeleteRemoteAccessVpnResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteRemoteAccessVpnResponse) Reset() {
-	*x = DeleteRemoteAccessVpnResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteRemoteAccessVpnResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteRemoteAccessVpnResponse) ProtoMessage() {}
-
-func (x *DeleteRemoteAccessVpnResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteRemoteAccessVpnResponse.ProtoReflect.Descriptor instead.
-func (*DeleteRemoteAccessVpnResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *DeleteRemoteAccessVpnResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVpnConnectionRequest represents the parameters for updates site to site vpn connection
-type UpdateVpnConnectionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of vpn connection
+	// The uuid of the Vpn user
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the vpn to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the username of the vpn user.
+	UserName *string `protobuf:"bytes,2,opt,name=user_name,json=userName" json:"user_name,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,5,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,7,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateVpnConnectionRequest) Reset() {
-	*x = UpdateVpnConnectionRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[32]
+func (x *ListVpnUsersRequest) Reset() {
+	*x = ListVpnUsersRequest{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateVpnConnectionRequest) String() string {
+func (x *ListVpnUsersRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateVpnConnectionRequest) ProtoMessage() {}
+func (*ListVpnUsersRequest) ProtoMessage() {}
 
-func (x *UpdateVpnConnectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[32]
+func (x *ListVpnUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2695,487 +3062,113 @@ func (x *UpdateVpnConnectionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateVpnConnectionRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVpnConnectionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{32}
+// Deprecated: Use ListVpnUsersRequest.ProtoReflect.Descriptor instead.
+func (*ListVpnUsersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{38}
 }
 
-func (x *UpdateVpnConnectionRequest) GetId() int64 {
+func (x *ListVpnUsersRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateVpnConnectionRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateVpnConnectionRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateVpnConnectionRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVpnConnectionRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVpnConnectionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVpnConnectionResponse represents the response from updates site to site vpn connection
-type UpdateVpnConnectionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVpnConnectionResponse) Reset() {
-	*x = UpdateVpnConnectionResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVpnConnectionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVpnConnectionResponse) ProtoMessage() {}
-
-func (x *UpdateVpnConnectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVpnConnectionResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVpnConnectionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *UpdateVpnConnectionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateVpnGatewayRequest represents the parameters for creates site to site vpn local gateway
-type CreateVpnGatewayRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// public ip address id of the vpn gateway
-	VpcId *int64 `protobuf:"varint,1,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// an optional field, whether to the display the vpn to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVpnGatewayRequest) Reset() {
-	*x = CreateVpnGatewayRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVpnGatewayRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVpnGatewayRequest) ProtoMessage() {}
-
-func (x *CreateVpnGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVpnGatewayRequest.ProtoReflect.Descriptor instead.
-func (*CreateVpnGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *CreateVpnGatewayRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *CreateVpnGatewayRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateVpnGatewayRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateVpnGatewayRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateVpnGatewayRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateVpnGatewayResponse represents the response from creates site to site vpn local gateway
-type CreateVpnGatewayResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVpnGatewayResponse) Reset() {
-	*x = CreateVpnGatewayResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVpnGatewayResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVpnGatewayResponse) ProtoMessage() {}
-
-func (x *CreateVpnGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVpnGatewayResponse.ProtoReflect.Descriptor instead.
-func (*CreateVpnGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *CreateVpnGatewayResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddVpnUserRequest represents the parameters for adds vpn users
-type AddVpnUserRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// username for the vpn user
-	UserName *string `protobuf:"bytes,1,opt,name=user_name,json=userName" json:"user_name,omitempty"`
-	// password for the username
-	Password *string `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
-	// an optional account for the vpn user. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// add vpn user to the specific project
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// an optional domainId for the vpn user. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddVpnUserRequest) Reset() {
-	*x = AddVpnUserRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddVpnUserRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddVpnUserRequest) ProtoMessage() {}
-
-func (x *AddVpnUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddVpnUserRequest.ProtoReflect.Descriptor instead.
-func (*AddVpnUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{36}
-}
-
-func (x *AddVpnUserRequest) GetUserName() string {
+func (x *ListVpnUsersRequest) GetUserName() string {
 	if x != nil && x.UserName != nil {
 		return *x.UserName
 	}
 	return ""
 }
 
-func (x *AddVpnUserRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *AddVpnUserRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *AddVpnUserRequest) GetProjectId() int64 {
+func (x *ListVpnUsersRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *AddVpnUserRequest) GetDomainId() int64 {
+func (x *ListVpnUsersRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListVpnUsersRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListVpnUsersRequest) GetDomainId() int64 {
 	if x != nil && x.DomainId != nil {
 		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *AddVpnUserRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddVpnUserRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddVpnUserRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddVpnUserResponse represents the response from adds vpn users
-type AddVpnUserResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddVpnUserResponse) Reset() {
-	*x = AddVpnUserResponse{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddVpnUserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddVpnUserResponse) ProtoMessage() {}
-
-func (x *AddVpnUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddVpnUserResponse.ProtoReflect.Descriptor instead.
-func (*AddVpnUserResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{37}
-}
-
-func (x *AddVpnUserResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVpnGatewayRequest represents the parameters for updates site to site vpn local gateway
-type UpdateVpnGatewayRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of customer gateway
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the vpn to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVpnGatewayRequest) Reset() {
-	*x = UpdateVpnGatewayRequest{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVpnGatewayRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVpnGatewayRequest) ProtoMessage() {}
-
-func (x *UpdateVpnGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVpnGatewayRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVpnGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{38}
-}
-
-func (x *UpdateVpnGatewayRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVpnGatewayRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
+func (x *ListVpnUsersRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
 	}
 	return false
 }
 
-func (x *UpdateVpnGatewayRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
+func (x *ListVpnUsersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *UpdateVpnGatewayRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *ListVpnUsersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
 	}
 	return 0
 }
 
-func (x *UpdateVpnGatewayRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *ListVpnUsersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
 	}
-	return ""
+	return 0
 }
 
-func (x *UpdateVpnGatewayRequest) GetResponseType() string {
+func (x *ListVpnUsersRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateVpnGatewayResponse represents the response from updates site to site vpn local gateway
-type UpdateVpnGatewayResponse struct {
+// ListVpnUsersResponse represents the response from lists vpn users
+type ListVpnUsersResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of VpnUserss
+	Items []*VpnUsers `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of VpnUserss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateVpnGatewayResponse) Reset() {
-	*x = UpdateVpnGatewayResponse{}
+func (x *ListVpnUsersResponse) Reset() {
+	*x = ListVpnUsersResponse{}
 	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateVpnGatewayResponse) String() string {
+func (x *ListVpnUsersResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateVpnGatewayResponse) ProtoMessage() {}
+func (*ListVpnUsersResponse) ProtoMessage() {}
 
-func (x *UpdateVpnGatewayResponse) ProtoReflect() protoreflect.Message {
+func (x *ListVpnUsersResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3187,28 +3180,35 @@ func (x *UpdateVpnGatewayResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateVpnGatewayResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVpnGatewayResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListVpnUsersResponse.ProtoReflect.Descriptor instead.
+func (*ListVpnUsersResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{39}
 }
 
-func (x *UpdateVpnGatewayResponse) GetResult() *Result {
+func (x *ListVpnUsersResponse) GetItems() []*VpnUsers {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
 }
 
-// VpnUsers represents a VpnUsers Item
-type VpnUsers struct {
+func (x *ListVpnUsersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// Site2SiteCustomerGateway represents a Site2SiteCustomerGateway Item
+type Site2SiteCustomerGateway struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the VpnUsers
+	// The ID of the Site2SiteCustomerGateway
 	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the VpnUsers
+	// The name of the Site2SiteCustomerGateway
 	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the VpnUsers
+	// The display name of the Site2SiteCustomerGateway
 	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the VpnUsers
+	// The description of the Site2SiteCustomerGateway
 	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
 	// The date this entity was created
 	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
@@ -3216,20 +3216,20 @@ type VpnUsers struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VpnUsers) Reset() {
-	*x = VpnUsers{}
+func (x *Site2SiteCustomerGateway) Reset() {
+	*x = Site2SiteCustomerGateway{}
 	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VpnUsers) String() string {
+func (x *Site2SiteCustomerGateway) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VpnUsers) ProtoMessage() {}
+func (*Site2SiteCustomerGateway) ProtoMessage() {}
 
-func (x *VpnUsers) ProtoReflect() protoreflect.Message {
+func (x *Site2SiteCustomerGateway) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3241,40 +3241,40 @@ func (x *VpnUsers) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VpnUsers.ProtoReflect.Descriptor instead.
-func (*VpnUsers) Descriptor() ([]byte, []int) {
+// Deprecated: Use Site2SiteCustomerGateway.ProtoReflect.Descriptor instead.
+func (*Site2SiteCustomerGateway) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{40}
 }
 
-func (x *VpnUsers) GetId() string {
+func (x *Site2SiteCustomerGateway) GetId() string {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return ""
 }
 
-func (x *VpnUsers) GetName() string {
+func (x *Site2SiteCustomerGateway) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *VpnUsers) GetDisplayName() string {
+func (x *Site2SiteCustomerGateway) GetDisplayName() string {
 	if x != nil && x.DisplayName != nil {
 		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *VpnUsers) GetDescription() string {
+func (x *Site2SiteCustomerGateway) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *VpnUsers) GetCreated() string {
+func (x *Site2SiteCustomerGateway) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -3445,88 +3445,6 @@ func (x *RemoteAccessVpn) GetCreated() string {
 	return ""
 }
 
-// Site2SiteCustomerGateway represents a Site2SiteCustomerGateway Item
-type Site2SiteCustomerGateway struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Site2SiteCustomerGateway
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Site2SiteCustomerGateway
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Site2SiteCustomerGateway
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Site2SiteCustomerGateway
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Site2SiteCustomerGateway) Reset() {
-	*x = Site2SiteCustomerGateway{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[43]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Site2SiteCustomerGateway) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Site2SiteCustomerGateway) ProtoMessage() {}
-
-func (x *Site2SiteCustomerGateway) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[43]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Site2SiteCustomerGateway.ProtoReflect.Descriptor instead.
-func (*Site2SiteCustomerGateway) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{43}
-}
-
-func (x *Site2SiteCustomerGateway) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Site2SiteCustomerGateway) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Site2SiteCustomerGateway) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Site2SiteCustomerGateway) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Site2SiteCustomerGateway) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // Site2SiteVpnGateway represents a Site2SiteVpnGateway Item
 type Site2SiteVpnGateway struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -3546,7 +3464,7 @@ type Site2SiteVpnGateway struct {
 
 func (x *Site2SiteVpnGateway) Reset() {
 	*x = Site2SiteVpnGateway{}
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[44]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3558,7 +3476,7 @@ func (x *Site2SiteVpnGateway) String() string {
 func (*Site2SiteVpnGateway) ProtoMessage() {}
 
 func (x *Site2SiteVpnGateway) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[44]
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3571,7 +3489,7 @@ func (x *Site2SiteVpnGateway) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Site2SiteVpnGateway.ProtoReflect.Descriptor instead.
 func (*Site2SiteVpnGateway) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{44}
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *Site2SiteVpnGateway) GetId() string {
@@ -3603,6 +3521,88 @@ func (x *Site2SiteVpnGateway) GetDescription() string {
 }
 
 func (x *Site2SiteVpnGateway) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// VpnUsers represents a VpnUsers Item
+type VpnUsers struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the VpnUsers
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the VpnUsers
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the VpnUsers
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the VpnUsers
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VpnUsers) Reset() {
+	*x = VpnUsers{}
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VpnUsers) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VpnUsers) ProtoMessage() {}
+
+func (x *VpnUsers) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VpnUsers.ProtoReflect.Descriptor instead.
+func (*VpnUsers) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *VpnUsers) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *VpnUsers) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *VpnUsers) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *VpnUsers) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *VpnUsers) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -3895,81 +3895,25 @@ var File_cloudstack_management_vpn_v1_vpn_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/vpn/v1/vpn.gen.proto\x12\x1ccloudstack.management.vpn.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb6\x01\n" +
-	"\x1fDeleteVpnCustomerGatewayRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"`\n" +
-	" DeleteVpnCustomerGatewayResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xc1\x02\n" +
-	"\x1aCreateVpnConnectionRequest\x12,\n" +
-	"\x0evpn_gateway_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fvpnGatewayId\x126\n" +
-	"\x13customer_gateway_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11customerGatewayId\x12\x1f\n" +
-	"\apassive\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\apassive\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"[\n" +
-	"\x1bCreateVpnConnectionResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xe4\x03\n" +
-	"\x13ListVpnUsersRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12'\n" +
-	"\tuser_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\buserName\x12\x1d\n" +
+	"*cloudstack/management/vpn/v1/vpn.gen.proto\x12\x1ccloudstack.management.vpn.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc6\x03\n" +
+	"\x1eListVpnCustomerGatewaysRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\x04 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"project_id\x18\x02 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\x03 \x01(\tB}\xbaHz\xba\x01w\n" +
 	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\n" +
-	" \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"|\n" +
-	"\x14ListVpnUsersResponse\x12<\n" +
-	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.vpn.v1.VpnUsersR\x05items\x12\x1f\n" +
+	"\blist_all\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\a \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\b \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\t \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"\x97\x01\n" +
+	"\x1fListVpnCustomerGatewaysResponse\x12L\n" +
+	"\x05items\x18\x01 \x03(\v26.cloudstack.management.vpn.v1.Site2SiteCustomerGatewayR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb9\x06\n" +
-	"\x1fUpdateVpnCustomerGatewayRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12)\n" +
-	"\n" +
-	"gateway_ip\x18\x03 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\tgatewayIp\x12.\n" +
-	"\x0fguest_cidr_list\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rguestCidrList\x12'\n" +
-	"\tipsec_psk\x18\x05 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\bipsecPsk\x12%\n" +
-	"\n" +
-	"ike_policy\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\tikePolicy\x12%\n" +
-	"\n" +
-	"esp_policy\x18\a \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\tespPolicy\x12!\n" +
-	"\fike_lifetime\x18\b \x01(\x03R\vikeLifetime\x12!\n" +
-	"\fesp_lifetime\x18\t \x01(\x03R\vespLifetime\x12\x17\n" +
-	"\x03dpd\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x03dpd\x12\x1b\n" +
-	"\x05encap\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x05encap\x12\xa0\x01\n" +
-	"\faccount_name\x18\f \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\r \x01(\x03R\bdomainId\x122\n" +
-	"\x11split_connections\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x10splitConnections\x12\x1f\n" +
-	"\vike_version\x18\x0f \x01(\tR\n" +
-	"ikeVersion\x12$\n" +
-	"\x0estart_event_id\x18\x10 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x11 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\"`\n" +
-	" UpdateVpnCustomerGatewayResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xb1\x01\n" +
-	"\x1aDeleteVpnConnectionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
-	"\x1bDeleteVpnConnectionResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf9\x03\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf9\x03\n" +
 	"\x19ListVpnConnectionsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
 	"\x06vpc_id\x18\x02 \x01(\x03R\x05vpcId\x12\x1f\n" +
@@ -3998,55 +3942,7 @@ const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"]\n" +
 	"\x1dUpdateRemoteAccessVpnResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\x9e\x02\n" +
-	"\x14RemoveVpnUserRequest\x12*\n" +
-	"\tuser_name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"U\n" +
-	"\x15RemoveVpnUserResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf6\x02\n" +
-	"\x1cCreateRemoteAccessVpnRequest\x12(\n" +
-	"\fpublic_ip_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"publicIpId\x12\"\n" +
-	"\bip_range\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\aipRange\x12!\n" +
-	"\faccount_name\x18\x03 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12*\n" +
-	"\ropen_firewall\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\fopenFirewall\x12\x1f\n" +
-	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"]\n" +
-	"\x1dCreateRemoteAccessVpnResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xa5\x04\n" +
-	"\x1bListRemoteAccessVpnsRequest\x12 \n" +
-	"\fpublic_ip_id\x18\x01 \x01(\x03R\n" +
-	"publicIpId\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x05 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\x06 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\n" +
-	" \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\v \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\f \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\r \x01(\tR\fresponseType\"\x8b\x01\n" +
-	"\x1cListRemoteAccessVpnsResponse\x12C\n" +
-	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.vpn.v1.RemoteAccessVpnR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xbe\x06\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xbe\x06\n" +
 	"\x1fCreateVpnCustomerGatewayRequest\x12\x1e\n" +
 	"\x04name\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12)\n" +
@@ -4077,6 +3973,132 @@ const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x11 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\"`\n" +
 	" CreateVpnCustomerGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf6\x02\n" +
+	"\x1cCreateRemoteAccessVpnRequest\x12(\n" +
+	"\fpublic_ip_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"publicIpId\x12\"\n" +
+	"\bip_range\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\aipRange\x12!\n" +
+	"\faccount_name\x18\x03 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12*\n" +
+	"\ropen_firewall\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\fopenFirewall\x12\x1f\n" +
+	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"]\n" +
+	"\x1dCreateRemoteAccessVpnResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xb9\x06\n" +
+	"\x1fUpdateVpnCustomerGatewayRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12)\n" +
+	"\n" +
+	"gateway_ip\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\tgatewayIp\x12.\n" +
+	"\x0fguest_cidr_list\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rguestCidrList\x12'\n" +
+	"\tipsec_psk\x18\x05 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\bipsecPsk\x12%\n" +
+	"\n" +
+	"ike_policy\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\tikePolicy\x12%\n" +
+	"\n" +
+	"esp_policy\x18\a \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\tespPolicy\x12!\n" +
+	"\fike_lifetime\x18\b \x01(\x03R\vikeLifetime\x12!\n" +
+	"\fesp_lifetime\x18\t \x01(\x03R\vespLifetime\x12\x17\n" +
+	"\x03dpd\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x03dpd\x12\x1b\n" +
+	"\x05encap\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x05encap\x12\xa0\x01\n" +
+	"\faccount_name\x18\f \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\r \x01(\x03R\bdomainId\x122\n" +
+	"\x11split_connections\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x10splitConnections\x12\x1f\n" +
+	"\vike_version\x18\x0f \x01(\tR\n" +
+	"ikeVersion\x12$\n" +
+	"\x0estart_event_id\x18\x10 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x11 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\"`\n" +
+	" UpdateVpnCustomerGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xa5\x04\n" +
+	"\x1bListRemoteAccessVpnsRequest\x12 \n" +
+	"\fpublic_ip_id\x18\x01 \x01(\x03R\n" +
+	"publicIpId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x05 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\x06 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\n" +
+	" \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\v \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\f \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\"\x8b\x01\n" +
+	"\x1cListRemoteAccessVpnsResponse\x12C\n" +
+	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.vpn.v1.RemoteAccessVpnR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc5\x01\n" +
+	"\x1cDeleteRemoteAccessVpnRequest\x12(\n" +
+	"\fpublic_ip_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"publicIpId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
+	"\x1dDeleteRemoteAccessVpnResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xc1\x02\n" +
+	"\x1aCreateVpnConnectionRequest\x12,\n" +
+	"\x0evpn_gateway_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fvpnGatewayId\x126\n" +
+	"\x13customer_gateway_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11customerGatewayId\x12\x1f\n" +
+	"\apassive\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\apassive\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"[\n" +
+	"\x1bCreateVpnConnectionResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xb6\x01\n" +
+	"\x1fDeleteVpnCustomerGatewayRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"`\n" +
+	" DeleteVpnCustomerGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf9\x01\n" +
+	"\x1aUpdateVpnConnectionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"[\n" +
+	"\x1bUpdateVpnConnectionResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xae\x01\n" +
+	"\x17DeleteVpnGatewayRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
+	"\x18DeleteVpnGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xb1\x01\n" +
+	"\x1aDeleteVpnConnectionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
+	"\x1bDeleteVpnConnectionResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\x9e\x02\n" +
+	"\x14RemoveVpnUserRequest\x12*\n" +
+	"\tuser_name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"U\n" +
+	"\x15RemoveVpnUserResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf0\x01\n" +
 	"\x19ResetVpnConnectionRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
@@ -4086,32 +4108,37 @@ const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Z\n" +
 	"\x1aResetVpnConnectionResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xae\x01\n" +
-	"\x17DeleteVpnGatewayRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
-	"\x18DeleteVpnGatewayResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xc6\x03\n" +
-	"\x1eListVpnCustomerGatewaysRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xbf\x02\n" +
+	"\x11AddVpnUserRequest\x12*\n" +
+	"\tuser_name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12\"\n" +
+	"\bpassword\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12!\n" +
+	"\faccount_name\x18\x03 \x01(\tR\vaccountName\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x02 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\x03 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\a \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\b \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\t \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"\x97\x01\n" +
-	"\x1fListVpnCustomerGatewaysResponse\x12L\n" +
-	"\x05items\x18\x01 \x03(\v26.cloudstack.management.vpn.v1.Site2SiteCustomerGatewayR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xf6\x03\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"R\n" +
+	"\x12AddVpnUserResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xd6\x01\n" +
+	"\x17CreateVpnGatewayRequest\x12\x1d\n" +
+	"\x06vpc_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05vpcId\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"X\n" +
+	"\x18CreateVpnGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf6\x01\n" +
+	"\x17UpdateVpnGatewayRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
+	"\x18UpdateVpnGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf6\x03\n" +
 	"\x16ListVpnGatewaysRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
 	"\x06vpc_id\x18\x02 \x01(\x03R\x05vpcId\x12\x1f\n" +
@@ -4131,55 +4158,28 @@ const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\x17ListVpnGatewaysResponse\x12G\n" +
 	"\x05items\x18\x01 \x03(\v21.cloudstack.management.vpn.v1.Site2SiteVpnGatewayR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc5\x01\n" +
-	"\x1cDeleteRemoteAccessVpnRequest\x12(\n" +
-	"\fpublic_ip_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"publicIpId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
-	"\x1dDeleteRemoteAccessVpnResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf9\x01\n" +
-	"\x1aUpdateVpnConnectionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"[\n" +
-	"\x1bUpdateVpnConnectionResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xd6\x01\n" +
-	"\x17CreateVpnGatewayRequest\x12\x1d\n" +
-	"\x06vpc_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05vpcId\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"X\n" +
-	"\x18CreateVpnGatewayResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xbf\x02\n" +
-	"\x11AddVpnUserRequest\x12*\n" +
-	"\tuser_name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12\"\n" +
-	"\bpassword\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12!\n" +
-	"\faccount_name\x18\x03 \x01(\tR\vaccountName\x12\x1d\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe4\x03\n" +
+	"\x13ListVpnUsersRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12'\n" +
+	"\tuser_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\buserName\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"R\n" +
-	"\x12AddVpnUserResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\xf6\x01\n" +
-	"\x17UpdateVpnGatewayRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
-	"\x18UpdateVpnGatewayResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpn.v1.ResultR\x06result\"\x97\x01\n" +
-	"\bVpnUsers\x12\x18\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\x04 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\n" +
+	" \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"|\n" +
+	"\x14ListVpnUsersResponse\x12<\n" +
+	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.vpn.v1.VpnUsersR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa7\x01\n" +
+	"\x18Site2SiteCustomerGateway\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -4196,14 +4196,14 @@ const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa7\x01\n" +
-	"\x18Site2SiteCustomerGateway\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\xa2\x01\n" +
+	"\x13Site2SiteVpnGateway\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa2\x01\n" +
-	"\x13Site2SiteVpnGateway\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
+	"\bVpnUsers\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -4239,28 +4239,28 @@ const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\x9c\x16\n" +
 	"\n" +
-	"VpnService\x12\x9b\x01\n" +
-	"\x18DeleteVpnCustomerGateway\x12=.cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayRequest\x1a>.cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse\"\x00\x12\x8c\x01\n" +
-	"\x13CreateVpnConnection\x128.cloudstack.management.vpn.v1.CreateVpnConnectionRequest\x1a9.cloudstack.management.vpn.v1.CreateVpnConnectionResponse\"\x00\x12w\n" +
-	"\fListVpnUsers\x121.cloudstack.management.vpn.v1.ListVpnUsersRequest\x1a2.cloudstack.management.vpn.v1.ListVpnUsersResponse\"\x00\x12\x9b\x01\n" +
-	"\x18UpdateVpnCustomerGateway\x12=.cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayRequest\x1a>.cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse\"\x00\x12\x8c\x01\n" +
-	"\x13DeleteVpnConnection\x128.cloudstack.management.vpn.v1.DeleteVpnConnectionRequest\x1a9.cloudstack.management.vpn.v1.DeleteVpnConnectionResponse\"\x00\x12\x89\x01\n" +
+	"VpnService\x12\x98\x01\n" +
+	"\x17ListVpnCustomerGateways\x12<.cloudstack.management.vpn.v1.ListVpnCustomerGatewaysRequest\x1a=.cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse\"\x00\x12\x89\x01\n" +
 	"\x12ListVpnConnections\x127.cloudstack.management.vpn.v1.ListVpnConnectionsRequest\x1a8.cloudstack.management.vpn.v1.ListVpnConnectionsResponse\"\x00\x12\x92\x01\n" +
-	"\x15UpdateRemoteAccessVpn\x12:.cloudstack.management.vpn.v1.UpdateRemoteAccessVpnRequest\x1a;.cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse\"\x00\x12z\n" +
-	"\rRemoveVpnUser\x122.cloudstack.management.vpn.v1.RemoveVpnUserRequest\x1a3.cloudstack.management.vpn.v1.RemoveVpnUserResponse\"\x00\x12\x92\x01\n" +
-	"\x15CreateRemoteAccessVpn\x12:.cloudstack.management.vpn.v1.CreateRemoteAccessVpnRequest\x1a;.cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse\"\x00\x12\x8f\x01\n" +
-	"\x14ListRemoteAccessVpns\x129.cloudstack.management.vpn.v1.ListRemoteAccessVpnsRequest\x1a:.cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse\"\x00\x12\x9b\x01\n" +
-	"\x18CreateVpnCustomerGateway\x12=.cloudstack.management.vpn.v1.CreateVpnCustomerGatewayRequest\x1a>.cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse\"\x00\x12\x89\x01\n" +
-	"\x12ResetVpnConnection\x127.cloudstack.management.vpn.v1.ResetVpnConnectionRequest\x1a8.cloudstack.management.vpn.v1.ResetVpnConnectionResponse\"\x00\x12\x83\x01\n" +
-	"\x10DeleteVpnGateway\x125.cloudstack.management.vpn.v1.DeleteVpnGatewayRequest\x1a6.cloudstack.management.vpn.v1.DeleteVpnGatewayResponse\"\x00\x12\x98\x01\n" +
-	"\x17ListVpnCustomerGateways\x12<.cloudstack.management.vpn.v1.ListVpnCustomerGatewaysRequest\x1a=.cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse\"\x00\x12\x80\x01\n" +
-	"\x0fListVpnGateways\x124.cloudstack.management.vpn.v1.ListVpnGatewaysRequest\x1a5.cloudstack.management.vpn.v1.ListVpnGatewaysResponse\"\x00\x12\x92\x01\n" +
+	"\x15UpdateRemoteAccessVpn\x12:.cloudstack.management.vpn.v1.UpdateRemoteAccessVpnRequest\x1a;.cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse\"\x00\x12\x9b\x01\n" +
+	"\x18CreateVpnCustomerGateway\x12=.cloudstack.management.vpn.v1.CreateVpnCustomerGatewayRequest\x1a>.cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse\"\x00\x12\x92\x01\n" +
+	"\x15CreateRemoteAccessVpn\x12:.cloudstack.management.vpn.v1.CreateRemoteAccessVpnRequest\x1a;.cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse\"\x00\x12\x9b\x01\n" +
+	"\x18UpdateVpnCustomerGateway\x12=.cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayRequest\x1a>.cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse\"\x00\x12\x8f\x01\n" +
+	"\x14ListRemoteAccessVpns\x129.cloudstack.management.vpn.v1.ListRemoteAccessVpnsRequest\x1a:.cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse\"\x00\x12\x92\x01\n" +
 	"\x15DeleteRemoteAccessVpn\x12:.cloudstack.management.vpn.v1.DeleteRemoteAccessVpnRequest\x1a;.cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse\"\x00\x12\x8c\x01\n" +
+	"\x13CreateVpnConnection\x128.cloudstack.management.vpn.v1.CreateVpnConnectionRequest\x1a9.cloudstack.management.vpn.v1.CreateVpnConnectionResponse\"\x00\x12\x9b\x01\n" +
+	"\x18DeleteVpnCustomerGateway\x12=.cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayRequest\x1a>.cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse\"\x00\x12\x8c\x01\n" +
 	"\x13UpdateVpnConnection\x128.cloudstack.management.vpn.v1.UpdateVpnConnectionRequest\x1a9.cloudstack.management.vpn.v1.UpdateVpnConnectionResponse\"\x00\x12\x83\x01\n" +
-	"\x10CreateVpnGateway\x125.cloudstack.management.vpn.v1.CreateVpnGatewayRequest\x1a6.cloudstack.management.vpn.v1.CreateVpnGatewayResponse\"\x00\x12q\n" +
+	"\x10DeleteVpnGateway\x125.cloudstack.management.vpn.v1.DeleteVpnGatewayRequest\x1a6.cloudstack.management.vpn.v1.DeleteVpnGatewayResponse\"\x00\x12\x8c\x01\n" +
+	"\x13DeleteVpnConnection\x128.cloudstack.management.vpn.v1.DeleteVpnConnectionRequest\x1a9.cloudstack.management.vpn.v1.DeleteVpnConnectionResponse\"\x00\x12z\n" +
+	"\rRemoveVpnUser\x122.cloudstack.management.vpn.v1.RemoveVpnUserRequest\x1a3.cloudstack.management.vpn.v1.RemoveVpnUserResponse\"\x00\x12\x89\x01\n" +
+	"\x12ResetVpnConnection\x127.cloudstack.management.vpn.v1.ResetVpnConnectionRequest\x1a8.cloudstack.management.vpn.v1.ResetVpnConnectionResponse\"\x00\x12q\n" +
 	"\n" +
 	"AddVpnUser\x12/.cloudstack.management.vpn.v1.AddVpnUserRequest\x1a0.cloudstack.management.vpn.v1.AddVpnUserResponse\"\x00\x12\x83\x01\n" +
-	"\x10UpdateVpnGateway\x125.cloudstack.management.vpn.v1.UpdateVpnGatewayRequest\x1a6.cloudstack.management.vpn.v1.UpdateVpnGatewayResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"\x10CreateVpnGateway\x125.cloudstack.management.vpn.v1.CreateVpnGatewayRequest\x1a6.cloudstack.management.vpn.v1.CreateVpnGatewayResponse\"\x00\x12\x83\x01\n" +
+	"\x10UpdateVpnGateway\x125.cloudstack.management.vpn.v1.UpdateVpnGatewayRequest\x1a6.cloudstack.management.vpn.v1.UpdateVpnGatewayResponse\"\x00\x12\x80\x01\n" +
+	"\x0fListVpnGateways\x124.cloudstack.management.vpn.v1.ListVpnGatewaysRequest\x1a5.cloudstack.management.vpn.v1.ListVpnGatewaysResponse\"\x00\x12w\n" +
+	"\fListVpnUsers\x121.cloudstack.management.vpn.v1.ListVpnUsersRequest\x1a2.cloudstack.management.vpn.v1.ListVpnUsersResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
 	" com.cloudstack.management.vpn.v1B\vVpnGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/vpn/v1;vpnv1\xa2\x02\x03CMV\xaa\x02\x1cCloudstack.Management.Vpn.V1\xca\x02\x1cCloudstack\\Management\\Vpn\\V1\xe2\x02(Cloudstack\\Management\\Vpn\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Vpn::V1b\beditionsp\xe8\a"
 
 var (
@@ -4277,118 +4277,118 @@ func file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDescGZIP() []byte {
 
 var file_cloudstack_management_vpn_v1_vpn_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
 var file_cloudstack_management_vpn_v1_vpn_gen_proto_goTypes = []any{
-	(*DeleteVpnCustomerGatewayRequest)(nil),  // 0: cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayRequest
-	(*DeleteVpnCustomerGatewayResponse)(nil), // 1: cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse
-	(*CreateVpnConnectionRequest)(nil),       // 2: cloudstack.management.vpn.v1.CreateVpnConnectionRequest
-	(*CreateVpnConnectionResponse)(nil),      // 3: cloudstack.management.vpn.v1.CreateVpnConnectionResponse
-	(*ListVpnUsersRequest)(nil),              // 4: cloudstack.management.vpn.v1.ListVpnUsersRequest
-	(*ListVpnUsersResponse)(nil),             // 5: cloudstack.management.vpn.v1.ListVpnUsersResponse
-	(*UpdateVpnCustomerGatewayRequest)(nil),  // 6: cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayRequest
-	(*UpdateVpnCustomerGatewayResponse)(nil), // 7: cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse
-	(*DeleteVpnConnectionRequest)(nil),       // 8: cloudstack.management.vpn.v1.DeleteVpnConnectionRequest
-	(*DeleteVpnConnectionResponse)(nil),      // 9: cloudstack.management.vpn.v1.DeleteVpnConnectionResponse
-	(*ListVpnConnectionsRequest)(nil),        // 10: cloudstack.management.vpn.v1.ListVpnConnectionsRequest
-	(*ListVpnConnectionsResponse)(nil),       // 11: cloudstack.management.vpn.v1.ListVpnConnectionsResponse
-	(*UpdateRemoteAccessVpnRequest)(nil),     // 12: cloudstack.management.vpn.v1.UpdateRemoteAccessVpnRequest
-	(*UpdateRemoteAccessVpnResponse)(nil),    // 13: cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse
-	(*RemoveVpnUserRequest)(nil),             // 14: cloudstack.management.vpn.v1.RemoveVpnUserRequest
-	(*RemoveVpnUserResponse)(nil),            // 15: cloudstack.management.vpn.v1.RemoveVpnUserResponse
-	(*CreateRemoteAccessVpnRequest)(nil),     // 16: cloudstack.management.vpn.v1.CreateRemoteAccessVpnRequest
-	(*CreateRemoteAccessVpnResponse)(nil),    // 17: cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse
-	(*ListRemoteAccessVpnsRequest)(nil),      // 18: cloudstack.management.vpn.v1.ListRemoteAccessVpnsRequest
-	(*ListRemoteAccessVpnsResponse)(nil),     // 19: cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse
-	(*CreateVpnCustomerGatewayRequest)(nil),  // 20: cloudstack.management.vpn.v1.CreateVpnCustomerGatewayRequest
-	(*CreateVpnCustomerGatewayResponse)(nil), // 21: cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse
-	(*ResetVpnConnectionRequest)(nil),        // 22: cloudstack.management.vpn.v1.ResetVpnConnectionRequest
-	(*ResetVpnConnectionResponse)(nil),       // 23: cloudstack.management.vpn.v1.ResetVpnConnectionResponse
-	(*DeleteVpnGatewayRequest)(nil),          // 24: cloudstack.management.vpn.v1.DeleteVpnGatewayRequest
-	(*DeleteVpnGatewayResponse)(nil),         // 25: cloudstack.management.vpn.v1.DeleteVpnGatewayResponse
-	(*ListVpnCustomerGatewaysRequest)(nil),   // 26: cloudstack.management.vpn.v1.ListVpnCustomerGatewaysRequest
-	(*ListVpnCustomerGatewaysResponse)(nil),  // 27: cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse
-	(*ListVpnGatewaysRequest)(nil),           // 28: cloudstack.management.vpn.v1.ListVpnGatewaysRequest
-	(*ListVpnGatewaysResponse)(nil),          // 29: cloudstack.management.vpn.v1.ListVpnGatewaysResponse
-	(*DeleteRemoteAccessVpnRequest)(nil),     // 30: cloudstack.management.vpn.v1.DeleteRemoteAccessVpnRequest
-	(*DeleteRemoteAccessVpnResponse)(nil),    // 31: cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse
-	(*UpdateVpnConnectionRequest)(nil),       // 32: cloudstack.management.vpn.v1.UpdateVpnConnectionRequest
-	(*UpdateVpnConnectionResponse)(nil),      // 33: cloudstack.management.vpn.v1.UpdateVpnConnectionResponse
-	(*CreateVpnGatewayRequest)(nil),          // 34: cloudstack.management.vpn.v1.CreateVpnGatewayRequest
-	(*CreateVpnGatewayResponse)(nil),         // 35: cloudstack.management.vpn.v1.CreateVpnGatewayResponse
-	(*AddVpnUserRequest)(nil),                // 36: cloudstack.management.vpn.v1.AddVpnUserRequest
-	(*AddVpnUserResponse)(nil),               // 37: cloudstack.management.vpn.v1.AddVpnUserResponse
-	(*UpdateVpnGatewayRequest)(nil),          // 38: cloudstack.management.vpn.v1.UpdateVpnGatewayRequest
-	(*UpdateVpnGatewayResponse)(nil),         // 39: cloudstack.management.vpn.v1.UpdateVpnGatewayResponse
-	(*VpnUsers)(nil),                         // 40: cloudstack.management.vpn.v1.VpnUsers
+	(*ListVpnCustomerGatewaysRequest)(nil),   // 0: cloudstack.management.vpn.v1.ListVpnCustomerGatewaysRequest
+	(*ListVpnCustomerGatewaysResponse)(nil),  // 1: cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse
+	(*ListVpnConnectionsRequest)(nil),        // 2: cloudstack.management.vpn.v1.ListVpnConnectionsRequest
+	(*ListVpnConnectionsResponse)(nil),       // 3: cloudstack.management.vpn.v1.ListVpnConnectionsResponse
+	(*UpdateRemoteAccessVpnRequest)(nil),     // 4: cloudstack.management.vpn.v1.UpdateRemoteAccessVpnRequest
+	(*UpdateRemoteAccessVpnResponse)(nil),    // 5: cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse
+	(*CreateVpnCustomerGatewayRequest)(nil),  // 6: cloudstack.management.vpn.v1.CreateVpnCustomerGatewayRequest
+	(*CreateVpnCustomerGatewayResponse)(nil), // 7: cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse
+	(*CreateRemoteAccessVpnRequest)(nil),     // 8: cloudstack.management.vpn.v1.CreateRemoteAccessVpnRequest
+	(*CreateRemoteAccessVpnResponse)(nil),    // 9: cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse
+	(*UpdateVpnCustomerGatewayRequest)(nil),  // 10: cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayRequest
+	(*UpdateVpnCustomerGatewayResponse)(nil), // 11: cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse
+	(*ListRemoteAccessVpnsRequest)(nil),      // 12: cloudstack.management.vpn.v1.ListRemoteAccessVpnsRequest
+	(*ListRemoteAccessVpnsResponse)(nil),     // 13: cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse
+	(*DeleteRemoteAccessVpnRequest)(nil),     // 14: cloudstack.management.vpn.v1.DeleteRemoteAccessVpnRequest
+	(*DeleteRemoteAccessVpnResponse)(nil),    // 15: cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse
+	(*CreateVpnConnectionRequest)(nil),       // 16: cloudstack.management.vpn.v1.CreateVpnConnectionRequest
+	(*CreateVpnConnectionResponse)(nil),      // 17: cloudstack.management.vpn.v1.CreateVpnConnectionResponse
+	(*DeleteVpnCustomerGatewayRequest)(nil),  // 18: cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayRequest
+	(*DeleteVpnCustomerGatewayResponse)(nil), // 19: cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse
+	(*UpdateVpnConnectionRequest)(nil),       // 20: cloudstack.management.vpn.v1.UpdateVpnConnectionRequest
+	(*UpdateVpnConnectionResponse)(nil),      // 21: cloudstack.management.vpn.v1.UpdateVpnConnectionResponse
+	(*DeleteVpnGatewayRequest)(nil),          // 22: cloudstack.management.vpn.v1.DeleteVpnGatewayRequest
+	(*DeleteVpnGatewayResponse)(nil),         // 23: cloudstack.management.vpn.v1.DeleteVpnGatewayResponse
+	(*DeleteVpnConnectionRequest)(nil),       // 24: cloudstack.management.vpn.v1.DeleteVpnConnectionRequest
+	(*DeleteVpnConnectionResponse)(nil),      // 25: cloudstack.management.vpn.v1.DeleteVpnConnectionResponse
+	(*RemoveVpnUserRequest)(nil),             // 26: cloudstack.management.vpn.v1.RemoveVpnUserRequest
+	(*RemoveVpnUserResponse)(nil),            // 27: cloudstack.management.vpn.v1.RemoveVpnUserResponse
+	(*ResetVpnConnectionRequest)(nil),        // 28: cloudstack.management.vpn.v1.ResetVpnConnectionRequest
+	(*ResetVpnConnectionResponse)(nil),       // 29: cloudstack.management.vpn.v1.ResetVpnConnectionResponse
+	(*AddVpnUserRequest)(nil),                // 30: cloudstack.management.vpn.v1.AddVpnUserRequest
+	(*AddVpnUserResponse)(nil),               // 31: cloudstack.management.vpn.v1.AddVpnUserResponse
+	(*CreateVpnGatewayRequest)(nil),          // 32: cloudstack.management.vpn.v1.CreateVpnGatewayRequest
+	(*CreateVpnGatewayResponse)(nil),         // 33: cloudstack.management.vpn.v1.CreateVpnGatewayResponse
+	(*UpdateVpnGatewayRequest)(nil),          // 34: cloudstack.management.vpn.v1.UpdateVpnGatewayRequest
+	(*UpdateVpnGatewayResponse)(nil),         // 35: cloudstack.management.vpn.v1.UpdateVpnGatewayResponse
+	(*ListVpnGatewaysRequest)(nil),           // 36: cloudstack.management.vpn.v1.ListVpnGatewaysRequest
+	(*ListVpnGatewaysResponse)(nil),          // 37: cloudstack.management.vpn.v1.ListVpnGatewaysResponse
+	(*ListVpnUsersRequest)(nil),              // 38: cloudstack.management.vpn.v1.ListVpnUsersRequest
+	(*ListVpnUsersResponse)(nil),             // 39: cloudstack.management.vpn.v1.ListVpnUsersResponse
+	(*Site2SiteCustomerGateway)(nil),         // 40: cloudstack.management.vpn.v1.Site2SiteCustomerGateway
 	(*Site2SiteVpnConnection)(nil),           // 41: cloudstack.management.vpn.v1.Site2SiteVpnConnection
 	(*RemoteAccessVpn)(nil),                  // 42: cloudstack.management.vpn.v1.RemoteAccessVpn
-	(*Site2SiteCustomerGateway)(nil),         // 43: cloudstack.management.vpn.v1.Site2SiteCustomerGateway
-	(*Site2SiteVpnGateway)(nil),              // 44: cloudstack.management.vpn.v1.Site2SiteVpnGateway
+	(*Site2SiteVpnGateway)(nil),              // 43: cloudstack.management.vpn.v1.Site2SiteVpnGateway
+	(*VpnUsers)(nil),                         // 44: cloudstack.management.vpn.v1.VpnUsers
 	(*Success)(nil),                          // 45: cloudstack.management.vpn.v1.Success
 	(*Item)(nil),                             // 46: cloudstack.management.vpn.v1.Item
 	(*Result)(nil),                           // 47: cloudstack.management.vpn.v1.Result
 	nil,                                      // 48: cloudstack.management.vpn.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_vpn_v1_vpn_gen_proto_depIdxs = []int32{
-	47, // 0: cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 1: cloudstack.management.vpn.v1.CreateVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	40, // 2: cloudstack.management.vpn.v1.ListVpnUsersResponse.items:type_name -> cloudstack.management.vpn.v1.VpnUsers
-	47, // 3: cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 4: cloudstack.management.vpn.v1.DeleteVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	41, // 5: cloudstack.management.vpn.v1.ListVpnConnectionsResponse.items:type_name -> cloudstack.management.vpn.v1.Site2SiteVpnConnection
-	47, // 6: cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 7: cloudstack.management.vpn.v1.RemoveVpnUserResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 8: cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	42, // 9: cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse.items:type_name -> cloudstack.management.vpn.v1.RemoteAccessVpn
-	47, // 10: cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 11: cloudstack.management.vpn.v1.ResetVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 12: cloudstack.management.vpn.v1.DeleteVpnGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	43, // 13: cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse.items:type_name -> cloudstack.management.vpn.v1.Site2SiteCustomerGateway
-	44, // 14: cloudstack.management.vpn.v1.ListVpnGatewaysResponse.items:type_name -> cloudstack.management.vpn.v1.Site2SiteVpnGateway
-	47, // 15: cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 16: cloudstack.management.vpn.v1.UpdateVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 17: cloudstack.management.vpn.v1.CreateVpnGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 18: cloudstack.management.vpn.v1.AddVpnUserResponse.result:type_name -> cloudstack.management.vpn.v1.Result
-	47, // 19: cloudstack.management.vpn.v1.UpdateVpnGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	40, // 0: cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse.items:type_name -> cloudstack.management.vpn.v1.Site2SiteCustomerGateway
+	41, // 1: cloudstack.management.vpn.v1.ListVpnConnectionsResponse.items:type_name -> cloudstack.management.vpn.v1.Site2SiteVpnConnection
+	47, // 2: cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 3: cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 4: cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 5: cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	42, // 6: cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse.items:type_name -> cloudstack.management.vpn.v1.RemoteAccessVpn
+	47, // 7: cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 8: cloudstack.management.vpn.v1.CreateVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 9: cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 10: cloudstack.management.vpn.v1.UpdateVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 11: cloudstack.management.vpn.v1.DeleteVpnGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 12: cloudstack.management.vpn.v1.DeleteVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 13: cloudstack.management.vpn.v1.RemoveVpnUserResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 14: cloudstack.management.vpn.v1.ResetVpnConnectionResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 15: cloudstack.management.vpn.v1.AddVpnUserResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 16: cloudstack.management.vpn.v1.CreateVpnGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	47, // 17: cloudstack.management.vpn.v1.UpdateVpnGatewayResponse.result:type_name -> cloudstack.management.vpn.v1.Result
+	43, // 18: cloudstack.management.vpn.v1.ListVpnGatewaysResponse.items:type_name -> cloudstack.management.vpn.v1.Site2SiteVpnGateway
+	44, // 19: cloudstack.management.vpn.v1.ListVpnUsersResponse.items:type_name -> cloudstack.management.vpn.v1.VpnUsers
 	48, // 20: cloudstack.management.vpn.v1.Item.details:type_name -> cloudstack.management.vpn.v1.Item.DetailsEntry
-	0,  // 21: cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway:input_type -> cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayRequest
-	2,  // 22: cloudstack.management.vpn.v1.VpnService.CreateVpnConnection:input_type -> cloudstack.management.vpn.v1.CreateVpnConnectionRequest
-	4,  // 23: cloudstack.management.vpn.v1.VpnService.ListVpnUsers:input_type -> cloudstack.management.vpn.v1.ListVpnUsersRequest
-	6,  // 24: cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway:input_type -> cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayRequest
-	8,  // 25: cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection:input_type -> cloudstack.management.vpn.v1.DeleteVpnConnectionRequest
-	10, // 26: cloudstack.management.vpn.v1.VpnService.ListVpnConnections:input_type -> cloudstack.management.vpn.v1.ListVpnConnectionsRequest
-	12, // 27: cloudstack.management.vpn.v1.VpnService.UpdateRemoteAccessVpn:input_type -> cloudstack.management.vpn.v1.UpdateRemoteAccessVpnRequest
-	14, // 28: cloudstack.management.vpn.v1.VpnService.RemoveVpnUser:input_type -> cloudstack.management.vpn.v1.RemoveVpnUserRequest
-	16, // 29: cloudstack.management.vpn.v1.VpnService.CreateRemoteAccessVpn:input_type -> cloudstack.management.vpn.v1.CreateRemoteAccessVpnRequest
-	18, // 30: cloudstack.management.vpn.v1.VpnService.ListRemoteAccessVpns:input_type -> cloudstack.management.vpn.v1.ListRemoteAccessVpnsRequest
-	20, // 31: cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway:input_type -> cloudstack.management.vpn.v1.CreateVpnCustomerGatewayRequest
-	22, // 32: cloudstack.management.vpn.v1.VpnService.ResetVpnConnection:input_type -> cloudstack.management.vpn.v1.ResetVpnConnectionRequest
-	24, // 33: cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway:input_type -> cloudstack.management.vpn.v1.DeleteVpnGatewayRequest
-	26, // 34: cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways:input_type -> cloudstack.management.vpn.v1.ListVpnCustomerGatewaysRequest
-	28, // 35: cloudstack.management.vpn.v1.VpnService.ListVpnGateways:input_type -> cloudstack.management.vpn.v1.ListVpnGatewaysRequest
-	30, // 36: cloudstack.management.vpn.v1.VpnService.DeleteRemoteAccessVpn:input_type -> cloudstack.management.vpn.v1.DeleteRemoteAccessVpnRequest
-	32, // 37: cloudstack.management.vpn.v1.VpnService.UpdateVpnConnection:input_type -> cloudstack.management.vpn.v1.UpdateVpnConnectionRequest
-	34, // 38: cloudstack.management.vpn.v1.VpnService.CreateVpnGateway:input_type -> cloudstack.management.vpn.v1.CreateVpnGatewayRequest
-	36, // 39: cloudstack.management.vpn.v1.VpnService.AddVpnUser:input_type -> cloudstack.management.vpn.v1.AddVpnUserRequest
-	38, // 40: cloudstack.management.vpn.v1.VpnService.UpdateVpnGateway:input_type -> cloudstack.management.vpn.v1.UpdateVpnGatewayRequest
-	1,  // 41: cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway:output_type -> cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse
-	3,  // 42: cloudstack.management.vpn.v1.VpnService.CreateVpnConnection:output_type -> cloudstack.management.vpn.v1.CreateVpnConnectionResponse
-	5,  // 43: cloudstack.management.vpn.v1.VpnService.ListVpnUsers:output_type -> cloudstack.management.vpn.v1.ListVpnUsersResponse
-	7,  // 44: cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway:output_type -> cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse
-	9,  // 45: cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection:output_type -> cloudstack.management.vpn.v1.DeleteVpnConnectionResponse
-	11, // 46: cloudstack.management.vpn.v1.VpnService.ListVpnConnections:output_type -> cloudstack.management.vpn.v1.ListVpnConnectionsResponse
-	13, // 47: cloudstack.management.vpn.v1.VpnService.UpdateRemoteAccessVpn:output_type -> cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse
-	15, // 48: cloudstack.management.vpn.v1.VpnService.RemoveVpnUser:output_type -> cloudstack.management.vpn.v1.RemoveVpnUserResponse
-	17, // 49: cloudstack.management.vpn.v1.VpnService.CreateRemoteAccessVpn:output_type -> cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse
-	19, // 50: cloudstack.management.vpn.v1.VpnService.ListRemoteAccessVpns:output_type -> cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse
-	21, // 51: cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway:output_type -> cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse
-	23, // 52: cloudstack.management.vpn.v1.VpnService.ResetVpnConnection:output_type -> cloudstack.management.vpn.v1.ResetVpnConnectionResponse
-	25, // 53: cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway:output_type -> cloudstack.management.vpn.v1.DeleteVpnGatewayResponse
-	27, // 54: cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways:output_type -> cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse
-	29, // 55: cloudstack.management.vpn.v1.VpnService.ListVpnGateways:output_type -> cloudstack.management.vpn.v1.ListVpnGatewaysResponse
-	31, // 56: cloudstack.management.vpn.v1.VpnService.DeleteRemoteAccessVpn:output_type -> cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse
-	33, // 57: cloudstack.management.vpn.v1.VpnService.UpdateVpnConnection:output_type -> cloudstack.management.vpn.v1.UpdateVpnConnectionResponse
-	35, // 58: cloudstack.management.vpn.v1.VpnService.CreateVpnGateway:output_type -> cloudstack.management.vpn.v1.CreateVpnGatewayResponse
-	37, // 59: cloudstack.management.vpn.v1.VpnService.AddVpnUser:output_type -> cloudstack.management.vpn.v1.AddVpnUserResponse
-	39, // 60: cloudstack.management.vpn.v1.VpnService.UpdateVpnGateway:output_type -> cloudstack.management.vpn.v1.UpdateVpnGatewayResponse
+	0,  // 21: cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways:input_type -> cloudstack.management.vpn.v1.ListVpnCustomerGatewaysRequest
+	2,  // 22: cloudstack.management.vpn.v1.VpnService.ListVpnConnections:input_type -> cloudstack.management.vpn.v1.ListVpnConnectionsRequest
+	4,  // 23: cloudstack.management.vpn.v1.VpnService.UpdateRemoteAccessVpn:input_type -> cloudstack.management.vpn.v1.UpdateRemoteAccessVpnRequest
+	6,  // 24: cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway:input_type -> cloudstack.management.vpn.v1.CreateVpnCustomerGatewayRequest
+	8,  // 25: cloudstack.management.vpn.v1.VpnService.CreateRemoteAccessVpn:input_type -> cloudstack.management.vpn.v1.CreateRemoteAccessVpnRequest
+	10, // 26: cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway:input_type -> cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayRequest
+	12, // 27: cloudstack.management.vpn.v1.VpnService.ListRemoteAccessVpns:input_type -> cloudstack.management.vpn.v1.ListRemoteAccessVpnsRequest
+	14, // 28: cloudstack.management.vpn.v1.VpnService.DeleteRemoteAccessVpn:input_type -> cloudstack.management.vpn.v1.DeleteRemoteAccessVpnRequest
+	16, // 29: cloudstack.management.vpn.v1.VpnService.CreateVpnConnection:input_type -> cloudstack.management.vpn.v1.CreateVpnConnectionRequest
+	18, // 30: cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway:input_type -> cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayRequest
+	20, // 31: cloudstack.management.vpn.v1.VpnService.UpdateVpnConnection:input_type -> cloudstack.management.vpn.v1.UpdateVpnConnectionRequest
+	22, // 32: cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway:input_type -> cloudstack.management.vpn.v1.DeleteVpnGatewayRequest
+	24, // 33: cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection:input_type -> cloudstack.management.vpn.v1.DeleteVpnConnectionRequest
+	26, // 34: cloudstack.management.vpn.v1.VpnService.RemoveVpnUser:input_type -> cloudstack.management.vpn.v1.RemoveVpnUserRequest
+	28, // 35: cloudstack.management.vpn.v1.VpnService.ResetVpnConnection:input_type -> cloudstack.management.vpn.v1.ResetVpnConnectionRequest
+	30, // 36: cloudstack.management.vpn.v1.VpnService.AddVpnUser:input_type -> cloudstack.management.vpn.v1.AddVpnUserRequest
+	32, // 37: cloudstack.management.vpn.v1.VpnService.CreateVpnGateway:input_type -> cloudstack.management.vpn.v1.CreateVpnGatewayRequest
+	34, // 38: cloudstack.management.vpn.v1.VpnService.UpdateVpnGateway:input_type -> cloudstack.management.vpn.v1.UpdateVpnGatewayRequest
+	36, // 39: cloudstack.management.vpn.v1.VpnService.ListVpnGateways:input_type -> cloudstack.management.vpn.v1.ListVpnGatewaysRequest
+	38, // 40: cloudstack.management.vpn.v1.VpnService.ListVpnUsers:input_type -> cloudstack.management.vpn.v1.ListVpnUsersRequest
+	1,  // 41: cloudstack.management.vpn.v1.VpnService.ListVpnCustomerGateways:output_type -> cloudstack.management.vpn.v1.ListVpnCustomerGatewaysResponse
+	3,  // 42: cloudstack.management.vpn.v1.VpnService.ListVpnConnections:output_type -> cloudstack.management.vpn.v1.ListVpnConnectionsResponse
+	5,  // 43: cloudstack.management.vpn.v1.VpnService.UpdateRemoteAccessVpn:output_type -> cloudstack.management.vpn.v1.UpdateRemoteAccessVpnResponse
+	7,  // 44: cloudstack.management.vpn.v1.VpnService.CreateVpnCustomerGateway:output_type -> cloudstack.management.vpn.v1.CreateVpnCustomerGatewayResponse
+	9,  // 45: cloudstack.management.vpn.v1.VpnService.CreateRemoteAccessVpn:output_type -> cloudstack.management.vpn.v1.CreateRemoteAccessVpnResponse
+	11, // 46: cloudstack.management.vpn.v1.VpnService.UpdateVpnCustomerGateway:output_type -> cloudstack.management.vpn.v1.UpdateVpnCustomerGatewayResponse
+	13, // 47: cloudstack.management.vpn.v1.VpnService.ListRemoteAccessVpns:output_type -> cloudstack.management.vpn.v1.ListRemoteAccessVpnsResponse
+	15, // 48: cloudstack.management.vpn.v1.VpnService.DeleteRemoteAccessVpn:output_type -> cloudstack.management.vpn.v1.DeleteRemoteAccessVpnResponse
+	17, // 49: cloudstack.management.vpn.v1.VpnService.CreateVpnConnection:output_type -> cloudstack.management.vpn.v1.CreateVpnConnectionResponse
+	19, // 50: cloudstack.management.vpn.v1.VpnService.DeleteVpnCustomerGateway:output_type -> cloudstack.management.vpn.v1.DeleteVpnCustomerGatewayResponse
+	21, // 51: cloudstack.management.vpn.v1.VpnService.UpdateVpnConnection:output_type -> cloudstack.management.vpn.v1.UpdateVpnConnectionResponse
+	23, // 52: cloudstack.management.vpn.v1.VpnService.DeleteVpnGateway:output_type -> cloudstack.management.vpn.v1.DeleteVpnGatewayResponse
+	25, // 53: cloudstack.management.vpn.v1.VpnService.DeleteVpnConnection:output_type -> cloudstack.management.vpn.v1.DeleteVpnConnectionResponse
+	27, // 54: cloudstack.management.vpn.v1.VpnService.RemoveVpnUser:output_type -> cloudstack.management.vpn.v1.RemoveVpnUserResponse
+	29, // 55: cloudstack.management.vpn.v1.VpnService.ResetVpnConnection:output_type -> cloudstack.management.vpn.v1.ResetVpnConnectionResponse
+	31, // 56: cloudstack.management.vpn.v1.VpnService.AddVpnUser:output_type -> cloudstack.management.vpn.v1.AddVpnUserResponse
+	33, // 57: cloudstack.management.vpn.v1.VpnService.CreateVpnGateway:output_type -> cloudstack.management.vpn.v1.CreateVpnGatewayResponse
+	35, // 58: cloudstack.management.vpn.v1.VpnService.UpdateVpnGateway:output_type -> cloudstack.management.vpn.v1.UpdateVpnGatewayResponse
+	37, // 59: cloudstack.management.vpn.v1.VpnService.ListVpnGateways:output_type -> cloudstack.management.vpn.v1.ListVpnGatewaysResponse
+	39, // 60: cloudstack.management.vpn.v1.VpnService.ListVpnUsers:output_type -> cloudstack.management.vpn.v1.ListVpnUsersResponse
 	41, // [41:61] is the sub-list for method output_type
 	21, // [21:41] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name

@@ -10,132 +10,107 @@ import "google/protobuf/descriptor.proto";
 service VmService {
 	option (annotations.service).scope = Scope_USER;
 
-	// StopVM Stops a virtual machine.
-	rpc StopVM(StopVMRequest) returns (StopVMResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// ListVMSchedule List VM Schedules.
-	rpc ListVMSchedule(ListVMScheduleRequest) returns (ListVMScheduleResponse) {}
-
-	// StartVM Starts a virtual machine.
-	rpc StartVM(StartVMRequest) returns (StartVMResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
 	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
 	rpc AssignVM(AssignVMRequest) returns (AssignVMResponse) {}
 
-	// ListNics list the vm nics  IP to NIC
-	rpc ListNics(ListNicsRequest) returns (ListNicsResponse) {}
-
-	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
-	rpc MigrateVirtualMachineWithVolume(MigrateVirtualMachineWithVolumeRequest) returns (MigrateVirtualMachineWithVolumeResponse) {}
-
-	// ResetVMPasswordCmdByAdmin Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
-	rpc ResetVMPasswordCmdByAdmin(ResetVMPasswordCmdByAdminRequest) returns (ResetVMPasswordCmdByAdminResponse) {}
-
-	// DestroyVMCmdByAdmin Destroys a virtual machine. Once destroyed, only the administrator can recover it.
-	rpc DestroyVMCmdByAdmin(DestroyVMCmdByAdminRequest) returns (DestroyVMCmdByAdminResponse) {}
-
-	// ListVMs List the virtual machines owned by the account.
-	rpc ListVMs(ListVMsRequest) returns (ListVMsResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// DeleteVMSchedule Delete VM Schedule.
-	rpc DeleteVMSchedule(DeleteVMScheduleRequest) returns (DeleteVMScheduleResponse) {}
-
-	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
-	rpc ResetVMUserData(ResetVMUserDataRequest) returns (ResetVMUserDataResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// GetVMPassword Returns an encrypted password for the VM
-	rpc GetVMPassword(GetVMPasswordRequest) returns (GetVMPasswordResponse) {}
-
-	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	rpc DeployVnfAppliance(DeployVnfApplianceRequest) returns (DeployVnfApplianceResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// ScaleVMCmdByAdmin Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-	rpc ScaleVMCmdByAdmin(ScaleVMCmdByAdminRequest) returns (ScaleVMCmdByAdminResponse) {}
-
-	// ImportVm Import virtual machine from a unmanaged host into CloudStack
-	rpc ImportVm(ImportVmRequest) returns (ImportVmResponse) {}
-
-	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	rpc UpdateVM(UpdateVMRequest) returns (UpdateVMResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// UpdateDefaultNicForVMCmdByAdmin Changes the default NIC on a VM
-	rpc UpdateDefaultNicForVMCmdByAdmin(UpdateDefaultNicForVMCmdByAdminRequest) returns (UpdateDefaultNicForVMCmdByAdminResponse) {}
-
-	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
-	rpc ListUnmanagedInstances(ListUnmanagedInstancesRequest) returns (ListUnmanagedInstancesResponse) {}
-
-	// ListVnfAppliances List VNF appliance owned by the account.
-	rpc ListVnfAppliances(ListVnfAppliancesRequest) returns (ListVnfAppliancesResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// RestoreVMCmdByAdmin Restore a VM to original template/ISO or new template/ISO
-	rpc RestoreVMCmdByAdmin(RestoreVMCmdByAdminRequest) returns (RestoreVMCmdByAdminResponse) {}
-
-	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
-	rpc UpgradeVM(UpgradeVMRequest) returns (UpgradeVMResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// RebootVMCmdByAdmin Reboots a virtual machine.
-	rpc RebootVMCmdByAdmin(RebootVMCmdByAdminRequest) returns (RebootVMCmdByAdminResponse) {}
-
-	// UpdateVmNicIp Update the default Ip of a VM Nic
-	rpc UpdateVmNicIp(UpdateVmNicIpRequest) returns (UpdateVmNicIpResponse) {}
-
-	// ResetVMSSHKeyCmdByAdmin Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
-	rpc ResetVMSSHKeyCmdByAdmin(ResetVMSSHKeyCmdByAdminRequest) returns (ResetVMSSHKeyCmdByAdminResponse) {}
-
-	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
-	rpc MigrateVM(MigrateVMRequest) returns (MigrateVMResponse) {}
-
-	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
-	rpc ResetVMPassword(ResetVMPasswordRequest) returns (ResetVMPasswordResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// CreateVMSchedule Create VM Schedule
-	rpc CreateVMSchedule(CreateVMScheduleRequest) returns (CreateVMScheduleResponse) {}
-
-	// RecoverVM Recovers a virtual machine.
-	rpc RecoverVM(RecoverVMRequest) returns (RecoverVMResponse) {}
-
-	// AddNicToVM Adds VM to specified network by creating a NIC
-	rpc AddNicToVM(AddNicToVMRequest) returns (AddNicToVMResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
+	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	rpc DeployVMCmdByAdmin(DeployVMCmdByAdminRequest) returns (DeployVMCmdByAdminResponse) {}
 
 	// UpdateDefaultNicForVM Changes the default NIC on a VM
 	rpc UpdateDefaultNicForVM(UpdateDefaultNicForVMRequest) returns (UpdateDefaultNicForVMResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// AddIpToVmNic Assigns secondary IP to NIC
-	rpc AddIpToVmNic(AddIpToVmNicRequest) returns (AddIpToVmNicResponse) {}
-
-	// RemoveIpFromVmNic Removes secondary IP from the NIC.
-	rpc RemoveIpFromVmNic(RemoveIpFromVmNicRequest) returns (RemoveIpFromVmNicResponse) {}
-
 	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
 	rpc ExpungeVM(ExpungeVMRequest) returns (ExpungeVMResponse) {}
+
+	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	rpc UpgradeVM(UpgradeVMRequest) returns (UpgradeVMResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// DestroyVM Destroys a virtual machine.
+	rpc DestroyVM(DestroyVMRequest) returns (DestroyVMResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
+	rpc RemoveNicFromVMCmdByAdmin(RemoveNicFromVMCmdByAdminRequest) returns (RemoveNicFromVMCmdByAdminResponse) {}
+
+	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
+	rpc AddNicToVMCmdByAdmin(AddNicToVMCmdByAdminRequest) returns (AddNicToVMCmdByAdminResponse) {}
+
+	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
+	rpc ListUnmanagedInstances(ListUnmanagedInstancesRequest) returns (ListUnmanagedInstancesResponse) {}
+
+	// UnmanageVMInstance Unmanage a guest virtual machine.
+	rpc UnmanageVMInstance(UnmanageVMInstanceRequest) returns (UnmanageVMInstanceResponse) {}
+
+	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	rpc ResetVMPassword(ResetVMPasswordRequest) returns (ResetVMPasswordResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	rpc DeployVnfApplianceCmdByAdmin(DeployVnfApplianceCmdByAdminRequest) returns (DeployVnfApplianceCmdByAdminResponse) {}
+
+	// ListNics list the vm nics  IP to NIC
+	rpc ListNics(ListNicsRequest) returns (ListNicsResponse) {}
+
+	// ListVMSchedule List VM Schedules.
+	rpc ListVMSchedule(ListVMScheduleRequest) returns (ListVMScheduleResponse) {}
+
+	// RestoreVM Restore a VM to original template/ISO or new template/ISO
+	rpc RestoreVM(RestoreVMRequest) returns (RestoreVMResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// StartVM Starts a virtual machine.
+	rpc StartVM(StartVMRequest) returns (StartVMResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	rpc DeployVnfAppliance(DeployVnfApplianceRequest) returns (DeployVnfApplianceResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
+	rpc MigrateVM(MigrateVMRequest) returns (MigrateVMResponse) {}
+
+	// ListVnfAppliances List VNF appliance owned by the account.
+	rpc ListVnfAppliances(ListVnfAppliancesRequest) returns (ListVnfAppliancesResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
+	rpc ListAffectedVmsForStorageScopeChange(ListAffectedVmsForStorageScopeChangeRequest) returns (ListAffectedVmsForStorageScopeChangeResponse) {}
+
+	// StopVMCmdByAdmin Stops a virtual machine.
+	rpc StopVMCmdByAdmin(StopVMCmdByAdminRequest) returns (StopVMCmdByAdminResponse) {}
+
+	// UpdateVmNicIp Update the default Ip of a VM Nic
+	rpc UpdateVmNicIp(UpdateVmNicIpRequest) returns (UpdateVmNicIpResponse) {}
+
+	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
+	rpc ImportUnmanagedInstance(ImportUnmanagedInstanceRequest) returns (ImportUnmanagedInstanceResponse) {}
+
+	// DeleteVMSchedule Delete VM Schedule.
+	rpc DeleteVMSchedule(DeleteVMScheduleRequest) returns (DeleteVMScheduleResponse) {}
+
+	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	rpc ResetVMSSHKey(ResetVMSSHKeyRequest) returns (ResetVMSSHKeyResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// GetVMPassword Returns an encrypted password for the VM
+	rpc GetVMPassword(GetVMPasswordRequest) returns (GetVMPasswordResponse) {}
 
 	// ListVmsForImport Lists virtual machines on a unmanaged host
 	rpc ListVmsForImport(ListVmsForImportRequest) returns (ListVmsForImportResponse) {}
 
-	// RestoreVM Restore a VM to original template/ISO or new template/ISO
-	rpc RestoreVM(RestoreVMRequest) returns (RestoreVMResponse) {
+	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	rpc DeployVM(DeployVMRequest) returns (DeployVMResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
@@ -144,34 +119,24 @@ service VmService {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
-	rpc RemoveNicFromVMCmdByAdmin(RemoveNicFromVMCmdByAdminRequest) returns (RemoveNicFromVMCmdByAdminResponse) {}
+	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	rpc UpdateVMCmdByAdmin(UpdateVMCmdByAdminRequest) returns (UpdateVMCmdByAdminResponse) {}
 
-	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	rpc DeployVMCmdByAdmin(DeployVMCmdByAdminRequest) returns (DeployVMCmdByAdminResponse) {}
+	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
+	rpc ResetVMUserData(ResetVMUserDataRequest) returns (ResetVMUserDataResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
 
-	// UnmanageVMInstance Unmanage a guest virtual machine.
-	rpc UnmanageVMInstance(UnmanageVMInstanceRequest) returns (UnmanageVMInstanceResponse) {}
-
-	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
-	rpc ListAffectedVmsForStorageScopeChange(ListAffectedVmsForStorageScopeChangeRequest) returns (ListAffectedVmsForStorageScopeChangeResponse) {}
+	// CreateVMSchedule Create VM Schedule
+	rpc CreateVMSchedule(CreateVMScheduleRequest) returns (CreateVMScheduleResponse) {}
 
 	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
 	rpc RemoveNicFromVM(RemoveNicFromVMRequest) returns (RemoveNicFromVMResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// UpdateVMSchedule Update VM Schedule.
-	rpc UpdateVMSchedule(UpdateVMScheduleRequest) returns (UpdateVMScheduleResponse) {}
-
-	// GetVMUserData Returns user data associated with the VM
-	rpc GetVMUserData(GetVMUserDataRequest) returns (GetVMUserDataResponse) {}
-
-	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
-	rpc ImportUnmanagedInstance(ImportUnmanagedInstanceRequest) returns (ImportUnmanagedInstanceResponse) {}
-
-	// DestroyVM Destroys a virtual machine.
-	rpc DestroyVM(DestroyVMRequest) returns (DestroyVMResponse) {
+	// ListVMs List the virtual machines owned by the account.
+	rpc ListVMs(ListVMsRequest) returns (ListVMsResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
@@ -180,124 +145,41 @@ service VmService {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	rpc DeployVM(DeployVMRequest) returns (DeployVMResponse) {
+	// ImportVm Import virtual machine from a unmanaged host into CloudStack
+	rpc ImportVm(ImportVmRequest) returns (ImportVmResponse) {}
+
+	// AddIpToVmNic Assigns secondary IP to NIC
+	rpc AddIpToVmNic(AddIpToVmNicRequest) returns (AddIpToVmNicResponse) {}
+
+	// GetVMUserData Returns user data associated with the VM
+	rpc GetVMUserData(GetVMUserDataRequest) returns (GetVMUserDataResponse) {}
+
+	// UpdateVMSchedule Update VM Schedule.
+	rpc UpdateVMSchedule(UpdateVMScheduleRequest) returns (UpdateVMScheduleResponse) {}
+
+	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
+	rpc MigrateVirtualMachineWithVolume(MigrateVirtualMachineWithVolumeRequest) returns (MigrateVirtualMachineWithVolumeResponse) {}
+
+	// AddNicToVM Adds VM to specified network by creating a NIC
+	rpc AddNicToVM(AddNicToVMRequest) returns (AddNicToVMResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
-	rpc ResetVMSSHKey(ResetVMSSHKeyRequest) returns (ResetVMSSHKeyResponse) {
+	// RemoveIpFromVmNic Removes secondary IP from the NIC.
+	rpc RemoveIpFromVmNic(RemoveIpFromVmNicRequest) returns (RemoveIpFromVmNicResponse) {}
+
+	// StopVM Stops a virtual machine.
+	rpc StopVM(StopVMRequest) returns (StopVMResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
-}
 
-// StopVMRequest represents the parameters for stops a virtual machine.
-message StopVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
-	bool forced = 3 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	int64 start_event_id = 4;
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 6;
-}
+	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	rpc UpdateVM(UpdateVMRequest) returns (UpdateVMResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
 
-// StopVMResponse represents the response from stops a virtual machine.
-message StopVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListVMScheduleRequest represents the parameters for list vm schedules.
-message ListVMScheduleRequest {
-	// ID of the VM for which schedule is to be defined
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// ID of VM schedule
-	int64 id = 2;
-
-	// Action taken by schedule
-	string action = 3;
-
-	// ID of VM schedule
-	bool enabled = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 5;
-
-	//
-	int32 page = 6;
-
-	//
-	int32 page_size = 7;
-
-	//
-	string response_type = 8;
-}
-
-// ListVMScheduleResponse represents the response from list vm schedules.
-message ListVMScheduleResponse {
-	option (validate.message).disabled = false;
-	// The list of VMSchedules
-	repeated VMSchedule items = 1;
-
-	// The total count of VMSchedules
-	int32 total_count = 2;
-}
-
-// StartVMRequest represents the parameters for starts a virtual machine.
-message StartVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// destination Pod ID to deploy the VM to - parameter available for root admin only
-	int64 pod_id = 3;
-	// destination Cluster ID to deploy the VM to - parameter available for root admin only
-	int64 cluster_id = 4;
-	// destination Host ID to deploy the VM to - parameter available for root admin only
-	int64 host_id = 5;
-	// True by default, CloudStack will firstly try to start the VM on the last host where it run on before stopping, if destination host is not specified. If false, CloudStack will not consider the last host and start the VM by normal process.
-	bool consider_last_host = 6 [
-		features.field_presence = EXPLICIT
-	];
-	// Deployment planner to use for vm allocation. Available to ROOT admin only
-	string deployment_planner = 7;
-	// Boot into hardware setup menu or not
-	bool boot_into_setup = 8 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	int64 start_event_id = 9;
-	//
-	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 11;
-}
-
-// StartVMResponse represents the response from starts a virtual machine.
-message StartVMResponse {
-	// The Result
-	Result result = 1;
+	// RecoverVM Recovers a virtual machine.
+	rpc RecoverVM(RecoverVMRequest) returns (RecoverVMResponse) {}
 }
 
 // AssignVMRequest represents the parameters for change ownership of a vm from one account to another. this api is available for basic zones with security groups and advanced zones with guest networks. a root administrator can reassign a vm from any account to any other account in any domain. a domain administrator can reassign a vm to any account in the same domain.
@@ -328,1580 +210,6 @@ message AssignVMRequest {
 
 // AssignVMResponse represents the response from change ownership of a vm from one account to another. this api is available for basic zones with security groups and advanced zones with guest networks. a root administrator can reassign a vm from any account to any other account in any domain. a domain administrator can reassign a vm to any account in the same domain.
 message AssignVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListNicsRequest represents the parameters for list the vm nics  ip to nic
-message ListNicsRequest {
-	// the ID of the nic to list IPs
-	int64 nic_id = 1;
-
-	// the ID of the vm
-	int64 vm_id = 2 [
-		(validate.field).required = true
-	];
-
-	// list nic of the specific vm's network
-	int64 network_id = 3;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 5;
-
-	//
-	int32 page = 6;
-
-	//
-	int32 page_size = 7;
-
-	//
-	string response_type = 8;
-}
-
-// ListNicsResponse represents the response from list the vm nics  ip to nic
-message ListNicsResponse {
-	option (validate.message).disabled = false;
-	// The list of Nics
-	repeated Nic items = 1;
-
-	// The total count of Nics
-	int32 total_count = 2;
-}
-
-// MigrateVirtualMachineWithVolumeRequest represents the parameters for attempts migration of a vm with its volumes to a different host
-message MigrateVirtualMachineWithVolumeRequest {
-	// Destination Host ID to migrate VM to.
-	int64 host_id = 1;
-
-	// the ID of the virtual machine
-	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
-	];
-
-	// Storage to pool mapping. This parameter specifies the mapping between a volume and a pool where you want to migrate that volume. Format of this parameter: migrateto[volume-index].volume=<uuid>&migrateto[volume-index].pool=<uuid>Where, [volume-index] indicates the index to identify the volume that you want to migrate, volume=<uuid> indicates the UUID of the volume that you want to migrate, and pool=<uuid> indicates the UUID of the pool where you want to migrate the volume. Example: migrateto[0].volume=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].pool=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].volume=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].pool=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].volume=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].pool=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
-	map<string, string> migrate_volume_to = 3;
-
-	// Automatically select a destination host for a running instance, if hostId is not specified. false by default
-	bool auto_select = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// MigrateVirtualMachineWithVolumeResponse represents the response from attempts migration of a vm with its volumes to a different host
-message MigrateVirtualMachineWithVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ResetVMPasswordCmdByAdminRequest represents the parameters for resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-message ResetVMPasswordCmdByAdminRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The new password of the virtual machine. If null, a random password will be generated for the VM.
-	string password = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ResetVMPasswordCmdByAdminResponse represents the response from resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-message ResetVMPasswordCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DestroyVMCmdByAdminRequest represents the parameters for destroys a virtual machine. once destroyed, only the administrator can recover it.
-message DestroyVMCmdByAdminRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// If true is passed, the vm is expunged immediately. False by default.
-	bool expunge = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Comma separated list of UUIDs for volumes that will be deleted
-	repeated string volume_ids = 3;
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// DestroyVMCmdByAdminResponse represents the response from destroys a virtual machine. once destroyed, only the administrator can recover it.
-message DestroyVMCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListVMsRequest represents the parameters for list the virtual machines owned by the account.
-message ListVMsRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the group ID
-	int64 group_id = 2;
-	// the ID of the virtual machine
-	int64 id = 3;
-	// the IDs of the virtual machines, mutually exclusive with id
-	repeated string ids = 4;
-	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
-	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
-	string state = 6;
-	// the availability zone ID
-	int64 zone_id = 7;
-	// list by network type; true if need to list vms using Virtual Network, false otherwise
-	bool for_virtual_network = 8 [
-		features.field_presence = EXPLICIT
-	];
-	// list by network id
-	int64 network_id = 9;
-	// the target hypervisor for the template
-	string hypervisor = 10;
-	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
-	repeated string view_details = 11;
-	// list vms by template
-	int64 template_id = 12;
-	// list vms by iso
-	int64 iso_id = 13;
-	// list vms by vpc
-	int64 vpc_id = 14;
-	// list vms by affinity group
-	int64 affinity_group_id = 15;
-	// list vms by ssh keypair name
-	string keypair = 16;
-	// list by the service offering
-	int64 service_off_id = 17;
-	// list by the backup offering
-	int64 backup_off_id = 18;
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 19 [
-		features.field_presence = EXPLICIT
-	];
-	// the user ID that created the VM and is under the account that owns the VM
-	int64 user_id = 20;
-	// the security group ID
-	int64 security_group_id = 21;
-	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
-	bool ha_enabled = 22 [
-		features.field_presence = EXPLICIT
-	];
-	// the ID of AutoScaling VM Group
-	int64 auto_scale_vm_group_id = 23;
-	// flag to display the resource icon for VMs
-	bool show_icon = 24 [
-		features.field_presence = EXPLICIT
-	];
-	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
-	bool accumulate = 25 [
-		features.field_presence = EXPLICIT
-	];
-	// Whether to return the VMs' user data or not. By default, user data will not be returned.
-	bool show_user_data = 26 [
-		features.field_presence = EXPLICIT
-	];
-	// the instances by userdata
-	int64 userdata_id = 27;
-	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
-	bool is_vnf = 28 [
-		features.field_presence = EXPLICIT
-	];
-	// makes the API's response contains only the resource count
-	bool retrieve_only_resource_count = 29 [
-		features.field_presence = EXPLICIT
-	];
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 30;
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 31;
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 32 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 33 [
-		features.field_presence = EXPLICIT
-	];
-	// list only resources belonging to the domain specified
-	int64 domain_id = 34;
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 35 [
-		features.field_presence = EXPLICIT
-	];
-	// List by keyword
-	string keyword = 36;
-	//
-	int32 page = 37;
-	//
-	int32 page_size = 38;
-	//
-	string response_type = 39;
-}
-
-// ListVMsResponse represents the response from list the virtual machines owned by the account.
-message ListVMsResponse {
-	option (validate.message).disabled = false;
-	// The list of UserVms
-	repeated UserVm items = 1;
-
-	// The total count of UserVms
-	int32 total_count = 2;
-}
-
-// DeleteVMScheduleRequest represents the parameters for delete vm schedule.
-message DeleteVMScheduleRequest {
-	// ID of VM
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// ID of VM schedule
-	int64 id = 2;
-
-	// IDs of VM schedule
-	repeated string ids = 3;
-
-	//
-	string response_type = 4;
-}
-
-// DeleteVMScheduleResponse represents the response from delete vm schedule.
-message DeleteVMScheduleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ResetVMUserDataRequest represents the parameters for resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
-message ResetVMUserDataRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	string user_data = 3;
-	// the ID of the userdata
-	int64 userdata_id = 4;
-	// used to specify the parameters values for the variables in userdata.
-	map<string, string> userdata_details = 5;
-	// an optional account for the virtual machine. Must be used with domainId.
-	string account_name = 6;
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 7;
-	// an optional project for the virtual machine
-	int64 project_id = 8;
-	//
-	string response_type = 9;
-}
-
-// ResetVMUserDataResponse represents the response from resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
-message ResetVMUserDataResponse {
-	// The Result
-	Result result = 1;
-}
-
-// GetVMPasswordRequest represents the parameters for returns an encrypted password for the vm
-message GetVMPasswordRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// GetVMPasswordResponse represents the response from returns an encrypted password for the vm
-message GetVMPasswordResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeployVnfApplianceRequest represents the parameters for creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
-message DeployVnfApplianceRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// True by default, security group or network rules (source nat and firewall rules) will be configured for VNF management interfaces. False otherwise. Network rules are configured if management network is an isolated network or shared network with security groups.
-	bool vnf_configure_management = 2 [
-		features.field_presence = EXPLICIT
-	];
-	// the CIDR list to forward traffic from to the VNF management interface. Multiple entries must be separated by a single comma character (,). The default value is 0.0.0.0/0.
-	repeated string vnf_cidrlist = 3;
-	// availability zone for the virtual machine
-	int64 zone_id = 4 [
-		(validate.field).required = true
-	];
-	// the ID of the service offering for the virtual machine
-	int64 service_offering_id = 5 [
-		(validate.field).required = true
-	];
-	// the ID of the template for the virtual machine
-	int64 template_id = 6 [
-		(validate.field).required = true
-	];
-	// host name for the virtual machine
-	string name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// an optional user generated name for the virtual machine
-	string display_name = 8 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// The password of the virtual machine. If null, a random password will be generated for the VM.
-	string password = 9;
-	// an optional account for the virtual machine. Must be used with domainId.
-	string account_name = 10;
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used. If account is NOT provided then virtual machine will be assigned to the caller account and domain.
-	int64 domain_id = 11;
-	// list of network ids used by virtual machine. Can't be specified with ipToNetworkList parameter
-	repeated string network_ids = 12;
-	// Guest VM Boot option either custom[UEFI] or default boot [BIOS]. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
-	string boot_type = 13;
-	// Boot Mode [Legacy] or [Secure] Applicable when Boot Type Selected is UEFI, otherwise Legacy only for BIOS. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
-	string boot_mode = 14;
-	// Boot into hardware setup or not (ignored if startVm = false, only valid for vmware)
-	bool boot_into_setup = 15 [
-		features.field_presence = EXPLICIT
-	];
-	// the ID of the disk offering for the virtual machine. If the template is of ISO format, the diskOfferingId is for the root disk volume. Otherwise this parameter is used to indicate the offering for the data disk volume. If the templateId parameter passed is from a Template object, the diskOfferingId refers to a DATA Disk Volume created. If the templateId parameter passed is from an ISO object, the diskOfferingId refers to a ROOT Disk Volume created.
-	int64 disk_offering_id = 16;
-	// the arbitrary size for the DATADISK volume. Mutually exclusive with diskOfferingId
-	int64 size = 17;
-	// Optional field to resize root disk on deploy. Value is in GB. Only applies to template-based deployments. Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
-	int64 rootdisksize = 18;
-	// an optional group for the virtual machine
-	string group = 19;
-	// the hypervisor on which to deploy the virtual machine. The parameter is required and respected only when hypervisor info is not set on the ISO/Template passed to the call
-	string hypervisor = 20;
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	string user_data = 21;
-	// the ID of the Userdata
-	int64 userdata_id = 22;
-	// used to specify the parameters values for the variables in userdata.
-	map<string, string> userdata_details = 23;
-	// name of the ssh key pair used to login to the virtual machine
-	string ssh_key_pair_name = 24;
-	// names of the ssh key pairs used to login to the virtual machine
-	repeated string ssh_key_pair_names = 25;
-	// destination Host ID to deploy the VM to - parameter available for root admin only
-	int64 host_id = 26;
-	// comma separated list of security groups id that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
-	repeated string security_group_id_list = 27;
-	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
-	repeated string security_group_name_list = 28;
-	// ip to network mapping. Can't be specified with networkIds parameter. Example: iptonetworklist[0].ip=10.10.10.11&iptonetworklist[0].ipv6=fc00:1234:5678::abcd&iptonetworklist[0].networkid=uuid&iptonetworklist[0].mac=aa:bb:cc:dd:ee::ff - requests to use ip 10.10.10.11 in network id=uuid
-	map<string, string> ip_to_network_list = 29;
-	// the ip address for default vm's network
-	string ip_address = 30 [
-		(validate.field).string.ipv4 = true
-	];
-	// the ipv6 address for default vm's network
-	string ip6_address = 31 [
-		(validate.field).string.ipv4 = true
-	];
-	// the mac address for default vm's network
-	string mac_address = 32;
-	// an optional keyboard device type for the virtual machine. valid value can be one of de,de-ch,es,fi,fr,fr-be,fr-ch,is,it,jp,nl-be,no,pt,uk,us
-	string keyboard = 33;
-	// Deploy vm for the project
-	int64 project_id = 34;
-	// true if start vm after creating; defaulted to true if not specified
-	bool start_vm = 35 [
-		features.field_presence = EXPLICIT
-	];
-	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Mutually exclusive with affinitygroupnames parameter
-	repeated string affinity_group_id_list = 36;
-	// comma separated list of affinity groups names that are going to be applied to the virtual machine.Mutually exclusive with affinitygroupids parameter
-	repeated string affinity_group_name_list = 37;
-	// an optional field, whether to the display the vm to the end user or not.
-	bool display_vm = 38 [
-		features.field_presence = EXPLICIT
-	];
-	// used to specify the custom parameters. 'extraconfig' is not allowed to be passed in details
-	map<string, string> details = 39;
-	// Deployment planner to use for vm allocation. Available to ROOT admin only
-	string deployment_planner = 40;
-	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
-	map<string, string> dhcp_options_network_list = 41;
-	// datadisk template to disk-offering mapping; an optional parameter used to create additional data disks from datadisk templates; can't be specified with diskOfferingId parameter
-	map<string, string> data_disk_template_to_disk_offering_list = 42;
-	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
-	string extra_config = 43;
-	// if true the image tags (if any) will be copied to the VM, default value is false
-	bool copy_image_tags = 44 [
-		features.field_presence = EXPLICIT
-	];
-	// used to specify the vApp properties.
-	map<string, string> v_app_properties = 45;
-	// VMware only: used to specify network mapping of a vApp VMware template registered "as-is". Example nicnetworklist[0].ip=Nic-101&nicnetworklist[0].network=uuid
-	map<string, string> v_app_networks = 46;
-	// true if virtual machine needs to be dynamically scalable
-	bool dynamic_scaling_enabled = 47 [
-		features.field_presence = EXPLICIT
-	];
-	// the ID of the disk offering for the virtual machine to be used for root volume instead of the disk offering mapped in service offering.In case of virtual machine deploying from ISO, then the diskofferingid specified for root volume is ignored and uses this override disk offering id
-	int64 override_disk_offering_id = 48;
-	// IOThreads are dedicated event loop threads for supported disk devices to perform block I/O requests in order to improve scalability especially on an SMP host/guest with many LUNs.
-	bool iothreads_enabled = 49 [
-		features.field_presence = EXPLICIT
-	];
-	// Controls specific policies on IO
-	string io_driver_policy = 50;
-	// The number of queues for multiqueue NICs.
-	int32 nic_multiqueue_number = 51;
-	// Enable packed virtqueues or not.
-	bool nic_packed_virt_queues = 52 [
-		features.field_presence = EXPLICIT
-	];
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 53 [
-		(validate.field).string.uuid = true
-	];
-	//
-	int64 start_event_id = 54;
-	//
-	string injected_job_id = 55 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 56;
-}
-
-// DeployVnfApplianceResponse represents the response from creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
-message DeployVnfApplianceResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ScaleVMCmdByAdminRequest represents the parameters for scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-message ScaleVMCmdByAdminRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the ID of the service offering for the virtual machine
-	int64 service_offering_id = 2 [
-		(validate.field).required = true
-	];
-
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	map<string, string> details = 3;
-
-	// New minimum number of IOPS for the custom disk offering
-	int64 min_iops = 4;
-
-	// New maximum number of IOPS for the custom disk offering
-	int64 max_iops = 5;
-
-	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
-	bool auto_migrate = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Verify OK to Shrink
-	bool shrink_ok = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 8;
-
-	//
-	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 10;
-}
-
-// ScaleVMCmdByAdminResponse represents the response from scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-message ScaleVMCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ImportVmRequest represents the parameters for import virtual machine from a unmanaged host into cloudstack
-message ImportVmRequest {
-	// the zone ID
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the username for the host
-	string username = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the password for the host
-	string password = 3;
-
-	// the host name or IP address
-	string host = 4;
-
-	// hypervisor type of the host
-	string hypervisor = 5 [
-		(validate.field).required = true
-	];
-
-	// path of the disk image
-	string disk_path = 6;
-
-	// Source location for Import
-	string import_source = 7 [
-		(validate.field).required = true
-	];
-
-	// the network ID
-	int64 network_id = 8;
-
-	// Host where local disk is located
-	int64 host_id = 9;
-
-	// Shared storage pool where disk is located
-	int64 storage_pool_id = 10;
-
-	// Temp Path on external host for disk image copy
-	string tmp_path = 11;
-
-	// (only for importing VMs from VMware to KVM) UUID of a linked existing vCenter
-	int64 existing_vcenter_id = 12;
-
-	// (only for importing VMs from VMware to KVM) VMware ESXi host IP/Name.
-	string hostip = 13 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// (only for importing VMs from VMware to KVM) The name/ip of vCenter. Make sure it is IP address or full qualified domain name for host running vCenter server.
-	string vcenter = 14;
-
-	// (only for importing VMs from VMware to KVM) Name of VMware datacenter.
-	string datacenter_name = 15 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// (only for importing VMs from VMware to KVM) Name of VMware cluster.
-	string cluster_name = 16 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// (only for importing VMs from VMware to KVM) optional - the host to perform the virt-v2v conversion from VMware to KVM.
-	int64 convert_instance_host_id = 17;
-
-	// (only for importing VMs from VMware to KVM) optional - the host to import the converted instance from VMware to KVM.
-	int64 import_instance_host_id = 18;
-
-	// (only for importing VMs from VMware to KVM) optional - the temporary storage pool to perform the virt-v2v migration from VMware to KVM.
-	int64 convert_storage_pool_id = 19;
-
-	// (only for importing VMs from VMware to KVM) optional - if true, forces MS to export OVF from VMware to temporary storage, else uses KVM Host if ovftool is available, falls back to MS if not.
-	bool force_ms_to_import_vm_files = 20 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the cluster ID
-	int64 cluster_id = 21 [
-		(validate.field).required = true
-	];
-
-	// the name of the instance as it is known to the hypervisor
-	string name = 22 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the display name of the instance
-	string display_name = 23 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the host name of the instance
-	string host_name = 24 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// an optional account for the virtual machine. Must be used with domainId.
-	string account_name = 25;
-
-	// import instance to the domain specified
-	int64 domain_id = 26;
-
-	// import instance for the project
-	int64 project_id = 27;
-
-	// the ID of the template for the virtual machine
-	int64 template_id = 28;
-
-	// the service offering for the virtual machine
-	int64 service_offering_id = 29 [
-		(validate.field).required = true
-	];
-
-	// VM nic to network id mapping using keys nic and network
-	map<string, string> nic_network_list = 30;
-
-	// VM nic to ip address mapping using keys nic, ip4Address
-	map<string, string> nic_ip_address_list = 31;
-
-	// datadisk template to disk-offering mapping using keys disk and diskOffering
-	map<string, string> data_disk_to_disk_offering_list = 32;
-
-	// used to specify the custom parameters.
-	map<string, string> details = 33;
-
-	// vm and its volumes are allowed to migrate to different host/pool when offerings passed are incompatible with current host/pool
-	bool migrate_allowed = 34 [
-		features.field_presence = EXPLICIT
-	];
-
-	// VM is imported despite some of its NIC's MAC addresses are already present, in case the MAC address exists then a new MAC address is generated
-	bool forced = 35 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 36;
-
-	//
-	string injected_job_id = 37 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 38;
-}
-
-// ImportVmResponse represents the response from import virtual machine from a unmanaged host into cloudstack
-message ImportVmResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateVMRequest represents the parameters for updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
-message UpdateVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// user generated name
-	string display_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// group of the virtual machine
-	string group = 3;
-	// true if high-availability is enabled for the virtual machine, false otherwise
-	bool ha_enable = 4 [
-		features.field_presence = EXPLICIT
-	];
-	// The ID of the virtual machine
-	int64 id = 5 [
-		(validate.field).required = true
-	];
-	// the ID of the OS type that best represents this VM.
-	int64 os_type_id = 6;
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	string user_data = 7;
-	// the ID of the userdata
-	int64 userdata_id = 8;
-	// used to specify the parameters values for the variables in userdata.
-	map<string, string> userdata_details = 9;
-	// an optional field, whether to the display the vm to the end user or not.
-	bool display_vm = 10 [
-		features.field_presence = EXPLICIT
-	];
-	// true if VM contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory. This can be updated only when dynamic scaling is enabled on template, service offering and the corresponding global setting
-	bool is_dynamically_scalable = 11 [
-		features.field_presence = EXPLICIT
-	];
-	// new host name of the vm. The VM has to be stopped/started for this update to take affect
-	string name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// instance name of the user vm
-	string instance_name = 13 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
-	map<string, string> details = 14;
-	// list of security group ids to be applied on the virtual machine.
-	repeated string security_group_id_list = 15;
-	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
-	repeated string security_group_name_list = 16;
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	bool cleanup_details = 17 [
-		features.field_presence = EXPLICIT
-	];
-	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
-	map<string, string> dhcp_options_network_list = 18;
-	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
-	string extra_config = 19;
-	// Set delete protection for the virtual machine. If true, the instance will be protected from deletion. Note: If the instance is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
-	bool delete_protection = 20 [
-		features.field_presence = EXPLICIT
-	];
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 21 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 22;
-}
-
-// UpdateVMResponse represents the response from updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
-message UpdateVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateDefaultNicForVMCmdByAdminRequest represents the parameters for changes the default nic on a vm
-message UpdateDefaultNicForVMCmdByAdminRequest {
-	// Virtual Machine ID
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// NIC ID
-	int64 nic_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// UpdateDefaultNicForVMCmdByAdminResponse represents the response from changes the default nic on a vm
-message UpdateDefaultNicForVMCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListUnmanagedInstancesRequest represents the parameters for lists unmanaged virtual machines for a given cluster.
-message ListUnmanagedInstancesRequest {
-	// the cluster ID
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the hypervisor name of the instance
-	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// List by keyword
-	string keyword = 3;
-
-	//
-	int32 page = 4;
-
-	//
-	int32 page_size = 5;
-
-	//
-	string response_type = 6;
-}
-
-// ListUnmanagedInstancesResponse represents the response from lists unmanaged virtual machines for a given cluster.
-message ListUnmanagedInstancesResponse {
-	option (validate.message).disabled = false;
-	// The list of UnmanagedInstances
-	repeated UnmanagedInstance items = 1;
-
-	// The total count of UnmanagedInstances
-	int32 total_count = 2;
-}
-
-// ListVnfAppliancesRequest represents the parameters for list vnf appliance owned by the account.
-message ListVnfAppliancesRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the group ID
-	int64 group_id = 2;
-	// the ID of the virtual machine
-	int64 id = 3;
-	// the IDs of the virtual machines, mutually exclusive with id
-	repeated string ids = 4;
-	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
-	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
-	string state = 6;
-	// the availability zone ID
-	int64 zone_id = 7;
-	// list by network type; true if need to list vms using Virtual Network, false otherwise
-	bool for_virtual_network = 8 [
-		features.field_presence = EXPLICIT
-	];
-	// list by network id
-	int64 network_id = 9;
-	// the target hypervisor for the template
-	string hypervisor = 10;
-	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
-	repeated string view_details = 11;
-	// list vms by template
-	int64 template_id = 12;
-	// list vms by iso
-	int64 iso_id = 13;
-	// list vms by vpc
-	int64 vpc_id = 14;
-	// list vms by affinity group
-	int64 affinity_group_id = 15;
-	// list vms by ssh keypair name
-	string keypair = 16;
-	// list by the service offering
-	int64 service_off_id = 17;
-	// list by the backup offering
-	int64 backup_off_id = 18;
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 19 [
-		features.field_presence = EXPLICIT
-	];
-	// the user ID that created the VM and is under the account that owns the VM
-	int64 user_id = 20;
-	// the security group ID
-	int64 security_group_id = 21;
-	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
-	bool ha_enabled = 22 [
-		features.field_presence = EXPLICIT
-	];
-	// the ID of AutoScaling VM Group
-	int64 auto_scale_vm_group_id = 23;
-	// flag to display the resource icon for VMs
-	bool show_icon = 24 [
-		features.field_presence = EXPLICIT
-	];
-	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
-	bool accumulate = 25 [
-		features.field_presence = EXPLICIT
-	];
-	// Whether to return the VMs' user data or not. By default, user data will not be returned.
-	bool show_user_data = 26 [
-		features.field_presence = EXPLICIT
-	];
-	// the instances by userdata
-	int64 userdata_id = 27;
-	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
-	bool is_vnf = 28 [
-		features.field_presence = EXPLICIT
-	];
-	// makes the API's response contains only the resource count
-	bool retrieve_only_resource_count = 29 [
-		features.field_presence = EXPLICIT
-	];
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 30;
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 31;
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 32 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 33 [
-		features.field_presence = EXPLICIT
-	];
-	// list only resources belonging to the domain specified
-	int64 domain_id = 34;
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 35 [
-		features.field_presence = EXPLICIT
-	];
-	// List by keyword
-	string keyword = 36;
-	//
-	int32 page = 37;
-	//
-	int32 page_size = 38;
-	//
-	string response_type = 39;
-}
-
-// ListVnfAppliancesResponse represents the response from list vnf appliance owned by the account.
-message ListVnfAppliancesResponse {
-	option (validate.message).disabled = false;
-	// The list of UserVms
-	repeated UserVm items = 1;
-
-	// The total count of UserVms
-	int32 total_count = 2;
-}
-
-// RestoreVMCmdByAdminRequest represents the parameters for restore a vm to original template/iso or new template/iso
-message RestoreVMCmdByAdminRequest {
-	// Virtual Machine ID
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
-	int64 template_id = 2;
-
-	// Override root volume's diskoffering.
-	int64 root_disk_offering_id = 3;
-
-	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
-	int64 root_disk_size = 4;
-
-	// used to specify the custom parameters
-	map<string, string> details = 5;
-
-	// Optional field to expunge old root volume after restore.
-	bool expunge_root_disk = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 9;
-}
-
-// RestoreVMCmdByAdminResponse represents the response from restore a vm to original template/iso or new template/iso
-message RestoreVMCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpgradeVMRequest represents the parameters for (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
-message UpgradeVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// the service offering ID to apply to the virtual machine
-	int64 service_offering_id = 3 [
-		(validate.field).required = true
-	];
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	map<string, string> details = 4;
-	// New minimum number of IOPS for the custom disk offering
-	int64 min_iops = 5;
-	// New maximum number of IOPS for the custom disk offering
-	int64 max_iops = 6;
-	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
-	bool auto_migrate = 7 [
-		features.field_presence = EXPLICIT
-	];
-	// Verify OK to Shrink
-	bool shrink_ok = 8 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	string response_type = 9;
-}
-
-// UpgradeVMResponse represents the response from (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
-message UpgradeVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RebootVMCmdByAdminRequest represents the parameters for reboots a virtual machine.
-message RebootVMCmdByAdminRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Force reboot the VM (VM is Stopped and then Started)
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Boot into hardware setup menu or not
-	bool boot_into_setup = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// RebootVMCmdByAdminResponse represents the response from reboots a virtual machine.
-message RebootVMCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateVmNicIpRequest represents the parameters for update the default ip of a vm nic
-message UpdateVmNicIpRequest {
-	// the ID of the nic to which you want to assign private IP
-	int64 nic_id = 1 [
-		(validate.field).required = true
-	];
-
-	// Secondary IP Address
-	string ip_addr = 2 [
-		(validate.field).string.ipv4 = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// UpdateVmNicIpResponse represents the response from update the default ip of a vm nic
-message UpdateVmNicIpResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ResetVMSSHKeyCmdByAdminRequest represents the parameters for resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-message ResetVMSSHKeyCmdByAdminRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// name of the ssh key pair used to login to the virtual machine
-	string name = 2;
-
-	// names of the ssh key pairs to be used to login to the virtual machine
-	repeated string names = 3;
-
-	// an optional account for the ssh key. Must be used with domainId.
-	string account_name = 4;
-
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 5;
-
-	// an optional project for the ssh key
-	int64 project_id = 6;
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 9;
-}
-
-// ResetVMSSHKeyCmdByAdminResponse represents the response from resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-message ResetVMSSHKeyCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// MigrateVMRequest represents the parameters for attempts migration of a vm to a different host or root volume of the vm to a different storage pool
-message MigrateVMRequest {
-	// Destination Host ID to migrate VM to.
-	int64 host_id = 1;
-
-	// the ID of the virtual machine
-	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
-	];
-
-	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
-	int64 storage_id = 3;
-
-	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
-	bool auto_select = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// MigrateVMResponse represents the response from attempts migration of a vm to a different host or root volume of the vm to a different storage pool
-message MigrateVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ResetVMPasswordRequest represents the parameters for resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-message ResetVMPasswordRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// The new password of the virtual machine. If null, a random password will be generated for the VM.
-	string password = 3;
-	//
-	int64 start_event_id = 4;
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 6;
-}
-
-// ResetVMPasswordResponse represents the response from resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-message ResetVMPasswordResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateVMScheduleRequest represents the parameters for create vm schedule
-message CreateVMScheduleRequest {
-	// ID of the VM for which schedule is to be defined
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// Description of the schedule
-	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
-	string schedule = 3 [
-		(validate.field).required = true
-	];
-
-	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
-	string time_zone = 4 [
-		(validate.field).required = true
-	];
-
-	// Action to take on the VM (start/stop/reboot/force_stop/force_reboot).
-	string action = 5 [
-		(validate.field).required = true
-	];
-
-	// start date from which the schedule becomes active. Defaults to current date plus 1 minute.Use format "yyyy-MM-dd hh:mm:ss")
-	string start_date = 6;
-
-	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
-	string end_date = 7;
-
-	// Enable VM schedule. Defaults to true
-	bool enabled = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 9;
-}
-
-// CreateVMScheduleResponse represents the response from create vm schedule
-message CreateVMScheduleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RecoverVMRequest represents the parameters for recovers a virtual machine.
-message RecoverVMRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RecoverVMResponse represents the response from recovers a virtual machine.
-message RecoverVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AddNicToVMRequest represents the parameters for adds vm to specified network by creating a nic
-message AddNicToVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// Virtual Machine ID
-	int64 vm_id = 2 [
-		(validate.field).required = true
-	];
-	// Network ID
-	int64 net_id = 3 [
-		(validate.field).required = true
-	];
-	// IP Address for the new network
-	string ipaddr = 4 [
-		(validate.field).string.ipv4 = true
-	];
-	// Mac Address for the new network
-	string macaddr = 5;
-	// DHCP options which are passed to the nic Example: dhcpoptions[0].dhcp:114=url&dhcpoptions[0].dhcp:66=www.test.com
-	map<string, string> dhcp_options = 6;
-	//
-	int64 start_event_id = 7;
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 9;
-}
-
-// AddNicToVMResponse represents the response from adds vm to specified network by creating a nic
-message AddNicToVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateDefaultNicForVMRequest represents the parameters for changes the default nic on a vm
-message UpdateDefaultNicForVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// Virtual Machine ID
-	int64 vm_id = 2 [
-		(validate.field).required = true
-	];
-	// NIC ID
-	int64 nic_id = 3 [
-		(validate.field).required = true
-	];
-	//
-	int64 start_event_id = 4;
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 6;
-}
-
-// UpdateDefaultNicForVMResponse represents the response from changes the default nic on a vm
-message UpdateDefaultNicForVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AddIpToVmNicRequest represents the parameters for assigns secondary ip to nic
-message AddIpToVmNicRequest {
-	// the ID of the nic to which you want to assign private IP
-	int64 nic_id = 1 [
-		(validate.field).required = true
-	];
-
-	// Secondary IP Address
-	string ip_addr = 2 [
-		(validate.field).string.ipv4 = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// AddIpToVmNicResponse represents the response from assigns secondary ip to nic
-message AddIpToVmNicResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveIpFromVmNicRequest represents the parameters for removes secondary ip from the nic.
-message RemoveIpFromVmNicRequest {
-	// the ID of the secondary ip address to nic
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RemoveIpFromVmNicResponse represents the response from removes secondary ip from the nic.
-message RemoveIpFromVmNicResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ExpungeVMRequest represents the parameters for expunge a virtual machine. once expunged, it cannot be recoverd.
-message ExpungeVMRequest {
-	// The ID of the virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// ExpungeVMResponse represents the response from expunge a virtual machine. once expunged, it cannot be recoverd.
-message ExpungeVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListVmsForImportRequest represents the parameters for lists virtual machines on a unmanaged host
-message ListVmsForImportRequest {
-	// the zone ID
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the username for the host
-	string username = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the password for the host
-	string password = 3;
-
-	// the host name or IP address
-	string host = 4 [
-		(validate.field).required = true
-	];
-
-	// hypervisor type of the host
-	string hypervisor = 5 [
-		(validate.field).required = true
-	];
-
-	// List by keyword
-	string keyword = 6;
-
-	//
-	int32 page = 7;
-
-	//
-	int32 page_size = 8;
-
-	//
-	string response_type = 9;
-}
-
-// ListVmsForImportResponse represents the response from lists virtual machines on a unmanaged host
-message ListVmsForImportResponse {
-	option (validate.message).disabled = false;
-	// The list of UnmanagedInstances
-	repeated UnmanagedInstance items = 1;
-
-	// The total count of UnmanagedInstances
-	int32 total_count = 2;
-}
-
-// RestoreVMRequest represents the parameters for restore a vm to original template/iso or new template/iso
-message RestoreVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// Virtual Machine ID
-	int64 vm_id = 2 [
-		(validate.field).required = true
-	];
-	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
-	int64 template_id = 3;
-	// Override root volume's diskoffering.
-	int64 root_disk_offering_id = 4;
-	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
-	int64 root_disk_size = 5;
-	// used to specify the custom parameters
-	map<string, string> details = 6;
-	// Optional field to expunge old root volume after restore.
-	bool expunge_root_disk = 7 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	int64 start_event_id = 8;
-	//
-	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 10;
-}
-
-// RestoreVMResponse represents the response from restore a vm to original template/iso or new template/iso
-message RestoreVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ScaleVMRequest represents the parameters for scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-message ScaleVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// the ID of the service offering for the virtual machine
-	int64 service_offering_id = 3 [
-		(validate.field).required = true
-	];
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	map<string, string> details = 4;
-	// New minimum number of IOPS for the custom disk offering
-	int64 min_iops = 5;
-	// New maximum number of IOPS for the custom disk offering
-	int64 max_iops = 6;
-	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
-	bool auto_migrate = 7 [
-		features.field_presence = EXPLICIT
-	];
-	// Verify OK to Shrink
-	bool shrink_ok = 8 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	int64 start_event_id = 9;
-	//
-	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 11;
-}
-
-// ScaleVMResponse represents the response from scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-message ScaleVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveNicFromVMCmdByAdminRequest represents the parameters for removes vm from specified network by deleting a nic
-message RemoveNicFromVMCmdByAdminRequest {
-	// Virtual Machine ID
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// NIC ID
-	int64 nic_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// RemoveNicFromVMCmdByAdminResponse represents the response from removes vm from specified network by deleting a nic
-message RemoveNicFromVMCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -2114,6 +422,232 @@ message DeployVMCmdByAdminResponse {
 	Result result = 1;
 }
 
+// UpdateDefaultNicForVMRequest represents the parameters for changes the default nic on a vm
+message UpdateDefaultNicForVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// Virtual Machine ID
+	int64 vm_id = 2 [
+		(validate.field).required = true
+	];
+	// NIC ID
+	int64 nic_id = 3 [
+		(validate.field).required = true
+	];
+	//
+	int64 start_event_id = 4;
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 6;
+}
+
+// UpdateDefaultNicForVMResponse represents the response from changes the default nic on a vm
+message UpdateDefaultNicForVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExpungeVMRequest represents the parameters for expunge a virtual machine. once expunged, it cannot be recoverd.
+message ExpungeVMRequest {
+	// The ID of the virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// ExpungeVMResponse represents the response from expunge a virtual machine. once expunged, it cannot be recoverd.
+message ExpungeVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpgradeVMRequest represents the parameters for (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
+message UpgradeVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// the service offering ID to apply to the virtual machine
+	int64 service_offering_id = 3 [
+		(validate.field).required = true
+	];
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 4;
+	// New minimum number of IOPS for the custom disk offering
+	int64 min_iops = 5;
+	// New maximum number of IOPS for the custom disk offering
+	int64 max_iops = 6;
+	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
+	bool auto_migrate = 7 [
+		features.field_presence = EXPLICIT
+	];
+	// Verify OK to Shrink
+	bool shrink_ok = 8 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	string response_type = 9;
+}
+
+// UpgradeVMResponse represents the response from (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
+message UpgradeVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DestroyVMRequest represents the parameters for destroys a virtual machine.
+message DestroyVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// If true is passed, the vm is expunged immediately. False by default.
+	bool expunge = 3 [
+		features.field_presence = EXPLICIT
+	];
+	// Comma separated list of UUIDs for volumes that will be deleted
+	repeated string volume_ids = 4;
+	//
+	int64 start_event_id = 5;
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 7;
+}
+
+// DestroyVMResponse represents the response from destroys a virtual machine.
+message DestroyVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveNicFromVMCmdByAdminRequest represents the parameters for removes vm from specified network by deleting a nic
+message RemoveNicFromVMCmdByAdminRequest {
+	// Virtual Machine ID
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// NIC ID
+	int64 nic_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RemoveNicFromVMCmdByAdminResponse represents the response from removes vm from specified network by deleting a nic
+message RemoveNicFromVMCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddNicToVMCmdByAdminRequest represents the parameters for adds vm to specified network by creating a nic
+message AddNicToVMCmdByAdminRequest {
+	// Virtual Machine ID
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Network ID
+	int64 net_id = 2 [
+		(validate.field).required = true
+	];
+
+	// IP Address for the new network
+	string ipaddr = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Mac Address for the new network
+	string macaddr = 4;
+
+	// DHCP options which are passed to the nic Example: dhcpoptions[0].dhcp:114=url&dhcpoptions[0].dhcp:66=www.test.com
+	map<string, string> dhcp_options = 5;
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// AddNicToVMCmdByAdminResponse represents the response from adds vm to specified network by creating a nic
+message AddNicToVMCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListUnmanagedInstancesRequest represents the parameters for lists unmanaged virtual machines for a given cluster.
+message ListUnmanagedInstancesRequest {
+	// the cluster ID
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the hypervisor name of the instance
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListUnmanagedInstancesResponse represents the response from lists unmanaged virtual machines for a given cluster.
+message ListUnmanagedInstancesResponse {
+	option (validate.message).disabled = false;
+	// The list of UnmanagedInstances
+	repeated UnmanagedInstance items = 1;
+
+	// The total count of UnmanagedInstances
+	int32 total_count = 2;
+}
+
 // UnmanageVMInstanceRequest represents the parameters for unmanage a guest virtual machine.
 message UnmanageVMInstanceRequest {
 	// The ID of the virtual machine to unmanage
@@ -2137,6 +671,715 @@ message UnmanageVMInstanceRequest {
 message UnmanageVMInstanceResponse {
 	// The Result
 	Result result = 1;
+}
+
+// ResetVMPasswordRequest represents the parameters for resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
+message ResetVMPasswordRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// The new password of the virtual machine. If null, a random password will be generated for the VM.
+	string password = 3;
+	//
+	int64 start_event_id = 4;
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 6;
+}
+
+// ResetVMPasswordResponse represents the response from resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
+message ResetVMPasswordResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeployVnfApplianceCmdByAdminRequest represents the parameters for creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
+message DeployVnfApplianceCmdByAdminRequest {
+	// True by default, security group or network rules (source nat and firewall rules) will be configured for VNF management interfaces. False otherwise. Network rules are configured if management network is an isolated network or shared network with security groups.
+	bool vnf_configure_management = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the CIDR list to forward traffic from to the VNF management interface. Multiple entries must be separated by a single comma character (,). The default value is 0.0.0.0/0.
+	repeated string vnf_cidrlist = 2;
+
+	// availability zone for the virtual machine
+	int64 zone_id = 3 [
+		(validate.field).required = true
+	];
+
+	// the ID of the service offering for the virtual machine
+	int64 service_offering_id = 4 [
+		(validate.field).required = true
+	];
+
+	// the ID of the template for the virtual machine
+	int64 template_id = 5 [
+		(validate.field).required = true
+	];
+
+	// host name for the virtual machine
+	string name = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// an optional user generated name for the virtual machine
+	string display_name = 7 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// The password of the virtual machine. If null, a random password will be generated for the VM.
+	string password = 8;
+
+	// an optional account for the virtual machine. Must be used with domainId.
+	string account_name = 9;
+
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used. If account is NOT provided then virtual machine will be assigned to the caller account and domain.
+	int64 domain_id = 10;
+
+	// list of network ids used by virtual machine. Can't be specified with ipToNetworkList parameter
+	repeated string network_ids = 11;
+
+	// Guest VM Boot option either custom[UEFI] or default boot [BIOS]. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	string boot_type = 12;
+
+	// Boot Mode [Legacy] or [Secure] Applicable when Boot Type Selected is UEFI, otherwise Legacy only for BIOS. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	string boot_mode = 13;
+
+	// Boot into hardware setup or not (ignored if startVm = false, only valid for vmware)
+	bool boot_into_setup = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the disk offering for the virtual machine. If the template is of ISO format, the diskOfferingId is for the root disk volume. Otherwise this parameter is used to indicate the offering for the data disk volume. If the templateId parameter passed is from a Template object, the diskOfferingId refers to a DATA Disk Volume created. If the templateId parameter passed is from an ISO object, the diskOfferingId refers to a ROOT Disk Volume created.
+	int64 disk_offering_id = 15;
+
+	// the arbitrary size for the DATADISK volume. Mutually exclusive with diskOfferingId
+	int64 size = 16;
+
+	// Optional field to resize root disk on deploy. Value is in GB. Only applies to template-based deployments. Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	int64 rootdisksize = 17;
+
+	// an optional group for the virtual machine
+	string group = 18;
+
+	// the hypervisor on which to deploy the virtual machine. The parameter is required and respected only when hypervisor info is not set on the ISO/Template passed to the call
+	string hypervisor = 19;
+
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 20;
+
+	// the ID of the Userdata
+	int64 userdata_id = 21;
+
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> userdata_details = 22;
+
+	// name of the ssh key pair used to login to the virtual machine
+	string ssh_key_pair_name = 23;
+
+	// names of the ssh key pairs used to login to the virtual machine
+	repeated string ssh_key_pair_names = 24;
+
+	// destination Host ID to deploy the VM to - parameter available for root admin only
+	int64 host_id = 25;
+
+	// comma separated list of security groups id that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	repeated string security_group_id_list = 26;
+
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	repeated string security_group_name_list = 27;
+
+	// ip to network mapping. Can't be specified with networkIds parameter. Example: iptonetworklist[0].ip=10.10.10.11&iptonetworklist[0].ipv6=fc00:1234:5678::abcd&iptonetworklist[0].networkid=uuid&iptonetworklist[0].mac=aa:bb:cc:dd:ee::ff - requests to use ip 10.10.10.11 in network id=uuid
+	map<string, string> ip_to_network_list = 28;
+
+	// the ip address for default vm's network
+	string ip_address = 29 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ipv6 address for default vm's network
+	string ip6_address = 30 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the mac address for default vm's network
+	string mac_address = 31;
+
+	// an optional keyboard device type for the virtual machine. valid value can be one of de,de-ch,es,fi,fr,fr-be,fr-ch,is,it,jp,nl-be,no,pt,uk,us
+	string keyboard = 32;
+
+	// Deploy vm for the project
+	int64 project_id = 33;
+
+	// true if start vm after creating; defaulted to true if not specified
+	bool start_vm = 34 [
+		features.field_presence = EXPLICIT
+	];
+
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Mutually exclusive with affinitygroupnames parameter
+	repeated string affinity_group_id_list = 35;
+
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine.Mutually exclusive with affinitygroupids parameter
+	repeated string affinity_group_name_list = 36;
+
+	// an optional field, whether to the display the vm to the end user or not.
+	bool display_vm = 37 [
+		features.field_presence = EXPLICIT
+	];
+
+	// used to specify the custom parameters. 'extraconfig' is not allowed to be passed in details
+	map<string, string> details = 38;
+
+	// Deployment planner to use for vm allocation. Available to ROOT admin only
+	string deployment_planner = 39;
+
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	map<string, string> dhcp_options_network_list = 40;
+
+	// datadisk template to disk-offering mapping; an optional parameter used to create additional data disks from datadisk templates; can't be specified with diskOfferingId parameter
+	map<string, string> data_disk_template_to_disk_offering_list = 41;
+
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	string extra_config = 42;
+
+	// if true the image tags (if any) will be copied to the VM, default value is false
+	bool copy_image_tags = 43 [
+		features.field_presence = EXPLICIT
+	];
+
+	// used to specify the vApp properties.
+	map<string, string> v_app_properties = 44;
+
+	// VMware only: used to specify network mapping of a vApp VMware template registered "as-is". Example nicnetworklist[0].ip=Nic-101&nicnetworklist[0].network=uuid
+	map<string, string> v_app_networks = 45;
+
+	// true if virtual machine needs to be dynamically scalable
+	bool dynamic_scaling_enabled = 46 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the disk offering for the virtual machine to be used for root volume instead of the disk offering mapped in service offering.In case of virtual machine deploying from ISO, then the diskofferingid specified for root volume is ignored and uses this override disk offering id
+	int64 override_disk_offering_id = 47;
+
+	// IOThreads are dedicated event loop threads for supported disk devices to perform block I/O requests in order to improve scalability especially on an SMP host/guest with many LUNs.
+	bool iothreads_enabled = 48 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Controls specific policies on IO
+	string io_driver_policy = 49;
+
+	// The number of queues for multiqueue NICs.
+	int32 nic_multiqueue_number = 50;
+
+	// Enable packed virtqueues or not.
+	bool nic_packed_virt_queues = 51 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 52 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 53;
+
+	//
+	string injected_job_id = 54 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 55;
+}
+
+// DeployVnfApplianceCmdByAdminResponse represents the response from creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
+message DeployVnfApplianceCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNicsRequest represents the parameters for list the vm nics  ip to nic
+message ListNicsRequest {
+	// the ID of the nic to list IPs
+	int64 nic_id = 1;
+
+	// the ID of the vm
+	int64 vm_id = 2 [
+		(validate.field).required = true
+	];
+
+	// list nic of the specific vm's network
+	int64 network_id = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 5;
+
+	//
+	int32 page = 6;
+
+	//
+	int32 page_size = 7;
+
+	//
+	string response_type = 8;
+}
+
+// ListNicsResponse represents the response from list the vm nics  ip to nic
+message ListNicsResponse {
+	option (validate.message).disabled = false;
+	// The list of Nics
+	repeated Nic items = 1;
+
+	// The total count of Nics
+	int32 total_count = 2;
+}
+
+// ListVMScheduleRequest represents the parameters for list vm schedules.
+message ListVMScheduleRequest {
+	// ID of the VM for which schedule is to be defined
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of VM schedule
+	int64 id = 2;
+
+	// Action taken by schedule
+	string action = 3;
+
+	// ID of VM schedule
+	bool enabled = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 5;
+
+	//
+	int32 page = 6;
+
+	//
+	int32 page_size = 7;
+
+	//
+	string response_type = 8;
+}
+
+// ListVMScheduleResponse represents the response from list vm schedules.
+message ListVMScheduleResponse {
+	option (validate.message).disabled = false;
+	// The list of VMSchedules
+	repeated VMSchedule items = 1;
+
+	// The total count of VMSchedules
+	int32 total_count = 2;
+}
+
+// RestoreVMRequest represents the parameters for restore a vm to original template/iso or new template/iso
+message RestoreVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// Virtual Machine ID
+	int64 vm_id = 2 [
+		(validate.field).required = true
+	];
+	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
+	int64 template_id = 3;
+	// Override root volume's diskoffering.
+	int64 root_disk_offering_id = 4;
+	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	int64 root_disk_size = 5;
+	// used to specify the custom parameters
+	map<string, string> details = 6;
+	// Optional field to expunge old root volume after restore.
+	bool expunge_root_disk = 7 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	int64 start_event_id = 8;
+	//
+	string injected_job_id = 9 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 10;
+}
+
+// RestoreVMResponse represents the response from restore a vm to original template/iso or new template/iso
+message RestoreVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StartVMRequest represents the parameters for starts a virtual machine.
+message StartVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// destination Pod ID to deploy the VM to - parameter available for root admin only
+	int64 pod_id = 3;
+	// destination Cluster ID to deploy the VM to - parameter available for root admin only
+	int64 cluster_id = 4;
+	// destination Host ID to deploy the VM to - parameter available for root admin only
+	int64 host_id = 5;
+	// True by default, CloudStack will firstly try to start the VM on the last host where it run on before stopping, if destination host is not specified. If false, CloudStack will not consider the last host and start the VM by normal process.
+	bool consider_last_host = 6 [
+		features.field_presence = EXPLICIT
+	];
+	// Deployment planner to use for vm allocation. Available to ROOT admin only
+	string deployment_planner = 7;
+	// Boot into hardware setup menu or not
+	bool boot_into_setup = 8 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	int64 start_event_id = 9;
+	//
+	string injected_job_id = 10 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 11;
+}
+
+// StartVMResponse represents the response from starts a virtual machine.
+message StartVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeployVnfApplianceRequest represents the parameters for creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
+message DeployVnfApplianceRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// True by default, security group or network rules (source nat and firewall rules) will be configured for VNF management interfaces. False otherwise. Network rules are configured if management network is an isolated network or shared network with security groups.
+	bool vnf_configure_management = 2 [
+		features.field_presence = EXPLICIT
+	];
+	// the CIDR list to forward traffic from to the VNF management interface. Multiple entries must be separated by a single comma character (,). The default value is 0.0.0.0/0.
+	repeated string vnf_cidrlist = 3;
+	// availability zone for the virtual machine
+	int64 zone_id = 4 [
+		(validate.field).required = true
+	];
+	// the ID of the service offering for the virtual machine
+	int64 service_offering_id = 5 [
+		(validate.field).required = true
+	];
+	// the ID of the template for the virtual machine
+	int64 template_id = 6 [
+		(validate.field).required = true
+	];
+	// host name for the virtual machine
+	string name = 7 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// an optional user generated name for the virtual machine
+	string display_name = 8 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// The password of the virtual machine. If null, a random password will be generated for the VM.
+	string password = 9;
+	// an optional account for the virtual machine. Must be used with domainId.
+	string account_name = 10;
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used. If account is NOT provided then virtual machine will be assigned to the caller account and domain.
+	int64 domain_id = 11;
+	// list of network ids used by virtual machine. Can't be specified with ipToNetworkList parameter
+	repeated string network_ids = 12;
+	// Guest VM Boot option either custom[UEFI] or default boot [BIOS]. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	string boot_type = 13;
+	// Boot Mode [Legacy] or [Secure] Applicable when Boot Type Selected is UEFI, otherwise Legacy only for BIOS. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	string boot_mode = 14;
+	// Boot into hardware setup or not (ignored if startVm = false, only valid for vmware)
+	bool boot_into_setup = 15 [
+		features.field_presence = EXPLICIT
+	];
+	// the ID of the disk offering for the virtual machine. If the template is of ISO format, the diskOfferingId is for the root disk volume. Otherwise this parameter is used to indicate the offering for the data disk volume. If the templateId parameter passed is from a Template object, the diskOfferingId refers to a DATA Disk Volume created. If the templateId parameter passed is from an ISO object, the diskOfferingId refers to a ROOT Disk Volume created.
+	int64 disk_offering_id = 16;
+	// the arbitrary size for the DATADISK volume. Mutually exclusive with diskOfferingId
+	int64 size = 17;
+	// Optional field to resize root disk on deploy. Value is in GB. Only applies to template-based deployments. Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	int64 rootdisksize = 18;
+	// an optional group for the virtual machine
+	string group = 19;
+	// the hypervisor on which to deploy the virtual machine. The parameter is required and respected only when hypervisor info is not set on the ISO/Template passed to the call
+	string hypervisor = 20;
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 21;
+	// the ID of the Userdata
+	int64 userdata_id = 22;
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> userdata_details = 23;
+	// name of the ssh key pair used to login to the virtual machine
+	string ssh_key_pair_name = 24;
+	// names of the ssh key pairs used to login to the virtual machine
+	repeated string ssh_key_pair_names = 25;
+	// destination Host ID to deploy the VM to - parameter available for root admin only
+	int64 host_id = 26;
+	// comma separated list of security groups id that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	repeated string security_group_id_list = 27;
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	repeated string security_group_name_list = 28;
+	// ip to network mapping. Can't be specified with networkIds parameter. Example: iptonetworklist[0].ip=10.10.10.11&iptonetworklist[0].ipv6=fc00:1234:5678::abcd&iptonetworklist[0].networkid=uuid&iptonetworklist[0].mac=aa:bb:cc:dd:ee::ff - requests to use ip 10.10.10.11 in network id=uuid
+	map<string, string> ip_to_network_list = 29;
+	// the ip address for default vm's network
+	string ip_address = 30 [
+		(validate.field).string.ipv4 = true
+	];
+	// the ipv6 address for default vm's network
+	string ip6_address = 31 [
+		(validate.field).string.ipv4 = true
+	];
+	// the mac address for default vm's network
+	string mac_address = 32;
+	// an optional keyboard device type for the virtual machine. valid value can be one of de,de-ch,es,fi,fr,fr-be,fr-ch,is,it,jp,nl-be,no,pt,uk,us
+	string keyboard = 33;
+	// Deploy vm for the project
+	int64 project_id = 34;
+	// true if start vm after creating; defaulted to true if not specified
+	bool start_vm = 35 [
+		features.field_presence = EXPLICIT
+	];
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Mutually exclusive with affinitygroupnames parameter
+	repeated string affinity_group_id_list = 36;
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine.Mutually exclusive with affinitygroupids parameter
+	repeated string affinity_group_name_list = 37;
+	// an optional field, whether to the display the vm to the end user or not.
+	bool display_vm = 38 [
+		features.field_presence = EXPLICIT
+	];
+	// used to specify the custom parameters. 'extraconfig' is not allowed to be passed in details
+	map<string, string> details = 39;
+	// Deployment planner to use for vm allocation. Available to ROOT admin only
+	string deployment_planner = 40;
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	map<string, string> dhcp_options_network_list = 41;
+	// datadisk template to disk-offering mapping; an optional parameter used to create additional data disks from datadisk templates; can't be specified with diskOfferingId parameter
+	map<string, string> data_disk_template_to_disk_offering_list = 42;
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	string extra_config = 43;
+	// if true the image tags (if any) will be copied to the VM, default value is false
+	bool copy_image_tags = 44 [
+		features.field_presence = EXPLICIT
+	];
+	// used to specify the vApp properties.
+	map<string, string> v_app_properties = 45;
+	// VMware only: used to specify network mapping of a vApp VMware template registered "as-is". Example nicnetworklist[0].ip=Nic-101&nicnetworklist[0].network=uuid
+	map<string, string> v_app_networks = 46;
+	// true if virtual machine needs to be dynamically scalable
+	bool dynamic_scaling_enabled = 47 [
+		features.field_presence = EXPLICIT
+	];
+	// the ID of the disk offering for the virtual machine to be used for root volume instead of the disk offering mapped in service offering.In case of virtual machine deploying from ISO, then the diskofferingid specified for root volume is ignored and uses this override disk offering id
+	int64 override_disk_offering_id = 48;
+	// IOThreads are dedicated event loop threads for supported disk devices to perform block I/O requests in order to improve scalability especially on an SMP host/guest with many LUNs.
+	bool iothreads_enabled = 49 [
+		features.field_presence = EXPLICIT
+	];
+	// Controls specific policies on IO
+	string io_driver_policy = 50;
+	// The number of queues for multiqueue NICs.
+	int32 nic_multiqueue_number = 51;
+	// Enable packed virtqueues or not.
+	bool nic_packed_virt_queues = 52 [
+		features.field_presence = EXPLICIT
+	];
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 53 [
+		(validate.field).string.uuid = true
+	];
+	//
+	int64 start_event_id = 54;
+	//
+	string injected_job_id = 55 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 56;
+}
+
+// DeployVnfApplianceResponse represents the response from creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
+message DeployVnfApplianceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateVMRequest represents the parameters for attempts migration of a vm to a different host or root volume of the vm to a different storage pool
+message MigrateVMRequest {
+	// Destination Host ID to migrate VM to.
+	int64 host_id = 1;
+
+	// the ID of the virtual machine
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+
+	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
+	int64 storage_id = 3;
+
+	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
+	bool auto_select = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// MigrateVMResponse represents the response from attempts migration of a vm to a different host or root volume of the vm to a different storage pool
+message MigrateVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVnfAppliancesRequest represents the parameters for list vnf appliance owned by the account.
+message ListVnfAppliancesRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the group ID
+	int64 group_id = 2;
+	// the ID of the virtual machine
+	int64 id = 3;
+	// the IDs of the virtual machines, mutually exclusive with id
+	repeated string ids = 4;
+	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
+	string name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
+	string state = 6;
+	// the availability zone ID
+	int64 zone_id = 7;
+	// list by network type; true if need to list vms using Virtual Network, false otherwise
+	bool for_virtual_network = 8 [
+		features.field_presence = EXPLICIT
+	];
+	// list by network id
+	int64 network_id = 9;
+	// the target hypervisor for the template
+	string hypervisor = 10;
+	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
+	repeated string view_details = 11;
+	// list vms by template
+	int64 template_id = 12;
+	// list vms by iso
+	int64 iso_id = 13;
+	// list vms by vpc
+	int64 vpc_id = 14;
+	// list vms by affinity group
+	int64 affinity_group_id = 15;
+	// list vms by ssh keypair name
+	string keypair = 16;
+	// list by the service offering
+	int64 service_off_id = 17;
+	// list by the backup offering
+	int64 backup_off_id = 18;
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 19 [
+		features.field_presence = EXPLICIT
+	];
+	// the user ID that created the VM and is under the account that owns the VM
+	int64 user_id = 20;
+	// the security group ID
+	int64 security_group_id = 21;
+	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
+	bool ha_enabled = 22 [
+		features.field_presence = EXPLICIT
+	];
+	// the ID of AutoScaling VM Group
+	int64 auto_scale_vm_group_id = 23;
+	// flag to display the resource icon for VMs
+	bool show_icon = 24 [
+		features.field_presence = EXPLICIT
+	];
+	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
+	bool accumulate = 25 [
+		features.field_presence = EXPLICIT
+	];
+	// Whether to return the VMs' user data or not. By default, user data will not be returned.
+	bool show_user_data = 26 [
+		features.field_presence = EXPLICIT
+	];
+	// the instances by userdata
+	int64 userdata_id = 27;
+	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
+	bool is_vnf = 28 [
+		features.field_presence = EXPLICIT
+	];
+	// makes the API's response contains only the resource count
+	bool retrieve_only_resource_count = 29 [
+		features.field_presence = EXPLICIT
+	];
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 30;
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 31;
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 32 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 33 [
+		features.field_presence = EXPLICIT
+	];
+	// list only resources belonging to the domain specified
+	int64 domain_id = 34;
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 35 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 36;
+	//
+	int32 page = 37;
+	//
+	int32 page_size = 38;
+	//
+	string response_type = 39;
+}
+
+// ListVnfAppliancesResponse represents the response from list vnf appliance owned by the account.
+message ListVnfAppliancesResponse {
+	option (validate.message).disabled = false;
+	// The list of UserVms
+	repeated UserVm items = 1;
+
+	// The total count of UserVms
+	int32 total_count = 2;
 }
 
 // ListAffectedVmsForStorageScopeChangeRequest represents the parameters for list user and system vms that need to be stopped and destroyed respectively for changing the scope of the storage pool from zone to cluster.
@@ -2174,87 +1417,62 @@ message ListAffectedVmsForStorageScopeChangeResponse {
 	int32 total_count = 2;
 }
 
-// RemoveNicFromVMRequest represents the parameters for removes vm from specified network by deleting a nic
-message RemoveNicFromVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// Virtual Machine ID
-	int64 vm_id = 2 [
-		(validate.field).required = true
-	];
-	// NIC ID
-	int64 nic_id = 3 [
-		(validate.field).required = true
-	];
-	//
-	int64 start_event_id = 4;
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 6;
-}
-
-// RemoveNicFromVMResponse represents the response from removes vm from specified network by deleting a nic
-message RemoveNicFromVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateVMScheduleRequest represents the parameters for update vm schedule.
-message UpdateVMScheduleRequest {
-	// ID of VM schedule
+// StopVMCmdByAdminRequest represents the parameters for stops a virtual machine.
+message StopVMCmdByAdminRequest {
+	// The ID of the virtual machine
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// Name of the schedule
-	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
-	string schedule = 3;
-
-	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
-	string time_zone = 4;
-
-	// start date from which the schedule becomes activeUse format "yyyy-MM-dd hh:mm:ss")
-	string start_date = 5;
-
-	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
-	string end_date = 6;
-
-	// Enable VM schedule
-	bool enabled = 7 [
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 2 [
 		features.field_presence = EXPLICIT
 	];
 
 	//
-	string response_type = 8;
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
 }
 
-// UpdateVMScheduleResponse represents the response from update vm schedule.
-message UpdateVMScheduleResponse {
+// StopVMCmdByAdminResponse represents the response from stops a virtual machine.
+message StopVMCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
 
-// GetVMUserDataRequest represents the parameters for returns user data associated with the vm
-message GetVMUserDataRequest {
-	// The ID of the virtual machine
-	int64 vm_id = 1 [
+// UpdateVmNicIpRequest represents the parameters for update the default ip of a vm nic
+message UpdateVmNicIpRequest {
+	// the ID of the nic to which you want to assign private IP
+	int64 nic_id = 1 [
 		(validate.field).required = true
 	];
 
+	// Secondary IP Address
+	string ip_addr = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
 	//
-	string response_type = 2;
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
 }
 
-// GetVMUserDataResponse represents the response from returns user data associated with the vm
-message GetVMUserDataResponse {
+// UpdateVmNicIpResponse represents the response from update the default ip of a vm nic
+message UpdateVmNicIpResponse {
 	// The Result
 	Result result = 1;
 }
@@ -2342,66 +1560,127 @@ message ImportUnmanagedInstanceResponse {
 	Result result = 1;
 }
 
-// DestroyVMRequest represents the parameters for destroys a virtual machine.
-message DestroyVMRequest {
+// DeleteVMScheduleRequest represents the parameters for delete vm schedule.
+message DeleteVMScheduleRequest {
+	// ID of VM
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of VM schedule
+	int64 id = 2;
+
+	// IDs of VM schedule
+	repeated string ids = 3;
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVMScheduleResponse represents the response from delete vm schedule.
+message DeleteVMScheduleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ResetVMSSHKeyRequest represents the parameters for resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
+message ResetVMSSHKeyRequest {
 	// Whether to run this operation as an administrator
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
 		(validate.field).required = true
 	];
-	// If true is passed, the vm is expunged immediately. False by default.
-	bool expunge = 3 [
-		features.field_presence = EXPLICIT
-	];
-	// Comma separated list of UUIDs for volumes that will be deleted
-	repeated string volume_ids = 4;
+	// name of the ssh key pair used to login to the virtual machine
+	string name = 3;
+	// names of the ssh key pairs to be used to login to the virtual machine
+	repeated string names = 4;
+	// an optional account for the ssh key. Must be used with domainId.
+	string account_name = 5;
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 6;
+	// an optional project for the ssh key
+	int64 project_id = 7;
 	//
-	int64 start_event_id = 5;
+	int64 start_event_id = 8;
 	//
-	string injected_job_id = 6 [
+	string injected_job_id = 9 [
 		(validate.field).string.uuid = true
 	];
 	//
-	string response_type = 7;
+	string response_type = 10;
 }
 
-// DestroyVMResponse represents the response from destroys a virtual machine.
-message DestroyVMResponse {
+// ResetVMSSHKeyResponse represents the response from resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
+message ResetVMSSHKeyResponse {
 	// The Result
 	Result result = 1;
 }
 
-// RebootVMRequest represents the parameters for reboots a virtual machine.
-message RebootVMRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
+// GetVMPasswordRequest represents the parameters for returns an encrypted password for the vm
+message GetVMPasswordRequest {
 	// The ID of the virtual machine
-	int64 id = 2 [
+	int64 id = 1 [
 		(validate.field).required = true
 	];
-	// Force reboot the VM (VM is Stopped and then Started)
-	bool forced = 3 [
-		features.field_presence = EXPLICIT
-	];
-	// Boot into hardware setup menu or not
-	bool boot_into_setup = 4 [
-		features.field_presence = EXPLICIT
-	];
+
 	//
-	int64 start_event_id = 5;
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 7;
+	string response_type = 2;
 }
 
-// RebootVMResponse represents the response from reboots a virtual machine.
-message RebootVMResponse {
+// GetVMPasswordResponse represents the response from returns an encrypted password for the vm
+message GetVMPasswordResponse {
 	// The Result
 	Result result = 1;
+}
+
+// ListVmsForImportRequest represents the parameters for lists virtual machines on a unmanaged host
+message ListVmsForImportRequest {
+	// the zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the username for the host
+	string username = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the password for the host
+	string password = 3;
+
+	// the host name or IP address
+	string host = 4 [
+		(validate.field).required = true
+	];
+
+	// hypervisor type of the host
+	string hypervisor = 5 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 6;
+
+	//
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
+}
+
+// ListVmsForImportResponse represents the response from lists virtual machines on a unmanaged host
+message ListVmsForImportResponse {
+	option (validate.message).disabled = false;
+	// The list of UnmanagedInstances
+	repeated UnmanagedInstance items = 1;
+
+	// The total count of UnmanagedInstances
+	int32 total_count = 2;
 }
 
 // DeployVMRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
@@ -2556,51 +1835,882 @@ message DeployVMResponse {
 	Result result = 1;
 }
 
-// ResetVMSSHKeyRequest represents the parameters for resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-message ResetVMSSHKeyRequest {
+// ScaleVMRequest represents the parameters for scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+message ScaleVMRequest {
 	// Whether to run this operation as an administrator
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
 		(validate.field).required = true
 	];
-	// name of the ssh key pair used to login to the virtual machine
-	string name = 3;
-	// names of the ssh key pairs to be used to login to the virtual machine
-	repeated string names = 4;
-	// an optional account for the ssh key. Must be used with domainId.
-	string account_name = 5;
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 6;
-	// an optional project for the ssh key
-	int64 project_id = 7;
+	// the ID of the service offering for the virtual machine
+	int64 service_offering_id = 3 [
+		(validate.field).required = true
+	];
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 4;
+	// New minimum number of IOPS for the custom disk offering
+	int64 min_iops = 5;
+	// New maximum number of IOPS for the custom disk offering
+	int64 max_iops = 6;
+	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
+	bool auto_migrate = 7 [
+		features.field_presence = EXPLICIT
+	];
+	// Verify OK to Shrink
+	bool shrink_ok = 8 [
+		features.field_presence = EXPLICIT
+	];
 	//
-	int64 start_event_id = 8;
+	int64 start_event_id = 9;
 	//
-	string injected_job_id = 9 [
+	string injected_job_id = 10 [
 		(validate.field).string.uuid = true
 	];
 	//
-	string response_type = 10;
+	string response_type = 11;
 }
 
-// ResetVMSSHKeyResponse represents the response from resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-message ResetVMSSHKeyResponse {
+// ScaleVMResponse represents the response from scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+message ScaleVMResponse {
 	// The Result
 	Result result = 1;
 }
 
-// VMSchedule represents a VMSchedule Item
-message VMSchedule {
-	// The ID of the VMSchedule
+// UpdateVMCmdByAdminRequest represents the parameters for updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+message UpdateVMCmdByAdminRequest {
+	// user generated name
+	string display_name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// group of the virtual machine
+	string group = 2;
+
+	// true if high-availability is enabled for the virtual machine, false otherwise
+	bool ha_enable = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The ID of the virtual machine
+	int64 id = 4 [
+		(validate.field).required = true
+	];
+
+	// the ID of the OS type that best represents this VM.
+	int64 os_type_id = 5;
+
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 6;
+
+	// the ID of the userdata
+	int64 userdata_id = 7;
+
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> userdata_details = 8;
+
+	// an optional field, whether to the display the vm to the end user or not.
+	bool display_vm = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if VM contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory. This can be updated only when dynamic scaling is enabled on template, service offering and the corresponding global setting
+	bool is_dynamically_scalable = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// new host name of the vm. The VM has to be stopped/started for this update to take affect
+	string name = 11 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// instance name of the user vm
+	string instance_name = 12 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
+	map<string, string> details = 13;
+
+	// list of security group ids to be applied on the virtual machine.
+	repeated string security_group_id_list = 14;
+
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	repeated string security_group_name_list = 15;
+
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	bool cleanup_details = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	map<string, string> dhcp_options_network_list = 17;
+
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	string extra_config = 18;
+
+	// Set delete protection for the virtual machine. If true, the instance will be protected from deletion. Note: If the instance is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	bool delete_protection = 19 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 20 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 21;
+}
+
+// UpdateVMCmdByAdminResponse represents the response from updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+message UpdateVMCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ResetVMUserDataRequest represents the parameters for resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
+message ResetVMUserDataRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 3;
+	// the ID of the userdata
+	int64 userdata_id = 4;
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> userdata_details = 5;
+	// an optional account for the virtual machine. Must be used with domainId.
+	string account_name = 6;
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 7;
+	// an optional project for the virtual machine
+	int64 project_id = 8;
+	//
+	string response_type = 9;
+}
+
+// ResetVMUserDataResponse represents the response from resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
+message ResetVMUserDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVMScheduleRequest represents the parameters for create vm schedule
+message CreateVMScheduleRequest {
+	// ID of the VM for which schedule is to be defined
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Description of the schedule
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
+	string schedule = 3 [
+		(validate.field).required = true
+	];
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	string time_zone = 4 [
+		(validate.field).required = true
+	];
+
+	// Action to take on the VM (start/stop/reboot/force_stop/force_reboot).
+	string action = 5 [
+		(validate.field).required = true
+	];
+
+	// start date from which the schedule becomes active. Defaults to current date plus 1 minute.Use format "yyyy-MM-dd hh:mm:ss")
+	string start_date = 6;
+
+	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
+	string end_date = 7;
+
+	// Enable VM schedule. Defaults to true
+	bool enabled = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreateVMScheduleResponse represents the response from create vm schedule
+message CreateVMScheduleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveNicFromVMRequest represents the parameters for removes vm from specified network by deleting a nic
+message RemoveNicFromVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// Virtual Machine ID
+	int64 vm_id = 2 [
+		(validate.field).required = true
+	];
+	// NIC ID
+	int64 nic_id = 3 [
+		(validate.field).required = true
+	];
+	//
+	int64 start_event_id = 4;
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 6;
+}
+
+// RemoveNicFromVMResponse represents the response from removes vm from specified network by deleting a nic
+message RemoveNicFromVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVMsRequest represents the parameters for list the virtual machines owned by the account.
+message ListVMsRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the group ID
+	int64 group_id = 2;
+	// the ID of the virtual machine
+	int64 id = 3;
+	// the IDs of the virtual machines, mutually exclusive with id
+	repeated string ids = 4;
+	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
+	string name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
+	string state = 6;
+	// the availability zone ID
+	int64 zone_id = 7;
+	// list by network type; true if need to list vms using Virtual Network, false otherwise
+	bool for_virtual_network = 8 [
+		features.field_presence = EXPLICIT
+	];
+	// list by network id
+	int64 network_id = 9;
+	// the target hypervisor for the template
+	string hypervisor = 10;
+	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
+	repeated string view_details = 11;
+	// list vms by template
+	int64 template_id = 12;
+	// list vms by iso
+	int64 iso_id = 13;
+	// list vms by vpc
+	int64 vpc_id = 14;
+	// list vms by affinity group
+	int64 affinity_group_id = 15;
+	// list vms by ssh keypair name
+	string keypair = 16;
+	// list by the service offering
+	int64 service_off_id = 17;
+	// list by the backup offering
+	int64 backup_off_id = 18;
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 19 [
+		features.field_presence = EXPLICIT
+	];
+	// the user ID that created the VM and is under the account that owns the VM
+	int64 user_id = 20;
+	// the security group ID
+	int64 security_group_id = 21;
+	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
+	bool ha_enabled = 22 [
+		features.field_presence = EXPLICIT
+	];
+	// the ID of AutoScaling VM Group
+	int64 auto_scale_vm_group_id = 23;
+	// flag to display the resource icon for VMs
+	bool show_icon = 24 [
+		features.field_presence = EXPLICIT
+	];
+	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
+	bool accumulate = 25 [
+		features.field_presence = EXPLICIT
+	];
+	// Whether to return the VMs' user data or not. By default, user data will not be returned.
+	bool show_user_data = 26 [
+		features.field_presence = EXPLICIT
+	];
+	// the instances by userdata
+	int64 userdata_id = 27;
+	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
+	bool is_vnf = 28 [
+		features.field_presence = EXPLICIT
+	];
+	// makes the API's response contains only the resource count
+	bool retrieve_only_resource_count = 29 [
+		features.field_presence = EXPLICIT
+	];
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 30;
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 31;
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 32 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 33 [
+		features.field_presence = EXPLICIT
+	];
+	// list only resources belonging to the domain specified
+	int64 domain_id = 34;
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 35 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 36;
+	//
+	int32 page = 37;
+	//
+	int32 page_size = 38;
+	//
+	string response_type = 39;
+}
+
+// ListVMsResponse represents the response from list the virtual machines owned by the account.
+message ListVMsResponse {
+	option (validate.message).disabled = false;
+	// The list of UserVms
+	repeated UserVm items = 1;
+
+	// The total count of UserVms
+	int32 total_count = 2;
+}
+
+// RebootVMRequest represents the parameters for reboots a virtual machine.
+message RebootVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// Force reboot the VM (VM is Stopped and then Started)
+	bool forced = 3 [
+		features.field_presence = EXPLICIT
+	];
+	// Boot into hardware setup menu or not
+	bool boot_into_setup = 4 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	int64 start_event_id = 5;
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 7;
+}
+
+// RebootVMResponse represents the response from reboots a virtual machine.
+message RebootVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ImportVmRequest represents the parameters for import virtual machine from a unmanaged host into cloudstack
+message ImportVmRequest {
+	// the zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the username for the host
+	string username = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the password for the host
+	string password = 3;
+
+	// the host name or IP address
+	string host = 4;
+
+	// hypervisor type of the host
+	string hypervisor = 5 [
+		(validate.field).required = true
+	];
+
+	// path of the disk image
+	string disk_path = 6;
+
+	// Source location for Import
+	string import_source = 7 [
+		(validate.field).required = true
+	];
+
+	// the network ID
+	int64 network_id = 8;
+
+	// Host where local disk is located
+	int64 host_id = 9;
+
+	// Shared storage pool where disk is located
+	int64 storage_pool_id = 10;
+
+	// Temp Path on external host for disk image copy
+	string tmp_path = 11;
+
+	// (only for importing VMs from VMware to KVM) UUID of a linked existing vCenter
+	int64 existing_vcenter_id = 12;
+
+	// (only for importing VMs from VMware to KVM) VMware ESXi host IP/Name.
+	string hostip = 13 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// (only for importing VMs from VMware to KVM) The name/ip of vCenter. Make sure it is IP address or full qualified domain name for host running vCenter server.
+	string vcenter = 14;
+
+	// (only for importing VMs from VMware to KVM) Name of VMware datacenter.
+	string datacenter_name = 15 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// (only for importing VMs from VMware to KVM) Name of VMware cluster.
+	string cluster_name = 16 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// (only for importing VMs from VMware to KVM) optional - the host to perform the virt-v2v conversion from VMware to KVM.
+	int64 convert_instance_host_id = 17;
+
+	// (only for importing VMs from VMware to KVM) optional - the host to import the converted instance from VMware to KVM.
+	int64 import_instance_host_id = 18;
+
+	// (only for importing VMs from VMware to KVM) optional - the temporary storage pool to perform the virt-v2v migration from VMware to KVM.
+	int64 convert_storage_pool_id = 19;
+
+	// (only for importing VMs from VMware to KVM) optional - if true, forces MS to export OVF from VMware to temporary storage, else uses KVM Host if ovftool is available, falls back to MS if not.
+	bool force_ms_to_import_vm_files = 20 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the cluster ID
+	int64 cluster_id = 21 [
+		(validate.field).required = true
+	];
+
+	// the name of the instance as it is known to the hypervisor
+	string name = 22 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the display name of the instance
+	string display_name = 23 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the host name of the instance
+	string host_name = 24 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// an optional account for the virtual machine. Must be used with domainId.
+	string account_name = 25;
+
+	// import instance to the domain specified
+	int64 domain_id = 26;
+
+	// import instance for the project
+	int64 project_id = 27;
+
+	// the ID of the template for the virtual machine
+	int64 template_id = 28;
+
+	// the service offering for the virtual machine
+	int64 service_offering_id = 29 [
+		(validate.field).required = true
+	];
+
+	// VM nic to network id mapping using keys nic and network
+	map<string, string> nic_network_list = 30;
+
+	// VM nic to ip address mapping using keys nic, ip4Address
+	map<string, string> nic_ip_address_list = 31;
+
+	// datadisk template to disk-offering mapping using keys disk and diskOffering
+	map<string, string> data_disk_to_disk_offering_list = 32;
+
+	// used to specify the custom parameters.
+	map<string, string> details = 33;
+
+	// vm and its volumes are allowed to migrate to different host/pool when offerings passed are incompatible with current host/pool
+	bool migrate_allowed = 34 [
+		features.field_presence = EXPLICIT
+	];
+
+	// VM is imported despite some of its NIC's MAC addresses are already present, in case the MAC address exists then a new MAC address is generated
+	bool forced = 35 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 36;
+
+	//
+	string injected_job_id = 37 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 38;
+}
+
+// ImportVmResponse represents the response from import virtual machine from a unmanaged host into cloudstack
+message ImportVmResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddIpToVmNicRequest represents the parameters for assigns secondary ip to nic
+message AddIpToVmNicRequest {
+	// the ID of the nic to which you want to assign private IP
+	int64 nic_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Secondary IP Address
+	string ip_addr = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// AddIpToVmNicResponse represents the response from assigns secondary ip to nic
+message AddIpToVmNicResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetVMUserDataRequest represents the parameters for returns user data associated with the vm
+message GetVMUserDataRequest {
+	// The ID of the virtual machine
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// GetVMUserDataResponse represents the response from returns user data associated with the vm
+message GetVMUserDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVMScheduleRequest represents the parameters for update vm schedule.
+message UpdateVMScheduleRequest {
+	// ID of VM schedule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Name of the schedule
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
+	string schedule = 3;
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	string time_zone = 4;
+
+	// start date from which the schedule becomes activeUse format "yyyy-MM-dd hh:mm:ss")
+	string start_date = 5;
+
+	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
+	string end_date = 6;
+
+	// Enable VM schedule
+	bool enabled = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpdateVMScheduleResponse represents the response from update vm schedule.
+message UpdateVMScheduleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateVirtualMachineWithVolumeRequest represents the parameters for attempts migration of a vm with its volumes to a different host
+message MigrateVirtualMachineWithVolumeRequest {
+	// Destination Host ID to migrate VM to.
+	int64 host_id = 1;
+
+	// the ID of the virtual machine
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+
+	// Storage to pool mapping. This parameter specifies the mapping between a volume and a pool where you want to migrate that volume. Format of this parameter: migrateto[volume-index].volume=<uuid>&migrateto[volume-index].pool=<uuid>Where, [volume-index] indicates the index to identify the volume that you want to migrate, volume=<uuid> indicates the UUID of the volume that you want to migrate, and pool=<uuid> indicates the UUID of the pool where you want to migrate the volume. Example: migrateto[0].volume=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].pool=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].volume=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].pool=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].volume=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].pool=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
+	map<string, string> migrate_volume_to = 3;
+
+	// Automatically select a destination host for a running instance, if hostId is not specified. false by default
+	bool auto_select = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// MigrateVirtualMachineWithVolumeResponse represents the response from attempts migration of a vm with its volumes to a different host
+message MigrateVirtualMachineWithVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddNicToVMRequest represents the parameters for adds vm to specified network by creating a nic
+message AddNicToVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// Virtual Machine ID
+	int64 vm_id = 2 [
+		(validate.field).required = true
+	];
+	// Network ID
+	int64 net_id = 3 [
+		(validate.field).required = true
+	];
+	// IP Address for the new network
+	string ipaddr = 4 [
+		(validate.field).string.ipv4 = true
+	];
+	// Mac Address for the new network
+	string macaddr = 5;
+	// DHCP options which are passed to the nic Example: dhcpoptions[0].dhcp:114=url&dhcpoptions[0].dhcp:66=www.test.com
+	map<string, string> dhcp_options = 6;
+	//
+	int64 start_event_id = 7;
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 9;
+}
+
+// AddNicToVMResponse represents the response from adds vm to specified network by creating a nic
+message AddNicToVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveIpFromVmNicRequest represents the parameters for removes secondary ip from the nic.
+message RemoveIpFromVmNicRequest {
+	// the ID of the secondary ip address to nic
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RemoveIpFromVmNicResponse represents the response from removes secondary ip from the nic.
+message RemoveIpFromVmNicResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StopVMRequest represents the parameters for stops a virtual machine.
+message StopVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 3 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	int64 start_event_id = 4;
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 6;
+}
+
+// StopVMResponse represents the response from stops a virtual machine.
+message StopVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVMRequest represents the parameters for updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+message UpdateVMRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// user generated name
+	string display_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// group of the virtual machine
+	string group = 3;
+	// true if high-availability is enabled for the virtual machine, false otherwise
+	bool ha_enable = 4 [
+		features.field_presence = EXPLICIT
+	];
+	// The ID of the virtual machine
+	int64 id = 5 [
+		(validate.field).required = true
+	];
+	// the ID of the OS type that best represents this VM.
+	int64 os_type_id = 6;
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 7;
+	// the ID of the userdata
+	int64 userdata_id = 8;
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> userdata_details = 9;
+	// an optional field, whether to the display the vm to the end user or not.
+	bool display_vm = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// true if VM contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory. This can be updated only when dynamic scaling is enabled on template, service offering and the corresponding global setting
+	bool is_dynamically_scalable = 11 [
+		features.field_presence = EXPLICIT
+	];
+	// new host name of the vm. The VM has to be stopped/started for this update to take affect
+	string name = 12 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// instance name of the user vm
+	string instance_name = 13 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
+	map<string, string> details = 14;
+	// list of security group ids to be applied on the virtual machine.
+	repeated string security_group_id_list = 15;
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	repeated string security_group_name_list = 16;
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	bool cleanup_details = 17 [
+		features.field_presence = EXPLICIT
+	];
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	map<string, string> dhcp_options_network_list = 18;
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	string extra_config = 19;
+	// Set delete protection for the virtual machine. If true, the instance will be protected from deletion. Note: If the instance is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	bool delete_protection = 20 [
+		features.field_presence = EXPLICIT
+	];
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 21 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 22;
+}
+
+// UpdateVMResponse represents the response from updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+message UpdateVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RecoverVMRequest represents the parameters for recovers a virtual machine.
+message RecoverVMRequest {
+	// The ID of the virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RecoverVMResponse represents the response from recovers a virtual machine.
+message RecoverVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UnmanagedInstance represents a UnmanagedInstance Item
+message UnmanagedInstance {
+	// The ID of the UnmanagedInstance
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the VMSchedule
+	// The name of the UnmanagedInstance
 	string name = 2;
-	// The display name of the VMSchedule
+	// The display name of the UnmanagedInstance
 	string display_name = 3;
-	// The description of the VMSchedule
+	// The description of the UnmanagedInstance
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -2622,6 +2732,22 @@ message Nic {
 	string created = 5;
 }
 
+// VMSchedule represents a VMSchedule Item
+message VMSchedule {
+	// The ID of the VMSchedule
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the VMSchedule
+	string name = 2;
+	// The display name of the VMSchedule
+	string display_name = 3;
+	// The description of the VMSchedule
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // UserVm represents a UserVm Item
 message UserVm {
 	// The ID of the UserVm
@@ -2633,22 +2759,6 @@ message UserVm {
 	// The display name of the UserVm
 	string display_name = 3;
 	// The description of the UserVm
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
-// UnmanagedInstance represents a UnmanagedInstance Item
-message UnmanagedInstance {
-	// The ID of the UnmanagedInstance
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the UnmanagedInstance
-	string name = 2;
-	// The display name of the UnmanagedInstance
-	string display_name = 3;
-	// The description of the UnmanagedInstance
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

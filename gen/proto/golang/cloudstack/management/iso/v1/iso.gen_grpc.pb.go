@@ -19,21 +19,22 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	IsoService_UpdateIsoCmdByAdmin_FullMethodName          = "/cloudstack.management.iso.v1.IsoService/UpdateIsoCmdByAdmin"
-	IsoService_UpdateIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/UpdateIso"
 	IsoService_GetUploadParamsForIso_FullMethodName        = "/cloudstack.management.iso.v1.IsoService/GetUploadParamsForIso"
-	IsoService_AttachIsoCmdByAdmin_FullMethodName          = "/cloudstack.management.iso.v1.IsoService/AttachIsoCmdByAdmin"
-	IsoService_DeleteIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/DeleteIso"
-	IsoService_CopyIso_FullMethodName                      = "/cloudstack.management.iso.v1.IsoService/CopyIso"
+	IsoService_DetachIsoCmdByAdmin_FullMethodName          = "/cloudstack.management.iso.v1.IsoService/DetachIsoCmdByAdmin"
+	IsoService_UpdateIsoCmdByAdmin_FullMethodName          = "/cloudstack.management.iso.v1.IsoService/UpdateIsoCmdByAdmin"
 	IsoService_AttachIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/AttachIso"
-	IsoService_DetachIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/DetachIso"
 	IsoService_ListIsosCmdByAdmin_FullMethodName           = "/cloudstack.management.iso.v1.IsoService/ListIsosCmdByAdmin"
-	IsoService_ExtractIso_FullMethodName                   = "/cloudstack.management.iso.v1.IsoService/ExtractIso"
 	IsoService_ListIsos_FullMethodName                     = "/cloudstack.management.iso.v1.IsoService/ListIsos"
-	IsoService_UpdateIsoPermissions_FullMethodName         = "/cloudstack.management.iso.v1.IsoService/UpdateIsoPermissions"
 	IsoService_RegisterIso_FullMethodName                  = "/cloudstack.management.iso.v1.IsoService/RegisterIso"
+	IsoService_UpdateIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/UpdateIso"
+	IsoService_ExtractIso_FullMethodName                   = "/cloudstack.management.iso.v1.IsoService/ExtractIso"
+	IsoService_DetachIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/DetachIso"
+	IsoService_DeleteIso_FullMethodName                    = "/cloudstack.management.iso.v1.IsoService/DeleteIso"
 	IsoService_ListIsoPermissionsCmdByAdmin_FullMethodName = "/cloudstack.management.iso.v1.IsoService/ListIsoPermissionsCmdByAdmin"
+	IsoService_CopyIsoCmdByAdmin_FullMethodName            = "/cloudstack.management.iso.v1.IsoService/CopyIsoCmdByAdmin"
 	IsoService_ListIsoPermissions_FullMethodName           = "/cloudstack.management.iso.v1.IsoService/ListIsoPermissions"
+	IsoService_UpdateIsoPermissions_FullMethodName         = "/cloudstack.management.iso.v1.IsoService/UpdateIsoPermissions"
+	IsoService_CopyIso_FullMethodName                      = "/cloudstack.management.iso.v1.IsoService/CopyIso"
 )
 
 // IsoServiceClient is the client API for IsoService service.
@@ -42,36 +43,38 @@ const (
 //
 // IsoService provides operations for managing Isos
 type IsoServiceClient interface {
-	// UpdateIsoCmdByAdmin Updates an ISO file.
-	UpdateIsoCmdByAdmin(ctx context.Context, in *UpdateIsoCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateIsoCmdByAdminResponse, error)
-	// UpdateIso Updates an ISO file.
-	UpdateIso(ctx context.Context, in *UpdateIsoRequest, opts ...grpc.CallOption) (*UpdateIsoResponse, error)
 	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
 	GetUploadParamsForIso(ctx context.Context, in *GetUploadParamsForIsoRequest, opts ...grpc.CallOption) (*GetUploadParamsForIsoResponse, error)
-	// AttachIsoCmdByAdmin Attaches an ISO to a virtual machine.
-	AttachIsoCmdByAdmin(ctx context.Context, in *AttachIsoCmdByAdminRequest, opts ...grpc.CallOption) (*AttachIsoCmdByAdminResponse, error)
-	// DeleteIso Deletes an ISO file.
-	DeleteIso(ctx context.Context, in *DeleteIsoRequest, opts ...grpc.CallOption) (*DeleteIsoResponse, error)
-	// CopyIso Copies an ISO from one zone to another.
-	CopyIso(ctx context.Context, in *CopyIsoRequest, opts ...grpc.CallOption) (*CopyIsoResponse, error)
+	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIsoCmdByAdmin(ctx context.Context, in *DetachIsoCmdByAdminRequest, opts ...grpc.CallOption) (*DetachIsoCmdByAdminResponse, error)
+	// UpdateIsoCmdByAdmin Updates an ISO file.
+	UpdateIsoCmdByAdmin(ctx context.Context, in *UpdateIsoCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateIsoCmdByAdminResponse, error)
 	// AttachIso Attaches an ISO to a virtual machine.
 	AttachIso(ctx context.Context, in *AttachIsoRequest, opts ...grpc.CallOption) (*AttachIsoResponse, error)
-	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
-	DetachIso(ctx context.Context, in *DetachIsoRequest, opts ...grpc.CallOption) (*DetachIsoResponse, error)
 	// ListIsosCmdByAdmin Lists all available ISO files.
 	ListIsosCmdByAdmin(ctx context.Context, in *ListIsosCmdByAdminRequest, opts ...grpc.CallOption) (*ListIsosCmdByAdminResponse, error)
-	// ExtractIso Extracts an ISO
-	ExtractIso(ctx context.Context, in *ExtractIsoRequest, opts ...grpc.CallOption) (*ExtractIsoResponse, error)
 	// ListIsos Lists all available ISO files.
 	ListIsos(ctx context.Context, in *ListIsosRequest, opts ...grpc.CallOption) (*ListIsosResponse, error)
-	// UpdateIsoPermissions Updates ISO permissions
-	UpdateIsoPermissions(ctx context.Context, in *UpdateIsoPermissionsRequest, opts ...grpc.CallOption) (*UpdateIsoPermissionsResponse, error)
 	// RegisterIso Registers an existing ISO into the CloudStack Cloud.
 	RegisterIso(ctx context.Context, in *RegisterIsoRequest, opts ...grpc.CallOption) (*RegisterIsoResponse, error)
+	// UpdateIso Updates an ISO file.
+	UpdateIso(ctx context.Context, in *UpdateIsoRequest, opts ...grpc.CallOption) (*UpdateIsoResponse, error)
+	// ExtractIso Extracts an ISO
+	ExtractIso(ctx context.Context, in *ExtractIsoRequest, opts ...grpc.CallOption) (*ExtractIsoResponse, error)
+	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIso(ctx context.Context, in *DetachIsoRequest, opts ...grpc.CallOption) (*DetachIsoResponse, error)
+	// DeleteIso Deletes an ISO file.
+	DeleteIso(ctx context.Context, in *DeleteIsoRequest, opts ...grpc.CallOption) (*DeleteIsoResponse, error)
 	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
 	ListIsoPermissionsCmdByAdmin(ctx context.Context, in *ListIsoPermissionsCmdByAdminRequest, opts ...grpc.CallOption) (*ListIsoPermissionsCmdByAdminResponse, error)
+	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
+	CopyIsoCmdByAdmin(ctx context.Context, in *CopyIsoCmdByAdminRequest, opts ...grpc.CallOption) (*CopyIsoCmdByAdminResponse, error)
 	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
 	ListIsoPermissions(ctx context.Context, in *ListIsoPermissionsRequest, opts ...grpc.CallOption) (*ListIsoPermissionsResponse, error)
+	// UpdateIsoPermissions Updates ISO permissions
+	UpdateIsoPermissions(ctx context.Context, in *UpdateIsoPermissionsRequest, opts ...grpc.CallOption) (*UpdateIsoPermissionsResponse, error)
+	// CopyIso Copies an ISO from one zone to another.
+	CopyIso(ctx context.Context, in *CopyIsoRequest, opts ...grpc.CallOption) (*CopyIsoResponse, error)
 }
 
 type isoServiceClient struct {
@@ -80,26 +83,6 @@ type isoServiceClient struct {
 
 func NewIsoServiceClient(cc grpc.ClientConnInterface) IsoServiceClient {
 	return &isoServiceClient{cc}
-}
-
-func (c *isoServiceClient) UpdateIsoCmdByAdmin(ctx context.Context, in *UpdateIsoCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateIsoCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateIsoCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, IsoService_UpdateIsoCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *isoServiceClient) UpdateIso(ctx context.Context, in *UpdateIsoRequest, opts ...grpc.CallOption) (*UpdateIsoResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateIsoResponse)
-	err := c.cc.Invoke(ctx, IsoService_UpdateIso_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *isoServiceClient) GetUploadParamsForIso(ctx context.Context, in *GetUploadParamsForIsoRequest, opts ...grpc.CallOption) (*GetUploadParamsForIsoResponse, error) {
@@ -112,30 +95,20 @@ func (c *isoServiceClient) GetUploadParamsForIso(ctx context.Context, in *GetUpl
 	return out, nil
 }
 
-func (c *isoServiceClient) AttachIsoCmdByAdmin(ctx context.Context, in *AttachIsoCmdByAdminRequest, opts ...grpc.CallOption) (*AttachIsoCmdByAdminResponse, error) {
+func (c *isoServiceClient) DetachIsoCmdByAdmin(ctx context.Context, in *DetachIsoCmdByAdminRequest, opts ...grpc.CallOption) (*DetachIsoCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AttachIsoCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, IsoService_AttachIsoCmdByAdmin_FullMethodName, in, out, cOpts...)
+	out := new(DetachIsoCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, IsoService_DetachIsoCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *isoServiceClient) DeleteIso(ctx context.Context, in *DeleteIsoRequest, opts ...grpc.CallOption) (*DeleteIsoResponse, error) {
+func (c *isoServiceClient) UpdateIsoCmdByAdmin(ctx context.Context, in *UpdateIsoCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateIsoCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteIsoResponse)
-	err := c.cc.Invoke(ctx, IsoService_DeleteIso_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *isoServiceClient) CopyIso(ctx context.Context, in *CopyIsoRequest, opts ...grpc.CallOption) (*CopyIsoResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CopyIsoResponse)
-	err := c.cc.Invoke(ctx, IsoService_CopyIso_FullMethodName, in, out, cOpts...)
+	out := new(UpdateIsoCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, IsoService_UpdateIsoCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -152,30 +125,10 @@ func (c *isoServiceClient) AttachIso(ctx context.Context, in *AttachIsoRequest, 
 	return out, nil
 }
 
-func (c *isoServiceClient) DetachIso(ctx context.Context, in *DetachIsoRequest, opts ...grpc.CallOption) (*DetachIsoResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DetachIsoResponse)
-	err := c.cc.Invoke(ctx, IsoService_DetachIso_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *isoServiceClient) ListIsosCmdByAdmin(ctx context.Context, in *ListIsosCmdByAdminRequest, opts ...grpc.CallOption) (*ListIsosCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIsosCmdByAdminResponse)
 	err := c.cc.Invoke(ctx, IsoService_ListIsosCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *isoServiceClient) ExtractIso(ctx context.Context, in *ExtractIsoRequest, opts ...grpc.CallOption) (*ExtractIsoResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ExtractIsoResponse)
-	err := c.cc.Invoke(ctx, IsoService_ExtractIso_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -192,20 +145,50 @@ func (c *isoServiceClient) ListIsos(ctx context.Context, in *ListIsosRequest, op
 	return out, nil
 }
 
-func (c *isoServiceClient) UpdateIsoPermissions(ctx context.Context, in *UpdateIsoPermissionsRequest, opts ...grpc.CallOption) (*UpdateIsoPermissionsResponse, error) {
+func (c *isoServiceClient) RegisterIso(ctx context.Context, in *RegisterIsoRequest, opts ...grpc.CallOption) (*RegisterIsoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateIsoPermissionsResponse)
-	err := c.cc.Invoke(ctx, IsoService_UpdateIsoPermissions_FullMethodName, in, out, cOpts...)
+	out := new(RegisterIsoResponse)
+	err := c.cc.Invoke(ctx, IsoService_RegisterIso_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *isoServiceClient) RegisterIso(ctx context.Context, in *RegisterIsoRequest, opts ...grpc.CallOption) (*RegisterIsoResponse, error) {
+func (c *isoServiceClient) UpdateIso(ctx context.Context, in *UpdateIsoRequest, opts ...grpc.CallOption) (*UpdateIsoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterIsoResponse)
-	err := c.cc.Invoke(ctx, IsoService_RegisterIso_FullMethodName, in, out, cOpts...)
+	out := new(UpdateIsoResponse)
+	err := c.cc.Invoke(ctx, IsoService_UpdateIso_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *isoServiceClient) ExtractIso(ctx context.Context, in *ExtractIsoRequest, opts ...grpc.CallOption) (*ExtractIsoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExtractIsoResponse)
+	err := c.cc.Invoke(ctx, IsoService_ExtractIso_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *isoServiceClient) DetachIso(ctx context.Context, in *DetachIsoRequest, opts ...grpc.CallOption) (*DetachIsoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DetachIsoResponse)
+	err := c.cc.Invoke(ctx, IsoService_DetachIso_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *isoServiceClient) DeleteIso(ctx context.Context, in *DeleteIsoRequest, opts ...grpc.CallOption) (*DeleteIsoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteIsoResponse)
+	err := c.cc.Invoke(ctx, IsoService_DeleteIso_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -222,10 +205,40 @@ func (c *isoServiceClient) ListIsoPermissionsCmdByAdmin(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *isoServiceClient) CopyIsoCmdByAdmin(ctx context.Context, in *CopyIsoCmdByAdminRequest, opts ...grpc.CallOption) (*CopyIsoCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CopyIsoCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, IsoService_CopyIsoCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *isoServiceClient) ListIsoPermissions(ctx context.Context, in *ListIsoPermissionsRequest, opts ...grpc.CallOption) (*ListIsoPermissionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIsoPermissionsResponse)
 	err := c.cc.Invoke(ctx, IsoService_ListIsoPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *isoServiceClient) UpdateIsoPermissions(ctx context.Context, in *UpdateIsoPermissionsRequest, opts ...grpc.CallOption) (*UpdateIsoPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateIsoPermissionsResponse)
+	err := c.cc.Invoke(ctx, IsoService_UpdateIsoPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *isoServiceClient) CopyIso(ctx context.Context, in *CopyIsoRequest, opts ...grpc.CallOption) (*CopyIsoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CopyIsoResponse)
+	err := c.cc.Invoke(ctx, IsoService_CopyIso_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -238,36 +251,38 @@ func (c *isoServiceClient) ListIsoPermissions(ctx context.Context, in *ListIsoPe
 //
 // IsoService provides operations for managing Isos
 type IsoServiceServer interface {
-	// UpdateIsoCmdByAdmin Updates an ISO file.
-	UpdateIsoCmdByAdmin(context.Context, *UpdateIsoCmdByAdminRequest) (*UpdateIsoCmdByAdminResponse, error)
-	// UpdateIso Updates an ISO file.
-	UpdateIso(context.Context, *UpdateIsoRequest) (*UpdateIsoResponse, error)
 	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
 	GetUploadParamsForIso(context.Context, *GetUploadParamsForIsoRequest) (*GetUploadParamsForIsoResponse, error)
-	// AttachIsoCmdByAdmin Attaches an ISO to a virtual machine.
-	AttachIsoCmdByAdmin(context.Context, *AttachIsoCmdByAdminRequest) (*AttachIsoCmdByAdminResponse, error)
-	// DeleteIso Deletes an ISO file.
-	DeleteIso(context.Context, *DeleteIsoRequest) (*DeleteIsoResponse, error)
-	// CopyIso Copies an ISO from one zone to another.
-	CopyIso(context.Context, *CopyIsoRequest) (*CopyIsoResponse, error)
+	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIsoCmdByAdmin(context.Context, *DetachIsoCmdByAdminRequest) (*DetachIsoCmdByAdminResponse, error)
+	// UpdateIsoCmdByAdmin Updates an ISO file.
+	UpdateIsoCmdByAdmin(context.Context, *UpdateIsoCmdByAdminRequest) (*UpdateIsoCmdByAdminResponse, error)
 	// AttachIso Attaches an ISO to a virtual machine.
 	AttachIso(context.Context, *AttachIsoRequest) (*AttachIsoResponse, error)
-	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
-	DetachIso(context.Context, *DetachIsoRequest) (*DetachIsoResponse, error)
 	// ListIsosCmdByAdmin Lists all available ISO files.
 	ListIsosCmdByAdmin(context.Context, *ListIsosCmdByAdminRequest) (*ListIsosCmdByAdminResponse, error)
-	// ExtractIso Extracts an ISO
-	ExtractIso(context.Context, *ExtractIsoRequest) (*ExtractIsoResponse, error)
 	// ListIsos Lists all available ISO files.
 	ListIsos(context.Context, *ListIsosRequest) (*ListIsosResponse, error)
-	// UpdateIsoPermissions Updates ISO permissions
-	UpdateIsoPermissions(context.Context, *UpdateIsoPermissionsRequest) (*UpdateIsoPermissionsResponse, error)
 	// RegisterIso Registers an existing ISO into the CloudStack Cloud.
 	RegisterIso(context.Context, *RegisterIsoRequest) (*RegisterIsoResponse, error)
+	// UpdateIso Updates an ISO file.
+	UpdateIso(context.Context, *UpdateIsoRequest) (*UpdateIsoResponse, error)
+	// ExtractIso Extracts an ISO
+	ExtractIso(context.Context, *ExtractIsoRequest) (*ExtractIsoResponse, error)
+	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIso(context.Context, *DetachIsoRequest) (*DetachIsoResponse, error)
+	// DeleteIso Deletes an ISO file.
+	DeleteIso(context.Context, *DeleteIsoRequest) (*DeleteIsoResponse, error)
 	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
 	ListIsoPermissionsCmdByAdmin(context.Context, *ListIsoPermissionsCmdByAdminRequest) (*ListIsoPermissionsCmdByAdminResponse, error)
+	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
+	CopyIsoCmdByAdmin(context.Context, *CopyIsoCmdByAdminRequest) (*CopyIsoCmdByAdminResponse, error)
 	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
 	ListIsoPermissions(context.Context, *ListIsoPermissionsRequest) (*ListIsoPermissionsResponse, error)
+	// UpdateIsoPermissions Updates ISO permissions
+	UpdateIsoPermissions(context.Context, *UpdateIsoPermissionsRequest) (*UpdateIsoPermissionsResponse, error)
+	// CopyIso Copies an ISO from one zone to another.
+	CopyIso(context.Context, *CopyIsoRequest) (*CopyIsoResponse, error)
 	mustEmbedUnimplementedIsoServiceServer()
 }
 
@@ -278,50 +293,53 @@ type IsoServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedIsoServiceServer struct{}
 
-func (UnimplementedIsoServiceServer) UpdateIsoCmdByAdmin(context.Context, *UpdateIsoCmdByAdminRequest) (*UpdateIsoCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateIsoCmdByAdmin not implemented")
-}
-func (UnimplementedIsoServiceServer) UpdateIso(context.Context, *UpdateIsoRequest) (*UpdateIsoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateIso not implemented")
-}
 func (UnimplementedIsoServiceServer) GetUploadParamsForIso(context.Context, *GetUploadParamsForIsoRequest) (*GetUploadParamsForIsoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUploadParamsForIso not implemented")
 }
-func (UnimplementedIsoServiceServer) AttachIsoCmdByAdmin(context.Context, *AttachIsoCmdByAdminRequest) (*AttachIsoCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AttachIsoCmdByAdmin not implemented")
+func (UnimplementedIsoServiceServer) DetachIsoCmdByAdmin(context.Context, *DetachIsoCmdByAdminRequest) (*DetachIsoCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetachIsoCmdByAdmin not implemented")
 }
-func (UnimplementedIsoServiceServer) DeleteIso(context.Context, *DeleteIsoRequest) (*DeleteIsoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteIso not implemented")
-}
-func (UnimplementedIsoServiceServer) CopyIso(context.Context, *CopyIsoRequest) (*CopyIsoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CopyIso not implemented")
+func (UnimplementedIsoServiceServer) UpdateIsoCmdByAdmin(context.Context, *UpdateIsoCmdByAdminRequest) (*UpdateIsoCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIsoCmdByAdmin not implemented")
 }
 func (UnimplementedIsoServiceServer) AttachIso(context.Context, *AttachIsoRequest) (*AttachIsoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AttachIso not implemented")
 }
-func (UnimplementedIsoServiceServer) DetachIso(context.Context, *DetachIsoRequest) (*DetachIsoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DetachIso not implemented")
-}
 func (UnimplementedIsoServiceServer) ListIsosCmdByAdmin(context.Context, *ListIsosCmdByAdminRequest) (*ListIsosCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIsosCmdByAdmin not implemented")
-}
-func (UnimplementedIsoServiceServer) ExtractIso(context.Context, *ExtractIsoRequest) (*ExtractIsoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExtractIso not implemented")
 }
 func (UnimplementedIsoServiceServer) ListIsos(context.Context, *ListIsosRequest) (*ListIsosResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIsos not implemented")
 }
-func (UnimplementedIsoServiceServer) UpdateIsoPermissions(context.Context, *UpdateIsoPermissionsRequest) (*UpdateIsoPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateIsoPermissions not implemented")
-}
 func (UnimplementedIsoServiceServer) RegisterIso(context.Context, *RegisterIsoRequest) (*RegisterIsoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterIso not implemented")
+}
+func (UnimplementedIsoServiceServer) UpdateIso(context.Context, *UpdateIsoRequest) (*UpdateIsoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIso not implemented")
+}
+func (UnimplementedIsoServiceServer) ExtractIso(context.Context, *ExtractIsoRequest) (*ExtractIsoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExtractIso not implemented")
+}
+func (UnimplementedIsoServiceServer) DetachIso(context.Context, *DetachIsoRequest) (*DetachIsoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetachIso not implemented")
+}
+func (UnimplementedIsoServiceServer) DeleteIso(context.Context, *DeleteIsoRequest) (*DeleteIsoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIso not implemented")
 }
 func (UnimplementedIsoServiceServer) ListIsoPermissionsCmdByAdmin(context.Context, *ListIsoPermissionsCmdByAdminRequest) (*ListIsoPermissionsCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIsoPermissionsCmdByAdmin not implemented")
 }
+func (UnimplementedIsoServiceServer) CopyIsoCmdByAdmin(context.Context, *CopyIsoCmdByAdminRequest) (*CopyIsoCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CopyIsoCmdByAdmin not implemented")
+}
 func (UnimplementedIsoServiceServer) ListIsoPermissions(context.Context, *ListIsoPermissionsRequest) (*ListIsoPermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIsoPermissions not implemented")
+}
+func (UnimplementedIsoServiceServer) UpdateIsoPermissions(context.Context, *UpdateIsoPermissionsRequest) (*UpdateIsoPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIsoPermissions not implemented")
+}
+func (UnimplementedIsoServiceServer) CopyIso(context.Context, *CopyIsoRequest) (*CopyIsoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CopyIso not implemented")
 }
 func (UnimplementedIsoServiceServer) mustEmbedUnimplementedIsoServiceServer() {}
 func (UnimplementedIsoServiceServer) testEmbeddedByValue()                    {}
@@ -344,42 +362,6 @@ func RegisterIsoServiceServer(s grpc.ServiceRegistrar, srv IsoServiceServer) {
 	s.RegisterService(&IsoService_ServiceDesc, srv)
 }
 
-func _IsoService_UpdateIsoCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateIsoCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IsoServiceServer).UpdateIsoCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: IsoService_UpdateIsoCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).UpdateIsoCmdByAdmin(ctx, req.(*UpdateIsoCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _IsoService_UpdateIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateIsoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IsoServiceServer).UpdateIso(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: IsoService_UpdateIso_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).UpdateIso(ctx, req.(*UpdateIsoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _IsoService_GetUploadParamsForIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetUploadParamsForIsoRequest)
 	if err := dec(in); err != nil {
@@ -398,56 +380,38 @@ func _IsoService_GetUploadParamsForIso_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IsoService_AttachIsoCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AttachIsoCmdByAdminRequest)
+func _IsoService_DetachIsoCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DetachIsoCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IsoServiceServer).AttachIsoCmdByAdmin(ctx, in)
+		return srv.(IsoServiceServer).DetachIsoCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: IsoService_AttachIsoCmdByAdmin_FullMethodName,
+		FullMethod: IsoService_DetachIsoCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).AttachIsoCmdByAdmin(ctx, req.(*AttachIsoCmdByAdminRequest))
+		return srv.(IsoServiceServer).DetachIsoCmdByAdmin(ctx, req.(*DetachIsoCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IsoService_DeleteIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteIsoRequest)
+func _IsoService_UpdateIsoCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateIsoCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IsoServiceServer).DeleteIso(ctx, in)
+		return srv.(IsoServiceServer).UpdateIsoCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: IsoService_DeleteIso_FullMethodName,
+		FullMethod: IsoService_UpdateIsoCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).DeleteIso(ctx, req.(*DeleteIsoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _IsoService_CopyIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CopyIsoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IsoServiceServer).CopyIso(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: IsoService_CopyIso_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).CopyIso(ctx, req.(*CopyIsoRequest))
+		return srv.(IsoServiceServer).UpdateIsoCmdByAdmin(ctx, req.(*UpdateIsoCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,24 +434,6 @@ func _IsoService_AttachIso_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IsoService_DetachIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DetachIsoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IsoServiceServer).DetachIso(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: IsoService_DetachIso_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).DetachIso(ctx, req.(*DetachIsoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _IsoService_ListIsosCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIsosCmdByAdminRequest)
 	if err := dec(in); err != nil {
@@ -502,24 +448,6 @@ func _IsoService_ListIsosCmdByAdmin_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(IsoServiceServer).ListIsosCmdByAdmin(ctx, req.(*ListIsosCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _IsoService_ExtractIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExtractIsoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IsoServiceServer).ExtractIso(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: IsoService_ExtractIso_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).ExtractIso(ctx, req.(*ExtractIsoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -542,24 +470,6 @@ func _IsoService_ListIsos_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IsoService_UpdateIsoPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateIsoPermissionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IsoServiceServer).UpdateIsoPermissions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: IsoService_UpdateIsoPermissions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IsoServiceServer).UpdateIsoPermissions(ctx, req.(*UpdateIsoPermissionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _IsoService_RegisterIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterIsoRequest)
 	if err := dec(in); err != nil {
@@ -574,6 +484,78 @@ func _IsoService_RegisterIso_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(IsoServiceServer).RegisterIso(ctx, req.(*RegisterIsoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IsoService_UpdateIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateIsoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).UpdateIso(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_UpdateIso_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).UpdateIso(ctx, req.(*UpdateIsoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IsoService_ExtractIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExtractIsoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).ExtractIso(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_ExtractIso_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).ExtractIso(ctx, req.(*ExtractIsoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IsoService_DetachIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DetachIsoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).DetachIso(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_DetachIso_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).DetachIso(ctx, req.(*DetachIsoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IsoService_DeleteIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteIsoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).DeleteIso(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_DeleteIso_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).DeleteIso(ctx, req.(*DeleteIsoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -596,6 +578,24 @@ func _IsoService_ListIsoPermissionsCmdByAdmin_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _IsoService_CopyIsoCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CopyIsoCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).CopyIsoCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_CopyIsoCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).CopyIsoCmdByAdmin(ctx, req.(*CopyIsoCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _IsoService_ListIsoPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIsoPermissionsRequest)
 	if err := dec(in); err != nil {
@@ -614,6 +614,42 @@ func _IsoService_ListIsoPermissions_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _IsoService_UpdateIsoPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateIsoPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).UpdateIsoPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_UpdateIsoPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).UpdateIsoPermissions(ctx, req.(*UpdateIsoPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IsoService_CopyIso_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CopyIsoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IsoServiceServer).CopyIso(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IsoService_CopyIso_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IsoServiceServer).CopyIso(ctx, req.(*CopyIsoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // IsoService_ServiceDesc is the grpc.ServiceDesc for IsoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -622,64 +658,68 @@ var IsoService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*IsoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdateIsoCmdByAdmin",
-			Handler:    _IsoService_UpdateIsoCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "UpdateIso",
-			Handler:    _IsoService_UpdateIso_Handler,
-		},
-		{
 			MethodName: "GetUploadParamsForIso",
 			Handler:    _IsoService_GetUploadParamsForIso_Handler,
 		},
 		{
-			MethodName: "AttachIsoCmdByAdmin",
-			Handler:    _IsoService_AttachIsoCmdByAdmin_Handler,
+			MethodName: "DetachIsoCmdByAdmin",
+			Handler:    _IsoService_DetachIsoCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "DeleteIso",
-			Handler:    _IsoService_DeleteIso_Handler,
-		},
-		{
-			MethodName: "CopyIso",
-			Handler:    _IsoService_CopyIso_Handler,
+			MethodName: "UpdateIsoCmdByAdmin",
+			Handler:    _IsoService_UpdateIsoCmdByAdmin_Handler,
 		},
 		{
 			MethodName: "AttachIso",
 			Handler:    _IsoService_AttachIso_Handler,
 		},
 		{
-			MethodName: "DetachIso",
-			Handler:    _IsoService_DetachIso_Handler,
-		},
-		{
 			MethodName: "ListIsosCmdByAdmin",
 			Handler:    _IsoService_ListIsosCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ExtractIso",
-			Handler:    _IsoService_ExtractIso_Handler,
 		},
 		{
 			MethodName: "ListIsos",
 			Handler:    _IsoService_ListIsos_Handler,
 		},
 		{
-			MethodName: "UpdateIsoPermissions",
-			Handler:    _IsoService_UpdateIsoPermissions_Handler,
-		},
-		{
 			MethodName: "RegisterIso",
 			Handler:    _IsoService_RegisterIso_Handler,
+		},
+		{
+			MethodName: "UpdateIso",
+			Handler:    _IsoService_UpdateIso_Handler,
+		},
+		{
+			MethodName: "ExtractIso",
+			Handler:    _IsoService_ExtractIso_Handler,
+		},
+		{
+			MethodName: "DetachIso",
+			Handler:    _IsoService_DetachIso_Handler,
+		},
+		{
+			MethodName: "DeleteIso",
+			Handler:    _IsoService_DeleteIso_Handler,
 		},
 		{
 			MethodName: "ListIsoPermissionsCmdByAdmin",
 			Handler:    _IsoService_ListIsoPermissionsCmdByAdmin_Handler,
 		},
 		{
+			MethodName: "CopyIsoCmdByAdmin",
+			Handler:    _IsoService_CopyIsoCmdByAdmin_Handler,
+		},
+		{
 			MethodName: "ListIsoPermissions",
 			Handler:    _IsoService_ListIsoPermissions_Handler,
+		},
+		{
+			MethodName: "UpdateIsoPermissions",
+			Handler:    _IsoService_UpdateIsoPermissions_Handler,
+		},
+		{
+			MethodName: "CopyIso",
+			Handler:    _IsoService_CopyIso_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

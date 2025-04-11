@@ -24,6 +24,131 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// GetDiagnosticsDataRequest represents the parameters for get diagnostics and files from system vms
+type GetDiagnosticsDataRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the system VM instance to retrieve diagnostics data files from
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// A comma separated list of diagnostics data files to be retrieved. Defaults are taken from global settings if none has been provided.
+	FilesList []string `protobuf:"bytes,2,rep,name=files_list,json=filesList" json:"files_list,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDiagnosticsDataRequest) Reset() {
+	*x = GetDiagnosticsDataRequest{}
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDiagnosticsDataRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDiagnosticsDataRequest) ProtoMessage() {}
+
+func (x *GetDiagnosticsDataRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDiagnosticsDataRequest.ProtoReflect.Descriptor instead.
+func (*GetDiagnosticsDataRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetDiagnosticsDataRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *GetDiagnosticsDataRequest) GetFilesList() []string {
+	if x != nil {
+		return x.FilesList
+	}
+	return nil
+}
+
+func (x *GetDiagnosticsDataRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *GetDiagnosticsDataRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *GetDiagnosticsDataRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GetDiagnosticsDataResponse represents the response from get diagnostics and files from system vms
+type GetDiagnosticsDataResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDiagnosticsDataResponse) Reset() {
+	*x = GetDiagnosticsDataResponse{}
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDiagnosticsDataResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDiagnosticsDataResponse) ProtoMessage() {}
+
+func (x *GetDiagnosticsDataResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDiagnosticsDataResponse.ProtoReflect.Descriptor instead.
+func (*GetDiagnosticsDataResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetDiagnosticsDataResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // RunDiagnosticsRequest represents the parameters for execute network-utility command (ping/arping/tracert) on system vms remotely
 type RunDiagnosticsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -44,7 +169,7 @@ type RunDiagnosticsRequest struct {
 
 func (x *RunDiagnosticsRequest) Reset() {
 	*x = RunDiagnosticsRequest{}
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -56,7 +181,7 @@ func (x *RunDiagnosticsRequest) String() string {
 func (*RunDiagnosticsRequest) ProtoMessage() {}
 
 func (x *RunDiagnosticsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,7 +194,7 @@ func (x *RunDiagnosticsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RunDiagnosticsRequest.ProtoReflect.Descriptor instead.
 func (*RunDiagnosticsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RunDiagnosticsRequest) GetId() int64 {
@@ -132,7 +257,7 @@ type RunDiagnosticsResponse struct {
 
 func (x *RunDiagnosticsResponse) Reset() {
 	*x = RunDiagnosticsResponse{}
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -144,7 +269,7 @@ func (x *RunDiagnosticsResponse) String() string {
 func (*RunDiagnosticsResponse) ProtoMessage() {}
 
 func (x *RunDiagnosticsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -157,135 +282,10 @@ func (x *RunDiagnosticsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RunDiagnosticsResponse.ProtoReflect.Descriptor instead.
 func (*RunDiagnosticsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *RunDiagnosticsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// GetDiagnosticsDataRequest represents the parameters for get diagnostics and files from system vms
-type GetDiagnosticsDataRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the system VM instance to retrieve diagnostics data files from
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// A comma separated list of diagnostics data files to be retrieved. Defaults are taken from global settings if none has been provided.
-	FilesList []string `protobuf:"bytes,2,rep,name=files_list,json=filesList" json:"files_list,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetDiagnosticsDataRequest) Reset() {
-	*x = GetDiagnosticsDataRequest{}
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetDiagnosticsDataRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetDiagnosticsDataRequest) ProtoMessage() {}
-
-func (x *GetDiagnosticsDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetDiagnosticsDataRequest.ProtoReflect.Descriptor instead.
-func (*GetDiagnosticsDataRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GetDiagnosticsDataRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *GetDiagnosticsDataRequest) GetFilesList() []string {
-	if x != nil {
-		return x.FilesList
-	}
-	return nil
-}
-
-func (x *GetDiagnosticsDataRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *GetDiagnosticsDataRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *GetDiagnosticsDataRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// GetDiagnosticsDataResponse represents the response from get diagnostics and files from system vms
-type GetDiagnosticsDataResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetDiagnosticsDataResponse) Reset() {
-	*x = GetDiagnosticsDataResponse{}
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetDiagnosticsDataResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetDiagnosticsDataResponse) ProtoMessage() {}
-
-func (x *GetDiagnosticsDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetDiagnosticsDataResponse.ProtoReflect.Descriptor instead.
-func (*GetDiagnosticsDataResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetDiagnosticsDataResponse) GetResult() *Result {
+func (x *RunDiagnosticsResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -578,7 +578,16 @@ var File_cloudstack_management_diagnostics_v1_diagnostics_gen_proto protoreflect
 
 const file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDesc = "" +
 	"\n" +
-	":cloudstack/management/diagnostics/v1/diagnostics.gen.proto\x12$cloudstack.management.diagnostics.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9d\x02\n" +
+	":cloudstack/management/diagnostics/v1/diagnostics.gen.proto\x12$cloudstack.management.diagnostics.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xcf\x01\n" +
+	"\x19GetDiagnosticsDataRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\n" +
+	"files_list\x18\x02 \x03(\tR\tfilesList\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"b\n" +
+	"\x1aGetDiagnosticsDataResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.diagnostics.v1.ResultR\x06result\"\x9d\x02\n" +
 	"\x15RunDiagnosticsRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\aaddress\x18\x02 \x01(\tB\n" +
@@ -589,15 +598,6 @@ const file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDesc = 
 	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\a \x01(\tR\fresponseType\"^\n" +
 	"\x16RunDiagnosticsResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.diagnostics.v1.ResultR\x06result\"\xcf\x01\n" +
-	"\x19GetDiagnosticsDataRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\n" +
-	"files_list\x18\x02 \x03(\tR\tfilesList\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"b\n" +
-	"\x1aGetDiagnosticsDataResponse\x12D\n" +
 	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.diagnostics.v1.ResultR\x06result\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
@@ -628,9 +628,9 @@ const file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDesc = 
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc8\x02\n" +
-	"\x12DiagnosticsService\x12\x8d\x01\n" +
-	"\x0eRunDiagnostics\x12;.cloudstack.management.diagnostics.v1.RunDiagnosticsRequest\x1a<.cloudstack.management.diagnostics.v1.RunDiagnosticsResponse\"\x00\x12\x99\x01\n" +
-	"\x12GetDiagnosticsData\x12?.cloudstack.management.diagnostics.v1.GetDiagnosticsDataRequest\x1a@.cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xda\x02\n" +
+	"\x12DiagnosticsService\x12\x99\x01\n" +
+	"\x12GetDiagnosticsData\x12?.cloudstack.management.diagnostics.v1.GetDiagnosticsDataRequest\x1a@.cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse\"\x00\x12\x8d\x01\n" +
+	"\x0eRunDiagnostics\x12;.cloudstack.management.diagnostics.v1.RunDiagnosticsRequest\x1a<.cloudstack.management.diagnostics.v1.RunDiagnosticsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xda\x02\n" +
 	"(com.cloudstack.management.diagnostics.v1B\x13DiagnosticsGenProtoP\x01Zfgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/diagnostics/v1;diagnosticsv1\xa2\x02\x03CMD\xaa\x02$Cloudstack.Management.Diagnostics.V1\xca\x02$Cloudstack\\Management\\Diagnostics\\V1\xe2\x020Cloudstack\\Management\\Diagnostics\\V1\\GPBMetadata\xea\x02'Cloudstack::Management::Diagnostics::V1b\beditionsp\xe8\a"
 
 var (
@@ -647,23 +647,23 @@ func file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_rawDescGZIP
 
 var file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_goTypes = []any{
-	(*RunDiagnosticsRequest)(nil),      // 0: cloudstack.management.diagnostics.v1.RunDiagnosticsRequest
-	(*RunDiagnosticsResponse)(nil),     // 1: cloudstack.management.diagnostics.v1.RunDiagnosticsResponse
-	(*GetDiagnosticsDataRequest)(nil),  // 2: cloudstack.management.diagnostics.v1.GetDiagnosticsDataRequest
-	(*GetDiagnosticsDataResponse)(nil), // 3: cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse
+	(*GetDiagnosticsDataRequest)(nil),  // 0: cloudstack.management.diagnostics.v1.GetDiagnosticsDataRequest
+	(*GetDiagnosticsDataResponse)(nil), // 1: cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse
+	(*RunDiagnosticsRequest)(nil),      // 2: cloudstack.management.diagnostics.v1.RunDiagnosticsRequest
+	(*RunDiagnosticsResponse)(nil),     // 3: cloudstack.management.diagnostics.v1.RunDiagnosticsResponse
 	(*Success)(nil),                    // 4: cloudstack.management.diagnostics.v1.Success
 	(*Item)(nil),                       // 5: cloudstack.management.diagnostics.v1.Item
 	(*Result)(nil),                     // 6: cloudstack.management.diagnostics.v1.Result
 	nil,                                // 7: cloudstack.management.diagnostics.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_diagnostics_v1_diagnostics_gen_proto_depIdxs = []int32{
-	6, // 0: cloudstack.management.diagnostics.v1.RunDiagnosticsResponse.result:type_name -> cloudstack.management.diagnostics.v1.Result
-	6, // 1: cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse.result:type_name -> cloudstack.management.diagnostics.v1.Result
+	6, // 0: cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse.result:type_name -> cloudstack.management.diagnostics.v1.Result
+	6, // 1: cloudstack.management.diagnostics.v1.RunDiagnosticsResponse.result:type_name -> cloudstack.management.diagnostics.v1.Result
 	7, // 2: cloudstack.management.diagnostics.v1.Item.details:type_name -> cloudstack.management.diagnostics.v1.Item.DetailsEntry
-	0, // 3: cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics:input_type -> cloudstack.management.diagnostics.v1.RunDiagnosticsRequest
-	2, // 4: cloudstack.management.diagnostics.v1.DiagnosticsService.GetDiagnosticsData:input_type -> cloudstack.management.diagnostics.v1.GetDiagnosticsDataRequest
-	1, // 5: cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics:output_type -> cloudstack.management.diagnostics.v1.RunDiagnosticsResponse
-	3, // 6: cloudstack.management.diagnostics.v1.DiagnosticsService.GetDiagnosticsData:output_type -> cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse
+	0, // 3: cloudstack.management.diagnostics.v1.DiagnosticsService.GetDiagnosticsData:input_type -> cloudstack.management.diagnostics.v1.GetDiagnosticsDataRequest
+	2, // 4: cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics:input_type -> cloudstack.management.diagnostics.v1.RunDiagnosticsRequest
+	1, // 5: cloudstack.management.diagnostics.v1.DiagnosticsService.GetDiagnosticsData:output_type -> cloudstack.management.diagnostics.v1.GetDiagnosticsDataResponse
+	3, // 6: cloudstack.management.diagnostics.v1.DiagnosticsService.RunDiagnostics:output_type -> cloudstack.management.diagnostics.v1.RunDiagnosticsResponse
 	5, // [5:7] is the sub-list for method output_type
 	3, // [3:5] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

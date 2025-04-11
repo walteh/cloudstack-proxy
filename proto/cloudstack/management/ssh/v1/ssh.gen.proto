@@ -16,11 +16,11 @@ service SshService {
 	// CreateSSHKeyPair Create a new keypair and returns the private key
 	rpc CreateSSHKeyPair(CreateSSHKeyPairRequest) returns (CreateSSHKeyPairResponse) {}
 
-	// DeleteSSHKeyPair Deletes a keypair by name
-	rpc DeleteSSHKeyPair(DeleteSSHKeyPairRequest) returns (DeleteSSHKeyPairResponse) {}
-
 	// RegisterSSHKeyPair Register a public key in a keypair under a certain name
 	rpc RegisterSSHKeyPair(RegisterSSHKeyPairRequest) returns (RegisterSSHKeyPairResponse) {}
+
+	// DeleteSSHKeyPair Deletes a keypair by name
+	rpc DeleteSSHKeyPair(DeleteSSHKeyPairRequest) returns (DeleteSSHKeyPairResponse) {}
 }
 
 // ListSSHKeyPairsRequest represents the parameters for list registered keypairs
@@ -113,6 +113,39 @@ message CreateSSHKeyPairResponse {
 	Result result = 1;
 }
 
+// RegisterSSHKeyPairRequest represents the parameters for register a public key in a keypair under a certain name
+message RegisterSSHKeyPairRequest {
+	// Name of the keypair
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Public key material of the keypair
+	string public_key = 2 [
+		(validate.field).required = true
+	];
+
+	// an optional account for the ssh key. Must be used with domainId.
+	string account_name = 3;
+
+	// an optional domainId for the ssh key. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 4;
+
+	// an optional project for the ssh key
+	int64 project_id = 5;
+
+	//
+	string response_type = 6;
+}
+
+// RegisterSSHKeyPairResponse represents the response from register a public key in a keypair under a certain name
+message RegisterSSHKeyPairResponse {
+	// The Result
+	Result result = 1;
+}
+
 // DeleteSSHKeyPairRequest represents the parameters for deletes a keypair by name
 message DeleteSSHKeyPairRequest {
 	// Name of the keypair
@@ -143,39 +176,6 @@ message DeleteSSHKeyPairRequest {
 
 // DeleteSSHKeyPairResponse represents the response from deletes a keypair by name
 message DeleteSSHKeyPairResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RegisterSSHKeyPairRequest represents the parameters for register a public key in a keypair under a certain name
-message RegisterSSHKeyPairRequest {
-	// Name of the keypair
-	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Public key material of the keypair
-	string public_key = 2 [
-		(validate.field).required = true
-	];
-
-	// an optional account for the ssh key. Must be used with domainId.
-	string account_name = 3;
-
-	// an optional domainId for the ssh key. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 4;
-
-	// an optional project for the ssh key
-	int64 project_id = 5;
-
-	//
-	string response_type = 6;
-}
-
-// RegisterSSHKeyPairResponse represents the response from register a public key in a keypair under a certain name
-message RegisterSSHKeyPairResponse {
 	// The Result
 	Result result = 1;
 }

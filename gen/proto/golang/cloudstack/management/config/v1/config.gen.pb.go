@@ -24,825 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ListCfgGroupsByRequest represents the parameters for lists all configuration groups (primarily used for ui).
-type ListCfgGroupsByRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// lists configuration group by group name
-	GroupName *string `protobuf:"bytes,1,opt,name=group_name,json=groupName" json:"group_name,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCfgGroupsByRequest) Reset() {
-	*x = ListCfgGroupsByRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCfgGroupsByRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCfgGroupsByRequest) ProtoMessage() {}
-
-func (x *ListCfgGroupsByRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCfgGroupsByRequest.ProtoReflect.Descriptor instead.
-func (*ListCfgGroupsByRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ListCfgGroupsByRequest) GetGroupName() string {
-	if x != nil && x.GroupName != nil {
-		return *x.GroupName
-	}
-	return ""
-}
-
-func (x *ListCfgGroupsByRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListCfgGroupsByRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListCfgGroupsByRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListCfgGroupsByRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListCfgGroupsByResponse represents the response from lists all configuration groups (primarily used for ui).
-type ListCfgGroupsByResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of ConfigurationGroups
-	Items []*ConfigurationGroup `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of ConfigurationGroups
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCfgGroupsByResponse) Reset() {
-	*x = ListCfgGroupsByResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCfgGroupsByResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCfgGroupsByResponse) ProtoMessage() {}
-
-func (x *ListCfgGroupsByResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCfgGroupsByResponse.ProtoReflect.Descriptor instead.
-func (*ListCfgGroupsByResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ListCfgGroupsByResponse) GetItems() []*ConfigurationGroup {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListCfgGroupsByResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ListHypervisorCapabilitiesRequest represents the parameters for lists all hypervisor capabilities.
-type ListHypervisorCapabilitiesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the hypervisor capability
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the hypervisor for which to restrict the search
-	Hypervisor *string `protobuf:"bytes,2,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHypervisorCapabilitiesRequest) Reset() {
-	*x = ListHypervisorCapabilitiesRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHypervisorCapabilitiesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHypervisorCapabilitiesRequest) ProtoMessage() {}
-
-func (x *ListHypervisorCapabilitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHypervisorCapabilitiesRequest.ProtoReflect.Descriptor instead.
-func (*ListHypervisorCapabilitiesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListHypervisorCapabilitiesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListHypervisorCapabilitiesRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *ListHypervisorCapabilitiesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListHypervisorCapabilitiesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListHypervisorCapabilitiesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListHypervisorCapabilitiesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListHypervisorCapabilitiesResponse represents the response from lists all hypervisor capabilities.
-type ListHypervisorCapabilitiesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of HypervisorCapabilitiess
-	Items []*HypervisorCapabilities `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of HypervisorCapabilitiess
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHypervisorCapabilitiesResponse) Reset() {
-	*x = ListHypervisorCapabilitiesResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHypervisorCapabilitiesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHypervisorCapabilitiesResponse) ProtoMessage() {}
-
-func (x *ListHypervisorCapabilitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHypervisorCapabilitiesResponse.ProtoReflect.Descriptor instead.
-func (*ListHypervisorCapabilitiesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListHypervisorCapabilitiesResponse) GetItems() []*HypervisorCapabilities {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListHypervisorCapabilitiesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ResetCfgRequest represents the parameters for resets a configuration. the configuration will be set to default value for global setting, and removed from account_details or domain_details for account/domain settings
-type ResetCfgRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the configuration
-	CfgName *string `protobuf:"bytes,1,opt,name=cfg_name,json=cfgName" json:"cfg_name,omitempty"`
-	// the ID of the Zone to reset the parameter value for corresponding zone
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the ID of the Cluster to reset the parameter value for corresponding cluster
-	ClusterId *int64 `protobuf:"varint,3,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// the ID of the Storage pool to reset the parameter value for corresponding storage pool
-	StoragePoolId *int64 `protobuf:"varint,4,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
-	// the ID of the Domain to reset the parameter value for corresponding domain
-	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the ID of the Account to reset the parameter value for corresponding account
-	AccountId *int64 `protobuf:"varint,6,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// the ID of the Image Store to reset the parameter value for corresponding image store
-	ImageStoreId *int64 `protobuf:"varint,7,opt,name=image_store_id,json=imageStoreId" json:"image_store_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetCfgRequest) Reset() {
-	*x = ResetCfgRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetCfgRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetCfgRequest) ProtoMessage() {}
-
-func (x *ResetCfgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetCfgRequest.ProtoReflect.Descriptor instead.
-func (*ResetCfgRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ResetCfgRequest) GetCfgName() string {
-	if x != nil && x.CfgName != nil {
-		return *x.CfgName
-	}
-	return ""
-}
-
-func (x *ResetCfgRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ResetCfgRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *ResetCfgRequest) GetStoragePoolId() int64 {
-	if x != nil && x.StoragePoolId != nil {
-		return *x.StoragePoolId
-	}
-	return 0
-}
-
-func (x *ResetCfgRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ResetCfgRequest) GetAccountId() int64 {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return 0
-}
-
-func (x *ResetCfgRequest) GetImageStoreId() int64 {
-	if x != nil && x.ImageStoreId != nil {
-		return *x.ImageStoreId
-	}
-	return 0
-}
-
-func (x *ResetCfgRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResetCfgResponse represents the response from resets a configuration. the configuration will be set to default value for global setting, and removed from account_details or domain_details for account/domain settings
-type ResetCfgResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetCfgResponse) Reset() {
-	*x = ResetCfgResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetCfgResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetCfgResponse) ProtoMessage() {}
-
-func (x *ResetCfgResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetCfgResponse.ProtoReflect.Descriptor instead.
-func (*ResetCfgResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ResetCfgResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListDeploymentPlannersRequest represents the parameters for lists all deploymentplanners available.
-type ListDeploymentPlannersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDeploymentPlannersRequest) Reset() {
-	*x = ListDeploymentPlannersRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDeploymentPlannersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDeploymentPlannersRequest) ProtoMessage() {}
-
-func (x *ListDeploymentPlannersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDeploymentPlannersRequest.ProtoReflect.Descriptor instead.
-func (*ListDeploymentPlannersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ListDeploymentPlannersRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListDeploymentPlannersRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListDeploymentPlannersRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListDeploymentPlannersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListDeploymentPlannersResponse represents the response from lists all deploymentplanners available.
-type ListDeploymentPlannersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of DeploymentPlannerss
-	Items []*DeploymentPlanners `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of DeploymentPlannerss
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDeploymentPlannersResponse) Reset() {
-	*x = ListDeploymentPlannersResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDeploymentPlannersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDeploymentPlannersResponse) ProtoMessage() {}
-
-func (x *ListDeploymentPlannersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDeploymentPlannersResponse.ProtoReflect.Descriptor instead.
-func (*ListDeploymentPlannersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *ListDeploymentPlannersResponse) GetItems() []*DeploymentPlanners {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListDeploymentPlannersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateCfgRequest represents the parameters for updates a configuration.
-type UpdateCfgRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the configuration
-	CfgName *string `protobuf:"bytes,1,opt,name=cfg_name,json=cfgName" json:"cfg_name,omitempty"`
-	// the value of the configuration
-	Value *string `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
-	// the ID of the Zone to update the parameter value for corresponding zone
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the ID of the Cluster to update the parameter value for corresponding cluster
-	ClusterId *int64 `protobuf:"varint,4,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// the ID of the Storage pool to update the parameter value for corresponding storage pool
-	StoragePoolId *int64 `protobuf:"varint,5,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
-	// the ID of the Account to update the parameter value for corresponding account
-	AccountId *int64 `protobuf:"varint,6,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// the ID of the Domain to update the parameter value for corresponding domain
-	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the ID of the Image Store to update the parameter value for corresponding image store
-	ImageStoreId *int64 `protobuf:"varint,8,opt,name=image_store_id,json=imageStoreId" json:"image_store_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateCfgRequest) Reset() {
-	*x = UpdateCfgRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateCfgRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateCfgRequest) ProtoMessage() {}
-
-func (x *UpdateCfgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateCfgRequest.ProtoReflect.Descriptor instead.
-func (*UpdateCfgRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *UpdateCfgRequest) GetCfgName() string {
-	if x != nil && x.CfgName != nil {
-		return *x.CfgName
-	}
-	return ""
-}
-
-func (x *UpdateCfgRequest) GetValue() string {
-	if x != nil && x.Value != nil {
-		return *x.Value
-	}
-	return ""
-}
-
-func (x *UpdateCfgRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *UpdateCfgRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *UpdateCfgRequest) GetStoragePoolId() int64 {
-	if x != nil && x.StoragePoolId != nil {
-		return *x.StoragePoolId
-	}
-	return 0
-}
-
-func (x *UpdateCfgRequest) GetAccountId() int64 {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return 0
-}
-
-func (x *UpdateCfgRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UpdateCfgRequest) GetImageStoreId() int64 {
-	if x != nil && x.ImageStoreId != nil {
-		return *x.ImageStoreId
-	}
-	return 0
-}
-
-func (x *UpdateCfgRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateCfgResponse represents the response from updates a configuration.
-type UpdateCfgResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateCfgResponse) Reset() {
-	*x = UpdateCfgResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateCfgResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateCfgResponse) ProtoMessage() {}
-
-func (x *UpdateCfgResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateCfgResponse.ProtoReflect.Descriptor instead.
-func (*UpdateCfgResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *UpdateCfgResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListCapabilitiesRequest represents the parameters for lists capabilities
-type ListCapabilitiesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	ResponseType  *string `protobuf:"bytes,1,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCapabilitiesRequest) Reset() {
-	*x = ListCapabilitiesRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCapabilitiesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCapabilitiesRequest) ProtoMessage() {}
-
-func (x *ListCapabilitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCapabilitiesRequest.ProtoReflect.Descriptor instead.
-func (*ListCapabilitiesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListCapabilitiesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListCapabilitiesResponse represents the response from lists capabilities
-type ListCapabilitiesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Capabilitiess
-	Items []*Capabilities `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Capabilitiess
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCapabilitiesResponse) Reset() {
-	*x = ListCapabilitiesResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCapabilitiesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCapabilitiesResponse) ProtoMessage() {}
-
-func (x *ListCapabilitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCapabilitiesResponse.ProtoReflect.Descriptor instead.
-func (*ListCapabilitiesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListCapabilitiesResponse) GetItems() []*Capabilities {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListCapabilitiesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
 // UpdateHypervisorCapabilitiesRequest represents the parameters for updates a hypervisor capabilities.
 type UpdateHypervisorCapabilitiesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -871,7 +52,7 @@ type UpdateHypervisorCapabilitiesRequest struct {
 
 func (x *UpdateHypervisorCapabilitiesRequest) Reset() {
 	*x = UpdateHypervisorCapabilitiesRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -883,7 +64,7 @@ func (x *UpdateHypervisorCapabilitiesRequest) String() string {
 func (*UpdateHypervisorCapabilitiesRequest) ProtoMessage() {}
 
 func (x *UpdateHypervisorCapabilitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -896,7 +77,7 @@ func (x *UpdateHypervisorCapabilitiesRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use UpdateHypervisorCapabilitiesRequest.ProtoReflect.Descriptor instead.
 func (*UpdateHypervisorCapabilitiesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UpdateHypervisorCapabilitiesRequest) GetId() int64 {
@@ -980,7 +161,7 @@ type UpdateHypervisorCapabilitiesResponse struct {
 
 func (x *UpdateHypervisorCapabilitiesResponse) Reset() {
 	*x = UpdateHypervisorCapabilitiesResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -992,7 +173,7 @@ func (x *UpdateHypervisorCapabilitiesResponse) String() string {
 func (*UpdateHypervisorCapabilitiesResponse) ProtoMessage() {}
 
 func (x *UpdateHypervisorCapabilitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1005,10 +186,298 @@ func (x *UpdateHypervisorCapabilitiesResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use UpdateHypervisorCapabilitiesResponse.ProtoReflect.Descriptor instead.
 func (*UpdateHypervisorCapabilitiesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UpdateHypervisorCapabilitiesResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListDeploymentPlannersRequest represents the parameters for lists all deploymentplanners available.
+type ListDeploymentPlannersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDeploymentPlannersRequest) Reset() {
+	*x = ListDeploymentPlannersRequest{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDeploymentPlannersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDeploymentPlannersRequest) ProtoMessage() {}
+
+func (x *ListDeploymentPlannersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDeploymentPlannersRequest.ProtoReflect.Descriptor instead.
+func (*ListDeploymentPlannersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListDeploymentPlannersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListDeploymentPlannersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListDeploymentPlannersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListDeploymentPlannersRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListDeploymentPlannersResponse represents the response from lists all deploymentplanners available.
+type ListDeploymentPlannersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of DeploymentPlannerss
+	Items []*DeploymentPlanners `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of DeploymentPlannerss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDeploymentPlannersResponse) Reset() {
+	*x = ListDeploymentPlannersResponse{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDeploymentPlannersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDeploymentPlannersResponse) ProtoMessage() {}
+
+func (x *ListDeploymentPlannersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDeploymentPlannersResponse.ProtoReflect.Descriptor instead.
+func (*ListDeploymentPlannersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListDeploymentPlannersResponse) GetItems() []*DeploymentPlanners {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListDeploymentPlannersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateCfgRequest represents the parameters for updates a configuration.
+type UpdateCfgRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the configuration
+	CfgName *string `protobuf:"bytes,1,opt,name=cfg_name,json=cfgName" json:"cfg_name,omitempty"`
+	// the value of the configuration
+	Value *string `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	// the ID of the Zone to update the parameter value for corresponding zone
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the ID of the Cluster to update the parameter value for corresponding cluster
+	ClusterId *int64 `protobuf:"varint,4,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// the ID of the Storage pool to update the parameter value for corresponding storage pool
+	StoragePoolId *int64 `protobuf:"varint,5,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
+	// the ID of the Account to update the parameter value for corresponding account
+	AccountId *int64 `protobuf:"varint,6,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
+	// the ID of the Domain to update the parameter value for corresponding domain
+	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the Image Store to update the parameter value for corresponding image store
+	ImageStoreId *int64 `protobuf:"varint,8,opt,name=image_store_id,json=imageStoreId" json:"image_store_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCfgRequest) Reset() {
+	*x = UpdateCfgRequest{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCfgRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCfgRequest) ProtoMessage() {}
+
+func (x *UpdateCfgRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCfgRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCfgRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateCfgRequest) GetCfgName() string {
+	if x != nil && x.CfgName != nil {
+		return *x.CfgName
+	}
+	return ""
+}
+
+func (x *UpdateCfgRequest) GetValue() string {
+	if x != nil && x.Value != nil {
+		return *x.Value
+	}
+	return ""
+}
+
+func (x *UpdateCfgRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *UpdateCfgRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *UpdateCfgRequest) GetStoragePoolId() int64 {
+	if x != nil && x.StoragePoolId != nil {
+		return *x.StoragePoolId
+	}
+	return 0
+}
+
+func (x *UpdateCfgRequest) GetAccountId() int64 {
+	if x != nil && x.AccountId != nil {
+		return *x.AccountId
+	}
+	return 0
+}
+
+func (x *UpdateCfgRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UpdateCfgRequest) GetImageStoreId() int64 {
+	if x != nil && x.ImageStoreId != nil {
+		return *x.ImageStoreId
+	}
+	return 0
+}
+
+func (x *UpdateCfgRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateCfgResponse represents the response from updates a configuration.
+type UpdateCfgResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCfgResponse) Reset() {
+	*x = UpdateCfgResponse{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCfgResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCfgResponse) ProtoMessage() {}
+
+func (x *UpdateCfgResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCfgResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCfgResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateCfgResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1051,7 +520,7 @@ type ListCfgsByRequest struct {
 
 func (x *ListCfgsByRequest) Reset() {
 	*x = ListCfgsByRequest{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1063,7 +532,7 @@ func (x *ListCfgsByRequest) String() string {
 func (*ListCfgsByRequest) ProtoMessage() {}
 
 func (x *ListCfgsByRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1076,7 +545,7 @@ func (x *ListCfgsByRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCfgsByRequest.ProtoReflect.Descriptor instead.
 func (*ListCfgsByRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListCfgsByRequest) GetCategory() string {
@@ -1197,7 +666,7 @@ type ListCfgsByResponse struct {
 
 func (x *ListCfgsByResponse) Reset() {
 	*x = ListCfgsByResponse{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1209,7 +678,7 @@ func (x *ListCfgsByResponse) String() string {
 func (*ListCfgsByResponse) ProtoMessage() {}
 
 func (x *ListCfgsByResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1222,7 +691,7 @@ func (x *ListCfgsByResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCfgsByResponse.ProtoReflect.Descriptor instead.
 func (*ListCfgsByResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListCfgsByResponse) GetItems() []*Configuration {
@@ -1239,38 +708,35 @@ func (x *ListCfgsByResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ConfigurationGroup represents a ConfigurationGroup Item
-type ConfigurationGroup struct {
+// ListCfgGroupsByRequest represents the parameters for lists all configuration groups (primarily used for ui).
+type ListCfgGroupsByRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the ConfigurationGroup
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the ConfigurationGroup
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the ConfigurationGroup
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the ConfigurationGroup
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// lists configuration group by group name
+	GroupName *string `protobuf:"bytes,1,opt,name=group_name,json=groupName" json:"group_name,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ConfigurationGroup) Reset() {
-	*x = ConfigurationGroup{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[16]
+func (x *ListCfgGroupsByRequest) Reset() {
+	*x = ListCfgGroupsByRequest{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ConfigurationGroup) String() string {
+func (x *ListCfgGroupsByRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ConfigurationGroup) ProtoMessage() {}
+func (*ListCfgGroupsByRequest) ProtoMessage() {}
 
-func (x *ConfigurationGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[16]
+func (x *ListCfgGroupsByRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1281,78 +747,72 @@ func (x *ConfigurationGroup) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ConfigurationGroup.ProtoReflect.Descriptor instead.
-func (*ConfigurationGroup) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{16}
+// Deprecated: Use ListCfgGroupsByRequest.ProtoReflect.Descriptor instead.
+func (*ListCfgGroupsByRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ConfigurationGroup) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *ListCfgGroupsByRequest) GetGroupName() string {
+	if x != nil && x.GroupName != nil {
+		return *x.GroupName
 	}
 	return ""
 }
 
-func (x *ConfigurationGroup) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ListCfgGroupsByRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ConfigurationGroup) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *ListCfgGroupsByRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListCfgGroupsByRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCfgGroupsByRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *ConfigurationGroup) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *ConfigurationGroup) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// HypervisorCapabilities represents a HypervisorCapabilities Item
-type HypervisorCapabilities struct {
+// ListCfgGroupsByResponse represents the response from lists all configuration groups (primarily used for ui).
+type ListCfgGroupsByResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the HypervisorCapabilities
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the HypervisorCapabilities
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the HypervisorCapabilities
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the HypervisorCapabilities
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The list of ConfigurationGroups
+	Items []*ConfigurationGroup `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of ConfigurationGroups
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *HypervisorCapabilities) Reset() {
-	*x = HypervisorCapabilities{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[17]
+func (x *ListCfgGroupsByResponse) Reset() {
+	*x = ListCfgGroupsByResponse{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *HypervisorCapabilities) String() string {
+func (x *ListCfgGroupsByResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*HypervisorCapabilities) ProtoMessage() {}
+func (*ListCfgGroupsByResponse) ProtoMessage() {}
 
-func (x *HypervisorCapabilities) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[17]
+func (x *ListCfgGroupsByResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1363,44 +823,420 @@ func (x *HypervisorCapabilities) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use HypervisorCapabilities.ProtoReflect.Descriptor instead.
-func (*HypervisorCapabilities) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{17}
+// Deprecated: Use ListCfgGroupsByResponse.ProtoReflect.Descriptor instead.
+func (*ListCfgGroupsByResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *HypervisorCapabilities) GetId() string {
+func (x *ListCfgGroupsByResponse) GetItems() []*ConfigurationGroup {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListCfgGroupsByResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListCapabilitiesRequest represents the parameters for lists capabilities
+type ListCapabilitiesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	ResponseType  *string `protobuf:"bytes,1,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCapabilitiesRequest) Reset() {
+	*x = ListCapabilitiesRequest{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCapabilitiesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCapabilitiesRequest) ProtoMessage() {}
+
+func (x *ListCapabilitiesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCapabilitiesRequest.ProtoReflect.Descriptor instead.
+func (*ListCapabilitiesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListCapabilitiesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListCapabilitiesResponse represents the response from lists capabilities
+type ListCapabilitiesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Capabilitiess
+	Items []*Capabilities `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Capabilitiess
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCapabilitiesResponse) Reset() {
+	*x = ListCapabilitiesResponse{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCapabilitiesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCapabilitiesResponse) ProtoMessage() {}
+
+func (x *ListCapabilitiesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCapabilitiesResponse.ProtoReflect.Descriptor instead.
+func (*ListCapabilitiesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ListCapabilitiesResponse) GetItems() []*Capabilities {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListCapabilitiesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ResetCfgRequest represents the parameters for resets a configuration. the configuration will be set to default value for global setting, and removed from account_details or domain_details for account/domain settings
+type ResetCfgRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the configuration
+	CfgName *string `protobuf:"bytes,1,opt,name=cfg_name,json=cfgName" json:"cfg_name,omitempty"`
+	// the ID of the Zone to reset the parameter value for corresponding zone
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the ID of the Cluster to reset the parameter value for corresponding cluster
+	ClusterId *int64 `protobuf:"varint,3,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// the ID of the Storage pool to reset the parameter value for corresponding storage pool
+	StoragePoolId *int64 `protobuf:"varint,4,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
+	// the ID of the Domain to reset the parameter value for corresponding domain
+	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the Account to reset the parameter value for corresponding account
+	AccountId *int64 `protobuf:"varint,6,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
+	// the ID of the Image Store to reset the parameter value for corresponding image store
+	ImageStoreId *int64 `protobuf:"varint,7,opt,name=image_store_id,json=imageStoreId" json:"image_store_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetCfgRequest) Reset() {
+	*x = ResetCfgRequest{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetCfgRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetCfgRequest) ProtoMessage() {}
+
+func (x *ResetCfgRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetCfgRequest.ProtoReflect.Descriptor instead.
+func (*ResetCfgRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ResetCfgRequest) GetCfgName() string {
+	if x != nil && x.CfgName != nil {
+		return *x.CfgName
+	}
+	return ""
+}
+
+func (x *ResetCfgRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ResetCfgRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *ResetCfgRequest) GetStoragePoolId() int64 {
+	if x != nil && x.StoragePoolId != nil {
+		return *x.StoragePoolId
+	}
+	return 0
+}
+
+func (x *ResetCfgRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ResetCfgRequest) GetAccountId() int64 {
+	if x != nil && x.AccountId != nil {
+		return *x.AccountId
+	}
+	return 0
+}
+
+func (x *ResetCfgRequest) GetImageStoreId() int64 {
+	if x != nil && x.ImageStoreId != nil {
+		return *x.ImageStoreId
+	}
+	return 0
+}
+
+func (x *ResetCfgRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ResetCfgResponse represents the response from resets a configuration. the configuration will be set to default value for global setting, and removed from account_details or domain_details for account/domain settings
+type ResetCfgResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetCfgResponse) Reset() {
+	*x = ResetCfgResponse{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetCfgResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetCfgResponse) ProtoMessage() {}
+
+func (x *ResetCfgResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetCfgResponse.ProtoReflect.Descriptor instead.
+func (*ResetCfgResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ResetCfgResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListHypervisorCapabilitiesRequest represents the parameters for lists all hypervisor capabilities.
+type ListHypervisorCapabilitiesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the hypervisor capability
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the hypervisor for which to restrict the search
+	Hypervisor *string `protobuf:"bytes,2,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHypervisorCapabilitiesRequest) Reset() {
+	*x = ListHypervisorCapabilitiesRequest{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHypervisorCapabilitiesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHypervisorCapabilitiesRequest) ProtoMessage() {}
+
+func (x *ListHypervisorCapabilitiesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHypervisorCapabilitiesRequest.ProtoReflect.Descriptor instead.
+func (*ListHypervisorCapabilitiesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ListHypervisorCapabilitiesRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *HypervisorCapabilities) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ListHypervisorCapabilitiesRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
 	}
 	return ""
 }
 
-func (x *HypervisorCapabilities) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *ListHypervisorCapabilitiesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *HypervisorCapabilities) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *ListHypervisorCapabilitiesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListHypervisorCapabilitiesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListHypervisorCapabilitiesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *HypervisorCapabilities) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+// ListHypervisorCapabilitiesResponse represents the response from lists all hypervisor capabilities.
+type ListHypervisorCapabilitiesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of HypervisorCapabilitiess
+	Items []*HypervisorCapabilities `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of HypervisorCapabilitiess
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHypervisorCapabilitiesResponse) Reset() {
+	*x = ListHypervisorCapabilitiesResponse{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHypervisorCapabilitiesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHypervisorCapabilitiesResponse) ProtoMessage() {}
+
+func (x *ListHypervisorCapabilitiesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
 	}
-	return ""
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHypervisorCapabilitiesResponse.ProtoReflect.Descriptor instead.
+func (*ListHypervisorCapabilitiesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListHypervisorCapabilitiesResponse) GetItems() []*HypervisorCapabilities {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListHypervisorCapabilitiesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // DeploymentPlanners represents a DeploymentPlanners Item
@@ -1422,7 +1258,7 @@ type DeploymentPlanners struct {
 
 func (x *DeploymentPlanners) Reset() {
 	*x = DeploymentPlanners{}
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1434,7 +1270,7 @@ func (x *DeploymentPlanners) String() string {
 func (*DeploymentPlanners) ProtoMessage() {}
 
 func (x *DeploymentPlanners) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1447,7 +1283,7 @@ func (x *DeploymentPlanners) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeploymentPlanners.ProtoReflect.Descriptor instead.
 func (*DeploymentPlanners) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{18}
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeploymentPlanners) GetId() string {
@@ -1479,6 +1315,170 @@ func (x *DeploymentPlanners) GetDescription() string {
 }
 
 func (x *DeploymentPlanners) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Configuration represents a Configuration Item
+type Configuration struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Configuration
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Configuration
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Configuration
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Configuration
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Configuration) Reset() {
+	*x = Configuration{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Configuration) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Configuration) ProtoMessage() {}
+
+func (x *Configuration) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Configuration.ProtoReflect.Descriptor instead.
+func (*Configuration) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *Configuration) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Configuration) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Configuration) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Configuration) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Configuration) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// ConfigurationGroup represents a ConfigurationGroup Item
+type ConfigurationGroup struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the ConfigurationGroup
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the ConfigurationGroup
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the ConfigurationGroup
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the ConfigurationGroup
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigurationGroup) Reset() {
+	*x = ConfigurationGroup{}
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigurationGroup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigurationGroup) ProtoMessage() {}
+
+func (x *ConfigurationGroup) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigurationGroup.ProtoReflect.Descriptor instead.
+func (*ConfigurationGroup) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *ConfigurationGroup) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *ConfigurationGroup) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ConfigurationGroup) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *ConfigurationGroup) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ConfigurationGroup) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -1567,16 +1567,16 @@ func (x *Capabilities) GetCreated() string {
 	return ""
 }
 
-// Configuration represents a Configuration Item
-type Configuration struct {
+// HypervisorCapabilities represents a HypervisorCapabilities Item
+type HypervisorCapabilities struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Configuration
+	// The ID of the HypervisorCapabilities
 	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Configuration
+	// The name of the HypervisorCapabilities
 	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Configuration
+	// The display name of the HypervisorCapabilities
 	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Configuration
+	// The description of the HypervisorCapabilities
 	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
 	// The date this entity was created
 	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
@@ -1584,20 +1584,20 @@ type Configuration struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Configuration) Reset() {
-	*x = Configuration{}
+func (x *HypervisorCapabilities) Reset() {
+	*x = HypervisorCapabilities{}
 	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Configuration) String() string {
+func (x *HypervisorCapabilities) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Configuration) ProtoMessage() {}
+func (*HypervisorCapabilities) ProtoMessage() {}
 
-func (x *Configuration) ProtoReflect() protoreflect.Message {
+func (x *HypervisorCapabilities) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_config_v1_config_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1609,40 +1609,40 @@ func (x *Configuration) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Configuration.ProtoReflect.Descriptor instead.
-func (*Configuration) Descriptor() ([]byte, []int) {
+// Deprecated: Use HypervisorCapabilities.ProtoReflect.Descriptor instead.
+func (*HypervisorCapabilities) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *Configuration) GetId() string {
+func (x *HypervisorCapabilities) GetId() string {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return ""
 }
 
-func (x *Configuration) GetName() string {
+func (x *HypervisorCapabilities) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *Configuration) GetDisplayName() string {
+func (x *HypervisorCapabilities) GetDisplayName() string {
 	if x != nil && x.DisplayName != nil {
 		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *Configuration) GetDescription() string {
+func (x *HypervisorCapabilities) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *Configuration) GetCreated() string {
+func (x *HypervisorCapabilities) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -1935,44 +1935,22 @@ var File_cloudstack_management_config_v1_config_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_config_v1_config_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/config/v1/config.gen.proto\x12\x1fcloudstack.management.config.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xa7\x01\n" +
-	"\x16ListCfgGroupsByRequest\x12\x1d\n" +
-	"\n" +
-	"group_name\x18\x01 \x01(\tR\tgroupName\x12\x18\n" +
-	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x8c\x01\n" +
-	"\x17ListCfgGroupsByResponse\x12I\n" +
-	"\x05items\x18\x01 \x03(\v23.cloudstack.management.config.v1.ConfigurationGroupR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc3\x01\n" +
-	"!ListHypervisorCapabilitiesRequest\x12\x0e\n" +
+	"0cloudstack/management/config/v1/config.gen.proto\x12\x1fcloudstack.management.config.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xfb\x03\n" +
+	"#UpdateHypervisorCapabilitiesRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\n" +
 	"hypervisor\x18\x02 \x01(\tR\n" +
-	"hypervisor\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x9b\x01\n" +
-	"\"ListHypervisorCapabilitiesResponse\x12M\n" +
-	"\x05items\x18\x01 \x03(\v27.cloudstack.management.config.v1.HypervisorCapabilitiesR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa2\x02\n" +
-	"\x0fResetCfgRequest\x12(\n" +
-	"\bcfg_name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\acfgName\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x03 \x01(\x03R\tclusterId\x12&\n" +
-	"\x0fstorage_pool_id\x18\x04 \x01(\x03R\rstoragePoolId\x12\x1b\n" +
-	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"account_id\x18\x06 \x01(\x03R\taccountId\x12$\n" +
-	"\x0eimage_store_id\x18\a \x01(\x03R\fimageStoreId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"S\n" +
-	"\x10ResetCfgResponse\x12?\n" +
+	"hypervisor\x12-\n" +
+	"\x12hypervisor_version\x18\x03 \x01(\tR\x11hypervisorVersion\x12;\n" +
+	"\x16security_group_enabled\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x14securityGroupEnabled\x12(\n" +
+	"\x10max_guests_limit\x18\x05 \x01(\x03R\x0emaxGuestsLimit\x123\n" +
+	"\x16max_data_volumes_limit\x18\x06 \x01(\x05R\x13maxDataVolumesLimit\x12?\n" +
+	"\x18storage_motion_supported\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x16storageMotionSupported\x12<\n" +
+	"\x1bmax_hosts_per_cluster_limit\x18\b \x01(\x05R\x17maxHostsPerClusterLimit\x125\n" +
+	"\x13vm_snapshot_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x11vmSnapshotEnabled\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"g\n" +
+	"$UpdateHypervisorCapabilitiesResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.config.v1.ResultR\x06result\"\x8f\x01\n" +
 	"\x1dListDeploymentPlannersRequest\x12\x18\n" +
 	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
@@ -1997,28 +1975,6 @@ const file_cloudstack_management_config_v1_config_gen_proto_rawDesc = "" +
 	"\x0eimage_store_id\x18\b \x01(\x03R\fimageStoreId\x12#\n" +
 	"\rresponse_type\x18\t \x01(\tR\fresponseType\"T\n" +
 	"\x11UpdateCfgResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.config.v1.ResultR\x06result\">\n" +
-	"\x17ListCapabilitiesRequest\x12#\n" +
-	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x87\x01\n" +
-	"\x18ListCapabilitiesResponse\x12C\n" +
-	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.config.v1.CapabilitiesR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xfb\x03\n" +
-	"#UpdateHypervisorCapabilitiesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
-	"\n" +
-	"hypervisor\x18\x02 \x01(\tR\n" +
-	"hypervisor\x12-\n" +
-	"\x12hypervisor_version\x18\x03 \x01(\tR\x11hypervisorVersion\x12;\n" +
-	"\x16security_group_enabled\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x14securityGroupEnabled\x12(\n" +
-	"\x10max_guests_limit\x18\x05 \x01(\x03R\x0emaxGuestsLimit\x123\n" +
-	"\x16max_data_volumes_limit\x18\x06 \x01(\x05R\x13maxDataVolumesLimit\x12?\n" +
-	"\x18storage_motion_supported\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x16storageMotionSupported\x12<\n" +
-	"\x1bmax_hosts_per_cluster_limit\x18\b \x01(\x05R\x17maxHostsPerClusterLimit\x125\n" +
-	"\x13vm_snapshot_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x11vmSnapshotEnabled\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"g\n" +
-	"$UpdateHypervisorCapabilitiesResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.config.v1.ResultR\x06result\"\xf4\x03\n" +
 	"\x11ListCfgsByRequest\x12\x1a\n" +
 	"\bcategory\x18\x01 \x01(\tR\bcategory\x12+\n" +
@@ -2046,20 +2002,64 @@ const file_cloudstack_management_config_v1_config_gen_proto_rawDesc = "" +
 	"\x12ListCfgsByResponse\x12D\n" +
 	"\x05items\x18\x01 \x03(\v2..cloudstack.management.config.v1.ConfigurationR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa7\x01\n" +
+	"\x16ListCfgGroupsByRequest\x12\x1d\n" +
+	"\n" +
+	"group_name\x18\x01 \x01(\tR\tgroupName\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x8c\x01\n" +
+	"\x17ListCfgGroupsByResponse\x12I\n" +
+	"\x05items\x18\x01 \x03(\v23.cloudstack.management.config.v1.ConfigurationGroupR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\">\n" +
+	"\x17ListCapabilitiesRequest\x12#\n" +
+	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x87\x01\n" +
+	"\x18ListCapabilitiesResponse\x12C\n" +
+	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.config.v1.CapabilitiesR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa2\x02\n" +
+	"\x0fResetCfgRequest\x12(\n" +
+	"\bcfg_name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\acfgName\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\n" +
+	"cluster_id\x18\x03 \x01(\x03R\tclusterId\x12&\n" +
+	"\x0fstorage_pool_id\x18\x04 \x01(\x03R\rstoragePoolId\x12\x1b\n" +
+	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x06 \x01(\x03R\taccountId\x12$\n" +
+	"\x0eimage_store_id\x18\a \x01(\x03R\fimageStoreId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"S\n" +
+	"\x10ResetCfgResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.config.v1.ResultR\x06result\"\xc3\x01\n" +
+	"!ListHypervisorCapabilitiesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
+	"\n" +
+	"hypervisor\x18\x02 \x01(\tR\n" +
+	"hypervisor\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x9b\x01\n" +
+	"\"ListHypervisorCapabilitiesResponse\x12M\n" +
+	"\x05items\x18\x01 \x03(\v27.cloudstack.management.config.v1.HypervisorCapabilitiesR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xa1\x01\n" +
-	"\x12ConfigurationGroup\x12\x18\n" +
+	"\x12DeploymentPlanners\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa5\x01\n" +
-	"\x16HypervisorCapabilities\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
+	"\rConfiguration\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\xa1\x01\n" +
-	"\x12DeploymentPlanners\x12\x18\n" +
+	"\x12ConfigurationGroup\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2070,8 +2070,8 @@ const file_cloudstack_management_config_v1_config_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
-	"\rConfiguration\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\xa5\x01\n" +
+	"\x16HypervisorCapabilities\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2106,16 +2106,16 @@ const file_cloudstack_management_config_v1_config_gen_proto_rawDesc = "" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\x86\t\n" +
-	"\rConfigService\x12\x86\x01\n" +
-	"\x0fListCfgGroupsBy\x127.cloudstack.management.config.v1.ListCfgGroupsByRequest\x1a8.cloudstack.management.config.v1.ListCfgGroupsByResponse\"\x00\x12\xa7\x01\n" +
-	"\x1aListHypervisorCapabilities\x12B.cloudstack.management.config.v1.ListHypervisorCapabilitiesRequest\x1aC.cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse\"\x00\x12q\n" +
-	"\bResetCfg\x120.cloudstack.management.config.v1.ResetCfgRequest\x1a1.cloudstack.management.config.v1.ResetCfgResponse\"\x00\x12\x9b\x01\n" +
+	"\rConfigService\x12\xad\x01\n" +
+	"\x1cUpdateHypervisorCapabilities\x12D.cloudstack.management.config.v1.UpdateHypervisorCapabilitiesRequest\x1aE.cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse\"\x00\x12\x9b\x01\n" +
 	"\x16ListDeploymentPlanners\x12>.cloudstack.management.config.v1.ListDeploymentPlannersRequest\x1a?.cloudstack.management.config.v1.ListDeploymentPlannersResponse\"\x00\x12t\n" +
-	"\tUpdateCfg\x121.cloudstack.management.config.v1.UpdateCfgRequest\x1a2.cloudstack.management.config.v1.UpdateCfgResponse\"\x00\x12\x89\x01\n" +
-	"\x10ListCapabilities\x128.cloudstack.management.config.v1.ListCapabilitiesRequest\x1a9.cloudstack.management.config.v1.ListCapabilitiesResponse\"\x00\x12\xad\x01\n" +
-	"\x1cUpdateHypervisorCapabilities\x12D.cloudstack.management.config.v1.UpdateHypervisorCapabilitiesRequest\x1aE.cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse\"\x00\x12w\n" +
+	"\tUpdateCfg\x121.cloudstack.management.config.v1.UpdateCfgRequest\x1a2.cloudstack.management.config.v1.UpdateCfgResponse\"\x00\x12w\n" +
 	"\n" +
-	"ListCfgsBy\x122.cloudstack.management.config.v1.ListCfgsByRequest\x1a3.cloudstack.management.config.v1.ListCfgsByResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
+	"ListCfgsBy\x122.cloudstack.management.config.v1.ListCfgsByRequest\x1a3.cloudstack.management.config.v1.ListCfgsByResponse\"\x00\x12\x86\x01\n" +
+	"\x0fListCfgGroupsBy\x127.cloudstack.management.config.v1.ListCfgGroupsByRequest\x1a8.cloudstack.management.config.v1.ListCfgGroupsByResponse\"\x00\x12\x89\x01\n" +
+	"\x10ListCapabilities\x128.cloudstack.management.config.v1.ListCapabilitiesRequest\x1a9.cloudstack.management.config.v1.ListCapabilitiesResponse\"\x00\x12q\n" +
+	"\bResetCfg\x120.cloudstack.management.config.v1.ResetCfgRequest\x1a1.cloudstack.management.config.v1.ResetCfgResponse\"\x00\x12\xa7\x01\n" +
+	"\x1aListHypervisorCapabilities\x12B.cloudstack.management.config.v1.ListHypervisorCapabilitiesRequest\x1aC.cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.config.v1B\x0eConfigGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/config/v1;configv1\xa2\x02\x03CMC\xaa\x02\x1fCloudstack.Management.Config.V1\xca\x02\x1fCloudstack\\Management\\Config\\V1\xe2\x02+Cloudstack\\Management\\Config\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Config::V1b\beditionsp\xe8\a"
 
 var (
@@ -2132,58 +2132,58 @@ func file_cloudstack_management_config_v1_config_gen_proto_rawDescGZIP() []byte 
 
 var file_cloudstack_management_config_v1_config_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_cloudstack_management_config_v1_config_gen_proto_goTypes = []any{
-	(*ListCfgGroupsByRequest)(nil),               // 0: cloudstack.management.config.v1.ListCfgGroupsByRequest
-	(*ListCfgGroupsByResponse)(nil),              // 1: cloudstack.management.config.v1.ListCfgGroupsByResponse
-	(*ListHypervisorCapabilitiesRequest)(nil),    // 2: cloudstack.management.config.v1.ListHypervisorCapabilitiesRequest
-	(*ListHypervisorCapabilitiesResponse)(nil),   // 3: cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse
-	(*ResetCfgRequest)(nil),                      // 4: cloudstack.management.config.v1.ResetCfgRequest
-	(*ResetCfgResponse)(nil),                     // 5: cloudstack.management.config.v1.ResetCfgResponse
-	(*ListDeploymentPlannersRequest)(nil),        // 6: cloudstack.management.config.v1.ListDeploymentPlannersRequest
-	(*ListDeploymentPlannersResponse)(nil),       // 7: cloudstack.management.config.v1.ListDeploymentPlannersResponse
-	(*UpdateCfgRequest)(nil),                     // 8: cloudstack.management.config.v1.UpdateCfgRequest
-	(*UpdateCfgResponse)(nil),                    // 9: cloudstack.management.config.v1.UpdateCfgResponse
+	(*UpdateHypervisorCapabilitiesRequest)(nil),  // 0: cloudstack.management.config.v1.UpdateHypervisorCapabilitiesRequest
+	(*UpdateHypervisorCapabilitiesResponse)(nil), // 1: cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse
+	(*ListDeploymentPlannersRequest)(nil),        // 2: cloudstack.management.config.v1.ListDeploymentPlannersRequest
+	(*ListDeploymentPlannersResponse)(nil),       // 3: cloudstack.management.config.v1.ListDeploymentPlannersResponse
+	(*UpdateCfgRequest)(nil),                     // 4: cloudstack.management.config.v1.UpdateCfgRequest
+	(*UpdateCfgResponse)(nil),                    // 5: cloudstack.management.config.v1.UpdateCfgResponse
+	(*ListCfgsByRequest)(nil),                    // 6: cloudstack.management.config.v1.ListCfgsByRequest
+	(*ListCfgsByResponse)(nil),                   // 7: cloudstack.management.config.v1.ListCfgsByResponse
+	(*ListCfgGroupsByRequest)(nil),               // 8: cloudstack.management.config.v1.ListCfgGroupsByRequest
+	(*ListCfgGroupsByResponse)(nil),              // 9: cloudstack.management.config.v1.ListCfgGroupsByResponse
 	(*ListCapabilitiesRequest)(nil),              // 10: cloudstack.management.config.v1.ListCapabilitiesRequest
 	(*ListCapabilitiesResponse)(nil),             // 11: cloudstack.management.config.v1.ListCapabilitiesResponse
-	(*UpdateHypervisorCapabilitiesRequest)(nil),  // 12: cloudstack.management.config.v1.UpdateHypervisorCapabilitiesRequest
-	(*UpdateHypervisorCapabilitiesResponse)(nil), // 13: cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse
-	(*ListCfgsByRequest)(nil),                    // 14: cloudstack.management.config.v1.ListCfgsByRequest
-	(*ListCfgsByResponse)(nil),                   // 15: cloudstack.management.config.v1.ListCfgsByResponse
-	(*ConfigurationGroup)(nil),                   // 16: cloudstack.management.config.v1.ConfigurationGroup
-	(*HypervisorCapabilities)(nil),               // 17: cloudstack.management.config.v1.HypervisorCapabilities
-	(*DeploymentPlanners)(nil),                   // 18: cloudstack.management.config.v1.DeploymentPlanners
+	(*ResetCfgRequest)(nil),                      // 12: cloudstack.management.config.v1.ResetCfgRequest
+	(*ResetCfgResponse)(nil),                     // 13: cloudstack.management.config.v1.ResetCfgResponse
+	(*ListHypervisorCapabilitiesRequest)(nil),    // 14: cloudstack.management.config.v1.ListHypervisorCapabilitiesRequest
+	(*ListHypervisorCapabilitiesResponse)(nil),   // 15: cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse
+	(*DeploymentPlanners)(nil),                   // 16: cloudstack.management.config.v1.DeploymentPlanners
+	(*Configuration)(nil),                        // 17: cloudstack.management.config.v1.Configuration
+	(*ConfigurationGroup)(nil),                   // 18: cloudstack.management.config.v1.ConfigurationGroup
 	(*Capabilities)(nil),                         // 19: cloudstack.management.config.v1.Capabilities
-	(*Configuration)(nil),                        // 20: cloudstack.management.config.v1.Configuration
+	(*HypervisorCapabilities)(nil),               // 20: cloudstack.management.config.v1.HypervisorCapabilities
 	(*Success)(nil),                              // 21: cloudstack.management.config.v1.Success
 	(*Item)(nil),                                 // 22: cloudstack.management.config.v1.Item
 	(*Result)(nil),                               // 23: cloudstack.management.config.v1.Result
 	nil,                                          // 24: cloudstack.management.config.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_config_v1_config_gen_proto_depIdxs = []int32{
-	16, // 0: cloudstack.management.config.v1.ListCfgGroupsByResponse.items:type_name -> cloudstack.management.config.v1.ConfigurationGroup
-	17, // 1: cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse.items:type_name -> cloudstack.management.config.v1.HypervisorCapabilities
-	23, // 2: cloudstack.management.config.v1.ResetCfgResponse.result:type_name -> cloudstack.management.config.v1.Result
-	18, // 3: cloudstack.management.config.v1.ListDeploymentPlannersResponse.items:type_name -> cloudstack.management.config.v1.DeploymentPlanners
-	23, // 4: cloudstack.management.config.v1.UpdateCfgResponse.result:type_name -> cloudstack.management.config.v1.Result
+	23, // 0: cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse.result:type_name -> cloudstack.management.config.v1.Result
+	16, // 1: cloudstack.management.config.v1.ListDeploymentPlannersResponse.items:type_name -> cloudstack.management.config.v1.DeploymentPlanners
+	23, // 2: cloudstack.management.config.v1.UpdateCfgResponse.result:type_name -> cloudstack.management.config.v1.Result
+	17, // 3: cloudstack.management.config.v1.ListCfgsByResponse.items:type_name -> cloudstack.management.config.v1.Configuration
+	18, // 4: cloudstack.management.config.v1.ListCfgGroupsByResponse.items:type_name -> cloudstack.management.config.v1.ConfigurationGroup
 	19, // 5: cloudstack.management.config.v1.ListCapabilitiesResponse.items:type_name -> cloudstack.management.config.v1.Capabilities
-	23, // 6: cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse.result:type_name -> cloudstack.management.config.v1.Result
-	20, // 7: cloudstack.management.config.v1.ListCfgsByResponse.items:type_name -> cloudstack.management.config.v1.Configuration
+	23, // 6: cloudstack.management.config.v1.ResetCfgResponse.result:type_name -> cloudstack.management.config.v1.Result
+	20, // 7: cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse.items:type_name -> cloudstack.management.config.v1.HypervisorCapabilities
 	24, // 8: cloudstack.management.config.v1.Item.details:type_name -> cloudstack.management.config.v1.Item.DetailsEntry
-	0,  // 9: cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy:input_type -> cloudstack.management.config.v1.ListCfgGroupsByRequest
-	2,  // 10: cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities:input_type -> cloudstack.management.config.v1.ListHypervisorCapabilitiesRequest
-	4,  // 11: cloudstack.management.config.v1.ConfigService.ResetCfg:input_type -> cloudstack.management.config.v1.ResetCfgRequest
-	6,  // 12: cloudstack.management.config.v1.ConfigService.ListDeploymentPlanners:input_type -> cloudstack.management.config.v1.ListDeploymentPlannersRequest
-	8,  // 13: cloudstack.management.config.v1.ConfigService.UpdateCfg:input_type -> cloudstack.management.config.v1.UpdateCfgRequest
+	0,  // 9: cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities:input_type -> cloudstack.management.config.v1.UpdateHypervisorCapabilitiesRequest
+	2,  // 10: cloudstack.management.config.v1.ConfigService.ListDeploymentPlanners:input_type -> cloudstack.management.config.v1.ListDeploymentPlannersRequest
+	4,  // 11: cloudstack.management.config.v1.ConfigService.UpdateCfg:input_type -> cloudstack.management.config.v1.UpdateCfgRequest
+	6,  // 12: cloudstack.management.config.v1.ConfigService.ListCfgsBy:input_type -> cloudstack.management.config.v1.ListCfgsByRequest
+	8,  // 13: cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy:input_type -> cloudstack.management.config.v1.ListCfgGroupsByRequest
 	10, // 14: cloudstack.management.config.v1.ConfigService.ListCapabilities:input_type -> cloudstack.management.config.v1.ListCapabilitiesRequest
-	12, // 15: cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities:input_type -> cloudstack.management.config.v1.UpdateHypervisorCapabilitiesRequest
-	14, // 16: cloudstack.management.config.v1.ConfigService.ListCfgsBy:input_type -> cloudstack.management.config.v1.ListCfgsByRequest
-	1,  // 17: cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy:output_type -> cloudstack.management.config.v1.ListCfgGroupsByResponse
-	3,  // 18: cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities:output_type -> cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse
-	5,  // 19: cloudstack.management.config.v1.ConfigService.ResetCfg:output_type -> cloudstack.management.config.v1.ResetCfgResponse
-	7,  // 20: cloudstack.management.config.v1.ConfigService.ListDeploymentPlanners:output_type -> cloudstack.management.config.v1.ListDeploymentPlannersResponse
-	9,  // 21: cloudstack.management.config.v1.ConfigService.UpdateCfg:output_type -> cloudstack.management.config.v1.UpdateCfgResponse
+	12, // 15: cloudstack.management.config.v1.ConfigService.ResetCfg:input_type -> cloudstack.management.config.v1.ResetCfgRequest
+	14, // 16: cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities:input_type -> cloudstack.management.config.v1.ListHypervisorCapabilitiesRequest
+	1,  // 17: cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities:output_type -> cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse
+	3,  // 18: cloudstack.management.config.v1.ConfigService.ListDeploymentPlanners:output_type -> cloudstack.management.config.v1.ListDeploymentPlannersResponse
+	5,  // 19: cloudstack.management.config.v1.ConfigService.UpdateCfg:output_type -> cloudstack.management.config.v1.UpdateCfgResponse
+	7,  // 20: cloudstack.management.config.v1.ConfigService.ListCfgsBy:output_type -> cloudstack.management.config.v1.ListCfgsByResponse
+	9,  // 21: cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy:output_type -> cloudstack.management.config.v1.ListCfgGroupsByResponse
 	11, // 22: cloudstack.management.config.v1.ConfigService.ListCapabilities:output_type -> cloudstack.management.config.v1.ListCapabilitiesResponse
-	13, // 23: cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities:output_type -> cloudstack.management.config.v1.UpdateHypervisorCapabilitiesResponse
-	15, // 24: cloudstack.management.config.v1.ConfigService.ListCfgsBy:output_type -> cloudstack.management.config.v1.ListCfgsByResponse
+	13, // 23: cloudstack.management.config.v1.ConfigService.ResetCfg:output_type -> cloudstack.management.config.v1.ResetCfgResponse
+	15, // 24: cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities:output_type -> cloudstack.management.config.v1.ListHypervisorCapabilitiesResponse
 	17, // [17:25] is the sub-list for method output_type
 	9,  // [9:17] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name

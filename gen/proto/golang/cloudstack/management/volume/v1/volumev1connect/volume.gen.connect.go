@@ -33,140 +33,160 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VolumeServiceRecoverVolumeProcedure is the fully-qualified name of the VolumeService's
-	// RecoverVolume RPC.
-	VolumeServiceRecoverVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/RecoverVolume"
-	// VolumeServiceAttachVolumeProcedure is the fully-qualified name of the VolumeService's
-	// AttachVolume RPC.
-	VolumeServiceAttachVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/AttachVolume"
-	// VolumeServiceAssignVolumeProcedure is the fully-qualified name of the VolumeService's
-	// AssignVolume RPC.
-	VolumeServiceAssignVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/AssignVolume"
-	// VolumeServiceUnmanageVolumeProcedure is the fully-qualified name of the VolumeService's
-	// UnmanageVolume RPC.
-	VolumeServiceUnmanageVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/UnmanageVolume"
-	// VolumeServiceRemoveResourceDetailProcedure is the fully-qualified name of the VolumeService's
-	// RemoveResourceDetail RPC.
-	VolumeServiceRemoveResourceDetailProcedure = "/cloudstack.management.volume.v1.VolumeService/RemoveResourceDetail"
-	// VolumeServiceDetachVolumeProcedure is the fully-qualified name of the VolumeService's
-	// DetachVolume RPC.
-	VolumeServiceDetachVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/DetachVolume"
-	// VolumeServiceListVolumesCmdByAdminProcedure is the fully-qualified name of the VolumeService's
-	// ListVolumesCmdByAdmin RPC.
-	VolumeServiceListVolumesCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/ListVolumesCmdByAdmin"
-	// VolumeServiceDeleteVolumeProcedure is the fully-qualified name of the VolumeService's
-	// DeleteVolume RPC.
-	VolumeServiceDeleteVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/DeleteVolume"
-	// VolumeServiceMigrateVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
-	// MigrateVolumeCmdByAdmin RPC.
-	VolumeServiceMigrateVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/MigrateVolumeCmdByAdmin"
-	// VolumeServiceChangeOfferingForVolumeProcedure is the fully-qualified name of the VolumeService's
-	// ChangeOfferingForVolume RPC.
-	VolumeServiceChangeOfferingForVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ChangeOfferingForVolume"
-	// VolumeServiceResizeVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
-	// ResizeVolumeCmdByAdmin RPC.
-	VolumeServiceResizeVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/ResizeVolumeCmdByAdmin"
-	// VolumeServiceExtractVolumeProcedure is the fully-qualified name of the VolumeService's
-	// ExtractVolume RPC.
-	VolumeServiceExtractVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ExtractVolume"
-	// VolumeServiceResizeVolumeProcedure is the fully-qualified name of the VolumeService's
-	// ResizeVolume RPC.
-	VolumeServiceResizeVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ResizeVolume"
-	// VolumeServiceUploadVolumeProcedure is the fully-qualified name of the VolumeService's
-	// UploadVolume RPC.
-	VolumeServiceUploadVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/UploadVolume"
-	// VolumeServiceCheckAndRepairVolumeProcedure is the fully-qualified name of the VolumeService's
-	// CheckAndRepairVolume RPC.
-	VolumeServiceCheckAndRepairVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/CheckAndRepairVolume"
-	// VolumeServiceCreateVolumeProcedure is the fully-qualified name of the VolumeService's
-	// CreateVolume RPC.
-	VolumeServiceCreateVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/CreateVolume"
-	// VolumeServiceImportVolumeProcedure is the fully-qualified name of the VolumeService's
-	// ImportVolume RPC.
-	VolumeServiceImportVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ImportVolume"
-	// VolumeServiceListVolumesProcedure is the fully-qualified name of the VolumeService's ListVolumes
-	// RPC.
-	VolumeServiceListVolumesProcedure = "/cloudstack.management.volume.v1.VolumeService/ListVolumes"
 	// VolumeServiceDestroyVolumeProcedure is the fully-qualified name of the VolumeService's
 	// DestroyVolume RPC.
 	VolumeServiceDestroyVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/DestroyVolume"
-	// VolumeServiceAddResourceDetailProcedure is the fully-qualified name of the VolumeService's
-	// AddResourceDetail RPC.
-	VolumeServiceAddResourceDetailProcedure = "/cloudstack.management.volume.v1.VolumeService/AddResourceDetail"
-	// VolumeServiceMigrateVolumeProcedure is the fully-qualified name of the VolumeService's
-	// MigrateVolume RPC.
-	VolumeServiceMigrateVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/MigrateVolume"
-	// VolumeServiceListResourceDetailsProcedure is the fully-qualified name of the VolumeService's
-	// ListResourceDetails RPC.
-	VolumeServiceListResourceDetailsProcedure = "/cloudstack.management.volume.v1.VolumeService/ListResourceDetails"
 	// VolumeServiceUpdateVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
 	// UpdateVolumeCmdByAdmin RPC.
 	VolumeServiceUpdateVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/UpdateVolumeCmdByAdmin"
-	// VolumeServiceListVolumesForImportProcedure is the fully-qualified name of the VolumeService's
-	// ListVolumesForImport RPC.
-	VolumeServiceListVolumesForImportProcedure = "/cloudstack.management.volume.v1.VolumeService/ListVolumesForImport"
+	// VolumeServiceCheckAndRepairVolumeProcedure is the fully-qualified name of the VolumeService's
+	// CheckAndRepairVolume RPC.
+	VolumeServiceCheckAndRepairVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/CheckAndRepairVolume"
+	// VolumeServiceExtractVolumeProcedure is the fully-qualified name of the VolumeService's
+	// ExtractVolume RPC.
+	VolumeServiceExtractVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ExtractVolume"
+	// VolumeServiceListVolumesCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// ListVolumesCmdByAdmin RPC.
+	VolumeServiceListVolumesCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/ListVolumesCmdByAdmin"
+	// VolumeServiceUnmanageVolumeProcedure is the fully-qualified name of the VolumeService's
+	// UnmanageVolume RPC.
+	VolumeServiceUnmanageVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/UnmanageVolume"
+	// VolumeServiceUploadVolumeProcedure is the fully-qualified name of the VolumeService's
+	// UploadVolume RPC.
+	VolumeServiceUploadVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/UploadVolume"
+	// VolumeServiceImportVolumeProcedure is the fully-qualified name of the VolumeService's
+	// ImportVolume RPC.
+	VolumeServiceImportVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ImportVolume"
+	// VolumeServiceDetachVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// DetachVolumeCmdByAdmin RPC.
+	VolumeServiceDetachVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/DetachVolumeCmdByAdmin"
+	// VolumeServiceChangeOfferingForVolumeProcedure is the fully-qualified name of the VolumeService's
+	// ChangeOfferingForVolume RPC.
+	VolumeServiceChangeOfferingForVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ChangeOfferingForVolume"
+	// VolumeServiceCreateVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// CreateVolumeCmdByAdmin RPC.
+	VolumeServiceCreateVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/CreateVolumeCmdByAdmin"
+	// VolumeServiceListVolumesProcedure is the fully-qualified name of the VolumeService's ListVolumes
+	// RPC.
+	VolumeServiceListVolumesProcedure = "/cloudstack.management.volume.v1.VolumeService/ListVolumes"
+	// VolumeServiceAssignVolumeProcedure is the fully-qualified name of the VolumeService's
+	// AssignVolume RPC.
+	VolumeServiceAssignVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/AssignVolume"
 	// VolumeServiceGetUploadParamsForVolumeProcedure is the fully-qualified name of the VolumeService's
 	// GetUploadParamsForVolume RPC.
 	VolumeServiceGetUploadParamsForVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/GetUploadParamsForVolume"
+	// VolumeServiceListVolumesForImportProcedure is the fully-qualified name of the VolumeService's
+	// ListVolumesForImport RPC.
+	VolumeServiceListVolumesForImportProcedure = "/cloudstack.management.volume.v1.VolumeService/ListVolumesForImport"
+	// VolumeServiceDeleteVolumeProcedure is the fully-qualified name of the VolumeService's
+	// DeleteVolume RPC.
+	VolumeServiceDeleteVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/DeleteVolume"
+	// VolumeServiceRecoverVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// RecoverVolumeCmdByAdmin RPC.
+	VolumeServiceRecoverVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/RecoverVolumeCmdByAdmin"
+	// VolumeServiceCreateVolumeProcedure is the fully-qualified name of the VolumeService's
+	// CreateVolume RPC.
+	VolumeServiceCreateVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/CreateVolume"
+	// VolumeServiceMigrateVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// MigrateVolumeCmdByAdmin RPC.
+	VolumeServiceMigrateVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/MigrateVolumeCmdByAdmin"
+	// VolumeServiceAddResourceDetailProcedure is the fully-qualified name of the VolumeService's
+	// AddResourceDetail RPC.
+	VolumeServiceAddResourceDetailProcedure = "/cloudstack.management.volume.v1.VolumeService/AddResourceDetail"
+	// VolumeServiceAttachVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// AttachVolumeCmdByAdmin RPC.
+	VolumeServiceAttachVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/AttachVolumeCmdByAdmin"
+	// VolumeServiceListResourceDetailsProcedure is the fully-qualified name of the VolumeService's
+	// ListResourceDetails RPC.
+	VolumeServiceListResourceDetailsProcedure = "/cloudstack.management.volume.v1.VolumeService/ListResourceDetails"
 	// VolumeServiceUpdateVolumeProcedure is the fully-qualified name of the VolumeService's
 	// UpdateVolume RPC.
 	VolumeServiceUpdateVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/UpdateVolume"
+	// VolumeServiceAttachVolumeProcedure is the fully-qualified name of the VolumeService's
+	// AttachVolume RPC.
+	VolumeServiceAttachVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/AttachVolume"
+	// VolumeServiceMigrateVolumeProcedure is the fully-qualified name of the VolumeService's
+	// MigrateVolume RPC.
+	VolumeServiceMigrateVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/MigrateVolume"
+	// VolumeServiceDetachVolumeProcedure is the fully-qualified name of the VolumeService's
+	// DetachVolume RPC.
+	VolumeServiceDetachVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/DetachVolume"
+	// VolumeServiceRemoveResourceDetailProcedure is the fully-qualified name of the VolumeService's
+	// RemoveResourceDetail RPC.
+	VolumeServiceRemoveResourceDetailProcedure = "/cloudstack.management.volume.v1.VolumeService/RemoveResourceDetail"
+	// VolumeServiceRecoverVolumeProcedure is the fully-qualified name of the VolumeService's
+	// RecoverVolume RPC.
+	VolumeServiceRecoverVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/RecoverVolume"
+	// VolumeServiceResizeVolumeCmdByAdminProcedure is the fully-qualified name of the VolumeService's
+	// ResizeVolumeCmdByAdmin RPC.
+	VolumeServiceResizeVolumeCmdByAdminProcedure = "/cloudstack.management.volume.v1.VolumeService/ResizeVolumeCmdByAdmin"
+	// VolumeServiceResizeVolumeProcedure is the fully-qualified name of the VolumeService's
+	// ResizeVolume RPC.
+	VolumeServiceResizeVolumeProcedure = "/cloudstack.management.volume.v1.VolumeService/ResizeVolume"
 )
 
 // VolumeServiceClient is a client for the cloudstack.management.volume.v1.VolumeService service.
 type VolumeServiceClient interface {
-	// RecoverVolume Recovers a Destroy volume.
-	RecoverVolume(context.Context, *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error)
-	// AttachVolume Attaches a disk volume to a virtual machine.
-	AttachVolume(context.Context, *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error)
-	// AssignVolume Changes ownership of a Volume from one account to another.
-	AssignVolume(context.Context, *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error)
-	// UnmanageVolume Unmanage a volume on storage pool.
-	UnmanageVolume(context.Context, *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error)
-	// RemoveResourceDetail Removes detail for the Resource.
-	RemoveResourceDetail(context.Context, *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error)
-	// DetachVolume Detaches a disk volume from a virtual machine.
-	DetachVolume(context.Context, *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error)
-	// ListVolumesCmdByAdmin Lists all volumes.
-	ListVolumesCmdByAdmin(context.Context, *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error)
-	// DeleteVolume Deletes a detached disk volume.
-	DeleteVolume(context.Context, *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error)
-	// MigrateVolumeCmdByAdmin Migrate volume
-	MigrateVolumeCmdByAdmin(context.Context, *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error)
-	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-	ChangeOfferingForVolume(context.Context, *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error)
-	// ResizeVolumeCmdByAdmin Resizes a volume
-	ResizeVolumeCmdByAdmin(context.Context, *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error)
-	// ExtractVolume Extracts volume
-	ExtractVolume(context.Context, *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error)
-	// ResizeVolume Resizes a volume
-	ResizeVolume(context.Context, *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error)
-	// UploadVolume Uploads a data disk.
-	UploadVolume(context.Context, *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error)
-	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
-	CheckAndRepairVolume(context.Context, *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error)
-	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	CreateVolume(context.Context, *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error)
-	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
-	ImportVolume(context.Context, *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error)
-	// ListVolumes Lists all volumes.
-	ListVolumes(context.Context, *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error)
 	// DestroyVolume Destroys a Volume.
 	DestroyVolume(context.Context, *connect.Request[v1.DestroyVolumeRequest]) (*connect.Response[v1.DestroyVolumeResponse], error)
-	// AddResourceDetail Adds detail for the Resource.
-	AddResourceDetail(context.Context, *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error)
-	// MigrateVolume Migrate volume
-	MigrateVolume(context.Context, *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error)
-	// ListResourceDetails List resource detail(s)
-	ListResourceDetails(context.Context, *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error)
 	// UpdateVolumeCmdByAdmin Updates the volume.
 	UpdateVolumeCmdByAdmin(context.Context, *connect.Request[v1.UpdateVolumeCmdByAdminRequest]) (*connect.Response[v1.UpdateVolumeCmdByAdminResponse], error)
-	// ListVolumesForImport Lists unmanaged volumes on a storage pool
-	ListVolumesForImport(context.Context, *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error)
+	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
+	CheckAndRepairVolume(context.Context, *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error)
+	// ExtractVolume Extracts volume
+	ExtractVolume(context.Context, *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error)
+	// ListVolumesCmdByAdmin Lists all volumes.
+	ListVolumesCmdByAdmin(context.Context, *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error)
+	// UnmanageVolume Unmanage a volume on storage pool.
+	UnmanageVolume(context.Context, *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error)
+	// UploadVolume Uploads a data disk.
+	UploadVolume(context.Context, *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error)
+	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
+	ImportVolume(context.Context, *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error)
+	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
+	DetachVolumeCmdByAdmin(context.Context, *connect.Request[v1.DetachVolumeCmdByAdminRequest]) (*connect.Response[v1.DetachVolumeCmdByAdminResponse], error)
+	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+	ChangeOfferingForVolume(context.Context, *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error)
+	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolumeCmdByAdmin(context.Context, *connect.Request[v1.CreateVolumeCmdByAdminRequest]) (*connect.Response[v1.CreateVolumeCmdByAdminResponse], error)
+	// ListVolumes Lists all volumes.
+	ListVolumes(context.Context, *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error)
+	// AssignVolume Changes ownership of a Volume from one account to another.
+	AssignVolume(context.Context, *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error)
 	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
 	GetUploadParamsForVolume(context.Context, *connect.Request[v1.GetUploadParamsForVolumeRequest]) (*connect.Response[v1.GetUploadParamsForVolumeResponse], error)
+	// ListVolumesForImport Lists unmanaged volumes on a storage pool
+	ListVolumesForImport(context.Context, *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error)
+	// DeleteVolume Deletes a detached disk volume.
+	DeleteVolume(context.Context, *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error)
+	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
+	RecoverVolumeCmdByAdmin(context.Context, *connect.Request[v1.RecoverVolumeCmdByAdminRequest]) (*connect.Response[v1.RecoverVolumeCmdByAdminResponse], error)
+	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolume(context.Context, *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error)
+	// MigrateVolumeCmdByAdmin Migrate volume
+	MigrateVolumeCmdByAdmin(context.Context, *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error)
+	// AddResourceDetail Adds detail for the Resource.
+	AddResourceDetail(context.Context, *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error)
+	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
+	AttachVolumeCmdByAdmin(context.Context, *connect.Request[v1.AttachVolumeCmdByAdminRequest]) (*connect.Response[v1.AttachVolumeCmdByAdminResponse], error)
+	// ListResourceDetails List resource detail(s)
+	ListResourceDetails(context.Context, *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error)
 	// UpdateVolume Updates the volume.
 	UpdateVolume(context.Context, *connect.Request[v1.UpdateVolumeRequest]) (*connect.Response[v1.UpdateVolumeResponse], error)
+	// AttachVolume Attaches a disk volume to a virtual machine.
+	AttachVolume(context.Context, *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error)
+	// MigrateVolume Migrate volume
+	MigrateVolume(context.Context, *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error)
+	// DetachVolume Detaches a disk volume from a virtual machine.
+	DetachVolume(context.Context, *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error)
+	// RemoveResourceDetail Removes detail for the Resource.
+	RemoveResourceDetail(context.Context, *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error)
+	// RecoverVolume Recovers a Destroy volume.
+	RecoverVolume(context.Context, *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error)
+	// ResizeVolumeCmdByAdmin Resizes a volume
+	ResizeVolumeCmdByAdmin(context.Context, *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error)
+	// ResizeVolume Resizes a volume
+	ResizeVolume(context.Context, *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error)
 }
 
 // NewVolumeServiceClient constructs a client for the cloudstack.management.volume.v1.VolumeService
@@ -180,136 +200,10 @@ func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	volumeServiceMethods := v1.File_cloudstack_management_volume_v1_volume_gen_proto.Services().ByName("VolumeService").Methods()
 	return &volumeServiceClient{
-		recoverVolume: connect.NewClient[v1.RecoverVolumeRequest, v1.RecoverVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceRecoverVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("RecoverVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		attachVolume: connect.NewClient[v1.AttachVolumeRequest, v1.AttachVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceAttachVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("AttachVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		assignVolume: connect.NewClient[v1.AssignVolumeRequest, v1.AssignVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceAssignVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("AssignVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		unmanageVolume: connect.NewClient[v1.UnmanageVolumeRequest, v1.UnmanageVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceUnmanageVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("UnmanageVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		removeResourceDetail: connect.NewClient[v1.RemoveResourceDetailRequest, v1.RemoveResourceDetailResponse](
-			httpClient,
-			baseURL+VolumeServiceRemoveResourceDetailProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("RemoveResourceDetail")),
-			connect.WithClientOptions(opts...),
-		),
-		detachVolume: connect.NewClient[v1.DetachVolumeRequest, v1.DetachVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceDetachVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("DetachVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		listVolumesCmdByAdmin: connect.NewClient[v1.ListVolumesCmdByAdminRequest, v1.ListVolumesCmdByAdminResponse](
-			httpClient,
-			baseURL+VolumeServiceListVolumesCmdByAdminProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ListVolumesCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVolume: connect.NewClient[v1.DeleteVolumeRequest, v1.DeleteVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceDeleteVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("DeleteVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		migrateVolumeCmdByAdmin: connect.NewClient[v1.MigrateVolumeCmdByAdminRequest, v1.MigrateVolumeCmdByAdminResponse](
-			httpClient,
-			baseURL+VolumeServiceMigrateVolumeCmdByAdminProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("MigrateVolumeCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		changeOfferingForVolume: connect.NewClient[v1.ChangeOfferingForVolumeRequest, v1.ChangeOfferingForVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceChangeOfferingForVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ChangeOfferingForVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		resizeVolumeCmdByAdmin: connect.NewClient[v1.ResizeVolumeCmdByAdminRequest, v1.ResizeVolumeCmdByAdminResponse](
-			httpClient,
-			baseURL+VolumeServiceResizeVolumeCmdByAdminProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ResizeVolumeCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		extractVolume: connect.NewClient[v1.ExtractVolumeRequest, v1.ExtractVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceExtractVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ExtractVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		resizeVolume: connect.NewClient[v1.ResizeVolumeRequest, v1.ResizeVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceResizeVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ResizeVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		uploadVolume: connect.NewClient[v1.UploadVolumeRequest, v1.UploadVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceUploadVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("UploadVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		checkAndRepairVolume: connect.NewClient[v1.CheckAndRepairVolumeRequest, v1.CheckAndRepairVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceCheckAndRepairVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("CheckAndRepairVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		createVolume: connect.NewClient[v1.CreateVolumeRequest, v1.CreateVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceCreateVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("CreateVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		importVolume: connect.NewClient[v1.ImportVolumeRequest, v1.ImportVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceImportVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ImportVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		listVolumes: connect.NewClient[v1.ListVolumesRequest, v1.ListVolumesResponse](
-			httpClient,
-			baseURL+VolumeServiceListVolumesProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ListVolumes")),
-			connect.WithClientOptions(opts...),
-		),
 		destroyVolume: connect.NewClient[v1.DestroyVolumeRequest, v1.DestroyVolumeResponse](
 			httpClient,
 			baseURL+VolumeServiceDestroyVolumeProcedure,
 			connect.WithSchema(volumeServiceMethods.ByName("DestroyVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		addResourceDetail: connect.NewClient[v1.AddResourceDetailRequest, v1.AddResourceDetailResponse](
-			httpClient,
-			baseURL+VolumeServiceAddResourceDetailProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("AddResourceDetail")),
-			connect.WithClientOptions(opts...),
-		),
-		migrateVolume: connect.NewClient[v1.MigrateVolumeRequest, v1.MigrateVolumeResponse](
-			httpClient,
-			baseURL+VolumeServiceMigrateVolumeProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("MigrateVolume")),
-			connect.WithClientOptions(opts...),
-		),
-		listResourceDetails: connect.NewClient[v1.ListResourceDetailsRequest, v1.ListResourceDetailsResponse](
-			httpClient,
-			baseURL+VolumeServiceListResourceDetailsProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ListResourceDetails")),
 			connect.WithClientOptions(opts...),
 		),
 		updateVolumeCmdByAdmin: connect.NewClient[v1.UpdateVolumeCmdByAdminRequest, v1.UpdateVolumeCmdByAdminResponse](
@@ -318,10 +212,70 @@ func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(volumeServiceMethods.ByName("UpdateVolumeCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
-		listVolumesForImport: connect.NewClient[v1.ListVolumesForImportRequest, v1.ListVolumesForImportResponse](
+		checkAndRepairVolume: connect.NewClient[v1.CheckAndRepairVolumeRequest, v1.CheckAndRepairVolumeResponse](
 			httpClient,
-			baseURL+VolumeServiceListVolumesForImportProcedure,
-			connect.WithSchema(volumeServiceMethods.ByName("ListVolumesForImport")),
+			baseURL+VolumeServiceCheckAndRepairVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("CheckAndRepairVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		extractVolume: connect.NewClient[v1.ExtractVolumeRequest, v1.ExtractVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceExtractVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ExtractVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		listVolumesCmdByAdmin: connect.NewClient[v1.ListVolumesCmdByAdminRequest, v1.ListVolumesCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceListVolumesCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ListVolumesCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		unmanageVolume: connect.NewClient[v1.UnmanageVolumeRequest, v1.UnmanageVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceUnmanageVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("UnmanageVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		uploadVolume: connect.NewClient[v1.UploadVolumeRequest, v1.UploadVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceUploadVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("UploadVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		importVolume: connect.NewClient[v1.ImportVolumeRequest, v1.ImportVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceImportVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ImportVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		detachVolumeCmdByAdmin: connect.NewClient[v1.DetachVolumeCmdByAdminRequest, v1.DetachVolumeCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceDetachVolumeCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("DetachVolumeCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		changeOfferingForVolume: connect.NewClient[v1.ChangeOfferingForVolumeRequest, v1.ChangeOfferingForVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceChangeOfferingForVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ChangeOfferingForVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		createVolumeCmdByAdmin: connect.NewClient[v1.CreateVolumeCmdByAdminRequest, v1.CreateVolumeCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceCreateVolumeCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("CreateVolumeCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		listVolumes: connect.NewClient[v1.ListVolumesRequest, v1.ListVolumesResponse](
+			httpClient,
+			baseURL+VolumeServiceListVolumesProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ListVolumes")),
+			connect.WithClientOptions(opts...),
+		),
+		assignVolume: connect.NewClient[v1.AssignVolumeRequest, v1.AssignVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceAssignVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("AssignVolume")),
 			connect.WithClientOptions(opts...),
 		),
 		getUploadParamsForVolume: connect.NewClient[v1.GetUploadParamsForVolumeRequest, v1.GetUploadParamsForVolumeResponse](
@@ -330,10 +284,100 @@ func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(volumeServiceMethods.ByName("GetUploadParamsForVolume")),
 			connect.WithClientOptions(opts...),
 		),
+		listVolumesForImport: connect.NewClient[v1.ListVolumesForImportRequest, v1.ListVolumesForImportResponse](
+			httpClient,
+			baseURL+VolumeServiceListVolumesForImportProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ListVolumesForImport")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteVolume: connect.NewClient[v1.DeleteVolumeRequest, v1.DeleteVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceDeleteVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("DeleteVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		recoverVolumeCmdByAdmin: connect.NewClient[v1.RecoverVolumeCmdByAdminRequest, v1.RecoverVolumeCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceRecoverVolumeCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("RecoverVolumeCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		createVolume: connect.NewClient[v1.CreateVolumeRequest, v1.CreateVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceCreateVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("CreateVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		migrateVolumeCmdByAdmin: connect.NewClient[v1.MigrateVolumeCmdByAdminRequest, v1.MigrateVolumeCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceMigrateVolumeCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("MigrateVolumeCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		addResourceDetail: connect.NewClient[v1.AddResourceDetailRequest, v1.AddResourceDetailResponse](
+			httpClient,
+			baseURL+VolumeServiceAddResourceDetailProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("AddResourceDetail")),
+			connect.WithClientOptions(opts...),
+		),
+		attachVolumeCmdByAdmin: connect.NewClient[v1.AttachVolumeCmdByAdminRequest, v1.AttachVolumeCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceAttachVolumeCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("AttachVolumeCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		listResourceDetails: connect.NewClient[v1.ListResourceDetailsRequest, v1.ListResourceDetailsResponse](
+			httpClient,
+			baseURL+VolumeServiceListResourceDetailsProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ListResourceDetails")),
+			connect.WithClientOptions(opts...),
+		),
 		updateVolume: connect.NewClient[v1.UpdateVolumeRequest, v1.UpdateVolumeResponse](
 			httpClient,
 			baseURL+VolumeServiceUpdateVolumeProcedure,
 			connect.WithSchema(volumeServiceMethods.ByName("UpdateVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		attachVolume: connect.NewClient[v1.AttachVolumeRequest, v1.AttachVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceAttachVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("AttachVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		migrateVolume: connect.NewClient[v1.MigrateVolumeRequest, v1.MigrateVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceMigrateVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("MigrateVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		detachVolume: connect.NewClient[v1.DetachVolumeRequest, v1.DetachVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceDetachVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("DetachVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		removeResourceDetail: connect.NewClient[v1.RemoveResourceDetailRequest, v1.RemoveResourceDetailResponse](
+			httpClient,
+			baseURL+VolumeServiceRemoveResourceDetailProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("RemoveResourceDetail")),
+			connect.WithClientOptions(opts...),
+		),
+		recoverVolume: connect.NewClient[v1.RecoverVolumeRequest, v1.RecoverVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceRecoverVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("RecoverVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		resizeVolumeCmdByAdmin: connect.NewClient[v1.ResizeVolumeCmdByAdminRequest, v1.ResizeVolumeCmdByAdminResponse](
+			httpClient,
+			baseURL+VolumeServiceResizeVolumeCmdByAdminProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ResizeVolumeCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		resizeVolume: connect.NewClient[v1.ResizeVolumeRequest, v1.ResizeVolumeResponse](
+			httpClient,
+			baseURL+VolumeServiceResizeVolumeProcedure,
+			connect.WithSchema(volumeServiceMethods.ByName("ResizeVolume")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -341,145 +385,41 @@ func NewVolumeServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // volumeServiceClient implements VolumeServiceClient.
 type volumeServiceClient struct {
-	recoverVolume            *connect.Client[v1.RecoverVolumeRequest, v1.RecoverVolumeResponse]
-	attachVolume             *connect.Client[v1.AttachVolumeRequest, v1.AttachVolumeResponse]
-	assignVolume             *connect.Client[v1.AssignVolumeRequest, v1.AssignVolumeResponse]
-	unmanageVolume           *connect.Client[v1.UnmanageVolumeRequest, v1.UnmanageVolumeResponse]
-	removeResourceDetail     *connect.Client[v1.RemoveResourceDetailRequest, v1.RemoveResourceDetailResponse]
-	detachVolume             *connect.Client[v1.DetachVolumeRequest, v1.DetachVolumeResponse]
-	listVolumesCmdByAdmin    *connect.Client[v1.ListVolumesCmdByAdminRequest, v1.ListVolumesCmdByAdminResponse]
-	deleteVolume             *connect.Client[v1.DeleteVolumeRequest, v1.DeleteVolumeResponse]
-	migrateVolumeCmdByAdmin  *connect.Client[v1.MigrateVolumeCmdByAdminRequest, v1.MigrateVolumeCmdByAdminResponse]
-	changeOfferingForVolume  *connect.Client[v1.ChangeOfferingForVolumeRequest, v1.ChangeOfferingForVolumeResponse]
-	resizeVolumeCmdByAdmin   *connect.Client[v1.ResizeVolumeCmdByAdminRequest, v1.ResizeVolumeCmdByAdminResponse]
-	extractVolume            *connect.Client[v1.ExtractVolumeRequest, v1.ExtractVolumeResponse]
-	resizeVolume             *connect.Client[v1.ResizeVolumeRequest, v1.ResizeVolumeResponse]
-	uploadVolume             *connect.Client[v1.UploadVolumeRequest, v1.UploadVolumeResponse]
-	checkAndRepairVolume     *connect.Client[v1.CheckAndRepairVolumeRequest, v1.CheckAndRepairVolumeResponse]
-	createVolume             *connect.Client[v1.CreateVolumeRequest, v1.CreateVolumeResponse]
-	importVolume             *connect.Client[v1.ImportVolumeRequest, v1.ImportVolumeResponse]
-	listVolumes              *connect.Client[v1.ListVolumesRequest, v1.ListVolumesResponse]
 	destroyVolume            *connect.Client[v1.DestroyVolumeRequest, v1.DestroyVolumeResponse]
-	addResourceDetail        *connect.Client[v1.AddResourceDetailRequest, v1.AddResourceDetailResponse]
-	migrateVolume            *connect.Client[v1.MigrateVolumeRequest, v1.MigrateVolumeResponse]
-	listResourceDetails      *connect.Client[v1.ListResourceDetailsRequest, v1.ListResourceDetailsResponse]
 	updateVolumeCmdByAdmin   *connect.Client[v1.UpdateVolumeCmdByAdminRequest, v1.UpdateVolumeCmdByAdminResponse]
-	listVolumesForImport     *connect.Client[v1.ListVolumesForImportRequest, v1.ListVolumesForImportResponse]
+	checkAndRepairVolume     *connect.Client[v1.CheckAndRepairVolumeRequest, v1.CheckAndRepairVolumeResponse]
+	extractVolume            *connect.Client[v1.ExtractVolumeRequest, v1.ExtractVolumeResponse]
+	listVolumesCmdByAdmin    *connect.Client[v1.ListVolumesCmdByAdminRequest, v1.ListVolumesCmdByAdminResponse]
+	unmanageVolume           *connect.Client[v1.UnmanageVolumeRequest, v1.UnmanageVolumeResponse]
+	uploadVolume             *connect.Client[v1.UploadVolumeRequest, v1.UploadVolumeResponse]
+	importVolume             *connect.Client[v1.ImportVolumeRequest, v1.ImportVolumeResponse]
+	detachVolumeCmdByAdmin   *connect.Client[v1.DetachVolumeCmdByAdminRequest, v1.DetachVolumeCmdByAdminResponse]
+	changeOfferingForVolume  *connect.Client[v1.ChangeOfferingForVolumeRequest, v1.ChangeOfferingForVolumeResponse]
+	createVolumeCmdByAdmin   *connect.Client[v1.CreateVolumeCmdByAdminRequest, v1.CreateVolumeCmdByAdminResponse]
+	listVolumes              *connect.Client[v1.ListVolumesRequest, v1.ListVolumesResponse]
+	assignVolume             *connect.Client[v1.AssignVolumeRequest, v1.AssignVolumeResponse]
 	getUploadParamsForVolume *connect.Client[v1.GetUploadParamsForVolumeRequest, v1.GetUploadParamsForVolumeResponse]
+	listVolumesForImport     *connect.Client[v1.ListVolumesForImportRequest, v1.ListVolumesForImportResponse]
+	deleteVolume             *connect.Client[v1.DeleteVolumeRequest, v1.DeleteVolumeResponse]
+	recoverVolumeCmdByAdmin  *connect.Client[v1.RecoverVolumeCmdByAdminRequest, v1.RecoverVolumeCmdByAdminResponse]
+	createVolume             *connect.Client[v1.CreateVolumeRequest, v1.CreateVolumeResponse]
+	migrateVolumeCmdByAdmin  *connect.Client[v1.MigrateVolumeCmdByAdminRequest, v1.MigrateVolumeCmdByAdminResponse]
+	addResourceDetail        *connect.Client[v1.AddResourceDetailRequest, v1.AddResourceDetailResponse]
+	attachVolumeCmdByAdmin   *connect.Client[v1.AttachVolumeCmdByAdminRequest, v1.AttachVolumeCmdByAdminResponse]
+	listResourceDetails      *connect.Client[v1.ListResourceDetailsRequest, v1.ListResourceDetailsResponse]
 	updateVolume             *connect.Client[v1.UpdateVolumeRequest, v1.UpdateVolumeResponse]
-}
-
-// RecoverVolume calls cloudstack.management.volume.v1.VolumeService.RecoverVolume.
-func (c *volumeServiceClient) RecoverVolume(ctx context.Context, req *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error) {
-	return c.recoverVolume.CallUnary(ctx, req)
-}
-
-// AttachVolume calls cloudstack.management.volume.v1.VolumeService.AttachVolume.
-func (c *volumeServiceClient) AttachVolume(ctx context.Context, req *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error) {
-	return c.attachVolume.CallUnary(ctx, req)
-}
-
-// AssignVolume calls cloudstack.management.volume.v1.VolumeService.AssignVolume.
-func (c *volumeServiceClient) AssignVolume(ctx context.Context, req *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error) {
-	return c.assignVolume.CallUnary(ctx, req)
-}
-
-// UnmanageVolume calls cloudstack.management.volume.v1.VolumeService.UnmanageVolume.
-func (c *volumeServiceClient) UnmanageVolume(ctx context.Context, req *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error) {
-	return c.unmanageVolume.CallUnary(ctx, req)
-}
-
-// RemoveResourceDetail calls cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail.
-func (c *volumeServiceClient) RemoveResourceDetail(ctx context.Context, req *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error) {
-	return c.removeResourceDetail.CallUnary(ctx, req)
-}
-
-// DetachVolume calls cloudstack.management.volume.v1.VolumeService.DetachVolume.
-func (c *volumeServiceClient) DetachVolume(ctx context.Context, req *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error) {
-	return c.detachVolume.CallUnary(ctx, req)
-}
-
-// ListVolumesCmdByAdmin calls cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin.
-func (c *volumeServiceClient) ListVolumesCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error) {
-	return c.listVolumesCmdByAdmin.CallUnary(ctx, req)
-}
-
-// DeleteVolume calls cloudstack.management.volume.v1.VolumeService.DeleteVolume.
-func (c *volumeServiceClient) DeleteVolume(ctx context.Context, req *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error) {
-	return c.deleteVolume.CallUnary(ctx, req)
-}
-
-// MigrateVolumeCmdByAdmin calls
-// cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin.
-func (c *volumeServiceClient) MigrateVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error) {
-	return c.migrateVolumeCmdByAdmin.CallUnary(ctx, req)
-}
-
-// ChangeOfferingForVolume calls
-// cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume.
-func (c *volumeServiceClient) ChangeOfferingForVolume(ctx context.Context, req *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error) {
-	return c.changeOfferingForVolume.CallUnary(ctx, req)
-}
-
-// ResizeVolumeCmdByAdmin calls
-// cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin.
-func (c *volumeServiceClient) ResizeVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error) {
-	return c.resizeVolumeCmdByAdmin.CallUnary(ctx, req)
-}
-
-// ExtractVolume calls cloudstack.management.volume.v1.VolumeService.ExtractVolume.
-func (c *volumeServiceClient) ExtractVolume(ctx context.Context, req *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error) {
-	return c.extractVolume.CallUnary(ctx, req)
-}
-
-// ResizeVolume calls cloudstack.management.volume.v1.VolumeService.ResizeVolume.
-func (c *volumeServiceClient) ResizeVolume(ctx context.Context, req *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error) {
-	return c.resizeVolume.CallUnary(ctx, req)
-}
-
-// UploadVolume calls cloudstack.management.volume.v1.VolumeService.UploadVolume.
-func (c *volumeServiceClient) UploadVolume(ctx context.Context, req *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error) {
-	return c.uploadVolume.CallUnary(ctx, req)
-}
-
-// CheckAndRepairVolume calls cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume.
-func (c *volumeServiceClient) CheckAndRepairVolume(ctx context.Context, req *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error) {
-	return c.checkAndRepairVolume.CallUnary(ctx, req)
-}
-
-// CreateVolume calls cloudstack.management.volume.v1.VolumeService.CreateVolume.
-func (c *volumeServiceClient) CreateVolume(ctx context.Context, req *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error) {
-	return c.createVolume.CallUnary(ctx, req)
-}
-
-// ImportVolume calls cloudstack.management.volume.v1.VolumeService.ImportVolume.
-func (c *volumeServiceClient) ImportVolume(ctx context.Context, req *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error) {
-	return c.importVolume.CallUnary(ctx, req)
-}
-
-// ListVolumes calls cloudstack.management.volume.v1.VolumeService.ListVolumes.
-func (c *volumeServiceClient) ListVolumes(ctx context.Context, req *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error) {
-	return c.listVolumes.CallUnary(ctx, req)
+	attachVolume             *connect.Client[v1.AttachVolumeRequest, v1.AttachVolumeResponse]
+	migrateVolume            *connect.Client[v1.MigrateVolumeRequest, v1.MigrateVolumeResponse]
+	detachVolume             *connect.Client[v1.DetachVolumeRequest, v1.DetachVolumeResponse]
+	removeResourceDetail     *connect.Client[v1.RemoveResourceDetailRequest, v1.RemoveResourceDetailResponse]
+	recoverVolume            *connect.Client[v1.RecoverVolumeRequest, v1.RecoverVolumeResponse]
+	resizeVolumeCmdByAdmin   *connect.Client[v1.ResizeVolumeCmdByAdminRequest, v1.ResizeVolumeCmdByAdminResponse]
+	resizeVolume             *connect.Client[v1.ResizeVolumeRequest, v1.ResizeVolumeResponse]
 }
 
 // DestroyVolume calls cloudstack.management.volume.v1.VolumeService.DestroyVolume.
 func (c *volumeServiceClient) DestroyVolume(ctx context.Context, req *connect.Request[v1.DestroyVolumeRequest]) (*connect.Response[v1.DestroyVolumeResponse], error) {
 	return c.destroyVolume.CallUnary(ctx, req)
-}
-
-// AddResourceDetail calls cloudstack.management.volume.v1.VolumeService.AddResourceDetail.
-func (c *volumeServiceClient) AddResourceDetail(ctx context.Context, req *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error) {
-	return c.addResourceDetail.CallUnary(ctx, req)
-}
-
-// MigrateVolume calls cloudstack.management.volume.v1.VolumeService.MigrateVolume.
-func (c *volumeServiceClient) MigrateVolume(ctx context.Context, req *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error) {
-	return c.migrateVolume.CallUnary(ctx, req)
-}
-
-// ListResourceDetails calls cloudstack.management.volume.v1.VolumeService.ListResourceDetails.
-func (c *volumeServiceClient) ListResourceDetails(ctx context.Context, req *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error) {
-	return c.listResourceDetails.CallUnary(ctx, req)
 }
 
 // UpdateVolumeCmdByAdmin calls
@@ -488,9 +428,62 @@ func (c *volumeServiceClient) UpdateVolumeCmdByAdmin(ctx context.Context, req *c
 	return c.updateVolumeCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ListVolumesForImport calls cloudstack.management.volume.v1.VolumeService.ListVolumesForImport.
-func (c *volumeServiceClient) ListVolumesForImport(ctx context.Context, req *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error) {
-	return c.listVolumesForImport.CallUnary(ctx, req)
+// CheckAndRepairVolume calls cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume.
+func (c *volumeServiceClient) CheckAndRepairVolume(ctx context.Context, req *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error) {
+	return c.checkAndRepairVolume.CallUnary(ctx, req)
+}
+
+// ExtractVolume calls cloudstack.management.volume.v1.VolumeService.ExtractVolume.
+func (c *volumeServiceClient) ExtractVolume(ctx context.Context, req *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error) {
+	return c.extractVolume.CallUnary(ctx, req)
+}
+
+// ListVolumesCmdByAdmin calls cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin.
+func (c *volumeServiceClient) ListVolumesCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error) {
+	return c.listVolumesCmdByAdmin.CallUnary(ctx, req)
+}
+
+// UnmanageVolume calls cloudstack.management.volume.v1.VolumeService.UnmanageVolume.
+func (c *volumeServiceClient) UnmanageVolume(ctx context.Context, req *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error) {
+	return c.unmanageVolume.CallUnary(ctx, req)
+}
+
+// UploadVolume calls cloudstack.management.volume.v1.VolumeService.UploadVolume.
+func (c *volumeServiceClient) UploadVolume(ctx context.Context, req *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error) {
+	return c.uploadVolume.CallUnary(ctx, req)
+}
+
+// ImportVolume calls cloudstack.management.volume.v1.VolumeService.ImportVolume.
+func (c *volumeServiceClient) ImportVolume(ctx context.Context, req *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error) {
+	return c.importVolume.CallUnary(ctx, req)
+}
+
+// DetachVolumeCmdByAdmin calls
+// cloudstack.management.volume.v1.VolumeService.DetachVolumeCmdByAdmin.
+func (c *volumeServiceClient) DetachVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.DetachVolumeCmdByAdminRequest]) (*connect.Response[v1.DetachVolumeCmdByAdminResponse], error) {
+	return c.detachVolumeCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ChangeOfferingForVolume calls
+// cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume.
+func (c *volumeServiceClient) ChangeOfferingForVolume(ctx context.Context, req *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error) {
+	return c.changeOfferingForVolume.CallUnary(ctx, req)
+}
+
+// CreateVolumeCmdByAdmin calls
+// cloudstack.management.volume.v1.VolumeService.CreateVolumeCmdByAdmin.
+func (c *volumeServiceClient) CreateVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.CreateVolumeCmdByAdminRequest]) (*connect.Response[v1.CreateVolumeCmdByAdminResponse], error) {
+	return c.createVolumeCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ListVolumes calls cloudstack.management.volume.v1.VolumeService.ListVolumes.
+func (c *volumeServiceClient) ListVolumes(ctx context.Context, req *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error) {
+	return c.listVolumes.CallUnary(ctx, req)
+}
+
+// AssignVolume calls cloudstack.management.volume.v1.VolumeService.AssignVolume.
+func (c *volumeServiceClient) AssignVolume(ctx context.Context, req *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error) {
+	return c.assignVolume.CallUnary(ctx, req)
 }
 
 // GetUploadParamsForVolume calls
@@ -499,66 +492,153 @@ func (c *volumeServiceClient) GetUploadParamsForVolume(ctx context.Context, req 
 	return c.getUploadParamsForVolume.CallUnary(ctx, req)
 }
 
+// ListVolumesForImport calls cloudstack.management.volume.v1.VolumeService.ListVolumesForImport.
+func (c *volumeServiceClient) ListVolumesForImport(ctx context.Context, req *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error) {
+	return c.listVolumesForImport.CallUnary(ctx, req)
+}
+
+// DeleteVolume calls cloudstack.management.volume.v1.VolumeService.DeleteVolume.
+func (c *volumeServiceClient) DeleteVolume(ctx context.Context, req *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error) {
+	return c.deleteVolume.CallUnary(ctx, req)
+}
+
+// RecoverVolumeCmdByAdmin calls
+// cloudstack.management.volume.v1.VolumeService.RecoverVolumeCmdByAdmin.
+func (c *volumeServiceClient) RecoverVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.RecoverVolumeCmdByAdminRequest]) (*connect.Response[v1.RecoverVolumeCmdByAdminResponse], error) {
+	return c.recoverVolumeCmdByAdmin.CallUnary(ctx, req)
+}
+
+// CreateVolume calls cloudstack.management.volume.v1.VolumeService.CreateVolume.
+func (c *volumeServiceClient) CreateVolume(ctx context.Context, req *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error) {
+	return c.createVolume.CallUnary(ctx, req)
+}
+
+// MigrateVolumeCmdByAdmin calls
+// cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin.
+func (c *volumeServiceClient) MigrateVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error) {
+	return c.migrateVolumeCmdByAdmin.CallUnary(ctx, req)
+}
+
+// AddResourceDetail calls cloudstack.management.volume.v1.VolumeService.AddResourceDetail.
+func (c *volumeServiceClient) AddResourceDetail(ctx context.Context, req *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error) {
+	return c.addResourceDetail.CallUnary(ctx, req)
+}
+
+// AttachVolumeCmdByAdmin calls
+// cloudstack.management.volume.v1.VolumeService.AttachVolumeCmdByAdmin.
+func (c *volumeServiceClient) AttachVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.AttachVolumeCmdByAdminRequest]) (*connect.Response[v1.AttachVolumeCmdByAdminResponse], error) {
+	return c.attachVolumeCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ListResourceDetails calls cloudstack.management.volume.v1.VolumeService.ListResourceDetails.
+func (c *volumeServiceClient) ListResourceDetails(ctx context.Context, req *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error) {
+	return c.listResourceDetails.CallUnary(ctx, req)
+}
+
 // UpdateVolume calls cloudstack.management.volume.v1.VolumeService.UpdateVolume.
 func (c *volumeServiceClient) UpdateVolume(ctx context.Context, req *connect.Request[v1.UpdateVolumeRequest]) (*connect.Response[v1.UpdateVolumeResponse], error) {
 	return c.updateVolume.CallUnary(ctx, req)
 }
 
+// AttachVolume calls cloudstack.management.volume.v1.VolumeService.AttachVolume.
+func (c *volumeServiceClient) AttachVolume(ctx context.Context, req *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error) {
+	return c.attachVolume.CallUnary(ctx, req)
+}
+
+// MigrateVolume calls cloudstack.management.volume.v1.VolumeService.MigrateVolume.
+func (c *volumeServiceClient) MigrateVolume(ctx context.Context, req *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error) {
+	return c.migrateVolume.CallUnary(ctx, req)
+}
+
+// DetachVolume calls cloudstack.management.volume.v1.VolumeService.DetachVolume.
+func (c *volumeServiceClient) DetachVolume(ctx context.Context, req *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error) {
+	return c.detachVolume.CallUnary(ctx, req)
+}
+
+// RemoveResourceDetail calls cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail.
+func (c *volumeServiceClient) RemoveResourceDetail(ctx context.Context, req *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error) {
+	return c.removeResourceDetail.CallUnary(ctx, req)
+}
+
+// RecoverVolume calls cloudstack.management.volume.v1.VolumeService.RecoverVolume.
+func (c *volumeServiceClient) RecoverVolume(ctx context.Context, req *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error) {
+	return c.recoverVolume.CallUnary(ctx, req)
+}
+
+// ResizeVolumeCmdByAdmin calls
+// cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin.
+func (c *volumeServiceClient) ResizeVolumeCmdByAdmin(ctx context.Context, req *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error) {
+	return c.resizeVolumeCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ResizeVolume calls cloudstack.management.volume.v1.VolumeService.ResizeVolume.
+func (c *volumeServiceClient) ResizeVolume(ctx context.Context, req *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error) {
+	return c.resizeVolume.CallUnary(ctx, req)
+}
+
 // VolumeServiceHandler is an implementation of the cloudstack.management.volume.v1.VolumeService
 // service.
 type VolumeServiceHandler interface {
-	// RecoverVolume Recovers a Destroy volume.
-	RecoverVolume(context.Context, *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error)
-	// AttachVolume Attaches a disk volume to a virtual machine.
-	AttachVolume(context.Context, *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error)
-	// AssignVolume Changes ownership of a Volume from one account to another.
-	AssignVolume(context.Context, *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error)
-	// UnmanageVolume Unmanage a volume on storage pool.
-	UnmanageVolume(context.Context, *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error)
-	// RemoveResourceDetail Removes detail for the Resource.
-	RemoveResourceDetail(context.Context, *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error)
-	// DetachVolume Detaches a disk volume from a virtual machine.
-	DetachVolume(context.Context, *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error)
-	// ListVolumesCmdByAdmin Lists all volumes.
-	ListVolumesCmdByAdmin(context.Context, *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error)
-	// DeleteVolume Deletes a detached disk volume.
-	DeleteVolume(context.Context, *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error)
-	// MigrateVolumeCmdByAdmin Migrate volume
-	MigrateVolumeCmdByAdmin(context.Context, *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error)
-	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-	ChangeOfferingForVolume(context.Context, *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error)
-	// ResizeVolumeCmdByAdmin Resizes a volume
-	ResizeVolumeCmdByAdmin(context.Context, *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error)
-	// ExtractVolume Extracts volume
-	ExtractVolume(context.Context, *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error)
-	// ResizeVolume Resizes a volume
-	ResizeVolume(context.Context, *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error)
-	// UploadVolume Uploads a data disk.
-	UploadVolume(context.Context, *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error)
-	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
-	CheckAndRepairVolume(context.Context, *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error)
-	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	CreateVolume(context.Context, *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error)
-	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
-	ImportVolume(context.Context, *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error)
-	// ListVolumes Lists all volumes.
-	ListVolumes(context.Context, *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error)
 	// DestroyVolume Destroys a Volume.
 	DestroyVolume(context.Context, *connect.Request[v1.DestroyVolumeRequest]) (*connect.Response[v1.DestroyVolumeResponse], error)
-	// AddResourceDetail Adds detail for the Resource.
-	AddResourceDetail(context.Context, *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error)
-	// MigrateVolume Migrate volume
-	MigrateVolume(context.Context, *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error)
-	// ListResourceDetails List resource detail(s)
-	ListResourceDetails(context.Context, *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error)
 	// UpdateVolumeCmdByAdmin Updates the volume.
 	UpdateVolumeCmdByAdmin(context.Context, *connect.Request[v1.UpdateVolumeCmdByAdminRequest]) (*connect.Response[v1.UpdateVolumeCmdByAdminResponse], error)
-	// ListVolumesForImport Lists unmanaged volumes on a storage pool
-	ListVolumesForImport(context.Context, *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error)
+	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
+	CheckAndRepairVolume(context.Context, *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error)
+	// ExtractVolume Extracts volume
+	ExtractVolume(context.Context, *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error)
+	// ListVolumesCmdByAdmin Lists all volumes.
+	ListVolumesCmdByAdmin(context.Context, *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error)
+	// UnmanageVolume Unmanage a volume on storage pool.
+	UnmanageVolume(context.Context, *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error)
+	// UploadVolume Uploads a data disk.
+	UploadVolume(context.Context, *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error)
+	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
+	ImportVolume(context.Context, *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error)
+	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
+	DetachVolumeCmdByAdmin(context.Context, *connect.Request[v1.DetachVolumeCmdByAdminRequest]) (*connect.Response[v1.DetachVolumeCmdByAdminResponse], error)
+	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+	ChangeOfferingForVolume(context.Context, *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error)
+	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolumeCmdByAdmin(context.Context, *connect.Request[v1.CreateVolumeCmdByAdminRequest]) (*connect.Response[v1.CreateVolumeCmdByAdminResponse], error)
+	// ListVolumes Lists all volumes.
+	ListVolumes(context.Context, *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error)
+	// AssignVolume Changes ownership of a Volume from one account to another.
+	AssignVolume(context.Context, *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error)
 	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
 	GetUploadParamsForVolume(context.Context, *connect.Request[v1.GetUploadParamsForVolumeRequest]) (*connect.Response[v1.GetUploadParamsForVolumeResponse], error)
+	// ListVolumesForImport Lists unmanaged volumes on a storage pool
+	ListVolumesForImport(context.Context, *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error)
+	// DeleteVolume Deletes a detached disk volume.
+	DeleteVolume(context.Context, *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error)
+	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
+	RecoverVolumeCmdByAdmin(context.Context, *connect.Request[v1.RecoverVolumeCmdByAdminRequest]) (*connect.Response[v1.RecoverVolumeCmdByAdminResponse], error)
+	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolume(context.Context, *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error)
+	// MigrateVolumeCmdByAdmin Migrate volume
+	MigrateVolumeCmdByAdmin(context.Context, *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error)
+	// AddResourceDetail Adds detail for the Resource.
+	AddResourceDetail(context.Context, *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error)
+	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
+	AttachVolumeCmdByAdmin(context.Context, *connect.Request[v1.AttachVolumeCmdByAdminRequest]) (*connect.Response[v1.AttachVolumeCmdByAdminResponse], error)
+	// ListResourceDetails List resource detail(s)
+	ListResourceDetails(context.Context, *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error)
 	// UpdateVolume Updates the volume.
 	UpdateVolume(context.Context, *connect.Request[v1.UpdateVolumeRequest]) (*connect.Response[v1.UpdateVolumeResponse], error)
+	// AttachVolume Attaches a disk volume to a virtual machine.
+	AttachVolume(context.Context, *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error)
+	// MigrateVolume Migrate volume
+	MigrateVolume(context.Context, *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error)
+	// DetachVolume Detaches a disk volume from a virtual machine.
+	DetachVolume(context.Context, *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error)
+	// RemoveResourceDetail Removes detail for the Resource.
+	RemoveResourceDetail(context.Context, *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error)
+	// RecoverVolume Recovers a Destroy volume.
+	RecoverVolume(context.Context, *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error)
+	// ResizeVolumeCmdByAdmin Resizes a volume
+	ResizeVolumeCmdByAdmin(context.Context, *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error)
+	// ResizeVolume Resizes a volume
+	ResizeVolume(context.Context, *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error)
 }
 
 // NewVolumeServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -568,136 +648,10 @@ type VolumeServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	volumeServiceMethods := v1.File_cloudstack_management_volume_v1_volume_gen_proto.Services().ByName("VolumeService").Methods()
-	volumeServiceRecoverVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceRecoverVolumeProcedure,
-		svc.RecoverVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("RecoverVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceAttachVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceAttachVolumeProcedure,
-		svc.AttachVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("AttachVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceAssignVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceAssignVolumeProcedure,
-		svc.AssignVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("AssignVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceUnmanageVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceUnmanageVolumeProcedure,
-		svc.UnmanageVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("UnmanageVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceRemoveResourceDetailHandler := connect.NewUnaryHandler(
-		VolumeServiceRemoveResourceDetailProcedure,
-		svc.RemoveResourceDetail,
-		connect.WithSchema(volumeServiceMethods.ByName("RemoveResourceDetail")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceDetachVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceDetachVolumeProcedure,
-		svc.DetachVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("DetachVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceListVolumesCmdByAdminHandler := connect.NewUnaryHandler(
-		VolumeServiceListVolumesCmdByAdminProcedure,
-		svc.ListVolumesCmdByAdmin,
-		connect.WithSchema(volumeServiceMethods.ByName("ListVolumesCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceDeleteVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceDeleteVolumeProcedure,
-		svc.DeleteVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("DeleteVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceMigrateVolumeCmdByAdminHandler := connect.NewUnaryHandler(
-		VolumeServiceMigrateVolumeCmdByAdminProcedure,
-		svc.MigrateVolumeCmdByAdmin,
-		connect.WithSchema(volumeServiceMethods.ByName("MigrateVolumeCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceChangeOfferingForVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceChangeOfferingForVolumeProcedure,
-		svc.ChangeOfferingForVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("ChangeOfferingForVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceResizeVolumeCmdByAdminHandler := connect.NewUnaryHandler(
-		VolumeServiceResizeVolumeCmdByAdminProcedure,
-		svc.ResizeVolumeCmdByAdmin,
-		connect.WithSchema(volumeServiceMethods.ByName("ResizeVolumeCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceExtractVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceExtractVolumeProcedure,
-		svc.ExtractVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("ExtractVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceResizeVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceResizeVolumeProcedure,
-		svc.ResizeVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("ResizeVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceUploadVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceUploadVolumeProcedure,
-		svc.UploadVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("UploadVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceCheckAndRepairVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceCheckAndRepairVolumeProcedure,
-		svc.CheckAndRepairVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("CheckAndRepairVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceCreateVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceCreateVolumeProcedure,
-		svc.CreateVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("CreateVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceImportVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceImportVolumeProcedure,
-		svc.ImportVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("ImportVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceListVolumesHandler := connect.NewUnaryHandler(
-		VolumeServiceListVolumesProcedure,
-		svc.ListVolumes,
-		connect.WithSchema(volumeServiceMethods.ByName("ListVolumes")),
-		connect.WithHandlerOptions(opts...),
-	)
 	volumeServiceDestroyVolumeHandler := connect.NewUnaryHandler(
 		VolumeServiceDestroyVolumeProcedure,
 		svc.DestroyVolume,
 		connect.WithSchema(volumeServiceMethods.ByName("DestroyVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceAddResourceDetailHandler := connect.NewUnaryHandler(
-		VolumeServiceAddResourceDetailProcedure,
-		svc.AddResourceDetail,
-		connect.WithSchema(volumeServiceMethods.ByName("AddResourceDetail")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceMigrateVolumeHandler := connect.NewUnaryHandler(
-		VolumeServiceMigrateVolumeProcedure,
-		svc.MigrateVolume,
-		connect.WithSchema(volumeServiceMethods.ByName("MigrateVolume")),
-		connect.WithHandlerOptions(opts...),
-	)
-	volumeServiceListResourceDetailsHandler := connect.NewUnaryHandler(
-		VolumeServiceListResourceDetailsProcedure,
-		svc.ListResourceDetails,
-		connect.WithSchema(volumeServiceMethods.ByName("ListResourceDetails")),
 		connect.WithHandlerOptions(opts...),
 	)
 	volumeServiceUpdateVolumeCmdByAdminHandler := connect.NewUnaryHandler(
@@ -706,10 +660,70 @@ func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(volumeServiceMethods.ByName("UpdateVolumeCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
-	volumeServiceListVolumesForImportHandler := connect.NewUnaryHandler(
-		VolumeServiceListVolumesForImportProcedure,
-		svc.ListVolumesForImport,
-		connect.WithSchema(volumeServiceMethods.ByName("ListVolumesForImport")),
+	volumeServiceCheckAndRepairVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceCheckAndRepairVolumeProcedure,
+		svc.CheckAndRepairVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("CheckAndRepairVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceExtractVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceExtractVolumeProcedure,
+		svc.ExtractVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("ExtractVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceListVolumesCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceListVolumesCmdByAdminProcedure,
+		svc.ListVolumesCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("ListVolumesCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceUnmanageVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceUnmanageVolumeProcedure,
+		svc.UnmanageVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("UnmanageVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceUploadVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceUploadVolumeProcedure,
+		svc.UploadVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("UploadVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceImportVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceImportVolumeProcedure,
+		svc.ImportVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("ImportVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceDetachVolumeCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceDetachVolumeCmdByAdminProcedure,
+		svc.DetachVolumeCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("DetachVolumeCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceChangeOfferingForVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceChangeOfferingForVolumeProcedure,
+		svc.ChangeOfferingForVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("ChangeOfferingForVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceCreateVolumeCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceCreateVolumeCmdByAdminProcedure,
+		svc.CreateVolumeCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("CreateVolumeCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceListVolumesHandler := connect.NewUnaryHandler(
+		VolumeServiceListVolumesProcedure,
+		svc.ListVolumes,
+		connect.WithSchema(volumeServiceMethods.ByName("ListVolumes")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceAssignVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceAssignVolumeProcedure,
+		svc.AssignVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("AssignVolume")),
 		connect.WithHandlerOptions(opts...),
 	)
 	volumeServiceGetUploadParamsForVolumeHandler := connect.NewUnaryHandler(
@@ -718,66 +732,164 @@ func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(volumeServiceMethods.ByName("GetUploadParamsForVolume")),
 		connect.WithHandlerOptions(opts...),
 	)
+	volumeServiceListVolumesForImportHandler := connect.NewUnaryHandler(
+		VolumeServiceListVolumesForImportProcedure,
+		svc.ListVolumesForImport,
+		connect.WithSchema(volumeServiceMethods.ByName("ListVolumesForImport")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceDeleteVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceDeleteVolumeProcedure,
+		svc.DeleteVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("DeleteVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceRecoverVolumeCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceRecoverVolumeCmdByAdminProcedure,
+		svc.RecoverVolumeCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("RecoverVolumeCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceCreateVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceCreateVolumeProcedure,
+		svc.CreateVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("CreateVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceMigrateVolumeCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceMigrateVolumeCmdByAdminProcedure,
+		svc.MigrateVolumeCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("MigrateVolumeCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceAddResourceDetailHandler := connect.NewUnaryHandler(
+		VolumeServiceAddResourceDetailProcedure,
+		svc.AddResourceDetail,
+		connect.WithSchema(volumeServiceMethods.ByName("AddResourceDetail")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceAttachVolumeCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceAttachVolumeCmdByAdminProcedure,
+		svc.AttachVolumeCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("AttachVolumeCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceListResourceDetailsHandler := connect.NewUnaryHandler(
+		VolumeServiceListResourceDetailsProcedure,
+		svc.ListResourceDetails,
+		connect.WithSchema(volumeServiceMethods.ByName("ListResourceDetails")),
+		connect.WithHandlerOptions(opts...),
+	)
 	volumeServiceUpdateVolumeHandler := connect.NewUnaryHandler(
 		VolumeServiceUpdateVolumeProcedure,
 		svc.UpdateVolume,
 		connect.WithSchema(volumeServiceMethods.ByName("UpdateVolume")),
 		connect.WithHandlerOptions(opts...),
 	)
+	volumeServiceAttachVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceAttachVolumeProcedure,
+		svc.AttachVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("AttachVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceMigrateVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceMigrateVolumeProcedure,
+		svc.MigrateVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("MigrateVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceDetachVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceDetachVolumeProcedure,
+		svc.DetachVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("DetachVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceRemoveResourceDetailHandler := connect.NewUnaryHandler(
+		VolumeServiceRemoveResourceDetailProcedure,
+		svc.RemoveResourceDetail,
+		connect.WithSchema(volumeServiceMethods.ByName("RemoveResourceDetail")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceRecoverVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceRecoverVolumeProcedure,
+		svc.RecoverVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("RecoverVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceResizeVolumeCmdByAdminHandler := connect.NewUnaryHandler(
+		VolumeServiceResizeVolumeCmdByAdminProcedure,
+		svc.ResizeVolumeCmdByAdmin,
+		connect.WithSchema(volumeServiceMethods.ByName("ResizeVolumeCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	volumeServiceResizeVolumeHandler := connect.NewUnaryHandler(
+		VolumeServiceResizeVolumeProcedure,
+		svc.ResizeVolume,
+		connect.WithSchema(volumeServiceMethods.ByName("ResizeVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.volume.v1.VolumeService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VolumeServiceRecoverVolumeProcedure:
-			volumeServiceRecoverVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceAttachVolumeProcedure:
-			volumeServiceAttachVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceAssignVolumeProcedure:
-			volumeServiceAssignVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceUnmanageVolumeProcedure:
-			volumeServiceUnmanageVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceRemoveResourceDetailProcedure:
-			volumeServiceRemoveResourceDetailHandler.ServeHTTP(w, r)
-		case VolumeServiceDetachVolumeProcedure:
-			volumeServiceDetachVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceListVolumesCmdByAdminProcedure:
-			volumeServiceListVolumesCmdByAdminHandler.ServeHTTP(w, r)
-		case VolumeServiceDeleteVolumeProcedure:
-			volumeServiceDeleteVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceMigrateVolumeCmdByAdminProcedure:
-			volumeServiceMigrateVolumeCmdByAdminHandler.ServeHTTP(w, r)
-		case VolumeServiceChangeOfferingForVolumeProcedure:
-			volumeServiceChangeOfferingForVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceResizeVolumeCmdByAdminProcedure:
-			volumeServiceResizeVolumeCmdByAdminHandler.ServeHTTP(w, r)
-		case VolumeServiceExtractVolumeProcedure:
-			volumeServiceExtractVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceResizeVolumeProcedure:
-			volumeServiceResizeVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceUploadVolumeProcedure:
-			volumeServiceUploadVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceCheckAndRepairVolumeProcedure:
-			volumeServiceCheckAndRepairVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceCreateVolumeProcedure:
-			volumeServiceCreateVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceImportVolumeProcedure:
-			volumeServiceImportVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceListVolumesProcedure:
-			volumeServiceListVolumesHandler.ServeHTTP(w, r)
 		case VolumeServiceDestroyVolumeProcedure:
 			volumeServiceDestroyVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceAddResourceDetailProcedure:
-			volumeServiceAddResourceDetailHandler.ServeHTTP(w, r)
-		case VolumeServiceMigrateVolumeProcedure:
-			volumeServiceMigrateVolumeHandler.ServeHTTP(w, r)
-		case VolumeServiceListResourceDetailsProcedure:
-			volumeServiceListResourceDetailsHandler.ServeHTTP(w, r)
 		case VolumeServiceUpdateVolumeCmdByAdminProcedure:
 			volumeServiceUpdateVolumeCmdByAdminHandler.ServeHTTP(w, r)
-		case VolumeServiceListVolumesForImportProcedure:
-			volumeServiceListVolumesForImportHandler.ServeHTTP(w, r)
+		case VolumeServiceCheckAndRepairVolumeProcedure:
+			volumeServiceCheckAndRepairVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceExtractVolumeProcedure:
+			volumeServiceExtractVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceListVolumesCmdByAdminProcedure:
+			volumeServiceListVolumesCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceUnmanageVolumeProcedure:
+			volumeServiceUnmanageVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceUploadVolumeProcedure:
+			volumeServiceUploadVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceImportVolumeProcedure:
+			volumeServiceImportVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceDetachVolumeCmdByAdminProcedure:
+			volumeServiceDetachVolumeCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceChangeOfferingForVolumeProcedure:
+			volumeServiceChangeOfferingForVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceCreateVolumeCmdByAdminProcedure:
+			volumeServiceCreateVolumeCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceListVolumesProcedure:
+			volumeServiceListVolumesHandler.ServeHTTP(w, r)
+		case VolumeServiceAssignVolumeProcedure:
+			volumeServiceAssignVolumeHandler.ServeHTTP(w, r)
 		case VolumeServiceGetUploadParamsForVolumeProcedure:
 			volumeServiceGetUploadParamsForVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceListVolumesForImportProcedure:
+			volumeServiceListVolumesForImportHandler.ServeHTTP(w, r)
+		case VolumeServiceDeleteVolumeProcedure:
+			volumeServiceDeleteVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceRecoverVolumeCmdByAdminProcedure:
+			volumeServiceRecoverVolumeCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceCreateVolumeProcedure:
+			volumeServiceCreateVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceMigrateVolumeCmdByAdminProcedure:
+			volumeServiceMigrateVolumeCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceAddResourceDetailProcedure:
+			volumeServiceAddResourceDetailHandler.ServeHTTP(w, r)
+		case VolumeServiceAttachVolumeCmdByAdminProcedure:
+			volumeServiceAttachVolumeCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceListResourceDetailsProcedure:
+			volumeServiceListResourceDetailsHandler.ServeHTTP(w, r)
 		case VolumeServiceUpdateVolumeProcedure:
 			volumeServiceUpdateVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceAttachVolumeProcedure:
+			volumeServiceAttachVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceMigrateVolumeProcedure:
+			volumeServiceMigrateVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceDetachVolumeProcedure:
+			volumeServiceDetachVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceRemoveResourceDetailProcedure:
+			volumeServiceRemoveResourceDetailHandler.ServeHTTP(w, r)
+		case VolumeServiceRecoverVolumeProcedure:
+			volumeServiceRecoverVolumeHandler.ServeHTTP(w, r)
+		case VolumeServiceResizeVolumeCmdByAdminProcedure:
+			volumeServiceResizeVolumeCmdByAdminHandler.ServeHTTP(w, r)
+		case VolumeServiceResizeVolumeProcedure:
+			volumeServiceResizeVolumeHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -787,106 +899,122 @@ func NewVolumeServiceHandler(svc VolumeServiceHandler, opts ...connect.HandlerOp
 // UnimplementedVolumeServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVolumeServiceHandler struct{}
 
-func (UnimplementedVolumeServiceHandler) RecoverVolume(context.Context, *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.RecoverVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) AttachVolume(context.Context, *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AttachVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) AssignVolume(context.Context, *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AssignVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) UnmanageVolume(context.Context, *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.UnmanageVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) RemoveResourceDetail(context.Context, *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) DetachVolume(context.Context, *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.DetachVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ListVolumesCmdByAdmin(context.Context, *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) DeleteVolume(context.Context, *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.DeleteVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) MigrateVolumeCmdByAdmin(context.Context, *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ChangeOfferingForVolume(context.Context, *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ResizeVolumeCmdByAdmin(context.Context, *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ExtractVolume(context.Context, *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ExtractVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ResizeVolume(context.Context, *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ResizeVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) UploadVolume(context.Context, *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.UploadVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) CheckAndRepairVolume(context.Context, *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) CreateVolume(context.Context, *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.CreateVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ImportVolume(context.Context, *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ImportVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ListVolumes(context.Context, *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListVolumes is not implemented"))
-}
-
 func (UnimplementedVolumeServiceHandler) DestroyVolume(context.Context, *connect.Request[v1.DestroyVolumeRequest]) (*connect.Response[v1.DestroyVolumeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.DestroyVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) AddResourceDetail(context.Context, *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AddResourceDetail is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) MigrateVolume(context.Context, *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.MigrateVolume is not implemented"))
-}
-
-func (UnimplementedVolumeServiceHandler) ListResourceDetails(context.Context, *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListResourceDetails is not implemented"))
 }
 
 func (UnimplementedVolumeServiceHandler) UpdateVolumeCmdByAdmin(context.Context, *connect.Request[v1.UpdateVolumeCmdByAdminRequest]) (*connect.Response[v1.UpdateVolumeCmdByAdminResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.UpdateVolumeCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedVolumeServiceHandler) ListVolumesForImport(context.Context, *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListVolumesForImport is not implemented"))
+func (UnimplementedVolumeServiceHandler) CheckAndRepairVolume(context.Context, *connect.Request[v1.CheckAndRepairVolumeRequest]) (*connect.Response[v1.CheckAndRepairVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ExtractVolume(context.Context, *connect.Request[v1.ExtractVolumeRequest]) (*connect.Response[v1.ExtractVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ExtractVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ListVolumesCmdByAdmin(context.Context, *connect.Request[v1.ListVolumesCmdByAdminRequest]) (*connect.Response[v1.ListVolumesCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) UnmanageVolume(context.Context, *connect.Request[v1.UnmanageVolumeRequest]) (*connect.Response[v1.UnmanageVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.UnmanageVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) UploadVolume(context.Context, *connect.Request[v1.UploadVolumeRequest]) (*connect.Response[v1.UploadVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.UploadVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ImportVolume(context.Context, *connect.Request[v1.ImportVolumeRequest]) (*connect.Response[v1.ImportVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ImportVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) DetachVolumeCmdByAdmin(context.Context, *connect.Request[v1.DetachVolumeCmdByAdminRequest]) (*connect.Response[v1.DetachVolumeCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.DetachVolumeCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ChangeOfferingForVolume(context.Context, *connect.Request[v1.ChangeOfferingForVolumeRequest]) (*connect.Response[v1.ChangeOfferingForVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) CreateVolumeCmdByAdmin(context.Context, *connect.Request[v1.CreateVolumeCmdByAdminRequest]) (*connect.Response[v1.CreateVolumeCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.CreateVolumeCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ListVolumes(context.Context, *connect.Request[v1.ListVolumesRequest]) (*connect.Response[v1.ListVolumesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListVolumes is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) AssignVolume(context.Context, *connect.Request[v1.AssignVolumeRequest]) (*connect.Response[v1.AssignVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AssignVolume is not implemented"))
 }
 
 func (UnimplementedVolumeServiceHandler) GetUploadParamsForVolume(context.Context, *connect.Request[v1.GetUploadParamsForVolumeRequest]) (*connect.Response[v1.GetUploadParamsForVolumeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.GetUploadParamsForVolume is not implemented"))
 }
 
+func (UnimplementedVolumeServiceHandler) ListVolumesForImport(context.Context, *connect.Request[v1.ListVolumesForImportRequest]) (*connect.Response[v1.ListVolumesForImportResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListVolumesForImport is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) DeleteVolume(context.Context, *connect.Request[v1.DeleteVolumeRequest]) (*connect.Response[v1.DeleteVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.DeleteVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) RecoverVolumeCmdByAdmin(context.Context, *connect.Request[v1.RecoverVolumeCmdByAdminRequest]) (*connect.Response[v1.RecoverVolumeCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.RecoverVolumeCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) CreateVolume(context.Context, *connect.Request[v1.CreateVolumeRequest]) (*connect.Response[v1.CreateVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.CreateVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) MigrateVolumeCmdByAdmin(context.Context, *connect.Request[v1.MigrateVolumeCmdByAdminRequest]) (*connect.Response[v1.MigrateVolumeCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) AddResourceDetail(context.Context, *connect.Request[v1.AddResourceDetailRequest]) (*connect.Response[v1.AddResourceDetailResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AddResourceDetail is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) AttachVolumeCmdByAdmin(context.Context, *connect.Request[v1.AttachVolumeCmdByAdminRequest]) (*connect.Response[v1.AttachVolumeCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AttachVolumeCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ListResourceDetails(context.Context, *connect.Request[v1.ListResourceDetailsRequest]) (*connect.Response[v1.ListResourceDetailsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ListResourceDetails is not implemented"))
+}
+
 func (UnimplementedVolumeServiceHandler) UpdateVolume(context.Context, *connect.Request[v1.UpdateVolumeRequest]) (*connect.Response[v1.UpdateVolumeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.UpdateVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) AttachVolume(context.Context, *connect.Request[v1.AttachVolumeRequest]) (*connect.Response[v1.AttachVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.AttachVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) MigrateVolume(context.Context, *connect.Request[v1.MigrateVolumeRequest]) (*connect.Response[v1.MigrateVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.MigrateVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) DetachVolume(context.Context, *connect.Request[v1.DetachVolumeRequest]) (*connect.Response[v1.DetachVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.DetachVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) RemoveResourceDetail(context.Context, *connect.Request[v1.RemoveResourceDetailRequest]) (*connect.Response[v1.RemoveResourceDetailResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) RecoverVolume(context.Context, *connect.Request[v1.RecoverVolumeRequest]) (*connect.Response[v1.RecoverVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.RecoverVolume is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ResizeVolumeCmdByAdmin(context.Context, *connect.Request[v1.ResizeVolumeCmdByAdminRequest]) (*connect.Response[v1.ResizeVolumeCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVolumeServiceHandler) ResizeVolume(context.Context, *connect.Request[v1.ResizeVolumeRequest]) (*connect.Response[v1.ResizeVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.volume.v1.VolumeService.ResizeVolume is not implemented"))
 }

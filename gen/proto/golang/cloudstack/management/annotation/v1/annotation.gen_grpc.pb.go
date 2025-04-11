@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AnnotationService_AddAnnotation_FullMethodName              = "/cloudstack.management.annotation.v1.AnnotationService/AddAnnotation"
-	AnnotationService_RemoveAnnotation_FullMethodName           = "/cloudstack.management.annotation.v1.AnnotationService/RemoveAnnotation"
 	AnnotationService_ListAnnotations_FullMethodName            = "/cloudstack.management.annotation.v1.AnnotationService/ListAnnotations"
 	AnnotationService_UpdateAnnotationVisibility_FullMethodName = "/cloudstack.management.annotation.v1.AnnotationService/UpdateAnnotationVisibility"
+	AnnotationService_AddAnnotation_FullMethodName              = "/cloudstack.management.annotation.v1.AnnotationService/AddAnnotation"
+	AnnotationService_RemoveAnnotation_FullMethodName           = "/cloudstack.management.annotation.v1.AnnotationService/RemoveAnnotation"
 )
 
 // AnnotationServiceClient is the client API for AnnotationService service.
@@ -31,14 +31,14 @@ const (
 //
 // AnnotationService provides operations for managing Annotations
 type AnnotationServiceClient interface {
-	// AddAnnotation add an annotation.
-	AddAnnotation(ctx context.Context, in *AddAnnotationRequest, opts ...grpc.CallOption) (*AddAnnotationResponse, error)
-	// RemoveAnnotation remove an annotation.
-	RemoveAnnotation(ctx context.Context, in *RemoveAnnotationRequest, opts ...grpc.CallOption) (*RemoveAnnotationResponse, error)
 	// ListAnnotations Lists annotations.
 	ListAnnotations(ctx context.Context, in *ListAnnotationsRequest, opts ...grpc.CallOption) (*ListAnnotationsResponse, error)
 	// UpdateAnnotationVisibility update an annotation visibility.
 	UpdateAnnotationVisibility(ctx context.Context, in *UpdateAnnotationVisibilityRequest, opts ...grpc.CallOption) (*UpdateAnnotationVisibilityResponse, error)
+	// AddAnnotation add an annotation.
+	AddAnnotation(ctx context.Context, in *AddAnnotationRequest, opts ...grpc.CallOption) (*AddAnnotationResponse, error)
+	// RemoveAnnotation remove an annotation.
+	RemoveAnnotation(ctx context.Context, in *RemoveAnnotationRequest, opts ...grpc.CallOption) (*RemoveAnnotationResponse, error)
 }
 
 type annotationServiceClient struct {
@@ -47,26 +47,6 @@ type annotationServiceClient struct {
 
 func NewAnnotationServiceClient(cc grpc.ClientConnInterface) AnnotationServiceClient {
 	return &annotationServiceClient{cc}
-}
-
-func (c *annotationServiceClient) AddAnnotation(ctx context.Context, in *AddAnnotationRequest, opts ...grpc.CallOption) (*AddAnnotationResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddAnnotationResponse)
-	err := c.cc.Invoke(ctx, AnnotationService_AddAnnotation_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *annotationServiceClient) RemoveAnnotation(ctx context.Context, in *RemoveAnnotationRequest, opts ...grpc.CallOption) (*RemoveAnnotationResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveAnnotationResponse)
-	err := c.cc.Invoke(ctx, AnnotationService_RemoveAnnotation_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *annotationServiceClient) ListAnnotations(ctx context.Context, in *ListAnnotationsRequest, opts ...grpc.CallOption) (*ListAnnotationsResponse, error) {
@@ -89,20 +69,40 @@ func (c *annotationServiceClient) UpdateAnnotationVisibility(ctx context.Context
 	return out, nil
 }
 
+func (c *annotationServiceClient) AddAnnotation(ctx context.Context, in *AddAnnotationRequest, opts ...grpc.CallOption) (*AddAnnotationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddAnnotationResponse)
+	err := c.cc.Invoke(ctx, AnnotationService_AddAnnotation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *annotationServiceClient) RemoveAnnotation(ctx context.Context, in *RemoveAnnotationRequest, opts ...grpc.CallOption) (*RemoveAnnotationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveAnnotationResponse)
+	err := c.cc.Invoke(ctx, AnnotationService_RemoveAnnotation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AnnotationServiceServer is the server API for AnnotationService service.
 // All implementations must embed UnimplementedAnnotationServiceServer
 // for forward compatibility.
 //
 // AnnotationService provides operations for managing Annotations
 type AnnotationServiceServer interface {
-	// AddAnnotation add an annotation.
-	AddAnnotation(context.Context, *AddAnnotationRequest) (*AddAnnotationResponse, error)
-	// RemoveAnnotation remove an annotation.
-	RemoveAnnotation(context.Context, *RemoveAnnotationRequest) (*RemoveAnnotationResponse, error)
 	// ListAnnotations Lists annotations.
 	ListAnnotations(context.Context, *ListAnnotationsRequest) (*ListAnnotationsResponse, error)
 	// UpdateAnnotationVisibility update an annotation visibility.
 	UpdateAnnotationVisibility(context.Context, *UpdateAnnotationVisibilityRequest) (*UpdateAnnotationVisibilityResponse, error)
+	// AddAnnotation add an annotation.
+	AddAnnotation(context.Context, *AddAnnotationRequest) (*AddAnnotationResponse, error)
+	// RemoveAnnotation remove an annotation.
+	RemoveAnnotation(context.Context, *RemoveAnnotationRequest) (*RemoveAnnotationResponse, error)
 	mustEmbedUnimplementedAnnotationServiceServer()
 }
 
@@ -113,17 +113,17 @@ type AnnotationServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAnnotationServiceServer struct{}
 
-func (UnimplementedAnnotationServiceServer) AddAnnotation(context.Context, *AddAnnotationRequest) (*AddAnnotationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddAnnotation not implemented")
-}
-func (UnimplementedAnnotationServiceServer) RemoveAnnotation(context.Context, *RemoveAnnotationRequest) (*RemoveAnnotationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveAnnotation not implemented")
-}
 func (UnimplementedAnnotationServiceServer) ListAnnotations(context.Context, *ListAnnotationsRequest) (*ListAnnotationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotations not implemented")
 }
 func (UnimplementedAnnotationServiceServer) UpdateAnnotationVisibility(context.Context, *UpdateAnnotationVisibilityRequest) (*UpdateAnnotationVisibilityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAnnotationVisibility not implemented")
+}
+func (UnimplementedAnnotationServiceServer) AddAnnotation(context.Context, *AddAnnotationRequest) (*AddAnnotationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddAnnotation not implemented")
+}
+func (UnimplementedAnnotationServiceServer) RemoveAnnotation(context.Context, *RemoveAnnotationRequest) (*RemoveAnnotationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveAnnotation not implemented")
 }
 func (UnimplementedAnnotationServiceServer) mustEmbedUnimplementedAnnotationServiceServer() {}
 func (UnimplementedAnnotationServiceServer) testEmbeddedByValue()                           {}
@@ -144,42 +144,6 @@ func RegisterAnnotationServiceServer(s grpc.ServiceRegistrar, srv AnnotationServ
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&AnnotationService_ServiceDesc, srv)
-}
-
-func _AnnotationService_AddAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddAnnotationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnnotationServiceServer).AddAnnotation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnnotationService_AddAnnotation_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnnotationServiceServer).AddAnnotation(ctx, req.(*AddAnnotationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AnnotationService_RemoveAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveAnnotationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnnotationServiceServer).RemoveAnnotation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnnotationService_RemoveAnnotation_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnnotationServiceServer).RemoveAnnotation(ctx, req.(*RemoveAnnotationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _AnnotationService_ListAnnotations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -218,6 +182,42 @@ func _AnnotationService_UpdateAnnotationVisibility_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AnnotationService_AddAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddAnnotationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnnotationServiceServer).AddAnnotation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AnnotationService_AddAnnotation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnnotationServiceServer).AddAnnotation(ctx, req.(*AddAnnotationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AnnotationService_RemoveAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveAnnotationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnnotationServiceServer).RemoveAnnotation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AnnotationService_RemoveAnnotation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnnotationServiceServer).RemoveAnnotation(ctx, req.(*RemoveAnnotationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AnnotationService_ServiceDesc is the grpc.ServiceDesc for AnnotationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -226,20 +226,20 @@ var AnnotationService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AnnotationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AddAnnotation",
-			Handler:    _AnnotationService_AddAnnotation_Handler,
-		},
-		{
-			MethodName: "RemoveAnnotation",
-			Handler:    _AnnotationService_RemoveAnnotation_Handler,
-		},
-		{
 			MethodName: "ListAnnotations",
 			Handler:    _AnnotationService_ListAnnotations_Handler,
 		},
 		{
 			MethodName: "UpdateAnnotationVisibility",
 			Handler:    _AnnotationService_UpdateAnnotationVisibility_Handler,
+		},
+		{
+			MethodName: "AddAnnotation",
+			Handler:    _AnnotationService_AddAnnotation_Handler,
+		},
+		{
+			MethodName: "RemoveAnnotation",
+			Handler:    _AnnotationService_RemoveAnnotation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

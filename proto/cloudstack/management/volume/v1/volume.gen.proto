@@ -10,8 +10,82 @@ import "google/protobuf/descriptor.proto";
 service VolumeService {
 	option (annotations.service).scope = Scope_USER;
 
-	// RecoverVolume Recovers a Destroy volume.
-	rpc RecoverVolume(RecoverVolumeRequest) returns (RecoverVolumeResponse) {
+	// DestroyVolume Destroys a Volume.
+	rpc DestroyVolume(DestroyVolumeRequest) returns (DestroyVolumeResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// UpdateVolumeCmdByAdmin Updates the volume.
+	rpc UpdateVolumeCmdByAdmin(UpdateVolumeCmdByAdminRequest) returns (UpdateVolumeCmdByAdminResponse) {}
+
+	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
+	rpc CheckAndRepairVolume(CheckAndRepairVolumeRequest) returns (CheckAndRepairVolumeResponse) {}
+
+	// ExtractVolume Extracts volume
+	rpc ExtractVolume(ExtractVolumeRequest) returns (ExtractVolumeResponse) {}
+
+	// ListVolumesCmdByAdmin Lists all volumes.
+	rpc ListVolumesCmdByAdmin(ListVolumesCmdByAdminRequest) returns (ListVolumesCmdByAdminResponse) {}
+
+	// UnmanageVolume Unmanage a volume on storage pool.
+	rpc UnmanageVolume(UnmanageVolumeRequest) returns (UnmanageVolumeResponse) {}
+
+	// UploadVolume Uploads a data disk.
+	rpc UploadVolume(UploadVolumeRequest) returns (UploadVolumeResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
+	rpc ImportVolume(ImportVolumeRequest) returns (ImportVolumeResponse) {}
+
+	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
+	rpc DetachVolumeCmdByAdmin(DetachVolumeCmdByAdminRequest) returns (DetachVolumeCmdByAdminResponse) {}
+
+	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+	rpc ChangeOfferingForVolume(ChangeOfferingForVolumeRequest) returns (ChangeOfferingForVolumeResponse) {}
+
+	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	rpc CreateVolumeCmdByAdmin(CreateVolumeCmdByAdminRequest) returns (CreateVolumeCmdByAdminResponse) {}
+
+	// ListVolumes Lists all volumes.
+	rpc ListVolumes(ListVolumesRequest) returns (ListVolumesResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// AssignVolume Changes ownership of a Volume from one account to another.
+	rpc AssignVolume(AssignVolumeRequest) returns (AssignVolumeResponse) {}
+
+	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
+	rpc GetUploadParamsForVolume(GetUploadParamsForVolumeRequest) returns (GetUploadParamsForVolumeResponse) {}
+
+	// ListVolumesForImport Lists unmanaged volumes on a storage pool
+	rpc ListVolumesForImport(ListVolumesForImportRequest) returns (ListVolumesForImportResponse) {}
+
+	// DeleteVolume Deletes a detached disk volume.
+	rpc DeleteVolume(DeleteVolumeRequest) returns (DeleteVolumeResponse) {}
+
+	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
+	rpc RecoverVolumeCmdByAdmin(RecoverVolumeCmdByAdminRequest) returns (RecoverVolumeCmdByAdminResponse) {}
+
+	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	rpc CreateVolume(CreateVolumeRequest) returns (CreateVolumeResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// MigrateVolumeCmdByAdmin Migrate volume
+	rpc MigrateVolumeCmdByAdmin(MigrateVolumeCmdByAdminRequest) returns (MigrateVolumeCmdByAdminResponse) {}
+
+	// AddResourceDetail Adds detail for the Resource.
+	rpc AddResourceDetail(AddResourceDetailRequest) returns (AddResourceDetailResponse) {}
+
+	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
+	rpc AttachVolumeCmdByAdmin(AttachVolumeCmdByAdminRequest) returns (AttachVolumeCmdByAdminResponse) {}
+
+	// ListResourceDetails List resource detail(s)
+	rpc ListResourceDetails(ListResourceDetailsRequest) returns (ListResourceDetailsResponse) {}
+
+	// UpdateVolume Updates the volume.
+	rpc UpdateVolume(UpdateVolumeRequest) returns (UpdateVolumeResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
@@ -20,247 +94,179 @@ service VolumeService {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// AssignVolume Changes ownership of a Volume from one account to another.
-	rpc AssignVolume(AssignVolumeRequest) returns (AssignVolumeResponse) {}
-
-	// UnmanageVolume Unmanage a volume on storage pool.
-	rpc UnmanageVolume(UnmanageVolumeRequest) returns (UnmanageVolumeResponse) {}
-
-	// RemoveResourceDetail Removes detail for the Resource.
-	rpc RemoveResourceDetail(RemoveResourceDetailRequest) returns (RemoveResourceDetailResponse) {}
+	// MigrateVolume Migrate volume
+	rpc MigrateVolume(MigrateVolumeRequest) returns (MigrateVolumeResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
 
 	// DetachVolume Detaches a disk volume from a virtual machine.
 	rpc DetachVolume(DetachVolumeRequest) returns (DetachVolumeResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// ListVolumesCmdByAdmin Lists all volumes.
-	rpc ListVolumesCmdByAdmin(ListVolumesCmdByAdminRequest) returns (ListVolumesCmdByAdminResponse) {}
+	// RemoveResourceDetail Removes detail for the Resource.
+	rpc RemoveResourceDetail(RemoveResourceDetailRequest) returns (RemoveResourceDetailResponse) {}
 
-	// DeleteVolume Deletes a detached disk volume.
-	rpc DeleteVolume(DeleteVolumeRequest) returns (DeleteVolumeResponse) {}
-
-	// MigrateVolumeCmdByAdmin Migrate volume
-	rpc MigrateVolumeCmdByAdmin(MigrateVolumeCmdByAdminRequest) returns (MigrateVolumeCmdByAdminResponse) {}
-
-	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-	rpc ChangeOfferingForVolume(ChangeOfferingForVolumeRequest) returns (ChangeOfferingForVolumeResponse) {}
+	// RecoverVolume Recovers a Destroy volume.
+	rpc RecoverVolume(RecoverVolumeRequest) returns (RecoverVolumeResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
 
 	// ResizeVolumeCmdByAdmin Resizes a volume
 	rpc ResizeVolumeCmdByAdmin(ResizeVolumeCmdByAdminRequest) returns (ResizeVolumeCmdByAdminResponse) {}
-
-	// ExtractVolume Extracts volume
-	rpc ExtractVolume(ExtractVolumeRequest) returns (ExtractVolumeResponse) {}
 
 	// ResizeVolume Resizes a volume
 	rpc ResizeVolume(ResizeVolumeRequest) returns (ResizeVolumeResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
-
-	// UploadVolume Uploads a data disk.
-	rpc UploadVolume(UploadVolumeRequest) returns (UploadVolumeResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
-	rpc CheckAndRepairVolume(CheckAndRepairVolumeRequest) returns (CheckAndRepairVolumeResponse) {}
-
-	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	rpc CreateVolume(CreateVolumeRequest) returns (CreateVolumeResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
-	rpc ImportVolume(ImportVolumeRequest) returns (ImportVolumeResponse) {}
-
-	// ListVolumes Lists all volumes.
-	rpc ListVolumes(ListVolumesRequest) returns (ListVolumesResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// DestroyVolume Destroys a Volume.
-	rpc DestroyVolume(DestroyVolumeRequest) returns (DestroyVolumeResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// AddResourceDetail Adds detail for the Resource.
-	rpc AddResourceDetail(AddResourceDetailRequest) returns (AddResourceDetailResponse) {}
-
-	// MigrateVolume Migrate volume
-	rpc MigrateVolume(MigrateVolumeRequest) returns (MigrateVolumeResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// ListResourceDetails List resource detail(s)
-	rpc ListResourceDetails(ListResourceDetailsRequest) returns (ListResourceDetailsResponse) {}
-
-	// UpdateVolumeCmdByAdmin Updates the volume.
-	rpc UpdateVolumeCmdByAdmin(UpdateVolumeCmdByAdminRequest) returns (UpdateVolumeCmdByAdminResponse) {}
-
-	// ListVolumesForImport Lists unmanaged volumes on a storage pool
-	rpc ListVolumesForImport(ListVolumesForImportRequest) returns (ListVolumesForImportResponse) {}
-
-	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
-	rpc GetUploadParamsForVolume(GetUploadParamsForVolumeRequest) returns (GetUploadParamsForVolumeResponse) {}
-
-	// UpdateVolume Updates the volume.
-	rpc UpdateVolume(UpdateVolumeRequest) returns (UpdateVolumeResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
 }
 
-// RecoverVolumeRequest represents the parameters for recovers a destroy volume.
-message RecoverVolumeRequest {
+// DestroyVolumeRequest represents the parameters for destroys a volume.
+message DestroyVolumeRequest {
 	// Whether to run this operation as an administrator
 	bool run_as_admin = 1;
 	// The ID of the volume
 	int64 id = 2 [
 		(validate.field).required = true
 	];
-	//
-	string response_type = 3;
-}
-
-// RecoverVolumeResponse represents the response from recovers a destroy volume.
-message RecoverVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AttachVolumeRequest represents the parameters for attaches a disk volume to a virtual machine.
-message AttachVolumeRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
-	int64 device_id = 2;
-	// the ID of the disk volume
-	int64 id = 3 [
-		(validate.field).required = true
+	// If true is passed, the volume is expunged immediately. False by default.
+	bool expunge = 3 [
+		features.field_presence = EXPLICIT
 	];
-	//     the ID of the virtual machine
-	int64 virtual_machine_id = 4 [
-		(validate.field).required = true
-	];
-	//
-	int64 start_event_id = 5;
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 7;
-}
-
-// AttachVolumeResponse represents the response from attaches a disk volume to a virtual machine.
-message AttachVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AssignVolumeRequest represents the parameters for changes ownership of a volume from one account to another.
-message AssignVolumeRequest {
-	// The ID of the volume to be reassigned.
-	int64 volume_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the account to which the volume will be assigned. Mutually exclusive with parameter 'projectid'.
-	int64 account_id = 2;
-
-	// The ID of the project to which the volume will be assigned. Mutually exclusive with 'accountid'.
-	int64 projectid = 3;
-
-	//
-	string response_type = 4;
-}
-
-// AssignVolumeResponse represents the response from changes ownership of a volume from one account to another.
-message AssignVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UnmanageVolumeRequest represents the parameters for unmanage a volume on storage pool.
-message UnmanageVolumeRequest {
-	// The ID of the volume to unmanage
-	int64 volume_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// UnmanageVolumeResponse represents the response from unmanage a volume on storage pool.
-message UnmanageVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveResourceDetailRequest represents the parameters for removes detail for the resource.
-message RemoveResourceDetailRequest {
-	// Delete details matching key/value pairs
-	string key = 1;
-
-	// Delete detail by resource type
-	string resource_type = 2 [
-		(validate.field).required = true
-	];
-
-	// Delete details for resource id
-	string resource_id = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
-	];
-
 	//
 	int64 start_event_id = 4;
-
 	//
 	string injected_job_id = 5 [
 		(validate.field).string.uuid = true
 	];
-
 	//
 	string response_type = 6;
 }
 
-// RemoveResourceDetailResponse represents the response from removes detail for the resource.
-message RemoveResourceDetailResponse {
+// DestroyVolumeResponse represents the response from destroys a volume.
+message DestroyVolumeResponse {
 	// The Result
 	Result result = 1;
 }
 
-// DetachVolumeRequest represents the parameters for detaches a disk volume from a virtual machine.
-message DetachVolumeRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
+// UpdateVolumeCmdByAdminRequest represents the parameters for updates the volume.
+message UpdateVolumeCmdByAdminRequest {
 	// the ID of the disk volume
-	int64 id = 2;
-	// the device ID on the virtual machine where volume is detached from
-	int64 device_id = 3;
-	// the ID of the virtual machine where the volume is detached from
-	int64 virtual_machine_id = 4;
+	int64 id = 1;
+
+	// The path of the volume
+	string path = 2;
+
+	// The chain info of the volume
+	string chain_info = 3;
+
+	// Destination storage pool UUID for the volume
+	int64 storage_id = 4;
+
+	// The state of the volume
+	string state = 5;
+
+	// an optional field, whether to the display the volume to the end user or not.
+	bool display_volume = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// new name of the volume
+	string name = 7 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	bool delete_protection = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 10;
+
+	//
+	string injected_job_id = 11 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 12;
+}
+
+// UpdateVolumeCmdByAdminResponse represents the response from updates the volume.
+message UpdateVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CheckAndRepairVolumeRequest represents the parameters for check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
+message CheckAndRepairVolumeRequest {
+	// The ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// parameter to repair the volume, leaks or all are the possible values
+	string repair = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CheckAndRepairVolumeResponse represents the response from check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
+message CheckAndRepairVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExtractVolumeRequest represents the parameters for extracts volume
+message ExtractVolumeRequest {
+	// the ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the url to which the volume would be extracted
+	string url = 2;
+
+	// the ID of the zone where the volume is located
+	int64 zone_id = 3 [
+		(validate.field).required = true
+	];
+
+	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
+	string mode = 4 [
+		(validate.field).required = true
+	];
+
 	//
 	int64 start_event_id = 5;
+
 	//
 	string injected_job_id = 6 [
 		(validate.field).string.uuid = true
 	];
+
 	//
 	string response_type = 7;
 }
 
-// DetachVolumeResponse represents the response from detaches a disk volume from a virtual machine.
-message DetachVolumeResponse {
+// ExtractVolumeResponse represents the response from extracts volume
+message ExtractVolumeResponse {
 	// The Result
 	Result result = 1;
 }
@@ -382,231 +388,27 @@ message ListVolumesCmdByAdminResponse {
 	int32 total_count = 2;
 }
 
-// DeleteVolumeRequest represents the parameters for deletes a detached disk volume.
-message DeleteVolumeRequest {
-	// The ID of the disk volume
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteVolumeResponse represents the response from deletes a detached disk volume.
-message DeleteVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// MigrateVolumeCmdByAdminRequest represents the parameters for migrate volume
-message MigrateVolumeCmdByAdminRequest {
-	// the ID of the volume
+// UnmanageVolumeRequest represents the parameters for unmanage a volume on storage pool.
+message UnmanageVolumeRequest {
+	// The ID of the volume to unmanage
 	int64 volume_id = 1 [
 		(validate.field).required = true
 	];
 
-	// destination storage pool ID to migrate the volume to
-	int64 storage_id = 2 [
-		(validate.field).required = true
-	];
-
-	// if the volume should be live migrated when it is attached to a running vm
-	bool live_migrate = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
-	int64 new_disk_offering_id = 4;
+	//
+	int64 start_event_id = 2;
 
 	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 7;
+	string response_type = 4;
 }
 
-// MigrateVolumeCmdByAdminResponse represents the response from migrate volume
-message MigrateVolumeCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ChangeOfferingForVolumeRequest represents the parameters for change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-message ChangeOfferingForVolumeRequest {
-	// the ID of the volume
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// new disk offering id
-	int64 new_disk_offering_id = 2 [
-		(validate.field).required = true
-	];
-
-	// New volume size in GB for the custom disk offering
-	int64 size = 3;
-
-	// New minimum number of IOPS for the custom disk offering
-	int64 min_iops = 4;
-
-	// New maximum number of IOPS for the custom disk offering
-	int64 max_iops = 5;
-
-	// Flag for automatic migration of the volume with new disk offering whenever migration is required to apply the offering
-	bool auto_migrate = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Verify OK to Shrink
-	bool shrink_ok = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 8;
-
-	//
-	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 10;
-}
-
-// ChangeOfferingForVolumeResponse represents the response from change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-message ChangeOfferingForVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ResizeVolumeCmdByAdminRequest represents the parameters for resizes a volume
-message ResizeVolumeCmdByAdminRequest {
-	// the ID of the disk volume
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// New minimum number of IOPS
-	int64 min_iops = 2;
-
-	// New maximum number of IOPS
-	int64 max_iops = 3;
-
-	// New volume size in GB
-	int64 size = 4;
-
-	// Verify OK to Shrink
-	bool shrink_ok = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	// new disk offering id
-	int64 new_disk_offering_id = 6;
-
-	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
-	bool auto_migrate = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 8;
-
-	//
-	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 10;
-}
-
-// ResizeVolumeCmdByAdminResponse represents the response from resizes a volume
-message ResizeVolumeCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ExtractVolumeRequest represents the parameters for extracts volume
-message ExtractVolumeRequest {
-	// the ID of the volume
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the url to which the volume would be extracted
-	string url = 2;
-
-	// the ID of the zone where the volume is located
-	int64 zone_id = 3 [
-		(validate.field).required = true
-	];
-
-	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
-	string mode = 4 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// ExtractVolumeResponse represents the response from extracts volume
-message ExtractVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ResizeVolumeRequest represents the parameters for resizes a volume
-message ResizeVolumeRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the ID of the disk volume
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// New minimum number of IOPS
-	int64 min_iops = 3;
-	// New maximum number of IOPS
-	int64 max_iops = 4;
-	// New volume size in GB
-	int64 size = 5;
-	// Verify OK to Shrink
-	bool shrink_ok = 6 [
-		features.field_presence = EXPLICIT
-	];
-	// new disk offering id
-	int64 new_disk_offering_id = 7;
-	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
-	bool auto_migrate = 8 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	int64 start_event_id = 9;
-	//
-	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 11;
-}
-
-// ResizeVolumeResponse represents the response from resizes a volume
-message ResizeVolumeResponse {
+// UnmanageVolumeResponse represents the response from unmanage a volume on storage pool.
+message UnmanageVolumeResponse {
 	// The Result
 	Result result = 1;
 }
@@ -670,93 +472,6 @@ message UploadVolumeResponse {
 	Result result = 1;
 }
 
-// CheckAndRepairVolumeRequest represents the parameters for check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
-message CheckAndRepairVolumeRequest {
-	// The ID of the volume
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// parameter to repair the volume, leaks or all are the possible values
-	string repair = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// CheckAndRepairVolumeResponse represents the response from check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
-message CheckAndRepairVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateVolumeRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
-message CreateVolumeRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the account associated with the disk volume. Must be used with the domainId parameter.
-	string account_name = 2 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-	// the project associated with the volume. Mutually exclusive with account parameter
-	int64 project_id = 3;
-	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
-	int64 domain_id = 4;
-	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
-	int64 disk_offering_id = 5;
-	// the name of the disk volume
-	string volume_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// Arbitrary volume size
-	int64 size = 7;
-	// min iops
-	int64 min_iops = 8;
-	// max iops
-	int64 max_iops = 9;
-	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
-	int64 snapshot_id = 10;
-	// the ID of the availability zone
-	int64 zone_id = 11;
-	// an optional field, whether to display the volume to the end user or not.
-	bool display_volume = 12 [
-		features.field_presence = EXPLICIT
-	];
-	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
-	int64 virtual_machine_id = 13;
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 14 [
-		(validate.field).string.uuid = true
-	];
-	//
-	int64 start_event_id = 15;
-	//
-	string injected_job_id = 16 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 17;
-}
-
-// CreateVolumeResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
-message CreateVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ImportVolumeRequest represents the parameters for import an unmanaged volume from a storage pool on a host into cloudstack
 message ImportVolumeRequest {
 	// the path of the volume
@@ -801,6 +516,156 @@ message ImportVolumeRequest {
 
 // ImportVolumeResponse represents the response from import an unmanaged volume from a storage pool on a host into cloudstack
 message ImportVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DetachVolumeCmdByAdminRequest represents the parameters for detaches a disk volume from a virtual machine.
+message DetachVolumeCmdByAdminRequest {
+	// the ID of the disk volume
+	int64 id = 1;
+
+	// the device ID on the virtual machine where volume is detached from
+	int64 device_id = 2;
+
+	// the ID of the virtual machine where the volume is detached from
+	int64 virtual_machine_id = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// DetachVolumeCmdByAdminResponse represents the response from detaches a disk volume from a virtual machine.
+message DetachVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ChangeOfferingForVolumeRequest represents the parameters for change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+message ChangeOfferingForVolumeRequest {
+	// the ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// new disk offering id
+	int64 new_disk_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// New volume size in GB for the custom disk offering
+	int64 size = 3;
+
+	// New minimum number of IOPS for the custom disk offering
+	int64 min_iops = 4;
+
+	// New maximum number of IOPS for the custom disk offering
+	int64 max_iops = 5;
+
+	// Flag for automatic migration of the volume with new disk offering whenever migration is required to apply the offering
+	bool auto_migrate = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Verify OK to Shrink
+	bool shrink_ok = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 8;
+
+	//
+	string injected_job_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 10;
+}
+
+// ChangeOfferingForVolumeResponse represents the response from change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+message ChangeOfferingForVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVolumeCmdByAdminRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+message CreateVolumeCmdByAdminRequest {
+	// the account associated with the disk volume. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// the project associated with the volume. Mutually exclusive with account parameter
+	int64 project_id = 2;
+
+	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
+	int64 domain_id = 3;
+
+	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
+	int64 disk_offering_id = 4;
+
+	// the name of the disk volume
+	string volume_name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Arbitrary volume size
+	int64 size = 6;
+
+	// min iops
+	int64 min_iops = 7;
+
+	// max iops
+	int64 max_iops = 8;
+
+	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
+	int64 snapshot_id = 9;
+
+	// the ID of the availability zone
+	int64 zone_id = 10;
+
+	// an optional field, whether to display the volume to the end user or not.
+	bool display_volume = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
+	int64 virtual_machine_id = 12;
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 13 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 14;
+
+	//
+	string injected_job_id = 15 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 16;
+}
+
+// CreateVolumeCmdByAdminResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+message CreateVolumeCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -898,30 +763,245 @@ message ListVolumesResponse {
 	int32 total_count = 2;
 }
 
-// DestroyVolumeRequest represents the parameters for destroys a volume.
-message DestroyVolumeRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the volume
-	int64 id = 2 [
+// AssignVolumeRequest represents the parameters for changes ownership of a volume from one account to another.
+message AssignVolumeRequest {
+	// The ID of the volume to be reassigned.
+	int64 volume_id = 1 [
 		(validate.field).required = true
 	];
-	// If true is passed, the volume is expunged immediately. False by default.
-	bool expunge = 3 [
-		features.field_presence = EXPLICIT
-	];
+
+	// The ID of the account to which the volume will be assigned. Mutually exclusive with parameter 'projectid'.
+	int64 account_id = 2;
+
+	// The ID of the project to which the volume will be assigned. Mutually exclusive with 'accountid'.
+	int64 projectid = 3;
+
 	//
-	int64 start_event_id = 4;
-	//
-	string injected_job_id = 5 [
+	string response_type = 4;
+}
+
+// AssignVolumeResponse represents the response from changes ownership of a volume from one account to another.
+message AssignVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetUploadParamsForVolumeRequest represents the parameters for upload a data disk to the cloudstack cloud.
+message GetUploadParamsForVolumeRequest {
+	// Image store uuid
+	string image_store_uuid = 1 [
 		(validate.field).string.uuid = true
 	];
+
+	// the ID of the disk offering. This must be a custom sized offering since during upload of volume/template size is unknown.
+	int64 disk_offering_id = 2;
+
+	// the name of the volume/template/iso
+	string name = 3 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
+	string format = 4 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone the volume/template/iso is to be hosted on
+	int64 zone_id = 5 [
+		(validate.field).required = true
+	];
+
+	/*
+	 * the checksum value of this volume/template/iso The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	 */
+	string checksum = 6;
+
+	// an optional accountName. Must be used with domainId.
+	string account_name = 7;
+
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 8;
+
+	// Upload volume/template/iso for the project
+	int64 project_id = 9;
+
+	//
+	string response_type = 10;
+}
+
+// GetUploadParamsForVolumeResponse represents the response from upload a data disk to the cloudstack cloud.
+message GetUploadParamsForVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVolumesForImportRequest represents the parameters for lists unmanaged volumes on a storage pool
+message ListVolumesForImportRequest {
+	// the ID of the storage pool
+	int64 storage_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the path of the volume on the storage pool
+	string path = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
 	//
 	string response_type = 6;
 }
 
-// DestroyVolumeResponse represents the response from destroys a volume.
-message DestroyVolumeResponse {
+// ListVolumesForImportResponse represents the response from lists unmanaged volumes on a storage pool
+message ListVolumesForImportResponse {
+	option (validate.message).disabled = false;
+	// The list of VolumeForImports
+	repeated VolumeForImport items = 1;
+
+	// The total count of VolumeForImports
+	int32 total_count = 2;
+}
+
+// DeleteVolumeRequest represents the parameters for deletes a detached disk volume.
+message DeleteVolumeRequest {
+	// The ID of the disk volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteVolumeResponse represents the response from deletes a detached disk volume.
+message DeleteVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RecoverVolumeCmdByAdminRequest represents the parameters for recovers a destroy volume.
+message RecoverVolumeCmdByAdminRequest {
+	// The ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RecoverVolumeCmdByAdminResponse represents the response from recovers a destroy volume.
+message RecoverVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVolumeRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+message CreateVolumeRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the account associated with the disk volume. Must be used with the domainId parameter.
+	string account_name = 2 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+	// the project associated with the volume. Mutually exclusive with account parameter
+	int64 project_id = 3;
+	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
+	int64 domain_id = 4;
+	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
+	int64 disk_offering_id = 5;
+	// the name of the disk volume
+	string volume_name = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// Arbitrary volume size
+	int64 size = 7;
+	// min iops
+	int64 min_iops = 8;
+	// max iops
+	int64 max_iops = 9;
+	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
+	int64 snapshot_id = 10;
+	// the ID of the availability zone
+	int64 zone_id = 11;
+	// an optional field, whether to display the volume to the end user or not.
+	bool display_volume = 12 [
+		features.field_presence = EXPLICIT
+	];
+	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
+	int64 virtual_machine_id = 13;
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 14 [
+		(validate.field).string.uuid = true
+	];
+	//
+	int64 start_event_id = 15;
+	//
+	string injected_job_id = 16 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 17;
+}
+
+// CreateVolumeResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+message CreateVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateVolumeCmdByAdminRequest represents the parameters for migrate volume
+message MigrateVolumeCmdByAdminRequest {
+	// the ID of the volume
+	int64 volume_id = 1 [
+		(validate.field).required = true
+	];
+
+	// destination storage pool ID to migrate the volume to
+	int64 storage_id = 2 [
+		(validate.field).required = true
+	];
+
+	// if the volume should be live migrated when it is attached to a running vm
+	bool live_migrate = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
+	int64 new_disk_offering_id = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// MigrateVolumeCmdByAdminResponse represents the response from migrate volume
+message MigrateVolumeCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -967,36 +1047,35 @@ message AddResourceDetailResponse {
 	Result result = 1;
 }
 
-// MigrateVolumeRequest represents the parameters for migrate volume
-message MigrateVolumeRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the ID of the volume
-	int64 volume_id = 2 [
+// AttachVolumeCmdByAdminRequest represents the parameters for attaches a disk volume to a virtual machine.
+message AttachVolumeCmdByAdminRequest {
+	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
+	int64 device_id = 1;
+
+	// the ID of the disk volume
+	int64 id = 2 [
 		(validate.field).required = true
 	];
-	// destination storage pool ID to migrate the volume to
-	int64 storage_id = 3 [
+
+	//     the ID of the virtual machine
+	int64 virtual_machine_id = 3 [
 		(validate.field).required = true
 	];
-	// if the volume should be live migrated when it is attached to a running vm
-	bool live_migrate = 4 [
-		features.field_presence = EXPLICIT
-	];
-	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
-	int64 new_disk_offering_id = 5;
+
 	//
-	int64 start_event_id = 6;
+	int64 start_event_id = 4;
+
 	//
-	string injected_job_id = 7 [
+	string injected_job_id = 5 [
 		(validate.field).string.uuid = true
 	];
+
 	//
-	string response_type = 8;
+	string response_type = 6;
 }
 
-// MigrateVolumeResponse represents the response from migrate volume
-message MigrateVolumeResponse {
+// AttachVolumeCmdByAdminResponse represents the response from attaches a disk volume to a virtual machine.
+message AttachVolumeCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -1072,151 +1151,6 @@ message ListResourceDetailsResponse {
 	int32 total_count = 2;
 }
 
-// UpdateVolumeCmdByAdminRequest represents the parameters for updates the volume.
-message UpdateVolumeCmdByAdminRequest {
-	// the ID of the disk volume
-	int64 id = 1;
-
-	// The path of the volume
-	string path = 2;
-
-	// The chain info of the volume
-	string chain_info = 3;
-
-	// Destination storage pool UUID for the volume
-	int64 storage_id = 4;
-
-	// The state of the volume
-	string state = 5;
-
-	// an optional field, whether to the display the volume to the end user or not.
-	bool display_volume = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// new name of the volume
-	string name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
-	bool delete_protection = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 9 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 10;
-
-	//
-	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 12;
-}
-
-// UpdateVolumeCmdByAdminResponse represents the response from updates the volume.
-message UpdateVolumeCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListVolumesForImportRequest represents the parameters for lists unmanaged volumes on a storage pool
-message ListVolumesForImportRequest {
-	// the ID of the storage pool
-	int64 storage_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the path of the volume on the storage pool
-	string path = 2;
-
-	// List by keyword
-	string keyword = 3;
-
-	//
-	int32 page = 4;
-
-	//
-	int32 page_size = 5;
-
-	//
-	string response_type = 6;
-}
-
-// ListVolumesForImportResponse represents the response from lists unmanaged volumes on a storage pool
-message ListVolumesForImportResponse {
-	option (validate.message).disabled = false;
-	// The list of VolumeForImports
-	repeated VolumeForImport items = 1;
-
-	// The total count of VolumeForImports
-	int32 total_count = 2;
-}
-
-// GetUploadParamsForVolumeRequest represents the parameters for upload a data disk to the cloudstack cloud.
-message GetUploadParamsForVolumeRequest {
-	// Image store uuid
-	string image_store_uuid = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// the ID of the disk offering. This must be a custom sized offering since during upload of volume/template size is unknown.
-	int64 disk_offering_id = 2;
-
-	// the name of the volume/template/iso
-	string name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
-	string format = 4 [
-		(validate.field).required = true
-	];
-
-	// the ID of the zone the volume/template/iso is to be hosted on
-	int64 zone_id = 5 [
-		(validate.field).required = true
-	];
-
-	/*
-	 * the checksum value of this volume/template/iso The parameter containing the checksum will be considered a MD5sum if it is not prefixed
-	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
-	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
-	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
-	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
-	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
-	 */
-	string checksum = 6;
-
-	// an optional accountName. Must be used with domainId.
-	string account_name = 7;
-
-	// an optional domainId. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 8;
-
-	// Upload volume/template/iso for the project
-	int64 project_id = 9;
-
-	//
-	string response_type = 10;
-}
-
-// GetUploadParamsForVolumeResponse represents the response from upload a data disk to the cloudstack cloud.
-message GetUploadParamsForVolumeResponse {
-	// The Result
-	Result result = 1;
-}
-
 // UpdateVolumeRequest represents the parameters for updates the volume.
 message UpdateVolumeRequest {
 	// Whether to run this operation as an administrator
@@ -1264,6 +1198,235 @@ message UpdateVolumeResponse {
 	Result result = 1;
 }
 
+// AttachVolumeRequest represents the parameters for attaches a disk volume to a virtual machine.
+message AttachVolumeRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
+	int64 device_id = 2;
+	// the ID of the disk volume
+	int64 id = 3 [
+		(validate.field).required = true
+	];
+	//     the ID of the virtual machine
+	int64 virtual_machine_id = 4 [
+		(validate.field).required = true
+	];
+	//
+	int64 start_event_id = 5;
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 7;
+}
+
+// AttachVolumeResponse represents the response from attaches a disk volume to a virtual machine.
+message AttachVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateVolumeRequest represents the parameters for migrate volume
+message MigrateVolumeRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the ID of the volume
+	int64 volume_id = 2 [
+		(validate.field).required = true
+	];
+	// destination storage pool ID to migrate the volume to
+	int64 storage_id = 3 [
+		(validate.field).required = true
+	];
+	// if the volume should be live migrated when it is attached to a running vm
+	bool live_migrate = 4 [
+		features.field_presence = EXPLICIT
+	];
+	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
+	int64 new_disk_offering_id = 5;
+	//
+	int64 start_event_id = 6;
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 8;
+}
+
+// MigrateVolumeResponse represents the response from migrate volume
+message MigrateVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DetachVolumeRequest represents the parameters for detaches a disk volume from a virtual machine.
+message DetachVolumeRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the ID of the disk volume
+	int64 id = 2;
+	// the device ID on the virtual machine where volume is detached from
+	int64 device_id = 3;
+	// the ID of the virtual machine where the volume is detached from
+	int64 virtual_machine_id = 4;
+	//
+	int64 start_event_id = 5;
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 7;
+}
+
+// DetachVolumeResponse represents the response from detaches a disk volume from a virtual machine.
+message DetachVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveResourceDetailRequest represents the parameters for removes detail for the resource.
+message RemoveResourceDetailRequest {
+	// Delete details matching key/value pairs
+	string key = 1;
+
+	// Delete detail by resource type
+	string resource_type = 2 [
+		(validate.field).required = true
+	];
+
+	// Delete details for resource id
+	string resource_id = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// RemoveResourceDetailResponse represents the response from removes detail for the resource.
+message RemoveResourceDetailResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RecoverVolumeRequest represents the parameters for recovers a destroy volume.
+message RecoverVolumeRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the volume
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	//
+	string response_type = 3;
+}
+
+// RecoverVolumeResponse represents the response from recovers a destroy volume.
+message RecoverVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ResizeVolumeCmdByAdminRequest represents the parameters for resizes a volume
+message ResizeVolumeCmdByAdminRequest {
+	// the ID of the disk volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// New minimum number of IOPS
+	int64 min_iops = 2;
+
+	// New maximum number of IOPS
+	int64 max_iops = 3;
+
+	// New volume size in GB
+	int64 size = 4;
+
+	// Verify OK to Shrink
+	bool shrink_ok = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// new disk offering id
+	int64 new_disk_offering_id = 6;
+
+	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
+	bool auto_migrate = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 8;
+
+	//
+	string injected_job_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 10;
+}
+
+// ResizeVolumeCmdByAdminResponse represents the response from resizes a volume
+message ResizeVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ResizeVolumeRequest represents the parameters for resizes a volume
+message ResizeVolumeRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the ID of the disk volume
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// New minimum number of IOPS
+	int64 min_iops = 3;
+	// New maximum number of IOPS
+	int64 max_iops = 4;
+	// New volume size in GB
+	int64 size = 5;
+	// Verify OK to Shrink
+	bool shrink_ok = 6 [
+		features.field_presence = EXPLICIT
+	];
+	// new disk offering id
+	int64 new_disk_offering_id = 7;
+	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
+	bool auto_migrate = 8 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	int64 start_event_id = 9;
+	//
+	string injected_job_id = 10 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 11;
+}
+
+// ResizeVolumeResponse represents the response from resizes a volume
+message ResizeVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
 // Volume represents a Volume Item
 message Volume {
 	// The ID of the Volume
@@ -1280,22 +1443,6 @@ message Volume {
 	string created = 5;
 }
 
-// ResourceTag represents a ResourceTag Item
-message ResourceTag {
-	// The ID of the ResourceTag
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the ResourceTag
-	string name = 2;
-	// The display name of the ResourceTag
-	string display_name = 3;
-	// The description of the ResourceTag
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
 // VolumeForImport represents a VolumeForImport Item
 message VolumeForImport {
 	// The ID of the VolumeForImport
@@ -1307,6 +1454,22 @@ message VolumeForImport {
 	// The display name of the VolumeForImport
 	string display_name = 3;
 	// The description of the VolumeForImport
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ResourceTag represents a ResourceTag Item
+message ResourceTag {
+	// The ID of the ResourceTag
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ResourceTag
+	string name = 2;
+	// The display name of the ResourceTag
+	string display_name = 3;
+	// The description of the ResourceTag
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

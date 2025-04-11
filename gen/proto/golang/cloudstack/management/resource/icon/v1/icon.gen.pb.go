@@ -24,8 +24,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteResourceIconRequest represents the parameters for deletes the resource icon from the specified resource(s)
-type DeleteResourceIconRequest struct {
+// ListResourceIconRequest represents the parameters for lists the resource icon for the specified resource(s)
+type ListResourceIconRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// list of resources to upload the icon/image for
 	ResourceIds []string `protobuf:"bytes,1,rep,name=resource_ids,json=resourceIds" json:"resource_ids,omitempty"`
@@ -36,20 +36,20 @@ type DeleteResourceIconRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteResourceIconRequest) Reset() {
-	*x = DeleteResourceIconRequest{}
+func (x *ListResourceIconRequest) Reset() {
+	*x = ListResourceIconRequest{}
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteResourceIconRequest) String() string {
+func (x *ListResourceIconRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteResourceIconRequest) ProtoMessage() {}
+func (*ListResourceIconRequest) ProtoMessage() {}
 
-func (x *DeleteResourceIconRequest) ProtoReflect() protoreflect.Message {
+func (x *ListResourceIconRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,55 +61,57 @@ func (x *DeleteResourceIconRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteResourceIconRequest.ProtoReflect.Descriptor instead.
-func (*DeleteResourceIconRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListResourceIconRequest.ProtoReflect.Descriptor instead.
+func (*ListResourceIconRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *DeleteResourceIconRequest) GetResourceIds() []string {
+func (x *ListResourceIconRequest) GetResourceIds() []string {
 	if x != nil {
 		return x.ResourceIds
 	}
 	return nil
 }
 
-func (x *DeleteResourceIconRequest) GetResourceType() string {
+func (x *ListResourceIconRequest) GetResourceType() string {
 	if x != nil && x.ResourceType != nil {
 		return *x.ResourceType
 	}
 	return ""
 }
 
-func (x *DeleteResourceIconRequest) GetResponseType() string {
+func (x *ListResourceIconRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteResourceIconResponse represents the response from deletes the resource icon from the specified resource(s)
-type DeleteResourceIconResponse struct {
+// ListResourceIconResponse represents the response from lists the resource icon for the specified resource(s)
+type ListResourceIconResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of ResourceIcons
+	Items []*ResourceIcon `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of ResourceIcons
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteResourceIconResponse) Reset() {
-	*x = DeleteResourceIconResponse{}
+func (x *ListResourceIconResponse) Reset() {
+	*x = ListResourceIconResponse{}
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteResourceIconResponse) String() string {
+func (x *ListResourceIconResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteResourceIconResponse) ProtoMessage() {}
+func (*ListResourceIconResponse) ProtoMessage() {}
 
-func (x *DeleteResourceIconResponse) ProtoReflect() protoreflect.Message {
+func (x *ListResourceIconResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -121,16 +123,23 @@ func (x *DeleteResourceIconResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteResourceIconResponse.ProtoReflect.Descriptor instead.
-func (*DeleteResourceIconResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListResourceIconResponse.ProtoReflect.Descriptor instead.
+func (*ListResourceIconResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *DeleteResourceIconResponse) GetResult() *Result {
+func (x *ListResourceIconResponse) GetItems() []*ResourceIcon {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
+}
+
+func (x *ListResourceIconResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // UploadResourceIconRequest represents the parameters for uploads an icon for the specified resource(s)
@@ -251,8 +260,8 @@ func (x *UploadResourceIconResponse) GetResult() *Result {
 	return nil
 }
 
-// ListResourceIconRequest represents the parameters for lists the resource icon for the specified resource(s)
-type ListResourceIconRequest struct {
+// DeleteResourceIconRequest represents the parameters for deletes the resource icon from the specified resource(s)
+type DeleteResourceIconRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// list of resources to upload the icon/image for
 	ResourceIds []string `protobuf:"bytes,1,rep,name=resource_ids,json=resourceIds" json:"resource_ids,omitempty"`
@@ -263,20 +272,20 @@ type ListResourceIconRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListResourceIconRequest) Reset() {
-	*x = ListResourceIconRequest{}
+func (x *DeleteResourceIconRequest) Reset() {
+	*x = DeleteResourceIconRequest{}
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListResourceIconRequest) String() string {
+func (x *DeleteResourceIconRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListResourceIconRequest) ProtoMessage() {}
+func (*DeleteResourceIconRequest) ProtoMessage() {}
 
-func (x *ListResourceIconRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteResourceIconRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -288,57 +297,55 @@ func (x *ListResourceIconRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListResourceIconRequest.ProtoReflect.Descriptor instead.
-func (*ListResourceIconRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteResourceIconRequest.ProtoReflect.Descriptor instead.
+func (*DeleteResourceIconRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListResourceIconRequest) GetResourceIds() []string {
+func (x *DeleteResourceIconRequest) GetResourceIds() []string {
 	if x != nil {
 		return x.ResourceIds
 	}
 	return nil
 }
 
-func (x *ListResourceIconRequest) GetResourceType() string {
+func (x *DeleteResourceIconRequest) GetResourceType() string {
 	if x != nil && x.ResourceType != nil {
 		return *x.ResourceType
 	}
 	return ""
 }
 
-func (x *ListResourceIconRequest) GetResponseType() string {
+func (x *DeleteResourceIconRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListResourceIconResponse represents the response from lists the resource icon for the specified resource(s)
-type ListResourceIconResponse struct {
+// DeleteResourceIconResponse represents the response from deletes the resource icon from the specified resource(s)
+type DeleteResourceIconResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of ResourceIcons
-	Items []*ResourceIcon `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of ResourceIcons
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListResourceIconResponse) Reset() {
-	*x = ListResourceIconResponse{}
+func (x *DeleteResourceIconResponse) Reset() {
+	*x = DeleteResourceIconResponse{}
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListResourceIconResponse) String() string {
+func (x *DeleteResourceIconResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListResourceIconResponse) ProtoMessage() {}
+func (*DeleteResourceIconResponse) ProtoMessage() {}
 
-func (x *ListResourceIconResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteResourceIconResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -350,23 +357,16 @@ func (x *ListResourceIconResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListResourceIconResponse.ProtoReflect.Descriptor instead.
-func (*ListResourceIconResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteResourceIconResponse.ProtoReflect.Descriptor instead.
+func (*DeleteResourceIconResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ListResourceIconResponse) GetItems() []*ResourceIcon {
+func (x *DeleteResourceIconResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListResourceIconResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // ResourceIcon represents a ResourceIcon Item
@@ -737,20 +737,7 @@ var File_cloudstack_management_resource_icon_v1_icon_gen_proto protoreflect.File
 
 const file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDesc = "" +
 	"\n" +
-	"5cloudstack/management/resource/icon/v1/icon.gen.proto\x12&cloudstack.management.resource.icon.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x98\x01\n" +
-	"\x19DeleteResourceIconRequest\x12)\n" +
-	"\fresource_ids\x18\x01 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12+\n" +
-	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"d\n" +
-	"\x1aDeleteResourceIconResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.resource.icon.v1.ResultR\x06result\"\xb6\x01\n" +
-	"\x19UploadResourceIconRequest\x12)\n" +
-	"\fresource_ids\x18\x01 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12+\n" +
-	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12\x1c\n" +
-	"\x05image\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05image\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"d\n" +
-	"\x1aUploadResourceIconResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.resource.icon.v1.ResultR\x06result\"\x96\x01\n" +
+	"5cloudstack/management/resource/icon/v1/icon.gen.proto\x12&cloudstack.management.resource.icon.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x96\x01\n" +
 	"\x17ListResourceIconRequest\x12)\n" +
 	"\fresource_ids\x18\x01 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12+\n" +
 	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12#\n" +
@@ -758,7 +745,20 @@ const file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDesc = "" +
 	"\x18ListResourceIconResponse\x12J\n" +
 	"\x05items\x18\x01 \x03(\v24.cloudstack.management.resource.icon.v1.ResourceIconR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9b\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb6\x01\n" +
+	"\x19UploadResourceIconRequest\x12)\n" +
+	"\fresource_ids\x18\x01 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12+\n" +
+	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12\x1c\n" +
+	"\x05image\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05image\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"d\n" +
+	"\x1aUploadResourceIconResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.resource.icon.v1.ResultR\x06result\"\x98\x01\n" +
+	"\x19DeleteResourceIconRequest\x12)\n" +
+	"\fresource_ids\x18\x01 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12+\n" +
+	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"d\n" +
+	"\x1aDeleteResourceIconResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.resource.icon.v1.ResultR\x06result\"\x9b\x01\n" +
 	"\fResourceIcon\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -794,10 +794,10 @@ const file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDesc = "" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xef\x03\n" +
-	"\vIconService\x12\x9d\x01\n" +
-	"\x12DeleteResourceIcon\x12A.cloudstack.management.resource.icon.v1.DeleteResourceIconRequest\x1aB.cloudstack.management.resource.icon.v1.DeleteResourceIconResponse\"\x00\x12\x9d\x01\n" +
-	"\x12UploadResourceIcon\x12A.cloudstack.management.resource.icon.v1.UploadResourceIconRequest\x1aB.cloudstack.management.resource.icon.v1.UploadResourceIconResponse\"\x00\x12\x97\x01\n" +
-	"\x10ListResourceIcon\x12?.cloudstack.management.resource.icon.v1.ListResourceIconRequest\x1a@.cloudstack.management.resource.icon.v1.ListResourceIconResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xda\x02\n" +
+	"\vIconService\x12\x97\x01\n" +
+	"\x10ListResourceIcon\x12?.cloudstack.management.resource.icon.v1.ListResourceIconRequest\x1a@.cloudstack.management.resource.icon.v1.ListResourceIconResponse\"\x00\x12\x9d\x01\n" +
+	"\x12UploadResourceIcon\x12A.cloudstack.management.resource.icon.v1.UploadResourceIconRequest\x1aB.cloudstack.management.resource.icon.v1.UploadResourceIconResponse\"\x00\x12\x9d\x01\n" +
+	"\x12DeleteResourceIcon\x12A.cloudstack.management.resource.icon.v1.DeleteResourceIconRequest\x1aB.cloudstack.management.resource.icon.v1.DeleteResourceIconResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xda\x02\n" +
 	"*com.cloudstack.management.resource.icon.v1B\fIconGenProtoP\x01Zagithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/resource/icon/v1;iconv1\xa2\x02\x04CMRI\xaa\x02&Cloudstack.Management.Resource.Icon.V1\xca\x02&Cloudstack\\Management\\Resource\\Icon\\V1\xe2\x022Cloudstack\\Management\\Resource\\Icon\\V1\\GPBMetadata\xea\x02*Cloudstack::Management::Resource::Icon::V1b\beditionsp\xe8\a"
 
 var (
@@ -814,12 +814,12 @@ func file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDescGZIP() []
 
 var file_cloudstack_management_resource_icon_v1_icon_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_resource_icon_v1_icon_gen_proto_goTypes = []any{
-	(*DeleteResourceIconRequest)(nil),  // 0: cloudstack.management.resource.icon.v1.DeleteResourceIconRequest
-	(*DeleteResourceIconResponse)(nil), // 1: cloudstack.management.resource.icon.v1.DeleteResourceIconResponse
+	(*ListResourceIconRequest)(nil),    // 0: cloudstack.management.resource.icon.v1.ListResourceIconRequest
+	(*ListResourceIconResponse)(nil),   // 1: cloudstack.management.resource.icon.v1.ListResourceIconResponse
 	(*UploadResourceIconRequest)(nil),  // 2: cloudstack.management.resource.icon.v1.UploadResourceIconRequest
 	(*UploadResourceIconResponse)(nil), // 3: cloudstack.management.resource.icon.v1.UploadResourceIconResponse
-	(*ListResourceIconRequest)(nil),    // 4: cloudstack.management.resource.icon.v1.ListResourceIconRequest
-	(*ListResourceIconResponse)(nil),   // 5: cloudstack.management.resource.icon.v1.ListResourceIconResponse
+	(*DeleteResourceIconRequest)(nil),  // 4: cloudstack.management.resource.icon.v1.DeleteResourceIconRequest
+	(*DeleteResourceIconResponse)(nil), // 5: cloudstack.management.resource.icon.v1.DeleteResourceIconResponse
 	(*ResourceIcon)(nil),               // 6: cloudstack.management.resource.icon.v1.ResourceIcon
 	(*Success)(nil),                    // 7: cloudstack.management.resource.icon.v1.Success
 	(*Item)(nil),                       // 8: cloudstack.management.resource.icon.v1.Item
@@ -827,16 +827,16 @@ var file_cloudstack_management_resource_icon_v1_icon_gen_proto_goTypes = []any{
 	nil,                                // 10: cloudstack.management.resource.icon.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_resource_icon_v1_icon_gen_proto_depIdxs = []int32{
-	9,  // 0: cloudstack.management.resource.icon.v1.DeleteResourceIconResponse.result:type_name -> cloudstack.management.resource.icon.v1.Result
+	6,  // 0: cloudstack.management.resource.icon.v1.ListResourceIconResponse.items:type_name -> cloudstack.management.resource.icon.v1.ResourceIcon
 	9,  // 1: cloudstack.management.resource.icon.v1.UploadResourceIconResponse.result:type_name -> cloudstack.management.resource.icon.v1.Result
-	6,  // 2: cloudstack.management.resource.icon.v1.ListResourceIconResponse.items:type_name -> cloudstack.management.resource.icon.v1.ResourceIcon
+	9,  // 2: cloudstack.management.resource.icon.v1.DeleteResourceIconResponse.result:type_name -> cloudstack.management.resource.icon.v1.Result
 	10, // 3: cloudstack.management.resource.icon.v1.Item.details:type_name -> cloudstack.management.resource.icon.v1.Item.DetailsEntry
-	0,  // 4: cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon:input_type -> cloudstack.management.resource.icon.v1.DeleteResourceIconRequest
+	0,  // 4: cloudstack.management.resource.icon.v1.IconService.ListResourceIcon:input_type -> cloudstack.management.resource.icon.v1.ListResourceIconRequest
 	2,  // 5: cloudstack.management.resource.icon.v1.IconService.UploadResourceIcon:input_type -> cloudstack.management.resource.icon.v1.UploadResourceIconRequest
-	4,  // 6: cloudstack.management.resource.icon.v1.IconService.ListResourceIcon:input_type -> cloudstack.management.resource.icon.v1.ListResourceIconRequest
-	1,  // 7: cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon:output_type -> cloudstack.management.resource.icon.v1.DeleteResourceIconResponse
+	4,  // 6: cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon:input_type -> cloudstack.management.resource.icon.v1.DeleteResourceIconRequest
+	1,  // 7: cloudstack.management.resource.icon.v1.IconService.ListResourceIcon:output_type -> cloudstack.management.resource.icon.v1.ListResourceIconResponse
 	3,  // 8: cloudstack.management.resource.icon.v1.IconService.UploadResourceIcon:output_type -> cloudstack.management.resource.icon.v1.UploadResourceIconResponse
-	5,  // 9: cloudstack.management.resource.icon.v1.IconService.ListResourceIcon:output_type -> cloudstack.management.resource.icon.v1.ListResourceIconResponse
+	5,  // 9: cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon:output_type -> cloudstack.management.resource.icon.v1.DeleteResourceIconResponse
 	7,  // [7:10] is the sub-list for method output_type
 	4,  // [4:7] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name

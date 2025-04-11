@@ -10,63 +10,17 @@ import "google/protobuf/descriptor.proto";
 service AnnotationService {
 	option (annotations.service).scope = Scope_USER;
 
-	// AddAnnotation add an annotation.
-	rpc AddAnnotation(AddAnnotationRequest) returns (AddAnnotationResponse) {}
-
-	// RemoveAnnotation remove an annotation.
-	rpc RemoveAnnotation(RemoveAnnotationRequest) returns (RemoveAnnotationResponse) {}
-
 	// ListAnnotations Lists annotations.
 	rpc ListAnnotations(ListAnnotationsRequest) returns (ListAnnotationsResponse) {}
 
 	// UpdateAnnotationVisibility update an annotation visibility.
 	rpc UpdateAnnotationVisibility(UpdateAnnotationVisibilityRequest) returns (UpdateAnnotationVisibilityResponse) {}
-}
 
-// AddAnnotationRequest represents the parameters for add an annotation.
-message AddAnnotationRequest {
-	// the annotation text
-	string annotation = 1;
+	// AddAnnotation add an annotation.
+	rpc AddAnnotation(AddAnnotationRequest) returns (AddAnnotationResponse) {}
 
-	// The following entity types are allowed VM, VOLUME, SNAPSHOT, VM_SNAPSHOT, INSTANCE_GROUP, SSH_KEYPAIR, USER_DATA, NETWORK, VPC, PUBLIC_IP_ADDRESS, VPN_CUSTOMER_GATEWAY, TEMPLATE, ISO, KUBERNETES_CLUSTER, SERVICE_OFFERING, DISK_OFFERING, NETWORK_OFFERING, ZONE, POD, CLUSTER, HOST, DOMAIN, PRIMARY_STORAGE, SECONDARY_STORAGE, VR, SYSTEM_VM, AUTOSCALE_VM_GROUP, MANAGEMENT_SERVER
-	string entity_type = 2;
-
-	// the id of the entity to annotate
-	string entity_uuid = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	// the annotation is visible for admins only
-	bool admins_only = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 5;
-}
-
-// AddAnnotationResponse represents the response from add an annotation.
-message AddAnnotationResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveAnnotationRequest represents the parameters for remove an annotation.
-message RemoveAnnotationRequest {
-	// the id of the annotation
-	string uuid = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RemoveAnnotationResponse represents the response from remove an annotation.
-message RemoveAnnotationResponse {
-	// The Result
-	Result result = 1;
+	// RemoveAnnotation remove an annotation.
+	rpc RemoveAnnotation(RemoveAnnotationRequest) returns (RemoveAnnotationResponse) {}
 }
 
 // ListAnnotationsRequest represents the parameters for lists annotations.
@@ -135,6 +89,52 @@ message UpdateAnnotationVisibilityRequest {
 
 // UpdateAnnotationVisibilityResponse represents the response from update an annotation visibility.
 message UpdateAnnotationVisibilityResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddAnnotationRequest represents the parameters for add an annotation.
+message AddAnnotationRequest {
+	// the annotation text
+	string annotation = 1;
+
+	// The following entity types are allowed VM, VOLUME, SNAPSHOT, VM_SNAPSHOT, INSTANCE_GROUP, SSH_KEYPAIR, USER_DATA, NETWORK, VPC, PUBLIC_IP_ADDRESS, VPN_CUSTOMER_GATEWAY, TEMPLATE, ISO, KUBERNETES_CLUSTER, SERVICE_OFFERING, DISK_OFFERING, NETWORK_OFFERING, ZONE, POD, CLUSTER, HOST, DOMAIN, PRIMARY_STORAGE, SECONDARY_STORAGE, VR, SYSTEM_VM, AUTOSCALE_VM_GROUP, MANAGEMENT_SERVER
+	string entity_type = 2;
+
+	// the id of the entity to annotate
+	string entity_uuid = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// the annotation is visible for admins only
+	bool admins_only = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 5;
+}
+
+// AddAnnotationResponse represents the response from add an annotation.
+message AddAnnotationResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveAnnotationRequest represents the parameters for remove an annotation.
+message RemoveAnnotationRequest {
+	// the id of the annotation
+	string uuid = 1 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveAnnotationResponse represents the response from remove an annotation.
+message RemoveAnnotationResponse {
 	// The Result
 	Result result = 1;
 }

@@ -10,8 +10,8 @@ import "google/protobuf/descriptor.proto";
 service SecuritygroupService {
 	option (annotations.service).scope = Scope_USER;
 
-	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
-	rpc RevokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest) returns (RevokeSecurityGroupIngressResponse) {}
+	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
+	rpc AuthorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest) returns (AuthorizeSecurityGroupIngressResponse) {}
 
 	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
 	rpc RevokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest) returns (RevokeSecurityGroupEgressResponse) {}
@@ -22,40 +22,80 @@ service SecuritygroupService {
 	// CreateSecurityGroup Creates a security group
 	rpc CreateSecurityGroup(CreateSecurityGroupRequest) returns (CreateSecurityGroupResponse) {}
 
-	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
-	rpc AuthorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest) returns (AuthorizeSecurityGroupIngressResponse) {}
-
 	// UpdateSecurityGroup Updates a security group
 	rpc UpdateSecurityGroup(UpdateSecurityGroupRequest) returns (UpdateSecurityGroupResponse) {}
 
-	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	rpc AuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest) returns (AuthorizeSecurityGroupEgressResponse) {}
-
 	// DeleteSecurityGroup Deletes security group
 	rpc DeleteSecurityGroup(DeleteSecurityGroupRequest) returns (DeleteSecurityGroupResponse) {}
+
+	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
+	rpc RevokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest) returns (RevokeSecurityGroupIngressResponse) {}
+
+	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
+	rpc AuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest) returns (AuthorizeSecurityGroupEgressResponse) {}
 }
 
-// RevokeSecurityGroupIngressRequest represents the parameters for deletes a particular ingress rule from this security group
-message RevokeSecurityGroupIngressRequest {
-	// The ID of the ingress rule
-	int64 id = 1 [
-		(validate.field).required = true
+// AuthorizeSecurityGroupIngressRequest represents the parameters for authorizes a particular ingress rule for this security group
+message AuthorizeSecurityGroupIngressRequest {
+	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number (see /etc/protocols). ALL is default.
+	string protocol = 1;
+
+	// start port for this ingress rule
+	int32 start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// end port for this ingress rule
+	int32 end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// type of the icmp message being sent
+	int32 icmp_type = 4;
+
+	// error code for this icmp message
+	int32 icmp_code = 5;
+
+	// the cidr list associated. Multiple entries must be separated by a single comma character (,).
+	repeated string cidr_list = 6;
+
+	// user to security group mapping
+	map<string, string> user_security_group_list = 7;
+
+	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 8;
+
+	// an optional account for the security group. Must be used with domainId.
+	string account_name = 9;
+
+	// an optional project of the security group
+	int64 project_id = 10;
+
+	// The ID of the security group. Mutually exclusive with securityGroupName parameter
+	int64 security_group_id = 11;
+
+	// The name of the security group. Mutually exclusive with securityGroupId parameter
+	string security_group_name = 12 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
 	//
-	int64 start_event_id = 2;
+	int64 start_event_id = 13;
 
 	//
-	string injected_job_id = 3 [
+	string injected_job_id = 14 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 15;
 }
 
-// RevokeSecurityGroupIngressResponse represents the response from deletes a particular ingress rule from this security group
-message RevokeSecurityGroupIngressResponse {
+// AuthorizeSecurityGroupIngressResponse represents the response from authorizes a particular ingress rule for this security group
+message AuthorizeSecurityGroupIngressResponse {
 	// The Result
 	Result result = 1;
 }
@@ -184,71 +224,6 @@ message CreateSecurityGroupResponse {
 	Result result = 1;
 }
 
-// AuthorizeSecurityGroupIngressRequest represents the parameters for authorizes a particular ingress rule for this security group
-message AuthorizeSecurityGroupIngressRequest {
-	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number (see /etc/protocols). ALL is default.
-	string protocol = 1;
-
-	// start port for this ingress rule
-	int32 start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// end port for this ingress rule
-	int32 end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// type of the icmp message being sent
-	int32 icmp_type = 4;
-
-	// error code for this icmp message
-	int32 icmp_code = 5;
-
-	// the cidr list associated. Multiple entries must be separated by a single comma character (,).
-	repeated string cidr_list = 6;
-
-	// user to security group mapping
-	map<string, string> user_security_group_list = 7;
-
-	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 8;
-
-	// an optional account for the security group. Must be used with domainId.
-	string account_name = 9;
-
-	// an optional project of the security group
-	int64 project_id = 10;
-
-	// The ID of the security group. Mutually exclusive with securityGroupName parameter
-	int64 security_group_id = 11;
-
-	// The name of the security group. Mutually exclusive with securityGroupId parameter
-	string security_group_name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	int64 start_event_id = 13;
-
-	//
-	string injected_job_id = 14 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 15;
-}
-
-// AuthorizeSecurityGroupIngressResponse represents the response from authorizes a particular ingress rule for this security group
-message AuthorizeSecurityGroupIngressResponse {
-	// The Result
-	Result result = 1;
-}
-
 // UpdateSecurityGroupRequest represents the parameters for updates a security group
 message UpdateSecurityGroupRequest {
 	// The ID of the security group.
@@ -273,6 +248,61 @@ message UpdateSecurityGroupRequest {
 
 // UpdateSecurityGroupResponse represents the response from updates a security group
 message UpdateSecurityGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSecurityGroupRequest represents the parameters for deletes security group
+message DeleteSecurityGroupRequest {
+	// the account of the security group. Must be specified with domain ID
+	string account_name = 1;
+
+	// the domain ID of account owning the security group
+	int64 domain_id = 2;
+
+	// the project of the security group
+	int64 project_id = 3;
+
+	// The ID of the security group. Mutually exclusive with name parameter
+	int64 id = 4;
+
+	// The ID of the security group. Mutually exclusive with id parameter
+	string name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 6;
+}
+
+// DeleteSecurityGroupResponse represents the response from deletes security group
+message DeleteSecurityGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RevokeSecurityGroupIngressRequest represents the parameters for deletes a particular ingress rule from this security group
+message RevokeSecurityGroupIngressRequest {
+	// The ID of the ingress rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RevokeSecurityGroupIngressResponse represents the response from deletes a particular ingress rule from this security group
+message RevokeSecurityGroupIngressResponse {
 	// The Result
 	Result result = 1;
 }
@@ -342,36 +372,6 @@ message AuthorizeSecurityGroupEgressResponse {
 	Result result = 1;
 }
 
-// DeleteSecurityGroupRequest represents the parameters for deletes security group
-message DeleteSecurityGroupRequest {
-	// the account of the security group. Must be specified with domain ID
-	string account_name = 1;
-
-	// the domain ID of account owning the security group
-	int64 domain_id = 2;
-
-	// the project of the security group
-	int64 project_id = 3;
-
-	// The ID of the security group. Mutually exclusive with name parameter
-	int64 id = 4;
-
-	// The ID of the security group. Mutually exclusive with id parameter
-	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	string response_type = 6;
-}
-
-// DeleteSecurityGroupResponse represents the response from deletes security group
-message DeleteSecurityGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
 // SecurityGroup represents a SecurityGroup Item
 message SecurityGroup {
 	// The ID of the SecurityGroup
@@ -394,6 +394,22 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
+}
+
+// ProtocolType represents the possible values for the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number (see /etc/protocols). ALL is default.
+enum ProtocolType {
+	// Default unspecified value
+	PROTOCOL_TYPE_UNSPECIFIED = 0;
+	// TCP value
+	PROTOCOL_TYPE_TCP = 1;
+	// UDP value
+	PROTOCOL_TYPE_UDP = 2;
+	// ICMP value
+	PROTOCOL_TYPE_ICMP = 3;
+	// ALL value
+	PROTOCOL_TYPE_ALL = 4;
+	// ETC value
+	PROTOCOL_TYPE_ETC = 5;
 }
 
 // Item represents a generic item in a list response

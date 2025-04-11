@@ -10,53 +10,63 @@ import "google/protobuf/descriptor.proto";
 service CaService {
 	option (annotations.service).scope = Scope_USER;
 
-	// RevokeCertificate Revokes certificate using configured CA plugin
-	rpc RevokeCertificate(RevokeCertificateRequest) returns (RevokeCertificateResponse) {}
-
-	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
-	rpc ProvisionCertificate(ProvisionCertificateRequest) returns (ProvisionCertificateResponse) {}
+	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
+	rpc ListCaCertificate(ListCaCertificateRequest) returns (ListCaCertificateResponse) {}
 
 	// ListCAProviders Lists available certificate authority providers in CloudStack
 	rpc ListCAProviders(ListCAProvidersRequest) returns (ListCAProvidersResponse) {}
 
+	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
+	rpc ProvisionCertificate(ProvisionCertificateRequest) returns (ProvisionCertificateResponse) {}
+
+	// RevokeCertificate Revokes certificate using configured CA plugin
+	rpc RevokeCertificate(RevokeCertificateRequest) returns (RevokeCertificateResponse) {}
+
 	// IssueCertificate Issues a client certificate using configured or provided CA plugin
 	rpc IssueCertificate(IssueCertificateRequest) returns (IssueCertificateResponse) {}
-
-	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
-	rpc ListCaCertificate(ListCaCertificateRequest) returns (ListCaCertificateResponse) {}
 }
 
-// RevokeCertificateRequest represents the parameters for revokes certificate using configured ca plugin
-message RevokeCertificateRequest {
-	// The certificate serial number, as a hex value
-	string serial = 1 [
-		(validate.field).required = true
-	];
-
-	// The certificate CN
-	string cn = 2;
-
+// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
+message ListCaCertificateRequest {
 	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	string provider = 3 [
+	string provider = 1 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
+	string response_type = 2;
 }
 
-// RevokeCertificateResponse represents the response from revokes certificate using configured ca plugin
-message RevokeCertificateResponse {
-	// The Result
-	Result result = 1;
+// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
+message ListCaCertificateResponse {
+	option (validate.message).disabled = false;
+	// The list of Certificates
+	repeated Certificate items = 1;
+
+	// The total count of Certificates
+	int32 total_count = 2;
+}
+
+// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
+message ListCAProvidersRequest {
+	// List CA service provider by name
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
+message ListCAProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of CAProviders
+	repeated CAProvider items = 1;
+
+	// The total count of CAProviders
+	int32 total_count = 2;
 }
 
 // ProvisionCertificateRequest represents the parameters for issues and propagates client certificate on a connected host/agent using configured ca plugin
@@ -94,26 +104,37 @@ message ProvisionCertificateResponse {
 	Result result = 1;
 }
 
-// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
-message ListCAProvidersRequest {
-	// List CA service provider by name
-	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// RevokeCertificateRequest represents the parameters for revokes certificate using configured ca plugin
+message RevokeCertificateRequest {
+	// The certificate serial number, as a hex value
+	string serial = 1 [
+		(validate.field).required = true
+	];
+
+	// The certificate CN
+	string cn = 2;
+
+	// Name of the CA service provider, otherwise the default configured provider plugin will be used
+	string provider = 3 [
+		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 2;
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
 }
 
-// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
-message ListCAProvidersResponse {
-	option (validate.message).disabled = false;
-	// The list of CAProviders
-	repeated CAProvider items = 1;
-
-	// The total count of CAProviders
-	int32 total_count = 2;
+// RevokeCertificateResponse represents the response from revokes certificate using configured ca plugin
+message RevokeCertificateResponse {
+	// The Result
+	Result result = 1;
 }
 
 // IssueCertificateRequest represents the parameters for issues a client certificate using configured or provided ca plugin
@@ -155,25 +176,20 @@ message IssueCertificateResponse {
 	Result result = 1;
 }
 
-// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
-message ListCaCertificateRequest {
-	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	string provider = 1 [
+// Certificate represents a Certificate Item
+message Certificate {
+	// The ID of the Certificate
+	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-
-	//
-	string response_type = 2;
-}
-
-// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
-message ListCaCertificateResponse {
-	option (validate.message).disabled = false;
-	// The list of Certificates
-	repeated Certificate items = 1;
-
-	// The total count of Certificates
-	int32 total_count = 2;
+	// The name of the Certificate
+	string name = 2;
+	// The display name of the Certificate
+	string display_name = 3;
+	// The description of the Certificate
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
 }
 
 // CAProvider represents a CAProvider Item
@@ -187,22 +203,6 @@ message CAProvider {
 	// The display name of the CAProvider
 	string display_name = 3;
 	// The description of the CAProvider
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
-// Certificate represents a Certificate Item
-message Certificate {
-	// The ID of the Certificate
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the Certificate
-	string name = 2;
-	// The display name of the Certificate
-	string display_name = 3;
-	// The description of the Certificate
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

@@ -33,160 +33,160 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// StorageServiceUpdateObjectStoragePoolProcedure is the fully-qualified name of the
-	// StorageService's UpdateObjectStoragePool RPC.
-	StorageServiceUpdateObjectStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateObjectStoragePool"
-	// StorageServiceUpdateStorageCapabilitiesProcedure is the fully-qualified name of the
-	// StorageService's UpdateStorageCapabilities RPC.
-	StorageServiceUpdateStorageCapabilitiesProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateStorageCapabilities"
-	// StorageServiceDeleteObjectStoragePoolProcedure is the fully-qualified name of the
-	// StorageService's DeleteObjectStoragePool RPC.
-	StorageServiceDeleteObjectStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/DeleteObjectStoragePool"
-	// StorageServiceAddImageStoreProcedure is the fully-qualified name of the StorageService's
-	// AddImageStore RPC.
-	StorageServiceAddImageStoreProcedure = "/cloudstack.management.storage.v1.StorageService/AddImageStore"
-	// StorageServiceChangeStoragePoolScopeProcedure is the fully-qualified name of the StorageService's
-	// ChangeStoragePoolScope RPC.
-	StorageServiceChangeStoragePoolScopeProcedure = "/cloudstack.management.storage.v1.StorageService/ChangeStoragePoolScope"
-	// StorageServiceDeleteSecondaryStagingStoreProcedure is the fully-qualified name of the
-	// StorageService's DeleteSecondaryStagingStore RPC.
-	StorageServiceDeleteSecondaryStagingStoreProcedure = "/cloudstack.management.storage.v1.StorageService/DeleteSecondaryStagingStore"
-	// StorageServiceListStorageTagsProcedure is the fully-qualified name of the StorageService's
-	// ListStorageTags RPC.
-	StorageServiceListStorageTagsProcedure = "/cloudstack.management.storage.v1.StorageService/ListStorageTags"
-	// StorageServiceDeleteImageStoreProcedure is the fully-qualified name of the StorageService's
-	// DeleteImageStore RPC.
-	StorageServiceDeleteImageStoreProcedure = "/cloudstack.management.storage.v1.StorageService/DeleteImageStore"
-	// StorageServiceListStorageProvidersProcedure is the fully-qualified name of the StorageService's
-	// ListStorageProviders RPC.
-	StorageServiceListStorageProvidersProcedure = "/cloudstack.management.storage.v1.StorageService/ListStorageProviders"
-	// StorageServiceAddImageStoreS3CMDProcedure is the fully-qualified name of the StorageService's
-	// AddImageStoreS3CMD RPC.
-	StorageServiceAddImageStoreS3CMDProcedure = "/cloudstack.management.storage.v1.StorageService/AddImageStoreS3CMD"
-	// StorageServiceUpdateImageStoreProcedure is the fully-qualified name of the StorageService's
-	// UpdateImageStore RPC.
-	StorageServiceUpdateImageStoreProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateImageStore"
-	// StorageServiceDeletePoolProcedure is the fully-qualified name of the StorageService's DeletePool
-	// RPC.
-	StorageServiceDeletePoolProcedure = "/cloudstack.management.storage.v1.StorageService/DeletePool"
-	// StorageServiceCreateStoragePoolProcedure is the fully-qualified name of the StorageService's
-	// CreateStoragePool RPC.
-	StorageServiceCreateStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/CreateStoragePool"
-	// StorageServiceListImageStoresProcedure is the fully-qualified name of the StorageService's
-	// ListImageStores RPC.
-	StorageServiceListImageStoresProcedure = "/cloudstack.management.storage.v1.StorageService/ListImageStores"
-	// StorageServiceListSecondaryStagingStoresProcedure is the fully-qualified name of the
-	// StorageService's ListSecondaryStagingStores RPC.
-	StorageServiceListSecondaryStagingStoresProcedure = "/cloudstack.management.storage.v1.StorageService/ListSecondaryStagingStores"
-	// StorageServiceUpdateStoragePoolProcedure is the fully-qualified name of the StorageService's
-	// UpdateStoragePool RPC.
-	StorageServiceUpdateStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateStoragePool"
-	// StorageServiceListObjectStoragePoolsProcedure is the fully-qualified name of the StorageService's
-	// ListObjectStoragePools RPC.
-	StorageServiceListObjectStoragePoolsProcedure = "/cloudstack.management.storage.v1.StorageService/ListObjectStoragePools"
-	// StorageServiceListImageStoreObjectsProcedure is the fully-qualified name of the StorageService's
-	// ListImageStoreObjects RPC.
-	StorageServiceListImageStoreObjectsProcedure = "/cloudstack.management.storage.v1.StorageService/ListImageStoreObjects"
-	// StorageServiceListStoragePoolObjectsProcedure is the fully-qualified name of the StorageService's
-	// ListStoragePoolObjects RPC.
-	StorageServiceListStoragePoolObjectsProcedure = "/cloudstack.management.storage.v1.StorageService/ListStoragePoolObjects"
 	// StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure is the fully-qualified name of
 	// the StorageService's MigrateResourcesToAnotherSecondaryStorage RPC.
 	StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure = "/cloudstack.management.storage.v1.StorageService/MigrateResourcesToAnotherSecondaryStorage"
-	// StorageServiceAddObjectStoragePoolProcedure is the fully-qualified name of the StorageService's
-	// AddObjectStoragePool RPC.
-	StorageServiceAddObjectStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/AddObjectStoragePool"
+	// StorageServiceDeletePoolProcedure is the fully-qualified name of the StorageService's DeletePool
+	// RPC.
+	StorageServiceDeletePoolProcedure = "/cloudstack.management.storage.v1.StorageService/DeletePool"
+	// StorageServiceSyncStoragePoolProcedure is the fully-qualified name of the StorageService's
+	// SyncStoragePool RPC.
+	StorageServiceSyncStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/SyncStoragePool"
+	// StorageServiceUpdateStoragePoolProcedure is the fully-qualified name of the StorageService's
+	// UpdateStoragePool RPC.
+	StorageServiceUpdateStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateStoragePool"
+	// StorageServiceListSecondaryStagingStoresProcedure is the fully-qualified name of the
+	// StorageService's ListSecondaryStagingStores RPC.
+	StorageServiceListSecondaryStagingStoresProcedure = "/cloudstack.management.storage.v1.StorageService/ListSecondaryStagingStores"
+	// StorageServiceMigrateSecondaryStorageDataProcedure is the fully-qualified name of the
+	// StorageService's MigrateSecondaryStorageData RPC.
+	StorageServiceMigrateSecondaryStorageDataProcedure = "/cloudstack.management.storage.v1.StorageService/MigrateSecondaryStorageData"
 	// StorageServiceUpdateCloudToUseObjectStoreProcedure is the fully-qualified name of the
 	// StorageService's UpdateCloudToUseObjectStore RPC.
 	StorageServiceUpdateCloudToUseObjectStoreProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateCloudToUseObjectStore"
 	// StorageServiceDownloadImageStoreObjectProcedure is the fully-qualified name of the
 	// StorageService's DownloadImageStoreObject RPC.
 	StorageServiceDownloadImageStoreObjectProcedure = "/cloudstack.management.storage.v1.StorageService/DownloadImageStoreObject"
-	// StorageServiceMigrateSecondaryStorageDataProcedure is the fully-qualified name of the
-	// StorageService's MigrateSecondaryStorageData RPC.
-	StorageServiceMigrateSecondaryStorageDataProcedure = "/cloudstack.management.storage.v1.StorageService/MigrateSecondaryStorageData"
-	// StorageServicePreparePrimaryStorageForMaintenanceProcedure is the fully-qualified name of the
-	// StorageService's PreparePrimaryStorageForMaintenance RPC.
-	StorageServicePreparePrimaryStorageForMaintenanceProcedure = "/cloudstack.management.storage.v1.StorageService/PreparePrimaryStorageForMaintenance"
 	// StorageServiceFindStoragePoolsForMigrationProcedure is the fully-qualified name of the
 	// StorageService's FindStoragePoolsForMigration RPC.
 	StorageServiceFindStoragePoolsForMigrationProcedure = "/cloudstack.management.storage.v1.StorageService/FindStoragePoolsForMigration"
+	// StorageServiceAddImageStoreProcedure is the fully-qualified name of the StorageService's
+	// AddImageStore RPC.
+	StorageServiceAddImageStoreProcedure = "/cloudstack.management.storage.v1.StorageService/AddImageStore"
 	// StorageServiceCancelPrimaryStorageMaintenanceProcedure is the fully-qualified name of the
 	// StorageService's CancelPrimaryStorageMaintenance RPC.
 	StorageServiceCancelPrimaryStorageMaintenanceProcedure = "/cloudstack.management.storage.v1.StorageService/CancelPrimaryStorageMaintenance"
+	// StorageServiceListImageStoreObjectsProcedure is the fully-qualified name of the StorageService's
+	// ListImageStoreObjects RPC.
+	StorageServiceListImageStoreObjectsProcedure = "/cloudstack.management.storage.v1.StorageService/ListImageStoreObjects"
+	// StorageServiceListStorageProvidersProcedure is the fully-qualified name of the StorageService's
+	// ListStorageProviders RPC.
+	StorageServiceListStorageProvidersProcedure = "/cloudstack.management.storage.v1.StorageService/ListStorageProviders"
+	// StorageServiceListImageStoresProcedure is the fully-qualified name of the StorageService's
+	// ListImageStores RPC.
+	StorageServiceListImageStoresProcedure = "/cloudstack.management.storage.v1.StorageService/ListImageStores"
+	// StorageServiceAddImageStoreS3CMDProcedure is the fully-qualified name of the StorageService's
+	// AddImageStoreS3CMD RPC.
+	StorageServiceAddImageStoreS3CMDProcedure = "/cloudstack.management.storage.v1.StorageService/AddImageStoreS3CMD"
+	// StorageServiceDeleteObjectStoragePoolProcedure is the fully-qualified name of the
+	// StorageService's DeleteObjectStoragePool RPC.
+	StorageServiceDeleteObjectStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/DeleteObjectStoragePool"
+	// StorageServiceUpdateStorageCapabilitiesProcedure is the fully-qualified name of the
+	// StorageService's UpdateStorageCapabilities RPC.
+	StorageServiceUpdateStorageCapabilitiesProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateStorageCapabilities"
+	// StorageServiceListStoragePoolObjectsProcedure is the fully-qualified name of the StorageService's
+	// ListStoragePoolObjects RPC.
+	StorageServiceListStoragePoolObjectsProcedure = "/cloudstack.management.storage.v1.StorageService/ListStoragePoolObjects"
+	// StorageServiceUpdateObjectStoragePoolProcedure is the fully-qualified name of the
+	// StorageService's UpdateObjectStoragePool RPC.
+	StorageServiceUpdateObjectStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateObjectStoragePool"
 	// StorageServiceCreateSecondaryStagingStoreProcedure is the fully-qualified name of the
 	// StorageService's CreateSecondaryStagingStore RPC.
 	StorageServiceCreateSecondaryStagingStoreProcedure = "/cloudstack.management.storage.v1.StorageService/CreateSecondaryStagingStore"
+	// StorageServiceListStorageTagsProcedure is the fully-qualified name of the StorageService's
+	// ListStorageTags RPC.
+	StorageServiceListStorageTagsProcedure = "/cloudstack.management.storage.v1.StorageService/ListStorageTags"
+	// StorageServiceListObjectStoragePoolsProcedure is the fully-qualified name of the StorageService's
+	// ListObjectStoragePools RPC.
+	StorageServiceListObjectStoragePoolsProcedure = "/cloudstack.management.storage.v1.StorageService/ListObjectStoragePools"
+	// StorageServiceDeleteImageStoreProcedure is the fully-qualified name of the StorageService's
+	// DeleteImageStore RPC.
+	StorageServiceDeleteImageStoreProcedure = "/cloudstack.management.storage.v1.StorageService/DeleteImageStore"
+	// StorageServiceCreateStoragePoolProcedure is the fully-qualified name of the StorageService's
+	// CreateStoragePool RPC.
+	StorageServiceCreateStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/CreateStoragePool"
+	// StorageServiceDeleteSecondaryStagingStoreProcedure is the fully-qualified name of the
+	// StorageService's DeleteSecondaryStagingStore RPC.
+	StorageServiceDeleteSecondaryStagingStoreProcedure = "/cloudstack.management.storage.v1.StorageService/DeleteSecondaryStagingStore"
+	// StorageServiceAddObjectStoragePoolProcedure is the fully-qualified name of the StorageService's
+	// AddObjectStoragePool RPC.
+	StorageServiceAddObjectStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/AddObjectStoragePool"
+	// StorageServiceChangeStoragePoolScopeProcedure is the fully-qualified name of the StorageService's
+	// ChangeStoragePoolScope RPC.
+	StorageServiceChangeStoragePoolScopeProcedure = "/cloudstack.management.storage.v1.StorageService/ChangeStoragePoolScope"
 	// StorageServiceListStoragePoolsProcedure is the fully-qualified name of the StorageService's
 	// ListStoragePools RPC.
 	StorageServiceListStoragePoolsProcedure = "/cloudstack.management.storage.v1.StorageService/ListStoragePools"
-	// StorageServiceSyncStoragePoolProcedure is the fully-qualified name of the StorageService's
-	// SyncStoragePool RPC.
-	StorageServiceSyncStoragePoolProcedure = "/cloudstack.management.storage.v1.StorageService/SyncStoragePool"
+	// StorageServiceUpdateImageStoreProcedure is the fully-qualified name of the StorageService's
+	// UpdateImageStore RPC.
+	StorageServiceUpdateImageStoreProcedure = "/cloudstack.management.storage.v1.StorageService/UpdateImageStore"
+	// StorageServicePreparePrimaryStorageForMaintenanceProcedure is the fully-qualified name of the
+	// StorageService's PreparePrimaryStorageForMaintenance RPC.
+	StorageServicePreparePrimaryStorageForMaintenanceProcedure = "/cloudstack.management.storage.v1.StorageService/PreparePrimaryStorageForMaintenance"
 )
 
 // StorageServiceClient is a client for the cloudstack.management.storage.v1.StorageService service.
 type StorageServiceClient interface {
-	// UpdateObjectStoragePool Updates object storage pool
-	UpdateObjectStoragePool(context.Context, *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error)
-	// UpdateStorageCapabilities Syncs capabilities of storage pools
-	UpdateStorageCapabilities(context.Context, *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error)
-	// DeleteObjectStoragePool Deletes an Object Storage Pool
-	DeleteObjectStoragePool(context.Context, *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error)
-	// AddImageStore Adds backup image store.
-	AddImageStore(context.Context, *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error)
-	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
-	ChangeStoragePoolScope(context.Context, *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error)
-	// DeleteSecondaryStagingStore Deletes a secondary staging store .
-	DeleteSecondaryStagingStore(context.Context, *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error)
-	// ListStorageTags Lists storage tags
-	ListStorageTags(context.Context, *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error)
-	// DeleteImageStore Deletes an image store or Secondary Storage.
-	DeleteImageStore(context.Context, *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error)
-	// ListStorageProviders Lists storage providers.
-	ListStorageProviders(context.Context, *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error)
-	// AddImageStoreS3CMD Adds S3 Image Store
-	AddImageStoreS3CMD(context.Context, *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error)
-	// UpdateImageStore Updates image store read-only status
-	UpdateImageStore(context.Context, *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error)
-	// DeletePool Deletes a storage pool.
-	DeletePool(context.Context, *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error)
-	// CreateStoragePool Creates a storage pool.
-	CreateStoragePool(context.Context, *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error)
-	// ListImageStores Lists image stores.
-	ListImageStores(context.Context, *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error)
-	// ListSecondaryStagingStores Lists secondary staging stores.
-	ListSecondaryStagingStores(context.Context, *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error)
-	// UpdateStoragePool Updates a storage pool.
-	UpdateStoragePool(context.Context, *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error)
-	// ListObjectStoragePools Lists object storage pools.
-	ListObjectStoragePools(context.Context, *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error)
-	// ListImageStoreObjects Lists objects at specified path on an image store.
-	ListImageStoreObjects(context.Context, *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error)
-	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
-	ListStoragePoolObjects(context.Context, *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error)
 	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
 	MigrateResourcesToAnotherSecondaryStorage(context.Context, *connect.Request[v1.MigrateResourcesToAnotherSecondaryStorageRequest]) (*connect.Response[v1.MigrateResourcesToAnotherSecondaryStorageResponse], error)
-	// AddObjectStoragePool Adds a object storage pool
-	AddObjectStoragePool(context.Context, *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error)
+	// DeletePool Deletes a storage pool.
+	DeletePool(context.Context, *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error)
+	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
+	SyncStoragePool(context.Context, *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error)
+	// UpdateStoragePool Updates a storage pool.
+	UpdateStoragePool(context.Context, *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error)
+	// ListSecondaryStagingStores Lists secondary staging stores.
+	ListSecondaryStagingStores(context.Context, *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error)
+	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
+	MigrateSecondaryStorageData(context.Context, *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error)
 	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
 	UpdateCloudToUseObjectStore(context.Context, *connect.Request[v1.UpdateCloudToUseObjectStoreRequest]) (*connect.Response[v1.UpdateCloudToUseObjectStoreResponse], error)
 	// DownloadImageStoreObject Download object at a specified path on an image store.
 	DownloadImageStoreObject(context.Context, *connect.Request[v1.DownloadImageStoreObjectRequest]) (*connect.Response[v1.DownloadImageStoreObjectResponse], error)
-	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
-	MigrateSecondaryStorageData(context.Context, *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error)
-	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
-	PreparePrimaryStorageForMaintenance(context.Context, *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error)
 	// FindStoragePoolsForMigration Lists storage pools available for migration of a volume.
 	FindStoragePoolsForMigration(context.Context, *connect.Request[v1.FindStoragePoolsForMigrationRequest]) (*connect.Response[v1.FindStoragePoolsForMigrationResponse], error)
+	// AddImageStore Adds backup image store.
+	AddImageStore(context.Context, *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error)
 	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
 	CancelPrimaryStorageMaintenance(context.Context, *connect.Request[v1.CancelPrimaryStorageMaintenanceRequest]) (*connect.Response[v1.CancelPrimaryStorageMaintenanceResponse], error)
+	// ListImageStoreObjects Lists objects at specified path on an image store.
+	ListImageStoreObjects(context.Context, *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error)
+	// ListStorageProviders Lists storage providers.
+	ListStorageProviders(context.Context, *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error)
+	// ListImageStores Lists image stores.
+	ListImageStores(context.Context, *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error)
+	// AddImageStoreS3CMD Adds S3 Image Store
+	AddImageStoreS3CMD(context.Context, *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error)
+	// DeleteObjectStoragePool Deletes an Object Storage Pool
+	DeleteObjectStoragePool(context.Context, *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error)
+	// UpdateStorageCapabilities Syncs capabilities of storage pools
+	UpdateStorageCapabilities(context.Context, *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error)
+	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
+	ListStoragePoolObjects(context.Context, *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error)
+	// UpdateObjectStoragePool Updates object storage pool
+	UpdateObjectStoragePool(context.Context, *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error)
 	// CreateSecondaryStagingStore create secondary staging store.
 	CreateSecondaryStagingStore(context.Context, *connect.Request[v1.CreateSecondaryStagingStoreRequest]) (*connect.Response[v1.CreateSecondaryStagingStoreResponse], error)
+	// ListStorageTags Lists storage tags
+	ListStorageTags(context.Context, *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error)
+	// ListObjectStoragePools Lists object storage pools.
+	ListObjectStoragePools(context.Context, *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error)
+	// DeleteImageStore Deletes an image store or Secondary Storage.
+	DeleteImageStore(context.Context, *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error)
+	// CreateStoragePool Creates a storage pool.
+	CreateStoragePool(context.Context, *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error)
+	// DeleteSecondaryStagingStore Deletes a secondary staging store .
+	DeleteSecondaryStagingStore(context.Context, *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error)
+	// AddObjectStoragePool Adds a object storage pool
+	AddObjectStoragePool(context.Context, *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error)
+	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
+	ChangeStoragePoolScope(context.Context, *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error)
 	// ListStoragePools Lists storage pools.
 	ListStoragePools(context.Context, *connect.Request[v1.ListStoragePoolsRequest]) (*connect.Response[v1.ListStoragePoolsResponse], error)
-	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
-	SyncStoragePool(context.Context, *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error)
+	// UpdateImageStore Updates image store read-only status
+	UpdateImageStore(context.Context, *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error)
+	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
+	PreparePrimaryStorageForMaintenance(context.Context, *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error)
 }
 
 // NewStorageServiceClient constructs a client for the
@@ -201,70 +201,10 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	storageServiceMethods := v1.File_cloudstack_management_storage_v1_storage_gen_proto.Services().ByName("StorageService").Methods()
 	return &storageServiceClient{
-		updateObjectStoragePool: connect.NewClient[v1.UpdateObjectStoragePoolRequest, v1.UpdateObjectStoragePoolResponse](
+		migrateResourcesToAnotherSecondaryStorage: connect.NewClient[v1.MigrateResourcesToAnotherSecondaryStorageRequest, v1.MigrateResourcesToAnotherSecondaryStorageResponse](
 			httpClient,
-			baseURL+StorageServiceUpdateObjectStoragePoolProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("UpdateObjectStoragePool")),
-			connect.WithClientOptions(opts...),
-		),
-		updateStorageCapabilities: connect.NewClient[v1.UpdateStorageCapabilitiesRequest, v1.UpdateStorageCapabilitiesResponse](
-			httpClient,
-			baseURL+StorageServiceUpdateStorageCapabilitiesProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("UpdateStorageCapabilities")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteObjectStoragePool: connect.NewClient[v1.DeleteObjectStoragePoolRequest, v1.DeleteObjectStoragePoolResponse](
-			httpClient,
-			baseURL+StorageServiceDeleteObjectStoragePoolProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("DeleteObjectStoragePool")),
-			connect.WithClientOptions(opts...),
-		),
-		addImageStore: connect.NewClient[v1.AddImageStoreRequest, v1.AddImageStoreResponse](
-			httpClient,
-			baseURL+StorageServiceAddImageStoreProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("AddImageStore")),
-			connect.WithClientOptions(opts...),
-		),
-		changeStoragePoolScope: connect.NewClient[v1.ChangeStoragePoolScopeRequest, v1.ChangeStoragePoolScopeResponse](
-			httpClient,
-			baseURL+StorageServiceChangeStoragePoolScopeProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ChangeStoragePoolScope")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteSecondaryStagingStore: connect.NewClient[v1.DeleteSecondaryStagingStoreRequest, v1.DeleteSecondaryStagingStoreResponse](
-			httpClient,
-			baseURL+StorageServiceDeleteSecondaryStagingStoreProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("DeleteSecondaryStagingStore")),
-			connect.WithClientOptions(opts...),
-		),
-		listStorageTags: connect.NewClient[v1.ListStorageTagsRequest, v1.ListStorageTagsResponse](
-			httpClient,
-			baseURL+StorageServiceListStorageTagsProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListStorageTags")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteImageStore: connect.NewClient[v1.DeleteImageStoreRequest, v1.DeleteImageStoreResponse](
-			httpClient,
-			baseURL+StorageServiceDeleteImageStoreProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("DeleteImageStore")),
-			connect.WithClientOptions(opts...),
-		),
-		listStorageProviders: connect.NewClient[v1.ListStorageProvidersRequest, v1.ListStorageProvidersResponse](
-			httpClient,
-			baseURL+StorageServiceListStorageProvidersProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListStorageProviders")),
-			connect.WithClientOptions(opts...),
-		),
-		addImageStoreS3CMD: connect.NewClient[v1.AddImageStoreS3CMDRequest, v1.AddImageStoreS3CMDResponse](
-			httpClient,
-			baseURL+StorageServiceAddImageStoreS3CMDProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("AddImageStoreS3CMD")),
-			connect.WithClientOptions(opts...),
-		),
-		updateImageStore: connect.NewClient[v1.UpdateImageStoreRequest, v1.UpdateImageStoreResponse](
-			httpClient,
-			baseURL+StorageServiceUpdateImageStoreProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("UpdateImageStore")),
+			baseURL+StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("MigrateResourcesToAnotherSecondaryStorage")),
 			connect.WithClientOptions(opts...),
 		),
 		deletePool: connect.NewClient[v1.DeletePoolRequest, v1.DeletePoolResponse](
@@ -273,22 +213,10 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(storageServiceMethods.ByName("DeletePool")),
 			connect.WithClientOptions(opts...),
 		),
-		createStoragePool: connect.NewClient[v1.CreateStoragePoolRequest, v1.CreateStoragePoolResponse](
+		syncStoragePool: connect.NewClient[v1.SyncStoragePoolRequest, v1.SyncStoragePoolResponse](
 			httpClient,
-			baseURL+StorageServiceCreateStoragePoolProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("CreateStoragePool")),
-			connect.WithClientOptions(opts...),
-		),
-		listImageStores: connect.NewClient[v1.ListImageStoresRequest, v1.ListImageStoresResponse](
-			httpClient,
-			baseURL+StorageServiceListImageStoresProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListImageStores")),
-			connect.WithClientOptions(opts...),
-		),
-		listSecondaryStagingStores: connect.NewClient[v1.ListSecondaryStagingStoresRequest, v1.ListSecondaryStagingStoresResponse](
-			httpClient,
-			baseURL+StorageServiceListSecondaryStagingStoresProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListSecondaryStagingStores")),
+			baseURL+StorageServiceSyncStoragePoolProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("SyncStoragePool")),
 			connect.WithClientOptions(opts...),
 		),
 		updateStoragePool: connect.NewClient[v1.UpdateStoragePoolRequest, v1.UpdateStoragePoolResponse](
@@ -297,34 +225,16 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(storageServiceMethods.ByName("UpdateStoragePool")),
 			connect.WithClientOptions(opts...),
 		),
-		listObjectStoragePools: connect.NewClient[v1.ListObjectStoragePoolsRequest, v1.ListObjectStoragePoolsResponse](
+		listSecondaryStagingStores: connect.NewClient[v1.ListSecondaryStagingStoresRequest, v1.ListSecondaryStagingStoresResponse](
 			httpClient,
-			baseURL+StorageServiceListObjectStoragePoolsProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListObjectStoragePools")),
+			baseURL+StorageServiceListSecondaryStagingStoresProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListSecondaryStagingStores")),
 			connect.WithClientOptions(opts...),
 		),
-		listImageStoreObjects: connect.NewClient[v1.ListImageStoreObjectsRequest, v1.ListImageStoreObjectsResponse](
+		migrateSecondaryStorageData: connect.NewClient[v1.MigrateSecondaryStorageDataRequest, v1.MigrateSecondaryStorageDataResponse](
 			httpClient,
-			baseURL+StorageServiceListImageStoreObjectsProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListImageStoreObjects")),
-			connect.WithClientOptions(opts...),
-		),
-		listStoragePoolObjects: connect.NewClient[v1.ListStoragePoolObjectsRequest, v1.ListStoragePoolObjectsResponse](
-			httpClient,
-			baseURL+StorageServiceListStoragePoolObjectsProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("ListStoragePoolObjects")),
-			connect.WithClientOptions(opts...),
-		),
-		migrateResourcesToAnotherSecondaryStorage: connect.NewClient[v1.MigrateResourcesToAnotherSecondaryStorageRequest, v1.MigrateResourcesToAnotherSecondaryStorageResponse](
-			httpClient,
-			baseURL+StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("MigrateResourcesToAnotherSecondaryStorage")),
-			connect.WithClientOptions(opts...),
-		),
-		addObjectStoragePool: connect.NewClient[v1.AddObjectStoragePoolRequest, v1.AddObjectStoragePoolResponse](
-			httpClient,
-			baseURL+StorageServiceAddObjectStoragePoolProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("AddObjectStoragePool")),
+			baseURL+StorageServiceMigrateSecondaryStorageDataProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("MigrateSecondaryStorageData")),
 			connect.WithClientOptions(opts...),
 		),
 		updateCloudToUseObjectStore: connect.NewClient[v1.UpdateCloudToUseObjectStoreRequest, v1.UpdateCloudToUseObjectStoreResponse](
@@ -339,22 +249,16 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(storageServiceMethods.ByName("DownloadImageStoreObject")),
 			connect.WithClientOptions(opts...),
 		),
-		migrateSecondaryStorageData: connect.NewClient[v1.MigrateSecondaryStorageDataRequest, v1.MigrateSecondaryStorageDataResponse](
-			httpClient,
-			baseURL+StorageServiceMigrateSecondaryStorageDataProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("MigrateSecondaryStorageData")),
-			connect.WithClientOptions(opts...),
-		),
-		preparePrimaryStorageForMaintenance: connect.NewClient[v1.PreparePrimaryStorageForMaintenanceRequest, v1.PreparePrimaryStorageForMaintenanceResponse](
-			httpClient,
-			baseURL+StorageServicePreparePrimaryStorageForMaintenanceProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("PreparePrimaryStorageForMaintenance")),
-			connect.WithClientOptions(opts...),
-		),
 		findStoragePoolsForMigration: connect.NewClient[v1.FindStoragePoolsForMigrationRequest, v1.FindStoragePoolsForMigrationResponse](
 			httpClient,
 			baseURL+StorageServiceFindStoragePoolsForMigrationProcedure,
 			connect.WithSchema(storageServiceMethods.ByName("FindStoragePoolsForMigration")),
+			connect.WithClientOptions(opts...),
+		),
+		addImageStore: connect.NewClient[v1.AddImageStoreRequest, v1.AddImageStoreResponse](
+			httpClient,
+			baseURL+StorageServiceAddImageStoreProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("AddImageStore")),
 			connect.WithClientOptions(opts...),
 		),
 		cancelPrimaryStorageMaintenance: connect.NewClient[v1.CancelPrimaryStorageMaintenanceRequest, v1.CancelPrimaryStorageMaintenanceResponse](
@@ -363,10 +267,100 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(storageServiceMethods.ByName("CancelPrimaryStorageMaintenance")),
 			connect.WithClientOptions(opts...),
 		),
+		listImageStoreObjects: connect.NewClient[v1.ListImageStoreObjectsRequest, v1.ListImageStoreObjectsResponse](
+			httpClient,
+			baseURL+StorageServiceListImageStoreObjectsProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListImageStoreObjects")),
+			connect.WithClientOptions(opts...),
+		),
+		listStorageProviders: connect.NewClient[v1.ListStorageProvidersRequest, v1.ListStorageProvidersResponse](
+			httpClient,
+			baseURL+StorageServiceListStorageProvidersProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListStorageProviders")),
+			connect.WithClientOptions(opts...),
+		),
+		listImageStores: connect.NewClient[v1.ListImageStoresRequest, v1.ListImageStoresResponse](
+			httpClient,
+			baseURL+StorageServiceListImageStoresProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListImageStores")),
+			connect.WithClientOptions(opts...),
+		),
+		addImageStoreS3CMD: connect.NewClient[v1.AddImageStoreS3CMDRequest, v1.AddImageStoreS3CMDResponse](
+			httpClient,
+			baseURL+StorageServiceAddImageStoreS3CMDProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("AddImageStoreS3CMD")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteObjectStoragePool: connect.NewClient[v1.DeleteObjectStoragePoolRequest, v1.DeleteObjectStoragePoolResponse](
+			httpClient,
+			baseURL+StorageServiceDeleteObjectStoragePoolProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("DeleteObjectStoragePool")),
+			connect.WithClientOptions(opts...),
+		),
+		updateStorageCapabilities: connect.NewClient[v1.UpdateStorageCapabilitiesRequest, v1.UpdateStorageCapabilitiesResponse](
+			httpClient,
+			baseURL+StorageServiceUpdateStorageCapabilitiesProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("UpdateStorageCapabilities")),
+			connect.WithClientOptions(opts...),
+		),
+		listStoragePoolObjects: connect.NewClient[v1.ListStoragePoolObjectsRequest, v1.ListStoragePoolObjectsResponse](
+			httpClient,
+			baseURL+StorageServiceListStoragePoolObjectsProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListStoragePoolObjects")),
+			connect.WithClientOptions(opts...),
+		),
+		updateObjectStoragePool: connect.NewClient[v1.UpdateObjectStoragePoolRequest, v1.UpdateObjectStoragePoolResponse](
+			httpClient,
+			baseURL+StorageServiceUpdateObjectStoragePoolProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("UpdateObjectStoragePool")),
+			connect.WithClientOptions(opts...),
+		),
 		createSecondaryStagingStore: connect.NewClient[v1.CreateSecondaryStagingStoreRequest, v1.CreateSecondaryStagingStoreResponse](
 			httpClient,
 			baseURL+StorageServiceCreateSecondaryStagingStoreProcedure,
 			connect.WithSchema(storageServiceMethods.ByName("CreateSecondaryStagingStore")),
+			connect.WithClientOptions(opts...),
+		),
+		listStorageTags: connect.NewClient[v1.ListStorageTagsRequest, v1.ListStorageTagsResponse](
+			httpClient,
+			baseURL+StorageServiceListStorageTagsProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListStorageTags")),
+			connect.WithClientOptions(opts...),
+		),
+		listObjectStoragePools: connect.NewClient[v1.ListObjectStoragePoolsRequest, v1.ListObjectStoragePoolsResponse](
+			httpClient,
+			baseURL+StorageServiceListObjectStoragePoolsProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ListObjectStoragePools")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteImageStore: connect.NewClient[v1.DeleteImageStoreRequest, v1.DeleteImageStoreResponse](
+			httpClient,
+			baseURL+StorageServiceDeleteImageStoreProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("DeleteImageStore")),
+			connect.WithClientOptions(opts...),
+		),
+		createStoragePool: connect.NewClient[v1.CreateStoragePoolRequest, v1.CreateStoragePoolResponse](
+			httpClient,
+			baseURL+StorageServiceCreateStoragePoolProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("CreateStoragePool")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteSecondaryStagingStore: connect.NewClient[v1.DeleteSecondaryStagingStoreRequest, v1.DeleteSecondaryStagingStoreResponse](
+			httpClient,
+			baseURL+StorageServiceDeleteSecondaryStagingStoreProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("DeleteSecondaryStagingStore")),
+			connect.WithClientOptions(opts...),
+		),
+		addObjectStoragePool: connect.NewClient[v1.AddObjectStoragePoolRequest, v1.AddObjectStoragePoolResponse](
+			httpClient,
+			baseURL+StorageServiceAddObjectStoragePoolProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("AddObjectStoragePool")),
+			connect.WithClientOptions(opts...),
+		),
+		changeStoragePoolScope: connect.NewClient[v1.ChangeStoragePoolScopeRequest, v1.ChangeStoragePoolScopeResponse](
+			httpClient,
+			baseURL+StorageServiceChangeStoragePoolScopeProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("ChangeStoragePoolScope")),
 			connect.WithClientOptions(opts...),
 		),
 		listStoragePools: connect.NewClient[v1.ListStoragePoolsRequest, v1.ListStoragePoolsResponse](
@@ -375,10 +369,16 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(storageServiceMethods.ByName("ListStoragePools")),
 			connect.WithClientOptions(opts...),
 		),
-		syncStoragePool: connect.NewClient[v1.SyncStoragePoolRequest, v1.SyncStoragePoolResponse](
+		updateImageStore: connect.NewClient[v1.UpdateImageStoreRequest, v1.UpdateImageStoreResponse](
 			httpClient,
-			baseURL+StorageServiceSyncStoragePoolProcedure,
-			connect.WithSchema(storageServiceMethods.ByName("SyncStoragePool")),
+			baseURL+StorageServiceUpdateImageStoreProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("UpdateImageStore")),
+			connect.WithClientOptions(opts...),
+		),
+		preparePrimaryStorageForMaintenance: connect.NewClient[v1.PreparePrimaryStorageForMaintenanceRequest, v1.PreparePrimaryStorageForMaintenanceResponse](
+			httpClient,
+			baseURL+StorageServicePreparePrimaryStorageForMaintenanceProcedure,
+			connect.WithSchema(storageServiceMethods.ByName("PreparePrimaryStorageForMaintenance")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -386,140 +386,36 @@ func NewStorageServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // storageServiceClient implements StorageServiceClient.
 type storageServiceClient struct {
-	updateObjectStoragePool                   *connect.Client[v1.UpdateObjectStoragePoolRequest, v1.UpdateObjectStoragePoolResponse]
-	updateStorageCapabilities                 *connect.Client[v1.UpdateStorageCapabilitiesRequest, v1.UpdateStorageCapabilitiesResponse]
-	deleteObjectStoragePool                   *connect.Client[v1.DeleteObjectStoragePoolRequest, v1.DeleteObjectStoragePoolResponse]
-	addImageStore                             *connect.Client[v1.AddImageStoreRequest, v1.AddImageStoreResponse]
-	changeStoragePoolScope                    *connect.Client[v1.ChangeStoragePoolScopeRequest, v1.ChangeStoragePoolScopeResponse]
-	deleteSecondaryStagingStore               *connect.Client[v1.DeleteSecondaryStagingStoreRequest, v1.DeleteSecondaryStagingStoreResponse]
-	listStorageTags                           *connect.Client[v1.ListStorageTagsRequest, v1.ListStorageTagsResponse]
-	deleteImageStore                          *connect.Client[v1.DeleteImageStoreRequest, v1.DeleteImageStoreResponse]
-	listStorageProviders                      *connect.Client[v1.ListStorageProvidersRequest, v1.ListStorageProvidersResponse]
-	addImageStoreS3CMD                        *connect.Client[v1.AddImageStoreS3CMDRequest, v1.AddImageStoreS3CMDResponse]
-	updateImageStore                          *connect.Client[v1.UpdateImageStoreRequest, v1.UpdateImageStoreResponse]
-	deletePool                                *connect.Client[v1.DeletePoolRequest, v1.DeletePoolResponse]
-	createStoragePool                         *connect.Client[v1.CreateStoragePoolRequest, v1.CreateStoragePoolResponse]
-	listImageStores                           *connect.Client[v1.ListImageStoresRequest, v1.ListImageStoresResponse]
-	listSecondaryStagingStores                *connect.Client[v1.ListSecondaryStagingStoresRequest, v1.ListSecondaryStagingStoresResponse]
-	updateStoragePool                         *connect.Client[v1.UpdateStoragePoolRequest, v1.UpdateStoragePoolResponse]
-	listObjectStoragePools                    *connect.Client[v1.ListObjectStoragePoolsRequest, v1.ListObjectStoragePoolsResponse]
-	listImageStoreObjects                     *connect.Client[v1.ListImageStoreObjectsRequest, v1.ListImageStoreObjectsResponse]
-	listStoragePoolObjects                    *connect.Client[v1.ListStoragePoolObjectsRequest, v1.ListStoragePoolObjectsResponse]
 	migrateResourcesToAnotherSecondaryStorage *connect.Client[v1.MigrateResourcesToAnotherSecondaryStorageRequest, v1.MigrateResourcesToAnotherSecondaryStorageResponse]
-	addObjectStoragePool                      *connect.Client[v1.AddObjectStoragePoolRequest, v1.AddObjectStoragePoolResponse]
+	deletePool                                *connect.Client[v1.DeletePoolRequest, v1.DeletePoolResponse]
+	syncStoragePool                           *connect.Client[v1.SyncStoragePoolRequest, v1.SyncStoragePoolResponse]
+	updateStoragePool                         *connect.Client[v1.UpdateStoragePoolRequest, v1.UpdateStoragePoolResponse]
+	listSecondaryStagingStores                *connect.Client[v1.ListSecondaryStagingStoresRequest, v1.ListSecondaryStagingStoresResponse]
+	migrateSecondaryStorageData               *connect.Client[v1.MigrateSecondaryStorageDataRequest, v1.MigrateSecondaryStorageDataResponse]
 	updateCloudToUseObjectStore               *connect.Client[v1.UpdateCloudToUseObjectStoreRequest, v1.UpdateCloudToUseObjectStoreResponse]
 	downloadImageStoreObject                  *connect.Client[v1.DownloadImageStoreObjectRequest, v1.DownloadImageStoreObjectResponse]
-	migrateSecondaryStorageData               *connect.Client[v1.MigrateSecondaryStorageDataRequest, v1.MigrateSecondaryStorageDataResponse]
-	preparePrimaryStorageForMaintenance       *connect.Client[v1.PreparePrimaryStorageForMaintenanceRequest, v1.PreparePrimaryStorageForMaintenanceResponse]
 	findStoragePoolsForMigration              *connect.Client[v1.FindStoragePoolsForMigrationRequest, v1.FindStoragePoolsForMigrationResponse]
+	addImageStore                             *connect.Client[v1.AddImageStoreRequest, v1.AddImageStoreResponse]
 	cancelPrimaryStorageMaintenance           *connect.Client[v1.CancelPrimaryStorageMaintenanceRequest, v1.CancelPrimaryStorageMaintenanceResponse]
+	listImageStoreObjects                     *connect.Client[v1.ListImageStoreObjectsRequest, v1.ListImageStoreObjectsResponse]
+	listStorageProviders                      *connect.Client[v1.ListStorageProvidersRequest, v1.ListStorageProvidersResponse]
+	listImageStores                           *connect.Client[v1.ListImageStoresRequest, v1.ListImageStoresResponse]
+	addImageStoreS3CMD                        *connect.Client[v1.AddImageStoreS3CMDRequest, v1.AddImageStoreS3CMDResponse]
+	deleteObjectStoragePool                   *connect.Client[v1.DeleteObjectStoragePoolRequest, v1.DeleteObjectStoragePoolResponse]
+	updateStorageCapabilities                 *connect.Client[v1.UpdateStorageCapabilitiesRequest, v1.UpdateStorageCapabilitiesResponse]
+	listStoragePoolObjects                    *connect.Client[v1.ListStoragePoolObjectsRequest, v1.ListStoragePoolObjectsResponse]
+	updateObjectStoragePool                   *connect.Client[v1.UpdateObjectStoragePoolRequest, v1.UpdateObjectStoragePoolResponse]
 	createSecondaryStagingStore               *connect.Client[v1.CreateSecondaryStagingStoreRequest, v1.CreateSecondaryStagingStoreResponse]
+	listStorageTags                           *connect.Client[v1.ListStorageTagsRequest, v1.ListStorageTagsResponse]
+	listObjectStoragePools                    *connect.Client[v1.ListObjectStoragePoolsRequest, v1.ListObjectStoragePoolsResponse]
+	deleteImageStore                          *connect.Client[v1.DeleteImageStoreRequest, v1.DeleteImageStoreResponse]
+	createStoragePool                         *connect.Client[v1.CreateStoragePoolRequest, v1.CreateStoragePoolResponse]
+	deleteSecondaryStagingStore               *connect.Client[v1.DeleteSecondaryStagingStoreRequest, v1.DeleteSecondaryStagingStoreResponse]
+	addObjectStoragePool                      *connect.Client[v1.AddObjectStoragePoolRequest, v1.AddObjectStoragePoolResponse]
+	changeStoragePoolScope                    *connect.Client[v1.ChangeStoragePoolScopeRequest, v1.ChangeStoragePoolScopeResponse]
 	listStoragePools                          *connect.Client[v1.ListStoragePoolsRequest, v1.ListStoragePoolsResponse]
-	syncStoragePool                           *connect.Client[v1.SyncStoragePoolRequest, v1.SyncStoragePoolResponse]
-}
-
-// UpdateObjectStoragePool calls
-// cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool.
-func (c *storageServiceClient) UpdateObjectStoragePool(ctx context.Context, req *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error) {
-	return c.updateObjectStoragePool.CallUnary(ctx, req)
-}
-
-// UpdateStorageCapabilities calls
-// cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities.
-func (c *storageServiceClient) UpdateStorageCapabilities(ctx context.Context, req *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error) {
-	return c.updateStorageCapabilities.CallUnary(ctx, req)
-}
-
-// DeleteObjectStoragePool calls
-// cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool.
-func (c *storageServiceClient) DeleteObjectStoragePool(ctx context.Context, req *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error) {
-	return c.deleteObjectStoragePool.CallUnary(ctx, req)
-}
-
-// AddImageStore calls cloudstack.management.storage.v1.StorageService.AddImageStore.
-func (c *storageServiceClient) AddImageStore(ctx context.Context, req *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error) {
-	return c.addImageStore.CallUnary(ctx, req)
-}
-
-// ChangeStoragePoolScope calls
-// cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope.
-func (c *storageServiceClient) ChangeStoragePoolScope(ctx context.Context, req *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error) {
-	return c.changeStoragePoolScope.CallUnary(ctx, req)
-}
-
-// DeleteSecondaryStagingStore calls
-// cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore.
-func (c *storageServiceClient) DeleteSecondaryStagingStore(ctx context.Context, req *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error) {
-	return c.deleteSecondaryStagingStore.CallUnary(ctx, req)
-}
-
-// ListStorageTags calls cloudstack.management.storage.v1.StorageService.ListStorageTags.
-func (c *storageServiceClient) ListStorageTags(ctx context.Context, req *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error) {
-	return c.listStorageTags.CallUnary(ctx, req)
-}
-
-// DeleteImageStore calls cloudstack.management.storage.v1.StorageService.DeleteImageStore.
-func (c *storageServiceClient) DeleteImageStore(ctx context.Context, req *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error) {
-	return c.deleteImageStore.CallUnary(ctx, req)
-}
-
-// ListStorageProviders calls cloudstack.management.storage.v1.StorageService.ListStorageProviders.
-func (c *storageServiceClient) ListStorageProviders(ctx context.Context, req *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error) {
-	return c.listStorageProviders.CallUnary(ctx, req)
-}
-
-// AddImageStoreS3CMD calls cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD.
-func (c *storageServiceClient) AddImageStoreS3CMD(ctx context.Context, req *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error) {
-	return c.addImageStoreS3CMD.CallUnary(ctx, req)
-}
-
-// UpdateImageStore calls cloudstack.management.storage.v1.StorageService.UpdateImageStore.
-func (c *storageServiceClient) UpdateImageStore(ctx context.Context, req *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error) {
-	return c.updateImageStore.CallUnary(ctx, req)
-}
-
-// DeletePool calls cloudstack.management.storage.v1.StorageService.DeletePool.
-func (c *storageServiceClient) DeletePool(ctx context.Context, req *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error) {
-	return c.deletePool.CallUnary(ctx, req)
-}
-
-// CreateStoragePool calls cloudstack.management.storage.v1.StorageService.CreateStoragePool.
-func (c *storageServiceClient) CreateStoragePool(ctx context.Context, req *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error) {
-	return c.createStoragePool.CallUnary(ctx, req)
-}
-
-// ListImageStores calls cloudstack.management.storage.v1.StorageService.ListImageStores.
-func (c *storageServiceClient) ListImageStores(ctx context.Context, req *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error) {
-	return c.listImageStores.CallUnary(ctx, req)
-}
-
-// ListSecondaryStagingStores calls
-// cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores.
-func (c *storageServiceClient) ListSecondaryStagingStores(ctx context.Context, req *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error) {
-	return c.listSecondaryStagingStores.CallUnary(ctx, req)
-}
-
-// UpdateStoragePool calls cloudstack.management.storage.v1.StorageService.UpdateStoragePool.
-func (c *storageServiceClient) UpdateStoragePool(ctx context.Context, req *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error) {
-	return c.updateStoragePool.CallUnary(ctx, req)
-}
-
-// ListObjectStoragePools calls
-// cloudstack.management.storage.v1.StorageService.ListObjectStoragePools.
-func (c *storageServiceClient) ListObjectStoragePools(ctx context.Context, req *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error) {
-	return c.listObjectStoragePools.CallUnary(ctx, req)
-}
-
-// ListImageStoreObjects calls
-// cloudstack.management.storage.v1.StorageService.ListImageStoreObjects.
-func (c *storageServiceClient) ListImageStoreObjects(ctx context.Context, req *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error) {
-	return c.listImageStoreObjects.CallUnary(ctx, req)
-}
-
-// ListStoragePoolObjects calls
-// cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects.
-func (c *storageServiceClient) ListStoragePoolObjects(ctx context.Context, req *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error) {
-	return c.listStoragePoolObjects.CallUnary(ctx, req)
+	updateImageStore                          *connect.Client[v1.UpdateImageStoreRequest, v1.UpdateImageStoreResponse]
+	preparePrimaryStorageForMaintenance       *connect.Client[v1.PreparePrimaryStorageForMaintenanceRequest, v1.PreparePrimaryStorageForMaintenanceResponse]
 }
 
 // MigrateResourcesToAnotherSecondaryStorage calls
@@ -528,9 +424,31 @@ func (c *storageServiceClient) MigrateResourcesToAnotherSecondaryStorage(ctx con
 	return c.migrateResourcesToAnotherSecondaryStorage.CallUnary(ctx, req)
 }
 
-// AddObjectStoragePool calls cloudstack.management.storage.v1.StorageService.AddObjectStoragePool.
-func (c *storageServiceClient) AddObjectStoragePool(ctx context.Context, req *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error) {
-	return c.addObjectStoragePool.CallUnary(ctx, req)
+// DeletePool calls cloudstack.management.storage.v1.StorageService.DeletePool.
+func (c *storageServiceClient) DeletePool(ctx context.Context, req *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error) {
+	return c.deletePool.CallUnary(ctx, req)
+}
+
+// SyncStoragePool calls cloudstack.management.storage.v1.StorageService.SyncStoragePool.
+func (c *storageServiceClient) SyncStoragePool(ctx context.Context, req *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error) {
+	return c.syncStoragePool.CallUnary(ctx, req)
+}
+
+// UpdateStoragePool calls cloudstack.management.storage.v1.StorageService.UpdateStoragePool.
+func (c *storageServiceClient) UpdateStoragePool(ctx context.Context, req *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error) {
+	return c.updateStoragePool.CallUnary(ctx, req)
+}
+
+// ListSecondaryStagingStores calls
+// cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores.
+func (c *storageServiceClient) ListSecondaryStagingStores(ctx context.Context, req *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error) {
+	return c.listSecondaryStagingStores.CallUnary(ctx, req)
+}
+
+// MigrateSecondaryStorageData calls
+// cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData.
+func (c *storageServiceClient) MigrateSecondaryStorageData(ctx context.Context, req *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error) {
+	return c.migrateSecondaryStorageData.CallUnary(ctx, req)
 }
 
 // UpdateCloudToUseObjectStore calls
@@ -545,22 +463,15 @@ func (c *storageServiceClient) DownloadImageStoreObject(ctx context.Context, req
 	return c.downloadImageStoreObject.CallUnary(ctx, req)
 }
 
-// MigrateSecondaryStorageData calls
-// cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData.
-func (c *storageServiceClient) MigrateSecondaryStorageData(ctx context.Context, req *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error) {
-	return c.migrateSecondaryStorageData.CallUnary(ctx, req)
-}
-
-// PreparePrimaryStorageForMaintenance calls
-// cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance.
-func (c *storageServiceClient) PreparePrimaryStorageForMaintenance(ctx context.Context, req *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error) {
-	return c.preparePrimaryStorageForMaintenance.CallUnary(ctx, req)
-}
-
 // FindStoragePoolsForMigration calls
 // cloudstack.management.storage.v1.StorageService.FindStoragePoolsForMigration.
 func (c *storageServiceClient) FindStoragePoolsForMigration(ctx context.Context, req *connect.Request[v1.FindStoragePoolsForMigrationRequest]) (*connect.Response[v1.FindStoragePoolsForMigrationResponse], error) {
 	return c.findStoragePoolsForMigration.CallUnary(ctx, req)
+}
+
+// AddImageStore calls cloudstack.management.storage.v1.StorageService.AddImageStore.
+func (c *storageServiceClient) AddImageStore(ctx context.Context, req *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error) {
+	return c.addImageStore.CallUnary(ctx, req)
 }
 
 // CancelPrimaryStorageMaintenance calls
@@ -569,10 +480,93 @@ func (c *storageServiceClient) CancelPrimaryStorageMaintenance(ctx context.Conte
 	return c.cancelPrimaryStorageMaintenance.CallUnary(ctx, req)
 }
 
+// ListImageStoreObjects calls
+// cloudstack.management.storage.v1.StorageService.ListImageStoreObjects.
+func (c *storageServiceClient) ListImageStoreObjects(ctx context.Context, req *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error) {
+	return c.listImageStoreObjects.CallUnary(ctx, req)
+}
+
+// ListStorageProviders calls cloudstack.management.storage.v1.StorageService.ListStorageProviders.
+func (c *storageServiceClient) ListStorageProviders(ctx context.Context, req *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error) {
+	return c.listStorageProviders.CallUnary(ctx, req)
+}
+
+// ListImageStores calls cloudstack.management.storage.v1.StorageService.ListImageStores.
+func (c *storageServiceClient) ListImageStores(ctx context.Context, req *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error) {
+	return c.listImageStores.CallUnary(ctx, req)
+}
+
+// AddImageStoreS3CMD calls cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD.
+func (c *storageServiceClient) AddImageStoreS3CMD(ctx context.Context, req *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error) {
+	return c.addImageStoreS3CMD.CallUnary(ctx, req)
+}
+
+// DeleteObjectStoragePool calls
+// cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool.
+func (c *storageServiceClient) DeleteObjectStoragePool(ctx context.Context, req *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error) {
+	return c.deleteObjectStoragePool.CallUnary(ctx, req)
+}
+
+// UpdateStorageCapabilities calls
+// cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities.
+func (c *storageServiceClient) UpdateStorageCapabilities(ctx context.Context, req *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error) {
+	return c.updateStorageCapabilities.CallUnary(ctx, req)
+}
+
+// ListStoragePoolObjects calls
+// cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects.
+func (c *storageServiceClient) ListStoragePoolObjects(ctx context.Context, req *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error) {
+	return c.listStoragePoolObjects.CallUnary(ctx, req)
+}
+
+// UpdateObjectStoragePool calls
+// cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool.
+func (c *storageServiceClient) UpdateObjectStoragePool(ctx context.Context, req *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error) {
+	return c.updateObjectStoragePool.CallUnary(ctx, req)
+}
+
 // CreateSecondaryStagingStore calls
 // cloudstack.management.storage.v1.StorageService.CreateSecondaryStagingStore.
 func (c *storageServiceClient) CreateSecondaryStagingStore(ctx context.Context, req *connect.Request[v1.CreateSecondaryStagingStoreRequest]) (*connect.Response[v1.CreateSecondaryStagingStoreResponse], error) {
 	return c.createSecondaryStagingStore.CallUnary(ctx, req)
+}
+
+// ListStorageTags calls cloudstack.management.storage.v1.StorageService.ListStorageTags.
+func (c *storageServiceClient) ListStorageTags(ctx context.Context, req *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error) {
+	return c.listStorageTags.CallUnary(ctx, req)
+}
+
+// ListObjectStoragePools calls
+// cloudstack.management.storage.v1.StorageService.ListObjectStoragePools.
+func (c *storageServiceClient) ListObjectStoragePools(ctx context.Context, req *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error) {
+	return c.listObjectStoragePools.CallUnary(ctx, req)
+}
+
+// DeleteImageStore calls cloudstack.management.storage.v1.StorageService.DeleteImageStore.
+func (c *storageServiceClient) DeleteImageStore(ctx context.Context, req *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error) {
+	return c.deleteImageStore.CallUnary(ctx, req)
+}
+
+// CreateStoragePool calls cloudstack.management.storage.v1.StorageService.CreateStoragePool.
+func (c *storageServiceClient) CreateStoragePool(ctx context.Context, req *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error) {
+	return c.createStoragePool.CallUnary(ctx, req)
+}
+
+// DeleteSecondaryStagingStore calls
+// cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore.
+func (c *storageServiceClient) DeleteSecondaryStagingStore(ctx context.Context, req *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error) {
+	return c.deleteSecondaryStagingStore.CallUnary(ctx, req)
+}
+
+// AddObjectStoragePool calls cloudstack.management.storage.v1.StorageService.AddObjectStoragePool.
+func (c *storageServiceClient) AddObjectStoragePool(ctx context.Context, req *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error) {
+	return c.addObjectStoragePool.CallUnary(ctx, req)
+}
+
+// ChangeStoragePoolScope calls
+// cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope.
+func (c *storageServiceClient) ChangeStoragePoolScope(ctx context.Context, req *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error) {
+	return c.changeStoragePoolScope.CallUnary(ctx, req)
 }
 
 // ListStoragePools calls cloudstack.management.storage.v1.StorageService.ListStoragePools.
@@ -580,74 +574,80 @@ func (c *storageServiceClient) ListStoragePools(ctx context.Context, req *connec
 	return c.listStoragePools.CallUnary(ctx, req)
 }
 
-// SyncStoragePool calls cloudstack.management.storage.v1.StorageService.SyncStoragePool.
-func (c *storageServiceClient) SyncStoragePool(ctx context.Context, req *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error) {
-	return c.syncStoragePool.CallUnary(ctx, req)
+// UpdateImageStore calls cloudstack.management.storage.v1.StorageService.UpdateImageStore.
+func (c *storageServiceClient) UpdateImageStore(ctx context.Context, req *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error) {
+	return c.updateImageStore.CallUnary(ctx, req)
+}
+
+// PreparePrimaryStorageForMaintenance calls
+// cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance.
+func (c *storageServiceClient) PreparePrimaryStorageForMaintenance(ctx context.Context, req *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error) {
+	return c.preparePrimaryStorageForMaintenance.CallUnary(ctx, req)
 }
 
 // StorageServiceHandler is an implementation of the cloudstack.management.storage.v1.StorageService
 // service.
 type StorageServiceHandler interface {
-	// UpdateObjectStoragePool Updates object storage pool
-	UpdateObjectStoragePool(context.Context, *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error)
-	// UpdateStorageCapabilities Syncs capabilities of storage pools
-	UpdateStorageCapabilities(context.Context, *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error)
-	// DeleteObjectStoragePool Deletes an Object Storage Pool
-	DeleteObjectStoragePool(context.Context, *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error)
-	// AddImageStore Adds backup image store.
-	AddImageStore(context.Context, *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error)
-	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
-	ChangeStoragePoolScope(context.Context, *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error)
-	// DeleteSecondaryStagingStore Deletes a secondary staging store .
-	DeleteSecondaryStagingStore(context.Context, *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error)
-	// ListStorageTags Lists storage tags
-	ListStorageTags(context.Context, *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error)
-	// DeleteImageStore Deletes an image store or Secondary Storage.
-	DeleteImageStore(context.Context, *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error)
-	// ListStorageProviders Lists storage providers.
-	ListStorageProviders(context.Context, *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error)
-	// AddImageStoreS3CMD Adds S3 Image Store
-	AddImageStoreS3CMD(context.Context, *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error)
-	// UpdateImageStore Updates image store read-only status
-	UpdateImageStore(context.Context, *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error)
-	// DeletePool Deletes a storage pool.
-	DeletePool(context.Context, *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error)
-	// CreateStoragePool Creates a storage pool.
-	CreateStoragePool(context.Context, *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error)
-	// ListImageStores Lists image stores.
-	ListImageStores(context.Context, *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error)
-	// ListSecondaryStagingStores Lists secondary staging stores.
-	ListSecondaryStagingStores(context.Context, *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error)
-	// UpdateStoragePool Updates a storage pool.
-	UpdateStoragePool(context.Context, *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error)
-	// ListObjectStoragePools Lists object storage pools.
-	ListObjectStoragePools(context.Context, *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error)
-	// ListImageStoreObjects Lists objects at specified path on an image store.
-	ListImageStoreObjects(context.Context, *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error)
-	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
-	ListStoragePoolObjects(context.Context, *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error)
 	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
 	MigrateResourcesToAnotherSecondaryStorage(context.Context, *connect.Request[v1.MigrateResourcesToAnotherSecondaryStorageRequest]) (*connect.Response[v1.MigrateResourcesToAnotherSecondaryStorageResponse], error)
-	// AddObjectStoragePool Adds a object storage pool
-	AddObjectStoragePool(context.Context, *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error)
+	// DeletePool Deletes a storage pool.
+	DeletePool(context.Context, *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error)
+	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
+	SyncStoragePool(context.Context, *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error)
+	// UpdateStoragePool Updates a storage pool.
+	UpdateStoragePool(context.Context, *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error)
+	// ListSecondaryStagingStores Lists secondary staging stores.
+	ListSecondaryStagingStores(context.Context, *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error)
+	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
+	MigrateSecondaryStorageData(context.Context, *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error)
 	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
 	UpdateCloudToUseObjectStore(context.Context, *connect.Request[v1.UpdateCloudToUseObjectStoreRequest]) (*connect.Response[v1.UpdateCloudToUseObjectStoreResponse], error)
 	// DownloadImageStoreObject Download object at a specified path on an image store.
 	DownloadImageStoreObject(context.Context, *connect.Request[v1.DownloadImageStoreObjectRequest]) (*connect.Response[v1.DownloadImageStoreObjectResponse], error)
-	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
-	MigrateSecondaryStorageData(context.Context, *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error)
-	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
-	PreparePrimaryStorageForMaintenance(context.Context, *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error)
 	// FindStoragePoolsForMigration Lists storage pools available for migration of a volume.
 	FindStoragePoolsForMigration(context.Context, *connect.Request[v1.FindStoragePoolsForMigrationRequest]) (*connect.Response[v1.FindStoragePoolsForMigrationResponse], error)
+	// AddImageStore Adds backup image store.
+	AddImageStore(context.Context, *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error)
 	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
 	CancelPrimaryStorageMaintenance(context.Context, *connect.Request[v1.CancelPrimaryStorageMaintenanceRequest]) (*connect.Response[v1.CancelPrimaryStorageMaintenanceResponse], error)
+	// ListImageStoreObjects Lists objects at specified path on an image store.
+	ListImageStoreObjects(context.Context, *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error)
+	// ListStorageProviders Lists storage providers.
+	ListStorageProviders(context.Context, *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error)
+	// ListImageStores Lists image stores.
+	ListImageStores(context.Context, *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error)
+	// AddImageStoreS3CMD Adds S3 Image Store
+	AddImageStoreS3CMD(context.Context, *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error)
+	// DeleteObjectStoragePool Deletes an Object Storage Pool
+	DeleteObjectStoragePool(context.Context, *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error)
+	// UpdateStorageCapabilities Syncs capabilities of storage pools
+	UpdateStorageCapabilities(context.Context, *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error)
+	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
+	ListStoragePoolObjects(context.Context, *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error)
+	// UpdateObjectStoragePool Updates object storage pool
+	UpdateObjectStoragePool(context.Context, *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error)
 	// CreateSecondaryStagingStore create secondary staging store.
 	CreateSecondaryStagingStore(context.Context, *connect.Request[v1.CreateSecondaryStagingStoreRequest]) (*connect.Response[v1.CreateSecondaryStagingStoreResponse], error)
+	// ListStorageTags Lists storage tags
+	ListStorageTags(context.Context, *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error)
+	// ListObjectStoragePools Lists object storage pools.
+	ListObjectStoragePools(context.Context, *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error)
+	// DeleteImageStore Deletes an image store or Secondary Storage.
+	DeleteImageStore(context.Context, *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error)
+	// CreateStoragePool Creates a storage pool.
+	CreateStoragePool(context.Context, *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error)
+	// DeleteSecondaryStagingStore Deletes a secondary staging store .
+	DeleteSecondaryStagingStore(context.Context, *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error)
+	// AddObjectStoragePool Adds a object storage pool
+	AddObjectStoragePool(context.Context, *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error)
+	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
+	ChangeStoragePoolScope(context.Context, *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error)
 	// ListStoragePools Lists storage pools.
 	ListStoragePools(context.Context, *connect.Request[v1.ListStoragePoolsRequest]) (*connect.Response[v1.ListStoragePoolsResponse], error)
-	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
-	SyncStoragePool(context.Context, *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error)
+	// UpdateImageStore Updates image store read-only status
+	UpdateImageStore(context.Context, *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error)
+	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
+	PreparePrimaryStorageForMaintenance(context.Context, *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error)
 }
 
 // NewStorageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -657,70 +657,10 @@ type StorageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	storageServiceMethods := v1.File_cloudstack_management_storage_v1_storage_gen_proto.Services().ByName("StorageService").Methods()
-	storageServiceUpdateObjectStoragePoolHandler := connect.NewUnaryHandler(
-		StorageServiceUpdateObjectStoragePoolProcedure,
-		svc.UpdateObjectStoragePool,
-		connect.WithSchema(storageServiceMethods.ByName("UpdateObjectStoragePool")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceUpdateStorageCapabilitiesHandler := connect.NewUnaryHandler(
-		StorageServiceUpdateStorageCapabilitiesProcedure,
-		svc.UpdateStorageCapabilities,
-		connect.WithSchema(storageServiceMethods.ByName("UpdateStorageCapabilities")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceDeleteObjectStoragePoolHandler := connect.NewUnaryHandler(
-		StorageServiceDeleteObjectStoragePoolProcedure,
-		svc.DeleteObjectStoragePool,
-		connect.WithSchema(storageServiceMethods.ByName("DeleteObjectStoragePool")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceAddImageStoreHandler := connect.NewUnaryHandler(
-		StorageServiceAddImageStoreProcedure,
-		svc.AddImageStore,
-		connect.WithSchema(storageServiceMethods.ByName("AddImageStore")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceChangeStoragePoolScopeHandler := connect.NewUnaryHandler(
-		StorageServiceChangeStoragePoolScopeProcedure,
-		svc.ChangeStoragePoolScope,
-		connect.WithSchema(storageServiceMethods.ByName("ChangeStoragePoolScope")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceDeleteSecondaryStagingStoreHandler := connect.NewUnaryHandler(
-		StorageServiceDeleteSecondaryStagingStoreProcedure,
-		svc.DeleteSecondaryStagingStore,
-		connect.WithSchema(storageServiceMethods.ByName("DeleteSecondaryStagingStore")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceListStorageTagsHandler := connect.NewUnaryHandler(
-		StorageServiceListStorageTagsProcedure,
-		svc.ListStorageTags,
-		connect.WithSchema(storageServiceMethods.ByName("ListStorageTags")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceDeleteImageStoreHandler := connect.NewUnaryHandler(
-		StorageServiceDeleteImageStoreProcedure,
-		svc.DeleteImageStore,
-		connect.WithSchema(storageServiceMethods.ByName("DeleteImageStore")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceListStorageProvidersHandler := connect.NewUnaryHandler(
-		StorageServiceListStorageProvidersProcedure,
-		svc.ListStorageProviders,
-		connect.WithSchema(storageServiceMethods.ByName("ListStorageProviders")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceAddImageStoreS3CMDHandler := connect.NewUnaryHandler(
-		StorageServiceAddImageStoreS3CMDProcedure,
-		svc.AddImageStoreS3CMD,
-		connect.WithSchema(storageServiceMethods.ByName("AddImageStoreS3CMD")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceUpdateImageStoreHandler := connect.NewUnaryHandler(
-		StorageServiceUpdateImageStoreProcedure,
-		svc.UpdateImageStore,
-		connect.WithSchema(storageServiceMethods.ByName("UpdateImageStore")),
+	storageServiceMigrateResourcesToAnotherSecondaryStorageHandler := connect.NewUnaryHandler(
+		StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure,
+		svc.MigrateResourcesToAnotherSecondaryStorage,
+		connect.WithSchema(storageServiceMethods.ByName("MigrateResourcesToAnotherSecondaryStorage")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceDeletePoolHandler := connect.NewUnaryHandler(
@@ -729,22 +669,10 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 		connect.WithSchema(storageServiceMethods.ByName("DeletePool")),
 		connect.WithHandlerOptions(opts...),
 	)
-	storageServiceCreateStoragePoolHandler := connect.NewUnaryHandler(
-		StorageServiceCreateStoragePoolProcedure,
-		svc.CreateStoragePool,
-		connect.WithSchema(storageServiceMethods.ByName("CreateStoragePool")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceListImageStoresHandler := connect.NewUnaryHandler(
-		StorageServiceListImageStoresProcedure,
-		svc.ListImageStores,
-		connect.WithSchema(storageServiceMethods.ByName("ListImageStores")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceListSecondaryStagingStoresHandler := connect.NewUnaryHandler(
-		StorageServiceListSecondaryStagingStoresProcedure,
-		svc.ListSecondaryStagingStores,
-		connect.WithSchema(storageServiceMethods.ByName("ListSecondaryStagingStores")),
+	storageServiceSyncStoragePoolHandler := connect.NewUnaryHandler(
+		StorageServiceSyncStoragePoolProcedure,
+		svc.SyncStoragePool,
+		connect.WithSchema(storageServiceMethods.ByName("SyncStoragePool")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceUpdateStoragePoolHandler := connect.NewUnaryHandler(
@@ -753,34 +681,16 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 		connect.WithSchema(storageServiceMethods.ByName("UpdateStoragePool")),
 		connect.WithHandlerOptions(opts...),
 	)
-	storageServiceListObjectStoragePoolsHandler := connect.NewUnaryHandler(
-		StorageServiceListObjectStoragePoolsProcedure,
-		svc.ListObjectStoragePools,
-		connect.WithSchema(storageServiceMethods.ByName("ListObjectStoragePools")),
+	storageServiceListSecondaryStagingStoresHandler := connect.NewUnaryHandler(
+		StorageServiceListSecondaryStagingStoresProcedure,
+		svc.ListSecondaryStagingStores,
+		connect.WithSchema(storageServiceMethods.ByName("ListSecondaryStagingStores")),
 		connect.WithHandlerOptions(opts...),
 	)
-	storageServiceListImageStoreObjectsHandler := connect.NewUnaryHandler(
-		StorageServiceListImageStoreObjectsProcedure,
-		svc.ListImageStoreObjects,
-		connect.WithSchema(storageServiceMethods.ByName("ListImageStoreObjects")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceListStoragePoolObjectsHandler := connect.NewUnaryHandler(
-		StorageServiceListStoragePoolObjectsProcedure,
-		svc.ListStoragePoolObjects,
-		connect.WithSchema(storageServiceMethods.ByName("ListStoragePoolObjects")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceMigrateResourcesToAnotherSecondaryStorageHandler := connect.NewUnaryHandler(
-		StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure,
-		svc.MigrateResourcesToAnotherSecondaryStorage,
-		connect.WithSchema(storageServiceMethods.ByName("MigrateResourcesToAnotherSecondaryStorage")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServiceAddObjectStoragePoolHandler := connect.NewUnaryHandler(
-		StorageServiceAddObjectStoragePoolProcedure,
-		svc.AddObjectStoragePool,
-		connect.WithSchema(storageServiceMethods.ByName("AddObjectStoragePool")),
+	storageServiceMigrateSecondaryStorageDataHandler := connect.NewUnaryHandler(
+		StorageServiceMigrateSecondaryStorageDataProcedure,
+		svc.MigrateSecondaryStorageData,
+		connect.WithSchema(storageServiceMethods.ByName("MigrateSecondaryStorageData")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceUpdateCloudToUseObjectStoreHandler := connect.NewUnaryHandler(
@@ -795,22 +705,16 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 		connect.WithSchema(storageServiceMethods.ByName("DownloadImageStoreObject")),
 		connect.WithHandlerOptions(opts...),
 	)
-	storageServiceMigrateSecondaryStorageDataHandler := connect.NewUnaryHandler(
-		StorageServiceMigrateSecondaryStorageDataProcedure,
-		svc.MigrateSecondaryStorageData,
-		connect.WithSchema(storageServiceMethods.ByName("MigrateSecondaryStorageData")),
-		connect.WithHandlerOptions(opts...),
-	)
-	storageServicePreparePrimaryStorageForMaintenanceHandler := connect.NewUnaryHandler(
-		StorageServicePreparePrimaryStorageForMaintenanceProcedure,
-		svc.PreparePrimaryStorageForMaintenance,
-		connect.WithSchema(storageServiceMethods.ByName("PreparePrimaryStorageForMaintenance")),
-		connect.WithHandlerOptions(opts...),
-	)
 	storageServiceFindStoragePoolsForMigrationHandler := connect.NewUnaryHandler(
 		StorageServiceFindStoragePoolsForMigrationProcedure,
 		svc.FindStoragePoolsForMigration,
 		connect.WithSchema(storageServiceMethods.ByName("FindStoragePoolsForMigration")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceAddImageStoreHandler := connect.NewUnaryHandler(
+		StorageServiceAddImageStoreProcedure,
+		svc.AddImageStore,
+		connect.WithSchema(storageServiceMethods.ByName("AddImageStore")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceCancelPrimaryStorageMaintenanceHandler := connect.NewUnaryHandler(
@@ -819,10 +723,100 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 		connect.WithSchema(storageServiceMethods.ByName("CancelPrimaryStorageMaintenance")),
 		connect.WithHandlerOptions(opts...),
 	)
+	storageServiceListImageStoreObjectsHandler := connect.NewUnaryHandler(
+		StorageServiceListImageStoreObjectsProcedure,
+		svc.ListImageStoreObjects,
+		connect.WithSchema(storageServiceMethods.ByName("ListImageStoreObjects")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceListStorageProvidersHandler := connect.NewUnaryHandler(
+		StorageServiceListStorageProvidersProcedure,
+		svc.ListStorageProviders,
+		connect.WithSchema(storageServiceMethods.ByName("ListStorageProviders")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceListImageStoresHandler := connect.NewUnaryHandler(
+		StorageServiceListImageStoresProcedure,
+		svc.ListImageStores,
+		connect.WithSchema(storageServiceMethods.ByName("ListImageStores")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceAddImageStoreS3CMDHandler := connect.NewUnaryHandler(
+		StorageServiceAddImageStoreS3CMDProcedure,
+		svc.AddImageStoreS3CMD,
+		connect.WithSchema(storageServiceMethods.ByName("AddImageStoreS3CMD")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceDeleteObjectStoragePoolHandler := connect.NewUnaryHandler(
+		StorageServiceDeleteObjectStoragePoolProcedure,
+		svc.DeleteObjectStoragePool,
+		connect.WithSchema(storageServiceMethods.ByName("DeleteObjectStoragePool")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceUpdateStorageCapabilitiesHandler := connect.NewUnaryHandler(
+		StorageServiceUpdateStorageCapabilitiesProcedure,
+		svc.UpdateStorageCapabilities,
+		connect.WithSchema(storageServiceMethods.ByName("UpdateStorageCapabilities")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceListStoragePoolObjectsHandler := connect.NewUnaryHandler(
+		StorageServiceListStoragePoolObjectsProcedure,
+		svc.ListStoragePoolObjects,
+		connect.WithSchema(storageServiceMethods.ByName("ListStoragePoolObjects")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceUpdateObjectStoragePoolHandler := connect.NewUnaryHandler(
+		StorageServiceUpdateObjectStoragePoolProcedure,
+		svc.UpdateObjectStoragePool,
+		connect.WithSchema(storageServiceMethods.ByName("UpdateObjectStoragePool")),
+		connect.WithHandlerOptions(opts...),
+	)
 	storageServiceCreateSecondaryStagingStoreHandler := connect.NewUnaryHandler(
 		StorageServiceCreateSecondaryStagingStoreProcedure,
 		svc.CreateSecondaryStagingStore,
 		connect.WithSchema(storageServiceMethods.ByName("CreateSecondaryStagingStore")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceListStorageTagsHandler := connect.NewUnaryHandler(
+		StorageServiceListStorageTagsProcedure,
+		svc.ListStorageTags,
+		connect.WithSchema(storageServiceMethods.ByName("ListStorageTags")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceListObjectStoragePoolsHandler := connect.NewUnaryHandler(
+		StorageServiceListObjectStoragePoolsProcedure,
+		svc.ListObjectStoragePools,
+		connect.WithSchema(storageServiceMethods.ByName("ListObjectStoragePools")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceDeleteImageStoreHandler := connect.NewUnaryHandler(
+		StorageServiceDeleteImageStoreProcedure,
+		svc.DeleteImageStore,
+		connect.WithSchema(storageServiceMethods.ByName("DeleteImageStore")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceCreateStoragePoolHandler := connect.NewUnaryHandler(
+		StorageServiceCreateStoragePoolProcedure,
+		svc.CreateStoragePool,
+		connect.WithSchema(storageServiceMethods.ByName("CreateStoragePool")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceDeleteSecondaryStagingStoreHandler := connect.NewUnaryHandler(
+		StorageServiceDeleteSecondaryStagingStoreProcedure,
+		svc.DeleteSecondaryStagingStore,
+		connect.WithSchema(storageServiceMethods.ByName("DeleteSecondaryStagingStore")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceAddObjectStoragePoolHandler := connect.NewUnaryHandler(
+		StorageServiceAddObjectStoragePoolProcedure,
+		svc.AddObjectStoragePool,
+		connect.WithSchema(storageServiceMethods.ByName("AddObjectStoragePool")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServiceChangeStoragePoolScopeHandler := connect.NewUnaryHandler(
+		StorageServiceChangeStoragePoolScopeProcedure,
+		svc.ChangeStoragePoolScope,
+		connect.WithSchema(storageServiceMethods.ByName("ChangeStoragePoolScope")),
 		connect.WithHandlerOptions(opts...),
 	)
 	storageServiceListStoragePoolsHandler := connect.NewUnaryHandler(
@@ -831,74 +825,80 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 		connect.WithSchema(storageServiceMethods.ByName("ListStoragePools")),
 		connect.WithHandlerOptions(opts...),
 	)
-	storageServiceSyncStoragePoolHandler := connect.NewUnaryHandler(
-		StorageServiceSyncStoragePoolProcedure,
-		svc.SyncStoragePool,
-		connect.WithSchema(storageServiceMethods.ByName("SyncStoragePool")),
+	storageServiceUpdateImageStoreHandler := connect.NewUnaryHandler(
+		StorageServiceUpdateImageStoreProcedure,
+		svc.UpdateImageStore,
+		connect.WithSchema(storageServiceMethods.ByName("UpdateImageStore")),
+		connect.WithHandlerOptions(opts...),
+	)
+	storageServicePreparePrimaryStorageForMaintenanceHandler := connect.NewUnaryHandler(
+		StorageServicePreparePrimaryStorageForMaintenanceProcedure,
+		svc.PreparePrimaryStorageForMaintenance,
+		connect.WithSchema(storageServiceMethods.ByName("PreparePrimaryStorageForMaintenance")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.storage.v1.StorageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case StorageServiceUpdateObjectStoragePoolProcedure:
-			storageServiceUpdateObjectStoragePoolHandler.ServeHTTP(w, r)
-		case StorageServiceUpdateStorageCapabilitiesProcedure:
-			storageServiceUpdateStorageCapabilitiesHandler.ServeHTTP(w, r)
-		case StorageServiceDeleteObjectStoragePoolProcedure:
-			storageServiceDeleteObjectStoragePoolHandler.ServeHTTP(w, r)
-		case StorageServiceAddImageStoreProcedure:
-			storageServiceAddImageStoreHandler.ServeHTTP(w, r)
-		case StorageServiceChangeStoragePoolScopeProcedure:
-			storageServiceChangeStoragePoolScopeHandler.ServeHTTP(w, r)
-		case StorageServiceDeleteSecondaryStagingStoreProcedure:
-			storageServiceDeleteSecondaryStagingStoreHandler.ServeHTTP(w, r)
-		case StorageServiceListStorageTagsProcedure:
-			storageServiceListStorageTagsHandler.ServeHTTP(w, r)
-		case StorageServiceDeleteImageStoreProcedure:
-			storageServiceDeleteImageStoreHandler.ServeHTTP(w, r)
-		case StorageServiceListStorageProvidersProcedure:
-			storageServiceListStorageProvidersHandler.ServeHTTP(w, r)
-		case StorageServiceAddImageStoreS3CMDProcedure:
-			storageServiceAddImageStoreS3CMDHandler.ServeHTTP(w, r)
-		case StorageServiceUpdateImageStoreProcedure:
-			storageServiceUpdateImageStoreHandler.ServeHTTP(w, r)
-		case StorageServiceDeletePoolProcedure:
-			storageServiceDeletePoolHandler.ServeHTTP(w, r)
-		case StorageServiceCreateStoragePoolProcedure:
-			storageServiceCreateStoragePoolHandler.ServeHTTP(w, r)
-		case StorageServiceListImageStoresProcedure:
-			storageServiceListImageStoresHandler.ServeHTTP(w, r)
-		case StorageServiceListSecondaryStagingStoresProcedure:
-			storageServiceListSecondaryStagingStoresHandler.ServeHTTP(w, r)
-		case StorageServiceUpdateStoragePoolProcedure:
-			storageServiceUpdateStoragePoolHandler.ServeHTTP(w, r)
-		case StorageServiceListObjectStoragePoolsProcedure:
-			storageServiceListObjectStoragePoolsHandler.ServeHTTP(w, r)
-		case StorageServiceListImageStoreObjectsProcedure:
-			storageServiceListImageStoreObjectsHandler.ServeHTTP(w, r)
-		case StorageServiceListStoragePoolObjectsProcedure:
-			storageServiceListStoragePoolObjectsHandler.ServeHTTP(w, r)
 		case StorageServiceMigrateResourcesToAnotherSecondaryStorageProcedure:
 			storageServiceMigrateResourcesToAnotherSecondaryStorageHandler.ServeHTTP(w, r)
-		case StorageServiceAddObjectStoragePoolProcedure:
-			storageServiceAddObjectStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceDeletePoolProcedure:
+			storageServiceDeletePoolHandler.ServeHTTP(w, r)
+		case StorageServiceSyncStoragePoolProcedure:
+			storageServiceSyncStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceUpdateStoragePoolProcedure:
+			storageServiceUpdateStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceListSecondaryStagingStoresProcedure:
+			storageServiceListSecondaryStagingStoresHandler.ServeHTTP(w, r)
+		case StorageServiceMigrateSecondaryStorageDataProcedure:
+			storageServiceMigrateSecondaryStorageDataHandler.ServeHTTP(w, r)
 		case StorageServiceUpdateCloudToUseObjectStoreProcedure:
 			storageServiceUpdateCloudToUseObjectStoreHandler.ServeHTTP(w, r)
 		case StorageServiceDownloadImageStoreObjectProcedure:
 			storageServiceDownloadImageStoreObjectHandler.ServeHTTP(w, r)
-		case StorageServiceMigrateSecondaryStorageDataProcedure:
-			storageServiceMigrateSecondaryStorageDataHandler.ServeHTTP(w, r)
-		case StorageServicePreparePrimaryStorageForMaintenanceProcedure:
-			storageServicePreparePrimaryStorageForMaintenanceHandler.ServeHTTP(w, r)
 		case StorageServiceFindStoragePoolsForMigrationProcedure:
 			storageServiceFindStoragePoolsForMigrationHandler.ServeHTTP(w, r)
+		case StorageServiceAddImageStoreProcedure:
+			storageServiceAddImageStoreHandler.ServeHTTP(w, r)
 		case StorageServiceCancelPrimaryStorageMaintenanceProcedure:
 			storageServiceCancelPrimaryStorageMaintenanceHandler.ServeHTTP(w, r)
+		case StorageServiceListImageStoreObjectsProcedure:
+			storageServiceListImageStoreObjectsHandler.ServeHTTP(w, r)
+		case StorageServiceListStorageProvidersProcedure:
+			storageServiceListStorageProvidersHandler.ServeHTTP(w, r)
+		case StorageServiceListImageStoresProcedure:
+			storageServiceListImageStoresHandler.ServeHTTP(w, r)
+		case StorageServiceAddImageStoreS3CMDProcedure:
+			storageServiceAddImageStoreS3CMDHandler.ServeHTTP(w, r)
+		case StorageServiceDeleteObjectStoragePoolProcedure:
+			storageServiceDeleteObjectStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceUpdateStorageCapabilitiesProcedure:
+			storageServiceUpdateStorageCapabilitiesHandler.ServeHTTP(w, r)
+		case StorageServiceListStoragePoolObjectsProcedure:
+			storageServiceListStoragePoolObjectsHandler.ServeHTTP(w, r)
+		case StorageServiceUpdateObjectStoragePoolProcedure:
+			storageServiceUpdateObjectStoragePoolHandler.ServeHTTP(w, r)
 		case StorageServiceCreateSecondaryStagingStoreProcedure:
 			storageServiceCreateSecondaryStagingStoreHandler.ServeHTTP(w, r)
+		case StorageServiceListStorageTagsProcedure:
+			storageServiceListStorageTagsHandler.ServeHTTP(w, r)
+		case StorageServiceListObjectStoragePoolsProcedure:
+			storageServiceListObjectStoragePoolsHandler.ServeHTTP(w, r)
+		case StorageServiceDeleteImageStoreProcedure:
+			storageServiceDeleteImageStoreHandler.ServeHTTP(w, r)
+		case StorageServiceCreateStoragePoolProcedure:
+			storageServiceCreateStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceDeleteSecondaryStagingStoreProcedure:
+			storageServiceDeleteSecondaryStagingStoreHandler.ServeHTTP(w, r)
+		case StorageServiceAddObjectStoragePoolProcedure:
+			storageServiceAddObjectStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceChangeStoragePoolScopeProcedure:
+			storageServiceChangeStoragePoolScopeHandler.ServeHTTP(w, r)
 		case StorageServiceListStoragePoolsProcedure:
 			storageServiceListStoragePoolsHandler.ServeHTTP(w, r)
-		case StorageServiceSyncStoragePoolProcedure:
-			storageServiceSyncStoragePoolHandler.ServeHTTP(w, r)
+		case StorageServiceUpdateImageStoreProcedure:
+			storageServiceUpdateImageStoreHandler.ServeHTTP(w, r)
+		case StorageServicePreparePrimaryStorageForMaintenanceProcedure:
+			storageServicePreparePrimaryStorageForMaintenanceHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -908,88 +908,28 @@ func NewStorageServiceHandler(svc StorageServiceHandler, opts ...connect.Handler
 // UnimplementedStorageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedStorageServiceHandler struct{}
 
-func (UnimplementedStorageServiceHandler) UpdateObjectStoragePool(context.Context, *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) UpdateStorageCapabilities(context.Context, *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) DeleteObjectStoragePool(context.Context, *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) AddImageStore(context.Context, *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.AddImageStore is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) ChangeStoragePoolScope(context.Context, *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) DeleteSecondaryStagingStore(context.Context, *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) ListStorageTags(context.Context, *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStorageTags is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) DeleteImageStore(context.Context, *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeleteImageStore is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) ListStorageProviders(context.Context, *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStorageProviders is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) AddImageStoreS3CMD(context.Context, *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) UpdateImageStore(context.Context, *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateImageStore is not implemented"))
+func (UnimplementedStorageServiceHandler) MigrateResourcesToAnotherSecondaryStorage(context.Context, *connect.Request[v1.MigrateResourcesToAnotherSecondaryStorageRequest]) (*connect.Response[v1.MigrateResourcesToAnotherSecondaryStorageResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.MigrateResourcesToAnotherSecondaryStorage is not implemented"))
 }
 
 func (UnimplementedStorageServiceHandler) DeletePool(context.Context, *connect.Request[v1.DeletePoolRequest]) (*connect.Response[v1.DeletePoolResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeletePool is not implemented"))
 }
 
-func (UnimplementedStorageServiceHandler) CreateStoragePool(context.Context, *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.CreateStoragePool is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) ListImageStores(context.Context, *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListImageStores is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) ListSecondaryStagingStores(context.Context, *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores is not implemented"))
+func (UnimplementedStorageServiceHandler) SyncStoragePool(context.Context, *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.SyncStoragePool is not implemented"))
 }
 
 func (UnimplementedStorageServiceHandler) UpdateStoragePool(context.Context, *connect.Request[v1.UpdateStoragePoolRequest]) (*connect.Response[v1.UpdateStoragePoolResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateStoragePool is not implemented"))
 }
 
-func (UnimplementedStorageServiceHandler) ListObjectStoragePools(context.Context, *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListObjectStoragePools is not implemented"))
+func (UnimplementedStorageServiceHandler) ListSecondaryStagingStores(context.Context, *connect.Request[v1.ListSecondaryStagingStoresRequest]) (*connect.Response[v1.ListSecondaryStagingStoresResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListSecondaryStagingStores is not implemented"))
 }
 
-func (UnimplementedStorageServiceHandler) ListImageStoreObjects(context.Context, *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListImageStoreObjects is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) ListStoragePoolObjects(context.Context, *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) MigrateResourcesToAnotherSecondaryStorage(context.Context, *connect.Request[v1.MigrateResourcesToAnotherSecondaryStorageRequest]) (*connect.Response[v1.MigrateResourcesToAnotherSecondaryStorageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.MigrateResourcesToAnotherSecondaryStorage is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) AddObjectStoragePool(context.Context, *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.AddObjectStoragePool is not implemented"))
+func (UnimplementedStorageServiceHandler) MigrateSecondaryStorageData(context.Context, *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData is not implemented"))
 }
 
 func (UnimplementedStorageServiceHandler) UpdateCloudToUseObjectStore(context.Context, *connect.Request[v1.UpdateCloudToUseObjectStoreRequest]) (*connect.Response[v1.UpdateCloudToUseObjectStoreResponse], error) {
@@ -1000,30 +940,90 @@ func (UnimplementedStorageServiceHandler) DownloadImageStoreObject(context.Conte
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DownloadImageStoreObject is not implemented"))
 }
 
-func (UnimplementedStorageServiceHandler) MigrateSecondaryStorageData(context.Context, *connect.Request[v1.MigrateSecondaryStorageDataRequest]) (*connect.Response[v1.MigrateSecondaryStorageDataResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.MigrateSecondaryStorageData is not implemented"))
-}
-
-func (UnimplementedStorageServiceHandler) PreparePrimaryStorageForMaintenance(context.Context, *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance is not implemented"))
-}
-
 func (UnimplementedStorageServiceHandler) FindStoragePoolsForMigration(context.Context, *connect.Request[v1.FindStoragePoolsForMigrationRequest]) (*connect.Response[v1.FindStoragePoolsForMigrationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.FindStoragePoolsForMigration is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) AddImageStore(context.Context, *connect.Request[v1.AddImageStoreRequest]) (*connect.Response[v1.AddImageStoreResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.AddImageStore is not implemented"))
 }
 
 func (UnimplementedStorageServiceHandler) CancelPrimaryStorageMaintenance(context.Context, *connect.Request[v1.CancelPrimaryStorageMaintenanceRequest]) (*connect.Response[v1.CancelPrimaryStorageMaintenanceResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.CancelPrimaryStorageMaintenance is not implemented"))
 }
 
+func (UnimplementedStorageServiceHandler) ListImageStoreObjects(context.Context, *connect.Request[v1.ListImageStoreObjectsRequest]) (*connect.Response[v1.ListImageStoreObjectsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListImageStoreObjects is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListStorageProviders(context.Context, *connect.Request[v1.ListStorageProvidersRequest]) (*connect.Response[v1.ListStorageProvidersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStorageProviders is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListImageStores(context.Context, *connect.Request[v1.ListImageStoresRequest]) (*connect.Response[v1.ListImageStoresResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListImageStores is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) AddImageStoreS3CMD(context.Context, *connect.Request[v1.AddImageStoreS3CMDRequest]) (*connect.Response[v1.AddImageStoreS3CMDResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.AddImageStoreS3CMD is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) DeleteObjectStoragePool(context.Context, *connect.Request[v1.DeleteObjectStoragePoolRequest]) (*connect.Response[v1.DeleteObjectStoragePoolResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeleteObjectStoragePool is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) UpdateStorageCapabilities(context.Context, *connect.Request[v1.UpdateStorageCapabilitiesRequest]) (*connect.Response[v1.UpdateStorageCapabilitiesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateStorageCapabilities is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListStoragePoolObjects(context.Context, *connect.Request[v1.ListStoragePoolObjectsRequest]) (*connect.Response[v1.ListStoragePoolObjectsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStoragePoolObjects is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) UpdateObjectStoragePool(context.Context, *connect.Request[v1.UpdateObjectStoragePoolRequest]) (*connect.Response[v1.UpdateObjectStoragePoolResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateObjectStoragePool is not implemented"))
+}
+
 func (UnimplementedStorageServiceHandler) CreateSecondaryStagingStore(context.Context, *connect.Request[v1.CreateSecondaryStagingStoreRequest]) (*connect.Response[v1.CreateSecondaryStagingStoreResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.CreateSecondaryStagingStore is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListStorageTags(context.Context, *connect.Request[v1.ListStorageTagsRequest]) (*connect.Response[v1.ListStorageTagsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStorageTags is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ListObjectStoragePools(context.Context, *connect.Request[v1.ListObjectStoragePoolsRequest]) (*connect.Response[v1.ListObjectStoragePoolsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListObjectStoragePools is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) DeleteImageStore(context.Context, *connect.Request[v1.DeleteImageStoreRequest]) (*connect.Response[v1.DeleteImageStoreResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeleteImageStore is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) CreateStoragePool(context.Context, *connect.Request[v1.CreateStoragePoolRequest]) (*connect.Response[v1.CreateStoragePoolResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.CreateStoragePool is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) DeleteSecondaryStagingStore(context.Context, *connect.Request[v1.DeleteSecondaryStagingStoreRequest]) (*connect.Response[v1.DeleteSecondaryStagingStoreResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.DeleteSecondaryStagingStore is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) AddObjectStoragePool(context.Context, *connect.Request[v1.AddObjectStoragePoolRequest]) (*connect.Response[v1.AddObjectStoragePoolResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.AddObjectStoragePool is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) ChangeStoragePoolScope(context.Context, *connect.Request[v1.ChangeStoragePoolScopeRequest]) (*connect.Response[v1.ChangeStoragePoolScopeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ChangeStoragePoolScope is not implemented"))
 }
 
 func (UnimplementedStorageServiceHandler) ListStoragePools(context.Context, *connect.Request[v1.ListStoragePoolsRequest]) (*connect.Response[v1.ListStoragePoolsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.ListStoragePools is not implemented"))
 }
 
-func (UnimplementedStorageServiceHandler) SyncStoragePool(context.Context, *connect.Request[v1.SyncStoragePoolRequest]) (*connect.Response[v1.SyncStoragePoolResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.SyncStoragePool is not implemented"))
+func (UnimplementedStorageServiceHandler) UpdateImageStore(context.Context, *connect.Request[v1.UpdateImageStoreRequest]) (*connect.Response[v1.UpdateImageStoreResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.UpdateImageStore is not implemented"))
+}
+
+func (UnimplementedStorageServiceHandler) PreparePrimaryStorageForMaintenance(context.Context, *connect.Request[v1.PreparePrimaryStorageForMaintenanceRequest]) (*connect.Response[v1.PreparePrimaryStorageForMaintenanceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.v1.StorageService.PreparePrimaryStorageForMaintenance is not implemented"))
 }

@@ -33,30 +33,30 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// Ipv6ServiceUpdateIpv6FirewallRuleProcedure is the fully-qualified name of the Ipv6Service's
-	// UpdateIpv6FirewallRule RPC.
-	Ipv6ServiceUpdateIpv6FirewallRuleProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/UpdateIpv6FirewallRule"
-	// Ipv6ServiceListIpv6FirewallRulesProcedure is the fully-qualified name of the Ipv6Service's
-	// ListIpv6FirewallRules RPC.
-	Ipv6ServiceListIpv6FirewallRulesProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/ListIpv6FirewallRules"
-	// Ipv6ServiceDeleteIpv6FirewallRuleProcedure is the fully-qualified name of the Ipv6Service's
-	// DeleteIpv6FirewallRule RPC.
-	Ipv6ServiceDeleteIpv6FirewallRuleProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/DeleteIpv6FirewallRule"
 	// Ipv6ServiceCreateIpv6FirewallRuleProcedure is the fully-qualified name of the Ipv6Service's
 	// CreateIpv6FirewallRule RPC.
 	Ipv6ServiceCreateIpv6FirewallRuleProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/CreateIpv6FirewallRule"
+	// Ipv6ServiceListIpv6FirewallRulesProcedure is the fully-qualified name of the Ipv6Service's
+	// ListIpv6FirewallRules RPC.
+	Ipv6ServiceListIpv6FirewallRulesProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/ListIpv6FirewallRules"
+	// Ipv6ServiceUpdateIpv6FirewallRuleProcedure is the fully-qualified name of the Ipv6Service's
+	// UpdateIpv6FirewallRule RPC.
+	Ipv6ServiceUpdateIpv6FirewallRuleProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/UpdateIpv6FirewallRule"
+	// Ipv6ServiceDeleteIpv6FirewallRuleProcedure is the fully-qualified name of the Ipv6Service's
+	// DeleteIpv6FirewallRule RPC.
+	Ipv6ServiceDeleteIpv6FirewallRuleProcedure = "/cloudstack.management.ipv6.v1.Ipv6Service/DeleteIpv6FirewallRule"
 )
 
 // Ipv6ServiceClient is a client for the cloudstack.management.ipv6.v1.Ipv6Service service.
 type Ipv6ServiceClient interface {
-	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
-	UpdateIpv6FirewallRule(context.Context, *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error)
-	// ListIpv6FirewallRules Lists all IPv6 firewall rules
-	ListIpv6FirewallRules(context.Context, *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error)
-	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
-	DeleteIpv6FirewallRule(context.Context, *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error)
 	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
 	CreateIpv6FirewallRule(context.Context, *connect.Request[v1.CreateIpv6FirewallRuleRequest]) (*connect.Response[v1.CreateIpv6FirewallRuleResponse], error)
+	// ListIpv6FirewallRules Lists all IPv6 firewall rules
+	ListIpv6FirewallRules(context.Context, *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error)
+	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
+	UpdateIpv6FirewallRule(context.Context, *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error)
+	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
+	DeleteIpv6FirewallRule(context.Context, *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error)
 }
 
 // NewIpv6ServiceClient constructs a client for the cloudstack.management.ipv6.v1.Ipv6Service
@@ -70,10 +70,10 @@ func NewIpv6ServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	ipv6ServiceMethods := v1.File_cloudstack_management_ipv6_v1_ipv6_gen_proto.Services().ByName("Ipv6Service").Methods()
 	return &ipv6ServiceClient{
-		updateIpv6FirewallRule: connect.NewClient[v1.UpdateIpv6FirewallRuleRequest, v1.UpdateIpv6FirewallRuleResponse](
+		createIpv6FirewallRule: connect.NewClient[v1.CreateIpv6FirewallRuleRequest, v1.CreateIpv6FirewallRuleResponse](
 			httpClient,
-			baseURL+Ipv6ServiceUpdateIpv6FirewallRuleProcedure,
-			connect.WithSchema(ipv6ServiceMethods.ByName("UpdateIpv6FirewallRule")),
+			baseURL+Ipv6ServiceCreateIpv6FirewallRuleProcedure,
+			connect.WithSchema(ipv6ServiceMethods.ByName("CreateIpv6FirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
 		listIpv6FirewallRules: connect.NewClient[v1.ListIpv6FirewallRulesRequest, v1.ListIpv6FirewallRulesResponse](
@@ -82,16 +82,16 @@ func NewIpv6ServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(ipv6ServiceMethods.ByName("ListIpv6FirewallRules")),
 			connect.WithClientOptions(opts...),
 		),
+		updateIpv6FirewallRule: connect.NewClient[v1.UpdateIpv6FirewallRuleRequest, v1.UpdateIpv6FirewallRuleResponse](
+			httpClient,
+			baseURL+Ipv6ServiceUpdateIpv6FirewallRuleProcedure,
+			connect.WithSchema(ipv6ServiceMethods.ByName("UpdateIpv6FirewallRule")),
+			connect.WithClientOptions(opts...),
+		),
 		deleteIpv6FirewallRule: connect.NewClient[v1.DeleteIpv6FirewallRuleRequest, v1.DeleteIpv6FirewallRuleResponse](
 			httpClient,
 			baseURL+Ipv6ServiceDeleteIpv6FirewallRuleProcedure,
 			connect.WithSchema(ipv6ServiceMethods.ByName("DeleteIpv6FirewallRule")),
-			connect.WithClientOptions(opts...),
-		),
-		createIpv6FirewallRule: connect.NewClient[v1.CreateIpv6FirewallRuleRequest, v1.CreateIpv6FirewallRuleResponse](
-			httpClient,
-			baseURL+Ipv6ServiceCreateIpv6FirewallRuleProcedure,
-			connect.WithSchema(ipv6ServiceMethods.ByName("CreateIpv6FirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -99,25 +99,10 @@ func NewIpv6ServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // ipv6ServiceClient implements Ipv6ServiceClient.
 type ipv6ServiceClient struct {
-	updateIpv6FirewallRule *connect.Client[v1.UpdateIpv6FirewallRuleRequest, v1.UpdateIpv6FirewallRuleResponse]
-	listIpv6FirewallRules  *connect.Client[v1.ListIpv6FirewallRulesRequest, v1.ListIpv6FirewallRulesResponse]
-	deleteIpv6FirewallRule *connect.Client[v1.DeleteIpv6FirewallRuleRequest, v1.DeleteIpv6FirewallRuleResponse]
 	createIpv6FirewallRule *connect.Client[v1.CreateIpv6FirewallRuleRequest, v1.CreateIpv6FirewallRuleResponse]
-}
-
-// UpdateIpv6FirewallRule calls cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule.
-func (c *ipv6ServiceClient) UpdateIpv6FirewallRule(ctx context.Context, req *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error) {
-	return c.updateIpv6FirewallRule.CallUnary(ctx, req)
-}
-
-// ListIpv6FirewallRules calls cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules.
-func (c *ipv6ServiceClient) ListIpv6FirewallRules(ctx context.Context, req *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error) {
-	return c.listIpv6FirewallRules.CallUnary(ctx, req)
-}
-
-// DeleteIpv6FirewallRule calls cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule.
-func (c *ipv6ServiceClient) DeleteIpv6FirewallRule(ctx context.Context, req *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error) {
-	return c.deleteIpv6FirewallRule.CallUnary(ctx, req)
+	listIpv6FirewallRules  *connect.Client[v1.ListIpv6FirewallRulesRequest, v1.ListIpv6FirewallRulesResponse]
+	updateIpv6FirewallRule *connect.Client[v1.UpdateIpv6FirewallRuleRequest, v1.UpdateIpv6FirewallRuleResponse]
+	deleteIpv6FirewallRule *connect.Client[v1.DeleteIpv6FirewallRuleRequest, v1.DeleteIpv6FirewallRuleResponse]
 }
 
 // CreateIpv6FirewallRule calls cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule.
@@ -125,16 +110,31 @@ func (c *ipv6ServiceClient) CreateIpv6FirewallRule(ctx context.Context, req *con
 	return c.createIpv6FirewallRule.CallUnary(ctx, req)
 }
 
+// ListIpv6FirewallRules calls cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules.
+func (c *ipv6ServiceClient) ListIpv6FirewallRules(ctx context.Context, req *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error) {
+	return c.listIpv6FirewallRules.CallUnary(ctx, req)
+}
+
+// UpdateIpv6FirewallRule calls cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule.
+func (c *ipv6ServiceClient) UpdateIpv6FirewallRule(ctx context.Context, req *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error) {
+	return c.updateIpv6FirewallRule.CallUnary(ctx, req)
+}
+
+// DeleteIpv6FirewallRule calls cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule.
+func (c *ipv6ServiceClient) DeleteIpv6FirewallRule(ctx context.Context, req *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error) {
+	return c.deleteIpv6FirewallRule.CallUnary(ctx, req)
+}
+
 // Ipv6ServiceHandler is an implementation of the cloudstack.management.ipv6.v1.Ipv6Service service.
 type Ipv6ServiceHandler interface {
-	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
-	UpdateIpv6FirewallRule(context.Context, *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error)
-	// ListIpv6FirewallRules Lists all IPv6 firewall rules
-	ListIpv6FirewallRules(context.Context, *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error)
-	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
-	DeleteIpv6FirewallRule(context.Context, *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error)
 	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
 	CreateIpv6FirewallRule(context.Context, *connect.Request[v1.CreateIpv6FirewallRuleRequest]) (*connect.Response[v1.CreateIpv6FirewallRuleResponse], error)
+	// ListIpv6FirewallRules Lists all IPv6 firewall rules
+	ListIpv6FirewallRules(context.Context, *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error)
+	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
+	UpdateIpv6FirewallRule(context.Context, *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error)
+	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
+	DeleteIpv6FirewallRule(context.Context, *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error)
 }
 
 // NewIpv6ServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -144,10 +144,10 @@ type Ipv6ServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIpv6ServiceHandler(svc Ipv6ServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	ipv6ServiceMethods := v1.File_cloudstack_management_ipv6_v1_ipv6_gen_proto.Services().ByName("Ipv6Service").Methods()
-	ipv6ServiceUpdateIpv6FirewallRuleHandler := connect.NewUnaryHandler(
-		Ipv6ServiceUpdateIpv6FirewallRuleProcedure,
-		svc.UpdateIpv6FirewallRule,
-		connect.WithSchema(ipv6ServiceMethods.ByName("UpdateIpv6FirewallRule")),
+	ipv6ServiceCreateIpv6FirewallRuleHandler := connect.NewUnaryHandler(
+		Ipv6ServiceCreateIpv6FirewallRuleProcedure,
+		svc.CreateIpv6FirewallRule,
+		connect.WithSchema(ipv6ServiceMethods.ByName("CreateIpv6FirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	ipv6ServiceListIpv6FirewallRulesHandler := connect.NewUnaryHandler(
@@ -156,28 +156,28 @@ func NewIpv6ServiceHandler(svc Ipv6ServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(ipv6ServiceMethods.ByName("ListIpv6FirewallRules")),
 		connect.WithHandlerOptions(opts...),
 	)
+	ipv6ServiceUpdateIpv6FirewallRuleHandler := connect.NewUnaryHandler(
+		Ipv6ServiceUpdateIpv6FirewallRuleProcedure,
+		svc.UpdateIpv6FirewallRule,
+		connect.WithSchema(ipv6ServiceMethods.ByName("UpdateIpv6FirewallRule")),
+		connect.WithHandlerOptions(opts...),
+	)
 	ipv6ServiceDeleteIpv6FirewallRuleHandler := connect.NewUnaryHandler(
 		Ipv6ServiceDeleteIpv6FirewallRuleProcedure,
 		svc.DeleteIpv6FirewallRule,
 		connect.WithSchema(ipv6ServiceMethods.ByName("DeleteIpv6FirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
-	ipv6ServiceCreateIpv6FirewallRuleHandler := connect.NewUnaryHandler(
-		Ipv6ServiceCreateIpv6FirewallRuleProcedure,
-		svc.CreateIpv6FirewallRule,
-		connect.WithSchema(ipv6ServiceMethods.ByName("CreateIpv6FirewallRule")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cloudstack.management.ipv6.v1.Ipv6Service/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case Ipv6ServiceUpdateIpv6FirewallRuleProcedure:
-			ipv6ServiceUpdateIpv6FirewallRuleHandler.ServeHTTP(w, r)
-		case Ipv6ServiceListIpv6FirewallRulesProcedure:
-			ipv6ServiceListIpv6FirewallRulesHandler.ServeHTTP(w, r)
-		case Ipv6ServiceDeleteIpv6FirewallRuleProcedure:
-			ipv6ServiceDeleteIpv6FirewallRuleHandler.ServeHTTP(w, r)
 		case Ipv6ServiceCreateIpv6FirewallRuleProcedure:
 			ipv6ServiceCreateIpv6FirewallRuleHandler.ServeHTTP(w, r)
+		case Ipv6ServiceListIpv6FirewallRulesProcedure:
+			ipv6ServiceListIpv6FirewallRulesHandler.ServeHTTP(w, r)
+		case Ipv6ServiceUpdateIpv6FirewallRuleProcedure:
+			ipv6ServiceUpdateIpv6FirewallRuleHandler.ServeHTTP(w, r)
+		case Ipv6ServiceDeleteIpv6FirewallRuleProcedure:
+			ipv6ServiceDeleteIpv6FirewallRuleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -187,18 +187,18 @@ func NewIpv6ServiceHandler(svc Ipv6ServiceHandler, opts ...connect.HandlerOption
 // UnimplementedIpv6ServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIpv6ServiceHandler struct{}
 
-func (UnimplementedIpv6ServiceHandler) UpdateIpv6FirewallRule(context.Context, *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule is not implemented"))
+func (UnimplementedIpv6ServiceHandler) CreateIpv6FirewallRule(context.Context, *connect.Request[v1.CreateIpv6FirewallRuleRequest]) (*connect.Response[v1.CreateIpv6FirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule is not implemented"))
 }
 
 func (UnimplementedIpv6ServiceHandler) ListIpv6FirewallRules(context.Context, *connect.Request[v1.ListIpv6FirewallRulesRequest]) (*connect.Response[v1.ListIpv6FirewallRulesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules is not implemented"))
 }
 
-func (UnimplementedIpv6ServiceHandler) DeleteIpv6FirewallRule(context.Context, *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule is not implemented"))
+func (UnimplementedIpv6ServiceHandler) UpdateIpv6FirewallRule(context.Context, *connect.Request[v1.UpdateIpv6FirewallRuleRequest]) (*connect.Response[v1.UpdateIpv6FirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule is not implemented"))
 }
 
-func (UnimplementedIpv6ServiceHandler) CreateIpv6FirewallRule(context.Context, *connect.Request[v1.CreateIpv6FirewallRuleRequest]) (*connect.Response[v1.CreateIpv6FirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule is not implemented"))
+func (UnimplementedIpv6ServiceHandler) DeleteIpv6FirewallRule(context.Context, *connect.Request[v1.DeleteIpv6FirewallRuleRequest]) (*connect.Response[v1.DeleteIpv6FirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule is not implemented"))
 }

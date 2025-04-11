@@ -33,71 +33,71 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SharedfsServiceStopSharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// StopSharedFS RPC.
-	SharedfsServiceStopSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StopSharedFS"
-	// SharedfsServiceChangeSharedFSDiskOfferingProcedure is the fully-qualified name of the
-	// SharedfsService's ChangeSharedFSDiskOffering RPC.
-	SharedfsServiceChangeSharedFSDiskOfferingProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSDiskOffering"
+	// SharedfsServiceChangeSharedFSServiceOfferingProcedure is the fully-qualified name of the
+	// SharedfsService's ChangeSharedFSServiceOffering RPC.
+	SharedfsServiceChangeSharedFSServiceOfferingProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSServiceOffering"
+	// SharedfsServiceCreateSharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// CreateSharedFS RPC.
+	SharedfsServiceCreateSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/CreateSharedFS"
+	// SharedfsServiceRecoverSharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// RecoverSharedFS RPC.
+	SharedfsServiceRecoverSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/RecoverSharedFS"
+	// SharedfsServiceUpdateSharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// UpdateSharedFS RPC.
+	SharedfsServiceUpdateSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/UpdateSharedFS"
+	// SharedfsServiceStartSharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// StartSharedFS RPC.
+	SharedfsServiceStartSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StartSharedFS"
 	// SharedfsServiceExpungeSharedFSProcedure is the fully-qualified name of the SharedfsService's
 	// ExpungeSharedFS RPC.
 	SharedfsServiceExpungeSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ExpungeSharedFS"
 	// SharedfsServiceListSharedFSProvidersProcedure is the fully-qualified name of the
 	// SharedfsService's ListSharedFSProviders RPC.
 	SharedfsServiceListSharedFSProvidersProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ListSharedFSProviders"
-	// SharedfsServiceCreateSharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// CreateSharedFS RPC.
-	SharedfsServiceCreateSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/CreateSharedFS"
-	// SharedfsServiceChangeSharedFSServiceOfferingProcedure is the fully-qualified name of the
-	// SharedfsService's ChangeSharedFSServiceOffering RPC.
-	SharedfsServiceChangeSharedFSServiceOfferingProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSServiceOffering"
-	// SharedfsServiceListSharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// ListSharedFS RPC.
-	SharedfsServiceListSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ListSharedFS"
-	// SharedfsServiceDestroySharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// DestroySharedFS RPC.
-	SharedfsServiceDestroySharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/DestroySharedFS"
-	// SharedfsServiceStartSharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// StartSharedFS RPC.
-	SharedfsServiceStartSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StartSharedFS"
-	// SharedfsServiceRecoverSharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// RecoverSharedFS RPC.
-	SharedfsServiceRecoverSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/RecoverSharedFS"
+	// SharedfsServiceStopSharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// StopSharedFS RPC.
+	SharedfsServiceStopSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StopSharedFS"
 	// SharedfsServiceRestartSharedFSProcedure is the fully-qualified name of the SharedfsService's
 	// RestartSharedFS RPC.
 	SharedfsServiceRestartSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/RestartSharedFS"
-	// SharedfsServiceUpdateSharedFSProcedure is the fully-qualified name of the SharedfsService's
-	// UpdateSharedFS RPC.
-	SharedfsServiceUpdateSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/UpdateSharedFS"
+	// SharedfsServiceDestroySharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// DestroySharedFS RPC.
+	SharedfsServiceDestroySharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/DestroySharedFS"
+	// SharedfsServiceListSharedFSProcedure is the fully-qualified name of the SharedfsService's
+	// ListSharedFS RPC.
+	SharedfsServiceListSharedFSProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ListSharedFS"
+	// SharedfsServiceChangeSharedFSDiskOfferingProcedure is the fully-qualified name of the
+	// SharedfsService's ChangeSharedFSDiskOffering RPC.
+	SharedfsServiceChangeSharedFSDiskOfferingProcedure = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSDiskOffering"
 )
 
 // SharedfsServiceClient is a client for the
 // cloudstack.management.storage.sharedfs.v1.SharedfsService service.
 type SharedfsServiceClient interface {
-	// StopSharedFS Stop a Shared FileSystem
-	StopSharedFS(context.Context, *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error)
-	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
-	ChangeSharedFSDiskOffering(context.Context, *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error)
+	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
+	ChangeSharedFSServiceOffering(context.Context, *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error)
+	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
+	CreateSharedFS(context.Context, *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error)
+	// RecoverSharedFS Recover a Shared FileSystem by id
+	RecoverSharedFS(context.Context, *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error)
+	// UpdateSharedFS Update a Shared FileSystem
+	UpdateSharedFS(context.Context, *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error)
+	// StartSharedFS Start a Shared FileSystem
+	StartSharedFS(context.Context, *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error)
 	// ExpungeSharedFS Expunge a Shared FileSystem by id
 	ExpungeSharedFS(context.Context, *connect.Request[v1.ExpungeSharedFSRequest]) (*connect.Response[v1.ExpungeSharedFSResponse], error)
 	// ListSharedFSProviders Lists all available shared filesystem providers.
 	ListSharedFSProviders(context.Context, *connect.Request[v1.ListSharedFSProvidersRequest]) (*connect.Response[v1.ListSharedFSProvidersResponse], error)
-	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
-	CreateSharedFS(context.Context, *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error)
-	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
-	ChangeSharedFSServiceOffering(context.Context, *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error)
-	// ListSharedFS List Shared FileSystems
-	ListSharedFS(context.Context, *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error)
-	// DestroySharedFS Destroy a Shared FileSystem by id
-	DestroySharedFS(context.Context, *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error)
-	// StartSharedFS Start a Shared FileSystem
-	StartSharedFS(context.Context, *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error)
-	// RecoverSharedFS Recover a Shared FileSystem by id
-	RecoverSharedFS(context.Context, *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error)
+	// StopSharedFS Stop a Shared FileSystem
+	StopSharedFS(context.Context, *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error)
 	// RestartSharedFS Restart a Shared FileSystem
 	RestartSharedFS(context.Context, *connect.Request[v1.RestartSharedFSRequest]) (*connect.Response[v1.RestartSharedFSResponse], error)
-	// UpdateSharedFS Update a Shared FileSystem
-	UpdateSharedFS(context.Context, *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error)
+	// DestroySharedFS Destroy a Shared FileSystem by id
+	DestroySharedFS(context.Context, *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error)
+	// ListSharedFS List Shared FileSystems
+	ListSharedFS(context.Context, *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error)
+	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
+	ChangeSharedFSDiskOffering(context.Context, *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error)
 }
 
 // NewSharedfsServiceClient constructs a client for the
@@ -112,16 +112,34 @@ func NewSharedfsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	sharedfsServiceMethods := v1.File_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto.Services().ByName("SharedfsService").Methods()
 	return &sharedfsServiceClient{
-		stopSharedFS: connect.NewClient[v1.StopSharedFSRequest, v1.StopSharedFSResponse](
+		changeSharedFSServiceOffering: connect.NewClient[v1.ChangeSharedFSServiceOfferingRequest, v1.ChangeSharedFSServiceOfferingResponse](
 			httpClient,
-			baseURL+SharedfsServiceStopSharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("StopSharedFS")),
+			baseURL+SharedfsServiceChangeSharedFSServiceOfferingProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSServiceOffering")),
 			connect.WithClientOptions(opts...),
 		),
-		changeSharedFSDiskOffering: connect.NewClient[v1.ChangeSharedFSDiskOfferingRequest, v1.ChangeSharedFSDiskOfferingResponse](
+		createSharedFS: connect.NewClient[v1.CreateSharedFSRequest, v1.CreateSharedFSResponse](
 			httpClient,
-			baseURL+SharedfsServiceChangeSharedFSDiskOfferingProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSDiskOffering")),
+			baseURL+SharedfsServiceCreateSharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("CreateSharedFS")),
+			connect.WithClientOptions(opts...),
+		),
+		recoverSharedFS: connect.NewClient[v1.RecoverSharedFSRequest, v1.RecoverSharedFSResponse](
+			httpClient,
+			baseURL+SharedfsServiceRecoverSharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("RecoverSharedFS")),
+			connect.WithClientOptions(opts...),
+		),
+		updateSharedFS: connect.NewClient[v1.UpdateSharedFSRequest, v1.UpdateSharedFSResponse](
+			httpClient,
+			baseURL+SharedfsServiceUpdateSharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("UpdateSharedFS")),
+			connect.WithClientOptions(opts...),
+		),
+		startSharedFS: connect.NewClient[v1.StartSharedFSRequest, v1.StartSharedFSResponse](
+			httpClient,
+			baseURL+SharedfsServiceStartSharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("StartSharedFS")),
 			connect.WithClientOptions(opts...),
 		),
 		expungeSharedFS: connect.NewClient[v1.ExpungeSharedFSRequest, v1.ExpungeSharedFSResponse](
@@ -136,40 +154,10 @@ func NewSharedfsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(sharedfsServiceMethods.ByName("ListSharedFSProviders")),
 			connect.WithClientOptions(opts...),
 		),
-		createSharedFS: connect.NewClient[v1.CreateSharedFSRequest, v1.CreateSharedFSResponse](
+		stopSharedFS: connect.NewClient[v1.StopSharedFSRequest, v1.StopSharedFSResponse](
 			httpClient,
-			baseURL+SharedfsServiceCreateSharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("CreateSharedFS")),
-			connect.WithClientOptions(opts...),
-		),
-		changeSharedFSServiceOffering: connect.NewClient[v1.ChangeSharedFSServiceOfferingRequest, v1.ChangeSharedFSServiceOfferingResponse](
-			httpClient,
-			baseURL+SharedfsServiceChangeSharedFSServiceOfferingProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSServiceOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		listSharedFS: connect.NewClient[v1.ListSharedFSRequest, v1.ListSharedFSResponse](
-			httpClient,
-			baseURL+SharedfsServiceListSharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("ListSharedFS")),
-			connect.WithClientOptions(opts...),
-		),
-		destroySharedFS: connect.NewClient[v1.DestroySharedFSRequest, v1.DestroySharedFSResponse](
-			httpClient,
-			baseURL+SharedfsServiceDestroySharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("DestroySharedFS")),
-			connect.WithClientOptions(opts...),
-		),
-		startSharedFS: connect.NewClient[v1.StartSharedFSRequest, v1.StartSharedFSResponse](
-			httpClient,
-			baseURL+SharedfsServiceStartSharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("StartSharedFS")),
-			connect.WithClientOptions(opts...),
-		),
-		recoverSharedFS: connect.NewClient[v1.RecoverSharedFSRequest, v1.RecoverSharedFSResponse](
-			httpClient,
-			baseURL+SharedfsServiceRecoverSharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("RecoverSharedFS")),
+			baseURL+SharedfsServiceStopSharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("StopSharedFS")),
 			connect.WithClientOptions(opts...),
 		),
 		restartSharedFS: connect.NewClient[v1.RestartSharedFSRequest, v1.RestartSharedFSResponse](
@@ -178,10 +166,22 @@ func NewSharedfsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(sharedfsServiceMethods.ByName("RestartSharedFS")),
 			connect.WithClientOptions(opts...),
 		),
-		updateSharedFS: connect.NewClient[v1.UpdateSharedFSRequest, v1.UpdateSharedFSResponse](
+		destroySharedFS: connect.NewClient[v1.DestroySharedFSRequest, v1.DestroySharedFSResponse](
 			httpClient,
-			baseURL+SharedfsServiceUpdateSharedFSProcedure,
-			connect.WithSchema(sharedfsServiceMethods.ByName("UpdateSharedFS")),
+			baseURL+SharedfsServiceDestroySharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("DestroySharedFS")),
+			connect.WithClientOptions(opts...),
+		),
+		listSharedFS: connect.NewClient[v1.ListSharedFSRequest, v1.ListSharedFSResponse](
+			httpClient,
+			baseURL+SharedfsServiceListSharedFSProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("ListSharedFS")),
+			connect.WithClientOptions(opts...),
+		),
+		changeSharedFSDiskOffering: connect.NewClient[v1.ChangeSharedFSDiskOfferingRequest, v1.ChangeSharedFSDiskOfferingResponse](
+			httpClient,
+			baseURL+SharedfsServiceChangeSharedFSDiskOfferingProcedure,
+			connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSDiskOffering")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -189,29 +189,44 @@ func NewSharedfsServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // sharedfsServiceClient implements SharedfsServiceClient.
 type sharedfsServiceClient struct {
-	stopSharedFS                  *connect.Client[v1.StopSharedFSRequest, v1.StopSharedFSResponse]
-	changeSharedFSDiskOffering    *connect.Client[v1.ChangeSharedFSDiskOfferingRequest, v1.ChangeSharedFSDiskOfferingResponse]
+	changeSharedFSServiceOffering *connect.Client[v1.ChangeSharedFSServiceOfferingRequest, v1.ChangeSharedFSServiceOfferingResponse]
+	createSharedFS                *connect.Client[v1.CreateSharedFSRequest, v1.CreateSharedFSResponse]
+	recoverSharedFS               *connect.Client[v1.RecoverSharedFSRequest, v1.RecoverSharedFSResponse]
+	updateSharedFS                *connect.Client[v1.UpdateSharedFSRequest, v1.UpdateSharedFSResponse]
+	startSharedFS                 *connect.Client[v1.StartSharedFSRequest, v1.StartSharedFSResponse]
 	expungeSharedFS               *connect.Client[v1.ExpungeSharedFSRequest, v1.ExpungeSharedFSResponse]
 	listSharedFSProviders         *connect.Client[v1.ListSharedFSProvidersRequest, v1.ListSharedFSProvidersResponse]
-	createSharedFS                *connect.Client[v1.CreateSharedFSRequest, v1.CreateSharedFSResponse]
-	changeSharedFSServiceOffering *connect.Client[v1.ChangeSharedFSServiceOfferingRequest, v1.ChangeSharedFSServiceOfferingResponse]
-	listSharedFS                  *connect.Client[v1.ListSharedFSRequest, v1.ListSharedFSResponse]
-	destroySharedFS               *connect.Client[v1.DestroySharedFSRequest, v1.DestroySharedFSResponse]
-	startSharedFS                 *connect.Client[v1.StartSharedFSRequest, v1.StartSharedFSResponse]
-	recoverSharedFS               *connect.Client[v1.RecoverSharedFSRequest, v1.RecoverSharedFSResponse]
+	stopSharedFS                  *connect.Client[v1.StopSharedFSRequest, v1.StopSharedFSResponse]
 	restartSharedFS               *connect.Client[v1.RestartSharedFSRequest, v1.RestartSharedFSResponse]
-	updateSharedFS                *connect.Client[v1.UpdateSharedFSRequest, v1.UpdateSharedFSResponse]
+	destroySharedFS               *connect.Client[v1.DestroySharedFSRequest, v1.DestroySharedFSResponse]
+	listSharedFS                  *connect.Client[v1.ListSharedFSRequest, v1.ListSharedFSResponse]
+	changeSharedFSDiskOffering    *connect.Client[v1.ChangeSharedFSDiskOfferingRequest, v1.ChangeSharedFSDiskOfferingResponse]
 }
 
-// StopSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS.
-func (c *sharedfsServiceClient) StopSharedFS(ctx context.Context, req *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error) {
-	return c.stopSharedFS.CallUnary(ctx, req)
+// ChangeSharedFSServiceOffering calls
+// cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering.
+func (c *sharedfsServiceClient) ChangeSharedFSServiceOffering(ctx context.Context, req *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error) {
+	return c.changeSharedFSServiceOffering.CallUnary(ctx, req)
 }
 
-// ChangeSharedFSDiskOffering calls
-// cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering.
-func (c *sharedfsServiceClient) ChangeSharedFSDiskOffering(ctx context.Context, req *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error) {
-	return c.changeSharedFSDiskOffering.CallUnary(ctx, req)
+// CreateSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS.
+func (c *sharedfsServiceClient) CreateSharedFS(ctx context.Context, req *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error) {
+	return c.createSharedFS.CallUnary(ctx, req)
+}
+
+// RecoverSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS.
+func (c *sharedfsServiceClient) RecoverSharedFS(ctx context.Context, req *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error) {
+	return c.recoverSharedFS.CallUnary(ctx, req)
+}
+
+// UpdateSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS.
+func (c *sharedfsServiceClient) UpdateSharedFS(ctx context.Context, req *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error) {
+	return c.updateSharedFS.CallUnary(ctx, req)
+}
+
+// StartSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS.
+func (c *sharedfsServiceClient) StartSharedFS(ctx context.Context, req *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error) {
+	return c.startSharedFS.CallUnary(ctx, req)
 }
 
 // ExpungeSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.ExpungeSharedFS.
@@ -225,35 +240,9 @@ func (c *sharedfsServiceClient) ListSharedFSProviders(ctx context.Context, req *
 	return c.listSharedFSProviders.CallUnary(ctx, req)
 }
 
-// CreateSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS.
-func (c *sharedfsServiceClient) CreateSharedFS(ctx context.Context, req *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error) {
-	return c.createSharedFS.CallUnary(ctx, req)
-}
-
-// ChangeSharedFSServiceOffering calls
-// cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering.
-func (c *sharedfsServiceClient) ChangeSharedFSServiceOffering(ctx context.Context, req *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error) {
-	return c.changeSharedFSServiceOffering.CallUnary(ctx, req)
-}
-
-// ListSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS.
-func (c *sharedfsServiceClient) ListSharedFS(ctx context.Context, req *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error) {
-	return c.listSharedFS.CallUnary(ctx, req)
-}
-
-// DestroySharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS.
-func (c *sharedfsServiceClient) DestroySharedFS(ctx context.Context, req *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error) {
-	return c.destroySharedFS.CallUnary(ctx, req)
-}
-
-// StartSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS.
-func (c *sharedfsServiceClient) StartSharedFS(ctx context.Context, req *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error) {
-	return c.startSharedFS.CallUnary(ctx, req)
-}
-
-// RecoverSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS.
-func (c *sharedfsServiceClient) RecoverSharedFS(ctx context.Context, req *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error) {
-	return c.recoverSharedFS.CallUnary(ctx, req)
+// StopSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS.
+func (c *sharedfsServiceClient) StopSharedFS(ctx context.Context, req *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error) {
+	return c.stopSharedFS.CallUnary(ctx, req)
 }
 
 // RestartSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.RestartSharedFS.
@@ -261,38 +250,49 @@ func (c *sharedfsServiceClient) RestartSharedFS(ctx context.Context, req *connec
 	return c.restartSharedFS.CallUnary(ctx, req)
 }
 
-// UpdateSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS.
-func (c *sharedfsServiceClient) UpdateSharedFS(ctx context.Context, req *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error) {
-	return c.updateSharedFS.CallUnary(ctx, req)
+// DestroySharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS.
+func (c *sharedfsServiceClient) DestroySharedFS(ctx context.Context, req *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error) {
+	return c.destroySharedFS.CallUnary(ctx, req)
+}
+
+// ListSharedFS calls cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS.
+func (c *sharedfsServiceClient) ListSharedFS(ctx context.Context, req *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error) {
+	return c.listSharedFS.CallUnary(ctx, req)
+}
+
+// ChangeSharedFSDiskOffering calls
+// cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering.
+func (c *sharedfsServiceClient) ChangeSharedFSDiskOffering(ctx context.Context, req *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error) {
+	return c.changeSharedFSDiskOffering.CallUnary(ctx, req)
 }
 
 // SharedfsServiceHandler is an implementation of the
 // cloudstack.management.storage.sharedfs.v1.SharedfsService service.
 type SharedfsServiceHandler interface {
-	// StopSharedFS Stop a Shared FileSystem
-	StopSharedFS(context.Context, *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error)
-	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
-	ChangeSharedFSDiskOffering(context.Context, *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error)
+	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
+	ChangeSharedFSServiceOffering(context.Context, *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error)
+	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
+	CreateSharedFS(context.Context, *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error)
+	// RecoverSharedFS Recover a Shared FileSystem by id
+	RecoverSharedFS(context.Context, *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error)
+	// UpdateSharedFS Update a Shared FileSystem
+	UpdateSharedFS(context.Context, *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error)
+	// StartSharedFS Start a Shared FileSystem
+	StartSharedFS(context.Context, *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error)
 	// ExpungeSharedFS Expunge a Shared FileSystem by id
 	ExpungeSharedFS(context.Context, *connect.Request[v1.ExpungeSharedFSRequest]) (*connect.Response[v1.ExpungeSharedFSResponse], error)
 	// ListSharedFSProviders Lists all available shared filesystem providers.
 	ListSharedFSProviders(context.Context, *connect.Request[v1.ListSharedFSProvidersRequest]) (*connect.Response[v1.ListSharedFSProvidersResponse], error)
-	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
-	CreateSharedFS(context.Context, *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error)
-	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
-	ChangeSharedFSServiceOffering(context.Context, *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error)
-	// ListSharedFS List Shared FileSystems
-	ListSharedFS(context.Context, *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error)
-	// DestroySharedFS Destroy a Shared FileSystem by id
-	DestroySharedFS(context.Context, *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error)
-	// StartSharedFS Start a Shared FileSystem
-	StartSharedFS(context.Context, *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error)
-	// RecoverSharedFS Recover a Shared FileSystem by id
-	RecoverSharedFS(context.Context, *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error)
+	// StopSharedFS Stop a Shared FileSystem
+	StopSharedFS(context.Context, *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error)
 	// RestartSharedFS Restart a Shared FileSystem
 	RestartSharedFS(context.Context, *connect.Request[v1.RestartSharedFSRequest]) (*connect.Response[v1.RestartSharedFSResponse], error)
-	// UpdateSharedFS Update a Shared FileSystem
-	UpdateSharedFS(context.Context, *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error)
+	// DestroySharedFS Destroy a Shared FileSystem by id
+	DestroySharedFS(context.Context, *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error)
+	// ListSharedFS List Shared FileSystems
+	ListSharedFS(context.Context, *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error)
+	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
+	ChangeSharedFSDiskOffering(context.Context, *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error)
 }
 
 // NewSharedfsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -302,16 +302,34 @@ type SharedfsServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSharedfsServiceHandler(svc SharedfsServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	sharedfsServiceMethods := v1.File_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto.Services().ByName("SharedfsService").Methods()
-	sharedfsServiceStopSharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceStopSharedFSProcedure,
-		svc.StopSharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("StopSharedFS")),
+	sharedfsServiceChangeSharedFSServiceOfferingHandler := connect.NewUnaryHandler(
+		SharedfsServiceChangeSharedFSServiceOfferingProcedure,
+		svc.ChangeSharedFSServiceOffering,
+		connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSServiceOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sharedfsServiceChangeSharedFSDiskOfferingHandler := connect.NewUnaryHandler(
-		SharedfsServiceChangeSharedFSDiskOfferingProcedure,
-		svc.ChangeSharedFSDiskOffering,
-		connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSDiskOffering")),
+	sharedfsServiceCreateSharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceCreateSharedFSProcedure,
+		svc.CreateSharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("CreateSharedFS")),
+		connect.WithHandlerOptions(opts...),
+	)
+	sharedfsServiceRecoverSharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceRecoverSharedFSProcedure,
+		svc.RecoverSharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("RecoverSharedFS")),
+		connect.WithHandlerOptions(opts...),
+	)
+	sharedfsServiceUpdateSharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceUpdateSharedFSProcedure,
+		svc.UpdateSharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("UpdateSharedFS")),
+		connect.WithHandlerOptions(opts...),
+	)
+	sharedfsServiceStartSharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceStartSharedFSProcedure,
+		svc.StartSharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("StartSharedFS")),
 		connect.WithHandlerOptions(opts...),
 	)
 	sharedfsServiceExpungeSharedFSHandler := connect.NewUnaryHandler(
@@ -326,40 +344,10 @@ func NewSharedfsServiceHandler(svc SharedfsServiceHandler, opts ...connect.Handl
 		connect.WithSchema(sharedfsServiceMethods.ByName("ListSharedFSProviders")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sharedfsServiceCreateSharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceCreateSharedFSProcedure,
-		svc.CreateSharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("CreateSharedFS")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sharedfsServiceChangeSharedFSServiceOfferingHandler := connect.NewUnaryHandler(
-		SharedfsServiceChangeSharedFSServiceOfferingProcedure,
-		svc.ChangeSharedFSServiceOffering,
-		connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSServiceOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sharedfsServiceListSharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceListSharedFSProcedure,
-		svc.ListSharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("ListSharedFS")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sharedfsServiceDestroySharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceDestroySharedFSProcedure,
-		svc.DestroySharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("DestroySharedFS")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sharedfsServiceStartSharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceStartSharedFSProcedure,
-		svc.StartSharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("StartSharedFS")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sharedfsServiceRecoverSharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceRecoverSharedFSProcedure,
-		svc.RecoverSharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("RecoverSharedFS")),
+	sharedfsServiceStopSharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceStopSharedFSProcedure,
+		svc.StopSharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("StopSharedFS")),
 		connect.WithHandlerOptions(opts...),
 	)
 	sharedfsServiceRestartSharedFSHandler := connect.NewUnaryHandler(
@@ -368,38 +356,50 @@ func NewSharedfsServiceHandler(svc SharedfsServiceHandler, opts ...connect.Handl
 		connect.WithSchema(sharedfsServiceMethods.ByName("RestartSharedFS")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sharedfsServiceUpdateSharedFSHandler := connect.NewUnaryHandler(
-		SharedfsServiceUpdateSharedFSProcedure,
-		svc.UpdateSharedFS,
-		connect.WithSchema(sharedfsServiceMethods.ByName("UpdateSharedFS")),
+	sharedfsServiceDestroySharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceDestroySharedFSProcedure,
+		svc.DestroySharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("DestroySharedFS")),
+		connect.WithHandlerOptions(opts...),
+	)
+	sharedfsServiceListSharedFSHandler := connect.NewUnaryHandler(
+		SharedfsServiceListSharedFSProcedure,
+		svc.ListSharedFS,
+		connect.WithSchema(sharedfsServiceMethods.ByName("ListSharedFS")),
+		connect.WithHandlerOptions(opts...),
+	)
+	sharedfsServiceChangeSharedFSDiskOfferingHandler := connect.NewUnaryHandler(
+		SharedfsServiceChangeSharedFSDiskOfferingProcedure,
+		svc.ChangeSharedFSDiskOffering,
+		connect.WithSchema(sharedfsServiceMethods.ByName("ChangeSharedFSDiskOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.storage.sharedfs.v1.SharedfsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case SharedfsServiceStopSharedFSProcedure:
-			sharedfsServiceStopSharedFSHandler.ServeHTTP(w, r)
-		case SharedfsServiceChangeSharedFSDiskOfferingProcedure:
-			sharedfsServiceChangeSharedFSDiskOfferingHandler.ServeHTTP(w, r)
+		case SharedfsServiceChangeSharedFSServiceOfferingProcedure:
+			sharedfsServiceChangeSharedFSServiceOfferingHandler.ServeHTTP(w, r)
+		case SharedfsServiceCreateSharedFSProcedure:
+			sharedfsServiceCreateSharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceRecoverSharedFSProcedure:
+			sharedfsServiceRecoverSharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceUpdateSharedFSProcedure:
+			sharedfsServiceUpdateSharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceStartSharedFSProcedure:
+			sharedfsServiceStartSharedFSHandler.ServeHTTP(w, r)
 		case SharedfsServiceExpungeSharedFSProcedure:
 			sharedfsServiceExpungeSharedFSHandler.ServeHTTP(w, r)
 		case SharedfsServiceListSharedFSProvidersProcedure:
 			sharedfsServiceListSharedFSProvidersHandler.ServeHTTP(w, r)
-		case SharedfsServiceCreateSharedFSProcedure:
-			sharedfsServiceCreateSharedFSHandler.ServeHTTP(w, r)
-		case SharedfsServiceChangeSharedFSServiceOfferingProcedure:
-			sharedfsServiceChangeSharedFSServiceOfferingHandler.ServeHTTP(w, r)
-		case SharedfsServiceListSharedFSProcedure:
-			sharedfsServiceListSharedFSHandler.ServeHTTP(w, r)
-		case SharedfsServiceDestroySharedFSProcedure:
-			sharedfsServiceDestroySharedFSHandler.ServeHTTP(w, r)
-		case SharedfsServiceStartSharedFSProcedure:
-			sharedfsServiceStartSharedFSHandler.ServeHTTP(w, r)
-		case SharedfsServiceRecoverSharedFSProcedure:
-			sharedfsServiceRecoverSharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceStopSharedFSProcedure:
+			sharedfsServiceStopSharedFSHandler.ServeHTTP(w, r)
 		case SharedfsServiceRestartSharedFSProcedure:
 			sharedfsServiceRestartSharedFSHandler.ServeHTTP(w, r)
-		case SharedfsServiceUpdateSharedFSProcedure:
-			sharedfsServiceUpdateSharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceDestroySharedFSProcedure:
+			sharedfsServiceDestroySharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceListSharedFSProcedure:
+			sharedfsServiceListSharedFSHandler.ServeHTTP(w, r)
+		case SharedfsServiceChangeSharedFSDiskOfferingProcedure:
+			sharedfsServiceChangeSharedFSDiskOfferingHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -409,12 +409,24 @@ func NewSharedfsServiceHandler(svc SharedfsServiceHandler, opts ...connect.Handl
 // UnimplementedSharedfsServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSharedfsServiceHandler struct{}
 
-func (UnimplementedSharedfsServiceHandler) StopSharedFS(context.Context, *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS is not implemented"))
+func (UnimplementedSharedfsServiceHandler) ChangeSharedFSServiceOffering(context.Context, *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering is not implemented"))
 }
 
-func (UnimplementedSharedfsServiceHandler) ChangeSharedFSDiskOffering(context.Context, *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering is not implemented"))
+func (UnimplementedSharedfsServiceHandler) CreateSharedFS(context.Context, *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS is not implemented"))
+}
+
+func (UnimplementedSharedfsServiceHandler) RecoverSharedFS(context.Context, *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS is not implemented"))
+}
+
+func (UnimplementedSharedfsServiceHandler) UpdateSharedFS(context.Context, *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS is not implemented"))
+}
+
+func (UnimplementedSharedfsServiceHandler) StartSharedFS(context.Context, *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS is not implemented"))
 }
 
 func (UnimplementedSharedfsServiceHandler) ExpungeSharedFS(context.Context, *connect.Request[v1.ExpungeSharedFSRequest]) (*connect.Response[v1.ExpungeSharedFSResponse], error) {
@@ -425,34 +437,22 @@ func (UnimplementedSharedfsServiceHandler) ListSharedFSProviders(context.Context
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFSProviders is not implemented"))
 }
 
-func (UnimplementedSharedfsServiceHandler) CreateSharedFS(context.Context, *connect.Request[v1.CreateSharedFSRequest]) (*connect.Response[v1.CreateSharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS is not implemented"))
-}
-
-func (UnimplementedSharedfsServiceHandler) ChangeSharedFSServiceOffering(context.Context, *connect.Request[v1.ChangeSharedFSServiceOfferingRequest]) (*connect.Response[v1.ChangeSharedFSServiceOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering is not implemented"))
-}
-
-func (UnimplementedSharedfsServiceHandler) ListSharedFS(context.Context, *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS is not implemented"))
-}
-
-func (UnimplementedSharedfsServiceHandler) DestroySharedFS(context.Context, *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS is not implemented"))
-}
-
-func (UnimplementedSharedfsServiceHandler) StartSharedFS(context.Context, *connect.Request[v1.StartSharedFSRequest]) (*connect.Response[v1.StartSharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS is not implemented"))
-}
-
-func (UnimplementedSharedfsServiceHandler) RecoverSharedFS(context.Context, *connect.Request[v1.RecoverSharedFSRequest]) (*connect.Response[v1.RecoverSharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS is not implemented"))
+func (UnimplementedSharedfsServiceHandler) StopSharedFS(context.Context, *connect.Request[v1.StopSharedFSRequest]) (*connect.Response[v1.StopSharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS is not implemented"))
 }
 
 func (UnimplementedSharedfsServiceHandler) RestartSharedFS(context.Context, *connect.Request[v1.RestartSharedFSRequest]) (*connect.Response[v1.RestartSharedFSResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.RestartSharedFS is not implemented"))
 }
 
-func (UnimplementedSharedfsServiceHandler) UpdateSharedFS(context.Context, *connect.Request[v1.UpdateSharedFSRequest]) (*connect.Response[v1.UpdateSharedFSResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS is not implemented"))
+func (UnimplementedSharedfsServiceHandler) DestroySharedFS(context.Context, *connect.Request[v1.DestroySharedFSRequest]) (*connect.Response[v1.DestroySharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS is not implemented"))
+}
+
+func (UnimplementedSharedfsServiceHandler) ListSharedFS(context.Context, *connect.Request[v1.ListSharedFSRequest]) (*connect.Response[v1.ListSharedFSResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS is not implemented"))
+}
+
+func (UnimplementedSharedfsServiceHandler) ChangeSharedFSDiskOffering(context.Context, *connect.Request[v1.ChangeSharedFSDiskOfferingRequest]) (*connect.Response[v1.ChangeSharedFSDiskOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering is not implemented"))
 }

@@ -24,32 +24,34 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// StartSystemVMRequest represents the parameters for starts a system virtual machine.
-type StartSystemVMRequest struct {
+// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+type UpgradeSystemVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the system virtual machine
+	// The ID of the system vm
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	// the service offering ID to apply to the system vm
+	ServiceOfferingId *int64 `protobuf:"varint,2,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	Details map[string]string `protobuf:"bytes,3,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StartSystemVMRequest) Reset() {
-	*x = StartSystemVMRequest{}
+func (x *UpgradeSystemVMRequest) Reset() {
+	*x = UpgradeSystemVMRequest{}
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StartSystemVMRequest) String() string {
+func (x *UpgradeSystemVMRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StartSystemVMRequest) ProtoMessage() {}
+func (*UpgradeSystemVMRequest) ProtoMessage() {}
 
-func (x *StartSystemVMRequest) ProtoReflect() protoreflect.Message {
+func (x *UpgradeSystemVMRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,41 +63,41 @@ func (x *StartSystemVMRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StartSystemVMRequest.ProtoReflect.Descriptor instead.
-func (*StartSystemVMRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpgradeSystemVMRequest.ProtoReflect.Descriptor instead.
+func (*UpgradeSystemVMRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *StartSystemVMRequest) GetId() int64 {
+func (x *UpgradeSystemVMRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *StartSystemVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *UpgradeSystemVMRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
 	}
 	return 0
 }
 
-func (x *StartSystemVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *UpgradeSystemVMRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
 	}
-	return ""
+	return nil
 }
 
-func (x *StartSystemVMRequest) GetResponseType() string {
+func (x *UpgradeSystemVMRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// StartSystemVMResponse represents the response from starts a system virtual machine.
-type StartSystemVMResponse struct {
+// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+type UpgradeSystemVMResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -103,20 +105,20 @@ type StartSystemVMResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StartSystemVMResponse) Reset() {
-	*x = StartSystemVMResponse{}
+func (x *UpgradeSystemVMResponse) Reset() {
+	*x = UpgradeSystemVMResponse{}
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StartSystemVMResponse) String() string {
+func (x *UpgradeSystemVMResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StartSystemVMResponse) ProtoMessage() {}
+func (*UpgradeSystemVMResponse) ProtoMessage() {}
 
-func (x *StartSystemVMResponse) ProtoReflect() protoreflect.Message {
+func (x *UpgradeSystemVMResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -128,12 +130,12 @@ func (x *StartSystemVMResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StartSystemVMResponse.ProtoReflect.Descriptor instead.
-func (*StartSystemVMResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpgradeSystemVMResponse.ProtoReflect.Descriptor instead.
+func (*UpgradeSystemVMResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *StartSystemVMResponse) GetResult() *Result {
+func (x *UpgradeSystemVMResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -462,32 +464,34 @@ func (x *StopSystemVmResponse) GetResult() *Result {
 	return nil
 }
 
-// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
-type DestroySystemVmRequest struct {
+// PatchSystemVMRequest represents the parameters for attempts to live patch systemvms - cpvm, ssvm
+type PatchSystemVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the system virtual machine
+	// patches systemVM - CPVM/SSVM with the specified ID
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// If true, initiates copy of scripts and restart of the agent, even if the scripts version matches.To be used with ID parameter only
+	Force *bool `protobuf:"varint,2,opt,name=force" json:"force,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DestroySystemVmRequest) Reset() {
-	*x = DestroySystemVmRequest{}
+func (x *PatchSystemVMRequest) Reset() {
+	*x = PatchSystemVMRequest{}
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DestroySystemVmRequest) String() string {
+func (x *PatchSystemVMRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DestroySystemVmRequest) ProtoMessage() {}
+func (*PatchSystemVMRequest) ProtoMessage() {}
 
-func (x *DestroySystemVmRequest) ProtoReflect() protoreflect.Message {
+func (x *PatchSystemVMRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -499,41 +503,48 @@ func (x *DestroySystemVmRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DestroySystemVmRequest.ProtoReflect.Descriptor instead.
-func (*DestroySystemVmRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use PatchSystemVMRequest.ProtoReflect.Descriptor instead.
+func (*PatchSystemVMRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DestroySystemVmRequest) GetId() int64 {
+func (x *PatchSystemVMRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DestroySystemVmRequest) GetStartEventId() int64 {
+func (x *PatchSystemVMRequest) GetForce() bool {
+	if x != nil && x.Force != nil {
+		return *x.Force
+	}
+	return false
+}
+
+func (x *PatchSystemVMRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DestroySystemVmRequest) GetInjectedJobId() string {
+func (x *PatchSystemVMRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DestroySystemVmRequest) GetResponseType() string {
+func (x *PatchSystemVMRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DestroySystemVmResponse represents the response from destroys a system virtual machine.
-type DestroySystemVmResponse struct {
+// PatchSystemVMResponse represents the response from attempts to live patch systemvms - cpvm, ssvm
+type PatchSystemVMResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -541,20 +552,20 @@ type DestroySystemVmResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DestroySystemVmResponse) Reset() {
-	*x = DestroySystemVmResponse{}
+func (x *PatchSystemVMResponse) Reset() {
+	*x = PatchSystemVMResponse{}
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DestroySystemVmResponse) String() string {
+func (x *PatchSystemVMResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DestroySystemVmResponse) ProtoMessage() {}
+func (*PatchSystemVMResponse) ProtoMessage() {}
 
-func (x *DestroySystemVmResponse) ProtoReflect() protoreflect.Message {
+func (x *PatchSystemVMResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -566,12 +577,12 @@ func (x *DestroySystemVmResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DestroySystemVmResponse.ProtoReflect.Descriptor instead.
-func (*DestroySystemVmResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use PatchSystemVMResponse.ProtoReflect.Descriptor instead.
+func (*PatchSystemVMResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DestroySystemVmResponse) GetResult() *Result {
+func (x *PatchSystemVMResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -703,34 +714,32 @@ func (x *RebootSystemVmResponse) GetResult() *Result {
 	return nil
 }
 
-// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-type UpgradeSystemVMRequest struct {
+// StartSystemVMRequest represents the parameters for starts a system virtual machine.
+type StartSystemVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the system vm
+	// The ID of the system virtual machine
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the service offering ID to apply to the system vm
-	ServiceOfferingId *int64 `protobuf:"varint,2,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	Details map[string]string `protobuf:"bytes,3,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpgradeSystemVMRequest) Reset() {
-	*x = UpgradeSystemVMRequest{}
+func (x *StartSystemVMRequest) Reset() {
+	*x = StartSystemVMRequest{}
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpgradeSystemVMRequest) String() string {
+func (x *StartSystemVMRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpgradeSystemVMRequest) ProtoMessage() {}
+func (*StartSystemVMRequest) ProtoMessage() {}
 
-func (x *UpgradeSystemVMRequest) ProtoReflect() protoreflect.Message {
+func (x *StartSystemVMRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -742,166 +751,41 @@ func (x *UpgradeSystemVMRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpgradeSystemVMRequest.ProtoReflect.Descriptor instead.
-func (*UpgradeSystemVMRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use StartSystemVMRequest.ProtoReflect.Descriptor instead.
+func (*StartSystemVMRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *UpgradeSystemVMRequest) GetId() int64 {
+func (x *StartSystemVMRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpgradeSystemVMRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *UpgradeSystemVMRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpgradeSystemVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-type UpgradeSystemVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpgradeSystemVMResponse) Reset() {
-	*x = UpgradeSystemVMResponse{}
-	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpgradeSystemVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpgradeSystemVMResponse) ProtoMessage() {}
-
-func (x *UpgradeSystemVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpgradeSystemVMResponse.ProtoReflect.Descriptor instead.
-func (*UpgradeSystemVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *UpgradeSystemVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// PatchSystemVMRequest represents the parameters for attempts to live patch systemvms - cpvm, ssvm
-type PatchSystemVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// patches systemVM - CPVM/SSVM with the specified ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// If true, initiates copy of scripts and restart of the agent, even if the scripts version matches.To be used with ID parameter only
-	Force *bool `protobuf:"varint,2,opt,name=force" json:"force,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PatchSystemVMRequest) Reset() {
-	*x = PatchSystemVMRequest{}
-	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PatchSystemVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PatchSystemVMRequest) ProtoMessage() {}
-
-func (x *PatchSystemVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PatchSystemVMRequest.ProtoReflect.Descriptor instead.
-func (*PatchSystemVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *PatchSystemVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *PatchSystemVMRequest) GetForce() bool {
-	if x != nil && x.Force != nil {
-		return *x.Force
-	}
-	return false
-}
-
-func (x *PatchSystemVMRequest) GetStartEventId() int64 {
+func (x *StartSystemVMRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *PatchSystemVMRequest) GetInjectedJobId() string {
+func (x *StartSystemVMRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *PatchSystemVMRequest) GetResponseType() string {
+func (x *StartSystemVMRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// PatchSystemVMResponse represents the response from attempts to live patch systemvms - cpvm, ssvm
-type PatchSystemVMResponse struct {
+// StartSystemVMResponse represents the response from starts a system virtual machine.
+type StartSystemVMResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -909,20 +793,136 @@ type PatchSystemVMResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PatchSystemVMResponse) Reset() {
-	*x = PatchSystemVMResponse{}
+func (x *StartSystemVMResponse) Reset() {
+	*x = StartSystemVMResponse{}
+	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartSystemVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartSystemVMResponse) ProtoMessage() {}
+
+func (x *StartSystemVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartSystemVMResponse.ProtoReflect.Descriptor instead.
+func (*StartSystemVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *StartSystemVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
+type DestroySystemVmRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the system virtual machine
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DestroySystemVmRequest) Reset() {
+	*x = DestroySystemVmRequest{}
+	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DestroySystemVmRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DestroySystemVmRequest) ProtoMessage() {}
+
+func (x *DestroySystemVmRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DestroySystemVmRequest.ProtoReflect.Descriptor instead.
+func (*DestroySystemVmRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DestroySystemVmRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DestroySystemVmRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DestroySystemVmRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DestroySystemVmRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DestroySystemVmResponse represents the response from destroys a system virtual machine.
+type DestroySystemVmResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DestroySystemVmResponse) Reset() {
+	*x = DestroySystemVmResponse{}
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PatchSystemVMResponse) String() string {
+func (x *DestroySystemVmResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PatchSystemVMResponse) ProtoMessage() {}
+func (*DestroySystemVmResponse) ProtoMessage() {}
 
-func (x *PatchSystemVMResponse) ProtoReflect() protoreflect.Message {
+func (x *DestroySystemVmResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -934,12 +934,12 @@ func (x *PatchSystemVMResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PatchSystemVMResponse.ProtoReflect.Descriptor instead.
-func (*PatchSystemVMResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DestroySystemVmResponse.ProtoReflect.Descriptor instead.
+func (*DestroySystemVmResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *PatchSystemVMResponse) GetResult() *Result {
+func (x *DestroySystemVmResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1591,13 +1591,16 @@ var File_cloudstack_management_systemvm_v1_systemvm_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/systemvm/v1/systemvm.gen.proto\x12!cloudstack.management.systemvm.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xab\x01\n" +
-	"\x14StartSystemVMRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Z\n" +
-	"\x15StartSystemVMResponse\x12A\n" +
+	"4cloudstack/management/systemvm/v1/systemvm.gen.proto\x12!cloudstack.management.systemvm.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xab\x02\n" +
+	"\x16UpgradeSystemVMRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
+	"\x13service_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12`\n" +
+	"\adetails\x18\x03 \x03(\v2F.cloudstack.management.systemvm.v1.UpgradeSystemVMRequest.DetailsEntryR\adetails\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\\\n" +
+	"\x17UpgradeSystemVMResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xec\x02\n" +
 	"\x14ListSystemVMsRequest\x12\x17\n" +
 	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x12\x0e\n" +
@@ -1626,31 +1629,6 @@ const file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
 	"\x14StopSystemVmResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xad\x01\n" +
-	"\x16DestroySystemVmRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
-	"\x17DestroySystemVmResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xcb\x01\n" +
-	"\x15RebootSystemVmRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
-	"\x16RebootSystemVmResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xab\x02\n" +
-	"\x16UpgradeSystemVMRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
-	"\x13service_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12`\n" +
-	"\adetails\x18\x03 \x03(\v2F.cloudstack.management.systemvm.v1.UpgradeSystemVMRequest.DetailsEntryR\adetails\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\\\n" +
-	"\x17UpgradeSystemVMResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xc0\x01\n" +
 	"\x14PatchSystemVMRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
@@ -1659,6 +1637,28 @@ const file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Z\n" +
 	"\x15PatchSystemVMResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xcb\x01\n" +
+	"\x15RebootSystemVmRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
+	"\x16RebootSystemVmResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xab\x01\n" +
+	"\x14StartSystemVMRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Z\n" +
+	"\x15StartSystemVMResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xad\x01\n" +
+	"\x16DestroySystemVmRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
+	"\x17DestroySystemVmResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.systemvm.v1.ResultR\x06result\"\xff\x02\n" +
 	"\x14ScaleSystemVMRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
@@ -1719,14 +1719,14 @@ const file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDesc = "" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xea\t\n" +
-	"\x0fSystemvmService\x12\x84\x01\n" +
-	"\rStartSystemVM\x127.cloudstack.management.systemvm.v1.StartSystemVMRequest\x1a8.cloudstack.management.systemvm.v1.StartSystemVMResponse\"\x00\x12\x84\x01\n" +
-	"\rListSystemVMs\x127.cloudstack.management.systemvm.v1.ListSystemVMsRequest\x1a8.cloudstack.management.systemvm.v1.ListSystemVMsResponse\"\x00\x12\x81\x01\n" +
-	"\fStopSystemVm\x126.cloudstack.management.systemvm.v1.StopSystemVmRequest\x1a7.cloudstack.management.systemvm.v1.StopSystemVmResponse\"\x00\x12\x8a\x01\n" +
-	"\x0fDestroySystemVm\x129.cloudstack.management.systemvm.v1.DestroySystemVmRequest\x1a:.cloudstack.management.systemvm.v1.DestroySystemVmResponse\"\x00\x12\x87\x01\n" +
-	"\x0eRebootSystemVm\x128.cloudstack.management.systemvm.v1.RebootSystemVmRequest\x1a9.cloudstack.management.systemvm.v1.RebootSystemVmResponse\"\x00\x12\x8a\x01\n" +
+	"\x0fSystemvmService\x12\x8a\x01\n" +
 	"\x0fUpgradeSystemVM\x129.cloudstack.management.systemvm.v1.UpgradeSystemVMRequest\x1a:.cloudstack.management.systemvm.v1.UpgradeSystemVMResponse\"\x00\x12\x84\x01\n" +
-	"\rPatchSystemVM\x127.cloudstack.management.systemvm.v1.PatchSystemVMRequest\x1a8.cloudstack.management.systemvm.v1.PatchSystemVMResponse\"\x00\x12\x84\x01\n" +
+	"\rListSystemVMs\x127.cloudstack.management.systemvm.v1.ListSystemVMsRequest\x1a8.cloudstack.management.systemvm.v1.ListSystemVMsResponse\"\x00\x12\x81\x01\n" +
+	"\fStopSystemVm\x126.cloudstack.management.systemvm.v1.StopSystemVmRequest\x1a7.cloudstack.management.systemvm.v1.StopSystemVmResponse\"\x00\x12\x84\x01\n" +
+	"\rPatchSystemVM\x127.cloudstack.management.systemvm.v1.PatchSystemVMRequest\x1a8.cloudstack.management.systemvm.v1.PatchSystemVMResponse\"\x00\x12\x87\x01\n" +
+	"\x0eRebootSystemVm\x128.cloudstack.management.systemvm.v1.RebootSystemVmRequest\x1a9.cloudstack.management.systemvm.v1.RebootSystemVmResponse\"\x00\x12\x84\x01\n" +
+	"\rStartSystemVM\x127.cloudstack.management.systemvm.v1.StartSystemVMRequest\x1a8.cloudstack.management.systemvm.v1.StartSystemVMResponse\"\x00\x12\x8a\x01\n" +
+	"\x0fDestroySystemVm\x129.cloudstack.management.systemvm.v1.DestroySystemVmRequest\x1a:.cloudstack.management.systemvm.v1.DestroySystemVmResponse\"\x00\x12\x84\x01\n" +
 	"\rScaleSystemVM\x127.cloudstack.management.systemvm.v1.ScaleSystemVMRequest\x1a8.cloudstack.management.systemvm.v1.ScaleSystemVMResponse\"\x00\x12\x8a\x01\n" +
 	"\x0fMigrateSystemVM\x129.cloudstack.management.systemvm.v1.MigrateSystemVMRequest\x1a:.cloudstack.management.systemvm.v1.MigrateSystemVMResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
 	"%com.cloudstack.management.systemvm.v1B\x10SystemvmGenProtoP\x01Z`github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/systemvm/v1;systemvmv1\xa2\x02\x03CMS\xaa\x02!Cloudstack.Management.Systemvm.V1\xca\x02!Cloudstack\\Management\\Systemvm\\V1\xe2\x02-Cloudstack\\Management\\Systemvm\\V1\\GPBMetadata\xea\x02$Cloudstack::Management::Systemvm::V1b\beditionsp\xe8\a"
@@ -1745,20 +1745,20 @@ func file_cloudstack_management_systemvm_v1_systemvm_gen_proto_rawDescGZIP() []b
 
 var file_cloudstack_management_systemvm_v1_systemvm_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_cloudstack_management_systemvm_v1_systemvm_gen_proto_goTypes = []any{
-	(*StartSystemVMRequest)(nil),    // 0: cloudstack.management.systemvm.v1.StartSystemVMRequest
-	(*StartSystemVMResponse)(nil),   // 1: cloudstack.management.systemvm.v1.StartSystemVMResponse
+	(*UpgradeSystemVMRequest)(nil),  // 0: cloudstack.management.systemvm.v1.UpgradeSystemVMRequest
+	(*UpgradeSystemVMResponse)(nil), // 1: cloudstack.management.systemvm.v1.UpgradeSystemVMResponse
 	(*ListSystemVMsRequest)(nil),    // 2: cloudstack.management.systemvm.v1.ListSystemVMsRequest
 	(*ListSystemVMsResponse)(nil),   // 3: cloudstack.management.systemvm.v1.ListSystemVMsResponse
 	(*StopSystemVmRequest)(nil),     // 4: cloudstack.management.systemvm.v1.StopSystemVmRequest
 	(*StopSystemVmResponse)(nil),    // 5: cloudstack.management.systemvm.v1.StopSystemVmResponse
-	(*DestroySystemVmRequest)(nil),  // 6: cloudstack.management.systemvm.v1.DestroySystemVmRequest
-	(*DestroySystemVmResponse)(nil), // 7: cloudstack.management.systemvm.v1.DestroySystemVmResponse
+	(*PatchSystemVMRequest)(nil),    // 6: cloudstack.management.systemvm.v1.PatchSystemVMRequest
+	(*PatchSystemVMResponse)(nil),   // 7: cloudstack.management.systemvm.v1.PatchSystemVMResponse
 	(*RebootSystemVmRequest)(nil),   // 8: cloudstack.management.systemvm.v1.RebootSystemVmRequest
 	(*RebootSystemVmResponse)(nil),  // 9: cloudstack.management.systemvm.v1.RebootSystemVmResponse
-	(*UpgradeSystemVMRequest)(nil),  // 10: cloudstack.management.systemvm.v1.UpgradeSystemVMRequest
-	(*UpgradeSystemVMResponse)(nil), // 11: cloudstack.management.systemvm.v1.UpgradeSystemVMResponse
-	(*PatchSystemVMRequest)(nil),    // 12: cloudstack.management.systemvm.v1.PatchSystemVMRequest
-	(*PatchSystemVMResponse)(nil),   // 13: cloudstack.management.systemvm.v1.PatchSystemVMResponse
+	(*StartSystemVMRequest)(nil),    // 10: cloudstack.management.systemvm.v1.StartSystemVMRequest
+	(*StartSystemVMResponse)(nil),   // 11: cloudstack.management.systemvm.v1.StartSystemVMResponse
+	(*DestroySystemVmRequest)(nil),  // 12: cloudstack.management.systemvm.v1.DestroySystemVmRequest
+	(*DestroySystemVmResponse)(nil), // 13: cloudstack.management.systemvm.v1.DestroySystemVmResponse
 	(*ScaleSystemVMRequest)(nil),    // 14: cloudstack.management.systemvm.v1.ScaleSystemVMRequest
 	(*ScaleSystemVMResponse)(nil),   // 15: cloudstack.management.systemvm.v1.ScaleSystemVMResponse
 	(*MigrateSystemVMRequest)(nil),  // 16: cloudstack.management.systemvm.v1.MigrateSystemVMRequest
@@ -1772,34 +1772,34 @@ var file_cloudstack_management_systemvm_v1_systemvm_gen_proto_goTypes = []any{
 	nil,                             // 24: cloudstack.management.systemvm.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_systemvm_v1_systemvm_gen_proto_depIdxs = []int32{
-	21, // 0: cloudstack.management.systemvm.v1.StartSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
-	18, // 1: cloudstack.management.systemvm.v1.ListSystemVMsResponse.items:type_name -> cloudstack.management.systemvm.v1.SystemVm
-	21, // 2: cloudstack.management.systemvm.v1.StopSystemVmResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
-	21, // 3: cloudstack.management.systemvm.v1.DestroySystemVmResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
-	21, // 4: cloudstack.management.systemvm.v1.RebootSystemVmResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
-	22, // 5: cloudstack.management.systemvm.v1.UpgradeSystemVMRequest.details:type_name -> cloudstack.management.systemvm.v1.UpgradeSystemVMRequest.DetailsEntry
-	21, // 6: cloudstack.management.systemvm.v1.UpgradeSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
-	21, // 7: cloudstack.management.systemvm.v1.PatchSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
+	22, // 0: cloudstack.management.systemvm.v1.UpgradeSystemVMRequest.details:type_name -> cloudstack.management.systemvm.v1.UpgradeSystemVMRequest.DetailsEntry
+	21, // 1: cloudstack.management.systemvm.v1.UpgradeSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
+	18, // 2: cloudstack.management.systemvm.v1.ListSystemVMsResponse.items:type_name -> cloudstack.management.systemvm.v1.SystemVm
+	21, // 3: cloudstack.management.systemvm.v1.StopSystemVmResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
+	21, // 4: cloudstack.management.systemvm.v1.PatchSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
+	21, // 5: cloudstack.management.systemvm.v1.RebootSystemVmResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
+	21, // 6: cloudstack.management.systemvm.v1.StartSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
+	21, // 7: cloudstack.management.systemvm.v1.DestroySystemVmResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
 	23, // 8: cloudstack.management.systemvm.v1.ScaleSystemVMRequest.details:type_name -> cloudstack.management.systemvm.v1.ScaleSystemVMRequest.DetailsEntry
 	21, // 9: cloudstack.management.systemvm.v1.ScaleSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
 	21, // 10: cloudstack.management.systemvm.v1.MigrateSystemVMResponse.result:type_name -> cloudstack.management.systemvm.v1.Result
 	24, // 11: cloudstack.management.systemvm.v1.Item.details:type_name -> cloudstack.management.systemvm.v1.Item.DetailsEntry
-	0,  // 12: cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM:input_type -> cloudstack.management.systemvm.v1.StartSystemVMRequest
+	0,  // 12: cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM:input_type -> cloudstack.management.systemvm.v1.UpgradeSystemVMRequest
 	2,  // 13: cloudstack.management.systemvm.v1.SystemvmService.ListSystemVMs:input_type -> cloudstack.management.systemvm.v1.ListSystemVMsRequest
 	4,  // 14: cloudstack.management.systemvm.v1.SystemvmService.StopSystemVm:input_type -> cloudstack.management.systemvm.v1.StopSystemVmRequest
-	6,  // 15: cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm:input_type -> cloudstack.management.systemvm.v1.DestroySystemVmRequest
+	6,  // 15: cloudstack.management.systemvm.v1.SystemvmService.PatchSystemVM:input_type -> cloudstack.management.systemvm.v1.PatchSystemVMRequest
 	8,  // 16: cloudstack.management.systemvm.v1.SystemvmService.RebootSystemVm:input_type -> cloudstack.management.systemvm.v1.RebootSystemVmRequest
-	10, // 17: cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM:input_type -> cloudstack.management.systemvm.v1.UpgradeSystemVMRequest
-	12, // 18: cloudstack.management.systemvm.v1.SystemvmService.PatchSystemVM:input_type -> cloudstack.management.systemvm.v1.PatchSystemVMRequest
+	10, // 17: cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM:input_type -> cloudstack.management.systemvm.v1.StartSystemVMRequest
+	12, // 18: cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm:input_type -> cloudstack.management.systemvm.v1.DestroySystemVmRequest
 	14, // 19: cloudstack.management.systemvm.v1.SystemvmService.ScaleSystemVM:input_type -> cloudstack.management.systemvm.v1.ScaleSystemVMRequest
 	16, // 20: cloudstack.management.systemvm.v1.SystemvmService.MigrateSystemVM:input_type -> cloudstack.management.systemvm.v1.MigrateSystemVMRequest
-	1,  // 21: cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM:output_type -> cloudstack.management.systemvm.v1.StartSystemVMResponse
+	1,  // 21: cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM:output_type -> cloudstack.management.systemvm.v1.UpgradeSystemVMResponse
 	3,  // 22: cloudstack.management.systemvm.v1.SystemvmService.ListSystemVMs:output_type -> cloudstack.management.systemvm.v1.ListSystemVMsResponse
 	5,  // 23: cloudstack.management.systemvm.v1.SystemvmService.StopSystemVm:output_type -> cloudstack.management.systemvm.v1.StopSystemVmResponse
-	7,  // 24: cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm:output_type -> cloudstack.management.systemvm.v1.DestroySystemVmResponse
+	7,  // 24: cloudstack.management.systemvm.v1.SystemvmService.PatchSystemVM:output_type -> cloudstack.management.systemvm.v1.PatchSystemVMResponse
 	9,  // 25: cloudstack.management.systemvm.v1.SystemvmService.RebootSystemVm:output_type -> cloudstack.management.systemvm.v1.RebootSystemVmResponse
-	11, // 26: cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM:output_type -> cloudstack.management.systemvm.v1.UpgradeSystemVMResponse
-	13, // 27: cloudstack.management.systemvm.v1.SystemvmService.PatchSystemVM:output_type -> cloudstack.management.systemvm.v1.PatchSystemVMResponse
+	11, // 26: cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM:output_type -> cloudstack.management.systemvm.v1.StartSystemVMResponse
+	13, // 27: cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm:output_type -> cloudstack.management.systemvm.v1.DestroySystemVmResponse
 	15, // 28: cloudstack.management.systemvm.v1.SystemvmService.ScaleSystemVM:output_type -> cloudstack.management.systemvm.v1.ScaleSystemVMResponse
 	17, // 29: cloudstack.management.systemvm.v1.SystemvmService.MigrateSystemVM:output_type -> cloudstack.management.systemvm.v1.MigrateSystemVMResponse
 	21, // [21:30] is the sub-list for method output_type

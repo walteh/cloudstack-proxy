@@ -24,29 +24,90 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateIpv6FirewallRuleRequest represents the parameters for updates ipv6 firewall rule with specified id
-type UpdateIpv6FirewallRuleRequest struct {
+// ProtocolType represents the possible values for the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+type ProtocolType int32
+
+const (
+	// Default unspecified value
+	ProtocolType_PROTOCOL_TYPE_UNSPECIFIED ProtocolType = 0
+	// TCP value
+	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 1
+	// UDP value
+	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 2
+	// ICMP value
+	ProtocolType_PROTOCOL_TYPE_ICMP ProtocolType = 3
+	// ALL value
+	ProtocolType_PROTOCOL_TYPE_ALL ProtocolType = 4
+)
+
+// Enum value maps for ProtocolType.
+var (
+	ProtocolType_name = map[int32]string{
+		0: "PROTOCOL_TYPE_UNSPECIFIED",
+		1: "PROTOCOL_TYPE_TCP",
+		2: "PROTOCOL_TYPE_UDP",
+		3: "PROTOCOL_TYPE_ICMP",
+		4: "PROTOCOL_TYPE_ALL",
+	}
+	ProtocolType_value = map[string]int32{
+		"PROTOCOL_TYPE_UNSPECIFIED": 0,
+		"PROTOCOL_TYPE_TCP":         1,
+		"PROTOCOL_TYPE_UDP":         2,
+		"PROTOCOL_TYPE_ICMP":        3,
+		"PROTOCOL_TYPE_ALL":         4,
+	}
+)
+
+func (x ProtocolType) Enum() *ProtocolType {
+	p := new(ProtocolType)
+	*p = x
+	return p
+}
+
+func (x ProtocolType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProtocolType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ProtocolType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_enumTypes[0]
+}
+
+func (x ProtocolType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProtocolType.Descriptor instead.
+func (ProtocolType) EnumDescriptor() ([]byte, []int) {
+	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{0}
+}
+
+// CreateIpv6FirewallRuleRequest represents the parameters for creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
+type CreateIpv6FirewallRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the ipv6 firewall rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
 	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	Protocol *string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
+	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
 	// the starting port of Ipv6 firewall rule
-	PublicStartPort *int32 `protobuf:"varint,3,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
+	PublicStartPort *int32 `protobuf:"varint,2,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
 	// the ending port of Ipv6 firewall rule
-	PublicEndPort *int32 `protobuf:"varint,4,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
-	// the cidr list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
-	Cidrlist []string `protobuf:"bytes,5,rep,name=cidrlist" json:"cidrlist,omitempty"`
+	PublicEndPort *int32 `protobuf:"varint,3,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
+	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
+	SourceCidrList []string `protobuf:"bytes,4,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
+	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
+	DestinationCidrlist []string `protobuf:"bytes,5,rep,name=destination_cidrlist,json=destinationCidrlist" json:"destination_cidrlist,omitempty"`
 	// type of the ICMP message being sent
 	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
 	// error code for this ICMP message
 	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
-	// the traffic type for the Ipv6 firewall rule, can be Ingress or Egress, defaulted to Ingress if not specified
-	TrafficType *string `protobuf:"bytes,8,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// an optional field, whether to the display the Ipv6 firewall rule to the end user or not
-	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,10,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	// The network of the VM the Ipv6 firewall rule will be created for
+	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// the traffic type for the Ipv6 firewall rule, can be ingress or egress, defaulted to ingress if not specified
+	TrafficType *string `protobuf:"bytes,9,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
 	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -54,20 +115,20 @@ type UpdateIpv6FirewallRuleRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) Reset() {
-	*x = UpdateIpv6FirewallRuleRequest{}
+func (x *CreateIpv6FirewallRuleRequest) Reset() {
+	*x = CreateIpv6FirewallRuleRequest{}
 	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) String() string {
+func (x *CreateIpv6FirewallRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateIpv6FirewallRuleRequest) ProtoMessage() {}
+func (*CreateIpv6FirewallRuleRequest) ProtoMessage() {}
 
-func (x *UpdateIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -79,104 +140,104 @@ func (x *UpdateIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateIpv6FirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateIpv6FirewallRuleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateIpv6FirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*CreateIpv6FirewallRuleRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateIpv6FirewallRuleRequest) GetProtocol() string {
+func (x *CreateIpv6FirewallRuleRequest) GetProtocol() string {
 	if x != nil && x.Protocol != nil {
 		return *x.Protocol
 	}
 	return ""
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetPublicStartPort() int32 {
+func (x *CreateIpv6FirewallRuleRequest) GetPublicStartPort() int32 {
 	if x != nil && x.PublicStartPort != nil {
 		return *x.PublicStartPort
 	}
 	return 0
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetPublicEndPort() int32 {
+func (x *CreateIpv6FirewallRuleRequest) GetPublicEndPort() int32 {
 	if x != nil && x.PublicEndPort != nil {
 		return *x.PublicEndPort
 	}
 	return 0
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetCidrlist() []string {
+func (x *CreateIpv6FirewallRuleRequest) GetSourceCidrList() []string {
 	if x != nil {
-		return x.Cidrlist
+		return x.SourceCidrList
 	}
 	return nil
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetIcmpType() int32 {
+func (x *CreateIpv6FirewallRuleRequest) GetDestinationCidrlist() []string {
+	if x != nil {
+		return x.DestinationCidrlist
+	}
+	return nil
+}
+
+func (x *CreateIpv6FirewallRuleRequest) GetIcmpType() int32 {
 	if x != nil && x.IcmpType != nil {
 		return *x.IcmpType
 	}
 	return 0
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetIcmpCode() int32 {
+func (x *CreateIpv6FirewallRuleRequest) GetIcmpCode() int32 {
 	if x != nil && x.IcmpCode != nil {
 		return *x.IcmpCode
 	}
 	return 0
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetTrafficType() string {
+func (x *CreateIpv6FirewallRuleRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *CreateIpv6FirewallRuleRequest) GetTrafficType() string {
 	if x != nil && x.TrafficType != nil {
 		return *x.TrafficType
 	}
 	return ""
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetDisplay() bool {
+func (x *CreateIpv6FirewallRuleRequest) GetDisplay() bool {
 	if x != nil && x.Display != nil {
 		return *x.Display
 	}
 	return false
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateIpv6FirewallRuleRequest) GetStartEventId() int64 {
+func (x *CreateIpv6FirewallRuleRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetInjectedJobId() string {
+func (x *CreateIpv6FirewallRuleRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateIpv6FirewallRuleRequest) GetResponseType() string {
+func (x *CreateIpv6FirewallRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateIpv6FirewallRuleResponse represents the response from updates ipv6 firewall rule with specified id
-type UpdateIpv6FirewallRuleResponse struct {
+// CreateIpv6FirewallRuleResponse represents the response from creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
+type CreateIpv6FirewallRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -184,20 +245,20 @@ type UpdateIpv6FirewallRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateIpv6FirewallRuleResponse) Reset() {
-	*x = UpdateIpv6FirewallRuleResponse{}
+func (x *CreateIpv6FirewallRuleResponse) Reset() {
+	*x = CreateIpv6FirewallRuleResponse{}
 	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateIpv6FirewallRuleResponse) String() string {
+func (x *CreateIpv6FirewallRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateIpv6FirewallRuleResponse) ProtoMessage() {}
+func (*CreateIpv6FirewallRuleResponse) ProtoMessage() {}
 
-func (x *UpdateIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -209,12 +270,12 @@ func (x *UpdateIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateIpv6FirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateIpv6FirewallRuleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateIpv6FirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*CreateIpv6FirewallRuleResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateIpv6FirewallRuleResponse) GetResult() *Result {
+func (x *CreateIpv6FirewallRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -436,6 +497,203 @@ func (x *ListIpv6FirewallRulesResponse) GetTotalCount() int32 {
 	return 0
 }
 
+// UpdateIpv6FirewallRuleRequest represents the parameters for updates ipv6 firewall rule with specified id
+type UpdateIpv6FirewallRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the ipv6 firewall rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	Protocol *string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
+	// the starting port of Ipv6 firewall rule
+	PublicStartPort *int32 `protobuf:"varint,3,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
+	// the ending port of Ipv6 firewall rule
+	PublicEndPort *int32 `protobuf:"varint,4,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
+	// the cidr list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
+	Cidrlist []string `protobuf:"bytes,5,rep,name=cidrlist" json:"cidrlist,omitempty"`
+	// type of the ICMP message being sent
+	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
+	// error code for this ICMP message
+	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
+	// the traffic type for the Ipv6 firewall rule, can be Ingress or Egress, defaulted to Ingress if not specified
+	TrafficType *string `protobuf:"bytes,8,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// an optional field, whether to the display the Ipv6 firewall rule to the end user or not
+	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,10,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) Reset() {
+	*x = UpdateIpv6FirewallRuleRequest{}
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateIpv6FirewallRuleRequest) ProtoMessage() {}
+
+func (x *UpdateIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateIpv6FirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateIpv6FirewallRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetPublicStartPort() int32 {
+	if x != nil && x.PublicStartPort != nil {
+		return *x.PublicStartPort
+	}
+	return 0
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetPublicEndPort() int32 {
+	if x != nil && x.PublicEndPort != nil {
+		return *x.PublicEndPort
+	}
+	return 0
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetCidrlist() []string {
+	if x != nil {
+		return x.Cidrlist
+	}
+	return nil
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetIcmpType() int32 {
+	if x != nil && x.IcmpType != nil {
+		return *x.IcmpType
+	}
+	return 0
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetIcmpCode() int32 {
+	if x != nil && x.IcmpCode != nil {
+		return *x.IcmpCode
+	}
+	return 0
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
+	}
+	return ""
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateIpv6FirewallRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateIpv6FirewallRuleResponse represents the response from updates ipv6 firewall rule with specified id
+type UpdateIpv6FirewallRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateIpv6FirewallRuleResponse) Reset() {
+	*x = UpdateIpv6FirewallRuleResponse{}
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateIpv6FirewallRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateIpv6FirewallRuleResponse) ProtoMessage() {}
+
+func (x *UpdateIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateIpv6FirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateIpv6FirewallRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateIpv6FirewallRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // DeleteIpv6FirewallRuleRequest represents the parameters for deletes a ipv6 firewall rule
 type DeleteIpv6FirewallRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -450,7 +708,7 @@ type DeleteIpv6FirewallRuleRequest struct {
 
 func (x *DeleteIpv6FirewallRuleRequest) Reset() {
 	*x = DeleteIpv6FirewallRuleRequest{}
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -462,7 +720,7 @@ func (x *DeleteIpv6FirewallRuleRequest) String() string {
 func (*DeleteIpv6FirewallRuleRequest) ProtoMessage() {}
 
 func (x *DeleteIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -475,7 +733,7 @@ func (x *DeleteIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteIpv6FirewallRuleRequest.ProtoReflect.Descriptor instead.
 func (*DeleteIpv6FirewallRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteIpv6FirewallRuleRequest) GetId() int64 {
@@ -517,7 +775,7 @@ type DeleteIpv6FirewallRuleResponse struct {
 
 func (x *DeleteIpv6FirewallRuleResponse) Reset() {
 	*x = DeleteIpv6FirewallRuleResponse{}
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -529,7 +787,7 @@ func (x *DeleteIpv6FirewallRuleResponse) String() string {
 func (*DeleteIpv6FirewallRuleResponse) ProtoMessage() {}
 
 func (x *DeleteIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -542,207 +800,10 @@ func (x *DeleteIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteIpv6FirewallRuleResponse.ProtoReflect.Descriptor instead.
 func (*DeleteIpv6FirewallRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteIpv6FirewallRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateIpv6FirewallRuleRequest represents the parameters for creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
-type CreateIpv6FirewallRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
-	// the starting port of Ipv6 firewall rule
-	PublicStartPort *int32 `protobuf:"varint,2,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
-	// the ending port of Ipv6 firewall rule
-	PublicEndPort *int32 `protobuf:"varint,3,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
-	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
-	SourceCidrList []string `protobuf:"bytes,4,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
-	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
-	DestinationCidrlist []string `protobuf:"bytes,5,rep,name=destination_cidrlist,json=destinationCidrlist" json:"destination_cidrlist,omitempty"`
-	// type of the ICMP message being sent
-	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
-	// error code for this ICMP message
-	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
-	// The network of the VM the Ipv6 firewall rule will be created for
-	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// the traffic type for the Ipv6 firewall rule, can be ingress or egress, defaulted to ingress if not specified
-	TrafficType *string `protobuf:"bytes,9,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpv6FirewallRuleRequest) Reset() {
-	*x = CreateIpv6FirewallRuleRequest{}
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpv6FirewallRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpv6FirewallRuleRequest) ProtoMessage() {}
-
-func (x *CreateIpv6FirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpv6FirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*CreateIpv6FirewallRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
-	}
-	return ""
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetPublicStartPort() int32 {
-	if x != nil && x.PublicStartPort != nil {
-		return *x.PublicStartPort
-	}
-	return 0
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetPublicEndPort() int32 {
-	if x != nil && x.PublicEndPort != nil {
-		return *x.PublicEndPort
-	}
-	return 0
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetSourceCidrList() []string {
-	if x != nil {
-		return x.SourceCidrList
-	}
-	return nil
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetDestinationCidrlist() []string {
-	if x != nil {
-		return x.DestinationCidrlist
-	}
-	return nil
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetIcmpType() int32 {
-	if x != nil && x.IcmpType != nil {
-		return *x.IcmpType
-	}
-	return 0
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetIcmpCode() int32 {
-	if x != nil && x.IcmpCode != nil {
-		return *x.IcmpCode
-	}
-	return 0
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
-	}
-	return ""
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateIpv6FirewallRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateIpv6FirewallRuleResponse represents the response from creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
-type CreateIpv6FirewallRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpv6FirewallRuleResponse) Reset() {
-	*x = CreateIpv6FirewallRuleResponse{}
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpv6FirewallRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpv6FirewallRuleResponse) ProtoMessage() {}
-
-func (x *CreateIpv6FirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpv6FirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*CreateIpv6FirewallRuleResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *CreateIpv6FirewallRuleResponse) GetResult() *Result {
+func (x *DeleteIpv6FirewallRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1117,23 +1178,24 @@ var File_cloudstack_management_ipv6_v1_ipv6_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/ipv6/v1/ipv6.gen.proto\x12\x1dcloudstack.management.ipv6.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xff\x03\n" +
-	"\x1dUpdateIpv6FirewallRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
-	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x127\n" +
-	"\x11public_start_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
-	"\x0fpublic_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
-	"\bcidrlist\x18\x05 \x03(\tR\bcidrlist\x12\x1b\n" +
+	",cloudstack/management/ipv6/v1/ipv6.gen.proto\x12\x1dcloudstack.management.ipv6.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb0\x04\n" +
+	"\x1dCreateIpv6FirewallRuleRequest\x12\"\n" +
+	"\bprotocol\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
+	"\x11public_start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
+	"\x0fpublic_end_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12(\n" +
+	"\x10source_cidr_list\x18\x04 \x03(\tR\x0esourceCidrList\x121\n" +
+	"\x14destination_cidrlist\x18\x05 \x03(\tR\x13destinationCidrlist\x12\x1b\n" +
 	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
-	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12!\n" +
-	"\ftraffic_type\x18\b \x01(\tR\vtrafficType\x12\x1f\n" +
-	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12%\n" +
+	"\n" +
+	"network_id\x18\b \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12!\n" +
+	"\ftraffic_type\x18\t \x01(\tR\vtrafficType\x12\x1f\n" +
+	"\adisplay\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
 	"\x0estart_event_id\x18\v \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\r \x01(\tR\fresponseType\"_\n" +
-	"\x1eUpdateIpv6FirewallRuleResponse\x12=\n" +
+	"\x1eCreateIpv6FirewallRuleResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.ipv6.v1.ResultR\x06result\"\xbb\x05\n" +
 	"\x1cListIpv6FirewallRulesRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
@@ -1160,31 +1222,30 @@ const file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDesc = "" +
 	"\x1dListIpv6FirewallRulesResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.ipv6.v1.FirewallRuleR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb4\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xff\x03\n" +
+	"\x1dUpdateIpv6FirewallRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
+	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x127\n" +
+	"\x11public_start_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
+	"\x0fpublic_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
+	"\bcidrlist\x18\x05 \x03(\tR\bcidrlist\x12\x1b\n" +
+	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
+	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12!\n" +
+	"\ftraffic_type\x18\b \x01(\tR\vtrafficType\x12\x1f\n" +
+	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\v \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\"_\n" +
+	"\x1eUpdateIpv6FirewallRuleResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.ipv6.v1.ResultR\x06result\"\xb4\x01\n" +
 	"\x1dDeleteIpv6FirewallRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
 	"\x1eDeleteIpv6FirewallRuleResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.ipv6.v1.ResultR\x06result\"\xb0\x04\n" +
-	"\x1dCreateIpv6FirewallRuleRequest\x12\"\n" +
-	"\bprotocol\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
-	"\x11public_start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
-	"\x0fpublic_end_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12(\n" +
-	"\x10source_cidr_list\x18\x04 \x03(\tR\x0esourceCidrList\x121\n" +
-	"\x14destination_cidrlist\x18\x05 \x03(\tR\x13destinationCidrlist\x12\x1b\n" +
-	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
-	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12%\n" +
-	"\n" +
-	"network_id\x18\b \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12!\n" +
-	"\ftraffic_type\x18\t \x01(\tR\vtrafficType\x12\x1f\n" +
-	"\adisplay\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\v \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\r \x01(\tR\fresponseType\"_\n" +
-	"\x1eCreateIpv6FirewallRuleResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.ipv6.v1.ResultR\x06result\"\x9b\x01\n" +
 	"\fFirewallRule\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1220,12 +1281,18 @@ const file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xfa\x04\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*\x8a\x01\n" +
+	"\fProtocolType\x12\x1d\n" +
+	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x02\x12\x16\n" +
+	"\x12PROTOCOL_TYPE_ICMP\x10\x03\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_ALL\x10\x042\xfa\x04\n" +
 	"\vIpv6Service\x12\x97\x01\n" +
-	"\x16UpdateIpv6FirewallRule\x12<.cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleRequest\x1a=.cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse\"\x00\x12\x94\x01\n" +
+	"\x16CreateIpv6FirewallRule\x12<.cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleRequest\x1a=.cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse\"\x00\x12\x94\x01\n" +
 	"\x15ListIpv6FirewallRules\x12;.cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest\x1a<.cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse\"\x00\x12\x97\x01\n" +
-	"\x16DeleteIpv6FirewallRule\x12<.cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleRequest\x1a=.cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse\"\x00\x12\x97\x01\n" +
-	"\x16CreateIpv6FirewallRule\x12<.cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleRequest\x1a=.cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xa2\x02\n" +
+	"\x16UpdateIpv6FirewallRule\x12<.cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleRequest\x1a=.cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse\"\x00\x12\x97\x01\n" +
+	"\x16DeleteIpv6FirewallRule\x12<.cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleRequest\x1a=.cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xa2\x02\n" +
 	"!com.cloudstack.management.ipv6.v1B\fIpv6GenProtoP\x01ZXgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/ipv6/v1;ipv6v1\xa2\x02\x03CMI\xaa\x02\x1dCloudstack.Management.Ipv6.V1\xca\x02\x1dCloudstack\\Management\\Ipv6\\V1\xe2\x02)Cloudstack\\Management\\Ipv6\\V1\\GPBMetadata\xea\x02 Cloudstack::Management::Ipv6::V1b\beditionsp\xe8\a"
 
 var (
@@ -1240,38 +1307,40 @@ func file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_ipv6_v1_ipv6_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_cloudstack_management_ipv6_v1_ipv6_gen_proto_goTypes = []any{
-	(*UpdateIpv6FirewallRuleRequest)(nil),  // 0: cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleRequest
-	(*UpdateIpv6FirewallRuleResponse)(nil), // 1: cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse
-	(*ListIpv6FirewallRulesRequest)(nil),   // 2: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest
-	(*ListIpv6FirewallRulesResponse)(nil),  // 3: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse
-	(*DeleteIpv6FirewallRuleRequest)(nil),  // 4: cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleRequest
-	(*DeleteIpv6FirewallRuleResponse)(nil), // 5: cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse
-	(*CreateIpv6FirewallRuleRequest)(nil),  // 6: cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleRequest
-	(*CreateIpv6FirewallRuleResponse)(nil), // 7: cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse
-	(*FirewallRule)(nil),                   // 8: cloudstack.management.ipv6.v1.FirewallRule
-	(*Success)(nil),                        // 9: cloudstack.management.ipv6.v1.Success
-	(*Item)(nil),                           // 10: cloudstack.management.ipv6.v1.Item
-	(*Result)(nil),                         // 11: cloudstack.management.ipv6.v1.Result
-	nil,                                    // 12: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest.TagsEntry
-	nil,                                    // 13: cloudstack.management.ipv6.v1.Item.DetailsEntry
+	(ProtocolType)(0),                      // 0: cloudstack.management.ipv6.v1.ProtocolType
+	(*CreateIpv6FirewallRuleRequest)(nil),  // 1: cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleRequest
+	(*CreateIpv6FirewallRuleResponse)(nil), // 2: cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse
+	(*ListIpv6FirewallRulesRequest)(nil),   // 3: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest
+	(*ListIpv6FirewallRulesResponse)(nil),  // 4: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse
+	(*UpdateIpv6FirewallRuleRequest)(nil),  // 5: cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleRequest
+	(*UpdateIpv6FirewallRuleResponse)(nil), // 6: cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse
+	(*DeleteIpv6FirewallRuleRequest)(nil),  // 7: cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleRequest
+	(*DeleteIpv6FirewallRuleResponse)(nil), // 8: cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse
+	(*FirewallRule)(nil),                   // 9: cloudstack.management.ipv6.v1.FirewallRule
+	(*Success)(nil),                        // 10: cloudstack.management.ipv6.v1.Success
+	(*Item)(nil),                           // 11: cloudstack.management.ipv6.v1.Item
+	(*Result)(nil),                         // 12: cloudstack.management.ipv6.v1.Result
+	nil,                                    // 13: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest.TagsEntry
+	nil,                                    // 14: cloudstack.management.ipv6.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_ipv6_v1_ipv6_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse.result:type_name -> cloudstack.management.ipv6.v1.Result
-	12, // 1: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest.tags:type_name -> cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest.TagsEntry
-	8,  // 2: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse.items:type_name -> cloudstack.management.ipv6.v1.FirewallRule
-	11, // 3: cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse.result:type_name -> cloudstack.management.ipv6.v1.Result
-	11, // 4: cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse.result:type_name -> cloudstack.management.ipv6.v1.Result
-	13, // 5: cloudstack.management.ipv6.v1.Item.details:type_name -> cloudstack.management.ipv6.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule:input_type -> cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleRequest
-	2,  // 7: cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules:input_type -> cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest
-	4,  // 8: cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule:input_type -> cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleRequest
-	6,  // 9: cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule:input_type -> cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleRequest
-	1,  // 10: cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule:output_type -> cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse
-	3,  // 11: cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules:output_type -> cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse
-	5,  // 12: cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule:output_type -> cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse
-	7,  // 13: cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule:output_type -> cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse
+	12, // 0: cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse.result:type_name -> cloudstack.management.ipv6.v1.Result
+	13, // 1: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest.tags:type_name -> cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest.TagsEntry
+	9,  // 2: cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse.items:type_name -> cloudstack.management.ipv6.v1.FirewallRule
+	12, // 3: cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse.result:type_name -> cloudstack.management.ipv6.v1.Result
+	12, // 4: cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse.result:type_name -> cloudstack.management.ipv6.v1.Result
+	14, // 5: cloudstack.management.ipv6.v1.Item.details:type_name -> cloudstack.management.ipv6.v1.Item.DetailsEntry
+	1,  // 6: cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule:input_type -> cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleRequest
+	3,  // 7: cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules:input_type -> cloudstack.management.ipv6.v1.ListIpv6FirewallRulesRequest
+	5,  // 8: cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule:input_type -> cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleRequest
+	7,  // 9: cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule:input_type -> cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleRequest
+	2,  // 10: cloudstack.management.ipv6.v1.Ipv6Service.CreateIpv6FirewallRule:output_type -> cloudstack.management.ipv6.v1.CreateIpv6FirewallRuleResponse
+	4,  // 11: cloudstack.management.ipv6.v1.Ipv6Service.ListIpv6FirewallRules:output_type -> cloudstack.management.ipv6.v1.ListIpv6FirewallRulesResponse
+	6,  // 12: cloudstack.management.ipv6.v1.Ipv6Service.UpdateIpv6FirewallRule:output_type -> cloudstack.management.ipv6.v1.UpdateIpv6FirewallRuleResponse
+	8,  // 13: cloudstack.management.ipv6.v1.Ipv6Service.DeleteIpv6FirewallRule:output_type -> cloudstack.management.ipv6.v1.DeleteIpv6FirewallRuleResponse
 	10, // [10:14] is the sub-list for method output_type
 	6,  // [6:10] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
@@ -1289,13 +1358,14 @@ func file_cloudstack_management_ipv6_v1_ipv6_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDesc), len(file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_ipv6_v1_ipv6_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_ipv6_v1_ipv6_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_ipv6_v1_ipv6_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_ipv6_v1_ipv6_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_ipv6_v1_ipv6_gen_proto = out.File

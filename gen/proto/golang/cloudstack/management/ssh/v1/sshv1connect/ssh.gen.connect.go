@@ -39,12 +39,12 @@ const (
 	// SshServiceCreateSSHKeyPairProcedure is the fully-qualified name of the SshService's
 	// CreateSSHKeyPair RPC.
 	SshServiceCreateSSHKeyPairProcedure = "/cloudstack.management.ssh.v1.SshService/CreateSSHKeyPair"
-	// SshServiceDeleteSSHKeyPairProcedure is the fully-qualified name of the SshService's
-	// DeleteSSHKeyPair RPC.
-	SshServiceDeleteSSHKeyPairProcedure = "/cloudstack.management.ssh.v1.SshService/DeleteSSHKeyPair"
 	// SshServiceRegisterSSHKeyPairProcedure is the fully-qualified name of the SshService's
 	// RegisterSSHKeyPair RPC.
 	SshServiceRegisterSSHKeyPairProcedure = "/cloudstack.management.ssh.v1.SshService/RegisterSSHKeyPair"
+	// SshServiceDeleteSSHKeyPairProcedure is the fully-qualified name of the SshService's
+	// DeleteSSHKeyPair RPC.
+	SshServiceDeleteSSHKeyPairProcedure = "/cloudstack.management.ssh.v1.SshService/DeleteSSHKeyPair"
 )
 
 // SshServiceClient is a client for the cloudstack.management.ssh.v1.SshService service.
@@ -53,10 +53,10 @@ type SshServiceClient interface {
 	ListSSHKeyPairs(context.Context, *connect.Request[v1.ListSSHKeyPairsRequest]) (*connect.Response[v1.ListSSHKeyPairsResponse], error)
 	// CreateSSHKeyPair Create a new keypair and returns the private key
 	CreateSSHKeyPair(context.Context, *connect.Request[v1.CreateSSHKeyPairRequest]) (*connect.Response[v1.CreateSSHKeyPairResponse], error)
-	// DeleteSSHKeyPair Deletes a keypair by name
-	DeleteSSHKeyPair(context.Context, *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error)
 	// RegisterSSHKeyPair Register a public key in a keypair under a certain name
 	RegisterSSHKeyPair(context.Context, *connect.Request[v1.RegisterSSHKeyPairRequest]) (*connect.Response[v1.RegisterSSHKeyPairResponse], error)
+	// DeleteSSHKeyPair Deletes a keypair by name
+	DeleteSSHKeyPair(context.Context, *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error)
 }
 
 // NewSshServiceClient constructs a client for the cloudstack.management.ssh.v1.SshService service.
@@ -82,16 +82,16 @@ func NewSshServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(sshServiceMethods.ByName("CreateSSHKeyPair")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteSSHKeyPair: connect.NewClient[v1.DeleteSSHKeyPairRequest, v1.DeleteSSHKeyPairResponse](
-			httpClient,
-			baseURL+SshServiceDeleteSSHKeyPairProcedure,
-			connect.WithSchema(sshServiceMethods.ByName("DeleteSSHKeyPair")),
-			connect.WithClientOptions(opts...),
-		),
 		registerSSHKeyPair: connect.NewClient[v1.RegisterSSHKeyPairRequest, v1.RegisterSSHKeyPairResponse](
 			httpClient,
 			baseURL+SshServiceRegisterSSHKeyPairProcedure,
 			connect.WithSchema(sshServiceMethods.ByName("RegisterSSHKeyPair")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteSSHKeyPair: connect.NewClient[v1.DeleteSSHKeyPairRequest, v1.DeleteSSHKeyPairResponse](
+			httpClient,
+			baseURL+SshServiceDeleteSSHKeyPairProcedure,
+			connect.WithSchema(sshServiceMethods.ByName("DeleteSSHKeyPair")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -101,8 +101,8 @@ func NewSshServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 type sshServiceClient struct {
 	listSSHKeyPairs    *connect.Client[v1.ListSSHKeyPairsRequest, v1.ListSSHKeyPairsResponse]
 	createSSHKeyPair   *connect.Client[v1.CreateSSHKeyPairRequest, v1.CreateSSHKeyPairResponse]
-	deleteSSHKeyPair   *connect.Client[v1.DeleteSSHKeyPairRequest, v1.DeleteSSHKeyPairResponse]
 	registerSSHKeyPair *connect.Client[v1.RegisterSSHKeyPairRequest, v1.RegisterSSHKeyPairResponse]
+	deleteSSHKeyPair   *connect.Client[v1.DeleteSSHKeyPairRequest, v1.DeleteSSHKeyPairResponse]
 }
 
 // ListSSHKeyPairs calls cloudstack.management.ssh.v1.SshService.ListSSHKeyPairs.
@@ -115,14 +115,14 @@ func (c *sshServiceClient) CreateSSHKeyPair(ctx context.Context, req *connect.Re
 	return c.createSSHKeyPair.CallUnary(ctx, req)
 }
 
-// DeleteSSHKeyPair calls cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair.
-func (c *sshServiceClient) DeleteSSHKeyPair(ctx context.Context, req *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error) {
-	return c.deleteSSHKeyPair.CallUnary(ctx, req)
-}
-
 // RegisterSSHKeyPair calls cloudstack.management.ssh.v1.SshService.RegisterSSHKeyPair.
 func (c *sshServiceClient) RegisterSSHKeyPair(ctx context.Context, req *connect.Request[v1.RegisterSSHKeyPairRequest]) (*connect.Response[v1.RegisterSSHKeyPairResponse], error) {
 	return c.registerSSHKeyPair.CallUnary(ctx, req)
+}
+
+// DeleteSSHKeyPair calls cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair.
+func (c *sshServiceClient) DeleteSSHKeyPair(ctx context.Context, req *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error) {
+	return c.deleteSSHKeyPair.CallUnary(ctx, req)
 }
 
 // SshServiceHandler is an implementation of the cloudstack.management.ssh.v1.SshService service.
@@ -131,10 +131,10 @@ type SshServiceHandler interface {
 	ListSSHKeyPairs(context.Context, *connect.Request[v1.ListSSHKeyPairsRequest]) (*connect.Response[v1.ListSSHKeyPairsResponse], error)
 	// CreateSSHKeyPair Create a new keypair and returns the private key
 	CreateSSHKeyPair(context.Context, *connect.Request[v1.CreateSSHKeyPairRequest]) (*connect.Response[v1.CreateSSHKeyPairResponse], error)
-	// DeleteSSHKeyPair Deletes a keypair by name
-	DeleteSSHKeyPair(context.Context, *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error)
 	// RegisterSSHKeyPair Register a public key in a keypair under a certain name
 	RegisterSSHKeyPair(context.Context, *connect.Request[v1.RegisterSSHKeyPairRequest]) (*connect.Response[v1.RegisterSSHKeyPairResponse], error)
+	// DeleteSSHKeyPair Deletes a keypair by name
+	DeleteSSHKeyPair(context.Context, *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error)
 }
 
 // NewSshServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -156,16 +156,16 @@ func NewSshServiceHandler(svc SshServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(sshServiceMethods.ByName("CreateSSHKeyPair")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sshServiceDeleteSSHKeyPairHandler := connect.NewUnaryHandler(
-		SshServiceDeleteSSHKeyPairProcedure,
-		svc.DeleteSSHKeyPair,
-		connect.WithSchema(sshServiceMethods.ByName("DeleteSSHKeyPair")),
-		connect.WithHandlerOptions(opts...),
-	)
 	sshServiceRegisterSSHKeyPairHandler := connect.NewUnaryHandler(
 		SshServiceRegisterSSHKeyPairProcedure,
 		svc.RegisterSSHKeyPair,
 		connect.WithSchema(sshServiceMethods.ByName("RegisterSSHKeyPair")),
+		connect.WithHandlerOptions(opts...),
+	)
+	sshServiceDeleteSSHKeyPairHandler := connect.NewUnaryHandler(
+		SshServiceDeleteSSHKeyPairProcedure,
+		svc.DeleteSSHKeyPair,
+		connect.WithSchema(sshServiceMethods.ByName("DeleteSSHKeyPair")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.ssh.v1.SshService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -174,10 +174,10 @@ func NewSshServiceHandler(svc SshServiceHandler, opts ...connect.HandlerOption) 
 			sshServiceListSSHKeyPairsHandler.ServeHTTP(w, r)
 		case SshServiceCreateSSHKeyPairProcedure:
 			sshServiceCreateSSHKeyPairHandler.ServeHTTP(w, r)
-		case SshServiceDeleteSSHKeyPairProcedure:
-			sshServiceDeleteSSHKeyPairHandler.ServeHTTP(w, r)
 		case SshServiceRegisterSSHKeyPairProcedure:
 			sshServiceRegisterSSHKeyPairHandler.ServeHTTP(w, r)
+		case SshServiceDeleteSSHKeyPairProcedure:
+			sshServiceDeleteSSHKeyPairHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -195,10 +195,10 @@ func (UnimplementedSshServiceHandler) CreateSSHKeyPair(context.Context, *connect
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ssh.v1.SshService.CreateSSHKeyPair is not implemented"))
 }
 
-func (UnimplementedSshServiceHandler) DeleteSSHKeyPair(context.Context, *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair is not implemented"))
-}
-
 func (UnimplementedSshServiceHandler) RegisterSSHKeyPair(context.Context, *connect.Request[v1.RegisterSSHKeyPairRequest]) (*connect.Response[v1.RegisterSSHKeyPairResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ssh.v1.SshService.RegisterSSHKeyPair is not implemented"))
+}
+
+func (UnimplementedSshServiceHandler) DeleteSSHKeyPair(context.Context, *connect.Request[v1.DeleteSSHKeyPairRequest]) (*connect.Response[v1.DeleteSSHKeyPairResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair is not implemented"))
 }

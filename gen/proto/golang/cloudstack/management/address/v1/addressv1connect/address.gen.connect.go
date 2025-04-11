@@ -33,36 +33,39 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// AddressServiceAssociateIPAddrCmdByAdminProcedure is the fully-qualified name of the
+	// AddressService's AssociateIPAddrCmdByAdmin RPC.
+	AddressServiceAssociateIPAddrCmdByAdminProcedure = "/cloudstack.management.address.v1.AddressService/AssociateIPAddrCmdByAdmin"
 	// AddressServiceAssociateIPAddrProcedure is the fully-qualified name of the AddressService's
 	// AssociateIPAddr RPC.
 	AddressServiceAssociateIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/AssociateIPAddr"
-	// AddressServiceReserveIPAddrProcedure is the fully-qualified name of the AddressService's
-	// ReserveIPAddr RPC.
-	AddressServiceReserveIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/ReserveIPAddr"
 	// AddressServiceListPublicIpAddressesProcedure is the fully-qualified name of the AddressService's
 	// ListPublicIpAddresses RPC.
 	AddressServiceListPublicIpAddressesProcedure = "/cloudstack.management.address.v1.AddressService/ListPublicIpAddresses"
-	// AddressServiceRemoveQuarantinedIpProcedure is the fully-qualified name of the AddressService's
-	// RemoveQuarantinedIp RPC.
-	AddressServiceRemoveQuarantinedIpProcedure = "/cloudstack.management.address.v1.AddressService/RemoveQuarantinedIp"
 	// AddressServiceAcquirePodIpCmdByAdminProcedure is the fully-qualified name of the AddressService's
 	// AcquirePodIpCmdByAdmin RPC.
 	AddressServiceAcquirePodIpCmdByAdminProcedure = "/cloudstack.management.address.v1.AddressService/AcquirePodIpCmdByAdmin"
-	// AddressServiceUpdateIPAddrProcedure is the fully-qualified name of the AddressService's
-	// UpdateIPAddr RPC.
-	AddressServiceUpdateIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/UpdateIPAddr"
-	// AddressServiceDisassociateIPAddrProcedure is the fully-qualified name of the AddressService's
-	// DisassociateIPAddr RPC.
-	AddressServiceDisassociateIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/DisassociateIPAddr"
+	// AddressServiceRemoveQuarantinedIpProcedure is the fully-qualified name of the AddressService's
+	// RemoveQuarantinedIp RPC.
+	AddressServiceRemoveQuarantinedIpProcedure = "/cloudstack.management.address.v1.AddressService/RemoveQuarantinedIp"
 	// AddressServiceUpdateQuarantinedIpProcedure is the fully-qualified name of the AddressService's
 	// UpdateQuarantinedIp RPC.
 	AddressServiceUpdateQuarantinedIpProcedure = "/cloudstack.management.address.v1.AddressService/UpdateQuarantinedIp"
 	// AddressServiceReleasePodIpCmdByAdminProcedure is the fully-qualified name of the AddressService's
 	// ReleasePodIpCmdByAdmin RPC.
 	AddressServiceReleasePodIpCmdByAdminProcedure = "/cloudstack.management.address.v1.AddressService/ReleasePodIpCmdByAdmin"
+	// AddressServiceUpdateIPAddrProcedure is the fully-qualified name of the AddressService's
+	// UpdateIPAddr RPC.
+	AddressServiceUpdateIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/UpdateIPAddr"
 	// AddressServiceListQuarantinedIpsProcedure is the fully-qualified name of the AddressService's
 	// ListQuarantinedIps RPC.
 	AddressServiceListQuarantinedIpsProcedure = "/cloudstack.management.address.v1.AddressService/ListQuarantinedIps"
+	// AddressServiceReserveIPAddrProcedure is the fully-qualified name of the AddressService's
+	// ReserveIPAddr RPC.
+	AddressServiceReserveIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/ReserveIPAddr"
+	// AddressServiceDisassociateIPAddrProcedure is the fully-qualified name of the AddressService's
+	// DisassociateIPAddr RPC.
+	AddressServiceDisassociateIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/DisassociateIPAddr"
 	// AddressServiceReleaseIPAddrProcedure is the fully-qualified name of the AddressService's
 	// ReleaseIPAddr RPC.
 	AddressServiceReleaseIPAddrProcedure = "/cloudstack.management.address.v1.AddressService/ReleaseIPAddr"
@@ -70,26 +73,28 @@ const (
 
 // AddressServiceClient is a client for the cloudstack.management.address.v1.AddressService service.
 type AddressServiceClient interface {
+	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
+	AssociateIPAddrCmdByAdmin(context.Context, *connect.Request[v1.AssociateIPAddrCmdByAdminRequest]) (*connect.Response[v1.AssociateIPAddrCmdByAdminResponse], error)
 	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
 	AssociateIPAddr(context.Context, *connect.Request[v1.AssociateIPAddrRequest]) (*connect.Response[v1.AssociateIPAddrResponse], error)
-	// ReserveIPAddr Reserve a public IP to an account.
-	ReserveIPAddr(context.Context, *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error)
 	// ListPublicIpAddresses Lists all public IP addresses
 	ListPublicIpAddresses(context.Context, *connect.Request[v1.ListPublicIpAddressesRequest]) (*connect.Response[v1.ListPublicIpAddressesResponse], error)
-	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
-	RemoveQuarantinedIp(context.Context, *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error)
 	// AcquirePodIpCmdByAdmin Allocates IP addresses in respective Pod of a Zone
 	AcquirePodIpCmdByAdmin(context.Context, *connect.Request[v1.AcquirePodIpCmdByAdminRequest]) (*connect.Response[v1.AcquirePodIpCmdByAdminResponse], error)
-	// UpdateIPAddr Updates an IP address
-	UpdateIPAddr(context.Context, *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error)
-	// DisassociateIPAddr Disassociates an IP address from the account.
-	DisassociateIPAddr(context.Context, *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error)
+	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
+	RemoveQuarantinedIp(context.Context, *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error)
 	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
 	UpdateQuarantinedIp(context.Context, *connect.Request[v1.UpdateQuarantinedIpRequest]) (*connect.Response[v1.UpdateQuarantinedIpResponse], error)
 	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
 	ReleasePodIpCmdByAdmin(context.Context, *connect.Request[v1.ReleasePodIpCmdByAdminRequest]) (*connect.Response[v1.ReleasePodIpCmdByAdminResponse], error)
+	// UpdateIPAddr Updates an IP address
+	UpdateIPAddr(context.Context, *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error)
 	// ListQuarantinedIps List public IP addresses in quarantine.
 	ListQuarantinedIps(context.Context, *connect.Request[v1.ListQuarantinedIpsRequest]) (*connect.Response[v1.ListQuarantinedIpsResponse], error)
+	// ReserveIPAddr Reserve a public IP to an account.
+	ReserveIPAddr(context.Context, *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error)
+	// DisassociateIPAddr Disassociates an IP address from the account.
+	DisassociateIPAddr(context.Context, *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error)
 	// ReleaseIPAddr Releases an IP address from the account.
 	ReleaseIPAddr(context.Context, *connect.Request[v1.ReleaseIPAddrRequest]) (*connect.Response[v1.ReleaseIPAddrResponse], error)
 }
@@ -106,16 +111,16 @@ func NewAddressServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	addressServiceMethods := v1.File_cloudstack_management_address_v1_address_gen_proto.Services().ByName("AddressService").Methods()
 	return &addressServiceClient{
+		associateIPAddrCmdByAdmin: connect.NewClient[v1.AssociateIPAddrCmdByAdminRequest, v1.AssociateIPAddrCmdByAdminResponse](
+			httpClient,
+			baseURL+AddressServiceAssociateIPAddrCmdByAdminProcedure,
+			connect.WithSchema(addressServiceMethods.ByName("AssociateIPAddrCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
 		associateIPAddr: connect.NewClient[v1.AssociateIPAddrRequest, v1.AssociateIPAddrResponse](
 			httpClient,
 			baseURL+AddressServiceAssociateIPAddrProcedure,
 			connect.WithSchema(addressServiceMethods.ByName("AssociateIPAddr")),
-			connect.WithClientOptions(opts...),
-		),
-		reserveIPAddr: connect.NewClient[v1.ReserveIPAddrRequest, v1.ReserveIPAddrResponse](
-			httpClient,
-			baseURL+AddressServiceReserveIPAddrProcedure,
-			connect.WithSchema(addressServiceMethods.ByName("ReserveIPAddr")),
 			connect.WithClientOptions(opts...),
 		),
 		listPublicIpAddresses: connect.NewClient[v1.ListPublicIpAddressesRequest, v1.ListPublicIpAddressesResponse](
@@ -124,28 +129,16 @@ func NewAddressServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(addressServiceMethods.ByName("ListPublicIpAddresses")),
 			connect.WithClientOptions(opts...),
 		),
-		removeQuarantinedIp: connect.NewClient[v1.RemoveQuarantinedIpRequest, v1.RemoveQuarantinedIpResponse](
-			httpClient,
-			baseURL+AddressServiceRemoveQuarantinedIpProcedure,
-			connect.WithSchema(addressServiceMethods.ByName("RemoveQuarantinedIp")),
-			connect.WithClientOptions(opts...),
-		),
 		acquirePodIpCmdByAdmin: connect.NewClient[v1.AcquirePodIpCmdByAdminRequest, v1.AcquirePodIpCmdByAdminResponse](
 			httpClient,
 			baseURL+AddressServiceAcquirePodIpCmdByAdminProcedure,
 			connect.WithSchema(addressServiceMethods.ByName("AcquirePodIpCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
-		updateIPAddr: connect.NewClient[v1.UpdateIPAddrRequest, v1.UpdateIPAddrResponse](
+		removeQuarantinedIp: connect.NewClient[v1.RemoveQuarantinedIpRequest, v1.RemoveQuarantinedIpResponse](
 			httpClient,
-			baseURL+AddressServiceUpdateIPAddrProcedure,
-			connect.WithSchema(addressServiceMethods.ByName("UpdateIPAddr")),
-			connect.WithClientOptions(opts...),
-		),
-		disassociateIPAddr: connect.NewClient[v1.DisassociateIPAddrRequest, v1.DisassociateIPAddrResponse](
-			httpClient,
-			baseURL+AddressServiceDisassociateIPAddrProcedure,
-			connect.WithSchema(addressServiceMethods.ByName("DisassociateIPAddr")),
+			baseURL+AddressServiceRemoveQuarantinedIpProcedure,
+			connect.WithSchema(addressServiceMethods.ByName("RemoveQuarantinedIp")),
 			connect.WithClientOptions(opts...),
 		),
 		updateQuarantinedIp: connect.NewClient[v1.UpdateQuarantinedIpRequest, v1.UpdateQuarantinedIpResponse](
@@ -160,10 +153,28 @@ func NewAddressServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(addressServiceMethods.ByName("ReleasePodIpCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
+		updateIPAddr: connect.NewClient[v1.UpdateIPAddrRequest, v1.UpdateIPAddrResponse](
+			httpClient,
+			baseURL+AddressServiceUpdateIPAddrProcedure,
+			connect.WithSchema(addressServiceMethods.ByName("UpdateIPAddr")),
+			connect.WithClientOptions(opts...),
+		),
 		listQuarantinedIps: connect.NewClient[v1.ListQuarantinedIpsRequest, v1.ListQuarantinedIpsResponse](
 			httpClient,
 			baseURL+AddressServiceListQuarantinedIpsProcedure,
 			connect.WithSchema(addressServiceMethods.ByName("ListQuarantinedIps")),
+			connect.WithClientOptions(opts...),
+		),
+		reserveIPAddr: connect.NewClient[v1.ReserveIPAddrRequest, v1.ReserveIPAddrResponse](
+			httpClient,
+			baseURL+AddressServiceReserveIPAddrProcedure,
+			connect.WithSchema(addressServiceMethods.ByName("ReserveIPAddr")),
+			connect.WithClientOptions(opts...),
+		),
+		disassociateIPAddr: connect.NewClient[v1.DisassociateIPAddrRequest, v1.DisassociateIPAddrResponse](
+			httpClient,
+			baseURL+AddressServiceDisassociateIPAddrProcedure,
+			connect.WithSchema(addressServiceMethods.ByName("DisassociateIPAddr")),
 			connect.WithClientOptions(opts...),
 		),
 		releaseIPAddr: connect.NewClient[v1.ReleaseIPAddrRequest, v1.ReleaseIPAddrResponse](
@@ -177,27 +188,29 @@ func NewAddressServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // addressServiceClient implements AddressServiceClient.
 type addressServiceClient struct {
-	associateIPAddr        *connect.Client[v1.AssociateIPAddrRequest, v1.AssociateIPAddrResponse]
-	reserveIPAddr          *connect.Client[v1.ReserveIPAddrRequest, v1.ReserveIPAddrResponse]
-	listPublicIpAddresses  *connect.Client[v1.ListPublicIpAddressesRequest, v1.ListPublicIpAddressesResponse]
-	removeQuarantinedIp    *connect.Client[v1.RemoveQuarantinedIpRequest, v1.RemoveQuarantinedIpResponse]
-	acquirePodIpCmdByAdmin *connect.Client[v1.AcquirePodIpCmdByAdminRequest, v1.AcquirePodIpCmdByAdminResponse]
-	updateIPAddr           *connect.Client[v1.UpdateIPAddrRequest, v1.UpdateIPAddrResponse]
-	disassociateIPAddr     *connect.Client[v1.DisassociateIPAddrRequest, v1.DisassociateIPAddrResponse]
-	updateQuarantinedIp    *connect.Client[v1.UpdateQuarantinedIpRequest, v1.UpdateQuarantinedIpResponse]
-	releasePodIpCmdByAdmin *connect.Client[v1.ReleasePodIpCmdByAdminRequest, v1.ReleasePodIpCmdByAdminResponse]
-	listQuarantinedIps     *connect.Client[v1.ListQuarantinedIpsRequest, v1.ListQuarantinedIpsResponse]
-	releaseIPAddr          *connect.Client[v1.ReleaseIPAddrRequest, v1.ReleaseIPAddrResponse]
+	associateIPAddrCmdByAdmin *connect.Client[v1.AssociateIPAddrCmdByAdminRequest, v1.AssociateIPAddrCmdByAdminResponse]
+	associateIPAddr           *connect.Client[v1.AssociateIPAddrRequest, v1.AssociateIPAddrResponse]
+	listPublicIpAddresses     *connect.Client[v1.ListPublicIpAddressesRequest, v1.ListPublicIpAddressesResponse]
+	acquirePodIpCmdByAdmin    *connect.Client[v1.AcquirePodIpCmdByAdminRequest, v1.AcquirePodIpCmdByAdminResponse]
+	removeQuarantinedIp       *connect.Client[v1.RemoveQuarantinedIpRequest, v1.RemoveQuarantinedIpResponse]
+	updateQuarantinedIp       *connect.Client[v1.UpdateQuarantinedIpRequest, v1.UpdateQuarantinedIpResponse]
+	releasePodIpCmdByAdmin    *connect.Client[v1.ReleasePodIpCmdByAdminRequest, v1.ReleasePodIpCmdByAdminResponse]
+	updateIPAddr              *connect.Client[v1.UpdateIPAddrRequest, v1.UpdateIPAddrResponse]
+	listQuarantinedIps        *connect.Client[v1.ListQuarantinedIpsRequest, v1.ListQuarantinedIpsResponse]
+	reserveIPAddr             *connect.Client[v1.ReserveIPAddrRequest, v1.ReserveIPAddrResponse]
+	disassociateIPAddr        *connect.Client[v1.DisassociateIPAddrRequest, v1.DisassociateIPAddrResponse]
+	releaseIPAddr             *connect.Client[v1.ReleaseIPAddrRequest, v1.ReleaseIPAddrResponse]
+}
+
+// AssociateIPAddrCmdByAdmin calls
+// cloudstack.management.address.v1.AddressService.AssociateIPAddrCmdByAdmin.
+func (c *addressServiceClient) AssociateIPAddrCmdByAdmin(ctx context.Context, req *connect.Request[v1.AssociateIPAddrCmdByAdminRequest]) (*connect.Response[v1.AssociateIPAddrCmdByAdminResponse], error) {
+	return c.associateIPAddrCmdByAdmin.CallUnary(ctx, req)
 }
 
 // AssociateIPAddr calls cloudstack.management.address.v1.AddressService.AssociateIPAddr.
 func (c *addressServiceClient) AssociateIPAddr(ctx context.Context, req *connect.Request[v1.AssociateIPAddrRequest]) (*connect.Response[v1.AssociateIPAddrResponse], error) {
 	return c.associateIPAddr.CallUnary(ctx, req)
-}
-
-// ReserveIPAddr calls cloudstack.management.address.v1.AddressService.ReserveIPAddr.
-func (c *addressServiceClient) ReserveIPAddr(ctx context.Context, req *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error) {
-	return c.reserveIPAddr.CallUnary(ctx, req)
 }
 
 // ListPublicIpAddresses calls
@@ -206,25 +219,15 @@ func (c *addressServiceClient) ListPublicIpAddresses(ctx context.Context, req *c
 	return c.listPublicIpAddresses.CallUnary(ctx, req)
 }
 
-// RemoveQuarantinedIp calls cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp.
-func (c *addressServiceClient) RemoveQuarantinedIp(ctx context.Context, req *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error) {
-	return c.removeQuarantinedIp.CallUnary(ctx, req)
-}
-
 // AcquirePodIpCmdByAdmin calls
 // cloudstack.management.address.v1.AddressService.AcquirePodIpCmdByAdmin.
 func (c *addressServiceClient) AcquirePodIpCmdByAdmin(ctx context.Context, req *connect.Request[v1.AcquirePodIpCmdByAdminRequest]) (*connect.Response[v1.AcquirePodIpCmdByAdminResponse], error) {
 	return c.acquirePodIpCmdByAdmin.CallUnary(ctx, req)
 }
 
-// UpdateIPAddr calls cloudstack.management.address.v1.AddressService.UpdateIPAddr.
-func (c *addressServiceClient) UpdateIPAddr(ctx context.Context, req *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error) {
-	return c.updateIPAddr.CallUnary(ctx, req)
-}
-
-// DisassociateIPAddr calls cloudstack.management.address.v1.AddressService.DisassociateIPAddr.
-func (c *addressServiceClient) DisassociateIPAddr(ctx context.Context, req *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error) {
-	return c.disassociateIPAddr.CallUnary(ctx, req)
+// RemoveQuarantinedIp calls cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp.
+func (c *addressServiceClient) RemoveQuarantinedIp(ctx context.Context, req *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error) {
+	return c.removeQuarantinedIp.CallUnary(ctx, req)
 }
 
 // UpdateQuarantinedIp calls cloudstack.management.address.v1.AddressService.UpdateQuarantinedIp.
@@ -238,9 +241,24 @@ func (c *addressServiceClient) ReleasePodIpCmdByAdmin(ctx context.Context, req *
 	return c.releasePodIpCmdByAdmin.CallUnary(ctx, req)
 }
 
+// UpdateIPAddr calls cloudstack.management.address.v1.AddressService.UpdateIPAddr.
+func (c *addressServiceClient) UpdateIPAddr(ctx context.Context, req *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error) {
+	return c.updateIPAddr.CallUnary(ctx, req)
+}
+
 // ListQuarantinedIps calls cloudstack.management.address.v1.AddressService.ListQuarantinedIps.
 func (c *addressServiceClient) ListQuarantinedIps(ctx context.Context, req *connect.Request[v1.ListQuarantinedIpsRequest]) (*connect.Response[v1.ListQuarantinedIpsResponse], error) {
 	return c.listQuarantinedIps.CallUnary(ctx, req)
+}
+
+// ReserveIPAddr calls cloudstack.management.address.v1.AddressService.ReserveIPAddr.
+func (c *addressServiceClient) ReserveIPAddr(ctx context.Context, req *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error) {
+	return c.reserveIPAddr.CallUnary(ctx, req)
+}
+
+// DisassociateIPAddr calls cloudstack.management.address.v1.AddressService.DisassociateIPAddr.
+func (c *addressServiceClient) DisassociateIPAddr(ctx context.Context, req *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error) {
+	return c.disassociateIPAddr.CallUnary(ctx, req)
 }
 
 // ReleaseIPAddr calls cloudstack.management.address.v1.AddressService.ReleaseIPAddr.
@@ -251,26 +269,28 @@ func (c *addressServiceClient) ReleaseIPAddr(ctx context.Context, req *connect.R
 // AddressServiceHandler is an implementation of the cloudstack.management.address.v1.AddressService
 // service.
 type AddressServiceHandler interface {
+	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
+	AssociateIPAddrCmdByAdmin(context.Context, *connect.Request[v1.AssociateIPAddrCmdByAdminRequest]) (*connect.Response[v1.AssociateIPAddrCmdByAdminResponse], error)
 	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
 	AssociateIPAddr(context.Context, *connect.Request[v1.AssociateIPAddrRequest]) (*connect.Response[v1.AssociateIPAddrResponse], error)
-	// ReserveIPAddr Reserve a public IP to an account.
-	ReserveIPAddr(context.Context, *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error)
 	// ListPublicIpAddresses Lists all public IP addresses
 	ListPublicIpAddresses(context.Context, *connect.Request[v1.ListPublicIpAddressesRequest]) (*connect.Response[v1.ListPublicIpAddressesResponse], error)
-	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
-	RemoveQuarantinedIp(context.Context, *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error)
 	// AcquirePodIpCmdByAdmin Allocates IP addresses in respective Pod of a Zone
 	AcquirePodIpCmdByAdmin(context.Context, *connect.Request[v1.AcquirePodIpCmdByAdminRequest]) (*connect.Response[v1.AcquirePodIpCmdByAdminResponse], error)
-	// UpdateIPAddr Updates an IP address
-	UpdateIPAddr(context.Context, *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error)
-	// DisassociateIPAddr Disassociates an IP address from the account.
-	DisassociateIPAddr(context.Context, *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error)
+	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
+	RemoveQuarantinedIp(context.Context, *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error)
 	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
 	UpdateQuarantinedIp(context.Context, *connect.Request[v1.UpdateQuarantinedIpRequest]) (*connect.Response[v1.UpdateQuarantinedIpResponse], error)
 	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
 	ReleasePodIpCmdByAdmin(context.Context, *connect.Request[v1.ReleasePodIpCmdByAdminRequest]) (*connect.Response[v1.ReleasePodIpCmdByAdminResponse], error)
+	// UpdateIPAddr Updates an IP address
+	UpdateIPAddr(context.Context, *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error)
 	// ListQuarantinedIps List public IP addresses in quarantine.
 	ListQuarantinedIps(context.Context, *connect.Request[v1.ListQuarantinedIpsRequest]) (*connect.Response[v1.ListQuarantinedIpsResponse], error)
+	// ReserveIPAddr Reserve a public IP to an account.
+	ReserveIPAddr(context.Context, *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error)
+	// DisassociateIPAddr Disassociates an IP address from the account.
+	DisassociateIPAddr(context.Context, *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error)
 	// ReleaseIPAddr Releases an IP address from the account.
 	ReleaseIPAddr(context.Context, *connect.Request[v1.ReleaseIPAddrRequest]) (*connect.Response[v1.ReleaseIPAddrResponse], error)
 }
@@ -282,16 +302,16 @@ type AddressServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAddressServiceHandler(svc AddressServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	addressServiceMethods := v1.File_cloudstack_management_address_v1_address_gen_proto.Services().ByName("AddressService").Methods()
+	addressServiceAssociateIPAddrCmdByAdminHandler := connect.NewUnaryHandler(
+		AddressServiceAssociateIPAddrCmdByAdminProcedure,
+		svc.AssociateIPAddrCmdByAdmin,
+		connect.WithSchema(addressServiceMethods.ByName("AssociateIPAddrCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
 	addressServiceAssociateIPAddrHandler := connect.NewUnaryHandler(
 		AddressServiceAssociateIPAddrProcedure,
 		svc.AssociateIPAddr,
 		connect.WithSchema(addressServiceMethods.ByName("AssociateIPAddr")),
-		connect.WithHandlerOptions(opts...),
-	)
-	addressServiceReserveIPAddrHandler := connect.NewUnaryHandler(
-		AddressServiceReserveIPAddrProcedure,
-		svc.ReserveIPAddr,
-		connect.WithSchema(addressServiceMethods.ByName("ReserveIPAddr")),
 		connect.WithHandlerOptions(opts...),
 	)
 	addressServiceListPublicIpAddressesHandler := connect.NewUnaryHandler(
@@ -300,28 +320,16 @@ func NewAddressServiceHandler(svc AddressServiceHandler, opts ...connect.Handler
 		connect.WithSchema(addressServiceMethods.ByName("ListPublicIpAddresses")),
 		connect.WithHandlerOptions(opts...),
 	)
-	addressServiceRemoveQuarantinedIpHandler := connect.NewUnaryHandler(
-		AddressServiceRemoveQuarantinedIpProcedure,
-		svc.RemoveQuarantinedIp,
-		connect.WithSchema(addressServiceMethods.ByName("RemoveQuarantinedIp")),
-		connect.WithHandlerOptions(opts...),
-	)
 	addressServiceAcquirePodIpCmdByAdminHandler := connect.NewUnaryHandler(
 		AddressServiceAcquirePodIpCmdByAdminProcedure,
 		svc.AcquirePodIpCmdByAdmin,
 		connect.WithSchema(addressServiceMethods.ByName("AcquirePodIpCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
-	addressServiceUpdateIPAddrHandler := connect.NewUnaryHandler(
-		AddressServiceUpdateIPAddrProcedure,
-		svc.UpdateIPAddr,
-		connect.WithSchema(addressServiceMethods.ByName("UpdateIPAddr")),
-		connect.WithHandlerOptions(opts...),
-	)
-	addressServiceDisassociateIPAddrHandler := connect.NewUnaryHandler(
-		AddressServiceDisassociateIPAddrProcedure,
-		svc.DisassociateIPAddr,
-		connect.WithSchema(addressServiceMethods.ByName("DisassociateIPAddr")),
+	addressServiceRemoveQuarantinedIpHandler := connect.NewUnaryHandler(
+		AddressServiceRemoveQuarantinedIpProcedure,
+		svc.RemoveQuarantinedIp,
+		connect.WithSchema(addressServiceMethods.ByName("RemoveQuarantinedIp")),
 		connect.WithHandlerOptions(opts...),
 	)
 	addressServiceUpdateQuarantinedIpHandler := connect.NewUnaryHandler(
@@ -336,10 +344,28 @@ func NewAddressServiceHandler(svc AddressServiceHandler, opts ...connect.Handler
 		connect.WithSchema(addressServiceMethods.ByName("ReleasePodIpCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
+	addressServiceUpdateIPAddrHandler := connect.NewUnaryHandler(
+		AddressServiceUpdateIPAddrProcedure,
+		svc.UpdateIPAddr,
+		connect.WithSchema(addressServiceMethods.ByName("UpdateIPAddr")),
+		connect.WithHandlerOptions(opts...),
+	)
 	addressServiceListQuarantinedIpsHandler := connect.NewUnaryHandler(
 		AddressServiceListQuarantinedIpsProcedure,
 		svc.ListQuarantinedIps,
 		connect.WithSchema(addressServiceMethods.ByName("ListQuarantinedIps")),
+		connect.WithHandlerOptions(opts...),
+	)
+	addressServiceReserveIPAddrHandler := connect.NewUnaryHandler(
+		AddressServiceReserveIPAddrProcedure,
+		svc.ReserveIPAddr,
+		connect.WithSchema(addressServiceMethods.ByName("ReserveIPAddr")),
+		connect.WithHandlerOptions(opts...),
+	)
+	addressServiceDisassociateIPAddrHandler := connect.NewUnaryHandler(
+		AddressServiceDisassociateIPAddrProcedure,
+		svc.DisassociateIPAddr,
+		connect.WithSchema(addressServiceMethods.ByName("DisassociateIPAddr")),
 		connect.WithHandlerOptions(opts...),
 	)
 	addressServiceReleaseIPAddrHandler := connect.NewUnaryHandler(
@@ -350,26 +376,28 @@ func NewAddressServiceHandler(svc AddressServiceHandler, opts ...connect.Handler
 	)
 	return "/cloudstack.management.address.v1.AddressService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case AddressServiceAssociateIPAddrCmdByAdminProcedure:
+			addressServiceAssociateIPAddrCmdByAdminHandler.ServeHTTP(w, r)
 		case AddressServiceAssociateIPAddrProcedure:
 			addressServiceAssociateIPAddrHandler.ServeHTTP(w, r)
-		case AddressServiceReserveIPAddrProcedure:
-			addressServiceReserveIPAddrHandler.ServeHTTP(w, r)
 		case AddressServiceListPublicIpAddressesProcedure:
 			addressServiceListPublicIpAddressesHandler.ServeHTTP(w, r)
-		case AddressServiceRemoveQuarantinedIpProcedure:
-			addressServiceRemoveQuarantinedIpHandler.ServeHTTP(w, r)
 		case AddressServiceAcquirePodIpCmdByAdminProcedure:
 			addressServiceAcquirePodIpCmdByAdminHandler.ServeHTTP(w, r)
-		case AddressServiceUpdateIPAddrProcedure:
-			addressServiceUpdateIPAddrHandler.ServeHTTP(w, r)
-		case AddressServiceDisassociateIPAddrProcedure:
-			addressServiceDisassociateIPAddrHandler.ServeHTTP(w, r)
+		case AddressServiceRemoveQuarantinedIpProcedure:
+			addressServiceRemoveQuarantinedIpHandler.ServeHTTP(w, r)
 		case AddressServiceUpdateQuarantinedIpProcedure:
 			addressServiceUpdateQuarantinedIpHandler.ServeHTTP(w, r)
 		case AddressServiceReleasePodIpCmdByAdminProcedure:
 			addressServiceReleasePodIpCmdByAdminHandler.ServeHTTP(w, r)
+		case AddressServiceUpdateIPAddrProcedure:
+			addressServiceUpdateIPAddrHandler.ServeHTTP(w, r)
 		case AddressServiceListQuarantinedIpsProcedure:
 			addressServiceListQuarantinedIpsHandler.ServeHTTP(w, r)
+		case AddressServiceReserveIPAddrProcedure:
+			addressServiceReserveIPAddrHandler.ServeHTTP(w, r)
+		case AddressServiceDisassociateIPAddrProcedure:
+			addressServiceDisassociateIPAddrHandler.ServeHTTP(w, r)
 		case AddressServiceReleaseIPAddrProcedure:
 			addressServiceReleaseIPAddrHandler.ServeHTTP(w, r)
 		default:
@@ -381,32 +409,24 @@ func NewAddressServiceHandler(svc AddressServiceHandler, opts ...connect.Handler
 // UnimplementedAddressServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAddressServiceHandler struct{}
 
-func (UnimplementedAddressServiceHandler) AssociateIPAddr(context.Context, *connect.Request[v1.AssociateIPAddrRequest]) (*connect.Response[v1.AssociateIPAddrResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.AssociateIPAddr is not implemented"))
+func (UnimplementedAddressServiceHandler) AssociateIPAddrCmdByAdmin(context.Context, *connect.Request[v1.AssociateIPAddrCmdByAdminRequest]) (*connect.Response[v1.AssociateIPAddrCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.AssociateIPAddrCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedAddressServiceHandler) ReserveIPAddr(context.Context, *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.ReserveIPAddr is not implemented"))
+func (UnimplementedAddressServiceHandler) AssociateIPAddr(context.Context, *connect.Request[v1.AssociateIPAddrRequest]) (*connect.Response[v1.AssociateIPAddrResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.AssociateIPAddr is not implemented"))
 }
 
 func (UnimplementedAddressServiceHandler) ListPublicIpAddresses(context.Context, *connect.Request[v1.ListPublicIpAddressesRequest]) (*connect.Response[v1.ListPublicIpAddressesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.ListPublicIpAddresses is not implemented"))
 }
 
-func (UnimplementedAddressServiceHandler) RemoveQuarantinedIp(context.Context, *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp is not implemented"))
-}
-
 func (UnimplementedAddressServiceHandler) AcquirePodIpCmdByAdmin(context.Context, *connect.Request[v1.AcquirePodIpCmdByAdminRequest]) (*connect.Response[v1.AcquirePodIpCmdByAdminResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.AcquirePodIpCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedAddressServiceHandler) UpdateIPAddr(context.Context, *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.UpdateIPAddr is not implemented"))
-}
-
-func (UnimplementedAddressServiceHandler) DisassociateIPAddr(context.Context, *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.DisassociateIPAddr is not implemented"))
+func (UnimplementedAddressServiceHandler) RemoveQuarantinedIp(context.Context, *connect.Request[v1.RemoveQuarantinedIpRequest]) (*connect.Response[v1.RemoveQuarantinedIpResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp is not implemented"))
 }
 
 func (UnimplementedAddressServiceHandler) UpdateQuarantinedIp(context.Context, *connect.Request[v1.UpdateQuarantinedIpRequest]) (*connect.Response[v1.UpdateQuarantinedIpResponse], error) {
@@ -417,8 +437,20 @@ func (UnimplementedAddressServiceHandler) ReleasePodIpCmdByAdmin(context.Context
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.ReleasePodIpCmdByAdmin is not implemented"))
 }
 
+func (UnimplementedAddressServiceHandler) UpdateIPAddr(context.Context, *connect.Request[v1.UpdateIPAddrRequest]) (*connect.Response[v1.UpdateIPAddrResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.UpdateIPAddr is not implemented"))
+}
+
 func (UnimplementedAddressServiceHandler) ListQuarantinedIps(context.Context, *connect.Request[v1.ListQuarantinedIpsRequest]) (*connect.Response[v1.ListQuarantinedIpsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.ListQuarantinedIps is not implemented"))
+}
+
+func (UnimplementedAddressServiceHandler) ReserveIPAddr(context.Context, *connect.Request[v1.ReserveIPAddrRequest]) (*connect.Response[v1.ReserveIPAddrResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.ReserveIPAddr is not implemented"))
+}
+
+func (UnimplementedAddressServiceHandler) DisassociateIPAddr(context.Context, *connect.Request[v1.DisassociateIPAddrRequest]) (*connect.Response[v1.DisassociateIPAddrResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.address.v1.AddressService.DisassociateIPAddr is not implemented"))
 }
 
 func (UnimplementedAddressServiceHandler) ReleaseIPAddr(context.Context, *connect.Request[v1.ReleaseIPAddrRequest]) (*connect.Response[v1.ReleaseIPAddrResponse], error) {

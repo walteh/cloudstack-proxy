@@ -20,17 +20,17 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	SnapshotService_ExtractSnapshot_FullMethodName              = "/cloudstack.management.snapshot.v1.SnapshotService/ExtractSnapshot"
-	SnapshotService_DeleteSnapshotPolicies_FullMethodName       = "/cloudstack.management.snapshot.v1.SnapshotService/DeleteSnapshotPolicies"
-	SnapshotService_CreateSnapshotPolicy_FullMethodName         = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshotPolicy"
-	SnapshotService_ListSnapshotPolicies_FullMethodName         = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshotPolicies"
 	SnapshotService_CreateSnapshotFromVMSnapshot_FullMethodName = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshotFromVMSnapshot"
-	SnapshotService_RevertSnapshot_FullMethodName               = "/cloudstack.management.snapshot.v1.SnapshotService/RevertSnapshot"
 	SnapshotService_CreateSnapshot_FullMethodName               = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshot"
-	SnapshotService_ListSnapshots_FullMethodName                = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshots"
-	SnapshotService_ArchiveSnapshot_FullMethodName              = "/cloudstack.management.snapshot.v1.SnapshotService/ArchiveSnapshot"
 	SnapshotService_CopySnapshot_FullMethodName                 = "/cloudstack.management.snapshot.v1.SnapshotService/CopySnapshot"
 	SnapshotService_UpdateSnapshotPolicy_FullMethodName         = "/cloudstack.management.snapshot.v1.SnapshotService/UpdateSnapshotPolicy"
+	SnapshotService_RevertSnapshot_FullMethodName               = "/cloudstack.management.snapshot.v1.SnapshotService/RevertSnapshot"
+	SnapshotService_ListSnapshots_FullMethodName                = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshots"
+	SnapshotService_ArchiveSnapshot_FullMethodName              = "/cloudstack.management.snapshot.v1.SnapshotService/ArchiveSnapshot"
+	SnapshotService_ListSnapshotPolicies_FullMethodName         = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshotPolicies"
 	SnapshotService_DeleteSnapshot_FullMethodName               = "/cloudstack.management.snapshot.v1.SnapshotService/DeleteSnapshot"
+	SnapshotService_DeleteSnapshotPolicies_FullMethodName       = "/cloudstack.management.snapshot.v1.SnapshotService/DeleteSnapshotPolicies"
+	SnapshotService_CreateSnapshotPolicy_FullMethodName         = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshotPolicy"
 )
 
 // SnapshotServiceClient is the client API for SnapshotService service.
@@ -41,28 +41,28 @@ const (
 type SnapshotServiceClient interface {
 	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
 	ExtractSnapshot(ctx context.Context, in *ExtractSnapshotRequest, opts ...grpc.CallOption) (*ExtractSnapshotResponse, error)
-	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
-	DeleteSnapshotPolicies(ctx context.Context, in *DeleteSnapshotPoliciesRequest, opts ...grpc.CallOption) (*DeleteSnapshotPoliciesResponse, error)
-	// CreateSnapshotPolicy Creates a snapshot policy for the account.
-	CreateSnapshotPolicy(ctx context.Context, in *CreateSnapshotPolicyRequest, opts ...grpc.CallOption) (*CreateSnapshotPolicyResponse, error)
-	// ListSnapshotPolicies Lists snapshot policies.
-	ListSnapshotPolicies(ctx context.Context, in *ListSnapshotPoliciesRequest, opts ...grpc.CallOption) (*ListSnapshotPoliciesResponse, error)
 	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
 	CreateSnapshotFromVMSnapshot(ctx context.Context, in *CreateSnapshotFromVMSnapshotRequest, opts ...grpc.CallOption) (*CreateSnapshotFromVMSnapshotResponse, error)
-	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
-	RevertSnapshot(ctx context.Context, in *RevertSnapshotRequest, opts ...grpc.CallOption) (*RevertSnapshotResponse, error)
 	// CreateSnapshot Creates an instant snapshot of a volume.
 	CreateSnapshot(ctx context.Context, in *CreateSnapshotRequest, opts ...grpc.CallOption) (*CreateSnapshotResponse, error)
-	// ListSnapshots Lists all available snapshots for the account.
-	ListSnapshots(ctx context.Context, in *ListSnapshotsRequest, opts ...grpc.CallOption) (*ListSnapshotsResponse, error)
-	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
-	ArchiveSnapshot(ctx context.Context, in *ArchiveSnapshotRequest, opts ...grpc.CallOption) (*ArchiveSnapshotResponse, error)
 	// CopySnapshot Copies a snapshot from one zone to another.
 	CopySnapshot(ctx context.Context, in *CopySnapshotRequest, opts ...grpc.CallOption) (*CopySnapshotResponse, error)
 	// UpdateSnapshotPolicy Updates the snapshot policy.
 	UpdateSnapshotPolicy(ctx context.Context, in *UpdateSnapshotPolicyRequest, opts ...grpc.CallOption) (*UpdateSnapshotPolicyResponse, error)
+	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
+	RevertSnapshot(ctx context.Context, in *RevertSnapshotRequest, opts ...grpc.CallOption) (*RevertSnapshotResponse, error)
+	// ListSnapshots Lists all available snapshots for the account.
+	ListSnapshots(ctx context.Context, in *ListSnapshotsRequest, opts ...grpc.CallOption) (*ListSnapshotsResponse, error)
+	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
+	ArchiveSnapshot(ctx context.Context, in *ArchiveSnapshotRequest, opts ...grpc.CallOption) (*ArchiveSnapshotResponse, error)
+	// ListSnapshotPolicies Lists snapshot policies.
+	ListSnapshotPolicies(ctx context.Context, in *ListSnapshotPoliciesRequest, opts ...grpc.CallOption) (*ListSnapshotPoliciesResponse, error)
 	// DeleteSnapshot Deletes a snapshot of a disk volume.
 	DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*DeleteSnapshotResponse, error)
+	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
+	DeleteSnapshotPolicies(ctx context.Context, in *DeleteSnapshotPoliciesRequest, opts ...grpc.CallOption) (*DeleteSnapshotPoliciesResponse, error)
+	// CreateSnapshotPolicy Creates a snapshot policy for the account.
+	CreateSnapshotPolicy(ctx context.Context, in *CreateSnapshotPolicyRequest, opts ...grpc.CallOption) (*CreateSnapshotPolicyResponse, error)
 }
 
 type snapshotServiceClient struct {
@@ -83,36 +83,6 @@ func (c *snapshotServiceClient) ExtractSnapshot(ctx context.Context, in *Extract
 	return out, nil
 }
 
-func (c *snapshotServiceClient) DeleteSnapshotPolicies(ctx context.Context, in *DeleteSnapshotPoliciesRequest, opts ...grpc.CallOption) (*DeleteSnapshotPoliciesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteSnapshotPoliciesResponse)
-	err := c.cc.Invoke(ctx, SnapshotService_DeleteSnapshotPolicies_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *snapshotServiceClient) CreateSnapshotPolicy(ctx context.Context, in *CreateSnapshotPolicyRequest, opts ...grpc.CallOption) (*CreateSnapshotPolicyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateSnapshotPolicyResponse)
-	err := c.cc.Invoke(ctx, SnapshotService_CreateSnapshotPolicy_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *snapshotServiceClient) ListSnapshotPolicies(ctx context.Context, in *ListSnapshotPoliciesRequest, opts ...grpc.CallOption) (*ListSnapshotPoliciesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListSnapshotPoliciesResponse)
-	err := c.cc.Invoke(ctx, SnapshotService_ListSnapshotPolicies_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *snapshotServiceClient) CreateSnapshotFromVMSnapshot(ctx context.Context, in *CreateSnapshotFromVMSnapshotRequest, opts ...grpc.CallOption) (*CreateSnapshotFromVMSnapshotResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateSnapshotFromVMSnapshotResponse)
@@ -123,40 +93,10 @@ func (c *snapshotServiceClient) CreateSnapshotFromVMSnapshot(ctx context.Context
 	return out, nil
 }
 
-func (c *snapshotServiceClient) RevertSnapshot(ctx context.Context, in *RevertSnapshotRequest, opts ...grpc.CallOption) (*RevertSnapshotResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RevertSnapshotResponse)
-	err := c.cc.Invoke(ctx, SnapshotService_RevertSnapshot_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *snapshotServiceClient) CreateSnapshot(ctx context.Context, in *CreateSnapshotRequest, opts ...grpc.CallOption) (*CreateSnapshotResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateSnapshotResponse)
 	err := c.cc.Invoke(ctx, SnapshotService_CreateSnapshot_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *snapshotServiceClient) ListSnapshots(ctx context.Context, in *ListSnapshotsRequest, opts ...grpc.CallOption) (*ListSnapshotsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListSnapshotsResponse)
-	err := c.cc.Invoke(ctx, SnapshotService_ListSnapshots_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *snapshotServiceClient) ArchiveSnapshot(ctx context.Context, in *ArchiveSnapshotRequest, opts ...grpc.CallOption) (*ArchiveSnapshotResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ArchiveSnapshotResponse)
-	err := c.cc.Invoke(ctx, SnapshotService_ArchiveSnapshot_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -183,10 +123,70 @@ func (c *snapshotServiceClient) UpdateSnapshotPolicy(ctx context.Context, in *Up
 	return out, nil
 }
 
+func (c *snapshotServiceClient) RevertSnapshot(ctx context.Context, in *RevertSnapshotRequest, opts ...grpc.CallOption) (*RevertSnapshotResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RevertSnapshotResponse)
+	err := c.cc.Invoke(ctx, SnapshotService_RevertSnapshot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *snapshotServiceClient) ListSnapshots(ctx context.Context, in *ListSnapshotsRequest, opts ...grpc.CallOption) (*ListSnapshotsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSnapshotsResponse)
+	err := c.cc.Invoke(ctx, SnapshotService_ListSnapshots_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *snapshotServiceClient) ArchiveSnapshot(ctx context.Context, in *ArchiveSnapshotRequest, opts ...grpc.CallOption) (*ArchiveSnapshotResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ArchiveSnapshotResponse)
+	err := c.cc.Invoke(ctx, SnapshotService_ArchiveSnapshot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *snapshotServiceClient) ListSnapshotPolicies(ctx context.Context, in *ListSnapshotPoliciesRequest, opts ...grpc.CallOption) (*ListSnapshotPoliciesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSnapshotPoliciesResponse)
+	err := c.cc.Invoke(ctx, SnapshotService_ListSnapshotPolicies_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *snapshotServiceClient) DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*DeleteSnapshotResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteSnapshotResponse)
 	err := c.cc.Invoke(ctx, SnapshotService_DeleteSnapshot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *snapshotServiceClient) DeleteSnapshotPolicies(ctx context.Context, in *DeleteSnapshotPoliciesRequest, opts ...grpc.CallOption) (*DeleteSnapshotPoliciesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteSnapshotPoliciesResponse)
+	err := c.cc.Invoke(ctx, SnapshotService_DeleteSnapshotPolicies_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *snapshotServiceClient) CreateSnapshotPolicy(ctx context.Context, in *CreateSnapshotPolicyRequest, opts ...grpc.CallOption) (*CreateSnapshotPolicyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateSnapshotPolicyResponse)
+	err := c.cc.Invoke(ctx, SnapshotService_CreateSnapshotPolicy_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -201,28 +201,28 @@ func (c *snapshotServiceClient) DeleteSnapshot(ctx context.Context, in *DeleteSn
 type SnapshotServiceServer interface {
 	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
 	ExtractSnapshot(context.Context, *ExtractSnapshotRequest) (*ExtractSnapshotResponse, error)
-	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
-	DeleteSnapshotPolicies(context.Context, *DeleteSnapshotPoliciesRequest) (*DeleteSnapshotPoliciesResponse, error)
-	// CreateSnapshotPolicy Creates a snapshot policy for the account.
-	CreateSnapshotPolicy(context.Context, *CreateSnapshotPolicyRequest) (*CreateSnapshotPolicyResponse, error)
-	// ListSnapshotPolicies Lists snapshot policies.
-	ListSnapshotPolicies(context.Context, *ListSnapshotPoliciesRequest) (*ListSnapshotPoliciesResponse, error)
 	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
 	CreateSnapshotFromVMSnapshot(context.Context, *CreateSnapshotFromVMSnapshotRequest) (*CreateSnapshotFromVMSnapshotResponse, error)
-	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
-	RevertSnapshot(context.Context, *RevertSnapshotRequest) (*RevertSnapshotResponse, error)
 	// CreateSnapshot Creates an instant snapshot of a volume.
 	CreateSnapshot(context.Context, *CreateSnapshotRequest) (*CreateSnapshotResponse, error)
-	// ListSnapshots Lists all available snapshots for the account.
-	ListSnapshots(context.Context, *ListSnapshotsRequest) (*ListSnapshotsResponse, error)
-	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
-	ArchiveSnapshot(context.Context, *ArchiveSnapshotRequest) (*ArchiveSnapshotResponse, error)
 	// CopySnapshot Copies a snapshot from one zone to another.
 	CopySnapshot(context.Context, *CopySnapshotRequest) (*CopySnapshotResponse, error)
 	// UpdateSnapshotPolicy Updates the snapshot policy.
 	UpdateSnapshotPolicy(context.Context, *UpdateSnapshotPolicyRequest) (*UpdateSnapshotPolicyResponse, error)
+	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
+	RevertSnapshot(context.Context, *RevertSnapshotRequest) (*RevertSnapshotResponse, error)
+	// ListSnapshots Lists all available snapshots for the account.
+	ListSnapshots(context.Context, *ListSnapshotsRequest) (*ListSnapshotsResponse, error)
+	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
+	ArchiveSnapshot(context.Context, *ArchiveSnapshotRequest) (*ArchiveSnapshotResponse, error)
+	// ListSnapshotPolicies Lists snapshot policies.
+	ListSnapshotPolicies(context.Context, *ListSnapshotPoliciesRequest) (*ListSnapshotPoliciesResponse, error)
 	// DeleteSnapshot Deletes a snapshot of a disk volume.
 	DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*DeleteSnapshotResponse, error)
+	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
+	DeleteSnapshotPolicies(context.Context, *DeleteSnapshotPoliciesRequest) (*DeleteSnapshotPoliciesResponse, error)
+	// CreateSnapshotPolicy Creates a snapshot policy for the account.
+	CreateSnapshotPolicy(context.Context, *CreateSnapshotPolicyRequest) (*CreateSnapshotPolicyResponse, error)
 	mustEmbedUnimplementedSnapshotServiceServer()
 }
 
@@ -236,29 +236,11 @@ type UnimplementedSnapshotServiceServer struct{}
 func (UnimplementedSnapshotServiceServer) ExtractSnapshot(context.Context, *ExtractSnapshotRequest) (*ExtractSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExtractSnapshot not implemented")
 }
-func (UnimplementedSnapshotServiceServer) DeleteSnapshotPolicies(context.Context, *DeleteSnapshotPoliciesRequest) (*DeleteSnapshotPoliciesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteSnapshotPolicies not implemented")
-}
-func (UnimplementedSnapshotServiceServer) CreateSnapshotPolicy(context.Context, *CreateSnapshotPolicyRequest) (*CreateSnapshotPolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSnapshotPolicy not implemented")
-}
-func (UnimplementedSnapshotServiceServer) ListSnapshotPolicies(context.Context, *ListSnapshotPoliciesRequest) (*ListSnapshotPoliciesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSnapshotPolicies not implemented")
-}
 func (UnimplementedSnapshotServiceServer) CreateSnapshotFromVMSnapshot(context.Context, *CreateSnapshotFromVMSnapshotRequest) (*CreateSnapshotFromVMSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSnapshotFromVMSnapshot not implemented")
 }
-func (UnimplementedSnapshotServiceServer) RevertSnapshot(context.Context, *RevertSnapshotRequest) (*RevertSnapshotResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RevertSnapshot not implemented")
-}
 func (UnimplementedSnapshotServiceServer) CreateSnapshot(context.Context, *CreateSnapshotRequest) (*CreateSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSnapshot not implemented")
-}
-func (UnimplementedSnapshotServiceServer) ListSnapshots(context.Context, *ListSnapshotsRequest) (*ListSnapshotsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSnapshots not implemented")
-}
-func (UnimplementedSnapshotServiceServer) ArchiveSnapshot(context.Context, *ArchiveSnapshotRequest) (*ArchiveSnapshotResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ArchiveSnapshot not implemented")
 }
 func (UnimplementedSnapshotServiceServer) CopySnapshot(context.Context, *CopySnapshotRequest) (*CopySnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CopySnapshot not implemented")
@@ -266,8 +248,26 @@ func (UnimplementedSnapshotServiceServer) CopySnapshot(context.Context, *CopySna
 func (UnimplementedSnapshotServiceServer) UpdateSnapshotPolicy(context.Context, *UpdateSnapshotPolicyRequest) (*UpdateSnapshotPolicyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSnapshotPolicy not implemented")
 }
+func (UnimplementedSnapshotServiceServer) RevertSnapshot(context.Context, *RevertSnapshotRequest) (*RevertSnapshotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevertSnapshot not implemented")
+}
+func (UnimplementedSnapshotServiceServer) ListSnapshots(context.Context, *ListSnapshotsRequest) (*ListSnapshotsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSnapshots not implemented")
+}
+func (UnimplementedSnapshotServiceServer) ArchiveSnapshot(context.Context, *ArchiveSnapshotRequest) (*ArchiveSnapshotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ArchiveSnapshot not implemented")
+}
+func (UnimplementedSnapshotServiceServer) ListSnapshotPolicies(context.Context, *ListSnapshotPoliciesRequest) (*ListSnapshotPoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSnapshotPolicies not implemented")
+}
 func (UnimplementedSnapshotServiceServer) DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*DeleteSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSnapshot not implemented")
+}
+func (UnimplementedSnapshotServiceServer) DeleteSnapshotPolicies(context.Context, *DeleteSnapshotPoliciesRequest) (*DeleteSnapshotPoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSnapshotPolicies not implemented")
+}
+func (UnimplementedSnapshotServiceServer) CreateSnapshotPolicy(context.Context, *CreateSnapshotPolicyRequest) (*CreateSnapshotPolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSnapshotPolicy not implemented")
 }
 func (UnimplementedSnapshotServiceServer) mustEmbedUnimplementedSnapshotServiceServer() {}
 func (UnimplementedSnapshotServiceServer) testEmbeddedByValue()                         {}
@@ -308,60 +308,6 @@ func _SnapshotService_ExtractSnapshot_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SnapshotService_DeleteSnapshotPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteSnapshotPoliciesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnapshotServiceServer).DeleteSnapshotPolicies(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnapshotService_DeleteSnapshotPolicies_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapshotServiceServer).DeleteSnapshotPolicies(ctx, req.(*DeleteSnapshotPoliciesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SnapshotService_CreateSnapshotPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateSnapshotPolicyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnapshotServiceServer).CreateSnapshotPolicy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnapshotService_CreateSnapshotPolicy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapshotServiceServer).CreateSnapshotPolicy(ctx, req.(*CreateSnapshotPolicyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SnapshotService_ListSnapshotPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSnapshotPoliciesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnapshotServiceServer).ListSnapshotPolicies(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnapshotService_ListSnapshotPolicies_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapshotServiceServer).ListSnapshotPolicies(ctx, req.(*ListSnapshotPoliciesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SnapshotService_CreateSnapshotFromVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateSnapshotFromVMSnapshotRequest)
 	if err := dec(in); err != nil {
@@ -380,24 +326,6 @@ func _SnapshotService_CreateSnapshotFromVMSnapshot_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SnapshotService_RevertSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RevertSnapshotRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnapshotServiceServer).RevertSnapshot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnapshotService_RevertSnapshot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapshotServiceServer).RevertSnapshot(ctx, req.(*RevertSnapshotRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SnapshotService_CreateSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateSnapshotRequest)
 	if err := dec(in); err != nil {
@@ -412,42 +340,6 @@ func _SnapshotService_CreateSnapshot_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SnapshotServiceServer).CreateSnapshot(ctx, req.(*CreateSnapshotRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SnapshotService_ListSnapshots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSnapshotsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnapshotServiceServer).ListSnapshots(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnapshotService_ListSnapshots_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapshotServiceServer).ListSnapshots(ctx, req.(*ListSnapshotsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SnapshotService_ArchiveSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ArchiveSnapshotRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnapshotServiceServer).ArchiveSnapshot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SnapshotService_ArchiveSnapshot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnapshotServiceServer).ArchiveSnapshot(ctx, req.(*ArchiveSnapshotRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -488,6 +380,78 @@ func _SnapshotService_UpdateSnapshotPolicy_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SnapshotService_RevertSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevertSnapshotRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapshotServiceServer).RevertSnapshot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SnapshotService_RevertSnapshot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapshotServiceServer).RevertSnapshot(ctx, req.(*RevertSnapshotRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SnapshotService_ListSnapshots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSnapshotsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapshotServiceServer).ListSnapshots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SnapshotService_ListSnapshots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapshotServiceServer).ListSnapshots(ctx, req.(*ListSnapshotsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SnapshotService_ArchiveSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ArchiveSnapshotRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapshotServiceServer).ArchiveSnapshot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SnapshotService_ArchiveSnapshot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapshotServiceServer).ArchiveSnapshot(ctx, req.(*ArchiveSnapshotRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SnapshotService_ListSnapshotPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSnapshotPoliciesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapshotServiceServer).ListSnapshotPolicies(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SnapshotService_ListSnapshotPolicies_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapshotServiceServer).ListSnapshotPolicies(ctx, req.(*ListSnapshotPoliciesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SnapshotService_DeleteSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteSnapshotRequest)
 	if err := dec(in); err != nil {
@@ -506,6 +470,42 @@ func _SnapshotService_DeleteSnapshot_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SnapshotService_DeleteSnapshotPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteSnapshotPoliciesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapshotServiceServer).DeleteSnapshotPolicies(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SnapshotService_DeleteSnapshotPolicies_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapshotServiceServer).DeleteSnapshotPolicies(ctx, req.(*DeleteSnapshotPoliciesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SnapshotService_CreateSnapshotPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateSnapshotPolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SnapshotServiceServer).CreateSnapshotPolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SnapshotService_CreateSnapshotPolicy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SnapshotServiceServer).CreateSnapshotPolicy(ctx, req.(*CreateSnapshotPolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SnapshotService_ServiceDesc is the grpc.ServiceDesc for SnapshotService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -518,36 +518,12 @@ var SnapshotService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SnapshotService_ExtractSnapshot_Handler,
 		},
 		{
-			MethodName: "DeleteSnapshotPolicies",
-			Handler:    _SnapshotService_DeleteSnapshotPolicies_Handler,
-		},
-		{
-			MethodName: "CreateSnapshotPolicy",
-			Handler:    _SnapshotService_CreateSnapshotPolicy_Handler,
-		},
-		{
-			MethodName: "ListSnapshotPolicies",
-			Handler:    _SnapshotService_ListSnapshotPolicies_Handler,
-		},
-		{
 			MethodName: "CreateSnapshotFromVMSnapshot",
 			Handler:    _SnapshotService_CreateSnapshotFromVMSnapshot_Handler,
 		},
 		{
-			MethodName: "RevertSnapshot",
-			Handler:    _SnapshotService_RevertSnapshot_Handler,
-		},
-		{
 			MethodName: "CreateSnapshot",
 			Handler:    _SnapshotService_CreateSnapshot_Handler,
-		},
-		{
-			MethodName: "ListSnapshots",
-			Handler:    _SnapshotService_ListSnapshots_Handler,
-		},
-		{
-			MethodName: "ArchiveSnapshot",
-			Handler:    _SnapshotService_ArchiveSnapshot_Handler,
 		},
 		{
 			MethodName: "CopySnapshot",
@@ -558,8 +534,32 @@ var SnapshotService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SnapshotService_UpdateSnapshotPolicy_Handler,
 		},
 		{
+			MethodName: "RevertSnapshot",
+			Handler:    _SnapshotService_RevertSnapshot_Handler,
+		},
+		{
+			MethodName: "ListSnapshots",
+			Handler:    _SnapshotService_ListSnapshots_Handler,
+		},
+		{
+			MethodName: "ArchiveSnapshot",
+			Handler:    _SnapshotService_ArchiveSnapshot_Handler,
+		},
+		{
+			MethodName: "ListSnapshotPolicies",
+			Handler:    _SnapshotService_ListSnapshotPolicies_Handler,
+		},
+		{
 			MethodName: "DeleteSnapshot",
 			Handler:    _SnapshotService_DeleteSnapshot_Handler,
+		},
+		{
+			MethodName: "DeleteSnapshotPolicies",
+			Handler:    _SnapshotService_DeleteSnapshotPolicies_Handler,
+		},
+		{
+			MethodName: "CreateSnapshotPolicy",
+			Handler:    _SnapshotService_CreateSnapshotPolicy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -33,95 +33,95 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// BackupServiceListBackupScheduleProcedure is the fully-qualified name of the BackupService's
-	// ListBackupSchedule RPC.
-	BackupServiceListBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupSchedule"
-	// BackupServiceImportBackupOfferingProcedure is the fully-qualified name of the BackupService's
-	// ImportBackupOffering RPC.
-	BackupServiceImportBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/ImportBackupOffering"
-	// BackupServiceDeleteBackupOfferingProcedure is the fully-qualified name of the BackupService's
-	// DeleteBackupOffering RPC.
-	BackupServiceDeleteBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/DeleteBackupOffering"
-	// BackupServiceDeleteBackupScheduleProcedure is the fully-qualified name of the BackupService's
-	// DeleteBackupSchedule RPC.
-	BackupServiceDeleteBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/DeleteBackupSchedule"
-	// BackupServiceAssignVirtualMachineToBackupOfferingProcedure is the fully-qualified name of the
-	// BackupService's AssignVirtualMachineToBackupOffering RPC.
-	BackupServiceAssignVirtualMachineToBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/AssignVirtualMachineToBackupOffering"
-	// BackupServiceCreateBackupScheduleProcedure is the fully-qualified name of the BackupService's
-	// CreateBackupSchedule RPC.
-	BackupServiceCreateBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/CreateBackupSchedule"
-	// BackupServiceListBackupsProcedure is the fully-qualified name of the BackupService's ListBackups
-	// RPC.
-	BackupServiceListBackupsProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackups"
-	// BackupServiceListBackupProvidersProcedure is the fully-qualified name of the BackupService's
-	// ListBackupProviders RPC.
-	BackupServiceListBackupProvidersProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupProviders"
-	// BackupServiceListBackupProviderOfferingsProcedure is the fully-qualified name of the
-	// BackupService's ListBackupProviderOfferings RPC.
-	BackupServiceListBackupProviderOfferingsProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupProviderOfferings"
 	// BackupServiceRestoreBackupProcedure is the fully-qualified name of the BackupService's
 	// RestoreBackup RPC.
 	BackupServiceRestoreBackupProcedure = "/cloudstack.management.backup.v1.BackupService/RestoreBackup"
-	// BackupServiceUpdateBackupScheduleProcedure is the fully-qualified name of the BackupService's
-	// UpdateBackupSchedule RPC.
-	BackupServiceUpdateBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/UpdateBackupSchedule"
-	// BackupServiceDeleteBackupProcedure is the fully-qualified name of the BackupService's
-	// DeleteBackup RPC.
-	BackupServiceDeleteBackupProcedure = "/cloudstack.management.backup.v1.BackupService/DeleteBackup"
 	// BackupServiceUpdateBackupOfferingProcedure is the fully-qualified name of the BackupService's
 	// UpdateBackupOffering RPC.
 	BackupServiceUpdateBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/UpdateBackupOffering"
-	// BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure is the fully-qualified name of the
-	// BackupService's RemoveVirtualMachineFromBackupOffering RPC.
-	BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/RemoveVirtualMachineFromBackupOffering"
-	// BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure is the fully-qualified name of the
-	// BackupService's RestoreVolumeFromBackupAndAttachToVM RPC.
-	BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure = "/cloudstack.management.backup.v1.BackupService/RestoreVolumeFromBackupAndAttachToVM"
+	// BackupServiceAssignVirtualMachineToBackupOfferingProcedure is the fully-qualified name of the
+	// BackupService's AssignVirtualMachineToBackupOffering RPC.
+	BackupServiceAssignVirtualMachineToBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/AssignVirtualMachineToBackupOffering"
+	// BackupServiceDeleteBackupOfferingProcedure is the fully-qualified name of the BackupService's
+	// DeleteBackupOffering RPC.
+	BackupServiceDeleteBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/DeleteBackupOffering"
+	// BackupServiceListBackupProvidersProcedure is the fully-qualified name of the BackupService's
+	// ListBackupProviders RPC.
+	BackupServiceListBackupProvidersProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupProviders"
+	// BackupServiceDeleteBackupScheduleProcedure is the fully-qualified name of the BackupService's
+	// DeleteBackupSchedule RPC.
+	BackupServiceDeleteBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/DeleteBackupSchedule"
 	// BackupServiceCreateBackupProcedure is the fully-qualified name of the BackupService's
 	// CreateBackup RPC.
 	BackupServiceCreateBackupProcedure = "/cloudstack.management.backup.v1.BackupService/CreateBackup"
+	// BackupServiceListBackupProviderOfferingsProcedure is the fully-qualified name of the
+	// BackupService's ListBackupProviderOfferings RPC.
+	BackupServiceListBackupProviderOfferingsProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupProviderOfferings"
+	// BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure is the fully-qualified name of the
+	// BackupService's RestoreVolumeFromBackupAndAttachToVM RPC.
+	BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure = "/cloudstack.management.backup.v1.BackupService/RestoreVolumeFromBackupAndAttachToVM"
+	// BackupServiceCreateBackupScheduleProcedure is the fully-qualified name of the BackupService's
+	// CreateBackupSchedule RPC.
+	BackupServiceCreateBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/CreateBackupSchedule"
+	// BackupServiceDeleteBackupProcedure is the fully-qualified name of the BackupService's
+	// DeleteBackup RPC.
+	BackupServiceDeleteBackupProcedure = "/cloudstack.management.backup.v1.BackupService/DeleteBackup"
+	// BackupServiceListBackupScheduleProcedure is the fully-qualified name of the BackupService's
+	// ListBackupSchedule RPC.
+	BackupServiceListBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupSchedule"
+	// BackupServiceListBackupsProcedure is the fully-qualified name of the BackupService's ListBackups
+	// RPC.
+	BackupServiceListBackupsProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackups"
+	// BackupServiceImportBackupOfferingProcedure is the fully-qualified name of the BackupService's
+	// ImportBackupOffering RPC.
+	BackupServiceImportBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/ImportBackupOffering"
+	// BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure is the fully-qualified name of the
+	// BackupService's RemoveVirtualMachineFromBackupOffering RPC.
+	BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure = "/cloudstack.management.backup.v1.BackupService/RemoveVirtualMachineFromBackupOffering"
 	// BackupServiceListBackupOfferingsProcedure is the fully-qualified name of the BackupService's
 	// ListBackupOfferings RPC.
 	BackupServiceListBackupOfferingsProcedure = "/cloudstack.management.backup.v1.BackupService/ListBackupOfferings"
+	// BackupServiceUpdateBackupScheduleProcedure is the fully-qualified name of the BackupService's
+	// UpdateBackupSchedule RPC.
+	BackupServiceUpdateBackupScheduleProcedure = "/cloudstack.management.backup.v1.BackupService/UpdateBackupSchedule"
 )
 
 // BackupServiceClient is a client for the cloudstack.management.backup.v1.BackupService service.
 type BackupServiceClient interface {
-	// ListBackupSchedule List backup schedule of a VM
-	ListBackupSchedule(context.Context, *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error)
-	// ImportBackupOffering Imports a backup offering using a backup provider
-	ImportBackupOffering(context.Context, *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error)
-	// DeleteBackupOffering Deletes a backup offering
-	DeleteBackupOffering(context.Context, *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error)
-	// DeleteBackupSchedule Deletes the backup schedule of a VM
-	DeleteBackupSchedule(context.Context, *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error)
-	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
-	AssignVirtualMachineToBackupOffering(context.Context, *connect.Request[v1.AssignVirtualMachineToBackupOfferingRequest]) (*connect.Response[v1.AssignVirtualMachineToBackupOfferingResponse], error)
-	// CreateBackupSchedule Creates a user-defined VM backup schedule
-	CreateBackupSchedule(context.Context, *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error)
-	// ListBackups Lists VM backups
-	ListBackups(context.Context, *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error)
-	// ListBackupProviders Lists Backup and Recovery providers
-	ListBackupProviders(context.Context, *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error)
-	// ListBackupProviderOfferings Lists external backup offerings of the provider
-	ListBackupProviderOfferings(context.Context, *connect.Request[v1.ListBackupProviderOfferingsRequest]) (*connect.Response[v1.ListBackupProviderOfferingsResponse], error)
 	// RestoreBackup Restores an existing stopped or deleted VM using a VM backup
 	RestoreBackup(context.Context, *connect.Request[v1.RestoreBackupRequest]) (*connect.Response[v1.RestoreBackupResponse], error)
-	// UpdateBackupSchedule Updates a user-defined VM backup schedule
-	UpdateBackupSchedule(context.Context, *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error)
-	// DeleteBackup Delete VM backup
-	DeleteBackup(context.Context, *connect.Request[v1.DeleteBackupRequest]) (*connect.Response[v1.DeleteBackupResponse], error)
 	// UpdateBackupOffering Updates a backup offering.
 	UpdateBackupOffering(context.Context, *connect.Request[v1.UpdateBackupOfferingRequest]) (*connect.Response[v1.UpdateBackupOfferingResponse], error)
-	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
-	RemoveVirtualMachineFromBackupOffering(context.Context, *connect.Request[v1.RemoveVirtualMachineFromBackupOfferingRequest]) (*connect.Response[v1.RemoveVirtualMachineFromBackupOfferingResponse], error)
-	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
-	RestoreVolumeFromBackupAndAttachToVM(context.Context, *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error)
+	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
+	AssignVirtualMachineToBackupOffering(context.Context, *connect.Request[v1.AssignVirtualMachineToBackupOfferingRequest]) (*connect.Response[v1.AssignVirtualMachineToBackupOfferingResponse], error)
+	// DeleteBackupOffering Deletes a backup offering
+	DeleteBackupOffering(context.Context, *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error)
+	// ListBackupProviders Lists Backup and Recovery providers
+	ListBackupProviders(context.Context, *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error)
+	// DeleteBackupSchedule Deletes the backup schedule of a VM
+	DeleteBackupSchedule(context.Context, *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error)
 	// CreateBackup Create VM backup
 	CreateBackup(context.Context, *connect.Request[v1.CreateBackupRequest]) (*connect.Response[v1.CreateBackupResponse], error)
+	// ListBackupProviderOfferings Lists external backup offerings of the provider
+	ListBackupProviderOfferings(context.Context, *connect.Request[v1.ListBackupProviderOfferingsRequest]) (*connect.Response[v1.ListBackupProviderOfferingsResponse], error)
+	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
+	RestoreVolumeFromBackupAndAttachToVM(context.Context, *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error)
+	// CreateBackupSchedule Creates a user-defined VM backup schedule
+	CreateBackupSchedule(context.Context, *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error)
+	// DeleteBackup Delete VM backup
+	DeleteBackup(context.Context, *connect.Request[v1.DeleteBackupRequest]) (*connect.Response[v1.DeleteBackupResponse], error)
+	// ListBackupSchedule List backup schedule of a VM
+	ListBackupSchedule(context.Context, *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error)
+	// ListBackups Lists VM backups
+	ListBackups(context.Context, *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error)
+	// ImportBackupOffering Imports a backup offering using a backup provider
+	ImportBackupOffering(context.Context, *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error)
+	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
+	RemoveVirtualMachineFromBackupOffering(context.Context, *connect.Request[v1.RemoveVirtualMachineFromBackupOfferingRequest]) (*connect.Response[v1.RemoveVirtualMachineFromBackupOfferingResponse], error)
 	// ListBackupOfferings Lists backup offerings
 	ListBackupOfferings(context.Context, *connect.Request[v1.ListBackupOfferingsRequest]) (*connect.Response[v1.ListBackupOfferingsResponse], error)
+	// UpdateBackupSchedule Updates a user-defined VM backup schedule
+	UpdateBackupSchedule(context.Context, *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error)
 }
 
 // NewBackupServiceClient constructs a client for the cloudstack.management.backup.v1.BackupService
@@ -135,76 +135,10 @@ func NewBackupServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	backupServiceMethods := v1.File_cloudstack_management_backup_v1_backup_gen_proto.Services().ByName("BackupService").Methods()
 	return &backupServiceClient{
-		listBackupSchedule: connect.NewClient[v1.ListBackupScheduleRequest, v1.ListBackupScheduleResponse](
-			httpClient,
-			baseURL+BackupServiceListBackupScheduleProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("ListBackupSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		importBackupOffering: connect.NewClient[v1.ImportBackupOfferingRequest, v1.ImportBackupOfferingResponse](
-			httpClient,
-			baseURL+BackupServiceImportBackupOfferingProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("ImportBackupOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteBackupOffering: connect.NewClient[v1.DeleteBackupOfferingRequest, v1.DeleteBackupOfferingResponse](
-			httpClient,
-			baseURL+BackupServiceDeleteBackupOfferingProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("DeleteBackupOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteBackupSchedule: connect.NewClient[v1.DeleteBackupScheduleRequest, v1.DeleteBackupScheduleResponse](
-			httpClient,
-			baseURL+BackupServiceDeleteBackupScheduleProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("DeleteBackupSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		assignVirtualMachineToBackupOffering: connect.NewClient[v1.AssignVirtualMachineToBackupOfferingRequest, v1.AssignVirtualMachineToBackupOfferingResponse](
-			httpClient,
-			baseURL+BackupServiceAssignVirtualMachineToBackupOfferingProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("AssignVirtualMachineToBackupOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		createBackupSchedule: connect.NewClient[v1.CreateBackupScheduleRequest, v1.CreateBackupScheduleResponse](
-			httpClient,
-			baseURL+BackupServiceCreateBackupScheduleProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("CreateBackupSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		listBackups: connect.NewClient[v1.ListBackupsRequest, v1.ListBackupsResponse](
-			httpClient,
-			baseURL+BackupServiceListBackupsProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("ListBackups")),
-			connect.WithClientOptions(opts...),
-		),
-		listBackupProviders: connect.NewClient[v1.ListBackupProvidersRequest, v1.ListBackupProvidersResponse](
-			httpClient,
-			baseURL+BackupServiceListBackupProvidersProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("ListBackupProviders")),
-			connect.WithClientOptions(opts...),
-		),
-		listBackupProviderOfferings: connect.NewClient[v1.ListBackupProviderOfferingsRequest, v1.ListBackupProviderOfferingsResponse](
-			httpClient,
-			baseURL+BackupServiceListBackupProviderOfferingsProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("ListBackupProviderOfferings")),
-			connect.WithClientOptions(opts...),
-		),
 		restoreBackup: connect.NewClient[v1.RestoreBackupRequest, v1.RestoreBackupResponse](
 			httpClient,
 			baseURL+BackupServiceRestoreBackupProcedure,
 			connect.WithSchema(backupServiceMethods.ByName("RestoreBackup")),
-			connect.WithClientOptions(opts...),
-		),
-		updateBackupSchedule: connect.NewClient[v1.UpdateBackupScheduleRequest, v1.UpdateBackupScheduleResponse](
-			httpClient,
-			baseURL+BackupServiceUpdateBackupScheduleProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("UpdateBackupSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteBackup: connect.NewClient[v1.DeleteBackupRequest, v1.DeleteBackupResponse](
-			httpClient,
-			baseURL+BackupServiceDeleteBackupProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("DeleteBackup")),
 			connect.WithClientOptions(opts...),
 		),
 		updateBackupOffering: connect.NewClient[v1.UpdateBackupOfferingRequest, v1.UpdateBackupOfferingResponse](
@@ -213,16 +147,28 @@ func NewBackupServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(backupServiceMethods.ByName("UpdateBackupOffering")),
 			connect.WithClientOptions(opts...),
 		),
-		removeVirtualMachineFromBackupOffering: connect.NewClient[v1.RemoveVirtualMachineFromBackupOfferingRequest, v1.RemoveVirtualMachineFromBackupOfferingResponse](
+		assignVirtualMachineToBackupOffering: connect.NewClient[v1.AssignVirtualMachineToBackupOfferingRequest, v1.AssignVirtualMachineToBackupOfferingResponse](
 			httpClient,
-			baseURL+BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("RemoveVirtualMachineFromBackupOffering")),
+			baseURL+BackupServiceAssignVirtualMachineToBackupOfferingProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("AssignVirtualMachineToBackupOffering")),
 			connect.WithClientOptions(opts...),
 		),
-		restoreVolumeFromBackupAndAttachToVM: connect.NewClient[v1.RestoreVolumeFromBackupAndAttachToVMRequest, v1.RestoreVolumeFromBackupAndAttachToVMResponse](
+		deleteBackupOffering: connect.NewClient[v1.DeleteBackupOfferingRequest, v1.DeleteBackupOfferingResponse](
 			httpClient,
-			baseURL+BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure,
-			connect.WithSchema(backupServiceMethods.ByName("RestoreVolumeFromBackupAndAttachToVM")),
+			baseURL+BackupServiceDeleteBackupOfferingProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("DeleteBackupOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		listBackupProviders: connect.NewClient[v1.ListBackupProvidersRequest, v1.ListBackupProvidersResponse](
+			httpClient,
+			baseURL+BackupServiceListBackupProvidersProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("ListBackupProviders")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteBackupSchedule: connect.NewClient[v1.DeleteBackupScheduleRequest, v1.DeleteBackupScheduleResponse](
+			httpClient,
+			baseURL+BackupServiceDeleteBackupScheduleProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("DeleteBackupSchedule")),
 			connect.WithClientOptions(opts...),
 		),
 		createBackup: connect.NewClient[v1.CreateBackupRequest, v1.CreateBackupResponse](
@@ -231,10 +177,64 @@ func NewBackupServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(backupServiceMethods.ByName("CreateBackup")),
 			connect.WithClientOptions(opts...),
 		),
+		listBackupProviderOfferings: connect.NewClient[v1.ListBackupProviderOfferingsRequest, v1.ListBackupProviderOfferingsResponse](
+			httpClient,
+			baseURL+BackupServiceListBackupProviderOfferingsProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("ListBackupProviderOfferings")),
+			connect.WithClientOptions(opts...),
+		),
+		restoreVolumeFromBackupAndAttachToVM: connect.NewClient[v1.RestoreVolumeFromBackupAndAttachToVMRequest, v1.RestoreVolumeFromBackupAndAttachToVMResponse](
+			httpClient,
+			baseURL+BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("RestoreVolumeFromBackupAndAttachToVM")),
+			connect.WithClientOptions(opts...),
+		),
+		createBackupSchedule: connect.NewClient[v1.CreateBackupScheduleRequest, v1.CreateBackupScheduleResponse](
+			httpClient,
+			baseURL+BackupServiceCreateBackupScheduleProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("CreateBackupSchedule")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteBackup: connect.NewClient[v1.DeleteBackupRequest, v1.DeleteBackupResponse](
+			httpClient,
+			baseURL+BackupServiceDeleteBackupProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("DeleteBackup")),
+			connect.WithClientOptions(opts...),
+		),
+		listBackupSchedule: connect.NewClient[v1.ListBackupScheduleRequest, v1.ListBackupScheduleResponse](
+			httpClient,
+			baseURL+BackupServiceListBackupScheduleProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("ListBackupSchedule")),
+			connect.WithClientOptions(opts...),
+		),
+		listBackups: connect.NewClient[v1.ListBackupsRequest, v1.ListBackupsResponse](
+			httpClient,
+			baseURL+BackupServiceListBackupsProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("ListBackups")),
+			connect.WithClientOptions(opts...),
+		),
+		importBackupOffering: connect.NewClient[v1.ImportBackupOfferingRequest, v1.ImportBackupOfferingResponse](
+			httpClient,
+			baseURL+BackupServiceImportBackupOfferingProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("ImportBackupOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		removeVirtualMachineFromBackupOffering: connect.NewClient[v1.RemoveVirtualMachineFromBackupOfferingRequest, v1.RemoveVirtualMachineFromBackupOfferingResponse](
+			httpClient,
+			baseURL+BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("RemoveVirtualMachineFromBackupOffering")),
+			connect.WithClientOptions(opts...),
+		),
 		listBackupOfferings: connect.NewClient[v1.ListBackupOfferingsRequest, v1.ListBackupOfferingsResponse](
 			httpClient,
 			baseURL+BackupServiceListBackupOfferingsProcedure,
 			connect.WithSchema(backupServiceMethods.ByName("ListBackupOfferings")),
+			connect.WithClientOptions(opts...),
+		),
+		updateBackupSchedule: connect.NewClient[v1.UpdateBackupScheduleRequest, v1.UpdateBackupScheduleResponse](
+			httpClient,
+			baseURL+BackupServiceUpdateBackupScheduleProcedure,
+			connect.WithSchema(backupServiceMethods.ByName("UpdateBackupSchedule")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -242,43 +242,33 @@ func NewBackupServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // backupServiceClient implements BackupServiceClient.
 type backupServiceClient struct {
-	listBackupSchedule                     *connect.Client[v1.ListBackupScheduleRequest, v1.ListBackupScheduleResponse]
-	importBackupOffering                   *connect.Client[v1.ImportBackupOfferingRequest, v1.ImportBackupOfferingResponse]
-	deleteBackupOffering                   *connect.Client[v1.DeleteBackupOfferingRequest, v1.DeleteBackupOfferingResponse]
-	deleteBackupSchedule                   *connect.Client[v1.DeleteBackupScheduleRequest, v1.DeleteBackupScheduleResponse]
-	assignVirtualMachineToBackupOffering   *connect.Client[v1.AssignVirtualMachineToBackupOfferingRequest, v1.AssignVirtualMachineToBackupOfferingResponse]
-	createBackupSchedule                   *connect.Client[v1.CreateBackupScheduleRequest, v1.CreateBackupScheduleResponse]
-	listBackups                            *connect.Client[v1.ListBackupsRequest, v1.ListBackupsResponse]
-	listBackupProviders                    *connect.Client[v1.ListBackupProvidersRequest, v1.ListBackupProvidersResponse]
-	listBackupProviderOfferings            *connect.Client[v1.ListBackupProviderOfferingsRequest, v1.ListBackupProviderOfferingsResponse]
 	restoreBackup                          *connect.Client[v1.RestoreBackupRequest, v1.RestoreBackupResponse]
-	updateBackupSchedule                   *connect.Client[v1.UpdateBackupScheduleRequest, v1.UpdateBackupScheduleResponse]
-	deleteBackup                           *connect.Client[v1.DeleteBackupRequest, v1.DeleteBackupResponse]
 	updateBackupOffering                   *connect.Client[v1.UpdateBackupOfferingRequest, v1.UpdateBackupOfferingResponse]
-	removeVirtualMachineFromBackupOffering *connect.Client[v1.RemoveVirtualMachineFromBackupOfferingRequest, v1.RemoveVirtualMachineFromBackupOfferingResponse]
-	restoreVolumeFromBackupAndAttachToVM   *connect.Client[v1.RestoreVolumeFromBackupAndAttachToVMRequest, v1.RestoreVolumeFromBackupAndAttachToVMResponse]
+	assignVirtualMachineToBackupOffering   *connect.Client[v1.AssignVirtualMachineToBackupOfferingRequest, v1.AssignVirtualMachineToBackupOfferingResponse]
+	deleteBackupOffering                   *connect.Client[v1.DeleteBackupOfferingRequest, v1.DeleteBackupOfferingResponse]
+	listBackupProviders                    *connect.Client[v1.ListBackupProvidersRequest, v1.ListBackupProvidersResponse]
+	deleteBackupSchedule                   *connect.Client[v1.DeleteBackupScheduleRequest, v1.DeleteBackupScheduleResponse]
 	createBackup                           *connect.Client[v1.CreateBackupRequest, v1.CreateBackupResponse]
+	listBackupProviderOfferings            *connect.Client[v1.ListBackupProviderOfferingsRequest, v1.ListBackupProviderOfferingsResponse]
+	restoreVolumeFromBackupAndAttachToVM   *connect.Client[v1.RestoreVolumeFromBackupAndAttachToVMRequest, v1.RestoreVolumeFromBackupAndAttachToVMResponse]
+	createBackupSchedule                   *connect.Client[v1.CreateBackupScheduleRequest, v1.CreateBackupScheduleResponse]
+	deleteBackup                           *connect.Client[v1.DeleteBackupRequest, v1.DeleteBackupResponse]
+	listBackupSchedule                     *connect.Client[v1.ListBackupScheduleRequest, v1.ListBackupScheduleResponse]
+	listBackups                            *connect.Client[v1.ListBackupsRequest, v1.ListBackupsResponse]
+	importBackupOffering                   *connect.Client[v1.ImportBackupOfferingRequest, v1.ImportBackupOfferingResponse]
+	removeVirtualMachineFromBackupOffering *connect.Client[v1.RemoveVirtualMachineFromBackupOfferingRequest, v1.RemoveVirtualMachineFromBackupOfferingResponse]
 	listBackupOfferings                    *connect.Client[v1.ListBackupOfferingsRequest, v1.ListBackupOfferingsResponse]
+	updateBackupSchedule                   *connect.Client[v1.UpdateBackupScheduleRequest, v1.UpdateBackupScheduleResponse]
 }
 
-// ListBackupSchedule calls cloudstack.management.backup.v1.BackupService.ListBackupSchedule.
-func (c *backupServiceClient) ListBackupSchedule(ctx context.Context, req *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error) {
-	return c.listBackupSchedule.CallUnary(ctx, req)
+// RestoreBackup calls cloudstack.management.backup.v1.BackupService.RestoreBackup.
+func (c *backupServiceClient) RestoreBackup(ctx context.Context, req *connect.Request[v1.RestoreBackupRequest]) (*connect.Response[v1.RestoreBackupResponse], error) {
+	return c.restoreBackup.CallUnary(ctx, req)
 }
 
-// ImportBackupOffering calls cloudstack.management.backup.v1.BackupService.ImportBackupOffering.
-func (c *backupServiceClient) ImportBackupOffering(ctx context.Context, req *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error) {
-	return c.importBackupOffering.CallUnary(ctx, req)
-}
-
-// DeleteBackupOffering calls cloudstack.management.backup.v1.BackupService.DeleteBackupOffering.
-func (c *backupServiceClient) DeleteBackupOffering(ctx context.Context, req *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error) {
-	return c.deleteBackupOffering.CallUnary(ctx, req)
-}
-
-// DeleteBackupSchedule calls cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule.
-func (c *backupServiceClient) DeleteBackupSchedule(ctx context.Context, req *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error) {
-	return c.deleteBackupSchedule.CallUnary(ctx, req)
+// UpdateBackupOffering calls cloudstack.management.backup.v1.BackupService.UpdateBackupOffering.
+func (c *backupServiceClient) UpdateBackupOffering(ctx context.Context, req *connect.Request[v1.UpdateBackupOfferingRequest]) (*connect.Response[v1.UpdateBackupOfferingResponse], error) {
+	return c.updateBackupOffering.CallUnary(ctx, req)
 }
 
 // AssignVirtualMachineToBackupOffering calls
@@ -287,19 +277,24 @@ func (c *backupServiceClient) AssignVirtualMachineToBackupOffering(ctx context.C
 	return c.assignVirtualMachineToBackupOffering.CallUnary(ctx, req)
 }
 
-// CreateBackupSchedule calls cloudstack.management.backup.v1.BackupService.CreateBackupSchedule.
-func (c *backupServiceClient) CreateBackupSchedule(ctx context.Context, req *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error) {
-	return c.createBackupSchedule.CallUnary(ctx, req)
-}
-
-// ListBackups calls cloudstack.management.backup.v1.BackupService.ListBackups.
-func (c *backupServiceClient) ListBackups(ctx context.Context, req *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error) {
-	return c.listBackups.CallUnary(ctx, req)
+// DeleteBackupOffering calls cloudstack.management.backup.v1.BackupService.DeleteBackupOffering.
+func (c *backupServiceClient) DeleteBackupOffering(ctx context.Context, req *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error) {
+	return c.deleteBackupOffering.CallUnary(ctx, req)
 }
 
 // ListBackupProviders calls cloudstack.management.backup.v1.BackupService.ListBackupProviders.
 func (c *backupServiceClient) ListBackupProviders(ctx context.Context, req *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error) {
 	return c.listBackupProviders.CallUnary(ctx, req)
+}
+
+// DeleteBackupSchedule calls cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule.
+func (c *backupServiceClient) DeleteBackupSchedule(ctx context.Context, req *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error) {
+	return c.deleteBackupSchedule.CallUnary(ctx, req)
+}
+
+// CreateBackup calls cloudstack.management.backup.v1.BackupService.CreateBackup.
+func (c *backupServiceClient) CreateBackup(ctx context.Context, req *connect.Request[v1.CreateBackupRequest]) (*connect.Response[v1.CreateBackupResponse], error) {
+	return c.createBackup.CallUnary(ctx, req)
 }
 
 // ListBackupProviderOfferings calls
@@ -308,14 +303,15 @@ func (c *backupServiceClient) ListBackupProviderOfferings(ctx context.Context, r
 	return c.listBackupProviderOfferings.CallUnary(ctx, req)
 }
 
-// RestoreBackup calls cloudstack.management.backup.v1.BackupService.RestoreBackup.
-func (c *backupServiceClient) RestoreBackup(ctx context.Context, req *connect.Request[v1.RestoreBackupRequest]) (*connect.Response[v1.RestoreBackupResponse], error) {
-	return c.restoreBackup.CallUnary(ctx, req)
+// RestoreVolumeFromBackupAndAttachToVM calls
+// cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM.
+func (c *backupServiceClient) RestoreVolumeFromBackupAndAttachToVM(ctx context.Context, req *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error) {
+	return c.restoreVolumeFromBackupAndAttachToVM.CallUnary(ctx, req)
 }
 
-// UpdateBackupSchedule calls cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule.
-func (c *backupServiceClient) UpdateBackupSchedule(ctx context.Context, req *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error) {
-	return c.updateBackupSchedule.CallUnary(ctx, req)
+// CreateBackupSchedule calls cloudstack.management.backup.v1.BackupService.CreateBackupSchedule.
+func (c *backupServiceClient) CreateBackupSchedule(ctx context.Context, req *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error) {
+	return c.createBackupSchedule.CallUnary(ctx, req)
 }
 
 // DeleteBackup calls cloudstack.management.backup.v1.BackupService.DeleteBackup.
@@ -323,9 +319,19 @@ func (c *backupServiceClient) DeleteBackup(ctx context.Context, req *connect.Req
 	return c.deleteBackup.CallUnary(ctx, req)
 }
 
-// UpdateBackupOffering calls cloudstack.management.backup.v1.BackupService.UpdateBackupOffering.
-func (c *backupServiceClient) UpdateBackupOffering(ctx context.Context, req *connect.Request[v1.UpdateBackupOfferingRequest]) (*connect.Response[v1.UpdateBackupOfferingResponse], error) {
-	return c.updateBackupOffering.CallUnary(ctx, req)
+// ListBackupSchedule calls cloudstack.management.backup.v1.BackupService.ListBackupSchedule.
+func (c *backupServiceClient) ListBackupSchedule(ctx context.Context, req *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error) {
+	return c.listBackupSchedule.CallUnary(ctx, req)
+}
+
+// ListBackups calls cloudstack.management.backup.v1.BackupService.ListBackups.
+func (c *backupServiceClient) ListBackups(ctx context.Context, req *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error) {
+	return c.listBackups.CallUnary(ctx, req)
+}
+
+// ImportBackupOffering calls cloudstack.management.backup.v1.BackupService.ImportBackupOffering.
+func (c *backupServiceClient) ImportBackupOffering(ctx context.Context, req *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error) {
+	return c.importBackupOffering.CallUnary(ctx, req)
 }
 
 // RemoveVirtualMachineFromBackupOffering calls
@@ -334,59 +340,53 @@ func (c *backupServiceClient) RemoveVirtualMachineFromBackupOffering(ctx context
 	return c.removeVirtualMachineFromBackupOffering.CallUnary(ctx, req)
 }
 
-// RestoreVolumeFromBackupAndAttachToVM calls
-// cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM.
-func (c *backupServiceClient) RestoreVolumeFromBackupAndAttachToVM(ctx context.Context, req *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error) {
-	return c.restoreVolumeFromBackupAndAttachToVM.CallUnary(ctx, req)
-}
-
-// CreateBackup calls cloudstack.management.backup.v1.BackupService.CreateBackup.
-func (c *backupServiceClient) CreateBackup(ctx context.Context, req *connect.Request[v1.CreateBackupRequest]) (*connect.Response[v1.CreateBackupResponse], error) {
-	return c.createBackup.CallUnary(ctx, req)
-}
-
 // ListBackupOfferings calls cloudstack.management.backup.v1.BackupService.ListBackupOfferings.
 func (c *backupServiceClient) ListBackupOfferings(ctx context.Context, req *connect.Request[v1.ListBackupOfferingsRequest]) (*connect.Response[v1.ListBackupOfferingsResponse], error) {
 	return c.listBackupOfferings.CallUnary(ctx, req)
 }
 
+// UpdateBackupSchedule calls cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule.
+func (c *backupServiceClient) UpdateBackupSchedule(ctx context.Context, req *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error) {
+	return c.updateBackupSchedule.CallUnary(ctx, req)
+}
+
 // BackupServiceHandler is an implementation of the cloudstack.management.backup.v1.BackupService
 // service.
 type BackupServiceHandler interface {
-	// ListBackupSchedule List backup schedule of a VM
-	ListBackupSchedule(context.Context, *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error)
-	// ImportBackupOffering Imports a backup offering using a backup provider
-	ImportBackupOffering(context.Context, *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error)
-	// DeleteBackupOffering Deletes a backup offering
-	DeleteBackupOffering(context.Context, *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error)
-	// DeleteBackupSchedule Deletes the backup schedule of a VM
-	DeleteBackupSchedule(context.Context, *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error)
-	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
-	AssignVirtualMachineToBackupOffering(context.Context, *connect.Request[v1.AssignVirtualMachineToBackupOfferingRequest]) (*connect.Response[v1.AssignVirtualMachineToBackupOfferingResponse], error)
-	// CreateBackupSchedule Creates a user-defined VM backup schedule
-	CreateBackupSchedule(context.Context, *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error)
-	// ListBackups Lists VM backups
-	ListBackups(context.Context, *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error)
-	// ListBackupProviders Lists Backup and Recovery providers
-	ListBackupProviders(context.Context, *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error)
-	// ListBackupProviderOfferings Lists external backup offerings of the provider
-	ListBackupProviderOfferings(context.Context, *connect.Request[v1.ListBackupProviderOfferingsRequest]) (*connect.Response[v1.ListBackupProviderOfferingsResponse], error)
 	// RestoreBackup Restores an existing stopped or deleted VM using a VM backup
 	RestoreBackup(context.Context, *connect.Request[v1.RestoreBackupRequest]) (*connect.Response[v1.RestoreBackupResponse], error)
-	// UpdateBackupSchedule Updates a user-defined VM backup schedule
-	UpdateBackupSchedule(context.Context, *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error)
-	// DeleteBackup Delete VM backup
-	DeleteBackup(context.Context, *connect.Request[v1.DeleteBackupRequest]) (*connect.Response[v1.DeleteBackupResponse], error)
 	// UpdateBackupOffering Updates a backup offering.
 	UpdateBackupOffering(context.Context, *connect.Request[v1.UpdateBackupOfferingRequest]) (*connect.Response[v1.UpdateBackupOfferingResponse], error)
-	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
-	RemoveVirtualMachineFromBackupOffering(context.Context, *connect.Request[v1.RemoveVirtualMachineFromBackupOfferingRequest]) (*connect.Response[v1.RemoveVirtualMachineFromBackupOfferingResponse], error)
-	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
-	RestoreVolumeFromBackupAndAttachToVM(context.Context, *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error)
+	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
+	AssignVirtualMachineToBackupOffering(context.Context, *connect.Request[v1.AssignVirtualMachineToBackupOfferingRequest]) (*connect.Response[v1.AssignVirtualMachineToBackupOfferingResponse], error)
+	// DeleteBackupOffering Deletes a backup offering
+	DeleteBackupOffering(context.Context, *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error)
+	// ListBackupProviders Lists Backup and Recovery providers
+	ListBackupProviders(context.Context, *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error)
+	// DeleteBackupSchedule Deletes the backup schedule of a VM
+	DeleteBackupSchedule(context.Context, *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error)
 	// CreateBackup Create VM backup
 	CreateBackup(context.Context, *connect.Request[v1.CreateBackupRequest]) (*connect.Response[v1.CreateBackupResponse], error)
+	// ListBackupProviderOfferings Lists external backup offerings of the provider
+	ListBackupProviderOfferings(context.Context, *connect.Request[v1.ListBackupProviderOfferingsRequest]) (*connect.Response[v1.ListBackupProviderOfferingsResponse], error)
+	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
+	RestoreVolumeFromBackupAndAttachToVM(context.Context, *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error)
+	// CreateBackupSchedule Creates a user-defined VM backup schedule
+	CreateBackupSchedule(context.Context, *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error)
+	// DeleteBackup Delete VM backup
+	DeleteBackup(context.Context, *connect.Request[v1.DeleteBackupRequest]) (*connect.Response[v1.DeleteBackupResponse], error)
+	// ListBackupSchedule List backup schedule of a VM
+	ListBackupSchedule(context.Context, *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error)
+	// ListBackups Lists VM backups
+	ListBackups(context.Context, *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error)
+	// ImportBackupOffering Imports a backup offering using a backup provider
+	ImportBackupOffering(context.Context, *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error)
+	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
+	RemoveVirtualMachineFromBackupOffering(context.Context, *connect.Request[v1.RemoveVirtualMachineFromBackupOfferingRequest]) (*connect.Response[v1.RemoveVirtualMachineFromBackupOfferingResponse], error)
 	// ListBackupOfferings Lists backup offerings
 	ListBackupOfferings(context.Context, *connect.Request[v1.ListBackupOfferingsRequest]) (*connect.Response[v1.ListBackupOfferingsResponse], error)
+	// UpdateBackupSchedule Updates a user-defined VM backup schedule
+	UpdateBackupSchedule(context.Context, *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error)
 }
 
 // NewBackupServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -396,76 +396,10 @@ type BackupServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewBackupServiceHandler(svc BackupServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	backupServiceMethods := v1.File_cloudstack_management_backup_v1_backup_gen_proto.Services().ByName("BackupService").Methods()
-	backupServiceListBackupScheduleHandler := connect.NewUnaryHandler(
-		BackupServiceListBackupScheduleProcedure,
-		svc.ListBackupSchedule,
-		connect.WithSchema(backupServiceMethods.ByName("ListBackupSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceImportBackupOfferingHandler := connect.NewUnaryHandler(
-		BackupServiceImportBackupOfferingProcedure,
-		svc.ImportBackupOffering,
-		connect.WithSchema(backupServiceMethods.ByName("ImportBackupOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceDeleteBackupOfferingHandler := connect.NewUnaryHandler(
-		BackupServiceDeleteBackupOfferingProcedure,
-		svc.DeleteBackupOffering,
-		connect.WithSchema(backupServiceMethods.ByName("DeleteBackupOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceDeleteBackupScheduleHandler := connect.NewUnaryHandler(
-		BackupServiceDeleteBackupScheduleProcedure,
-		svc.DeleteBackupSchedule,
-		connect.WithSchema(backupServiceMethods.ByName("DeleteBackupSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceAssignVirtualMachineToBackupOfferingHandler := connect.NewUnaryHandler(
-		BackupServiceAssignVirtualMachineToBackupOfferingProcedure,
-		svc.AssignVirtualMachineToBackupOffering,
-		connect.WithSchema(backupServiceMethods.ByName("AssignVirtualMachineToBackupOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceCreateBackupScheduleHandler := connect.NewUnaryHandler(
-		BackupServiceCreateBackupScheduleProcedure,
-		svc.CreateBackupSchedule,
-		connect.WithSchema(backupServiceMethods.ByName("CreateBackupSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceListBackupsHandler := connect.NewUnaryHandler(
-		BackupServiceListBackupsProcedure,
-		svc.ListBackups,
-		connect.WithSchema(backupServiceMethods.ByName("ListBackups")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceListBackupProvidersHandler := connect.NewUnaryHandler(
-		BackupServiceListBackupProvidersProcedure,
-		svc.ListBackupProviders,
-		connect.WithSchema(backupServiceMethods.ByName("ListBackupProviders")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceListBackupProviderOfferingsHandler := connect.NewUnaryHandler(
-		BackupServiceListBackupProviderOfferingsProcedure,
-		svc.ListBackupProviderOfferings,
-		connect.WithSchema(backupServiceMethods.ByName("ListBackupProviderOfferings")),
-		connect.WithHandlerOptions(opts...),
-	)
 	backupServiceRestoreBackupHandler := connect.NewUnaryHandler(
 		BackupServiceRestoreBackupProcedure,
 		svc.RestoreBackup,
 		connect.WithSchema(backupServiceMethods.ByName("RestoreBackup")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceUpdateBackupScheduleHandler := connect.NewUnaryHandler(
-		BackupServiceUpdateBackupScheduleProcedure,
-		svc.UpdateBackupSchedule,
-		connect.WithSchema(backupServiceMethods.ByName("UpdateBackupSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	backupServiceDeleteBackupHandler := connect.NewUnaryHandler(
-		BackupServiceDeleteBackupProcedure,
-		svc.DeleteBackup,
-		connect.WithSchema(backupServiceMethods.ByName("DeleteBackup")),
 		connect.WithHandlerOptions(opts...),
 	)
 	backupServiceUpdateBackupOfferingHandler := connect.NewUnaryHandler(
@@ -474,16 +408,28 @@ func NewBackupServiceHandler(svc BackupServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(backupServiceMethods.ByName("UpdateBackupOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
-	backupServiceRemoveVirtualMachineFromBackupOfferingHandler := connect.NewUnaryHandler(
-		BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure,
-		svc.RemoveVirtualMachineFromBackupOffering,
-		connect.WithSchema(backupServiceMethods.ByName("RemoveVirtualMachineFromBackupOffering")),
+	backupServiceAssignVirtualMachineToBackupOfferingHandler := connect.NewUnaryHandler(
+		BackupServiceAssignVirtualMachineToBackupOfferingProcedure,
+		svc.AssignVirtualMachineToBackupOffering,
+		connect.WithSchema(backupServiceMethods.ByName("AssignVirtualMachineToBackupOffering")),
 		connect.WithHandlerOptions(opts...),
 	)
-	backupServiceRestoreVolumeFromBackupAndAttachToVMHandler := connect.NewUnaryHandler(
-		BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure,
-		svc.RestoreVolumeFromBackupAndAttachToVM,
-		connect.WithSchema(backupServiceMethods.ByName("RestoreVolumeFromBackupAndAttachToVM")),
+	backupServiceDeleteBackupOfferingHandler := connect.NewUnaryHandler(
+		BackupServiceDeleteBackupOfferingProcedure,
+		svc.DeleteBackupOffering,
+		connect.WithSchema(backupServiceMethods.ByName("DeleteBackupOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceListBackupProvidersHandler := connect.NewUnaryHandler(
+		BackupServiceListBackupProvidersProcedure,
+		svc.ListBackupProviders,
+		connect.WithSchema(backupServiceMethods.ByName("ListBackupProviders")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceDeleteBackupScheduleHandler := connect.NewUnaryHandler(
+		BackupServiceDeleteBackupScheduleProcedure,
+		svc.DeleteBackupSchedule,
+		connect.WithSchema(backupServiceMethods.ByName("DeleteBackupSchedule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	backupServiceCreateBackupHandler := connect.NewUnaryHandler(
@@ -492,48 +438,102 @@ func NewBackupServiceHandler(svc BackupServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(backupServiceMethods.ByName("CreateBackup")),
 		connect.WithHandlerOptions(opts...),
 	)
+	backupServiceListBackupProviderOfferingsHandler := connect.NewUnaryHandler(
+		BackupServiceListBackupProviderOfferingsProcedure,
+		svc.ListBackupProviderOfferings,
+		connect.WithSchema(backupServiceMethods.ByName("ListBackupProviderOfferings")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceRestoreVolumeFromBackupAndAttachToVMHandler := connect.NewUnaryHandler(
+		BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure,
+		svc.RestoreVolumeFromBackupAndAttachToVM,
+		connect.WithSchema(backupServiceMethods.ByName("RestoreVolumeFromBackupAndAttachToVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceCreateBackupScheduleHandler := connect.NewUnaryHandler(
+		BackupServiceCreateBackupScheduleProcedure,
+		svc.CreateBackupSchedule,
+		connect.WithSchema(backupServiceMethods.ByName("CreateBackupSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceDeleteBackupHandler := connect.NewUnaryHandler(
+		BackupServiceDeleteBackupProcedure,
+		svc.DeleteBackup,
+		connect.WithSchema(backupServiceMethods.ByName("DeleteBackup")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceListBackupScheduleHandler := connect.NewUnaryHandler(
+		BackupServiceListBackupScheduleProcedure,
+		svc.ListBackupSchedule,
+		connect.WithSchema(backupServiceMethods.ByName("ListBackupSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceListBackupsHandler := connect.NewUnaryHandler(
+		BackupServiceListBackupsProcedure,
+		svc.ListBackups,
+		connect.WithSchema(backupServiceMethods.ByName("ListBackups")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceImportBackupOfferingHandler := connect.NewUnaryHandler(
+		BackupServiceImportBackupOfferingProcedure,
+		svc.ImportBackupOffering,
+		connect.WithSchema(backupServiceMethods.ByName("ImportBackupOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	backupServiceRemoveVirtualMachineFromBackupOfferingHandler := connect.NewUnaryHandler(
+		BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure,
+		svc.RemoveVirtualMachineFromBackupOffering,
+		connect.WithSchema(backupServiceMethods.ByName("RemoveVirtualMachineFromBackupOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
 	backupServiceListBackupOfferingsHandler := connect.NewUnaryHandler(
 		BackupServiceListBackupOfferingsProcedure,
 		svc.ListBackupOfferings,
 		connect.WithSchema(backupServiceMethods.ByName("ListBackupOfferings")),
 		connect.WithHandlerOptions(opts...),
 	)
+	backupServiceUpdateBackupScheduleHandler := connect.NewUnaryHandler(
+		BackupServiceUpdateBackupScheduleProcedure,
+		svc.UpdateBackupSchedule,
+		connect.WithSchema(backupServiceMethods.ByName("UpdateBackupSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.backup.v1.BackupService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case BackupServiceListBackupScheduleProcedure:
-			backupServiceListBackupScheduleHandler.ServeHTTP(w, r)
-		case BackupServiceImportBackupOfferingProcedure:
-			backupServiceImportBackupOfferingHandler.ServeHTTP(w, r)
-		case BackupServiceDeleteBackupOfferingProcedure:
-			backupServiceDeleteBackupOfferingHandler.ServeHTTP(w, r)
-		case BackupServiceDeleteBackupScheduleProcedure:
-			backupServiceDeleteBackupScheduleHandler.ServeHTTP(w, r)
-		case BackupServiceAssignVirtualMachineToBackupOfferingProcedure:
-			backupServiceAssignVirtualMachineToBackupOfferingHandler.ServeHTTP(w, r)
-		case BackupServiceCreateBackupScheduleProcedure:
-			backupServiceCreateBackupScheduleHandler.ServeHTTP(w, r)
-		case BackupServiceListBackupsProcedure:
-			backupServiceListBackupsHandler.ServeHTTP(w, r)
-		case BackupServiceListBackupProvidersProcedure:
-			backupServiceListBackupProvidersHandler.ServeHTTP(w, r)
-		case BackupServiceListBackupProviderOfferingsProcedure:
-			backupServiceListBackupProviderOfferingsHandler.ServeHTTP(w, r)
 		case BackupServiceRestoreBackupProcedure:
 			backupServiceRestoreBackupHandler.ServeHTTP(w, r)
-		case BackupServiceUpdateBackupScheduleProcedure:
-			backupServiceUpdateBackupScheduleHandler.ServeHTTP(w, r)
-		case BackupServiceDeleteBackupProcedure:
-			backupServiceDeleteBackupHandler.ServeHTTP(w, r)
 		case BackupServiceUpdateBackupOfferingProcedure:
 			backupServiceUpdateBackupOfferingHandler.ServeHTTP(w, r)
-		case BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure:
-			backupServiceRemoveVirtualMachineFromBackupOfferingHandler.ServeHTTP(w, r)
-		case BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure:
-			backupServiceRestoreVolumeFromBackupAndAttachToVMHandler.ServeHTTP(w, r)
+		case BackupServiceAssignVirtualMachineToBackupOfferingProcedure:
+			backupServiceAssignVirtualMachineToBackupOfferingHandler.ServeHTTP(w, r)
+		case BackupServiceDeleteBackupOfferingProcedure:
+			backupServiceDeleteBackupOfferingHandler.ServeHTTP(w, r)
+		case BackupServiceListBackupProvidersProcedure:
+			backupServiceListBackupProvidersHandler.ServeHTTP(w, r)
+		case BackupServiceDeleteBackupScheduleProcedure:
+			backupServiceDeleteBackupScheduleHandler.ServeHTTP(w, r)
 		case BackupServiceCreateBackupProcedure:
 			backupServiceCreateBackupHandler.ServeHTTP(w, r)
+		case BackupServiceListBackupProviderOfferingsProcedure:
+			backupServiceListBackupProviderOfferingsHandler.ServeHTTP(w, r)
+		case BackupServiceRestoreVolumeFromBackupAndAttachToVMProcedure:
+			backupServiceRestoreVolumeFromBackupAndAttachToVMHandler.ServeHTTP(w, r)
+		case BackupServiceCreateBackupScheduleProcedure:
+			backupServiceCreateBackupScheduleHandler.ServeHTTP(w, r)
+		case BackupServiceDeleteBackupProcedure:
+			backupServiceDeleteBackupHandler.ServeHTTP(w, r)
+		case BackupServiceListBackupScheduleProcedure:
+			backupServiceListBackupScheduleHandler.ServeHTTP(w, r)
+		case BackupServiceListBackupsProcedure:
+			backupServiceListBackupsHandler.ServeHTTP(w, r)
+		case BackupServiceImportBackupOfferingProcedure:
+			backupServiceImportBackupOfferingHandler.ServeHTTP(w, r)
+		case BackupServiceRemoveVirtualMachineFromBackupOfferingProcedure:
+			backupServiceRemoveVirtualMachineFromBackupOfferingHandler.ServeHTTP(w, r)
 		case BackupServiceListBackupOfferingsProcedure:
 			backupServiceListBackupOfferingsHandler.ServeHTTP(w, r)
+		case BackupServiceUpdateBackupScheduleProcedure:
+			backupServiceUpdateBackupScheduleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -543,70 +543,70 @@ func NewBackupServiceHandler(svc BackupServiceHandler, opts ...connect.HandlerOp
 // UnimplementedBackupServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBackupServiceHandler struct{}
 
-func (UnimplementedBackupServiceHandler) ListBackupSchedule(context.Context, *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupSchedule is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) ImportBackupOffering(context.Context, *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ImportBackupOffering is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) DeleteBackupOffering(context.Context, *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.DeleteBackupOffering is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) DeleteBackupSchedule(context.Context, *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) AssignVirtualMachineToBackupOffering(context.Context, *connect.Request[v1.AssignVirtualMachineToBackupOfferingRequest]) (*connect.Response[v1.AssignVirtualMachineToBackupOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.AssignVirtualMachineToBackupOffering is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) CreateBackupSchedule(context.Context, *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.CreateBackupSchedule is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) ListBackups(context.Context, *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackups is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) ListBackupProviders(context.Context, *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupProviders is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) ListBackupProviderOfferings(context.Context, *connect.Request[v1.ListBackupProviderOfferingsRequest]) (*connect.Response[v1.ListBackupProviderOfferingsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupProviderOfferings is not implemented"))
-}
-
 func (UnimplementedBackupServiceHandler) RestoreBackup(context.Context, *connect.Request[v1.RestoreBackupRequest]) (*connect.Response[v1.RestoreBackupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.RestoreBackup is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) UpdateBackupSchedule(context.Context, *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule is not implemented"))
-}
-
-func (UnimplementedBackupServiceHandler) DeleteBackup(context.Context, *connect.Request[v1.DeleteBackupRequest]) (*connect.Response[v1.DeleteBackupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.DeleteBackup is not implemented"))
 }
 
 func (UnimplementedBackupServiceHandler) UpdateBackupOffering(context.Context, *connect.Request[v1.UpdateBackupOfferingRequest]) (*connect.Response[v1.UpdateBackupOfferingResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.UpdateBackupOffering is not implemented"))
 }
 
-func (UnimplementedBackupServiceHandler) RemoveVirtualMachineFromBackupOffering(context.Context, *connect.Request[v1.RemoveVirtualMachineFromBackupOfferingRequest]) (*connect.Response[v1.RemoveVirtualMachineFromBackupOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.RemoveVirtualMachineFromBackupOffering is not implemented"))
+func (UnimplementedBackupServiceHandler) AssignVirtualMachineToBackupOffering(context.Context, *connect.Request[v1.AssignVirtualMachineToBackupOfferingRequest]) (*connect.Response[v1.AssignVirtualMachineToBackupOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.AssignVirtualMachineToBackupOffering is not implemented"))
 }
 
-func (UnimplementedBackupServiceHandler) RestoreVolumeFromBackupAndAttachToVM(context.Context, *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM is not implemented"))
+func (UnimplementedBackupServiceHandler) DeleteBackupOffering(context.Context, *connect.Request[v1.DeleteBackupOfferingRequest]) (*connect.Response[v1.DeleteBackupOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.DeleteBackupOffering is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) ListBackupProviders(context.Context, *connect.Request[v1.ListBackupProvidersRequest]) (*connect.Response[v1.ListBackupProvidersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupProviders is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) DeleteBackupSchedule(context.Context, *connect.Request[v1.DeleteBackupScheduleRequest]) (*connect.Response[v1.DeleteBackupScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.DeleteBackupSchedule is not implemented"))
 }
 
 func (UnimplementedBackupServiceHandler) CreateBackup(context.Context, *connect.Request[v1.CreateBackupRequest]) (*connect.Response[v1.CreateBackupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.CreateBackup is not implemented"))
 }
 
+func (UnimplementedBackupServiceHandler) ListBackupProviderOfferings(context.Context, *connect.Request[v1.ListBackupProviderOfferingsRequest]) (*connect.Response[v1.ListBackupProviderOfferingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupProviderOfferings is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) RestoreVolumeFromBackupAndAttachToVM(context.Context, *connect.Request[v1.RestoreVolumeFromBackupAndAttachToVMRequest]) (*connect.Response[v1.RestoreVolumeFromBackupAndAttachToVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.RestoreVolumeFromBackupAndAttachToVM is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) CreateBackupSchedule(context.Context, *connect.Request[v1.CreateBackupScheduleRequest]) (*connect.Response[v1.CreateBackupScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.CreateBackupSchedule is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) DeleteBackup(context.Context, *connect.Request[v1.DeleteBackupRequest]) (*connect.Response[v1.DeleteBackupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.DeleteBackup is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) ListBackupSchedule(context.Context, *connect.Request[v1.ListBackupScheduleRequest]) (*connect.Response[v1.ListBackupScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupSchedule is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) ListBackups(context.Context, *connect.Request[v1.ListBackupsRequest]) (*connect.Response[v1.ListBackupsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackups is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) ImportBackupOffering(context.Context, *connect.Request[v1.ImportBackupOfferingRequest]) (*connect.Response[v1.ImportBackupOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ImportBackupOffering is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) RemoveVirtualMachineFromBackupOffering(context.Context, *connect.Request[v1.RemoveVirtualMachineFromBackupOfferingRequest]) (*connect.Response[v1.RemoveVirtualMachineFromBackupOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.RemoveVirtualMachineFromBackupOffering is not implemented"))
+}
+
 func (UnimplementedBackupServiceHandler) ListBackupOfferings(context.Context, *connect.Request[v1.ListBackupOfferingsRequest]) (*connect.Response[v1.ListBackupOfferingsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.ListBackupOfferings is not implemented"))
+}
+
+func (UnimplementedBackupServiceHandler) UpdateBackupSchedule(context.Context, *connect.Request[v1.UpdateBackupScheduleRequest]) (*connect.Response[v1.UpdateBackupScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.v1.BackupService.UpdateBackupSchedule is not implemented"))
 }

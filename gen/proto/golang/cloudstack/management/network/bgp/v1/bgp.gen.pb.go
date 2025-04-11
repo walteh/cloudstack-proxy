@@ -24,11 +24,342 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ChangeBgpPeersForVpcRequest represents the parameters for change the bgp peers for a vpc.
-type ChangeBgpPeersForVpcRequest struct {
+// DedicateBgpPeerRequest represents the parameters for dedicates an existing bgp peer to an account or a domain.
+type DedicateBgpPeerRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the VPC which the Bgp Peers are associated to.
-	VpcId *int64 `protobuf:"varint,1,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// Id of the Bgp Peer
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// account who will own the Bgp Peer
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who will own the Bgp Peer
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// domain ID of the account owning the Bgp Peer
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DedicateBgpPeerRequest) Reset() {
+	*x = DedicateBgpPeerRequest{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DedicateBgpPeerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DedicateBgpPeerRequest) ProtoMessage() {}
+
+func (x *DedicateBgpPeerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DedicateBgpPeerRequest.ProtoReflect.Descriptor instead.
+func (*DedicateBgpPeerRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *DedicateBgpPeerRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DedicateBgpPeerRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DedicateBgpPeerRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DedicateBgpPeerRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DedicateBgpPeerRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DedicateBgpPeerRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DedicateBgpPeerRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DedicateBgpPeerResponse represents the response from dedicates an existing bgp peer to an account or a domain.
+type DedicateBgpPeerResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DedicateBgpPeerResponse) Reset() {
+	*x = DedicateBgpPeerResponse{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DedicateBgpPeerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DedicateBgpPeerResponse) ProtoMessage() {}
+
+func (x *DedicateBgpPeerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DedicateBgpPeerResponse.ProtoReflect.Descriptor instead.
+func (*DedicateBgpPeerResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *DedicateBgpPeerResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListBgpPeersRequest represents the parameters for lists bgp peers.
+type ListBgpPeersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the Bgp Peer.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// UUID of zone to which the Bgp Peer belongs to.
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// AS number of the Bgp Peer.
+	AsNumber *int64 `protobuf:"varint,3,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
+	// the account which the Bgp Peer is dedicated to. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who which the Bgp Peer is dedicated to
+	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the domain ID which the Bgp Peer is dedicated to.
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// Lists only dedicated or non-dedicated Bgp Peers. If not set, lists all dedicated and non-dedicated BGP peers the domain/account can access.
+	IsDedicated *bool `protobuf:"varint,7,opt,name=is_dedicated,json=isDedicated" json:"is_dedicated,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBgpPeersRequest) Reset() {
+	*x = ListBgpPeersRequest{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBgpPeersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBgpPeersRequest) ProtoMessage() {}
+
+func (x *ListBgpPeersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBgpPeersRequest.ProtoReflect.Descriptor instead.
+func (*ListBgpPeersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListBgpPeersRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetAsNumber() int64 {
+	if x != nil && x.AsNumber != nil {
+		return *x.AsNumber
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListBgpPeersRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetIsDedicated() bool {
+	if x != nil && x.IsDedicated != nil {
+		return *x.IsDedicated
+	}
+	return false
+}
+
+func (x *ListBgpPeersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListBgpPeersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListBgpPeersRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListBgpPeersResponse represents the response from lists bgp peers.
+type ListBgpPeersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of BgpPeers
+	Items []*BgpPeer `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of BgpPeers
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListBgpPeersResponse) Reset() {
+	*x = ListBgpPeersResponse{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListBgpPeersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListBgpPeersResponse) ProtoMessage() {}
+
+func (x *ListBgpPeersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListBgpPeersResponse.ProtoReflect.Descriptor instead.
+func (*ListBgpPeersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListBgpPeersResponse) GetItems() []*BgpPeer {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListBgpPeersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ChangeBgpPeersForNetworkRequest represents the parameters for change the bgp peers for a network.
+type ChangeBgpPeersForNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the network which the Bgp Peers are associated to.
+	NetworkId *int64 `protobuf:"varint,1,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
 	// Ids of the Bgp Peer. If it is empty, all BGP peers will be unlinked.
 	BgpPeerIds []string `protobuf:"bytes,2,rep,name=bgp_peer_ids,json=bgpPeerIds" json:"bgp_peer_ids,omitempty"`
 	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
@@ -38,21 +369,21 @@ type ChangeBgpPeersForVpcRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeBgpPeersForVpcRequest) Reset() {
-	*x = ChangeBgpPeersForVpcRequest{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[0]
+func (x *ChangeBgpPeersForNetworkRequest) Reset() {
+	*x = ChangeBgpPeersForNetworkRequest{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeBgpPeersForVpcRequest) String() string {
+func (x *ChangeBgpPeersForNetworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeBgpPeersForVpcRequest) ProtoMessage() {}
+func (*ChangeBgpPeersForNetworkRequest) ProtoMessage() {}
 
-func (x *ChangeBgpPeersForVpcRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[0]
+func (x *ChangeBgpPeersForNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,48 +394,48 @@ func (x *ChangeBgpPeersForVpcRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeBgpPeersForVpcRequest.ProtoReflect.Descriptor instead.
-func (*ChangeBgpPeersForVpcRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use ChangeBgpPeersForNetworkRequest.ProtoReflect.Descriptor instead.
+func (*ChangeBgpPeersForNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ChangeBgpPeersForVpcRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
+func (x *ChangeBgpPeersForNetworkRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
 	}
 	return 0
 }
 
-func (x *ChangeBgpPeersForVpcRequest) GetBgpPeerIds() []string {
+func (x *ChangeBgpPeersForNetworkRequest) GetBgpPeerIds() []string {
 	if x != nil {
 		return x.BgpPeerIds
 	}
 	return nil
 }
 
-func (x *ChangeBgpPeersForVpcRequest) GetStartEventId() int64 {
+func (x *ChangeBgpPeersForNetworkRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ChangeBgpPeersForVpcRequest) GetInjectedJobId() string {
+func (x *ChangeBgpPeersForNetworkRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ChangeBgpPeersForVpcRequest) GetResponseType() string {
+func (x *ChangeBgpPeersForNetworkRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ChangeBgpPeersForVpcResponse represents the response from change the bgp peers for a vpc.
-type ChangeBgpPeersForVpcResponse struct {
+// ChangeBgpPeersForNetworkResponse represents the response from change the bgp peers for a network.
+type ChangeBgpPeersForNetworkResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -112,21 +443,21 @@ type ChangeBgpPeersForVpcResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeBgpPeersForVpcResponse) Reset() {
-	*x = ChangeBgpPeersForVpcResponse{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[1]
+func (x *ChangeBgpPeersForNetworkResponse) Reset() {
+	*x = ChangeBgpPeersForNetworkResponse{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeBgpPeersForVpcResponse) String() string {
+func (x *ChangeBgpPeersForNetworkResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeBgpPeersForVpcResponse) ProtoMessage() {}
+func (*ChangeBgpPeersForNetworkResponse) ProtoMessage() {}
 
-func (x *ChangeBgpPeersForVpcResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[1]
+func (x *ChangeBgpPeersForNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -137,128 +468,12 @@ func (x *ChangeBgpPeersForVpcResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeBgpPeersForVpcResponse.ProtoReflect.Descriptor instead.
-func (*ChangeBgpPeersForVpcResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use ChangeBgpPeersForNetworkResponse.ProtoReflect.Descriptor instead.
+func (*ChangeBgpPeersForNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ChangeBgpPeersForVpcResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteBgpPeerRequest represents the parameters for deletes an existing bgp peer.
-type DeleteBgpPeerRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the Bgp Peer
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBgpPeerRequest) Reset() {
-	*x = DeleteBgpPeerRequest{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBgpPeerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBgpPeerRequest) ProtoMessage() {}
-
-func (x *DeleteBgpPeerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBgpPeerRequest.ProtoReflect.Descriptor instead.
-func (*DeleteBgpPeerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DeleteBgpPeerRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteBgpPeerRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteBgpPeerRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteBgpPeerRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteBgpPeerResponse represents the response from deletes an existing bgp peer.
-type DeleteBgpPeerResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBgpPeerResponse) Reset() {
-	*x = DeleteBgpPeerResponse{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBgpPeerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBgpPeerResponse) ProtoMessage() {}
-
-func (x *DeleteBgpPeerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBgpPeerResponse.ProtoReflect.Descriptor instead.
-func (*DeleteBgpPeerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DeleteBgpPeerResponse) GetResult() *Result {
+func (x *ChangeBgpPeersForNetworkResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -291,7 +506,7 @@ type UpdateBgpPeerRequest struct {
 
 func (x *UpdateBgpPeerRequest) Reset() {
 	*x = UpdateBgpPeerRequest{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -303,7 +518,7 @@ func (x *UpdateBgpPeerRequest) String() string {
 func (*UpdateBgpPeerRequest) ProtoMessage() {}
 
 func (x *UpdateBgpPeerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +531,7 @@ func (x *UpdateBgpPeerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateBgpPeerRequest.ProtoReflect.Descriptor instead.
 func (*UpdateBgpPeerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UpdateBgpPeerRequest) GetId() int64 {
@@ -400,7 +615,7 @@ type UpdateBgpPeerResponse struct {
 
 func (x *UpdateBgpPeerResponse) Reset() {
 	*x = UpdateBgpPeerResponse{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -412,7 +627,7 @@ func (x *UpdateBgpPeerResponse) String() string {
 func (*UpdateBgpPeerResponse) ProtoMessage() {}
 
 func (x *UpdateBgpPeerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -425,7 +640,7 @@ func (x *UpdateBgpPeerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateBgpPeerResponse.ProtoReflect.Descriptor instead.
 func (*UpdateBgpPeerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateBgpPeerResponse) GetResult() *Result {
@@ -435,163 +650,32 @@ func (x *UpdateBgpPeerResponse) GetResult() *Result {
 	return nil
 }
 
-// ChangeBgpPeersForNetworkRequest represents the parameters for change the bgp peers for a network.
-type ChangeBgpPeersForNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the network which the Bgp Peers are associated to.
-	NetworkId *int64 `protobuf:"varint,1,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// Ids of the Bgp Peer. If it is empty, all BGP peers will be unlinked.
-	BgpPeerIds []string `protobuf:"bytes,2,rep,name=bgp_peer_ids,json=bgpPeerIds" json:"bgp_peer_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) Reset() {
-	*x = ChangeBgpPeersForNetworkRequest{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ChangeBgpPeersForNetworkRequest) ProtoMessage() {}
-
-func (x *ChangeBgpPeersForNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ChangeBgpPeersForNetworkRequest.ProtoReflect.Descriptor instead.
-func (*ChangeBgpPeersForNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) GetBgpPeerIds() []string {
-	if x != nil {
-		return x.BgpPeerIds
-	}
-	return nil
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ChangeBgpPeersForNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ChangeBgpPeersForNetworkResponse represents the response from change the bgp peers for a network.
-type ChangeBgpPeersForNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ChangeBgpPeersForNetworkResponse) Reset() {
-	*x = ChangeBgpPeersForNetworkResponse{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ChangeBgpPeersForNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ChangeBgpPeersForNetworkResponse) ProtoMessage() {}
-
-func (x *ChangeBgpPeersForNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ChangeBgpPeersForNetworkResponse.ProtoReflect.Descriptor instead.
-func (*ChangeBgpPeersForNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *ChangeBgpPeersForNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DedicateBgpPeerRequest represents the parameters for dedicates an existing bgp peer to an account or a domain.
-type DedicateBgpPeerRequest struct {
+// DeleteBgpPeerRequest represents the parameters for deletes an existing bgp peer.
+type DeleteBgpPeerRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of the Bgp Peer
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// account who will own the Bgp Peer
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who will own the Bgp Peer
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// domain ID of the account owning the Bgp Peer
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DedicateBgpPeerRequest) Reset() {
-	*x = DedicateBgpPeerRequest{}
+func (x *DeleteBgpPeerRequest) Reset() {
+	*x = DeleteBgpPeerRequest{}
 	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DedicateBgpPeerRequest) String() string {
+func (x *DeleteBgpPeerRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DedicateBgpPeerRequest) ProtoMessage() {}
+func (*DeleteBgpPeerRequest) ProtoMessage() {}
 
-func (x *DedicateBgpPeerRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteBgpPeerRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -603,62 +687,41 @@ func (x *DedicateBgpPeerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DedicateBgpPeerRequest.ProtoReflect.Descriptor instead.
-func (*DedicateBgpPeerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteBgpPeerRequest.ProtoReflect.Descriptor instead.
+func (*DeleteBgpPeerRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DedicateBgpPeerRequest) GetId() int64 {
+func (x *DeleteBgpPeerRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DedicateBgpPeerRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DedicateBgpPeerRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DedicateBgpPeerRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DedicateBgpPeerRequest) GetStartEventId() int64 {
+func (x *DeleteBgpPeerRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DedicateBgpPeerRequest) GetInjectedJobId() string {
+func (x *DeleteBgpPeerRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DedicateBgpPeerRequest) GetResponseType() string {
+func (x *DeleteBgpPeerRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DedicateBgpPeerResponse represents the response from dedicates an existing bgp peer to an account or a domain.
-type DedicateBgpPeerResponse struct {
+// DeleteBgpPeerResponse represents the response from deletes an existing bgp peer.
+type DeleteBgpPeerResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -666,20 +729,20 @@ type DedicateBgpPeerResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DedicateBgpPeerResponse) Reset() {
-	*x = DedicateBgpPeerResponse{}
+func (x *DeleteBgpPeerResponse) Reset() {
+	*x = DeleteBgpPeerResponse{}
 	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DedicateBgpPeerResponse) String() string {
+func (x *DeleteBgpPeerResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DedicateBgpPeerResponse) ProtoMessage() {}
+func (*DeleteBgpPeerResponse) ProtoMessage() {}
 
-func (x *DedicateBgpPeerResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteBgpPeerResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -691,12 +754,12 @@ func (x *DedicateBgpPeerResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DedicateBgpPeerResponse.ProtoReflect.Descriptor instead.
-func (*DedicateBgpPeerResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteBgpPeerResponse.ProtoReflect.Descriptor instead.
+func (*DeleteBgpPeerResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DedicateBgpPeerResponse) GetResult() *Result {
+func (x *DeleteBgpPeerResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -819,6 +882,131 @@ func (x *ReleaseDedicatedBgpPeerResponse) GetResult() *Result {
 	return nil
 }
 
+// ChangeBgpPeersForVpcRequest represents the parameters for change the bgp peers for a vpc.
+type ChangeBgpPeersForVpcRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the VPC which the Bgp Peers are associated to.
+	VpcId *int64 `protobuf:"varint,1,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// Ids of the Bgp Peer. If it is empty, all BGP peers will be unlinked.
+	BgpPeerIds []string `protobuf:"bytes,2,rep,name=bgp_peer_ids,json=bgpPeerIds" json:"bgp_peer_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeBgpPeersForVpcRequest) Reset() {
+	*x = ChangeBgpPeersForVpcRequest{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeBgpPeersForVpcRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeBgpPeersForVpcRequest) ProtoMessage() {}
+
+func (x *ChangeBgpPeersForVpcRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeBgpPeersForVpcRequest.ProtoReflect.Descriptor instead.
+func (*ChangeBgpPeersForVpcRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ChangeBgpPeersForVpcRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *ChangeBgpPeersForVpcRequest) GetBgpPeerIds() []string {
+	if x != nil {
+		return x.BgpPeerIds
+	}
+	return nil
+}
+
+func (x *ChangeBgpPeersForVpcRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ChangeBgpPeersForVpcRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ChangeBgpPeersForVpcRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ChangeBgpPeersForVpcResponse represents the response from change the bgp peers for a vpc.
+type ChangeBgpPeersForVpcResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeBgpPeersForVpcResponse) Reset() {
+	*x = ChangeBgpPeersForVpcResponse{}
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeBgpPeersForVpcResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeBgpPeersForVpcResponse) ProtoMessage() {}
+
+func (x *ChangeBgpPeersForVpcResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeBgpPeersForVpcResponse.ProtoReflect.Descriptor instead.
+func (*ChangeBgpPeersForVpcResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ChangeBgpPeersForVpcResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // CreateBgpPeerRequest represents the parameters for creates a bgp peer for a zone.
 type CreateBgpPeerRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -849,7 +1037,7 @@ type CreateBgpPeerRequest struct {
 
 func (x *CreateBgpPeerRequest) Reset() {
 	*x = CreateBgpPeerRequest{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -861,7 +1049,7 @@ func (x *CreateBgpPeerRequest) String() string {
 func (*CreateBgpPeerRequest) ProtoMessage() {}
 
 func (x *CreateBgpPeerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -874,7 +1062,7 @@ func (x *CreateBgpPeerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBgpPeerRequest.ProtoReflect.Descriptor instead.
 func (*CreateBgpPeerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CreateBgpPeerRequest) GetZoneId() int64 {
@@ -972,7 +1160,7 @@ type CreateBgpPeerResponse struct {
 
 func (x *CreateBgpPeerResponse) Reset() {
 	*x = CreateBgpPeerResponse{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -984,7 +1172,7 @@ func (x *CreateBgpPeerResponse) String() string {
 func (*CreateBgpPeerResponse) ProtoMessage() {}
 
 func (x *CreateBgpPeerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -997,7 +1185,7 @@ func (x *CreateBgpPeerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBgpPeerResponse.ProtoReflect.Descriptor instead.
 func (*CreateBgpPeerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CreateBgpPeerResponse) GetResult() *Result {
@@ -1005,194 +1193,6 @@ func (x *CreateBgpPeerResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// ListBgpPeersRequest represents the parameters for lists bgp peers.
-type ListBgpPeersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the Bgp Peer.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// UUID of zone to which the Bgp Peer belongs to.
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// AS number of the Bgp Peer.
-	AsNumber *int64 `protobuf:"varint,3,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
-	// the account which the Bgp Peer is dedicated to. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who which the Bgp Peer is dedicated to
-	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// the domain ID which the Bgp Peer is dedicated to.
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// Lists only dedicated or non-dedicated Bgp Peers. If not set, lists all dedicated and non-dedicated BGP peers the domain/account can access.
-	IsDedicated *bool `protobuf:"varint,7,opt,name=is_dedicated,json=isDedicated" json:"is_dedicated,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListBgpPeersRequest) Reset() {
-	*x = ListBgpPeersRequest{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListBgpPeersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListBgpPeersRequest) ProtoMessage() {}
-
-func (x *ListBgpPeersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListBgpPeersRequest.ProtoReflect.Descriptor instead.
-func (*ListBgpPeersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *ListBgpPeersRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetAsNumber() int64 {
-	if x != nil && x.AsNumber != nil {
-		return *x.AsNumber
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListBgpPeersRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetIsDedicated() bool {
-	if x != nil && x.IsDedicated != nil {
-		return *x.IsDedicated
-	}
-	return false
-}
-
-func (x *ListBgpPeersRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListBgpPeersRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListBgpPeersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListBgpPeersResponse represents the response from lists bgp peers.
-type ListBgpPeersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of BgpPeers
-	Items []*BgpPeer `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of BgpPeers
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListBgpPeersResponse) Reset() {
-	*x = ListBgpPeersResponse{}
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListBgpPeersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListBgpPeersResponse) ProtoMessage() {}
-
-func (x *ListBgpPeersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListBgpPeersResponse.ProtoReflect.Descriptor instead.
-func (*ListBgpPeersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *ListBgpPeersResponse) GetItems() []*BgpPeer {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListBgpPeersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // BgpPeer represents a BgpPeer Item
@@ -1563,22 +1563,46 @@ var File_cloudstack_management_network_bgp_v1_bgp_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/network/bgp/v1/bgp.gen.proto\x12$cloudstack.management.network.bgp.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xdb\x01\n" +
-	"\x1bChangeBgpPeersForVpcRequest\x12\x1d\n" +
-	"\x06vpc_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05vpcId\x12 \n" +
+	"2cloudstack/management/network/bgp/v1/bgp.gen.proto\x12$cloudstack.management.network.bgp.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8c\x02\n" +
+	"\x16DedicateBgpPeerRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"_\n" +
+	"\x17DedicateBgpPeerResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xd4\x03\n" +
+	"\x13ListBgpPeersRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1b\n" +
+	"\tas_number\x18\x03 \x01(\x03R\basNumber\x12\xa0\x01\n" +
+	"\faccount_name\x18\x04 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x05 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12(\n" +
+	"\fis_dedicated\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\visDedicated\x12\x18\n" +
+	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\n" +
+	" \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x83\x01\n" +
+	"\x14ListBgpPeersResponse\x12C\n" +
+	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.network.bgp.v1.BgpPeerR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe7\x01\n" +
+	"\x1fChangeBgpPeersForNetworkRequest\x12%\n" +
+	"\n" +
+	"network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12 \n" +
 	"\fbgp_peer_ids\x18\x02 \x03(\tR\n" +
 	"bgpPeerIds\x12$\n" +
 	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	"\x1cChangeBgpPeersForVpcResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xab\x01\n" +
-	"\x14DeleteBgpPeerRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
-	"\x15DeleteBgpPeerResponse\x12D\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
+	" ChangeBgpPeersForNetworkResponse\x12D\n" +
 	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\x87\x04\n" +
 	"\x14UpdateBgpPeerRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12(\n" +
@@ -1598,27 +1622,13 @@ const file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
 	"\x15UpdateBgpPeerResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xe7\x01\n" +
-	"\x1fChangeBgpPeersForNetworkRequest\x12%\n" +
-	"\n" +
-	"network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12 \n" +
-	"\fbgp_peer_ids\x18\x02 \x03(\tR\n" +
-	"bgpPeerIds\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
-	" ChangeBgpPeersForNetworkResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\x8c\x02\n" +
-	"\x16DedicateBgpPeerRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"_\n" +
-	"\x17DedicateBgpPeerResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xab\x01\n" +
+	"\x14DeleteBgpPeerRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
+	"\x15DeleteBgpPeerResponse\x12D\n" +
 	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xb5\x01\n" +
 	"\x1eReleaseDedicatedBgpPeerRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -1626,6 +1636,15 @@ const file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"g\n" +
 	"\x1fReleaseDedicatedBgpPeerResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xdb\x01\n" +
+	"\x1bChangeBgpPeersForVpcRequest\x12\x1d\n" +
+	"\x06vpc_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05vpcId\x12 \n" +
+	"\fbgp_peer_ids\x18\x02 \x03(\tR\n" +
+	"bgpPeerIds\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	"\x1cChangeBgpPeersForVpcResponse\x12D\n" +
 	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xc7\x04\n" +
 	"\x14CreateBgpPeerRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12(\n" +
@@ -1648,26 +1667,7 @@ const file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
 	"\x15CreateBgpPeerResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\xd4\x03\n" +
-	"\x13ListBgpPeersRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1b\n" +
-	"\tas_number\x18\x03 \x01(\x03R\basNumber\x12\xa0\x01\n" +
-	"\faccount_name\x18\x04 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x05 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12(\n" +
-	"\fis_dedicated\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\visDedicated\x12\x18\n" +
-	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\n" +
-	" \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x83\x01\n" +
-	"\x14ListBgpPeersResponse\x12C\n" +
-	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.network.bgp.v1.BgpPeerR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x96\x01\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.network.bgp.v1.ResultR\x06result\"\x96\x01\n" +
 	"\aBgpPeer\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1704,15 +1704,15 @@ const file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd3\t\n" +
 	"\n" +
-	"BgpService\x12\x9f\x01\n" +
+	"BgpService\x12\x90\x01\n" +
+	"\x0fDedicateBgpPeer\x12<.cloudstack.management.network.bgp.v1.DedicateBgpPeerRequest\x1a=.cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse\"\x00\x12\x87\x01\n" +
+	"\fListBgpPeers\x129.cloudstack.management.network.bgp.v1.ListBgpPeersRequest\x1a:.cloudstack.management.network.bgp.v1.ListBgpPeersResponse\"\x00\x12\xab\x01\n" +
+	"\x18ChangeBgpPeersForNetwork\x12E.cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkRequest\x1aF.cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse\"\x00\x12\x8a\x01\n" +
+	"\rUpdateBgpPeer\x12:.cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest\x1a;.cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse\"\x00\x12\x8a\x01\n" +
+	"\rDeleteBgpPeer\x12:.cloudstack.management.network.bgp.v1.DeleteBgpPeerRequest\x1a;.cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse\"\x00\x12\xa8\x01\n" +
+	"\x17ReleaseDedicatedBgpPeer\x12D.cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerRequest\x1aE.cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerResponse\"\x00\x12\x9f\x01\n" +
 	"\x14ChangeBgpPeersForVpc\x12A.cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcRequest\x1aB.cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse\"\x00\x12\x8a\x01\n" +
-	"\rDeleteBgpPeer\x12:.cloudstack.management.network.bgp.v1.DeleteBgpPeerRequest\x1a;.cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse\"\x00\x12\x8a\x01\n" +
-	"\rUpdateBgpPeer\x12:.cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest\x1a;.cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse\"\x00\x12\xab\x01\n" +
-	"\x18ChangeBgpPeersForNetwork\x12E.cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkRequest\x1aF.cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse\"\x00\x12\x90\x01\n" +
-	"\x0fDedicateBgpPeer\x12<.cloudstack.management.network.bgp.v1.DedicateBgpPeerRequest\x1a=.cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse\"\x00\x12\xa8\x01\n" +
-	"\x17ReleaseDedicatedBgpPeer\x12D.cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerRequest\x1aE.cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerResponse\"\x00\x12\x8a\x01\n" +
-	"\rCreateBgpPeer\x12:.cloudstack.management.network.bgp.v1.CreateBgpPeerRequest\x1a;.cloudstack.management.network.bgp.v1.CreateBgpPeerResponse\"\x00\x12\x87\x01\n" +
-	"\fListBgpPeers\x129.cloudstack.management.network.bgp.v1.ListBgpPeersRequest\x1a:.cloudstack.management.network.bgp.v1.ListBgpPeersResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xcc\x02\n" +
+	"\rCreateBgpPeer\x12:.cloudstack.management.network.bgp.v1.CreateBgpPeerRequest\x1a;.cloudstack.management.network.bgp.v1.CreateBgpPeerResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xcc\x02\n" +
 	"(com.cloudstack.management.network.bgp.v1B\vBgpGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/network/bgp/v1;bgpv1\xa2\x02\x04CMNB\xaa\x02$Cloudstack.Management.Network.Bgp.V1\xca\x02$Cloudstack\\Management\\Network\\Bgp\\V1\xe2\x020Cloudstack\\Management\\Network\\Bgp\\V1\\GPBMetadata\xea\x02(Cloudstack::Management::Network::Bgp::V1b\beditionsp\xe8\a"
 
 var (
@@ -1729,22 +1729,22 @@ func file_cloudstack_management_network_bgp_v1_bgp_gen_proto_rawDescGZIP() []byt
 
 var file_cloudstack_management_network_bgp_v1_bgp_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_cloudstack_management_network_bgp_v1_bgp_gen_proto_goTypes = []any{
-	(*ChangeBgpPeersForVpcRequest)(nil),      // 0: cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcRequest
-	(*ChangeBgpPeersForVpcResponse)(nil),     // 1: cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse
-	(*DeleteBgpPeerRequest)(nil),             // 2: cloudstack.management.network.bgp.v1.DeleteBgpPeerRequest
-	(*DeleteBgpPeerResponse)(nil),            // 3: cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse
-	(*UpdateBgpPeerRequest)(nil),             // 4: cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest
-	(*UpdateBgpPeerResponse)(nil),            // 5: cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse
-	(*ChangeBgpPeersForNetworkRequest)(nil),  // 6: cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkRequest
-	(*ChangeBgpPeersForNetworkResponse)(nil), // 7: cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse
-	(*DedicateBgpPeerRequest)(nil),           // 8: cloudstack.management.network.bgp.v1.DedicateBgpPeerRequest
-	(*DedicateBgpPeerResponse)(nil),          // 9: cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse
+	(*DedicateBgpPeerRequest)(nil),           // 0: cloudstack.management.network.bgp.v1.DedicateBgpPeerRequest
+	(*DedicateBgpPeerResponse)(nil),          // 1: cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse
+	(*ListBgpPeersRequest)(nil),              // 2: cloudstack.management.network.bgp.v1.ListBgpPeersRequest
+	(*ListBgpPeersResponse)(nil),             // 3: cloudstack.management.network.bgp.v1.ListBgpPeersResponse
+	(*ChangeBgpPeersForNetworkRequest)(nil),  // 4: cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkRequest
+	(*ChangeBgpPeersForNetworkResponse)(nil), // 5: cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse
+	(*UpdateBgpPeerRequest)(nil),             // 6: cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest
+	(*UpdateBgpPeerResponse)(nil),            // 7: cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse
+	(*DeleteBgpPeerRequest)(nil),             // 8: cloudstack.management.network.bgp.v1.DeleteBgpPeerRequest
+	(*DeleteBgpPeerResponse)(nil),            // 9: cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse
 	(*ReleaseDedicatedBgpPeerRequest)(nil),   // 10: cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerRequest
 	(*ReleaseDedicatedBgpPeerResponse)(nil),  // 11: cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerResponse
-	(*CreateBgpPeerRequest)(nil),             // 12: cloudstack.management.network.bgp.v1.CreateBgpPeerRequest
-	(*CreateBgpPeerResponse)(nil),            // 13: cloudstack.management.network.bgp.v1.CreateBgpPeerResponse
-	(*ListBgpPeersRequest)(nil),              // 14: cloudstack.management.network.bgp.v1.ListBgpPeersRequest
-	(*ListBgpPeersResponse)(nil),             // 15: cloudstack.management.network.bgp.v1.ListBgpPeersResponse
+	(*ChangeBgpPeersForVpcRequest)(nil),      // 12: cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcRequest
+	(*ChangeBgpPeersForVpcResponse)(nil),     // 13: cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse
+	(*CreateBgpPeerRequest)(nil),             // 14: cloudstack.management.network.bgp.v1.CreateBgpPeerRequest
+	(*CreateBgpPeerResponse)(nil),            // 15: cloudstack.management.network.bgp.v1.CreateBgpPeerResponse
 	(*BgpPeer)(nil),                          // 16: cloudstack.management.network.bgp.v1.BgpPeer
 	(*Success)(nil),                          // 17: cloudstack.management.network.bgp.v1.Success
 	(*Item)(nil),                             // 18: cloudstack.management.network.bgp.v1.Item
@@ -1754,33 +1754,33 @@ var file_cloudstack_management_network_bgp_v1_bgp_gen_proto_goTypes = []any{
 	nil,                                      // 22: cloudstack.management.network.bgp.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_network_bgp_v1_bgp_gen_proto_depIdxs = []int32{
-	19, // 0: cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
-	19, // 1: cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
-	20, // 2: cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest.details:type_name -> cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest.DetailsEntry
-	19, // 3: cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
-	19, // 4: cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
-	19, // 5: cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
+	19, // 0: cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
+	16, // 1: cloudstack.management.network.bgp.v1.ListBgpPeersResponse.items:type_name -> cloudstack.management.network.bgp.v1.BgpPeer
+	19, // 2: cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
+	20, // 3: cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest.details:type_name -> cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest.DetailsEntry
+	19, // 4: cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
+	19, // 5: cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
 	19, // 6: cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
-	21, // 7: cloudstack.management.network.bgp.v1.CreateBgpPeerRequest.details:type_name -> cloudstack.management.network.bgp.v1.CreateBgpPeerRequest.DetailsEntry
-	19, // 8: cloudstack.management.network.bgp.v1.CreateBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
-	16, // 9: cloudstack.management.network.bgp.v1.ListBgpPeersResponse.items:type_name -> cloudstack.management.network.bgp.v1.BgpPeer
+	19, // 7: cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
+	21, // 8: cloudstack.management.network.bgp.v1.CreateBgpPeerRequest.details:type_name -> cloudstack.management.network.bgp.v1.CreateBgpPeerRequest.DetailsEntry
+	19, // 9: cloudstack.management.network.bgp.v1.CreateBgpPeerResponse.result:type_name -> cloudstack.management.network.bgp.v1.Result
 	22, // 10: cloudstack.management.network.bgp.v1.Item.details:type_name -> cloudstack.management.network.bgp.v1.Item.DetailsEntry
-	0,  // 11: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForVpc:input_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcRequest
-	2,  // 12: cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer:input_type -> cloudstack.management.network.bgp.v1.DeleteBgpPeerRequest
-	4,  // 13: cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer:input_type -> cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest
-	6,  // 14: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForNetwork:input_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkRequest
-	8,  // 15: cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer:input_type -> cloudstack.management.network.bgp.v1.DedicateBgpPeerRequest
+	0,  // 11: cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer:input_type -> cloudstack.management.network.bgp.v1.DedicateBgpPeerRequest
+	2,  // 12: cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers:input_type -> cloudstack.management.network.bgp.v1.ListBgpPeersRequest
+	4,  // 13: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForNetwork:input_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkRequest
+	6,  // 14: cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer:input_type -> cloudstack.management.network.bgp.v1.UpdateBgpPeerRequest
+	8,  // 15: cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer:input_type -> cloudstack.management.network.bgp.v1.DeleteBgpPeerRequest
 	10, // 16: cloudstack.management.network.bgp.v1.BgpService.ReleaseDedicatedBgpPeer:input_type -> cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerRequest
-	12, // 17: cloudstack.management.network.bgp.v1.BgpService.CreateBgpPeer:input_type -> cloudstack.management.network.bgp.v1.CreateBgpPeerRequest
-	14, // 18: cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers:input_type -> cloudstack.management.network.bgp.v1.ListBgpPeersRequest
-	1,  // 19: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForVpc:output_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse
-	3,  // 20: cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer:output_type -> cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse
-	5,  // 21: cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer:output_type -> cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse
-	7,  // 22: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForNetwork:output_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse
-	9,  // 23: cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer:output_type -> cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse
+	12, // 17: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForVpc:input_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcRequest
+	14, // 18: cloudstack.management.network.bgp.v1.BgpService.CreateBgpPeer:input_type -> cloudstack.management.network.bgp.v1.CreateBgpPeerRequest
+	1,  // 19: cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer:output_type -> cloudstack.management.network.bgp.v1.DedicateBgpPeerResponse
+	3,  // 20: cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers:output_type -> cloudstack.management.network.bgp.v1.ListBgpPeersResponse
+	5,  // 21: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForNetwork:output_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForNetworkResponse
+	7,  // 22: cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer:output_type -> cloudstack.management.network.bgp.v1.UpdateBgpPeerResponse
+	9,  // 23: cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer:output_type -> cloudstack.management.network.bgp.v1.DeleteBgpPeerResponse
 	11, // 24: cloudstack.management.network.bgp.v1.BgpService.ReleaseDedicatedBgpPeer:output_type -> cloudstack.management.network.bgp.v1.ReleaseDedicatedBgpPeerResponse
-	13, // 25: cloudstack.management.network.bgp.v1.BgpService.CreateBgpPeer:output_type -> cloudstack.management.network.bgp.v1.CreateBgpPeerResponse
-	15, // 26: cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers:output_type -> cloudstack.management.network.bgp.v1.ListBgpPeersResponse
+	13, // 25: cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForVpc:output_type -> cloudstack.management.network.bgp.v1.ChangeBgpPeersForVpcResponse
+	15, // 26: cloudstack.management.network.bgp.v1.BgpService.CreateBgpPeer:output_type -> cloudstack.management.network.bgp.v1.CreateBgpPeerResponse
 	19, // [19:27] is the sub-list for method output_type
 	11, // [11:19] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name

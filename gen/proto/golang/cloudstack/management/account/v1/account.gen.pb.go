@@ -24,399 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteAccountRequest represents the parameters for deletes a account, and all users associated with this account
-type DeleteAccountRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Account id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAccountRequest) Reset() {
-	*x = DeleteAccountRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAccountRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAccountRequest) ProtoMessage() {}
-
-func (x *DeleteAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAccountRequest.ProtoReflect.Descriptor instead.
-func (*DeleteAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *DeleteAccountRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteAccountRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteAccountRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteAccountRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteAccountResponse represents the response from deletes a account, and all users associated with this account
-type DeleteAccountResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAccountResponse) Reset() {
-	*x = DeleteAccountResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAccountResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAccountResponse) ProtoMessage() {}
-
-func (x *DeleteAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAccountResponse.ProtoReflect.Descriptor instead.
-func (*DeleteAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DeleteAccountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddUserToProjectRequest represents the parameters for adds user to a project
-type AddUserToProjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the project to add the user to
-	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Name of the user to be added to the project
-	Username *string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
-	// email ID of user to which invitation to the project is going to be sent
-	Email *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
-	// ID of the project role
-	ProjectRoleId *int64 `protobuf:"varint,4,opt,name=project_role_id,json=projectRoleId" json:"project_role_id,omitempty"`
-	// Project role type to be assigned to the user - Admin/Regular
-	RoleType *string `protobuf:"bytes,5,opt,name=role_type,json=roleType" json:"role_type,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddUserToProjectRequest) Reset() {
-	*x = AddUserToProjectRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddUserToProjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddUserToProjectRequest) ProtoMessage() {}
-
-func (x *AddUserToProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddUserToProjectRequest.ProtoReflect.Descriptor instead.
-func (*AddUserToProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *AddUserToProjectRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *AddUserToProjectRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *AddUserToProjectRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
-	}
-	return ""
-}
-
-func (x *AddUserToProjectRequest) GetProjectRoleId() int64 {
-	if x != nil && x.ProjectRoleId != nil {
-		return *x.ProjectRoleId
-	}
-	return 0
-}
-
-func (x *AddUserToProjectRequest) GetRoleType() string {
-	if x != nil && x.RoleType != nil {
-		return *x.RoleType
-	}
-	return ""
-}
-
-func (x *AddUserToProjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddUserToProjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddUserToProjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddUserToProjectResponse represents the response from adds user to a project
-type AddUserToProjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddUserToProjectResponse) Reset() {
-	*x = AddUserToProjectResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddUserToProjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddUserToProjectResponse) ProtoMessage() {}
-
-func (x *AddUserToProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddUserToProjectResponse.ProtoReflect.Descriptor instead.
-func (*AddUserToProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *AddUserToProjectResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteAccountFromProjectRequest represents the parameters for deletes account from the project
-type DeleteAccountFromProjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the project to remove the account from
-	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// name of the account to be removed from the project
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAccountFromProjectRequest) Reset() {
-	*x = DeleteAccountFromProjectRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAccountFromProjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAccountFromProjectRequest) ProtoMessage() {}
-
-func (x *DeleteAccountFromProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAccountFromProjectRequest.ProtoReflect.Descriptor instead.
-func (*DeleteAccountFromProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteAccountFromProjectRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DeleteAccountFromProjectRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DeleteAccountFromProjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteAccountFromProjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteAccountFromProjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteAccountFromProjectResponse represents the response from deletes account from the project
-type DeleteAccountFromProjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAccountFromProjectResponse) Reset() {
-	*x = DeleteAccountFromProjectResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAccountFromProjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAccountFromProjectResponse) ProtoMessage() {}
-
-func (x *DeleteAccountFromProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAccountFromProjectResponse.ProtoReflect.Descriptor instead.
-func (*DeleteAccountFromProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteAccountFromProjectResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // UpdateAccountRequest represents the parameters for updates account information for the authenticated user
 type UpdateAccountRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -443,7 +50,7 @@ type UpdateAccountRequest struct {
 
 func (x *UpdateAccountRequest) Reset() {
 	*x = UpdateAccountRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -455,7 +62,7 @@ func (x *UpdateAccountRequest) String() string {
 func (*UpdateAccountRequest) ProtoMessage() {}
 
 func (x *UpdateAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -468,7 +75,7 @@ func (x *UpdateAccountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAccountRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UpdateAccountRequest) GetId() int64 {
@@ -545,7 +152,7 @@ type UpdateAccountResponse struct {
 
 func (x *UpdateAccountResponse) Reset() {
 	*x = UpdateAccountResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -557,7 +164,7 @@ func (x *UpdateAccountResponse) String() string {
 func (*UpdateAccountResponse) ProtoMessage() {}
 
 func (x *UpdateAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -570,738 +177,10 @@ func (x *UpdateAccountResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAccountResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UpdateAccountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// EnableAccountRequest represents the parameters for enables an account
-type EnableAccountRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Account id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Enables specified account.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Enables specified account in this domain.
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableAccountRequest) Reset() {
-	*x = EnableAccountRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableAccountRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableAccountRequest) ProtoMessage() {}
-
-func (x *EnableAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableAccountRequest.ProtoReflect.Descriptor instead.
-func (*EnableAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *EnableAccountRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *EnableAccountRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *EnableAccountRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *EnableAccountRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// EnableAccountResponse represents the response from enables an account
-type EnableAccountResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableAccountResponse) Reset() {
-	*x = EnableAccountResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableAccountResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableAccountResponse) ProtoMessage() {}
-
-func (x *EnableAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableAccountResponse.ProtoReflect.Descriptor instead.
-func (*EnableAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *EnableAccountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListAccountsCmdByAdminRequest represents the parameters for lists accounts and provides detailed account information for listed accounts
-type ListAccountsCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list accounts by account type. Valid account types are 1 (admin), 2 (domain-admin), and 0 (user).
-	AccountType *int32 `protobuf:"varint,1,opt,name=account_type,json=accountType" json:"account_type,omitempty"`
-	// list account by account ID
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// list accounts by cleanuprequired attribute (values are true or false)
-	CleanupRequired *bool `protobuf:"varint,3,opt,name=cleanup_required,json=cleanupRequired" json:"cleanup_required,omitempty"`
-	// list account by account name
-	SearchName *string `protobuf:"bytes,4,opt,name=search_name,json=searchName" json:"search_name,omitempty"`
-	// list accounts by state. Valid states are enabled, disabled, and locked.
-	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
-	// comma separated list of account details requested, value can be a list of [ all, resource, min]
-	ViewDetails []string `protobuf:"bytes,6,rep,name=view_details,json=viewDetails" json:"view_details,omitempty"`
-	// List accounts by the Api key access value
-	ApiKeyAccess *string `protobuf:"bytes,7,opt,name=api_key_access,json=apiKeyAccess" json:"api_key_access,omitempty"`
-	// flag to display the resource icon for accounts
-	ShowIcon *bool `protobuf:"varint,8,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// Tag for resource type to return usage
-	Tag *string `protobuf:"bytes,9,opt,name=tag" json:"tag,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,10,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,11,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,12,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,13,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,14,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,15,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,16,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListAccountsCmdByAdminRequest) Reset() {
-	*x = ListAccountsCmdByAdminRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListAccountsCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListAccountsCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ListAccountsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListAccountsCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ListAccountsCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetAccountType() int32 {
-	if x != nil && x.AccountType != nil {
-		return *x.AccountType
-	}
-	return 0
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetCleanupRequired() bool {
-	if x != nil && x.CleanupRequired != nil {
-		return *x.CleanupRequired
-	}
-	return false
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetSearchName() string {
-	if x != nil && x.SearchName != nil {
-		return *x.SearchName
-	}
-	return ""
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetViewDetails() []string {
-	if x != nil {
-		return x.ViewDetails
-	}
-	return nil
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetApiKeyAccess() string {
-	if x != nil && x.ApiKeyAccess != nil {
-		return *x.ApiKeyAccess
-	}
-	return ""
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetTag() string {
-	if x != nil && x.Tag != nil {
-		return *x.Tag
-	}
-	return ""
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListAccountsCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListAccountsCmdByAdminResponse represents the response from lists accounts and provides detailed account information for listed accounts
-type ListAccountsCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Accounts
-	Items []*Account `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Accounts
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListAccountsCmdByAdminResponse) Reset() {
-	*x = ListAccountsCmdByAdminResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListAccountsCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListAccountsCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ListAccountsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListAccountsCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ListAccountsCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListAccountsCmdByAdminResponse) GetItems() []*Account {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListAccountsCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DisableAccountRequest represents the parameters for disables an account
-type DisableAccountRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Account id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Disables specified account.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Disables specified account in this domain.
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// If true, only lock the account; else disable the account
-	LockRequested *bool `protobuf:"varint,4,opt,name=lock_requested,json=lockRequested" json:"lock_requested,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableAccountRequest) Reset() {
-	*x = DisableAccountRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableAccountRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableAccountRequest) ProtoMessage() {}
-
-func (x *DisableAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableAccountRequest.ProtoReflect.Descriptor instead.
-func (*DisableAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *DisableAccountRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DisableAccountRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DisableAccountRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DisableAccountRequest) GetLockRequested() bool {
-	if x != nil && x.LockRequested != nil {
-		return *x.LockRequested
-	}
-	return false
-}
-
-func (x *DisableAccountRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DisableAccountRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DisableAccountRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DisableAccountResponse represents the response from disables an account
-type DisableAccountResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableAccountResponse) Reset() {
-	*x = DisableAccountResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableAccountResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableAccountResponse) ProtoMessage() {}
-
-func (x *DisableAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableAccountResponse.ProtoReflect.Descriptor instead.
-func (*DisableAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *DisableAccountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// LockAccountRequest represents the parameters for this deprecated function used to locks an account. look for the api disableaccount instead
-type LockAccountRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Locks the specified account.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Locks the specified account on this domain.
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LockAccountRequest) Reset() {
-	*x = LockAccountRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LockAccountRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LockAccountRequest) ProtoMessage() {}
-
-func (x *LockAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LockAccountRequest.ProtoReflect.Descriptor instead.
-func (*LockAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *LockAccountRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *LockAccountRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *LockAccountRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// LockAccountResponse represents the response from this deprecated function used to locks an account. look for the api disableaccount instead
-type LockAccountResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LockAccountResponse) Reset() {
-	*x = LockAccountResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LockAccountResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LockAccountResponse) ProtoMessage() {}
-
-func (x *LockAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LockAccountResponse.ProtoReflect.Descriptor instead.
-func (*LockAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *LockAccountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteUserFromProjectRequest represents the parameters for deletes user from the project
-type DeleteUserFromProjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the project to remove the user from
-	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Id of the user to be removed from the project
-	UserId *int64 `protobuf:"varint,2,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteUserFromProjectRequest) Reset() {
-	*x = DeleteUserFromProjectRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteUserFromProjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteUserFromProjectRequest) ProtoMessage() {}
-
-func (x *DeleteUserFromProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteUserFromProjectRequest.ProtoReflect.Descriptor instead.
-func (*DeleteUserFromProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *DeleteUserFromProjectRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DeleteUserFromProjectRequest) GetUserId() int64 {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
-	}
-	return 0
-}
-
-func (x *DeleteUserFromProjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteUserFromProjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteUserFromProjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteUserFromProjectResponse represents the response from deletes user from the project
-type DeleteUserFromProjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteUserFromProjectResponse) Reset() {
-	*x = DeleteUserFromProjectResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteUserFromProjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteUserFromProjectResponse) ProtoMessage() {}
-
-func (x *DeleteUserFromProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteUserFromProjectResponse.ProtoReflect.Descriptor instead.
-func (*DeleteUserFromProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *DeleteUserFromProjectResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1332,7 +211,7 @@ type ListProjectAccountsRequest struct {
 
 func (x *ListProjectAccountsRequest) Reset() {
 	*x = ListProjectAccountsRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1344,7 +223,7 @@ func (x *ListProjectAccountsRequest) String() string {
 func (*ListProjectAccountsRequest) ProtoMessage() {}
 
 func (x *ListProjectAccountsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1357,7 +236,7 @@ func (x *ListProjectAccountsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProjectAccountsRequest.ProtoReflect.Descriptor instead.
 func (*ListProjectAccountsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{18}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListProjectAccountsRequest) GetProjectId() int64 {
@@ -1436,7 +315,7 @@ type ListProjectAccountsResponse struct {
 
 func (x *ListProjectAccountsResponse) Reset() {
 	*x = ListProjectAccountsResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1448,7 +327,7 @@ func (x *ListProjectAccountsResponse) String() string {
 func (*ListProjectAccountsResponse) ProtoMessage() {}
 
 func (x *ListProjectAccountsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1461,7 +340,7 @@ func (x *ListProjectAccountsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProjectAccountsResponse.ProtoReflect.Descriptor instead.
 func (*ListProjectAccountsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{19}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListProjectAccountsResponse) GetItems() []*Project {
@@ -1478,57 +357,35 @@ func (x *ListProjectAccountsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateAccountRequest represents the parameters for creates an account
-type CreateAccountRequest struct {
+// DeleteUserFromProjectRequest represents the parameters for deletes user from the project
+type DeleteUserFromProjectRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the account to be created. The user will be added to this newly created account. If no account is specified, the username will be used as the account name.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Type of the account.  Specify 0 for user, 1 for root admin, and 2 for domain admin
-	AccountType *int32 `protobuf:"varint,2,opt,name=account_type,json=accountType" json:"account_type,omitempty"`
-	// Creates the account under the specified role.
-	RoleId *int64 `protobuf:"varint,3,opt,name=role_id,json=roleId" json:"role_id,omitempty"`
-	// Creates the user under the specified domain.
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// email
-	Email *string `protobuf:"bytes,5,opt,name=email" json:"email,omitempty"`
-	// firstname
-	FirstName *string `protobuf:"bytes,6,opt,name=first_name,json=firstName" json:"first_name,omitempty"`
-	// lastname
-	LastName *string `protobuf:"bytes,7,opt,name=last_name,json=lastName" json:"last_name,omitempty"`
-	// Clear text password (Default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section.
-	Password *string `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
-	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
-	TimeZone *string `protobuf:"bytes,9,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	// Unique username.
-	UserName *string `protobuf:"bytes,10,opt,name=user_name,json=userName" json:"user_name,omitempty"`
-	// Network domain for the account's networks
-	NetworkDomain *string `protobuf:"bytes,11,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
-	// details for account used to store specific parameters
-	Details map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Account UUID, required for adding account from external provisioning system
-	AccountUUId *string `protobuf:"bytes,13,opt,name=account_u_u_id,json=accountUUId" json:"account_u_u_id,omitempty"`
-	// User UUID, required for adding account from external provisioning system
-	UserUUId *string `protobuf:"bytes,14,opt,name=user_u_u_id,json=userUUId" json:"user_u_u_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// ID of the project to remove the user from
+	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Id of the user to be removed from the project
+	UserId *int64 `protobuf:"varint,2,opt,name=user_id,json=userId" json:"user_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateAccountRequest) Reset() {
-	*x = CreateAccountRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[20]
+func (x *DeleteUserFromProjectRequest) Reset() {
+	*x = DeleteUserFromProjectRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateAccountRequest) String() string {
+func (x *DeleteUserFromProjectRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAccountRequest) ProtoMessage() {}
+func (*DeleteUserFromProjectRequest) ProtoMessage() {}
 
-func (x *CreateAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[20]
+func (x *DeleteUserFromProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1539,118 +396,48 @@ func (x *CreateAccountRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAccountRequest.ProtoReflect.Descriptor instead.
-func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{20}
+// Deprecated: Use DeleteUserFromProjectRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserFromProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateAccountRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetAccountType() int32 {
-	if x != nil && x.AccountType != nil {
-		return *x.AccountType
+func (x *DeleteUserFromProjectRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *CreateAccountRequest) GetRoleId() int64 {
-	if x != nil && x.RoleId != nil {
-		return *x.RoleId
+func (x *DeleteUserFromProjectRequest) GetUserId() int64 {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
 	}
 	return 0
 }
 
-func (x *CreateAccountRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *DeleteUserFromProjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CreateAccountRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
+func (x *DeleteUserFromProjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreateAccountRequest) GetFirstName() string {
-	if x != nil && x.FirstName != nil {
-		return *x.FirstName
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetLastName() string {
-	if x != nil && x.LastName != nil {
-		return *x.LastName
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetTimeZone() string {
-	if x != nil && x.TimeZone != nil {
-		return *x.TimeZone
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetUserName() string {
-	if x != nil && x.UserName != nil {
-		return *x.UserName
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetNetworkDomain() string {
-	if x != nil && x.NetworkDomain != nil {
-		return *x.NetworkDomain
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *CreateAccountRequest) GetAccountUUId() string {
-	if x != nil && x.AccountUUId != nil {
-		return *x.AccountUUId
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetUserUUId() string {
-	if x != nil && x.UserUUId != nil {
-		return *x.UserUUId
-	}
-	return ""
-}
-
-func (x *CreateAccountRequest) GetResponseType() string {
+func (x *DeleteUserFromProjectRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateAccountResponse represents the response from creates an account
-type CreateAccountResponse struct {
+// DeleteUserFromProjectResponse represents the response from deletes user from the project
+type DeleteUserFromProjectResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1658,21 +445,21 @@ type CreateAccountResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateAccountResponse) Reset() {
-	*x = CreateAccountResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[21]
+func (x *DeleteUserFromProjectResponse) Reset() {
+	*x = DeleteUserFromProjectResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateAccountResponse) String() string {
+func (x *DeleteUserFromProjectResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAccountResponse) ProtoMessage() {}
+func (*DeleteUserFromProjectResponse) ProtoMessage() {}
 
-func (x *CreateAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[21]
+func (x *DeleteUserFromProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1683,12 +470,802 @@ func (x *CreateAccountResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAccountResponse.ProtoReflect.Descriptor instead.
-func (*CreateAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{21}
+// Deprecated: Use DeleteUserFromProjectResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserFromProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CreateAccountResponse) GetResult() *Result {
+func (x *DeleteUserFromProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// EnableAccountRequest represents the parameters for enables an account
+type EnableAccountRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Account id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Enables specified account.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Enables specified account in this domain.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableAccountRequest) Reset() {
+	*x = EnableAccountRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableAccountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableAccountRequest) ProtoMessage() {}
+
+func (x *EnableAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableAccountRequest.ProtoReflect.Descriptor instead.
+func (*EnableAccountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *EnableAccountRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *EnableAccountRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *EnableAccountRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *EnableAccountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// EnableAccountResponse represents the response from enables an account
+type EnableAccountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableAccountResponse) Reset() {
+	*x = EnableAccountResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableAccountResponse) ProtoMessage() {}
+
+func (x *EnableAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableAccountResponse.ProtoReflect.Descriptor instead.
+func (*EnableAccountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *EnableAccountResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisableAccountRequest represents the parameters for disables an account
+type DisableAccountRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Account id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Disables specified account.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Disables specified account in this domain.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// If true, only lock the account; else disable the account
+	LockRequested *bool `protobuf:"varint,4,opt,name=lock_requested,json=lockRequested" json:"lock_requested,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableAccountRequest) Reset() {
+	*x = DisableAccountRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableAccountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableAccountRequest) ProtoMessage() {}
+
+func (x *DisableAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableAccountRequest.ProtoReflect.Descriptor instead.
+func (*DisableAccountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DisableAccountRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DisableAccountRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DisableAccountRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DisableAccountRequest) GetLockRequested() bool {
+	if x != nil && x.LockRequested != nil {
+		return *x.LockRequested
+	}
+	return false
+}
+
+func (x *DisableAccountRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisableAccountRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisableAccountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisableAccountResponse represents the response from disables an account
+type DisableAccountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableAccountResponse) Reset() {
+	*x = DisableAccountResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableAccountResponse) ProtoMessage() {}
+
+func (x *DisableAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableAccountResponse.ProtoReflect.Descriptor instead.
+func (*DisableAccountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DisableAccountResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteAccountRequest represents the parameters for deletes a account, and all users associated with this account
+type DeleteAccountRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Account id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAccountRequest) Reset() {
+	*x = DeleteAccountRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAccountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAccountRequest) ProtoMessage() {}
+
+func (x *DeleteAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAccountRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAccountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteAccountRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteAccountRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteAccountRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteAccountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteAccountResponse represents the response from deletes a account, and all users associated with this account
+type DeleteAccountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAccountResponse) Reset() {
+	*x = DeleteAccountResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAccountResponse) ProtoMessage() {}
+
+func (x *DeleteAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAccountResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAccountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteAccountResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddUserToProjectRequest represents the parameters for adds user to a project
+type AddUserToProjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the project to add the user to
+	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Name of the user to be added to the project
+	Username *string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
+	// email ID of user to which invitation to the project is going to be sent
+	Email *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
+	// ID of the project role
+	ProjectRoleId *int64 `protobuf:"varint,4,opt,name=project_role_id,json=projectRoleId" json:"project_role_id,omitempty"`
+	// Project role type to be assigned to the user - Admin/Regular
+	RoleType *string `protobuf:"bytes,5,opt,name=role_type,json=roleType" json:"role_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddUserToProjectRequest) Reset() {
+	*x = AddUserToProjectRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddUserToProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddUserToProjectRequest) ProtoMessage() {}
+
+func (x *AddUserToProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddUserToProjectRequest.ProtoReflect.Descriptor instead.
+func (*AddUserToProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AddUserToProjectRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *AddUserToProjectRequest) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
+	}
+	return ""
+}
+
+func (x *AddUserToProjectRequest) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
+	}
+	return ""
+}
+
+func (x *AddUserToProjectRequest) GetProjectRoleId() int64 {
+	if x != nil && x.ProjectRoleId != nil {
+		return *x.ProjectRoleId
+	}
+	return 0
+}
+
+func (x *AddUserToProjectRequest) GetRoleType() string {
+	if x != nil && x.RoleType != nil {
+		return *x.RoleType
+	}
+	return ""
+}
+
+func (x *AddUserToProjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddUserToProjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddUserToProjectRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddUserToProjectResponse represents the response from adds user to a project
+type AddUserToProjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddUserToProjectResponse) Reset() {
+	*x = AddUserToProjectResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddUserToProjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddUserToProjectResponse) ProtoMessage() {}
+
+func (x *AddUserToProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddUserToProjectResponse.ProtoReflect.Descriptor instead.
+func (*AddUserToProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *AddUserToProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddAccountToProjectRequest represents the parameters for adds account to a project
+type AddAccountToProjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the project to add the account to
+	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// name of the account to be added to the project
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// email to which invitation to the project is going to be sent
+	Email *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
+	// ID of the project role
+	ProjectRoleId *int64 `protobuf:"varint,4,opt,name=project_role_id,json=projectRoleId" json:"project_role_id,omitempty"`
+	// Project role type to be assigned to the user - Admin/Regular; default: Regular
+	RoleType *string `protobuf:"bytes,5,opt,name=role_type,json=roleType" json:"role_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddAccountToProjectRequest) Reset() {
+	*x = AddAccountToProjectRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddAccountToProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddAccountToProjectRequest) ProtoMessage() {}
+
+func (x *AddAccountToProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddAccountToProjectRequest.ProtoReflect.Descriptor instead.
+func (*AddAccountToProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *AddAccountToProjectRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *AddAccountToProjectRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *AddAccountToProjectRequest) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
+	}
+	return ""
+}
+
+func (x *AddAccountToProjectRequest) GetProjectRoleId() int64 {
+	if x != nil && x.ProjectRoleId != nil {
+		return *x.ProjectRoleId
+	}
+	return 0
+}
+
+func (x *AddAccountToProjectRequest) GetRoleType() string {
+	if x != nil && x.RoleType != nil {
+		return *x.RoleType
+	}
+	return ""
+}
+
+func (x *AddAccountToProjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddAccountToProjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddAccountToProjectRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddAccountToProjectResponse represents the response from adds account to a project
+type AddAccountToProjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddAccountToProjectResponse) Reset() {
+	*x = AddAccountToProjectResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddAccountToProjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddAccountToProjectResponse) ProtoMessage() {}
+
+func (x *AddAccountToProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddAccountToProjectResponse.ProtoReflect.Descriptor instead.
+func (*AddAccountToProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *AddAccountToProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// LockAccountRequest represents the parameters for this deprecated function used to locks an account. look for the api disableaccount instead
+type LockAccountRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Locks the specified account.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Locks the specified account on this domain.
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LockAccountRequest) Reset() {
+	*x = LockAccountRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LockAccountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LockAccountRequest) ProtoMessage() {}
+
+func (x *LockAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LockAccountRequest.ProtoReflect.Descriptor instead.
+func (*LockAccountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *LockAccountRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *LockAccountRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *LockAccountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// LockAccountResponse represents the response from this deprecated function used to locks an account. look for the api disableaccount instead
+type LockAccountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LockAccountResponse) Reset() {
+	*x = LockAccountResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LockAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LockAccountResponse) ProtoMessage() {}
+
+func (x *LockAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LockAccountResponse.ProtoReflect.Descriptor instead.
+func (*LockAccountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *LockAccountResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1735,7 +1312,7 @@ type ListAccountsRequest struct {
 
 func (x *ListAccountsRequest) Reset() {
 	*x = ListAccountsRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1747,7 +1324,7 @@ func (x *ListAccountsRequest) String() string {
 func (*ListAccountsRequest) ProtoMessage() {}
 
 func (x *ListAccountsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1760,7 +1337,7 @@ func (x *ListAccountsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAccountsRequest.ProtoReflect.Descriptor instead.
 func (*ListAccountsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{22}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListAccountsRequest) GetRunAsAdmin() bool {
@@ -1895,7 +1472,7 @@ type ListAccountsResponse struct {
 
 func (x *ListAccountsResponse) Reset() {
 	*x = ListAccountsResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[23]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1907,7 +1484,7 @@ func (x *ListAccountsResponse) String() string {
 func (*ListAccountsResponse) ProtoMessage() {}
 
 func (x *ListAccountsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[23]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1920,7 +1497,7 @@ func (x *ListAccountsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAccountsResponse.ProtoReflect.Descriptor instead.
 func (*ListAccountsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{23}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListAccountsResponse) GetItems() []*Account {
@@ -1937,41 +1514,35 @@ func (x *ListAccountsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// AddAccountToProjectRequest represents the parameters for adds account to a project
-type AddAccountToProjectRequest struct {
+// DeleteAccountFromProjectRequest represents the parameters for deletes account from the project
+type DeleteAccountFromProjectRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the project to add the account to
+	// ID of the project to remove the account from
 	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// name of the account to be added to the project
+	// name of the account to be removed from the project
 	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// email to which invitation to the project is going to be sent
-	Email *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
-	// ID of the project role
-	ProjectRoleId *int64 `protobuf:"varint,4,opt,name=project_role_id,json=projectRoleId" json:"project_role_id,omitempty"`
-	// Project role type to be assigned to the user - Admin/Regular; default: Regular
-	RoleType *string `protobuf:"bytes,5,opt,name=role_type,json=roleType" json:"role_type,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddAccountToProjectRequest) Reset() {
-	*x = AddAccountToProjectRequest{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[24]
+func (x *DeleteAccountFromProjectRequest) Reset() {
+	*x = DeleteAccountFromProjectRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddAccountToProjectRequest) String() string {
+func (x *DeleteAccountFromProjectRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddAccountToProjectRequest) ProtoMessage() {}
+func (*DeleteAccountFromProjectRequest) ProtoMessage() {}
 
-func (x *AddAccountToProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[24]
+func (x *DeleteAccountFromProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1982,69 +1553,48 @@ func (x *AddAccountToProjectRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddAccountToProjectRequest.ProtoReflect.Descriptor instead.
-func (*AddAccountToProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{24}
+// Deprecated: Use DeleteAccountFromProjectRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAccountFromProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *AddAccountToProjectRequest) GetProjectId() int64 {
+func (x *DeleteAccountFromProjectRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *AddAccountToProjectRequest) GetAccountName() string {
+func (x *DeleteAccountFromProjectRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *AddAccountToProjectRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
-	}
-	return ""
-}
-
-func (x *AddAccountToProjectRequest) GetProjectRoleId() int64 {
-	if x != nil && x.ProjectRoleId != nil {
-		return *x.ProjectRoleId
-	}
-	return 0
-}
-
-func (x *AddAccountToProjectRequest) GetRoleType() string {
-	if x != nil && x.RoleType != nil {
-		return *x.RoleType
-	}
-	return ""
-}
-
-func (x *AddAccountToProjectRequest) GetStartEventId() int64 {
+func (x *DeleteAccountFromProjectRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *AddAccountToProjectRequest) GetInjectedJobId() string {
+func (x *DeleteAccountFromProjectRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *AddAccountToProjectRequest) GetResponseType() string {
+func (x *DeleteAccountFromProjectRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// AddAccountToProjectResponse represents the response from adds account to a project
-type AddAccountToProjectResponse struct {
+// DeleteAccountFromProjectResponse represents the response from deletes account from the project
+type DeleteAccountFromProjectResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2052,21 +1602,21 @@ type AddAccountToProjectResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddAccountToProjectResponse) Reset() {
-	*x = AddAccountToProjectResponse{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[25]
+func (x *DeleteAccountFromProjectResponse) Reset() {
+	*x = DeleteAccountFromProjectResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddAccountToProjectResponse) String() string {
+func (x *DeleteAccountFromProjectResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddAccountToProjectResponse) ProtoMessage() {}
+func (*DeleteAccountFromProjectResponse) ProtoMessage() {}
 
-func (x *AddAccountToProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[25]
+func (x *DeleteAccountFromProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2077,50 +1627,69 @@ func (x *AddAccountToProjectResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddAccountToProjectResponse.ProtoReflect.Descriptor instead.
-func (*AddAccountToProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{25}
+// Deprecated: Use DeleteAccountFromProjectResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAccountFromProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *AddAccountToProjectResponse) GetResult() *Result {
+func (x *DeleteAccountFromProjectResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// Account represents a Account Item
-type Account struct {
+// CreateAccountRequest represents the parameters for creates an account
+type CreateAccountRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Account
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Account
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Account
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Account
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// Name of the account to be created. The user will be added to this newly created account. If no account is specified, the username will be used as the account name.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Type of the account.  Specify 0 for user, 1 for root admin, and 2 for domain admin
+	AccountType *int32 `protobuf:"varint,2,opt,name=account_type,json=accountType" json:"account_type,omitempty"`
+	// Creates the account under the specified role.
+	RoleId *int64 `protobuf:"varint,3,opt,name=role_id,json=roleId" json:"role_id,omitempty"`
+	// Creates the user under the specified domain.
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// email
+	Email *string `protobuf:"bytes,5,opt,name=email" json:"email,omitempty"`
+	// firstname
+	FirstName *string `protobuf:"bytes,6,opt,name=first_name,json=firstName" json:"first_name,omitempty"`
+	// lastname
+	LastName *string `protobuf:"bytes,7,opt,name=last_name,json=lastName" json:"last_name,omitempty"`
+	// Clear text password (Default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section.
+	Password *string `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
+	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
+	TimeZone *string `protobuf:"bytes,9,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	// Unique username.
+	UserName *string `protobuf:"bytes,10,opt,name=user_name,json=userName" json:"user_name,omitempty"`
+	// Network domain for the account's networks
+	NetworkDomain *string `protobuf:"bytes,11,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
+	// details for account used to store specific parameters
+	Details map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Account UUID, required for adding account from external provisioning system
+	AccountUUId *string `protobuf:"bytes,13,opt,name=account_u_u_id,json=accountUUId" json:"account_u_u_id,omitempty"`
+	// User UUID, required for adding account from external provisioning system
+	UserUUId *string `protobuf:"bytes,14,opt,name=user_u_u_id,json=userUUId" json:"user_u_u_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Account) Reset() {
-	*x = Account{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[26]
+func (x *CreateAccountRequest) Reset() {
+	*x = CreateAccountRequest{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Account) String() string {
+func (x *CreateAccountRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Account) ProtoMessage() {}
+func (*CreateAccountRequest) ProtoMessage() {}
 
-func (x *Account) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[26]
+func (x *CreateAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2131,44 +1700,160 @@ func (x *Account) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Account.ProtoReflect.Descriptor instead.
-func (*Account) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{26}
+// Deprecated: Use CreateAccountRequest.ProtoReflect.Descriptor instead.
+func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *Account) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateAccountRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *Account) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *CreateAccountRequest) GetAccountType() int32 {
+	if x != nil && x.AccountType != nil {
+		return *x.AccountType
+	}
+	return 0
+}
+
+func (x *CreateAccountRequest) GetRoleId() int64 {
+	if x != nil && x.RoleId != nil {
+		return *x.RoleId
+	}
+	return 0
+}
+
+func (x *CreateAccountRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateAccountRequest) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
 	}
 	return ""
 }
 
-func (x *Account) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *CreateAccountRequest) GetFirstName() string {
+	if x != nil && x.FirstName != nil {
+		return *x.FirstName
 	}
 	return ""
 }
 
-func (x *Account) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *CreateAccountRequest) GetLastName() string {
+	if x != nil && x.LastName != nil {
+		return *x.LastName
 	}
 	return ""
 }
 
-func (x *Account) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *CreateAccountRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
 	}
 	return ""
+}
+
+func (x *CreateAccountRequest) GetTimeZone() string {
+	if x != nil && x.TimeZone != nil {
+		return *x.TimeZone
+	}
+	return ""
+}
+
+func (x *CreateAccountRequest) GetUserName() string {
+	if x != nil && x.UserName != nil {
+		return *x.UserName
+	}
+	return ""
+}
+
+func (x *CreateAccountRequest) GetNetworkDomain() string {
+	if x != nil && x.NetworkDomain != nil {
+		return *x.NetworkDomain
+	}
+	return ""
+}
+
+func (x *CreateAccountRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *CreateAccountRequest) GetAccountUUId() string {
+	if x != nil && x.AccountUUId != nil {
+		return *x.AccountUUId
+	}
+	return ""
+}
+
+func (x *CreateAccountRequest) GetUserUUId() string {
+	if x != nil && x.UserUUId != nil {
+		return *x.UserUUId
+	}
+	return ""
+}
+
+func (x *CreateAccountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateAccountResponse represents the response from creates an account
+type CreateAccountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAccountResponse) Reset() {
+	*x = CreateAccountResponse{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAccountResponse) ProtoMessage() {}
+
+func (x *CreateAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAccountResponse.ProtoReflect.Descriptor instead.
+func (*CreateAccountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *CreateAccountResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // Project represents a Project Item
@@ -2190,7 +1875,7 @@ type Project struct {
 
 func (x *Project) Reset() {
 	*x = Project{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[27]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2202,7 +1887,7 @@ func (x *Project) String() string {
 func (*Project) ProtoMessage() {}
 
 func (x *Project) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[27]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2215,7 +1900,7 @@ func (x *Project) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Project.ProtoReflect.Descriptor instead.
 func (*Project) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{27}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Project) GetId() string {
@@ -2253,6 +1938,88 @@ func (x *Project) GetCreated() string {
 	return ""
 }
 
+// Account represents a Account Item
+type Account struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Account
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Account
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Account
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Account
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Account) Reset() {
+	*x = Account{}
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Account) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Account) ProtoMessage() {}
+
+func (x *Account) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Account.ProtoReflect.Descriptor instead.
+func (*Account) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *Account) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Account) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Account) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Account) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Account) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
 // Success represents a Success Operation Response
 type Success struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2266,7 +2033,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2278,7 +2045,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2291,7 +2058,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -2341,7 +2108,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2353,7 +2120,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2366,7 +2133,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{29}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *Item) GetId() string {
@@ -2472,7 +2239,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[30]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2484,7 +2251,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[30]
+	mi := &file_cloudstack_management_account_v1_account_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2497,7 +2264,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{30}
+	return file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2539,7 +2306,64 @@ var File_cloudstack_management_account_v1_account_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_account_v1_account_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/account/v1/account.gen.proto\x12 cloudstack.management.account.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xab\x01\n" +
+	"2cloudstack/management/account/v1/account.gen.proto\x12 cloudstack.management.account.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb3\x03\n" +
+	"\x14UpdateAccountRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x17\n" +
+	"\arole_id\x18\x04 \x01(\x03R\x06roleId\x12%\n" +
+	"\bnew_name\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\anewName\x12%\n" +
+	"\x0enetwork_domain\x18\x06 \x01(\tR\rnetworkDomain\x12]\n" +
+	"\adetails\x18\a \x03(\v2C.cloudstack.management.account.v1.UpdateAccountRequest.DetailsEntryR\adetails\x12$\n" +
+	"\x0eapi_key_access\x18\b \x01(\tR\fapiKeyAccess\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
+	"\x15UpdateAccountResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xab\x02\n" +
+	"\x1aListProjectAccountsRequest\x12%\n" +
+	"\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\x03R\x06userId\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\x12&\n" +
+	"\x0fproject_role_id\x18\x05 \x01(\x03R\rprojectRoleId\x12\x18\n" +
+	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x86\x01\n" +
+	"\x1bListProjectAccountsResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.account.v1.ProjectR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe3\x01\n" +
+	"\x1cDeleteUserFromProjectRequest\x12%\n" +
+	"\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12\x1f\n" +
+	"\auser_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06userId\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
+	"\x1dDeleteUserFromProjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\x8b\x01\n" +
+	"\x14EnableAccountRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
+	"\x15EnableAccountResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\x98\x02\n" +
+	"\x15DisableAccountRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x122\n" +
+	"\x0elock_requested\x18\x04 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\rlockRequested\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Z\n" +
+	"\x16DisableAccountResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xab\x01\n" +
 	"\x14DeleteAccountRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
@@ -2559,128 +2383,24 @@ const file_cloudstack_management_account_v1_account_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\b \x01(\tR\fresponseType\"\\\n" +
 	"\x18AddUserToProjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xf0\x01\n" +
-	"\x1fDeleteAccountFromProjectRequest\x12%\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xbe\x02\n" +
+	"\x1aAddAccountToProjectRequest\x12%\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12)\n" +
-	"\faccount_name\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	" DeleteAccountFromProjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xb3\x03\n" +
-	"\x14UpdateAccountRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x17\n" +
-	"\arole_id\x18\x04 \x01(\x03R\x06roleId\x12%\n" +
-	"\bnew_name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\anewName\x12%\n" +
-	"\x0enetwork_domain\x18\x06 \x01(\tR\rnetworkDomain\x12]\n" +
-	"\adetails\x18\a \x03(\v2C.cloudstack.management.account.v1.UpdateAccountRequest.DetailsEntryR\adetails\x12$\n" +
-	"\x0eapi_key_access\x18\b \x01(\tR\fapiKeyAccess\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
-	"\x15UpdateAccountResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\x8b\x01\n" +
-	"\x14EnableAccountRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
-	"\x15EnableAccountResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\x9a\x04\n" +
-	"\x1dListAccountsCmdByAdminRequest\x12!\n" +
-	"\faccount_type\x18\x01 \x01(\x05R\vaccountType\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x120\n" +
-	"\x10cleanup_required\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fcleanupRequired\x12+\n" +
-	"\vsearch_name\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"searchName\x12\x14\n" +
-	"\x05state\x18\x05 \x01(\tR\x05state\x12!\n" +
-	"\fview_details\x18\x06 \x03(\tR\vviewDetails\x12$\n" +
-	"\x0eapi_key_access\x18\a \x01(\tR\fapiKeyAccess\x12\"\n" +
-	"\tshow_icon\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x10\n" +
-	"\x03tag\x18\t \x01(\tR\x03tag\x12 \n" +
-	"\blist_all\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\v \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\r \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x0e \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x0f \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\"\x89\x01\n" +
-	"\x1eListAccountsCmdByAdminResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.account.v1.AccountR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x98\x02\n" +
-	"\x15DisableAccountRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x122\n" +
-	"\x0elock_requested\x18\x04 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\rlockRequested\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Z\n" +
-	"\x16DisableAccountResponse\x12@\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12&\n" +
+	"\x0fproject_role_id\x18\x04 \x01(\x03R\rprojectRoleId\x12\x1b\n" +
+	"\trole_type\x18\x05 \x01(\tR\broleType\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"_\n" +
+	"\x1bAddAccountToProjectResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\x89\x01\n" +
 	"\x12LockAccountRequest\x12)\n" +
 	"\faccount_name\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12#\n" +
 	"\tdomain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12#\n" +
 	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"W\n" +
 	"\x13LockAccountResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xe3\x01\n" +
-	"\x1cDeleteUserFromProjectRequest\x12%\n" +
-	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12\x1f\n" +
-	"\auser_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06userId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
-	"\x1dDeleteUserFromProjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xab\x02\n" +
-	"\x1aListProjectAccountsRequest\x12%\n" +
-	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\x03R\x06userId\x12\x12\n" +
-	"\x04role\x18\x04 \x01(\tR\x04role\x12&\n" +
-	"\x0fproject_role_id\x18\x05 \x01(\x03R\rprojectRoleId\x12\x18\n" +
-	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x86\x01\n" +
-	"\x1bListProjectAccountsResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.account.v1.ProjectR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb6\x05\n" +
-	"\x14CreateAccountRequest\x12!\n" +
-	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12!\n" +
-	"\faccount_type\x18\x02 \x01(\x05R\vaccountType\x12\x17\n" +
-	"\arole_id\x18\x03 \x01(\x03R\x06roleId\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12\x1c\n" +
-	"\x05email\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05email\x12,\n" +
-	"\n" +
-	"first_name\x18\x06 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\tfirstName\x12*\n" +
-	"\tlast_name\x18\a \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\blastName\x12\"\n" +
-	"\bpassword\x18\b \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12\x1b\n" +
-	"\ttime_zone\x18\t \x01(\tR\btimeZone\x12*\n" +
-	"\tuser_name\x18\n" +
-	" \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12%\n" +
-	"\x0enetwork_domain\x18\v \x01(\tR\rnetworkDomain\x12]\n" +
-	"\adetails\x18\f \x03(\v2C.cloudstack.management.account.v1.CreateAccountRequest.DetailsEntryR\adetails\x12-\n" +
-	"\x0eaccount_u_u_id\x18\r \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\vaccountUUId\x12'\n" +
-	"\vuser_u_u_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\buserUUId\x12#\n" +
-	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
-	"\x15CreateAccountResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xb2\x04\n" +
 	"\x13ListAccountsRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -2707,26 +2427,49 @@ const file_cloudstack_management_account_v1_account_gen_proto_rawDesc = "" +
 	"\x14ListAccountsResponse\x12?\n" +
 	"\x05items\x18\x01 \x03(\v2).cloudstack.management.account.v1.AccountR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xbe\x02\n" +
-	"\x1aAddAccountToProjectRequest\x12%\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf0\x01\n" +
+	"\x1fDeleteAccountFromProjectRequest\x12%\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12&\n" +
-	"\x0fproject_role_id\x18\x04 \x01(\x03R\rprojectRoleId\x12\x1b\n" +
-	"\trole_type\x18\x05 \x01(\tR\broleType\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"_\n" +
-	"\x1bAddAccountToProjectResponse\x12@\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12)\n" +
+	"\faccount_name\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	" DeleteAccountFromProjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\xb6\x05\n" +
+	"\x14CreateAccountRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12!\n" +
+	"\faccount_type\x18\x02 \x01(\x05R\vaccountType\x12\x17\n" +
+	"\arole_id\x18\x03 \x01(\x03R\x06roleId\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12\x1c\n" +
+	"\x05email\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05email\x12,\n" +
+	"\n" +
+	"first_name\x18\x06 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\tfirstName\x12*\n" +
+	"\tlast_name\x18\a \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\blastName\x12\"\n" +
+	"\bpassword\x18\b \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12\x1b\n" +
+	"\ttime_zone\x18\t \x01(\tR\btimeZone\x12*\n" +
+	"\tuser_name\x18\n" +
+	" \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12%\n" +
+	"\x0enetwork_domain\x18\v \x01(\tR\rnetworkDomain\x12]\n" +
+	"\adetails\x18\f \x03(\v2C.cloudstack.management.account.v1.CreateAccountRequest.DetailsEntryR\adetails\x12-\n" +
+	"\x0eaccount_u_u_id\x18\r \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\vaccountUUId\x12'\n" +
+	"\vuser_u_u_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\buserUUId\x12#\n" +
+	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
+	"\x15CreateAccountResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.account.v1.ResultR\x06result\"\x96\x01\n" +
-	"\aAccount\x12\x18\n" +
+	"\aProject\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x96\x01\n" +
-	"\aProject\x12\x18\n" +
+	"\aAccount\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2760,21 +2503,20 @@ const file_cloudstack_management_account_v1_account_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd9\x0e\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb9\r\n" +
 	"\x0eAccountService\x12\x82\x01\n" +
+	"\rUpdateAccount\x126.cloudstack.management.account.v1.UpdateAccountRequest\x1a7.cloudstack.management.account.v1.UpdateAccountResponse\"\x00\x12\x94\x01\n" +
+	"\x13ListProjectAccounts\x12<.cloudstack.management.account.v1.ListProjectAccountsRequest\x1a=.cloudstack.management.account.v1.ListProjectAccountsResponse\"\x00\x12\x9a\x01\n" +
+	"\x15DeleteUserFromProject\x12>.cloudstack.management.account.v1.DeleteUserFromProjectRequest\x1a?.cloudstack.management.account.v1.DeleteUserFromProjectResponse\"\x00\x12\x82\x01\n" +
+	"\rEnableAccount\x126.cloudstack.management.account.v1.EnableAccountRequest\x1a7.cloudstack.management.account.v1.EnableAccountResponse\"\x00\x12\x85\x01\n" +
+	"\x0eDisableAccount\x127.cloudstack.management.account.v1.DisableAccountRequest\x1a8.cloudstack.management.account.v1.DisableAccountResponse\"\x00\x12\x82\x01\n" +
 	"\rDeleteAccount\x126.cloudstack.management.account.v1.DeleteAccountRequest\x1a7.cloudstack.management.account.v1.DeleteAccountResponse\"\x00\x12\x8b\x01\n" +
-	"\x10AddUserToProject\x129.cloudstack.management.account.v1.AddUserToProjectRequest\x1a:.cloudstack.management.account.v1.AddUserToProjectResponse\"\x00\x12\xa3\x01\n" +
+	"\x10AddUserToProject\x129.cloudstack.management.account.v1.AddUserToProjectRequest\x1a:.cloudstack.management.account.v1.AddUserToProjectResponse\"\x00\x12\x94\x01\n" +
+	"\x13AddAccountToProject\x12<.cloudstack.management.account.v1.AddAccountToProjectRequest\x1a=.cloudstack.management.account.v1.AddAccountToProjectResponse\"\x00\x12|\n" +
+	"\vLockAccount\x124.cloudstack.management.account.v1.LockAccountRequest\x1a5.cloudstack.management.account.v1.LockAccountResponse\"\x00\x12\x85\x01\n" +
+	"\fListAccounts\x125.cloudstack.management.account.v1.ListAccountsRequest\x1a6.cloudstack.management.account.v1.ListAccountsResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa3\x01\n" +
 	"\x18DeleteAccountFromProject\x12A.cloudstack.management.account.v1.DeleteAccountFromProjectRequest\x1aB.cloudstack.management.account.v1.DeleteAccountFromProjectResponse\"\x00\x12\x82\x01\n" +
-	"\rUpdateAccount\x126.cloudstack.management.account.v1.UpdateAccountRequest\x1a7.cloudstack.management.account.v1.UpdateAccountResponse\"\x00\x12\x82\x01\n" +
-	"\rEnableAccount\x126.cloudstack.management.account.v1.EnableAccountRequest\x1a7.cloudstack.management.account.v1.EnableAccountResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ListAccountsCmdByAdmin\x12?.cloudstack.management.account.v1.ListAccountsCmdByAdminRequest\x1a@.cloudstack.management.account.v1.ListAccountsCmdByAdminResponse\"\x00\x12\x85\x01\n" +
-	"\x0eDisableAccount\x127.cloudstack.management.account.v1.DisableAccountRequest\x1a8.cloudstack.management.account.v1.DisableAccountResponse\"\x00\x12|\n" +
-	"\vLockAccount\x124.cloudstack.management.account.v1.LockAccountRequest\x1a5.cloudstack.management.account.v1.LockAccountResponse\"\x00\x12\x9a\x01\n" +
-	"\x15DeleteUserFromProject\x12>.cloudstack.management.account.v1.DeleteUserFromProjectRequest\x1a?.cloudstack.management.account.v1.DeleteUserFromProjectResponse\"\x00\x12\x94\x01\n" +
-	"\x13ListProjectAccounts\x12<.cloudstack.management.account.v1.ListProjectAccountsRequest\x1a=.cloudstack.management.account.v1.ListProjectAccountsResponse\"\x00\x12\x82\x01\n" +
-	"\rCreateAccount\x126.cloudstack.management.account.v1.CreateAccountRequest\x1a7.cloudstack.management.account.v1.CreateAccountResponse\"\x00\x12\x85\x01\n" +
-	"\fListAccounts\x125.cloudstack.management.account.v1.ListAccountsRequest\x1a6.cloudstack.management.account.v1.ListAccountsResponse\"\x06\xc2>\x03\xc0>\x01\x12\x94\x01\n" +
-	"\x13AddAccountToProject\x12<.cloudstack.management.account.v1.AddAccountToProjectRequest\x1a=.cloudstack.management.account.v1.AddAccountToProjectResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
+	"\rCreateAccount\x126.cloudstack.management.account.v1.CreateAccountRequest\x1a7.cloudstack.management.account.v1.CreateAccountResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
 	"$com.cloudstack.management.account.v1B\x0fAccountGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/account/v1;accountv1\xa2\x02\x03CMA\xaa\x02 Cloudstack.Management.Account.V1\xca\x02 Cloudstack\\Management\\Account\\V1\xe2\x02,Cloudstack\\Management\\Account\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Account::V1b\beditionsp\xe8\a"
 
 var (
@@ -2789,91 +2531,86 @@ func file_cloudstack_management_account_v1_account_gen_proto_rawDescGZIP() []byt
 	return file_cloudstack_management_account_v1_account_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_account_v1_account_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_cloudstack_management_account_v1_account_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_cloudstack_management_account_v1_account_gen_proto_goTypes = []any{
-	(*DeleteAccountRequest)(nil),             // 0: cloudstack.management.account.v1.DeleteAccountRequest
-	(*DeleteAccountResponse)(nil),            // 1: cloudstack.management.account.v1.DeleteAccountResponse
-	(*AddUserToProjectRequest)(nil),          // 2: cloudstack.management.account.v1.AddUserToProjectRequest
-	(*AddUserToProjectResponse)(nil),         // 3: cloudstack.management.account.v1.AddUserToProjectResponse
-	(*DeleteAccountFromProjectRequest)(nil),  // 4: cloudstack.management.account.v1.DeleteAccountFromProjectRequest
-	(*DeleteAccountFromProjectResponse)(nil), // 5: cloudstack.management.account.v1.DeleteAccountFromProjectResponse
-	(*UpdateAccountRequest)(nil),             // 6: cloudstack.management.account.v1.UpdateAccountRequest
-	(*UpdateAccountResponse)(nil),            // 7: cloudstack.management.account.v1.UpdateAccountResponse
-	(*EnableAccountRequest)(nil),             // 8: cloudstack.management.account.v1.EnableAccountRequest
-	(*EnableAccountResponse)(nil),            // 9: cloudstack.management.account.v1.EnableAccountResponse
-	(*ListAccountsCmdByAdminRequest)(nil),    // 10: cloudstack.management.account.v1.ListAccountsCmdByAdminRequest
-	(*ListAccountsCmdByAdminResponse)(nil),   // 11: cloudstack.management.account.v1.ListAccountsCmdByAdminResponse
-	(*DisableAccountRequest)(nil),            // 12: cloudstack.management.account.v1.DisableAccountRequest
-	(*DisableAccountResponse)(nil),           // 13: cloudstack.management.account.v1.DisableAccountResponse
-	(*LockAccountRequest)(nil),               // 14: cloudstack.management.account.v1.LockAccountRequest
-	(*LockAccountResponse)(nil),              // 15: cloudstack.management.account.v1.LockAccountResponse
-	(*DeleteUserFromProjectRequest)(nil),     // 16: cloudstack.management.account.v1.DeleteUserFromProjectRequest
-	(*DeleteUserFromProjectResponse)(nil),    // 17: cloudstack.management.account.v1.DeleteUserFromProjectResponse
-	(*ListProjectAccountsRequest)(nil),       // 18: cloudstack.management.account.v1.ListProjectAccountsRequest
-	(*ListProjectAccountsResponse)(nil),      // 19: cloudstack.management.account.v1.ListProjectAccountsResponse
-	(*CreateAccountRequest)(nil),             // 20: cloudstack.management.account.v1.CreateAccountRequest
-	(*CreateAccountResponse)(nil),            // 21: cloudstack.management.account.v1.CreateAccountResponse
-	(*ListAccountsRequest)(nil),              // 22: cloudstack.management.account.v1.ListAccountsRequest
-	(*ListAccountsResponse)(nil),             // 23: cloudstack.management.account.v1.ListAccountsResponse
-	(*AddAccountToProjectRequest)(nil),       // 24: cloudstack.management.account.v1.AddAccountToProjectRequest
-	(*AddAccountToProjectResponse)(nil),      // 25: cloudstack.management.account.v1.AddAccountToProjectResponse
-	(*Account)(nil),                          // 26: cloudstack.management.account.v1.Account
-	(*Project)(nil),                          // 27: cloudstack.management.account.v1.Project
-	(*Success)(nil),                          // 28: cloudstack.management.account.v1.Success
-	(*Item)(nil),                             // 29: cloudstack.management.account.v1.Item
-	(*Result)(nil),                           // 30: cloudstack.management.account.v1.Result
-	nil,                                      // 31: cloudstack.management.account.v1.UpdateAccountRequest.DetailsEntry
-	nil,                                      // 32: cloudstack.management.account.v1.CreateAccountRequest.DetailsEntry
-	nil,                                      // 33: cloudstack.management.account.v1.Item.DetailsEntry
+	(*UpdateAccountRequest)(nil),             // 0: cloudstack.management.account.v1.UpdateAccountRequest
+	(*UpdateAccountResponse)(nil),            // 1: cloudstack.management.account.v1.UpdateAccountResponse
+	(*ListProjectAccountsRequest)(nil),       // 2: cloudstack.management.account.v1.ListProjectAccountsRequest
+	(*ListProjectAccountsResponse)(nil),      // 3: cloudstack.management.account.v1.ListProjectAccountsResponse
+	(*DeleteUserFromProjectRequest)(nil),     // 4: cloudstack.management.account.v1.DeleteUserFromProjectRequest
+	(*DeleteUserFromProjectResponse)(nil),    // 5: cloudstack.management.account.v1.DeleteUserFromProjectResponse
+	(*EnableAccountRequest)(nil),             // 6: cloudstack.management.account.v1.EnableAccountRequest
+	(*EnableAccountResponse)(nil),            // 7: cloudstack.management.account.v1.EnableAccountResponse
+	(*DisableAccountRequest)(nil),            // 8: cloudstack.management.account.v1.DisableAccountRequest
+	(*DisableAccountResponse)(nil),           // 9: cloudstack.management.account.v1.DisableAccountResponse
+	(*DeleteAccountRequest)(nil),             // 10: cloudstack.management.account.v1.DeleteAccountRequest
+	(*DeleteAccountResponse)(nil),            // 11: cloudstack.management.account.v1.DeleteAccountResponse
+	(*AddUserToProjectRequest)(nil),          // 12: cloudstack.management.account.v1.AddUserToProjectRequest
+	(*AddUserToProjectResponse)(nil),         // 13: cloudstack.management.account.v1.AddUserToProjectResponse
+	(*AddAccountToProjectRequest)(nil),       // 14: cloudstack.management.account.v1.AddAccountToProjectRequest
+	(*AddAccountToProjectResponse)(nil),      // 15: cloudstack.management.account.v1.AddAccountToProjectResponse
+	(*LockAccountRequest)(nil),               // 16: cloudstack.management.account.v1.LockAccountRequest
+	(*LockAccountResponse)(nil),              // 17: cloudstack.management.account.v1.LockAccountResponse
+	(*ListAccountsRequest)(nil),              // 18: cloudstack.management.account.v1.ListAccountsRequest
+	(*ListAccountsResponse)(nil),             // 19: cloudstack.management.account.v1.ListAccountsResponse
+	(*DeleteAccountFromProjectRequest)(nil),  // 20: cloudstack.management.account.v1.DeleteAccountFromProjectRequest
+	(*DeleteAccountFromProjectResponse)(nil), // 21: cloudstack.management.account.v1.DeleteAccountFromProjectResponse
+	(*CreateAccountRequest)(nil),             // 22: cloudstack.management.account.v1.CreateAccountRequest
+	(*CreateAccountResponse)(nil),            // 23: cloudstack.management.account.v1.CreateAccountResponse
+	(*Project)(nil),                          // 24: cloudstack.management.account.v1.Project
+	(*Account)(nil),                          // 25: cloudstack.management.account.v1.Account
+	(*Success)(nil),                          // 26: cloudstack.management.account.v1.Success
+	(*Item)(nil),                             // 27: cloudstack.management.account.v1.Item
+	(*Result)(nil),                           // 28: cloudstack.management.account.v1.Result
+	nil,                                      // 29: cloudstack.management.account.v1.UpdateAccountRequest.DetailsEntry
+	nil,                                      // 30: cloudstack.management.account.v1.CreateAccountRequest.DetailsEntry
+	nil,                                      // 31: cloudstack.management.account.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_account_v1_account_gen_proto_depIdxs = []int32{
-	30, // 0: cloudstack.management.account.v1.DeleteAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
-	30, // 1: cloudstack.management.account.v1.AddUserToProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
-	30, // 2: cloudstack.management.account.v1.DeleteAccountFromProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
-	31, // 3: cloudstack.management.account.v1.UpdateAccountRequest.details:type_name -> cloudstack.management.account.v1.UpdateAccountRequest.DetailsEntry
-	30, // 4: cloudstack.management.account.v1.UpdateAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
-	30, // 5: cloudstack.management.account.v1.EnableAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
-	26, // 6: cloudstack.management.account.v1.ListAccountsCmdByAdminResponse.items:type_name -> cloudstack.management.account.v1.Account
-	30, // 7: cloudstack.management.account.v1.DisableAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
-	30, // 8: cloudstack.management.account.v1.LockAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
-	30, // 9: cloudstack.management.account.v1.DeleteUserFromProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
-	27, // 10: cloudstack.management.account.v1.ListProjectAccountsResponse.items:type_name -> cloudstack.management.account.v1.Project
-	32, // 11: cloudstack.management.account.v1.CreateAccountRequest.details:type_name -> cloudstack.management.account.v1.CreateAccountRequest.DetailsEntry
-	30, // 12: cloudstack.management.account.v1.CreateAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
-	26, // 13: cloudstack.management.account.v1.ListAccountsResponse.items:type_name -> cloudstack.management.account.v1.Account
-	30, // 14: cloudstack.management.account.v1.AddAccountToProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
-	33, // 15: cloudstack.management.account.v1.Item.details:type_name -> cloudstack.management.account.v1.Item.DetailsEntry
-	0,  // 16: cloudstack.management.account.v1.AccountService.DeleteAccount:input_type -> cloudstack.management.account.v1.DeleteAccountRequest
-	2,  // 17: cloudstack.management.account.v1.AccountService.AddUserToProject:input_type -> cloudstack.management.account.v1.AddUserToProjectRequest
-	4,  // 18: cloudstack.management.account.v1.AccountService.DeleteAccountFromProject:input_type -> cloudstack.management.account.v1.DeleteAccountFromProjectRequest
-	6,  // 19: cloudstack.management.account.v1.AccountService.UpdateAccount:input_type -> cloudstack.management.account.v1.UpdateAccountRequest
-	8,  // 20: cloudstack.management.account.v1.AccountService.EnableAccount:input_type -> cloudstack.management.account.v1.EnableAccountRequest
-	10, // 21: cloudstack.management.account.v1.AccountService.ListAccountsCmdByAdmin:input_type -> cloudstack.management.account.v1.ListAccountsCmdByAdminRequest
-	12, // 22: cloudstack.management.account.v1.AccountService.DisableAccount:input_type -> cloudstack.management.account.v1.DisableAccountRequest
-	14, // 23: cloudstack.management.account.v1.AccountService.LockAccount:input_type -> cloudstack.management.account.v1.LockAccountRequest
-	16, // 24: cloudstack.management.account.v1.AccountService.DeleteUserFromProject:input_type -> cloudstack.management.account.v1.DeleteUserFromProjectRequest
-	18, // 25: cloudstack.management.account.v1.AccountService.ListProjectAccounts:input_type -> cloudstack.management.account.v1.ListProjectAccountsRequest
-	20, // 26: cloudstack.management.account.v1.AccountService.CreateAccount:input_type -> cloudstack.management.account.v1.CreateAccountRequest
-	22, // 27: cloudstack.management.account.v1.AccountService.ListAccounts:input_type -> cloudstack.management.account.v1.ListAccountsRequest
-	24, // 28: cloudstack.management.account.v1.AccountService.AddAccountToProject:input_type -> cloudstack.management.account.v1.AddAccountToProjectRequest
-	1,  // 29: cloudstack.management.account.v1.AccountService.DeleteAccount:output_type -> cloudstack.management.account.v1.DeleteAccountResponse
-	3,  // 30: cloudstack.management.account.v1.AccountService.AddUserToProject:output_type -> cloudstack.management.account.v1.AddUserToProjectResponse
-	5,  // 31: cloudstack.management.account.v1.AccountService.DeleteAccountFromProject:output_type -> cloudstack.management.account.v1.DeleteAccountFromProjectResponse
-	7,  // 32: cloudstack.management.account.v1.AccountService.UpdateAccount:output_type -> cloudstack.management.account.v1.UpdateAccountResponse
-	9,  // 33: cloudstack.management.account.v1.AccountService.EnableAccount:output_type -> cloudstack.management.account.v1.EnableAccountResponse
-	11, // 34: cloudstack.management.account.v1.AccountService.ListAccountsCmdByAdmin:output_type -> cloudstack.management.account.v1.ListAccountsCmdByAdminResponse
-	13, // 35: cloudstack.management.account.v1.AccountService.DisableAccount:output_type -> cloudstack.management.account.v1.DisableAccountResponse
-	15, // 36: cloudstack.management.account.v1.AccountService.LockAccount:output_type -> cloudstack.management.account.v1.LockAccountResponse
-	17, // 37: cloudstack.management.account.v1.AccountService.DeleteUserFromProject:output_type -> cloudstack.management.account.v1.DeleteUserFromProjectResponse
-	19, // 38: cloudstack.management.account.v1.AccountService.ListProjectAccounts:output_type -> cloudstack.management.account.v1.ListProjectAccountsResponse
-	21, // 39: cloudstack.management.account.v1.AccountService.CreateAccount:output_type -> cloudstack.management.account.v1.CreateAccountResponse
-	23, // 40: cloudstack.management.account.v1.AccountService.ListAccounts:output_type -> cloudstack.management.account.v1.ListAccountsResponse
-	25, // 41: cloudstack.management.account.v1.AccountService.AddAccountToProject:output_type -> cloudstack.management.account.v1.AddAccountToProjectResponse
-	29, // [29:42] is the sub-list for method output_type
-	16, // [16:29] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	29, // 0: cloudstack.management.account.v1.UpdateAccountRequest.details:type_name -> cloudstack.management.account.v1.UpdateAccountRequest.DetailsEntry
+	28, // 1: cloudstack.management.account.v1.UpdateAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
+	24, // 2: cloudstack.management.account.v1.ListProjectAccountsResponse.items:type_name -> cloudstack.management.account.v1.Project
+	28, // 3: cloudstack.management.account.v1.DeleteUserFromProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
+	28, // 4: cloudstack.management.account.v1.EnableAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
+	28, // 5: cloudstack.management.account.v1.DisableAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
+	28, // 6: cloudstack.management.account.v1.DeleteAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
+	28, // 7: cloudstack.management.account.v1.AddUserToProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
+	28, // 8: cloudstack.management.account.v1.AddAccountToProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
+	28, // 9: cloudstack.management.account.v1.LockAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
+	25, // 10: cloudstack.management.account.v1.ListAccountsResponse.items:type_name -> cloudstack.management.account.v1.Account
+	28, // 11: cloudstack.management.account.v1.DeleteAccountFromProjectResponse.result:type_name -> cloudstack.management.account.v1.Result
+	30, // 12: cloudstack.management.account.v1.CreateAccountRequest.details:type_name -> cloudstack.management.account.v1.CreateAccountRequest.DetailsEntry
+	28, // 13: cloudstack.management.account.v1.CreateAccountResponse.result:type_name -> cloudstack.management.account.v1.Result
+	31, // 14: cloudstack.management.account.v1.Item.details:type_name -> cloudstack.management.account.v1.Item.DetailsEntry
+	0,  // 15: cloudstack.management.account.v1.AccountService.UpdateAccount:input_type -> cloudstack.management.account.v1.UpdateAccountRequest
+	2,  // 16: cloudstack.management.account.v1.AccountService.ListProjectAccounts:input_type -> cloudstack.management.account.v1.ListProjectAccountsRequest
+	4,  // 17: cloudstack.management.account.v1.AccountService.DeleteUserFromProject:input_type -> cloudstack.management.account.v1.DeleteUserFromProjectRequest
+	6,  // 18: cloudstack.management.account.v1.AccountService.EnableAccount:input_type -> cloudstack.management.account.v1.EnableAccountRequest
+	8,  // 19: cloudstack.management.account.v1.AccountService.DisableAccount:input_type -> cloudstack.management.account.v1.DisableAccountRequest
+	10, // 20: cloudstack.management.account.v1.AccountService.DeleteAccount:input_type -> cloudstack.management.account.v1.DeleteAccountRequest
+	12, // 21: cloudstack.management.account.v1.AccountService.AddUserToProject:input_type -> cloudstack.management.account.v1.AddUserToProjectRequest
+	14, // 22: cloudstack.management.account.v1.AccountService.AddAccountToProject:input_type -> cloudstack.management.account.v1.AddAccountToProjectRequest
+	16, // 23: cloudstack.management.account.v1.AccountService.LockAccount:input_type -> cloudstack.management.account.v1.LockAccountRequest
+	18, // 24: cloudstack.management.account.v1.AccountService.ListAccounts:input_type -> cloudstack.management.account.v1.ListAccountsRequest
+	20, // 25: cloudstack.management.account.v1.AccountService.DeleteAccountFromProject:input_type -> cloudstack.management.account.v1.DeleteAccountFromProjectRequest
+	22, // 26: cloudstack.management.account.v1.AccountService.CreateAccount:input_type -> cloudstack.management.account.v1.CreateAccountRequest
+	1,  // 27: cloudstack.management.account.v1.AccountService.UpdateAccount:output_type -> cloudstack.management.account.v1.UpdateAccountResponse
+	3,  // 28: cloudstack.management.account.v1.AccountService.ListProjectAccounts:output_type -> cloudstack.management.account.v1.ListProjectAccountsResponse
+	5,  // 29: cloudstack.management.account.v1.AccountService.DeleteUserFromProject:output_type -> cloudstack.management.account.v1.DeleteUserFromProjectResponse
+	7,  // 30: cloudstack.management.account.v1.AccountService.EnableAccount:output_type -> cloudstack.management.account.v1.EnableAccountResponse
+	9,  // 31: cloudstack.management.account.v1.AccountService.DisableAccount:output_type -> cloudstack.management.account.v1.DisableAccountResponse
+	11, // 32: cloudstack.management.account.v1.AccountService.DeleteAccount:output_type -> cloudstack.management.account.v1.DeleteAccountResponse
+	13, // 33: cloudstack.management.account.v1.AccountService.AddUserToProject:output_type -> cloudstack.management.account.v1.AddUserToProjectResponse
+	15, // 34: cloudstack.management.account.v1.AccountService.AddAccountToProject:output_type -> cloudstack.management.account.v1.AddAccountToProjectResponse
+	17, // 35: cloudstack.management.account.v1.AccountService.LockAccount:output_type -> cloudstack.management.account.v1.LockAccountResponse
+	19, // 36: cloudstack.management.account.v1.AccountService.ListAccounts:output_type -> cloudstack.management.account.v1.ListAccountsResponse
+	21, // 37: cloudstack.management.account.v1.AccountService.DeleteAccountFromProject:output_type -> cloudstack.management.account.v1.DeleteAccountFromProjectResponse
+	23, // 38: cloudstack.management.account.v1.AccountService.CreateAccount:output_type -> cloudstack.management.account.v1.CreateAccountResponse
+	27, // [27:39] is the sub-list for method output_type
+	15, // [15:27] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_account_v1_account_gen_proto_init() }
@@ -2887,7 +2624,7 @@ func file_cloudstack_management_account_v1_account_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_account_v1_account_gen_proto_rawDesc), len(file_cloudstack_management_account_v1_account_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   34,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

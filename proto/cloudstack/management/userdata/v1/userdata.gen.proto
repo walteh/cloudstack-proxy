@@ -13,14 +13,14 @@ service UserdataService {
 	// DeleteUserData Deletes a userdata
 	rpc DeleteUserData(DeleteUserDataRequest) returns (DeleteUserDataResponse) {}
 
-	// ListUserData List registered userdatas
-	rpc ListUserData(ListUserDataRequest) returns (ListUserDataResponse) {}
+	// RegisterUserData Register a new userdata.
+	rpc RegisterUserData(RegisterUserDataRequest) returns (RegisterUserDataResponse) {}
 
 	// LinkUserDataToTemplate Link or unlink a userdata to a template.
 	rpc LinkUserDataToTemplate(LinkUserDataToTemplateRequest) returns (LinkUserDataToTemplateResponse) {}
 
-	// RegisterUserData Register a new userdata.
-	rpc RegisterUserData(RegisterUserDataRequest) returns (RegisterUserDataResponse) {}
+	// ListUserData List registered userdatas
+	rpc ListUserData(ListUserDataRequest) returns (ListUserDataResponse) {}
 }
 
 // DeleteUserDataRequest represents the parameters for deletes a userdata
@@ -45,6 +45,66 @@ message DeleteUserDataRequest {
 
 // DeleteUserDataResponse represents the response from deletes a userdata
 message DeleteUserDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RegisterUserDataRequest represents the parameters for register a new userdata.
+message RegisterUserDataRequest {
+	// Name of the userdata
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// an optional account for the userdata. Must be used with domainId.
+	string account_name = 2;
+
+	// an optional domainId for the userdata. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 3;
+
+	// an optional project for the userdata
+	int64 project_id = 4;
+
+	// Base64 encoded userdata content. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 5 [
+		(validate.field).required = true
+	];
+
+	// comma separated list of variables declared in userdata content
+	string params = 6;
+
+	//
+	string response_type = 7;
+}
+
+// RegisterUserDataResponse represents the response from register a new userdata.
+message RegisterUserDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// LinkUserDataToTemplateRequest represents the parameters for link or unlink a userdata to a template.
+message LinkUserDataToTemplateRequest {
+	// the ID of the template for the virtual machine
+	int64 template_id = 1;
+
+	// the ID of the ISO for the virtual machine
+	int64 iso_id = 2;
+
+	// the ID of the userdata that has to be linked to template/ISO. If not provided existing userdata will be unlinked from the template/ISO
+	int64 userdata_id = 3;
+
+	// an optional override policy of the userdata. Possible values are - ALLOWOVERRIDE, APPEND, DENYOVERRIDE. Default policy is allowoverride
+	string userdata_policy = 4;
+
+	//
+	string response_type = 5;
+}
+
+// LinkUserDataToTemplateResponse represents the response from link or unlink a userdata to a template.
+message LinkUserDataToTemplateResponse {
 	// The Result
 	Result result = 1;
 }
@@ -106,66 +166,6 @@ message ListUserDataResponse {
 
 	// The total count of UserDatas
 	int32 total_count = 2;
-}
-
-// LinkUserDataToTemplateRequest represents the parameters for link or unlink a userdata to a template.
-message LinkUserDataToTemplateRequest {
-	// the ID of the template for the virtual machine
-	int64 template_id = 1;
-
-	// the ID of the ISO for the virtual machine
-	int64 iso_id = 2;
-
-	// the ID of the userdata that has to be linked to template/ISO. If not provided existing userdata will be unlinked from the template/ISO
-	int64 userdata_id = 3;
-
-	// an optional override policy of the userdata. Possible values are - ALLOWOVERRIDE, APPEND, DENYOVERRIDE. Default policy is allowoverride
-	string userdata_policy = 4;
-
-	//
-	string response_type = 5;
-}
-
-// LinkUserDataToTemplateResponse represents the response from link or unlink a userdata to a template.
-message LinkUserDataToTemplateResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RegisterUserDataRequest represents the parameters for register a new userdata.
-message RegisterUserDataRequest {
-	// Name of the userdata
-	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// an optional account for the userdata. Must be used with domainId.
-	string account_name = 2;
-
-	// an optional domainId for the userdata. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 3;
-
-	// an optional project for the userdata
-	int64 project_id = 4;
-
-	// Base64 encoded userdata content. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	string user_data = 5 [
-		(validate.field).required = true
-	];
-
-	// comma separated list of variables declared in userdata content
-	string params = 6;
-
-	//
-	string response_type = 7;
-}
-
-// RegisterUserDataResponse represents the response from register a new userdata.
-message RegisterUserDataResponse {
-	// The Result
-	Result result = 1;
 }
 
 // UserData represents a UserData Item

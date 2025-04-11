@@ -19,31 +19,30 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LoadbalancerService_ListSslCerts_FullMethodName                            = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListSslCerts"
-	LoadbalancerService_DeleteSslCert_FullMethodName                           = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteSslCert"
-	LoadbalancerService_ListLoadBalancerRuleInstancesCmdByAdmin_FullMethodName = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRuleInstancesCmdByAdmin"
-	LoadbalancerService_ListLBStickinessPolicies_FullMethodName                = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBStickinessPolicies"
-	LoadbalancerService_CreateLoadBalancerRule_FullMethodName                  = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLoadBalancerRule"
-	LoadbalancerService_CreateLBStickinessPolicy_FullMethodName                = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBStickinessPolicy"
-	LoadbalancerService_DeleteLBStickinessPolicy_FullMethodName                = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBStickinessPolicy"
-	LoadbalancerService_ListLoadBalancerRuleInstances_FullMethodName           = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRuleInstances"
-	LoadbalancerService_UpdateApplicationLoadBalancer_FullMethodName           = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateApplicationLoadBalancer"
-	LoadbalancerService_RemoveFromLoadBalancerRule_FullMethodName              = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveFromLoadBalancerRule"
-	LoadbalancerService_ListLoadBalancerRules_FullMethodName                   = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRules"
-	LoadbalancerService_DeleteLoadBalancerRule_FullMethodName                  = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLoadBalancerRule"
-	LoadbalancerService_ListApplicationLoadBalancers_FullMethodName            = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListApplicationLoadBalancers"
-	LoadbalancerService_RemoveCertFromLoadBalancer_FullMethodName              = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveCertFromLoadBalancer"
-	LoadbalancerService_UploadSslCert_FullMethodName                           = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UploadSslCert"
-	LoadbalancerService_AssignToLoadBalancerRule_FullMethodName                = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/AssignToLoadBalancerRule"
-	LoadbalancerService_CreateApplicationLoadBalancer_FullMethodName           = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateApplicationLoadBalancer"
-	LoadbalancerService_UpdateLBHealthCheckPolicy_FullMethodName               = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBHealthCheckPolicy"
-	LoadbalancerService_AssignCertToLoadBalancer_FullMethodName                = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/AssignCertToLoadBalancer"
-	LoadbalancerService_ListLBHealthCheckPolicies_FullMethodName               = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBHealthCheckPolicies"
-	LoadbalancerService_DeleteApplicationLoadBalancer_FullMethodName           = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteApplicationLoadBalancer"
-	LoadbalancerService_DeleteLBHealthCheckPolicy_FullMethodName               = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBHealthCheckPolicy"
-	LoadbalancerService_CreateLBHealthCheckPolicy_FullMethodName               = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBHealthCheckPolicy"
-	LoadbalancerService_UpdateLoadBalancerRule_FullMethodName                  = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLoadBalancerRule"
-	LoadbalancerService_UpdateLBStickinessPolicy_FullMethodName                = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBStickinessPolicy"
+	LoadbalancerService_AssignToLoadBalancerRule_FullMethodName      = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/AssignToLoadBalancerRule"
+	LoadbalancerService_ListLoadBalancerRules_FullMethodName         = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRules"
+	LoadbalancerService_DeleteLBStickinessPolicy_FullMethodName      = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBStickinessPolicy"
+	LoadbalancerService_CreateLoadBalancerRule_FullMethodName        = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLoadBalancerRule"
+	LoadbalancerService_ListLoadBalancerRuleInstances_FullMethodName = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRuleInstances"
+	LoadbalancerService_CreateApplicationLoadBalancer_FullMethodName = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateApplicationLoadBalancer"
+	LoadbalancerService_DeleteLoadBalancerRule_FullMethodName        = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLoadBalancerRule"
+	LoadbalancerService_AssignCertToLoadBalancer_FullMethodName      = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/AssignCertToLoadBalancer"
+	LoadbalancerService_DeleteApplicationLoadBalancer_FullMethodName = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteApplicationLoadBalancer"
+	LoadbalancerService_ListLBStickinessPolicies_FullMethodName      = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBStickinessPolicies"
+	LoadbalancerService_CreateLBHealthCheckPolicy_FullMethodName     = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBHealthCheckPolicy"
+	LoadbalancerService_UpdateLoadBalancerRule_FullMethodName        = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLoadBalancerRule"
+	LoadbalancerService_UpdateLBHealthCheckPolicy_FullMethodName     = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBHealthCheckPolicy"
+	LoadbalancerService_DeleteSslCert_FullMethodName                 = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteSslCert"
+	LoadbalancerService_RemoveFromLoadBalancerRule_FullMethodName    = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveFromLoadBalancerRule"
+	LoadbalancerService_ListSslCerts_FullMethodName                  = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListSslCerts"
+	LoadbalancerService_DeleteLBHealthCheckPolicy_FullMethodName     = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBHealthCheckPolicy"
+	LoadbalancerService_CreateLBStickinessPolicy_FullMethodName      = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBStickinessPolicy"
+	LoadbalancerService_UpdateApplicationLoadBalancer_FullMethodName = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateApplicationLoadBalancer"
+	LoadbalancerService_RemoveCertFromLoadBalancer_FullMethodName    = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveCertFromLoadBalancer"
+	LoadbalancerService_ListLBHealthCheckPolicies_FullMethodName     = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBHealthCheckPolicies"
+	LoadbalancerService_UploadSslCert_FullMethodName                 = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UploadSslCert"
+	LoadbalancerService_ListApplicationLoadBalancers_FullMethodName  = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListApplicationLoadBalancers"
+	LoadbalancerService_UpdateLBStickinessPolicy_FullMethodName      = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBStickinessPolicy"
 )
 
 // LoadbalancerServiceClient is the client API for LoadbalancerService service.
@@ -52,54 +51,52 @@ const (
 //
 // LoadbalancerService provides operations for managing Loadbalancers
 type LoadbalancerServiceClient interface {
-	// ListSslCerts Lists SSL certificates
-	ListSslCerts(ctx context.Context, in *ListSslCertsRequest, opts ...grpc.CallOption) (*ListSslCertsResponse, error)
-	// DeleteSslCert Delete a certificate to CloudStack
-	DeleteSslCert(ctx context.Context, in *DeleteSslCertRequest, opts ...grpc.CallOption) (*DeleteSslCertResponse, error)
-	// ListLoadBalancerRuleInstancesCmdByAdmin List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstancesCmdByAdmin(ctx context.Context, in *ListLoadBalancerRuleInstancesCmdByAdminRequest, opts ...grpc.CallOption) (*ListLoadBalancerRuleInstancesCmdByAdminResponse, error)
-	// ListLBStickinessPolicies Lists load balancer stickiness policies.
-	ListLBStickinessPolicies(ctx context.Context, in *ListLBStickinessPoliciesRequest, opts ...grpc.CallOption) (*ListLBStickinessPoliciesResponse, error)
-	// CreateLoadBalancerRule Creates a load balancer rule
-	CreateLoadBalancerRule(ctx context.Context, in *CreateLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateLoadBalancerRuleResponse, error)
-	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
-	CreateLBStickinessPolicy(ctx context.Context, in *CreateLBStickinessPolicyRequest, opts ...grpc.CallOption) (*CreateLBStickinessPolicyResponse, error)
-	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
-	DeleteLBStickinessPolicy(ctx context.Context, in *DeleteLBStickinessPolicyRequest, opts ...grpc.CallOption) (*DeleteLBStickinessPolicyResponse, error)
-	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstances(ctx context.Context, in *ListLoadBalancerRuleInstancesRequest, opts ...grpc.CallOption) (*ListLoadBalancerRuleInstancesResponse, error)
-	// UpdateApplicationLoadBalancer Updates an internal load balancer
-	UpdateApplicationLoadBalancer(ctx context.Context, in *UpdateApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*UpdateApplicationLoadBalancerResponse, error)
-	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
-	RemoveFromLoadBalancerRule(ctx context.Context, in *RemoveFromLoadBalancerRuleRequest, opts ...grpc.CallOption) (*RemoveFromLoadBalancerRuleResponse, error)
-	// ListLoadBalancerRules Lists load balancer rules.
-	ListLoadBalancerRules(ctx context.Context, in *ListLoadBalancerRulesRequest, opts ...grpc.CallOption) (*ListLoadBalancerRulesResponse, error)
-	// DeleteLoadBalancerRule Deletes a load balancer rule.
-	DeleteLoadBalancerRule(ctx context.Context, in *DeleteLoadBalancerRuleRequest, opts ...grpc.CallOption) (*DeleteLoadBalancerRuleResponse, error)
-	// ListApplicationLoadBalancers Lists internal load balancers
-	ListApplicationLoadBalancers(ctx context.Context, in *ListApplicationLoadBalancersRequest, opts ...grpc.CallOption) (*ListApplicationLoadBalancersResponse, error)
-	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
-	RemoveCertFromLoadBalancer(ctx context.Context, in *RemoveCertFromLoadBalancerRequest, opts ...grpc.CallOption) (*RemoveCertFromLoadBalancerResponse, error)
-	// UploadSslCert Upload a certificate to CloudStack
-	UploadSslCert(ctx context.Context, in *UploadSslCertRequest, opts ...grpc.CallOption) (*UploadSslCertResponse, error)
 	// AssignToLoadBalancerRule Assigns virtual machine or a list of virtual machines to a load balancer rule.
 	AssignToLoadBalancerRule(ctx context.Context, in *AssignToLoadBalancerRuleRequest, opts ...grpc.CallOption) (*AssignToLoadBalancerRuleResponse, error)
+	// ListLoadBalancerRules Lists load balancer rules.
+	ListLoadBalancerRules(ctx context.Context, in *ListLoadBalancerRulesRequest, opts ...grpc.CallOption) (*ListLoadBalancerRulesResponse, error)
+	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
+	DeleteLBStickinessPolicy(ctx context.Context, in *DeleteLBStickinessPolicyRequest, opts ...grpc.CallOption) (*DeleteLBStickinessPolicyResponse, error)
+	// CreateLoadBalancerRule Creates a load balancer rule
+	CreateLoadBalancerRule(ctx context.Context, in *CreateLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateLoadBalancerRuleResponse, error)
+	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
+	ListLoadBalancerRuleInstances(ctx context.Context, in *ListLoadBalancerRuleInstancesRequest, opts ...grpc.CallOption) (*ListLoadBalancerRuleInstancesResponse, error)
 	// CreateApplicationLoadBalancer Creates an internal load balancer
 	CreateApplicationLoadBalancer(ctx context.Context, in *CreateApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*CreateApplicationLoadBalancerResponse, error)
-	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
-	UpdateLBHealthCheckPolicy(ctx context.Context, in *UpdateLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*UpdateLBHealthCheckPolicyResponse, error)
+	// DeleteLoadBalancerRule Deletes a load balancer rule.
+	DeleteLoadBalancerRule(ctx context.Context, in *DeleteLoadBalancerRuleRequest, opts ...grpc.CallOption) (*DeleteLoadBalancerRuleResponse, error)
 	// AssignCertToLoadBalancer Assigns a certificate to a load balancer rule
 	AssignCertToLoadBalancer(ctx context.Context, in *AssignCertToLoadBalancerRequest, opts ...grpc.CallOption) (*AssignCertToLoadBalancerResponse, error)
-	// ListLBHealthCheckPolicies Lists load balancer health check policies.
-	ListLBHealthCheckPolicies(ctx context.Context, in *ListLBHealthCheckPoliciesRequest, opts ...grpc.CallOption) (*ListLBHealthCheckPoliciesResponse, error)
 	// DeleteApplicationLoadBalancer Deletes an internal load balancer
 	DeleteApplicationLoadBalancer(ctx context.Context, in *DeleteApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*DeleteApplicationLoadBalancerResponse, error)
-	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
-	DeleteLBHealthCheckPolicy(ctx context.Context, in *DeleteLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*DeleteLBHealthCheckPolicyResponse, error)
+	// ListLBStickinessPolicies Lists load balancer stickiness policies.
+	ListLBStickinessPolicies(ctx context.Context, in *ListLBStickinessPoliciesRequest, opts ...grpc.CallOption) (*ListLBStickinessPoliciesResponse, error)
 	// CreateLBHealthCheckPolicy Creates a load balancer health check policy
 	CreateLBHealthCheckPolicy(ctx context.Context, in *CreateLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*CreateLBHealthCheckPolicyResponse, error)
 	// UpdateLoadBalancerRule Updates load balancer
 	UpdateLoadBalancerRule(ctx context.Context, in *UpdateLoadBalancerRuleRequest, opts ...grpc.CallOption) (*UpdateLoadBalancerRuleResponse, error)
+	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
+	UpdateLBHealthCheckPolicy(ctx context.Context, in *UpdateLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*UpdateLBHealthCheckPolicyResponse, error)
+	// DeleteSslCert Delete a certificate to CloudStack
+	DeleteSslCert(ctx context.Context, in *DeleteSslCertRequest, opts ...grpc.CallOption) (*DeleteSslCertResponse, error)
+	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
+	RemoveFromLoadBalancerRule(ctx context.Context, in *RemoveFromLoadBalancerRuleRequest, opts ...grpc.CallOption) (*RemoveFromLoadBalancerRuleResponse, error)
+	// ListSslCerts Lists SSL certificates
+	ListSslCerts(ctx context.Context, in *ListSslCertsRequest, opts ...grpc.CallOption) (*ListSslCertsResponse, error)
+	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
+	DeleteLBHealthCheckPolicy(ctx context.Context, in *DeleteLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*DeleteLBHealthCheckPolicyResponse, error)
+	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
+	CreateLBStickinessPolicy(ctx context.Context, in *CreateLBStickinessPolicyRequest, opts ...grpc.CallOption) (*CreateLBStickinessPolicyResponse, error)
+	// UpdateApplicationLoadBalancer Updates an internal load balancer
+	UpdateApplicationLoadBalancer(ctx context.Context, in *UpdateApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*UpdateApplicationLoadBalancerResponse, error)
+	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
+	RemoveCertFromLoadBalancer(ctx context.Context, in *RemoveCertFromLoadBalancerRequest, opts ...grpc.CallOption) (*RemoveCertFromLoadBalancerResponse, error)
+	// ListLBHealthCheckPolicies Lists load balancer health check policies.
+	ListLBHealthCheckPolicies(ctx context.Context, in *ListLBHealthCheckPoliciesRequest, opts ...grpc.CallOption) (*ListLBHealthCheckPoliciesResponse, error)
+	// UploadSslCert Upload a certificate to CloudStack
+	UploadSslCert(ctx context.Context, in *UploadSslCertRequest, opts ...grpc.CallOption) (*UploadSslCertResponse, error)
+	// ListApplicationLoadBalancers Lists internal load balancers
+	ListApplicationLoadBalancers(ctx context.Context, in *ListApplicationLoadBalancersRequest, opts ...grpc.CallOption) (*ListApplicationLoadBalancersResponse, error)
 	// UpdateLBStickinessPolicy Updates load balancer stickiness policy
 	UpdateLBStickinessPolicy(ctx context.Context, in *UpdateLBStickinessPolicyRequest, opts ...grpc.CallOption) (*UpdateLBStickinessPolicyResponse, error)
 }
@@ -112,100 +109,10 @@ func NewLoadbalancerServiceClient(cc grpc.ClientConnInterface) LoadbalancerServi
 	return &loadbalancerServiceClient{cc}
 }
 
-func (c *loadbalancerServiceClient) ListSslCerts(ctx context.Context, in *ListSslCertsRequest, opts ...grpc.CallOption) (*ListSslCertsResponse, error) {
+func (c *loadbalancerServiceClient) AssignToLoadBalancerRule(ctx context.Context, in *AssignToLoadBalancerRuleRequest, opts ...grpc.CallOption) (*AssignToLoadBalancerRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListSslCertsResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_ListSslCerts_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) DeleteSslCert(ctx context.Context, in *DeleteSslCertRequest, opts ...grpc.CallOption) (*DeleteSslCertResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteSslCertResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteSslCert_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) ListLoadBalancerRuleInstancesCmdByAdmin(ctx context.Context, in *ListLoadBalancerRuleInstancesCmdByAdminRequest, opts ...grpc.CallOption) (*ListLoadBalancerRuleInstancesCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListLoadBalancerRuleInstancesCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_ListLoadBalancerRuleInstancesCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) ListLBStickinessPolicies(ctx context.Context, in *ListLBStickinessPoliciesRequest, opts ...grpc.CallOption) (*ListLBStickinessPoliciesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListLBStickinessPoliciesResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_ListLBStickinessPolicies_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) CreateLoadBalancerRule(ctx context.Context, in *CreateLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateLoadBalancerRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_CreateLoadBalancerRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) CreateLBStickinessPolicy(ctx context.Context, in *CreateLBStickinessPolicyRequest, opts ...grpc.CallOption) (*CreateLBStickinessPolicyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateLBStickinessPolicyResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_CreateLBStickinessPolicy_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) DeleteLBStickinessPolicy(ctx context.Context, in *DeleteLBStickinessPolicyRequest, opts ...grpc.CallOption) (*DeleteLBStickinessPolicyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteLBStickinessPolicyResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteLBStickinessPolicy_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) ListLoadBalancerRuleInstances(ctx context.Context, in *ListLoadBalancerRuleInstancesRequest, opts ...grpc.CallOption) (*ListLoadBalancerRuleInstancesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListLoadBalancerRuleInstancesResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_ListLoadBalancerRuleInstances_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) UpdateApplicationLoadBalancer(ctx context.Context, in *UpdateApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*UpdateApplicationLoadBalancerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateApplicationLoadBalancerResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_UpdateApplicationLoadBalancer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) RemoveFromLoadBalancerRule(ctx context.Context, in *RemoveFromLoadBalancerRuleRequest, opts ...grpc.CallOption) (*RemoveFromLoadBalancerRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveFromLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_RemoveFromLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	out := new(AssignToLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_AssignToLoadBalancerRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -222,50 +129,30 @@ func (c *loadbalancerServiceClient) ListLoadBalancerRules(ctx context.Context, i
 	return out, nil
 }
 
-func (c *loadbalancerServiceClient) DeleteLoadBalancerRule(ctx context.Context, in *DeleteLoadBalancerRuleRequest, opts ...grpc.CallOption) (*DeleteLoadBalancerRuleResponse, error) {
+func (c *loadbalancerServiceClient) DeleteLBStickinessPolicy(ctx context.Context, in *DeleteLBStickinessPolicyRequest, opts ...grpc.CallOption) (*DeleteLBStickinessPolicyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	out := new(DeleteLBStickinessPolicyResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteLBStickinessPolicy_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *loadbalancerServiceClient) ListApplicationLoadBalancers(ctx context.Context, in *ListApplicationLoadBalancersRequest, opts ...grpc.CallOption) (*ListApplicationLoadBalancersResponse, error) {
+func (c *loadbalancerServiceClient) CreateLoadBalancerRule(ctx context.Context, in *CreateLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateLoadBalancerRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListApplicationLoadBalancersResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_ListApplicationLoadBalancers_FullMethodName, in, out, cOpts...)
+	out := new(CreateLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_CreateLoadBalancerRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *loadbalancerServiceClient) RemoveCertFromLoadBalancer(ctx context.Context, in *RemoveCertFromLoadBalancerRequest, opts ...grpc.CallOption) (*RemoveCertFromLoadBalancerResponse, error) {
+func (c *loadbalancerServiceClient) ListLoadBalancerRuleInstances(ctx context.Context, in *ListLoadBalancerRuleInstancesRequest, opts ...grpc.CallOption) (*ListLoadBalancerRuleInstancesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveCertFromLoadBalancerResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_RemoveCertFromLoadBalancer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) UploadSslCert(ctx context.Context, in *UploadSslCertRequest, opts ...grpc.CallOption) (*UploadSslCertResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UploadSslCertResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_UploadSslCert_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *loadbalancerServiceClient) AssignToLoadBalancerRule(ctx context.Context, in *AssignToLoadBalancerRuleRequest, opts ...grpc.CallOption) (*AssignToLoadBalancerRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignToLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_AssignToLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	out := new(ListLoadBalancerRuleInstancesResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_ListLoadBalancerRuleInstances_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -282,10 +169,10 @@ func (c *loadbalancerServiceClient) CreateApplicationLoadBalancer(ctx context.Co
 	return out, nil
 }
 
-func (c *loadbalancerServiceClient) UpdateLBHealthCheckPolicy(ctx context.Context, in *UpdateLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*UpdateLBHealthCheckPolicyResponse, error) {
+func (c *loadbalancerServiceClient) DeleteLoadBalancerRule(ctx context.Context, in *DeleteLoadBalancerRuleRequest, opts ...grpc.CallOption) (*DeleteLoadBalancerRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateLBHealthCheckPolicyResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_UpdateLBHealthCheckPolicy_FullMethodName, in, out, cOpts...)
+	out := new(DeleteLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteLoadBalancerRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -302,16 +189,6 @@ func (c *loadbalancerServiceClient) AssignCertToLoadBalancer(ctx context.Context
 	return out, nil
 }
 
-func (c *loadbalancerServiceClient) ListLBHealthCheckPolicies(ctx context.Context, in *ListLBHealthCheckPoliciesRequest, opts ...grpc.CallOption) (*ListLBHealthCheckPoliciesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListLBHealthCheckPoliciesResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_ListLBHealthCheckPolicies_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *loadbalancerServiceClient) DeleteApplicationLoadBalancer(ctx context.Context, in *DeleteApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*DeleteApplicationLoadBalancerResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteApplicationLoadBalancerResponse)
@@ -322,10 +199,10 @@ func (c *loadbalancerServiceClient) DeleteApplicationLoadBalancer(ctx context.Co
 	return out, nil
 }
 
-func (c *loadbalancerServiceClient) DeleteLBHealthCheckPolicy(ctx context.Context, in *DeleteLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*DeleteLBHealthCheckPolicyResponse, error) {
+func (c *loadbalancerServiceClient) ListLBStickinessPolicies(ctx context.Context, in *ListLBStickinessPoliciesRequest, opts ...grpc.CallOption) (*ListLBStickinessPoliciesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteLBHealthCheckPolicyResponse)
-	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteLBHealthCheckPolicy_FullMethodName, in, out, cOpts...)
+	out := new(ListLBStickinessPoliciesResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_ListLBStickinessPolicies_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -352,6 +229,116 @@ func (c *loadbalancerServiceClient) UpdateLoadBalancerRule(ctx context.Context, 
 	return out, nil
 }
 
+func (c *loadbalancerServiceClient) UpdateLBHealthCheckPolicy(ctx context.Context, in *UpdateLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*UpdateLBHealthCheckPolicyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateLBHealthCheckPolicyResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_UpdateLBHealthCheckPolicy_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) DeleteSslCert(ctx context.Context, in *DeleteSslCertRequest, opts ...grpc.CallOption) (*DeleteSslCertResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteSslCertResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteSslCert_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) RemoveFromLoadBalancerRule(ctx context.Context, in *RemoveFromLoadBalancerRuleRequest, opts ...grpc.CallOption) (*RemoveFromLoadBalancerRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveFromLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_RemoveFromLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) ListSslCerts(ctx context.Context, in *ListSslCertsRequest, opts ...grpc.CallOption) (*ListSslCertsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSslCertsResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_ListSslCerts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) DeleteLBHealthCheckPolicy(ctx context.Context, in *DeleteLBHealthCheckPolicyRequest, opts ...grpc.CallOption) (*DeleteLBHealthCheckPolicyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteLBHealthCheckPolicyResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_DeleteLBHealthCheckPolicy_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) CreateLBStickinessPolicy(ctx context.Context, in *CreateLBStickinessPolicyRequest, opts ...grpc.CallOption) (*CreateLBStickinessPolicyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateLBStickinessPolicyResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_CreateLBStickinessPolicy_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) UpdateApplicationLoadBalancer(ctx context.Context, in *UpdateApplicationLoadBalancerRequest, opts ...grpc.CallOption) (*UpdateApplicationLoadBalancerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateApplicationLoadBalancerResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_UpdateApplicationLoadBalancer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) RemoveCertFromLoadBalancer(ctx context.Context, in *RemoveCertFromLoadBalancerRequest, opts ...grpc.CallOption) (*RemoveCertFromLoadBalancerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveCertFromLoadBalancerResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_RemoveCertFromLoadBalancer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) ListLBHealthCheckPolicies(ctx context.Context, in *ListLBHealthCheckPoliciesRequest, opts ...grpc.CallOption) (*ListLBHealthCheckPoliciesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListLBHealthCheckPoliciesResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_ListLBHealthCheckPolicies_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) UploadSslCert(ctx context.Context, in *UploadSslCertRequest, opts ...grpc.CallOption) (*UploadSslCertResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UploadSslCertResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_UploadSslCert_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *loadbalancerServiceClient) ListApplicationLoadBalancers(ctx context.Context, in *ListApplicationLoadBalancersRequest, opts ...grpc.CallOption) (*ListApplicationLoadBalancersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListApplicationLoadBalancersResponse)
+	err := c.cc.Invoke(ctx, LoadbalancerService_ListApplicationLoadBalancers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *loadbalancerServiceClient) UpdateLBStickinessPolicy(ctx context.Context, in *UpdateLBStickinessPolicyRequest, opts ...grpc.CallOption) (*UpdateLBStickinessPolicyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateLBStickinessPolicyResponse)
@@ -368,54 +355,52 @@ func (c *loadbalancerServiceClient) UpdateLBStickinessPolicy(ctx context.Context
 //
 // LoadbalancerService provides operations for managing Loadbalancers
 type LoadbalancerServiceServer interface {
-	// ListSslCerts Lists SSL certificates
-	ListSslCerts(context.Context, *ListSslCertsRequest) (*ListSslCertsResponse, error)
-	// DeleteSslCert Delete a certificate to CloudStack
-	DeleteSslCert(context.Context, *DeleteSslCertRequest) (*DeleteSslCertResponse, error)
-	// ListLoadBalancerRuleInstancesCmdByAdmin List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstancesCmdByAdmin(context.Context, *ListLoadBalancerRuleInstancesCmdByAdminRequest) (*ListLoadBalancerRuleInstancesCmdByAdminResponse, error)
-	// ListLBStickinessPolicies Lists load balancer stickiness policies.
-	ListLBStickinessPolicies(context.Context, *ListLBStickinessPoliciesRequest) (*ListLBStickinessPoliciesResponse, error)
-	// CreateLoadBalancerRule Creates a load balancer rule
-	CreateLoadBalancerRule(context.Context, *CreateLoadBalancerRuleRequest) (*CreateLoadBalancerRuleResponse, error)
-	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
-	CreateLBStickinessPolicy(context.Context, *CreateLBStickinessPolicyRequest) (*CreateLBStickinessPolicyResponse, error)
-	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
-	DeleteLBStickinessPolicy(context.Context, *DeleteLBStickinessPolicyRequest) (*DeleteLBStickinessPolicyResponse, error)
-	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstances(context.Context, *ListLoadBalancerRuleInstancesRequest) (*ListLoadBalancerRuleInstancesResponse, error)
-	// UpdateApplicationLoadBalancer Updates an internal load balancer
-	UpdateApplicationLoadBalancer(context.Context, *UpdateApplicationLoadBalancerRequest) (*UpdateApplicationLoadBalancerResponse, error)
-	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
-	RemoveFromLoadBalancerRule(context.Context, *RemoveFromLoadBalancerRuleRequest) (*RemoveFromLoadBalancerRuleResponse, error)
-	// ListLoadBalancerRules Lists load balancer rules.
-	ListLoadBalancerRules(context.Context, *ListLoadBalancerRulesRequest) (*ListLoadBalancerRulesResponse, error)
-	// DeleteLoadBalancerRule Deletes a load balancer rule.
-	DeleteLoadBalancerRule(context.Context, *DeleteLoadBalancerRuleRequest) (*DeleteLoadBalancerRuleResponse, error)
-	// ListApplicationLoadBalancers Lists internal load balancers
-	ListApplicationLoadBalancers(context.Context, *ListApplicationLoadBalancersRequest) (*ListApplicationLoadBalancersResponse, error)
-	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
-	RemoveCertFromLoadBalancer(context.Context, *RemoveCertFromLoadBalancerRequest) (*RemoveCertFromLoadBalancerResponse, error)
-	// UploadSslCert Upload a certificate to CloudStack
-	UploadSslCert(context.Context, *UploadSslCertRequest) (*UploadSslCertResponse, error)
 	// AssignToLoadBalancerRule Assigns virtual machine or a list of virtual machines to a load balancer rule.
 	AssignToLoadBalancerRule(context.Context, *AssignToLoadBalancerRuleRequest) (*AssignToLoadBalancerRuleResponse, error)
+	// ListLoadBalancerRules Lists load balancer rules.
+	ListLoadBalancerRules(context.Context, *ListLoadBalancerRulesRequest) (*ListLoadBalancerRulesResponse, error)
+	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
+	DeleteLBStickinessPolicy(context.Context, *DeleteLBStickinessPolicyRequest) (*DeleteLBStickinessPolicyResponse, error)
+	// CreateLoadBalancerRule Creates a load balancer rule
+	CreateLoadBalancerRule(context.Context, *CreateLoadBalancerRuleRequest) (*CreateLoadBalancerRuleResponse, error)
+	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
+	ListLoadBalancerRuleInstances(context.Context, *ListLoadBalancerRuleInstancesRequest) (*ListLoadBalancerRuleInstancesResponse, error)
 	// CreateApplicationLoadBalancer Creates an internal load balancer
 	CreateApplicationLoadBalancer(context.Context, *CreateApplicationLoadBalancerRequest) (*CreateApplicationLoadBalancerResponse, error)
-	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
-	UpdateLBHealthCheckPolicy(context.Context, *UpdateLBHealthCheckPolicyRequest) (*UpdateLBHealthCheckPolicyResponse, error)
+	// DeleteLoadBalancerRule Deletes a load balancer rule.
+	DeleteLoadBalancerRule(context.Context, *DeleteLoadBalancerRuleRequest) (*DeleteLoadBalancerRuleResponse, error)
 	// AssignCertToLoadBalancer Assigns a certificate to a load balancer rule
 	AssignCertToLoadBalancer(context.Context, *AssignCertToLoadBalancerRequest) (*AssignCertToLoadBalancerResponse, error)
-	// ListLBHealthCheckPolicies Lists load balancer health check policies.
-	ListLBHealthCheckPolicies(context.Context, *ListLBHealthCheckPoliciesRequest) (*ListLBHealthCheckPoliciesResponse, error)
 	// DeleteApplicationLoadBalancer Deletes an internal load balancer
 	DeleteApplicationLoadBalancer(context.Context, *DeleteApplicationLoadBalancerRequest) (*DeleteApplicationLoadBalancerResponse, error)
-	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
-	DeleteLBHealthCheckPolicy(context.Context, *DeleteLBHealthCheckPolicyRequest) (*DeleteLBHealthCheckPolicyResponse, error)
+	// ListLBStickinessPolicies Lists load balancer stickiness policies.
+	ListLBStickinessPolicies(context.Context, *ListLBStickinessPoliciesRequest) (*ListLBStickinessPoliciesResponse, error)
 	// CreateLBHealthCheckPolicy Creates a load balancer health check policy
 	CreateLBHealthCheckPolicy(context.Context, *CreateLBHealthCheckPolicyRequest) (*CreateLBHealthCheckPolicyResponse, error)
 	// UpdateLoadBalancerRule Updates load balancer
 	UpdateLoadBalancerRule(context.Context, *UpdateLoadBalancerRuleRequest) (*UpdateLoadBalancerRuleResponse, error)
+	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
+	UpdateLBHealthCheckPolicy(context.Context, *UpdateLBHealthCheckPolicyRequest) (*UpdateLBHealthCheckPolicyResponse, error)
+	// DeleteSslCert Delete a certificate to CloudStack
+	DeleteSslCert(context.Context, *DeleteSslCertRequest) (*DeleteSslCertResponse, error)
+	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
+	RemoveFromLoadBalancerRule(context.Context, *RemoveFromLoadBalancerRuleRequest) (*RemoveFromLoadBalancerRuleResponse, error)
+	// ListSslCerts Lists SSL certificates
+	ListSslCerts(context.Context, *ListSslCertsRequest) (*ListSslCertsResponse, error)
+	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
+	DeleteLBHealthCheckPolicy(context.Context, *DeleteLBHealthCheckPolicyRequest) (*DeleteLBHealthCheckPolicyResponse, error)
+	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
+	CreateLBStickinessPolicy(context.Context, *CreateLBStickinessPolicyRequest) (*CreateLBStickinessPolicyResponse, error)
+	// UpdateApplicationLoadBalancer Updates an internal load balancer
+	UpdateApplicationLoadBalancer(context.Context, *UpdateApplicationLoadBalancerRequest) (*UpdateApplicationLoadBalancerResponse, error)
+	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
+	RemoveCertFromLoadBalancer(context.Context, *RemoveCertFromLoadBalancerRequest) (*RemoveCertFromLoadBalancerResponse, error)
+	// ListLBHealthCheckPolicies Lists load balancer health check policies.
+	ListLBHealthCheckPolicies(context.Context, *ListLBHealthCheckPoliciesRequest) (*ListLBHealthCheckPoliciesResponse, error)
+	// UploadSslCert Upload a certificate to CloudStack
+	UploadSslCert(context.Context, *UploadSslCertRequest) (*UploadSslCertResponse, error)
+	// ListApplicationLoadBalancers Lists internal load balancers
+	ListApplicationLoadBalancers(context.Context, *ListApplicationLoadBalancersRequest) (*ListApplicationLoadBalancersResponse, error)
 	// UpdateLBStickinessPolicy Updates load balancer stickiness policy
 	UpdateLBStickinessPolicy(context.Context, *UpdateLBStickinessPolicyRequest) (*UpdateLBStickinessPolicyResponse, error)
 	mustEmbedUnimplementedLoadbalancerServiceServer()
@@ -428,77 +413,74 @@ type LoadbalancerServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedLoadbalancerServiceServer struct{}
 
-func (UnimplementedLoadbalancerServiceServer) ListSslCerts(context.Context, *ListSslCertsRequest) (*ListSslCertsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSslCerts not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) DeleteSslCert(context.Context, *DeleteSslCertRequest) (*DeleteSslCertResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteSslCert not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) ListLoadBalancerRuleInstancesCmdByAdmin(context.Context, *ListLoadBalancerRuleInstancesCmdByAdminRequest) (*ListLoadBalancerRuleInstancesCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListLoadBalancerRuleInstancesCmdByAdmin not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) ListLBStickinessPolicies(context.Context, *ListLBStickinessPoliciesRequest) (*ListLBStickinessPoliciesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListLBStickinessPolicies not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) CreateLoadBalancerRule(context.Context, *CreateLoadBalancerRuleRequest) (*CreateLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateLoadBalancerRule not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) CreateLBStickinessPolicy(context.Context, *CreateLBStickinessPolicyRequest) (*CreateLBStickinessPolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateLBStickinessPolicy not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) DeleteLBStickinessPolicy(context.Context, *DeleteLBStickinessPolicyRequest) (*DeleteLBStickinessPolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteLBStickinessPolicy not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) ListLoadBalancerRuleInstances(context.Context, *ListLoadBalancerRuleInstancesRequest) (*ListLoadBalancerRuleInstancesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListLoadBalancerRuleInstances not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) UpdateApplicationLoadBalancer(context.Context, *UpdateApplicationLoadBalancerRequest) (*UpdateApplicationLoadBalancerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateApplicationLoadBalancer not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) RemoveFromLoadBalancerRule(context.Context, *RemoveFromLoadBalancerRuleRequest) (*RemoveFromLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveFromLoadBalancerRule not implemented")
+func (UnimplementedLoadbalancerServiceServer) AssignToLoadBalancerRule(context.Context, *AssignToLoadBalancerRuleRequest) (*AssignToLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AssignToLoadBalancerRule not implemented")
 }
 func (UnimplementedLoadbalancerServiceServer) ListLoadBalancerRules(context.Context, *ListLoadBalancerRulesRequest) (*ListLoadBalancerRulesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListLoadBalancerRules not implemented")
 }
-func (UnimplementedLoadbalancerServiceServer) DeleteLoadBalancerRule(context.Context, *DeleteLoadBalancerRuleRequest) (*DeleteLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteLoadBalancerRule not implemented")
+func (UnimplementedLoadbalancerServiceServer) DeleteLBStickinessPolicy(context.Context, *DeleteLBStickinessPolicyRequest) (*DeleteLBStickinessPolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteLBStickinessPolicy not implemented")
 }
-func (UnimplementedLoadbalancerServiceServer) ListApplicationLoadBalancers(context.Context, *ListApplicationLoadBalancersRequest) (*ListApplicationLoadBalancersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListApplicationLoadBalancers not implemented")
+func (UnimplementedLoadbalancerServiceServer) CreateLoadBalancerRule(context.Context, *CreateLoadBalancerRuleRequest) (*CreateLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateLoadBalancerRule not implemented")
 }
-func (UnimplementedLoadbalancerServiceServer) RemoveCertFromLoadBalancer(context.Context, *RemoveCertFromLoadBalancerRequest) (*RemoveCertFromLoadBalancerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveCertFromLoadBalancer not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) UploadSslCert(context.Context, *UploadSslCertRequest) (*UploadSslCertResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UploadSslCert not implemented")
-}
-func (UnimplementedLoadbalancerServiceServer) AssignToLoadBalancerRule(context.Context, *AssignToLoadBalancerRuleRequest) (*AssignToLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AssignToLoadBalancerRule not implemented")
+func (UnimplementedLoadbalancerServiceServer) ListLoadBalancerRuleInstances(context.Context, *ListLoadBalancerRuleInstancesRequest) (*ListLoadBalancerRuleInstancesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLoadBalancerRuleInstances not implemented")
 }
 func (UnimplementedLoadbalancerServiceServer) CreateApplicationLoadBalancer(context.Context, *CreateApplicationLoadBalancerRequest) (*CreateApplicationLoadBalancerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateApplicationLoadBalancer not implemented")
 }
-func (UnimplementedLoadbalancerServiceServer) UpdateLBHealthCheckPolicy(context.Context, *UpdateLBHealthCheckPolicyRequest) (*UpdateLBHealthCheckPolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateLBHealthCheckPolicy not implemented")
+func (UnimplementedLoadbalancerServiceServer) DeleteLoadBalancerRule(context.Context, *DeleteLoadBalancerRuleRequest) (*DeleteLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteLoadBalancerRule not implemented")
 }
 func (UnimplementedLoadbalancerServiceServer) AssignCertToLoadBalancer(context.Context, *AssignCertToLoadBalancerRequest) (*AssignCertToLoadBalancerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AssignCertToLoadBalancer not implemented")
 }
-func (UnimplementedLoadbalancerServiceServer) ListLBHealthCheckPolicies(context.Context, *ListLBHealthCheckPoliciesRequest) (*ListLBHealthCheckPoliciesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListLBHealthCheckPolicies not implemented")
-}
 func (UnimplementedLoadbalancerServiceServer) DeleteApplicationLoadBalancer(context.Context, *DeleteApplicationLoadBalancerRequest) (*DeleteApplicationLoadBalancerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteApplicationLoadBalancer not implemented")
 }
-func (UnimplementedLoadbalancerServiceServer) DeleteLBHealthCheckPolicy(context.Context, *DeleteLBHealthCheckPolicyRequest) (*DeleteLBHealthCheckPolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteLBHealthCheckPolicy not implemented")
+func (UnimplementedLoadbalancerServiceServer) ListLBStickinessPolicies(context.Context, *ListLBStickinessPoliciesRequest) (*ListLBStickinessPoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLBStickinessPolicies not implemented")
 }
 func (UnimplementedLoadbalancerServiceServer) CreateLBHealthCheckPolicy(context.Context, *CreateLBHealthCheckPolicyRequest) (*CreateLBHealthCheckPolicyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLBHealthCheckPolicy not implemented")
 }
 func (UnimplementedLoadbalancerServiceServer) UpdateLoadBalancerRule(context.Context, *UpdateLoadBalancerRuleRequest) (*UpdateLoadBalancerRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLoadBalancerRule not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) UpdateLBHealthCheckPolicy(context.Context, *UpdateLBHealthCheckPolicyRequest) (*UpdateLBHealthCheckPolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLBHealthCheckPolicy not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) DeleteSslCert(context.Context, *DeleteSslCertRequest) (*DeleteSslCertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSslCert not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) RemoveFromLoadBalancerRule(context.Context, *RemoveFromLoadBalancerRuleRequest) (*RemoveFromLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveFromLoadBalancerRule not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) ListSslCerts(context.Context, *ListSslCertsRequest) (*ListSslCertsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSslCerts not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) DeleteLBHealthCheckPolicy(context.Context, *DeleteLBHealthCheckPolicyRequest) (*DeleteLBHealthCheckPolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteLBHealthCheckPolicy not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) CreateLBStickinessPolicy(context.Context, *CreateLBStickinessPolicyRequest) (*CreateLBStickinessPolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateLBStickinessPolicy not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) UpdateApplicationLoadBalancer(context.Context, *UpdateApplicationLoadBalancerRequest) (*UpdateApplicationLoadBalancerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateApplicationLoadBalancer not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) RemoveCertFromLoadBalancer(context.Context, *RemoveCertFromLoadBalancerRequest) (*RemoveCertFromLoadBalancerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveCertFromLoadBalancer not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) ListLBHealthCheckPolicies(context.Context, *ListLBHealthCheckPoliciesRequest) (*ListLBHealthCheckPoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLBHealthCheckPolicies not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) UploadSslCert(context.Context, *UploadSslCertRequest) (*UploadSslCertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadSslCert not implemented")
+}
+func (UnimplementedLoadbalancerServiceServer) ListApplicationLoadBalancers(context.Context, *ListApplicationLoadBalancersRequest) (*ListApplicationLoadBalancersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListApplicationLoadBalancers not implemented")
 }
 func (UnimplementedLoadbalancerServiceServer) UpdateLBStickinessPolicy(context.Context, *UpdateLBStickinessPolicyRequest) (*UpdateLBStickinessPolicyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLBStickinessPolicy not implemented")
@@ -524,182 +506,20 @@ func RegisterLoadbalancerServiceServer(s grpc.ServiceRegistrar, srv Loadbalancer
 	s.RegisterService(&LoadbalancerService_ServiceDesc, srv)
 }
 
-func _LoadbalancerService_ListSslCerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSslCertsRequest)
+func _LoadbalancerService_AssignToLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AssignToLoadBalancerRuleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).ListSslCerts(ctx, in)
+		return srv.(LoadbalancerServiceServer).AssignToLoadBalancerRule(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LoadbalancerService_ListSslCerts_FullMethodName,
+		FullMethod: LoadbalancerService_AssignToLoadBalancerRule_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).ListSslCerts(ctx, req.(*ListSslCertsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_DeleteSslCert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteSslCertRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).DeleteSslCert(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_DeleteSslCert_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).DeleteSslCert(ctx, req.(*DeleteSslCertRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_ListLoadBalancerRuleInstancesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListLoadBalancerRuleInstancesCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).ListLoadBalancerRuleInstancesCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_ListLoadBalancerRuleInstancesCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).ListLoadBalancerRuleInstancesCmdByAdmin(ctx, req.(*ListLoadBalancerRuleInstancesCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_ListLBStickinessPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListLBStickinessPoliciesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).ListLBStickinessPolicies(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_ListLBStickinessPolicies_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).ListLBStickinessPolicies(ctx, req.(*ListLBStickinessPoliciesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_CreateLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateLoadBalancerRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).CreateLoadBalancerRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_CreateLoadBalancerRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).CreateLoadBalancerRule(ctx, req.(*CreateLoadBalancerRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_CreateLBStickinessPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateLBStickinessPolicyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).CreateLBStickinessPolicy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_CreateLBStickinessPolicy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).CreateLBStickinessPolicy(ctx, req.(*CreateLBStickinessPolicyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_DeleteLBStickinessPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteLBStickinessPolicyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).DeleteLBStickinessPolicy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_DeleteLBStickinessPolicy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).DeleteLBStickinessPolicy(ctx, req.(*DeleteLBStickinessPolicyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_ListLoadBalancerRuleInstances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListLoadBalancerRuleInstancesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).ListLoadBalancerRuleInstances(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_ListLoadBalancerRuleInstances_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).ListLoadBalancerRuleInstances(ctx, req.(*ListLoadBalancerRuleInstancesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_UpdateApplicationLoadBalancer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateApplicationLoadBalancerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).UpdateApplicationLoadBalancer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_UpdateApplicationLoadBalancer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).UpdateApplicationLoadBalancer(ctx, req.(*UpdateApplicationLoadBalancerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_RemoveFromLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveFromLoadBalancerRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).RemoveFromLoadBalancerRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_RemoveFromLoadBalancerRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).RemoveFromLoadBalancerRule(ctx, req.(*RemoveFromLoadBalancerRuleRequest))
+		return srv.(LoadbalancerServiceServer).AssignToLoadBalancerRule(ctx, req.(*AssignToLoadBalancerRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -722,92 +542,56 @@ func _LoadbalancerService_ListLoadBalancerRules_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LoadbalancerService_DeleteLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteLoadBalancerRuleRequest)
+func _LoadbalancerService_DeleteLBStickinessPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteLBStickinessPolicyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).DeleteLoadBalancerRule(ctx, in)
+		return srv.(LoadbalancerServiceServer).DeleteLBStickinessPolicy(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LoadbalancerService_DeleteLoadBalancerRule_FullMethodName,
+		FullMethod: LoadbalancerService_DeleteLBStickinessPolicy_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).DeleteLoadBalancerRule(ctx, req.(*DeleteLoadBalancerRuleRequest))
+		return srv.(LoadbalancerServiceServer).DeleteLBStickinessPolicy(ctx, req.(*DeleteLBStickinessPolicyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LoadbalancerService_ListApplicationLoadBalancers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListApplicationLoadBalancersRequest)
+func _LoadbalancerService_CreateLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateLoadBalancerRuleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).ListApplicationLoadBalancers(ctx, in)
+		return srv.(LoadbalancerServiceServer).CreateLoadBalancerRule(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LoadbalancerService_ListApplicationLoadBalancers_FullMethodName,
+		FullMethod: LoadbalancerService_CreateLoadBalancerRule_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).ListApplicationLoadBalancers(ctx, req.(*ListApplicationLoadBalancersRequest))
+		return srv.(LoadbalancerServiceServer).CreateLoadBalancerRule(ctx, req.(*CreateLoadBalancerRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LoadbalancerService_RemoveCertFromLoadBalancer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveCertFromLoadBalancerRequest)
+func _LoadbalancerService_ListLoadBalancerRuleInstances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLoadBalancerRuleInstancesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).RemoveCertFromLoadBalancer(ctx, in)
+		return srv.(LoadbalancerServiceServer).ListLoadBalancerRuleInstances(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LoadbalancerService_RemoveCertFromLoadBalancer_FullMethodName,
+		FullMethod: LoadbalancerService_ListLoadBalancerRuleInstances_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).RemoveCertFromLoadBalancer(ctx, req.(*RemoveCertFromLoadBalancerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_UploadSslCert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadSslCertRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).UploadSslCert(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_UploadSslCert_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).UploadSslCert(ctx, req.(*UploadSslCertRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LoadbalancerService_AssignToLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssignToLoadBalancerRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).AssignToLoadBalancerRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_AssignToLoadBalancerRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).AssignToLoadBalancerRule(ctx, req.(*AssignToLoadBalancerRuleRequest))
+		return srv.(LoadbalancerServiceServer).ListLoadBalancerRuleInstances(ctx, req.(*ListLoadBalancerRuleInstancesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -830,20 +614,20 @@ func _LoadbalancerService_CreateApplicationLoadBalancer_Handler(srv interface{},
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LoadbalancerService_UpdateLBHealthCheckPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateLBHealthCheckPolicyRequest)
+func _LoadbalancerService_DeleteLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteLoadBalancerRuleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).UpdateLBHealthCheckPolicy(ctx, in)
+		return srv.(LoadbalancerServiceServer).DeleteLoadBalancerRule(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LoadbalancerService_UpdateLBHealthCheckPolicy_FullMethodName,
+		FullMethod: LoadbalancerService_DeleteLoadBalancerRule_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).UpdateLBHealthCheckPolicy(ctx, req.(*UpdateLBHealthCheckPolicyRequest))
+		return srv.(LoadbalancerServiceServer).DeleteLoadBalancerRule(ctx, req.(*DeleteLoadBalancerRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -866,24 +650,6 @@ func _LoadbalancerService_AssignCertToLoadBalancer_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LoadbalancerService_ListLBHealthCheckPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListLBHealthCheckPoliciesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).ListLBHealthCheckPolicies(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LoadbalancerService_ListLBHealthCheckPolicies_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).ListLBHealthCheckPolicies(ctx, req.(*ListLBHealthCheckPoliciesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _LoadbalancerService_DeleteApplicationLoadBalancer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteApplicationLoadBalancerRequest)
 	if err := dec(in); err != nil {
@@ -902,20 +668,20 @@ func _LoadbalancerService_DeleteApplicationLoadBalancer_Handler(srv interface{},
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LoadbalancerService_DeleteLBHealthCheckPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteLBHealthCheckPolicyRequest)
+func _LoadbalancerService_ListLBStickinessPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLBStickinessPoliciesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LoadbalancerServiceServer).DeleteLBHealthCheckPolicy(ctx, in)
+		return srv.(LoadbalancerServiceServer).ListLBStickinessPolicies(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LoadbalancerService_DeleteLBHealthCheckPolicy_FullMethodName,
+		FullMethod: LoadbalancerService_ListLBStickinessPolicies_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadbalancerServiceServer).DeleteLBHealthCheckPolicy(ctx, req.(*DeleteLBHealthCheckPolicyRequest))
+		return srv.(LoadbalancerServiceServer).ListLBStickinessPolicies(ctx, req.(*ListLBStickinessPoliciesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -956,6 +722,204 @@ func _LoadbalancerService_UpdateLoadBalancerRule_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _LoadbalancerService_UpdateLBHealthCheckPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLBHealthCheckPolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).UpdateLBHealthCheckPolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_UpdateLBHealthCheckPolicy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).UpdateLBHealthCheckPolicy(ctx, req.(*UpdateLBHealthCheckPolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_DeleteSslCert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteSslCertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).DeleteSslCert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_DeleteSslCert_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).DeleteSslCert(ctx, req.(*DeleteSslCertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_RemoveFromLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveFromLoadBalancerRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).RemoveFromLoadBalancerRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_RemoveFromLoadBalancerRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).RemoveFromLoadBalancerRule(ctx, req.(*RemoveFromLoadBalancerRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_ListSslCerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSslCertsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).ListSslCerts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_ListSslCerts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).ListSslCerts(ctx, req.(*ListSslCertsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_DeleteLBHealthCheckPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteLBHealthCheckPolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).DeleteLBHealthCheckPolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_DeleteLBHealthCheckPolicy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).DeleteLBHealthCheckPolicy(ctx, req.(*DeleteLBHealthCheckPolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_CreateLBStickinessPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateLBStickinessPolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).CreateLBStickinessPolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_CreateLBStickinessPolicy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).CreateLBStickinessPolicy(ctx, req.(*CreateLBStickinessPolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_UpdateApplicationLoadBalancer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateApplicationLoadBalancerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).UpdateApplicationLoadBalancer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_UpdateApplicationLoadBalancer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).UpdateApplicationLoadBalancer(ctx, req.(*UpdateApplicationLoadBalancerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_RemoveCertFromLoadBalancer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveCertFromLoadBalancerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).RemoveCertFromLoadBalancer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_RemoveCertFromLoadBalancer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).RemoveCertFromLoadBalancer(ctx, req.(*RemoveCertFromLoadBalancerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_ListLBHealthCheckPolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLBHealthCheckPoliciesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).ListLBHealthCheckPolicies(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_ListLBHealthCheckPolicies_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).ListLBHealthCheckPolicies(ctx, req.(*ListLBHealthCheckPoliciesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_UploadSslCert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadSslCertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).UploadSslCert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_UploadSslCert_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).UploadSslCert(ctx, req.(*UploadSslCertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LoadbalancerService_ListApplicationLoadBalancers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListApplicationLoadBalancersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoadbalancerServiceServer).ListApplicationLoadBalancers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoadbalancerService_ListApplicationLoadBalancers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoadbalancerServiceServer).ListApplicationLoadBalancers(ctx, req.(*ListApplicationLoadBalancersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _LoadbalancerService_UpdateLBStickinessPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateLBStickinessPolicyRequest)
 	if err := dec(in); err != nil {
@@ -982,92 +946,44 @@ var LoadbalancerService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*LoadbalancerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListSslCerts",
-			Handler:    _LoadbalancerService_ListSslCerts_Handler,
-		},
-		{
-			MethodName: "DeleteSslCert",
-			Handler:    _LoadbalancerService_DeleteSslCert_Handler,
-		},
-		{
-			MethodName: "ListLoadBalancerRuleInstancesCmdByAdmin",
-			Handler:    _LoadbalancerService_ListLoadBalancerRuleInstancesCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ListLBStickinessPolicies",
-			Handler:    _LoadbalancerService_ListLBStickinessPolicies_Handler,
-		},
-		{
-			MethodName: "CreateLoadBalancerRule",
-			Handler:    _LoadbalancerService_CreateLoadBalancerRule_Handler,
-		},
-		{
-			MethodName: "CreateLBStickinessPolicy",
-			Handler:    _LoadbalancerService_CreateLBStickinessPolicy_Handler,
-		},
-		{
-			MethodName: "DeleteLBStickinessPolicy",
-			Handler:    _LoadbalancerService_DeleteLBStickinessPolicy_Handler,
-		},
-		{
-			MethodName: "ListLoadBalancerRuleInstances",
-			Handler:    _LoadbalancerService_ListLoadBalancerRuleInstances_Handler,
-		},
-		{
-			MethodName: "UpdateApplicationLoadBalancer",
-			Handler:    _LoadbalancerService_UpdateApplicationLoadBalancer_Handler,
-		},
-		{
-			MethodName: "RemoveFromLoadBalancerRule",
-			Handler:    _LoadbalancerService_RemoveFromLoadBalancerRule_Handler,
+			MethodName: "AssignToLoadBalancerRule",
+			Handler:    _LoadbalancerService_AssignToLoadBalancerRule_Handler,
 		},
 		{
 			MethodName: "ListLoadBalancerRules",
 			Handler:    _LoadbalancerService_ListLoadBalancerRules_Handler,
 		},
 		{
-			MethodName: "DeleteLoadBalancerRule",
-			Handler:    _LoadbalancerService_DeleteLoadBalancerRule_Handler,
+			MethodName: "DeleteLBStickinessPolicy",
+			Handler:    _LoadbalancerService_DeleteLBStickinessPolicy_Handler,
 		},
 		{
-			MethodName: "ListApplicationLoadBalancers",
-			Handler:    _LoadbalancerService_ListApplicationLoadBalancers_Handler,
+			MethodName: "CreateLoadBalancerRule",
+			Handler:    _LoadbalancerService_CreateLoadBalancerRule_Handler,
 		},
 		{
-			MethodName: "RemoveCertFromLoadBalancer",
-			Handler:    _LoadbalancerService_RemoveCertFromLoadBalancer_Handler,
-		},
-		{
-			MethodName: "UploadSslCert",
-			Handler:    _LoadbalancerService_UploadSslCert_Handler,
-		},
-		{
-			MethodName: "AssignToLoadBalancerRule",
-			Handler:    _LoadbalancerService_AssignToLoadBalancerRule_Handler,
+			MethodName: "ListLoadBalancerRuleInstances",
+			Handler:    _LoadbalancerService_ListLoadBalancerRuleInstances_Handler,
 		},
 		{
 			MethodName: "CreateApplicationLoadBalancer",
 			Handler:    _LoadbalancerService_CreateApplicationLoadBalancer_Handler,
 		},
 		{
-			MethodName: "UpdateLBHealthCheckPolicy",
-			Handler:    _LoadbalancerService_UpdateLBHealthCheckPolicy_Handler,
+			MethodName: "DeleteLoadBalancerRule",
+			Handler:    _LoadbalancerService_DeleteLoadBalancerRule_Handler,
 		},
 		{
 			MethodName: "AssignCertToLoadBalancer",
 			Handler:    _LoadbalancerService_AssignCertToLoadBalancer_Handler,
 		},
 		{
-			MethodName: "ListLBHealthCheckPolicies",
-			Handler:    _LoadbalancerService_ListLBHealthCheckPolicies_Handler,
-		},
-		{
 			MethodName: "DeleteApplicationLoadBalancer",
 			Handler:    _LoadbalancerService_DeleteApplicationLoadBalancer_Handler,
 		},
 		{
-			MethodName: "DeleteLBHealthCheckPolicy",
-			Handler:    _LoadbalancerService_DeleteLBHealthCheckPolicy_Handler,
+			MethodName: "ListLBStickinessPolicies",
+			Handler:    _LoadbalancerService_ListLBStickinessPolicies_Handler,
 		},
 		{
 			MethodName: "CreateLBHealthCheckPolicy",
@@ -1076,6 +992,50 @@ var LoadbalancerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateLoadBalancerRule",
 			Handler:    _LoadbalancerService_UpdateLoadBalancerRule_Handler,
+		},
+		{
+			MethodName: "UpdateLBHealthCheckPolicy",
+			Handler:    _LoadbalancerService_UpdateLBHealthCheckPolicy_Handler,
+		},
+		{
+			MethodName: "DeleteSslCert",
+			Handler:    _LoadbalancerService_DeleteSslCert_Handler,
+		},
+		{
+			MethodName: "RemoveFromLoadBalancerRule",
+			Handler:    _LoadbalancerService_RemoveFromLoadBalancerRule_Handler,
+		},
+		{
+			MethodName: "ListSslCerts",
+			Handler:    _LoadbalancerService_ListSslCerts_Handler,
+		},
+		{
+			MethodName: "DeleteLBHealthCheckPolicy",
+			Handler:    _LoadbalancerService_DeleteLBHealthCheckPolicy_Handler,
+		},
+		{
+			MethodName: "CreateLBStickinessPolicy",
+			Handler:    _LoadbalancerService_CreateLBStickinessPolicy_Handler,
+		},
+		{
+			MethodName: "UpdateApplicationLoadBalancer",
+			Handler:    _LoadbalancerService_UpdateApplicationLoadBalancer_Handler,
+		},
+		{
+			MethodName: "RemoveCertFromLoadBalancer",
+			Handler:    _LoadbalancerService_RemoveCertFromLoadBalancer_Handler,
+		},
+		{
+			MethodName: "ListLBHealthCheckPolicies",
+			Handler:    _LoadbalancerService_ListLBHealthCheckPolicies_Handler,
+		},
+		{
+			MethodName: "UploadSslCert",
+			Handler:    _LoadbalancerService_UploadSslCert_Handler,
+		},
+		{
+			MethodName: "ListApplicationLoadBalancers",
+			Handler:    _LoadbalancerService_ListApplicationLoadBalancers_Handler,
 		},
 		{
 			MethodName: "UpdateLBStickinessPolicy",

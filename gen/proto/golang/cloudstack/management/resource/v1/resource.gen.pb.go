@@ -24,6 +24,1241 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ResourceType represents the possible values for Type of resource to update. If specifies valid values are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11. If not specified will update all resource counts0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects that a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+type ResourceType int32
+
+const (
+	// Default unspecified value
+	ResourceType_RESOURCE_TYPE_UNSPECIFIED ResourceType = 0
+	// V_0 value
+	ResourceType_RESOURCE_TYPE_V_0 ResourceType = 1
+	// V_1 value
+	ResourceType_RESOURCE_TYPE_V_1 ResourceType = 2
+	// V_2 value
+	ResourceType_RESOURCE_TYPE_V_2 ResourceType = 3
+	// V_3 value
+	ResourceType_RESOURCE_TYPE_V_3 ResourceType = 4
+	// V_4 value
+	ResourceType_RESOURCE_TYPE_V_4 ResourceType = 5
+	// V_5 value
+	ResourceType_RESOURCE_TYPE_V_5 ResourceType = 6
+	// V_6 value
+	ResourceType_RESOURCE_TYPE_V_6 ResourceType = 7
+	// V_7 value
+	ResourceType_RESOURCE_TYPE_V_7 ResourceType = 8
+	// V_8 value
+	ResourceType_RESOURCE_TYPE_V_8 ResourceType = 9
+	// V_9 value
+	ResourceType_RESOURCE_TYPE_V_9 ResourceType = 10
+)
+
+// Enum value maps for ResourceType.
+var (
+	ResourceType_name = map[int32]string{
+		0:  "RESOURCE_TYPE_UNSPECIFIED",
+		1:  "RESOURCE_TYPE_V_0",
+		2:  "RESOURCE_TYPE_V_1",
+		3:  "RESOURCE_TYPE_V_2",
+		4:  "RESOURCE_TYPE_V_3",
+		5:  "RESOURCE_TYPE_V_4",
+		6:  "RESOURCE_TYPE_V_5",
+		7:  "RESOURCE_TYPE_V_6",
+		8:  "RESOURCE_TYPE_V_7",
+		9:  "RESOURCE_TYPE_V_8",
+		10: "RESOURCE_TYPE_V_9",
+	}
+	ResourceType_value = map[string]int32{
+		"RESOURCE_TYPE_UNSPECIFIED": 0,
+		"RESOURCE_TYPE_V_0":         1,
+		"RESOURCE_TYPE_V_1":         2,
+		"RESOURCE_TYPE_V_2":         3,
+		"RESOURCE_TYPE_V_3":         4,
+		"RESOURCE_TYPE_V_4":         5,
+		"RESOURCE_TYPE_V_5":         6,
+		"RESOURCE_TYPE_V_6":         7,
+		"RESOURCE_TYPE_V_7":         8,
+		"RESOURCE_TYPE_V_8":         9,
+		"RESOURCE_TYPE_V_9":         10,
+	}
+)
+
+func (x ResourceType) Enum() *ResourceType {
+	p := new(ResourceType)
+	*p = x
+	return p
+}
+
+func (x ResourceType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ResourceType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ResourceType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_resource_v1_resource_gen_proto_enumTypes[0]
+}
+
+func (x ResourceType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ResourceType.Descriptor instead.
+func (ResourceType) EnumDescriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{0}
+}
+
+// StartRollingMaintenanceRequest represents the parameters for start rolling maintenance
+type StartRollingMaintenanceRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the IDs of the pods to start maintenance on
+	PodIds []string `protobuf:"bytes,1,rep,name=pod_ids,json=podIds" json:"pod_ids,omitempty"`
+	// the IDs of the clusters to start maintenance on
+	ClusterIds []string `protobuf:"bytes,2,rep,name=cluster_ids,json=clusterIds" json:"cluster_ids,omitempty"`
+	// the IDs of the zones to start maintenance on
+	ZoneIds []string `protobuf:"bytes,3,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
+	// the IDs of the hosts to start maintenance on
+	HostIds []string `protobuf:"bytes,4,rep,name=host_ids,json=hostIds" json:"host_ids,omitempty"`
+	// if rolling mechanism should continue in case of an error
+	Forced *bool `protobuf:"varint,5,opt,name=forced" json:"forced,omitempty"`
+	// the command to execute while hosts are on maintenance
+	Payload *string `protobuf:"bytes,6,opt,name=payload" json:"payload,omitempty"`
+	// optional operation timeout (in seconds) that overrides the global timeout setting
+	Timeout *int32 `protobuf:"varint,7,opt,name=timeout" json:"timeout,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartRollingMaintenanceRequest) Reset() {
+	*x = StartRollingMaintenanceRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartRollingMaintenanceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRollingMaintenanceRequest) ProtoMessage() {}
+
+func (x *StartRollingMaintenanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRollingMaintenanceRequest.ProtoReflect.Descriptor instead.
+func (*StartRollingMaintenanceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *StartRollingMaintenanceRequest) GetPodIds() []string {
+	if x != nil {
+		return x.PodIds
+	}
+	return nil
+}
+
+func (x *StartRollingMaintenanceRequest) GetClusterIds() []string {
+	if x != nil {
+		return x.ClusterIds
+	}
+	return nil
+}
+
+func (x *StartRollingMaintenanceRequest) GetZoneIds() []string {
+	if x != nil {
+		return x.ZoneIds
+	}
+	return nil
+}
+
+func (x *StartRollingMaintenanceRequest) GetHostIds() []string {
+	if x != nil {
+		return x.HostIds
+	}
+	return nil
+}
+
+func (x *StartRollingMaintenanceRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *StartRollingMaintenanceRequest) GetPayload() string {
+	if x != nil && x.Payload != nil {
+		return *x.Payload
+	}
+	return ""
+}
+
+func (x *StartRollingMaintenanceRequest) GetTimeout() int32 {
+	if x != nil && x.Timeout != nil {
+		return *x.Timeout
+	}
+	return 0
+}
+
+func (x *StartRollingMaintenanceRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StartRollingMaintenanceRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StartRollingMaintenanceRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// StartRollingMaintenanceResponse represents the response from start rolling maintenance
+type StartRollingMaintenanceResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartRollingMaintenanceResponse) Reset() {
+	*x = StartRollingMaintenanceResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartRollingMaintenanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRollingMaintenanceResponse) ProtoMessage() {}
+
+func (x *StartRollingMaintenanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRollingMaintenanceResponse.ProtoReflect.Descriptor instead.
+func (*StartRollingMaintenanceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *StartRollingMaintenanceResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UploadCustomCertificateRequest represents the parameters for uploads a custom certificate for the console proxy vms to use for ssl. can be used to upload a single certificate signed by a known ca. can also be used, through multiple calls, to upload a chain of certificates from ca to the custom certificate itself.
+type UploadCustomCertificateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The certificate to be uploaded.
+	Certificate *string `protobuf:"bytes,1,opt,name=certificate" json:"certificate,omitempty"`
+	// An integer providing the location in a chain that the certificate will hold. Usually, this can be left empty. When creating a chain, the top level certificate should have an ID of 1, with each step in the chain incrementing by one. Example, CA with id = 1, Intermediate CA with id = 2, Site certificate with ID = 3
+	Index *int32 `protobuf:"varint,2,opt,name=index" json:"index,omitempty"`
+	// A name / alias for the certificate.
+	Alias *string `protobuf:"bytes,3,opt,name=alias" json:"alias,omitempty"`
+	// The private key for the attached certificate.
+	PrivateKey *string `protobuf:"bytes,4,opt,name=private_key,json=privateKey" json:"private_key,omitempty"`
+	// DNS domain suffix that the certificate is granted for.
+	DomainSuffix *string `protobuf:"bytes,5,opt,name=domain_suffix,json=domainSuffix" json:"domain_suffix,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadCustomCertificateRequest) Reset() {
+	*x = UploadCustomCertificateRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadCustomCertificateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadCustomCertificateRequest) ProtoMessage() {}
+
+func (x *UploadCustomCertificateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadCustomCertificateRequest.ProtoReflect.Descriptor instead.
+func (*UploadCustomCertificateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UploadCustomCertificateRequest) GetCertificate() string {
+	if x != nil && x.Certificate != nil {
+		return *x.Certificate
+	}
+	return ""
+}
+
+func (x *UploadCustomCertificateRequest) GetIndex() int32 {
+	if x != nil && x.Index != nil {
+		return *x.Index
+	}
+	return 0
+}
+
+func (x *UploadCustomCertificateRequest) GetAlias() string {
+	if x != nil && x.Alias != nil {
+		return *x.Alias
+	}
+	return ""
+}
+
+func (x *UploadCustomCertificateRequest) GetPrivateKey() string {
+	if x != nil && x.PrivateKey != nil {
+		return *x.PrivateKey
+	}
+	return ""
+}
+
+func (x *UploadCustomCertificateRequest) GetDomainSuffix() string {
+	if x != nil && x.DomainSuffix != nil {
+		return *x.DomainSuffix
+	}
+	return ""
+}
+
+func (x *UploadCustomCertificateRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UploadCustomCertificateRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UploadCustomCertificateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UploadCustomCertificateResponse represents the response from uploads a custom certificate for the console proxy vms to use for ssl. can be used to upload a single certificate signed by a known ca. can also be used, through multiple calls, to upload a chain of certificates from ca to the custom certificate itself.
+type UploadCustomCertificateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadCustomCertificateResponse) Reset() {
+	*x = UploadCustomCertificateResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadCustomCertificateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadCustomCertificateResponse) ProtoMessage() {}
+
+func (x *UploadCustomCertificateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadCustomCertificateResponse.ProtoReflect.Descriptor instead.
+func (*UploadCustomCertificateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UploadCustomCertificateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// GetCloudIdentifierRequest represents the parameters for retrieves a cloud identifier.
+type GetCloudIdentifierRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the user ID for the cloud identifier
+	Userid *int64 `protobuf:"varint,1,opt,name=userid" json:"userid,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCloudIdentifierRequest) Reset() {
+	*x = GetCloudIdentifierRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCloudIdentifierRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCloudIdentifierRequest) ProtoMessage() {}
+
+func (x *GetCloudIdentifierRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCloudIdentifierRequest.ProtoReflect.Descriptor instead.
+func (*GetCloudIdentifierRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetCloudIdentifierRequest) GetUserid() int64 {
+	if x != nil && x.Userid != nil {
+		return *x.Userid
+	}
+	return 0
+}
+
+func (x *GetCloudIdentifierRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GetCloudIdentifierResponse represents the response from retrieves a cloud identifier.
+type GetCloudIdentifierResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCloudIdentifierResponse) Reset() {
+	*x = GetCloudIdentifierResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCloudIdentifierResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCloudIdentifierResponse) ProtoMessage() {}
+
+func (x *GetCloudIdentifierResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCloudIdentifierResponse.ProtoReflect.Descriptor instead.
+func (*GetCloudIdentifierResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetCloudIdentifierResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListCapacityRequest represents the parameters for lists all the system wide capacities.
+type ListCapacityRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// lists capacity by the Zone ID
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// lists capacity by the Pod ID
+	PodId *int64 `protobuf:"varint,2,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// lists capacity by the Cluster ID
+	ClusterId *int64 `protobuf:"varint,3,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// recalculate capacities and fetch the latest
+	FetchLatest *bool `protobuf:"varint,4,opt,name=fetch_latest,json=fetchLatest" json:"fetch_latest,omitempty"`
+	// lists capacity by type* CAPACITY_TYPE_MEMORY = 0* CAPACITY_TYPE_CPU = 1* CAPACITY_TYPE_STORAGE = 2* CAPACITY_TYPE_STORAGE_ALLOCATED = 3* CAPACITY_TYPE_VIRTUAL_NETWORK_PUBLIC_IP = 4* CAPACITY_TYPE_PRIVATE_IP = 5* CAPACITY_TYPE_SECONDARY_STORAGE = 6* CAPACITY_TYPE_VLAN = 7* CAPACITY_TYPE_DIRECT_ATTACHED_PUBLIC_IP = 8* CAPACITY_TYPE_LOCAL_STORAGE = 9* CAPACITY_TYPE_GPU = 19* CAPACITY_TYPE_CPU_CORE = 90.
+	Type *int32 `protobuf:"varint,5,opt,name=type" json:"type,omitempty"`
+	// Sort the results. Available values: Usage
+	SortBy *string `protobuf:"bytes,6,opt,name=sort_by,json=sortBy" json:"sort_by,omitempty"`
+	// Tag for the resource type
+	Tag *string `protobuf:"bytes,7,opt,name=tag" json:"tag,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCapacityRequest) Reset() {
+	*x = ListCapacityRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCapacityRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCapacityRequest) ProtoMessage() {}
+
+func (x *ListCapacityRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCapacityRequest.ProtoReflect.Descriptor instead.
+func (*ListCapacityRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListCapacityRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListCapacityRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *ListCapacityRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *ListCapacityRequest) GetFetchLatest() bool {
+	if x != nil && x.FetchLatest != nil {
+		return *x.FetchLatest
+	}
+	return false
+}
+
+func (x *ListCapacityRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+func (x *ListCapacityRequest) GetSortBy() string {
+	if x != nil && x.SortBy != nil {
+		return *x.SortBy
+	}
+	return ""
+}
+
+func (x *ListCapacityRequest) GetTag() string {
+	if x != nil && x.Tag != nil {
+		return *x.Tag
+	}
+	return ""
+}
+
+func (x *ListCapacityRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListCapacityRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListCapacityRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCapacityRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListCapacityResponse represents the response from lists all the system wide capacities.
+type ListCapacityResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Capacitys
+	Items []*Capacity `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Capacitys
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCapacityResponse) Reset() {
+	*x = ListCapacityResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCapacityResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCapacityResponse) ProtoMessage() {}
+
+func (x *ListCapacityResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCapacityResponse.ProtoReflect.Descriptor instead.
+func (*ListCapacityResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListCapacityResponse) GetItems() []*Capacity {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListCapacityResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListAlertsRequest represents the parameters for lists all alerts.
+type ListAlertsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the alert
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list by alert type
+	Type *string `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
+	// list by alert name
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAlertsRequest) Reset() {
+	*x = ListAlertsRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAlertsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAlertsRequest) ProtoMessage() {}
+
+func (x *ListAlertsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAlertsRequest.ProtoReflect.Descriptor instead.
+func (*ListAlertsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListAlertsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListAlertsRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
+}
+
+func (x *ListAlertsRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListAlertsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListAlertsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListAlertsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListAlertsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListAlertsResponse represents the response from lists all alerts.
+type ListAlertsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Alerts
+	Items []*Alert `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Alerts
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAlertsResponse) Reset() {
+	*x = ListAlertsResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAlertsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAlertsResponse) ProtoMessage() {}
+
+func (x *ListAlertsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAlertsResponse.ProtoReflect.Descriptor instead.
+func (*ListAlertsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListAlertsResponse) GetItems() []*Alert {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListAlertsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListHypervisorsRequest represents the parameters for list hypervisors
+type ListHypervisorsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the zone id for listing hypervisors.
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHypervisorsRequest) Reset() {
+	*x = ListHypervisorsRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHypervisorsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHypervisorsRequest) ProtoMessage() {}
+
+func (x *ListHypervisorsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHypervisorsRequest.ProtoReflect.Descriptor instead.
+func (*ListHypervisorsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListHypervisorsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListHypervisorsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListHypervisorsResponse represents the response from list hypervisors
+type ListHypervisorsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Hypervisors
+	Items []*Hypervisor `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Hypervisors
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHypervisorsResponse) Reset() {
+	*x = ListHypervisorsResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHypervisorsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHypervisorsResponse) ProtoMessage() {}
+
+func (x *ListHypervisorsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHypervisorsResponse.ProtoReflect.Descriptor instead.
+func (*ListHypervisorsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ListHypervisorsResponse) GetItems() []*Hypervisor {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListHypervisorsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateResourceCountRequest represents the parameters for recalculate and update resource count for an account or domain. this also executes some cleanup tasks before calculating resource counts.
+type UpdateResourceCountRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Update resource count for a specified account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If account parameter specified then updates resource counts for a specified account in this domain else update resource counts for all accounts & child domains in specified domain.
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// Type of resource to update. If specifies valid values are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11. If not specified will update all resource counts0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects that a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+	ResourceType *int32 `protobuf:"varint,3,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
+	// Update resource limits for project
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Tag for the resource type
+	Tag *string `protobuf:"bytes,5,opt,name=tag" json:"tag,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateResourceCountRequest) Reset() {
+	*x = UpdateResourceCountRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateResourceCountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateResourceCountRequest) ProtoMessage() {}
+
+func (x *UpdateResourceCountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateResourceCountRequest.ProtoReflect.Descriptor instead.
+func (*UpdateResourceCountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *UpdateResourceCountRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *UpdateResourceCountRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UpdateResourceCountRequest) GetResourceType() int32 {
+	if x != nil && x.ResourceType != nil {
+		return *x.ResourceType
+	}
+	return 0
+}
+
+func (x *UpdateResourceCountRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *UpdateResourceCountRequest) GetTag() string {
+	if x != nil && x.Tag != nil {
+		return *x.Tag
+	}
+	return ""
+}
+
+func (x *UpdateResourceCountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateResourceCountResponse represents the response from recalculate and update resource count for an account or domain. this also executes some cleanup tasks before calculating resource counts.
+type UpdateResourceCountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateResourceCountResponse) Reset() {
+	*x = UpdateResourceCountResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateResourceCountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateResourceCountResponse) ProtoMessage() {}
+
+func (x *UpdateResourceCountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateResourceCountResponse.ProtoReflect.Descriptor instead.
+func (*UpdateResourceCountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *UpdateResourceCountResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// PurgeExpungedResourcesRequest represents the parameters for purge expunged resources
+type PurgeExpungedResourcesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The type of the resource which need to be purged. Supported types: VirtualMachine
+	ResourceType *string `protobuf:"bytes,1,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
+	// The size of batch used during purging
+	BatchSize *int64 `protobuf:"varint,2,opt,name=batch_size,json=batchSize" json:"batch_size,omitempty"`
+	// The start date range of the expunged resources used for purging (use format "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss")
+	StartDate *string `protobuf:"bytes,3,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
+	// The end date range of the expunged resources used for purging (use format "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss")
+	EndDate *string `protobuf:"bytes,4,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PurgeExpungedResourcesRequest) Reset() {
+	*x = PurgeExpungedResourcesRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PurgeExpungedResourcesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PurgeExpungedResourcesRequest) ProtoMessage() {}
+
+func (x *PurgeExpungedResourcesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PurgeExpungedResourcesRequest.ProtoReflect.Descriptor instead.
+func (*PurgeExpungedResourcesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *PurgeExpungedResourcesRequest) GetResourceType() string {
+	if x != nil && x.ResourceType != nil {
+		return *x.ResourceType
+	}
+	return ""
+}
+
+func (x *PurgeExpungedResourcesRequest) GetBatchSize() int64 {
+	if x != nil && x.BatchSize != nil {
+		return *x.BatchSize
+	}
+	return 0
+}
+
+func (x *PurgeExpungedResourcesRequest) GetStartDate() string {
+	if x != nil && x.StartDate != nil {
+		return *x.StartDate
+	}
+	return ""
+}
+
+func (x *PurgeExpungedResourcesRequest) GetEndDate() string {
+	if x != nil && x.EndDate != nil {
+		return *x.EndDate
+	}
+	return ""
+}
+
+func (x *PurgeExpungedResourcesRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *PurgeExpungedResourcesRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *PurgeExpungedResourcesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// PurgeExpungedResourcesResponse represents the response from purge expunged resources
+type PurgeExpungedResourcesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PurgeExpungedResourcesResponse) Reset() {
+	*x = PurgeExpungedResourcesResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PurgeExpungedResourcesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PurgeExpungedResourcesResponse) ProtoMessage() {}
+
+func (x *PurgeExpungedResourcesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PurgeExpungedResourcesResponse.ProtoReflect.Descriptor instead.
+func (*PurgeExpungedResourcesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *PurgeExpungedResourcesResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ListResourceLimitsRequest represents the parameters for lists resource limits.
 type ListResourceLimitsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -56,7 +1291,7 @@ type ListResourceLimitsRequest struct {
 
 func (x *ListResourceLimitsRequest) Reset() {
 	*x = ListResourceLimitsRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -68,7 +1303,7 @@ func (x *ListResourceLimitsRequest) String() string {
 func (*ListResourceLimitsRequest) ProtoMessage() {}
 
 func (x *ListResourceLimitsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -81,7 +1316,7 @@ func (x *ListResourceLimitsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceLimitsRequest.ProtoReflect.Descriptor instead.
 func (*ListResourceLimitsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListResourceLimitsRequest) GetId() int64 {
@@ -188,7 +1423,7 @@ type ListResourceLimitsResponse struct {
 
 func (x *ListResourceLimitsResponse) Reset() {
 	*x = ListResourceLimitsResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -200,7 +1435,7 @@ func (x *ListResourceLimitsResponse) String() string {
 func (*ListResourceLimitsResponse) ProtoMessage() {}
 
 func (x *ListResourceLimitsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +1448,7 @@ func (x *ListResourceLimitsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResourceLimitsResponse.ProtoReflect.Descriptor instead.
 func (*ListResourceLimitsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListResourceLimitsResponse) GetItems() []*ResourceLimit {
@@ -224,1151 +1459,6 @@ func (x *ListResourceLimitsResponse) GetItems() []*ResourceLimit {
 }
 
 func (x *ListResourceLimitsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateResourceCountRequest represents the parameters for recalculate and update resource count for an account or domain. this also executes some cleanup tasks before calculating resource counts.
-type UpdateResourceCountRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Update resource count for a specified account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If account parameter specified then updates resource counts for a specified account in this domain else update resource counts for all accounts & child domains in specified domain.
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// Type of resource to update. If specifies valid values are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11. If not specified will update all resource counts0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects that a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
-	ResourceType *int32 `protobuf:"varint,3,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
-	// Update resource limits for project
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Tag for the resource type
-	Tag *string `protobuf:"bytes,5,opt,name=tag" json:"tag,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateResourceCountRequest) Reset() {
-	*x = UpdateResourceCountRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateResourceCountRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateResourceCountRequest) ProtoMessage() {}
-
-func (x *UpdateResourceCountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateResourceCountRequest.ProtoReflect.Descriptor instead.
-func (*UpdateResourceCountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UpdateResourceCountRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *UpdateResourceCountRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UpdateResourceCountRequest) GetResourceType() int32 {
-	if x != nil && x.ResourceType != nil {
-		return *x.ResourceType
-	}
-	return 0
-}
-
-func (x *UpdateResourceCountRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *UpdateResourceCountRequest) GetTag() string {
-	if x != nil && x.Tag != nil {
-		return *x.Tag
-	}
-	return ""
-}
-
-func (x *UpdateResourceCountRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateResourceCountResponse represents the response from recalculate and update resource count for an account or domain. this also executes some cleanup tasks before calculating resource counts.
-type UpdateResourceCountResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateResourceCountResponse) Reset() {
-	*x = UpdateResourceCountResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateResourceCountResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateResourceCountResponse) ProtoMessage() {}
-
-func (x *UpdateResourceCountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateResourceCountResponse.ProtoReflect.Descriptor instead.
-func (*UpdateResourceCountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UpdateResourceCountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// StartRollingMaintenanceRequest represents the parameters for start rolling maintenance
-type StartRollingMaintenanceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the IDs of the pods to start maintenance on
-	PodIds []string `protobuf:"bytes,1,rep,name=pod_ids,json=podIds" json:"pod_ids,omitempty"`
-	// the IDs of the clusters to start maintenance on
-	ClusterIds []string `protobuf:"bytes,2,rep,name=cluster_ids,json=clusterIds" json:"cluster_ids,omitempty"`
-	// the IDs of the zones to start maintenance on
-	ZoneIds []string `protobuf:"bytes,3,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	// the IDs of the hosts to start maintenance on
-	HostIds []string `protobuf:"bytes,4,rep,name=host_ids,json=hostIds" json:"host_ids,omitempty"`
-	// if rolling mechanism should continue in case of an error
-	Forced *bool `protobuf:"varint,5,opt,name=forced" json:"forced,omitempty"`
-	// the command to execute while hosts are on maintenance
-	Payload *string `protobuf:"bytes,6,opt,name=payload" json:"payload,omitempty"`
-	// optional operation timeout (in seconds) that overrides the global timeout setting
-	Timeout *int32 `protobuf:"varint,7,opt,name=timeout" json:"timeout,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StartRollingMaintenanceRequest) Reset() {
-	*x = StartRollingMaintenanceRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StartRollingMaintenanceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartRollingMaintenanceRequest) ProtoMessage() {}
-
-func (x *StartRollingMaintenanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartRollingMaintenanceRequest.ProtoReflect.Descriptor instead.
-func (*StartRollingMaintenanceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *StartRollingMaintenanceRequest) GetPodIds() []string {
-	if x != nil {
-		return x.PodIds
-	}
-	return nil
-}
-
-func (x *StartRollingMaintenanceRequest) GetClusterIds() []string {
-	if x != nil {
-		return x.ClusterIds
-	}
-	return nil
-}
-
-func (x *StartRollingMaintenanceRequest) GetZoneIds() []string {
-	if x != nil {
-		return x.ZoneIds
-	}
-	return nil
-}
-
-func (x *StartRollingMaintenanceRequest) GetHostIds() []string {
-	if x != nil {
-		return x.HostIds
-	}
-	return nil
-}
-
-func (x *StartRollingMaintenanceRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *StartRollingMaintenanceRequest) GetPayload() string {
-	if x != nil && x.Payload != nil {
-		return *x.Payload
-	}
-	return ""
-}
-
-func (x *StartRollingMaintenanceRequest) GetTimeout() int32 {
-	if x != nil && x.Timeout != nil {
-		return *x.Timeout
-	}
-	return 0
-}
-
-func (x *StartRollingMaintenanceRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *StartRollingMaintenanceRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *StartRollingMaintenanceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// StartRollingMaintenanceResponse represents the response from start rolling maintenance
-type StartRollingMaintenanceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StartRollingMaintenanceResponse) Reset() {
-	*x = StartRollingMaintenanceResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StartRollingMaintenanceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartRollingMaintenanceResponse) ProtoMessage() {}
-
-func (x *StartRollingMaintenanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartRollingMaintenanceResponse.ProtoReflect.Descriptor instead.
-func (*StartRollingMaintenanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *StartRollingMaintenanceResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListAlertsRequest represents the parameters for lists all alerts.
-type ListAlertsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the alert
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list by alert type
-	Type *string `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
-	// list by alert name
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListAlertsRequest) Reset() {
-	*x = ListAlertsRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListAlertsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListAlertsRequest) ProtoMessage() {}
-
-func (x *ListAlertsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListAlertsRequest.ProtoReflect.Descriptor instead.
-func (*ListAlertsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ListAlertsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListAlertsRequest) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return ""
-}
-
-func (x *ListAlertsRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListAlertsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListAlertsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListAlertsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListAlertsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListAlertsResponse represents the response from lists all alerts.
-type ListAlertsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Alerts
-	Items []*Alert `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Alerts
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListAlertsResponse) Reset() {
-	*x = ListAlertsResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListAlertsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListAlertsResponse) ProtoMessage() {}
-
-func (x *ListAlertsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListAlertsResponse.ProtoReflect.Descriptor instead.
-func (*ListAlertsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *ListAlertsResponse) GetItems() []*Alert {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListAlertsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateResourceLimitRequest represents the parameters for updates resource limits for an account or domain.
-type UpdateResourceLimitRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Update resource for a specified account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Update resource limits for all accounts in specified domain. If used with the account parameter, updates resource limits for a specified account in specified domain.
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// Update resource limits for project
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Maximum resource limit.
-	Max *int64 `protobuf:"varint,4,opt,name=max" json:"max,omitempty"`
-	// Type of resource to update. Values are 0, 1, 2, 3, 4, 6, 7, 8, 9, 10 and 11. 0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
-	ResourceType *int32 `protobuf:"varint,5,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
-	// Tag for the resource type
-	Tag *string `protobuf:"bytes,6,opt,name=tag" json:"tag,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateResourceLimitRequest) Reset() {
-	*x = UpdateResourceLimitRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateResourceLimitRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateResourceLimitRequest) ProtoMessage() {}
-
-func (x *UpdateResourceLimitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateResourceLimitRequest.ProtoReflect.Descriptor instead.
-func (*UpdateResourceLimitRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *UpdateResourceLimitRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *UpdateResourceLimitRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UpdateResourceLimitRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *UpdateResourceLimitRequest) GetMax() int64 {
-	if x != nil && x.Max != nil {
-		return *x.Max
-	}
-	return 0
-}
-
-func (x *UpdateResourceLimitRequest) GetResourceType() int32 {
-	if x != nil && x.ResourceType != nil {
-		return *x.ResourceType
-	}
-	return 0
-}
-
-func (x *UpdateResourceLimitRequest) GetTag() string {
-	if x != nil && x.Tag != nil {
-		return *x.Tag
-	}
-	return ""
-}
-
-func (x *UpdateResourceLimitRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateResourceLimitResponse represents the response from updates resource limits for an account or domain.
-type UpdateResourceLimitResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateResourceLimitResponse) Reset() {
-	*x = UpdateResourceLimitResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateResourceLimitResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateResourceLimitResponse) ProtoMessage() {}
-
-func (x *UpdateResourceLimitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateResourceLimitResponse.ProtoReflect.Descriptor instead.
-func (*UpdateResourceLimitResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *UpdateResourceLimitResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListDetailOptionsRequest represents the parameters for lists all possible details and their options for a resource type such as a vm or a template
-type ListDetailOptionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the resource type such as UserVm, Template etc.
-	ResourceType *string `protobuf:"bytes,1,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
-	// the UUID of the resource (optional)
-	ResourceId *string `protobuf:"bytes,2,opt,name=resource_id,json=resourceId" json:"resource_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDetailOptionsRequest) Reset() {
-	*x = ListDetailOptionsRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDetailOptionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDetailOptionsRequest) ProtoMessage() {}
-
-func (x *ListDetailOptionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDetailOptionsRequest.ProtoReflect.Descriptor instead.
-func (*ListDetailOptionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListDetailOptionsRequest) GetResourceType() string {
-	if x != nil && x.ResourceType != nil {
-		return *x.ResourceType
-	}
-	return ""
-}
-
-func (x *ListDetailOptionsRequest) GetResourceId() string {
-	if x != nil && x.ResourceId != nil {
-		return *x.ResourceId
-	}
-	return ""
-}
-
-func (x *ListDetailOptionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListDetailOptionsResponse represents the response from lists all possible details and their options for a resource type such as a vm or a template
-type ListDetailOptionsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of DetailOptionss
-	Items []*DetailOptions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of DetailOptionss
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDetailOptionsResponse) Reset() {
-	*x = ListDetailOptionsResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDetailOptionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDetailOptionsResponse) ProtoMessage() {}
-
-func (x *ListDetailOptionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDetailOptionsResponse.ProtoReflect.Descriptor instead.
-func (*ListDetailOptionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListDetailOptionsResponse) GetItems() []*DetailOptions {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListDetailOptionsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteAlertsRequest represents the parameters for delete one or more alerts.
-type DeleteAlertsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the IDs of the alerts
-	Ids []string `protobuf:"bytes,1,rep,name=ids" json:"ids,omitempty"`
-	// end date range to delete alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
-	EndDate *string `protobuf:"bytes,2,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
-	// start date range to delete alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
-	StartDate *string `protobuf:"bytes,3,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	// delete by alert type
-	Type *string `protobuf:"bytes,4,opt,name=type" json:"type,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAlertsRequest) Reset() {
-	*x = DeleteAlertsRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAlertsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAlertsRequest) ProtoMessage() {}
-
-func (x *DeleteAlertsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAlertsRequest.ProtoReflect.Descriptor instead.
-func (*DeleteAlertsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *DeleteAlertsRequest) GetIds() []string {
-	if x != nil {
-		return x.Ids
-	}
-	return nil
-}
-
-func (x *DeleteAlertsRequest) GetEndDate() string {
-	if x != nil && x.EndDate != nil {
-		return *x.EndDate
-	}
-	return ""
-}
-
-func (x *DeleteAlertsRequest) GetStartDate() string {
-	if x != nil && x.StartDate != nil {
-		return *x.StartDate
-	}
-	return ""
-}
-
-func (x *DeleteAlertsRequest) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return ""
-}
-
-func (x *DeleteAlertsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteAlertsResponse represents the response from delete one or more alerts.
-type DeleteAlertsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAlertsResponse) Reset() {
-	*x = DeleteAlertsResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAlertsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAlertsResponse) ProtoMessage() {}
-
-func (x *DeleteAlertsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAlertsResponse.ProtoReflect.Descriptor instead.
-func (*DeleteAlertsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *DeleteAlertsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListCapacityRequest represents the parameters for lists all the system wide capacities.
-type ListCapacityRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// lists capacity by the Zone ID
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// lists capacity by the Pod ID
-	PodId *int64 `protobuf:"varint,2,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// lists capacity by the Cluster ID
-	ClusterId *int64 `protobuf:"varint,3,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// recalculate capacities and fetch the latest
-	FetchLatest *bool `protobuf:"varint,4,opt,name=fetch_latest,json=fetchLatest" json:"fetch_latest,omitempty"`
-	// lists capacity by type* CAPACITY_TYPE_MEMORY = 0* CAPACITY_TYPE_CPU = 1* CAPACITY_TYPE_STORAGE = 2* CAPACITY_TYPE_STORAGE_ALLOCATED = 3* CAPACITY_TYPE_VIRTUAL_NETWORK_PUBLIC_IP = 4* CAPACITY_TYPE_PRIVATE_IP = 5* CAPACITY_TYPE_SECONDARY_STORAGE = 6* CAPACITY_TYPE_VLAN = 7* CAPACITY_TYPE_DIRECT_ATTACHED_PUBLIC_IP = 8* CAPACITY_TYPE_LOCAL_STORAGE = 9* CAPACITY_TYPE_GPU = 19* CAPACITY_TYPE_CPU_CORE = 90.
-	Type *int32 `protobuf:"varint,5,opt,name=type" json:"type,omitempty"`
-	// Sort the results. Available values: Usage
-	SortBy *string `protobuf:"bytes,6,opt,name=sort_by,json=sortBy" json:"sort_by,omitempty"`
-	// Tag for the resource type
-	Tag *string `protobuf:"bytes,7,opt,name=tag" json:"tag,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCapacityRequest) Reset() {
-	*x = ListCapacityRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCapacityRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCapacityRequest) ProtoMessage() {}
-
-func (x *ListCapacityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCapacityRequest.ProtoReflect.Descriptor instead.
-func (*ListCapacityRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *ListCapacityRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListCapacityRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *ListCapacityRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *ListCapacityRequest) GetFetchLatest() bool {
-	if x != nil && x.FetchLatest != nil {
-		return *x.FetchLatest
-	}
-	return false
-}
-
-func (x *ListCapacityRequest) GetType() int32 {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return 0
-}
-
-func (x *ListCapacityRequest) GetSortBy() string {
-	if x != nil && x.SortBy != nil {
-		return *x.SortBy
-	}
-	return ""
-}
-
-func (x *ListCapacityRequest) GetTag() string {
-	if x != nil && x.Tag != nil {
-		return *x.Tag
-	}
-	return ""
-}
-
-func (x *ListCapacityRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListCapacityRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListCapacityRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListCapacityRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListCapacityResponse represents the response from lists all the system wide capacities.
-type ListCapacityResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Capacitys
-	Items []*Capacity `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Capacitys
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCapacityResponse) Reset() {
-	*x = ListCapacityResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCapacityResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCapacityResponse) ProtoMessage() {}
-
-func (x *ListCapacityResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCapacityResponse.ProtoReflect.Descriptor instead.
-func (*ListCapacityResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *ListCapacityResponse) GetItems() []*Capacity {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListCapacityResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ListHypervisorsRequest represents the parameters for list hypervisors
-type ListHypervisorsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the zone id for listing hypervisors.
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHypervisorsRequest) Reset() {
-	*x = ListHypervisorsRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHypervisorsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHypervisorsRequest) ProtoMessage() {}
-
-func (x *ListHypervisorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHypervisorsRequest.ProtoReflect.Descriptor instead.
-func (*ListHypervisorsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *ListHypervisorsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListHypervisorsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListHypervisorsResponse represents the response from list hypervisors
-type ListHypervisorsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Hypervisors
-	Items []*Hypervisor `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Hypervisors
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHypervisorsResponse) Reset() {
-	*x = ListHypervisorsResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHypervisorsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHypervisorsResponse) ProtoMessage() {}
-
-func (x *ListHypervisorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHypervisorsResponse.ProtoReflect.Descriptor instead.
-func (*ListHypervisorsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ListHypervisorsResponse) GetItems() []*Hypervisor {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListHypervisorsResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
@@ -1482,258 +1572,6 @@ func (x *CleanVMReservationsResponse) GetResult() *Result {
 	return nil
 }
 
-// UploadCustomCertificateRequest represents the parameters for uploads a custom certificate for the console proxy vms to use for ssl. can be used to upload a single certificate signed by a known ca. can also be used, through multiple calls, to upload a chain of certificates from ca to the custom certificate itself.
-type UploadCustomCertificateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The certificate to be uploaded.
-	Certificate *string `protobuf:"bytes,1,opt,name=certificate" json:"certificate,omitempty"`
-	// An integer providing the location in a chain that the certificate will hold. Usually, this can be left empty. When creating a chain, the top level certificate should have an ID of 1, with each step in the chain incrementing by one. Example, CA with id = 1, Intermediate CA with id = 2, Site certificate with ID = 3
-	Index *int32 `protobuf:"varint,2,opt,name=index" json:"index,omitempty"`
-	// A name / alias for the certificate.
-	Alias *string `protobuf:"bytes,3,opt,name=alias" json:"alias,omitempty"`
-	// The private key for the attached certificate.
-	PrivateKey *string `protobuf:"bytes,4,opt,name=private_key,json=privateKey" json:"private_key,omitempty"`
-	// DNS domain suffix that the certificate is granted for.
-	DomainSuffix *string `protobuf:"bytes,5,opt,name=domain_suffix,json=domainSuffix" json:"domain_suffix,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadCustomCertificateRequest) Reset() {
-	*x = UploadCustomCertificateRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadCustomCertificateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadCustomCertificateRequest) ProtoMessage() {}
-
-func (x *UploadCustomCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadCustomCertificateRequest.ProtoReflect.Descriptor instead.
-func (*UploadCustomCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *UploadCustomCertificateRequest) GetCertificate() string {
-	if x != nil && x.Certificate != nil {
-		return *x.Certificate
-	}
-	return ""
-}
-
-func (x *UploadCustomCertificateRequest) GetIndex() int32 {
-	if x != nil && x.Index != nil {
-		return *x.Index
-	}
-	return 0
-}
-
-func (x *UploadCustomCertificateRequest) GetAlias() string {
-	if x != nil && x.Alias != nil {
-		return *x.Alias
-	}
-	return ""
-}
-
-func (x *UploadCustomCertificateRequest) GetPrivateKey() string {
-	if x != nil && x.PrivateKey != nil {
-		return *x.PrivateKey
-	}
-	return ""
-}
-
-func (x *UploadCustomCertificateRequest) GetDomainSuffix() string {
-	if x != nil && x.DomainSuffix != nil {
-		return *x.DomainSuffix
-	}
-	return ""
-}
-
-func (x *UploadCustomCertificateRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UploadCustomCertificateRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UploadCustomCertificateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UploadCustomCertificateResponse represents the response from uploads a custom certificate for the console proxy vms to use for ssl. can be used to upload a single certificate signed by a known ca. can also be used, through multiple calls, to upload a chain of certificates from ca to the custom certificate itself.
-type UploadCustomCertificateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadCustomCertificateResponse) Reset() {
-	*x = UploadCustomCertificateResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadCustomCertificateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadCustomCertificateResponse) ProtoMessage() {}
-
-func (x *UploadCustomCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadCustomCertificateResponse.ProtoReflect.Descriptor instead.
-func (*UploadCustomCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *UploadCustomCertificateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// GetCloudIdentifierRequest represents the parameters for retrieves a cloud identifier.
-type GetCloudIdentifierRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the user ID for the cloud identifier
-	Userid *int64 `protobuf:"varint,1,opt,name=userid" json:"userid,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetCloudIdentifierRequest) Reset() {
-	*x = GetCloudIdentifierRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetCloudIdentifierRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetCloudIdentifierRequest) ProtoMessage() {}
-
-func (x *GetCloudIdentifierRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetCloudIdentifierRequest.ProtoReflect.Descriptor instead.
-func (*GetCloudIdentifierRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *GetCloudIdentifierRequest) GetUserid() int64 {
-	if x != nil && x.Userid != nil {
-		return *x.Userid
-	}
-	return 0
-}
-
-func (x *GetCloudIdentifierRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// GetCloudIdentifierResponse represents the response from retrieves a cloud identifier.
-type GetCloudIdentifierResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetCloudIdentifierResponse) Reset() {
-	*x = GetCloudIdentifierResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetCloudIdentifierResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetCloudIdentifierResponse) ProtoMessage() {}
-
-func (x *GetCloudIdentifierResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetCloudIdentifierResponse.ProtoReflect.Descriptor instead.
-func (*GetCloudIdentifierResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *GetCloudIdentifierResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ArchiveAlertsRequest represents the parameters for archive one or more alerts.
 type ArchiveAlertsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1752,7 +1590,7 @@ type ArchiveAlertsRequest struct {
 
 func (x *ArchiveAlertsRequest) Reset() {
 	*x = ArchiveAlertsRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1764,7 +1602,7 @@ func (x *ArchiveAlertsRequest) String() string {
 func (*ArchiveAlertsRequest) ProtoMessage() {}
 
 func (x *ArchiveAlertsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1777,7 +1615,7 @@ func (x *ArchiveAlertsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArchiveAlertsRequest.ProtoReflect.Descriptor instead.
 func (*ArchiveAlertsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{24}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ArchiveAlertsRequest) GetIds() []string {
@@ -1826,7 +1664,7 @@ type ArchiveAlertsResponse struct {
 
 func (x *ArchiveAlertsResponse) Reset() {
 	*x = ArchiveAlertsResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1838,7 +1676,7 @@ func (x *ArchiveAlertsResponse) String() string {
 func (*ArchiveAlertsResponse) ProtoMessage() {}
 
 func (x *ArchiveAlertsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1851,7 +1689,7 @@ func (x *ArchiveAlertsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArchiveAlertsResponse.ProtoReflect.Descriptor instead.
 func (*ArchiveAlertsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ArchiveAlertsResponse) GetResult() *Result {
@@ -1861,39 +1699,41 @@ func (x *ArchiveAlertsResponse) GetResult() *Result {
 	return nil
 }
 
-// PurgeExpungedResourcesRequest represents the parameters for purge expunged resources
-type PurgeExpungedResourcesRequest struct {
+// UpdateResourceLimitRequest represents the parameters for updates resource limits for an account or domain.
+type UpdateResourceLimitRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The type of the resource which need to be purged. Supported types: VirtualMachine
-	ResourceType *string `protobuf:"bytes,1,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
-	// The size of batch used during purging
-	BatchSize *int64 `protobuf:"varint,2,opt,name=batch_size,json=batchSize" json:"batch_size,omitempty"`
-	// The start date range of the expunged resources used for purging (use format "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss")
-	StartDate *string `protobuf:"bytes,3,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	// The end date range of the expunged resources used for purging (use format "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss")
-	EndDate *string `protobuf:"bytes,4,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	// Update resource for a specified account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Update resource limits for all accounts in specified domain. If used with the account parameter, updates resource limits for a specified account in specified domain.
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// Update resource limits for project
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Maximum resource limit.
+	Max *int64 `protobuf:"varint,4,opt,name=max" json:"max,omitempty"`
+	// Type of resource to update. Values are 0, 1, 2, 3, 4, 6, 7, 8, 9, 10 and 11. 0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+	ResourceType *int32 `protobuf:"varint,5,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
+	// Tag for the resource type
+	Tag *string `protobuf:"bytes,6,opt,name=tag" json:"tag,omitempty"`
 	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PurgeExpungedResourcesRequest) Reset() {
-	*x = PurgeExpungedResourcesRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[26]
+func (x *UpdateResourceLimitRequest) Reset() {
+	*x = UpdateResourceLimitRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PurgeExpungedResourcesRequest) String() string {
+func (x *UpdateResourceLimitRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PurgeExpungedResourcesRequest) ProtoMessage() {}
+func (*UpdateResourceLimitRequest) ProtoMessage() {}
 
-func (x *PurgeExpungedResourcesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[26]
+func (x *UpdateResourceLimitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1904,62 +1744,62 @@ func (x *PurgeExpungedResourcesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PurgeExpungedResourcesRequest.ProtoReflect.Descriptor instead.
-func (*PurgeExpungedResourcesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{26}
+// Deprecated: Use UpdateResourceLimitRequest.ProtoReflect.Descriptor instead.
+func (*UpdateResourceLimitRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *PurgeExpungedResourcesRequest) GetResourceType() string {
+func (x *UpdateResourceLimitRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *UpdateResourceLimitRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UpdateResourceLimitRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *UpdateResourceLimitRequest) GetMax() int64 {
+	if x != nil && x.Max != nil {
+		return *x.Max
+	}
+	return 0
+}
+
+func (x *UpdateResourceLimitRequest) GetResourceType() int32 {
 	if x != nil && x.ResourceType != nil {
 		return *x.ResourceType
 	}
-	return ""
-}
-
-func (x *PurgeExpungedResourcesRequest) GetBatchSize() int64 {
-	if x != nil && x.BatchSize != nil {
-		return *x.BatchSize
-	}
 	return 0
 }
 
-func (x *PurgeExpungedResourcesRequest) GetStartDate() string {
-	if x != nil && x.StartDate != nil {
-		return *x.StartDate
+func (x *UpdateResourceLimitRequest) GetTag() string {
+	if x != nil && x.Tag != nil {
+		return *x.Tag
 	}
 	return ""
 }
 
-func (x *PurgeExpungedResourcesRequest) GetEndDate() string {
-	if x != nil && x.EndDate != nil {
-		return *x.EndDate
-	}
-	return ""
-}
-
-func (x *PurgeExpungedResourcesRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *PurgeExpungedResourcesRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *PurgeExpungedResourcesRequest) GetResponseType() string {
+func (x *UpdateResourceLimitRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// PurgeExpungedResourcesResponse represents the response from purge expunged resources
-type PurgeExpungedResourcesResponse struct {
+// UpdateResourceLimitResponse represents the response from updates resource limits for an account or domain.
+type UpdateResourceLimitResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1967,21 +1807,21 @@ type PurgeExpungedResourcesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PurgeExpungedResourcesResponse) Reset() {
-	*x = PurgeExpungedResourcesResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[27]
+func (x *UpdateResourceLimitResponse) Reset() {
+	*x = UpdateResourceLimitResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PurgeExpungedResourcesResponse) String() string {
+func (x *UpdateResourceLimitResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PurgeExpungedResourcesResponse) ProtoMessage() {}
+func (*UpdateResourceLimitResponse) ProtoMessage() {}
 
-func (x *PurgeExpungedResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[27]
+func (x *UpdateResourceLimitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1992,12 +1832,139 @@ func (x *PurgeExpungedResourcesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PurgeExpungedResourcesResponse.ProtoReflect.Descriptor instead.
-func (*PurgeExpungedResourcesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{27}
+// Deprecated: Use UpdateResourceLimitResponse.ProtoReflect.Descriptor instead.
+func (*UpdateResourceLimitResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{23}
 }
 
-func (x *PurgeExpungedResourcesResponse) GetResult() *Result {
+func (x *UpdateResourceLimitResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteAlertsRequest represents the parameters for delete one or more alerts.
+type DeleteAlertsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the IDs of the alerts
+	Ids []string `protobuf:"bytes,1,rep,name=ids" json:"ids,omitempty"`
+	// end date range to delete alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	EndDate *string `protobuf:"bytes,2,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
+	// start date range to delete alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	StartDate *string `protobuf:"bytes,3,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
+	// delete by alert type
+	Type *string `protobuf:"bytes,4,opt,name=type" json:"type,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAlertsRequest) Reset() {
+	*x = DeleteAlertsRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAlertsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAlertsRequest) ProtoMessage() {}
+
+func (x *DeleteAlertsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAlertsRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAlertsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *DeleteAlertsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *DeleteAlertsRequest) GetEndDate() string {
+	if x != nil && x.EndDate != nil {
+		return *x.EndDate
+	}
+	return ""
+}
+
+func (x *DeleteAlertsRequest) GetStartDate() string {
+	if x != nil && x.StartDate != nil {
+		return *x.StartDate
+	}
+	return ""
+}
+
+func (x *DeleteAlertsRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
+}
+
+func (x *DeleteAlertsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteAlertsResponse represents the response from delete one or more alerts.
+type DeleteAlertsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAlertsResponse) Reset() {
+	*x = DeleteAlertsResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAlertsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAlertsResponse) ProtoMessage() {}
+
+func (x *DeleteAlertsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAlertsResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAlertsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *DeleteAlertsResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2014,7 +1981,7 @@ type ListAlertTypesRequest struct {
 
 func (x *ListAlertTypesRequest) Reset() {
 	*x = ListAlertTypesRequest{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2026,7 +1993,7 @@ func (x *ListAlertTypesRequest) String() string {
 func (*ListAlertTypesRequest) ProtoMessage() {}
 
 func (x *ListAlertTypesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2039,7 +2006,7 @@ func (x *ListAlertTypesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAlertTypesRequest.ProtoReflect.Descriptor instead.
 func (*ListAlertTypesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListAlertTypesRequest) GetResponseType() string {
@@ -2062,7 +2029,7 @@ type ListAlertTypesResponse struct {
 
 func (x *ListAlertTypesResponse) Reset() {
 	*x = ListAlertTypesResponse{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2074,7 +2041,7 @@ func (x *ListAlertTypesResponse) String() string {
 func (*ListAlertTypesResponse) ProtoMessage() {}
 
 func (x *ListAlertTypesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2087,7 +2054,7 @@ func (x *ListAlertTypesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAlertTypesResponse.ProtoReflect.Descriptor instead.
 func (*ListAlertTypesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{29}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ListAlertTypesResponse) GetItems() []*Alert {
@@ -2104,16 +2071,134 @@ func (x *ListAlertTypesResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ResourceLimit represents a ResourceLimit Item
-type ResourceLimit struct {
+// ListDetailOptionsRequest represents the parameters for lists all possible details and their options for a resource type such as a vm or a template
+type ListDetailOptionsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the ResourceLimit
+	// the resource type such as UserVm, Template etc.
+	ResourceType *string `protobuf:"bytes,1,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
+	// the UUID of the resource (optional)
+	ResourceId *string `protobuf:"bytes,2,opt,name=resource_id,json=resourceId" json:"resource_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDetailOptionsRequest) Reset() {
+	*x = ListDetailOptionsRequest{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDetailOptionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDetailOptionsRequest) ProtoMessage() {}
+
+func (x *ListDetailOptionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDetailOptionsRequest.ProtoReflect.Descriptor instead.
+func (*ListDetailOptionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *ListDetailOptionsRequest) GetResourceType() string {
+	if x != nil && x.ResourceType != nil {
+		return *x.ResourceType
+	}
+	return ""
+}
+
+func (x *ListDetailOptionsRequest) GetResourceId() string {
+	if x != nil && x.ResourceId != nil {
+		return *x.ResourceId
+	}
+	return ""
+}
+
+func (x *ListDetailOptionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListDetailOptionsResponse represents the response from lists all possible details and their options for a resource type such as a vm or a template
+type ListDetailOptionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of DetailOptionss
+	Items []*DetailOptions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of DetailOptionss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDetailOptionsResponse) Reset() {
+	*x = ListDetailOptionsResponse{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDetailOptionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDetailOptionsResponse) ProtoMessage() {}
+
+func (x *ListDetailOptionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDetailOptionsResponse.ProtoReflect.Descriptor instead.
+func (*ListDetailOptionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *ListDetailOptionsResponse) GetItems() []*DetailOptions {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListDetailOptionsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// Capacity represents a Capacity Item
+type Capacity struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Capacity
 	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the ResourceLimit
+	// The name of the Capacity
 	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the ResourceLimit
+	// The display name of the Capacity
 	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the ResourceLimit
+	// The description of the Capacity
 	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
 	// The date this entity was created
 	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
@@ -2121,20 +2206,20 @@ type ResourceLimit struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ResourceLimit) Reset() {
-	*x = ResourceLimit{}
+func (x *Capacity) Reset() {
+	*x = Capacity{}
 	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ResourceLimit) String() string {
+func (x *Capacity) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ResourceLimit) ProtoMessage() {}
+func (*Capacity) ProtoMessage() {}
 
-func (x *ResourceLimit) ProtoReflect() protoreflect.Message {
+func (x *Capacity) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2146,40 +2231,40 @@ func (x *ResourceLimit) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ResourceLimit.ProtoReflect.Descriptor instead.
-func (*ResourceLimit) Descriptor() ([]byte, []int) {
+// Deprecated: Use Capacity.ProtoReflect.Descriptor instead.
+func (*Capacity) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *ResourceLimit) GetId() string {
+func (x *Capacity) GetId() string {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return ""
 }
 
-func (x *ResourceLimit) GetName() string {
+func (x *Capacity) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *ResourceLimit) GetDisplayName() string {
+func (x *Capacity) GetDisplayName() string {
 	if x != nil && x.DisplayName != nil {
 		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *ResourceLimit) GetDescription() string {
+func (x *Capacity) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *ResourceLimit) GetCreated() string {
+func (x *Capacity) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -2268,170 +2353,6 @@ func (x *Alert) GetCreated() string {
 	return ""
 }
 
-// DetailOptions represents a DetailOptions Item
-type DetailOptions struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the DetailOptions
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the DetailOptions
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the DetailOptions
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the DetailOptions
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DetailOptions) Reset() {
-	*x = DetailOptions{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DetailOptions) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DetailOptions) ProtoMessage() {}
-
-func (x *DetailOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DetailOptions.ProtoReflect.Descriptor instead.
-func (*DetailOptions) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *DetailOptions) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *DetailOptions) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *DetailOptions) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *DetailOptions) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *DetailOptions) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// Capacity represents a Capacity Item
-type Capacity struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Capacity
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Capacity
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Capacity
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Capacity
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Capacity) Reset() {
-	*x = Capacity{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Capacity) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Capacity) ProtoMessage() {}
-
-func (x *Capacity) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Capacity.ProtoReflect.Descriptor instead.
-func (*Capacity) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *Capacity) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Capacity) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Capacity) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Capacity) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Capacity) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // Hypervisor represents a Hypervisor Item
 type Hypervisor struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2451,7 +2372,7 @@ type Hypervisor struct {
 
 func (x *Hypervisor) Reset() {
 	*x = Hypervisor{}
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2463,7 +2384,7 @@ func (x *Hypervisor) String() string {
 func (*Hypervisor) ProtoMessage() {}
 
 func (x *Hypervisor) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2397,7 @@ func (x *Hypervisor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Hypervisor.ProtoReflect.Descriptor instead.
 func (*Hypervisor) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{34}
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *Hypervisor) GetId() string {
@@ -2508,6 +2429,170 @@ func (x *Hypervisor) GetDescription() string {
 }
 
 func (x *Hypervisor) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// ResourceLimit represents a ResourceLimit Item
+type ResourceLimit struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the ResourceLimit
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the ResourceLimit
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the ResourceLimit
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the ResourceLimit
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResourceLimit) Reset() {
+	*x = ResourceLimit{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResourceLimit) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResourceLimit) ProtoMessage() {}
+
+func (x *ResourceLimit) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResourceLimit.ProtoReflect.Descriptor instead.
+func (*ResourceLimit) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *ResourceLimit) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *ResourceLimit) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ResourceLimit) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *ResourceLimit) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ResourceLimit) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// DetailOptions represents a DetailOptions Item
+type DetailOptions struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the DetailOptions
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the DetailOptions
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the DetailOptions
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the DetailOptions
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetailOptions) Reset() {
+	*x = DetailOptions{}
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetailOptions) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetailOptions) ProtoMessage() {}
+
+func (x *DetailOptions) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetailOptions.ProtoReflect.Descriptor instead.
+func (*DetailOptions) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *DetailOptions) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *DetailOptions) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DetailOptions) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *DetailOptions) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *DetailOptions) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -2800,7 +2885,101 @@ var File_cloudstack_management_resource_v1_resource_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/resource/v1/resource.gen.proto\x12!cloudstack.management.resource.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb2\x04\n" +
+	"4cloudstack/management/resource/v1/resource.gen.proto\x12!cloudstack.management.resource.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe0\x02\n" +
+	"\x1eStartRollingMaintenanceRequest\x12\x17\n" +
+	"\apod_ids\x18\x01 \x03(\tR\x06podIds\x12\x1f\n" +
+	"\vcluster_ids\x18\x02 \x03(\tR\n" +
+	"clusterIds\x12\x19\n" +
+	"\bzone_ids\x18\x03 \x03(\tR\azoneIds\x12\x19\n" +
+	"\bhost_ids\x18\x04 \x03(\tR\ahostIds\x12\x1d\n" +
+	"\x06forced\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\x18\n" +
+	"\apayload\x18\x06 \x01(\tR\apayload\x12\x18\n" +
+	"\atimeout\x18\a \x01(\x05R\atimeout\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"d\n" +
+	"\x1fStartRollingMaintenanceResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xcd\x02\n" +
+	"\x1eUploadCustomCertificateRequest\x12(\n" +
+	"\vcertificate\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vcertificate\x12\x14\n" +
+	"\x05index\x18\x02 \x01(\x05R\x05index\x12 \n" +
+	"\x05alias\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x05alias\x12\x1f\n" +
+	"\vprivate_key\x18\x04 \x01(\tR\n" +
+	"privateKey\x12+\n" +
+	"\rdomain_suffix\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fdomainSuffix\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"d\n" +
+	"\x1fUploadCustomCertificateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"`\n" +
+	"\x19GetCloudIdentifierRequest\x12\x1e\n" +
+	"\x06userid\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06userid\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
+	"\x1aGetCloudIdentifierResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xbd\x02\n" +
+	"\x13ListCapacityRequest\x12\x17\n" +
+	"\azone_id\x18\x01 \x01(\x03R\x06zoneId\x12\x15\n" +
+	"\x06pod_id\x18\x02 \x01(\x03R\x05podId\x12\x1d\n" +
+	"\n" +
+	"cluster_id\x18\x03 \x01(\x03R\tclusterId\x12(\n" +
+	"\ffetch_latest\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\vfetchLatest\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\x05R\x04type\x12\x17\n" +
+	"\asort_by\x18\x06 \x01(\tR\x06sortBy\x12\x10\n" +
+	"\x03tag\x18\a \x01(\tR\x03tag\x12\x18\n" +
+	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\n" +
+	" \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x81\x01\n" +
+	"\x14ListCapacityResponse\x12A\n" +
+	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.resource.v1.CapacityR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc7\x01\n" +
+	"\x11ListAlertsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04type\x18\x02 \x01(\tR\x04type\x12\x1e\n" +
+	"\x04name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"|\n" +
+	"\x12ListAlertsResponse\x12>\n" +
+	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.resource.v1.AlertR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"V\n" +
+	"\x16ListHypervisorsRequest\x12\x17\n" +
+	"\azone_id\x18\x01 \x01(\x03R\x06zoneId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x86\x01\n" +
+	"\x17ListHypervisorsResponse\x12C\n" +
+	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.resource.v1.HypervisorR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xdf\x02\n" +
+	"\x1aUpdateResourceCountRequest\x12\xa0\x01\n" +
+	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12#\n" +
+	"\tdomain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12#\n" +
+	"\rresource_type\x18\x03 \x01(\x05R\fresourceType\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x10\n" +
+	"\x03tag\x18\x05 \x01(\tR\x03tag\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"`\n" +
+	"\x1bUpdateResourceCountResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\x9a\x02\n" +
+	"\x1dPurgeExpungedResourcesRequest\x12#\n" +
+	"\rresource_type\x18\x01 \x01(\tR\fresourceType\x12\x1d\n" +
+	"\n" +
+	"batch_size\x18\x02 \x01(\x03R\tbatchSize\x12\x1d\n" +
+	"\n" +
+	"start_date\x18\x03 \x01(\tR\tstartDate\x12\x19\n" +
+	"\bend_date\x18\x04 \x01(\tR\aendDate\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"c\n" +
+	"\x1ePurgeExpungedResourcesResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xb2\x04\n" +
 	"\x19ListResourceLimitsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12#\n" +
 	"\rresource_type\x18\x02 \x01(\x05R\fresourceType\x128\n" +
@@ -2822,46 +3001,22 @@ const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\x1aListResourceLimitsResponse\x12F\n" +
 	"\x05items\x18\x01 \x03(\v20.cloudstack.management.resource.v1.ResourceLimitR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xdf\x02\n" +
-	"\x1aUpdateResourceCountRequest\x12\xa0\x01\n" +
-	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12#\n" +
-	"\tdomain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12#\n" +
-	"\rresource_type\x18\x03 \x01(\x05R\fresourceType\x12\x1d\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x99\x01\n" +
+	"\x1aCleanVMReservationsRequest\x12$\n" +
+	"\x0estart_event_id\x18\x01 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"`\n" +
+	"\x1bCleanVMReservationsResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\x9b\x01\n" +
+	"\x14ArchiveAlertsRequest\x12\x10\n" +
+	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x19\n" +
+	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x10\n" +
-	"\x03tag\x18\x05 \x01(\tR\x03tag\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"`\n" +
-	"\x1bUpdateResourceCountResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xe0\x02\n" +
-	"\x1eStartRollingMaintenanceRequest\x12\x17\n" +
-	"\apod_ids\x18\x01 \x03(\tR\x06podIds\x12\x1f\n" +
-	"\vcluster_ids\x18\x02 \x03(\tR\n" +
-	"clusterIds\x12\x19\n" +
-	"\bzone_ids\x18\x03 \x03(\tR\azoneIds\x12\x19\n" +
-	"\bhost_ids\x18\x04 \x03(\tR\ahostIds\x12\x1d\n" +
-	"\x06forced\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\x18\n" +
-	"\apayload\x18\x06 \x01(\tR\apayload\x12\x18\n" +
-	"\atimeout\x18\a \x01(\x05R\atimeout\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"d\n" +
-	"\x1fStartRollingMaintenanceResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xc7\x01\n" +
-	"\x11ListAlertsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\x12\x1e\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"|\n" +
-	"\x12ListAlertsResponse\x12>\n" +
-	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.resource.v1.AlertR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xf1\x02\n" +
+	"start_date\x18\x03 \x01(\tR\tstartDate\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Z\n" +
+	"\x15ArchiveAlertsResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xf1\x02\n" +
 	"\x1aUpdateResourceLimitRequest\x12\xa0\x01\n" +
 	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
 	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
@@ -2873,16 +3028,7 @@ const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\x03tag\x18\x06 \x01(\tR\x03tag\x12#\n" +
 	"\rresponse_type\x18\a \x01(\tR\fresponseType\"`\n" +
 	"\x1bUpdateResourceLimitResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\x97\x01\n" +
-	"\x18ListDetailOptionsRequest\x12+\n" +
-	"\rresource_type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12)\n" +
-	"\vresource_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\n" +
-	"resourceId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\x8b\x01\n" +
-	"\x19ListDetailOptionsResponse\x12F\n" +
-	"\x05items\x18\x01 \x03(\v20.cloudstack.management.resource.v1.DetailOptionsR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9a\x01\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\x9a\x01\n" +
 	"\x13DeleteAlertsRequest\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x19\n" +
 	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +
@@ -2891,84 +3037,23 @@ const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\tR\x04type\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
 	"\x14DeleteAlertsResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xbd\x02\n" +
-	"\x13ListCapacityRequest\x12\x17\n" +
-	"\azone_id\x18\x01 \x01(\x03R\x06zoneId\x12\x15\n" +
-	"\x06pod_id\x18\x02 \x01(\x03R\x05podId\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x03 \x01(\x03R\tclusterId\x12(\n" +
-	"\ffetch_latest\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\vfetchLatest\x12\x12\n" +
-	"\x04type\x18\x05 \x01(\x05R\x04type\x12\x17\n" +
-	"\asort_by\x18\x06 \x01(\tR\x06sortBy\x12\x10\n" +
-	"\x03tag\x18\a \x01(\tR\x03tag\x12\x18\n" +
-	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\n" +
-	" \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x81\x01\n" +
-	"\x14ListCapacityResponse\x12A\n" +
-	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.resource.v1.CapacityR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"V\n" +
-	"\x16ListHypervisorsRequest\x12\x17\n" +
-	"\azone_id\x18\x01 \x01(\x03R\x06zoneId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x86\x01\n" +
-	"\x17ListHypervisorsResponse\x12C\n" +
-	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.resource.v1.HypervisorR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x99\x01\n" +
-	"\x1aCleanVMReservationsRequest\x12$\n" +
-	"\x0estart_event_id\x18\x01 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"`\n" +
-	"\x1bCleanVMReservationsResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\xcd\x02\n" +
-	"\x1eUploadCustomCertificateRequest\x12(\n" +
-	"\vcertificate\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vcertificate\x12\x14\n" +
-	"\x05index\x18\x02 \x01(\x05R\x05index\x12 \n" +
-	"\x05alias\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x05alias\x12\x1f\n" +
-	"\vprivate_key\x18\x04 \x01(\tR\n" +
-	"privateKey\x12+\n" +
-	"\rdomain_suffix\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fdomainSuffix\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"d\n" +
-	"\x1fUploadCustomCertificateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"`\n" +
-	"\x19GetCloudIdentifierRequest\x12\x1e\n" +
-	"\x06userid\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06userid\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
-	"\x1aGetCloudIdentifierResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\x9b\x01\n" +
-	"\x14ArchiveAlertsRequest\x12\x10\n" +
-	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x19\n" +
-	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +
-	"\n" +
-	"start_date\x18\x03 \x01(\tR\tstartDate\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Z\n" +
-	"\x15ArchiveAlertsResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"\x9a\x02\n" +
-	"\x1dPurgeExpungedResourcesRequest\x12#\n" +
-	"\rresource_type\x18\x01 \x01(\tR\fresourceType\x12\x1d\n" +
-	"\n" +
-	"batch_size\x18\x02 \x01(\x03R\tbatchSize\x12\x1d\n" +
-	"\n" +
-	"start_date\x18\x03 \x01(\tR\tstartDate\x12\x19\n" +
-	"\bend_date\x18\x04 \x01(\tR\aendDate\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"c\n" +
-	"\x1ePurgeExpungedResourcesResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.resource.v1.ResultR\x06result\"<\n" +
 	"\x15ListAlertTypesRequest\x12#\n" +
 	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x80\x01\n" +
 	"\x16ListAlertTypesResponse\x12>\n" +
 	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.resource.v1.AlertR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9c\x01\n" +
-	"\rResourceLimit\x12\x18\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x97\x01\n" +
+	"\x18ListDetailOptionsRequest\x12+\n" +
+	"\rresource_type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12)\n" +
+	"\vresource_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\n" +
+	"resourceId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\x8b\x01\n" +
+	"\x19ListDetailOptionsResponse\x12F\n" +
+	"\x05items\x18\x01 \x03(\v20.cloudstack.management.resource.v1.DetailOptionsR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x97\x01\n" +
+	"\bCapacity\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2979,21 +3064,21 @@ const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
-	"\rDetailOptions\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
-	"\bCapacity\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x99\x01\n" +
 	"\n" +
 	"Hypervisor\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
+	"\rResourceLimit\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
+	"\rDetailOptions\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -3027,24 +3112,37 @@ const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb2\x11\n" +
-	"\x0fResourceService\x12\x93\x01\n" +
-	"\x12ListResourceLimits\x12<.cloudstack.management.resource.v1.ListResourceLimitsRequest\x1a=.cloudstack.management.resource.v1.ListResourceLimitsResponse\"\x00\x12\x96\x01\n" +
-	"\x13UpdateResourceCount\x12=.cloudstack.management.resource.v1.UpdateResourceCountRequest\x1a>.cloudstack.management.resource.v1.UpdateResourceCountResponse\"\x00\x12\xa2\x01\n" +
-	"\x17StartRollingMaintenance\x12A.cloudstack.management.resource.v1.StartRollingMaintenanceRequest\x1aB.cloudstack.management.resource.v1.StartRollingMaintenanceResponse\"\x00\x12{\n" +
-	"\n" +
-	"ListAlerts\x124.cloudstack.management.resource.v1.ListAlertsRequest\x1a5.cloudstack.management.resource.v1.ListAlertsResponse\"\x00\x12\x96\x01\n" +
-	"\x13UpdateResourceLimit\x12=.cloudstack.management.resource.v1.UpdateResourceLimitRequest\x1a>.cloudstack.management.resource.v1.UpdateResourceLimitResponse\"\x00\x12\x90\x01\n" +
-	"\x11ListDetailOptions\x12;.cloudstack.management.resource.v1.ListDetailOptionsRequest\x1a<.cloudstack.management.resource.v1.ListDetailOptionsResponse\"\x00\x12\x81\x01\n" +
-	"\fDeleteAlerts\x126.cloudstack.management.resource.v1.DeleteAlertsRequest\x1a7.cloudstack.management.resource.v1.DeleteAlertsResponse\"\x00\x12\x81\x01\n" +
-	"\fListCapacity\x126.cloudstack.management.resource.v1.ListCapacityRequest\x1a7.cloudstack.management.resource.v1.ListCapacityResponse\"\x00\x12\x8a\x01\n" +
-	"\x0fListHypervisors\x129.cloudstack.management.resource.v1.ListHypervisorsRequest\x1a:.cloudstack.management.resource.v1.ListHypervisorsResponse\"\x00\x12\x96\x01\n" +
-	"\x13CleanVMReservations\x12=.cloudstack.management.resource.v1.CleanVMReservationsRequest\x1a>.cloudstack.management.resource.v1.CleanVMReservationsResponse\"\x00\x12\xa2\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*\x93\x02\n" +
+	"\fResourceType\x12\x1d\n" +
+	"\x19RESOURCE_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_0\x10\x01\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_1\x10\x02\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_2\x10\x03\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_3\x10\x04\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_4\x10\x05\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_5\x10\x06\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_6\x10\a\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_7\x10\b\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_8\x10\t\x12\x15\n" +
+	"\x11RESOURCE_TYPE_V_9\x10\n" +
+	"2\xb2\x11\n" +
+	"\x0fResourceService\x12\xa2\x01\n" +
+	"\x17StartRollingMaintenance\x12A.cloudstack.management.resource.v1.StartRollingMaintenanceRequest\x1aB.cloudstack.management.resource.v1.StartRollingMaintenanceResponse\"\x00\x12\xa2\x01\n" +
 	"\x17UploadCustomCertificate\x12A.cloudstack.management.resource.v1.UploadCustomCertificateRequest\x1aB.cloudstack.management.resource.v1.UploadCustomCertificateResponse\"\x00\x12\x93\x01\n" +
-	"\x12GetCloudIdentifier\x12<.cloudstack.management.resource.v1.GetCloudIdentifierRequest\x1a=.cloudstack.management.resource.v1.GetCloudIdentifierResponse\"\x00\x12\x84\x01\n" +
-	"\rArchiveAlerts\x127.cloudstack.management.resource.v1.ArchiveAlertsRequest\x1a8.cloudstack.management.resource.v1.ArchiveAlertsResponse\"\x00\x12\x9f\x01\n" +
-	"\x16PurgeExpungedResources\x12@.cloudstack.management.resource.v1.PurgeExpungedResourcesRequest\x1aA.cloudstack.management.resource.v1.PurgeExpungedResourcesResponse\"\x00\x12\x87\x01\n" +
-	"\x0eListAlertTypes\x128.cloudstack.management.resource.v1.ListAlertTypesRequest\x1a9.cloudstack.management.resource.v1.ListAlertTypesResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
+	"\x12GetCloudIdentifier\x12<.cloudstack.management.resource.v1.GetCloudIdentifierRequest\x1a=.cloudstack.management.resource.v1.GetCloudIdentifierResponse\"\x00\x12\x81\x01\n" +
+	"\fListCapacity\x126.cloudstack.management.resource.v1.ListCapacityRequest\x1a7.cloudstack.management.resource.v1.ListCapacityResponse\"\x00\x12{\n" +
+	"\n" +
+	"ListAlerts\x124.cloudstack.management.resource.v1.ListAlertsRequest\x1a5.cloudstack.management.resource.v1.ListAlertsResponse\"\x00\x12\x8a\x01\n" +
+	"\x0fListHypervisors\x129.cloudstack.management.resource.v1.ListHypervisorsRequest\x1a:.cloudstack.management.resource.v1.ListHypervisorsResponse\"\x00\x12\x96\x01\n" +
+	"\x13UpdateResourceCount\x12=.cloudstack.management.resource.v1.UpdateResourceCountRequest\x1a>.cloudstack.management.resource.v1.UpdateResourceCountResponse\"\x00\x12\x9f\x01\n" +
+	"\x16PurgeExpungedResources\x12@.cloudstack.management.resource.v1.PurgeExpungedResourcesRequest\x1aA.cloudstack.management.resource.v1.PurgeExpungedResourcesResponse\"\x00\x12\x93\x01\n" +
+	"\x12ListResourceLimits\x12<.cloudstack.management.resource.v1.ListResourceLimitsRequest\x1a=.cloudstack.management.resource.v1.ListResourceLimitsResponse\"\x00\x12\x96\x01\n" +
+	"\x13CleanVMReservations\x12=.cloudstack.management.resource.v1.CleanVMReservationsRequest\x1a>.cloudstack.management.resource.v1.CleanVMReservationsResponse\"\x00\x12\x84\x01\n" +
+	"\rArchiveAlerts\x127.cloudstack.management.resource.v1.ArchiveAlertsRequest\x1a8.cloudstack.management.resource.v1.ArchiveAlertsResponse\"\x00\x12\x96\x01\n" +
+	"\x13UpdateResourceLimit\x12=.cloudstack.management.resource.v1.UpdateResourceLimitRequest\x1a>.cloudstack.management.resource.v1.UpdateResourceLimitResponse\"\x00\x12\x81\x01\n" +
+	"\fDeleteAlerts\x126.cloudstack.management.resource.v1.DeleteAlertsRequest\x1a7.cloudstack.management.resource.v1.DeleteAlertsResponse\"\x00\x12\x87\x01\n" +
+	"\x0eListAlertTypes\x128.cloudstack.management.resource.v1.ListAlertTypesRequest\x1a9.cloudstack.management.resource.v1.ListAlertTypesResponse\"\x00\x12\x90\x01\n" +
+	"\x11ListDetailOptions\x12;.cloudstack.management.resource.v1.ListDetailOptionsRequest\x1a<.cloudstack.management.resource.v1.ListDetailOptionsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
 	"%com.cloudstack.management.resource.v1B\x10ResourceGenProtoP\x01Z`github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/resource/v1;resourcev1\xa2\x02\x03CMR\xaa\x02!Cloudstack.Management.Resource.V1\xca\x02!Cloudstack\\Management\\Resource\\V1\xe2\x02-Cloudstack\\Management\\Resource\\V1\\GPBMetadata\xea\x02$Cloudstack::Management::Resource::V1b\beditionsp\xe8\a"
 
 var (
@@ -3059,95 +3157,97 @@ func file_cloudstack_management_resource_v1_resource_gen_proto_rawDescGZIP() []b
 	return file_cloudstack_management_resource_v1_resource_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_resource_v1_resource_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
 var file_cloudstack_management_resource_v1_resource_gen_proto_goTypes = []any{
-	(*ListResourceLimitsRequest)(nil),       // 0: cloudstack.management.resource.v1.ListResourceLimitsRequest
-	(*ListResourceLimitsResponse)(nil),      // 1: cloudstack.management.resource.v1.ListResourceLimitsResponse
-	(*UpdateResourceCountRequest)(nil),      // 2: cloudstack.management.resource.v1.UpdateResourceCountRequest
-	(*UpdateResourceCountResponse)(nil),     // 3: cloudstack.management.resource.v1.UpdateResourceCountResponse
-	(*StartRollingMaintenanceRequest)(nil),  // 4: cloudstack.management.resource.v1.StartRollingMaintenanceRequest
-	(*StartRollingMaintenanceResponse)(nil), // 5: cloudstack.management.resource.v1.StartRollingMaintenanceResponse
-	(*ListAlertsRequest)(nil),               // 6: cloudstack.management.resource.v1.ListAlertsRequest
-	(*ListAlertsResponse)(nil),              // 7: cloudstack.management.resource.v1.ListAlertsResponse
-	(*UpdateResourceLimitRequest)(nil),      // 8: cloudstack.management.resource.v1.UpdateResourceLimitRequest
-	(*UpdateResourceLimitResponse)(nil),     // 9: cloudstack.management.resource.v1.UpdateResourceLimitResponse
-	(*ListDetailOptionsRequest)(nil),        // 10: cloudstack.management.resource.v1.ListDetailOptionsRequest
-	(*ListDetailOptionsResponse)(nil),       // 11: cloudstack.management.resource.v1.ListDetailOptionsResponse
-	(*DeleteAlertsRequest)(nil),             // 12: cloudstack.management.resource.v1.DeleteAlertsRequest
-	(*DeleteAlertsResponse)(nil),            // 13: cloudstack.management.resource.v1.DeleteAlertsResponse
-	(*ListCapacityRequest)(nil),             // 14: cloudstack.management.resource.v1.ListCapacityRequest
-	(*ListCapacityResponse)(nil),            // 15: cloudstack.management.resource.v1.ListCapacityResponse
-	(*ListHypervisorsRequest)(nil),          // 16: cloudstack.management.resource.v1.ListHypervisorsRequest
-	(*ListHypervisorsResponse)(nil),         // 17: cloudstack.management.resource.v1.ListHypervisorsResponse
-	(*CleanVMReservationsRequest)(nil),      // 18: cloudstack.management.resource.v1.CleanVMReservationsRequest
-	(*CleanVMReservationsResponse)(nil),     // 19: cloudstack.management.resource.v1.CleanVMReservationsResponse
-	(*UploadCustomCertificateRequest)(nil),  // 20: cloudstack.management.resource.v1.UploadCustomCertificateRequest
-	(*UploadCustomCertificateResponse)(nil), // 21: cloudstack.management.resource.v1.UploadCustomCertificateResponse
-	(*GetCloudIdentifierRequest)(nil),       // 22: cloudstack.management.resource.v1.GetCloudIdentifierRequest
-	(*GetCloudIdentifierResponse)(nil),      // 23: cloudstack.management.resource.v1.GetCloudIdentifierResponse
-	(*ArchiveAlertsRequest)(nil),            // 24: cloudstack.management.resource.v1.ArchiveAlertsRequest
-	(*ArchiveAlertsResponse)(nil),           // 25: cloudstack.management.resource.v1.ArchiveAlertsResponse
-	(*PurgeExpungedResourcesRequest)(nil),   // 26: cloudstack.management.resource.v1.PurgeExpungedResourcesRequest
-	(*PurgeExpungedResourcesResponse)(nil),  // 27: cloudstack.management.resource.v1.PurgeExpungedResourcesResponse
-	(*ListAlertTypesRequest)(nil),           // 28: cloudstack.management.resource.v1.ListAlertTypesRequest
-	(*ListAlertTypesResponse)(nil),          // 29: cloudstack.management.resource.v1.ListAlertTypesResponse
-	(*ResourceLimit)(nil),                   // 30: cloudstack.management.resource.v1.ResourceLimit
-	(*Alert)(nil),                           // 31: cloudstack.management.resource.v1.Alert
-	(*DetailOptions)(nil),                   // 32: cloudstack.management.resource.v1.DetailOptions
-	(*Capacity)(nil),                        // 33: cloudstack.management.resource.v1.Capacity
-	(*Hypervisor)(nil),                      // 34: cloudstack.management.resource.v1.Hypervisor
-	(*Success)(nil),                         // 35: cloudstack.management.resource.v1.Success
-	(*Item)(nil),                            // 36: cloudstack.management.resource.v1.Item
-	(*Result)(nil),                          // 37: cloudstack.management.resource.v1.Result
-	nil,                                     // 38: cloudstack.management.resource.v1.Item.DetailsEntry
+	(ResourceType)(0),                       // 0: cloudstack.management.resource.v1.ResourceType
+	(*StartRollingMaintenanceRequest)(nil),  // 1: cloudstack.management.resource.v1.StartRollingMaintenanceRequest
+	(*StartRollingMaintenanceResponse)(nil), // 2: cloudstack.management.resource.v1.StartRollingMaintenanceResponse
+	(*UploadCustomCertificateRequest)(nil),  // 3: cloudstack.management.resource.v1.UploadCustomCertificateRequest
+	(*UploadCustomCertificateResponse)(nil), // 4: cloudstack.management.resource.v1.UploadCustomCertificateResponse
+	(*GetCloudIdentifierRequest)(nil),       // 5: cloudstack.management.resource.v1.GetCloudIdentifierRequest
+	(*GetCloudIdentifierResponse)(nil),      // 6: cloudstack.management.resource.v1.GetCloudIdentifierResponse
+	(*ListCapacityRequest)(nil),             // 7: cloudstack.management.resource.v1.ListCapacityRequest
+	(*ListCapacityResponse)(nil),            // 8: cloudstack.management.resource.v1.ListCapacityResponse
+	(*ListAlertsRequest)(nil),               // 9: cloudstack.management.resource.v1.ListAlertsRequest
+	(*ListAlertsResponse)(nil),              // 10: cloudstack.management.resource.v1.ListAlertsResponse
+	(*ListHypervisorsRequest)(nil),          // 11: cloudstack.management.resource.v1.ListHypervisorsRequest
+	(*ListHypervisorsResponse)(nil),         // 12: cloudstack.management.resource.v1.ListHypervisorsResponse
+	(*UpdateResourceCountRequest)(nil),      // 13: cloudstack.management.resource.v1.UpdateResourceCountRequest
+	(*UpdateResourceCountResponse)(nil),     // 14: cloudstack.management.resource.v1.UpdateResourceCountResponse
+	(*PurgeExpungedResourcesRequest)(nil),   // 15: cloudstack.management.resource.v1.PurgeExpungedResourcesRequest
+	(*PurgeExpungedResourcesResponse)(nil),  // 16: cloudstack.management.resource.v1.PurgeExpungedResourcesResponse
+	(*ListResourceLimitsRequest)(nil),       // 17: cloudstack.management.resource.v1.ListResourceLimitsRequest
+	(*ListResourceLimitsResponse)(nil),      // 18: cloudstack.management.resource.v1.ListResourceLimitsResponse
+	(*CleanVMReservationsRequest)(nil),      // 19: cloudstack.management.resource.v1.CleanVMReservationsRequest
+	(*CleanVMReservationsResponse)(nil),     // 20: cloudstack.management.resource.v1.CleanVMReservationsResponse
+	(*ArchiveAlertsRequest)(nil),            // 21: cloudstack.management.resource.v1.ArchiveAlertsRequest
+	(*ArchiveAlertsResponse)(nil),           // 22: cloudstack.management.resource.v1.ArchiveAlertsResponse
+	(*UpdateResourceLimitRequest)(nil),      // 23: cloudstack.management.resource.v1.UpdateResourceLimitRequest
+	(*UpdateResourceLimitResponse)(nil),     // 24: cloudstack.management.resource.v1.UpdateResourceLimitResponse
+	(*DeleteAlertsRequest)(nil),             // 25: cloudstack.management.resource.v1.DeleteAlertsRequest
+	(*DeleteAlertsResponse)(nil),            // 26: cloudstack.management.resource.v1.DeleteAlertsResponse
+	(*ListAlertTypesRequest)(nil),           // 27: cloudstack.management.resource.v1.ListAlertTypesRequest
+	(*ListAlertTypesResponse)(nil),          // 28: cloudstack.management.resource.v1.ListAlertTypesResponse
+	(*ListDetailOptionsRequest)(nil),        // 29: cloudstack.management.resource.v1.ListDetailOptionsRequest
+	(*ListDetailOptionsResponse)(nil),       // 30: cloudstack.management.resource.v1.ListDetailOptionsResponse
+	(*Capacity)(nil),                        // 31: cloudstack.management.resource.v1.Capacity
+	(*Alert)(nil),                           // 32: cloudstack.management.resource.v1.Alert
+	(*Hypervisor)(nil),                      // 33: cloudstack.management.resource.v1.Hypervisor
+	(*ResourceLimit)(nil),                   // 34: cloudstack.management.resource.v1.ResourceLimit
+	(*DetailOptions)(nil),                   // 35: cloudstack.management.resource.v1.DetailOptions
+	(*Success)(nil),                         // 36: cloudstack.management.resource.v1.Success
+	(*Item)(nil),                            // 37: cloudstack.management.resource.v1.Item
+	(*Result)(nil),                          // 38: cloudstack.management.resource.v1.Result
+	nil,                                     // 39: cloudstack.management.resource.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_resource_v1_resource_gen_proto_depIdxs = []int32{
-	30, // 0: cloudstack.management.resource.v1.ListResourceLimitsResponse.items:type_name -> cloudstack.management.resource.v1.ResourceLimit
-	37, // 1: cloudstack.management.resource.v1.UpdateResourceCountResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	37, // 2: cloudstack.management.resource.v1.StartRollingMaintenanceResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	31, // 3: cloudstack.management.resource.v1.ListAlertsResponse.items:type_name -> cloudstack.management.resource.v1.Alert
-	37, // 4: cloudstack.management.resource.v1.UpdateResourceLimitResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	32, // 5: cloudstack.management.resource.v1.ListDetailOptionsResponse.items:type_name -> cloudstack.management.resource.v1.DetailOptions
-	37, // 6: cloudstack.management.resource.v1.DeleteAlertsResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	33, // 7: cloudstack.management.resource.v1.ListCapacityResponse.items:type_name -> cloudstack.management.resource.v1.Capacity
-	34, // 8: cloudstack.management.resource.v1.ListHypervisorsResponse.items:type_name -> cloudstack.management.resource.v1.Hypervisor
-	37, // 9: cloudstack.management.resource.v1.CleanVMReservationsResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	37, // 10: cloudstack.management.resource.v1.UploadCustomCertificateResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	37, // 11: cloudstack.management.resource.v1.GetCloudIdentifierResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	37, // 12: cloudstack.management.resource.v1.ArchiveAlertsResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	37, // 13: cloudstack.management.resource.v1.PurgeExpungedResourcesResponse.result:type_name -> cloudstack.management.resource.v1.Result
-	31, // 14: cloudstack.management.resource.v1.ListAlertTypesResponse.items:type_name -> cloudstack.management.resource.v1.Alert
-	38, // 15: cloudstack.management.resource.v1.Item.details:type_name -> cloudstack.management.resource.v1.Item.DetailsEntry
-	0,  // 16: cloudstack.management.resource.v1.ResourceService.ListResourceLimits:input_type -> cloudstack.management.resource.v1.ListResourceLimitsRequest
-	2,  // 17: cloudstack.management.resource.v1.ResourceService.UpdateResourceCount:input_type -> cloudstack.management.resource.v1.UpdateResourceCountRequest
-	4,  // 18: cloudstack.management.resource.v1.ResourceService.StartRollingMaintenance:input_type -> cloudstack.management.resource.v1.StartRollingMaintenanceRequest
-	6,  // 19: cloudstack.management.resource.v1.ResourceService.ListAlerts:input_type -> cloudstack.management.resource.v1.ListAlertsRequest
-	8,  // 20: cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit:input_type -> cloudstack.management.resource.v1.UpdateResourceLimitRequest
-	10, // 21: cloudstack.management.resource.v1.ResourceService.ListDetailOptions:input_type -> cloudstack.management.resource.v1.ListDetailOptionsRequest
-	12, // 22: cloudstack.management.resource.v1.ResourceService.DeleteAlerts:input_type -> cloudstack.management.resource.v1.DeleteAlertsRequest
-	14, // 23: cloudstack.management.resource.v1.ResourceService.ListCapacity:input_type -> cloudstack.management.resource.v1.ListCapacityRequest
-	16, // 24: cloudstack.management.resource.v1.ResourceService.ListHypervisors:input_type -> cloudstack.management.resource.v1.ListHypervisorsRequest
-	18, // 25: cloudstack.management.resource.v1.ResourceService.CleanVMReservations:input_type -> cloudstack.management.resource.v1.CleanVMReservationsRequest
-	20, // 26: cloudstack.management.resource.v1.ResourceService.UploadCustomCertificate:input_type -> cloudstack.management.resource.v1.UploadCustomCertificateRequest
-	22, // 27: cloudstack.management.resource.v1.ResourceService.GetCloudIdentifier:input_type -> cloudstack.management.resource.v1.GetCloudIdentifierRequest
-	24, // 28: cloudstack.management.resource.v1.ResourceService.ArchiveAlerts:input_type -> cloudstack.management.resource.v1.ArchiveAlertsRequest
-	26, // 29: cloudstack.management.resource.v1.ResourceService.PurgeExpungedResources:input_type -> cloudstack.management.resource.v1.PurgeExpungedResourcesRequest
-	28, // 30: cloudstack.management.resource.v1.ResourceService.ListAlertTypes:input_type -> cloudstack.management.resource.v1.ListAlertTypesRequest
-	1,  // 31: cloudstack.management.resource.v1.ResourceService.ListResourceLimits:output_type -> cloudstack.management.resource.v1.ListResourceLimitsResponse
-	3,  // 32: cloudstack.management.resource.v1.ResourceService.UpdateResourceCount:output_type -> cloudstack.management.resource.v1.UpdateResourceCountResponse
-	5,  // 33: cloudstack.management.resource.v1.ResourceService.StartRollingMaintenance:output_type -> cloudstack.management.resource.v1.StartRollingMaintenanceResponse
-	7,  // 34: cloudstack.management.resource.v1.ResourceService.ListAlerts:output_type -> cloudstack.management.resource.v1.ListAlertsResponse
-	9,  // 35: cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit:output_type -> cloudstack.management.resource.v1.UpdateResourceLimitResponse
-	11, // 36: cloudstack.management.resource.v1.ResourceService.ListDetailOptions:output_type -> cloudstack.management.resource.v1.ListDetailOptionsResponse
-	13, // 37: cloudstack.management.resource.v1.ResourceService.DeleteAlerts:output_type -> cloudstack.management.resource.v1.DeleteAlertsResponse
-	15, // 38: cloudstack.management.resource.v1.ResourceService.ListCapacity:output_type -> cloudstack.management.resource.v1.ListCapacityResponse
-	17, // 39: cloudstack.management.resource.v1.ResourceService.ListHypervisors:output_type -> cloudstack.management.resource.v1.ListHypervisorsResponse
-	19, // 40: cloudstack.management.resource.v1.ResourceService.CleanVMReservations:output_type -> cloudstack.management.resource.v1.CleanVMReservationsResponse
-	21, // 41: cloudstack.management.resource.v1.ResourceService.UploadCustomCertificate:output_type -> cloudstack.management.resource.v1.UploadCustomCertificateResponse
-	23, // 42: cloudstack.management.resource.v1.ResourceService.GetCloudIdentifier:output_type -> cloudstack.management.resource.v1.GetCloudIdentifierResponse
-	25, // 43: cloudstack.management.resource.v1.ResourceService.ArchiveAlerts:output_type -> cloudstack.management.resource.v1.ArchiveAlertsResponse
-	27, // 44: cloudstack.management.resource.v1.ResourceService.PurgeExpungedResources:output_type -> cloudstack.management.resource.v1.PurgeExpungedResourcesResponse
-	29, // 45: cloudstack.management.resource.v1.ResourceService.ListAlertTypes:output_type -> cloudstack.management.resource.v1.ListAlertTypesResponse
+	38, // 0: cloudstack.management.resource.v1.StartRollingMaintenanceResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	38, // 1: cloudstack.management.resource.v1.UploadCustomCertificateResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	38, // 2: cloudstack.management.resource.v1.GetCloudIdentifierResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	31, // 3: cloudstack.management.resource.v1.ListCapacityResponse.items:type_name -> cloudstack.management.resource.v1.Capacity
+	32, // 4: cloudstack.management.resource.v1.ListAlertsResponse.items:type_name -> cloudstack.management.resource.v1.Alert
+	33, // 5: cloudstack.management.resource.v1.ListHypervisorsResponse.items:type_name -> cloudstack.management.resource.v1.Hypervisor
+	38, // 6: cloudstack.management.resource.v1.UpdateResourceCountResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	38, // 7: cloudstack.management.resource.v1.PurgeExpungedResourcesResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	34, // 8: cloudstack.management.resource.v1.ListResourceLimitsResponse.items:type_name -> cloudstack.management.resource.v1.ResourceLimit
+	38, // 9: cloudstack.management.resource.v1.CleanVMReservationsResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	38, // 10: cloudstack.management.resource.v1.ArchiveAlertsResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	38, // 11: cloudstack.management.resource.v1.UpdateResourceLimitResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	38, // 12: cloudstack.management.resource.v1.DeleteAlertsResponse.result:type_name -> cloudstack.management.resource.v1.Result
+	32, // 13: cloudstack.management.resource.v1.ListAlertTypesResponse.items:type_name -> cloudstack.management.resource.v1.Alert
+	35, // 14: cloudstack.management.resource.v1.ListDetailOptionsResponse.items:type_name -> cloudstack.management.resource.v1.DetailOptions
+	39, // 15: cloudstack.management.resource.v1.Item.details:type_name -> cloudstack.management.resource.v1.Item.DetailsEntry
+	1,  // 16: cloudstack.management.resource.v1.ResourceService.StartRollingMaintenance:input_type -> cloudstack.management.resource.v1.StartRollingMaintenanceRequest
+	3,  // 17: cloudstack.management.resource.v1.ResourceService.UploadCustomCertificate:input_type -> cloudstack.management.resource.v1.UploadCustomCertificateRequest
+	5,  // 18: cloudstack.management.resource.v1.ResourceService.GetCloudIdentifier:input_type -> cloudstack.management.resource.v1.GetCloudIdentifierRequest
+	7,  // 19: cloudstack.management.resource.v1.ResourceService.ListCapacity:input_type -> cloudstack.management.resource.v1.ListCapacityRequest
+	9,  // 20: cloudstack.management.resource.v1.ResourceService.ListAlerts:input_type -> cloudstack.management.resource.v1.ListAlertsRequest
+	11, // 21: cloudstack.management.resource.v1.ResourceService.ListHypervisors:input_type -> cloudstack.management.resource.v1.ListHypervisorsRequest
+	13, // 22: cloudstack.management.resource.v1.ResourceService.UpdateResourceCount:input_type -> cloudstack.management.resource.v1.UpdateResourceCountRequest
+	15, // 23: cloudstack.management.resource.v1.ResourceService.PurgeExpungedResources:input_type -> cloudstack.management.resource.v1.PurgeExpungedResourcesRequest
+	17, // 24: cloudstack.management.resource.v1.ResourceService.ListResourceLimits:input_type -> cloudstack.management.resource.v1.ListResourceLimitsRequest
+	19, // 25: cloudstack.management.resource.v1.ResourceService.CleanVMReservations:input_type -> cloudstack.management.resource.v1.CleanVMReservationsRequest
+	21, // 26: cloudstack.management.resource.v1.ResourceService.ArchiveAlerts:input_type -> cloudstack.management.resource.v1.ArchiveAlertsRequest
+	23, // 27: cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit:input_type -> cloudstack.management.resource.v1.UpdateResourceLimitRequest
+	25, // 28: cloudstack.management.resource.v1.ResourceService.DeleteAlerts:input_type -> cloudstack.management.resource.v1.DeleteAlertsRequest
+	27, // 29: cloudstack.management.resource.v1.ResourceService.ListAlertTypes:input_type -> cloudstack.management.resource.v1.ListAlertTypesRequest
+	29, // 30: cloudstack.management.resource.v1.ResourceService.ListDetailOptions:input_type -> cloudstack.management.resource.v1.ListDetailOptionsRequest
+	2,  // 31: cloudstack.management.resource.v1.ResourceService.StartRollingMaintenance:output_type -> cloudstack.management.resource.v1.StartRollingMaintenanceResponse
+	4,  // 32: cloudstack.management.resource.v1.ResourceService.UploadCustomCertificate:output_type -> cloudstack.management.resource.v1.UploadCustomCertificateResponse
+	6,  // 33: cloudstack.management.resource.v1.ResourceService.GetCloudIdentifier:output_type -> cloudstack.management.resource.v1.GetCloudIdentifierResponse
+	8,  // 34: cloudstack.management.resource.v1.ResourceService.ListCapacity:output_type -> cloudstack.management.resource.v1.ListCapacityResponse
+	10, // 35: cloudstack.management.resource.v1.ResourceService.ListAlerts:output_type -> cloudstack.management.resource.v1.ListAlertsResponse
+	12, // 36: cloudstack.management.resource.v1.ResourceService.ListHypervisors:output_type -> cloudstack.management.resource.v1.ListHypervisorsResponse
+	14, // 37: cloudstack.management.resource.v1.ResourceService.UpdateResourceCount:output_type -> cloudstack.management.resource.v1.UpdateResourceCountResponse
+	16, // 38: cloudstack.management.resource.v1.ResourceService.PurgeExpungedResources:output_type -> cloudstack.management.resource.v1.PurgeExpungedResourcesResponse
+	18, // 39: cloudstack.management.resource.v1.ResourceService.ListResourceLimits:output_type -> cloudstack.management.resource.v1.ListResourceLimitsResponse
+	20, // 40: cloudstack.management.resource.v1.ResourceService.CleanVMReservations:output_type -> cloudstack.management.resource.v1.CleanVMReservationsResponse
+	22, // 41: cloudstack.management.resource.v1.ResourceService.ArchiveAlerts:output_type -> cloudstack.management.resource.v1.ArchiveAlertsResponse
+	24, // 42: cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit:output_type -> cloudstack.management.resource.v1.UpdateResourceLimitResponse
+	26, // 43: cloudstack.management.resource.v1.ResourceService.DeleteAlerts:output_type -> cloudstack.management.resource.v1.DeleteAlertsResponse
+	28, // 44: cloudstack.management.resource.v1.ResourceService.ListAlertTypes:output_type -> cloudstack.management.resource.v1.ListAlertTypesResponse
+	30, // 45: cloudstack.management.resource.v1.ResourceService.ListDetailOptions:output_type -> cloudstack.management.resource.v1.ListDetailOptionsResponse
 	31, // [31:46] is the sub-list for method output_type
 	16, // [16:31] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
@@ -3165,13 +3265,14 @@ func file_cloudstack_management_resource_v1_resource_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc), len(file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   39,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_resource_v1_resource_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_resource_v1_resource_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_resource_v1_resource_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_resource_v1_resource_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_resource_v1_resource_gen_proto = out.File

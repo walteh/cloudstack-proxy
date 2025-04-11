@@ -33,96 +33,101 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// TemplateServiceRegisterTemplateCmdByAdminProcedure is the fully-qualified name of the
-	// TemplateService's RegisterTemplateCmdByAdmin RPC.
-	TemplateServiceRegisterTemplateCmdByAdminProcedure = "/cloudstack.management.template.v1.TemplateService/RegisterTemplateCmdByAdmin"
+	// TemplateServiceDeleteVnfTemplateProcedure is the fully-qualified name of the TemplateService's
+	// DeleteVnfTemplate RPC.
+	TemplateServiceDeleteVnfTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/DeleteVnfTemplate"
+	// TemplateServiceListTemplatePermissionsCmdByAdminProcedure is the fully-qualified name of the
+	// TemplateService's ListTemplatePermissionsCmdByAdmin RPC.
+	TemplateServiceListTemplatePermissionsCmdByAdminProcedure = "/cloudstack.management.template.v1.TemplateService/ListTemplatePermissionsCmdByAdmin"
 	// TemplateServiceListVnfTemplatesProcedure is the fully-qualified name of the TemplateService's
 	// ListVnfTemplates RPC.
 	TemplateServiceListVnfTemplatesProcedure = "/cloudstack.management.template.v1.TemplateService/ListVnfTemplates"
-	// TemplateServiceUpdateTemplatePermissionsProcedure is the fully-qualified name of the
-	// TemplateService's UpdateTemplatePermissions RPC.
-	TemplateServiceUpdateTemplatePermissionsProcedure = "/cloudstack.management.template.v1.TemplateService/UpdateTemplatePermissions"
 	// TemplateServiceUpdateVnfTemplateProcedure is the fully-qualified name of the TemplateService's
 	// UpdateVnfTemplate RPC.
 	TemplateServiceUpdateVnfTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/UpdateVnfTemplate"
 	// TemplateServiceListTemplatesProcedure is the fully-qualified name of the TemplateService's
 	// ListTemplates RPC.
 	TemplateServiceListTemplatesProcedure = "/cloudstack.management.template.v1.TemplateService/ListTemplates"
-	// TemplateServiceCreateTemplateProcedure is the fully-qualified name of the TemplateService's
-	// CreateTemplate RPC.
-	TemplateServiceCreateTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/CreateTemplate"
+	// TemplateServiceCreateTemplateCmdByAdminProcedure is the fully-qualified name of the
+	// TemplateService's CreateTemplateCmdByAdmin RPC.
+	TemplateServiceCreateTemplateCmdByAdminProcedure = "/cloudstack.management.template.v1.TemplateService/CreateTemplateCmdByAdmin"
+	// TemplateServiceCopyTemplateProcedure is the fully-qualified name of the TemplateService's
+	// CopyTemplate RPC.
+	TemplateServiceCopyTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/CopyTemplate"
+	// TemplateServiceDeleteTemplateProcedure is the fully-qualified name of the TemplateService's
+	// DeleteTemplate RPC.
+	TemplateServiceDeleteTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/DeleteTemplate"
 	// TemplateServiceListTemplatePermissionsProcedure is the fully-qualified name of the
 	// TemplateService's ListTemplatePermissions RPC.
 	TemplateServiceListTemplatePermissionsProcedure = "/cloudstack.management.template.v1.TemplateService/ListTemplatePermissions"
 	// TemplateServiceUpdateTemplateCmdByAdminProcedure is the fully-qualified name of the
 	// TemplateService's UpdateTemplateCmdByAdmin RPC.
 	TemplateServiceUpdateTemplateCmdByAdminProcedure = "/cloudstack.management.template.v1.TemplateService/UpdateTemplateCmdByAdmin"
-	// TemplateServiceDeleteTemplateProcedure is the fully-qualified name of the TemplateService's
-	// DeleteTemplate RPC.
-	TemplateServiceDeleteTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/DeleteTemplate"
-	// TemplateServiceUpdateTemplateProcedure is the fully-qualified name of the TemplateService's
-	// UpdateTemplate RPC.
-	TemplateServiceUpdateTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/UpdateTemplate"
-	// TemplateServicePrepareTemplateProcedure is the fully-qualified name of the TemplateService's
-	// PrepareTemplate RPC.
-	TemplateServicePrepareTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/PrepareTemplate"
-	// TemplateServiceExtractTemplateProcedure is the fully-qualified name of the TemplateService's
-	// ExtractTemplate RPC.
-	TemplateServiceExtractTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/ExtractTemplate"
-	// TemplateServiceCopyTemplateProcedure is the fully-qualified name of the TemplateService's
-	// CopyTemplate RPC.
-	TemplateServiceCopyTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/CopyTemplate"
-	// TemplateServiceRegisterVnfTemplateProcedure is the fully-qualified name of the TemplateService's
-	// RegisterVnfTemplate RPC.
-	TemplateServiceRegisterVnfTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/RegisterVnfTemplate"
-	// TemplateServiceGetUploadParamsForTemplateProcedure is the fully-qualified name of the
-	// TemplateService's GetUploadParamsForTemplate RPC.
-	TemplateServiceGetUploadParamsForTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/GetUploadParamsForTemplate"
-	// TemplateServiceDeleteVnfTemplateProcedure is the fully-qualified name of the TemplateService's
-	// DeleteVnfTemplate RPC.
-	TemplateServiceDeleteVnfTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/DeleteVnfTemplate"
+	// TemplateServiceUpdateTemplatePermissionsProcedure is the fully-qualified name of the
+	// TemplateService's UpdateTemplatePermissions RPC.
+	TemplateServiceUpdateTemplatePermissionsProcedure = "/cloudstack.management.template.v1.TemplateService/UpdateTemplatePermissions"
+	// TemplateServiceCreateTemplateProcedure is the fully-qualified name of the TemplateService's
+	// CreateTemplate RPC.
+	TemplateServiceCreateTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/CreateTemplate"
 	// TemplateServiceRegisterTemplateProcedure is the fully-qualified name of the TemplateService's
 	// RegisterTemplate RPC.
 	TemplateServiceRegisterTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/RegisterTemplate"
+	// TemplateServiceRegisterVnfTemplateProcedure is the fully-qualified name of the TemplateService's
+	// RegisterVnfTemplate RPC.
+	TemplateServiceRegisterVnfTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/RegisterVnfTemplate"
+	// TemplateServiceExtractTemplateProcedure is the fully-qualified name of the TemplateService's
+	// ExtractTemplate RPC.
+	TemplateServiceExtractTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/ExtractTemplate"
+	// TemplateServiceUpdateTemplateProcedure is the fully-qualified name of the TemplateService's
+	// UpdateTemplate RPC.
+	TemplateServiceUpdateTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/UpdateTemplate"
+	// TemplateServiceGetUploadParamsForTemplateProcedure is the fully-qualified name of the
+	// TemplateService's GetUploadParamsForTemplate RPC.
+	TemplateServiceGetUploadParamsForTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/GetUploadParamsForTemplate"
+	// TemplateServicePrepareTemplateProcedure is the fully-qualified name of the TemplateService's
+	// PrepareTemplate RPC.
+	TemplateServicePrepareTemplateProcedure = "/cloudstack.management.template.v1.TemplateService/PrepareTemplate"
 )
 
 // TemplateServiceClient is a client for the cloudstack.management.template.v1.TemplateService
 // service.
 type TemplateServiceClient interface {
-	// RegisterTemplateCmdByAdmin Registers an existing template into the CloudStack cloud.
-	RegisterTemplateCmdByAdmin(context.Context, *connect.Request[v1.RegisterTemplateCmdByAdminRequest]) (*connect.Response[v1.RegisterTemplateCmdByAdminResponse], error)
+	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
+	DeleteVnfTemplate(context.Context, *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error)
+	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
+	ListTemplatePermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListTemplatePermissionsCmdByAdminRequest]) (*connect.Response[v1.ListTemplatePermissionsCmdByAdminResponse], error)
 	// ListVnfTemplates List all public, private, and privileged VNF templates.
 	ListVnfTemplates(context.Context, *connect.Request[v1.ListVnfTemplatesRequest]) (*connect.Response[v1.ListVnfTemplatesResponse], error)
-	// UpdateTemplatePermissions Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A privileged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
-	UpdateTemplatePermissions(context.Context, *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error)
 	// UpdateVnfTemplate Updates a template to VNF template or attributes of a VNF template.
 	UpdateVnfTemplate(context.Context, *connect.Request[v1.UpdateVnfTemplateRequest]) (*connect.Response[v1.UpdateVnfTemplateResponse], error)
 	// ListTemplates List all public, private, and privileged templates.
 	ListTemplates(context.Context, *connect.Request[v1.ListTemplatesRequest]) (*connect.Response[v1.ListTemplatesResponse], error)
-	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
-	CreateTemplate(context.Context, *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error)
+	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplateCmdByAdmin(context.Context, *connect.Request[v1.CreateTemplateCmdByAdminRequest]) (*connect.Response[v1.CreateTemplateCmdByAdminResponse], error)
+	// CopyTemplate Copies a template from one zone to another.
+	CopyTemplate(context.Context, *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error)
+	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
+	DeleteTemplate(context.Context, *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error)
 	// ListTemplatePermissions List template visibility and all accounts that have permissions to view this template.
 	ListTemplatePermissions(context.Context, *connect.Request[v1.ListTemplatePermissionsRequest]) (*connect.Response[v1.ListTemplatePermissionsResponse], error)
 	// UpdateTemplateCmdByAdmin Updates attributes of a template.
 	UpdateTemplateCmdByAdmin(context.Context, *connect.Request[v1.UpdateTemplateCmdByAdminRequest]) (*connect.Response[v1.UpdateTemplateCmdByAdminResponse], error)
-	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
-	DeleteTemplate(context.Context, *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error)
-	// UpdateTemplate Updates attributes of a template.
-	UpdateTemplate(context.Context, *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error)
-	// PrepareTemplate load template into primary storage
-	PrepareTemplate(context.Context, *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error)
-	// ExtractTemplate Extracts a template
-	ExtractTemplate(context.Context, *connect.Request[v1.ExtractTemplateRequest]) (*connect.Response[v1.ExtractTemplateResponse], error)
-	// CopyTemplate Copies a template from one zone to another.
-	CopyTemplate(context.Context, *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error)
-	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
-	RegisterVnfTemplate(context.Context, *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error)
-	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
-	GetUploadParamsForTemplate(context.Context, *connect.Request[v1.GetUploadParamsForTemplateRequest]) (*connect.Response[v1.GetUploadParamsForTemplateResponse], error)
-	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
-	DeleteVnfTemplate(context.Context, *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error)
+	// UpdateTemplatePermissions Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A privileged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
+	UpdateTemplatePermissions(context.Context, *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error)
+	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplate(context.Context, *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error)
 	// RegisterTemplate Registers an existing template into the CloudStack cloud.
 	RegisterTemplate(context.Context, *connect.Request[v1.RegisterTemplateRequest]) (*connect.Response[v1.RegisterTemplateResponse], error)
+	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
+	RegisterVnfTemplate(context.Context, *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error)
+	// ExtractTemplate Extracts a template
+	ExtractTemplate(context.Context, *connect.Request[v1.ExtractTemplateRequest]) (*connect.Response[v1.ExtractTemplateResponse], error)
+	// UpdateTemplate Updates attributes of a template.
+	UpdateTemplate(context.Context, *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error)
+	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
+	GetUploadParamsForTemplate(context.Context, *connect.Request[v1.GetUploadParamsForTemplateRequest]) (*connect.Response[v1.GetUploadParamsForTemplateResponse], error)
+	// PrepareTemplate load template into primary storage
+	PrepareTemplate(context.Context, *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error)
 }
 
 // NewTemplateServiceClient constructs a client for the
@@ -137,22 +142,22 @@ func NewTemplateServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	templateServiceMethods := v1.File_cloudstack_management_template_v1_template_gen_proto.Services().ByName("TemplateService").Methods()
 	return &templateServiceClient{
-		registerTemplateCmdByAdmin: connect.NewClient[v1.RegisterTemplateCmdByAdminRequest, v1.RegisterTemplateCmdByAdminResponse](
+		deleteVnfTemplate: connect.NewClient[v1.DeleteVnfTemplateRequest, v1.DeleteVnfTemplateResponse](
 			httpClient,
-			baseURL+TemplateServiceRegisterTemplateCmdByAdminProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("RegisterTemplateCmdByAdmin")),
+			baseURL+TemplateServiceDeleteVnfTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("DeleteVnfTemplate")),
+			connect.WithClientOptions(opts...),
+		),
+		listTemplatePermissionsCmdByAdmin: connect.NewClient[v1.ListTemplatePermissionsCmdByAdminRequest, v1.ListTemplatePermissionsCmdByAdminResponse](
+			httpClient,
+			baseURL+TemplateServiceListTemplatePermissionsCmdByAdminProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("ListTemplatePermissionsCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
 		listVnfTemplates: connect.NewClient[v1.ListVnfTemplatesRequest, v1.ListVnfTemplatesResponse](
 			httpClient,
 			baseURL+TemplateServiceListVnfTemplatesProcedure,
 			connect.WithSchema(templateServiceMethods.ByName("ListVnfTemplates")),
-			connect.WithClientOptions(opts...),
-		),
-		updateTemplatePermissions: connect.NewClient[v1.UpdateTemplatePermissionsRequest, v1.UpdateTemplatePermissionsResponse](
-			httpClient,
-			baseURL+TemplateServiceUpdateTemplatePermissionsProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("UpdateTemplatePermissions")),
 			connect.WithClientOptions(opts...),
 		),
 		updateVnfTemplate: connect.NewClient[v1.UpdateVnfTemplateRequest, v1.UpdateVnfTemplateResponse](
@@ -167,10 +172,22 @@ func NewTemplateServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(templateServiceMethods.ByName("ListTemplates")),
 			connect.WithClientOptions(opts...),
 		),
-		createTemplate: connect.NewClient[v1.CreateTemplateRequest, v1.CreateTemplateResponse](
+		createTemplateCmdByAdmin: connect.NewClient[v1.CreateTemplateCmdByAdminRequest, v1.CreateTemplateCmdByAdminResponse](
 			httpClient,
-			baseURL+TemplateServiceCreateTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("CreateTemplate")),
+			baseURL+TemplateServiceCreateTemplateCmdByAdminProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("CreateTemplateCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		copyTemplate: connect.NewClient[v1.CopyTemplateRequest, v1.CopyTemplateResponse](
+			httpClient,
+			baseURL+TemplateServiceCopyTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("CopyTemplate")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteTemplate: connect.NewClient[v1.DeleteTemplateRequest, v1.DeleteTemplateResponse](
+			httpClient,
+			baseURL+TemplateServiceDeleteTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("DeleteTemplate")),
 			connect.WithClientOptions(opts...),
 		),
 		listTemplatePermissions: connect.NewClient[v1.ListTemplatePermissionsRequest, v1.ListTemplatePermissionsResponse](
@@ -185,52 +202,16 @@ func NewTemplateServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(templateServiceMethods.ByName("UpdateTemplateCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteTemplate: connect.NewClient[v1.DeleteTemplateRequest, v1.DeleteTemplateResponse](
+		updateTemplatePermissions: connect.NewClient[v1.UpdateTemplatePermissionsRequest, v1.UpdateTemplatePermissionsResponse](
 			httpClient,
-			baseURL+TemplateServiceDeleteTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("DeleteTemplate")),
+			baseURL+TemplateServiceUpdateTemplatePermissionsProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("UpdateTemplatePermissions")),
 			connect.WithClientOptions(opts...),
 		),
-		updateTemplate: connect.NewClient[v1.UpdateTemplateRequest, v1.UpdateTemplateResponse](
+		createTemplate: connect.NewClient[v1.CreateTemplateRequest, v1.CreateTemplateResponse](
 			httpClient,
-			baseURL+TemplateServiceUpdateTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("UpdateTemplate")),
-			connect.WithClientOptions(opts...),
-		),
-		prepareTemplate: connect.NewClient[v1.PrepareTemplateRequest, v1.PrepareTemplateResponse](
-			httpClient,
-			baseURL+TemplateServicePrepareTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("PrepareTemplate")),
-			connect.WithClientOptions(opts...),
-		),
-		extractTemplate: connect.NewClient[v1.ExtractTemplateRequest, v1.ExtractTemplateResponse](
-			httpClient,
-			baseURL+TemplateServiceExtractTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("ExtractTemplate")),
-			connect.WithClientOptions(opts...),
-		),
-		copyTemplate: connect.NewClient[v1.CopyTemplateRequest, v1.CopyTemplateResponse](
-			httpClient,
-			baseURL+TemplateServiceCopyTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("CopyTemplate")),
-			connect.WithClientOptions(opts...),
-		),
-		registerVnfTemplate: connect.NewClient[v1.RegisterVnfTemplateRequest, v1.RegisterVnfTemplateResponse](
-			httpClient,
-			baseURL+TemplateServiceRegisterVnfTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("RegisterVnfTemplate")),
-			connect.WithClientOptions(opts...),
-		),
-		getUploadParamsForTemplate: connect.NewClient[v1.GetUploadParamsForTemplateRequest, v1.GetUploadParamsForTemplateResponse](
-			httpClient,
-			baseURL+TemplateServiceGetUploadParamsForTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("GetUploadParamsForTemplate")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVnfTemplate: connect.NewClient[v1.DeleteVnfTemplateRequest, v1.DeleteVnfTemplateResponse](
-			httpClient,
-			baseURL+TemplateServiceDeleteVnfTemplateProcedure,
-			connect.WithSchema(templateServiceMethods.ByName("DeleteVnfTemplate")),
+			baseURL+TemplateServiceCreateTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("CreateTemplate")),
 			connect.WithClientOptions(opts...),
 		),
 		registerTemplate: connect.NewClient[v1.RegisterTemplateRequest, v1.RegisterTemplateResponse](
@@ -239,45 +220,75 @@ func NewTemplateServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(templateServiceMethods.ByName("RegisterTemplate")),
 			connect.WithClientOptions(opts...),
 		),
+		registerVnfTemplate: connect.NewClient[v1.RegisterVnfTemplateRequest, v1.RegisterVnfTemplateResponse](
+			httpClient,
+			baseURL+TemplateServiceRegisterVnfTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("RegisterVnfTemplate")),
+			connect.WithClientOptions(opts...),
+		),
+		extractTemplate: connect.NewClient[v1.ExtractTemplateRequest, v1.ExtractTemplateResponse](
+			httpClient,
+			baseURL+TemplateServiceExtractTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("ExtractTemplate")),
+			connect.WithClientOptions(opts...),
+		),
+		updateTemplate: connect.NewClient[v1.UpdateTemplateRequest, v1.UpdateTemplateResponse](
+			httpClient,
+			baseURL+TemplateServiceUpdateTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("UpdateTemplate")),
+			connect.WithClientOptions(opts...),
+		),
+		getUploadParamsForTemplate: connect.NewClient[v1.GetUploadParamsForTemplateRequest, v1.GetUploadParamsForTemplateResponse](
+			httpClient,
+			baseURL+TemplateServiceGetUploadParamsForTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("GetUploadParamsForTemplate")),
+			connect.WithClientOptions(opts...),
+		),
+		prepareTemplate: connect.NewClient[v1.PrepareTemplateRequest, v1.PrepareTemplateResponse](
+			httpClient,
+			baseURL+TemplateServicePrepareTemplateProcedure,
+			connect.WithSchema(templateServiceMethods.ByName("PrepareTemplate")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // templateServiceClient implements TemplateServiceClient.
 type templateServiceClient struct {
-	registerTemplateCmdByAdmin *connect.Client[v1.RegisterTemplateCmdByAdminRequest, v1.RegisterTemplateCmdByAdminResponse]
-	listVnfTemplates           *connect.Client[v1.ListVnfTemplatesRequest, v1.ListVnfTemplatesResponse]
-	updateTemplatePermissions  *connect.Client[v1.UpdateTemplatePermissionsRequest, v1.UpdateTemplatePermissionsResponse]
-	updateVnfTemplate          *connect.Client[v1.UpdateVnfTemplateRequest, v1.UpdateVnfTemplateResponse]
-	listTemplates              *connect.Client[v1.ListTemplatesRequest, v1.ListTemplatesResponse]
-	createTemplate             *connect.Client[v1.CreateTemplateRequest, v1.CreateTemplateResponse]
-	listTemplatePermissions    *connect.Client[v1.ListTemplatePermissionsRequest, v1.ListTemplatePermissionsResponse]
-	updateTemplateCmdByAdmin   *connect.Client[v1.UpdateTemplateCmdByAdminRequest, v1.UpdateTemplateCmdByAdminResponse]
-	deleteTemplate             *connect.Client[v1.DeleteTemplateRequest, v1.DeleteTemplateResponse]
-	updateTemplate             *connect.Client[v1.UpdateTemplateRequest, v1.UpdateTemplateResponse]
-	prepareTemplate            *connect.Client[v1.PrepareTemplateRequest, v1.PrepareTemplateResponse]
-	extractTemplate            *connect.Client[v1.ExtractTemplateRequest, v1.ExtractTemplateResponse]
-	copyTemplate               *connect.Client[v1.CopyTemplateRequest, v1.CopyTemplateResponse]
-	registerVnfTemplate        *connect.Client[v1.RegisterVnfTemplateRequest, v1.RegisterVnfTemplateResponse]
-	getUploadParamsForTemplate *connect.Client[v1.GetUploadParamsForTemplateRequest, v1.GetUploadParamsForTemplateResponse]
-	deleteVnfTemplate          *connect.Client[v1.DeleteVnfTemplateRequest, v1.DeleteVnfTemplateResponse]
-	registerTemplate           *connect.Client[v1.RegisterTemplateRequest, v1.RegisterTemplateResponse]
+	deleteVnfTemplate                 *connect.Client[v1.DeleteVnfTemplateRequest, v1.DeleteVnfTemplateResponse]
+	listTemplatePermissionsCmdByAdmin *connect.Client[v1.ListTemplatePermissionsCmdByAdminRequest, v1.ListTemplatePermissionsCmdByAdminResponse]
+	listVnfTemplates                  *connect.Client[v1.ListVnfTemplatesRequest, v1.ListVnfTemplatesResponse]
+	updateVnfTemplate                 *connect.Client[v1.UpdateVnfTemplateRequest, v1.UpdateVnfTemplateResponse]
+	listTemplates                     *connect.Client[v1.ListTemplatesRequest, v1.ListTemplatesResponse]
+	createTemplateCmdByAdmin          *connect.Client[v1.CreateTemplateCmdByAdminRequest, v1.CreateTemplateCmdByAdminResponse]
+	copyTemplate                      *connect.Client[v1.CopyTemplateRequest, v1.CopyTemplateResponse]
+	deleteTemplate                    *connect.Client[v1.DeleteTemplateRequest, v1.DeleteTemplateResponse]
+	listTemplatePermissions           *connect.Client[v1.ListTemplatePermissionsRequest, v1.ListTemplatePermissionsResponse]
+	updateTemplateCmdByAdmin          *connect.Client[v1.UpdateTemplateCmdByAdminRequest, v1.UpdateTemplateCmdByAdminResponse]
+	updateTemplatePermissions         *connect.Client[v1.UpdateTemplatePermissionsRequest, v1.UpdateTemplatePermissionsResponse]
+	createTemplate                    *connect.Client[v1.CreateTemplateRequest, v1.CreateTemplateResponse]
+	registerTemplate                  *connect.Client[v1.RegisterTemplateRequest, v1.RegisterTemplateResponse]
+	registerVnfTemplate               *connect.Client[v1.RegisterVnfTemplateRequest, v1.RegisterVnfTemplateResponse]
+	extractTemplate                   *connect.Client[v1.ExtractTemplateRequest, v1.ExtractTemplateResponse]
+	updateTemplate                    *connect.Client[v1.UpdateTemplateRequest, v1.UpdateTemplateResponse]
+	getUploadParamsForTemplate        *connect.Client[v1.GetUploadParamsForTemplateRequest, v1.GetUploadParamsForTemplateResponse]
+	prepareTemplate                   *connect.Client[v1.PrepareTemplateRequest, v1.PrepareTemplateResponse]
 }
 
-// RegisterTemplateCmdByAdmin calls
-// cloudstack.management.template.v1.TemplateService.RegisterTemplateCmdByAdmin.
-func (c *templateServiceClient) RegisterTemplateCmdByAdmin(ctx context.Context, req *connect.Request[v1.RegisterTemplateCmdByAdminRequest]) (*connect.Response[v1.RegisterTemplateCmdByAdminResponse], error) {
-	return c.registerTemplateCmdByAdmin.CallUnary(ctx, req)
+// DeleteVnfTemplate calls cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate.
+func (c *templateServiceClient) DeleteVnfTemplate(ctx context.Context, req *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error) {
+	return c.deleteVnfTemplate.CallUnary(ctx, req)
+}
+
+// ListTemplatePermissionsCmdByAdmin calls
+// cloudstack.management.template.v1.TemplateService.ListTemplatePermissionsCmdByAdmin.
+func (c *templateServiceClient) ListTemplatePermissionsCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListTemplatePermissionsCmdByAdminRequest]) (*connect.Response[v1.ListTemplatePermissionsCmdByAdminResponse], error) {
+	return c.listTemplatePermissionsCmdByAdmin.CallUnary(ctx, req)
 }
 
 // ListVnfTemplates calls cloudstack.management.template.v1.TemplateService.ListVnfTemplates.
 func (c *templateServiceClient) ListVnfTemplates(ctx context.Context, req *connect.Request[v1.ListVnfTemplatesRequest]) (*connect.Response[v1.ListVnfTemplatesResponse], error) {
 	return c.listVnfTemplates.CallUnary(ctx, req)
-}
-
-// UpdateTemplatePermissions calls
-// cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions.
-func (c *templateServiceClient) UpdateTemplatePermissions(ctx context.Context, req *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error) {
-	return c.updateTemplatePermissions.CallUnary(ctx, req)
 }
 
 // UpdateVnfTemplate calls cloudstack.management.template.v1.TemplateService.UpdateVnfTemplate.
@@ -290,9 +301,20 @@ func (c *templateServiceClient) ListTemplates(ctx context.Context, req *connect.
 	return c.listTemplates.CallUnary(ctx, req)
 }
 
-// CreateTemplate calls cloudstack.management.template.v1.TemplateService.CreateTemplate.
-func (c *templateServiceClient) CreateTemplate(ctx context.Context, req *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error) {
-	return c.createTemplate.CallUnary(ctx, req)
+// CreateTemplateCmdByAdmin calls
+// cloudstack.management.template.v1.TemplateService.CreateTemplateCmdByAdmin.
+func (c *templateServiceClient) CreateTemplateCmdByAdmin(ctx context.Context, req *connect.Request[v1.CreateTemplateCmdByAdminRequest]) (*connect.Response[v1.CreateTemplateCmdByAdminResponse], error) {
+	return c.createTemplateCmdByAdmin.CallUnary(ctx, req)
+}
+
+// CopyTemplate calls cloudstack.management.template.v1.TemplateService.CopyTemplate.
+func (c *templateServiceClient) CopyTemplate(ctx context.Context, req *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error) {
+	return c.copyTemplate.CallUnary(ctx, req)
+}
+
+// DeleteTemplate calls cloudstack.management.template.v1.TemplateService.DeleteTemplate.
+func (c *templateServiceClient) DeleteTemplate(ctx context.Context, req *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error) {
+	return c.deleteTemplate.CallUnary(ctx, req)
 }
 
 // ListTemplatePermissions calls
@@ -307,19 +329,25 @@ func (c *templateServiceClient) UpdateTemplateCmdByAdmin(ctx context.Context, re
 	return c.updateTemplateCmdByAdmin.CallUnary(ctx, req)
 }
 
-// DeleteTemplate calls cloudstack.management.template.v1.TemplateService.DeleteTemplate.
-func (c *templateServiceClient) DeleteTemplate(ctx context.Context, req *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error) {
-	return c.deleteTemplate.CallUnary(ctx, req)
+// UpdateTemplatePermissions calls
+// cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions.
+func (c *templateServiceClient) UpdateTemplatePermissions(ctx context.Context, req *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error) {
+	return c.updateTemplatePermissions.CallUnary(ctx, req)
 }
 
-// UpdateTemplate calls cloudstack.management.template.v1.TemplateService.UpdateTemplate.
-func (c *templateServiceClient) UpdateTemplate(ctx context.Context, req *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error) {
-	return c.updateTemplate.CallUnary(ctx, req)
+// CreateTemplate calls cloudstack.management.template.v1.TemplateService.CreateTemplate.
+func (c *templateServiceClient) CreateTemplate(ctx context.Context, req *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error) {
+	return c.createTemplate.CallUnary(ctx, req)
 }
 
-// PrepareTemplate calls cloudstack.management.template.v1.TemplateService.PrepareTemplate.
-func (c *templateServiceClient) PrepareTemplate(ctx context.Context, req *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error) {
-	return c.prepareTemplate.CallUnary(ctx, req)
+// RegisterTemplate calls cloudstack.management.template.v1.TemplateService.RegisterTemplate.
+func (c *templateServiceClient) RegisterTemplate(ctx context.Context, req *connect.Request[v1.RegisterTemplateRequest]) (*connect.Response[v1.RegisterTemplateResponse], error) {
+	return c.registerTemplate.CallUnary(ctx, req)
+}
+
+// RegisterVnfTemplate calls cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate.
+func (c *templateServiceClient) RegisterVnfTemplate(ctx context.Context, req *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error) {
+	return c.registerVnfTemplate.CallUnary(ctx, req)
 }
 
 // ExtractTemplate calls cloudstack.management.template.v1.TemplateService.ExtractTemplate.
@@ -327,14 +355,9 @@ func (c *templateServiceClient) ExtractTemplate(ctx context.Context, req *connec
 	return c.extractTemplate.CallUnary(ctx, req)
 }
 
-// CopyTemplate calls cloudstack.management.template.v1.TemplateService.CopyTemplate.
-func (c *templateServiceClient) CopyTemplate(ctx context.Context, req *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error) {
-	return c.copyTemplate.CallUnary(ctx, req)
-}
-
-// RegisterVnfTemplate calls cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate.
-func (c *templateServiceClient) RegisterVnfTemplate(ctx context.Context, req *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error) {
-	return c.registerVnfTemplate.CallUnary(ctx, req)
+// UpdateTemplate calls cloudstack.management.template.v1.TemplateService.UpdateTemplate.
+func (c *templateServiceClient) UpdateTemplate(ctx context.Context, req *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error) {
+	return c.updateTemplate.CallUnary(ctx, req)
 }
 
 // GetUploadParamsForTemplate calls
@@ -343,53 +366,50 @@ func (c *templateServiceClient) GetUploadParamsForTemplate(ctx context.Context, 
 	return c.getUploadParamsForTemplate.CallUnary(ctx, req)
 }
 
-// DeleteVnfTemplate calls cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate.
-func (c *templateServiceClient) DeleteVnfTemplate(ctx context.Context, req *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error) {
-	return c.deleteVnfTemplate.CallUnary(ctx, req)
-}
-
-// RegisterTemplate calls cloudstack.management.template.v1.TemplateService.RegisterTemplate.
-func (c *templateServiceClient) RegisterTemplate(ctx context.Context, req *connect.Request[v1.RegisterTemplateRequest]) (*connect.Response[v1.RegisterTemplateResponse], error) {
-	return c.registerTemplate.CallUnary(ctx, req)
+// PrepareTemplate calls cloudstack.management.template.v1.TemplateService.PrepareTemplate.
+func (c *templateServiceClient) PrepareTemplate(ctx context.Context, req *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error) {
+	return c.prepareTemplate.CallUnary(ctx, req)
 }
 
 // TemplateServiceHandler is an implementation of the
 // cloudstack.management.template.v1.TemplateService service.
 type TemplateServiceHandler interface {
-	// RegisterTemplateCmdByAdmin Registers an existing template into the CloudStack cloud.
-	RegisterTemplateCmdByAdmin(context.Context, *connect.Request[v1.RegisterTemplateCmdByAdminRequest]) (*connect.Response[v1.RegisterTemplateCmdByAdminResponse], error)
+	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
+	DeleteVnfTemplate(context.Context, *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error)
+	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
+	ListTemplatePermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListTemplatePermissionsCmdByAdminRequest]) (*connect.Response[v1.ListTemplatePermissionsCmdByAdminResponse], error)
 	// ListVnfTemplates List all public, private, and privileged VNF templates.
 	ListVnfTemplates(context.Context, *connect.Request[v1.ListVnfTemplatesRequest]) (*connect.Response[v1.ListVnfTemplatesResponse], error)
-	// UpdateTemplatePermissions Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A privileged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
-	UpdateTemplatePermissions(context.Context, *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error)
 	// UpdateVnfTemplate Updates a template to VNF template or attributes of a VNF template.
 	UpdateVnfTemplate(context.Context, *connect.Request[v1.UpdateVnfTemplateRequest]) (*connect.Response[v1.UpdateVnfTemplateResponse], error)
 	// ListTemplates List all public, private, and privileged templates.
 	ListTemplates(context.Context, *connect.Request[v1.ListTemplatesRequest]) (*connect.Response[v1.ListTemplatesResponse], error)
-	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
-	CreateTemplate(context.Context, *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error)
+	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplateCmdByAdmin(context.Context, *connect.Request[v1.CreateTemplateCmdByAdminRequest]) (*connect.Response[v1.CreateTemplateCmdByAdminResponse], error)
+	// CopyTemplate Copies a template from one zone to another.
+	CopyTemplate(context.Context, *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error)
+	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
+	DeleteTemplate(context.Context, *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error)
 	// ListTemplatePermissions List template visibility and all accounts that have permissions to view this template.
 	ListTemplatePermissions(context.Context, *connect.Request[v1.ListTemplatePermissionsRequest]) (*connect.Response[v1.ListTemplatePermissionsResponse], error)
 	// UpdateTemplateCmdByAdmin Updates attributes of a template.
 	UpdateTemplateCmdByAdmin(context.Context, *connect.Request[v1.UpdateTemplateCmdByAdminRequest]) (*connect.Response[v1.UpdateTemplateCmdByAdminResponse], error)
-	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
-	DeleteTemplate(context.Context, *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error)
-	// UpdateTemplate Updates attributes of a template.
-	UpdateTemplate(context.Context, *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error)
-	// PrepareTemplate load template into primary storage
-	PrepareTemplate(context.Context, *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error)
-	// ExtractTemplate Extracts a template
-	ExtractTemplate(context.Context, *connect.Request[v1.ExtractTemplateRequest]) (*connect.Response[v1.ExtractTemplateResponse], error)
-	// CopyTemplate Copies a template from one zone to another.
-	CopyTemplate(context.Context, *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error)
-	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
-	RegisterVnfTemplate(context.Context, *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error)
-	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
-	GetUploadParamsForTemplate(context.Context, *connect.Request[v1.GetUploadParamsForTemplateRequest]) (*connect.Response[v1.GetUploadParamsForTemplateResponse], error)
-	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
-	DeleteVnfTemplate(context.Context, *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error)
+	// UpdateTemplatePermissions Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A privileged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
+	UpdateTemplatePermissions(context.Context, *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error)
+	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplate(context.Context, *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error)
 	// RegisterTemplate Registers an existing template into the CloudStack cloud.
 	RegisterTemplate(context.Context, *connect.Request[v1.RegisterTemplateRequest]) (*connect.Response[v1.RegisterTemplateResponse], error)
+	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
+	RegisterVnfTemplate(context.Context, *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error)
+	// ExtractTemplate Extracts a template
+	ExtractTemplate(context.Context, *connect.Request[v1.ExtractTemplateRequest]) (*connect.Response[v1.ExtractTemplateResponse], error)
+	// UpdateTemplate Updates attributes of a template.
+	UpdateTemplate(context.Context, *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error)
+	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
+	GetUploadParamsForTemplate(context.Context, *connect.Request[v1.GetUploadParamsForTemplateRequest]) (*connect.Response[v1.GetUploadParamsForTemplateResponse], error)
+	// PrepareTemplate load template into primary storage
+	PrepareTemplate(context.Context, *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error)
 }
 
 // NewTemplateServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -399,22 +419,22 @@ type TemplateServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTemplateServiceHandler(svc TemplateServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	templateServiceMethods := v1.File_cloudstack_management_template_v1_template_gen_proto.Services().ByName("TemplateService").Methods()
-	templateServiceRegisterTemplateCmdByAdminHandler := connect.NewUnaryHandler(
-		TemplateServiceRegisterTemplateCmdByAdminProcedure,
-		svc.RegisterTemplateCmdByAdmin,
-		connect.WithSchema(templateServiceMethods.ByName("RegisterTemplateCmdByAdmin")),
+	templateServiceDeleteVnfTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceDeleteVnfTemplateProcedure,
+		svc.DeleteVnfTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("DeleteVnfTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServiceListTemplatePermissionsCmdByAdminHandler := connect.NewUnaryHandler(
+		TemplateServiceListTemplatePermissionsCmdByAdminProcedure,
+		svc.ListTemplatePermissionsCmdByAdmin,
+		connect.WithSchema(templateServiceMethods.ByName("ListTemplatePermissionsCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
 	templateServiceListVnfTemplatesHandler := connect.NewUnaryHandler(
 		TemplateServiceListVnfTemplatesProcedure,
 		svc.ListVnfTemplates,
 		connect.WithSchema(templateServiceMethods.ByName("ListVnfTemplates")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServiceUpdateTemplatePermissionsHandler := connect.NewUnaryHandler(
-		TemplateServiceUpdateTemplatePermissionsProcedure,
-		svc.UpdateTemplatePermissions,
-		connect.WithSchema(templateServiceMethods.ByName("UpdateTemplatePermissions")),
 		connect.WithHandlerOptions(opts...),
 	)
 	templateServiceUpdateVnfTemplateHandler := connect.NewUnaryHandler(
@@ -429,10 +449,22 @@ func NewTemplateServiceHandler(svc TemplateServiceHandler, opts ...connect.Handl
 		connect.WithSchema(templateServiceMethods.ByName("ListTemplates")),
 		connect.WithHandlerOptions(opts...),
 	)
-	templateServiceCreateTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceCreateTemplateProcedure,
-		svc.CreateTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("CreateTemplate")),
+	templateServiceCreateTemplateCmdByAdminHandler := connect.NewUnaryHandler(
+		TemplateServiceCreateTemplateCmdByAdminProcedure,
+		svc.CreateTemplateCmdByAdmin,
+		connect.WithSchema(templateServiceMethods.ByName("CreateTemplateCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServiceCopyTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceCopyTemplateProcedure,
+		svc.CopyTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("CopyTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServiceDeleteTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceDeleteTemplateProcedure,
+		svc.DeleteTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("DeleteTemplate")),
 		connect.WithHandlerOptions(opts...),
 	)
 	templateServiceListTemplatePermissionsHandler := connect.NewUnaryHandler(
@@ -447,52 +479,16 @@ func NewTemplateServiceHandler(svc TemplateServiceHandler, opts ...connect.Handl
 		connect.WithSchema(templateServiceMethods.ByName("UpdateTemplateCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
-	templateServiceDeleteTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceDeleteTemplateProcedure,
-		svc.DeleteTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("DeleteTemplate")),
+	templateServiceUpdateTemplatePermissionsHandler := connect.NewUnaryHandler(
+		TemplateServiceUpdateTemplatePermissionsProcedure,
+		svc.UpdateTemplatePermissions,
+		connect.WithSchema(templateServiceMethods.ByName("UpdateTemplatePermissions")),
 		connect.WithHandlerOptions(opts...),
 	)
-	templateServiceUpdateTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceUpdateTemplateProcedure,
-		svc.UpdateTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("UpdateTemplate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServicePrepareTemplateHandler := connect.NewUnaryHandler(
-		TemplateServicePrepareTemplateProcedure,
-		svc.PrepareTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("PrepareTemplate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServiceExtractTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceExtractTemplateProcedure,
-		svc.ExtractTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("ExtractTemplate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServiceCopyTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceCopyTemplateProcedure,
-		svc.CopyTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("CopyTemplate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServiceRegisterVnfTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceRegisterVnfTemplateProcedure,
-		svc.RegisterVnfTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("RegisterVnfTemplate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServiceGetUploadParamsForTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceGetUploadParamsForTemplateProcedure,
-		svc.GetUploadParamsForTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("GetUploadParamsForTemplate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	templateServiceDeleteVnfTemplateHandler := connect.NewUnaryHandler(
-		TemplateServiceDeleteVnfTemplateProcedure,
-		svc.DeleteVnfTemplate,
-		connect.WithSchema(templateServiceMethods.ByName("DeleteVnfTemplate")),
+	templateServiceCreateTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceCreateTemplateProcedure,
+		svc.CreateTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("CreateTemplate")),
 		connect.WithHandlerOptions(opts...),
 	)
 	templateServiceRegisterTemplateHandler := connect.NewUnaryHandler(
@@ -501,42 +497,74 @@ func NewTemplateServiceHandler(svc TemplateServiceHandler, opts ...connect.Handl
 		connect.WithSchema(templateServiceMethods.ByName("RegisterTemplate")),
 		connect.WithHandlerOptions(opts...),
 	)
+	templateServiceRegisterVnfTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceRegisterVnfTemplateProcedure,
+		svc.RegisterVnfTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("RegisterVnfTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServiceExtractTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceExtractTemplateProcedure,
+		svc.ExtractTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("ExtractTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServiceUpdateTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceUpdateTemplateProcedure,
+		svc.UpdateTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("UpdateTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServiceGetUploadParamsForTemplateHandler := connect.NewUnaryHandler(
+		TemplateServiceGetUploadParamsForTemplateProcedure,
+		svc.GetUploadParamsForTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("GetUploadParamsForTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	templateServicePrepareTemplateHandler := connect.NewUnaryHandler(
+		TemplateServicePrepareTemplateProcedure,
+		svc.PrepareTemplate,
+		connect.WithSchema(templateServiceMethods.ByName("PrepareTemplate")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.template.v1.TemplateService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case TemplateServiceRegisterTemplateCmdByAdminProcedure:
-			templateServiceRegisterTemplateCmdByAdminHandler.ServeHTTP(w, r)
+		case TemplateServiceDeleteVnfTemplateProcedure:
+			templateServiceDeleteVnfTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceListTemplatePermissionsCmdByAdminProcedure:
+			templateServiceListTemplatePermissionsCmdByAdminHandler.ServeHTTP(w, r)
 		case TemplateServiceListVnfTemplatesProcedure:
 			templateServiceListVnfTemplatesHandler.ServeHTTP(w, r)
-		case TemplateServiceUpdateTemplatePermissionsProcedure:
-			templateServiceUpdateTemplatePermissionsHandler.ServeHTTP(w, r)
 		case TemplateServiceUpdateVnfTemplateProcedure:
 			templateServiceUpdateVnfTemplateHandler.ServeHTTP(w, r)
 		case TemplateServiceListTemplatesProcedure:
 			templateServiceListTemplatesHandler.ServeHTTP(w, r)
-		case TemplateServiceCreateTemplateProcedure:
-			templateServiceCreateTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceCreateTemplateCmdByAdminProcedure:
+			templateServiceCreateTemplateCmdByAdminHandler.ServeHTTP(w, r)
+		case TemplateServiceCopyTemplateProcedure:
+			templateServiceCopyTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceDeleteTemplateProcedure:
+			templateServiceDeleteTemplateHandler.ServeHTTP(w, r)
 		case TemplateServiceListTemplatePermissionsProcedure:
 			templateServiceListTemplatePermissionsHandler.ServeHTTP(w, r)
 		case TemplateServiceUpdateTemplateCmdByAdminProcedure:
 			templateServiceUpdateTemplateCmdByAdminHandler.ServeHTTP(w, r)
-		case TemplateServiceDeleteTemplateProcedure:
-			templateServiceDeleteTemplateHandler.ServeHTTP(w, r)
-		case TemplateServiceUpdateTemplateProcedure:
-			templateServiceUpdateTemplateHandler.ServeHTTP(w, r)
-		case TemplateServicePrepareTemplateProcedure:
-			templateServicePrepareTemplateHandler.ServeHTTP(w, r)
-		case TemplateServiceExtractTemplateProcedure:
-			templateServiceExtractTemplateHandler.ServeHTTP(w, r)
-		case TemplateServiceCopyTemplateProcedure:
-			templateServiceCopyTemplateHandler.ServeHTTP(w, r)
-		case TemplateServiceRegisterVnfTemplateProcedure:
-			templateServiceRegisterVnfTemplateHandler.ServeHTTP(w, r)
-		case TemplateServiceGetUploadParamsForTemplateProcedure:
-			templateServiceGetUploadParamsForTemplateHandler.ServeHTTP(w, r)
-		case TemplateServiceDeleteVnfTemplateProcedure:
-			templateServiceDeleteVnfTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceUpdateTemplatePermissionsProcedure:
+			templateServiceUpdateTemplatePermissionsHandler.ServeHTTP(w, r)
+		case TemplateServiceCreateTemplateProcedure:
+			templateServiceCreateTemplateHandler.ServeHTTP(w, r)
 		case TemplateServiceRegisterTemplateProcedure:
 			templateServiceRegisterTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceRegisterVnfTemplateProcedure:
+			templateServiceRegisterVnfTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceExtractTemplateProcedure:
+			templateServiceExtractTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceUpdateTemplateProcedure:
+			templateServiceUpdateTemplateHandler.ServeHTTP(w, r)
+		case TemplateServiceGetUploadParamsForTemplateProcedure:
+			templateServiceGetUploadParamsForTemplateHandler.ServeHTTP(w, r)
+		case TemplateServicePrepareTemplateProcedure:
+			templateServicePrepareTemplateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -546,16 +574,16 @@ func NewTemplateServiceHandler(svc TemplateServiceHandler, opts ...connect.Handl
 // UnimplementedTemplateServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTemplateServiceHandler struct{}
 
-func (UnimplementedTemplateServiceHandler) RegisterTemplateCmdByAdmin(context.Context, *connect.Request[v1.RegisterTemplateCmdByAdminRequest]) (*connect.Response[v1.RegisterTemplateCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.RegisterTemplateCmdByAdmin is not implemented"))
+func (UnimplementedTemplateServiceHandler) DeleteVnfTemplate(context.Context, *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate is not implemented"))
+}
+
+func (UnimplementedTemplateServiceHandler) ListTemplatePermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListTemplatePermissionsCmdByAdminRequest]) (*connect.Response[v1.ListTemplatePermissionsCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.ListTemplatePermissionsCmdByAdmin is not implemented"))
 }
 
 func (UnimplementedTemplateServiceHandler) ListVnfTemplates(context.Context, *connect.Request[v1.ListVnfTemplatesRequest]) (*connect.Response[v1.ListVnfTemplatesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.ListVnfTemplates is not implemented"))
-}
-
-func (UnimplementedTemplateServiceHandler) UpdateTemplatePermissions(context.Context, *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions is not implemented"))
 }
 
 func (UnimplementedTemplateServiceHandler) UpdateVnfTemplate(context.Context, *connect.Request[v1.UpdateVnfTemplateRequest]) (*connect.Response[v1.UpdateVnfTemplateResponse], error) {
@@ -566,8 +594,16 @@ func (UnimplementedTemplateServiceHandler) ListTemplates(context.Context, *conne
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.ListTemplates is not implemented"))
 }
 
-func (UnimplementedTemplateServiceHandler) CreateTemplate(context.Context, *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.CreateTemplate is not implemented"))
+func (UnimplementedTemplateServiceHandler) CreateTemplateCmdByAdmin(context.Context, *connect.Request[v1.CreateTemplateCmdByAdminRequest]) (*connect.Response[v1.CreateTemplateCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.CreateTemplateCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedTemplateServiceHandler) CopyTemplate(context.Context, *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.CopyTemplate is not implemented"))
+}
+
+func (UnimplementedTemplateServiceHandler) DeleteTemplate(context.Context, *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.DeleteTemplate is not implemented"))
 }
 
 func (UnimplementedTemplateServiceHandler) ListTemplatePermissions(context.Context, *connect.Request[v1.ListTemplatePermissionsRequest]) (*connect.Response[v1.ListTemplatePermissionsResponse], error) {
@@ -578,38 +614,34 @@ func (UnimplementedTemplateServiceHandler) UpdateTemplateCmdByAdmin(context.Cont
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.UpdateTemplateCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedTemplateServiceHandler) DeleteTemplate(context.Context, *connect.Request[v1.DeleteTemplateRequest]) (*connect.Response[v1.DeleteTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.DeleteTemplate is not implemented"))
+func (UnimplementedTemplateServiceHandler) UpdateTemplatePermissions(context.Context, *connect.Request[v1.UpdateTemplatePermissionsRequest]) (*connect.Response[v1.UpdateTemplatePermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions is not implemented"))
 }
 
-func (UnimplementedTemplateServiceHandler) UpdateTemplate(context.Context, *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.UpdateTemplate is not implemented"))
+func (UnimplementedTemplateServiceHandler) CreateTemplate(context.Context, *connect.Request[v1.CreateTemplateRequest]) (*connect.Response[v1.CreateTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.CreateTemplate is not implemented"))
 }
 
-func (UnimplementedTemplateServiceHandler) PrepareTemplate(context.Context, *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.PrepareTemplate is not implemented"))
-}
-
-func (UnimplementedTemplateServiceHandler) ExtractTemplate(context.Context, *connect.Request[v1.ExtractTemplateRequest]) (*connect.Response[v1.ExtractTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.ExtractTemplate is not implemented"))
-}
-
-func (UnimplementedTemplateServiceHandler) CopyTemplate(context.Context, *connect.Request[v1.CopyTemplateRequest]) (*connect.Response[v1.CopyTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.CopyTemplate is not implemented"))
+func (UnimplementedTemplateServiceHandler) RegisterTemplate(context.Context, *connect.Request[v1.RegisterTemplateRequest]) (*connect.Response[v1.RegisterTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.RegisterTemplate is not implemented"))
 }
 
 func (UnimplementedTemplateServiceHandler) RegisterVnfTemplate(context.Context, *connect.Request[v1.RegisterVnfTemplateRequest]) (*connect.Response[v1.RegisterVnfTemplateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate is not implemented"))
 }
 
+func (UnimplementedTemplateServiceHandler) ExtractTemplate(context.Context, *connect.Request[v1.ExtractTemplateRequest]) (*connect.Response[v1.ExtractTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.ExtractTemplate is not implemented"))
+}
+
+func (UnimplementedTemplateServiceHandler) UpdateTemplate(context.Context, *connect.Request[v1.UpdateTemplateRequest]) (*connect.Response[v1.UpdateTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.UpdateTemplate is not implemented"))
+}
+
 func (UnimplementedTemplateServiceHandler) GetUploadParamsForTemplate(context.Context, *connect.Request[v1.GetUploadParamsForTemplateRequest]) (*connect.Response[v1.GetUploadParamsForTemplateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.GetUploadParamsForTemplate is not implemented"))
 }
 
-func (UnimplementedTemplateServiceHandler) DeleteVnfTemplate(context.Context, *connect.Request[v1.DeleteVnfTemplateRequest]) (*connect.Response[v1.DeleteVnfTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate is not implemented"))
-}
-
-func (UnimplementedTemplateServiceHandler) RegisterTemplate(context.Context, *connect.Request[v1.RegisterTemplateRequest]) (*connect.Response[v1.RegisterTemplateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.RegisterTemplate is not implemented"))
+func (UnimplementedTemplateServiceHandler) PrepareTemplate(context.Context, *connect.Request[v1.PrepareTemplateRequest]) (*connect.Response[v1.PrepareTemplateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.template.v1.TemplateService.PrepareTemplate is not implemented"))
 }

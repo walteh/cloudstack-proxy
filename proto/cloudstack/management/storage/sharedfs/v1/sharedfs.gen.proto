@@ -10,11 +10,20 @@ import "google/protobuf/descriptor.proto";
 service SharedfsService {
 	option (annotations.service).scope = Scope_USER;
 
-	// StopSharedFS Stop a Shared FileSystem
-	rpc StopSharedFS(StopSharedFSRequest) returns (StopSharedFSResponse) {}
+	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
+	rpc ChangeSharedFSServiceOffering(ChangeSharedFSServiceOfferingRequest) returns (ChangeSharedFSServiceOfferingResponse) {}
 
-	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
-	rpc ChangeSharedFSDiskOffering(ChangeSharedFSDiskOfferingRequest) returns (ChangeSharedFSDiskOfferingResponse) {}
+	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
+	rpc CreateSharedFS(CreateSharedFSRequest) returns (CreateSharedFSResponse) {}
+
+	// RecoverSharedFS Recover a Shared FileSystem by id
+	rpc RecoverSharedFS(RecoverSharedFSRequest) returns (RecoverSharedFSResponse) {}
+
+	// UpdateSharedFS Update a Shared FileSystem
+	rpc UpdateSharedFS(UpdateSharedFSRequest) returns (UpdateSharedFSResponse) {}
+
+	// StartSharedFS Start a Shared FileSystem
+	rpc StartSharedFS(StartSharedFSRequest) returns (StartSharedFSResponse) {}
 
 	// ExpungeSharedFS Expunge a Shared FileSystem by id
 	rpc ExpungeSharedFS(ExpungeSharedFSRequest) returns (ExpungeSharedFSResponse) {}
@@ -22,41 +31,32 @@ service SharedfsService {
 	// ListSharedFSProviders Lists all available shared filesystem providers.
 	rpc ListSharedFSProviders(ListSharedFSProvidersRequest) returns (ListSharedFSProvidersResponse) {}
 
-	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
-	rpc CreateSharedFS(CreateSharedFSRequest) returns (CreateSharedFSResponse) {}
-
-	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
-	rpc ChangeSharedFSServiceOffering(ChangeSharedFSServiceOfferingRequest) returns (ChangeSharedFSServiceOfferingResponse) {}
-
-	// ListSharedFS List Shared FileSystems
-	rpc ListSharedFS(ListSharedFSRequest) returns (ListSharedFSResponse) {}
-
-	// DestroySharedFS Destroy a Shared FileSystem by id
-	rpc DestroySharedFS(DestroySharedFSRequest) returns (DestroySharedFSResponse) {}
-
-	// StartSharedFS Start a Shared FileSystem
-	rpc StartSharedFS(StartSharedFSRequest) returns (StartSharedFSResponse) {}
-
-	// RecoverSharedFS Recover a Shared FileSystem by id
-	rpc RecoverSharedFS(RecoverSharedFSRequest) returns (RecoverSharedFSResponse) {}
+	// StopSharedFS Stop a Shared FileSystem
+	rpc StopSharedFS(StopSharedFSRequest) returns (StopSharedFSResponse) {}
 
 	// RestartSharedFS Restart a Shared FileSystem
 	rpc RestartSharedFS(RestartSharedFSRequest) returns (RestartSharedFSResponse) {}
 
-	// UpdateSharedFS Update a Shared FileSystem
-	rpc UpdateSharedFS(UpdateSharedFSRequest) returns (UpdateSharedFSResponse) {}
+	// DestroySharedFS Destroy a Shared FileSystem by id
+	rpc DestroySharedFS(DestroySharedFSRequest) returns (DestroySharedFSResponse) {}
+
+	// ListSharedFS List Shared FileSystems
+	rpc ListSharedFS(ListSharedFSRequest) returns (ListSharedFSResponse) {}
+
+	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
+	rpc ChangeSharedFSDiskOffering(ChangeSharedFSDiskOfferingRequest) returns (ChangeSharedFSDiskOfferingResponse) {}
 }
 
-// StopSharedFSRequest represents the parameters for stop a shared filesystem
-message StopSharedFSRequest {
+// ChangeSharedFSServiceOfferingRequest represents the parameters for change service offering of a shared filesystem
+message ChangeSharedFSServiceOfferingRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// Force stop the shared filesystem.
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
+	// the offering to use for the shared filesystem instance
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
 	];
 
 	//
@@ -71,95 +71,10 @@ message StopSharedFSRequest {
 	string response_type = 5;
 }
 
-// StopSharedFSResponse represents the response from stop a shared filesystem
-message StopSharedFSResponse {
+// ChangeSharedFSServiceOfferingResponse represents the response from change service offering of a shared filesystem
+message ChangeSharedFSServiceOfferingResponse {
 	// The Result
 	Result result = 1;
-}
-
-// ChangeSharedFSDiskOfferingRequest represents the parameters for change disk offering of a shared filesystem
-message ChangeSharedFSDiskOfferingRequest {
-	// the ID of the shared filesystem
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the disk offering to use for the underlying storage
-	int64 disk_offering_id = 2;
-
-	// the size of the shared filesystem in GiB
-	int64 size = 3;
-
-	// min iops
-	int64 min_iops = 4;
-
-	// max iops
-	int64 max_iops = 5;
-
-	//
-	int64 start_event_id = 6;
-
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 8;
-}
-
-// ChangeSharedFSDiskOfferingResponse represents the response from change disk offering of a shared filesystem
-message ChangeSharedFSDiskOfferingResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ExpungeSharedFSRequest represents the parameters for expunge a shared filesystem by id
-message ExpungeSharedFSRequest {
-	// the ID of the shared filesystem to expunge
-	int64 id = 1;
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// ExpungeSharedFSResponse represents the response from expunge a shared filesystem by id
-message ExpungeSharedFSResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListSharedFSProvidersRequest represents the parameters for lists all available shared filesystem providers.
-message ListSharedFSProvidersRequest {
-	// List by keyword
-	string keyword = 1;
-
-	//
-	int32 page = 2;
-
-	//
-	int32 page_size = 3;
-
-	//
-	string response_type = 4;
-}
-
-// ListSharedFSProvidersResponse represents the response from lists all available shared filesystem providers.
-message ListSharedFSProvidersResponse {
-	option (validate.message).disabled = false;
-	// The list of SharedFSProviders
-	repeated SharedFSProvider items = 1;
-
-	// The total count of SharedFSProviders
-	int32 total_count = 2;
 }
 
 // CreateSharedFSRequest represents the parameters for create a new shared file system of specified size and disk offering, attached to the given network
@@ -249,16 +164,133 @@ message CreateSharedFSResponse {
 	Result result = 1;
 }
 
-// ChangeSharedFSServiceOfferingRequest represents the parameters for change service offering of a shared filesystem
-message ChangeSharedFSServiceOfferingRequest {
+// RecoverSharedFSRequest represents the parameters for recover a shared filesystem by id
+message RecoverSharedFSRequest {
+	// the ID of the shared filesystem to recover
+	int64 id = 1;
+
+	//
+	string response_type = 2;
+}
+
+// RecoverSharedFSResponse represents the response from recover a shared filesystem by id
+message RecoverSharedFSResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateSharedFSRequest represents the parameters for update a shared filesystem
+message UpdateSharedFSRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// the offering to use for the shared filesystem instance
-	int64 service_offering_id = 2 [
+	// the name of the shared filesystem.
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the description for the shared filesystem.
+	string description = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 4;
+}
+
+// UpdateSharedFSResponse represents the response from update a shared filesystem
+message UpdateSharedFSResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StartSharedFSRequest represents the parameters for start a shared filesystem
+message StartSharedFSRequest {
+	// the ID of the shared filesystem
+	int64 id = 1 [
 		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// StartSharedFSResponse represents the response from start a shared filesystem
+message StartSharedFSResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExpungeSharedFSRequest represents the parameters for expunge a shared filesystem by id
+message ExpungeSharedFSRequest {
+	// the ID of the shared filesystem to expunge
+	int64 id = 1;
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// ExpungeSharedFSResponse represents the response from expunge a shared filesystem by id
+message ExpungeSharedFSResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSharedFSProvidersRequest represents the parameters for lists all available shared filesystem providers.
+message ListSharedFSProvidersRequest {
+	// List by keyword
+	string keyword = 1;
+
+	//
+	int32 page = 2;
+
+	//
+	int32 page_size = 3;
+
+	//
+	string response_type = 4;
+}
+
+// ListSharedFSProvidersResponse represents the response from lists all available shared filesystem providers.
+message ListSharedFSProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of SharedFSProviders
+	repeated SharedFSProvider items = 1;
+
+	// The total count of SharedFSProviders
+	int32 total_count = 2;
+}
+
+// StopSharedFSRequest represents the parameters for stop a shared filesystem
+message StopSharedFSRequest {
+	// the ID of the shared filesystem
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force stop the shared filesystem.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
 	];
 
 	//
@@ -273,8 +305,71 @@ message ChangeSharedFSServiceOfferingRequest {
 	string response_type = 5;
 }
 
-// ChangeSharedFSServiceOfferingResponse represents the response from change service offering of a shared filesystem
-message ChangeSharedFSServiceOfferingResponse {
+// StopSharedFSResponse represents the response from stop a shared filesystem
+message StopSharedFSResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RestartSharedFSRequest represents the parameters for restart a shared filesystem
+message RestartSharedFSRequest {
+	// the ID of the shared filesystem
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// is cleanup required
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RestartSharedFSResponse represents the response from restart a shared filesystem
+message RestartSharedFSResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DestroySharedFSRequest represents the parameters for destroy a shared filesystem by id
+message DestroySharedFSRequest {
+	// the ID of the shared filesystem to delete
+	int64 id = 1;
+
+	// If true is passed, the shared filesystem is expunged immediately. False by default.
+	bool expunge = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// If true is passed, the shared filesystem can be destroyed without stopping it first.
+	bool forced = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// DestroySharedFSResponse represents the response from destroy a shared filesystem by id
+message DestroySharedFSResponse {
 	// The Result
 	Result result = 1;
 }
@@ -358,134 +453,39 @@ message ListSharedFSResponse {
 	int32 total_count = 2;
 }
 
-// DestroySharedFSRequest represents the parameters for destroy a shared filesystem by id
-message DestroySharedFSRequest {
-	// the ID of the shared filesystem to delete
-	int64 id = 1;
-
-	// If true is passed, the shared filesystem is expunged immediately. False by default.
-	bool expunge = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// If true is passed, the shared filesystem can be destroyed without stopping it first.
-	bool forced = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// DestroySharedFSResponse represents the response from destroy a shared filesystem by id
-message DestroySharedFSResponse {
-	// The Result
-	Result result = 1;
-}
-
-// StartSharedFSRequest represents the parameters for start a shared filesystem
-message StartSharedFSRequest {
+// ChangeSharedFSDiskOfferingRequest represents the parameters for change disk offering of a shared filesystem
+message ChangeSharedFSDiskOfferingRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
+	// the disk offering to use for the underlying storage
+	int64 disk_offering_id = 2;
+
+	// the size of the shared filesystem in GiB
+	int64 size = 3;
+
+	// min iops
+	int64 min_iops = 4;
+
+	// max iops
+	int64 max_iops = 5;
 
 	//
-	string injected_job_id = 3 [
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 8;
 }
 
-// StartSharedFSResponse represents the response from start a shared filesystem
-message StartSharedFSResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RecoverSharedFSRequest represents the parameters for recover a shared filesystem by id
-message RecoverSharedFSRequest {
-	// the ID of the shared filesystem to recover
-	int64 id = 1;
-
-	//
-	string response_type = 2;
-}
-
-// RecoverSharedFSResponse represents the response from recover a shared filesystem by id
-message RecoverSharedFSResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RestartSharedFSRequest represents the parameters for restart a shared filesystem
-message RestartSharedFSRequest {
-	// the ID of the shared filesystem
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// is cleanup required
-	bool cleanup = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// RestartSharedFSResponse represents the response from restart a shared filesystem
-message RestartSharedFSResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateSharedFSRequest represents the parameters for update a shared filesystem
-message UpdateSharedFSRequest {
-	// the ID of the shared filesystem
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the name of the shared filesystem.
-	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the description for the shared filesystem.
-	string description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	//
-	string response_type = 4;
-}
-
-// UpdateSharedFSResponse represents the response from update a shared filesystem
-message UpdateSharedFSResponse {
+// ChangeSharedFSDiskOfferingResponse represents the response from change disk offering of a shared filesystem
+message ChangeSharedFSDiskOfferingResponse {
 	// The Result
 	Result result = 1;
 }

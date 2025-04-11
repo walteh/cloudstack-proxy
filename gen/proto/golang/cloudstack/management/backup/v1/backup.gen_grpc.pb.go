@@ -19,23 +19,23 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BackupService_ListBackupSchedule_FullMethodName                     = "/cloudstack.management.backup.v1.BackupService/ListBackupSchedule"
-	BackupService_ImportBackupOffering_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/ImportBackupOffering"
-	BackupService_DeleteBackupOffering_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/DeleteBackupOffering"
-	BackupService_DeleteBackupSchedule_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/DeleteBackupSchedule"
-	BackupService_AssignVirtualMachineToBackupOffering_FullMethodName   = "/cloudstack.management.backup.v1.BackupService/AssignVirtualMachineToBackupOffering"
-	BackupService_CreateBackupSchedule_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/CreateBackupSchedule"
-	BackupService_ListBackups_FullMethodName                            = "/cloudstack.management.backup.v1.BackupService/ListBackups"
-	BackupService_ListBackupProviders_FullMethodName                    = "/cloudstack.management.backup.v1.BackupService/ListBackupProviders"
-	BackupService_ListBackupProviderOfferings_FullMethodName            = "/cloudstack.management.backup.v1.BackupService/ListBackupProviderOfferings"
 	BackupService_RestoreBackup_FullMethodName                          = "/cloudstack.management.backup.v1.BackupService/RestoreBackup"
-	BackupService_UpdateBackupSchedule_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/UpdateBackupSchedule"
-	BackupService_DeleteBackup_FullMethodName                           = "/cloudstack.management.backup.v1.BackupService/DeleteBackup"
 	BackupService_UpdateBackupOffering_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/UpdateBackupOffering"
-	BackupService_RemoveVirtualMachineFromBackupOffering_FullMethodName = "/cloudstack.management.backup.v1.BackupService/RemoveVirtualMachineFromBackupOffering"
-	BackupService_RestoreVolumeFromBackupAndAttachToVM_FullMethodName   = "/cloudstack.management.backup.v1.BackupService/RestoreVolumeFromBackupAndAttachToVM"
+	BackupService_AssignVirtualMachineToBackupOffering_FullMethodName   = "/cloudstack.management.backup.v1.BackupService/AssignVirtualMachineToBackupOffering"
+	BackupService_DeleteBackupOffering_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/DeleteBackupOffering"
+	BackupService_ListBackupProviders_FullMethodName                    = "/cloudstack.management.backup.v1.BackupService/ListBackupProviders"
+	BackupService_DeleteBackupSchedule_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/DeleteBackupSchedule"
 	BackupService_CreateBackup_FullMethodName                           = "/cloudstack.management.backup.v1.BackupService/CreateBackup"
+	BackupService_ListBackupProviderOfferings_FullMethodName            = "/cloudstack.management.backup.v1.BackupService/ListBackupProviderOfferings"
+	BackupService_RestoreVolumeFromBackupAndAttachToVM_FullMethodName   = "/cloudstack.management.backup.v1.BackupService/RestoreVolumeFromBackupAndAttachToVM"
+	BackupService_CreateBackupSchedule_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/CreateBackupSchedule"
+	BackupService_DeleteBackup_FullMethodName                           = "/cloudstack.management.backup.v1.BackupService/DeleteBackup"
+	BackupService_ListBackupSchedule_FullMethodName                     = "/cloudstack.management.backup.v1.BackupService/ListBackupSchedule"
+	BackupService_ListBackups_FullMethodName                            = "/cloudstack.management.backup.v1.BackupService/ListBackups"
+	BackupService_ImportBackupOffering_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/ImportBackupOffering"
+	BackupService_RemoveVirtualMachineFromBackupOffering_FullMethodName = "/cloudstack.management.backup.v1.BackupService/RemoveVirtualMachineFromBackupOffering"
 	BackupService_ListBackupOfferings_FullMethodName                    = "/cloudstack.management.backup.v1.BackupService/ListBackupOfferings"
+	BackupService_UpdateBackupSchedule_FullMethodName                   = "/cloudstack.management.backup.v1.BackupService/UpdateBackupSchedule"
 )
 
 // BackupServiceClient is the client API for BackupService service.
@@ -44,40 +44,40 @@ const (
 //
 // BackupService provides operations for managing Backups
 type BackupServiceClient interface {
-	// ListBackupSchedule List backup schedule of a VM
-	ListBackupSchedule(ctx context.Context, in *ListBackupScheduleRequest, opts ...grpc.CallOption) (*ListBackupScheduleResponse, error)
-	// ImportBackupOffering Imports a backup offering using a backup provider
-	ImportBackupOffering(ctx context.Context, in *ImportBackupOfferingRequest, opts ...grpc.CallOption) (*ImportBackupOfferingResponse, error)
-	// DeleteBackupOffering Deletes a backup offering
-	DeleteBackupOffering(ctx context.Context, in *DeleteBackupOfferingRequest, opts ...grpc.CallOption) (*DeleteBackupOfferingResponse, error)
-	// DeleteBackupSchedule Deletes the backup schedule of a VM
-	DeleteBackupSchedule(ctx context.Context, in *DeleteBackupScheduleRequest, opts ...grpc.CallOption) (*DeleteBackupScheduleResponse, error)
-	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
-	AssignVirtualMachineToBackupOffering(ctx context.Context, in *AssignVirtualMachineToBackupOfferingRequest, opts ...grpc.CallOption) (*AssignVirtualMachineToBackupOfferingResponse, error)
-	// CreateBackupSchedule Creates a user-defined VM backup schedule
-	CreateBackupSchedule(ctx context.Context, in *CreateBackupScheduleRequest, opts ...grpc.CallOption) (*CreateBackupScheduleResponse, error)
-	// ListBackups Lists VM backups
-	ListBackups(ctx context.Context, in *ListBackupsRequest, opts ...grpc.CallOption) (*ListBackupsResponse, error)
-	// ListBackupProviders Lists Backup and Recovery providers
-	ListBackupProviders(ctx context.Context, in *ListBackupProvidersRequest, opts ...grpc.CallOption) (*ListBackupProvidersResponse, error)
-	// ListBackupProviderOfferings Lists external backup offerings of the provider
-	ListBackupProviderOfferings(ctx context.Context, in *ListBackupProviderOfferingsRequest, opts ...grpc.CallOption) (*ListBackupProviderOfferingsResponse, error)
 	// RestoreBackup Restores an existing stopped or deleted VM using a VM backup
 	RestoreBackup(ctx context.Context, in *RestoreBackupRequest, opts ...grpc.CallOption) (*RestoreBackupResponse, error)
-	// UpdateBackupSchedule Updates a user-defined VM backup schedule
-	UpdateBackupSchedule(ctx context.Context, in *UpdateBackupScheduleRequest, opts ...grpc.CallOption) (*UpdateBackupScheduleResponse, error)
-	// DeleteBackup Delete VM backup
-	DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*DeleteBackupResponse, error)
 	// UpdateBackupOffering Updates a backup offering.
 	UpdateBackupOffering(ctx context.Context, in *UpdateBackupOfferingRequest, opts ...grpc.CallOption) (*UpdateBackupOfferingResponse, error)
-	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
-	RemoveVirtualMachineFromBackupOffering(ctx context.Context, in *RemoveVirtualMachineFromBackupOfferingRequest, opts ...grpc.CallOption) (*RemoveVirtualMachineFromBackupOfferingResponse, error)
-	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
-	RestoreVolumeFromBackupAndAttachToVM(ctx context.Context, in *RestoreVolumeFromBackupAndAttachToVMRequest, opts ...grpc.CallOption) (*RestoreVolumeFromBackupAndAttachToVMResponse, error)
+	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
+	AssignVirtualMachineToBackupOffering(ctx context.Context, in *AssignVirtualMachineToBackupOfferingRequest, opts ...grpc.CallOption) (*AssignVirtualMachineToBackupOfferingResponse, error)
+	// DeleteBackupOffering Deletes a backup offering
+	DeleteBackupOffering(ctx context.Context, in *DeleteBackupOfferingRequest, opts ...grpc.CallOption) (*DeleteBackupOfferingResponse, error)
+	// ListBackupProviders Lists Backup and Recovery providers
+	ListBackupProviders(ctx context.Context, in *ListBackupProvidersRequest, opts ...grpc.CallOption) (*ListBackupProvidersResponse, error)
+	// DeleteBackupSchedule Deletes the backup schedule of a VM
+	DeleteBackupSchedule(ctx context.Context, in *DeleteBackupScheduleRequest, opts ...grpc.CallOption) (*DeleteBackupScheduleResponse, error)
 	// CreateBackup Create VM backup
 	CreateBackup(ctx context.Context, in *CreateBackupRequest, opts ...grpc.CallOption) (*CreateBackupResponse, error)
+	// ListBackupProviderOfferings Lists external backup offerings of the provider
+	ListBackupProviderOfferings(ctx context.Context, in *ListBackupProviderOfferingsRequest, opts ...grpc.CallOption) (*ListBackupProviderOfferingsResponse, error)
+	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
+	RestoreVolumeFromBackupAndAttachToVM(ctx context.Context, in *RestoreVolumeFromBackupAndAttachToVMRequest, opts ...grpc.CallOption) (*RestoreVolumeFromBackupAndAttachToVMResponse, error)
+	// CreateBackupSchedule Creates a user-defined VM backup schedule
+	CreateBackupSchedule(ctx context.Context, in *CreateBackupScheduleRequest, opts ...grpc.CallOption) (*CreateBackupScheduleResponse, error)
+	// DeleteBackup Delete VM backup
+	DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*DeleteBackupResponse, error)
+	// ListBackupSchedule List backup schedule of a VM
+	ListBackupSchedule(ctx context.Context, in *ListBackupScheduleRequest, opts ...grpc.CallOption) (*ListBackupScheduleResponse, error)
+	// ListBackups Lists VM backups
+	ListBackups(ctx context.Context, in *ListBackupsRequest, opts ...grpc.CallOption) (*ListBackupsResponse, error)
+	// ImportBackupOffering Imports a backup offering using a backup provider
+	ImportBackupOffering(ctx context.Context, in *ImportBackupOfferingRequest, opts ...grpc.CallOption) (*ImportBackupOfferingResponse, error)
+	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
+	RemoveVirtualMachineFromBackupOffering(ctx context.Context, in *RemoveVirtualMachineFromBackupOfferingRequest, opts ...grpc.CallOption) (*RemoveVirtualMachineFromBackupOfferingResponse, error)
 	// ListBackupOfferings Lists backup offerings
 	ListBackupOfferings(ctx context.Context, in *ListBackupOfferingsRequest, opts ...grpc.CallOption) (*ListBackupOfferingsResponse, error)
+	// UpdateBackupSchedule Updates a user-defined VM backup schedule
+	UpdateBackupSchedule(ctx context.Context, in *UpdateBackupScheduleRequest, opts ...grpc.CallOption) (*UpdateBackupScheduleResponse, error)
 }
 
 type backupServiceClient struct {
@@ -88,120 +88,10 @@ func NewBackupServiceClient(cc grpc.ClientConnInterface) BackupServiceClient {
 	return &backupServiceClient{cc}
 }
 
-func (c *backupServiceClient) ListBackupSchedule(ctx context.Context, in *ListBackupScheduleRequest, opts ...grpc.CallOption) (*ListBackupScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListBackupScheduleResponse)
-	err := c.cc.Invoke(ctx, BackupService_ListBackupSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) ImportBackupOffering(ctx context.Context, in *ImportBackupOfferingRequest, opts ...grpc.CallOption) (*ImportBackupOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ImportBackupOfferingResponse)
-	err := c.cc.Invoke(ctx, BackupService_ImportBackupOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) DeleteBackupOffering(ctx context.Context, in *DeleteBackupOfferingRequest, opts ...grpc.CallOption) (*DeleteBackupOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteBackupOfferingResponse)
-	err := c.cc.Invoke(ctx, BackupService_DeleteBackupOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) DeleteBackupSchedule(ctx context.Context, in *DeleteBackupScheduleRequest, opts ...grpc.CallOption) (*DeleteBackupScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteBackupScheduleResponse)
-	err := c.cc.Invoke(ctx, BackupService_DeleteBackupSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) AssignVirtualMachineToBackupOffering(ctx context.Context, in *AssignVirtualMachineToBackupOfferingRequest, opts ...grpc.CallOption) (*AssignVirtualMachineToBackupOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignVirtualMachineToBackupOfferingResponse)
-	err := c.cc.Invoke(ctx, BackupService_AssignVirtualMachineToBackupOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) CreateBackupSchedule(ctx context.Context, in *CreateBackupScheduleRequest, opts ...grpc.CallOption) (*CreateBackupScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateBackupScheduleResponse)
-	err := c.cc.Invoke(ctx, BackupService_CreateBackupSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) ListBackups(ctx context.Context, in *ListBackupsRequest, opts ...grpc.CallOption) (*ListBackupsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListBackupsResponse)
-	err := c.cc.Invoke(ctx, BackupService_ListBackups_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) ListBackupProviders(ctx context.Context, in *ListBackupProvidersRequest, opts ...grpc.CallOption) (*ListBackupProvidersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListBackupProvidersResponse)
-	err := c.cc.Invoke(ctx, BackupService_ListBackupProviders_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) ListBackupProviderOfferings(ctx context.Context, in *ListBackupProviderOfferingsRequest, opts ...grpc.CallOption) (*ListBackupProviderOfferingsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListBackupProviderOfferingsResponse)
-	err := c.cc.Invoke(ctx, BackupService_ListBackupProviderOfferings_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *backupServiceClient) RestoreBackup(ctx context.Context, in *RestoreBackupRequest, opts ...grpc.CallOption) (*RestoreBackupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RestoreBackupResponse)
 	err := c.cc.Invoke(ctx, BackupService_RestoreBackup_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) UpdateBackupSchedule(ctx context.Context, in *UpdateBackupScheduleRequest, opts ...grpc.CallOption) (*UpdateBackupScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateBackupScheduleResponse)
-	err := c.cc.Invoke(ctx, BackupService_UpdateBackupSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *backupServiceClient) DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*DeleteBackupResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteBackupResponse)
-	err := c.cc.Invoke(ctx, BackupService_DeleteBackup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -218,20 +108,40 @@ func (c *backupServiceClient) UpdateBackupOffering(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *backupServiceClient) RemoveVirtualMachineFromBackupOffering(ctx context.Context, in *RemoveVirtualMachineFromBackupOfferingRequest, opts ...grpc.CallOption) (*RemoveVirtualMachineFromBackupOfferingResponse, error) {
+func (c *backupServiceClient) AssignVirtualMachineToBackupOffering(ctx context.Context, in *AssignVirtualMachineToBackupOfferingRequest, opts ...grpc.CallOption) (*AssignVirtualMachineToBackupOfferingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveVirtualMachineFromBackupOfferingResponse)
-	err := c.cc.Invoke(ctx, BackupService_RemoveVirtualMachineFromBackupOffering_FullMethodName, in, out, cOpts...)
+	out := new(AssignVirtualMachineToBackupOfferingResponse)
+	err := c.cc.Invoke(ctx, BackupService_AssignVirtualMachineToBackupOffering_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *backupServiceClient) RestoreVolumeFromBackupAndAttachToVM(ctx context.Context, in *RestoreVolumeFromBackupAndAttachToVMRequest, opts ...grpc.CallOption) (*RestoreVolumeFromBackupAndAttachToVMResponse, error) {
+func (c *backupServiceClient) DeleteBackupOffering(ctx context.Context, in *DeleteBackupOfferingRequest, opts ...grpc.CallOption) (*DeleteBackupOfferingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RestoreVolumeFromBackupAndAttachToVMResponse)
-	err := c.cc.Invoke(ctx, BackupService_RestoreVolumeFromBackupAndAttachToVM_FullMethodName, in, out, cOpts...)
+	out := new(DeleteBackupOfferingResponse)
+	err := c.cc.Invoke(ctx, BackupService_DeleteBackupOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) ListBackupProviders(ctx context.Context, in *ListBackupProvidersRequest, opts ...grpc.CallOption) (*ListBackupProvidersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListBackupProvidersResponse)
+	err := c.cc.Invoke(ctx, BackupService_ListBackupProviders_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) DeleteBackupSchedule(ctx context.Context, in *DeleteBackupScheduleRequest, opts ...grpc.CallOption) (*DeleteBackupScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteBackupScheduleResponse)
+	err := c.cc.Invoke(ctx, BackupService_DeleteBackupSchedule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -248,10 +158,100 @@ func (c *backupServiceClient) CreateBackup(ctx context.Context, in *CreateBackup
 	return out, nil
 }
 
+func (c *backupServiceClient) ListBackupProviderOfferings(ctx context.Context, in *ListBackupProviderOfferingsRequest, opts ...grpc.CallOption) (*ListBackupProviderOfferingsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListBackupProviderOfferingsResponse)
+	err := c.cc.Invoke(ctx, BackupService_ListBackupProviderOfferings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) RestoreVolumeFromBackupAndAttachToVM(ctx context.Context, in *RestoreVolumeFromBackupAndAttachToVMRequest, opts ...grpc.CallOption) (*RestoreVolumeFromBackupAndAttachToVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RestoreVolumeFromBackupAndAttachToVMResponse)
+	err := c.cc.Invoke(ctx, BackupService_RestoreVolumeFromBackupAndAttachToVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) CreateBackupSchedule(ctx context.Context, in *CreateBackupScheduleRequest, opts ...grpc.CallOption) (*CreateBackupScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateBackupScheduleResponse)
+	err := c.cc.Invoke(ctx, BackupService_CreateBackupSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*DeleteBackupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteBackupResponse)
+	err := c.cc.Invoke(ctx, BackupService_DeleteBackup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) ListBackupSchedule(ctx context.Context, in *ListBackupScheduleRequest, opts ...grpc.CallOption) (*ListBackupScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListBackupScheduleResponse)
+	err := c.cc.Invoke(ctx, BackupService_ListBackupSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) ListBackups(ctx context.Context, in *ListBackupsRequest, opts ...grpc.CallOption) (*ListBackupsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListBackupsResponse)
+	err := c.cc.Invoke(ctx, BackupService_ListBackups_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) ImportBackupOffering(ctx context.Context, in *ImportBackupOfferingRequest, opts ...grpc.CallOption) (*ImportBackupOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ImportBackupOfferingResponse)
+	err := c.cc.Invoke(ctx, BackupService_ImportBackupOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) RemoveVirtualMachineFromBackupOffering(ctx context.Context, in *RemoveVirtualMachineFromBackupOfferingRequest, opts ...grpc.CallOption) (*RemoveVirtualMachineFromBackupOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveVirtualMachineFromBackupOfferingResponse)
+	err := c.cc.Invoke(ctx, BackupService_RemoveVirtualMachineFromBackupOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *backupServiceClient) ListBackupOfferings(ctx context.Context, in *ListBackupOfferingsRequest, opts ...grpc.CallOption) (*ListBackupOfferingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListBackupOfferingsResponse)
 	err := c.cc.Invoke(ctx, BackupService_ListBackupOfferings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *backupServiceClient) UpdateBackupSchedule(ctx context.Context, in *UpdateBackupScheduleRequest, opts ...grpc.CallOption) (*UpdateBackupScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateBackupScheduleResponse)
+	err := c.cc.Invoke(ctx, BackupService_UpdateBackupSchedule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -264,40 +264,40 @@ func (c *backupServiceClient) ListBackupOfferings(ctx context.Context, in *ListB
 //
 // BackupService provides operations for managing Backups
 type BackupServiceServer interface {
-	// ListBackupSchedule List backup schedule of a VM
-	ListBackupSchedule(context.Context, *ListBackupScheduleRequest) (*ListBackupScheduleResponse, error)
-	// ImportBackupOffering Imports a backup offering using a backup provider
-	ImportBackupOffering(context.Context, *ImportBackupOfferingRequest) (*ImportBackupOfferingResponse, error)
-	// DeleteBackupOffering Deletes a backup offering
-	DeleteBackupOffering(context.Context, *DeleteBackupOfferingRequest) (*DeleteBackupOfferingResponse, error)
-	// DeleteBackupSchedule Deletes the backup schedule of a VM
-	DeleteBackupSchedule(context.Context, *DeleteBackupScheduleRequest) (*DeleteBackupScheduleResponse, error)
-	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
-	AssignVirtualMachineToBackupOffering(context.Context, *AssignVirtualMachineToBackupOfferingRequest) (*AssignVirtualMachineToBackupOfferingResponse, error)
-	// CreateBackupSchedule Creates a user-defined VM backup schedule
-	CreateBackupSchedule(context.Context, *CreateBackupScheduleRequest) (*CreateBackupScheduleResponse, error)
-	// ListBackups Lists VM backups
-	ListBackups(context.Context, *ListBackupsRequest) (*ListBackupsResponse, error)
-	// ListBackupProviders Lists Backup and Recovery providers
-	ListBackupProviders(context.Context, *ListBackupProvidersRequest) (*ListBackupProvidersResponse, error)
-	// ListBackupProviderOfferings Lists external backup offerings of the provider
-	ListBackupProviderOfferings(context.Context, *ListBackupProviderOfferingsRequest) (*ListBackupProviderOfferingsResponse, error)
 	// RestoreBackup Restores an existing stopped or deleted VM using a VM backup
 	RestoreBackup(context.Context, *RestoreBackupRequest) (*RestoreBackupResponse, error)
-	// UpdateBackupSchedule Updates a user-defined VM backup schedule
-	UpdateBackupSchedule(context.Context, *UpdateBackupScheduleRequest) (*UpdateBackupScheduleResponse, error)
-	// DeleteBackup Delete VM backup
-	DeleteBackup(context.Context, *DeleteBackupRequest) (*DeleteBackupResponse, error)
 	// UpdateBackupOffering Updates a backup offering.
 	UpdateBackupOffering(context.Context, *UpdateBackupOfferingRequest) (*UpdateBackupOfferingResponse, error)
-	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
-	RemoveVirtualMachineFromBackupOffering(context.Context, *RemoveVirtualMachineFromBackupOfferingRequest) (*RemoveVirtualMachineFromBackupOfferingResponse, error)
-	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
-	RestoreVolumeFromBackupAndAttachToVM(context.Context, *RestoreVolumeFromBackupAndAttachToVMRequest) (*RestoreVolumeFromBackupAndAttachToVMResponse, error)
+	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
+	AssignVirtualMachineToBackupOffering(context.Context, *AssignVirtualMachineToBackupOfferingRequest) (*AssignVirtualMachineToBackupOfferingResponse, error)
+	// DeleteBackupOffering Deletes a backup offering
+	DeleteBackupOffering(context.Context, *DeleteBackupOfferingRequest) (*DeleteBackupOfferingResponse, error)
+	// ListBackupProviders Lists Backup and Recovery providers
+	ListBackupProviders(context.Context, *ListBackupProvidersRequest) (*ListBackupProvidersResponse, error)
+	// DeleteBackupSchedule Deletes the backup schedule of a VM
+	DeleteBackupSchedule(context.Context, *DeleteBackupScheduleRequest) (*DeleteBackupScheduleResponse, error)
 	// CreateBackup Create VM backup
 	CreateBackup(context.Context, *CreateBackupRequest) (*CreateBackupResponse, error)
+	// ListBackupProviderOfferings Lists external backup offerings of the provider
+	ListBackupProviderOfferings(context.Context, *ListBackupProviderOfferingsRequest) (*ListBackupProviderOfferingsResponse, error)
+	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
+	RestoreVolumeFromBackupAndAttachToVM(context.Context, *RestoreVolumeFromBackupAndAttachToVMRequest) (*RestoreVolumeFromBackupAndAttachToVMResponse, error)
+	// CreateBackupSchedule Creates a user-defined VM backup schedule
+	CreateBackupSchedule(context.Context, *CreateBackupScheduleRequest) (*CreateBackupScheduleResponse, error)
+	// DeleteBackup Delete VM backup
+	DeleteBackup(context.Context, *DeleteBackupRequest) (*DeleteBackupResponse, error)
+	// ListBackupSchedule List backup schedule of a VM
+	ListBackupSchedule(context.Context, *ListBackupScheduleRequest) (*ListBackupScheduleResponse, error)
+	// ListBackups Lists VM backups
+	ListBackups(context.Context, *ListBackupsRequest) (*ListBackupsResponse, error)
+	// ImportBackupOffering Imports a backup offering using a backup provider
+	ImportBackupOffering(context.Context, *ImportBackupOfferingRequest) (*ImportBackupOfferingResponse, error)
+	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
+	RemoveVirtualMachineFromBackupOffering(context.Context, *RemoveVirtualMachineFromBackupOfferingRequest) (*RemoveVirtualMachineFromBackupOfferingResponse, error)
 	// ListBackupOfferings Lists backup offerings
 	ListBackupOfferings(context.Context, *ListBackupOfferingsRequest) (*ListBackupOfferingsResponse, error)
+	// UpdateBackupSchedule Updates a user-defined VM backup schedule
+	UpdateBackupSchedule(context.Context, *UpdateBackupScheduleRequest) (*UpdateBackupScheduleResponse, error)
 	mustEmbedUnimplementedBackupServiceServer()
 }
 
@@ -308,56 +308,56 @@ type BackupServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedBackupServiceServer struct{}
 
-func (UnimplementedBackupServiceServer) ListBackupSchedule(context.Context, *ListBackupScheduleRequest) (*ListBackupScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListBackupSchedule not implemented")
-}
-func (UnimplementedBackupServiceServer) ImportBackupOffering(context.Context, *ImportBackupOfferingRequest) (*ImportBackupOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ImportBackupOffering not implemented")
-}
-func (UnimplementedBackupServiceServer) DeleteBackupOffering(context.Context, *DeleteBackupOfferingRequest) (*DeleteBackupOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackupOffering not implemented")
-}
-func (UnimplementedBackupServiceServer) DeleteBackupSchedule(context.Context, *DeleteBackupScheduleRequest) (*DeleteBackupScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackupSchedule not implemented")
-}
-func (UnimplementedBackupServiceServer) AssignVirtualMachineToBackupOffering(context.Context, *AssignVirtualMachineToBackupOfferingRequest) (*AssignVirtualMachineToBackupOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AssignVirtualMachineToBackupOffering not implemented")
-}
-func (UnimplementedBackupServiceServer) CreateBackupSchedule(context.Context, *CreateBackupScheduleRequest) (*CreateBackupScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateBackupSchedule not implemented")
-}
-func (UnimplementedBackupServiceServer) ListBackups(context.Context, *ListBackupsRequest) (*ListBackupsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListBackups not implemented")
-}
-func (UnimplementedBackupServiceServer) ListBackupProviders(context.Context, *ListBackupProvidersRequest) (*ListBackupProvidersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListBackupProviders not implemented")
-}
-func (UnimplementedBackupServiceServer) ListBackupProviderOfferings(context.Context, *ListBackupProviderOfferingsRequest) (*ListBackupProviderOfferingsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListBackupProviderOfferings not implemented")
-}
 func (UnimplementedBackupServiceServer) RestoreBackup(context.Context, *RestoreBackupRequest) (*RestoreBackupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RestoreBackup not implemented")
-}
-func (UnimplementedBackupServiceServer) UpdateBackupSchedule(context.Context, *UpdateBackupScheduleRequest) (*UpdateBackupScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateBackupSchedule not implemented")
-}
-func (UnimplementedBackupServiceServer) DeleteBackup(context.Context, *DeleteBackupRequest) (*DeleteBackupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackup not implemented")
 }
 func (UnimplementedBackupServiceServer) UpdateBackupOffering(context.Context, *UpdateBackupOfferingRequest) (*UpdateBackupOfferingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateBackupOffering not implemented")
 }
-func (UnimplementedBackupServiceServer) RemoveVirtualMachineFromBackupOffering(context.Context, *RemoveVirtualMachineFromBackupOfferingRequest) (*RemoveVirtualMachineFromBackupOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveVirtualMachineFromBackupOffering not implemented")
+func (UnimplementedBackupServiceServer) AssignVirtualMachineToBackupOffering(context.Context, *AssignVirtualMachineToBackupOfferingRequest) (*AssignVirtualMachineToBackupOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AssignVirtualMachineToBackupOffering not implemented")
 }
-func (UnimplementedBackupServiceServer) RestoreVolumeFromBackupAndAttachToVM(context.Context, *RestoreVolumeFromBackupAndAttachToVMRequest) (*RestoreVolumeFromBackupAndAttachToVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RestoreVolumeFromBackupAndAttachToVM not implemented")
+func (UnimplementedBackupServiceServer) DeleteBackupOffering(context.Context, *DeleteBackupOfferingRequest) (*DeleteBackupOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackupOffering not implemented")
+}
+func (UnimplementedBackupServiceServer) ListBackupProviders(context.Context, *ListBackupProvidersRequest) (*ListBackupProvidersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBackupProviders not implemented")
+}
+func (UnimplementedBackupServiceServer) DeleteBackupSchedule(context.Context, *DeleteBackupScheduleRequest) (*DeleteBackupScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackupSchedule not implemented")
 }
 func (UnimplementedBackupServiceServer) CreateBackup(context.Context, *CreateBackupRequest) (*CreateBackupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBackup not implemented")
 }
+func (UnimplementedBackupServiceServer) ListBackupProviderOfferings(context.Context, *ListBackupProviderOfferingsRequest) (*ListBackupProviderOfferingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBackupProviderOfferings not implemented")
+}
+func (UnimplementedBackupServiceServer) RestoreVolumeFromBackupAndAttachToVM(context.Context, *RestoreVolumeFromBackupAndAttachToVMRequest) (*RestoreVolumeFromBackupAndAttachToVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestoreVolumeFromBackupAndAttachToVM not implemented")
+}
+func (UnimplementedBackupServiceServer) CreateBackupSchedule(context.Context, *CreateBackupScheduleRequest) (*CreateBackupScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBackupSchedule not implemented")
+}
+func (UnimplementedBackupServiceServer) DeleteBackup(context.Context, *DeleteBackupRequest) (*DeleteBackupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackup not implemented")
+}
+func (UnimplementedBackupServiceServer) ListBackupSchedule(context.Context, *ListBackupScheduleRequest) (*ListBackupScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBackupSchedule not implemented")
+}
+func (UnimplementedBackupServiceServer) ListBackups(context.Context, *ListBackupsRequest) (*ListBackupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBackups not implemented")
+}
+func (UnimplementedBackupServiceServer) ImportBackupOffering(context.Context, *ImportBackupOfferingRequest) (*ImportBackupOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportBackupOffering not implemented")
+}
+func (UnimplementedBackupServiceServer) RemoveVirtualMachineFromBackupOffering(context.Context, *RemoveVirtualMachineFromBackupOfferingRequest) (*RemoveVirtualMachineFromBackupOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveVirtualMachineFromBackupOffering not implemented")
+}
 func (UnimplementedBackupServiceServer) ListBackupOfferings(context.Context, *ListBackupOfferingsRequest) (*ListBackupOfferingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBackupOfferings not implemented")
+}
+func (UnimplementedBackupServiceServer) UpdateBackupSchedule(context.Context, *UpdateBackupScheduleRequest) (*UpdateBackupScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBackupSchedule not implemented")
 }
 func (UnimplementedBackupServiceServer) mustEmbedUnimplementedBackupServiceServer() {}
 func (UnimplementedBackupServiceServer) testEmbeddedByValue()                       {}
@@ -380,168 +380,6 @@ func RegisterBackupServiceServer(s grpc.ServiceRegistrar, srv BackupServiceServe
 	s.RegisterService(&BackupService_ServiceDesc, srv)
 }
 
-func _BackupService_ListBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListBackupScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).ListBackupSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_ListBackupSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).ListBackupSchedule(ctx, req.(*ListBackupScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_ImportBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ImportBackupOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).ImportBackupOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_ImportBackupOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).ImportBackupOffering(ctx, req.(*ImportBackupOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_DeleteBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteBackupOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).DeleteBackupOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_DeleteBackupOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).DeleteBackupOffering(ctx, req.(*DeleteBackupOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_DeleteBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteBackupScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).DeleteBackupSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_DeleteBackupSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).DeleteBackupSchedule(ctx, req.(*DeleteBackupScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_AssignVirtualMachineToBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssignVirtualMachineToBackupOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).AssignVirtualMachineToBackupOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_AssignVirtualMachineToBackupOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).AssignVirtualMachineToBackupOffering(ctx, req.(*AssignVirtualMachineToBackupOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_CreateBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateBackupScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).CreateBackupSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_CreateBackupSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).CreateBackupSchedule(ctx, req.(*CreateBackupScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_ListBackups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListBackupsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).ListBackups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_ListBackups_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).ListBackups(ctx, req.(*ListBackupsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_ListBackupProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListBackupProvidersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).ListBackupProviders(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_ListBackupProviders_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).ListBackupProviders(ctx, req.(*ListBackupProvidersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_ListBackupProviderOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListBackupProviderOfferingsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).ListBackupProviderOfferings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_ListBackupProviderOfferings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).ListBackupProviderOfferings(ctx, req.(*ListBackupProviderOfferingsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _BackupService_RestoreBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RestoreBackupRequest)
 	if err := dec(in); err != nil {
@@ -556,42 +394,6 @@ func _BackupService_RestoreBackup_Handler(srv interface{}, ctx context.Context, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BackupServiceServer).RestoreBackup(ctx, req.(*RestoreBackupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_UpdateBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateBackupScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).UpdateBackupSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_UpdateBackupSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).UpdateBackupSchedule(ctx, req.(*UpdateBackupScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BackupService_DeleteBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteBackupRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BackupServiceServer).DeleteBackup(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BackupService_DeleteBackup_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).DeleteBackup(ctx, req.(*DeleteBackupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -614,38 +416,74 @@ func _BackupService_UpdateBackupOffering_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BackupService_RemoveVirtualMachineFromBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveVirtualMachineFromBackupOfferingRequest)
+func _BackupService_AssignVirtualMachineToBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AssignVirtualMachineToBackupOfferingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BackupServiceServer).RemoveVirtualMachineFromBackupOffering(ctx, in)
+		return srv.(BackupServiceServer).AssignVirtualMachineToBackupOffering(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BackupService_RemoveVirtualMachineFromBackupOffering_FullMethodName,
+		FullMethod: BackupService_AssignVirtualMachineToBackupOffering_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).RemoveVirtualMachineFromBackupOffering(ctx, req.(*RemoveVirtualMachineFromBackupOfferingRequest))
+		return srv.(BackupServiceServer).AssignVirtualMachineToBackupOffering(ctx, req.(*AssignVirtualMachineToBackupOfferingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BackupService_RestoreVolumeFromBackupAndAttachToVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RestoreVolumeFromBackupAndAttachToVMRequest)
+func _BackupService_DeleteBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBackupOfferingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BackupServiceServer).RestoreVolumeFromBackupAndAttachToVM(ctx, in)
+		return srv.(BackupServiceServer).DeleteBackupOffering(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BackupService_RestoreVolumeFromBackupAndAttachToVM_FullMethodName,
+		FullMethod: BackupService_DeleteBackupOffering_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BackupServiceServer).RestoreVolumeFromBackupAndAttachToVM(ctx, req.(*RestoreVolumeFromBackupAndAttachToVMRequest))
+		return srv.(BackupServiceServer).DeleteBackupOffering(ctx, req.(*DeleteBackupOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_ListBackupProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBackupProvidersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).ListBackupProviders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_ListBackupProviders_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).ListBackupProviders(ctx, req.(*ListBackupProvidersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_DeleteBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBackupScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).DeleteBackupSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_DeleteBackupSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).DeleteBackupSchedule(ctx, req.(*DeleteBackupScheduleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -668,6 +506,150 @@ func _BackupService_CreateBackup_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BackupService_ListBackupProviderOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBackupProviderOfferingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).ListBackupProviderOfferings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_ListBackupProviderOfferings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).ListBackupProviderOfferings(ctx, req.(*ListBackupProviderOfferingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_RestoreVolumeFromBackupAndAttachToVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestoreVolumeFromBackupAndAttachToVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).RestoreVolumeFromBackupAndAttachToVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_RestoreVolumeFromBackupAndAttachToVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).RestoreVolumeFromBackupAndAttachToVM(ctx, req.(*RestoreVolumeFromBackupAndAttachToVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_CreateBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBackupScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).CreateBackupSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_CreateBackupSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).CreateBackupSchedule(ctx, req.(*CreateBackupScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_DeleteBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBackupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).DeleteBackup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_DeleteBackup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).DeleteBackup(ctx, req.(*DeleteBackupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_ListBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBackupScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).ListBackupSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_ListBackupSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).ListBackupSchedule(ctx, req.(*ListBackupScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_ListBackups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBackupsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).ListBackups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_ListBackups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).ListBackups(ctx, req.(*ListBackupsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_ImportBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ImportBackupOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).ImportBackupOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_ImportBackupOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).ImportBackupOffering(ctx, req.(*ImportBackupOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BackupService_RemoveVirtualMachineFromBackupOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveVirtualMachineFromBackupOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).RemoveVirtualMachineFromBackupOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_RemoveVirtualMachineFromBackupOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).RemoveVirtualMachineFromBackupOffering(ctx, req.(*RemoveVirtualMachineFromBackupOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BackupService_ListBackupOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListBackupOfferingsRequest)
 	if err := dec(in); err != nil {
@@ -686,6 +668,24 @@ func _BackupService_ListBackupOfferings_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BackupService_UpdateBackupSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBackupScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BackupServiceServer).UpdateBackupSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BackupService_UpdateBackupSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BackupServiceServer).UpdateBackupSchedule(ctx, req.(*UpdateBackupScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BackupService_ServiceDesc is the grpc.ServiceDesc for BackupService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -694,72 +694,72 @@ var BackupService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BackupServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListBackupSchedule",
-			Handler:    _BackupService_ListBackupSchedule_Handler,
-		},
-		{
-			MethodName: "ImportBackupOffering",
-			Handler:    _BackupService_ImportBackupOffering_Handler,
-		},
-		{
-			MethodName: "DeleteBackupOffering",
-			Handler:    _BackupService_DeleteBackupOffering_Handler,
-		},
-		{
-			MethodName: "DeleteBackupSchedule",
-			Handler:    _BackupService_DeleteBackupSchedule_Handler,
-		},
-		{
-			MethodName: "AssignVirtualMachineToBackupOffering",
-			Handler:    _BackupService_AssignVirtualMachineToBackupOffering_Handler,
-		},
-		{
-			MethodName: "CreateBackupSchedule",
-			Handler:    _BackupService_CreateBackupSchedule_Handler,
-		},
-		{
-			MethodName: "ListBackups",
-			Handler:    _BackupService_ListBackups_Handler,
-		},
-		{
-			MethodName: "ListBackupProviders",
-			Handler:    _BackupService_ListBackupProviders_Handler,
-		},
-		{
-			MethodName: "ListBackupProviderOfferings",
-			Handler:    _BackupService_ListBackupProviderOfferings_Handler,
-		},
-		{
 			MethodName: "RestoreBackup",
 			Handler:    _BackupService_RestoreBackup_Handler,
-		},
-		{
-			MethodName: "UpdateBackupSchedule",
-			Handler:    _BackupService_UpdateBackupSchedule_Handler,
-		},
-		{
-			MethodName: "DeleteBackup",
-			Handler:    _BackupService_DeleteBackup_Handler,
 		},
 		{
 			MethodName: "UpdateBackupOffering",
 			Handler:    _BackupService_UpdateBackupOffering_Handler,
 		},
 		{
-			MethodName: "RemoveVirtualMachineFromBackupOffering",
-			Handler:    _BackupService_RemoveVirtualMachineFromBackupOffering_Handler,
+			MethodName: "AssignVirtualMachineToBackupOffering",
+			Handler:    _BackupService_AssignVirtualMachineToBackupOffering_Handler,
 		},
 		{
-			MethodName: "RestoreVolumeFromBackupAndAttachToVM",
-			Handler:    _BackupService_RestoreVolumeFromBackupAndAttachToVM_Handler,
+			MethodName: "DeleteBackupOffering",
+			Handler:    _BackupService_DeleteBackupOffering_Handler,
+		},
+		{
+			MethodName: "ListBackupProviders",
+			Handler:    _BackupService_ListBackupProviders_Handler,
+		},
+		{
+			MethodName: "DeleteBackupSchedule",
+			Handler:    _BackupService_DeleteBackupSchedule_Handler,
 		},
 		{
 			MethodName: "CreateBackup",
 			Handler:    _BackupService_CreateBackup_Handler,
 		},
 		{
+			MethodName: "ListBackupProviderOfferings",
+			Handler:    _BackupService_ListBackupProviderOfferings_Handler,
+		},
+		{
+			MethodName: "RestoreVolumeFromBackupAndAttachToVM",
+			Handler:    _BackupService_RestoreVolumeFromBackupAndAttachToVM_Handler,
+		},
+		{
+			MethodName: "CreateBackupSchedule",
+			Handler:    _BackupService_CreateBackupSchedule_Handler,
+		},
+		{
+			MethodName: "DeleteBackup",
+			Handler:    _BackupService_DeleteBackup_Handler,
+		},
+		{
+			MethodName: "ListBackupSchedule",
+			Handler:    _BackupService_ListBackupSchedule_Handler,
+		},
+		{
+			MethodName: "ListBackups",
+			Handler:    _BackupService_ListBackups_Handler,
+		},
+		{
+			MethodName: "ImportBackupOffering",
+			Handler:    _BackupService_ImportBackupOffering_Handler,
+		},
+		{
+			MethodName: "RemoveVirtualMachineFromBackupOffering",
+			Handler:    _BackupService_RemoveVirtualMachineFromBackupOffering_Handler,
+		},
+		{
 			MethodName: "ListBackupOfferings",
 			Handler:    _BackupService_ListBackupOfferings_Handler,
+		},
+		{
+			MethodName: "UpdateBackupSchedule",
+			Handler:    _BackupService_UpdateBackupSchedule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

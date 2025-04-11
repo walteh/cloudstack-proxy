@@ -20,8 +20,8 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	RepositoryService_ListBackupRepositories_FullMethodName = "/cloudstack.management.backup.repository.v1.RepositoryService/ListBackupRepositories"
-	RepositoryService_DeleteBackupRepository_FullMethodName = "/cloudstack.management.backup.repository.v1.RepositoryService/DeleteBackupRepository"
 	RepositoryService_AddBackupRepository_FullMethodName    = "/cloudstack.management.backup.repository.v1.RepositoryService/AddBackupRepository"
+	RepositoryService_DeleteBackupRepository_FullMethodName = "/cloudstack.management.backup.repository.v1.RepositoryService/DeleteBackupRepository"
 )
 
 // RepositoryServiceClient is the client API for RepositoryService service.
@@ -32,10 +32,10 @@ const (
 type RepositoryServiceClient interface {
 	// ListBackupRepositories Lists all backup repositories
 	ListBackupRepositories(ctx context.Context, in *ListBackupRepositoriesRequest, opts ...grpc.CallOption) (*ListBackupRepositoriesResponse, error)
-	// DeleteBackupRepository delete a backup repository
-	DeleteBackupRepository(ctx context.Context, in *DeleteBackupRepositoryRequest, opts ...grpc.CallOption) (*DeleteBackupRepositoryResponse, error)
 	// AddBackupRepository Adds a backup repository to store NAS backups
 	AddBackupRepository(ctx context.Context, in *AddBackupRepositoryRequest, opts ...grpc.CallOption) (*AddBackupRepositoryResponse, error)
+	// DeleteBackupRepository delete a backup repository
+	DeleteBackupRepository(ctx context.Context, in *DeleteBackupRepositoryRequest, opts ...grpc.CallOption) (*DeleteBackupRepositoryResponse, error)
 }
 
 type repositoryServiceClient struct {
@@ -56,20 +56,20 @@ func (c *repositoryServiceClient) ListBackupRepositories(ctx context.Context, in
 	return out, nil
 }
 
-func (c *repositoryServiceClient) DeleteBackupRepository(ctx context.Context, in *DeleteBackupRepositoryRequest, opts ...grpc.CallOption) (*DeleteBackupRepositoryResponse, error) {
+func (c *repositoryServiceClient) AddBackupRepository(ctx context.Context, in *AddBackupRepositoryRequest, opts ...grpc.CallOption) (*AddBackupRepositoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteBackupRepositoryResponse)
-	err := c.cc.Invoke(ctx, RepositoryService_DeleteBackupRepository_FullMethodName, in, out, cOpts...)
+	out := new(AddBackupRepositoryResponse)
+	err := c.cc.Invoke(ctx, RepositoryService_AddBackupRepository_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *repositoryServiceClient) AddBackupRepository(ctx context.Context, in *AddBackupRepositoryRequest, opts ...grpc.CallOption) (*AddBackupRepositoryResponse, error) {
+func (c *repositoryServiceClient) DeleteBackupRepository(ctx context.Context, in *DeleteBackupRepositoryRequest, opts ...grpc.CallOption) (*DeleteBackupRepositoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddBackupRepositoryResponse)
-	err := c.cc.Invoke(ctx, RepositoryService_AddBackupRepository_FullMethodName, in, out, cOpts...)
+	out := new(DeleteBackupRepositoryResponse)
+	err := c.cc.Invoke(ctx, RepositoryService_DeleteBackupRepository_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,10 +84,10 @@ func (c *repositoryServiceClient) AddBackupRepository(ctx context.Context, in *A
 type RepositoryServiceServer interface {
 	// ListBackupRepositories Lists all backup repositories
 	ListBackupRepositories(context.Context, *ListBackupRepositoriesRequest) (*ListBackupRepositoriesResponse, error)
-	// DeleteBackupRepository delete a backup repository
-	DeleteBackupRepository(context.Context, *DeleteBackupRepositoryRequest) (*DeleteBackupRepositoryResponse, error)
 	// AddBackupRepository Adds a backup repository to store NAS backups
 	AddBackupRepository(context.Context, *AddBackupRepositoryRequest) (*AddBackupRepositoryResponse, error)
+	// DeleteBackupRepository delete a backup repository
+	DeleteBackupRepository(context.Context, *DeleteBackupRepositoryRequest) (*DeleteBackupRepositoryResponse, error)
 	mustEmbedUnimplementedRepositoryServiceServer()
 }
 
@@ -101,11 +101,11 @@ type UnimplementedRepositoryServiceServer struct{}
 func (UnimplementedRepositoryServiceServer) ListBackupRepositories(context.Context, *ListBackupRepositoriesRequest) (*ListBackupRepositoriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBackupRepositories not implemented")
 }
-func (UnimplementedRepositoryServiceServer) DeleteBackupRepository(context.Context, *DeleteBackupRepositoryRequest) (*DeleteBackupRepositoryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackupRepository not implemented")
-}
 func (UnimplementedRepositoryServiceServer) AddBackupRepository(context.Context, *AddBackupRepositoryRequest) (*AddBackupRepositoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddBackupRepository not implemented")
+}
+func (UnimplementedRepositoryServiceServer) DeleteBackupRepository(context.Context, *DeleteBackupRepositoryRequest) (*DeleteBackupRepositoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackupRepository not implemented")
 }
 func (UnimplementedRepositoryServiceServer) mustEmbedUnimplementedRepositoryServiceServer() {}
 func (UnimplementedRepositoryServiceServer) testEmbeddedByValue()                           {}
@@ -146,24 +146,6 @@ func _RepositoryService_ListBackupRepositories_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RepositoryService_DeleteBackupRepository_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteBackupRepositoryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RepositoryServiceServer).DeleteBackupRepository(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RepositoryService_DeleteBackupRepository_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RepositoryServiceServer).DeleteBackupRepository(ctx, req.(*DeleteBackupRepositoryRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RepositoryService_AddBackupRepository_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddBackupRepositoryRequest)
 	if err := dec(in); err != nil {
@@ -182,6 +164,24 @@ func _RepositoryService_AddBackupRepository_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RepositoryService_DeleteBackupRepository_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBackupRepositoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServiceServer).DeleteBackupRepository(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RepositoryService_DeleteBackupRepository_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServiceServer).DeleteBackupRepository(ctx, req.(*DeleteBackupRepositoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RepositoryService_ServiceDesc is the grpc.ServiceDesc for RepositoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -194,12 +194,12 @@ var RepositoryService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RepositoryService_ListBackupRepositories_Handler,
 		},
 		{
-			MethodName: "DeleteBackupRepository",
-			Handler:    _RepositoryService_DeleteBackupRepository_Handler,
-		},
-		{
 			MethodName: "AddBackupRepository",
 			Handler:    _RepositoryService_AddBackupRepository_Handler,
+		},
+		{
+			MethodName: "DeleteBackupRepository",
+			Handler:    _RepositoryService_DeleteBackupRepository_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

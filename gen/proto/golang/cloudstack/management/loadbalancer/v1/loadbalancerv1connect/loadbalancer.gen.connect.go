@@ -33,78 +33,75 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// LoadbalancerServiceListSslCertsProcedure is the fully-qualified name of the LoadbalancerService's
-	// ListSslCerts RPC.
-	LoadbalancerServiceListSslCertsProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListSslCerts"
-	// LoadbalancerServiceDeleteSslCertProcedure is the fully-qualified name of the
-	// LoadbalancerService's DeleteSslCert RPC.
-	LoadbalancerServiceDeleteSslCertProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteSslCert"
-	// LoadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminProcedure is the fully-qualified name
-	// of the LoadbalancerService's ListLoadBalancerRuleInstancesCmdByAdmin RPC.
-	LoadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRuleInstancesCmdByAdmin"
-	// LoadbalancerServiceListLBStickinessPoliciesProcedure is the fully-qualified name of the
-	// LoadbalancerService's ListLBStickinessPolicies RPC.
-	LoadbalancerServiceListLBStickinessPoliciesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBStickinessPolicies"
-	// LoadbalancerServiceCreateLoadBalancerRuleProcedure is the fully-qualified name of the
-	// LoadbalancerService's CreateLoadBalancerRule RPC.
-	LoadbalancerServiceCreateLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLoadBalancerRule"
-	// LoadbalancerServiceCreateLBStickinessPolicyProcedure is the fully-qualified name of the
-	// LoadbalancerService's CreateLBStickinessPolicy RPC.
-	LoadbalancerServiceCreateLBStickinessPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBStickinessPolicy"
-	// LoadbalancerServiceDeleteLBStickinessPolicyProcedure is the fully-qualified name of the
-	// LoadbalancerService's DeleteLBStickinessPolicy RPC.
-	LoadbalancerServiceDeleteLBStickinessPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBStickinessPolicy"
-	// LoadbalancerServiceListLoadBalancerRuleInstancesProcedure is the fully-qualified name of the
-	// LoadbalancerService's ListLoadBalancerRuleInstances RPC.
-	LoadbalancerServiceListLoadBalancerRuleInstancesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRuleInstances"
-	// LoadbalancerServiceUpdateApplicationLoadBalancerProcedure is the fully-qualified name of the
-	// LoadbalancerService's UpdateApplicationLoadBalancer RPC.
-	LoadbalancerServiceUpdateApplicationLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateApplicationLoadBalancer"
-	// LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure is the fully-qualified name of the
-	// LoadbalancerService's RemoveFromLoadBalancerRule RPC.
-	LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveFromLoadBalancerRule"
-	// LoadbalancerServiceListLoadBalancerRulesProcedure is the fully-qualified name of the
-	// LoadbalancerService's ListLoadBalancerRules RPC.
-	LoadbalancerServiceListLoadBalancerRulesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRules"
-	// LoadbalancerServiceDeleteLoadBalancerRuleProcedure is the fully-qualified name of the
-	// LoadbalancerService's DeleteLoadBalancerRule RPC.
-	LoadbalancerServiceDeleteLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLoadBalancerRule"
-	// LoadbalancerServiceListApplicationLoadBalancersProcedure is the fully-qualified name of the
-	// LoadbalancerService's ListApplicationLoadBalancers RPC.
-	LoadbalancerServiceListApplicationLoadBalancersProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListApplicationLoadBalancers"
-	// LoadbalancerServiceRemoveCertFromLoadBalancerProcedure is the fully-qualified name of the
-	// LoadbalancerService's RemoveCertFromLoadBalancer RPC.
-	LoadbalancerServiceRemoveCertFromLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveCertFromLoadBalancer"
-	// LoadbalancerServiceUploadSslCertProcedure is the fully-qualified name of the
-	// LoadbalancerService's UploadSslCert RPC.
-	LoadbalancerServiceUploadSslCertProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UploadSslCert"
 	// LoadbalancerServiceAssignToLoadBalancerRuleProcedure is the fully-qualified name of the
 	// LoadbalancerService's AssignToLoadBalancerRule RPC.
 	LoadbalancerServiceAssignToLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/AssignToLoadBalancerRule"
+	// LoadbalancerServiceListLoadBalancerRulesProcedure is the fully-qualified name of the
+	// LoadbalancerService's ListLoadBalancerRules RPC.
+	LoadbalancerServiceListLoadBalancerRulesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRules"
+	// LoadbalancerServiceDeleteLBStickinessPolicyProcedure is the fully-qualified name of the
+	// LoadbalancerService's DeleteLBStickinessPolicy RPC.
+	LoadbalancerServiceDeleteLBStickinessPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBStickinessPolicy"
+	// LoadbalancerServiceCreateLoadBalancerRuleProcedure is the fully-qualified name of the
+	// LoadbalancerService's CreateLoadBalancerRule RPC.
+	LoadbalancerServiceCreateLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLoadBalancerRule"
+	// LoadbalancerServiceListLoadBalancerRuleInstancesProcedure is the fully-qualified name of the
+	// LoadbalancerService's ListLoadBalancerRuleInstances RPC.
+	LoadbalancerServiceListLoadBalancerRuleInstancesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLoadBalancerRuleInstances"
 	// LoadbalancerServiceCreateApplicationLoadBalancerProcedure is the fully-qualified name of the
 	// LoadbalancerService's CreateApplicationLoadBalancer RPC.
 	LoadbalancerServiceCreateApplicationLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateApplicationLoadBalancer"
-	// LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure is the fully-qualified name of the
-	// LoadbalancerService's UpdateLBHealthCheckPolicy RPC.
-	LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBHealthCheckPolicy"
+	// LoadbalancerServiceDeleteLoadBalancerRuleProcedure is the fully-qualified name of the
+	// LoadbalancerService's DeleteLoadBalancerRule RPC.
+	LoadbalancerServiceDeleteLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLoadBalancerRule"
 	// LoadbalancerServiceAssignCertToLoadBalancerProcedure is the fully-qualified name of the
 	// LoadbalancerService's AssignCertToLoadBalancer RPC.
 	LoadbalancerServiceAssignCertToLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/AssignCertToLoadBalancer"
-	// LoadbalancerServiceListLBHealthCheckPoliciesProcedure is the fully-qualified name of the
-	// LoadbalancerService's ListLBHealthCheckPolicies RPC.
-	LoadbalancerServiceListLBHealthCheckPoliciesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBHealthCheckPolicies"
 	// LoadbalancerServiceDeleteApplicationLoadBalancerProcedure is the fully-qualified name of the
 	// LoadbalancerService's DeleteApplicationLoadBalancer RPC.
 	LoadbalancerServiceDeleteApplicationLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteApplicationLoadBalancer"
-	// LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure is the fully-qualified name of the
-	// LoadbalancerService's DeleteLBHealthCheckPolicy RPC.
-	LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBHealthCheckPolicy"
+	// LoadbalancerServiceListLBStickinessPoliciesProcedure is the fully-qualified name of the
+	// LoadbalancerService's ListLBStickinessPolicies RPC.
+	LoadbalancerServiceListLBStickinessPoliciesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBStickinessPolicies"
 	// LoadbalancerServiceCreateLBHealthCheckPolicyProcedure is the fully-qualified name of the
 	// LoadbalancerService's CreateLBHealthCheckPolicy RPC.
 	LoadbalancerServiceCreateLBHealthCheckPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBHealthCheckPolicy"
 	// LoadbalancerServiceUpdateLoadBalancerRuleProcedure is the fully-qualified name of the
 	// LoadbalancerService's UpdateLoadBalancerRule RPC.
 	LoadbalancerServiceUpdateLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLoadBalancerRule"
+	// LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure is the fully-qualified name of the
+	// LoadbalancerService's UpdateLBHealthCheckPolicy RPC.
+	LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBHealthCheckPolicy"
+	// LoadbalancerServiceDeleteSslCertProcedure is the fully-qualified name of the
+	// LoadbalancerService's DeleteSslCert RPC.
+	LoadbalancerServiceDeleteSslCertProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteSslCert"
+	// LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure is the fully-qualified name of the
+	// LoadbalancerService's RemoveFromLoadBalancerRule RPC.
+	LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveFromLoadBalancerRule"
+	// LoadbalancerServiceListSslCertsProcedure is the fully-qualified name of the LoadbalancerService's
+	// ListSslCerts RPC.
+	LoadbalancerServiceListSslCertsProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListSslCerts"
+	// LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure is the fully-qualified name of the
+	// LoadbalancerService's DeleteLBHealthCheckPolicy RPC.
+	LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/DeleteLBHealthCheckPolicy"
+	// LoadbalancerServiceCreateLBStickinessPolicyProcedure is the fully-qualified name of the
+	// LoadbalancerService's CreateLBStickinessPolicy RPC.
+	LoadbalancerServiceCreateLBStickinessPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/CreateLBStickinessPolicy"
+	// LoadbalancerServiceUpdateApplicationLoadBalancerProcedure is the fully-qualified name of the
+	// LoadbalancerService's UpdateApplicationLoadBalancer RPC.
+	LoadbalancerServiceUpdateApplicationLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateApplicationLoadBalancer"
+	// LoadbalancerServiceRemoveCertFromLoadBalancerProcedure is the fully-qualified name of the
+	// LoadbalancerService's RemoveCertFromLoadBalancer RPC.
+	LoadbalancerServiceRemoveCertFromLoadBalancerProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/RemoveCertFromLoadBalancer"
+	// LoadbalancerServiceListLBHealthCheckPoliciesProcedure is the fully-qualified name of the
+	// LoadbalancerService's ListLBHealthCheckPolicies RPC.
+	LoadbalancerServiceListLBHealthCheckPoliciesProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListLBHealthCheckPolicies"
+	// LoadbalancerServiceUploadSslCertProcedure is the fully-qualified name of the
+	// LoadbalancerService's UploadSslCert RPC.
+	LoadbalancerServiceUploadSslCertProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UploadSslCert"
+	// LoadbalancerServiceListApplicationLoadBalancersProcedure is the fully-qualified name of the
+	// LoadbalancerService's ListApplicationLoadBalancers RPC.
+	LoadbalancerServiceListApplicationLoadBalancersProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/ListApplicationLoadBalancers"
 	// LoadbalancerServiceUpdateLBStickinessPolicyProcedure is the fully-qualified name of the
 	// LoadbalancerService's UpdateLBStickinessPolicy RPC.
 	LoadbalancerServiceUpdateLBStickinessPolicyProcedure = "/cloudstack.management.loadbalancer.v1.LoadbalancerService/UpdateLBStickinessPolicy"
@@ -113,54 +110,52 @@ const (
 // LoadbalancerServiceClient is a client for the
 // cloudstack.management.loadbalancer.v1.LoadbalancerService service.
 type LoadbalancerServiceClient interface {
-	// ListSslCerts Lists SSL certificates
-	ListSslCerts(context.Context, *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error)
-	// DeleteSslCert Delete a certificate to CloudStack
-	DeleteSslCert(context.Context, *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error)
-	// ListLoadBalancerRuleInstancesCmdByAdmin List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstancesCmdByAdmin(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesCmdByAdminRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesCmdByAdminResponse], error)
-	// ListLBStickinessPolicies Lists load balancer stickiness policies.
-	ListLBStickinessPolicies(context.Context, *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error)
-	// CreateLoadBalancerRule Creates a load balancer rule
-	CreateLoadBalancerRule(context.Context, *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error)
-	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
-	CreateLBStickinessPolicy(context.Context, *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error)
-	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
-	DeleteLBStickinessPolicy(context.Context, *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error)
-	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstances(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error)
-	// UpdateApplicationLoadBalancer Updates an internal load balancer
-	UpdateApplicationLoadBalancer(context.Context, *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error)
-	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
-	RemoveFromLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error)
-	// ListLoadBalancerRules Lists load balancer rules.
-	ListLoadBalancerRules(context.Context, *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error)
-	// DeleteLoadBalancerRule Deletes a load balancer rule.
-	DeleteLoadBalancerRule(context.Context, *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error)
-	// ListApplicationLoadBalancers Lists internal load balancers
-	ListApplicationLoadBalancers(context.Context, *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error)
-	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
-	RemoveCertFromLoadBalancer(context.Context, *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error)
-	// UploadSslCert Upload a certificate to CloudStack
-	UploadSslCert(context.Context, *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error)
 	// AssignToLoadBalancerRule Assigns virtual machine or a list of virtual machines to a load balancer rule.
 	AssignToLoadBalancerRule(context.Context, *connect.Request[v1.AssignToLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToLoadBalancerRuleResponse], error)
+	// ListLoadBalancerRules Lists load balancer rules.
+	ListLoadBalancerRules(context.Context, *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error)
+	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
+	DeleteLBStickinessPolicy(context.Context, *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error)
+	// CreateLoadBalancerRule Creates a load balancer rule
+	CreateLoadBalancerRule(context.Context, *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error)
+	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
+	ListLoadBalancerRuleInstances(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error)
 	// CreateApplicationLoadBalancer Creates an internal load balancer
 	CreateApplicationLoadBalancer(context.Context, *connect.Request[v1.CreateApplicationLoadBalancerRequest]) (*connect.Response[v1.CreateApplicationLoadBalancerResponse], error)
-	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
-	UpdateLBHealthCheckPolicy(context.Context, *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error)
+	// DeleteLoadBalancerRule Deletes a load balancer rule.
+	DeleteLoadBalancerRule(context.Context, *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error)
 	// AssignCertToLoadBalancer Assigns a certificate to a load balancer rule
 	AssignCertToLoadBalancer(context.Context, *connect.Request[v1.AssignCertToLoadBalancerRequest]) (*connect.Response[v1.AssignCertToLoadBalancerResponse], error)
-	// ListLBHealthCheckPolicies Lists load balancer health check policies.
-	ListLBHealthCheckPolicies(context.Context, *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error)
 	// DeleteApplicationLoadBalancer Deletes an internal load balancer
 	DeleteApplicationLoadBalancer(context.Context, *connect.Request[v1.DeleteApplicationLoadBalancerRequest]) (*connect.Response[v1.DeleteApplicationLoadBalancerResponse], error)
-	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
-	DeleteLBHealthCheckPolicy(context.Context, *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error)
+	// ListLBStickinessPolicies Lists load balancer stickiness policies.
+	ListLBStickinessPolicies(context.Context, *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error)
 	// CreateLBHealthCheckPolicy Creates a load balancer health check policy
 	CreateLBHealthCheckPolicy(context.Context, *connect.Request[v1.CreateLBHealthCheckPolicyRequest]) (*connect.Response[v1.CreateLBHealthCheckPolicyResponse], error)
 	// UpdateLoadBalancerRule Updates load balancer
 	UpdateLoadBalancerRule(context.Context, *connect.Request[v1.UpdateLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateLoadBalancerRuleResponse], error)
+	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
+	UpdateLBHealthCheckPolicy(context.Context, *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error)
+	// DeleteSslCert Delete a certificate to CloudStack
+	DeleteSslCert(context.Context, *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error)
+	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
+	RemoveFromLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error)
+	// ListSslCerts Lists SSL certificates
+	ListSslCerts(context.Context, *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error)
+	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
+	DeleteLBHealthCheckPolicy(context.Context, *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error)
+	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
+	CreateLBStickinessPolicy(context.Context, *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error)
+	// UpdateApplicationLoadBalancer Updates an internal load balancer
+	UpdateApplicationLoadBalancer(context.Context, *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error)
+	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
+	RemoveCertFromLoadBalancer(context.Context, *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error)
+	// ListLBHealthCheckPolicies Lists load balancer health check policies.
+	ListLBHealthCheckPolicies(context.Context, *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error)
+	// UploadSslCert Upload a certificate to CloudStack
+	UploadSslCert(context.Context, *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error)
+	// ListApplicationLoadBalancers Lists internal load balancers
+	ListApplicationLoadBalancers(context.Context, *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error)
 	// UpdateLBStickinessPolicy Updates load balancer stickiness policy
 	UpdateLBStickinessPolicy(context.Context, *connect.Request[v1.UpdateLBStickinessPolicyRequest]) (*connect.Response[v1.UpdateLBStickinessPolicyResponse], error)
 }
@@ -177,64 +172,10 @@ func NewLoadbalancerServiceClient(httpClient connect.HTTPClient, baseURL string,
 	baseURL = strings.TrimRight(baseURL, "/")
 	loadbalancerServiceMethods := v1.File_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto.Services().ByName("LoadbalancerService").Methods()
 	return &loadbalancerServiceClient{
-		listSslCerts: connect.NewClient[v1.ListSslCertsRequest, v1.ListSslCertsResponse](
+		assignToLoadBalancerRule: connect.NewClient[v1.AssignToLoadBalancerRuleRequest, v1.AssignToLoadBalancerRuleResponse](
 			httpClient,
-			baseURL+LoadbalancerServiceListSslCertsProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("ListSslCerts")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteSslCert: connect.NewClient[v1.DeleteSslCertRequest, v1.DeleteSslCertResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceDeleteSslCertProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteSslCert")),
-			connect.WithClientOptions(opts...),
-		),
-		listLoadBalancerRuleInstancesCmdByAdmin: connect.NewClient[v1.ListLoadBalancerRuleInstancesCmdByAdminRequest, v1.ListLoadBalancerRuleInstancesCmdByAdminResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRuleInstancesCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listLBStickinessPolicies: connect.NewClient[v1.ListLBStickinessPoliciesRequest, v1.ListLBStickinessPoliciesResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceListLBStickinessPoliciesProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBStickinessPolicies")),
-			connect.WithClientOptions(opts...),
-		),
-		createLoadBalancerRule: connect.NewClient[v1.CreateLoadBalancerRuleRequest, v1.CreateLoadBalancerRuleResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceCreateLoadBalancerRuleProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLoadBalancerRule")),
-			connect.WithClientOptions(opts...),
-		),
-		createLBStickinessPolicy: connect.NewClient[v1.CreateLBStickinessPolicyRequest, v1.CreateLBStickinessPolicyResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceCreateLBStickinessPolicyProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLBStickinessPolicy")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteLBStickinessPolicy: connect.NewClient[v1.DeleteLBStickinessPolicyRequest, v1.DeleteLBStickinessPolicyResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceDeleteLBStickinessPolicyProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBStickinessPolicy")),
-			connect.WithClientOptions(opts...),
-		),
-		listLoadBalancerRuleInstances: connect.NewClient[v1.ListLoadBalancerRuleInstancesRequest, v1.ListLoadBalancerRuleInstancesResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceListLoadBalancerRuleInstancesProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRuleInstances")),
-			connect.WithClientOptions(opts...),
-		),
-		updateApplicationLoadBalancer: connect.NewClient[v1.UpdateApplicationLoadBalancerRequest, v1.UpdateApplicationLoadBalancerResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceUpdateApplicationLoadBalancerProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateApplicationLoadBalancer")),
-			connect.WithClientOptions(opts...),
-		),
-		removeFromLoadBalancerRule: connect.NewClient[v1.RemoveFromLoadBalancerRuleRequest, v1.RemoveFromLoadBalancerRuleResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveFromLoadBalancerRule")),
+			baseURL+LoadbalancerServiceAssignToLoadBalancerRuleProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("AssignToLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
 		listLoadBalancerRules: connect.NewClient[v1.ListLoadBalancerRulesRequest, v1.ListLoadBalancerRulesResponse](
@@ -243,34 +184,22 @@ func NewLoadbalancerServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRules")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteLoadBalancerRule: connect.NewClient[v1.DeleteLoadBalancerRuleRequest, v1.DeleteLoadBalancerRuleResponse](
+		deleteLBStickinessPolicy: connect.NewClient[v1.DeleteLBStickinessPolicyRequest, v1.DeleteLBStickinessPolicyResponse](
 			httpClient,
-			baseURL+LoadbalancerServiceDeleteLoadBalancerRuleProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLoadBalancerRule")),
+			baseURL+LoadbalancerServiceDeleteLBStickinessPolicyProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBStickinessPolicy")),
 			connect.WithClientOptions(opts...),
 		),
-		listApplicationLoadBalancers: connect.NewClient[v1.ListApplicationLoadBalancersRequest, v1.ListApplicationLoadBalancersResponse](
+		createLoadBalancerRule: connect.NewClient[v1.CreateLoadBalancerRuleRequest, v1.CreateLoadBalancerRuleResponse](
 			httpClient,
-			baseURL+LoadbalancerServiceListApplicationLoadBalancersProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("ListApplicationLoadBalancers")),
+			baseURL+LoadbalancerServiceCreateLoadBalancerRuleProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
-		removeCertFromLoadBalancer: connect.NewClient[v1.RemoveCertFromLoadBalancerRequest, v1.RemoveCertFromLoadBalancerResponse](
+		listLoadBalancerRuleInstances: connect.NewClient[v1.ListLoadBalancerRuleInstancesRequest, v1.ListLoadBalancerRuleInstancesResponse](
 			httpClient,
-			baseURL+LoadbalancerServiceRemoveCertFromLoadBalancerProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveCertFromLoadBalancer")),
-			connect.WithClientOptions(opts...),
-		),
-		uploadSslCert: connect.NewClient[v1.UploadSslCertRequest, v1.UploadSslCertResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceUploadSslCertProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("UploadSslCert")),
-			connect.WithClientOptions(opts...),
-		),
-		assignToLoadBalancerRule: connect.NewClient[v1.AssignToLoadBalancerRuleRequest, v1.AssignToLoadBalancerRuleResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceAssignToLoadBalancerRuleProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("AssignToLoadBalancerRule")),
+			baseURL+LoadbalancerServiceListLoadBalancerRuleInstancesProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRuleInstances")),
 			connect.WithClientOptions(opts...),
 		),
 		createApplicationLoadBalancer: connect.NewClient[v1.CreateApplicationLoadBalancerRequest, v1.CreateApplicationLoadBalancerResponse](
@@ -279,10 +208,10 @@ func NewLoadbalancerServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(loadbalancerServiceMethods.ByName("CreateApplicationLoadBalancer")),
 			connect.WithClientOptions(opts...),
 		),
-		updateLBHealthCheckPolicy: connect.NewClient[v1.UpdateLBHealthCheckPolicyRequest, v1.UpdateLBHealthCheckPolicyResponse](
+		deleteLoadBalancerRule: connect.NewClient[v1.DeleteLoadBalancerRuleRequest, v1.DeleteLoadBalancerRuleResponse](
 			httpClient,
-			baseURL+LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateLBHealthCheckPolicy")),
+			baseURL+LoadbalancerServiceDeleteLoadBalancerRuleProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
 		assignCertToLoadBalancer: connect.NewClient[v1.AssignCertToLoadBalancerRequest, v1.AssignCertToLoadBalancerResponse](
@@ -291,22 +220,16 @@ func NewLoadbalancerServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(loadbalancerServiceMethods.ByName("AssignCertToLoadBalancer")),
 			connect.WithClientOptions(opts...),
 		),
-		listLBHealthCheckPolicies: connect.NewClient[v1.ListLBHealthCheckPoliciesRequest, v1.ListLBHealthCheckPoliciesResponse](
-			httpClient,
-			baseURL+LoadbalancerServiceListLBHealthCheckPoliciesProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBHealthCheckPolicies")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteApplicationLoadBalancer: connect.NewClient[v1.DeleteApplicationLoadBalancerRequest, v1.DeleteApplicationLoadBalancerResponse](
 			httpClient,
 			baseURL+LoadbalancerServiceDeleteApplicationLoadBalancerProcedure,
 			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteApplicationLoadBalancer")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteLBHealthCheckPolicy: connect.NewClient[v1.DeleteLBHealthCheckPolicyRequest, v1.DeleteLBHealthCheckPolicyResponse](
+		listLBStickinessPolicies: connect.NewClient[v1.ListLBStickinessPoliciesRequest, v1.ListLBStickinessPoliciesResponse](
 			httpClient,
-			baseURL+LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure,
-			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBHealthCheckPolicy")),
+			baseURL+LoadbalancerServiceListLBStickinessPoliciesProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBStickinessPolicies")),
 			connect.WithClientOptions(opts...),
 		),
 		createLBHealthCheckPolicy: connect.NewClient[v1.CreateLBHealthCheckPolicyRequest, v1.CreateLBHealthCheckPolicyResponse](
@@ -321,6 +244,72 @@ func NewLoadbalancerServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
+		updateLBHealthCheckPolicy: connect.NewClient[v1.UpdateLBHealthCheckPolicyRequest, v1.UpdateLBHealthCheckPolicyResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateLBHealthCheckPolicy")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteSslCert: connect.NewClient[v1.DeleteSslCertRequest, v1.DeleteSslCertResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceDeleteSslCertProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteSslCert")),
+			connect.WithClientOptions(opts...),
+		),
+		removeFromLoadBalancerRule: connect.NewClient[v1.RemoveFromLoadBalancerRuleRequest, v1.RemoveFromLoadBalancerRuleResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveFromLoadBalancerRule")),
+			connect.WithClientOptions(opts...),
+		),
+		listSslCerts: connect.NewClient[v1.ListSslCertsRequest, v1.ListSslCertsResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceListSslCertsProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("ListSslCerts")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteLBHealthCheckPolicy: connect.NewClient[v1.DeleteLBHealthCheckPolicyRequest, v1.DeleteLBHealthCheckPolicyResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBHealthCheckPolicy")),
+			connect.WithClientOptions(opts...),
+		),
+		createLBStickinessPolicy: connect.NewClient[v1.CreateLBStickinessPolicyRequest, v1.CreateLBStickinessPolicyResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceCreateLBStickinessPolicyProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLBStickinessPolicy")),
+			connect.WithClientOptions(opts...),
+		),
+		updateApplicationLoadBalancer: connect.NewClient[v1.UpdateApplicationLoadBalancerRequest, v1.UpdateApplicationLoadBalancerResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceUpdateApplicationLoadBalancerProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateApplicationLoadBalancer")),
+			connect.WithClientOptions(opts...),
+		),
+		removeCertFromLoadBalancer: connect.NewClient[v1.RemoveCertFromLoadBalancerRequest, v1.RemoveCertFromLoadBalancerResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceRemoveCertFromLoadBalancerProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveCertFromLoadBalancer")),
+			connect.WithClientOptions(opts...),
+		),
+		listLBHealthCheckPolicies: connect.NewClient[v1.ListLBHealthCheckPoliciesRequest, v1.ListLBHealthCheckPoliciesResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceListLBHealthCheckPoliciesProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBHealthCheckPolicies")),
+			connect.WithClientOptions(opts...),
+		),
+		uploadSslCert: connect.NewClient[v1.UploadSslCertRequest, v1.UploadSslCertResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceUploadSslCertProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("UploadSslCert")),
+			connect.WithClientOptions(opts...),
+		),
+		listApplicationLoadBalancers: connect.NewClient[v1.ListApplicationLoadBalancersRequest, v1.ListApplicationLoadBalancersResponse](
+			httpClient,
+			baseURL+LoadbalancerServiceListApplicationLoadBalancersProcedure,
+			connect.WithSchema(loadbalancerServiceMethods.ByName("ListApplicationLoadBalancers")),
+			connect.WithClientOptions(opts...),
+		),
 		updateLBStickinessPolicy: connect.NewClient[v1.UpdateLBStickinessPolicyRequest, v1.UpdateLBStickinessPolicyResponse](
 			httpClient,
 			baseURL+LoadbalancerServiceUpdateLBStickinessPolicyProcedure,
@@ -332,118 +321,30 @@ func NewLoadbalancerServiceClient(httpClient connect.HTTPClient, baseURL string,
 
 // loadbalancerServiceClient implements LoadbalancerServiceClient.
 type loadbalancerServiceClient struct {
-	listSslCerts                            *connect.Client[v1.ListSslCertsRequest, v1.ListSslCertsResponse]
-	deleteSslCert                           *connect.Client[v1.DeleteSslCertRequest, v1.DeleteSslCertResponse]
-	listLoadBalancerRuleInstancesCmdByAdmin *connect.Client[v1.ListLoadBalancerRuleInstancesCmdByAdminRequest, v1.ListLoadBalancerRuleInstancesCmdByAdminResponse]
-	listLBStickinessPolicies                *connect.Client[v1.ListLBStickinessPoliciesRequest, v1.ListLBStickinessPoliciesResponse]
-	createLoadBalancerRule                  *connect.Client[v1.CreateLoadBalancerRuleRequest, v1.CreateLoadBalancerRuleResponse]
-	createLBStickinessPolicy                *connect.Client[v1.CreateLBStickinessPolicyRequest, v1.CreateLBStickinessPolicyResponse]
-	deleteLBStickinessPolicy                *connect.Client[v1.DeleteLBStickinessPolicyRequest, v1.DeleteLBStickinessPolicyResponse]
-	listLoadBalancerRuleInstances           *connect.Client[v1.ListLoadBalancerRuleInstancesRequest, v1.ListLoadBalancerRuleInstancesResponse]
-	updateApplicationLoadBalancer           *connect.Client[v1.UpdateApplicationLoadBalancerRequest, v1.UpdateApplicationLoadBalancerResponse]
-	removeFromLoadBalancerRule              *connect.Client[v1.RemoveFromLoadBalancerRuleRequest, v1.RemoveFromLoadBalancerRuleResponse]
-	listLoadBalancerRules                   *connect.Client[v1.ListLoadBalancerRulesRequest, v1.ListLoadBalancerRulesResponse]
-	deleteLoadBalancerRule                  *connect.Client[v1.DeleteLoadBalancerRuleRequest, v1.DeleteLoadBalancerRuleResponse]
-	listApplicationLoadBalancers            *connect.Client[v1.ListApplicationLoadBalancersRequest, v1.ListApplicationLoadBalancersResponse]
-	removeCertFromLoadBalancer              *connect.Client[v1.RemoveCertFromLoadBalancerRequest, v1.RemoveCertFromLoadBalancerResponse]
-	uploadSslCert                           *connect.Client[v1.UploadSslCertRequest, v1.UploadSslCertResponse]
-	assignToLoadBalancerRule                *connect.Client[v1.AssignToLoadBalancerRuleRequest, v1.AssignToLoadBalancerRuleResponse]
-	createApplicationLoadBalancer           *connect.Client[v1.CreateApplicationLoadBalancerRequest, v1.CreateApplicationLoadBalancerResponse]
-	updateLBHealthCheckPolicy               *connect.Client[v1.UpdateLBHealthCheckPolicyRequest, v1.UpdateLBHealthCheckPolicyResponse]
-	assignCertToLoadBalancer                *connect.Client[v1.AssignCertToLoadBalancerRequest, v1.AssignCertToLoadBalancerResponse]
-	listLBHealthCheckPolicies               *connect.Client[v1.ListLBHealthCheckPoliciesRequest, v1.ListLBHealthCheckPoliciesResponse]
-	deleteApplicationLoadBalancer           *connect.Client[v1.DeleteApplicationLoadBalancerRequest, v1.DeleteApplicationLoadBalancerResponse]
-	deleteLBHealthCheckPolicy               *connect.Client[v1.DeleteLBHealthCheckPolicyRequest, v1.DeleteLBHealthCheckPolicyResponse]
-	createLBHealthCheckPolicy               *connect.Client[v1.CreateLBHealthCheckPolicyRequest, v1.CreateLBHealthCheckPolicyResponse]
-	updateLoadBalancerRule                  *connect.Client[v1.UpdateLoadBalancerRuleRequest, v1.UpdateLoadBalancerRuleResponse]
-	updateLBStickinessPolicy                *connect.Client[v1.UpdateLBStickinessPolicyRequest, v1.UpdateLBStickinessPolicyResponse]
-}
-
-// ListSslCerts calls cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts.
-func (c *loadbalancerServiceClient) ListSslCerts(ctx context.Context, req *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error) {
-	return c.listSslCerts.CallUnary(ctx, req)
-}
-
-// DeleteSslCert calls cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert.
-func (c *loadbalancerServiceClient) DeleteSslCert(ctx context.Context, req *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error) {
-	return c.deleteSslCert.CallUnary(ctx, req)
-}
-
-// ListLoadBalancerRuleInstancesCmdByAdmin calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstancesCmdByAdmin.
-func (c *loadbalancerServiceClient) ListLoadBalancerRuleInstancesCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListLoadBalancerRuleInstancesCmdByAdminRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesCmdByAdminResponse], error) {
-	return c.listLoadBalancerRuleInstancesCmdByAdmin.CallUnary(ctx, req)
-}
-
-// ListLBStickinessPolicies calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies.
-func (c *loadbalancerServiceClient) ListLBStickinessPolicies(ctx context.Context, req *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error) {
-	return c.listLBStickinessPolicies.CallUnary(ctx, req)
-}
-
-// CreateLoadBalancerRule calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule.
-func (c *loadbalancerServiceClient) CreateLoadBalancerRule(ctx context.Context, req *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error) {
-	return c.createLoadBalancerRule.CallUnary(ctx, req)
-}
-
-// CreateLBStickinessPolicy calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy.
-func (c *loadbalancerServiceClient) CreateLBStickinessPolicy(ctx context.Context, req *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error) {
-	return c.createLBStickinessPolicy.CallUnary(ctx, req)
-}
-
-// DeleteLBStickinessPolicy calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy.
-func (c *loadbalancerServiceClient) DeleteLBStickinessPolicy(ctx context.Context, req *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error) {
-	return c.deleteLBStickinessPolicy.CallUnary(ctx, req)
-}
-
-// ListLoadBalancerRuleInstances calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances.
-func (c *loadbalancerServiceClient) ListLoadBalancerRuleInstances(ctx context.Context, req *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error) {
-	return c.listLoadBalancerRuleInstances.CallUnary(ctx, req)
-}
-
-// UpdateApplicationLoadBalancer calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer.
-func (c *loadbalancerServiceClient) UpdateApplicationLoadBalancer(ctx context.Context, req *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error) {
-	return c.updateApplicationLoadBalancer.CallUnary(ctx, req)
-}
-
-// RemoveFromLoadBalancerRule calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule.
-func (c *loadbalancerServiceClient) RemoveFromLoadBalancerRule(ctx context.Context, req *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error) {
-	return c.removeFromLoadBalancerRule.CallUnary(ctx, req)
-}
-
-// ListLoadBalancerRules calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules.
-func (c *loadbalancerServiceClient) ListLoadBalancerRules(ctx context.Context, req *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error) {
-	return c.listLoadBalancerRules.CallUnary(ctx, req)
-}
-
-// DeleteLoadBalancerRule calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule.
-func (c *loadbalancerServiceClient) DeleteLoadBalancerRule(ctx context.Context, req *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error) {
-	return c.deleteLoadBalancerRule.CallUnary(ctx, req)
-}
-
-// ListApplicationLoadBalancers calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers.
-func (c *loadbalancerServiceClient) ListApplicationLoadBalancers(ctx context.Context, req *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error) {
-	return c.listApplicationLoadBalancers.CallUnary(ctx, req)
-}
-
-// RemoveCertFromLoadBalancer calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer.
-func (c *loadbalancerServiceClient) RemoveCertFromLoadBalancer(ctx context.Context, req *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error) {
-	return c.removeCertFromLoadBalancer.CallUnary(ctx, req)
-}
-
-// UploadSslCert calls cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert.
-func (c *loadbalancerServiceClient) UploadSslCert(ctx context.Context, req *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error) {
-	return c.uploadSslCert.CallUnary(ctx, req)
+	assignToLoadBalancerRule      *connect.Client[v1.AssignToLoadBalancerRuleRequest, v1.AssignToLoadBalancerRuleResponse]
+	listLoadBalancerRules         *connect.Client[v1.ListLoadBalancerRulesRequest, v1.ListLoadBalancerRulesResponse]
+	deleteLBStickinessPolicy      *connect.Client[v1.DeleteLBStickinessPolicyRequest, v1.DeleteLBStickinessPolicyResponse]
+	createLoadBalancerRule        *connect.Client[v1.CreateLoadBalancerRuleRequest, v1.CreateLoadBalancerRuleResponse]
+	listLoadBalancerRuleInstances *connect.Client[v1.ListLoadBalancerRuleInstancesRequest, v1.ListLoadBalancerRuleInstancesResponse]
+	createApplicationLoadBalancer *connect.Client[v1.CreateApplicationLoadBalancerRequest, v1.CreateApplicationLoadBalancerResponse]
+	deleteLoadBalancerRule        *connect.Client[v1.DeleteLoadBalancerRuleRequest, v1.DeleteLoadBalancerRuleResponse]
+	assignCertToLoadBalancer      *connect.Client[v1.AssignCertToLoadBalancerRequest, v1.AssignCertToLoadBalancerResponse]
+	deleteApplicationLoadBalancer *connect.Client[v1.DeleteApplicationLoadBalancerRequest, v1.DeleteApplicationLoadBalancerResponse]
+	listLBStickinessPolicies      *connect.Client[v1.ListLBStickinessPoliciesRequest, v1.ListLBStickinessPoliciesResponse]
+	createLBHealthCheckPolicy     *connect.Client[v1.CreateLBHealthCheckPolicyRequest, v1.CreateLBHealthCheckPolicyResponse]
+	updateLoadBalancerRule        *connect.Client[v1.UpdateLoadBalancerRuleRequest, v1.UpdateLoadBalancerRuleResponse]
+	updateLBHealthCheckPolicy     *connect.Client[v1.UpdateLBHealthCheckPolicyRequest, v1.UpdateLBHealthCheckPolicyResponse]
+	deleteSslCert                 *connect.Client[v1.DeleteSslCertRequest, v1.DeleteSslCertResponse]
+	removeFromLoadBalancerRule    *connect.Client[v1.RemoveFromLoadBalancerRuleRequest, v1.RemoveFromLoadBalancerRuleResponse]
+	listSslCerts                  *connect.Client[v1.ListSslCertsRequest, v1.ListSslCertsResponse]
+	deleteLBHealthCheckPolicy     *connect.Client[v1.DeleteLBHealthCheckPolicyRequest, v1.DeleteLBHealthCheckPolicyResponse]
+	createLBStickinessPolicy      *connect.Client[v1.CreateLBStickinessPolicyRequest, v1.CreateLBStickinessPolicyResponse]
+	updateApplicationLoadBalancer *connect.Client[v1.UpdateApplicationLoadBalancerRequest, v1.UpdateApplicationLoadBalancerResponse]
+	removeCertFromLoadBalancer    *connect.Client[v1.RemoveCertFromLoadBalancerRequest, v1.RemoveCertFromLoadBalancerResponse]
+	listLBHealthCheckPolicies     *connect.Client[v1.ListLBHealthCheckPoliciesRequest, v1.ListLBHealthCheckPoliciesResponse]
+	uploadSslCert                 *connect.Client[v1.UploadSslCertRequest, v1.UploadSslCertResponse]
+	listApplicationLoadBalancers  *connect.Client[v1.ListApplicationLoadBalancersRequest, v1.ListApplicationLoadBalancersResponse]
+	updateLBStickinessPolicy      *connect.Client[v1.UpdateLBStickinessPolicyRequest, v1.UpdateLBStickinessPolicyResponse]
 }
 
 // AssignToLoadBalancerRule calls
@@ -452,16 +353,40 @@ func (c *loadbalancerServiceClient) AssignToLoadBalancerRule(ctx context.Context
 	return c.assignToLoadBalancerRule.CallUnary(ctx, req)
 }
 
+// ListLoadBalancerRules calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules.
+func (c *loadbalancerServiceClient) ListLoadBalancerRules(ctx context.Context, req *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error) {
+	return c.listLoadBalancerRules.CallUnary(ctx, req)
+}
+
+// DeleteLBStickinessPolicy calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy.
+func (c *loadbalancerServiceClient) DeleteLBStickinessPolicy(ctx context.Context, req *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error) {
+	return c.deleteLBStickinessPolicy.CallUnary(ctx, req)
+}
+
+// CreateLoadBalancerRule calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule.
+func (c *loadbalancerServiceClient) CreateLoadBalancerRule(ctx context.Context, req *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error) {
+	return c.createLoadBalancerRule.CallUnary(ctx, req)
+}
+
+// ListLoadBalancerRuleInstances calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances.
+func (c *loadbalancerServiceClient) ListLoadBalancerRuleInstances(ctx context.Context, req *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error) {
+	return c.listLoadBalancerRuleInstances.CallUnary(ctx, req)
+}
+
 // CreateApplicationLoadBalancer calls
 // cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateApplicationLoadBalancer.
 func (c *loadbalancerServiceClient) CreateApplicationLoadBalancer(ctx context.Context, req *connect.Request[v1.CreateApplicationLoadBalancerRequest]) (*connect.Response[v1.CreateApplicationLoadBalancerResponse], error) {
 	return c.createApplicationLoadBalancer.CallUnary(ctx, req)
 }
 
-// UpdateLBHealthCheckPolicy calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy.
-func (c *loadbalancerServiceClient) UpdateLBHealthCheckPolicy(ctx context.Context, req *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error) {
-	return c.updateLBHealthCheckPolicy.CallUnary(ctx, req)
+// DeleteLoadBalancerRule calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule.
+func (c *loadbalancerServiceClient) DeleteLoadBalancerRule(ctx context.Context, req *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error) {
+	return c.deleteLoadBalancerRule.CallUnary(ctx, req)
 }
 
 // AssignCertToLoadBalancer calls
@@ -470,22 +395,16 @@ func (c *loadbalancerServiceClient) AssignCertToLoadBalancer(ctx context.Context
 	return c.assignCertToLoadBalancer.CallUnary(ctx, req)
 }
 
-// ListLBHealthCheckPolicies calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies.
-func (c *loadbalancerServiceClient) ListLBHealthCheckPolicies(ctx context.Context, req *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error) {
-	return c.listLBHealthCheckPolicies.CallUnary(ctx, req)
-}
-
 // DeleteApplicationLoadBalancer calls
 // cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteApplicationLoadBalancer.
 func (c *loadbalancerServiceClient) DeleteApplicationLoadBalancer(ctx context.Context, req *connect.Request[v1.DeleteApplicationLoadBalancerRequest]) (*connect.Response[v1.DeleteApplicationLoadBalancerResponse], error) {
 	return c.deleteApplicationLoadBalancer.CallUnary(ctx, req)
 }
 
-// DeleteLBHealthCheckPolicy calls
-// cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy.
-func (c *loadbalancerServiceClient) DeleteLBHealthCheckPolicy(ctx context.Context, req *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error) {
-	return c.deleteLBHealthCheckPolicy.CallUnary(ctx, req)
+// ListLBStickinessPolicies calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies.
+func (c *loadbalancerServiceClient) ListLBStickinessPolicies(ctx context.Context, req *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error) {
+	return c.listLBStickinessPolicies.CallUnary(ctx, req)
 }
 
 // CreateLBHealthCheckPolicy calls
@@ -500,6 +419,69 @@ func (c *loadbalancerServiceClient) UpdateLoadBalancerRule(ctx context.Context, 
 	return c.updateLoadBalancerRule.CallUnary(ctx, req)
 }
 
+// UpdateLBHealthCheckPolicy calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy.
+func (c *loadbalancerServiceClient) UpdateLBHealthCheckPolicy(ctx context.Context, req *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error) {
+	return c.updateLBHealthCheckPolicy.CallUnary(ctx, req)
+}
+
+// DeleteSslCert calls cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert.
+func (c *loadbalancerServiceClient) DeleteSslCert(ctx context.Context, req *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error) {
+	return c.deleteSslCert.CallUnary(ctx, req)
+}
+
+// RemoveFromLoadBalancerRule calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule.
+func (c *loadbalancerServiceClient) RemoveFromLoadBalancerRule(ctx context.Context, req *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error) {
+	return c.removeFromLoadBalancerRule.CallUnary(ctx, req)
+}
+
+// ListSslCerts calls cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts.
+func (c *loadbalancerServiceClient) ListSslCerts(ctx context.Context, req *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error) {
+	return c.listSslCerts.CallUnary(ctx, req)
+}
+
+// DeleteLBHealthCheckPolicy calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy.
+func (c *loadbalancerServiceClient) DeleteLBHealthCheckPolicy(ctx context.Context, req *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error) {
+	return c.deleteLBHealthCheckPolicy.CallUnary(ctx, req)
+}
+
+// CreateLBStickinessPolicy calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy.
+func (c *loadbalancerServiceClient) CreateLBStickinessPolicy(ctx context.Context, req *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error) {
+	return c.createLBStickinessPolicy.CallUnary(ctx, req)
+}
+
+// UpdateApplicationLoadBalancer calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer.
+func (c *loadbalancerServiceClient) UpdateApplicationLoadBalancer(ctx context.Context, req *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error) {
+	return c.updateApplicationLoadBalancer.CallUnary(ctx, req)
+}
+
+// RemoveCertFromLoadBalancer calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer.
+func (c *loadbalancerServiceClient) RemoveCertFromLoadBalancer(ctx context.Context, req *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error) {
+	return c.removeCertFromLoadBalancer.CallUnary(ctx, req)
+}
+
+// ListLBHealthCheckPolicies calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies.
+func (c *loadbalancerServiceClient) ListLBHealthCheckPolicies(ctx context.Context, req *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error) {
+	return c.listLBHealthCheckPolicies.CallUnary(ctx, req)
+}
+
+// UploadSslCert calls cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert.
+func (c *loadbalancerServiceClient) UploadSslCert(ctx context.Context, req *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error) {
+	return c.uploadSslCert.CallUnary(ctx, req)
+}
+
+// ListApplicationLoadBalancers calls
+// cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers.
+func (c *loadbalancerServiceClient) ListApplicationLoadBalancers(ctx context.Context, req *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error) {
+	return c.listApplicationLoadBalancers.CallUnary(ctx, req)
+}
+
 // UpdateLBStickinessPolicy calls
 // cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBStickinessPolicy.
 func (c *loadbalancerServiceClient) UpdateLBStickinessPolicy(ctx context.Context, req *connect.Request[v1.UpdateLBStickinessPolicyRequest]) (*connect.Response[v1.UpdateLBStickinessPolicyResponse], error) {
@@ -509,54 +491,52 @@ func (c *loadbalancerServiceClient) UpdateLBStickinessPolicy(ctx context.Context
 // LoadbalancerServiceHandler is an implementation of the
 // cloudstack.management.loadbalancer.v1.LoadbalancerService service.
 type LoadbalancerServiceHandler interface {
-	// ListSslCerts Lists SSL certificates
-	ListSslCerts(context.Context, *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error)
-	// DeleteSslCert Delete a certificate to CloudStack
-	DeleteSslCert(context.Context, *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error)
-	// ListLoadBalancerRuleInstancesCmdByAdmin List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstancesCmdByAdmin(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesCmdByAdminRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesCmdByAdminResponse], error)
-	// ListLBStickinessPolicies Lists load balancer stickiness policies.
-	ListLBStickinessPolicies(context.Context, *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error)
-	// CreateLoadBalancerRule Creates a load balancer rule
-	CreateLoadBalancerRule(context.Context, *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error)
-	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
-	CreateLBStickinessPolicy(context.Context, *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error)
-	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
-	DeleteLBStickinessPolicy(context.Context, *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error)
-	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
-	ListLoadBalancerRuleInstances(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error)
-	// UpdateApplicationLoadBalancer Updates an internal load balancer
-	UpdateApplicationLoadBalancer(context.Context, *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error)
-	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
-	RemoveFromLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error)
-	// ListLoadBalancerRules Lists load balancer rules.
-	ListLoadBalancerRules(context.Context, *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error)
-	// DeleteLoadBalancerRule Deletes a load balancer rule.
-	DeleteLoadBalancerRule(context.Context, *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error)
-	// ListApplicationLoadBalancers Lists internal load balancers
-	ListApplicationLoadBalancers(context.Context, *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error)
-	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
-	RemoveCertFromLoadBalancer(context.Context, *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error)
-	// UploadSslCert Upload a certificate to CloudStack
-	UploadSslCert(context.Context, *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error)
 	// AssignToLoadBalancerRule Assigns virtual machine or a list of virtual machines to a load balancer rule.
 	AssignToLoadBalancerRule(context.Context, *connect.Request[v1.AssignToLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToLoadBalancerRuleResponse], error)
+	// ListLoadBalancerRules Lists load balancer rules.
+	ListLoadBalancerRules(context.Context, *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error)
+	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
+	DeleteLBStickinessPolicy(context.Context, *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error)
+	// CreateLoadBalancerRule Creates a load balancer rule
+	CreateLoadBalancerRule(context.Context, *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error)
+	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
+	ListLoadBalancerRuleInstances(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error)
 	// CreateApplicationLoadBalancer Creates an internal load balancer
 	CreateApplicationLoadBalancer(context.Context, *connect.Request[v1.CreateApplicationLoadBalancerRequest]) (*connect.Response[v1.CreateApplicationLoadBalancerResponse], error)
-	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
-	UpdateLBHealthCheckPolicy(context.Context, *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error)
+	// DeleteLoadBalancerRule Deletes a load balancer rule.
+	DeleteLoadBalancerRule(context.Context, *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error)
 	// AssignCertToLoadBalancer Assigns a certificate to a load balancer rule
 	AssignCertToLoadBalancer(context.Context, *connect.Request[v1.AssignCertToLoadBalancerRequest]) (*connect.Response[v1.AssignCertToLoadBalancerResponse], error)
-	// ListLBHealthCheckPolicies Lists load balancer health check policies.
-	ListLBHealthCheckPolicies(context.Context, *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error)
 	// DeleteApplicationLoadBalancer Deletes an internal load balancer
 	DeleteApplicationLoadBalancer(context.Context, *connect.Request[v1.DeleteApplicationLoadBalancerRequest]) (*connect.Response[v1.DeleteApplicationLoadBalancerResponse], error)
-	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
-	DeleteLBHealthCheckPolicy(context.Context, *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error)
+	// ListLBStickinessPolicies Lists load balancer stickiness policies.
+	ListLBStickinessPolicies(context.Context, *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error)
 	// CreateLBHealthCheckPolicy Creates a load balancer health check policy
 	CreateLBHealthCheckPolicy(context.Context, *connect.Request[v1.CreateLBHealthCheckPolicyRequest]) (*connect.Response[v1.CreateLBHealthCheckPolicyResponse], error)
 	// UpdateLoadBalancerRule Updates load balancer
 	UpdateLoadBalancerRule(context.Context, *connect.Request[v1.UpdateLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateLoadBalancerRuleResponse], error)
+	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
+	UpdateLBHealthCheckPolicy(context.Context, *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error)
+	// DeleteSslCert Delete a certificate to CloudStack
+	DeleteSslCert(context.Context, *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error)
+	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
+	RemoveFromLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error)
+	// ListSslCerts Lists SSL certificates
+	ListSslCerts(context.Context, *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error)
+	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
+	DeleteLBHealthCheckPolicy(context.Context, *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error)
+	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
+	CreateLBStickinessPolicy(context.Context, *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error)
+	// UpdateApplicationLoadBalancer Updates an internal load balancer
+	UpdateApplicationLoadBalancer(context.Context, *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error)
+	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
+	RemoveCertFromLoadBalancer(context.Context, *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error)
+	// ListLBHealthCheckPolicies Lists load balancer health check policies.
+	ListLBHealthCheckPolicies(context.Context, *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error)
+	// UploadSslCert Upload a certificate to CloudStack
+	UploadSslCert(context.Context, *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error)
+	// ListApplicationLoadBalancers Lists internal load balancers
+	ListApplicationLoadBalancers(context.Context, *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error)
 	// UpdateLBStickinessPolicy Updates load balancer stickiness policy
 	UpdateLBStickinessPolicy(context.Context, *connect.Request[v1.UpdateLBStickinessPolicyRequest]) (*connect.Response[v1.UpdateLBStickinessPolicyResponse], error)
 }
@@ -568,64 +548,10 @@ type LoadbalancerServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	loadbalancerServiceMethods := v1.File_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto.Services().ByName("LoadbalancerService").Methods()
-	loadbalancerServiceListSslCertsHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceListSslCertsProcedure,
-		svc.ListSslCerts,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("ListSslCerts")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceDeleteSslCertHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceDeleteSslCertProcedure,
-		svc.DeleteSslCert,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteSslCert")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminProcedure,
-		svc.ListLoadBalancerRuleInstancesCmdByAdmin,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRuleInstancesCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceListLBStickinessPoliciesHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceListLBStickinessPoliciesProcedure,
-		svc.ListLBStickinessPolicies,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBStickinessPolicies")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceCreateLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceCreateLoadBalancerRuleProcedure,
-		svc.CreateLoadBalancerRule,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLoadBalancerRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceCreateLBStickinessPolicyHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceCreateLBStickinessPolicyProcedure,
-		svc.CreateLBStickinessPolicy,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLBStickinessPolicy")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceDeleteLBStickinessPolicyHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceDeleteLBStickinessPolicyProcedure,
-		svc.DeleteLBStickinessPolicy,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBStickinessPolicy")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceListLoadBalancerRuleInstancesHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceListLoadBalancerRuleInstancesProcedure,
-		svc.ListLoadBalancerRuleInstances,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRuleInstances")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceUpdateApplicationLoadBalancerHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceUpdateApplicationLoadBalancerProcedure,
-		svc.UpdateApplicationLoadBalancer,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateApplicationLoadBalancer")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceRemoveFromLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure,
-		svc.RemoveFromLoadBalancerRule,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveFromLoadBalancerRule")),
+	loadbalancerServiceAssignToLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceAssignToLoadBalancerRuleProcedure,
+		svc.AssignToLoadBalancerRule,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("AssignToLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	loadbalancerServiceListLoadBalancerRulesHandler := connect.NewUnaryHandler(
@@ -634,34 +560,22 @@ func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...conne
 		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRules")),
 		connect.WithHandlerOptions(opts...),
 	)
-	loadbalancerServiceDeleteLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceDeleteLoadBalancerRuleProcedure,
-		svc.DeleteLoadBalancerRule,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLoadBalancerRule")),
+	loadbalancerServiceDeleteLBStickinessPolicyHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceDeleteLBStickinessPolicyProcedure,
+		svc.DeleteLBStickinessPolicy,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBStickinessPolicy")),
 		connect.WithHandlerOptions(opts...),
 	)
-	loadbalancerServiceListApplicationLoadBalancersHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceListApplicationLoadBalancersProcedure,
-		svc.ListApplicationLoadBalancers,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("ListApplicationLoadBalancers")),
+	loadbalancerServiceCreateLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceCreateLoadBalancerRuleProcedure,
+		svc.CreateLoadBalancerRule,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
-	loadbalancerServiceRemoveCertFromLoadBalancerHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceRemoveCertFromLoadBalancerProcedure,
-		svc.RemoveCertFromLoadBalancer,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveCertFromLoadBalancer")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceUploadSslCertHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceUploadSslCertProcedure,
-		svc.UploadSslCert,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("UploadSslCert")),
-		connect.WithHandlerOptions(opts...),
-	)
-	loadbalancerServiceAssignToLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceAssignToLoadBalancerRuleProcedure,
-		svc.AssignToLoadBalancerRule,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("AssignToLoadBalancerRule")),
+	loadbalancerServiceListLoadBalancerRuleInstancesHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceListLoadBalancerRuleInstancesProcedure,
+		svc.ListLoadBalancerRuleInstances,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLoadBalancerRuleInstances")),
 		connect.WithHandlerOptions(opts...),
 	)
 	loadbalancerServiceCreateApplicationLoadBalancerHandler := connect.NewUnaryHandler(
@@ -670,10 +584,10 @@ func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...conne
 		connect.WithSchema(loadbalancerServiceMethods.ByName("CreateApplicationLoadBalancer")),
 		connect.WithHandlerOptions(opts...),
 	)
-	loadbalancerServiceUpdateLBHealthCheckPolicyHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure,
-		svc.UpdateLBHealthCheckPolicy,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateLBHealthCheckPolicy")),
+	loadbalancerServiceDeleteLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceDeleteLoadBalancerRuleProcedure,
+		svc.DeleteLoadBalancerRule,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	loadbalancerServiceAssignCertToLoadBalancerHandler := connect.NewUnaryHandler(
@@ -682,22 +596,16 @@ func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...conne
 		connect.WithSchema(loadbalancerServiceMethods.ByName("AssignCertToLoadBalancer")),
 		connect.WithHandlerOptions(opts...),
 	)
-	loadbalancerServiceListLBHealthCheckPoliciesHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceListLBHealthCheckPoliciesProcedure,
-		svc.ListLBHealthCheckPolicies,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBHealthCheckPolicies")),
-		connect.WithHandlerOptions(opts...),
-	)
 	loadbalancerServiceDeleteApplicationLoadBalancerHandler := connect.NewUnaryHandler(
 		LoadbalancerServiceDeleteApplicationLoadBalancerProcedure,
 		svc.DeleteApplicationLoadBalancer,
 		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteApplicationLoadBalancer")),
 		connect.WithHandlerOptions(opts...),
 	)
-	loadbalancerServiceDeleteLBHealthCheckPolicyHandler := connect.NewUnaryHandler(
-		LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure,
-		svc.DeleteLBHealthCheckPolicy,
-		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBHealthCheckPolicy")),
+	loadbalancerServiceListLBStickinessPoliciesHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceListLBStickinessPoliciesProcedure,
+		svc.ListLBStickinessPolicies,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBStickinessPolicies")),
 		connect.WithHandlerOptions(opts...),
 	)
 	loadbalancerServiceCreateLBHealthCheckPolicyHandler := connect.NewUnaryHandler(
@@ -712,6 +620,72 @@ func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...conne
 		connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
+	loadbalancerServiceUpdateLBHealthCheckPolicyHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure,
+		svc.UpdateLBHealthCheckPolicy,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateLBHealthCheckPolicy")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceDeleteSslCertHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceDeleteSslCertProcedure,
+		svc.DeleteSslCert,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteSslCert")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceRemoveFromLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure,
+		svc.RemoveFromLoadBalancerRule,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveFromLoadBalancerRule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceListSslCertsHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceListSslCertsProcedure,
+		svc.ListSslCerts,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("ListSslCerts")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceDeleteLBHealthCheckPolicyHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure,
+		svc.DeleteLBHealthCheckPolicy,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("DeleteLBHealthCheckPolicy")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceCreateLBStickinessPolicyHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceCreateLBStickinessPolicyProcedure,
+		svc.CreateLBStickinessPolicy,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("CreateLBStickinessPolicy")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceUpdateApplicationLoadBalancerHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceUpdateApplicationLoadBalancerProcedure,
+		svc.UpdateApplicationLoadBalancer,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("UpdateApplicationLoadBalancer")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceRemoveCertFromLoadBalancerHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceRemoveCertFromLoadBalancerProcedure,
+		svc.RemoveCertFromLoadBalancer,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("RemoveCertFromLoadBalancer")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceListLBHealthCheckPoliciesHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceListLBHealthCheckPoliciesProcedure,
+		svc.ListLBHealthCheckPolicies,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("ListLBHealthCheckPolicies")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceUploadSslCertHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceUploadSslCertProcedure,
+		svc.UploadSslCert,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("UploadSslCert")),
+		connect.WithHandlerOptions(opts...),
+	)
+	loadbalancerServiceListApplicationLoadBalancersHandler := connect.NewUnaryHandler(
+		LoadbalancerServiceListApplicationLoadBalancersProcedure,
+		svc.ListApplicationLoadBalancers,
+		connect.WithSchema(loadbalancerServiceMethods.ByName("ListApplicationLoadBalancers")),
+		connect.WithHandlerOptions(opts...),
+	)
 	loadbalancerServiceUpdateLBStickinessPolicyHandler := connect.NewUnaryHandler(
 		LoadbalancerServiceUpdateLBStickinessPolicyProcedure,
 		svc.UpdateLBStickinessPolicy,
@@ -720,54 +694,52 @@ func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...conne
 	)
 	return "/cloudstack.management.loadbalancer.v1.LoadbalancerService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case LoadbalancerServiceListSslCertsProcedure:
-			loadbalancerServiceListSslCertsHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceDeleteSslCertProcedure:
-			loadbalancerServiceDeleteSslCertHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminProcedure:
-			loadbalancerServiceListLoadBalancerRuleInstancesCmdByAdminHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceListLBStickinessPoliciesProcedure:
-			loadbalancerServiceListLBStickinessPoliciesHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceCreateLoadBalancerRuleProcedure:
-			loadbalancerServiceCreateLoadBalancerRuleHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceCreateLBStickinessPolicyProcedure:
-			loadbalancerServiceCreateLBStickinessPolicyHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceDeleteLBStickinessPolicyProcedure:
-			loadbalancerServiceDeleteLBStickinessPolicyHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceListLoadBalancerRuleInstancesProcedure:
-			loadbalancerServiceListLoadBalancerRuleInstancesHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceUpdateApplicationLoadBalancerProcedure:
-			loadbalancerServiceUpdateApplicationLoadBalancerHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure:
-			loadbalancerServiceRemoveFromLoadBalancerRuleHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceListLoadBalancerRulesProcedure:
-			loadbalancerServiceListLoadBalancerRulesHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceDeleteLoadBalancerRuleProcedure:
-			loadbalancerServiceDeleteLoadBalancerRuleHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceListApplicationLoadBalancersProcedure:
-			loadbalancerServiceListApplicationLoadBalancersHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceRemoveCertFromLoadBalancerProcedure:
-			loadbalancerServiceRemoveCertFromLoadBalancerHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceUploadSslCertProcedure:
-			loadbalancerServiceUploadSslCertHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceAssignToLoadBalancerRuleProcedure:
 			loadbalancerServiceAssignToLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceListLoadBalancerRulesProcedure:
+			loadbalancerServiceListLoadBalancerRulesHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceDeleteLBStickinessPolicyProcedure:
+			loadbalancerServiceDeleteLBStickinessPolicyHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceCreateLoadBalancerRuleProcedure:
+			loadbalancerServiceCreateLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceListLoadBalancerRuleInstancesProcedure:
+			loadbalancerServiceListLoadBalancerRuleInstancesHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceCreateApplicationLoadBalancerProcedure:
 			loadbalancerServiceCreateApplicationLoadBalancerHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure:
-			loadbalancerServiceUpdateLBHealthCheckPolicyHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceDeleteLoadBalancerRuleProcedure:
+			loadbalancerServiceDeleteLoadBalancerRuleHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceAssignCertToLoadBalancerProcedure:
 			loadbalancerServiceAssignCertToLoadBalancerHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceListLBHealthCheckPoliciesProcedure:
-			loadbalancerServiceListLBHealthCheckPoliciesHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceDeleteApplicationLoadBalancerProcedure:
 			loadbalancerServiceDeleteApplicationLoadBalancerHandler.ServeHTTP(w, r)
-		case LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure:
-			loadbalancerServiceDeleteLBHealthCheckPolicyHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceListLBStickinessPoliciesProcedure:
+			loadbalancerServiceListLBStickinessPoliciesHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceCreateLBHealthCheckPolicyProcedure:
 			loadbalancerServiceCreateLBHealthCheckPolicyHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceUpdateLoadBalancerRuleProcedure:
 			loadbalancerServiceUpdateLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceUpdateLBHealthCheckPolicyProcedure:
+			loadbalancerServiceUpdateLBHealthCheckPolicyHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceDeleteSslCertProcedure:
+			loadbalancerServiceDeleteSslCertHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceRemoveFromLoadBalancerRuleProcedure:
+			loadbalancerServiceRemoveFromLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceListSslCertsProcedure:
+			loadbalancerServiceListSslCertsHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceDeleteLBHealthCheckPolicyProcedure:
+			loadbalancerServiceDeleteLBHealthCheckPolicyHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceCreateLBStickinessPolicyProcedure:
+			loadbalancerServiceCreateLBStickinessPolicyHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceUpdateApplicationLoadBalancerProcedure:
+			loadbalancerServiceUpdateApplicationLoadBalancerHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceRemoveCertFromLoadBalancerProcedure:
+			loadbalancerServiceRemoveCertFromLoadBalancerHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceListLBHealthCheckPoliciesProcedure:
+			loadbalancerServiceListLBHealthCheckPoliciesHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceUploadSslCertProcedure:
+			loadbalancerServiceUploadSslCertHandler.ServeHTTP(w, r)
+		case LoadbalancerServiceListApplicationLoadBalancersProcedure:
+			loadbalancerServiceListApplicationLoadBalancersHandler.ServeHTTP(w, r)
 		case LoadbalancerServiceUpdateLBStickinessPolicyProcedure:
 			loadbalancerServiceUpdateLBStickinessPolicyHandler.ServeHTTP(w, r)
 		default:
@@ -779,92 +751,44 @@ func NewLoadbalancerServiceHandler(svc LoadbalancerServiceHandler, opts ...conne
 // UnimplementedLoadbalancerServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedLoadbalancerServiceHandler struct{}
 
-func (UnimplementedLoadbalancerServiceHandler) ListSslCerts(context.Context, *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) DeleteSslCert(context.Context, *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) ListLoadBalancerRuleInstancesCmdByAdmin(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesCmdByAdminRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstancesCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) ListLBStickinessPolicies(context.Context, *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) CreateLoadBalancerRule(context.Context, *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) CreateLBStickinessPolicy(context.Context, *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) DeleteLBStickinessPolicy(context.Context, *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) ListLoadBalancerRuleInstances(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) UpdateApplicationLoadBalancer(context.Context, *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) RemoveFromLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule is not implemented"))
+func (UnimplementedLoadbalancerServiceHandler) AssignToLoadBalancerRule(context.Context, *connect.Request[v1.AssignToLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignToLoadBalancerRule is not implemented"))
 }
 
 func (UnimplementedLoadbalancerServiceHandler) ListLoadBalancerRules(context.Context, *connect.Request[v1.ListLoadBalancerRulesRequest]) (*connect.Response[v1.ListLoadBalancerRulesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules is not implemented"))
 }
 
-func (UnimplementedLoadbalancerServiceHandler) DeleteLoadBalancerRule(context.Context, *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule is not implemented"))
+func (UnimplementedLoadbalancerServiceHandler) DeleteLBStickinessPolicy(context.Context, *connect.Request[v1.DeleteLBStickinessPolicyRequest]) (*connect.Response[v1.DeleteLBStickinessPolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy is not implemented"))
 }
 
-func (UnimplementedLoadbalancerServiceHandler) ListApplicationLoadBalancers(context.Context, *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers is not implemented"))
+func (UnimplementedLoadbalancerServiceHandler) CreateLoadBalancerRule(context.Context, *connect.Request[v1.CreateLoadBalancerRuleRequest]) (*connect.Response[v1.CreateLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule is not implemented"))
 }
 
-func (UnimplementedLoadbalancerServiceHandler) RemoveCertFromLoadBalancer(context.Context, *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) UploadSslCert(context.Context, *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert is not implemented"))
-}
-
-func (UnimplementedLoadbalancerServiceHandler) AssignToLoadBalancerRule(context.Context, *connect.Request[v1.AssignToLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignToLoadBalancerRule is not implemented"))
+func (UnimplementedLoadbalancerServiceHandler) ListLoadBalancerRuleInstances(context.Context, *connect.Request[v1.ListLoadBalancerRuleInstancesRequest]) (*connect.Response[v1.ListLoadBalancerRuleInstancesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances is not implemented"))
 }
 
 func (UnimplementedLoadbalancerServiceHandler) CreateApplicationLoadBalancer(context.Context, *connect.Request[v1.CreateApplicationLoadBalancerRequest]) (*connect.Response[v1.CreateApplicationLoadBalancerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateApplicationLoadBalancer is not implemented"))
 }
 
-func (UnimplementedLoadbalancerServiceHandler) UpdateLBHealthCheckPolicy(context.Context, *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy is not implemented"))
+func (UnimplementedLoadbalancerServiceHandler) DeleteLoadBalancerRule(context.Context, *connect.Request[v1.DeleteLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule is not implemented"))
 }
 
 func (UnimplementedLoadbalancerServiceHandler) AssignCertToLoadBalancer(context.Context, *connect.Request[v1.AssignCertToLoadBalancerRequest]) (*connect.Response[v1.AssignCertToLoadBalancerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignCertToLoadBalancer is not implemented"))
 }
 
-func (UnimplementedLoadbalancerServiceHandler) ListLBHealthCheckPolicies(context.Context, *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies is not implemented"))
-}
-
 func (UnimplementedLoadbalancerServiceHandler) DeleteApplicationLoadBalancer(context.Context, *connect.Request[v1.DeleteApplicationLoadBalancerRequest]) (*connect.Response[v1.DeleteApplicationLoadBalancerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteApplicationLoadBalancer is not implemented"))
 }
 
-func (UnimplementedLoadbalancerServiceHandler) DeleteLBHealthCheckPolicy(context.Context, *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy is not implemented"))
+func (UnimplementedLoadbalancerServiceHandler) ListLBStickinessPolicies(context.Context, *connect.Request[v1.ListLBStickinessPoliciesRequest]) (*connect.Response[v1.ListLBStickinessPoliciesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies is not implemented"))
 }
 
 func (UnimplementedLoadbalancerServiceHandler) CreateLBHealthCheckPolicy(context.Context, *connect.Request[v1.CreateLBHealthCheckPolicyRequest]) (*connect.Response[v1.CreateLBHealthCheckPolicyResponse], error) {
@@ -873,6 +797,50 @@ func (UnimplementedLoadbalancerServiceHandler) CreateLBHealthCheckPolicy(context
 
 func (UnimplementedLoadbalancerServiceHandler) UpdateLoadBalancerRule(context.Context, *connect.Request[v1.UpdateLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateLoadBalancerRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLoadBalancerRule is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) UpdateLBHealthCheckPolicy(context.Context, *connect.Request[v1.UpdateLBHealthCheckPolicyRequest]) (*connect.Response[v1.UpdateLBHealthCheckPolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) DeleteSslCert(context.Context, *connect.Request[v1.DeleteSslCertRequest]) (*connect.Response[v1.DeleteSslCertResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) RemoveFromLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) ListSslCerts(context.Context, *connect.Request[v1.ListSslCertsRequest]) (*connect.Response[v1.ListSslCertsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) DeleteLBHealthCheckPolicy(context.Context, *connect.Request[v1.DeleteLBHealthCheckPolicyRequest]) (*connect.Response[v1.DeleteLBHealthCheckPolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) CreateLBStickinessPolicy(context.Context, *connect.Request[v1.CreateLBStickinessPolicyRequest]) (*connect.Response[v1.CreateLBStickinessPolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) UpdateApplicationLoadBalancer(context.Context, *connect.Request[v1.UpdateApplicationLoadBalancerRequest]) (*connect.Response[v1.UpdateApplicationLoadBalancerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) RemoveCertFromLoadBalancer(context.Context, *connect.Request[v1.RemoveCertFromLoadBalancerRequest]) (*connect.Response[v1.RemoveCertFromLoadBalancerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) ListLBHealthCheckPolicies(context.Context, *connect.Request[v1.ListLBHealthCheckPoliciesRequest]) (*connect.Response[v1.ListLBHealthCheckPoliciesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) UploadSslCert(context.Context, *connect.Request[v1.UploadSslCertRequest]) (*connect.Response[v1.UploadSslCertResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert is not implemented"))
+}
+
+func (UnimplementedLoadbalancerServiceHandler) ListApplicationLoadBalancers(context.Context, *connect.Request[v1.ListApplicationLoadBalancersRequest]) (*connect.Response[v1.ListApplicationLoadBalancersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers is not implemented"))
 }
 
 func (UnimplementedLoadbalancerServiceHandler) UpdateLBStickinessPolicy(context.Context, *connect.Request[v1.UpdateLBStickinessPolicyRequest]) (*connect.Response[v1.UpdateLBStickinessPolicyResponse], error) {

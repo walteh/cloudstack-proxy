@@ -24,451 +24,65 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// CreateRoutingFirewallRuleRequest represents the parameters for creates a routing firewall rule in the given network in routed mode
-type CreateRoutingFirewallRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
-	// the starting port of firewall rule
-	PublicStartPort *int32 `protobuf:"varint,2,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
-	// the ending port of firewall rule
-	PublicEndPort *int32 `protobuf:"varint,3,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
-	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
-	SourceCidrList []string `protobuf:"bytes,4,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
-	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
-	DestinationCidrlist []string `protobuf:"bytes,5,rep,name=destination_cidrlist,json=destinationCidrlist" json:"destination_cidrlist,omitempty"`
-	// type of the ICMP message being sent
-	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
-	// error code for this ICMP message
-	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
-	// The network of the VM the firewall rule will be created for
-	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// the traffic type for the Routing firewall rule, can be ingress or egress, defaulted to ingress if not specified
-	TrafficType *string `protobuf:"bytes,9,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
+// ProtocolType represents the possible values for the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+type ProtocolType int32
 
-func (x *CreateRoutingFirewallRuleRequest) Reset() {
-	*x = CreateRoutingFirewallRuleRequest{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+const (
+	// Default unspecified value
+	ProtocolType_PROTOCOL_TYPE_UNSPECIFIED ProtocolType = 0
+	// TCP value
+	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 1
+	// UDP value
+	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 2
+	// ICMP value
+	ProtocolType_PROTOCOL_TYPE_ICMP ProtocolType = 3
+	// ALL value
+	ProtocolType_PROTOCOL_TYPE_ALL ProtocolType = 4
+)
 
-func (x *CreateRoutingFirewallRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRoutingFirewallRuleRequest) ProtoMessage() {}
-
-func (x *CreateRoutingFirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+// Enum value maps for ProtocolType.
+var (
+	ProtocolType_name = map[int32]string{
+		0: "PROTOCOL_TYPE_UNSPECIFIED",
+		1: "PROTOCOL_TYPE_TCP",
+		2: "PROTOCOL_TYPE_UDP",
+		3: "PROTOCOL_TYPE_ICMP",
+		4: "PROTOCOL_TYPE_ALL",
 	}
-	return mi.MessageOf(x)
+	ProtocolType_value = map[string]int32{
+		"PROTOCOL_TYPE_UNSPECIFIED": 0,
+		"PROTOCOL_TYPE_TCP":         1,
+		"PROTOCOL_TYPE_UDP":         2,
+		"PROTOCOL_TYPE_ICMP":        3,
+		"PROTOCOL_TYPE_ALL":         4,
+	}
+)
+
+func (x ProtocolType) Enum() *ProtocolType {
+	p := new(ProtocolType)
+	*p = x
+	return p
 }
 
-// Deprecated: Use CreateRoutingFirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*CreateRoutingFirewallRuleRequest) Descriptor() ([]byte, []int) {
+func (x ProtocolType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProtocolType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ProtocolType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_network_routing_v1_routing_gen_proto_enumTypes[0]
+}
+
+func (x ProtocolType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProtocolType.Descriptor instead.
+func (ProtocolType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
-	}
-	return ""
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetPublicStartPort() int32 {
-	if x != nil && x.PublicStartPort != nil {
-		return *x.PublicStartPort
-	}
-	return 0
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetPublicEndPort() int32 {
-	if x != nil && x.PublicEndPort != nil {
-		return *x.PublicEndPort
-	}
-	return 0
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetSourceCidrList() []string {
-	if x != nil {
-		return x.SourceCidrList
-	}
-	return nil
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetDestinationCidrlist() []string {
-	if x != nil {
-		return x.DestinationCidrlist
-	}
-	return nil
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetIcmpType() int32 {
-	if x != nil && x.IcmpType != nil {
-		return *x.IcmpType
-	}
-	return 0
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetIcmpCode() int32 {
-	if x != nil && x.IcmpCode != nil {
-		return *x.IcmpCode
-	}
-	return 0
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
-	}
-	return ""
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateRoutingFirewallRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateRoutingFirewallRuleResponse represents the response from creates a routing firewall rule in the given network in routed mode
-type CreateRoutingFirewallRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateRoutingFirewallRuleResponse) Reset() {
-	*x = CreateRoutingFirewallRuleResponse{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateRoutingFirewallRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRoutingFirewallRuleResponse) ProtoMessage() {}
-
-func (x *CreateRoutingFirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateRoutingFirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*CreateRoutingFirewallRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateRoutingFirewallRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateRoutingFirewallRuleRequest represents the parameters for updates routing firewall rule with specified id
-type UpdateRoutingFirewallRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the Routing firewall rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the Routing firewall rule to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) Reset() {
-	*x = UpdateRoutingFirewallRuleRequest{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateRoutingFirewallRuleRequest) ProtoMessage() {}
-
-func (x *UpdateRoutingFirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateRoutingFirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateRoutingFirewallRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateRoutingFirewallRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateRoutingFirewallRuleResponse represents the response from updates routing firewall rule with specified id
-type UpdateRoutingFirewallRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateRoutingFirewallRuleResponse) Reset() {
-	*x = UpdateRoutingFirewallRuleResponse{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateRoutingFirewallRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateRoutingFirewallRuleResponse) ProtoMessage() {}
-
-func (x *UpdateRoutingFirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateRoutingFirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateRoutingFirewallRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UpdateRoutingFirewallRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteRoutingFirewallRuleRequest represents the parameters for deletes a routing firewall rule
-type DeleteRoutingFirewallRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the Routing firewall rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteRoutingFirewallRuleRequest) Reset() {
-	*x = DeleteRoutingFirewallRuleRequest{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteRoutingFirewallRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteRoutingFirewallRuleRequest) ProtoMessage() {}
-
-func (x *DeleteRoutingFirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteRoutingFirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteRoutingFirewallRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteRoutingFirewallRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteRoutingFirewallRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteRoutingFirewallRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteRoutingFirewallRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteRoutingFirewallRuleResponse represents the response from deletes a routing firewall rule
-type DeleteRoutingFirewallRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteRoutingFirewallRuleResponse) Reset() {
-	*x = DeleteRoutingFirewallRuleResponse{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteRoutingFirewallRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteRoutingFirewallRuleResponse) ProtoMessage() {}
-
-func (x *DeleteRoutingFirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteRoutingFirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteRoutingFirewallRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteRoutingFirewallRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListRoutingFirewallRulesRequest represents the parameters for lists all routing firewall rules
@@ -505,7 +119,7 @@ type ListRoutingFirewallRulesRequest struct {
 
 func (x *ListRoutingFirewallRulesRequest) Reset() {
 	*x = ListRoutingFirewallRulesRequest{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -517,7 +131,7 @@ func (x *ListRoutingFirewallRulesRequest) String() string {
 func (*ListRoutingFirewallRulesRequest) ProtoMessage() {}
 
 func (x *ListRoutingFirewallRulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -530,7 +144,7 @@ func (x *ListRoutingFirewallRulesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoutingFirewallRulesRequest.ProtoReflect.Descriptor instead.
 func (*ListRoutingFirewallRulesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListRoutingFirewallRulesRequest) GetId() int64 {
@@ -644,7 +258,7 @@ type ListRoutingFirewallRulesResponse struct {
 
 func (x *ListRoutingFirewallRulesResponse) Reset() {
 	*x = ListRoutingFirewallRulesResponse{}
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -656,7 +270,7 @@ func (x *ListRoutingFirewallRulesResponse) String() string {
 func (*ListRoutingFirewallRulesResponse) ProtoMessage() {}
 
 func (x *ListRoutingFirewallRulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -669,7 +283,7 @@ func (x *ListRoutingFirewallRulesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoutingFirewallRulesResponse.ProtoReflect.Descriptor instead.
 func (*ListRoutingFirewallRulesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListRoutingFirewallRulesResponse) GetItems() []*FirewallRule {
@@ -684,6 +298,453 @@ func (x *ListRoutingFirewallRulesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// CreateRoutingFirewallRuleRequest represents the parameters for creates a routing firewall rule in the given network in routed mode
+type CreateRoutingFirewallRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
+	// the starting port of firewall rule
+	PublicStartPort *int32 `protobuf:"varint,2,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
+	// the ending port of firewall rule
+	PublicEndPort *int32 `protobuf:"varint,3,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
+	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
+	SourceCidrList []string `protobuf:"bytes,4,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
+	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
+	DestinationCidrlist []string `protobuf:"bytes,5,rep,name=destination_cidrlist,json=destinationCidrlist" json:"destination_cidrlist,omitempty"`
+	// type of the ICMP message being sent
+	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
+	// error code for this ICMP message
+	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
+	// The network of the VM the firewall rule will be created for
+	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// the traffic type for the Routing firewall rule, can be ingress or egress, defaulted to ingress if not specified
+	TrafficType *string `protobuf:"bytes,9,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateRoutingFirewallRuleRequest) Reset() {
+	*x = CreateRoutingFirewallRuleRequest{}
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateRoutingFirewallRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRoutingFirewallRuleRequest) ProtoMessage() {}
+
+func (x *CreateRoutingFirewallRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRoutingFirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*CreateRoutingFirewallRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetPublicStartPort() int32 {
+	if x != nil && x.PublicStartPort != nil {
+		return *x.PublicStartPort
+	}
+	return 0
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetPublicEndPort() int32 {
+	if x != nil && x.PublicEndPort != nil {
+		return *x.PublicEndPort
+	}
+	return 0
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetSourceCidrList() []string {
+	if x != nil {
+		return x.SourceCidrList
+	}
+	return nil
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetDestinationCidrlist() []string {
+	if x != nil {
+		return x.DestinationCidrlist
+	}
+	return nil
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetIcmpType() int32 {
+	if x != nil && x.IcmpType != nil {
+		return *x.IcmpType
+	}
+	return 0
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetIcmpCode() int32 {
+	if x != nil && x.IcmpCode != nil {
+		return *x.IcmpCode
+	}
+	return 0
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
+	}
+	return ""
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateRoutingFirewallRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateRoutingFirewallRuleResponse represents the response from creates a routing firewall rule in the given network in routed mode
+type CreateRoutingFirewallRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateRoutingFirewallRuleResponse) Reset() {
+	*x = CreateRoutingFirewallRuleResponse{}
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateRoutingFirewallRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRoutingFirewallRuleResponse) ProtoMessage() {}
+
+func (x *CreateRoutingFirewallRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRoutingFirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*CreateRoutingFirewallRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreateRoutingFirewallRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateRoutingFirewallRuleRequest represents the parameters for updates routing firewall rule with specified id
+type UpdateRoutingFirewallRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the Routing firewall rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// an optional field, whether to the display the Routing firewall rule to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) Reset() {
+	*x = UpdateRoutingFirewallRuleRequest{}
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRoutingFirewallRuleRequest) ProtoMessage() {}
+
+func (x *UpdateRoutingFirewallRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRoutingFirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateRoutingFirewallRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateRoutingFirewallRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateRoutingFirewallRuleResponse represents the response from updates routing firewall rule with specified id
+type UpdateRoutingFirewallRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateRoutingFirewallRuleResponse) Reset() {
+	*x = UpdateRoutingFirewallRuleResponse{}
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateRoutingFirewallRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateRoutingFirewallRuleResponse) ProtoMessage() {}
+
+func (x *UpdateRoutingFirewallRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateRoutingFirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateRoutingFirewallRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateRoutingFirewallRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteRoutingFirewallRuleRequest represents the parameters for deletes a routing firewall rule
+type DeleteRoutingFirewallRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the Routing firewall rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRoutingFirewallRuleRequest) Reset() {
+	*x = DeleteRoutingFirewallRuleRequest{}
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRoutingFirewallRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRoutingFirewallRuleRequest) ProtoMessage() {}
+
+func (x *DeleteRoutingFirewallRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRoutingFirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRoutingFirewallRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteRoutingFirewallRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteRoutingFirewallRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteRoutingFirewallRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteRoutingFirewallRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteRoutingFirewallRuleResponse represents the response from deletes a routing firewall rule
+type DeleteRoutingFirewallRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRoutingFirewallRuleResponse) Reset() {
+	*x = DeleteRoutingFirewallRuleResponse{}
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRoutingFirewallRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRoutingFirewallRuleResponse) ProtoMessage() {}
+
+func (x *DeleteRoutingFirewallRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRoutingFirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteRoutingFirewallRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteRoutingFirewallRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // FirewallRule represents a FirewallRule Item
@@ -1054,7 +1115,33 @@ var File_cloudstack_management_network_routing_v1_routing_gen_proto protoreflect
 
 const file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDesc = "" +
 	"\n" +
-	":cloudstack/management/network/routing/v1/routing.gen.proto\x12(cloudstack.management.network.routing.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb3\x04\n" +
+	":cloudstack/management/network/routing/v1/routing.gen.proto\x12(cloudstack.management.network.routing.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xcc\x05\n" +
+	"\x1fListRoutingFirewallRulesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x02 \x01(\x03R\tnetworkId\x12!\n" +
+	"\ftraffic_type\x18\x03 \x01(\tR\vtrafficType\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12g\n" +
+	"\x04tags\x18\x05 \x03(\v2S.cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x98\x01\n" +
+	" ListRoutingFirewallRulesResponse\x12L\n" +
+	"\x05items\x18\x01 \x03(\v26.cloudstack.management.network.routing.v1.FirewallRuleR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb3\x04\n" +
 	" CreateRoutingFirewallRuleRequest\x12\"\n" +
 	"\bprotocol\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
 	"\x11public_start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
@@ -1088,33 +1175,7 @@ const file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDesc = 
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"m\n" +
 	"!DeleteRoutingFirewallRuleResponse\x12H\n" +
-	"\x06result\x18\x01 \x01(\v20.cloudstack.management.network.routing.v1.ResultR\x06result\"\xcc\x05\n" +
-	"\x1fListRoutingFirewallRulesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x02 \x01(\x03R\tnetworkId\x12!\n" +
-	"\ftraffic_type\x18\x03 \x01(\tR\vtrafficType\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12g\n" +
-	"\x04tags\x18\x05 \x03(\v2S.cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.TagsEntryR\x04tags\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x98\x01\n" +
-	" ListRoutingFirewallRulesResponse\x12L\n" +
-	"\x05items\x18\x01 \x03(\v26.cloudstack.management.network.routing.v1.FirewallRuleR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9b\x01\n" +
+	"\x06result\x18\x01 \x01(\v20.cloudstack.management.network.routing.v1.ResultR\x06result\"\x9b\x01\n" +
 	"\fFirewallRule\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1149,12 +1210,18 @@ const file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDesc = 
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xf9\x05\n" +
-	"\x0eRoutingService\x12\xb6\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*\x8a\x01\n" +
+	"\fProtocolType\x12\x1d\n" +
+	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x02\x12\x16\n" +
+	"\x12PROTOCOL_TYPE_ICMP\x10\x03\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_ALL\x10\x042\xf9\x05\n" +
+	"\x0eRoutingService\x12\xb3\x01\n" +
+	"\x18ListRoutingFirewallRules\x12I.cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest\x1aJ.cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse\"\x00\x12\xb6\x01\n" +
 	"\x19CreateRoutingFirewallRule\x12J.cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleRequest\x1aK.cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse\"\x00\x12\xb6\x01\n" +
 	"\x19UpdateRoutingFirewallRule\x12J.cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleRequest\x1aK.cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse\"\x00\x12\xb6\x01\n" +
-	"\x19DeleteRoutingFirewallRule\x12J.cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleRequest\x1aK.cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse\"\x00\x12\xb3\x01\n" +
-	"\x18ListRoutingFirewallRules\x12I.cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest\x1aJ.cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xec\x02\n" +
+	"\x19DeleteRoutingFirewallRule\x12J.cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleRequest\x1aK.cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xec\x02\n" +
 	",com.cloudstack.management.network.routing.v1B\x0fRoutingGenProtoP\x01Zfgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/network/routing/v1;routingv1\xa2\x02\x04CMNR\xaa\x02(Cloudstack.Management.Network.Routing.V1\xca\x02(Cloudstack\\Management\\Network\\Routing\\V1\xe2\x024Cloudstack\\Management\\Network\\Routing\\V1\\GPBMetadata\xea\x02,Cloudstack::Management::Network::Routing::V1b\beditionsp\xe8\a"
 
 var (
@@ -1169,38 +1236,40 @@ func file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescGZIP
 	return file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_network_routing_v1_routing_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_cloudstack_management_network_routing_v1_routing_gen_proto_goTypes = []any{
-	(*CreateRoutingFirewallRuleRequest)(nil),  // 0: cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleRequest
-	(*CreateRoutingFirewallRuleResponse)(nil), // 1: cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse
-	(*UpdateRoutingFirewallRuleRequest)(nil),  // 2: cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleRequest
-	(*UpdateRoutingFirewallRuleResponse)(nil), // 3: cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse
-	(*DeleteRoutingFirewallRuleRequest)(nil),  // 4: cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleRequest
-	(*DeleteRoutingFirewallRuleResponse)(nil), // 5: cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse
-	(*ListRoutingFirewallRulesRequest)(nil),   // 6: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest
-	(*ListRoutingFirewallRulesResponse)(nil),  // 7: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse
-	(*FirewallRule)(nil),                      // 8: cloudstack.management.network.routing.v1.FirewallRule
-	(*Success)(nil),                           // 9: cloudstack.management.network.routing.v1.Success
-	(*Item)(nil),                              // 10: cloudstack.management.network.routing.v1.Item
-	(*Result)(nil),                            // 11: cloudstack.management.network.routing.v1.Result
-	nil,                                       // 12: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.TagsEntry
-	nil,                                       // 13: cloudstack.management.network.routing.v1.Item.DetailsEntry
+	(ProtocolType)(0),                         // 0: cloudstack.management.network.routing.v1.ProtocolType
+	(*ListRoutingFirewallRulesRequest)(nil),   // 1: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest
+	(*ListRoutingFirewallRulesResponse)(nil),  // 2: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse
+	(*CreateRoutingFirewallRuleRequest)(nil),  // 3: cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleRequest
+	(*CreateRoutingFirewallRuleResponse)(nil), // 4: cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse
+	(*UpdateRoutingFirewallRuleRequest)(nil),  // 5: cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleRequest
+	(*UpdateRoutingFirewallRuleResponse)(nil), // 6: cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse
+	(*DeleteRoutingFirewallRuleRequest)(nil),  // 7: cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleRequest
+	(*DeleteRoutingFirewallRuleResponse)(nil), // 8: cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse
+	(*FirewallRule)(nil),                      // 9: cloudstack.management.network.routing.v1.FirewallRule
+	(*Success)(nil),                           // 10: cloudstack.management.network.routing.v1.Success
+	(*Item)(nil),                              // 11: cloudstack.management.network.routing.v1.Item
+	(*Result)(nil),                            // 12: cloudstack.management.network.routing.v1.Result
+	nil,                                       // 13: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.TagsEntry
+	nil,                                       // 14: cloudstack.management.network.routing.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_network_routing_v1_routing_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse.result:type_name -> cloudstack.management.network.routing.v1.Result
-	11, // 1: cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse.result:type_name -> cloudstack.management.network.routing.v1.Result
-	11, // 2: cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse.result:type_name -> cloudstack.management.network.routing.v1.Result
-	12, // 3: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.tags:type_name -> cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.TagsEntry
-	8,  // 4: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse.items:type_name -> cloudstack.management.network.routing.v1.FirewallRule
-	13, // 5: cloudstack.management.network.routing.v1.Item.details:type_name -> cloudstack.management.network.routing.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.network.routing.v1.RoutingService.CreateRoutingFirewallRule:input_type -> cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleRequest
-	2,  // 7: cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule:input_type -> cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleRequest
-	4,  // 8: cloudstack.management.network.routing.v1.RoutingService.DeleteRoutingFirewallRule:input_type -> cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleRequest
-	6,  // 9: cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules:input_type -> cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest
-	1,  // 10: cloudstack.management.network.routing.v1.RoutingService.CreateRoutingFirewallRule:output_type -> cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse
-	3,  // 11: cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule:output_type -> cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse
-	5,  // 12: cloudstack.management.network.routing.v1.RoutingService.DeleteRoutingFirewallRule:output_type -> cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse
-	7,  // 13: cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules:output_type -> cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse
+	13, // 0: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.tags:type_name -> cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest.TagsEntry
+	9,  // 1: cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse.items:type_name -> cloudstack.management.network.routing.v1.FirewallRule
+	12, // 2: cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse.result:type_name -> cloudstack.management.network.routing.v1.Result
+	12, // 3: cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse.result:type_name -> cloudstack.management.network.routing.v1.Result
+	12, // 4: cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse.result:type_name -> cloudstack.management.network.routing.v1.Result
+	14, // 5: cloudstack.management.network.routing.v1.Item.details:type_name -> cloudstack.management.network.routing.v1.Item.DetailsEntry
+	1,  // 6: cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules:input_type -> cloudstack.management.network.routing.v1.ListRoutingFirewallRulesRequest
+	3,  // 7: cloudstack.management.network.routing.v1.RoutingService.CreateRoutingFirewallRule:input_type -> cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleRequest
+	5,  // 8: cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule:input_type -> cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleRequest
+	7,  // 9: cloudstack.management.network.routing.v1.RoutingService.DeleteRoutingFirewallRule:input_type -> cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleRequest
+	2,  // 10: cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules:output_type -> cloudstack.management.network.routing.v1.ListRoutingFirewallRulesResponse
+	4,  // 11: cloudstack.management.network.routing.v1.RoutingService.CreateRoutingFirewallRule:output_type -> cloudstack.management.network.routing.v1.CreateRoutingFirewallRuleResponse
+	6,  // 12: cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule:output_type -> cloudstack.management.network.routing.v1.UpdateRoutingFirewallRuleResponse
+	8,  // 13: cloudstack.management.network.routing.v1.RoutingService.DeleteRoutingFirewallRule:output_type -> cloudstack.management.network.routing.v1.DeleteRoutingFirewallRuleResponse
 	10, // [10:14] is the sub-list for method output_type
 	6,  // [6:10] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
@@ -1218,13 +1287,14 @@ func file_cloudstack_management_network_routing_v1_routing_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDesc), len(file_cloudstack_management_network_routing_v1_routing_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_network_routing_v1_routing_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_network_routing_v1_routing_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_network_routing_v1_routing_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_network_routing_v1_routing_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_network_routing_v1_routing_gen_proto = out.File

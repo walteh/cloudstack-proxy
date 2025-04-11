@@ -10,11 +10,39 @@ import "google/protobuf/descriptor.proto";
 service DiagnosticsService {
 	option (annotations.service).scope = Scope_USER;
 
-	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	rpc RunDiagnostics(RunDiagnosticsRequest) returns (RunDiagnosticsResponse) {}
-
 	// GetDiagnosticsData Get diagnostics and files from system VMs
 	rpc GetDiagnosticsData(GetDiagnosticsDataRequest) returns (GetDiagnosticsDataResponse) {}
+
+	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
+	rpc RunDiagnostics(RunDiagnosticsRequest) returns (RunDiagnosticsResponse) {}
+}
+
+// GetDiagnosticsDataRequest represents the parameters for get diagnostics and files from system vms
+message GetDiagnosticsDataRequest {
+	// The ID of the system VM instance to retrieve diagnostics data files from
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// A comma separated list of diagnostics data files to be retrieved. Defaults are taken from global settings if none has been provided.
+	repeated string files_list = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// GetDiagnosticsDataResponse represents the response from get diagnostics and files from system vms
+message GetDiagnosticsDataResponse {
+	// The Result
+	Result result = 1;
 }
 
 // RunDiagnosticsRequest represents the parameters for execute network-utility command (ping/arping/tracert) on system vms remotely
@@ -52,34 +80,6 @@ message RunDiagnosticsRequest {
 
 // RunDiagnosticsResponse represents the response from execute network-utility command (ping/arping/tracert) on system vms remotely
 message RunDiagnosticsResponse {
-	// The Result
-	Result result = 1;
-}
-
-// GetDiagnosticsDataRequest represents the parameters for get diagnostics and files from system vms
-message GetDiagnosticsDataRequest {
-	// The ID of the system VM instance to retrieve diagnostics data files from
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// A comma separated list of diagnostics data files to be retrieved. Defaults are taken from global settings if none has been provided.
-	repeated string files_list = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// GetDiagnosticsDataResponse represents the response from get diagnostics and files from system vms
-message GetDiagnosticsDataResponse {
 	// The Result
 	Result result = 1;
 }

@@ -33,29 +33,29 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// EventServiceListEventsProcedure is the fully-qualified name of the EventService's ListEvents RPC.
-	EventServiceListEventsProcedure = "/cloudstack.management.event.v1.EventService/ListEvents"
-	// EventServiceListEventTypesProcedure is the fully-qualified name of the EventService's
-	// ListEventTypes RPC.
-	EventServiceListEventTypesProcedure = "/cloudstack.management.event.v1.EventService/ListEventTypes"
 	// EventServiceArchiveEventsProcedure is the fully-qualified name of the EventService's
 	// ArchiveEvents RPC.
 	EventServiceArchiveEventsProcedure = "/cloudstack.management.event.v1.EventService/ArchiveEvents"
+	// EventServiceListEventTypesProcedure is the fully-qualified name of the EventService's
+	// ListEventTypes RPC.
+	EventServiceListEventTypesProcedure = "/cloudstack.management.event.v1.EventService/ListEventTypes"
 	// EventServiceDeleteEventsProcedure is the fully-qualified name of the EventService's DeleteEvents
 	// RPC.
 	EventServiceDeleteEventsProcedure = "/cloudstack.management.event.v1.EventService/DeleteEvents"
+	// EventServiceListEventsProcedure is the fully-qualified name of the EventService's ListEvents RPC.
+	EventServiceListEventsProcedure = "/cloudstack.management.event.v1.EventService/ListEvents"
 )
 
 // EventServiceClient is a client for the cloudstack.management.event.v1.EventService service.
 type EventServiceClient interface {
-	// ListEvents A command to list events.
-	ListEvents(context.Context, *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error)
-	// ListEventTypes List Event Types
-	ListEventTypes(context.Context, *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error)
 	// ArchiveEvents Archive one or more events.
 	ArchiveEvents(context.Context, *connect.Request[v1.ArchiveEventsRequest]) (*connect.Response[v1.ArchiveEventsResponse], error)
+	// ListEventTypes List Event Types
+	ListEventTypes(context.Context, *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error)
 	// DeleteEvents Delete one or more events.
 	DeleteEvents(context.Context, *connect.Request[v1.DeleteEventsRequest]) (*connect.Response[v1.DeleteEventsResponse], error)
+	// ListEvents A command to list events.
+	ListEvents(context.Context, *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error)
 }
 
 // NewEventServiceClient constructs a client for the cloudstack.management.event.v1.EventService
@@ -69,10 +69,10 @@ func NewEventServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 	baseURL = strings.TrimRight(baseURL, "/")
 	eventServiceMethods := v1.File_cloudstack_management_event_v1_event_gen_proto.Services().ByName("EventService").Methods()
 	return &eventServiceClient{
-		listEvents: connect.NewClient[v1.ListEventsRequest, v1.ListEventsResponse](
+		archiveEvents: connect.NewClient[v1.ArchiveEventsRequest, v1.ArchiveEventsResponse](
 			httpClient,
-			baseURL+EventServiceListEventsProcedure,
-			connect.WithSchema(eventServiceMethods.ByName("ListEvents")),
+			baseURL+EventServiceArchiveEventsProcedure,
+			connect.WithSchema(eventServiceMethods.ByName("ArchiveEvents")),
 			connect.WithClientOptions(opts...),
 		),
 		listEventTypes: connect.NewClient[v1.ListEventTypesRequest, v1.ListEventTypesResponse](
@@ -81,16 +81,16 @@ func NewEventServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(eventServiceMethods.ByName("ListEventTypes")),
 			connect.WithClientOptions(opts...),
 		),
-		archiveEvents: connect.NewClient[v1.ArchiveEventsRequest, v1.ArchiveEventsResponse](
-			httpClient,
-			baseURL+EventServiceArchiveEventsProcedure,
-			connect.WithSchema(eventServiceMethods.ByName("ArchiveEvents")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteEvents: connect.NewClient[v1.DeleteEventsRequest, v1.DeleteEventsResponse](
 			httpClient,
 			baseURL+EventServiceDeleteEventsProcedure,
 			connect.WithSchema(eventServiceMethods.ByName("DeleteEvents")),
+			connect.WithClientOptions(opts...),
+		),
+		listEvents: connect.NewClient[v1.ListEventsRequest, v1.ListEventsResponse](
+			httpClient,
+			baseURL+EventServiceListEventsProcedure,
+			connect.WithSchema(eventServiceMethods.ByName("ListEvents")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -98,20 +98,10 @@ func NewEventServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 
 // eventServiceClient implements EventServiceClient.
 type eventServiceClient struct {
-	listEvents     *connect.Client[v1.ListEventsRequest, v1.ListEventsResponse]
-	listEventTypes *connect.Client[v1.ListEventTypesRequest, v1.ListEventTypesResponse]
 	archiveEvents  *connect.Client[v1.ArchiveEventsRequest, v1.ArchiveEventsResponse]
+	listEventTypes *connect.Client[v1.ListEventTypesRequest, v1.ListEventTypesResponse]
 	deleteEvents   *connect.Client[v1.DeleteEventsRequest, v1.DeleteEventsResponse]
-}
-
-// ListEvents calls cloudstack.management.event.v1.EventService.ListEvents.
-func (c *eventServiceClient) ListEvents(ctx context.Context, req *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error) {
-	return c.listEvents.CallUnary(ctx, req)
-}
-
-// ListEventTypes calls cloudstack.management.event.v1.EventService.ListEventTypes.
-func (c *eventServiceClient) ListEventTypes(ctx context.Context, req *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error) {
-	return c.listEventTypes.CallUnary(ctx, req)
+	listEvents     *connect.Client[v1.ListEventsRequest, v1.ListEventsResponse]
 }
 
 // ArchiveEvents calls cloudstack.management.event.v1.EventService.ArchiveEvents.
@@ -119,22 +109,32 @@ func (c *eventServiceClient) ArchiveEvents(ctx context.Context, req *connect.Req
 	return c.archiveEvents.CallUnary(ctx, req)
 }
 
+// ListEventTypes calls cloudstack.management.event.v1.EventService.ListEventTypes.
+func (c *eventServiceClient) ListEventTypes(ctx context.Context, req *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error) {
+	return c.listEventTypes.CallUnary(ctx, req)
+}
+
 // DeleteEvents calls cloudstack.management.event.v1.EventService.DeleteEvents.
 func (c *eventServiceClient) DeleteEvents(ctx context.Context, req *connect.Request[v1.DeleteEventsRequest]) (*connect.Response[v1.DeleteEventsResponse], error) {
 	return c.deleteEvents.CallUnary(ctx, req)
 }
 
+// ListEvents calls cloudstack.management.event.v1.EventService.ListEvents.
+func (c *eventServiceClient) ListEvents(ctx context.Context, req *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error) {
+	return c.listEvents.CallUnary(ctx, req)
+}
+
 // EventServiceHandler is an implementation of the cloudstack.management.event.v1.EventService
 // service.
 type EventServiceHandler interface {
-	// ListEvents A command to list events.
-	ListEvents(context.Context, *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error)
-	// ListEventTypes List Event Types
-	ListEventTypes(context.Context, *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error)
 	// ArchiveEvents Archive one or more events.
 	ArchiveEvents(context.Context, *connect.Request[v1.ArchiveEventsRequest]) (*connect.Response[v1.ArchiveEventsResponse], error)
+	// ListEventTypes List Event Types
+	ListEventTypes(context.Context, *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error)
 	// DeleteEvents Delete one or more events.
 	DeleteEvents(context.Context, *connect.Request[v1.DeleteEventsRequest]) (*connect.Response[v1.DeleteEventsResponse], error)
+	// ListEvents A command to list events.
+	ListEvents(context.Context, *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error)
 }
 
 // NewEventServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -144,10 +144,10 @@ type EventServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewEventServiceHandler(svc EventServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	eventServiceMethods := v1.File_cloudstack_management_event_v1_event_gen_proto.Services().ByName("EventService").Methods()
-	eventServiceListEventsHandler := connect.NewUnaryHandler(
-		EventServiceListEventsProcedure,
-		svc.ListEvents,
-		connect.WithSchema(eventServiceMethods.ByName("ListEvents")),
+	eventServiceArchiveEventsHandler := connect.NewUnaryHandler(
+		EventServiceArchiveEventsProcedure,
+		svc.ArchiveEvents,
+		connect.WithSchema(eventServiceMethods.ByName("ArchiveEvents")),
 		connect.WithHandlerOptions(opts...),
 	)
 	eventServiceListEventTypesHandler := connect.NewUnaryHandler(
@@ -156,28 +156,28 @@ func NewEventServiceHandler(svc EventServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(eventServiceMethods.ByName("ListEventTypes")),
 		connect.WithHandlerOptions(opts...),
 	)
-	eventServiceArchiveEventsHandler := connect.NewUnaryHandler(
-		EventServiceArchiveEventsProcedure,
-		svc.ArchiveEvents,
-		connect.WithSchema(eventServiceMethods.ByName("ArchiveEvents")),
-		connect.WithHandlerOptions(opts...),
-	)
 	eventServiceDeleteEventsHandler := connect.NewUnaryHandler(
 		EventServiceDeleteEventsProcedure,
 		svc.DeleteEvents,
 		connect.WithSchema(eventServiceMethods.ByName("DeleteEvents")),
 		connect.WithHandlerOptions(opts...),
 	)
+	eventServiceListEventsHandler := connect.NewUnaryHandler(
+		EventServiceListEventsProcedure,
+		svc.ListEvents,
+		connect.WithSchema(eventServiceMethods.ByName("ListEvents")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.event.v1.EventService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case EventServiceListEventsProcedure:
-			eventServiceListEventsHandler.ServeHTTP(w, r)
-		case EventServiceListEventTypesProcedure:
-			eventServiceListEventTypesHandler.ServeHTTP(w, r)
 		case EventServiceArchiveEventsProcedure:
 			eventServiceArchiveEventsHandler.ServeHTTP(w, r)
+		case EventServiceListEventTypesProcedure:
+			eventServiceListEventTypesHandler.ServeHTTP(w, r)
 		case EventServiceDeleteEventsProcedure:
 			eventServiceDeleteEventsHandler.ServeHTTP(w, r)
+		case EventServiceListEventsProcedure:
+			eventServiceListEventsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -187,18 +187,18 @@ func NewEventServiceHandler(svc EventServiceHandler, opts ...connect.HandlerOpti
 // UnimplementedEventServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedEventServiceHandler struct{}
 
-func (UnimplementedEventServiceHandler) ListEvents(context.Context, *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.event.v1.EventService.ListEvents is not implemented"))
+func (UnimplementedEventServiceHandler) ArchiveEvents(context.Context, *connect.Request[v1.ArchiveEventsRequest]) (*connect.Response[v1.ArchiveEventsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.event.v1.EventService.ArchiveEvents is not implemented"))
 }
 
 func (UnimplementedEventServiceHandler) ListEventTypes(context.Context, *connect.Request[v1.ListEventTypesRequest]) (*connect.Response[v1.ListEventTypesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.event.v1.EventService.ListEventTypes is not implemented"))
 }
 
-func (UnimplementedEventServiceHandler) ArchiveEvents(context.Context, *connect.Request[v1.ArchiveEventsRequest]) (*connect.Response[v1.ArchiveEventsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.event.v1.EventService.ArchiveEvents is not implemented"))
-}
-
 func (UnimplementedEventServiceHandler) DeleteEvents(context.Context, *connect.Request[v1.DeleteEventsRequest]) (*connect.Response[v1.DeleteEventsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.event.v1.EventService.DeleteEvents is not implemented"))
+}
+
+func (UnimplementedEventServiceHandler) ListEvents(context.Context, *connect.Request[v1.ListEventsRequest]) (*connect.Response[v1.ListEventsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.event.v1.EventService.ListEvents is not implemented"))
 }

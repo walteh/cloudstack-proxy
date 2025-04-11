@@ -33,86 +33,86 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ResourceServiceListResourceLimitsProcedure is the fully-qualified name of the ResourceService's
-	// ListResourceLimits RPC.
-	ResourceServiceListResourceLimitsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListResourceLimits"
-	// ResourceServiceUpdateResourceCountProcedure is the fully-qualified name of the ResourceService's
-	// UpdateResourceCount RPC.
-	ResourceServiceUpdateResourceCountProcedure = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceCount"
 	// ResourceServiceStartRollingMaintenanceProcedure is the fully-qualified name of the
 	// ResourceService's StartRollingMaintenance RPC.
 	ResourceServiceStartRollingMaintenanceProcedure = "/cloudstack.management.resource.v1.ResourceService/StartRollingMaintenance"
-	// ResourceServiceListAlertsProcedure is the fully-qualified name of the ResourceService's
-	// ListAlerts RPC.
-	ResourceServiceListAlertsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListAlerts"
-	// ResourceServiceUpdateResourceLimitProcedure is the fully-qualified name of the ResourceService's
-	// UpdateResourceLimit RPC.
-	ResourceServiceUpdateResourceLimitProcedure = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceLimit"
-	// ResourceServiceListDetailOptionsProcedure is the fully-qualified name of the ResourceService's
-	// ListDetailOptions RPC.
-	ResourceServiceListDetailOptionsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListDetailOptions"
-	// ResourceServiceDeleteAlertsProcedure is the fully-qualified name of the ResourceService's
-	// DeleteAlerts RPC.
-	ResourceServiceDeleteAlertsProcedure = "/cloudstack.management.resource.v1.ResourceService/DeleteAlerts"
-	// ResourceServiceListCapacityProcedure is the fully-qualified name of the ResourceService's
-	// ListCapacity RPC.
-	ResourceServiceListCapacityProcedure = "/cloudstack.management.resource.v1.ResourceService/ListCapacity"
-	// ResourceServiceListHypervisorsProcedure is the fully-qualified name of the ResourceService's
-	// ListHypervisors RPC.
-	ResourceServiceListHypervisorsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListHypervisors"
-	// ResourceServiceCleanVMReservationsProcedure is the fully-qualified name of the ResourceService's
-	// CleanVMReservations RPC.
-	ResourceServiceCleanVMReservationsProcedure = "/cloudstack.management.resource.v1.ResourceService/CleanVMReservations"
 	// ResourceServiceUploadCustomCertificateProcedure is the fully-qualified name of the
 	// ResourceService's UploadCustomCertificate RPC.
 	ResourceServiceUploadCustomCertificateProcedure = "/cloudstack.management.resource.v1.ResourceService/UploadCustomCertificate"
 	// ResourceServiceGetCloudIdentifierProcedure is the fully-qualified name of the ResourceService's
 	// GetCloudIdentifier RPC.
 	ResourceServiceGetCloudIdentifierProcedure = "/cloudstack.management.resource.v1.ResourceService/GetCloudIdentifier"
-	// ResourceServiceArchiveAlertsProcedure is the fully-qualified name of the ResourceService's
-	// ArchiveAlerts RPC.
-	ResourceServiceArchiveAlertsProcedure = "/cloudstack.management.resource.v1.ResourceService/ArchiveAlerts"
+	// ResourceServiceListCapacityProcedure is the fully-qualified name of the ResourceService's
+	// ListCapacity RPC.
+	ResourceServiceListCapacityProcedure = "/cloudstack.management.resource.v1.ResourceService/ListCapacity"
+	// ResourceServiceListAlertsProcedure is the fully-qualified name of the ResourceService's
+	// ListAlerts RPC.
+	ResourceServiceListAlertsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListAlerts"
+	// ResourceServiceListHypervisorsProcedure is the fully-qualified name of the ResourceService's
+	// ListHypervisors RPC.
+	ResourceServiceListHypervisorsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListHypervisors"
+	// ResourceServiceUpdateResourceCountProcedure is the fully-qualified name of the ResourceService's
+	// UpdateResourceCount RPC.
+	ResourceServiceUpdateResourceCountProcedure = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceCount"
 	// ResourceServicePurgeExpungedResourcesProcedure is the fully-qualified name of the
 	// ResourceService's PurgeExpungedResources RPC.
 	ResourceServicePurgeExpungedResourcesProcedure = "/cloudstack.management.resource.v1.ResourceService/PurgeExpungedResources"
+	// ResourceServiceListResourceLimitsProcedure is the fully-qualified name of the ResourceService's
+	// ListResourceLimits RPC.
+	ResourceServiceListResourceLimitsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListResourceLimits"
+	// ResourceServiceCleanVMReservationsProcedure is the fully-qualified name of the ResourceService's
+	// CleanVMReservations RPC.
+	ResourceServiceCleanVMReservationsProcedure = "/cloudstack.management.resource.v1.ResourceService/CleanVMReservations"
+	// ResourceServiceArchiveAlertsProcedure is the fully-qualified name of the ResourceService's
+	// ArchiveAlerts RPC.
+	ResourceServiceArchiveAlertsProcedure = "/cloudstack.management.resource.v1.ResourceService/ArchiveAlerts"
+	// ResourceServiceUpdateResourceLimitProcedure is the fully-qualified name of the ResourceService's
+	// UpdateResourceLimit RPC.
+	ResourceServiceUpdateResourceLimitProcedure = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceLimit"
+	// ResourceServiceDeleteAlertsProcedure is the fully-qualified name of the ResourceService's
+	// DeleteAlerts RPC.
+	ResourceServiceDeleteAlertsProcedure = "/cloudstack.management.resource.v1.ResourceService/DeleteAlerts"
 	// ResourceServiceListAlertTypesProcedure is the fully-qualified name of the ResourceService's
 	// ListAlertTypes RPC.
 	ResourceServiceListAlertTypesProcedure = "/cloudstack.management.resource.v1.ResourceService/ListAlertTypes"
+	// ResourceServiceListDetailOptionsProcedure is the fully-qualified name of the ResourceService's
+	// ListDetailOptions RPC.
+	ResourceServiceListDetailOptionsProcedure = "/cloudstack.management.resource.v1.ResourceService/ListDetailOptions"
 )
 
 // ResourceServiceClient is a client for the cloudstack.management.resource.v1.ResourceService
 // service.
 type ResourceServiceClient interface {
-	// ListResourceLimits Lists resource limits.
-	ListResourceLimits(context.Context, *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error)
-	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
-	UpdateResourceCount(context.Context, *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error)
 	// StartRollingMaintenance Start rolling maintenance
 	StartRollingMaintenance(context.Context, *connect.Request[v1.StartRollingMaintenanceRequest]) (*connect.Response[v1.StartRollingMaintenanceResponse], error)
-	// ListAlerts Lists all alerts.
-	ListAlerts(context.Context, *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error)
-	// UpdateResourceLimit Updates resource limits for an account or domain.
-	UpdateResourceLimit(context.Context, *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error)
-	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
-	ListDetailOptions(context.Context, *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error)
-	// DeleteAlerts Delete one or more alerts.
-	DeleteAlerts(context.Context, *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error)
-	// ListCapacity Lists all the system wide capacities.
-	ListCapacity(context.Context, *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error)
-	// ListHypervisors List hypervisors
-	ListHypervisors(context.Context, *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error)
-	// CleanVMReservations Cleanups VM reservations in the database.
-	CleanVMReservations(context.Context, *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error)
 	// UploadCustomCertificate Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself.
 	UploadCustomCertificate(context.Context, *connect.Request[v1.UploadCustomCertificateRequest]) (*connect.Response[v1.UploadCustomCertificateResponse], error)
 	// GetCloudIdentifier Retrieves a cloud identifier.
 	GetCloudIdentifier(context.Context, *connect.Request[v1.GetCloudIdentifierRequest]) (*connect.Response[v1.GetCloudIdentifierResponse], error)
-	// ArchiveAlerts Archive one or more alerts.
-	ArchiveAlerts(context.Context, *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error)
+	// ListCapacity Lists all the system wide capacities.
+	ListCapacity(context.Context, *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error)
+	// ListAlerts Lists all alerts.
+	ListAlerts(context.Context, *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error)
+	// ListHypervisors List hypervisors
+	ListHypervisors(context.Context, *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error)
+	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
+	UpdateResourceCount(context.Context, *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error)
 	// PurgeExpungedResources Purge expunged resources
 	PurgeExpungedResources(context.Context, *connect.Request[v1.PurgeExpungedResourcesRequest]) (*connect.Response[v1.PurgeExpungedResourcesResponse], error)
+	// ListResourceLimits Lists resource limits.
+	ListResourceLimits(context.Context, *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error)
+	// CleanVMReservations Cleanups VM reservations in the database.
+	CleanVMReservations(context.Context, *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error)
+	// ArchiveAlerts Archive one or more alerts.
+	ArchiveAlerts(context.Context, *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error)
+	// UpdateResourceLimit Updates resource limits for an account or domain.
+	UpdateResourceLimit(context.Context, *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error)
+	// DeleteAlerts Delete one or more alerts.
+	DeleteAlerts(context.Context, *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error)
 	// ListAlertTypes Lists all alerts types
 	ListAlertTypes(context.Context, *connect.Request[v1.ListAlertTypesRequest]) (*connect.Response[v1.ListAlertTypesResponse], error)
+	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
+	ListDetailOptions(context.Context, *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error)
 }
 
 // NewResourceServiceClient constructs a client for the
@@ -127,64 +127,10 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	resourceServiceMethods := v1.File_cloudstack_management_resource_v1_resource_gen_proto.Services().ByName("ResourceService").Methods()
 	return &resourceServiceClient{
-		listResourceLimits: connect.NewClient[v1.ListResourceLimitsRequest, v1.ListResourceLimitsResponse](
-			httpClient,
-			baseURL+ResourceServiceListResourceLimitsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("ListResourceLimits")),
-			connect.WithClientOptions(opts...),
-		),
-		updateResourceCount: connect.NewClient[v1.UpdateResourceCountRequest, v1.UpdateResourceCountResponse](
-			httpClient,
-			baseURL+ResourceServiceUpdateResourceCountProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceCount")),
-			connect.WithClientOptions(opts...),
-		),
 		startRollingMaintenance: connect.NewClient[v1.StartRollingMaintenanceRequest, v1.StartRollingMaintenanceResponse](
 			httpClient,
 			baseURL+ResourceServiceStartRollingMaintenanceProcedure,
 			connect.WithSchema(resourceServiceMethods.ByName("StartRollingMaintenance")),
-			connect.WithClientOptions(opts...),
-		),
-		listAlerts: connect.NewClient[v1.ListAlertsRequest, v1.ListAlertsResponse](
-			httpClient,
-			baseURL+ResourceServiceListAlertsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("ListAlerts")),
-			connect.WithClientOptions(opts...),
-		),
-		updateResourceLimit: connect.NewClient[v1.UpdateResourceLimitRequest, v1.UpdateResourceLimitResponse](
-			httpClient,
-			baseURL+ResourceServiceUpdateResourceLimitProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceLimit")),
-			connect.WithClientOptions(opts...),
-		),
-		listDetailOptions: connect.NewClient[v1.ListDetailOptionsRequest, v1.ListDetailOptionsResponse](
-			httpClient,
-			baseURL+ResourceServiceListDetailOptionsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("ListDetailOptions")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteAlerts: connect.NewClient[v1.DeleteAlertsRequest, v1.DeleteAlertsResponse](
-			httpClient,
-			baseURL+ResourceServiceDeleteAlertsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("DeleteAlerts")),
-			connect.WithClientOptions(opts...),
-		),
-		listCapacity: connect.NewClient[v1.ListCapacityRequest, v1.ListCapacityResponse](
-			httpClient,
-			baseURL+ResourceServiceListCapacityProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("ListCapacity")),
-			connect.WithClientOptions(opts...),
-		),
-		listHypervisors: connect.NewClient[v1.ListHypervisorsRequest, v1.ListHypervisorsResponse](
-			httpClient,
-			baseURL+ResourceServiceListHypervisorsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("ListHypervisors")),
-			connect.WithClientOptions(opts...),
-		),
-		cleanVMReservations: connect.NewClient[v1.CleanVMReservationsRequest, v1.CleanVMReservationsResponse](
-			httpClient,
-			baseURL+ResourceServiceCleanVMReservationsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("CleanVMReservations")),
 			connect.WithClientOptions(opts...),
 		),
 		uploadCustomCertificate: connect.NewClient[v1.UploadCustomCertificateRequest, v1.UploadCustomCertificateResponse](
@@ -199,10 +145,28 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(resourceServiceMethods.ByName("GetCloudIdentifier")),
 			connect.WithClientOptions(opts...),
 		),
-		archiveAlerts: connect.NewClient[v1.ArchiveAlertsRequest, v1.ArchiveAlertsResponse](
+		listCapacity: connect.NewClient[v1.ListCapacityRequest, v1.ListCapacityResponse](
 			httpClient,
-			baseURL+ResourceServiceArchiveAlertsProcedure,
-			connect.WithSchema(resourceServiceMethods.ByName("ArchiveAlerts")),
+			baseURL+ResourceServiceListCapacityProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ListCapacity")),
+			connect.WithClientOptions(opts...),
+		),
+		listAlerts: connect.NewClient[v1.ListAlertsRequest, v1.ListAlertsResponse](
+			httpClient,
+			baseURL+ResourceServiceListAlertsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ListAlerts")),
+			connect.WithClientOptions(opts...),
+		),
+		listHypervisors: connect.NewClient[v1.ListHypervisorsRequest, v1.ListHypervisorsResponse](
+			httpClient,
+			baseURL+ResourceServiceListHypervisorsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ListHypervisors")),
+			connect.WithClientOptions(opts...),
+		),
+		updateResourceCount: connect.NewClient[v1.UpdateResourceCountRequest, v1.UpdateResourceCountResponse](
+			httpClient,
+			baseURL+ResourceServiceUpdateResourceCountProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceCount")),
 			connect.WithClientOptions(opts...),
 		),
 		purgeExpungedResources: connect.NewClient[v1.PurgeExpungedResourcesRequest, v1.PurgeExpungedResourcesResponse](
@@ -211,10 +175,46 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(resourceServiceMethods.ByName("PurgeExpungedResources")),
 			connect.WithClientOptions(opts...),
 		),
+		listResourceLimits: connect.NewClient[v1.ListResourceLimitsRequest, v1.ListResourceLimitsResponse](
+			httpClient,
+			baseURL+ResourceServiceListResourceLimitsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ListResourceLimits")),
+			connect.WithClientOptions(opts...),
+		),
+		cleanVMReservations: connect.NewClient[v1.CleanVMReservationsRequest, v1.CleanVMReservationsResponse](
+			httpClient,
+			baseURL+ResourceServiceCleanVMReservationsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("CleanVMReservations")),
+			connect.WithClientOptions(opts...),
+		),
+		archiveAlerts: connect.NewClient[v1.ArchiveAlertsRequest, v1.ArchiveAlertsResponse](
+			httpClient,
+			baseURL+ResourceServiceArchiveAlertsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ArchiveAlerts")),
+			connect.WithClientOptions(opts...),
+		),
+		updateResourceLimit: connect.NewClient[v1.UpdateResourceLimitRequest, v1.UpdateResourceLimitResponse](
+			httpClient,
+			baseURL+ResourceServiceUpdateResourceLimitProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceLimit")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteAlerts: connect.NewClient[v1.DeleteAlertsRequest, v1.DeleteAlertsResponse](
+			httpClient,
+			baseURL+ResourceServiceDeleteAlertsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("DeleteAlerts")),
+			connect.WithClientOptions(opts...),
+		),
 		listAlertTypes: connect.NewClient[v1.ListAlertTypesRequest, v1.ListAlertTypesResponse](
 			httpClient,
 			baseURL+ResourceServiceListAlertTypesProcedure,
 			connect.WithSchema(resourceServiceMethods.ByName("ListAlertTypes")),
+			connect.WithClientOptions(opts...),
+		),
+		listDetailOptions: connect.NewClient[v1.ListDetailOptionsRequest, v1.ListDetailOptionsResponse](
+			httpClient,
+			baseURL+ResourceServiceListDetailOptionsProcedure,
+			connect.WithSchema(resourceServiceMethods.ByName("ListDetailOptions")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -222,72 +222,27 @@ func NewResourceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // resourceServiceClient implements ResourceServiceClient.
 type resourceServiceClient struct {
-	listResourceLimits      *connect.Client[v1.ListResourceLimitsRequest, v1.ListResourceLimitsResponse]
-	updateResourceCount     *connect.Client[v1.UpdateResourceCountRequest, v1.UpdateResourceCountResponse]
 	startRollingMaintenance *connect.Client[v1.StartRollingMaintenanceRequest, v1.StartRollingMaintenanceResponse]
-	listAlerts              *connect.Client[v1.ListAlertsRequest, v1.ListAlertsResponse]
-	updateResourceLimit     *connect.Client[v1.UpdateResourceLimitRequest, v1.UpdateResourceLimitResponse]
-	listDetailOptions       *connect.Client[v1.ListDetailOptionsRequest, v1.ListDetailOptionsResponse]
-	deleteAlerts            *connect.Client[v1.DeleteAlertsRequest, v1.DeleteAlertsResponse]
-	listCapacity            *connect.Client[v1.ListCapacityRequest, v1.ListCapacityResponse]
-	listHypervisors         *connect.Client[v1.ListHypervisorsRequest, v1.ListHypervisorsResponse]
-	cleanVMReservations     *connect.Client[v1.CleanVMReservationsRequest, v1.CleanVMReservationsResponse]
 	uploadCustomCertificate *connect.Client[v1.UploadCustomCertificateRequest, v1.UploadCustomCertificateResponse]
 	getCloudIdentifier      *connect.Client[v1.GetCloudIdentifierRequest, v1.GetCloudIdentifierResponse]
-	archiveAlerts           *connect.Client[v1.ArchiveAlertsRequest, v1.ArchiveAlertsResponse]
+	listCapacity            *connect.Client[v1.ListCapacityRequest, v1.ListCapacityResponse]
+	listAlerts              *connect.Client[v1.ListAlertsRequest, v1.ListAlertsResponse]
+	listHypervisors         *connect.Client[v1.ListHypervisorsRequest, v1.ListHypervisorsResponse]
+	updateResourceCount     *connect.Client[v1.UpdateResourceCountRequest, v1.UpdateResourceCountResponse]
 	purgeExpungedResources  *connect.Client[v1.PurgeExpungedResourcesRequest, v1.PurgeExpungedResourcesResponse]
+	listResourceLimits      *connect.Client[v1.ListResourceLimitsRequest, v1.ListResourceLimitsResponse]
+	cleanVMReservations     *connect.Client[v1.CleanVMReservationsRequest, v1.CleanVMReservationsResponse]
+	archiveAlerts           *connect.Client[v1.ArchiveAlertsRequest, v1.ArchiveAlertsResponse]
+	updateResourceLimit     *connect.Client[v1.UpdateResourceLimitRequest, v1.UpdateResourceLimitResponse]
+	deleteAlerts            *connect.Client[v1.DeleteAlertsRequest, v1.DeleteAlertsResponse]
 	listAlertTypes          *connect.Client[v1.ListAlertTypesRequest, v1.ListAlertTypesResponse]
-}
-
-// ListResourceLimits calls cloudstack.management.resource.v1.ResourceService.ListResourceLimits.
-func (c *resourceServiceClient) ListResourceLimits(ctx context.Context, req *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error) {
-	return c.listResourceLimits.CallUnary(ctx, req)
-}
-
-// UpdateResourceCount calls cloudstack.management.resource.v1.ResourceService.UpdateResourceCount.
-func (c *resourceServiceClient) UpdateResourceCount(ctx context.Context, req *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error) {
-	return c.updateResourceCount.CallUnary(ctx, req)
+	listDetailOptions       *connect.Client[v1.ListDetailOptionsRequest, v1.ListDetailOptionsResponse]
 }
 
 // StartRollingMaintenance calls
 // cloudstack.management.resource.v1.ResourceService.StartRollingMaintenance.
 func (c *resourceServiceClient) StartRollingMaintenance(ctx context.Context, req *connect.Request[v1.StartRollingMaintenanceRequest]) (*connect.Response[v1.StartRollingMaintenanceResponse], error) {
 	return c.startRollingMaintenance.CallUnary(ctx, req)
-}
-
-// ListAlerts calls cloudstack.management.resource.v1.ResourceService.ListAlerts.
-func (c *resourceServiceClient) ListAlerts(ctx context.Context, req *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error) {
-	return c.listAlerts.CallUnary(ctx, req)
-}
-
-// UpdateResourceLimit calls cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit.
-func (c *resourceServiceClient) UpdateResourceLimit(ctx context.Context, req *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error) {
-	return c.updateResourceLimit.CallUnary(ctx, req)
-}
-
-// ListDetailOptions calls cloudstack.management.resource.v1.ResourceService.ListDetailOptions.
-func (c *resourceServiceClient) ListDetailOptions(ctx context.Context, req *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error) {
-	return c.listDetailOptions.CallUnary(ctx, req)
-}
-
-// DeleteAlerts calls cloudstack.management.resource.v1.ResourceService.DeleteAlerts.
-func (c *resourceServiceClient) DeleteAlerts(ctx context.Context, req *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error) {
-	return c.deleteAlerts.CallUnary(ctx, req)
-}
-
-// ListCapacity calls cloudstack.management.resource.v1.ResourceService.ListCapacity.
-func (c *resourceServiceClient) ListCapacity(ctx context.Context, req *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error) {
-	return c.listCapacity.CallUnary(ctx, req)
-}
-
-// ListHypervisors calls cloudstack.management.resource.v1.ResourceService.ListHypervisors.
-func (c *resourceServiceClient) ListHypervisors(ctx context.Context, req *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error) {
-	return c.listHypervisors.CallUnary(ctx, req)
-}
-
-// CleanVMReservations calls cloudstack.management.resource.v1.ResourceService.CleanVMReservations.
-func (c *resourceServiceClient) CleanVMReservations(ctx context.Context, req *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error) {
-	return c.cleanVMReservations.CallUnary(ctx, req)
 }
 
 // UploadCustomCertificate calls
@@ -301,9 +256,24 @@ func (c *resourceServiceClient) GetCloudIdentifier(ctx context.Context, req *con
 	return c.getCloudIdentifier.CallUnary(ctx, req)
 }
 
-// ArchiveAlerts calls cloudstack.management.resource.v1.ResourceService.ArchiveAlerts.
-func (c *resourceServiceClient) ArchiveAlerts(ctx context.Context, req *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error) {
-	return c.archiveAlerts.CallUnary(ctx, req)
+// ListCapacity calls cloudstack.management.resource.v1.ResourceService.ListCapacity.
+func (c *resourceServiceClient) ListCapacity(ctx context.Context, req *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error) {
+	return c.listCapacity.CallUnary(ctx, req)
+}
+
+// ListAlerts calls cloudstack.management.resource.v1.ResourceService.ListAlerts.
+func (c *resourceServiceClient) ListAlerts(ctx context.Context, req *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error) {
+	return c.listAlerts.CallUnary(ctx, req)
+}
+
+// ListHypervisors calls cloudstack.management.resource.v1.ResourceService.ListHypervisors.
+func (c *resourceServiceClient) ListHypervisors(ctx context.Context, req *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error) {
+	return c.listHypervisors.CallUnary(ctx, req)
+}
+
+// UpdateResourceCount calls cloudstack.management.resource.v1.ResourceService.UpdateResourceCount.
+func (c *resourceServiceClient) UpdateResourceCount(ctx context.Context, req *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error) {
+	return c.updateResourceCount.CallUnary(ctx, req)
 }
 
 // PurgeExpungedResources calls
@@ -312,44 +282,74 @@ func (c *resourceServiceClient) PurgeExpungedResources(ctx context.Context, req 
 	return c.purgeExpungedResources.CallUnary(ctx, req)
 }
 
+// ListResourceLimits calls cloudstack.management.resource.v1.ResourceService.ListResourceLimits.
+func (c *resourceServiceClient) ListResourceLimits(ctx context.Context, req *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error) {
+	return c.listResourceLimits.CallUnary(ctx, req)
+}
+
+// CleanVMReservations calls cloudstack.management.resource.v1.ResourceService.CleanVMReservations.
+func (c *resourceServiceClient) CleanVMReservations(ctx context.Context, req *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error) {
+	return c.cleanVMReservations.CallUnary(ctx, req)
+}
+
+// ArchiveAlerts calls cloudstack.management.resource.v1.ResourceService.ArchiveAlerts.
+func (c *resourceServiceClient) ArchiveAlerts(ctx context.Context, req *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error) {
+	return c.archiveAlerts.CallUnary(ctx, req)
+}
+
+// UpdateResourceLimit calls cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit.
+func (c *resourceServiceClient) UpdateResourceLimit(ctx context.Context, req *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error) {
+	return c.updateResourceLimit.CallUnary(ctx, req)
+}
+
+// DeleteAlerts calls cloudstack.management.resource.v1.ResourceService.DeleteAlerts.
+func (c *resourceServiceClient) DeleteAlerts(ctx context.Context, req *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error) {
+	return c.deleteAlerts.CallUnary(ctx, req)
+}
+
 // ListAlertTypes calls cloudstack.management.resource.v1.ResourceService.ListAlertTypes.
 func (c *resourceServiceClient) ListAlertTypes(ctx context.Context, req *connect.Request[v1.ListAlertTypesRequest]) (*connect.Response[v1.ListAlertTypesResponse], error) {
 	return c.listAlertTypes.CallUnary(ctx, req)
 }
 
+// ListDetailOptions calls cloudstack.management.resource.v1.ResourceService.ListDetailOptions.
+func (c *resourceServiceClient) ListDetailOptions(ctx context.Context, req *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error) {
+	return c.listDetailOptions.CallUnary(ctx, req)
+}
+
 // ResourceServiceHandler is an implementation of the
 // cloudstack.management.resource.v1.ResourceService service.
 type ResourceServiceHandler interface {
-	// ListResourceLimits Lists resource limits.
-	ListResourceLimits(context.Context, *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error)
-	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
-	UpdateResourceCount(context.Context, *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error)
 	// StartRollingMaintenance Start rolling maintenance
 	StartRollingMaintenance(context.Context, *connect.Request[v1.StartRollingMaintenanceRequest]) (*connect.Response[v1.StartRollingMaintenanceResponse], error)
-	// ListAlerts Lists all alerts.
-	ListAlerts(context.Context, *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error)
-	// UpdateResourceLimit Updates resource limits for an account or domain.
-	UpdateResourceLimit(context.Context, *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error)
-	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
-	ListDetailOptions(context.Context, *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error)
-	// DeleteAlerts Delete one or more alerts.
-	DeleteAlerts(context.Context, *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error)
-	// ListCapacity Lists all the system wide capacities.
-	ListCapacity(context.Context, *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error)
-	// ListHypervisors List hypervisors
-	ListHypervisors(context.Context, *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error)
-	// CleanVMReservations Cleanups VM reservations in the database.
-	CleanVMReservations(context.Context, *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error)
 	// UploadCustomCertificate Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself.
 	UploadCustomCertificate(context.Context, *connect.Request[v1.UploadCustomCertificateRequest]) (*connect.Response[v1.UploadCustomCertificateResponse], error)
 	// GetCloudIdentifier Retrieves a cloud identifier.
 	GetCloudIdentifier(context.Context, *connect.Request[v1.GetCloudIdentifierRequest]) (*connect.Response[v1.GetCloudIdentifierResponse], error)
-	// ArchiveAlerts Archive one or more alerts.
-	ArchiveAlerts(context.Context, *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error)
+	// ListCapacity Lists all the system wide capacities.
+	ListCapacity(context.Context, *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error)
+	// ListAlerts Lists all alerts.
+	ListAlerts(context.Context, *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error)
+	// ListHypervisors List hypervisors
+	ListHypervisors(context.Context, *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error)
+	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
+	UpdateResourceCount(context.Context, *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error)
 	// PurgeExpungedResources Purge expunged resources
 	PurgeExpungedResources(context.Context, *connect.Request[v1.PurgeExpungedResourcesRequest]) (*connect.Response[v1.PurgeExpungedResourcesResponse], error)
+	// ListResourceLimits Lists resource limits.
+	ListResourceLimits(context.Context, *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error)
+	// CleanVMReservations Cleanups VM reservations in the database.
+	CleanVMReservations(context.Context, *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error)
+	// ArchiveAlerts Archive one or more alerts.
+	ArchiveAlerts(context.Context, *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error)
+	// UpdateResourceLimit Updates resource limits for an account or domain.
+	UpdateResourceLimit(context.Context, *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error)
+	// DeleteAlerts Delete one or more alerts.
+	DeleteAlerts(context.Context, *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error)
 	// ListAlertTypes Lists all alerts types
 	ListAlertTypes(context.Context, *connect.Request[v1.ListAlertTypesRequest]) (*connect.Response[v1.ListAlertTypesResponse], error)
+	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
+	ListDetailOptions(context.Context, *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error)
 }
 
 // NewResourceServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -359,64 +359,10 @@ type ResourceServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	resourceServiceMethods := v1.File_cloudstack_management_resource_v1_resource_gen_proto.Services().ByName("ResourceService").Methods()
-	resourceServiceListResourceLimitsHandler := connect.NewUnaryHandler(
-		ResourceServiceListResourceLimitsProcedure,
-		svc.ListResourceLimits,
-		connect.WithSchema(resourceServiceMethods.ByName("ListResourceLimits")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceUpdateResourceCountHandler := connect.NewUnaryHandler(
-		ResourceServiceUpdateResourceCountProcedure,
-		svc.UpdateResourceCount,
-		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceCount")),
-		connect.WithHandlerOptions(opts...),
-	)
 	resourceServiceStartRollingMaintenanceHandler := connect.NewUnaryHandler(
 		ResourceServiceStartRollingMaintenanceProcedure,
 		svc.StartRollingMaintenance,
 		connect.WithSchema(resourceServiceMethods.ByName("StartRollingMaintenance")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceListAlertsHandler := connect.NewUnaryHandler(
-		ResourceServiceListAlertsProcedure,
-		svc.ListAlerts,
-		connect.WithSchema(resourceServiceMethods.ByName("ListAlerts")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceUpdateResourceLimitHandler := connect.NewUnaryHandler(
-		ResourceServiceUpdateResourceLimitProcedure,
-		svc.UpdateResourceLimit,
-		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceLimit")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceListDetailOptionsHandler := connect.NewUnaryHandler(
-		ResourceServiceListDetailOptionsProcedure,
-		svc.ListDetailOptions,
-		connect.WithSchema(resourceServiceMethods.ByName("ListDetailOptions")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceDeleteAlertsHandler := connect.NewUnaryHandler(
-		ResourceServiceDeleteAlertsProcedure,
-		svc.DeleteAlerts,
-		connect.WithSchema(resourceServiceMethods.ByName("DeleteAlerts")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceListCapacityHandler := connect.NewUnaryHandler(
-		ResourceServiceListCapacityProcedure,
-		svc.ListCapacity,
-		connect.WithSchema(resourceServiceMethods.ByName("ListCapacity")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceListHypervisorsHandler := connect.NewUnaryHandler(
-		ResourceServiceListHypervisorsProcedure,
-		svc.ListHypervisors,
-		connect.WithSchema(resourceServiceMethods.ByName("ListHypervisors")),
-		connect.WithHandlerOptions(opts...),
-	)
-	resourceServiceCleanVMReservationsHandler := connect.NewUnaryHandler(
-		ResourceServiceCleanVMReservationsProcedure,
-		svc.CleanVMReservations,
-		connect.WithSchema(resourceServiceMethods.ByName("CleanVMReservations")),
 		connect.WithHandlerOptions(opts...),
 	)
 	resourceServiceUploadCustomCertificateHandler := connect.NewUnaryHandler(
@@ -431,10 +377,28 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		connect.WithSchema(resourceServiceMethods.ByName("GetCloudIdentifier")),
 		connect.WithHandlerOptions(opts...),
 	)
-	resourceServiceArchiveAlertsHandler := connect.NewUnaryHandler(
-		ResourceServiceArchiveAlertsProcedure,
-		svc.ArchiveAlerts,
-		connect.WithSchema(resourceServiceMethods.ByName("ArchiveAlerts")),
+	resourceServiceListCapacityHandler := connect.NewUnaryHandler(
+		ResourceServiceListCapacityProcedure,
+		svc.ListCapacity,
+		connect.WithSchema(resourceServiceMethods.ByName("ListCapacity")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceListAlertsHandler := connect.NewUnaryHandler(
+		ResourceServiceListAlertsProcedure,
+		svc.ListAlerts,
+		connect.WithSchema(resourceServiceMethods.ByName("ListAlerts")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceListHypervisorsHandler := connect.NewUnaryHandler(
+		ResourceServiceListHypervisorsProcedure,
+		svc.ListHypervisors,
+		connect.WithSchema(resourceServiceMethods.ByName("ListHypervisors")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceUpdateResourceCountHandler := connect.NewUnaryHandler(
+		ResourceServiceUpdateResourceCountProcedure,
+		svc.UpdateResourceCount,
+		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceCount")),
 		connect.WithHandlerOptions(opts...),
 	)
 	resourceServicePurgeExpungedResourcesHandler := connect.NewUnaryHandler(
@@ -443,44 +407,80 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 		connect.WithSchema(resourceServiceMethods.ByName("PurgeExpungedResources")),
 		connect.WithHandlerOptions(opts...),
 	)
+	resourceServiceListResourceLimitsHandler := connect.NewUnaryHandler(
+		ResourceServiceListResourceLimitsProcedure,
+		svc.ListResourceLimits,
+		connect.WithSchema(resourceServiceMethods.ByName("ListResourceLimits")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceCleanVMReservationsHandler := connect.NewUnaryHandler(
+		ResourceServiceCleanVMReservationsProcedure,
+		svc.CleanVMReservations,
+		connect.WithSchema(resourceServiceMethods.ByName("CleanVMReservations")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceArchiveAlertsHandler := connect.NewUnaryHandler(
+		ResourceServiceArchiveAlertsProcedure,
+		svc.ArchiveAlerts,
+		connect.WithSchema(resourceServiceMethods.ByName("ArchiveAlerts")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceUpdateResourceLimitHandler := connect.NewUnaryHandler(
+		ResourceServiceUpdateResourceLimitProcedure,
+		svc.UpdateResourceLimit,
+		connect.WithSchema(resourceServiceMethods.ByName("UpdateResourceLimit")),
+		connect.WithHandlerOptions(opts...),
+	)
+	resourceServiceDeleteAlertsHandler := connect.NewUnaryHandler(
+		ResourceServiceDeleteAlertsProcedure,
+		svc.DeleteAlerts,
+		connect.WithSchema(resourceServiceMethods.ByName("DeleteAlerts")),
+		connect.WithHandlerOptions(opts...),
+	)
 	resourceServiceListAlertTypesHandler := connect.NewUnaryHandler(
 		ResourceServiceListAlertTypesProcedure,
 		svc.ListAlertTypes,
 		connect.WithSchema(resourceServiceMethods.ByName("ListAlertTypes")),
 		connect.WithHandlerOptions(opts...),
 	)
+	resourceServiceListDetailOptionsHandler := connect.NewUnaryHandler(
+		ResourceServiceListDetailOptionsProcedure,
+		svc.ListDetailOptions,
+		connect.WithSchema(resourceServiceMethods.ByName("ListDetailOptions")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.resource.v1.ResourceService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case ResourceServiceListResourceLimitsProcedure:
-			resourceServiceListResourceLimitsHandler.ServeHTTP(w, r)
-		case ResourceServiceUpdateResourceCountProcedure:
-			resourceServiceUpdateResourceCountHandler.ServeHTTP(w, r)
 		case ResourceServiceStartRollingMaintenanceProcedure:
 			resourceServiceStartRollingMaintenanceHandler.ServeHTTP(w, r)
-		case ResourceServiceListAlertsProcedure:
-			resourceServiceListAlertsHandler.ServeHTTP(w, r)
-		case ResourceServiceUpdateResourceLimitProcedure:
-			resourceServiceUpdateResourceLimitHandler.ServeHTTP(w, r)
-		case ResourceServiceListDetailOptionsProcedure:
-			resourceServiceListDetailOptionsHandler.ServeHTTP(w, r)
-		case ResourceServiceDeleteAlertsProcedure:
-			resourceServiceDeleteAlertsHandler.ServeHTTP(w, r)
-		case ResourceServiceListCapacityProcedure:
-			resourceServiceListCapacityHandler.ServeHTTP(w, r)
-		case ResourceServiceListHypervisorsProcedure:
-			resourceServiceListHypervisorsHandler.ServeHTTP(w, r)
-		case ResourceServiceCleanVMReservationsProcedure:
-			resourceServiceCleanVMReservationsHandler.ServeHTTP(w, r)
 		case ResourceServiceUploadCustomCertificateProcedure:
 			resourceServiceUploadCustomCertificateHandler.ServeHTTP(w, r)
 		case ResourceServiceGetCloudIdentifierProcedure:
 			resourceServiceGetCloudIdentifierHandler.ServeHTTP(w, r)
-		case ResourceServiceArchiveAlertsProcedure:
-			resourceServiceArchiveAlertsHandler.ServeHTTP(w, r)
+		case ResourceServiceListCapacityProcedure:
+			resourceServiceListCapacityHandler.ServeHTTP(w, r)
+		case ResourceServiceListAlertsProcedure:
+			resourceServiceListAlertsHandler.ServeHTTP(w, r)
+		case ResourceServiceListHypervisorsProcedure:
+			resourceServiceListHypervisorsHandler.ServeHTTP(w, r)
+		case ResourceServiceUpdateResourceCountProcedure:
+			resourceServiceUpdateResourceCountHandler.ServeHTTP(w, r)
 		case ResourceServicePurgeExpungedResourcesProcedure:
 			resourceServicePurgeExpungedResourcesHandler.ServeHTTP(w, r)
+		case ResourceServiceListResourceLimitsProcedure:
+			resourceServiceListResourceLimitsHandler.ServeHTTP(w, r)
+		case ResourceServiceCleanVMReservationsProcedure:
+			resourceServiceCleanVMReservationsHandler.ServeHTTP(w, r)
+		case ResourceServiceArchiveAlertsProcedure:
+			resourceServiceArchiveAlertsHandler.ServeHTTP(w, r)
+		case ResourceServiceUpdateResourceLimitProcedure:
+			resourceServiceUpdateResourceLimitHandler.ServeHTTP(w, r)
+		case ResourceServiceDeleteAlertsProcedure:
+			resourceServiceDeleteAlertsHandler.ServeHTTP(w, r)
 		case ResourceServiceListAlertTypesProcedure:
 			resourceServiceListAlertTypesHandler.ServeHTTP(w, r)
+		case ResourceServiceListDetailOptionsProcedure:
+			resourceServiceListDetailOptionsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -490,44 +490,8 @@ func NewResourceServiceHandler(svc ResourceServiceHandler, opts ...connect.Handl
 // UnimplementedResourceServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedResourceServiceHandler struct{}
 
-func (UnimplementedResourceServiceHandler) ListResourceLimits(context.Context, *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListResourceLimits is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) UpdateResourceCount(context.Context, *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.UpdateResourceCount is not implemented"))
-}
-
 func (UnimplementedResourceServiceHandler) StartRollingMaintenance(context.Context, *connect.Request[v1.StartRollingMaintenanceRequest]) (*connect.Response[v1.StartRollingMaintenanceResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.StartRollingMaintenance is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) ListAlerts(context.Context, *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListAlerts is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) UpdateResourceLimit(context.Context, *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) ListDetailOptions(context.Context, *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListDetailOptions is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) DeleteAlerts(context.Context, *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.DeleteAlerts is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) ListCapacity(context.Context, *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListCapacity is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) ListHypervisors(context.Context, *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListHypervisors is not implemented"))
-}
-
-func (UnimplementedResourceServiceHandler) CleanVMReservations(context.Context, *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.CleanVMReservations is not implemented"))
 }
 
 func (UnimplementedResourceServiceHandler) UploadCustomCertificate(context.Context, *connect.Request[v1.UploadCustomCertificateRequest]) (*connect.Response[v1.UploadCustomCertificateResponse], error) {
@@ -538,14 +502,50 @@ func (UnimplementedResourceServiceHandler) GetCloudIdentifier(context.Context, *
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.GetCloudIdentifier is not implemented"))
 }
 
-func (UnimplementedResourceServiceHandler) ArchiveAlerts(context.Context, *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ArchiveAlerts is not implemented"))
+func (UnimplementedResourceServiceHandler) ListCapacity(context.Context, *connect.Request[v1.ListCapacityRequest]) (*connect.Response[v1.ListCapacityResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListCapacity is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) ListAlerts(context.Context, *connect.Request[v1.ListAlertsRequest]) (*connect.Response[v1.ListAlertsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListAlerts is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) ListHypervisors(context.Context, *connect.Request[v1.ListHypervisorsRequest]) (*connect.Response[v1.ListHypervisorsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListHypervisors is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) UpdateResourceCount(context.Context, *connect.Request[v1.UpdateResourceCountRequest]) (*connect.Response[v1.UpdateResourceCountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.UpdateResourceCount is not implemented"))
 }
 
 func (UnimplementedResourceServiceHandler) PurgeExpungedResources(context.Context, *connect.Request[v1.PurgeExpungedResourcesRequest]) (*connect.Response[v1.PurgeExpungedResourcesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.PurgeExpungedResources is not implemented"))
 }
 
+func (UnimplementedResourceServiceHandler) ListResourceLimits(context.Context, *connect.Request[v1.ListResourceLimitsRequest]) (*connect.Response[v1.ListResourceLimitsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListResourceLimits is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) CleanVMReservations(context.Context, *connect.Request[v1.CleanVMReservationsRequest]) (*connect.Response[v1.CleanVMReservationsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.CleanVMReservations is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) ArchiveAlerts(context.Context, *connect.Request[v1.ArchiveAlertsRequest]) (*connect.Response[v1.ArchiveAlertsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ArchiveAlerts is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) UpdateResourceLimit(context.Context, *connect.Request[v1.UpdateResourceLimitRequest]) (*connect.Response[v1.UpdateResourceLimitResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.UpdateResourceLimit is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) DeleteAlerts(context.Context, *connect.Request[v1.DeleteAlertsRequest]) (*connect.Response[v1.DeleteAlertsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.DeleteAlerts is not implemented"))
+}
+
 func (UnimplementedResourceServiceHandler) ListAlertTypes(context.Context, *connect.Request[v1.ListAlertTypesRequest]) (*connect.Response[v1.ListAlertTypesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListAlertTypes is not implemented"))
+}
+
+func (UnimplementedResourceServiceHandler) ListDetailOptions(context.Context, *connect.Request[v1.ListDetailOptionsRequest]) (*connect.Response[v1.ListDetailOptionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.v1.ResourceService.ListDetailOptions is not implemented"))
 }

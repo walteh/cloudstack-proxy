@@ -33,22 +33,22 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// TagServiceListTagsProcedure is the fully-qualified name of the TagService's ListTags RPC.
-	TagServiceListTagsProcedure = "/cloudstack.management.tag.v1.TagService/ListTags"
 	// TagServiceDeleteTagsProcedure is the fully-qualified name of the TagService's DeleteTags RPC.
 	TagServiceDeleteTagsProcedure = "/cloudstack.management.tag.v1.TagService/DeleteTags"
 	// TagServiceCreateTagsProcedure is the fully-qualified name of the TagService's CreateTags RPC.
 	TagServiceCreateTagsProcedure = "/cloudstack.management.tag.v1.TagService/CreateTags"
+	// TagServiceListTagsProcedure is the fully-qualified name of the TagService's ListTags RPC.
+	TagServiceListTagsProcedure = "/cloudstack.management.tag.v1.TagService/ListTags"
 )
 
 // TagServiceClient is a client for the cloudstack.management.tag.v1.TagService service.
 type TagServiceClient interface {
-	// ListTags List resource tag(s)
-	ListTags(context.Context, *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error)
 	// DeleteTags Deleting resource tag(s)
 	DeleteTags(context.Context, *connect.Request[v1.DeleteTagsRequest]) (*connect.Response[v1.DeleteTagsResponse], error)
 	// CreateTags Creates resource tag(s)
 	CreateTags(context.Context, *connect.Request[v1.CreateTagsRequest]) (*connect.Response[v1.CreateTagsResponse], error)
+	// ListTags List resource tag(s)
+	ListTags(context.Context, *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error)
 }
 
 // NewTagServiceClient constructs a client for the cloudstack.management.tag.v1.TagService service.
@@ -62,12 +62,6 @@ func NewTagServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	tagServiceMethods := v1.File_cloudstack_management_tag_v1_tag_gen_proto.Services().ByName("TagService").Methods()
 	return &tagServiceClient{
-		listTags: connect.NewClient[v1.ListTagsRequest, v1.ListTagsResponse](
-			httpClient,
-			baseURL+TagServiceListTagsProcedure,
-			connect.WithSchema(tagServiceMethods.ByName("ListTags")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteTags: connect.NewClient[v1.DeleteTagsRequest, v1.DeleteTagsResponse](
 			httpClient,
 			baseURL+TagServiceDeleteTagsProcedure,
@@ -80,19 +74,20 @@ func NewTagServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(tagServiceMethods.ByName("CreateTags")),
 			connect.WithClientOptions(opts...),
 		),
+		listTags: connect.NewClient[v1.ListTagsRequest, v1.ListTagsResponse](
+			httpClient,
+			baseURL+TagServiceListTagsProcedure,
+			connect.WithSchema(tagServiceMethods.ByName("ListTags")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // tagServiceClient implements TagServiceClient.
 type tagServiceClient struct {
-	listTags   *connect.Client[v1.ListTagsRequest, v1.ListTagsResponse]
 	deleteTags *connect.Client[v1.DeleteTagsRequest, v1.DeleteTagsResponse]
 	createTags *connect.Client[v1.CreateTagsRequest, v1.CreateTagsResponse]
-}
-
-// ListTags calls cloudstack.management.tag.v1.TagService.ListTags.
-func (c *tagServiceClient) ListTags(ctx context.Context, req *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error) {
-	return c.listTags.CallUnary(ctx, req)
+	listTags   *connect.Client[v1.ListTagsRequest, v1.ListTagsResponse]
 }
 
 // DeleteTags calls cloudstack.management.tag.v1.TagService.DeleteTags.
@@ -105,14 +100,19 @@ func (c *tagServiceClient) CreateTags(ctx context.Context, req *connect.Request[
 	return c.createTags.CallUnary(ctx, req)
 }
 
+// ListTags calls cloudstack.management.tag.v1.TagService.ListTags.
+func (c *tagServiceClient) ListTags(ctx context.Context, req *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error) {
+	return c.listTags.CallUnary(ctx, req)
+}
+
 // TagServiceHandler is an implementation of the cloudstack.management.tag.v1.TagService service.
 type TagServiceHandler interface {
-	// ListTags List resource tag(s)
-	ListTags(context.Context, *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error)
 	// DeleteTags Deleting resource tag(s)
 	DeleteTags(context.Context, *connect.Request[v1.DeleteTagsRequest]) (*connect.Response[v1.DeleteTagsResponse], error)
 	// CreateTags Creates resource tag(s)
 	CreateTags(context.Context, *connect.Request[v1.CreateTagsRequest]) (*connect.Response[v1.CreateTagsResponse], error)
+	// ListTags List resource tag(s)
+	ListTags(context.Context, *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error)
 }
 
 // NewTagServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -122,12 +122,6 @@ type TagServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTagServiceHandler(svc TagServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	tagServiceMethods := v1.File_cloudstack_management_tag_v1_tag_gen_proto.Services().ByName("TagService").Methods()
-	tagServiceListTagsHandler := connect.NewUnaryHandler(
-		TagServiceListTagsProcedure,
-		svc.ListTags,
-		connect.WithSchema(tagServiceMethods.ByName("ListTags")),
-		connect.WithHandlerOptions(opts...),
-	)
 	tagServiceDeleteTagsHandler := connect.NewUnaryHandler(
 		TagServiceDeleteTagsProcedure,
 		svc.DeleteTags,
@@ -140,14 +134,20 @@ func NewTagServiceHandler(svc TagServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(tagServiceMethods.ByName("CreateTags")),
 		connect.WithHandlerOptions(opts...),
 	)
+	tagServiceListTagsHandler := connect.NewUnaryHandler(
+		TagServiceListTagsProcedure,
+		svc.ListTags,
+		connect.WithSchema(tagServiceMethods.ByName("ListTags")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.tag.v1.TagService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case TagServiceListTagsProcedure:
-			tagServiceListTagsHandler.ServeHTTP(w, r)
 		case TagServiceDeleteTagsProcedure:
 			tagServiceDeleteTagsHandler.ServeHTTP(w, r)
 		case TagServiceCreateTagsProcedure:
 			tagServiceCreateTagsHandler.ServeHTTP(w, r)
+		case TagServiceListTagsProcedure:
+			tagServiceListTagsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -157,14 +157,14 @@ func NewTagServiceHandler(svc TagServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedTagServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTagServiceHandler struct{}
 
-func (UnimplementedTagServiceHandler) ListTags(context.Context, *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.tag.v1.TagService.ListTags is not implemented"))
-}
-
 func (UnimplementedTagServiceHandler) DeleteTags(context.Context, *connect.Request[v1.DeleteTagsRequest]) (*connect.Response[v1.DeleteTagsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.tag.v1.TagService.DeleteTags is not implemented"))
 }
 
 func (UnimplementedTagServiceHandler) CreateTags(context.Context, *connect.Request[v1.CreateTagsRequest]) (*connect.Response[v1.CreateTagsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.tag.v1.TagService.CreateTags is not implemented"))
+}
+
+func (UnimplementedTagServiceHandler) ListTags(context.Context, *connect.Request[v1.ListTagsRequest]) (*connect.Response[v1.ListTagsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.tag.v1.TagService.ListTags is not implemented"))
 }

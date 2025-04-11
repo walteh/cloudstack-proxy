@@ -20,13 +20,13 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	ProjectService_ListProjects_FullMethodName            = "/cloudstack.management.project.v1.ProjectService/ListProjects"
-	ProjectService_DeleteProject_FullMethodName           = "/cloudstack.management.project.v1.ProjectService/DeleteProject"
-	ProjectService_ListProjectInvitations_FullMethodName  = "/cloudstack.management.project.v1.ProjectService/ListProjectInvitations"
-	ProjectService_CreateProject_FullMethodName           = "/cloudstack.management.project.v1.ProjectService/CreateProject"
-	ProjectService_UpdateProjectInvitation_FullMethodName = "/cloudstack.management.project.v1.ProjectService/UpdateProjectInvitation"
 	ProjectService_DeleteProjectInvitation_FullMethodName = "/cloudstack.management.project.v1.ProjectService/DeleteProjectInvitation"
-	ProjectService_SuspendProject_FullMethodName          = "/cloudstack.management.project.v1.ProjectService/SuspendProject"
+	ProjectService_ListProjectInvitations_FullMethodName  = "/cloudstack.management.project.v1.ProjectService/ListProjectInvitations"
+	ProjectService_DeleteProject_FullMethodName           = "/cloudstack.management.project.v1.ProjectService/DeleteProject"
+	ProjectService_UpdateProjectInvitation_FullMethodName = "/cloudstack.management.project.v1.ProjectService/UpdateProjectInvitation"
 	ProjectService_ActivateProject_FullMethodName         = "/cloudstack.management.project.v1.ProjectService/ActivateProject"
+	ProjectService_SuspendProject_FullMethodName          = "/cloudstack.management.project.v1.ProjectService/SuspendProject"
+	ProjectService_CreateProject_FullMethodName           = "/cloudstack.management.project.v1.ProjectService/CreateProject"
 	ProjectService_UpdateProject_FullMethodName           = "/cloudstack.management.project.v1.ProjectService/UpdateProject"
 )
 
@@ -38,20 +38,20 @@ const (
 type ProjectServiceClient interface {
 	// ListProjects Lists projects and provides detailed information for listed projects
 	ListProjects(ctx context.Context, in *ListProjectsRequest, opts ...grpc.CallOption) (*ListProjectsResponse, error)
-	// DeleteProject Deletes a project
-	DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*DeleteProjectResponse, error)
-	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
-	ListProjectInvitations(ctx context.Context, in *ListProjectInvitationsRequest, opts ...grpc.CallOption) (*ListProjectInvitationsResponse, error)
-	// CreateProject Creates a project
-	CreateProject(ctx context.Context, in *CreateProjectRequest, opts ...grpc.CallOption) (*CreateProjectResponse, error)
-	// UpdateProjectInvitation Accepts or declines project invitation
-	UpdateProjectInvitation(ctx context.Context, in *UpdateProjectInvitationRequest, opts ...grpc.CallOption) (*UpdateProjectInvitationResponse, error)
 	// DeleteProjectInvitation Deletes project invitation
 	DeleteProjectInvitation(ctx context.Context, in *DeleteProjectInvitationRequest, opts ...grpc.CallOption) (*DeleteProjectInvitationResponse, error)
-	// SuspendProject Suspends a project
-	SuspendProject(ctx context.Context, in *SuspendProjectRequest, opts ...grpc.CallOption) (*SuspendProjectResponse, error)
+	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
+	ListProjectInvitations(ctx context.Context, in *ListProjectInvitationsRequest, opts ...grpc.CallOption) (*ListProjectInvitationsResponse, error)
+	// DeleteProject Deletes a project
+	DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*DeleteProjectResponse, error)
+	// UpdateProjectInvitation Accepts or declines project invitation
+	UpdateProjectInvitation(ctx context.Context, in *UpdateProjectInvitationRequest, opts ...grpc.CallOption) (*UpdateProjectInvitationResponse, error)
 	// ActivateProject Activates a project
 	ActivateProject(ctx context.Context, in *ActivateProjectRequest, opts ...grpc.CallOption) (*ActivateProjectResponse, error)
+	// SuspendProject Suspends a project
+	SuspendProject(ctx context.Context, in *SuspendProjectRequest, opts ...grpc.CallOption) (*SuspendProjectResponse, error)
+	// CreateProject Creates a project
+	CreateProject(ctx context.Context, in *CreateProjectRequest, opts ...grpc.CallOption) (*CreateProjectResponse, error)
 	// UpdateProject Updates a project
 	UpdateProject(ctx context.Context, in *UpdateProjectRequest, opts ...grpc.CallOption) (*UpdateProjectResponse, error)
 }
@@ -74,10 +74,10 @@ func (c *projectServiceClient) ListProjects(ctx context.Context, in *ListProject
 	return out, nil
 }
 
-func (c *projectServiceClient) DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*DeleteProjectResponse, error) {
+func (c *projectServiceClient) DeleteProjectInvitation(ctx context.Context, in *DeleteProjectInvitationRequest, opts ...grpc.CallOption) (*DeleteProjectInvitationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteProjectResponse)
-	err := c.cc.Invoke(ctx, ProjectService_DeleteProject_FullMethodName, in, out, cOpts...)
+	out := new(DeleteProjectInvitationResponse)
+	err := c.cc.Invoke(ctx, ProjectService_DeleteProjectInvitation_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -94,10 +94,10 @@ func (c *projectServiceClient) ListProjectInvitations(ctx context.Context, in *L
 	return out, nil
 }
 
-func (c *projectServiceClient) CreateProject(ctx context.Context, in *CreateProjectRequest, opts ...grpc.CallOption) (*CreateProjectResponse, error) {
+func (c *projectServiceClient) DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*DeleteProjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateProjectResponse)
-	err := c.cc.Invoke(ctx, ProjectService_CreateProject_FullMethodName, in, out, cOpts...)
+	out := new(DeleteProjectResponse)
+	err := c.cc.Invoke(ctx, ProjectService_DeleteProject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,10 +114,10 @@ func (c *projectServiceClient) UpdateProjectInvitation(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *projectServiceClient) DeleteProjectInvitation(ctx context.Context, in *DeleteProjectInvitationRequest, opts ...grpc.CallOption) (*DeleteProjectInvitationResponse, error) {
+func (c *projectServiceClient) ActivateProject(ctx context.Context, in *ActivateProjectRequest, opts ...grpc.CallOption) (*ActivateProjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteProjectInvitationResponse)
-	err := c.cc.Invoke(ctx, ProjectService_DeleteProjectInvitation_FullMethodName, in, out, cOpts...)
+	out := new(ActivateProjectResponse)
+	err := c.cc.Invoke(ctx, ProjectService_ActivateProject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -134,10 +134,10 @@ func (c *projectServiceClient) SuspendProject(ctx context.Context, in *SuspendPr
 	return out, nil
 }
 
-func (c *projectServiceClient) ActivateProject(ctx context.Context, in *ActivateProjectRequest, opts ...grpc.CallOption) (*ActivateProjectResponse, error) {
+func (c *projectServiceClient) CreateProject(ctx context.Context, in *CreateProjectRequest, opts ...grpc.CallOption) (*CreateProjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ActivateProjectResponse)
-	err := c.cc.Invoke(ctx, ProjectService_ActivateProject_FullMethodName, in, out, cOpts...)
+	out := new(CreateProjectResponse)
+	err := c.cc.Invoke(ctx, ProjectService_CreateProject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,20 +162,20 @@ func (c *projectServiceClient) UpdateProject(ctx context.Context, in *UpdateProj
 type ProjectServiceServer interface {
 	// ListProjects Lists projects and provides detailed information for listed projects
 	ListProjects(context.Context, *ListProjectsRequest) (*ListProjectsResponse, error)
-	// DeleteProject Deletes a project
-	DeleteProject(context.Context, *DeleteProjectRequest) (*DeleteProjectResponse, error)
-	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
-	ListProjectInvitations(context.Context, *ListProjectInvitationsRequest) (*ListProjectInvitationsResponse, error)
-	// CreateProject Creates a project
-	CreateProject(context.Context, *CreateProjectRequest) (*CreateProjectResponse, error)
-	// UpdateProjectInvitation Accepts or declines project invitation
-	UpdateProjectInvitation(context.Context, *UpdateProjectInvitationRequest) (*UpdateProjectInvitationResponse, error)
 	// DeleteProjectInvitation Deletes project invitation
 	DeleteProjectInvitation(context.Context, *DeleteProjectInvitationRequest) (*DeleteProjectInvitationResponse, error)
-	// SuspendProject Suspends a project
-	SuspendProject(context.Context, *SuspendProjectRequest) (*SuspendProjectResponse, error)
+	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
+	ListProjectInvitations(context.Context, *ListProjectInvitationsRequest) (*ListProjectInvitationsResponse, error)
+	// DeleteProject Deletes a project
+	DeleteProject(context.Context, *DeleteProjectRequest) (*DeleteProjectResponse, error)
+	// UpdateProjectInvitation Accepts or declines project invitation
+	UpdateProjectInvitation(context.Context, *UpdateProjectInvitationRequest) (*UpdateProjectInvitationResponse, error)
 	// ActivateProject Activates a project
 	ActivateProject(context.Context, *ActivateProjectRequest) (*ActivateProjectResponse, error)
+	// SuspendProject Suspends a project
+	SuspendProject(context.Context, *SuspendProjectRequest) (*SuspendProjectResponse, error)
+	// CreateProject Creates a project
+	CreateProject(context.Context, *CreateProjectRequest) (*CreateProjectResponse, error)
 	// UpdateProject Updates a project
 	UpdateProject(context.Context, *UpdateProjectRequest) (*UpdateProjectResponse, error)
 	mustEmbedUnimplementedProjectServiceServer()
@@ -191,26 +191,26 @@ type UnimplementedProjectServiceServer struct{}
 func (UnimplementedProjectServiceServer) ListProjects(context.Context, *ListProjectsRequest) (*ListProjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListProjects not implemented")
 }
-func (UnimplementedProjectServiceServer) DeleteProject(context.Context, *DeleteProjectRequest) (*DeleteProjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteProject not implemented")
+func (UnimplementedProjectServiceServer) DeleteProjectInvitation(context.Context, *DeleteProjectInvitationRequest) (*DeleteProjectInvitationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProjectInvitation not implemented")
 }
 func (UnimplementedProjectServiceServer) ListProjectInvitations(context.Context, *ListProjectInvitationsRequest) (*ListProjectInvitationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListProjectInvitations not implemented")
 }
-func (UnimplementedProjectServiceServer) CreateProject(context.Context, *CreateProjectRequest) (*CreateProjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateProject not implemented")
+func (UnimplementedProjectServiceServer) DeleteProject(context.Context, *DeleteProjectRequest) (*DeleteProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProject not implemented")
 }
 func (UnimplementedProjectServiceServer) UpdateProjectInvitation(context.Context, *UpdateProjectInvitationRequest) (*UpdateProjectInvitationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateProjectInvitation not implemented")
 }
-func (UnimplementedProjectServiceServer) DeleteProjectInvitation(context.Context, *DeleteProjectInvitationRequest) (*DeleteProjectInvitationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteProjectInvitation not implemented")
+func (UnimplementedProjectServiceServer) ActivateProject(context.Context, *ActivateProjectRequest) (*ActivateProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ActivateProject not implemented")
 }
 func (UnimplementedProjectServiceServer) SuspendProject(context.Context, *SuspendProjectRequest) (*SuspendProjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SuspendProject not implemented")
 }
-func (UnimplementedProjectServiceServer) ActivateProject(context.Context, *ActivateProjectRequest) (*ActivateProjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ActivateProject not implemented")
+func (UnimplementedProjectServiceServer) CreateProject(context.Context, *CreateProjectRequest) (*CreateProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProject not implemented")
 }
 func (UnimplementedProjectServiceServer) UpdateProject(context.Context, *UpdateProjectRequest) (*UpdateProjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateProject not implemented")
@@ -254,20 +254,20 @@ func _ProjectService_ListProjects_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectService_DeleteProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteProjectRequest)
+func _ProjectService_DeleteProjectInvitation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteProjectInvitationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectServiceServer).DeleteProject(ctx, in)
+		return srv.(ProjectServiceServer).DeleteProjectInvitation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectService_DeleteProject_FullMethodName,
+		FullMethod: ProjectService_DeleteProjectInvitation_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectServiceServer).DeleteProject(ctx, req.(*DeleteProjectRequest))
+		return srv.(ProjectServiceServer).DeleteProjectInvitation(ctx, req.(*DeleteProjectInvitationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -290,20 +290,20 @@ func _ProjectService_ListProjectInvitations_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectService_CreateProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateProjectRequest)
+func _ProjectService_DeleteProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteProjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectServiceServer).CreateProject(ctx, in)
+		return srv.(ProjectServiceServer).DeleteProject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectService_CreateProject_FullMethodName,
+		FullMethod: ProjectService_DeleteProject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectServiceServer).CreateProject(ctx, req.(*CreateProjectRequest))
+		return srv.(ProjectServiceServer).DeleteProject(ctx, req.(*DeleteProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -326,20 +326,20 @@ func _ProjectService_UpdateProjectInvitation_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectService_DeleteProjectInvitation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteProjectInvitationRequest)
+func _ProjectService_ActivateProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ActivateProjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectServiceServer).DeleteProjectInvitation(ctx, in)
+		return srv.(ProjectServiceServer).ActivateProject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectService_DeleteProjectInvitation_FullMethodName,
+		FullMethod: ProjectService_ActivateProject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectServiceServer).DeleteProjectInvitation(ctx, req.(*DeleteProjectInvitationRequest))
+		return srv.(ProjectServiceServer).ActivateProject(ctx, req.(*ActivateProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -362,20 +362,20 @@ func _ProjectService_SuspendProject_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectService_ActivateProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ActivateProjectRequest)
+func _ProjectService_CreateProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateProjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectServiceServer).ActivateProject(ctx, in)
+		return srv.(ProjectServiceServer).CreateProject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectService_ActivateProject_FullMethodName,
+		FullMethod: ProjectService_CreateProject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectServiceServer).ActivateProject(ctx, req.(*ActivateProjectRequest))
+		return srv.(ProjectServiceServer).CreateProject(ctx, req.(*CreateProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -410,32 +410,32 @@ var ProjectService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProjectService_ListProjects_Handler,
 		},
 		{
-			MethodName: "DeleteProject",
-			Handler:    _ProjectService_DeleteProject_Handler,
+			MethodName: "DeleteProjectInvitation",
+			Handler:    _ProjectService_DeleteProjectInvitation_Handler,
 		},
 		{
 			MethodName: "ListProjectInvitations",
 			Handler:    _ProjectService_ListProjectInvitations_Handler,
 		},
 		{
-			MethodName: "CreateProject",
-			Handler:    _ProjectService_CreateProject_Handler,
+			MethodName: "DeleteProject",
+			Handler:    _ProjectService_DeleteProject_Handler,
 		},
 		{
 			MethodName: "UpdateProjectInvitation",
 			Handler:    _ProjectService_UpdateProjectInvitation_Handler,
 		},
 		{
-			MethodName: "DeleteProjectInvitation",
-			Handler:    _ProjectService_DeleteProjectInvitation_Handler,
+			MethodName: "ActivateProject",
+			Handler:    _ProjectService_ActivateProject_Handler,
 		},
 		{
 			MethodName: "SuspendProject",
 			Handler:    _ProjectService_SuspendProject_Handler,
 		},
 		{
-			MethodName: "ActivateProject",
-			Handler:    _ProjectService_ActivateProject_Handler,
+			MethodName: "CreateProject",
+			Handler:    _ProjectService_CreateProject_Handler,
 		},
 		{
 			MethodName: "UpdateProject",

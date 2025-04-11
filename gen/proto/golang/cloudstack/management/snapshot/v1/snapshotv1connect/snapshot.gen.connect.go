@@ -36,39 +36,39 @@ const (
 	// SnapshotServiceExtractSnapshotProcedure is the fully-qualified name of the SnapshotService's
 	// ExtractSnapshot RPC.
 	SnapshotServiceExtractSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ExtractSnapshot"
-	// SnapshotServiceDeleteSnapshotPoliciesProcedure is the fully-qualified name of the
-	// SnapshotService's DeleteSnapshotPolicies RPC.
-	SnapshotServiceDeleteSnapshotPoliciesProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/DeleteSnapshotPolicies"
-	// SnapshotServiceCreateSnapshotPolicyProcedure is the fully-qualified name of the SnapshotService's
-	// CreateSnapshotPolicy RPC.
-	SnapshotServiceCreateSnapshotPolicyProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshotPolicy"
-	// SnapshotServiceListSnapshotPoliciesProcedure is the fully-qualified name of the SnapshotService's
-	// ListSnapshotPolicies RPC.
-	SnapshotServiceListSnapshotPoliciesProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshotPolicies"
 	// SnapshotServiceCreateSnapshotFromVMSnapshotProcedure is the fully-qualified name of the
 	// SnapshotService's CreateSnapshotFromVMSnapshot RPC.
 	SnapshotServiceCreateSnapshotFromVMSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshotFromVMSnapshot"
-	// SnapshotServiceRevertSnapshotProcedure is the fully-qualified name of the SnapshotService's
-	// RevertSnapshot RPC.
-	SnapshotServiceRevertSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/RevertSnapshot"
 	// SnapshotServiceCreateSnapshotProcedure is the fully-qualified name of the SnapshotService's
 	// CreateSnapshot RPC.
 	SnapshotServiceCreateSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshot"
-	// SnapshotServiceListSnapshotsProcedure is the fully-qualified name of the SnapshotService's
-	// ListSnapshots RPC.
-	SnapshotServiceListSnapshotsProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshots"
-	// SnapshotServiceArchiveSnapshotProcedure is the fully-qualified name of the SnapshotService's
-	// ArchiveSnapshot RPC.
-	SnapshotServiceArchiveSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ArchiveSnapshot"
 	// SnapshotServiceCopySnapshotProcedure is the fully-qualified name of the SnapshotService's
 	// CopySnapshot RPC.
 	SnapshotServiceCopySnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/CopySnapshot"
 	// SnapshotServiceUpdateSnapshotPolicyProcedure is the fully-qualified name of the SnapshotService's
 	// UpdateSnapshotPolicy RPC.
 	SnapshotServiceUpdateSnapshotPolicyProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/UpdateSnapshotPolicy"
+	// SnapshotServiceRevertSnapshotProcedure is the fully-qualified name of the SnapshotService's
+	// RevertSnapshot RPC.
+	SnapshotServiceRevertSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/RevertSnapshot"
+	// SnapshotServiceListSnapshotsProcedure is the fully-qualified name of the SnapshotService's
+	// ListSnapshots RPC.
+	SnapshotServiceListSnapshotsProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshots"
+	// SnapshotServiceArchiveSnapshotProcedure is the fully-qualified name of the SnapshotService's
+	// ArchiveSnapshot RPC.
+	SnapshotServiceArchiveSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ArchiveSnapshot"
+	// SnapshotServiceListSnapshotPoliciesProcedure is the fully-qualified name of the SnapshotService's
+	// ListSnapshotPolicies RPC.
+	SnapshotServiceListSnapshotPoliciesProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/ListSnapshotPolicies"
 	// SnapshotServiceDeleteSnapshotProcedure is the fully-qualified name of the SnapshotService's
 	// DeleteSnapshot RPC.
 	SnapshotServiceDeleteSnapshotProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/DeleteSnapshot"
+	// SnapshotServiceDeleteSnapshotPoliciesProcedure is the fully-qualified name of the
+	// SnapshotService's DeleteSnapshotPolicies RPC.
+	SnapshotServiceDeleteSnapshotPoliciesProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/DeleteSnapshotPolicies"
+	// SnapshotServiceCreateSnapshotPolicyProcedure is the fully-qualified name of the SnapshotService's
+	// CreateSnapshotPolicy RPC.
+	SnapshotServiceCreateSnapshotPolicyProcedure = "/cloudstack.management.snapshot.v1.SnapshotService/CreateSnapshotPolicy"
 )
 
 // SnapshotServiceClient is a client for the cloudstack.management.snapshot.v1.SnapshotService
@@ -76,28 +76,28 @@ const (
 type SnapshotServiceClient interface {
 	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
 	ExtractSnapshot(context.Context, *connect.Request[v1.ExtractSnapshotRequest]) (*connect.Response[v1.ExtractSnapshotResponse], error)
-	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
-	DeleteSnapshotPolicies(context.Context, *connect.Request[v1.DeleteSnapshotPoliciesRequest]) (*connect.Response[v1.DeleteSnapshotPoliciesResponse], error)
-	// CreateSnapshotPolicy Creates a snapshot policy for the account.
-	CreateSnapshotPolicy(context.Context, *connect.Request[v1.CreateSnapshotPolicyRequest]) (*connect.Response[v1.CreateSnapshotPolicyResponse], error)
-	// ListSnapshotPolicies Lists snapshot policies.
-	ListSnapshotPolicies(context.Context, *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error)
 	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
 	CreateSnapshotFromVMSnapshot(context.Context, *connect.Request[v1.CreateSnapshotFromVMSnapshotRequest]) (*connect.Response[v1.CreateSnapshotFromVMSnapshotResponse], error)
-	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
-	RevertSnapshot(context.Context, *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error)
 	// CreateSnapshot Creates an instant snapshot of a volume.
 	CreateSnapshot(context.Context, *connect.Request[v1.CreateSnapshotRequest]) (*connect.Response[v1.CreateSnapshotResponse], error)
-	// ListSnapshots Lists all available snapshots for the account.
-	ListSnapshots(context.Context, *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error)
-	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
-	ArchiveSnapshot(context.Context, *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error)
 	// CopySnapshot Copies a snapshot from one zone to another.
 	CopySnapshot(context.Context, *connect.Request[v1.CopySnapshotRequest]) (*connect.Response[v1.CopySnapshotResponse], error)
 	// UpdateSnapshotPolicy Updates the snapshot policy.
 	UpdateSnapshotPolicy(context.Context, *connect.Request[v1.UpdateSnapshotPolicyRequest]) (*connect.Response[v1.UpdateSnapshotPolicyResponse], error)
+	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
+	RevertSnapshot(context.Context, *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error)
+	// ListSnapshots Lists all available snapshots for the account.
+	ListSnapshots(context.Context, *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error)
+	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
+	ArchiveSnapshot(context.Context, *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error)
+	// ListSnapshotPolicies Lists snapshot policies.
+	ListSnapshotPolicies(context.Context, *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error)
 	// DeleteSnapshot Deletes a snapshot of a disk volume.
 	DeleteSnapshot(context.Context, *connect.Request[v1.DeleteSnapshotRequest]) (*connect.Response[v1.DeleteSnapshotResponse], error)
+	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
+	DeleteSnapshotPolicies(context.Context, *connect.Request[v1.DeleteSnapshotPoliciesRequest]) (*connect.Response[v1.DeleteSnapshotPoliciesResponse], error)
+	// CreateSnapshotPolicy Creates a snapshot policy for the account.
+	CreateSnapshotPolicy(context.Context, *connect.Request[v1.CreateSnapshotPolicyRequest]) (*connect.Response[v1.CreateSnapshotPolicyResponse], error)
 }
 
 // NewSnapshotServiceClient constructs a client for the
@@ -118,52 +118,16 @@ func NewSnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(snapshotServiceMethods.ByName("ExtractSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteSnapshotPolicies: connect.NewClient[v1.DeleteSnapshotPoliciesRequest, v1.DeleteSnapshotPoliciesResponse](
-			httpClient,
-			baseURL+SnapshotServiceDeleteSnapshotPoliciesProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("DeleteSnapshotPolicies")),
-			connect.WithClientOptions(opts...),
-		),
-		createSnapshotPolicy: connect.NewClient[v1.CreateSnapshotPolicyRequest, v1.CreateSnapshotPolicyResponse](
-			httpClient,
-			baseURL+SnapshotServiceCreateSnapshotPolicyProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshotPolicy")),
-			connect.WithClientOptions(opts...),
-		),
-		listSnapshotPolicies: connect.NewClient[v1.ListSnapshotPoliciesRequest, v1.ListSnapshotPoliciesResponse](
-			httpClient,
-			baseURL+SnapshotServiceListSnapshotPoliciesProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshotPolicies")),
-			connect.WithClientOptions(opts...),
-		),
 		createSnapshotFromVMSnapshot: connect.NewClient[v1.CreateSnapshotFromVMSnapshotRequest, v1.CreateSnapshotFromVMSnapshotResponse](
 			httpClient,
 			baseURL+SnapshotServiceCreateSnapshotFromVMSnapshotProcedure,
 			connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshotFromVMSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
-		revertSnapshot: connect.NewClient[v1.RevertSnapshotRequest, v1.RevertSnapshotResponse](
-			httpClient,
-			baseURL+SnapshotServiceRevertSnapshotProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("RevertSnapshot")),
-			connect.WithClientOptions(opts...),
-		),
 		createSnapshot: connect.NewClient[v1.CreateSnapshotRequest, v1.CreateSnapshotResponse](
 			httpClient,
 			baseURL+SnapshotServiceCreateSnapshotProcedure,
 			connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshot")),
-			connect.WithClientOptions(opts...),
-		),
-		listSnapshots: connect.NewClient[v1.ListSnapshotsRequest, v1.ListSnapshotsResponse](
-			httpClient,
-			baseURL+SnapshotServiceListSnapshotsProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshots")),
-			connect.WithClientOptions(opts...),
-		),
-		archiveSnapshot: connect.NewClient[v1.ArchiveSnapshotRequest, v1.ArchiveSnapshotResponse](
-			httpClient,
-			baseURL+SnapshotServiceArchiveSnapshotProcedure,
-			connect.WithSchema(snapshotServiceMethods.ByName("ArchiveSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
 		copySnapshot: connect.NewClient[v1.CopySnapshotRequest, v1.CopySnapshotResponse](
@@ -178,10 +142,46 @@ func NewSnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(snapshotServiceMethods.ByName("UpdateSnapshotPolicy")),
 			connect.WithClientOptions(opts...),
 		),
+		revertSnapshot: connect.NewClient[v1.RevertSnapshotRequest, v1.RevertSnapshotResponse](
+			httpClient,
+			baseURL+SnapshotServiceRevertSnapshotProcedure,
+			connect.WithSchema(snapshotServiceMethods.ByName("RevertSnapshot")),
+			connect.WithClientOptions(opts...),
+		),
+		listSnapshots: connect.NewClient[v1.ListSnapshotsRequest, v1.ListSnapshotsResponse](
+			httpClient,
+			baseURL+SnapshotServiceListSnapshotsProcedure,
+			connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshots")),
+			connect.WithClientOptions(opts...),
+		),
+		archiveSnapshot: connect.NewClient[v1.ArchiveSnapshotRequest, v1.ArchiveSnapshotResponse](
+			httpClient,
+			baseURL+SnapshotServiceArchiveSnapshotProcedure,
+			connect.WithSchema(snapshotServiceMethods.ByName("ArchiveSnapshot")),
+			connect.WithClientOptions(opts...),
+		),
+		listSnapshotPolicies: connect.NewClient[v1.ListSnapshotPoliciesRequest, v1.ListSnapshotPoliciesResponse](
+			httpClient,
+			baseURL+SnapshotServiceListSnapshotPoliciesProcedure,
+			connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshotPolicies")),
+			connect.WithClientOptions(opts...),
+		),
 		deleteSnapshot: connect.NewClient[v1.DeleteSnapshotRequest, v1.DeleteSnapshotResponse](
 			httpClient,
 			baseURL+SnapshotServiceDeleteSnapshotProcedure,
 			connect.WithSchema(snapshotServiceMethods.ByName("DeleteSnapshot")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteSnapshotPolicies: connect.NewClient[v1.DeleteSnapshotPoliciesRequest, v1.DeleteSnapshotPoliciesResponse](
+			httpClient,
+			baseURL+SnapshotServiceDeleteSnapshotPoliciesProcedure,
+			connect.WithSchema(snapshotServiceMethods.ByName("DeleteSnapshotPolicies")),
+			connect.WithClientOptions(opts...),
+		),
+		createSnapshotPolicy: connect.NewClient[v1.CreateSnapshotPolicyRequest, v1.CreateSnapshotPolicyResponse](
+			httpClient,
+			baseURL+SnapshotServiceCreateSnapshotPolicyProcedure,
+			connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshotPolicy")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -190,22 +190,70 @@ func NewSnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 // snapshotServiceClient implements SnapshotServiceClient.
 type snapshotServiceClient struct {
 	extractSnapshot              *connect.Client[v1.ExtractSnapshotRequest, v1.ExtractSnapshotResponse]
-	deleteSnapshotPolicies       *connect.Client[v1.DeleteSnapshotPoliciesRequest, v1.DeleteSnapshotPoliciesResponse]
-	createSnapshotPolicy         *connect.Client[v1.CreateSnapshotPolicyRequest, v1.CreateSnapshotPolicyResponse]
-	listSnapshotPolicies         *connect.Client[v1.ListSnapshotPoliciesRequest, v1.ListSnapshotPoliciesResponse]
 	createSnapshotFromVMSnapshot *connect.Client[v1.CreateSnapshotFromVMSnapshotRequest, v1.CreateSnapshotFromVMSnapshotResponse]
-	revertSnapshot               *connect.Client[v1.RevertSnapshotRequest, v1.RevertSnapshotResponse]
 	createSnapshot               *connect.Client[v1.CreateSnapshotRequest, v1.CreateSnapshotResponse]
-	listSnapshots                *connect.Client[v1.ListSnapshotsRequest, v1.ListSnapshotsResponse]
-	archiveSnapshot              *connect.Client[v1.ArchiveSnapshotRequest, v1.ArchiveSnapshotResponse]
 	copySnapshot                 *connect.Client[v1.CopySnapshotRequest, v1.CopySnapshotResponse]
 	updateSnapshotPolicy         *connect.Client[v1.UpdateSnapshotPolicyRequest, v1.UpdateSnapshotPolicyResponse]
+	revertSnapshot               *connect.Client[v1.RevertSnapshotRequest, v1.RevertSnapshotResponse]
+	listSnapshots                *connect.Client[v1.ListSnapshotsRequest, v1.ListSnapshotsResponse]
+	archiveSnapshot              *connect.Client[v1.ArchiveSnapshotRequest, v1.ArchiveSnapshotResponse]
+	listSnapshotPolicies         *connect.Client[v1.ListSnapshotPoliciesRequest, v1.ListSnapshotPoliciesResponse]
 	deleteSnapshot               *connect.Client[v1.DeleteSnapshotRequest, v1.DeleteSnapshotResponse]
+	deleteSnapshotPolicies       *connect.Client[v1.DeleteSnapshotPoliciesRequest, v1.DeleteSnapshotPoliciesResponse]
+	createSnapshotPolicy         *connect.Client[v1.CreateSnapshotPolicyRequest, v1.CreateSnapshotPolicyResponse]
 }
 
 // ExtractSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.ExtractSnapshot.
 func (c *snapshotServiceClient) ExtractSnapshot(ctx context.Context, req *connect.Request[v1.ExtractSnapshotRequest]) (*connect.Response[v1.ExtractSnapshotResponse], error) {
 	return c.extractSnapshot.CallUnary(ctx, req)
+}
+
+// CreateSnapshotFromVMSnapshot calls
+// cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshotFromVMSnapshot.
+func (c *snapshotServiceClient) CreateSnapshotFromVMSnapshot(ctx context.Context, req *connect.Request[v1.CreateSnapshotFromVMSnapshotRequest]) (*connect.Response[v1.CreateSnapshotFromVMSnapshotResponse], error) {
+	return c.createSnapshotFromVMSnapshot.CallUnary(ctx, req)
+}
+
+// CreateSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshot.
+func (c *snapshotServiceClient) CreateSnapshot(ctx context.Context, req *connect.Request[v1.CreateSnapshotRequest]) (*connect.Response[v1.CreateSnapshotResponse], error) {
+	return c.createSnapshot.CallUnary(ctx, req)
+}
+
+// CopySnapshot calls cloudstack.management.snapshot.v1.SnapshotService.CopySnapshot.
+func (c *snapshotServiceClient) CopySnapshot(ctx context.Context, req *connect.Request[v1.CopySnapshotRequest]) (*connect.Response[v1.CopySnapshotResponse], error) {
+	return c.copySnapshot.CallUnary(ctx, req)
+}
+
+// UpdateSnapshotPolicy calls
+// cloudstack.management.snapshot.v1.SnapshotService.UpdateSnapshotPolicy.
+func (c *snapshotServiceClient) UpdateSnapshotPolicy(ctx context.Context, req *connect.Request[v1.UpdateSnapshotPolicyRequest]) (*connect.Response[v1.UpdateSnapshotPolicyResponse], error) {
+	return c.updateSnapshotPolicy.CallUnary(ctx, req)
+}
+
+// RevertSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.RevertSnapshot.
+func (c *snapshotServiceClient) RevertSnapshot(ctx context.Context, req *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error) {
+	return c.revertSnapshot.CallUnary(ctx, req)
+}
+
+// ListSnapshots calls cloudstack.management.snapshot.v1.SnapshotService.ListSnapshots.
+func (c *snapshotServiceClient) ListSnapshots(ctx context.Context, req *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error) {
+	return c.listSnapshots.CallUnary(ctx, req)
+}
+
+// ArchiveSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.ArchiveSnapshot.
+func (c *snapshotServiceClient) ArchiveSnapshot(ctx context.Context, req *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error) {
+	return c.archiveSnapshot.CallUnary(ctx, req)
+}
+
+// ListSnapshotPolicies calls
+// cloudstack.management.snapshot.v1.SnapshotService.ListSnapshotPolicies.
+func (c *snapshotServiceClient) ListSnapshotPolicies(ctx context.Context, req *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error) {
+	return c.listSnapshotPolicies.CallUnary(ctx, req)
+}
+
+// DeleteSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.DeleteSnapshot.
+func (c *snapshotServiceClient) DeleteSnapshot(ctx context.Context, req *connect.Request[v1.DeleteSnapshotRequest]) (*connect.Response[v1.DeleteSnapshotResponse], error) {
+	return c.deleteSnapshot.CallUnary(ctx, req)
 }
 
 // DeleteSnapshotPolicies calls
@@ -220,81 +268,33 @@ func (c *snapshotServiceClient) CreateSnapshotPolicy(ctx context.Context, req *c
 	return c.createSnapshotPolicy.CallUnary(ctx, req)
 }
 
-// ListSnapshotPolicies calls
-// cloudstack.management.snapshot.v1.SnapshotService.ListSnapshotPolicies.
-func (c *snapshotServiceClient) ListSnapshotPolicies(ctx context.Context, req *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error) {
-	return c.listSnapshotPolicies.CallUnary(ctx, req)
-}
-
-// CreateSnapshotFromVMSnapshot calls
-// cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshotFromVMSnapshot.
-func (c *snapshotServiceClient) CreateSnapshotFromVMSnapshot(ctx context.Context, req *connect.Request[v1.CreateSnapshotFromVMSnapshotRequest]) (*connect.Response[v1.CreateSnapshotFromVMSnapshotResponse], error) {
-	return c.createSnapshotFromVMSnapshot.CallUnary(ctx, req)
-}
-
-// RevertSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.RevertSnapshot.
-func (c *snapshotServiceClient) RevertSnapshot(ctx context.Context, req *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error) {
-	return c.revertSnapshot.CallUnary(ctx, req)
-}
-
-// CreateSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshot.
-func (c *snapshotServiceClient) CreateSnapshot(ctx context.Context, req *connect.Request[v1.CreateSnapshotRequest]) (*connect.Response[v1.CreateSnapshotResponse], error) {
-	return c.createSnapshot.CallUnary(ctx, req)
-}
-
-// ListSnapshots calls cloudstack.management.snapshot.v1.SnapshotService.ListSnapshots.
-func (c *snapshotServiceClient) ListSnapshots(ctx context.Context, req *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error) {
-	return c.listSnapshots.CallUnary(ctx, req)
-}
-
-// ArchiveSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.ArchiveSnapshot.
-func (c *snapshotServiceClient) ArchiveSnapshot(ctx context.Context, req *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error) {
-	return c.archiveSnapshot.CallUnary(ctx, req)
-}
-
-// CopySnapshot calls cloudstack.management.snapshot.v1.SnapshotService.CopySnapshot.
-func (c *snapshotServiceClient) CopySnapshot(ctx context.Context, req *connect.Request[v1.CopySnapshotRequest]) (*connect.Response[v1.CopySnapshotResponse], error) {
-	return c.copySnapshot.CallUnary(ctx, req)
-}
-
-// UpdateSnapshotPolicy calls
-// cloudstack.management.snapshot.v1.SnapshotService.UpdateSnapshotPolicy.
-func (c *snapshotServiceClient) UpdateSnapshotPolicy(ctx context.Context, req *connect.Request[v1.UpdateSnapshotPolicyRequest]) (*connect.Response[v1.UpdateSnapshotPolicyResponse], error) {
-	return c.updateSnapshotPolicy.CallUnary(ctx, req)
-}
-
-// DeleteSnapshot calls cloudstack.management.snapshot.v1.SnapshotService.DeleteSnapshot.
-func (c *snapshotServiceClient) DeleteSnapshot(ctx context.Context, req *connect.Request[v1.DeleteSnapshotRequest]) (*connect.Response[v1.DeleteSnapshotResponse], error) {
-	return c.deleteSnapshot.CallUnary(ctx, req)
-}
-
 // SnapshotServiceHandler is an implementation of the
 // cloudstack.management.snapshot.v1.SnapshotService service.
 type SnapshotServiceHandler interface {
 	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
 	ExtractSnapshot(context.Context, *connect.Request[v1.ExtractSnapshotRequest]) (*connect.Response[v1.ExtractSnapshotResponse], error)
-	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
-	DeleteSnapshotPolicies(context.Context, *connect.Request[v1.DeleteSnapshotPoliciesRequest]) (*connect.Response[v1.DeleteSnapshotPoliciesResponse], error)
-	// CreateSnapshotPolicy Creates a snapshot policy for the account.
-	CreateSnapshotPolicy(context.Context, *connect.Request[v1.CreateSnapshotPolicyRequest]) (*connect.Response[v1.CreateSnapshotPolicyResponse], error)
-	// ListSnapshotPolicies Lists snapshot policies.
-	ListSnapshotPolicies(context.Context, *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error)
 	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
 	CreateSnapshotFromVMSnapshot(context.Context, *connect.Request[v1.CreateSnapshotFromVMSnapshotRequest]) (*connect.Response[v1.CreateSnapshotFromVMSnapshotResponse], error)
-	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
-	RevertSnapshot(context.Context, *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error)
 	// CreateSnapshot Creates an instant snapshot of a volume.
 	CreateSnapshot(context.Context, *connect.Request[v1.CreateSnapshotRequest]) (*connect.Response[v1.CreateSnapshotResponse], error)
-	// ListSnapshots Lists all available snapshots for the account.
-	ListSnapshots(context.Context, *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error)
-	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
-	ArchiveSnapshot(context.Context, *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error)
 	// CopySnapshot Copies a snapshot from one zone to another.
 	CopySnapshot(context.Context, *connect.Request[v1.CopySnapshotRequest]) (*connect.Response[v1.CopySnapshotResponse], error)
 	// UpdateSnapshotPolicy Updates the snapshot policy.
 	UpdateSnapshotPolicy(context.Context, *connect.Request[v1.UpdateSnapshotPolicyRequest]) (*connect.Response[v1.UpdateSnapshotPolicyResponse], error)
+	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
+	RevertSnapshot(context.Context, *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error)
+	// ListSnapshots Lists all available snapshots for the account.
+	ListSnapshots(context.Context, *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error)
+	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
+	ArchiveSnapshot(context.Context, *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error)
+	// ListSnapshotPolicies Lists snapshot policies.
+	ListSnapshotPolicies(context.Context, *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error)
 	// DeleteSnapshot Deletes a snapshot of a disk volume.
 	DeleteSnapshot(context.Context, *connect.Request[v1.DeleteSnapshotRequest]) (*connect.Response[v1.DeleteSnapshotResponse], error)
+	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
+	DeleteSnapshotPolicies(context.Context, *connect.Request[v1.DeleteSnapshotPoliciesRequest]) (*connect.Response[v1.DeleteSnapshotPoliciesResponse], error)
+	// CreateSnapshotPolicy Creates a snapshot policy for the account.
+	CreateSnapshotPolicy(context.Context, *connect.Request[v1.CreateSnapshotPolicyRequest]) (*connect.Response[v1.CreateSnapshotPolicyResponse], error)
 }
 
 // NewSnapshotServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -310,52 +310,16 @@ func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect.Handl
 		connect.WithSchema(snapshotServiceMethods.ByName("ExtractSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
-	snapshotServiceDeleteSnapshotPoliciesHandler := connect.NewUnaryHandler(
-		SnapshotServiceDeleteSnapshotPoliciesProcedure,
-		svc.DeleteSnapshotPolicies,
-		connect.WithSchema(snapshotServiceMethods.ByName("DeleteSnapshotPolicies")),
-		connect.WithHandlerOptions(opts...),
-	)
-	snapshotServiceCreateSnapshotPolicyHandler := connect.NewUnaryHandler(
-		SnapshotServiceCreateSnapshotPolicyProcedure,
-		svc.CreateSnapshotPolicy,
-		connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshotPolicy")),
-		connect.WithHandlerOptions(opts...),
-	)
-	snapshotServiceListSnapshotPoliciesHandler := connect.NewUnaryHandler(
-		SnapshotServiceListSnapshotPoliciesProcedure,
-		svc.ListSnapshotPolicies,
-		connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshotPolicies")),
-		connect.WithHandlerOptions(opts...),
-	)
 	snapshotServiceCreateSnapshotFromVMSnapshotHandler := connect.NewUnaryHandler(
 		SnapshotServiceCreateSnapshotFromVMSnapshotProcedure,
 		svc.CreateSnapshotFromVMSnapshot,
 		connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshotFromVMSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
-	snapshotServiceRevertSnapshotHandler := connect.NewUnaryHandler(
-		SnapshotServiceRevertSnapshotProcedure,
-		svc.RevertSnapshot,
-		connect.WithSchema(snapshotServiceMethods.ByName("RevertSnapshot")),
-		connect.WithHandlerOptions(opts...),
-	)
 	snapshotServiceCreateSnapshotHandler := connect.NewUnaryHandler(
 		SnapshotServiceCreateSnapshotProcedure,
 		svc.CreateSnapshot,
 		connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshot")),
-		connect.WithHandlerOptions(opts...),
-	)
-	snapshotServiceListSnapshotsHandler := connect.NewUnaryHandler(
-		SnapshotServiceListSnapshotsProcedure,
-		svc.ListSnapshots,
-		connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshots")),
-		connect.WithHandlerOptions(opts...),
-	)
-	snapshotServiceArchiveSnapshotHandler := connect.NewUnaryHandler(
-		SnapshotServiceArchiveSnapshotProcedure,
-		svc.ArchiveSnapshot,
-		connect.WithSchema(snapshotServiceMethods.ByName("ArchiveSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
 	snapshotServiceCopySnapshotHandler := connect.NewUnaryHandler(
@@ -370,38 +334,74 @@ func NewSnapshotServiceHandler(svc SnapshotServiceHandler, opts ...connect.Handl
 		connect.WithSchema(snapshotServiceMethods.ByName("UpdateSnapshotPolicy")),
 		connect.WithHandlerOptions(opts...),
 	)
+	snapshotServiceRevertSnapshotHandler := connect.NewUnaryHandler(
+		SnapshotServiceRevertSnapshotProcedure,
+		svc.RevertSnapshot,
+		connect.WithSchema(snapshotServiceMethods.ByName("RevertSnapshot")),
+		connect.WithHandlerOptions(opts...),
+	)
+	snapshotServiceListSnapshotsHandler := connect.NewUnaryHandler(
+		SnapshotServiceListSnapshotsProcedure,
+		svc.ListSnapshots,
+		connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshots")),
+		connect.WithHandlerOptions(opts...),
+	)
+	snapshotServiceArchiveSnapshotHandler := connect.NewUnaryHandler(
+		SnapshotServiceArchiveSnapshotProcedure,
+		svc.ArchiveSnapshot,
+		connect.WithSchema(snapshotServiceMethods.ByName("ArchiveSnapshot")),
+		connect.WithHandlerOptions(opts...),
+	)
+	snapshotServiceListSnapshotPoliciesHandler := connect.NewUnaryHandler(
+		SnapshotServiceListSnapshotPoliciesProcedure,
+		svc.ListSnapshotPolicies,
+		connect.WithSchema(snapshotServiceMethods.ByName("ListSnapshotPolicies")),
+		connect.WithHandlerOptions(opts...),
+	)
 	snapshotServiceDeleteSnapshotHandler := connect.NewUnaryHandler(
 		SnapshotServiceDeleteSnapshotProcedure,
 		svc.DeleteSnapshot,
 		connect.WithSchema(snapshotServiceMethods.ByName("DeleteSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
+	snapshotServiceDeleteSnapshotPoliciesHandler := connect.NewUnaryHandler(
+		SnapshotServiceDeleteSnapshotPoliciesProcedure,
+		svc.DeleteSnapshotPolicies,
+		connect.WithSchema(snapshotServiceMethods.ByName("DeleteSnapshotPolicies")),
+		connect.WithHandlerOptions(opts...),
+	)
+	snapshotServiceCreateSnapshotPolicyHandler := connect.NewUnaryHandler(
+		SnapshotServiceCreateSnapshotPolicyProcedure,
+		svc.CreateSnapshotPolicy,
+		connect.WithSchema(snapshotServiceMethods.ByName("CreateSnapshotPolicy")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.snapshot.v1.SnapshotService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SnapshotServiceExtractSnapshotProcedure:
 			snapshotServiceExtractSnapshotHandler.ServeHTTP(w, r)
-		case SnapshotServiceDeleteSnapshotPoliciesProcedure:
-			snapshotServiceDeleteSnapshotPoliciesHandler.ServeHTTP(w, r)
-		case SnapshotServiceCreateSnapshotPolicyProcedure:
-			snapshotServiceCreateSnapshotPolicyHandler.ServeHTTP(w, r)
-		case SnapshotServiceListSnapshotPoliciesProcedure:
-			snapshotServiceListSnapshotPoliciesHandler.ServeHTTP(w, r)
 		case SnapshotServiceCreateSnapshotFromVMSnapshotProcedure:
 			snapshotServiceCreateSnapshotFromVMSnapshotHandler.ServeHTTP(w, r)
-		case SnapshotServiceRevertSnapshotProcedure:
-			snapshotServiceRevertSnapshotHandler.ServeHTTP(w, r)
 		case SnapshotServiceCreateSnapshotProcedure:
 			snapshotServiceCreateSnapshotHandler.ServeHTTP(w, r)
-		case SnapshotServiceListSnapshotsProcedure:
-			snapshotServiceListSnapshotsHandler.ServeHTTP(w, r)
-		case SnapshotServiceArchiveSnapshotProcedure:
-			snapshotServiceArchiveSnapshotHandler.ServeHTTP(w, r)
 		case SnapshotServiceCopySnapshotProcedure:
 			snapshotServiceCopySnapshotHandler.ServeHTTP(w, r)
 		case SnapshotServiceUpdateSnapshotPolicyProcedure:
 			snapshotServiceUpdateSnapshotPolicyHandler.ServeHTTP(w, r)
+		case SnapshotServiceRevertSnapshotProcedure:
+			snapshotServiceRevertSnapshotHandler.ServeHTTP(w, r)
+		case SnapshotServiceListSnapshotsProcedure:
+			snapshotServiceListSnapshotsHandler.ServeHTTP(w, r)
+		case SnapshotServiceArchiveSnapshotProcedure:
+			snapshotServiceArchiveSnapshotHandler.ServeHTTP(w, r)
+		case SnapshotServiceListSnapshotPoliciesProcedure:
+			snapshotServiceListSnapshotPoliciesHandler.ServeHTTP(w, r)
 		case SnapshotServiceDeleteSnapshotProcedure:
 			snapshotServiceDeleteSnapshotHandler.ServeHTTP(w, r)
+		case SnapshotServiceDeleteSnapshotPoliciesProcedure:
+			snapshotServiceDeleteSnapshotPoliciesHandler.ServeHTTP(w, r)
+		case SnapshotServiceCreateSnapshotPolicyProcedure:
+			snapshotServiceCreateSnapshotPolicyHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -415,36 +415,12 @@ func (UnimplementedSnapshotServiceHandler) ExtractSnapshot(context.Context, *con
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ExtractSnapshot is not implemented"))
 }
 
-func (UnimplementedSnapshotServiceHandler) DeleteSnapshotPolicies(context.Context, *connect.Request[v1.DeleteSnapshotPoliciesRequest]) (*connect.Response[v1.DeleteSnapshotPoliciesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.DeleteSnapshotPolicies is not implemented"))
-}
-
-func (UnimplementedSnapshotServiceHandler) CreateSnapshotPolicy(context.Context, *connect.Request[v1.CreateSnapshotPolicyRequest]) (*connect.Response[v1.CreateSnapshotPolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshotPolicy is not implemented"))
-}
-
-func (UnimplementedSnapshotServiceHandler) ListSnapshotPolicies(context.Context, *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ListSnapshotPolicies is not implemented"))
-}
-
 func (UnimplementedSnapshotServiceHandler) CreateSnapshotFromVMSnapshot(context.Context, *connect.Request[v1.CreateSnapshotFromVMSnapshotRequest]) (*connect.Response[v1.CreateSnapshotFromVMSnapshotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshotFromVMSnapshot is not implemented"))
 }
 
-func (UnimplementedSnapshotServiceHandler) RevertSnapshot(context.Context, *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.RevertSnapshot is not implemented"))
-}
-
 func (UnimplementedSnapshotServiceHandler) CreateSnapshot(context.Context, *connect.Request[v1.CreateSnapshotRequest]) (*connect.Response[v1.CreateSnapshotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshot is not implemented"))
-}
-
-func (UnimplementedSnapshotServiceHandler) ListSnapshots(context.Context, *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ListSnapshots is not implemented"))
-}
-
-func (UnimplementedSnapshotServiceHandler) ArchiveSnapshot(context.Context, *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ArchiveSnapshot is not implemented"))
 }
 
 func (UnimplementedSnapshotServiceHandler) CopySnapshot(context.Context, *connect.Request[v1.CopySnapshotRequest]) (*connect.Response[v1.CopySnapshotResponse], error) {
@@ -455,6 +431,30 @@ func (UnimplementedSnapshotServiceHandler) UpdateSnapshotPolicy(context.Context,
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.UpdateSnapshotPolicy is not implemented"))
 }
 
+func (UnimplementedSnapshotServiceHandler) RevertSnapshot(context.Context, *connect.Request[v1.RevertSnapshotRequest]) (*connect.Response[v1.RevertSnapshotResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.RevertSnapshot is not implemented"))
+}
+
+func (UnimplementedSnapshotServiceHandler) ListSnapshots(context.Context, *connect.Request[v1.ListSnapshotsRequest]) (*connect.Response[v1.ListSnapshotsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ListSnapshots is not implemented"))
+}
+
+func (UnimplementedSnapshotServiceHandler) ArchiveSnapshot(context.Context, *connect.Request[v1.ArchiveSnapshotRequest]) (*connect.Response[v1.ArchiveSnapshotResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ArchiveSnapshot is not implemented"))
+}
+
+func (UnimplementedSnapshotServiceHandler) ListSnapshotPolicies(context.Context, *connect.Request[v1.ListSnapshotPoliciesRequest]) (*connect.Response[v1.ListSnapshotPoliciesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.ListSnapshotPolicies is not implemented"))
+}
+
 func (UnimplementedSnapshotServiceHandler) DeleteSnapshot(context.Context, *connect.Request[v1.DeleteSnapshotRequest]) (*connect.Response[v1.DeleteSnapshotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.DeleteSnapshot is not implemented"))
+}
+
+func (UnimplementedSnapshotServiceHandler) DeleteSnapshotPolicies(context.Context, *connect.Request[v1.DeleteSnapshotPoliciesRequest]) (*connect.Response[v1.DeleteSnapshotPoliciesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.DeleteSnapshotPolicies is not implemented"))
+}
+
+func (UnimplementedSnapshotServiceHandler) CreateSnapshotPolicy(context.Context, *connect.Request[v1.CreateSnapshotPolicyRequest]) (*connect.Response[v1.CreateSnapshotPolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.snapshot.v1.SnapshotService.CreateSnapshotPolicy is not implemented"))
 }

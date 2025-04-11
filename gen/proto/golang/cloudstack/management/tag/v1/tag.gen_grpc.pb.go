@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TagService_ListTags_FullMethodName   = "/cloudstack.management.tag.v1.TagService/ListTags"
 	TagService_DeleteTags_FullMethodName = "/cloudstack.management.tag.v1.TagService/DeleteTags"
 	TagService_CreateTags_FullMethodName = "/cloudstack.management.tag.v1.TagService/CreateTags"
+	TagService_ListTags_FullMethodName   = "/cloudstack.management.tag.v1.TagService/ListTags"
 )
 
 // TagServiceClient is the client API for TagService service.
@@ -30,12 +30,12 @@ const (
 //
 // TagService provides operations for managing Tags
 type TagServiceClient interface {
-	// ListTags List resource tag(s)
-	ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error)
 	// DeleteTags Deleting resource tag(s)
 	DeleteTags(ctx context.Context, in *DeleteTagsRequest, opts ...grpc.CallOption) (*DeleteTagsResponse, error)
 	// CreateTags Creates resource tag(s)
 	CreateTags(ctx context.Context, in *CreateTagsRequest, opts ...grpc.CallOption) (*CreateTagsResponse, error)
+	// ListTags List resource tag(s)
+	ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error)
 }
 
 type tagServiceClient struct {
@@ -44,16 +44,6 @@ type tagServiceClient struct {
 
 func NewTagServiceClient(cc grpc.ClientConnInterface) TagServiceClient {
 	return &tagServiceClient{cc}
-}
-
-func (c *tagServiceClient) ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTagsResponse)
-	err := c.cc.Invoke(ctx, TagService_ListTags_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *tagServiceClient) DeleteTags(ctx context.Context, in *DeleteTagsRequest, opts ...grpc.CallOption) (*DeleteTagsResponse, error) {
@@ -76,18 +66,28 @@ func (c *tagServiceClient) CreateTags(ctx context.Context, in *CreateTagsRequest
 	return out, nil
 }
 
+func (c *tagServiceClient) ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTagsResponse)
+	err := c.cc.Invoke(ctx, TagService_ListTags_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TagServiceServer is the server API for TagService service.
 // All implementations must embed UnimplementedTagServiceServer
 // for forward compatibility.
 //
 // TagService provides operations for managing Tags
 type TagServiceServer interface {
-	// ListTags List resource tag(s)
-	ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error)
 	// DeleteTags Deleting resource tag(s)
 	DeleteTags(context.Context, *DeleteTagsRequest) (*DeleteTagsResponse, error)
 	// CreateTags Creates resource tag(s)
 	CreateTags(context.Context, *CreateTagsRequest) (*CreateTagsResponse, error)
+	// ListTags List resource tag(s)
+	ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error)
 	mustEmbedUnimplementedTagServiceServer()
 }
 
@@ -98,14 +98,14 @@ type TagServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedTagServiceServer struct{}
 
-func (UnimplementedTagServiceServer) ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTags not implemented")
-}
 func (UnimplementedTagServiceServer) DeleteTags(context.Context, *DeleteTagsRequest) (*DeleteTagsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTags not implemented")
 }
 func (UnimplementedTagServiceServer) CreateTags(context.Context, *CreateTagsRequest) (*CreateTagsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTags not implemented")
+}
+func (UnimplementedTagServiceServer) ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTags not implemented")
 }
 func (UnimplementedTagServiceServer) mustEmbedUnimplementedTagServiceServer() {}
 func (UnimplementedTagServiceServer) testEmbeddedByValue()                    {}
@@ -126,24 +126,6 @@ func RegisterTagServiceServer(s grpc.ServiceRegistrar, srv TagServiceServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&TagService_ServiceDesc, srv)
-}
-
-func _TagService_ListTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListTagsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TagServiceServer).ListTags(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TagService_ListTags_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TagServiceServer).ListTags(ctx, req.(*ListTagsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _TagService_DeleteTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -182,6 +164,24 @@ func _TagService_CreateTags_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TagService_ListTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTagsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TagServiceServer).ListTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TagService_ListTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TagServiceServer).ListTags(ctx, req.(*ListTagsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TagService_ServiceDesc is the grpc.ServiceDesc for TagService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,16 +190,16 @@ var TagService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TagServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListTags",
-			Handler:    _TagService_ListTags_Handler,
-		},
-		{
 			MethodName: "DeleteTags",
 			Handler:    _TagService_DeleteTags_Handler,
 		},
 		{
 			MethodName: "CreateTags",
 			Handler:    _TagService_CreateTags_Handler,
+		},
+		{
+			MethodName: "ListTags",
+			Handler:    _TagService_ListTags_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

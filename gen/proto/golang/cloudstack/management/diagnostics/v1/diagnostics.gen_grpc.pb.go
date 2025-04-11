@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DiagnosticsService_RunDiagnostics_FullMethodName     = "/cloudstack.management.diagnostics.v1.DiagnosticsService/RunDiagnostics"
 	DiagnosticsService_GetDiagnosticsData_FullMethodName = "/cloudstack.management.diagnostics.v1.DiagnosticsService/GetDiagnosticsData"
+	DiagnosticsService_RunDiagnostics_FullMethodName     = "/cloudstack.management.diagnostics.v1.DiagnosticsService/RunDiagnostics"
 )
 
 // DiagnosticsServiceClient is the client API for DiagnosticsService service.
@@ -29,10 +29,10 @@ const (
 //
 // DiagnosticsService provides operations for managing Diagnosticss
 type DiagnosticsServiceClient interface {
-	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	RunDiagnostics(ctx context.Context, in *RunDiagnosticsRequest, opts ...grpc.CallOption) (*RunDiagnosticsResponse, error)
 	// GetDiagnosticsData Get diagnostics and files from system VMs
 	GetDiagnosticsData(ctx context.Context, in *GetDiagnosticsDataRequest, opts ...grpc.CallOption) (*GetDiagnosticsDataResponse, error)
+	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
+	RunDiagnostics(ctx context.Context, in *RunDiagnosticsRequest, opts ...grpc.CallOption) (*RunDiagnosticsResponse, error)
 }
 
 type diagnosticsServiceClient struct {
@@ -41,16 +41,6 @@ type diagnosticsServiceClient struct {
 
 func NewDiagnosticsServiceClient(cc grpc.ClientConnInterface) DiagnosticsServiceClient {
 	return &diagnosticsServiceClient{cc}
-}
-
-func (c *diagnosticsServiceClient) RunDiagnostics(ctx context.Context, in *RunDiagnosticsRequest, opts ...grpc.CallOption) (*RunDiagnosticsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RunDiagnosticsResponse)
-	err := c.cc.Invoke(ctx, DiagnosticsService_RunDiagnostics_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *diagnosticsServiceClient) GetDiagnosticsData(ctx context.Context, in *GetDiagnosticsDataRequest, opts ...grpc.CallOption) (*GetDiagnosticsDataResponse, error) {
@@ -63,16 +53,26 @@ func (c *diagnosticsServiceClient) GetDiagnosticsData(ctx context.Context, in *G
 	return out, nil
 }
 
+func (c *diagnosticsServiceClient) RunDiagnostics(ctx context.Context, in *RunDiagnosticsRequest, opts ...grpc.CallOption) (*RunDiagnosticsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RunDiagnosticsResponse)
+	err := c.cc.Invoke(ctx, DiagnosticsService_RunDiagnostics_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DiagnosticsServiceServer is the server API for DiagnosticsService service.
 // All implementations must embed UnimplementedDiagnosticsServiceServer
 // for forward compatibility.
 //
 // DiagnosticsService provides operations for managing Diagnosticss
 type DiagnosticsServiceServer interface {
-	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	RunDiagnostics(context.Context, *RunDiagnosticsRequest) (*RunDiagnosticsResponse, error)
 	// GetDiagnosticsData Get diagnostics and files from system VMs
 	GetDiagnosticsData(context.Context, *GetDiagnosticsDataRequest) (*GetDiagnosticsDataResponse, error)
+	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
+	RunDiagnostics(context.Context, *RunDiagnosticsRequest) (*RunDiagnosticsResponse, error)
 	mustEmbedUnimplementedDiagnosticsServiceServer()
 }
 
@@ -83,11 +83,11 @@ type DiagnosticsServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDiagnosticsServiceServer struct{}
 
-func (UnimplementedDiagnosticsServiceServer) RunDiagnostics(context.Context, *RunDiagnosticsRequest) (*RunDiagnosticsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RunDiagnostics not implemented")
-}
 func (UnimplementedDiagnosticsServiceServer) GetDiagnosticsData(context.Context, *GetDiagnosticsDataRequest) (*GetDiagnosticsDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDiagnosticsData not implemented")
+}
+func (UnimplementedDiagnosticsServiceServer) RunDiagnostics(context.Context, *RunDiagnosticsRequest) (*RunDiagnosticsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunDiagnostics not implemented")
 }
 func (UnimplementedDiagnosticsServiceServer) mustEmbedUnimplementedDiagnosticsServiceServer() {}
 func (UnimplementedDiagnosticsServiceServer) testEmbeddedByValue()                            {}
@@ -110,24 +110,6 @@ func RegisterDiagnosticsServiceServer(s grpc.ServiceRegistrar, srv DiagnosticsSe
 	s.RegisterService(&DiagnosticsService_ServiceDesc, srv)
 }
 
-func _DiagnosticsService_RunDiagnostics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RunDiagnosticsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DiagnosticsServiceServer).RunDiagnostics(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: DiagnosticsService_RunDiagnostics_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DiagnosticsServiceServer).RunDiagnostics(ctx, req.(*RunDiagnosticsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _DiagnosticsService_GetDiagnosticsData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetDiagnosticsDataRequest)
 	if err := dec(in); err != nil {
@@ -146,6 +128,24 @@ func _DiagnosticsService_GetDiagnosticsData_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DiagnosticsService_RunDiagnostics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunDiagnosticsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DiagnosticsServiceServer).RunDiagnostics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DiagnosticsService_RunDiagnostics_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DiagnosticsServiceServer).RunDiagnostics(ctx, req.(*RunDiagnosticsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DiagnosticsService_ServiceDesc is the grpc.ServiceDesc for DiagnosticsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -154,12 +154,12 @@ var DiagnosticsService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*DiagnosticsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RunDiagnostics",
-			Handler:    _DiagnosticsService_RunDiagnostics_Handler,
-		},
-		{
 			MethodName: "GetDiagnosticsData",
 			Handler:    _DiagnosticsService_GetDiagnosticsData_Handler,
+		},
+		{
+			MethodName: "RunDiagnostics",
+			Handler:    _DiagnosticsService_RunDiagnostics_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	VmsnapshotService_ListVMSnapshot_FullMethodName               = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/ListVMSnapshot"
+	VmsnapshotService_DeleteVMSnapshot_FullMethodName             = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/DeleteVMSnapshot"
 	VmsnapshotService_CreateVMSnapshot_FullMethodName             = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/CreateVMSnapshot"
 	VmsnapshotService_RevertToVMSnapshotCmdByAdmin_FullMethodName = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/RevertToVMSnapshotCmdByAdmin"
-	VmsnapshotService_DeleteVMSnapshot_FullMethodName             = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/DeleteVMSnapshot"
 	VmsnapshotService_RevertToVMSnapshot_FullMethodName           = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/RevertToVMSnapshot"
-	VmsnapshotService_ListVMSnapshot_FullMethodName               = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/ListVMSnapshot"
 )
 
 // VmsnapshotServiceClient is the client API for VmsnapshotService service.
@@ -32,16 +32,16 @@ const (
 //
 // VmsnapshotService provides operations for managing Vmsnapshots
 type VmsnapshotServiceClient interface {
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	ListVMSnapshot(ctx context.Context, in *ListVMSnapshotRequest, opts ...grpc.CallOption) (*ListVMSnapshotResponse, error)
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	DeleteVMSnapshot(ctx context.Context, in *DeleteVMSnapshotRequest, opts ...grpc.CallOption) (*DeleteVMSnapshotResponse, error)
 	// CreateVMSnapshot Creates snapshot for a vm.
 	CreateVMSnapshot(ctx context.Context, in *CreateVMSnapshotRequest, opts ...grpc.CallOption) (*CreateVMSnapshotResponse, error)
 	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
 	RevertToVMSnapshotCmdByAdmin(ctx context.Context, in *RevertToVMSnapshotCmdByAdminRequest, opts ...grpc.CallOption) (*RevertToVMSnapshotCmdByAdminResponse, error)
-	// DeleteVMSnapshot Deletes a vmsnapshot.
-	DeleteVMSnapshot(ctx context.Context, in *DeleteVMSnapshotRequest, opts ...grpc.CallOption) (*DeleteVMSnapshotResponse, error)
 	// RevertToVMSnapshot Revert VM from a vmsnapshot.
 	RevertToVMSnapshot(ctx context.Context, in *RevertToVMSnapshotRequest, opts ...grpc.CallOption) (*RevertToVMSnapshotResponse, error)
-	// ListVMSnapshot List virtual machine snapshot by conditions
-	ListVMSnapshot(ctx context.Context, in *ListVMSnapshotRequest, opts ...grpc.CallOption) (*ListVMSnapshotResponse, error)
 }
 
 type vmsnapshotServiceClient struct {
@@ -50,6 +50,26 @@ type vmsnapshotServiceClient struct {
 
 func NewVmsnapshotServiceClient(cc grpc.ClientConnInterface) VmsnapshotServiceClient {
 	return &vmsnapshotServiceClient{cc}
+}
+
+func (c *vmsnapshotServiceClient) ListVMSnapshot(ctx context.Context, in *ListVMSnapshotRequest, opts ...grpc.CallOption) (*ListVMSnapshotResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVMSnapshotResponse)
+	err := c.cc.Invoke(ctx, VmsnapshotService_ListVMSnapshot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmsnapshotServiceClient) DeleteVMSnapshot(ctx context.Context, in *DeleteVMSnapshotRequest, opts ...grpc.CallOption) (*DeleteVMSnapshotResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVMSnapshotResponse)
+	err := c.cc.Invoke(ctx, VmsnapshotService_DeleteVMSnapshot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *vmsnapshotServiceClient) CreateVMSnapshot(ctx context.Context, in *CreateVMSnapshotRequest, opts ...grpc.CallOption) (*CreateVMSnapshotResponse, error) {
@@ -72,30 +92,10 @@ func (c *vmsnapshotServiceClient) RevertToVMSnapshotCmdByAdmin(ctx context.Conte
 	return out, nil
 }
 
-func (c *vmsnapshotServiceClient) DeleteVMSnapshot(ctx context.Context, in *DeleteVMSnapshotRequest, opts ...grpc.CallOption) (*DeleteVMSnapshotResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVMSnapshotResponse)
-	err := c.cc.Invoke(ctx, VmsnapshotService_DeleteVMSnapshot_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *vmsnapshotServiceClient) RevertToVMSnapshot(ctx context.Context, in *RevertToVMSnapshotRequest, opts ...grpc.CallOption) (*RevertToVMSnapshotResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RevertToVMSnapshotResponse)
 	err := c.cc.Invoke(ctx, VmsnapshotService_RevertToVMSnapshot_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmsnapshotServiceClient) ListVMSnapshot(ctx context.Context, in *ListVMSnapshotRequest, opts ...grpc.CallOption) (*ListVMSnapshotResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVMSnapshotResponse)
-	err := c.cc.Invoke(ctx, VmsnapshotService_ListVMSnapshot_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,16 +108,16 @@ func (c *vmsnapshotServiceClient) ListVMSnapshot(ctx context.Context, in *ListVM
 //
 // VmsnapshotService provides operations for managing Vmsnapshots
 type VmsnapshotServiceServer interface {
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	ListVMSnapshot(context.Context, *ListVMSnapshotRequest) (*ListVMSnapshotResponse, error)
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	DeleteVMSnapshot(context.Context, *DeleteVMSnapshotRequest) (*DeleteVMSnapshotResponse, error)
 	// CreateVMSnapshot Creates snapshot for a vm.
 	CreateVMSnapshot(context.Context, *CreateVMSnapshotRequest) (*CreateVMSnapshotResponse, error)
 	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
 	RevertToVMSnapshotCmdByAdmin(context.Context, *RevertToVMSnapshotCmdByAdminRequest) (*RevertToVMSnapshotCmdByAdminResponse, error)
-	// DeleteVMSnapshot Deletes a vmsnapshot.
-	DeleteVMSnapshot(context.Context, *DeleteVMSnapshotRequest) (*DeleteVMSnapshotResponse, error)
 	// RevertToVMSnapshot Revert VM from a vmsnapshot.
 	RevertToVMSnapshot(context.Context, *RevertToVMSnapshotRequest) (*RevertToVMSnapshotResponse, error)
-	// ListVMSnapshot List virtual machine snapshot by conditions
-	ListVMSnapshot(context.Context, *ListVMSnapshotRequest) (*ListVMSnapshotResponse, error)
 	mustEmbedUnimplementedVmsnapshotServiceServer()
 }
 
@@ -128,20 +128,20 @@ type VmsnapshotServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVmsnapshotServiceServer struct{}
 
+func (UnimplementedVmsnapshotServiceServer) ListVMSnapshot(context.Context, *ListVMSnapshotRequest) (*ListVMSnapshotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVMSnapshot not implemented")
+}
+func (UnimplementedVmsnapshotServiceServer) DeleteVMSnapshot(context.Context, *DeleteVMSnapshotRequest) (*DeleteVMSnapshotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVMSnapshot not implemented")
+}
 func (UnimplementedVmsnapshotServiceServer) CreateVMSnapshot(context.Context, *CreateVMSnapshotRequest) (*CreateVMSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateVMSnapshot not implemented")
 }
 func (UnimplementedVmsnapshotServiceServer) RevertToVMSnapshotCmdByAdmin(context.Context, *RevertToVMSnapshotCmdByAdminRequest) (*RevertToVMSnapshotCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevertToVMSnapshotCmdByAdmin not implemented")
 }
-func (UnimplementedVmsnapshotServiceServer) DeleteVMSnapshot(context.Context, *DeleteVMSnapshotRequest) (*DeleteVMSnapshotResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVMSnapshot not implemented")
-}
 func (UnimplementedVmsnapshotServiceServer) RevertToVMSnapshot(context.Context, *RevertToVMSnapshotRequest) (*RevertToVMSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevertToVMSnapshot not implemented")
-}
-func (UnimplementedVmsnapshotServiceServer) ListVMSnapshot(context.Context, *ListVMSnapshotRequest) (*ListVMSnapshotResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVMSnapshot not implemented")
 }
 func (UnimplementedVmsnapshotServiceServer) mustEmbedUnimplementedVmsnapshotServiceServer() {}
 func (UnimplementedVmsnapshotServiceServer) testEmbeddedByValue()                           {}
@@ -162,6 +162,42 @@ func RegisterVmsnapshotServiceServer(s grpc.ServiceRegistrar, srv VmsnapshotServ
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&VmsnapshotService_ServiceDesc, srv)
+}
+
+func _VmsnapshotService_ListVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVMSnapshotRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmsnapshotServiceServer).ListVMSnapshot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmsnapshotService_ListVMSnapshot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmsnapshotServiceServer).ListVMSnapshot(ctx, req.(*ListVMSnapshotRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmsnapshotService_DeleteVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVMSnapshotRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmsnapshotServiceServer).DeleteVMSnapshot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmsnapshotService_DeleteVMSnapshot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmsnapshotServiceServer).DeleteVMSnapshot(ctx, req.(*DeleteVMSnapshotRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _VmsnapshotService_CreateVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -200,24 +236,6 @@ func _VmsnapshotService_RevertToVMSnapshotCmdByAdmin_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VmsnapshotService_DeleteVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVMSnapshotRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmsnapshotServiceServer).DeleteVMSnapshot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmsnapshotService_DeleteVMSnapshot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmsnapshotServiceServer).DeleteVMSnapshot(ctx, req.(*DeleteVMSnapshotRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _VmsnapshotService_RevertToVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RevertToVMSnapshotRequest)
 	if err := dec(in); err != nil {
@@ -236,24 +254,6 @@ func _VmsnapshotService_RevertToVMSnapshot_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VmsnapshotService_ListVMSnapshot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVMSnapshotRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmsnapshotServiceServer).ListVMSnapshot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmsnapshotService_ListVMSnapshot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmsnapshotServiceServer).ListVMSnapshot(ctx, req.(*ListVMSnapshotRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // VmsnapshotService_ServiceDesc is the grpc.ServiceDesc for VmsnapshotService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -261,6 +261,14 @@ var VmsnapshotService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "cloudstack.management.vmsnapshot.v1.VmsnapshotService",
 	HandlerType: (*VmsnapshotServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListVMSnapshot",
+			Handler:    _VmsnapshotService_ListVMSnapshot_Handler,
+		},
+		{
+			MethodName: "DeleteVMSnapshot",
+			Handler:    _VmsnapshotService_DeleteVMSnapshot_Handler,
+		},
 		{
 			MethodName: "CreateVMSnapshot",
 			Handler:    _VmsnapshotService_CreateVMSnapshot_Handler,
@@ -270,16 +278,8 @@ var VmsnapshotService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _VmsnapshotService_RevertToVMSnapshotCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "DeleteVMSnapshot",
-			Handler:    _VmsnapshotService_DeleteVMSnapshot_Handler,
-		},
-		{
 			MethodName: "RevertToVMSnapshot",
 			Handler:    _VmsnapshotService_RevertToVMSnapshot_Handler,
-		},
-		{
-			MethodName: "ListVMSnapshot",
-			Handler:    _VmsnapshotService_ListVMSnapshot_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

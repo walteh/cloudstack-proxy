@@ -24,501 +24,15 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// RecoverVolumeRequest represents the parameters for recovers a destroy volume.
-type RecoverVolumeRequest struct {
+// DestroyVolumeRequest represents the parameters for destroys a volume.
+type DestroyVolumeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Whether to run this operation as an administrator
 	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
 	// The ID of the volume
 	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RecoverVolumeRequest) Reset() {
-	*x = RecoverVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RecoverVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecoverVolumeRequest) ProtoMessage() {}
-
-func (x *RecoverVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecoverVolumeRequest.ProtoReflect.Descriptor instead.
-func (*RecoverVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *RecoverVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *RecoverVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RecoverVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RecoverVolumeResponse represents the response from recovers a destroy volume.
-type RecoverVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RecoverVolumeResponse) Reset() {
-	*x = RecoverVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RecoverVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecoverVolumeResponse) ProtoMessage() {}
-
-func (x *RecoverVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecoverVolumeResponse.ProtoReflect.Descriptor instead.
-func (*RecoverVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *RecoverVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AttachVolumeRequest represents the parameters for attaches a disk volume to a virtual machine.
-type AttachVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
-	DeviceId *int64 `protobuf:"varint,2,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
-	// the ID of the disk volume
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// the ID of the virtual machine
-	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AttachVolumeRequest) Reset() {
-	*x = AttachVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AttachVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AttachVolumeRequest) ProtoMessage() {}
-
-func (x *AttachVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AttachVolumeRequest.ProtoReflect.Descriptor instead.
-func (*AttachVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *AttachVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *AttachVolumeRequest) GetDeviceId() int64 {
-	if x != nil && x.DeviceId != nil {
-		return *x.DeviceId
-	}
-	return 0
-}
-
-func (x *AttachVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *AttachVolumeRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *AttachVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AttachVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AttachVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AttachVolumeResponse represents the response from attaches a disk volume to a virtual machine.
-type AttachVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AttachVolumeResponse) Reset() {
-	*x = AttachVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AttachVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AttachVolumeResponse) ProtoMessage() {}
-
-func (x *AttachVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AttachVolumeResponse.ProtoReflect.Descriptor instead.
-func (*AttachVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *AttachVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AssignVolumeRequest represents the parameters for changes ownership of a volume from one account to another.
-type AssignVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the volume to be reassigned.
-	VolumeId *int64 `protobuf:"varint,1,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
-	// The ID of the account to which the volume will be assigned. Mutually exclusive with parameter 'projectid'.
-	AccountId *int64 `protobuf:"varint,2,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The ID of the project to which the volume will be assigned. Mutually exclusive with 'accountid'.
-	Projectid *int64 `protobuf:"varint,3,opt,name=projectid" json:"projectid,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignVolumeRequest) Reset() {
-	*x = AssignVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignVolumeRequest) ProtoMessage() {}
-
-func (x *AssignVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignVolumeRequest.ProtoReflect.Descriptor instead.
-func (*AssignVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *AssignVolumeRequest) GetVolumeId() int64 {
-	if x != nil && x.VolumeId != nil {
-		return *x.VolumeId
-	}
-	return 0
-}
-
-func (x *AssignVolumeRequest) GetAccountId() int64 {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return 0
-}
-
-func (x *AssignVolumeRequest) GetProjectid() int64 {
-	if x != nil && x.Projectid != nil {
-		return *x.Projectid
-	}
-	return 0
-}
-
-func (x *AssignVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AssignVolumeResponse represents the response from changes ownership of a volume from one account to another.
-type AssignVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignVolumeResponse) Reset() {
-	*x = AssignVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignVolumeResponse) ProtoMessage() {}
-
-func (x *AssignVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignVolumeResponse.ProtoReflect.Descriptor instead.
-func (*AssignVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *AssignVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UnmanageVolumeRequest represents the parameters for unmanage a volume on storage pool.
-type UnmanageVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the volume to unmanage
-	VolumeId *int64 `protobuf:"varint,1,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UnmanageVolumeRequest) Reset() {
-	*x = UnmanageVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UnmanageVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UnmanageVolumeRequest) ProtoMessage() {}
-
-func (x *UnmanageVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UnmanageVolumeRequest.ProtoReflect.Descriptor instead.
-func (*UnmanageVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UnmanageVolumeRequest) GetVolumeId() int64 {
-	if x != nil && x.VolumeId != nil {
-		return *x.VolumeId
-	}
-	return 0
-}
-
-func (x *UnmanageVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UnmanageVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UnmanageVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UnmanageVolumeResponse represents the response from unmanage a volume on storage pool.
-type UnmanageVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UnmanageVolumeResponse) Reset() {
-	*x = UnmanageVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UnmanageVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UnmanageVolumeResponse) ProtoMessage() {}
-
-func (x *UnmanageVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UnmanageVolumeResponse.ProtoReflect.Descriptor instead.
-func (*UnmanageVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *UnmanageVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveResourceDetailRequest represents the parameters for removes detail for the resource.
-type RemoveResourceDetailRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Delete details matching key/value pairs
-	Key *string `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
-	// Delete detail by resource type
-	ResourceType *string `protobuf:"bytes,2,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
-	// Delete details for resource id
-	ResourceId *string `protobuf:"bytes,3,opt,name=resource_id,json=resourceId" json:"resource_id,omitempty"`
+	// If true is passed, the volume is expunged immediately. False by default.
+	Expunge *bool `protobuf:"varint,3,opt,name=expunge" json:"expunge,omitempty"`
 	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -526,21 +40,21 @@ type RemoveResourceDetailRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveResourceDetailRequest) Reset() {
-	*x = RemoveResourceDetailRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[8]
+func (x *DestroyVolumeRequest) Reset() {
+	*x = DestroyVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveResourceDetailRequest) String() string {
+func (x *DestroyVolumeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveResourceDetailRequest) ProtoMessage() {}
+func (*DestroyVolumeRequest) ProtoMessage() {}
 
-func (x *RemoveResourceDetailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[8]
+func (x *DestroyVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -551,55 +65,55 @@ func (x *RemoveResourceDetailRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveResourceDetailRequest.ProtoReflect.Descriptor instead.
-func (*RemoveResourceDetailRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{8}
+// Deprecated: Use DestroyVolumeRequest.ProtoReflect.Descriptor instead.
+func (*DestroyVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RemoveResourceDetailRequest) GetKey() string {
-	if x != nil && x.Key != nil {
-		return *x.Key
+func (x *DestroyVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
 	}
-	return ""
+	return false
 }
 
-func (x *RemoveResourceDetailRequest) GetResourceType() string {
-	if x != nil && x.ResourceType != nil {
-		return *x.ResourceType
+func (x *DestroyVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *RemoveResourceDetailRequest) GetResourceId() string {
-	if x != nil && x.ResourceId != nil {
-		return *x.ResourceId
+func (x *DestroyVolumeRequest) GetExpunge() bool {
+	if x != nil && x.Expunge != nil {
+		return *x.Expunge
 	}
-	return ""
+	return false
 }
 
-func (x *RemoveResourceDetailRequest) GetStartEventId() int64 {
+func (x *DestroyVolumeRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *RemoveResourceDetailRequest) GetInjectedJobId() string {
+func (x *DestroyVolumeRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *RemoveResourceDetailRequest) GetResponseType() string {
+func (x *DestroyVolumeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RemoveResourceDetailResponse represents the response from removes detail for the resource.
-type RemoveResourceDetailResponse struct {
+// DestroyVolumeResponse represents the response from destroys a volume.
+type DestroyVolumeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -607,21 +121,21 @@ type RemoveResourceDetailResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveResourceDetailResponse) Reset() {
-	*x = RemoveResourceDetailResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[9]
+func (x *DestroyVolumeResponse) Reset() {
+	*x = DestroyVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveResourceDetailResponse) String() string {
+func (x *DestroyVolumeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveResourceDetailResponse) ProtoMessage() {}
+func (*DestroyVolumeResponse) ProtoMessage() {}
 
-func (x *RemoveResourceDetailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[9]
+func (x *DestroyVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -632,29 +146,342 @@ func (x *RemoveResourceDetailResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveResourceDetailResponse.ProtoReflect.Descriptor instead.
-func (*RemoveResourceDetailResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{9}
+// Deprecated: Use DestroyVolumeResponse.ProtoReflect.Descriptor instead.
+func (*DestroyVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RemoveResourceDetailResponse) GetResult() *Result {
+func (x *DestroyVolumeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// DetachVolumeRequest represents the parameters for detaches a disk volume from a virtual machine.
-type DetachVolumeRequest struct {
+// UpdateVolumeCmdByAdminRequest represents the parameters for updates the volume.
+type UpdateVolumeCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
 	// the ID of the disk volume
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the device ID on the virtual machine where volume is detached from
-	DeviceId *int64 `protobuf:"varint,3,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
-	// the ID of the virtual machine where the volume is detached from
-	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The path of the volume
+	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
+	// The chain info of the volume
+	ChainInfo *string `protobuf:"bytes,3,opt,name=chain_info,json=chainInfo" json:"chain_info,omitempty"`
+	// Destination storage pool UUID for the volume
+	StorageId *int64 `protobuf:"varint,4,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	// The state of the volume
+	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
+	// an optional field, whether to the display the volume to the end user or not.
+	DisplayVolume *bool `protobuf:"varint,6,opt,name=display_volume,json=displayVolume" json:"display_volume,omitempty"`
+	// new name of the volume
+	Name *string `protobuf:"bytes,7,opt,name=name" json:"name,omitempty"`
+	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	DeleteProtection *bool `protobuf:"varint,8,opt,name=delete_protection,json=deleteProtection" json:"delete_protection,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,9,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) Reset() {
+	*x = UpdateVolumeCmdByAdminRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVolumeCmdByAdminRequest) ProtoMessage() {}
+
+func (x *UpdateVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetPath() string {
+	if x != nil && x.Path != nil {
+		return *x.Path
+	}
+	return ""
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetChainInfo() string {
+	if x != nil && x.ChainInfo != nil {
+		return *x.ChainInfo
+	}
+	return ""
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
+	}
+	return 0
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetDisplayVolume() bool {
+	if x != nil && x.DisplayVolume != nil {
+		return *x.DisplayVolume
+	}
+	return false
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetDeleteProtection() bool {
+	if x != nil && x.DeleteProtection != nil {
+		return *x.DeleteProtection
+	}
+	return false
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVolumeCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVolumeCmdByAdminResponse represents the response from updates the volume.
+type UpdateVolumeCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVolumeCmdByAdminResponse) Reset() {
+	*x = UpdateVolumeCmdByAdminResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVolumeCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVolumeCmdByAdminResponse) ProtoMessage() {}
+
+func (x *UpdateVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UpdateVolumeCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CheckAndRepairVolumeRequest represents the parameters for check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
+type CheckAndRepairVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// parameter to repair the volume, leaks or all are the possible values
+	Repair *string `protobuf:"bytes,2,opt,name=repair" json:"repair,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CheckAndRepairVolumeRequest) Reset() {
+	*x = CheckAndRepairVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CheckAndRepairVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckAndRepairVolumeRequest) ProtoMessage() {}
+
+func (x *CheckAndRepairVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckAndRepairVolumeRequest.ProtoReflect.Descriptor instead.
+func (*CheckAndRepairVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CheckAndRepairVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CheckAndRepairVolumeRequest) GetRepair() string {
+	if x != nil && x.Repair != nil {
+		return *x.Repair
+	}
+	return ""
+}
+
+func (x *CheckAndRepairVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CheckAndRepairVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CheckAndRepairVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CheckAndRepairVolumeResponse represents the response from check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
+type CheckAndRepairVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CheckAndRepairVolumeResponse) Reset() {
+	*x = CheckAndRepairVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CheckAndRepairVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckAndRepairVolumeResponse) ProtoMessage() {}
+
+func (x *CheckAndRepairVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckAndRepairVolumeResponse.ProtoReflect.Descriptor instead.
+func (*CheckAndRepairVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CheckAndRepairVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ExtractVolumeRequest represents the parameters for extracts volume
+type ExtractVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the url to which the volume would be extracted
+	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
+	// the ID of the zone where the volume is located
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
+	Mode *string `protobuf:"bytes,4,opt,name=mode" json:"mode,omitempty"`
 	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -662,21 +489,21 @@ type DetachVolumeRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DetachVolumeRequest) Reset() {
-	*x = DetachVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[10]
+func (x *ExtractVolumeRequest) Reset() {
+	*x = ExtractVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DetachVolumeRequest) String() string {
+func (x *ExtractVolumeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DetachVolumeRequest) ProtoMessage() {}
+func (*ExtractVolumeRequest) ProtoMessage() {}
 
-func (x *DetachVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[10]
+func (x *ExtractVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -687,62 +514,62 @@ func (x *DetachVolumeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DetachVolumeRequest.ProtoReflect.Descriptor instead.
-func (*DetachVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{10}
+// Deprecated: Use ExtractVolumeRequest.ProtoReflect.Descriptor instead.
+func (*ExtractVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DetachVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *DetachVolumeRequest) GetId() int64 {
+func (x *ExtractVolumeRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DetachVolumeRequest) GetDeviceId() int64 {
-	if x != nil && x.DeviceId != nil {
-		return *x.DeviceId
+func (x *ExtractVolumeRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *ExtractVolumeRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *DetachVolumeRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
+func (x *ExtractVolumeRequest) GetMode() string {
+	if x != nil && x.Mode != nil {
+		return *x.Mode
 	}
-	return 0
+	return ""
 }
 
-func (x *DetachVolumeRequest) GetStartEventId() int64 {
+func (x *ExtractVolumeRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DetachVolumeRequest) GetInjectedJobId() string {
+func (x *ExtractVolumeRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DetachVolumeRequest) GetResponseType() string {
+func (x *ExtractVolumeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DetachVolumeResponse represents the response from detaches a disk volume from a virtual machine.
-type DetachVolumeResponse struct {
+// ExtractVolumeResponse represents the response from extracts volume
+type ExtractVolumeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -750,21 +577,21 @@ type DetachVolumeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DetachVolumeResponse) Reset() {
-	*x = DetachVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[11]
+func (x *ExtractVolumeResponse) Reset() {
+	*x = ExtractVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DetachVolumeResponse) String() string {
+func (x *ExtractVolumeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DetachVolumeResponse) ProtoMessage() {}
+func (*ExtractVolumeResponse) ProtoMessage() {}
 
-func (x *DetachVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[11]
+func (x *ExtractVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -775,12 +602,12 @@ func (x *DetachVolumeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DetachVolumeResponse.ProtoReflect.Descriptor instead.
-func (*DetachVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{11}
+// Deprecated: Use ExtractVolumeResponse.ProtoReflect.Descriptor instead.
+func (*ExtractVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DetachVolumeResponse) GetResult() *Result {
+func (x *ExtractVolumeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -847,7 +674,7 @@ type ListVolumesCmdByAdminRequest struct {
 
 func (x *ListVolumesCmdByAdminRequest) Reset() {
 	*x = ListVolumesCmdByAdminRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -859,7 +686,7 @@ func (x *ListVolumesCmdByAdminRequest) String() string {
 func (*ListVolumesCmdByAdminRequest) ProtoMessage() {}
 
 func (x *ListVolumesCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -872,7 +699,7 @@ func (x *ListVolumesCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVolumesCmdByAdminRequest.ProtoReflect.Descriptor instead.
 func (*ListVolumesCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListVolumesCmdByAdminRequest) GetHostId() int64 {
@@ -1077,7 +904,7 @@ type ListVolumesCmdByAdminResponse struct {
 
 func (x *ListVolumesCmdByAdminResponse) Reset() {
 	*x = ListVolumesCmdByAdminResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1089,7 +916,7 @@ func (x *ListVolumesCmdByAdminResponse) String() string {
 func (*ListVolumesCmdByAdminResponse) ProtoMessage() {}
 
 func (x *ListVolumesCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1102,7 +929,7 @@ func (x *ListVolumesCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVolumesCmdByAdminResponse.ProtoReflect.Descriptor instead.
 func (*ListVolumesCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListVolumesCmdByAdminResponse) GetItems() []*Volume {
@@ -1119,139 +946,33 @@ func (x *ListVolumesCmdByAdminResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// DeleteVolumeRequest represents the parameters for deletes a detached disk volume.
-type DeleteVolumeRequest struct {
+// UnmanageVolumeRequest represents the parameters for unmanage a volume on storage pool.
+type UnmanageVolumeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the disk volume
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVolumeRequest) Reset() {
-	*x = DeleteVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVolumeRequest) ProtoMessage() {}
-
-func (x *DeleteVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVolumeRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *DeleteVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVolumeResponse represents the response from deletes a detached disk volume.
-type DeleteVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVolumeResponse) Reset() {
-	*x = DeleteVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVolumeResponse) ProtoMessage() {}
-
-func (x *DeleteVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVolumeResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *DeleteVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// MigrateVolumeCmdByAdminRequest represents the parameters for migrate volume
-type MigrateVolumeCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the volume
+	// The ID of the volume to unmanage
 	VolumeId *int64 `protobuf:"varint,1,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
-	// destination storage pool ID to migrate the volume to
-	StorageId *int64 `protobuf:"varint,2,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	// if the volume should be live migrated when it is attached to a running vm
-	LiveMigrate *bool `protobuf:"varint,3,opt,name=live_migrate,json=liveMigrate" json:"live_migrate,omitempty"`
-	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
-	NewDiskOfferingId *int64 `protobuf:"varint,4,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateVolumeCmdByAdminRequest) Reset() {
-	*x = MigrateVolumeCmdByAdminRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[16]
+func (x *UnmanageVolumeRequest) Reset() {
+	*x = UnmanageVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MigrateVolumeCmdByAdminRequest) String() string {
+func (x *UnmanageVolumeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MigrateVolumeCmdByAdminRequest) ProtoMessage() {}
+func (*UnmanageVolumeRequest) ProtoMessage() {}
 
-func (x *MigrateVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[16]
+func (x *UnmanageVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1262,62 +983,41 @@ func (x *MigrateVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MigrateVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*MigrateVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{16}
+// Deprecated: Use UnmanageVolumeRequest.ProtoReflect.Descriptor instead.
+func (*UnmanageVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *MigrateVolumeCmdByAdminRequest) GetVolumeId() int64 {
+func (x *UnmanageVolumeRequest) GetVolumeId() int64 {
 	if x != nil && x.VolumeId != nil {
 		return *x.VolumeId
 	}
 	return 0
 }
 
-func (x *MigrateVolumeCmdByAdminRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
-	}
-	return 0
-}
-
-func (x *MigrateVolumeCmdByAdminRequest) GetLiveMigrate() bool {
-	if x != nil && x.LiveMigrate != nil {
-		return *x.LiveMigrate
-	}
-	return false
-}
-
-func (x *MigrateVolumeCmdByAdminRequest) GetNewDiskOfferingId() int64 {
-	if x != nil && x.NewDiskOfferingId != nil {
-		return *x.NewDiskOfferingId
-	}
-	return 0
-}
-
-func (x *MigrateVolumeCmdByAdminRequest) GetStartEventId() int64 {
+func (x *UnmanageVolumeRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *MigrateVolumeCmdByAdminRequest) GetInjectedJobId() string {
+func (x *UnmanageVolumeRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *MigrateVolumeCmdByAdminRequest) GetResponseType() string {
+func (x *UnmanageVolumeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// MigrateVolumeCmdByAdminResponse represents the response from migrate volume
-type MigrateVolumeCmdByAdminResponse struct {
+// UnmanageVolumeResponse represents the response from unmanage a volume on storage pool.
+type UnmanageVolumeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1325,20 +1025,535 @@ type MigrateVolumeCmdByAdminResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateVolumeCmdByAdminResponse) Reset() {
-	*x = MigrateVolumeCmdByAdminResponse{}
+func (x *UnmanageVolumeResponse) Reset() {
+	*x = UnmanageVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnmanageVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnmanageVolumeResponse) ProtoMessage() {}
+
+func (x *UnmanageVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnmanageVolumeResponse.ProtoReflect.Descriptor instead.
+func (*UnmanageVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UnmanageVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UploadVolumeRequest represents the parameters for uploads a data disk.
+type UploadVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the format for the volume. Possible values include QCOW2, OVA, and VHD.
+	Format *string `protobuf:"bytes,2,opt,name=format" json:"format,omitempty"`
+	// the name of the volume
+	VolumeName *string `protobuf:"bytes,3,opt,name=volume_name,json=volumeName" json:"volume_name,omitempty"`
+	// the URL of where the volume is hosted. Possible URL include http:// and https://
+	Url *string `protobuf:"bytes,4,opt,name=url" json:"url,omitempty"`
+	// the ID of the zone the volume is to be hosted on
+	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// an optional domainId. If the account parameter is used, domainId must also be used. If account is NOT provided then volume will be assigned to the caller account and domain.
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional accountName. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the checksum value of this volume. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	Checksum *string `protobuf:"bytes,8,opt,name=checksum" json:"checksum,omitempty"`
+	// Image store uuid
+	ImageStoreUuid *string `protobuf:"bytes,9,opt,name=image_store_uuid,json=imageStoreUuid" json:"image_store_uuid,omitempty"`
+	// Upload volume for the project
+	ProjectId *int64 `protobuf:"varint,10,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the ID of the disk offering. This must be a custom sized offering since during uploadVolume volume size is unknown.
+	DiskOfferingId *int64 `protobuf:"varint,11,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,12,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,13,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadVolumeRequest) Reset() {
+	*x = UploadVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadVolumeRequest) ProtoMessage() {}
+
+func (x *UploadVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadVolumeRequest.ProtoReflect.Descriptor instead.
+func (*UploadVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *UploadVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UploadVolumeRequest) GetFormat() string {
+	if x != nil && x.Format != nil {
+		return *x.Format
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetVolumeName() string {
+	if x != nil && x.VolumeName != nil {
+		return *x.VolumeName
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *UploadVolumeRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UploadVolumeRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetChecksum() string {
+	if x != nil && x.Checksum != nil {
+		return *x.Checksum
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetImageStoreUuid() string {
+	if x != nil && x.ImageStoreUuid != nil {
+		return *x.ImageStoreUuid
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *UploadVolumeRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *UploadVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UploadVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UploadVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UploadVolumeResponse represents the response from uploads a data disk.
+type UploadVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadVolumeResponse) Reset() {
+	*x = UploadVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadVolumeResponse) ProtoMessage() {}
+
+func (x *UploadVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadVolumeResponse.ProtoReflect.Descriptor instead.
+func (*UploadVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *UploadVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ImportVolumeRequest represents the parameters for import an unmanaged volume from a storage pool on a host into cloudstack
+type ImportVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the path of the volume
+	Path *string `protobuf:"bytes,1,opt,name=path" json:"path,omitempty"`
+	// the name of the volume. If not set, it will be set to the path of the volume.
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// the ID of the storage pool
+	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	// the ID of the disk offering linked to the volume
+	DiskOfferingId *int64 `protobuf:"varint,4,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// an optional account for the volume. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// import volume to the domain specified
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// import volume for the project
+	ProjectId *int64 `protobuf:"varint,7,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportVolumeRequest) Reset() {
+	*x = ImportVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportVolumeRequest) ProtoMessage() {}
+
+func (x *ImportVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportVolumeRequest.ProtoReflect.Descriptor instead.
+func (*ImportVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ImportVolumeRequest) GetPath() string {
+	if x != nil && x.Path != nil {
+		return *x.Path
+	}
+	return ""
+}
+
+func (x *ImportVolumeRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ImportVolumeRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
+	}
+	return 0
+}
+
+func (x *ImportVolumeRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *ImportVolumeRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ImportVolumeRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ImportVolumeRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ImportVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ImportVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ImportVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ImportVolumeResponse represents the response from import an unmanaged volume from a storage pool on a host into cloudstack
+type ImportVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportVolumeResponse) Reset() {
+	*x = ImportVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportVolumeResponse) ProtoMessage() {}
+
+func (x *ImportVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportVolumeResponse.ProtoReflect.Descriptor instead.
+func (*ImportVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ImportVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DetachVolumeCmdByAdminRequest represents the parameters for detaches a disk volume from a virtual machine.
+type DetachVolumeCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the disk volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the device ID on the virtual machine where volume is detached from
+	DeviceId *int64 `protobuf:"varint,2,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	// the ID of the virtual machine where the volume is detached from
+	VirtualMachineId *int64 `protobuf:"varint,3,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachVolumeCmdByAdminRequest) Reset() {
+	*x = DetachVolumeCmdByAdminRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachVolumeCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachVolumeCmdByAdminRequest) ProtoMessage() {}
+
+func (x *DetachVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*DetachVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *DetachVolumeCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DetachVolumeCmdByAdminRequest) GetDeviceId() int64 {
+	if x != nil && x.DeviceId != nil {
+		return *x.DeviceId
+	}
+	return 0
+}
+
+func (x *DetachVolumeCmdByAdminRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *DetachVolumeCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DetachVolumeCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DetachVolumeCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DetachVolumeCmdByAdminResponse represents the response from detaches a disk volume from a virtual machine.
+type DetachVolumeCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachVolumeCmdByAdminResponse) Reset() {
+	*x = DetachVolumeCmdByAdminResponse{}
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MigrateVolumeCmdByAdminResponse) String() string {
+func (x *DetachVolumeCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MigrateVolumeCmdByAdminResponse) ProtoMessage() {}
+func (*DetachVolumeCmdByAdminResponse) ProtoMessage() {}
 
-func (x *MigrateVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+func (x *DetachVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1350,12 +1565,12 @@ func (x *MigrateVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MigrateVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*MigrateVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DetachVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*DetachVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *MigrateVolumeCmdByAdminResponse) GetResult() *Result {
+func (x *DetachVolumeCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1532,44 +1747,56 @@ func (x *ChangeOfferingForVolumeResponse) GetResult() *Result {
 	return nil
 }
 
-// ResizeVolumeCmdByAdminRequest represents the parameters for resizes a volume
-type ResizeVolumeCmdByAdminRequest struct {
+// CreateVolumeCmdByAdminRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+type CreateVolumeCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the disk volume
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// New minimum number of IOPS
-	MinIops *int64 `protobuf:"varint,2,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// New maximum number of IOPS
-	MaxIops *int64 `protobuf:"varint,3,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	// New volume size in GB
-	Size *int64 `protobuf:"varint,4,opt,name=size" json:"size,omitempty"`
-	// Verify OK to Shrink
-	ShrinkOk *bool `protobuf:"varint,5,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
-	// new disk offering id
-	NewDiskOfferingId *int64 `protobuf:"varint,6,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
-	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
-	AutoMigrate *bool `protobuf:"varint,7,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the account associated with the disk volume. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the project associated with the volume. Mutually exclusive with account parameter
+	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
+	DiskOfferingId *int64 `protobuf:"varint,4,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// the name of the disk volume
+	VolumeName *string `protobuf:"bytes,5,opt,name=volume_name,json=volumeName" json:"volume_name,omitempty"`
+	// Arbitrary volume size
+	Size *int64 `protobuf:"varint,6,opt,name=size" json:"size,omitempty"`
+	// min iops
+	MinIops *int64 `protobuf:"varint,7,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// max iops
+	MaxIops *int64 `protobuf:"varint,8,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
+	SnapshotId *int64 `protobuf:"varint,9,opt,name=snapshot_id,json=snapshotId" json:"snapshot_id,omitempty"`
+	// the ID of the availability zone
+	ZoneId *int64 `protobuf:"varint,10,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// an optional field, whether to display the volume to the end user or not.
+	DisplayVolume *bool `protobuf:"varint,11,opt,name=display_volume,json=displayVolume" json:"display_volume,omitempty"`
+	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
+	VirtualMachineId *int64 `protobuf:"varint,12,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,13,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,14,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,15,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,16,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ResizeVolumeCmdByAdminRequest) Reset() {
-	*x = ResizeVolumeCmdByAdminRequest{}
+func (x *CreateVolumeCmdByAdminRequest) Reset() {
+	*x = CreateVolumeCmdByAdminRequest{}
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ResizeVolumeCmdByAdminRequest) String() string {
+func (x *CreateVolumeCmdByAdminRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ResizeVolumeCmdByAdminRequest) ProtoMessage() {}
+func (*CreateVolumeCmdByAdminRequest) ProtoMessage() {}
 
-func (x *ResizeVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1581,974 +1808,125 @@ func (x *ResizeVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ResizeVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ResizeVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*CreateVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *ResizeVolumeCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetMinIops() int64 {
-	if x != nil && x.MinIops != nil {
-		return *x.MinIops
-	}
-	return 0
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetMaxIops() int64 {
-	if x != nil && x.MaxIops != nil {
-		return *x.MaxIops
-	}
-	return 0
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetSize() int64 {
-	if x != nil && x.Size != nil {
-		return *x.Size
-	}
-	return 0
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetShrinkOk() bool {
-	if x != nil && x.ShrinkOk != nil {
-		return *x.ShrinkOk
-	}
-	return false
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetNewDiskOfferingId() int64 {
-	if x != nil && x.NewDiskOfferingId != nil {
-		return *x.NewDiskOfferingId
-	}
-	return 0
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetAutoMigrate() bool {
-	if x != nil && x.AutoMigrate != nil {
-		return *x.AutoMigrate
-	}
-	return false
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ResizeVolumeCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResizeVolumeCmdByAdminResponse represents the response from resizes a volume
-type ResizeVolumeCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResizeVolumeCmdByAdminResponse) Reset() {
-	*x = ResizeVolumeCmdByAdminResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResizeVolumeCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResizeVolumeCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ResizeVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResizeVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ResizeVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *ResizeVolumeCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ExtractVolumeRequest represents the parameters for extracts volume
-type ExtractVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the volume
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the url to which the volume would be extracted
-	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
-	// the ID of the zone where the volume is located
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
-	Mode *string `protobuf:"bytes,4,opt,name=mode" json:"mode,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExtractVolumeRequest) Reset() {
-	*x = ExtractVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExtractVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExtractVolumeRequest) ProtoMessage() {}
-
-func (x *ExtractVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExtractVolumeRequest.ProtoReflect.Descriptor instead.
-func (*ExtractVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *ExtractVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ExtractVolumeRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *ExtractVolumeRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ExtractVolumeRequest) GetMode() string {
-	if x != nil && x.Mode != nil {
-		return *x.Mode
-	}
-	return ""
-}
-
-func (x *ExtractVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ExtractVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ExtractVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ExtractVolumeResponse represents the response from extracts volume
-type ExtractVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExtractVolumeResponse) Reset() {
-	*x = ExtractVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExtractVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExtractVolumeResponse) ProtoMessage() {}
-
-func (x *ExtractVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExtractVolumeResponse.ProtoReflect.Descriptor instead.
-func (*ExtractVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *ExtractVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ResizeVolumeRequest represents the parameters for resizes a volume
-type ResizeVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the ID of the disk volume
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// New minimum number of IOPS
-	MinIops *int64 `protobuf:"varint,3,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// New maximum number of IOPS
-	MaxIops *int64 `protobuf:"varint,4,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	// New volume size in GB
-	Size *int64 `protobuf:"varint,5,opt,name=size" json:"size,omitempty"`
-	// Verify OK to Shrink
-	ShrinkOk *bool `protobuf:"varint,6,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
-	// new disk offering id
-	NewDiskOfferingId *int64 `protobuf:"varint,7,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
-	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
-	AutoMigrate *bool `protobuf:"varint,8,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResizeVolumeRequest) Reset() {
-	*x = ResizeVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResizeVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResizeVolumeRequest) ProtoMessage() {}
-
-func (x *ResizeVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResizeVolumeRequest.ProtoReflect.Descriptor instead.
-func (*ResizeVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *ResizeVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ResizeVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ResizeVolumeRequest) GetMinIops() int64 {
-	if x != nil && x.MinIops != nil {
-		return *x.MinIops
-	}
-	return 0
-}
-
-func (x *ResizeVolumeRequest) GetMaxIops() int64 {
-	if x != nil && x.MaxIops != nil {
-		return *x.MaxIops
-	}
-	return 0
-}
-
-func (x *ResizeVolumeRequest) GetSize() int64 {
-	if x != nil && x.Size != nil {
-		return *x.Size
-	}
-	return 0
-}
-
-func (x *ResizeVolumeRequest) GetShrinkOk() bool {
-	if x != nil && x.ShrinkOk != nil {
-		return *x.ShrinkOk
-	}
-	return false
-}
-
-func (x *ResizeVolumeRequest) GetNewDiskOfferingId() int64 {
-	if x != nil && x.NewDiskOfferingId != nil {
-		return *x.NewDiskOfferingId
-	}
-	return 0
-}
-
-func (x *ResizeVolumeRequest) GetAutoMigrate() bool {
-	if x != nil && x.AutoMigrate != nil {
-		return *x.AutoMigrate
-	}
-	return false
-}
-
-func (x *ResizeVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ResizeVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ResizeVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResizeVolumeResponse represents the response from resizes a volume
-type ResizeVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResizeVolumeResponse) Reset() {
-	*x = ResizeVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResizeVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResizeVolumeResponse) ProtoMessage() {}
-
-func (x *ResizeVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResizeVolumeResponse.ProtoReflect.Descriptor instead.
-func (*ResizeVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *ResizeVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UploadVolumeRequest represents the parameters for uploads a data disk.
-type UploadVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the format for the volume. Possible values include QCOW2, OVA, and VHD.
-	Format *string `protobuf:"bytes,2,opt,name=format" json:"format,omitempty"`
-	// the name of the volume
-	VolumeName *string `protobuf:"bytes,3,opt,name=volume_name,json=volumeName" json:"volume_name,omitempty"`
-	// the URL of where the volume is hosted. Possible URL include http:// and https://
-	Url *string `protobuf:"bytes,4,opt,name=url" json:"url,omitempty"`
-	// the ID of the zone the volume is to be hosted on
-	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// an optional domainId. If the account parameter is used, domainId must also be used. If account is NOT provided then volume will be assigned to the caller account and domain.
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional accountName. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the checksum value of this volume. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
-	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
-	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
-	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
-	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
-	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
-	Checksum *string `protobuf:"bytes,8,opt,name=checksum" json:"checksum,omitempty"`
-	// Image store uuid
-	ImageStoreUuid *string `protobuf:"bytes,9,opt,name=image_store_uuid,json=imageStoreUuid" json:"image_store_uuid,omitempty"`
-	// Upload volume for the project
-	ProjectId *int64 `protobuf:"varint,10,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// the ID of the disk offering. This must be a custom sized offering since during uploadVolume volume size is unknown.
-	DiskOfferingId *int64 `protobuf:"varint,11,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,12,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,13,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadVolumeRequest) Reset() {
-	*x = UploadVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadVolumeRequest) ProtoMessage() {}
-
-func (x *UploadVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadVolumeRequest.ProtoReflect.Descriptor instead.
-func (*UploadVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *UploadVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *UploadVolumeRequest) GetFormat() string {
-	if x != nil && x.Format != nil {
-		return *x.Format
-	}
-	return ""
-}
-
-func (x *UploadVolumeRequest) GetVolumeName() string {
-	if x != nil && x.VolumeName != nil {
-		return *x.VolumeName
-	}
-	return ""
-}
-
-func (x *UploadVolumeRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *UploadVolumeRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *UploadVolumeRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UploadVolumeRequest) GetAccountName() string {
+func (x *CreateVolumeCmdByAdminRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *UploadVolumeRequest) GetChecksum() string {
-	if x != nil && x.Checksum != nil {
-		return *x.Checksum
-	}
-	return ""
-}
-
-func (x *UploadVolumeRequest) GetImageStoreUuid() string {
-	if x != nil && x.ImageStoreUuid != nil {
-		return *x.ImageStoreUuid
-	}
-	return ""
-}
-
-func (x *UploadVolumeRequest) GetProjectId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *UploadVolumeRequest) GetDiskOfferingId() int64 {
-	if x != nil && x.DiskOfferingId != nil {
-		return *x.DiskOfferingId
-	}
-	return 0
-}
-
-func (x *UploadVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UploadVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UploadVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UploadVolumeResponse represents the response from uploads a data disk.
-type UploadVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadVolumeResponse) Reset() {
-	*x = UploadVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadVolumeResponse) ProtoMessage() {}
-
-func (x *UploadVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadVolumeResponse.ProtoReflect.Descriptor instead.
-func (*UploadVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *UploadVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CheckAndRepairVolumeRequest represents the parameters for check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
-type CheckAndRepairVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the volume
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// parameter to repair the volume, leaks or all are the possible values
-	Repair *string `protobuf:"bytes,2,opt,name=repair" json:"repair,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CheckAndRepairVolumeRequest) Reset() {
-	*x = CheckAndRepairVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CheckAndRepairVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CheckAndRepairVolumeRequest) ProtoMessage() {}
-
-func (x *CheckAndRepairVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CheckAndRepairVolumeRequest.ProtoReflect.Descriptor instead.
-func (*CheckAndRepairVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *CheckAndRepairVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *CheckAndRepairVolumeRequest) GetRepair() string {
-	if x != nil && x.Repair != nil {
-		return *x.Repair
-	}
-	return ""
-}
-
-func (x *CheckAndRepairVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CheckAndRepairVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CheckAndRepairVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CheckAndRepairVolumeResponse represents the response from check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for kvm only
-type CheckAndRepairVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CheckAndRepairVolumeResponse) Reset() {
-	*x = CheckAndRepairVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CheckAndRepairVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CheckAndRepairVolumeResponse) ProtoMessage() {}
-
-func (x *CheckAndRepairVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CheckAndRepairVolumeResponse.ProtoReflect.Descriptor instead.
-func (*CheckAndRepairVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *CheckAndRepairVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateVolumeRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
-type CreateVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the account associated with the disk volume. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the project associated with the volume. Mutually exclusive with account parameter
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
-	DiskOfferingId *int64 `protobuf:"varint,5,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
-	// the name of the disk volume
-	VolumeName *string `protobuf:"bytes,6,opt,name=volume_name,json=volumeName" json:"volume_name,omitempty"`
-	// Arbitrary volume size
-	Size *int64 `protobuf:"varint,7,opt,name=size" json:"size,omitempty"`
-	// min iops
-	MinIops *int64 `protobuf:"varint,8,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// max iops
-	MaxIops *int64 `protobuf:"varint,9,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
-	SnapshotId *int64 `protobuf:"varint,10,opt,name=snapshot_id,json=snapshotId" json:"snapshot_id,omitempty"`
-	// the ID of the availability zone
-	ZoneId *int64 `protobuf:"varint,11,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// an optional field, whether to display the volume to the end user or not.
-	DisplayVolume *bool `protobuf:"varint,12,opt,name=display_volume,json=displayVolume" json:"display_volume,omitempty"`
-	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
-	VirtualMachineId *int64 `protobuf:"varint,13,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,14,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,15,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,16,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,17,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVolumeRequest) Reset() {
-	*x = CreateVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVolumeRequest) ProtoMessage() {}
-
-func (x *CreateVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVolumeRequest.ProtoReflect.Descriptor instead.
-func (*CreateVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *CreateVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *CreateVolumeRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateVolumeRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *CreateVolumeRequest) GetDomainId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetDomainId() int64 {
 	if x != nil && x.DomainId != nil {
 		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetDiskOfferingId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetDiskOfferingId() int64 {
 	if x != nil && x.DiskOfferingId != nil {
 		return *x.DiskOfferingId
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetVolumeName() string {
+func (x *CreateVolumeCmdByAdminRequest) GetVolumeName() string {
 	if x != nil && x.VolumeName != nil {
 		return *x.VolumeName
 	}
 	return ""
 }
 
-func (x *CreateVolumeRequest) GetSize() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetSize() int64 {
 	if x != nil && x.Size != nil {
 		return *x.Size
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetMinIops() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetMinIops() int64 {
 	if x != nil && x.MinIops != nil {
 		return *x.MinIops
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetMaxIops() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetMaxIops() int64 {
 	if x != nil && x.MaxIops != nil {
 		return *x.MaxIops
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetSnapshotId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetSnapshotId() int64 {
 	if x != nil && x.SnapshotId != nil {
 		return *x.SnapshotId
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetZoneId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetZoneId() int64 {
 	if x != nil && x.ZoneId != nil {
 		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetDisplayVolume() bool {
+func (x *CreateVolumeCmdByAdminRequest) GetDisplayVolume() bool {
 	if x != nil && x.DisplayVolume != nil {
 		return *x.DisplayVolume
 	}
 	return false
 }
 
-func (x *CreateVolumeRequest) GetVirtualMachineId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetVirtualMachineId() int64 {
 	if x != nil && x.VirtualMachineId != nil {
 		return *x.VirtualMachineId
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetCustomId() string {
+func (x *CreateVolumeCmdByAdminRequest) GetCustomId() string {
 	if x != nil && x.CustomId != nil {
 		return *x.CustomId
 	}
 	return ""
 }
 
-func (x *CreateVolumeRequest) GetStartEventId() int64 {
+func (x *CreateVolumeCmdByAdminRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CreateVolumeRequest) GetInjectedJobId() string {
+func (x *CreateVolumeCmdByAdminRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreateVolumeRequest) GetResponseType() string {
+func (x *CreateVolumeCmdByAdminRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateVolumeResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
-type CreateVolumeResponse struct {
+// CreateVolumeCmdByAdminResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+type CreateVolumeCmdByAdminResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2556,21 +1934,21 @@ type CreateVolumeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateVolumeResponse) Reset() {
-	*x = CreateVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[31]
+func (x *CreateVolumeCmdByAdminResponse) Reset() {
+	*x = CreateVolumeCmdByAdminResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateVolumeResponse) String() string {
+func (x *CreateVolumeCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateVolumeResponse) ProtoMessage() {}
+func (*CreateVolumeCmdByAdminResponse) ProtoMessage() {}
 
-func (x *CreateVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[31]
+func (x *CreateVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2581,182 +1959,12 @@ func (x *CreateVolumeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateVolumeResponse.ProtoReflect.Descriptor instead.
-func (*CreateVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{31}
+// Deprecated: Use CreateVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*CreateVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *CreateVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ImportVolumeRequest represents the parameters for import an unmanaged volume from a storage pool on a host into cloudstack
-type ImportVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the path of the volume
-	Path *string `protobuf:"bytes,1,opt,name=path" json:"path,omitempty"`
-	// the name of the volume. If not set, it will be set to the path of the volume.
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// the ID of the storage pool
-	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	// the ID of the disk offering linked to the volume
-	DiskOfferingId *int64 `protobuf:"varint,4,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
-	// an optional account for the volume. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// import volume to the domain specified
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// import volume for the project
-	ProjectId *int64 `protobuf:"varint,7,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImportVolumeRequest) Reset() {
-	*x = ImportVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportVolumeRequest) ProtoMessage() {}
-
-func (x *ImportVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportVolumeRequest.ProtoReflect.Descriptor instead.
-func (*ImportVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *ImportVolumeRequest) GetPath() string {
-	if x != nil && x.Path != nil {
-		return *x.Path
-	}
-	return ""
-}
-
-func (x *ImportVolumeRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ImportVolumeRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
-	}
-	return 0
-}
-
-func (x *ImportVolumeRequest) GetDiskOfferingId() int64 {
-	if x != nil && x.DiskOfferingId != nil {
-		return *x.DiskOfferingId
-	}
-	return 0
-}
-
-func (x *ImportVolumeRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ImportVolumeRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ImportVolumeRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ImportVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ImportVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ImportVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ImportVolumeResponse represents the response from import an unmanaged volume from a storage pool on a host into cloudstack
-type ImportVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImportVolumeResponse) Reset() {
-	*x = ImportVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportVolumeResponse) ProtoMessage() {}
-
-func (x *ImportVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportVolumeResponse.ProtoReflect.Descriptor instead.
-func (*ImportVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *ImportVolumeResponse) GetResult() *Result {
+func (x *CreateVolumeCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2825,7 +2033,7 @@ type ListVolumesRequest struct {
 
 func (x *ListVolumesRequest) Reset() {
 	*x = ListVolumesRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2837,7 +2045,7 @@ func (x *ListVolumesRequest) String() string {
 func (*ListVolumesRequest) ProtoMessage() {}
 
 func (x *ListVolumesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2850,7 +2058,7 @@ func (x *ListVolumesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVolumesRequest.ProtoReflect.Descriptor instead.
 func (*ListVolumesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{34}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListVolumesRequest) GetRunAsAdmin() bool {
@@ -3062,7 +2270,7 @@ type ListVolumesResponse struct {
 
 func (x *ListVolumesResponse) Reset() {
 	*x = ListVolumesResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[35]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3074,7 +2282,7 @@ func (x *ListVolumesResponse) String() string {
 func (*ListVolumesResponse) ProtoMessage() {}
 
 func (x *ListVolumesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[35]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3087,7 +2295,7 @@ func (x *ListVolumesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVolumesResponse.ProtoReflect.Descriptor instead.
 func (*ListVolumesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{35}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListVolumesResponse) GetItems() []*Volume {
@@ -3104,37 +2312,35 @@ func (x *ListVolumesResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// DestroyVolumeRequest represents the parameters for destroys a volume.
-type DestroyVolumeRequest struct {
+// AssignVolumeRequest represents the parameters for changes ownership of a volume from one account to another.
+type AssignVolumeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the volume
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// If true is passed, the volume is expunged immediately. False by default.
-	Expunge *bool `protobuf:"varint,3,opt,name=expunge" json:"expunge,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The ID of the volume to be reassigned.
+	VolumeId *int64 `protobuf:"varint,1,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
+	// The ID of the account to which the volume will be assigned. Mutually exclusive with parameter 'projectid'.
+	AccountId *int64 `protobuf:"varint,2,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
+	// The ID of the project to which the volume will be assigned. Mutually exclusive with 'accountid'.
+	Projectid *int64 `protobuf:"varint,3,opt,name=projectid" json:"projectid,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DestroyVolumeRequest) Reset() {
-	*x = DestroyVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[36]
+func (x *AssignVolumeRequest) Reset() {
+	*x = AssignVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DestroyVolumeRequest) String() string {
+func (x *AssignVolumeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DestroyVolumeRequest) ProtoMessage() {}
+func (*AssignVolumeRequest) ProtoMessage() {}
 
-func (x *DestroyVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[36]
+func (x *AssignVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3145,55 +2351,41 @@ func (x *DestroyVolumeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DestroyVolumeRequest.ProtoReflect.Descriptor instead.
-func (*DestroyVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{36}
+// Deprecated: Use AssignVolumeRequest.ProtoReflect.Descriptor instead.
+func (*AssignVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *DestroyVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *DestroyVolumeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *AssignVolumeRequest) GetVolumeId() int64 {
+	if x != nil && x.VolumeId != nil {
+		return *x.VolumeId
 	}
 	return 0
 }
 
-func (x *DestroyVolumeRequest) GetExpunge() bool {
-	if x != nil && x.Expunge != nil {
-		return *x.Expunge
-	}
-	return false
-}
-
-func (x *DestroyVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *AssignVolumeRequest) GetAccountId() int64 {
+	if x != nil && x.AccountId != nil {
+		return *x.AccountId
 	}
 	return 0
 }
 
-func (x *DestroyVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *AssignVolumeRequest) GetProjectid() int64 {
+	if x != nil && x.Projectid != nil {
+		return *x.Projectid
 	}
-	return ""
+	return 0
 }
 
-func (x *DestroyVolumeRequest) GetResponseType() string {
+func (x *AssignVolumeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DestroyVolumeResponse represents the response from destroys a volume.
-type DestroyVolumeResponse struct {
+// AssignVolumeResponse represents the response from changes ownership of a volume from one account to another.
+type AssignVolumeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3201,20 +2393,916 @@ type DestroyVolumeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DestroyVolumeResponse) Reset() {
-	*x = DestroyVolumeResponse{}
+func (x *AssignVolumeResponse) Reset() {
+	*x = AssignVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignVolumeResponse) ProtoMessage() {}
+
+func (x *AssignVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignVolumeResponse.ProtoReflect.Descriptor instead.
+func (*AssignVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *AssignVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// GetUploadParamsForVolumeRequest represents the parameters for upload a data disk to the cloudstack cloud.
+type GetUploadParamsForVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Image store uuid
+	ImageStoreUuid *string `protobuf:"bytes,1,opt,name=image_store_uuid,json=imageStoreUuid" json:"image_store_uuid,omitempty"`
+	// the ID of the disk offering. This must be a custom sized offering since during upload of volume/template size is unknown.
+	DiskOfferingId *int64 `protobuf:"varint,2,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// the name of the volume/template/iso
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
+	Format *string `protobuf:"bytes,4,opt,name=format" json:"format,omitempty"`
+	// the ID of the zone the volume/template/iso is to be hosted on
+	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the checksum value of this volume/template/iso The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	Checksum *string `protobuf:"bytes,6,opt,name=checksum" json:"checksum,omitempty"`
+	// an optional accountName. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// Upload volume/template/iso for the project
+	ProjectId *int64 `protobuf:"varint,9,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUploadParamsForVolumeRequest) Reset() {
+	*x = GetUploadParamsForVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUploadParamsForVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUploadParamsForVolumeRequest) ProtoMessage() {}
+
+func (x *GetUploadParamsForVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUploadParamsForVolumeRequest.ProtoReflect.Descriptor instead.
+func (*GetUploadParamsForVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetImageStoreUuid() string {
+	if x != nil && x.ImageStoreUuid != nil {
+		return *x.ImageStoreUuid
+	}
+	return ""
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetFormat() string {
+	if x != nil && x.Format != nil {
+		return *x.Format
+	}
+	return ""
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetChecksum() string {
+	if x != nil && x.Checksum != nil {
+		return *x.Checksum
+	}
+	return ""
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *GetUploadParamsForVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GetUploadParamsForVolumeResponse represents the response from upload a data disk to the cloudstack cloud.
+type GetUploadParamsForVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUploadParamsForVolumeResponse) Reset() {
+	*x = GetUploadParamsForVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUploadParamsForVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUploadParamsForVolumeResponse) ProtoMessage() {}
+
+func (x *GetUploadParamsForVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUploadParamsForVolumeResponse.ProtoReflect.Descriptor instead.
+func (*GetUploadParamsForVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *GetUploadParamsForVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListVolumesForImportRequest represents the parameters for lists unmanaged volumes on a storage pool
+type ListVolumesForImportRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the storage pool
+	StorageId *int64 `protobuf:"varint,1,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	// the path of the volume on the storage pool
+	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVolumesForImportRequest) Reset() {
+	*x = ListVolumesForImportRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVolumesForImportRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVolumesForImportRequest) ProtoMessage() {}
+
+func (x *ListVolumesForImportRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVolumesForImportRequest.ProtoReflect.Descriptor instead.
+func (*ListVolumesForImportRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *ListVolumesForImportRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
+	}
+	return 0
+}
+
+func (x *ListVolumesForImportRequest) GetPath() string {
+	if x != nil && x.Path != nil {
+		return *x.Path
+	}
+	return ""
+}
+
+func (x *ListVolumesForImportRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVolumesForImportRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVolumesForImportRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVolumesForImportRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVolumesForImportResponse represents the response from lists unmanaged volumes on a storage pool
+type ListVolumesForImportResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of VolumeForImports
+	Items []*VolumeForImport `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of VolumeForImports
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVolumesForImportResponse) Reset() {
+	*x = ListVolumesForImportResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVolumesForImportResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVolumesForImportResponse) ProtoMessage() {}
+
+func (x *ListVolumesForImportResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVolumesForImportResponse.ProtoReflect.Descriptor instead.
+func (*ListVolumesForImportResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *ListVolumesForImportResponse) GetItems() []*VolumeForImport {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVolumesForImportResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// DeleteVolumeRequest represents the parameters for deletes a detached disk volume.
+type DeleteVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the disk volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVolumeRequest) Reset() {
+	*x = DeleteVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVolumeRequest) ProtoMessage() {}
+
+func (x *DeleteVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVolumeRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *DeleteVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVolumeResponse represents the response from deletes a detached disk volume.
+type DeleteVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVolumeResponse) Reset() {
+	*x = DeleteVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVolumeResponse) ProtoMessage() {}
+
+func (x *DeleteVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVolumeResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *DeleteVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RecoverVolumeCmdByAdminRequest represents the parameters for recovers a destroy volume.
+type RecoverVolumeCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverVolumeCmdByAdminRequest) Reset() {
+	*x = RecoverVolumeCmdByAdminRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverVolumeCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverVolumeCmdByAdminRequest) ProtoMessage() {}
+
+func (x *RecoverVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*RecoverVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *RecoverVolumeCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RecoverVolumeCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RecoverVolumeCmdByAdminResponse represents the response from recovers a destroy volume.
+type RecoverVolumeCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverVolumeCmdByAdminResponse) Reset() {
+	*x = RecoverVolumeCmdByAdminResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverVolumeCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverVolumeCmdByAdminResponse) ProtoMessage() {}
+
+func (x *RecoverVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*RecoverVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *RecoverVolumeCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVolumeRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+type CreateVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the account associated with the disk volume. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the project associated with the volume. Mutually exclusive with account parameter
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
+	DiskOfferingId *int64 `protobuf:"varint,5,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// the name of the disk volume
+	VolumeName *string `protobuf:"bytes,6,opt,name=volume_name,json=volumeName" json:"volume_name,omitempty"`
+	// Arbitrary volume size
+	Size *int64 `protobuf:"varint,7,opt,name=size" json:"size,omitempty"`
+	// min iops
+	MinIops *int64 `protobuf:"varint,8,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// max iops
+	MaxIops *int64 `protobuf:"varint,9,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
+	SnapshotId *int64 `protobuf:"varint,10,opt,name=snapshot_id,json=snapshotId" json:"snapshot_id,omitempty"`
+	// the ID of the availability zone
+	ZoneId *int64 `protobuf:"varint,11,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// an optional field, whether to display the volume to the end user or not.
+	DisplayVolume *bool `protobuf:"varint,12,opt,name=display_volume,json=displayVolume" json:"display_volume,omitempty"`
+	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
+	VirtualMachineId *int64 `protobuf:"varint,13,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,14,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,15,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,16,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,17,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVolumeRequest) Reset() {
+	*x = CreateVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVolumeRequest) ProtoMessage() {}
+
+func (x *CreateVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVolumeRequest.ProtoReflect.Descriptor instead.
+func (*CreateVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *CreateVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *CreateVolumeRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *CreateVolumeRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetVolumeName() string {
+	if x != nil && x.VolumeName != nil {
+		return *x.VolumeName
+	}
+	return ""
+}
+
+func (x *CreateVolumeRequest) GetSize() int64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetMinIops() int64 {
+	if x != nil && x.MinIops != nil {
+		return *x.MinIops
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetMaxIops() int64 {
+	if x != nil && x.MaxIops != nil {
+		return *x.MaxIops
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetSnapshotId() int64 {
+	if x != nil && x.SnapshotId != nil {
+		return *x.SnapshotId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetDisplayVolume() bool {
+	if x != nil && x.DisplayVolume != nil {
+		return *x.DisplayVolume
+	}
+	return false
+}
+
+func (x *CreateVolumeRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *CreateVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVolumeResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+type CreateVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVolumeResponse) Reset() {
+	*x = CreateVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVolumeResponse) ProtoMessage() {}
+
+func (x *CreateVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVolumeResponse.ProtoReflect.Descriptor instead.
+func (*CreateVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *CreateVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// MigrateVolumeCmdByAdminRequest represents the parameters for migrate volume
+type MigrateVolumeCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the volume
+	VolumeId *int64 `protobuf:"varint,1,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
+	// destination storage pool ID to migrate the volume to
+	StorageId *int64 `protobuf:"varint,2,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	// if the volume should be live migrated when it is attached to a running vm
+	LiveMigrate *bool `protobuf:"varint,3,opt,name=live_migrate,json=liveMigrate" json:"live_migrate,omitempty"`
+	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
+	NewDiskOfferingId *int64 `protobuf:"varint,4,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) Reset() {
+	*x = MigrateVolumeCmdByAdminRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVolumeCmdByAdminRequest) ProtoMessage() {}
+
+func (x *MigrateVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*MigrateVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetVolumeId() int64 {
+	if x != nil && x.VolumeId != nil {
+		return *x.VolumeId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetLiveMigrate() bool {
+	if x != nil && x.LiveMigrate != nil {
+		return *x.LiveMigrate
+	}
+	return false
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetNewDiskOfferingId() int64 {
+	if x != nil && x.NewDiskOfferingId != nil {
+		return *x.NewDiskOfferingId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *MigrateVolumeCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MigrateVolumeCmdByAdminResponse represents the response from migrate volume
+type MigrateVolumeCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVolumeCmdByAdminResponse) Reset() {
+	*x = MigrateVolumeCmdByAdminResponse{}
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DestroyVolumeResponse) String() string {
+func (x *MigrateVolumeCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DestroyVolumeResponse) ProtoMessage() {}
+func (*MigrateVolumeCmdByAdminResponse) ProtoMessage() {}
 
-func (x *DestroyVolumeResponse) ProtoReflect() protoreflect.Message {
+func (x *MigrateVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3226,12 +3314,12 @@ func (x *DestroyVolumeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DestroyVolumeResponse.ProtoReflect.Descriptor instead.
-func (*DestroyVolumeResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MigrateVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*MigrateVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{37}
 }
 
-func (x *DestroyVolumeResponse) GetResult() *Result {
+func (x *MigrateVolumeCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -3381,40 +3469,36 @@ func (x *AddResourceDetailResponse) GetResult() *Result {
 	return nil
 }
 
-// MigrateVolumeRequest represents the parameters for migrate volume
-type MigrateVolumeRequest struct {
+// AttachVolumeCmdByAdminRequest represents the parameters for attaches a disk volume to a virtual machine.
+type AttachVolumeCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the ID of the volume
-	VolumeId *int64 `protobuf:"varint,2,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
-	// destination storage pool ID to migrate the volume to
-	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	// if the volume should be live migrated when it is attached to a running vm
-	LiveMigrate *bool `protobuf:"varint,4,opt,name=live_migrate,json=liveMigrate" json:"live_migrate,omitempty"`
-	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
-	NewDiskOfferingId *int64 `protobuf:"varint,5,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
+	DeviceId *int64 `protobuf:"varint,1,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	// the ID of the disk volume
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,3,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateVolumeRequest) Reset() {
-	*x = MigrateVolumeRequest{}
+func (x *AttachVolumeCmdByAdminRequest) Reset() {
+	*x = AttachVolumeCmdByAdminRequest{}
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MigrateVolumeRequest) String() string {
+func (x *AttachVolumeCmdByAdminRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MigrateVolumeRequest) ProtoMessage() {}
+func (*AttachVolumeCmdByAdminRequest) ProtoMessage() {}
 
-func (x *MigrateVolumeRequest) ProtoReflect() protoreflect.Message {
+func (x *AttachVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3426,69 +3510,55 @@ func (x *MigrateVolumeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MigrateVolumeRequest.ProtoReflect.Descriptor instead.
-func (*MigrateVolumeRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AttachVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*AttachVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{40}
 }
 
-func (x *MigrateVolumeRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *MigrateVolumeRequest) GetVolumeId() int64 {
-	if x != nil && x.VolumeId != nil {
-		return *x.VolumeId
+func (x *AttachVolumeCmdByAdminRequest) GetDeviceId() int64 {
+	if x != nil && x.DeviceId != nil {
+		return *x.DeviceId
 	}
 	return 0
 }
 
-func (x *MigrateVolumeRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
+func (x *AttachVolumeCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *MigrateVolumeRequest) GetLiveMigrate() bool {
-	if x != nil && x.LiveMigrate != nil {
-		return *x.LiveMigrate
-	}
-	return false
-}
-
-func (x *MigrateVolumeRequest) GetNewDiskOfferingId() int64 {
-	if x != nil && x.NewDiskOfferingId != nil {
-		return *x.NewDiskOfferingId
+func (x *AttachVolumeCmdByAdminRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
 	}
 	return 0
 }
 
-func (x *MigrateVolumeRequest) GetStartEventId() int64 {
+func (x *AttachVolumeCmdByAdminRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *MigrateVolumeRequest) GetInjectedJobId() string {
+func (x *AttachVolumeCmdByAdminRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *MigrateVolumeRequest) GetResponseType() string {
+func (x *AttachVolumeCmdByAdminRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// MigrateVolumeResponse represents the response from migrate volume
-type MigrateVolumeResponse struct {
+// AttachVolumeCmdByAdminResponse represents the response from attaches a disk volume to a virtual machine.
+type AttachVolumeCmdByAdminResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3496,20 +3566,20 @@ type MigrateVolumeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MigrateVolumeResponse) Reset() {
-	*x = MigrateVolumeResponse{}
+func (x *AttachVolumeCmdByAdminResponse) Reset() {
+	*x = AttachVolumeCmdByAdminResponse{}
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MigrateVolumeResponse) String() string {
+func (x *AttachVolumeCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MigrateVolumeResponse) ProtoMessage() {}
+func (*AttachVolumeCmdByAdminResponse) ProtoMessage() {}
 
-func (x *MigrateVolumeResponse) ProtoReflect() protoreflect.Message {
+func (x *AttachVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3521,12 +3591,12 @@ func (x *MigrateVolumeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MigrateVolumeResponse.ProtoReflect.Descriptor instead.
-func (*MigrateVolumeResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AttachVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*AttachVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *MigrateVolumeResponse) GetResult() *Result {
+func (x *AttachVolumeCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -3748,514 +3818,6 @@ func (x *ListResourceDetailsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// UpdateVolumeCmdByAdminRequest represents the parameters for updates the volume.
-type UpdateVolumeCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the disk volume
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The path of the volume
-	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
-	// The chain info of the volume
-	ChainInfo *string `protobuf:"bytes,3,opt,name=chain_info,json=chainInfo" json:"chain_info,omitempty"`
-	// Destination storage pool UUID for the volume
-	StorageId *int64 `protobuf:"varint,4,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	// The state of the volume
-	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
-	// an optional field, whether to the display the volume to the end user or not.
-	DisplayVolume *bool `protobuf:"varint,6,opt,name=display_volume,json=displayVolume" json:"display_volume,omitempty"`
-	// new name of the volume
-	Name *string `protobuf:"bytes,7,opt,name=name" json:"name,omitempty"`
-	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
-	DeleteProtection *bool `protobuf:"varint,8,opt,name=delete_protection,json=deleteProtection" json:"delete_protection,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,9,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) Reset() {
-	*x = UpdateVolumeCmdByAdminRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVolumeCmdByAdminRequest) ProtoMessage() {}
-
-func (x *UpdateVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{44}
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetPath() string {
-	if x != nil && x.Path != nil {
-		return *x.Path
-	}
-	return ""
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetChainInfo() string {
-	if x != nil && x.ChainInfo != nil {
-		return *x.ChainInfo
-	}
-	return ""
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
-	}
-	return 0
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetDisplayVolume() bool {
-	if x != nil && x.DisplayVolume != nil {
-		return *x.DisplayVolume
-	}
-	return false
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetDeleteProtection() bool {
-	if x != nil && x.DeleteProtection != nil {
-		return *x.DeleteProtection
-	}
-	return false
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVolumeCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVolumeCmdByAdminResponse represents the response from updates the volume.
-type UpdateVolumeCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVolumeCmdByAdminResponse) Reset() {
-	*x = UpdateVolumeCmdByAdminResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[45]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVolumeCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVolumeCmdByAdminResponse) ProtoMessage() {}
-
-func (x *UpdateVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[45]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{45}
-}
-
-func (x *UpdateVolumeCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListVolumesForImportRequest represents the parameters for lists unmanaged volumes on a storage pool
-type ListVolumesForImportRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the storage pool
-	StorageId *int64 `protobuf:"varint,1,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	// the path of the volume on the storage pool
-	Path *string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVolumesForImportRequest) Reset() {
-	*x = ListVolumesForImportRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[46]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVolumesForImportRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVolumesForImportRequest) ProtoMessage() {}
-
-func (x *ListVolumesForImportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[46]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVolumesForImportRequest.ProtoReflect.Descriptor instead.
-func (*ListVolumesForImportRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{46}
-}
-
-func (x *ListVolumesForImportRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
-	}
-	return 0
-}
-
-func (x *ListVolumesForImportRequest) GetPath() string {
-	if x != nil && x.Path != nil {
-		return *x.Path
-	}
-	return ""
-}
-
-func (x *ListVolumesForImportRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVolumesForImportRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVolumesForImportRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVolumesForImportRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVolumesForImportResponse represents the response from lists unmanaged volumes on a storage pool
-type ListVolumesForImportResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of VolumeForImports
-	Items []*VolumeForImport `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of VolumeForImports
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVolumesForImportResponse) Reset() {
-	*x = ListVolumesForImportResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[47]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVolumesForImportResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVolumesForImportResponse) ProtoMessage() {}
-
-func (x *ListVolumesForImportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[47]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVolumesForImportResponse.ProtoReflect.Descriptor instead.
-func (*ListVolumesForImportResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{47}
-}
-
-func (x *ListVolumesForImportResponse) GetItems() []*VolumeForImport {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVolumesForImportResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// GetUploadParamsForVolumeRequest represents the parameters for upload a data disk to the cloudstack cloud.
-type GetUploadParamsForVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image store uuid
-	ImageStoreUuid *string `protobuf:"bytes,1,opt,name=image_store_uuid,json=imageStoreUuid" json:"image_store_uuid,omitempty"`
-	// the ID of the disk offering. This must be a custom sized offering since during upload of volume/template size is unknown.
-	DiskOfferingId *int64 `protobuf:"varint,2,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
-	// the name of the volume/template/iso
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
-	Format *string `protobuf:"bytes,4,opt,name=format" json:"format,omitempty"`
-	// the ID of the zone the volume/template/iso is to be hosted on
-	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the checksum value of this volume/template/iso The parameter containing the checksum will be considered a MD5sum if it is not prefixed
-	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
-	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
-	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
-	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
-	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
-	Checksum *string `protobuf:"bytes,6,opt,name=checksum" json:"checksum,omitempty"`
-	// an optional accountName. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// Upload volume/template/iso for the project
-	ProjectId *int64 `protobuf:"varint,9,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetUploadParamsForVolumeRequest) Reset() {
-	*x = GetUploadParamsForVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[48]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetUploadParamsForVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetUploadParamsForVolumeRequest) ProtoMessage() {}
-
-func (x *GetUploadParamsForVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[48]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetUploadParamsForVolumeRequest.ProtoReflect.Descriptor instead.
-func (*GetUploadParamsForVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{48}
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetImageStoreUuid() string {
-	if x != nil && x.ImageStoreUuid != nil {
-		return *x.ImageStoreUuid
-	}
-	return ""
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetDiskOfferingId() int64 {
-	if x != nil && x.DiskOfferingId != nil {
-		return *x.DiskOfferingId
-	}
-	return 0
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetFormat() string {
-	if x != nil && x.Format != nil {
-		return *x.Format
-	}
-	return ""
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetChecksum() string {
-	if x != nil && x.Checksum != nil {
-		return *x.Checksum
-	}
-	return ""
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *GetUploadParamsForVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// GetUploadParamsForVolumeResponse represents the response from upload a data disk to the cloudstack cloud.
-type GetUploadParamsForVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetUploadParamsForVolumeResponse) Reset() {
-	*x = GetUploadParamsForVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[49]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetUploadParamsForVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetUploadParamsForVolumeResponse) ProtoMessage() {}
-
-func (x *GetUploadParamsForVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[49]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetUploadParamsForVolumeResponse.ProtoReflect.Descriptor instead.
-func (*GetUploadParamsForVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{49}
-}
-
-func (x *GetUploadParamsForVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // UpdateVolumeRequest represents the parameters for updates the volume.
 type UpdateVolumeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4288,7 +3850,7 @@ type UpdateVolumeRequest struct {
 
 func (x *UpdateVolumeRequest) Reset() {
 	*x = UpdateVolumeRequest{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[50]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4300,7 +3862,7 @@ func (x *UpdateVolumeRequest) String() string {
 func (*UpdateVolumeRequest) ProtoMessage() {}
 
 func (x *UpdateVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[50]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4313,7 +3875,7 @@ func (x *UpdateVolumeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateVolumeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{50}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *UpdateVolumeRequest) GetRunAsAdmin() bool {
@@ -4418,7 +3980,7 @@ type UpdateVolumeResponse struct {
 
 func (x *UpdateVolumeResponse) Reset() {
 	*x = UpdateVolumeResponse{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[51]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4430,7 +3992,7 @@ func (x *UpdateVolumeResponse) String() string {
 func (*UpdateVolumeResponse) ProtoMessage() {}
 
 func (x *UpdateVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[51]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4443,10 +4005,1040 @@ func (x *UpdateVolumeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateVolumeResponse.ProtoReflect.Descriptor instead.
 func (*UpdateVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{51}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *UpdateVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AttachVolumeRequest represents the parameters for attaches a disk volume to a virtual machine.
+type AttachVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
+	DeviceId *int64 `protobuf:"varint,2,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	// the ID of the disk volume
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// the ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttachVolumeRequest) Reset() {
+	*x = AttachVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachVolumeRequest) ProtoMessage() {}
+
+func (x *AttachVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachVolumeRequest.ProtoReflect.Descriptor instead.
+func (*AttachVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *AttachVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *AttachVolumeRequest) GetDeviceId() int64 {
+	if x != nil && x.DeviceId != nil {
+		return *x.DeviceId
+	}
+	return 0
+}
+
+func (x *AttachVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *AttachVolumeRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *AttachVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AttachVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AttachVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AttachVolumeResponse represents the response from attaches a disk volume to a virtual machine.
+type AttachVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttachVolumeResponse) Reset() {
+	*x = AttachVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachVolumeResponse) ProtoMessage() {}
+
+func (x *AttachVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachVolumeResponse.ProtoReflect.Descriptor instead.
+func (*AttachVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *AttachVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// MigrateVolumeRequest represents the parameters for migrate volume
+type MigrateVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the ID of the volume
+	VolumeId *int64 `protobuf:"varint,2,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
+	// destination storage pool ID to migrate the volume to
+	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	// if the volume should be live migrated when it is attached to a running vm
+	LiveMigrate *bool `protobuf:"varint,4,opt,name=live_migrate,json=liveMigrate" json:"live_migrate,omitempty"`
+	// The new disk offering ID that replaces the current one used by the volume. This new disk offering is used to better reflect the new storage where the volume is going to be migrated to.
+	NewDiskOfferingId *int64 `protobuf:"varint,5,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVolumeRequest) Reset() {
+	*x = MigrateVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVolumeRequest) ProtoMessage() {}
+
+func (x *MigrateVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVolumeRequest.ProtoReflect.Descriptor instead.
+func (*MigrateVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *MigrateVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *MigrateVolumeRequest) GetVolumeId() int64 {
+	if x != nil && x.VolumeId != nil {
+		return *x.VolumeId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeRequest) GetLiveMigrate() bool {
+	if x != nil && x.LiveMigrate != nil {
+		return *x.LiveMigrate
+	}
+	return false
+}
+
+func (x *MigrateVolumeRequest) GetNewDiskOfferingId() int64 {
+	if x != nil && x.NewDiskOfferingId != nil {
+		return *x.NewDiskOfferingId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MigrateVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *MigrateVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MigrateVolumeResponse represents the response from migrate volume
+type MigrateVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVolumeResponse) Reset() {
+	*x = MigrateVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVolumeResponse) ProtoMessage() {}
+
+func (x *MigrateVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVolumeResponse.ProtoReflect.Descriptor instead.
+func (*MigrateVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *MigrateVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DetachVolumeRequest represents the parameters for detaches a disk volume from a virtual machine.
+type DetachVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the ID of the disk volume
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the device ID on the virtual machine where volume is detached from
+	DeviceId *int64 `protobuf:"varint,3,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	// the ID of the virtual machine where the volume is detached from
+	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachVolumeRequest) Reset() {
+	*x = DetachVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachVolumeRequest) ProtoMessage() {}
+
+func (x *DetachVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachVolumeRequest.ProtoReflect.Descriptor instead.
+func (*DetachVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *DetachVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *DetachVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DetachVolumeRequest) GetDeviceId() int64 {
+	if x != nil && x.DeviceId != nil {
+		return *x.DeviceId
+	}
+	return 0
+}
+
+func (x *DetachVolumeRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *DetachVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DetachVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DetachVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DetachVolumeResponse represents the response from detaches a disk volume from a virtual machine.
+type DetachVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachVolumeResponse) Reset() {
+	*x = DetachVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachVolumeResponse) ProtoMessage() {}
+
+func (x *DetachVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachVolumeResponse.ProtoReflect.Descriptor instead.
+func (*DetachVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *DetachVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveResourceDetailRequest represents the parameters for removes detail for the resource.
+type RemoveResourceDetailRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Delete details matching key/value pairs
+	Key *string `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
+	// Delete detail by resource type
+	ResourceType *string `protobuf:"bytes,2,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
+	// Delete details for resource id
+	ResourceId *string `protobuf:"bytes,3,opt,name=resource_id,json=resourceId" json:"resource_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveResourceDetailRequest) Reset() {
+	*x = RemoveResourceDetailRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveResourceDetailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveResourceDetailRequest) ProtoMessage() {}
+
+func (x *RemoveResourceDetailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveResourceDetailRequest.ProtoReflect.Descriptor instead.
+func (*RemoveResourceDetailRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *RemoveResourceDetailRequest) GetKey() string {
+	if x != nil && x.Key != nil {
+		return *x.Key
+	}
+	return ""
+}
+
+func (x *RemoveResourceDetailRequest) GetResourceType() string {
+	if x != nil && x.ResourceType != nil {
+		return *x.ResourceType
+	}
+	return ""
+}
+
+func (x *RemoveResourceDetailRequest) GetResourceId() string {
+	if x != nil && x.ResourceId != nil {
+		return *x.ResourceId
+	}
+	return ""
+}
+
+func (x *RemoveResourceDetailRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveResourceDetailRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveResourceDetailRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveResourceDetailResponse represents the response from removes detail for the resource.
+type RemoveResourceDetailResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveResourceDetailResponse) Reset() {
+	*x = RemoveResourceDetailResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveResourceDetailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveResourceDetailResponse) ProtoMessage() {}
+
+func (x *RemoveResourceDetailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveResourceDetailResponse.ProtoReflect.Descriptor instead.
+func (*RemoveResourceDetailResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *RemoveResourceDetailResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RecoverVolumeRequest represents the parameters for recovers a destroy volume.
+type RecoverVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the volume
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverVolumeRequest) Reset() {
+	*x = RecoverVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[54]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverVolumeRequest) ProtoMessage() {}
+
+func (x *RecoverVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[54]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverVolumeRequest.ProtoReflect.Descriptor instead.
+func (*RecoverVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *RecoverVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *RecoverVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RecoverVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RecoverVolumeResponse represents the response from recovers a destroy volume.
+type RecoverVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverVolumeResponse) Reset() {
+	*x = RecoverVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[55]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverVolumeResponse) ProtoMessage() {}
+
+func (x *RecoverVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[55]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverVolumeResponse.ProtoReflect.Descriptor instead.
+func (*RecoverVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *RecoverVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ResizeVolumeCmdByAdminRequest represents the parameters for resizes a volume
+type ResizeVolumeCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the disk volume
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// New minimum number of IOPS
+	MinIops *int64 `protobuf:"varint,2,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// New maximum number of IOPS
+	MaxIops *int64 `protobuf:"varint,3,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	// New volume size in GB
+	Size *int64 `protobuf:"varint,4,opt,name=size" json:"size,omitempty"`
+	// Verify OK to Shrink
+	ShrinkOk *bool `protobuf:"varint,5,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
+	// new disk offering id
+	NewDiskOfferingId *int64 `protobuf:"varint,6,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
+	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
+	AutoMigrate *bool `protobuf:"varint,7,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) Reset() {
+	*x = ResizeVolumeCmdByAdminRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResizeVolumeCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ResizeVolumeCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResizeVolumeCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ResizeVolumeCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetMinIops() int64 {
+	if x != nil && x.MinIops != nil {
+		return *x.MinIops
+	}
+	return 0
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetMaxIops() int64 {
+	if x != nil && x.MaxIops != nil {
+		return *x.MaxIops
+	}
+	return 0
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetSize() int64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetShrinkOk() bool {
+	if x != nil && x.ShrinkOk != nil {
+		return *x.ShrinkOk
+	}
+	return false
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetNewDiskOfferingId() int64 {
+	if x != nil && x.NewDiskOfferingId != nil {
+		return *x.NewDiskOfferingId
+	}
+	return 0
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetAutoMigrate() bool {
+	if x != nil && x.AutoMigrate != nil {
+		return *x.AutoMigrate
+	}
+	return false
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ResizeVolumeCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ResizeVolumeCmdByAdminResponse represents the response from resizes a volume
+type ResizeVolumeCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResizeVolumeCmdByAdminResponse) Reset() {
+	*x = ResizeVolumeCmdByAdminResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResizeVolumeCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResizeVolumeCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ResizeVolumeCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResizeVolumeCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ResizeVolumeCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *ResizeVolumeCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ResizeVolumeRequest represents the parameters for resizes a volume
+type ResizeVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the ID of the disk volume
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// New minimum number of IOPS
+	MinIops *int64 `protobuf:"varint,3,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// New maximum number of IOPS
+	MaxIops *int64 `protobuf:"varint,4,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	// New volume size in GB
+	Size *int64 `protobuf:"varint,5,opt,name=size" json:"size,omitempty"`
+	// Verify OK to Shrink
+	ShrinkOk *bool `protobuf:"varint,6,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
+	// new disk offering id
+	NewDiskOfferingId *int64 `protobuf:"varint,7,opt,name=new_disk_offering_id,json=newDiskOfferingId" json:"new_disk_offering_id,omitempty"`
+	// Flag to allow automatic migration of the volume to another suitable storage pool that accommodates the new size
+	AutoMigrate *bool `protobuf:"varint,8,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResizeVolumeRequest) Reset() {
+	*x = ResizeVolumeRequest{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResizeVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResizeVolumeRequest) ProtoMessage() {}
+
+func (x *ResizeVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResizeVolumeRequest.ProtoReflect.Descriptor instead.
+func (*ResizeVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *ResizeVolumeRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ResizeVolumeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ResizeVolumeRequest) GetMinIops() int64 {
+	if x != nil && x.MinIops != nil {
+		return *x.MinIops
+	}
+	return 0
+}
+
+func (x *ResizeVolumeRequest) GetMaxIops() int64 {
+	if x != nil && x.MaxIops != nil {
+		return *x.MaxIops
+	}
+	return 0
+}
+
+func (x *ResizeVolumeRequest) GetSize() int64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *ResizeVolumeRequest) GetShrinkOk() bool {
+	if x != nil && x.ShrinkOk != nil {
+		return *x.ShrinkOk
+	}
+	return false
+}
+
+func (x *ResizeVolumeRequest) GetNewDiskOfferingId() int64 {
+	if x != nil && x.NewDiskOfferingId != nil {
+		return *x.NewDiskOfferingId
+	}
+	return 0
+}
+
+func (x *ResizeVolumeRequest) GetAutoMigrate() bool {
+	if x != nil && x.AutoMigrate != nil {
+		return *x.AutoMigrate
+	}
+	return false
+}
+
+func (x *ResizeVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ResizeVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ResizeVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ResizeVolumeResponse represents the response from resizes a volume
+type ResizeVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResizeVolumeResponse) Reset() {
+	*x = ResizeVolumeResponse{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResizeVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResizeVolumeResponse) ProtoMessage() {}
+
+func (x *ResizeVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResizeVolumeResponse.ProtoReflect.Descriptor instead.
+func (*ResizeVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *ResizeVolumeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -4472,7 +5064,7 @@ type Volume struct {
 
 func (x *Volume) Reset() {
 	*x = Volume{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[52]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4484,7 +5076,7 @@ func (x *Volume) String() string {
 func (*Volume) ProtoMessage() {}
 
 func (x *Volume) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[52]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4497,7 +5089,7 @@ func (x *Volume) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Volume.ProtoReflect.Descriptor instead.
 func (*Volume) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{52}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *Volume) GetId() string {
@@ -4535,88 +5127,6 @@ func (x *Volume) GetCreated() string {
 	return ""
 }
 
-// ResourceTag represents a ResourceTag Item
-type ResourceTag struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the ResourceTag
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the ResourceTag
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the ResourceTag
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the ResourceTag
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResourceTag) Reset() {
-	*x = ResourceTag{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[53]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResourceTag) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResourceTag) ProtoMessage() {}
-
-func (x *ResourceTag) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[53]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResourceTag.ProtoReflect.Descriptor instead.
-func (*ResourceTag) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{53}
-}
-
-func (x *ResourceTag) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *ResourceTag) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ResourceTag) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *ResourceTag) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *ResourceTag) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // VolumeForImport represents a VolumeForImport Item
 type VolumeForImport struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4636,7 +5146,7 @@ type VolumeForImport struct {
 
 func (x *VolumeForImport) Reset() {
 	*x = VolumeForImport{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[54]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4648,7 +5158,7 @@ func (x *VolumeForImport) String() string {
 func (*VolumeForImport) ProtoMessage() {}
 
 func (x *VolumeForImport) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[54]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4661,7 +5171,7 @@ func (x *VolumeForImport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeForImport.ProtoReflect.Descriptor instead.
 func (*VolumeForImport) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{54}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *VolumeForImport) GetId() string {
@@ -4699,6 +5209,88 @@ func (x *VolumeForImport) GetCreated() string {
 	return ""
 }
 
+// ResourceTag represents a ResourceTag Item
+type ResourceTag struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the ResourceTag
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the ResourceTag
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the ResourceTag
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the ResourceTag
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResourceTag) Reset() {
+	*x = ResourceTag{}
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResourceTag) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResourceTag) ProtoMessage() {}
+
+func (x *ResourceTag) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResourceTag.ProtoReflect.Descriptor instead.
+func (*ResourceTag) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *ResourceTag) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *ResourceTag) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ResourceTag) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *ResourceTag) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ResourceTag) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
 // Success represents a Success Operation Response
 type Success struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4712,7 +5304,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[55]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4724,7 +5316,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[55]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4737,7 +5329,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{55}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -4787,7 +5379,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[56]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4799,7 +5391,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[56]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4812,7 +5404,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{56}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *Item) GetId() string {
@@ -4918,7 +5510,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[57]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4930,7 +5522,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[57]
+	mi := &file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4943,7 +5535,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{57}
+	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -4985,60 +5577,53 @@ var File_cloudstack_management_volume_v1_volume_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/volume/v1/volume.gen.proto\x12\x1fcloudstack.management.volume.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"u\n" +
-	"\x14RecoverVolumeRequest\x12 \n" +
+	"0cloudstack/management/volume/v1/volume.gen.proto\x12\x1fcloudstack.management.volume.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xee\x01\n" +
+	"\x14DestroyVolumeRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"X\n" +
-	"\x15RecoverVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x9f\x02\n" +
-	"\x13AttachVolumeRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x1b\n" +
-	"\tdevice_id\x18\x02 \x01(\x03R\bdeviceId\x12\x16\n" +
-	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x124\n" +
-	"\x12virtual_machine_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"W\n" +
-	"\x14AttachVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x9c\x01\n" +
-	"\x13AssignVolumeRequest\x12#\n" +
-	"\tvolume_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12\x1d\n" +
-	"\n" +
-	"account_id\x18\x02 \x01(\x03R\taccountId\x12\x1c\n" +
-	"\tprojectid\x18\x03 \x01(\x03R\tprojectid\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
-	"\x14AssignVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xb9\x01\n" +
-	"\x15UnmanageVolumeRequest\x12#\n" +
-	"\tvolume_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
-	"\x16UnmanageVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x87\x02\n" +
-	"\x1bRemoveResourceDetailRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12+\n" +
-	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12,\n" +
-	"\vresource_id\x18\x03 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
-	"resourceId\x12$\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\aexpunge\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\aexpunge\x12$\n" +
 	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
-	"\x1cRemoveResourceDetailResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x8f\x02\n" +
-	"\x13DetachVolumeRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x1b\n" +
-	"\tdevice_id\x18\x03 \x01(\x03R\bdeviceId\x12,\n" +
-	"\x12virtual_machine_id\x18\x04 \x01(\x03R\x10virtualMachineId\x12$\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
+	"\x15DestroyVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xbd\x03\n" +
+	"\x1dUpdateVolumeCmdByAdminRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04path\x18\x02 \x01(\tR\x04path\x12\x1d\n" +
+	"\n" +
+	"chain_info\x18\x03 \x01(\tR\tchainInfo\x12\x1d\n" +
+	"\n" +
+	"storage_id\x18\x04 \x01(\x03R\tstorageId\x12\x14\n" +
+	"\x05state\x18\x05 \x01(\tR\x05state\x12,\n" +
+	"\x0edisplay_volume\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\rdisplayVolume\x12\x1e\n" +
+	"\x04name\x18\a \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x122\n" +
+	"\x11delete_protection\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x10deleteProtection\x12%\n" +
+	"\tcustom_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\n" +
+	" \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"a\n" +
+	"\x1eUpdateVolumeCmdByAdminResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xca\x01\n" +
+	"\x1bCheckAndRepairVolumeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x16\n" +
+	"\x06repair\x18\x02 \x01(\tR\x06repair\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"_\n" +
+	"\x1cCheckAndRepairVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xfa\x01\n" +
+	"\x14ExtractVolumeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x10\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\x12\x1f\n" +
+	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1a\n" +
+	"\x04mode\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04mode\x12$\n" +
 	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"W\n" +
-	"\x14DetachVolumeResponse\x12?\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"X\n" +
+	"\x15ExtractVolumeResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x99\t\n" +
 	"\x1cListVolumesCmdByAdminRequest\x12\x17\n" +
 	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x12\x0e\n" +
@@ -5081,76 +5666,13 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x1dListVolumesCmdByAdminResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.volume.v1.VolumeR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"R\n" +
-	"\x13DeleteVolumeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"W\n" +
-	"\x14DeleteVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xc4\x02\n" +
-	"\x1eMigrateVolumeCmdByAdminRequest\x12#\n" +
-	"\tvolume_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12%\n" +
-	"\n" +
-	"storage_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tstorageId\x12(\n" +
-	"\flive_migrate\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\vliveMigrate\x12/\n" +
-	"\x14new_disk_offering_id\x18\x04 \x01(\x03R\x11newDiskOfferingId\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"b\n" +
-	"\x1fMigrateVolumeCmdByAdminResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x86\x03\n" +
-	"\x1eChangeOfferingForVolumeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x127\n" +
-	"\x14new_disk_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11newDiskOfferingId\x12\x12\n" +
-	"\x04size\x18\x03 \x01(\x03R\x04size\x12\x19\n" +
-	"\bmin_iops\x18\x04 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x05 \x01(\x03R\amaxIops\x12(\n" +
-	"\fauto_migrate\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
-	"\tshrink_ok\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"b\n" +
-	"\x1fChangeOfferingForVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xfd\x02\n" +
-	"\x1dResizeVolumeCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x19\n" +
-	"\bmin_iops\x18\x02 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x03 \x01(\x03R\amaxIops\x12\x12\n" +
-	"\x04size\x18\x04 \x01(\x03R\x04size\x12\"\n" +
-	"\tshrink_ok\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12/\n" +
-	"\x14new_disk_offering_id\x18\x06 \x01(\x03R\x11newDiskOfferingId\x12(\n" +
-	"\fauto_migrate\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"a\n" +
-	"\x1eResizeVolumeCmdByAdminResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xfa\x01\n" +
-	"\x14ExtractVolumeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x10\n" +
-	"\x03url\x18\x02 \x01(\tR\x03url\x12\x1f\n" +
-	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1a\n" +
-	"\x04mode\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04mode\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"X\n" +
-	"\x15ExtractVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x95\x03\n" +
-	"\x13ResizeVolumeRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x19\n" +
-	"\bmin_iops\x18\x03 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x04 \x01(\x03R\amaxIops\x12\x12\n" +
-	"\x04size\x18\x05 \x01(\x03R\x04size\x12\"\n" +
-	"\tshrink_ok\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12/\n" +
-	"\x14new_disk_offering_id\x18\a \x01(\x03R\x11newDiskOfferingId\x12(\n" +
-	"\fauto_migrate\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12$\n" +
-	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"W\n" +
-	"\x14ResizeVolumeResponse\x12?\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb9\x01\n" +
+	"\x15UnmanageVolumeRequest\x12#\n" +
+	"\tvolume_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
+	"\x16UnmanageVolumeResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x98\x04\n" +
 	"\x13UploadVolumeRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -5173,41 +5695,6 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\r \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"W\n" +
 	"\x14UploadVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xca\x01\n" +
-	"\x1bCheckAndRepairVolumeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x16\n" +
-	"\x06repair\x18\x02 \x01(\tR\x06repair\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"_\n" +
-	"\x1cCheckAndRepairVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xf1\x05\n" +
-	"\x13CreateVolumeRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\xa0\x01\n" +
-	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12(\n" +
-	"\x10disk_offering_id\x18\x05 \x01(\x03R\x0ediskOfferingId\x12+\n" +
-	"\vvolume_name\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"volumeName\x12\x12\n" +
-	"\x04size\x18\a \x01(\x03R\x04size\x12\x19\n" +
-	"\bmin_iops\x18\b \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\t \x01(\x03R\amaxIops\x12\x1f\n" +
-	"\vsnapshot_id\x18\n" +
-	" \x01(\x03R\n" +
-	"snapshotId\x12\x17\n" +
-	"\azone_id\x18\v \x01(\x03R\x06zoneId\x12,\n" +
-	"\x0edisplay_volume\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\rdisplayVolume\x12,\n" +
-	"\x12virtual_machine_id\x18\r \x01(\x03R\x10virtualMachineId\x12%\n" +
-	"\tcustom_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x0f \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x10 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\"W\n" +
-	"\x14CreateVolumeResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xfe\x02\n" +
 	"\x13ImportVolumeRequest\x12\x1a\n" +
 	"\x04path\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04path\x12\x1e\n" +
@@ -5225,6 +5712,54 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\rresponse_type\x18\n" +
 	" \x01(\tR\fresponseType\"W\n" +
 	"\x14ImportVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xf7\x01\n" +
+	"\x1dDetachVolumeCmdByAdminRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
+	"\tdevice_id\x18\x02 \x01(\x03R\bdeviceId\x12,\n" +
+	"\x12virtual_machine_id\x18\x03 \x01(\x03R\x10virtualMachineId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"a\n" +
+	"\x1eDetachVolumeCmdByAdminResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x86\x03\n" +
+	"\x1eChangeOfferingForVolumeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x127\n" +
+	"\x14new_disk_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11newDiskOfferingId\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x03R\x04size\x12\x19\n" +
+	"\bmin_iops\x18\x04 \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\x05 \x01(\x03R\amaxIops\x12(\n" +
+	"\fauto_migrate\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
+	"\tshrink_ok\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"b\n" +
+	"\x1fChangeOfferingForVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xd9\x05\n" +
+	"\x1dCreateVolumeCmdByAdminRequest\x12\xa0\x01\n" +
+	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x02 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12(\n" +
+	"\x10disk_offering_id\x18\x04 \x01(\x03R\x0ediskOfferingId\x12+\n" +
+	"\vvolume_name\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
+	"volumeName\x12\x12\n" +
+	"\x04size\x18\x06 \x01(\x03R\x04size\x12\x19\n" +
+	"\bmin_iops\x18\a \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\b \x01(\x03R\amaxIops\x12\x1f\n" +
+	"\vsnapshot_id\x18\t \x01(\x03R\n" +
+	"snapshotId\x12\x17\n" +
+	"\azone_id\x18\n" +
+	" \x01(\x03R\x06zoneId\x12,\n" +
+	"\x0edisplay_volume\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\rdisplayVolume\x12,\n" +
+	"\x12virtual_machine_id\x18\f \x01(\x03R\x10virtualMachineId\x12%\n" +
+	"\tcustom_id\x18\r \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x0e \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x0f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\"a\n" +
+	"\x1eCreateVolumeCmdByAdminResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xa7\t\n" +
 	"\x12ListVolumesRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -5269,16 +5804,90 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x13ListVolumesResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.volume.v1.VolumeR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xee\x01\n" +
-	"\x14DestroyVolumeRequest\x12 \n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9c\x01\n" +
+	"\x13AssignVolumeRequest\x12#\n" +
+	"\tvolume_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x02 \x01(\x03R\taccountId\x12\x1c\n" +
+	"\tprojectid\x18\x03 \x01(\x03R\tprojectid\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
+	"\x14AssignVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x83\x03\n" +
+	"\x1fGetUploadParamsForVolumeRequest\x122\n" +
+	"\x10image_store_uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x0eimageStoreUuid\x12(\n" +
+	"\x10disk_offering_id\x18\x02 \x01(\x03R\x0ediskOfferingId\x12!\n" +
+	"\x04name\x18\x03 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12\x1e\n" +
+	"\x06format\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06format\x12\x1f\n" +
+	"\azone_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1a\n" +
+	"\bchecksum\x18\x06 \x01(\tR\bchecksum\x12!\n" +
+	"\faccount_name\x18\a \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\t \x01(\x03R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"c\n" +
+	" GetUploadParamsForVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xc8\x01\n" +
+	"\x1bListVolumesForImportRequest\x12%\n" +
+	"\n" +
+	"storage_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tstorageId\x12\x12\n" +
+	"\x04path\x18\x02 \x01(\tR\x04path\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8e\x01\n" +
+	"\x1cListVolumesForImportResponse\x12F\n" +
+	"\x05items\x18\x01 \x03(\v20.cloudstack.management.volume.v1.VolumeForImportR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"R\n" +
+	"\x13DeleteVolumeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"W\n" +
+	"\x14DeleteVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"]\n" +
+	"\x1eRecoverVolumeCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"b\n" +
+	"\x1fRecoverVolumeCmdByAdminResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xf1\x05\n" +
+	"\x13CreateVolumeRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\aexpunge\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\aexpunge\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
-	"\x15DestroyVolumeResponse\x12?\n" +
+	"runAsAdmin\x12\xa0\x01\n" +
+	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12(\n" +
+	"\x10disk_offering_id\x18\x05 \x01(\x03R\x0ediskOfferingId\x12+\n" +
+	"\vvolume_name\x18\x06 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
+	"volumeName\x12\x12\n" +
+	"\x04size\x18\a \x01(\x03R\x04size\x12\x19\n" +
+	"\bmin_iops\x18\b \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\t \x01(\x03R\amaxIops\x12\x1f\n" +
+	"\vsnapshot_id\x18\n" +
+	" \x01(\x03R\n" +
+	"snapshotId\x12\x17\n" +
+	"\azone_id\x18\v \x01(\x03R\x06zoneId\x12,\n" +
+	"\x0edisplay_volume\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\rdisplayVolume\x12,\n" +
+	"\x12virtual_machine_id\x18\r \x01(\x03R\x10virtualMachineId\x12%\n" +
+	"\tcustom_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x0f \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x10 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\"W\n" +
+	"\x14CreateVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xc4\x02\n" +
+	"\x1eMigrateVolumeCmdByAdminRequest\x12#\n" +
+	"\tvolume_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12%\n" +
+	"\n" +
+	"storage_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tstorageId\x12(\n" +
+	"\flive_migrate\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\vliveMigrate\x12/\n" +
+	"\x14new_disk_offering_id\x18\x04 \x01(\x03R\x11newDiskOfferingId\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"b\n" +
+	"\x1fMigrateVolumeCmdByAdminResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xb9\x03\n" +
 	"\x18AddResourceDetailRequest\x12h\n" +
 	"\adetails\x18\x01 \x03(\v2F.cloudstack.management.volume.v1.AddResourceDetailRequest.DetailsEntryB\x06\xbaH\x03\xc8\x01\x01R\adetails\x12+\n" +
@@ -5293,19 +5902,15 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\\\n" +
 	"\x19AddResourceDetailResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xdc\x02\n" +
-	"\x14MigrateVolumeRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12#\n" +
-	"\tvolume_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12%\n" +
-	"\n" +
-	"storage_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tstorageId\x12(\n" +
-	"\flive_migrate\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\vliveMigrate\x12/\n" +
-	"\x14new_disk_offering_id\x18\x05 \x01(\x03R\x11newDiskOfferingId\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"X\n" +
-	"\x15MigrateVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x87\x02\n" +
+	"\x1dAttachVolumeCmdByAdminRequest\x12\x1b\n" +
+	"\tdevice_id\x18\x01 \x01(\x03R\bdeviceId\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x124\n" +
+	"\x12virtual_machine_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"a\n" +
+	"\x1eAttachVolumeCmdByAdminResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xda\x04\n" +
 	"\x1aListResourceDetailsRequest\x12+\n" +
 	"\rresource_type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12)\n" +
@@ -5330,54 +5935,7 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x1bListResourceDetailsResponse\x12B\n" +
 	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.volume.v1.ResourceTagR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xbd\x03\n" +
-	"\x1dUpdateVolumeCmdByAdminRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04path\x18\x02 \x01(\tR\x04path\x12\x1d\n" +
-	"\n" +
-	"chain_info\x18\x03 \x01(\tR\tchainInfo\x12\x1d\n" +
-	"\n" +
-	"storage_id\x18\x04 \x01(\x03R\tstorageId\x12\x14\n" +
-	"\x05state\x18\x05 \x01(\tR\x05state\x12,\n" +
-	"\x0edisplay_volume\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\rdisplayVolume\x12\x1e\n" +
-	"\x04name\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x122\n" +
-	"\x11delete_protection\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x10deleteProtection\x12%\n" +
-	"\tcustom_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\n" +
-	" \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"a\n" +
-	"\x1eUpdateVolumeCmdByAdminResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xc8\x01\n" +
-	"\x1bListVolumesForImportRequest\x12%\n" +
-	"\n" +
-	"storage_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tstorageId\x12\x12\n" +
-	"\x04path\x18\x02 \x01(\tR\x04path\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8e\x01\n" +
-	"\x1cListVolumesForImportResponse\x12F\n" +
-	"\x05items\x18\x01 \x03(\v20.cloudstack.management.volume.v1.VolumeForImportR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x83\x03\n" +
-	"\x1fGetUploadParamsForVolumeRequest\x122\n" +
-	"\x10image_store_uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x0eimageStoreUuid\x12(\n" +
-	"\x10disk_offering_id\x18\x02 \x01(\x03R\x0ediskOfferingId\x12!\n" +
-	"\x04name\x18\x03 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12\x1e\n" +
-	"\x06format\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06format\x12\x1f\n" +
-	"\azone_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1a\n" +
-	"\bchecksum\x18\x06 \x01(\tR\bchecksum\x12!\n" +
-	"\faccount_name\x18\a \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\t \x01(\x03R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"c\n" +
-	" GetUploadParamsForVolumeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xd5\x03\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xd5\x03\n" +
 	"\x13UpdateVolumeRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x0e\n" +
@@ -5398,20 +5956,102 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\r \x01(\tR\fresponseType\"W\n" +
 	"\x14UpdateVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x9f\x02\n" +
+	"\x13AttachVolumeRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x1b\n" +
+	"\tdevice_id\x18\x02 \x01(\x03R\bdeviceId\x12\x16\n" +
+	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x124\n" +
+	"\x12virtual_machine_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"W\n" +
+	"\x14AttachVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xdc\x02\n" +
+	"\x14MigrateVolumeRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12#\n" +
+	"\tvolume_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bvolumeId\x12%\n" +
+	"\n" +
+	"storage_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tstorageId\x12(\n" +
+	"\flive_migrate\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\vliveMigrate\x12/\n" +
+	"\x14new_disk_offering_id\x18\x05 \x01(\x03R\x11newDiskOfferingId\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"X\n" +
+	"\x15MigrateVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x8f\x02\n" +
+	"\x13DetachVolumeRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x1b\n" +
+	"\tdevice_id\x18\x03 \x01(\x03R\bdeviceId\x12,\n" +
+	"\x12virtual_machine_id\x18\x04 \x01(\x03R\x10virtualMachineId\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"W\n" +
+	"\x14DetachVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x87\x02\n" +
+	"\x1bRemoveResourceDetailRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12+\n" +
+	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12,\n" +
+	"\vresource_id\x18\x03 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
+	"resourceId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
+	"\x1cRemoveResourceDetailResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"u\n" +
+	"\x14RecoverVolumeRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"X\n" +
+	"\x15RecoverVolumeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\xfd\x02\n" +
+	"\x1dResizeVolumeCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x19\n" +
+	"\bmin_iops\x18\x02 \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\x03 \x01(\x03R\amaxIops\x12\x12\n" +
+	"\x04size\x18\x04 \x01(\x03R\x04size\x12\"\n" +
+	"\tshrink_ok\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12/\n" +
+	"\x14new_disk_offering_id\x18\x06 \x01(\x03R\x11newDiskOfferingId\x12(\n" +
+	"\fauto_migrate\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"a\n" +
+	"\x1eResizeVolumeCmdByAdminResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x95\x03\n" +
+	"\x13ResizeVolumeRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x19\n" +
+	"\bmin_iops\x18\x03 \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\x04 \x01(\x03R\amaxIops\x12\x12\n" +
+	"\x04size\x18\x05 \x01(\x03R\x04size\x12\"\n" +
+	"\tshrink_ok\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12/\n" +
+	"\x14new_disk_offering_id\x18\a \x01(\x03R\x11newDiskOfferingId\x12(\n" +
+	"\fauto_migrate\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12$\n" +
+	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"W\n" +
+	"\x14ResizeVolumeResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.volume.v1.ResultR\x06result\"\x95\x01\n" +
 	"\x06Volume\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
-	"\vResourceTag\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
+	"\x0fVolumeForImport\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
-	"\x0fVolumeForImport\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
+	"\vResourceTag\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -5445,34 +6085,38 @@ const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\x88\x1d\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x83\"\n" +
 	"\rVolumeService\x12\x86\x01\n" +
-	"\rRecoverVolume\x125.cloudstack.management.volume.v1.RecoverVolumeRequest\x1a6.cloudstack.management.volume.v1.RecoverVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x83\x01\n" +
-	"\fAttachVolume\x124.cloudstack.management.volume.v1.AttachVolumeRequest\x1a5.cloudstack.management.volume.v1.AttachVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12}\n" +
-	"\fAssignVolume\x124.cloudstack.management.volume.v1.AssignVolumeRequest\x1a5.cloudstack.management.volume.v1.AssignVolumeResponse\"\x00\x12\x83\x01\n" +
-	"\x0eUnmanageVolume\x126.cloudstack.management.volume.v1.UnmanageVolumeRequest\x1a7.cloudstack.management.volume.v1.UnmanageVolumeResponse\"\x00\x12\x95\x01\n" +
-	"\x14RemoveResourceDetail\x12<.cloudstack.management.volume.v1.RemoveResourceDetailRequest\x1a=.cloudstack.management.volume.v1.RemoveResourceDetailResponse\"\x00\x12\x83\x01\n" +
-	"\fDetachVolume\x124.cloudstack.management.volume.v1.DetachVolumeRequest\x1a5.cloudstack.management.volume.v1.DetachVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x98\x01\n" +
-	"\x15ListVolumesCmdByAdmin\x12=.cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest\x1a>.cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse\"\x00\x12}\n" +
-	"\fDeleteVolume\x124.cloudstack.management.volume.v1.DeleteVolumeRequest\x1a5.cloudstack.management.volume.v1.DeleteVolumeResponse\"\x00\x12\x9e\x01\n" +
-	"\x17MigrateVolumeCmdByAdmin\x12?.cloudstack.management.volume.v1.MigrateVolumeCmdByAdminRequest\x1a@.cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse\"\x00\x12\x9e\x01\n" +
-	"\x17ChangeOfferingForVolume\x12?.cloudstack.management.volume.v1.ChangeOfferingForVolumeRequest\x1a@.cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse\"\x00\x12\x9b\x01\n" +
-	"\x16ResizeVolumeCmdByAdmin\x12>.cloudstack.management.volume.v1.ResizeVolumeCmdByAdminRequest\x1a?.cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse\"\x00\x12\x80\x01\n" +
-	"\rExtractVolume\x125.cloudstack.management.volume.v1.ExtractVolumeRequest\x1a6.cloudstack.management.volume.v1.ExtractVolumeResponse\"\x00\x12\x83\x01\n" +
-	"\fResizeVolume\x124.cloudstack.management.volume.v1.ResizeVolumeRequest\x1a5.cloudstack.management.volume.v1.ResizeVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x83\x01\n" +
-	"\fUploadVolume\x124.cloudstack.management.volume.v1.UploadVolumeRequest\x1a5.cloudstack.management.volume.v1.UploadVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x95\x01\n" +
-	"\x14CheckAndRepairVolume\x12<.cloudstack.management.volume.v1.CheckAndRepairVolumeRequest\x1a=.cloudstack.management.volume.v1.CheckAndRepairVolumeResponse\"\x00\x12\x83\x01\n" +
-	"\fCreateVolume\x124.cloudstack.management.volume.v1.CreateVolumeRequest\x1a5.cloudstack.management.volume.v1.CreateVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12}\n" +
-	"\fImportVolume\x124.cloudstack.management.volume.v1.ImportVolumeRequest\x1a5.cloudstack.management.volume.v1.ImportVolumeResponse\"\x00\x12\x80\x01\n" +
-	"\vListVolumes\x123.cloudstack.management.volume.v1.ListVolumesRequest\x1a4.cloudstack.management.volume.v1.ListVolumesResponse\"\x06\xc2>\x03\xc0>\x01\x12\x86\x01\n" +
-	"\rDestroyVolume\x125.cloudstack.management.volume.v1.DestroyVolumeRequest\x1a6.cloudstack.management.volume.v1.DestroyVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8c\x01\n" +
-	"\x11AddResourceDetail\x129.cloudstack.management.volume.v1.AddResourceDetailRequest\x1a:.cloudstack.management.volume.v1.AddResourceDetailResponse\"\x00\x12\x86\x01\n" +
-	"\rMigrateVolume\x125.cloudstack.management.volume.v1.MigrateVolumeRequest\x1a6.cloudstack.management.volume.v1.MigrateVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x92\x01\n" +
-	"\x13ListResourceDetails\x12;.cloudstack.management.volume.v1.ListResourceDetailsRequest\x1a<.cloudstack.management.volume.v1.ListResourceDetailsResponse\"\x00\x12\x9b\x01\n" +
+	"\rDestroyVolume\x125.cloudstack.management.volume.v1.DestroyVolumeRequest\x1a6.cloudstack.management.volume.v1.DestroyVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9b\x01\n" +
 	"\x16UpdateVolumeCmdByAdmin\x12>.cloudstack.management.volume.v1.UpdateVolumeCmdByAdminRequest\x1a?.cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse\"\x00\x12\x95\x01\n" +
-	"\x14ListVolumesForImport\x12<.cloudstack.management.volume.v1.ListVolumesForImportRequest\x1a=.cloudstack.management.volume.v1.ListVolumesForImportResponse\"\x00\x12\xa1\x01\n" +
-	"\x18GetUploadParamsForVolume\x12@.cloudstack.management.volume.v1.GetUploadParamsForVolumeRequest\x1aA.cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse\"\x00\x12\x83\x01\n" +
-	"\fUpdateVolume\x124.cloudstack.management.volume.v1.UpdateVolumeRequest\x1a5.cloudstack.management.volume.v1.UpdateVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
+	"\x14CheckAndRepairVolume\x12<.cloudstack.management.volume.v1.CheckAndRepairVolumeRequest\x1a=.cloudstack.management.volume.v1.CheckAndRepairVolumeResponse\"\x00\x12\x80\x01\n" +
+	"\rExtractVolume\x125.cloudstack.management.volume.v1.ExtractVolumeRequest\x1a6.cloudstack.management.volume.v1.ExtractVolumeResponse\"\x00\x12\x98\x01\n" +
+	"\x15ListVolumesCmdByAdmin\x12=.cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest\x1a>.cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse\"\x00\x12\x83\x01\n" +
+	"\x0eUnmanageVolume\x126.cloudstack.management.volume.v1.UnmanageVolumeRequest\x1a7.cloudstack.management.volume.v1.UnmanageVolumeResponse\"\x00\x12\x83\x01\n" +
+	"\fUploadVolume\x124.cloudstack.management.volume.v1.UploadVolumeRequest\x1a5.cloudstack.management.volume.v1.UploadVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12}\n" +
+	"\fImportVolume\x124.cloudstack.management.volume.v1.ImportVolumeRequest\x1a5.cloudstack.management.volume.v1.ImportVolumeResponse\"\x00\x12\x9b\x01\n" +
+	"\x16DetachVolumeCmdByAdmin\x12>.cloudstack.management.volume.v1.DetachVolumeCmdByAdminRequest\x1a?.cloudstack.management.volume.v1.DetachVolumeCmdByAdminResponse\"\x00\x12\x9e\x01\n" +
+	"\x17ChangeOfferingForVolume\x12?.cloudstack.management.volume.v1.ChangeOfferingForVolumeRequest\x1a@.cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse\"\x00\x12\x9b\x01\n" +
+	"\x16CreateVolumeCmdByAdmin\x12>.cloudstack.management.volume.v1.CreateVolumeCmdByAdminRequest\x1a?.cloudstack.management.volume.v1.CreateVolumeCmdByAdminResponse\"\x00\x12\x80\x01\n" +
+	"\vListVolumes\x123.cloudstack.management.volume.v1.ListVolumesRequest\x1a4.cloudstack.management.volume.v1.ListVolumesResponse\"\x06\xc2>\x03\xc0>\x01\x12}\n" +
+	"\fAssignVolume\x124.cloudstack.management.volume.v1.AssignVolumeRequest\x1a5.cloudstack.management.volume.v1.AssignVolumeResponse\"\x00\x12\xa1\x01\n" +
+	"\x18GetUploadParamsForVolume\x12@.cloudstack.management.volume.v1.GetUploadParamsForVolumeRequest\x1aA.cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse\"\x00\x12\x95\x01\n" +
+	"\x14ListVolumesForImport\x12<.cloudstack.management.volume.v1.ListVolumesForImportRequest\x1a=.cloudstack.management.volume.v1.ListVolumesForImportResponse\"\x00\x12}\n" +
+	"\fDeleteVolume\x124.cloudstack.management.volume.v1.DeleteVolumeRequest\x1a5.cloudstack.management.volume.v1.DeleteVolumeResponse\"\x00\x12\x9e\x01\n" +
+	"\x17RecoverVolumeCmdByAdmin\x12?.cloudstack.management.volume.v1.RecoverVolumeCmdByAdminRequest\x1a@.cloudstack.management.volume.v1.RecoverVolumeCmdByAdminResponse\"\x00\x12\x83\x01\n" +
+	"\fCreateVolume\x124.cloudstack.management.volume.v1.CreateVolumeRequest\x1a5.cloudstack.management.volume.v1.CreateVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9e\x01\n" +
+	"\x17MigrateVolumeCmdByAdmin\x12?.cloudstack.management.volume.v1.MigrateVolumeCmdByAdminRequest\x1a@.cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse\"\x00\x12\x8c\x01\n" +
+	"\x11AddResourceDetail\x129.cloudstack.management.volume.v1.AddResourceDetailRequest\x1a:.cloudstack.management.volume.v1.AddResourceDetailResponse\"\x00\x12\x9b\x01\n" +
+	"\x16AttachVolumeCmdByAdmin\x12>.cloudstack.management.volume.v1.AttachVolumeCmdByAdminRequest\x1a?.cloudstack.management.volume.v1.AttachVolumeCmdByAdminResponse\"\x00\x12\x92\x01\n" +
+	"\x13ListResourceDetails\x12;.cloudstack.management.volume.v1.ListResourceDetailsRequest\x1a<.cloudstack.management.volume.v1.ListResourceDetailsResponse\"\x00\x12\x83\x01\n" +
+	"\fUpdateVolume\x124.cloudstack.management.volume.v1.UpdateVolumeRequest\x1a5.cloudstack.management.volume.v1.UpdateVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x83\x01\n" +
+	"\fAttachVolume\x124.cloudstack.management.volume.v1.AttachVolumeRequest\x1a5.cloudstack.management.volume.v1.AttachVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x86\x01\n" +
+	"\rMigrateVolume\x125.cloudstack.management.volume.v1.MigrateVolumeRequest\x1a6.cloudstack.management.volume.v1.MigrateVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x83\x01\n" +
+	"\fDetachVolume\x124.cloudstack.management.volume.v1.DetachVolumeRequest\x1a5.cloudstack.management.volume.v1.DetachVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x95\x01\n" +
+	"\x14RemoveResourceDetail\x12<.cloudstack.management.volume.v1.RemoveResourceDetailRequest\x1a=.cloudstack.management.volume.v1.RemoveResourceDetailResponse\"\x00\x12\x86\x01\n" +
+	"\rRecoverVolume\x125.cloudstack.management.volume.v1.RecoverVolumeRequest\x1a6.cloudstack.management.volume.v1.RecoverVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9b\x01\n" +
+	"\x16ResizeVolumeCmdByAdmin\x12>.cloudstack.management.volume.v1.ResizeVolumeCmdByAdminRequest\x1a?.cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse\"\x00\x12\x83\x01\n" +
+	"\fResizeVolume\x124.cloudstack.management.volume.v1.ResizeVolumeRequest\x1a5.cloudstack.management.volume.v1.ResizeVolumeResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.volume.v1B\x0eVolumeGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/volume/v1;volumev1\xa2\x02\x03CMV\xaa\x02\x1fCloudstack.Management.Volume.V1\xca\x02\x1fCloudstack\\Management\\Volume\\V1\xe2\x02+Cloudstack\\Management\\Volume\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Volume::V1b\beditionsp\xe8\a"
 
 var (
@@ -5487,159 +6131,179 @@ func file_cloudstack_management_volume_v1_volume_gen_proto_rawDescGZIP() []byte 
 	return file_cloudstack_management_volume_v1_volume_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 62)
+var file_cloudstack_management_volume_v1_volume_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
 var file_cloudstack_management_volume_v1_volume_gen_proto_goTypes = []any{
-	(*RecoverVolumeRequest)(nil),             // 0: cloudstack.management.volume.v1.RecoverVolumeRequest
-	(*RecoverVolumeResponse)(nil),            // 1: cloudstack.management.volume.v1.RecoverVolumeResponse
-	(*AttachVolumeRequest)(nil),              // 2: cloudstack.management.volume.v1.AttachVolumeRequest
-	(*AttachVolumeResponse)(nil),             // 3: cloudstack.management.volume.v1.AttachVolumeResponse
-	(*AssignVolumeRequest)(nil),              // 4: cloudstack.management.volume.v1.AssignVolumeRequest
-	(*AssignVolumeResponse)(nil),             // 5: cloudstack.management.volume.v1.AssignVolumeResponse
-	(*UnmanageVolumeRequest)(nil),            // 6: cloudstack.management.volume.v1.UnmanageVolumeRequest
-	(*UnmanageVolumeResponse)(nil),           // 7: cloudstack.management.volume.v1.UnmanageVolumeResponse
-	(*RemoveResourceDetailRequest)(nil),      // 8: cloudstack.management.volume.v1.RemoveResourceDetailRequest
-	(*RemoveResourceDetailResponse)(nil),     // 9: cloudstack.management.volume.v1.RemoveResourceDetailResponse
-	(*DetachVolumeRequest)(nil),              // 10: cloudstack.management.volume.v1.DetachVolumeRequest
-	(*DetachVolumeResponse)(nil),             // 11: cloudstack.management.volume.v1.DetachVolumeResponse
-	(*ListVolumesCmdByAdminRequest)(nil),     // 12: cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest
-	(*ListVolumesCmdByAdminResponse)(nil),    // 13: cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse
-	(*DeleteVolumeRequest)(nil),              // 14: cloudstack.management.volume.v1.DeleteVolumeRequest
-	(*DeleteVolumeResponse)(nil),             // 15: cloudstack.management.volume.v1.DeleteVolumeResponse
-	(*MigrateVolumeCmdByAdminRequest)(nil),   // 16: cloudstack.management.volume.v1.MigrateVolumeCmdByAdminRequest
-	(*MigrateVolumeCmdByAdminResponse)(nil),  // 17: cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse
+	(*DestroyVolumeRequest)(nil),             // 0: cloudstack.management.volume.v1.DestroyVolumeRequest
+	(*DestroyVolumeResponse)(nil),            // 1: cloudstack.management.volume.v1.DestroyVolumeResponse
+	(*UpdateVolumeCmdByAdminRequest)(nil),    // 2: cloudstack.management.volume.v1.UpdateVolumeCmdByAdminRequest
+	(*UpdateVolumeCmdByAdminResponse)(nil),   // 3: cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse
+	(*CheckAndRepairVolumeRequest)(nil),      // 4: cloudstack.management.volume.v1.CheckAndRepairVolumeRequest
+	(*CheckAndRepairVolumeResponse)(nil),     // 5: cloudstack.management.volume.v1.CheckAndRepairVolumeResponse
+	(*ExtractVolumeRequest)(nil),             // 6: cloudstack.management.volume.v1.ExtractVolumeRequest
+	(*ExtractVolumeResponse)(nil),            // 7: cloudstack.management.volume.v1.ExtractVolumeResponse
+	(*ListVolumesCmdByAdminRequest)(nil),     // 8: cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest
+	(*ListVolumesCmdByAdminResponse)(nil),    // 9: cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse
+	(*UnmanageVolumeRequest)(nil),            // 10: cloudstack.management.volume.v1.UnmanageVolumeRequest
+	(*UnmanageVolumeResponse)(nil),           // 11: cloudstack.management.volume.v1.UnmanageVolumeResponse
+	(*UploadVolumeRequest)(nil),              // 12: cloudstack.management.volume.v1.UploadVolumeRequest
+	(*UploadVolumeResponse)(nil),             // 13: cloudstack.management.volume.v1.UploadVolumeResponse
+	(*ImportVolumeRequest)(nil),              // 14: cloudstack.management.volume.v1.ImportVolumeRequest
+	(*ImportVolumeResponse)(nil),             // 15: cloudstack.management.volume.v1.ImportVolumeResponse
+	(*DetachVolumeCmdByAdminRequest)(nil),    // 16: cloudstack.management.volume.v1.DetachVolumeCmdByAdminRequest
+	(*DetachVolumeCmdByAdminResponse)(nil),   // 17: cloudstack.management.volume.v1.DetachVolumeCmdByAdminResponse
 	(*ChangeOfferingForVolumeRequest)(nil),   // 18: cloudstack.management.volume.v1.ChangeOfferingForVolumeRequest
 	(*ChangeOfferingForVolumeResponse)(nil),  // 19: cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse
-	(*ResizeVolumeCmdByAdminRequest)(nil),    // 20: cloudstack.management.volume.v1.ResizeVolumeCmdByAdminRequest
-	(*ResizeVolumeCmdByAdminResponse)(nil),   // 21: cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse
-	(*ExtractVolumeRequest)(nil),             // 22: cloudstack.management.volume.v1.ExtractVolumeRequest
-	(*ExtractVolumeResponse)(nil),            // 23: cloudstack.management.volume.v1.ExtractVolumeResponse
-	(*ResizeVolumeRequest)(nil),              // 24: cloudstack.management.volume.v1.ResizeVolumeRequest
-	(*ResizeVolumeResponse)(nil),             // 25: cloudstack.management.volume.v1.ResizeVolumeResponse
-	(*UploadVolumeRequest)(nil),              // 26: cloudstack.management.volume.v1.UploadVolumeRequest
-	(*UploadVolumeResponse)(nil),             // 27: cloudstack.management.volume.v1.UploadVolumeResponse
-	(*CheckAndRepairVolumeRequest)(nil),      // 28: cloudstack.management.volume.v1.CheckAndRepairVolumeRequest
-	(*CheckAndRepairVolumeResponse)(nil),     // 29: cloudstack.management.volume.v1.CheckAndRepairVolumeResponse
-	(*CreateVolumeRequest)(nil),              // 30: cloudstack.management.volume.v1.CreateVolumeRequest
-	(*CreateVolumeResponse)(nil),             // 31: cloudstack.management.volume.v1.CreateVolumeResponse
-	(*ImportVolumeRequest)(nil),              // 32: cloudstack.management.volume.v1.ImportVolumeRequest
-	(*ImportVolumeResponse)(nil),             // 33: cloudstack.management.volume.v1.ImportVolumeResponse
-	(*ListVolumesRequest)(nil),               // 34: cloudstack.management.volume.v1.ListVolumesRequest
-	(*ListVolumesResponse)(nil),              // 35: cloudstack.management.volume.v1.ListVolumesResponse
-	(*DestroyVolumeRequest)(nil),             // 36: cloudstack.management.volume.v1.DestroyVolumeRequest
-	(*DestroyVolumeResponse)(nil),            // 37: cloudstack.management.volume.v1.DestroyVolumeResponse
+	(*CreateVolumeCmdByAdminRequest)(nil),    // 20: cloudstack.management.volume.v1.CreateVolumeCmdByAdminRequest
+	(*CreateVolumeCmdByAdminResponse)(nil),   // 21: cloudstack.management.volume.v1.CreateVolumeCmdByAdminResponse
+	(*ListVolumesRequest)(nil),               // 22: cloudstack.management.volume.v1.ListVolumesRequest
+	(*ListVolumesResponse)(nil),              // 23: cloudstack.management.volume.v1.ListVolumesResponse
+	(*AssignVolumeRequest)(nil),              // 24: cloudstack.management.volume.v1.AssignVolumeRequest
+	(*AssignVolumeResponse)(nil),             // 25: cloudstack.management.volume.v1.AssignVolumeResponse
+	(*GetUploadParamsForVolumeRequest)(nil),  // 26: cloudstack.management.volume.v1.GetUploadParamsForVolumeRequest
+	(*GetUploadParamsForVolumeResponse)(nil), // 27: cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse
+	(*ListVolumesForImportRequest)(nil),      // 28: cloudstack.management.volume.v1.ListVolumesForImportRequest
+	(*ListVolumesForImportResponse)(nil),     // 29: cloudstack.management.volume.v1.ListVolumesForImportResponse
+	(*DeleteVolumeRequest)(nil),              // 30: cloudstack.management.volume.v1.DeleteVolumeRequest
+	(*DeleteVolumeResponse)(nil),             // 31: cloudstack.management.volume.v1.DeleteVolumeResponse
+	(*RecoverVolumeCmdByAdminRequest)(nil),   // 32: cloudstack.management.volume.v1.RecoverVolumeCmdByAdminRequest
+	(*RecoverVolumeCmdByAdminResponse)(nil),  // 33: cloudstack.management.volume.v1.RecoverVolumeCmdByAdminResponse
+	(*CreateVolumeRequest)(nil),              // 34: cloudstack.management.volume.v1.CreateVolumeRequest
+	(*CreateVolumeResponse)(nil),             // 35: cloudstack.management.volume.v1.CreateVolumeResponse
+	(*MigrateVolumeCmdByAdminRequest)(nil),   // 36: cloudstack.management.volume.v1.MigrateVolumeCmdByAdminRequest
+	(*MigrateVolumeCmdByAdminResponse)(nil),  // 37: cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse
 	(*AddResourceDetailRequest)(nil),         // 38: cloudstack.management.volume.v1.AddResourceDetailRequest
 	(*AddResourceDetailResponse)(nil),        // 39: cloudstack.management.volume.v1.AddResourceDetailResponse
-	(*MigrateVolumeRequest)(nil),             // 40: cloudstack.management.volume.v1.MigrateVolumeRequest
-	(*MigrateVolumeResponse)(nil),            // 41: cloudstack.management.volume.v1.MigrateVolumeResponse
+	(*AttachVolumeCmdByAdminRequest)(nil),    // 40: cloudstack.management.volume.v1.AttachVolumeCmdByAdminRequest
+	(*AttachVolumeCmdByAdminResponse)(nil),   // 41: cloudstack.management.volume.v1.AttachVolumeCmdByAdminResponse
 	(*ListResourceDetailsRequest)(nil),       // 42: cloudstack.management.volume.v1.ListResourceDetailsRequest
 	(*ListResourceDetailsResponse)(nil),      // 43: cloudstack.management.volume.v1.ListResourceDetailsResponse
-	(*UpdateVolumeCmdByAdminRequest)(nil),    // 44: cloudstack.management.volume.v1.UpdateVolumeCmdByAdminRequest
-	(*UpdateVolumeCmdByAdminResponse)(nil),   // 45: cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse
-	(*ListVolumesForImportRequest)(nil),      // 46: cloudstack.management.volume.v1.ListVolumesForImportRequest
-	(*ListVolumesForImportResponse)(nil),     // 47: cloudstack.management.volume.v1.ListVolumesForImportResponse
-	(*GetUploadParamsForVolumeRequest)(nil),  // 48: cloudstack.management.volume.v1.GetUploadParamsForVolumeRequest
-	(*GetUploadParamsForVolumeResponse)(nil), // 49: cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse
-	(*UpdateVolumeRequest)(nil),              // 50: cloudstack.management.volume.v1.UpdateVolumeRequest
-	(*UpdateVolumeResponse)(nil),             // 51: cloudstack.management.volume.v1.UpdateVolumeResponse
-	(*Volume)(nil),                           // 52: cloudstack.management.volume.v1.Volume
-	(*ResourceTag)(nil),                      // 53: cloudstack.management.volume.v1.ResourceTag
-	(*VolumeForImport)(nil),                  // 54: cloudstack.management.volume.v1.VolumeForImport
-	(*Success)(nil),                          // 55: cloudstack.management.volume.v1.Success
-	(*Item)(nil),                             // 56: cloudstack.management.volume.v1.Item
-	(*Result)(nil),                           // 57: cloudstack.management.volume.v1.Result
-	nil,                                      // 58: cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest.TagsEntry
-	nil,                                      // 59: cloudstack.management.volume.v1.ListVolumesRequest.TagsEntry
-	nil,                                      // 60: cloudstack.management.volume.v1.AddResourceDetailRequest.DetailsEntry
-	nil,                                      // 61: cloudstack.management.volume.v1.Item.DetailsEntry
+	(*UpdateVolumeRequest)(nil),              // 44: cloudstack.management.volume.v1.UpdateVolumeRequest
+	(*UpdateVolumeResponse)(nil),             // 45: cloudstack.management.volume.v1.UpdateVolumeResponse
+	(*AttachVolumeRequest)(nil),              // 46: cloudstack.management.volume.v1.AttachVolumeRequest
+	(*AttachVolumeResponse)(nil),             // 47: cloudstack.management.volume.v1.AttachVolumeResponse
+	(*MigrateVolumeRequest)(nil),             // 48: cloudstack.management.volume.v1.MigrateVolumeRequest
+	(*MigrateVolumeResponse)(nil),            // 49: cloudstack.management.volume.v1.MigrateVolumeResponse
+	(*DetachVolumeRequest)(nil),              // 50: cloudstack.management.volume.v1.DetachVolumeRequest
+	(*DetachVolumeResponse)(nil),             // 51: cloudstack.management.volume.v1.DetachVolumeResponse
+	(*RemoveResourceDetailRequest)(nil),      // 52: cloudstack.management.volume.v1.RemoveResourceDetailRequest
+	(*RemoveResourceDetailResponse)(nil),     // 53: cloudstack.management.volume.v1.RemoveResourceDetailResponse
+	(*RecoverVolumeRequest)(nil),             // 54: cloudstack.management.volume.v1.RecoverVolumeRequest
+	(*RecoverVolumeResponse)(nil),            // 55: cloudstack.management.volume.v1.RecoverVolumeResponse
+	(*ResizeVolumeCmdByAdminRequest)(nil),    // 56: cloudstack.management.volume.v1.ResizeVolumeCmdByAdminRequest
+	(*ResizeVolumeCmdByAdminResponse)(nil),   // 57: cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse
+	(*ResizeVolumeRequest)(nil),              // 58: cloudstack.management.volume.v1.ResizeVolumeRequest
+	(*ResizeVolumeResponse)(nil),             // 59: cloudstack.management.volume.v1.ResizeVolumeResponse
+	(*Volume)(nil),                           // 60: cloudstack.management.volume.v1.Volume
+	(*VolumeForImport)(nil),                  // 61: cloudstack.management.volume.v1.VolumeForImport
+	(*ResourceTag)(nil),                      // 62: cloudstack.management.volume.v1.ResourceTag
+	(*Success)(nil),                          // 63: cloudstack.management.volume.v1.Success
+	(*Item)(nil),                             // 64: cloudstack.management.volume.v1.Item
+	(*Result)(nil),                           // 65: cloudstack.management.volume.v1.Result
+	nil,                                      // 66: cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest.TagsEntry
+	nil,                                      // 67: cloudstack.management.volume.v1.ListVolumesRequest.TagsEntry
+	nil,                                      // 68: cloudstack.management.volume.v1.AddResourceDetailRequest.DetailsEntry
+	nil,                                      // 69: cloudstack.management.volume.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_volume_v1_volume_gen_proto_depIdxs = []int32{
-	57, // 0: cloudstack.management.volume.v1.RecoverVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 1: cloudstack.management.volume.v1.AttachVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 2: cloudstack.management.volume.v1.AssignVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 3: cloudstack.management.volume.v1.UnmanageVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 4: cloudstack.management.volume.v1.RemoveResourceDetailResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 5: cloudstack.management.volume.v1.DetachVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	58, // 6: cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest.tags:type_name -> cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest.TagsEntry
-	52, // 7: cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse.items:type_name -> cloudstack.management.volume.v1.Volume
-	57, // 8: cloudstack.management.volume.v1.DeleteVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 9: cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 10: cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 11: cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 12: cloudstack.management.volume.v1.ExtractVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 13: cloudstack.management.volume.v1.ResizeVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 14: cloudstack.management.volume.v1.UploadVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 15: cloudstack.management.volume.v1.CheckAndRepairVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 16: cloudstack.management.volume.v1.CreateVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 17: cloudstack.management.volume.v1.ImportVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	59, // 18: cloudstack.management.volume.v1.ListVolumesRequest.tags:type_name -> cloudstack.management.volume.v1.ListVolumesRequest.TagsEntry
-	52, // 19: cloudstack.management.volume.v1.ListVolumesResponse.items:type_name -> cloudstack.management.volume.v1.Volume
-	57, // 20: cloudstack.management.volume.v1.DestroyVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	60, // 21: cloudstack.management.volume.v1.AddResourceDetailRequest.details:type_name -> cloudstack.management.volume.v1.AddResourceDetailRequest.DetailsEntry
-	57, // 22: cloudstack.management.volume.v1.AddResourceDetailResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 23: cloudstack.management.volume.v1.MigrateVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	53, // 24: cloudstack.management.volume.v1.ListResourceDetailsResponse.items:type_name -> cloudstack.management.volume.v1.ResourceTag
-	57, // 25: cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	54, // 26: cloudstack.management.volume.v1.ListVolumesForImportResponse.items:type_name -> cloudstack.management.volume.v1.VolumeForImport
-	57, // 27: cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	57, // 28: cloudstack.management.volume.v1.UpdateVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
-	61, // 29: cloudstack.management.volume.v1.Item.details:type_name -> cloudstack.management.volume.v1.Item.DetailsEntry
-	0,  // 30: cloudstack.management.volume.v1.VolumeService.RecoverVolume:input_type -> cloudstack.management.volume.v1.RecoverVolumeRequest
-	2,  // 31: cloudstack.management.volume.v1.VolumeService.AttachVolume:input_type -> cloudstack.management.volume.v1.AttachVolumeRequest
-	4,  // 32: cloudstack.management.volume.v1.VolumeService.AssignVolume:input_type -> cloudstack.management.volume.v1.AssignVolumeRequest
-	6,  // 33: cloudstack.management.volume.v1.VolumeService.UnmanageVolume:input_type -> cloudstack.management.volume.v1.UnmanageVolumeRequest
-	8,  // 34: cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail:input_type -> cloudstack.management.volume.v1.RemoveResourceDetailRequest
-	10, // 35: cloudstack.management.volume.v1.VolumeService.DetachVolume:input_type -> cloudstack.management.volume.v1.DetachVolumeRequest
-	12, // 36: cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin:input_type -> cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest
-	14, // 37: cloudstack.management.volume.v1.VolumeService.DeleteVolume:input_type -> cloudstack.management.volume.v1.DeleteVolumeRequest
-	16, // 38: cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.MigrateVolumeCmdByAdminRequest
-	18, // 39: cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume:input_type -> cloudstack.management.volume.v1.ChangeOfferingForVolumeRequest
-	20, // 40: cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.ResizeVolumeCmdByAdminRequest
-	22, // 41: cloudstack.management.volume.v1.VolumeService.ExtractVolume:input_type -> cloudstack.management.volume.v1.ExtractVolumeRequest
-	24, // 42: cloudstack.management.volume.v1.VolumeService.ResizeVolume:input_type -> cloudstack.management.volume.v1.ResizeVolumeRequest
-	26, // 43: cloudstack.management.volume.v1.VolumeService.UploadVolume:input_type -> cloudstack.management.volume.v1.UploadVolumeRequest
-	28, // 44: cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume:input_type -> cloudstack.management.volume.v1.CheckAndRepairVolumeRequest
-	30, // 45: cloudstack.management.volume.v1.VolumeService.CreateVolume:input_type -> cloudstack.management.volume.v1.CreateVolumeRequest
-	32, // 46: cloudstack.management.volume.v1.VolumeService.ImportVolume:input_type -> cloudstack.management.volume.v1.ImportVolumeRequest
-	34, // 47: cloudstack.management.volume.v1.VolumeService.ListVolumes:input_type -> cloudstack.management.volume.v1.ListVolumesRequest
-	36, // 48: cloudstack.management.volume.v1.VolumeService.DestroyVolume:input_type -> cloudstack.management.volume.v1.DestroyVolumeRequest
-	38, // 49: cloudstack.management.volume.v1.VolumeService.AddResourceDetail:input_type -> cloudstack.management.volume.v1.AddResourceDetailRequest
-	40, // 50: cloudstack.management.volume.v1.VolumeService.MigrateVolume:input_type -> cloudstack.management.volume.v1.MigrateVolumeRequest
-	42, // 51: cloudstack.management.volume.v1.VolumeService.ListResourceDetails:input_type -> cloudstack.management.volume.v1.ListResourceDetailsRequest
-	44, // 52: cloudstack.management.volume.v1.VolumeService.UpdateVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.UpdateVolumeCmdByAdminRequest
-	46, // 53: cloudstack.management.volume.v1.VolumeService.ListVolumesForImport:input_type -> cloudstack.management.volume.v1.ListVolumesForImportRequest
-	48, // 54: cloudstack.management.volume.v1.VolumeService.GetUploadParamsForVolume:input_type -> cloudstack.management.volume.v1.GetUploadParamsForVolumeRequest
-	50, // 55: cloudstack.management.volume.v1.VolumeService.UpdateVolume:input_type -> cloudstack.management.volume.v1.UpdateVolumeRequest
-	1,  // 56: cloudstack.management.volume.v1.VolumeService.RecoverVolume:output_type -> cloudstack.management.volume.v1.RecoverVolumeResponse
-	3,  // 57: cloudstack.management.volume.v1.VolumeService.AttachVolume:output_type -> cloudstack.management.volume.v1.AttachVolumeResponse
-	5,  // 58: cloudstack.management.volume.v1.VolumeService.AssignVolume:output_type -> cloudstack.management.volume.v1.AssignVolumeResponse
-	7,  // 59: cloudstack.management.volume.v1.VolumeService.UnmanageVolume:output_type -> cloudstack.management.volume.v1.UnmanageVolumeResponse
-	9,  // 60: cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail:output_type -> cloudstack.management.volume.v1.RemoveResourceDetailResponse
-	11, // 61: cloudstack.management.volume.v1.VolumeService.DetachVolume:output_type -> cloudstack.management.volume.v1.DetachVolumeResponse
-	13, // 62: cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin:output_type -> cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse
-	15, // 63: cloudstack.management.volume.v1.VolumeService.DeleteVolume:output_type -> cloudstack.management.volume.v1.DeleteVolumeResponse
-	17, // 64: cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse
-	19, // 65: cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume:output_type -> cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse
-	21, // 66: cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse
-	23, // 67: cloudstack.management.volume.v1.VolumeService.ExtractVolume:output_type -> cloudstack.management.volume.v1.ExtractVolumeResponse
-	25, // 68: cloudstack.management.volume.v1.VolumeService.ResizeVolume:output_type -> cloudstack.management.volume.v1.ResizeVolumeResponse
-	27, // 69: cloudstack.management.volume.v1.VolumeService.UploadVolume:output_type -> cloudstack.management.volume.v1.UploadVolumeResponse
-	29, // 70: cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume:output_type -> cloudstack.management.volume.v1.CheckAndRepairVolumeResponse
-	31, // 71: cloudstack.management.volume.v1.VolumeService.CreateVolume:output_type -> cloudstack.management.volume.v1.CreateVolumeResponse
-	33, // 72: cloudstack.management.volume.v1.VolumeService.ImportVolume:output_type -> cloudstack.management.volume.v1.ImportVolumeResponse
-	35, // 73: cloudstack.management.volume.v1.VolumeService.ListVolumes:output_type -> cloudstack.management.volume.v1.ListVolumesResponse
-	37, // 74: cloudstack.management.volume.v1.VolumeService.DestroyVolume:output_type -> cloudstack.management.volume.v1.DestroyVolumeResponse
-	39, // 75: cloudstack.management.volume.v1.VolumeService.AddResourceDetail:output_type -> cloudstack.management.volume.v1.AddResourceDetailResponse
-	41, // 76: cloudstack.management.volume.v1.VolumeService.MigrateVolume:output_type -> cloudstack.management.volume.v1.MigrateVolumeResponse
-	43, // 77: cloudstack.management.volume.v1.VolumeService.ListResourceDetails:output_type -> cloudstack.management.volume.v1.ListResourceDetailsResponse
-	45, // 78: cloudstack.management.volume.v1.VolumeService.UpdateVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse
-	47, // 79: cloudstack.management.volume.v1.VolumeService.ListVolumesForImport:output_type -> cloudstack.management.volume.v1.ListVolumesForImportResponse
-	49, // 80: cloudstack.management.volume.v1.VolumeService.GetUploadParamsForVolume:output_type -> cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse
-	51, // 81: cloudstack.management.volume.v1.VolumeService.UpdateVolume:output_type -> cloudstack.management.volume.v1.UpdateVolumeResponse
-	56, // [56:82] is the sub-list for method output_type
-	30, // [30:56] is the sub-list for method input_type
-	30, // [30:30] is the sub-list for extension type_name
-	30, // [30:30] is the sub-list for extension extendee
-	0,  // [0:30] is the sub-list for field type_name
+	65, // 0: cloudstack.management.volume.v1.DestroyVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 1: cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 2: cloudstack.management.volume.v1.CheckAndRepairVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 3: cloudstack.management.volume.v1.ExtractVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	66, // 4: cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest.tags:type_name -> cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest.TagsEntry
+	60, // 5: cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse.items:type_name -> cloudstack.management.volume.v1.Volume
+	65, // 6: cloudstack.management.volume.v1.UnmanageVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 7: cloudstack.management.volume.v1.UploadVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 8: cloudstack.management.volume.v1.ImportVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 9: cloudstack.management.volume.v1.DetachVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 10: cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 11: cloudstack.management.volume.v1.CreateVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	67, // 12: cloudstack.management.volume.v1.ListVolumesRequest.tags:type_name -> cloudstack.management.volume.v1.ListVolumesRequest.TagsEntry
+	60, // 13: cloudstack.management.volume.v1.ListVolumesResponse.items:type_name -> cloudstack.management.volume.v1.Volume
+	65, // 14: cloudstack.management.volume.v1.AssignVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 15: cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	61, // 16: cloudstack.management.volume.v1.ListVolumesForImportResponse.items:type_name -> cloudstack.management.volume.v1.VolumeForImport
+	65, // 17: cloudstack.management.volume.v1.DeleteVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 18: cloudstack.management.volume.v1.RecoverVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 19: cloudstack.management.volume.v1.CreateVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 20: cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	68, // 21: cloudstack.management.volume.v1.AddResourceDetailRequest.details:type_name -> cloudstack.management.volume.v1.AddResourceDetailRequest.DetailsEntry
+	65, // 22: cloudstack.management.volume.v1.AddResourceDetailResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 23: cloudstack.management.volume.v1.AttachVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	62, // 24: cloudstack.management.volume.v1.ListResourceDetailsResponse.items:type_name -> cloudstack.management.volume.v1.ResourceTag
+	65, // 25: cloudstack.management.volume.v1.UpdateVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 26: cloudstack.management.volume.v1.AttachVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 27: cloudstack.management.volume.v1.MigrateVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 28: cloudstack.management.volume.v1.DetachVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 29: cloudstack.management.volume.v1.RemoveResourceDetailResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 30: cloudstack.management.volume.v1.RecoverVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 31: cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	65, // 32: cloudstack.management.volume.v1.ResizeVolumeResponse.result:type_name -> cloudstack.management.volume.v1.Result
+	69, // 33: cloudstack.management.volume.v1.Item.details:type_name -> cloudstack.management.volume.v1.Item.DetailsEntry
+	0,  // 34: cloudstack.management.volume.v1.VolumeService.DestroyVolume:input_type -> cloudstack.management.volume.v1.DestroyVolumeRequest
+	2,  // 35: cloudstack.management.volume.v1.VolumeService.UpdateVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.UpdateVolumeCmdByAdminRequest
+	4,  // 36: cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume:input_type -> cloudstack.management.volume.v1.CheckAndRepairVolumeRequest
+	6,  // 37: cloudstack.management.volume.v1.VolumeService.ExtractVolume:input_type -> cloudstack.management.volume.v1.ExtractVolumeRequest
+	8,  // 38: cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin:input_type -> cloudstack.management.volume.v1.ListVolumesCmdByAdminRequest
+	10, // 39: cloudstack.management.volume.v1.VolumeService.UnmanageVolume:input_type -> cloudstack.management.volume.v1.UnmanageVolumeRequest
+	12, // 40: cloudstack.management.volume.v1.VolumeService.UploadVolume:input_type -> cloudstack.management.volume.v1.UploadVolumeRequest
+	14, // 41: cloudstack.management.volume.v1.VolumeService.ImportVolume:input_type -> cloudstack.management.volume.v1.ImportVolumeRequest
+	16, // 42: cloudstack.management.volume.v1.VolumeService.DetachVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.DetachVolumeCmdByAdminRequest
+	18, // 43: cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume:input_type -> cloudstack.management.volume.v1.ChangeOfferingForVolumeRequest
+	20, // 44: cloudstack.management.volume.v1.VolumeService.CreateVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.CreateVolumeCmdByAdminRequest
+	22, // 45: cloudstack.management.volume.v1.VolumeService.ListVolumes:input_type -> cloudstack.management.volume.v1.ListVolumesRequest
+	24, // 46: cloudstack.management.volume.v1.VolumeService.AssignVolume:input_type -> cloudstack.management.volume.v1.AssignVolumeRequest
+	26, // 47: cloudstack.management.volume.v1.VolumeService.GetUploadParamsForVolume:input_type -> cloudstack.management.volume.v1.GetUploadParamsForVolumeRequest
+	28, // 48: cloudstack.management.volume.v1.VolumeService.ListVolumesForImport:input_type -> cloudstack.management.volume.v1.ListVolumesForImportRequest
+	30, // 49: cloudstack.management.volume.v1.VolumeService.DeleteVolume:input_type -> cloudstack.management.volume.v1.DeleteVolumeRequest
+	32, // 50: cloudstack.management.volume.v1.VolumeService.RecoverVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.RecoverVolumeCmdByAdminRequest
+	34, // 51: cloudstack.management.volume.v1.VolumeService.CreateVolume:input_type -> cloudstack.management.volume.v1.CreateVolumeRequest
+	36, // 52: cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.MigrateVolumeCmdByAdminRequest
+	38, // 53: cloudstack.management.volume.v1.VolumeService.AddResourceDetail:input_type -> cloudstack.management.volume.v1.AddResourceDetailRequest
+	40, // 54: cloudstack.management.volume.v1.VolumeService.AttachVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.AttachVolumeCmdByAdminRequest
+	42, // 55: cloudstack.management.volume.v1.VolumeService.ListResourceDetails:input_type -> cloudstack.management.volume.v1.ListResourceDetailsRequest
+	44, // 56: cloudstack.management.volume.v1.VolumeService.UpdateVolume:input_type -> cloudstack.management.volume.v1.UpdateVolumeRequest
+	46, // 57: cloudstack.management.volume.v1.VolumeService.AttachVolume:input_type -> cloudstack.management.volume.v1.AttachVolumeRequest
+	48, // 58: cloudstack.management.volume.v1.VolumeService.MigrateVolume:input_type -> cloudstack.management.volume.v1.MigrateVolumeRequest
+	50, // 59: cloudstack.management.volume.v1.VolumeService.DetachVolume:input_type -> cloudstack.management.volume.v1.DetachVolumeRequest
+	52, // 60: cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail:input_type -> cloudstack.management.volume.v1.RemoveResourceDetailRequest
+	54, // 61: cloudstack.management.volume.v1.VolumeService.RecoverVolume:input_type -> cloudstack.management.volume.v1.RecoverVolumeRequest
+	56, // 62: cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin:input_type -> cloudstack.management.volume.v1.ResizeVolumeCmdByAdminRequest
+	58, // 63: cloudstack.management.volume.v1.VolumeService.ResizeVolume:input_type -> cloudstack.management.volume.v1.ResizeVolumeRequest
+	1,  // 64: cloudstack.management.volume.v1.VolumeService.DestroyVolume:output_type -> cloudstack.management.volume.v1.DestroyVolumeResponse
+	3,  // 65: cloudstack.management.volume.v1.VolumeService.UpdateVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.UpdateVolumeCmdByAdminResponse
+	5,  // 66: cloudstack.management.volume.v1.VolumeService.CheckAndRepairVolume:output_type -> cloudstack.management.volume.v1.CheckAndRepairVolumeResponse
+	7,  // 67: cloudstack.management.volume.v1.VolumeService.ExtractVolume:output_type -> cloudstack.management.volume.v1.ExtractVolumeResponse
+	9,  // 68: cloudstack.management.volume.v1.VolumeService.ListVolumesCmdByAdmin:output_type -> cloudstack.management.volume.v1.ListVolumesCmdByAdminResponse
+	11, // 69: cloudstack.management.volume.v1.VolumeService.UnmanageVolume:output_type -> cloudstack.management.volume.v1.UnmanageVolumeResponse
+	13, // 70: cloudstack.management.volume.v1.VolumeService.UploadVolume:output_type -> cloudstack.management.volume.v1.UploadVolumeResponse
+	15, // 71: cloudstack.management.volume.v1.VolumeService.ImportVolume:output_type -> cloudstack.management.volume.v1.ImportVolumeResponse
+	17, // 72: cloudstack.management.volume.v1.VolumeService.DetachVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.DetachVolumeCmdByAdminResponse
+	19, // 73: cloudstack.management.volume.v1.VolumeService.ChangeOfferingForVolume:output_type -> cloudstack.management.volume.v1.ChangeOfferingForVolumeResponse
+	21, // 74: cloudstack.management.volume.v1.VolumeService.CreateVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.CreateVolumeCmdByAdminResponse
+	23, // 75: cloudstack.management.volume.v1.VolumeService.ListVolumes:output_type -> cloudstack.management.volume.v1.ListVolumesResponse
+	25, // 76: cloudstack.management.volume.v1.VolumeService.AssignVolume:output_type -> cloudstack.management.volume.v1.AssignVolumeResponse
+	27, // 77: cloudstack.management.volume.v1.VolumeService.GetUploadParamsForVolume:output_type -> cloudstack.management.volume.v1.GetUploadParamsForVolumeResponse
+	29, // 78: cloudstack.management.volume.v1.VolumeService.ListVolumesForImport:output_type -> cloudstack.management.volume.v1.ListVolumesForImportResponse
+	31, // 79: cloudstack.management.volume.v1.VolumeService.DeleteVolume:output_type -> cloudstack.management.volume.v1.DeleteVolumeResponse
+	33, // 80: cloudstack.management.volume.v1.VolumeService.RecoverVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.RecoverVolumeCmdByAdminResponse
+	35, // 81: cloudstack.management.volume.v1.VolumeService.CreateVolume:output_type -> cloudstack.management.volume.v1.CreateVolumeResponse
+	37, // 82: cloudstack.management.volume.v1.VolumeService.MigrateVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.MigrateVolumeCmdByAdminResponse
+	39, // 83: cloudstack.management.volume.v1.VolumeService.AddResourceDetail:output_type -> cloudstack.management.volume.v1.AddResourceDetailResponse
+	41, // 84: cloudstack.management.volume.v1.VolumeService.AttachVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.AttachVolumeCmdByAdminResponse
+	43, // 85: cloudstack.management.volume.v1.VolumeService.ListResourceDetails:output_type -> cloudstack.management.volume.v1.ListResourceDetailsResponse
+	45, // 86: cloudstack.management.volume.v1.VolumeService.UpdateVolume:output_type -> cloudstack.management.volume.v1.UpdateVolumeResponse
+	47, // 87: cloudstack.management.volume.v1.VolumeService.AttachVolume:output_type -> cloudstack.management.volume.v1.AttachVolumeResponse
+	49, // 88: cloudstack.management.volume.v1.VolumeService.MigrateVolume:output_type -> cloudstack.management.volume.v1.MigrateVolumeResponse
+	51, // 89: cloudstack.management.volume.v1.VolumeService.DetachVolume:output_type -> cloudstack.management.volume.v1.DetachVolumeResponse
+	53, // 90: cloudstack.management.volume.v1.VolumeService.RemoveResourceDetail:output_type -> cloudstack.management.volume.v1.RemoveResourceDetailResponse
+	55, // 91: cloudstack.management.volume.v1.VolumeService.RecoverVolume:output_type -> cloudstack.management.volume.v1.RecoverVolumeResponse
+	57, // 92: cloudstack.management.volume.v1.VolumeService.ResizeVolumeCmdByAdmin:output_type -> cloudstack.management.volume.v1.ResizeVolumeCmdByAdminResponse
+	59, // 93: cloudstack.management.volume.v1.VolumeService.ResizeVolume:output_type -> cloudstack.management.volume.v1.ResizeVolumeResponse
+	64, // [64:94] is the sub-list for method output_type
+	34, // [34:64] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_volume_v1_volume_gen_proto_init() }
@@ -5653,7 +6317,7 @@ func file_cloudstack_management_volume_v1_volume_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc), len(file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   62,
+			NumMessages:   70,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

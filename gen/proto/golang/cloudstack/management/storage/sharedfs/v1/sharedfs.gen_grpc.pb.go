@@ -19,18 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SharedfsService_StopSharedFS_FullMethodName                  = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StopSharedFS"
-	SharedfsService_ChangeSharedFSDiskOffering_FullMethodName    = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSDiskOffering"
+	SharedfsService_ChangeSharedFSServiceOffering_FullMethodName = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSServiceOffering"
+	SharedfsService_CreateSharedFS_FullMethodName                = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/CreateSharedFS"
+	SharedfsService_RecoverSharedFS_FullMethodName               = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/RecoverSharedFS"
+	SharedfsService_UpdateSharedFS_FullMethodName                = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/UpdateSharedFS"
+	SharedfsService_StartSharedFS_FullMethodName                 = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StartSharedFS"
 	SharedfsService_ExpungeSharedFS_FullMethodName               = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ExpungeSharedFS"
 	SharedfsService_ListSharedFSProviders_FullMethodName         = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ListSharedFSProviders"
-	SharedfsService_CreateSharedFS_FullMethodName                = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/CreateSharedFS"
-	SharedfsService_ChangeSharedFSServiceOffering_FullMethodName = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSServiceOffering"
-	SharedfsService_ListSharedFS_FullMethodName                  = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ListSharedFS"
-	SharedfsService_DestroySharedFS_FullMethodName               = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/DestroySharedFS"
-	SharedfsService_StartSharedFS_FullMethodName                 = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StartSharedFS"
-	SharedfsService_RecoverSharedFS_FullMethodName               = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/RecoverSharedFS"
+	SharedfsService_StopSharedFS_FullMethodName                  = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/StopSharedFS"
 	SharedfsService_RestartSharedFS_FullMethodName               = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/RestartSharedFS"
-	SharedfsService_UpdateSharedFS_FullMethodName                = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/UpdateSharedFS"
+	SharedfsService_DestroySharedFS_FullMethodName               = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/DestroySharedFS"
+	SharedfsService_ListSharedFS_FullMethodName                  = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ListSharedFS"
+	SharedfsService_ChangeSharedFSDiskOffering_FullMethodName    = "/cloudstack.management.storage.sharedfs.v1.SharedfsService/ChangeSharedFSDiskOffering"
 )
 
 // SharedfsServiceClient is the client API for SharedfsService service.
@@ -39,30 +39,30 @@ const (
 //
 // SharedfsService provides operations for managing Storage.Sharedfss
 type SharedfsServiceClient interface {
-	// StopSharedFS Stop a Shared FileSystem
-	StopSharedFS(ctx context.Context, in *StopSharedFSRequest, opts ...grpc.CallOption) (*StopSharedFSResponse, error)
-	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
-	ChangeSharedFSDiskOffering(ctx context.Context, in *ChangeSharedFSDiskOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSDiskOfferingResponse, error)
+	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
+	ChangeSharedFSServiceOffering(ctx context.Context, in *ChangeSharedFSServiceOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSServiceOfferingResponse, error)
+	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
+	CreateSharedFS(ctx context.Context, in *CreateSharedFSRequest, opts ...grpc.CallOption) (*CreateSharedFSResponse, error)
+	// RecoverSharedFS Recover a Shared FileSystem by id
+	RecoverSharedFS(ctx context.Context, in *RecoverSharedFSRequest, opts ...grpc.CallOption) (*RecoverSharedFSResponse, error)
+	// UpdateSharedFS Update a Shared FileSystem
+	UpdateSharedFS(ctx context.Context, in *UpdateSharedFSRequest, opts ...grpc.CallOption) (*UpdateSharedFSResponse, error)
+	// StartSharedFS Start a Shared FileSystem
+	StartSharedFS(ctx context.Context, in *StartSharedFSRequest, opts ...grpc.CallOption) (*StartSharedFSResponse, error)
 	// ExpungeSharedFS Expunge a Shared FileSystem by id
 	ExpungeSharedFS(ctx context.Context, in *ExpungeSharedFSRequest, opts ...grpc.CallOption) (*ExpungeSharedFSResponse, error)
 	// ListSharedFSProviders Lists all available shared filesystem providers.
 	ListSharedFSProviders(ctx context.Context, in *ListSharedFSProvidersRequest, opts ...grpc.CallOption) (*ListSharedFSProvidersResponse, error)
-	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
-	CreateSharedFS(ctx context.Context, in *CreateSharedFSRequest, opts ...grpc.CallOption) (*CreateSharedFSResponse, error)
-	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
-	ChangeSharedFSServiceOffering(ctx context.Context, in *ChangeSharedFSServiceOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSServiceOfferingResponse, error)
-	// ListSharedFS List Shared FileSystems
-	ListSharedFS(ctx context.Context, in *ListSharedFSRequest, opts ...grpc.CallOption) (*ListSharedFSResponse, error)
-	// DestroySharedFS Destroy a Shared FileSystem by id
-	DestroySharedFS(ctx context.Context, in *DestroySharedFSRequest, opts ...grpc.CallOption) (*DestroySharedFSResponse, error)
-	// StartSharedFS Start a Shared FileSystem
-	StartSharedFS(ctx context.Context, in *StartSharedFSRequest, opts ...grpc.CallOption) (*StartSharedFSResponse, error)
-	// RecoverSharedFS Recover a Shared FileSystem by id
-	RecoverSharedFS(ctx context.Context, in *RecoverSharedFSRequest, opts ...grpc.CallOption) (*RecoverSharedFSResponse, error)
+	// StopSharedFS Stop a Shared FileSystem
+	StopSharedFS(ctx context.Context, in *StopSharedFSRequest, opts ...grpc.CallOption) (*StopSharedFSResponse, error)
 	// RestartSharedFS Restart a Shared FileSystem
 	RestartSharedFS(ctx context.Context, in *RestartSharedFSRequest, opts ...grpc.CallOption) (*RestartSharedFSResponse, error)
-	// UpdateSharedFS Update a Shared FileSystem
-	UpdateSharedFS(ctx context.Context, in *UpdateSharedFSRequest, opts ...grpc.CallOption) (*UpdateSharedFSResponse, error)
+	// DestroySharedFS Destroy a Shared FileSystem by id
+	DestroySharedFS(ctx context.Context, in *DestroySharedFSRequest, opts ...grpc.CallOption) (*DestroySharedFSResponse, error)
+	// ListSharedFS List Shared FileSystems
+	ListSharedFS(ctx context.Context, in *ListSharedFSRequest, opts ...grpc.CallOption) (*ListSharedFSResponse, error)
+	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
+	ChangeSharedFSDiskOffering(ctx context.Context, in *ChangeSharedFSDiskOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSDiskOfferingResponse, error)
 }
 
 type sharedfsServiceClient struct {
@@ -73,20 +73,50 @@ func NewSharedfsServiceClient(cc grpc.ClientConnInterface) SharedfsServiceClient
 	return &sharedfsServiceClient{cc}
 }
 
-func (c *sharedfsServiceClient) StopSharedFS(ctx context.Context, in *StopSharedFSRequest, opts ...grpc.CallOption) (*StopSharedFSResponse, error) {
+func (c *sharedfsServiceClient) ChangeSharedFSServiceOffering(ctx context.Context, in *ChangeSharedFSServiceOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSServiceOfferingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StopSharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_StopSharedFS_FullMethodName, in, out, cOpts...)
+	out := new(ChangeSharedFSServiceOfferingResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_ChangeSharedFSServiceOffering_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sharedfsServiceClient) ChangeSharedFSDiskOffering(ctx context.Context, in *ChangeSharedFSDiskOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSDiskOfferingResponse, error) {
+func (c *sharedfsServiceClient) CreateSharedFS(ctx context.Context, in *CreateSharedFSRequest, opts ...grpc.CallOption) (*CreateSharedFSResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeSharedFSDiskOfferingResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_ChangeSharedFSDiskOffering_FullMethodName, in, out, cOpts...)
+	out := new(CreateSharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_CreateSharedFS_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sharedfsServiceClient) RecoverSharedFS(ctx context.Context, in *RecoverSharedFSRequest, opts ...grpc.CallOption) (*RecoverSharedFSResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecoverSharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_RecoverSharedFS_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sharedfsServiceClient) UpdateSharedFS(ctx context.Context, in *UpdateSharedFSRequest, opts ...grpc.CallOption) (*UpdateSharedFSResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateSharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_UpdateSharedFS_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sharedfsServiceClient) StartSharedFS(ctx context.Context, in *StartSharedFSRequest, opts ...grpc.CallOption) (*StartSharedFSResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StartSharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_StartSharedFS_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,60 +143,10 @@ func (c *sharedfsServiceClient) ListSharedFSProviders(ctx context.Context, in *L
 	return out, nil
 }
 
-func (c *sharedfsServiceClient) CreateSharedFS(ctx context.Context, in *CreateSharedFSRequest, opts ...grpc.CallOption) (*CreateSharedFSResponse, error) {
+func (c *sharedfsServiceClient) StopSharedFS(ctx context.Context, in *StopSharedFSRequest, opts ...grpc.CallOption) (*StopSharedFSResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateSharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_CreateSharedFS_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *sharedfsServiceClient) ChangeSharedFSServiceOffering(ctx context.Context, in *ChangeSharedFSServiceOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSServiceOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeSharedFSServiceOfferingResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_ChangeSharedFSServiceOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *sharedfsServiceClient) ListSharedFS(ctx context.Context, in *ListSharedFSRequest, opts ...grpc.CallOption) (*ListSharedFSResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListSharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_ListSharedFS_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *sharedfsServiceClient) DestroySharedFS(ctx context.Context, in *DestroySharedFSRequest, opts ...grpc.CallOption) (*DestroySharedFSResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DestroySharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_DestroySharedFS_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *sharedfsServiceClient) StartSharedFS(ctx context.Context, in *StartSharedFSRequest, opts ...grpc.CallOption) (*StartSharedFSResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StartSharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_StartSharedFS_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *sharedfsServiceClient) RecoverSharedFS(ctx context.Context, in *RecoverSharedFSRequest, opts ...grpc.CallOption) (*RecoverSharedFSResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RecoverSharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_RecoverSharedFS_FullMethodName, in, out, cOpts...)
+	out := new(StopSharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_StopSharedFS_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -183,10 +163,30 @@ func (c *sharedfsServiceClient) RestartSharedFS(ctx context.Context, in *Restart
 	return out, nil
 }
 
-func (c *sharedfsServiceClient) UpdateSharedFS(ctx context.Context, in *UpdateSharedFSRequest, opts ...grpc.CallOption) (*UpdateSharedFSResponse, error) {
+func (c *sharedfsServiceClient) DestroySharedFS(ctx context.Context, in *DestroySharedFSRequest, opts ...grpc.CallOption) (*DestroySharedFSResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateSharedFSResponse)
-	err := c.cc.Invoke(ctx, SharedfsService_UpdateSharedFS_FullMethodName, in, out, cOpts...)
+	out := new(DestroySharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_DestroySharedFS_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sharedfsServiceClient) ListSharedFS(ctx context.Context, in *ListSharedFSRequest, opts ...grpc.CallOption) (*ListSharedFSResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSharedFSResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_ListSharedFS_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sharedfsServiceClient) ChangeSharedFSDiskOffering(ctx context.Context, in *ChangeSharedFSDiskOfferingRequest, opts ...grpc.CallOption) (*ChangeSharedFSDiskOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeSharedFSDiskOfferingResponse)
+	err := c.cc.Invoke(ctx, SharedfsService_ChangeSharedFSDiskOffering_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -199,30 +199,30 @@ func (c *sharedfsServiceClient) UpdateSharedFS(ctx context.Context, in *UpdateSh
 //
 // SharedfsService provides operations for managing Storage.Sharedfss
 type SharedfsServiceServer interface {
-	// StopSharedFS Stop a Shared FileSystem
-	StopSharedFS(context.Context, *StopSharedFSRequest) (*StopSharedFSResponse, error)
-	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
-	ChangeSharedFSDiskOffering(context.Context, *ChangeSharedFSDiskOfferingRequest) (*ChangeSharedFSDiskOfferingResponse, error)
+	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
+	ChangeSharedFSServiceOffering(context.Context, *ChangeSharedFSServiceOfferingRequest) (*ChangeSharedFSServiceOfferingResponse, error)
+	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
+	CreateSharedFS(context.Context, *CreateSharedFSRequest) (*CreateSharedFSResponse, error)
+	// RecoverSharedFS Recover a Shared FileSystem by id
+	RecoverSharedFS(context.Context, *RecoverSharedFSRequest) (*RecoverSharedFSResponse, error)
+	// UpdateSharedFS Update a Shared FileSystem
+	UpdateSharedFS(context.Context, *UpdateSharedFSRequest) (*UpdateSharedFSResponse, error)
+	// StartSharedFS Start a Shared FileSystem
+	StartSharedFS(context.Context, *StartSharedFSRequest) (*StartSharedFSResponse, error)
 	// ExpungeSharedFS Expunge a Shared FileSystem by id
 	ExpungeSharedFS(context.Context, *ExpungeSharedFSRequest) (*ExpungeSharedFSResponse, error)
 	// ListSharedFSProviders Lists all available shared filesystem providers.
 	ListSharedFSProviders(context.Context, *ListSharedFSProvidersRequest) (*ListSharedFSProvidersResponse, error)
-	// CreateSharedFS Create a new Shared File System of specified size and disk offering, attached to the given network
-	CreateSharedFS(context.Context, *CreateSharedFSRequest) (*CreateSharedFSResponse, error)
-	// ChangeSharedFSServiceOffering Change Service offering of a Shared FileSystem
-	ChangeSharedFSServiceOffering(context.Context, *ChangeSharedFSServiceOfferingRequest) (*ChangeSharedFSServiceOfferingResponse, error)
-	// ListSharedFS List Shared FileSystems
-	ListSharedFS(context.Context, *ListSharedFSRequest) (*ListSharedFSResponse, error)
-	// DestroySharedFS Destroy a Shared FileSystem by id
-	DestroySharedFS(context.Context, *DestroySharedFSRequest) (*DestroySharedFSResponse, error)
-	// StartSharedFS Start a Shared FileSystem
-	StartSharedFS(context.Context, *StartSharedFSRequest) (*StartSharedFSResponse, error)
-	// RecoverSharedFS Recover a Shared FileSystem by id
-	RecoverSharedFS(context.Context, *RecoverSharedFSRequest) (*RecoverSharedFSResponse, error)
+	// StopSharedFS Stop a Shared FileSystem
+	StopSharedFS(context.Context, *StopSharedFSRequest) (*StopSharedFSResponse, error)
 	// RestartSharedFS Restart a Shared FileSystem
 	RestartSharedFS(context.Context, *RestartSharedFSRequest) (*RestartSharedFSResponse, error)
-	// UpdateSharedFS Update a Shared FileSystem
-	UpdateSharedFS(context.Context, *UpdateSharedFSRequest) (*UpdateSharedFSResponse, error)
+	// DestroySharedFS Destroy a Shared FileSystem by id
+	DestroySharedFS(context.Context, *DestroySharedFSRequest) (*DestroySharedFSResponse, error)
+	// ListSharedFS List Shared FileSystems
+	ListSharedFS(context.Context, *ListSharedFSRequest) (*ListSharedFSResponse, error)
+	// ChangeSharedFSDiskOffering Change Disk offering of a Shared FileSystem
+	ChangeSharedFSDiskOffering(context.Context, *ChangeSharedFSDiskOfferingRequest) (*ChangeSharedFSDiskOfferingResponse, error)
 	mustEmbedUnimplementedSharedfsServiceServer()
 }
 
@@ -233,11 +233,20 @@ type SharedfsServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedSharedfsServiceServer struct{}
 
-func (UnimplementedSharedfsServiceServer) StopSharedFS(context.Context, *StopSharedFSRequest) (*StopSharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StopSharedFS not implemented")
+func (UnimplementedSharedfsServiceServer) ChangeSharedFSServiceOffering(context.Context, *ChangeSharedFSServiceOfferingRequest) (*ChangeSharedFSServiceOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeSharedFSServiceOffering not implemented")
 }
-func (UnimplementedSharedfsServiceServer) ChangeSharedFSDiskOffering(context.Context, *ChangeSharedFSDiskOfferingRequest) (*ChangeSharedFSDiskOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeSharedFSDiskOffering not implemented")
+func (UnimplementedSharedfsServiceServer) CreateSharedFS(context.Context, *CreateSharedFSRequest) (*CreateSharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSharedFS not implemented")
+}
+func (UnimplementedSharedfsServiceServer) RecoverSharedFS(context.Context, *RecoverSharedFSRequest) (*RecoverSharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecoverSharedFS not implemented")
+}
+func (UnimplementedSharedfsServiceServer) UpdateSharedFS(context.Context, *UpdateSharedFSRequest) (*UpdateSharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSharedFS not implemented")
+}
+func (UnimplementedSharedfsServiceServer) StartSharedFS(context.Context, *StartSharedFSRequest) (*StartSharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartSharedFS not implemented")
 }
 func (UnimplementedSharedfsServiceServer) ExpungeSharedFS(context.Context, *ExpungeSharedFSRequest) (*ExpungeSharedFSResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExpungeSharedFS not implemented")
@@ -245,29 +254,20 @@ func (UnimplementedSharedfsServiceServer) ExpungeSharedFS(context.Context, *Expu
 func (UnimplementedSharedfsServiceServer) ListSharedFSProviders(context.Context, *ListSharedFSProvidersRequest) (*ListSharedFSProvidersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSharedFSProviders not implemented")
 }
-func (UnimplementedSharedfsServiceServer) CreateSharedFS(context.Context, *CreateSharedFSRequest) (*CreateSharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSharedFS not implemented")
-}
-func (UnimplementedSharedfsServiceServer) ChangeSharedFSServiceOffering(context.Context, *ChangeSharedFSServiceOfferingRequest) (*ChangeSharedFSServiceOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeSharedFSServiceOffering not implemented")
-}
-func (UnimplementedSharedfsServiceServer) ListSharedFS(context.Context, *ListSharedFSRequest) (*ListSharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSharedFS not implemented")
-}
-func (UnimplementedSharedfsServiceServer) DestroySharedFS(context.Context, *DestroySharedFSRequest) (*DestroySharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DestroySharedFS not implemented")
-}
-func (UnimplementedSharedfsServiceServer) StartSharedFS(context.Context, *StartSharedFSRequest) (*StartSharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StartSharedFS not implemented")
-}
-func (UnimplementedSharedfsServiceServer) RecoverSharedFS(context.Context, *RecoverSharedFSRequest) (*RecoverSharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecoverSharedFS not implemented")
+func (UnimplementedSharedfsServiceServer) StopSharedFS(context.Context, *StopSharedFSRequest) (*StopSharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopSharedFS not implemented")
 }
 func (UnimplementedSharedfsServiceServer) RestartSharedFS(context.Context, *RestartSharedFSRequest) (*RestartSharedFSResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RestartSharedFS not implemented")
 }
-func (UnimplementedSharedfsServiceServer) UpdateSharedFS(context.Context, *UpdateSharedFSRequest) (*UpdateSharedFSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateSharedFS not implemented")
+func (UnimplementedSharedfsServiceServer) DestroySharedFS(context.Context, *DestroySharedFSRequest) (*DestroySharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroySharedFS not implemented")
+}
+func (UnimplementedSharedfsServiceServer) ListSharedFS(context.Context, *ListSharedFSRequest) (*ListSharedFSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSharedFS not implemented")
+}
+func (UnimplementedSharedfsServiceServer) ChangeSharedFSDiskOffering(context.Context, *ChangeSharedFSDiskOfferingRequest) (*ChangeSharedFSDiskOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeSharedFSDiskOffering not implemented")
 }
 func (UnimplementedSharedfsServiceServer) mustEmbedUnimplementedSharedfsServiceServer() {}
 func (UnimplementedSharedfsServiceServer) testEmbeddedByValue()                         {}
@@ -290,38 +290,92 @@ func RegisterSharedfsServiceServer(s grpc.ServiceRegistrar, srv SharedfsServiceS
 	s.RegisterService(&SharedfsService_ServiceDesc, srv)
 }
 
-func _SharedfsService_StopSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StopSharedFSRequest)
+func _SharedfsService_ChangeSharedFSServiceOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeSharedFSServiceOfferingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SharedfsServiceServer).StopSharedFS(ctx, in)
+		return srv.(SharedfsServiceServer).ChangeSharedFSServiceOffering(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SharedfsService_StopSharedFS_FullMethodName,
+		FullMethod: SharedfsService_ChangeSharedFSServiceOffering_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).StopSharedFS(ctx, req.(*StopSharedFSRequest))
+		return srv.(SharedfsServiceServer).ChangeSharedFSServiceOffering(ctx, req.(*ChangeSharedFSServiceOfferingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SharedfsService_ChangeSharedFSDiskOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeSharedFSDiskOfferingRequest)
+func _SharedfsService_CreateSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateSharedFSRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SharedfsServiceServer).ChangeSharedFSDiskOffering(ctx, in)
+		return srv.(SharedfsServiceServer).CreateSharedFS(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SharedfsService_ChangeSharedFSDiskOffering_FullMethodName,
+		FullMethod: SharedfsService_CreateSharedFS_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).ChangeSharedFSDiskOffering(ctx, req.(*ChangeSharedFSDiskOfferingRequest))
+		return srv.(SharedfsServiceServer).CreateSharedFS(ctx, req.(*CreateSharedFSRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SharedfsService_RecoverSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecoverSharedFSRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SharedfsServiceServer).RecoverSharedFS(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SharedfsService_RecoverSharedFS_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SharedfsServiceServer).RecoverSharedFS(ctx, req.(*RecoverSharedFSRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SharedfsService_UpdateSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateSharedFSRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SharedfsServiceServer).UpdateSharedFS(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SharedfsService_UpdateSharedFS_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SharedfsServiceServer).UpdateSharedFS(ctx, req.(*UpdateSharedFSRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SharedfsService_StartSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartSharedFSRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SharedfsServiceServer).StartSharedFS(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SharedfsService_StartSharedFS_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SharedfsServiceServer).StartSharedFS(ctx, req.(*StartSharedFSRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -362,110 +416,20 @@ func _SharedfsService_ListSharedFSProviders_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SharedfsService_CreateSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateSharedFSRequest)
+func _SharedfsService_StopSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopSharedFSRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SharedfsServiceServer).CreateSharedFS(ctx, in)
+		return srv.(SharedfsServiceServer).StopSharedFS(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SharedfsService_CreateSharedFS_FullMethodName,
+		FullMethod: SharedfsService_StopSharedFS_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).CreateSharedFS(ctx, req.(*CreateSharedFSRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SharedfsService_ChangeSharedFSServiceOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeSharedFSServiceOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SharedfsServiceServer).ChangeSharedFSServiceOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SharedfsService_ChangeSharedFSServiceOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).ChangeSharedFSServiceOffering(ctx, req.(*ChangeSharedFSServiceOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SharedfsService_ListSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSharedFSRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SharedfsServiceServer).ListSharedFS(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SharedfsService_ListSharedFS_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).ListSharedFS(ctx, req.(*ListSharedFSRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SharedfsService_DestroySharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DestroySharedFSRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SharedfsServiceServer).DestroySharedFS(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SharedfsService_DestroySharedFS_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).DestroySharedFS(ctx, req.(*DestroySharedFSRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SharedfsService_StartSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartSharedFSRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SharedfsServiceServer).StartSharedFS(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SharedfsService_StartSharedFS_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).StartSharedFS(ctx, req.(*StartSharedFSRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SharedfsService_RecoverSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecoverSharedFSRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SharedfsServiceServer).RecoverSharedFS(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SharedfsService_RecoverSharedFS_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).RecoverSharedFS(ctx, req.(*RecoverSharedFSRequest))
+		return srv.(SharedfsServiceServer).StopSharedFS(ctx, req.(*StopSharedFSRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -488,20 +452,56 @@ func _SharedfsService_RestartSharedFS_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SharedfsService_UpdateSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateSharedFSRequest)
+func _SharedfsService_DestroySharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroySharedFSRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SharedfsServiceServer).UpdateSharedFS(ctx, in)
+		return srv.(SharedfsServiceServer).DestroySharedFS(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SharedfsService_UpdateSharedFS_FullMethodName,
+		FullMethod: SharedfsService_DestroySharedFS_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SharedfsServiceServer).UpdateSharedFS(ctx, req.(*UpdateSharedFSRequest))
+		return srv.(SharedfsServiceServer).DestroySharedFS(ctx, req.(*DestroySharedFSRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SharedfsService_ListSharedFS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSharedFSRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SharedfsServiceServer).ListSharedFS(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SharedfsService_ListSharedFS_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SharedfsServiceServer).ListSharedFS(ctx, req.(*ListSharedFSRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SharedfsService_ChangeSharedFSDiskOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeSharedFSDiskOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SharedfsServiceServer).ChangeSharedFSDiskOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SharedfsService_ChangeSharedFSDiskOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SharedfsServiceServer).ChangeSharedFSDiskOffering(ctx, req.(*ChangeSharedFSDiskOfferingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -514,12 +514,24 @@ var SharedfsService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SharedfsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "StopSharedFS",
-			Handler:    _SharedfsService_StopSharedFS_Handler,
+			MethodName: "ChangeSharedFSServiceOffering",
+			Handler:    _SharedfsService_ChangeSharedFSServiceOffering_Handler,
 		},
 		{
-			MethodName: "ChangeSharedFSDiskOffering",
-			Handler:    _SharedfsService_ChangeSharedFSDiskOffering_Handler,
+			MethodName: "CreateSharedFS",
+			Handler:    _SharedfsService_CreateSharedFS_Handler,
+		},
+		{
+			MethodName: "RecoverSharedFS",
+			Handler:    _SharedfsService_RecoverSharedFS_Handler,
+		},
+		{
+			MethodName: "UpdateSharedFS",
+			Handler:    _SharedfsService_UpdateSharedFS_Handler,
+		},
+		{
+			MethodName: "StartSharedFS",
+			Handler:    _SharedfsService_StartSharedFS_Handler,
 		},
 		{
 			MethodName: "ExpungeSharedFS",
@@ -530,36 +542,24 @@ var SharedfsService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SharedfsService_ListSharedFSProviders_Handler,
 		},
 		{
-			MethodName: "CreateSharedFS",
-			Handler:    _SharedfsService_CreateSharedFS_Handler,
-		},
-		{
-			MethodName: "ChangeSharedFSServiceOffering",
-			Handler:    _SharedfsService_ChangeSharedFSServiceOffering_Handler,
-		},
-		{
-			MethodName: "ListSharedFS",
-			Handler:    _SharedfsService_ListSharedFS_Handler,
-		},
-		{
-			MethodName: "DestroySharedFS",
-			Handler:    _SharedfsService_DestroySharedFS_Handler,
-		},
-		{
-			MethodName: "StartSharedFS",
-			Handler:    _SharedfsService_StartSharedFS_Handler,
-		},
-		{
-			MethodName: "RecoverSharedFS",
-			Handler:    _SharedfsService_RecoverSharedFS_Handler,
+			MethodName: "StopSharedFS",
+			Handler:    _SharedfsService_StopSharedFS_Handler,
 		},
 		{
 			MethodName: "RestartSharedFS",
 			Handler:    _SharedfsService_RestartSharedFS_Handler,
 		},
 		{
-			MethodName: "UpdateSharedFS",
-			Handler:    _SharedfsService_UpdateSharedFS_Handler,
+			MethodName: "DestroySharedFS",
+			Handler:    _SharedfsService_DestroySharedFS_Handler,
+		},
+		{
+			MethodName: "ListSharedFS",
+			Handler:    _SharedfsService_ListSharedFS_Handler,
+		},
+		{
+			MethodName: "ChangeSharedFSDiskOffering",
+			Handler:    _SharedfsService_ChangeSharedFSDiskOffering_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

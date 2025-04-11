@@ -19,25 +19,25 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VpcService_DeleteStaticRoute_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/DeleteStaticRoute"
-	VpcService_CreateVPC_FullMethodName                     = "/cloudstack.management.vpc.v1.VpcService/CreateVPC"
-	VpcService_UpdateVPCCmdByAdmin_FullMethodName           = "/cloudstack.management.vpc.v1.VpcService/UpdateVPCCmdByAdmin"
-	VpcService_ListStaticRoutes_FullMethodName              = "/cloudstack.management.vpc.v1.VpcService/ListStaticRoutes"
+	VpcService_UpdateVPC_FullMethodName                     = "/cloudstack.management.vpc.v1.VpcService/UpdateVPC"
+	VpcService_CreateStaticRoute_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/CreateStaticRoute"
+	VpcService_CreateVPCOffering_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/CreateVPCOffering"
 	VpcService_ListVPCsCmdByAdmin_FullMethodName            = "/cloudstack.management.vpc.v1.VpcService/ListVPCsCmdByAdmin"
-	VpcService_ListPrivateGatewaysCmdByAdmin_FullMethodName = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGatewaysCmdByAdmin"
+	VpcService_ListVPCOfferings_FullMethodName              = "/cloudstack.management.vpc.v1.VpcService/ListVPCOfferings"
 	VpcService_CreatePrivateGatewayByAdmin_FullMethodName   = "/cloudstack.management.vpc.v1.VpcService/CreatePrivateGatewayByAdmin"
 	VpcService_CreatePrivateGateway_FullMethodName          = "/cloudstack.management.vpc.v1.VpcService/CreatePrivateGateway"
-	VpcService_ListVPCs_FullMethodName                      = "/cloudstack.management.vpc.v1.VpcService/ListVPCs"
-	VpcService_UpdateVPCOffering_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/UpdateVPCOffering"
-	VpcService_ListPrivateGateways_FullMethodName           = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGateways"
-	VpcService_CreateVPCOffering_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/CreateVPCOffering"
-	VpcService_DeletePrivateGateway_FullMethodName          = "/cloudstack.management.vpc.v1.VpcService/DeletePrivateGateway"
-	VpcService_CreateStaticRoute_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/CreateStaticRoute"
-	VpcService_RestartVPC_FullMethodName                    = "/cloudstack.management.vpc.v1.VpcService/RestartVPC"
-	VpcService_DeleteVPC_FullMethodName                     = "/cloudstack.management.vpc.v1.VpcService/DeleteVPC"
+	VpcService_DeleteStaticRoute_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/DeleteStaticRoute"
 	VpcService_DeleteVPCOffering_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/DeleteVPCOffering"
-	VpcService_ListVPCOfferings_FullMethodName              = "/cloudstack.management.vpc.v1.VpcService/ListVPCOfferings"
-	VpcService_UpdateVPC_FullMethodName                     = "/cloudstack.management.vpc.v1.VpcService/UpdateVPC"
+	VpcService_CreateVPCCmdByAdmin_FullMethodName           = "/cloudstack.management.vpc.v1.VpcService/CreateVPCCmdByAdmin"
+	VpcService_RestartVPC_FullMethodName                    = "/cloudstack.management.vpc.v1.VpcService/RestartVPC"
+	VpcService_DeletePrivateGateway_FullMethodName          = "/cloudstack.management.vpc.v1.VpcService/DeletePrivateGateway"
+	VpcService_ListPrivateGatewaysCmdByAdmin_FullMethodName = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGatewaysCmdByAdmin"
+	VpcService_ListPrivateGateways_FullMethodName           = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGateways"
+	VpcService_DeleteVPC_FullMethodName                     = "/cloudstack.management.vpc.v1.VpcService/DeleteVPC"
+	VpcService_UpdateVPCOffering_FullMethodName             = "/cloudstack.management.vpc.v1.VpcService/UpdateVPCOffering"
+	VpcService_ListVPCs_FullMethodName                      = "/cloudstack.management.vpc.v1.VpcService/ListVPCs"
+	VpcService_CreateVPC_FullMethodName                     = "/cloudstack.management.vpc.v1.VpcService/CreateVPC"
+	VpcService_ListStaticRoutes_FullMethodName              = "/cloudstack.management.vpc.v1.VpcService/ListStaticRoutes"
 )
 
 // VpcServiceClient is the client API for VpcService service.
@@ -46,44 +46,44 @@ const (
 //
 // VpcService provides operations for managing Vpcs
 type VpcServiceClient interface {
-	// DeleteStaticRoute Deletes a static route
-	DeleteStaticRoute(ctx context.Context, in *DeleteStaticRouteRequest, opts ...grpc.CallOption) (*DeleteStaticRouteResponse, error)
-	// CreateVPC Creates a VPC
-	CreateVPC(ctx context.Context, in *CreateVPCRequest, opts ...grpc.CallOption) (*CreateVPCResponse, error)
-	// UpdateVPCCmdByAdmin Updates a VPC
-	UpdateVPCCmdByAdmin(ctx context.Context, in *UpdateVPCCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVPCCmdByAdminResponse, error)
-	// ListStaticRoutes Lists all static routes
-	ListStaticRoutes(ctx context.Context, in *ListStaticRoutesRequest, opts ...grpc.CallOption) (*ListStaticRoutesResponse, error)
+	// UpdateVPC Updates a VPC
+	UpdateVPC(ctx context.Context, in *UpdateVPCRequest, opts ...grpc.CallOption) (*UpdateVPCResponse, error)
+	// CreateStaticRoute Creates a static route
+	CreateStaticRoute(ctx context.Context, in *CreateStaticRouteRequest, opts ...grpc.CallOption) (*CreateStaticRouteResponse, error)
+	// CreateVPCOffering Creates VPC offering
+	CreateVPCOffering(ctx context.Context, in *CreateVPCOfferingRequest, opts ...grpc.CallOption) (*CreateVPCOfferingResponse, error)
 	// ListVPCsCmdByAdmin Lists VPCs
 	ListVPCsCmdByAdmin(ctx context.Context, in *ListVPCsCmdByAdminRequest, opts ...grpc.CallOption) (*ListVPCsCmdByAdminResponse, error)
-	// ListPrivateGatewaysCmdByAdmin List private gateways
-	ListPrivateGatewaysCmdByAdmin(ctx context.Context, in *ListPrivateGatewaysCmdByAdminRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysCmdByAdminResponse, error)
+	// ListVPCOfferings Lists VPC offerings
+	ListVPCOfferings(ctx context.Context, in *ListVPCOfferingsRequest, opts ...grpc.CallOption) (*ListVPCOfferingsResponse, error)
 	// CreatePrivateGatewayByAdmin Creates a private gateway
 	CreatePrivateGatewayByAdmin(ctx context.Context, in *CreatePrivateGatewayByAdminRequest, opts ...grpc.CallOption) (*CreatePrivateGatewayByAdminResponse, error)
 	// CreatePrivateGateway Creates a private gateway
 	CreatePrivateGateway(ctx context.Context, in *CreatePrivateGatewayRequest, opts ...grpc.CallOption) (*CreatePrivateGatewayResponse, error)
-	// ListVPCs Lists VPCs
-	ListVPCs(ctx context.Context, in *ListVPCsRequest, opts ...grpc.CallOption) (*ListVPCsResponse, error)
-	// UpdateVPCOffering Updates VPC offering
-	UpdateVPCOffering(ctx context.Context, in *UpdateVPCOfferingRequest, opts ...grpc.CallOption) (*UpdateVPCOfferingResponse, error)
-	// ListPrivateGateways List private gateways
-	ListPrivateGateways(ctx context.Context, in *ListPrivateGatewaysRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysResponse, error)
-	// CreateVPCOffering Creates VPC offering
-	CreateVPCOffering(ctx context.Context, in *CreateVPCOfferingRequest, opts ...grpc.CallOption) (*CreateVPCOfferingResponse, error)
-	// DeletePrivateGateway Deletes a Private gateway
-	DeletePrivateGateway(ctx context.Context, in *DeletePrivateGatewayRequest, opts ...grpc.CallOption) (*DeletePrivateGatewayResponse, error)
-	// CreateStaticRoute Creates a static route
-	CreateStaticRoute(ctx context.Context, in *CreateStaticRouteRequest, opts ...grpc.CallOption) (*CreateStaticRouteResponse, error)
-	// RestartVPC Restarts a VPC
-	RestartVPC(ctx context.Context, in *RestartVPCRequest, opts ...grpc.CallOption) (*RestartVPCResponse, error)
-	// DeleteVPC Deletes a VPC
-	DeleteVPC(ctx context.Context, in *DeleteVPCRequest, opts ...grpc.CallOption) (*DeleteVPCResponse, error)
+	// DeleteStaticRoute Deletes a static route
+	DeleteStaticRoute(ctx context.Context, in *DeleteStaticRouteRequest, opts ...grpc.CallOption) (*DeleteStaticRouteResponse, error)
 	// DeleteVPCOffering Deletes VPC offering
 	DeleteVPCOffering(ctx context.Context, in *DeleteVPCOfferingRequest, opts ...grpc.CallOption) (*DeleteVPCOfferingResponse, error)
-	// ListVPCOfferings Lists VPC offerings
-	ListVPCOfferings(ctx context.Context, in *ListVPCOfferingsRequest, opts ...grpc.CallOption) (*ListVPCOfferingsResponse, error)
-	// UpdateVPC Updates a VPC
-	UpdateVPC(ctx context.Context, in *UpdateVPCRequest, opts ...grpc.CallOption) (*UpdateVPCResponse, error)
+	// CreateVPCCmdByAdmin Creates a VPC
+	CreateVPCCmdByAdmin(ctx context.Context, in *CreateVPCCmdByAdminRequest, opts ...grpc.CallOption) (*CreateVPCCmdByAdminResponse, error)
+	// RestartVPC Restarts a VPC
+	RestartVPC(ctx context.Context, in *RestartVPCRequest, opts ...grpc.CallOption) (*RestartVPCResponse, error)
+	// DeletePrivateGateway Deletes a Private gateway
+	DeletePrivateGateway(ctx context.Context, in *DeletePrivateGatewayRequest, opts ...grpc.CallOption) (*DeletePrivateGatewayResponse, error)
+	// ListPrivateGatewaysCmdByAdmin List private gateways
+	ListPrivateGatewaysCmdByAdmin(ctx context.Context, in *ListPrivateGatewaysCmdByAdminRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysCmdByAdminResponse, error)
+	// ListPrivateGateways List private gateways
+	ListPrivateGateways(ctx context.Context, in *ListPrivateGatewaysRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysResponse, error)
+	// DeleteVPC Deletes a VPC
+	DeleteVPC(ctx context.Context, in *DeleteVPCRequest, opts ...grpc.CallOption) (*DeleteVPCResponse, error)
+	// UpdateVPCOffering Updates VPC offering
+	UpdateVPCOffering(ctx context.Context, in *UpdateVPCOfferingRequest, opts ...grpc.CallOption) (*UpdateVPCOfferingResponse, error)
+	// ListVPCs Lists VPCs
+	ListVPCs(ctx context.Context, in *ListVPCsRequest, opts ...grpc.CallOption) (*ListVPCsResponse, error)
+	// CreateVPC Creates a VPC
+	CreateVPC(ctx context.Context, in *CreateVPCRequest, opts ...grpc.CallOption) (*CreateVPCResponse, error)
+	// ListStaticRoutes Lists all static routes
+	ListStaticRoutes(ctx context.Context, in *ListStaticRoutesRequest, opts ...grpc.CallOption) (*ListStaticRoutesResponse, error)
 }
 
 type vpcServiceClient struct {
@@ -94,40 +94,30 @@ func NewVpcServiceClient(cc grpc.ClientConnInterface) VpcServiceClient {
 	return &vpcServiceClient{cc}
 }
 
-func (c *vpcServiceClient) DeleteStaticRoute(ctx context.Context, in *DeleteStaticRouteRequest, opts ...grpc.CallOption) (*DeleteStaticRouteResponse, error) {
+func (c *vpcServiceClient) UpdateVPC(ctx context.Context, in *UpdateVPCRequest, opts ...grpc.CallOption) (*UpdateVPCResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteStaticRouteResponse)
-	err := c.cc.Invoke(ctx, VpcService_DeleteStaticRoute_FullMethodName, in, out, cOpts...)
+	out := new(UpdateVPCResponse)
+	err := c.cc.Invoke(ctx, VpcService_UpdateVPC_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *vpcServiceClient) CreateVPC(ctx context.Context, in *CreateVPCRequest, opts ...grpc.CallOption) (*CreateVPCResponse, error) {
+func (c *vpcServiceClient) CreateStaticRoute(ctx context.Context, in *CreateStaticRouteRequest, opts ...grpc.CallOption) (*CreateStaticRouteResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVPCResponse)
-	err := c.cc.Invoke(ctx, VpcService_CreateVPC_FullMethodName, in, out, cOpts...)
+	out := new(CreateStaticRouteResponse)
+	err := c.cc.Invoke(ctx, VpcService_CreateStaticRoute_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *vpcServiceClient) UpdateVPCCmdByAdmin(ctx context.Context, in *UpdateVPCCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVPCCmdByAdminResponse, error) {
+func (c *vpcServiceClient) CreateVPCOffering(ctx context.Context, in *CreateVPCOfferingRequest, opts ...grpc.CallOption) (*CreateVPCOfferingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVPCCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VpcService_UpdateVPCCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) ListStaticRoutes(ctx context.Context, in *ListStaticRoutesRequest, opts ...grpc.CallOption) (*ListStaticRoutesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListStaticRoutesResponse)
-	err := c.cc.Invoke(ctx, VpcService_ListStaticRoutes_FullMethodName, in, out, cOpts...)
+	out := new(CreateVPCOfferingResponse)
+	err := c.cc.Invoke(ctx, VpcService_CreateVPCOffering_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -144,10 +134,10 @@ func (c *vpcServiceClient) ListVPCsCmdByAdmin(ctx context.Context, in *ListVPCsC
 	return out, nil
 }
 
-func (c *vpcServiceClient) ListPrivateGatewaysCmdByAdmin(ctx context.Context, in *ListPrivateGatewaysCmdByAdminRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysCmdByAdminResponse, error) {
+func (c *vpcServiceClient) ListVPCOfferings(ctx context.Context, in *ListVPCOfferingsRequest, opts ...grpc.CallOption) (*ListVPCOfferingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListPrivateGatewaysCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VpcService_ListPrivateGatewaysCmdByAdmin_FullMethodName, in, out, cOpts...)
+	out := new(ListVPCOfferingsResponse)
+	err := c.cc.Invoke(ctx, VpcService_ListVPCOfferings_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -174,80 +164,10 @@ func (c *vpcServiceClient) CreatePrivateGateway(ctx context.Context, in *CreateP
 	return out, nil
 }
 
-func (c *vpcServiceClient) ListVPCs(ctx context.Context, in *ListVPCsRequest, opts ...grpc.CallOption) (*ListVPCsResponse, error) {
+func (c *vpcServiceClient) DeleteStaticRoute(ctx context.Context, in *DeleteStaticRouteRequest, opts ...grpc.CallOption) (*DeleteStaticRouteResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVPCsResponse)
-	err := c.cc.Invoke(ctx, VpcService_ListVPCs_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) UpdateVPCOffering(ctx context.Context, in *UpdateVPCOfferingRequest, opts ...grpc.CallOption) (*UpdateVPCOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVPCOfferingResponse)
-	err := c.cc.Invoke(ctx, VpcService_UpdateVPCOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) ListPrivateGateways(ctx context.Context, in *ListPrivateGatewaysRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListPrivateGatewaysResponse)
-	err := c.cc.Invoke(ctx, VpcService_ListPrivateGateways_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) CreateVPCOffering(ctx context.Context, in *CreateVPCOfferingRequest, opts ...grpc.CallOption) (*CreateVPCOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVPCOfferingResponse)
-	err := c.cc.Invoke(ctx, VpcService_CreateVPCOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) DeletePrivateGateway(ctx context.Context, in *DeletePrivateGatewayRequest, opts ...grpc.CallOption) (*DeletePrivateGatewayResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeletePrivateGatewayResponse)
-	err := c.cc.Invoke(ctx, VpcService_DeletePrivateGateway_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) CreateStaticRoute(ctx context.Context, in *CreateStaticRouteRequest, opts ...grpc.CallOption) (*CreateStaticRouteResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateStaticRouteResponse)
-	err := c.cc.Invoke(ctx, VpcService_CreateStaticRoute_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) RestartVPC(ctx context.Context, in *RestartVPCRequest, opts ...grpc.CallOption) (*RestartVPCResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RestartVPCResponse)
-	err := c.cc.Invoke(ctx, VpcService_RestartVPC_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpcServiceClient) DeleteVPC(ctx context.Context, in *DeleteVPCRequest, opts ...grpc.CallOption) (*DeleteVPCResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVPCResponse)
-	err := c.cc.Invoke(ctx, VpcService_DeleteVPC_FullMethodName, in, out, cOpts...)
+	out := new(DeleteStaticRouteResponse)
+	err := c.cc.Invoke(ctx, VpcService_DeleteStaticRoute_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -264,20 +184,100 @@ func (c *vpcServiceClient) DeleteVPCOffering(ctx context.Context, in *DeleteVPCO
 	return out, nil
 }
 
-func (c *vpcServiceClient) ListVPCOfferings(ctx context.Context, in *ListVPCOfferingsRequest, opts ...grpc.CallOption) (*ListVPCOfferingsResponse, error) {
+func (c *vpcServiceClient) CreateVPCCmdByAdmin(ctx context.Context, in *CreateVPCCmdByAdminRequest, opts ...grpc.CallOption) (*CreateVPCCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVPCOfferingsResponse)
-	err := c.cc.Invoke(ctx, VpcService_ListVPCOfferings_FullMethodName, in, out, cOpts...)
+	out := new(CreateVPCCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VpcService_CreateVPCCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *vpcServiceClient) UpdateVPC(ctx context.Context, in *UpdateVPCRequest, opts ...grpc.CallOption) (*UpdateVPCResponse, error) {
+func (c *vpcServiceClient) RestartVPC(ctx context.Context, in *RestartVPCRequest, opts ...grpc.CallOption) (*RestartVPCResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVPCResponse)
-	err := c.cc.Invoke(ctx, VpcService_UpdateVPC_FullMethodName, in, out, cOpts...)
+	out := new(RestartVPCResponse)
+	err := c.cc.Invoke(ctx, VpcService_RestartVPC_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) DeletePrivateGateway(ctx context.Context, in *DeletePrivateGatewayRequest, opts ...grpc.CallOption) (*DeletePrivateGatewayResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeletePrivateGatewayResponse)
+	err := c.cc.Invoke(ctx, VpcService_DeletePrivateGateway_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) ListPrivateGatewaysCmdByAdmin(ctx context.Context, in *ListPrivateGatewaysCmdByAdminRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPrivateGatewaysCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VpcService_ListPrivateGatewaysCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) ListPrivateGateways(ctx context.Context, in *ListPrivateGatewaysRequest, opts ...grpc.CallOption) (*ListPrivateGatewaysResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPrivateGatewaysResponse)
+	err := c.cc.Invoke(ctx, VpcService_ListPrivateGateways_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) DeleteVPC(ctx context.Context, in *DeleteVPCRequest, opts ...grpc.CallOption) (*DeleteVPCResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVPCResponse)
+	err := c.cc.Invoke(ctx, VpcService_DeleteVPC_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) UpdateVPCOffering(ctx context.Context, in *UpdateVPCOfferingRequest, opts ...grpc.CallOption) (*UpdateVPCOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVPCOfferingResponse)
+	err := c.cc.Invoke(ctx, VpcService_UpdateVPCOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) ListVPCs(ctx context.Context, in *ListVPCsRequest, opts ...grpc.CallOption) (*ListVPCsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVPCsResponse)
+	err := c.cc.Invoke(ctx, VpcService_ListVPCs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) CreateVPC(ctx context.Context, in *CreateVPCRequest, opts ...grpc.CallOption) (*CreateVPCResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateVPCResponse)
+	err := c.cc.Invoke(ctx, VpcService_CreateVPC_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpcServiceClient) ListStaticRoutes(ctx context.Context, in *ListStaticRoutesRequest, opts ...grpc.CallOption) (*ListStaticRoutesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListStaticRoutesResponse)
+	err := c.cc.Invoke(ctx, VpcService_ListStaticRoutes_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -290,44 +290,44 @@ func (c *vpcServiceClient) UpdateVPC(ctx context.Context, in *UpdateVPCRequest, 
 //
 // VpcService provides operations for managing Vpcs
 type VpcServiceServer interface {
-	// DeleteStaticRoute Deletes a static route
-	DeleteStaticRoute(context.Context, *DeleteStaticRouteRequest) (*DeleteStaticRouteResponse, error)
-	// CreateVPC Creates a VPC
-	CreateVPC(context.Context, *CreateVPCRequest) (*CreateVPCResponse, error)
-	// UpdateVPCCmdByAdmin Updates a VPC
-	UpdateVPCCmdByAdmin(context.Context, *UpdateVPCCmdByAdminRequest) (*UpdateVPCCmdByAdminResponse, error)
-	// ListStaticRoutes Lists all static routes
-	ListStaticRoutes(context.Context, *ListStaticRoutesRequest) (*ListStaticRoutesResponse, error)
+	// UpdateVPC Updates a VPC
+	UpdateVPC(context.Context, *UpdateVPCRequest) (*UpdateVPCResponse, error)
+	// CreateStaticRoute Creates a static route
+	CreateStaticRoute(context.Context, *CreateStaticRouteRequest) (*CreateStaticRouteResponse, error)
+	// CreateVPCOffering Creates VPC offering
+	CreateVPCOffering(context.Context, *CreateVPCOfferingRequest) (*CreateVPCOfferingResponse, error)
 	// ListVPCsCmdByAdmin Lists VPCs
 	ListVPCsCmdByAdmin(context.Context, *ListVPCsCmdByAdminRequest) (*ListVPCsCmdByAdminResponse, error)
-	// ListPrivateGatewaysCmdByAdmin List private gateways
-	ListPrivateGatewaysCmdByAdmin(context.Context, *ListPrivateGatewaysCmdByAdminRequest) (*ListPrivateGatewaysCmdByAdminResponse, error)
+	// ListVPCOfferings Lists VPC offerings
+	ListVPCOfferings(context.Context, *ListVPCOfferingsRequest) (*ListVPCOfferingsResponse, error)
 	// CreatePrivateGatewayByAdmin Creates a private gateway
 	CreatePrivateGatewayByAdmin(context.Context, *CreatePrivateGatewayByAdminRequest) (*CreatePrivateGatewayByAdminResponse, error)
 	// CreatePrivateGateway Creates a private gateway
 	CreatePrivateGateway(context.Context, *CreatePrivateGatewayRequest) (*CreatePrivateGatewayResponse, error)
-	// ListVPCs Lists VPCs
-	ListVPCs(context.Context, *ListVPCsRequest) (*ListVPCsResponse, error)
-	// UpdateVPCOffering Updates VPC offering
-	UpdateVPCOffering(context.Context, *UpdateVPCOfferingRequest) (*UpdateVPCOfferingResponse, error)
-	// ListPrivateGateways List private gateways
-	ListPrivateGateways(context.Context, *ListPrivateGatewaysRequest) (*ListPrivateGatewaysResponse, error)
-	// CreateVPCOffering Creates VPC offering
-	CreateVPCOffering(context.Context, *CreateVPCOfferingRequest) (*CreateVPCOfferingResponse, error)
-	// DeletePrivateGateway Deletes a Private gateway
-	DeletePrivateGateway(context.Context, *DeletePrivateGatewayRequest) (*DeletePrivateGatewayResponse, error)
-	// CreateStaticRoute Creates a static route
-	CreateStaticRoute(context.Context, *CreateStaticRouteRequest) (*CreateStaticRouteResponse, error)
-	// RestartVPC Restarts a VPC
-	RestartVPC(context.Context, *RestartVPCRequest) (*RestartVPCResponse, error)
-	// DeleteVPC Deletes a VPC
-	DeleteVPC(context.Context, *DeleteVPCRequest) (*DeleteVPCResponse, error)
+	// DeleteStaticRoute Deletes a static route
+	DeleteStaticRoute(context.Context, *DeleteStaticRouteRequest) (*DeleteStaticRouteResponse, error)
 	// DeleteVPCOffering Deletes VPC offering
 	DeleteVPCOffering(context.Context, *DeleteVPCOfferingRequest) (*DeleteVPCOfferingResponse, error)
-	// ListVPCOfferings Lists VPC offerings
-	ListVPCOfferings(context.Context, *ListVPCOfferingsRequest) (*ListVPCOfferingsResponse, error)
-	// UpdateVPC Updates a VPC
-	UpdateVPC(context.Context, *UpdateVPCRequest) (*UpdateVPCResponse, error)
+	// CreateVPCCmdByAdmin Creates a VPC
+	CreateVPCCmdByAdmin(context.Context, *CreateVPCCmdByAdminRequest) (*CreateVPCCmdByAdminResponse, error)
+	// RestartVPC Restarts a VPC
+	RestartVPC(context.Context, *RestartVPCRequest) (*RestartVPCResponse, error)
+	// DeletePrivateGateway Deletes a Private gateway
+	DeletePrivateGateway(context.Context, *DeletePrivateGatewayRequest) (*DeletePrivateGatewayResponse, error)
+	// ListPrivateGatewaysCmdByAdmin List private gateways
+	ListPrivateGatewaysCmdByAdmin(context.Context, *ListPrivateGatewaysCmdByAdminRequest) (*ListPrivateGatewaysCmdByAdminResponse, error)
+	// ListPrivateGateways List private gateways
+	ListPrivateGateways(context.Context, *ListPrivateGatewaysRequest) (*ListPrivateGatewaysResponse, error)
+	// DeleteVPC Deletes a VPC
+	DeleteVPC(context.Context, *DeleteVPCRequest) (*DeleteVPCResponse, error)
+	// UpdateVPCOffering Updates VPC offering
+	UpdateVPCOffering(context.Context, *UpdateVPCOfferingRequest) (*UpdateVPCOfferingResponse, error)
+	// ListVPCs Lists VPCs
+	ListVPCs(context.Context, *ListVPCsRequest) (*ListVPCsResponse, error)
+	// CreateVPC Creates a VPC
+	CreateVPC(context.Context, *CreateVPCRequest) (*CreateVPCResponse, error)
+	// ListStaticRoutes Lists all static routes
+	ListStaticRoutes(context.Context, *ListStaticRoutesRequest) (*ListStaticRoutesResponse, error)
 	mustEmbedUnimplementedVpcServiceServer()
 }
 
@@ -338,23 +338,20 @@ type VpcServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVpcServiceServer struct{}
 
-func (UnimplementedVpcServiceServer) DeleteStaticRoute(context.Context, *DeleteStaticRouteRequest) (*DeleteStaticRouteResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteStaticRoute not implemented")
+func (UnimplementedVpcServiceServer) UpdateVPC(context.Context, *UpdateVPCRequest) (*UpdateVPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVPC not implemented")
 }
-func (UnimplementedVpcServiceServer) CreateVPC(context.Context, *CreateVPCRequest) (*CreateVPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVPC not implemented")
+func (UnimplementedVpcServiceServer) CreateStaticRoute(context.Context, *CreateStaticRouteRequest) (*CreateStaticRouteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStaticRoute not implemented")
 }
-func (UnimplementedVpcServiceServer) UpdateVPCCmdByAdmin(context.Context, *UpdateVPCCmdByAdminRequest) (*UpdateVPCCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVPCCmdByAdmin not implemented")
-}
-func (UnimplementedVpcServiceServer) ListStaticRoutes(context.Context, *ListStaticRoutesRequest) (*ListStaticRoutesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListStaticRoutes not implemented")
+func (UnimplementedVpcServiceServer) CreateVPCOffering(context.Context, *CreateVPCOfferingRequest) (*CreateVPCOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVPCOffering not implemented")
 }
 func (UnimplementedVpcServiceServer) ListVPCsCmdByAdmin(context.Context, *ListVPCsCmdByAdminRequest) (*ListVPCsCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListVPCsCmdByAdmin not implemented")
 }
-func (UnimplementedVpcServiceServer) ListPrivateGatewaysCmdByAdmin(context.Context, *ListPrivateGatewaysCmdByAdminRequest) (*ListPrivateGatewaysCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPrivateGatewaysCmdByAdmin not implemented")
+func (UnimplementedVpcServiceServer) ListVPCOfferings(context.Context, *ListVPCOfferingsRequest) (*ListVPCOfferingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVPCOfferings not implemented")
 }
 func (UnimplementedVpcServiceServer) CreatePrivateGatewayByAdmin(context.Context, *CreatePrivateGatewayByAdminRequest) (*CreatePrivateGatewayByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePrivateGatewayByAdmin not implemented")
@@ -362,38 +359,41 @@ func (UnimplementedVpcServiceServer) CreatePrivateGatewayByAdmin(context.Context
 func (UnimplementedVpcServiceServer) CreatePrivateGateway(context.Context, *CreatePrivateGatewayRequest) (*CreatePrivateGatewayResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePrivateGateway not implemented")
 }
-func (UnimplementedVpcServiceServer) ListVPCs(context.Context, *ListVPCsRequest) (*ListVPCsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVPCs not implemented")
-}
-func (UnimplementedVpcServiceServer) UpdateVPCOffering(context.Context, *UpdateVPCOfferingRequest) (*UpdateVPCOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVPCOffering not implemented")
-}
-func (UnimplementedVpcServiceServer) ListPrivateGateways(context.Context, *ListPrivateGatewaysRequest) (*ListPrivateGatewaysResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPrivateGateways not implemented")
-}
-func (UnimplementedVpcServiceServer) CreateVPCOffering(context.Context, *CreateVPCOfferingRequest) (*CreateVPCOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVPCOffering not implemented")
-}
-func (UnimplementedVpcServiceServer) DeletePrivateGateway(context.Context, *DeletePrivateGatewayRequest) (*DeletePrivateGatewayResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeletePrivateGateway not implemented")
-}
-func (UnimplementedVpcServiceServer) CreateStaticRoute(context.Context, *CreateStaticRouteRequest) (*CreateStaticRouteResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateStaticRoute not implemented")
-}
-func (UnimplementedVpcServiceServer) RestartVPC(context.Context, *RestartVPCRequest) (*RestartVPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RestartVPC not implemented")
-}
-func (UnimplementedVpcServiceServer) DeleteVPC(context.Context, *DeleteVPCRequest) (*DeleteVPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVPC not implemented")
+func (UnimplementedVpcServiceServer) DeleteStaticRoute(context.Context, *DeleteStaticRouteRequest) (*DeleteStaticRouteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStaticRoute not implemented")
 }
 func (UnimplementedVpcServiceServer) DeleteVPCOffering(context.Context, *DeleteVPCOfferingRequest) (*DeleteVPCOfferingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVPCOffering not implemented")
 }
-func (UnimplementedVpcServiceServer) ListVPCOfferings(context.Context, *ListVPCOfferingsRequest) (*ListVPCOfferingsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVPCOfferings not implemented")
+func (UnimplementedVpcServiceServer) CreateVPCCmdByAdmin(context.Context, *CreateVPCCmdByAdminRequest) (*CreateVPCCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVPCCmdByAdmin not implemented")
 }
-func (UnimplementedVpcServiceServer) UpdateVPC(context.Context, *UpdateVPCRequest) (*UpdateVPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVPC not implemented")
+func (UnimplementedVpcServiceServer) RestartVPC(context.Context, *RestartVPCRequest) (*RestartVPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestartVPC not implemented")
+}
+func (UnimplementedVpcServiceServer) DeletePrivateGateway(context.Context, *DeletePrivateGatewayRequest) (*DeletePrivateGatewayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePrivateGateway not implemented")
+}
+func (UnimplementedVpcServiceServer) ListPrivateGatewaysCmdByAdmin(context.Context, *ListPrivateGatewaysCmdByAdminRequest) (*ListPrivateGatewaysCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPrivateGatewaysCmdByAdmin not implemented")
+}
+func (UnimplementedVpcServiceServer) ListPrivateGateways(context.Context, *ListPrivateGatewaysRequest) (*ListPrivateGatewaysResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPrivateGateways not implemented")
+}
+func (UnimplementedVpcServiceServer) DeleteVPC(context.Context, *DeleteVPCRequest) (*DeleteVPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVPC not implemented")
+}
+func (UnimplementedVpcServiceServer) UpdateVPCOffering(context.Context, *UpdateVPCOfferingRequest) (*UpdateVPCOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVPCOffering not implemented")
+}
+func (UnimplementedVpcServiceServer) ListVPCs(context.Context, *ListVPCsRequest) (*ListVPCsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVPCs not implemented")
+}
+func (UnimplementedVpcServiceServer) CreateVPC(context.Context, *CreateVPCRequest) (*CreateVPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVPC not implemented")
+}
+func (UnimplementedVpcServiceServer) ListStaticRoutes(context.Context, *ListStaticRoutesRequest) (*ListStaticRoutesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListStaticRoutes not implemented")
 }
 func (UnimplementedVpcServiceServer) mustEmbedUnimplementedVpcServiceServer() {}
 func (UnimplementedVpcServiceServer) testEmbeddedByValue()                    {}
@@ -416,74 +416,56 @@ func RegisterVpcServiceServer(s grpc.ServiceRegistrar, srv VpcServiceServer) {
 	s.RegisterService(&VpcService_ServiceDesc, srv)
 }
 
-func _VpcService_DeleteStaticRoute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteStaticRouteRequest)
+func _VpcService_UpdateVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVPCRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).DeleteStaticRoute(ctx, in)
+		return srv.(VpcServiceServer).UpdateVPC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_DeleteStaticRoute_FullMethodName,
+		FullMethod: VpcService_UpdateVPC_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).DeleteStaticRoute(ctx, req.(*DeleteStaticRouteRequest))
+		return srv.(VpcServiceServer).UpdateVPC(ctx, req.(*UpdateVPCRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpcService_CreateVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVPCRequest)
+func _VpcService_CreateStaticRoute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateStaticRouteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).CreateVPC(ctx, in)
+		return srv.(VpcServiceServer).CreateStaticRoute(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_CreateVPC_FullMethodName,
+		FullMethod: VpcService_CreateStaticRoute_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).CreateVPC(ctx, req.(*CreateVPCRequest))
+		return srv.(VpcServiceServer).CreateStaticRoute(ctx, req.(*CreateStaticRouteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpcService_UpdateVPCCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVPCCmdByAdminRequest)
+func _VpcService_CreateVPCOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVPCOfferingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).UpdateVPCCmdByAdmin(ctx, in)
+		return srv.(VpcServiceServer).CreateVPCOffering(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_UpdateVPCCmdByAdmin_FullMethodName,
+		FullMethod: VpcService_CreateVPCOffering_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).UpdateVPCCmdByAdmin(ctx, req.(*UpdateVPCCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_ListStaticRoutes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListStaticRoutesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).ListStaticRoutes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_ListStaticRoutes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).ListStaticRoutes(ctx, req.(*ListStaticRoutesRequest))
+		return srv.(VpcServiceServer).CreateVPCOffering(ctx, req.(*CreateVPCOfferingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -506,20 +488,20 @@ func _VpcService_ListVPCsCmdByAdmin_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpcService_ListPrivateGatewaysCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListPrivateGatewaysCmdByAdminRequest)
+func _VpcService_ListVPCOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVPCOfferingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).ListPrivateGatewaysCmdByAdmin(ctx, in)
+		return srv.(VpcServiceServer).ListVPCOfferings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_ListPrivateGatewaysCmdByAdmin_FullMethodName,
+		FullMethod: VpcService_ListVPCOfferings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).ListPrivateGatewaysCmdByAdmin(ctx, req.(*ListPrivateGatewaysCmdByAdminRequest))
+		return srv.(VpcServiceServer).ListVPCOfferings(ctx, req.(*ListVPCOfferingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -560,146 +542,20 @@ func _VpcService_CreatePrivateGateway_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpcService_ListVPCs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVPCsRequest)
+func _VpcService_DeleteStaticRoute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteStaticRouteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).ListVPCs(ctx, in)
+		return srv.(VpcServiceServer).DeleteStaticRoute(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_ListVPCs_FullMethodName,
+		FullMethod: VpcService_DeleteStaticRoute_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).ListVPCs(ctx, req.(*ListVPCsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_UpdateVPCOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVPCOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).UpdateVPCOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_UpdateVPCOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).UpdateVPCOffering(ctx, req.(*UpdateVPCOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_ListPrivateGateways_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListPrivateGatewaysRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).ListPrivateGateways(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_ListPrivateGateways_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).ListPrivateGateways(ctx, req.(*ListPrivateGatewaysRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_CreateVPCOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVPCOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).CreateVPCOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_CreateVPCOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).CreateVPCOffering(ctx, req.(*CreateVPCOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_DeletePrivateGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeletePrivateGatewayRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).DeletePrivateGateway(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_DeletePrivateGateway_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).DeletePrivateGateway(ctx, req.(*DeletePrivateGatewayRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_CreateStaticRoute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateStaticRouteRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).CreateStaticRoute(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_CreateStaticRoute_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).CreateStaticRoute(ctx, req.(*CreateStaticRouteRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_RestartVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RestartVPCRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).RestartVPC(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_RestartVPC_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).RestartVPC(ctx, req.(*RestartVPCRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpcService_DeleteVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVPCRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpcServiceServer).DeleteVPC(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpcService_DeleteVPC_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).DeleteVPC(ctx, req.(*DeleteVPCRequest))
+		return srv.(VpcServiceServer).DeleteStaticRoute(ctx, req.(*DeleteStaticRouteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -722,38 +578,182 @@ func _VpcService_DeleteVPCOffering_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpcService_ListVPCOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVPCOfferingsRequest)
+func _VpcService_CreateVPCCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVPCCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).ListVPCOfferings(ctx, in)
+		return srv.(VpcServiceServer).CreateVPCCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_ListVPCOfferings_FullMethodName,
+		FullMethod: VpcService_CreateVPCCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).ListVPCOfferings(ctx, req.(*ListVPCOfferingsRequest))
+		return srv.(VpcServiceServer).CreateVPCCmdByAdmin(ctx, req.(*CreateVPCCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpcService_UpdateVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVPCRequest)
+func _VpcService_RestartVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestartVPCRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpcServiceServer).UpdateVPC(ctx, in)
+		return srv.(VpcServiceServer).RestartVPC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpcService_UpdateVPC_FullMethodName,
+		FullMethod: VpcService_RestartVPC_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpcServiceServer).UpdateVPC(ctx, req.(*UpdateVPCRequest))
+		return srv.(VpcServiceServer).RestartVPC(ctx, req.(*RestartVPCRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_DeletePrivateGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePrivateGatewayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).DeletePrivateGateway(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_DeletePrivateGateway_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).DeletePrivateGateway(ctx, req.(*DeletePrivateGatewayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_ListPrivateGatewaysCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPrivateGatewaysCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).ListPrivateGatewaysCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_ListPrivateGatewaysCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).ListPrivateGatewaysCmdByAdmin(ctx, req.(*ListPrivateGatewaysCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_ListPrivateGateways_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPrivateGatewaysRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).ListPrivateGateways(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_ListPrivateGateways_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).ListPrivateGateways(ctx, req.(*ListPrivateGatewaysRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_DeleteVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVPCRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).DeleteVPC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_DeleteVPC_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).DeleteVPC(ctx, req.(*DeleteVPCRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_UpdateVPCOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVPCOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).UpdateVPCOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_UpdateVPCOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).UpdateVPCOffering(ctx, req.(*UpdateVPCOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_ListVPCs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVPCsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).ListVPCs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_ListVPCs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).ListVPCs(ctx, req.(*ListVPCsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_CreateVPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVPCRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).CreateVPC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_CreateVPC_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).CreateVPC(ctx, req.(*CreateVPCRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpcService_ListStaticRoutes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListStaticRoutesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpcServiceServer).ListStaticRoutes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpcService_ListStaticRoutes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpcServiceServer).ListStaticRoutes(ctx, req.(*ListStaticRoutesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -766,28 +766,24 @@ var VpcService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VpcServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteStaticRoute",
-			Handler:    _VpcService_DeleteStaticRoute_Handler,
+			MethodName: "UpdateVPC",
+			Handler:    _VpcService_UpdateVPC_Handler,
 		},
 		{
-			MethodName: "CreateVPC",
-			Handler:    _VpcService_CreateVPC_Handler,
+			MethodName: "CreateStaticRoute",
+			Handler:    _VpcService_CreateStaticRoute_Handler,
 		},
 		{
-			MethodName: "UpdateVPCCmdByAdmin",
-			Handler:    _VpcService_UpdateVPCCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ListStaticRoutes",
-			Handler:    _VpcService_ListStaticRoutes_Handler,
+			MethodName: "CreateVPCOffering",
+			Handler:    _VpcService_CreateVPCOffering_Handler,
 		},
 		{
 			MethodName: "ListVPCsCmdByAdmin",
 			Handler:    _VpcService_ListVPCsCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "ListPrivateGatewaysCmdByAdmin",
-			Handler:    _VpcService_ListPrivateGatewaysCmdByAdmin_Handler,
+			MethodName: "ListVPCOfferings",
+			Handler:    _VpcService_ListVPCOfferings_Handler,
 		},
 		{
 			MethodName: "CreatePrivateGatewayByAdmin",
@@ -798,48 +794,52 @@ var VpcService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _VpcService_CreatePrivateGateway_Handler,
 		},
 		{
-			MethodName: "ListVPCs",
-			Handler:    _VpcService_ListVPCs_Handler,
-		},
-		{
-			MethodName: "UpdateVPCOffering",
-			Handler:    _VpcService_UpdateVPCOffering_Handler,
-		},
-		{
-			MethodName: "ListPrivateGateways",
-			Handler:    _VpcService_ListPrivateGateways_Handler,
-		},
-		{
-			MethodName: "CreateVPCOffering",
-			Handler:    _VpcService_CreateVPCOffering_Handler,
-		},
-		{
-			MethodName: "DeletePrivateGateway",
-			Handler:    _VpcService_DeletePrivateGateway_Handler,
-		},
-		{
-			MethodName: "CreateStaticRoute",
-			Handler:    _VpcService_CreateStaticRoute_Handler,
-		},
-		{
-			MethodName: "RestartVPC",
-			Handler:    _VpcService_RestartVPC_Handler,
-		},
-		{
-			MethodName: "DeleteVPC",
-			Handler:    _VpcService_DeleteVPC_Handler,
+			MethodName: "DeleteStaticRoute",
+			Handler:    _VpcService_DeleteStaticRoute_Handler,
 		},
 		{
 			MethodName: "DeleteVPCOffering",
 			Handler:    _VpcService_DeleteVPCOffering_Handler,
 		},
 		{
-			MethodName: "ListVPCOfferings",
-			Handler:    _VpcService_ListVPCOfferings_Handler,
+			MethodName: "CreateVPCCmdByAdmin",
+			Handler:    _VpcService_CreateVPCCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "UpdateVPC",
-			Handler:    _VpcService_UpdateVPC_Handler,
+			MethodName: "RestartVPC",
+			Handler:    _VpcService_RestartVPC_Handler,
+		},
+		{
+			MethodName: "DeletePrivateGateway",
+			Handler:    _VpcService_DeletePrivateGateway_Handler,
+		},
+		{
+			MethodName: "ListPrivateGatewaysCmdByAdmin",
+			Handler:    _VpcService_ListPrivateGatewaysCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ListPrivateGateways",
+			Handler:    _VpcService_ListPrivateGateways_Handler,
+		},
+		{
+			MethodName: "DeleteVPC",
+			Handler:    _VpcService_DeleteVPC_Handler,
+		},
+		{
+			MethodName: "UpdateVPCOffering",
+			Handler:    _VpcService_UpdateVPCOffering_Handler,
+		},
+		{
+			MethodName: "ListVPCs",
+			Handler:    _VpcService_ListVPCs_Handler,
+		},
+		{
+			MethodName: "CreateVPC",
+			Handler:    _VpcService_CreateVPC_Handler,
+		},
+		{
+			MethodName: "ListStaticRoutes",
+			Handler:    _VpcService_ListStaticRoutes_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

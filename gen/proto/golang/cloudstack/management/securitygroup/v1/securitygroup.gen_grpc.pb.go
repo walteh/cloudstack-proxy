@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SecuritygroupService_RevokeSecurityGroupIngress_FullMethodName    = "/cloudstack.management.securitygroup.v1.SecuritygroupService/RevokeSecurityGroupIngress"
+	SecuritygroupService_AuthorizeSecurityGroupIngress_FullMethodName = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupIngress"
 	SecuritygroupService_RevokeSecurityGroupEgress_FullMethodName     = "/cloudstack.management.securitygroup.v1.SecuritygroupService/RevokeSecurityGroupEgress"
 	SecuritygroupService_ListSecurityGroups_FullMethodName            = "/cloudstack.management.securitygroup.v1.SecuritygroupService/ListSecurityGroups"
 	SecuritygroupService_CreateSecurityGroup_FullMethodName           = "/cloudstack.management.securitygroup.v1.SecuritygroupService/CreateSecurityGroup"
-	SecuritygroupService_AuthorizeSecurityGroupIngress_FullMethodName = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupIngress"
 	SecuritygroupService_UpdateSecurityGroup_FullMethodName           = "/cloudstack.management.securitygroup.v1.SecuritygroupService/UpdateSecurityGroup"
-	SecuritygroupService_AuthorizeSecurityGroupEgress_FullMethodName  = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupEgress"
 	SecuritygroupService_DeleteSecurityGroup_FullMethodName           = "/cloudstack.management.securitygroup.v1.SecuritygroupService/DeleteSecurityGroup"
+	SecuritygroupService_RevokeSecurityGroupIngress_FullMethodName    = "/cloudstack.management.securitygroup.v1.SecuritygroupService/RevokeSecurityGroupIngress"
+	SecuritygroupService_AuthorizeSecurityGroupEgress_FullMethodName  = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupEgress"
 )
 
 // SecuritygroupServiceClient is the client API for SecuritygroupService service.
@@ -35,22 +35,22 @@ const (
 //
 // SecuritygroupService provides operations for managing Securitygroups
 type SecuritygroupServiceClient interface {
-	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
-	RevokeSecurityGroupIngress(ctx context.Context, in *RevokeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*RevokeSecurityGroupIngressResponse, error)
+	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
+	AuthorizeSecurityGroupIngress(ctx context.Context, in *AuthorizeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupIngressResponse, error)
 	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
 	RevokeSecurityGroupEgress(ctx context.Context, in *RevokeSecurityGroupEgressRequest, opts ...grpc.CallOption) (*RevokeSecurityGroupEgressResponse, error)
 	// ListSecurityGroups Lists security groups
 	ListSecurityGroups(ctx context.Context, in *ListSecurityGroupsRequest, opts ...grpc.CallOption) (*ListSecurityGroupsResponse, error)
 	// CreateSecurityGroup Creates a security group
 	CreateSecurityGroup(ctx context.Context, in *CreateSecurityGroupRequest, opts ...grpc.CallOption) (*CreateSecurityGroupResponse, error)
-	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
-	AuthorizeSecurityGroupIngress(ctx context.Context, in *AuthorizeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupIngressResponse, error)
 	// UpdateSecurityGroup Updates a security group
 	UpdateSecurityGroup(ctx context.Context, in *UpdateSecurityGroupRequest, opts ...grpc.CallOption) (*UpdateSecurityGroupResponse, error)
-	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	AuthorizeSecurityGroupEgress(ctx context.Context, in *AuthorizeSecurityGroupEgressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupEgressResponse, error)
 	// DeleteSecurityGroup Deletes security group
 	DeleteSecurityGroup(ctx context.Context, in *DeleteSecurityGroupRequest, opts ...grpc.CallOption) (*DeleteSecurityGroupResponse, error)
+	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
+	RevokeSecurityGroupIngress(ctx context.Context, in *RevokeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*RevokeSecurityGroupIngressResponse, error)
+	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
+	AuthorizeSecurityGroupEgress(ctx context.Context, in *AuthorizeSecurityGroupEgressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupEgressResponse, error)
 }
 
 type securitygroupServiceClient struct {
@@ -61,10 +61,10 @@ func NewSecuritygroupServiceClient(cc grpc.ClientConnInterface) SecuritygroupSer
 	return &securitygroupServiceClient{cc}
 }
 
-func (c *securitygroupServiceClient) RevokeSecurityGroupIngress(ctx context.Context, in *RevokeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*RevokeSecurityGroupIngressResponse, error) {
+func (c *securitygroupServiceClient) AuthorizeSecurityGroupIngress(ctx context.Context, in *AuthorizeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupIngressResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RevokeSecurityGroupIngressResponse)
-	err := c.cc.Invoke(ctx, SecuritygroupService_RevokeSecurityGroupIngress_FullMethodName, in, out, cOpts...)
+	out := new(AuthorizeSecurityGroupIngressResponse)
+	err := c.cc.Invoke(ctx, SecuritygroupService_AuthorizeSecurityGroupIngress_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,30 +101,10 @@ func (c *securitygroupServiceClient) CreateSecurityGroup(ctx context.Context, in
 	return out, nil
 }
 
-func (c *securitygroupServiceClient) AuthorizeSecurityGroupIngress(ctx context.Context, in *AuthorizeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupIngressResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AuthorizeSecurityGroupIngressResponse)
-	err := c.cc.Invoke(ctx, SecuritygroupService_AuthorizeSecurityGroupIngress_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *securitygroupServiceClient) UpdateSecurityGroup(ctx context.Context, in *UpdateSecurityGroupRequest, opts ...grpc.CallOption) (*UpdateSecurityGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateSecurityGroupResponse)
 	err := c.cc.Invoke(ctx, SecuritygroupService_UpdateSecurityGroup_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *securitygroupServiceClient) AuthorizeSecurityGroupEgress(ctx context.Context, in *AuthorizeSecurityGroupEgressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupEgressResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AuthorizeSecurityGroupEgressResponse)
-	err := c.cc.Invoke(ctx, SecuritygroupService_AuthorizeSecurityGroupEgress_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -141,28 +121,48 @@ func (c *securitygroupServiceClient) DeleteSecurityGroup(ctx context.Context, in
 	return out, nil
 }
 
+func (c *securitygroupServiceClient) RevokeSecurityGroupIngress(ctx context.Context, in *RevokeSecurityGroupIngressRequest, opts ...grpc.CallOption) (*RevokeSecurityGroupIngressResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RevokeSecurityGroupIngressResponse)
+	err := c.cc.Invoke(ctx, SecuritygroupService_RevokeSecurityGroupIngress_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *securitygroupServiceClient) AuthorizeSecurityGroupEgress(ctx context.Context, in *AuthorizeSecurityGroupEgressRequest, opts ...grpc.CallOption) (*AuthorizeSecurityGroupEgressResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AuthorizeSecurityGroupEgressResponse)
+	err := c.cc.Invoke(ctx, SecuritygroupService_AuthorizeSecurityGroupEgress_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SecuritygroupServiceServer is the server API for SecuritygroupService service.
 // All implementations must embed UnimplementedSecuritygroupServiceServer
 // for forward compatibility.
 //
 // SecuritygroupService provides operations for managing Securitygroups
 type SecuritygroupServiceServer interface {
-	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
-	RevokeSecurityGroupIngress(context.Context, *RevokeSecurityGroupIngressRequest) (*RevokeSecurityGroupIngressResponse, error)
+	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
+	AuthorizeSecurityGroupIngress(context.Context, *AuthorizeSecurityGroupIngressRequest) (*AuthorizeSecurityGroupIngressResponse, error)
 	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
 	RevokeSecurityGroupEgress(context.Context, *RevokeSecurityGroupEgressRequest) (*RevokeSecurityGroupEgressResponse, error)
 	// ListSecurityGroups Lists security groups
 	ListSecurityGroups(context.Context, *ListSecurityGroupsRequest) (*ListSecurityGroupsResponse, error)
 	// CreateSecurityGroup Creates a security group
 	CreateSecurityGroup(context.Context, *CreateSecurityGroupRequest) (*CreateSecurityGroupResponse, error)
-	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
-	AuthorizeSecurityGroupIngress(context.Context, *AuthorizeSecurityGroupIngressRequest) (*AuthorizeSecurityGroupIngressResponse, error)
 	// UpdateSecurityGroup Updates a security group
 	UpdateSecurityGroup(context.Context, *UpdateSecurityGroupRequest) (*UpdateSecurityGroupResponse, error)
-	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	AuthorizeSecurityGroupEgress(context.Context, *AuthorizeSecurityGroupEgressRequest) (*AuthorizeSecurityGroupEgressResponse, error)
 	// DeleteSecurityGroup Deletes security group
 	DeleteSecurityGroup(context.Context, *DeleteSecurityGroupRequest) (*DeleteSecurityGroupResponse, error)
+	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
+	RevokeSecurityGroupIngress(context.Context, *RevokeSecurityGroupIngressRequest) (*RevokeSecurityGroupIngressResponse, error)
+	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
+	AuthorizeSecurityGroupEgress(context.Context, *AuthorizeSecurityGroupEgressRequest) (*AuthorizeSecurityGroupEgressResponse, error)
 	mustEmbedUnimplementedSecuritygroupServiceServer()
 }
 
@@ -173,8 +173,8 @@ type SecuritygroupServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedSecuritygroupServiceServer struct{}
 
-func (UnimplementedSecuritygroupServiceServer) RevokeSecurityGroupIngress(context.Context, *RevokeSecurityGroupIngressRequest) (*RevokeSecurityGroupIngressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RevokeSecurityGroupIngress not implemented")
+func (UnimplementedSecuritygroupServiceServer) AuthorizeSecurityGroupIngress(context.Context, *AuthorizeSecurityGroupIngressRequest) (*AuthorizeSecurityGroupIngressResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeSecurityGroupIngress not implemented")
 }
 func (UnimplementedSecuritygroupServiceServer) RevokeSecurityGroupEgress(context.Context, *RevokeSecurityGroupEgressRequest) (*RevokeSecurityGroupEgressResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevokeSecurityGroupEgress not implemented")
@@ -185,17 +185,17 @@ func (UnimplementedSecuritygroupServiceServer) ListSecurityGroups(context.Contex
 func (UnimplementedSecuritygroupServiceServer) CreateSecurityGroup(context.Context, *CreateSecurityGroupRequest) (*CreateSecurityGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSecurityGroup not implemented")
 }
-func (UnimplementedSecuritygroupServiceServer) AuthorizeSecurityGroupIngress(context.Context, *AuthorizeSecurityGroupIngressRequest) (*AuthorizeSecurityGroupIngressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeSecurityGroupIngress not implemented")
-}
 func (UnimplementedSecuritygroupServiceServer) UpdateSecurityGroup(context.Context, *UpdateSecurityGroupRequest) (*UpdateSecurityGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSecurityGroup not implemented")
 }
-func (UnimplementedSecuritygroupServiceServer) AuthorizeSecurityGroupEgress(context.Context, *AuthorizeSecurityGroupEgressRequest) (*AuthorizeSecurityGroupEgressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeSecurityGroupEgress not implemented")
-}
 func (UnimplementedSecuritygroupServiceServer) DeleteSecurityGroup(context.Context, *DeleteSecurityGroupRequest) (*DeleteSecurityGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSecurityGroup not implemented")
+}
+func (UnimplementedSecuritygroupServiceServer) RevokeSecurityGroupIngress(context.Context, *RevokeSecurityGroupIngressRequest) (*RevokeSecurityGroupIngressResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeSecurityGroupIngress not implemented")
+}
+func (UnimplementedSecuritygroupServiceServer) AuthorizeSecurityGroupEgress(context.Context, *AuthorizeSecurityGroupEgressRequest) (*AuthorizeSecurityGroupEgressResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeSecurityGroupEgress not implemented")
 }
 func (UnimplementedSecuritygroupServiceServer) mustEmbedUnimplementedSecuritygroupServiceServer() {}
 func (UnimplementedSecuritygroupServiceServer) testEmbeddedByValue()                              {}
@@ -218,20 +218,20 @@ func RegisterSecuritygroupServiceServer(s grpc.ServiceRegistrar, srv Securitygro
 	s.RegisterService(&SecuritygroupService_ServiceDesc, srv)
 }
 
-func _SecuritygroupService_RevokeSecurityGroupIngress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RevokeSecurityGroupIngressRequest)
+func _SecuritygroupService_AuthorizeSecurityGroupIngress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthorizeSecurityGroupIngressRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SecuritygroupServiceServer).RevokeSecurityGroupIngress(ctx, in)
+		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupIngress(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SecuritygroupService_RevokeSecurityGroupIngress_FullMethodName,
+		FullMethod: SecuritygroupService_AuthorizeSecurityGroupIngress_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SecuritygroupServiceServer).RevokeSecurityGroupIngress(ctx, req.(*RevokeSecurityGroupIngressRequest))
+		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupIngress(ctx, req.(*AuthorizeSecurityGroupIngressRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -290,24 +290,6 @@ func _SecuritygroupService_CreateSecurityGroup_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SecuritygroupService_AuthorizeSecurityGroupIngress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthorizeSecurityGroupIngressRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupIngress(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SecuritygroupService_AuthorizeSecurityGroupIngress_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupIngress(ctx, req.(*AuthorizeSecurityGroupIngressRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SecuritygroupService_UpdateSecurityGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateSecurityGroupRequest)
 	if err := dec(in); err != nil {
@@ -322,24 +304,6 @@ func _SecuritygroupService_UpdateSecurityGroup_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SecuritygroupServiceServer).UpdateSecurityGroup(ctx, req.(*UpdateSecurityGroupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SecuritygroupService_AuthorizeSecurityGroupEgress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthorizeSecurityGroupEgressRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupEgress(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SecuritygroupService_AuthorizeSecurityGroupEgress_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupEgress(ctx, req.(*AuthorizeSecurityGroupEgressRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -362,6 +326,42 @@ func _SecuritygroupService_DeleteSecurityGroup_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SecuritygroupService_RevokeSecurityGroupIngress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeSecurityGroupIngressRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SecuritygroupServiceServer).RevokeSecurityGroupIngress(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SecuritygroupService_RevokeSecurityGroupIngress_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SecuritygroupServiceServer).RevokeSecurityGroupIngress(ctx, req.(*RevokeSecurityGroupIngressRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SecuritygroupService_AuthorizeSecurityGroupEgress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthorizeSecurityGroupEgressRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupEgress(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SecuritygroupService_AuthorizeSecurityGroupEgress_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SecuritygroupServiceServer).AuthorizeSecurityGroupEgress(ctx, req.(*AuthorizeSecurityGroupEgressRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SecuritygroupService_ServiceDesc is the grpc.ServiceDesc for SecuritygroupService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -370,8 +370,8 @@ var SecuritygroupService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SecuritygroupServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RevokeSecurityGroupIngress",
-			Handler:    _SecuritygroupService_RevokeSecurityGroupIngress_Handler,
+			MethodName: "AuthorizeSecurityGroupIngress",
+			Handler:    _SecuritygroupService_AuthorizeSecurityGroupIngress_Handler,
 		},
 		{
 			MethodName: "RevokeSecurityGroupEgress",
@@ -386,20 +386,20 @@ var SecuritygroupService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SecuritygroupService_CreateSecurityGroup_Handler,
 		},
 		{
-			MethodName: "AuthorizeSecurityGroupIngress",
-			Handler:    _SecuritygroupService_AuthorizeSecurityGroupIngress_Handler,
-		},
-		{
 			MethodName: "UpdateSecurityGroup",
 			Handler:    _SecuritygroupService_UpdateSecurityGroup_Handler,
 		},
 		{
-			MethodName: "AuthorizeSecurityGroupEgress",
-			Handler:    _SecuritygroupService_AuthorizeSecurityGroupEgress_Handler,
-		},
-		{
 			MethodName: "DeleteSecurityGroup",
 			Handler:    _SecuritygroupService_DeleteSecurityGroup_Handler,
+		},
+		{
+			MethodName: "RevokeSecurityGroupIngress",
+			Handler:    _SecuritygroupService_RevokeSecurityGroupIngress_Handler,
+		},
+		{
+			MethodName: "AuthorizeSecurityGroupEgress",
+			Handler:    _SecuritygroupService_AuthorizeSecurityGroupEgress_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

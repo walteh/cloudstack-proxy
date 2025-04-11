@@ -33,40 +33,40 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VlanServiceCreateVlanIpRangeProcedure is the fully-qualified name of the VlanService's
-	// CreateVlanIpRange RPC.
-	VlanServiceCreateVlanIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/CreateVlanIpRange"
-	// VlanServiceUpdateVlanIpRangeProcedure is the fully-qualified name of the VlanService's
-	// UpdateVlanIpRange RPC.
-	VlanServiceUpdateVlanIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/UpdateVlanIpRange"
-	// VlanServiceReleasePublicIpRangeProcedure is the fully-qualified name of the VlanService's
-	// ReleasePublicIpRange RPC.
-	VlanServiceReleasePublicIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/ReleasePublicIpRange"
-	// VlanServiceDedicatePublicIpRangeProcedure is the fully-qualified name of the VlanService's
-	// DedicatePublicIpRange RPC.
-	VlanServiceDedicatePublicIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/DedicatePublicIpRange"
-	// VlanServiceDeleteVlanIpRangeProcedure is the fully-qualified name of the VlanService's
-	// DeleteVlanIpRange RPC.
-	VlanServiceDeleteVlanIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/DeleteVlanIpRange"
 	// VlanServiceListVlanIpRangesProcedure is the fully-qualified name of the VlanService's
 	// ListVlanIpRanges RPC.
 	VlanServiceListVlanIpRangesProcedure = "/cloudstack.management.vlan.v1.VlanService/ListVlanIpRanges"
+	// VlanServiceDeleteVlanIpRangeProcedure is the fully-qualified name of the VlanService's
+	// DeleteVlanIpRange RPC.
+	VlanServiceDeleteVlanIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/DeleteVlanIpRange"
+	// VlanServiceUpdateVlanIpRangeProcedure is the fully-qualified name of the VlanService's
+	// UpdateVlanIpRange RPC.
+	VlanServiceUpdateVlanIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/UpdateVlanIpRange"
+	// VlanServiceDedicatePublicIpRangeProcedure is the fully-qualified name of the VlanService's
+	// DedicatePublicIpRange RPC.
+	VlanServiceDedicatePublicIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/DedicatePublicIpRange"
+	// VlanServiceCreateVlanIpRangeProcedure is the fully-qualified name of the VlanService's
+	// CreateVlanIpRange RPC.
+	VlanServiceCreateVlanIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/CreateVlanIpRange"
+	// VlanServiceReleasePublicIpRangeProcedure is the fully-qualified name of the VlanService's
+	// ReleasePublicIpRange RPC.
+	VlanServiceReleasePublicIpRangeProcedure = "/cloudstack.management.vlan.v1.VlanService/ReleasePublicIpRange"
 )
 
 // VlanServiceClient is a client for the cloudstack.management.vlan.v1.VlanService service.
 type VlanServiceClient interface {
-	// CreateVlanIpRange Creates a VLAN IP range.
-	CreateVlanIpRange(context.Context, *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error)
-	// UpdateVlanIpRange Updates a VLAN IP range.
-	UpdateVlanIpRange(context.Context, *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error)
-	// ReleasePublicIpRange Releases a Public IP range back to the system pool
-	ReleasePublicIpRange(context.Context, *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error)
-	// DedicatePublicIpRange Dedicates a Public IP range to an account
-	DedicatePublicIpRange(context.Context, *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error)
-	// DeleteVlanIpRange Deletes a VLAN IP range.
-	DeleteVlanIpRange(context.Context, *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error)
 	// ListVlanIpRanges Lists all VLAN IP ranges.
 	ListVlanIpRanges(context.Context, *connect.Request[v1.ListVlanIpRangesRequest]) (*connect.Response[v1.ListVlanIpRangesResponse], error)
+	// DeleteVlanIpRange Deletes a VLAN IP range.
+	DeleteVlanIpRange(context.Context, *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error)
+	// UpdateVlanIpRange Updates a VLAN IP range.
+	UpdateVlanIpRange(context.Context, *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error)
+	// DedicatePublicIpRange Dedicates a Public IP range to an account
+	DedicatePublicIpRange(context.Context, *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error)
+	// CreateVlanIpRange Creates a VLAN IP range.
+	CreateVlanIpRange(context.Context, *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error)
+	// ReleasePublicIpRange Releases a Public IP range back to the system pool
+	ReleasePublicIpRange(context.Context, *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error)
 }
 
 // NewVlanServiceClient constructs a client for the cloudstack.management.vlan.v1.VlanService
@@ -80,28 +80,10 @@ func NewVlanServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	vlanServiceMethods := v1.File_cloudstack_management_vlan_v1_vlan_gen_proto.Services().ByName("VlanService").Methods()
 	return &vlanServiceClient{
-		createVlanIpRange: connect.NewClient[v1.CreateVlanIpRangeRequest, v1.CreateVlanIpRangeResponse](
+		listVlanIpRanges: connect.NewClient[v1.ListVlanIpRangesRequest, v1.ListVlanIpRangesResponse](
 			httpClient,
-			baseURL+VlanServiceCreateVlanIpRangeProcedure,
-			connect.WithSchema(vlanServiceMethods.ByName("CreateVlanIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		updateVlanIpRange: connect.NewClient[v1.UpdateVlanIpRangeRequest, v1.UpdateVlanIpRangeResponse](
-			httpClient,
-			baseURL+VlanServiceUpdateVlanIpRangeProcedure,
-			connect.WithSchema(vlanServiceMethods.ByName("UpdateVlanIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		releasePublicIpRange: connect.NewClient[v1.ReleasePublicIpRangeRequest, v1.ReleasePublicIpRangeResponse](
-			httpClient,
-			baseURL+VlanServiceReleasePublicIpRangeProcedure,
-			connect.WithSchema(vlanServiceMethods.ByName("ReleasePublicIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		dedicatePublicIpRange: connect.NewClient[v1.DedicatePublicIpRangeRequest, v1.DedicatePublicIpRangeResponse](
-			httpClient,
-			baseURL+VlanServiceDedicatePublicIpRangeProcedure,
-			connect.WithSchema(vlanServiceMethods.ByName("DedicatePublicIpRange")),
+			baseURL+VlanServiceListVlanIpRangesProcedure,
+			connect.WithSchema(vlanServiceMethods.ByName("ListVlanIpRanges")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteVlanIpRange: connect.NewClient[v1.DeleteVlanIpRangeRequest, v1.DeleteVlanIpRangeResponse](
@@ -110,10 +92,28 @@ func NewVlanServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(vlanServiceMethods.ByName("DeleteVlanIpRange")),
 			connect.WithClientOptions(opts...),
 		),
-		listVlanIpRanges: connect.NewClient[v1.ListVlanIpRangesRequest, v1.ListVlanIpRangesResponse](
+		updateVlanIpRange: connect.NewClient[v1.UpdateVlanIpRangeRequest, v1.UpdateVlanIpRangeResponse](
 			httpClient,
-			baseURL+VlanServiceListVlanIpRangesProcedure,
-			connect.WithSchema(vlanServiceMethods.ByName("ListVlanIpRanges")),
+			baseURL+VlanServiceUpdateVlanIpRangeProcedure,
+			connect.WithSchema(vlanServiceMethods.ByName("UpdateVlanIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		dedicatePublicIpRange: connect.NewClient[v1.DedicatePublicIpRangeRequest, v1.DedicatePublicIpRangeResponse](
+			httpClient,
+			baseURL+VlanServiceDedicatePublicIpRangeProcedure,
+			connect.WithSchema(vlanServiceMethods.ByName("DedicatePublicIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		createVlanIpRange: connect.NewClient[v1.CreateVlanIpRangeRequest, v1.CreateVlanIpRangeResponse](
+			httpClient,
+			baseURL+VlanServiceCreateVlanIpRangeProcedure,
+			connect.WithSchema(vlanServiceMethods.ByName("CreateVlanIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		releasePublicIpRange: connect.NewClient[v1.ReleasePublicIpRangeRequest, v1.ReleasePublicIpRangeResponse](
+			httpClient,
+			baseURL+VlanServiceReleasePublicIpRangeProcedure,
+			connect.WithSchema(vlanServiceMethods.ByName("ReleasePublicIpRange")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -121,37 +121,12 @@ func NewVlanServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // vlanServiceClient implements VlanServiceClient.
 type vlanServiceClient struct {
-	createVlanIpRange     *connect.Client[v1.CreateVlanIpRangeRequest, v1.CreateVlanIpRangeResponse]
-	updateVlanIpRange     *connect.Client[v1.UpdateVlanIpRangeRequest, v1.UpdateVlanIpRangeResponse]
-	releasePublicIpRange  *connect.Client[v1.ReleasePublicIpRangeRequest, v1.ReleasePublicIpRangeResponse]
-	dedicatePublicIpRange *connect.Client[v1.DedicatePublicIpRangeRequest, v1.DedicatePublicIpRangeResponse]
-	deleteVlanIpRange     *connect.Client[v1.DeleteVlanIpRangeRequest, v1.DeleteVlanIpRangeResponse]
 	listVlanIpRanges      *connect.Client[v1.ListVlanIpRangesRequest, v1.ListVlanIpRangesResponse]
-}
-
-// CreateVlanIpRange calls cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange.
-func (c *vlanServiceClient) CreateVlanIpRange(ctx context.Context, req *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error) {
-	return c.createVlanIpRange.CallUnary(ctx, req)
-}
-
-// UpdateVlanIpRange calls cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange.
-func (c *vlanServiceClient) UpdateVlanIpRange(ctx context.Context, req *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error) {
-	return c.updateVlanIpRange.CallUnary(ctx, req)
-}
-
-// ReleasePublicIpRange calls cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange.
-func (c *vlanServiceClient) ReleasePublicIpRange(ctx context.Context, req *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error) {
-	return c.releasePublicIpRange.CallUnary(ctx, req)
-}
-
-// DedicatePublicIpRange calls cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange.
-func (c *vlanServiceClient) DedicatePublicIpRange(ctx context.Context, req *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error) {
-	return c.dedicatePublicIpRange.CallUnary(ctx, req)
-}
-
-// DeleteVlanIpRange calls cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange.
-func (c *vlanServiceClient) DeleteVlanIpRange(ctx context.Context, req *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error) {
-	return c.deleteVlanIpRange.CallUnary(ctx, req)
+	deleteVlanIpRange     *connect.Client[v1.DeleteVlanIpRangeRequest, v1.DeleteVlanIpRangeResponse]
+	updateVlanIpRange     *connect.Client[v1.UpdateVlanIpRangeRequest, v1.UpdateVlanIpRangeResponse]
+	dedicatePublicIpRange *connect.Client[v1.DedicatePublicIpRangeRequest, v1.DedicatePublicIpRangeResponse]
+	createVlanIpRange     *connect.Client[v1.CreateVlanIpRangeRequest, v1.CreateVlanIpRangeResponse]
+	releasePublicIpRange  *connect.Client[v1.ReleasePublicIpRangeRequest, v1.ReleasePublicIpRangeResponse]
 }
 
 // ListVlanIpRanges calls cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges.
@@ -159,20 +134,45 @@ func (c *vlanServiceClient) ListVlanIpRanges(ctx context.Context, req *connect.R
 	return c.listVlanIpRanges.CallUnary(ctx, req)
 }
 
+// DeleteVlanIpRange calls cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange.
+func (c *vlanServiceClient) DeleteVlanIpRange(ctx context.Context, req *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error) {
+	return c.deleteVlanIpRange.CallUnary(ctx, req)
+}
+
+// UpdateVlanIpRange calls cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange.
+func (c *vlanServiceClient) UpdateVlanIpRange(ctx context.Context, req *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error) {
+	return c.updateVlanIpRange.CallUnary(ctx, req)
+}
+
+// DedicatePublicIpRange calls cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange.
+func (c *vlanServiceClient) DedicatePublicIpRange(ctx context.Context, req *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error) {
+	return c.dedicatePublicIpRange.CallUnary(ctx, req)
+}
+
+// CreateVlanIpRange calls cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange.
+func (c *vlanServiceClient) CreateVlanIpRange(ctx context.Context, req *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error) {
+	return c.createVlanIpRange.CallUnary(ctx, req)
+}
+
+// ReleasePublicIpRange calls cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange.
+func (c *vlanServiceClient) ReleasePublicIpRange(ctx context.Context, req *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error) {
+	return c.releasePublicIpRange.CallUnary(ctx, req)
+}
+
 // VlanServiceHandler is an implementation of the cloudstack.management.vlan.v1.VlanService service.
 type VlanServiceHandler interface {
-	// CreateVlanIpRange Creates a VLAN IP range.
-	CreateVlanIpRange(context.Context, *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error)
-	// UpdateVlanIpRange Updates a VLAN IP range.
-	UpdateVlanIpRange(context.Context, *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error)
-	// ReleasePublicIpRange Releases a Public IP range back to the system pool
-	ReleasePublicIpRange(context.Context, *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error)
-	// DedicatePublicIpRange Dedicates a Public IP range to an account
-	DedicatePublicIpRange(context.Context, *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error)
-	// DeleteVlanIpRange Deletes a VLAN IP range.
-	DeleteVlanIpRange(context.Context, *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error)
 	// ListVlanIpRanges Lists all VLAN IP ranges.
 	ListVlanIpRanges(context.Context, *connect.Request[v1.ListVlanIpRangesRequest]) (*connect.Response[v1.ListVlanIpRangesResponse], error)
+	// DeleteVlanIpRange Deletes a VLAN IP range.
+	DeleteVlanIpRange(context.Context, *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error)
+	// UpdateVlanIpRange Updates a VLAN IP range.
+	UpdateVlanIpRange(context.Context, *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error)
+	// DedicatePublicIpRange Dedicates a Public IP range to an account
+	DedicatePublicIpRange(context.Context, *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error)
+	// CreateVlanIpRange Creates a VLAN IP range.
+	CreateVlanIpRange(context.Context, *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error)
+	// ReleasePublicIpRange Releases a Public IP range back to the system pool
+	ReleasePublicIpRange(context.Context, *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error)
 }
 
 // NewVlanServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -182,28 +182,10 @@ type VlanServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVlanServiceHandler(svc VlanServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vlanServiceMethods := v1.File_cloudstack_management_vlan_v1_vlan_gen_proto.Services().ByName("VlanService").Methods()
-	vlanServiceCreateVlanIpRangeHandler := connect.NewUnaryHandler(
-		VlanServiceCreateVlanIpRangeProcedure,
-		svc.CreateVlanIpRange,
-		connect.WithSchema(vlanServiceMethods.ByName("CreateVlanIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vlanServiceUpdateVlanIpRangeHandler := connect.NewUnaryHandler(
-		VlanServiceUpdateVlanIpRangeProcedure,
-		svc.UpdateVlanIpRange,
-		connect.WithSchema(vlanServiceMethods.ByName("UpdateVlanIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vlanServiceReleasePublicIpRangeHandler := connect.NewUnaryHandler(
-		VlanServiceReleasePublicIpRangeProcedure,
-		svc.ReleasePublicIpRange,
-		connect.WithSchema(vlanServiceMethods.ByName("ReleasePublicIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vlanServiceDedicatePublicIpRangeHandler := connect.NewUnaryHandler(
-		VlanServiceDedicatePublicIpRangeProcedure,
-		svc.DedicatePublicIpRange,
-		connect.WithSchema(vlanServiceMethods.ByName("DedicatePublicIpRange")),
+	vlanServiceListVlanIpRangesHandler := connect.NewUnaryHandler(
+		VlanServiceListVlanIpRangesProcedure,
+		svc.ListVlanIpRanges,
+		connect.WithSchema(vlanServiceMethods.ByName("ListVlanIpRanges")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vlanServiceDeleteVlanIpRangeHandler := connect.NewUnaryHandler(
@@ -212,26 +194,44 @@ func NewVlanServiceHandler(svc VlanServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(vlanServiceMethods.ByName("DeleteVlanIpRange")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vlanServiceListVlanIpRangesHandler := connect.NewUnaryHandler(
-		VlanServiceListVlanIpRangesProcedure,
-		svc.ListVlanIpRanges,
-		connect.WithSchema(vlanServiceMethods.ByName("ListVlanIpRanges")),
+	vlanServiceUpdateVlanIpRangeHandler := connect.NewUnaryHandler(
+		VlanServiceUpdateVlanIpRangeProcedure,
+		svc.UpdateVlanIpRange,
+		connect.WithSchema(vlanServiceMethods.ByName("UpdateVlanIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vlanServiceDedicatePublicIpRangeHandler := connect.NewUnaryHandler(
+		VlanServiceDedicatePublicIpRangeProcedure,
+		svc.DedicatePublicIpRange,
+		connect.WithSchema(vlanServiceMethods.ByName("DedicatePublicIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vlanServiceCreateVlanIpRangeHandler := connect.NewUnaryHandler(
+		VlanServiceCreateVlanIpRangeProcedure,
+		svc.CreateVlanIpRange,
+		connect.WithSchema(vlanServiceMethods.ByName("CreateVlanIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vlanServiceReleasePublicIpRangeHandler := connect.NewUnaryHandler(
+		VlanServiceReleasePublicIpRangeProcedure,
+		svc.ReleasePublicIpRange,
+		connect.WithSchema(vlanServiceMethods.ByName("ReleasePublicIpRange")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.vlan.v1.VlanService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VlanServiceCreateVlanIpRangeProcedure:
-			vlanServiceCreateVlanIpRangeHandler.ServeHTTP(w, r)
-		case VlanServiceUpdateVlanIpRangeProcedure:
-			vlanServiceUpdateVlanIpRangeHandler.ServeHTTP(w, r)
-		case VlanServiceReleasePublicIpRangeProcedure:
-			vlanServiceReleasePublicIpRangeHandler.ServeHTTP(w, r)
-		case VlanServiceDedicatePublicIpRangeProcedure:
-			vlanServiceDedicatePublicIpRangeHandler.ServeHTTP(w, r)
-		case VlanServiceDeleteVlanIpRangeProcedure:
-			vlanServiceDeleteVlanIpRangeHandler.ServeHTTP(w, r)
 		case VlanServiceListVlanIpRangesProcedure:
 			vlanServiceListVlanIpRangesHandler.ServeHTTP(w, r)
+		case VlanServiceDeleteVlanIpRangeProcedure:
+			vlanServiceDeleteVlanIpRangeHandler.ServeHTTP(w, r)
+		case VlanServiceUpdateVlanIpRangeProcedure:
+			vlanServiceUpdateVlanIpRangeHandler.ServeHTTP(w, r)
+		case VlanServiceDedicatePublicIpRangeProcedure:
+			vlanServiceDedicatePublicIpRangeHandler.ServeHTTP(w, r)
+		case VlanServiceCreateVlanIpRangeProcedure:
+			vlanServiceCreateVlanIpRangeHandler.ServeHTTP(w, r)
+		case VlanServiceReleasePublicIpRangeProcedure:
+			vlanServiceReleasePublicIpRangeHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -241,26 +241,26 @@ func NewVlanServiceHandler(svc VlanServiceHandler, opts ...connect.HandlerOption
 // UnimplementedVlanServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVlanServiceHandler struct{}
 
-func (UnimplementedVlanServiceHandler) CreateVlanIpRange(context.Context, *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange is not implemented"))
-}
-
-func (UnimplementedVlanServiceHandler) UpdateVlanIpRange(context.Context, *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange is not implemented"))
-}
-
-func (UnimplementedVlanServiceHandler) ReleasePublicIpRange(context.Context, *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange is not implemented"))
-}
-
-func (UnimplementedVlanServiceHandler) DedicatePublicIpRange(context.Context, *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange is not implemented"))
+func (UnimplementedVlanServiceHandler) ListVlanIpRanges(context.Context, *connect.Request[v1.ListVlanIpRangesRequest]) (*connect.Response[v1.ListVlanIpRangesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges is not implemented"))
 }
 
 func (UnimplementedVlanServiceHandler) DeleteVlanIpRange(context.Context, *connect.Request[v1.DeleteVlanIpRangeRequest]) (*connect.Response[v1.DeleteVlanIpRangeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange is not implemented"))
 }
 
-func (UnimplementedVlanServiceHandler) ListVlanIpRanges(context.Context, *connect.Request[v1.ListVlanIpRangesRequest]) (*connect.Response[v1.ListVlanIpRangesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges is not implemented"))
+func (UnimplementedVlanServiceHandler) UpdateVlanIpRange(context.Context, *connect.Request[v1.UpdateVlanIpRangeRequest]) (*connect.Response[v1.UpdateVlanIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange is not implemented"))
+}
+
+func (UnimplementedVlanServiceHandler) DedicatePublicIpRange(context.Context, *connect.Request[v1.DedicatePublicIpRangeRequest]) (*connect.Response[v1.DedicatePublicIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange is not implemented"))
+}
+
+func (UnimplementedVlanServiceHandler) CreateVlanIpRange(context.Context, *connect.Request[v1.CreateVlanIpRangeRequest]) (*connect.Response[v1.CreateVlanIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange is not implemented"))
+}
+
+func (UnimplementedVlanServiceHandler) ReleasePublicIpRange(context.Context, *connect.Request[v1.ReleasePublicIpRangeRequest]) (*connect.Response[v1.ReleasePublicIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange is not implemented"))
 }

@@ -24,6 +24,1412 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// UpdateVPCRequest represents the parameters for updates a vpc
+type UpdateVPCRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the id of the VPC
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the name of the VPC
+	VpcName *string `protobuf:"bytes,3,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
+	// the display text of the VPC
+	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// an optional field, whether to the display the vpc to the end user or not
+	Display *bool `protobuf:"varint,5,opt,name=display" json:"display,omitempty"`
+	// MTU to be configured on the network VR's public facing interfaces
+	PublicMtu *int32 `protobuf:"varint,6,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
+	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
+	SourceNatIP *string `protobuf:"bytes,7,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,8,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVPCRequest) Reset() {
+	*x = UpdateVPCRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVPCRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVPCRequest) ProtoMessage() {}
+
+func (x *UpdateVPCRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVPCRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVPCRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *UpdateVPCRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UpdateVPCRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVPCRequest) GetVpcName() string {
+	if x != nil && x.VpcName != nil {
+		return *x.VpcName
+	}
+	return ""
+}
+
+func (x *UpdateVPCRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *UpdateVPCRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateVPCRequest) GetPublicMtu() int32 {
+	if x != nil && x.PublicMtu != nil {
+		return *x.PublicMtu
+	}
+	return 0
+}
+
+func (x *UpdateVPCRequest) GetSourceNatIP() string {
+	if x != nil && x.SourceNatIP != nil {
+		return *x.SourceNatIP
+	}
+	return ""
+}
+
+func (x *UpdateVPCRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateVPCRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVPCRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVPCRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVPCResponse represents the response from updates a vpc
+type UpdateVPCResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVPCResponse) Reset() {
+	*x = UpdateVPCResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVPCResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVPCResponse) ProtoMessage() {}
+
+func (x *UpdateVPCResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVPCResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVPCResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UpdateVPCResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateStaticRouteRequest represents the parameters for creates a static route
+type CreateStaticRouteRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the gateway id we are creating static route for
+	GatewayId *int64 `protobuf:"varint,1,opt,name=gateway_id,json=gatewayId" json:"gateway_id,omitempty"`
+	// static route cidr
+	Cidr *string `protobuf:"bytes,2,opt,name=cidr" json:"cidr,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateStaticRouteRequest) Reset() {
+	*x = CreateStaticRouteRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateStaticRouteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateStaticRouteRequest) ProtoMessage() {}
+
+func (x *CreateStaticRouteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateStaticRouteRequest.ProtoReflect.Descriptor instead.
+func (*CreateStaticRouteRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateStaticRouteRequest) GetGatewayId() int64 {
+	if x != nil && x.GatewayId != nil {
+		return *x.GatewayId
+	}
+	return 0
+}
+
+func (x *CreateStaticRouteRequest) GetCidr() string {
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
+	}
+	return ""
+}
+
+func (x *CreateStaticRouteRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateStaticRouteRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateStaticRouteRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateStaticRouteResponse represents the response from creates a static route
+type CreateStaticRouteResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateStaticRouteResponse) Reset() {
+	*x = CreateStaticRouteResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateStaticRouteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateStaticRouteResponse) ProtoMessage() {}
+
+func (x *CreateStaticRouteResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateStaticRouteResponse.ProtoReflect.Descriptor instead.
+func (*CreateStaticRouteResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreateStaticRouteResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVPCOfferingRequest represents the parameters for creates vpc offering
+type CreateVPCOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the vpc offering
+	VpcOfferingName *string `protobuf:"bytes,1,opt,name=vpc_offering_name,json=vpcOfferingName" json:"vpc_offering_name,omitempty"`
+	// the display text of the vpc offering, defaults to the 'name'
+	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// services supported by the vpc offering
+	SupportedServices []string `protobuf:"bytes,3,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
+	// provider to service mapping. If not specified, the provider for the service will be mapped to the default provider on the physical network
+	ServiceProviderList map[string]string `protobuf:"bytes,4,rep,name=service_provider_list,json=serviceProviderList" json:"service_provider_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// desired service capabilities as part of vpc offering
+	ServiceCapabilityList map[string]string `protobuf:"bytes,5,rep,name=service_capability_list,json=serviceCapabilityList" json:"service_capability_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// The internet protocol of the offering. Options are ipv4 and dualstack. Default is ipv4. dualstack will create an offering that supports both IPv4 and IPv6
+	InternetProtocol *string `protobuf:"bytes,6,opt,name=internet_protocol,json=internetProtocol" json:"internet_protocol,omitempty"`
+	// the ID of the service offering for the VPC router appliance
+	ServiceOfferingId *int64 `protobuf:"varint,7,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// the ID of the containing domain(s), null for public offerings
+	DomainIds []string `protobuf:"bytes,8,rep,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
+	// the ID of the containing zone(s), null for public offerings
+	ZoneIds []string `protobuf:"bytes,9,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
+	// true if network offering is meant to be used for NSX, false otherwise.
+	ForNsx *bool `protobuf:"varint,10,opt,name=for_nsx,json=forNsx" json:"for_nsx,omitempty"`
+	// true if network offering for NSX VPC offering supports Load balancer service.
+	NsxSupportsLbService *bool `protobuf:"varint,11,opt,name=nsx_supports_lb_service,json=nsxSupportsLbService" json:"nsx_supports_lb_service,omitempty"`
+	// set to true if the offering is to be enabled during creation. Default is false
+	Enable *bool `protobuf:"varint,12,opt,name=enable" json:"enable,omitempty"`
+	// Indicates the mode with which the network will operate. Valid option: NATTED or ROUTED
+	NetworkMode *string `protobuf:"bytes,13,opt,name=network_mode,json=networkMode" json:"network_mode,omitempty"`
+	// true if the VPC offering supports choosing AS number
+	SpecifyAsNumber *bool `protobuf:"varint,14,opt,name=specify_as_number,json=specifyAsNumber" json:"specify_as_number,omitempty"`
+	// the routing mode for the VPC offering. Supported types are: Static or Dynamic.
+	RoutingMode *string `protobuf:"bytes,15,opt,name=routing_mode,json=routingMode" json:"routing_mode,omitempty"`
+	StartEventId *int64 `protobuf:"varint,16,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,17,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVPCOfferingRequest) Reset() {
+	*x = CreateVPCOfferingRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVPCOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVPCOfferingRequest) ProtoMessage() {}
+
+func (x *CreateVPCOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVPCOfferingRequest.ProtoReflect.Descriptor instead.
+func (*CreateVPCOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CreateVPCOfferingRequest) GetVpcOfferingName() string {
+	if x != nil && x.VpcOfferingName != nil {
+		return *x.VpcOfferingName
+	}
+	return ""
+}
+
+func (x *CreateVPCOfferingRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *CreateVPCOfferingRequest) GetSupportedServices() []string {
+	if x != nil {
+		return x.SupportedServices
+	}
+	return nil
+}
+
+func (x *CreateVPCOfferingRequest) GetServiceProviderList() map[string]string {
+	if x != nil {
+		return x.ServiceProviderList
+	}
+	return nil
+}
+
+func (x *CreateVPCOfferingRequest) GetServiceCapabilityList() map[string]string {
+	if x != nil {
+		return x.ServiceCapabilityList
+	}
+	return nil
+}
+
+func (x *CreateVPCOfferingRequest) GetInternetProtocol() string {
+	if x != nil && x.InternetProtocol != nil {
+		return *x.InternetProtocol
+	}
+	return ""
+}
+
+func (x *CreateVPCOfferingRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
+	}
+	return 0
+}
+
+func (x *CreateVPCOfferingRequest) GetDomainIds() []string {
+	if x != nil {
+		return x.DomainIds
+	}
+	return nil
+}
+
+func (x *CreateVPCOfferingRequest) GetZoneIds() []string {
+	if x != nil {
+		return x.ZoneIds
+	}
+	return nil
+}
+
+func (x *CreateVPCOfferingRequest) GetForNsx() bool {
+	if x != nil && x.ForNsx != nil {
+		return *x.ForNsx
+	}
+	return false
+}
+
+func (x *CreateVPCOfferingRequest) GetNsxSupportsLbService() bool {
+	if x != nil && x.NsxSupportsLbService != nil {
+		return *x.NsxSupportsLbService
+	}
+	return false
+}
+
+func (x *CreateVPCOfferingRequest) GetEnable() bool {
+	if x != nil && x.Enable != nil {
+		return *x.Enable
+	}
+	return false
+}
+
+func (x *CreateVPCOfferingRequest) GetNetworkMode() string {
+	if x != nil && x.NetworkMode != nil {
+		return *x.NetworkMode
+	}
+	return ""
+}
+
+func (x *CreateVPCOfferingRequest) GetSpecifyAsNumber() bool {
+	if x != nil && x.SpecifyAsNumber != nil {
+		return *x.SpecifyAsNumber
+	}
+	return false
+}
+
+func (x *CreateVPCOfferingRequest) GetRoutingMode() string {
+	if x != nil && x.RoutingMode != nil {
+		return *x.RoutingMode
+	}
+	return ""
+}
+
+func (x *CreateVPCOfferingRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateVPCOfferingRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateVPCOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVPCOfferingResponse represents the response from creates vpc offering
+type CreateVPCOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVPCOfferingResponse) Reset() {
+	*x = CreateVPCOfferingResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVPCOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVPCOfferingResponse) ProtoMessage() {}
+
+func (x *CreateVPCOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVPCOfferingResponse.ProtoReflect.Descriptor instead.
+func (*CreateVPCOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CreateVPCOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListVPCsCmdByAdminRequest represents the parameters for lists vpcs
+type ListVPCsCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list VPC by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list by zone
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list by name of the VPC
+	VpcName *string `protobuf:"bytes,3,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
+	// List by display text of the VPC
+	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
+	Cidr *string `protobuf:"bytes,5,opt,name=cidr" json:"cidr,omitempty"`
+	// list by ID of the VPC offering
+	VpcOffId *int64 `protobuf:"varint,6,opt,name=vpc_off_id,json=vpcOffId" json:"vpc_off_id,omitempty"`
+	// list VPC supporting certain services
+	SupportedServices []string `protobuf:"bytes,7,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
+	// list VPCs by state
+	State *string `protobuf:"bytes,8,opt,name=state" json:"state,omitempty"`
+	// list VPCs by restartRequired option
+	RestartRequired *bool `protobuf:"varint,9,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
+	// flag to display the resource icon for VPCs
+	ShowIcon *bool `protobuf:"varint,11,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,12,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,13,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,14,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,15,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,16,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,17,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,18,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,19,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,20,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,21,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVPCsCmdByAdminRequest) Reset() {
+	*x = ListVPCsCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVPCsCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVPCsCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ListVPCsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVPCsCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ListVPCsCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetVpcName() string {
+	if x != nil && x.VpcName != nil {
+		return *x.VpcName
+	}
+	return ""
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetCidr() string {
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
+	}
+	return ""
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetVpcOffId() int64 {
+	if x != nil && x.VpcOffId != nil {
+		return *x.VpcOffId
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetSupportedServices() []string {
+	if x != nil {
+		return x.SupportedServices
+	}
+	return nil
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetRestartRequired() bool {
+	if x != nil && x.RestartRequired != nil {
+		return *x.RestartRequired
+	}
+	return false
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVPCsCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVPCsCmdByAdminResponse represents the response from lists vpcs
+type ListVPCsCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Vpcs
+	Items []*Vpc `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Vpcs
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVPCsCmdByAdminResponse) Reset() {
+	*x = ListVPCsCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVPCsCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVPCsCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ListVPCsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVPCsCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ListVPCsCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListVPCsCmdByAdminResponse) GetItems() []*Vpc {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVPCsCmdByAdminResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListVPCOfferingsRequest represents the parameters for lists vpc offerings
+type ListVPCOfferingsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list VPC offerings by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list VPC offerings by name
+	VpcOffName *string `protobuf:"bytes,2,opt,name=vpc_off_name,json=vpcOffName" json:"vpc_off_name,omitempty"`
+	// list VPC offerings by display text
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// true if need to list only default VPC offerings. Default value is false
+	IsDefault *bool `protobuf:"varint,4,opt,name=is_default,json=isDefault" json:"is_default,omitempty"`
+	// list VPC offerings supporting certain services
+	SupportedServices []string `protobuf:"bytes,5,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
+	// list VPC offerings by state
+	State *string `protobuf:"bytes,6,opt,name=state" json:"state,omitempty"`
+	// list VPC offerings available for VPC creation in specific domain
+	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// id of zone VPC offering is associated with
+	ZoneId *int64 `protobuf:"varint,8,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,9,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVPCOfferingsRequest) Reset() {
+	*x = ListVPCOfferingsRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVPCOfferingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVPCOfferingsRequest) ProtoMessage() {}
+
+func (x *ListVPCOfferingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVPCOfferingsRequest.ProtoReflect.Descriptor instead.
+func (*ListVPCOfferingsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListVPCOfferingsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListVPCOfferingsRequest) GetVpcOffName() string {
+	if x != nil && x.VpcOffName != nil {
+		return *x.VpcOffName
+	}
+	return ""
+}
+
+func (x *ListVPCOfferingsRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *ListVPCOfferingsRequest) GetIsDefault() bool {
+	if x != nil && x.IsDefault != nil {
+		return *x.IsDefault
+	}
+	return false
+}
+
+func (x *ListVPCOfferingsRequest) GetSupportedServices() []string {
+	if x != nil {
+		return x.SupportedServices
+	}
+	return nil
+}
+
+func (x *ListVPCOfferingsRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListVPCOfferingsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListVPCOfferingsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListVPCOfferingsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVPCOfferingsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVPCOfferingsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVPCOfferingsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVPCOfferingsResponse represents the response from lists vpc offerings
+type ListVPCOfferingsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of VpcOfferings
+	Items []*VpcOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of VpcOfferings
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVPCOfferingsResponse) Reset() {
+	*x = ListVPCOfferingsResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVPCOfferingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVPCOfferingsResponse) ProtoMessage() {}
+
+func (x *ListVPCOfferingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVPCOfferingsResponse.ProtoReflect.Descriptor instead.
+func (*ListVPCOfferingsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListVPCOfferingsResponse) GetItems() []*VpcOffering {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVPCOfferingsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// CreatePrivateGatewayByAdminRequest represents the parameters for creates a private gateway
+type CreatePrivateGatewayByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the Physical Network ID the network belongs to
+	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// the network implementation uri for the private gateway
+	BroadcastUri *string `protobuf:"bytes,2,opt,name=broadcast_uri,json=broadcastUri" json:"broadcast_uri,omitempty"`
+	// when true bypasses VLAN id/range overlap check during private gateway creation
+	BypassVlanOverlapCheck *bool `protobuf:"varint,3,opt,name=bypass_vlan_overlap_check,json=bypassVlanOverlapCheck" json:"bypass_vlan_overlap_check,omitempty"`
+	// the gateway of the Private gateway
+	Gateway *string `protobuf:"bytes,4,opt,name=gateway" json:"gateway,omitempty"`
+	// the netmask of the Private gateway
+	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
+	// the IP address of the Private gateaway
+	IpAddress *string `protobuf:"bytes,6,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// the uuid of the network offering to use for the private gateways network connection
+	NetworkOfferingId *int64 `protobuf:"varint,7,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
+	// the VPC network belongs to
+	VpcId *int64 `protobuf:"varint,8,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
+	IsSourceNat *bool `protobuf:"varint,9,opt,name=is_source_nat,json=isSourceNat" json:"is_source_nat,omitempty"`
+	// the ID of the network ACL
+	AclId *int64 `protobuf:"varint,10,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
+	// The isolated network this private gateway is associated to.
+	AssociatedNetworkId *int64 `protobuf:"varint,11,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,12,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,13,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) Reset() {
+	*x = CreatePrivateGatewayByAdminRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePrivateGatewayByAdminRequest) ProtoMessage() {}
+
+func (x *CreatePrivateGatewayByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePrivateGatewayByAdminRequest.ProtoReflect.Descriptor instead.
+func (*CreatePrivateGatewayByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetBroadcastUri() string {
+	if x != nil && x.BroadcastUri != nil {
+		return *x.BroadcastUri
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetBypassVlanOverlapCheck() bool {
+	if x != nil && x.BypassVlanOverlapCheck != nil {
+		return *x.BypassVlanOverlapCheck
+	}
+	return false
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetGateway() string {
+	if x != nil && x.Gateway != nil {
+		return *x.Gateway
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetNetworkOfferingId() int64 {
+	if x != nil && x.NetworkOfferingId != nil {
+		return *x.NetworkOfferingId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetIsSourceNat() bool {
+	if x != nil && x.IsSourceNat != nil {
+		return *x.IsSourceNat
+	}
+	return false
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetAclId() int64 {
+	if x != nil && x.AclId != nil {
+		return *x.AclId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetAssociatedNetworkId() int64 {
+	if x != nil && x.AssociatedNetworkId != nil {
+		return *x.AssociatedNetworkId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreatePrivateGatewayByAdminResponse represents the response from creates a private gateway
+type CreatePrivateGatewayByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePrivateGatewayByAdminResponse) Reset() {
+	*x = CreatePrivateGatewayByAdminResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePrivateGatewayByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePrivateGatewayByAdminResponse) ProtoMessage() {}
+
+func (x *CreatePrivateGatewayByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePrivateGatewayByAdminResponse.ProtoReflect.Descriptor instead.
+func (*CreatePrivateGatewayByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CreatePrivateGatewayByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreatePrivateGatewayRequest represents the parameters for creates a private gateway
+type CreatePrivateGatewayRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the gateway of the Private gateway
+	Gateway *string `protobuf:"bytes,1,opt,name=gateway" json:"gateway,omitempty"`
+	// the netmask of the Private gateway
+	Netmask *string `protobuf:"bytes,2,opt,name=netmask" json:"netmask,omitempty"`
+	// the IP address of the Private gateaway
+	IpAddress *string `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// the uuid of the network offering to use for the private gateways network connection
+	NetworkOfferingId *int64 `protobuf:"varint,4,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
+	// the VPC network belongs to
+	VpcId *int64 `protobuf:"varint,5,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
+	IsSourceNat *bool `protobuf:"varint,6,opt,name=is_source_nat,json=isSourceNat" json:"is_source_nat,omitempty"`
+	// the ID of the network ACL
+	AclId *int64 `protobuf:"varint,7,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
+	// The isolated network this private gateway is associated to.
+	AssociatedNetworkId *int64 `protobuf:"varint,8,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePrivateGatewayRequest) Reset() {
+	*x = CreatePrivateGatewayRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePrivateGatewayRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePrivateGatewayRequest) ProtoMessage() {}
+
+func (x *CreatePrivateGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePrivateGatewayRequest.ProtoReflect.Descriptor instead.
+func (*CreatePrivateGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CreatePrivateGatewayRequest) GetGateway() string {
+	if x != nil && x.Gateway != nil {
+		return *x.Gateway
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayRequest) GetNetworkOfferingId() int64 {
+	if x != nil && x.NetworkOfferingId != nil {
+		return *x.NetworkOfferingId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayRequest) GetIsSourceNat() bool {
+	if x != nil && x.IsSourceNat != nil {
+		return *x.IsSourceNat
+	}
+	return false
+}
+
+func (x *CreatePrivateGatewayRequest) GetAclId() int64 {
+	if x != nil && x.AclId != nil {
+		return *x.AclId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayRequest) GetAssociatedNetworkId() int64 {
+	if x != nil && x.AssociatedNetworkId != nil {
+		return *x.AssociatedNetworkId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreatePrivateGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreatePrivateGatewayRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreatePrivateGatewayResponse represents the response from creates a private gateway
+type CreatePrivateGatewayResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePrivateGatewayResponse) Reset() {
+	*x = CreatePrivateGatewayResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePrivateGatewayResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePrivateGatewayResponse) ProtoMessage() {}
+
+func (x *CreatePrivateGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePrivateGatewayResponse.ProtoReflect.Descriptor instead.
+func (*CreatePrivateGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *CreatePrivateGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // DeleteStaticRouteRequest represents the parameters for deletes a static route
 type DeleteStaticRouteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -38,7 +1444,7 @@ type DeleteStaticRouteRequest struct {
 
 func (x *DeleteStaticRouteRequest) Reset() {
 	*x = DeleteStaticRouteRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -50,7 +1456,7 @@ func (x *DeleteStaticRouteRequest) String() string {
 func (*DeleteStaticRouteRequest) ProtoMessage() {}
 
 func (x *DeleteStaticRouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +1469,7 @@ func (x *DeleteStaticRouteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStaticRouteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteStaticRouteRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteStaticRouteRequest) GetId() int64 {
@@ -105,7 +1511,7 @@ type DeleteStaticRouteResponse struct {
 
 func (x *DeleteStaticRouteResponse) Reset() {
 	*x = DeleteStaticRouteResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -117,7 +1523,7 @@ func (x *DeleteStaticRouteResponse) String() string {
 func (*DeleteStaticRouteResponse) ProtoMessage() {}
 
 func (x *DeleteStaticRouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -130,7 +1536,7 @@ func (x *DeleteStaticRouteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStaticRouteResponse.ProtoReflect.Descriptor instead.
 func (*DeleteStaticRouteResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteStaticRouteResponse) GetResult() *Result {
@@ -138,6 +1544,1672 @@ func (x *DeleteStaticRouteResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// DeleteVPCOfferingRequest represents the parameters for deletes vpc offering
+type DeleteVPCOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the VPC offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVPCOfferingRequest) Reset() {
+	*x = DeleteVPCOfferingRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVPCOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVPCOfferingRequest) ProtoMessage() {}
+
+func (x *DeleteVPCOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVPCOfferingRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVPCOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *DeleteVPCOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVPCOfferingRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteVPCOfferingRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteVPCOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVPCOfferingResponse represents the response from deletes vpc offering
+type DeleteVPCOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVPCOfferingResponse) Reset() {
+	*x = DeleteVPCOfferingResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVPCOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVPCOfferingResponse) ProtoMessage() {}
+
+func (x *DeleteVPCOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVPCOfferingResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVPCOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *DeleteVPCOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVPCCmdByAdminRequest represents the parameters for creates a vpc
+type CreateVPCCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Ids of the Bgp Peer for the VPC
+	BgpPeerIds []string `protobuf:"bytes,1,rep,name=bgp_peer_ids,json=bgpPeerIds" json:"bgp_peer_ids,omitempty"`
+	// the account associated with the VPC. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the domain ID associated with the VPC. If used with the account parameter returns the VPC associated with the account for the specified domain.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// create VPC for the project
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the ID of the availability zone
+	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the name of the VPC
+	VpcName *string `protobuf:"bytes,6,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
+	// The display text of the VPC, defaults to its 'name'.
+	DisplayText *string `protobuf:"bytes,7,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
+	Cidr *string `protobuf:"bytes,8,opt,name=cidr" json:"cidr,omitempty"`
+	// the CIDR size of VPC. For regular users, this is required for VPC with ROUTED mode.
+	CidrSize *int32 `protobuf:"varint,9,opt,name=cidr_size,json=cidrSize" json:"cidr_size,omitempty"`
+	// the ID of the VPC offering
+	VpcOffering *int64 `protobuf:"varint,10,opt,name=vpc_offering,json=vpcOffering" json:"vpc_offering,omitempty"`
+	// VPC network domain. All networks inside the VPC will belong to this domain
+	NetworkDomain *string `protobuf:"bytes,11,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
+	// If set to false, the VPC won't start (VPC VR will not get allocated) until its first network gets implemented. True by default.
+	Start *bool `protobuf:"varint,12,opt,name=start" json:"start,omitempty"`
+	// an optional field, whether to the display the vpc to the end user or not
+	Display *bool `protobuf:"varint,13,opt,name=display" json:"display,omitempty"`
+	// MTU to be configured on the network VR's public facing interfaces
+	PublicMtu *int32 `protobuf:"varint,14,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
+	// the first IPv4 DNS for the VPC
+	Ip4Dns1 *string `protobuf:"bytes,15,opt,name=ip4_dns1,json=ip4Dns1" json:"ip4_dns1,omitempty"`
+	// the second IPv4 DNS for the VPC
+	Ip4Dns2 *string `protobuf:"bytes,16,opt,name=ip4_dns2,json=ip4Dns2" json:"ip4_dns2,omitempty"`
+	// the first IPv6 DNS for the VPC
+	Ip6Dns1 *string `protobuf:"bytes,17,opt,name=ip6_dns1,json=ip6Dns1" json:"ip6_dns1,omitempty"`
+	// the second IPv6 DNS for the VPC
+	Ip6Dns2 *string `protobuf:"bytes,18,opt,name=ip6_dns2,json=ip6Dns2" json:"ip6_dns2,omitempty"`
+	// IPV4 address to be assigned to the public interface of the network router.This address will be used as source NAT address for the networks in ths VPC.
+	// If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
+	SourceNatIP *string `protobuf:"bytes,19,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
+	// the AS Number of the VPC tiers
+	AsNumber *int64 `protobuf:"varint,20,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
+	StartEventId *int64 `protobuf:"varint,21,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,22,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,23,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVPCCmdByAdminRequest) Reset() {
+	*x = CreateVPCCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVPCCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVPCCmdByAdminRequest) ProtoMessage() {}
+
+func (x *CreateVPCCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVPCCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*CreateVPCCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetBgpPeerIds() []string {
+	if x != nil {
+		return x.BgpPeerIds
+	}
+	return nil
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetVpcName() string {
+	if x != nil && x.VpcName != nil {
+		return *x.VpcName
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetCidr() string {
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetCidrSize() int32 {
+	if x != nil && x.CidrSize != nil {
+		return *x.CidrSize
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetVpcOffering() int64 {
+	if x != nil && x.VpcOffering != nil {
+		return *x.VpcOffering
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetNetworkDomain() string {
+	if x != nil && x.NetworkDomain != nil {
+		return *x.NetworkDomain
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetStart() bool {
+	if x != nil && x.Start != nil {
+		return *x.Start
+	}
+	return false
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetPublicMtu() int32 {
+	if x != nil && x.PublicMtu != nil {
+		return *x.PublicMtu
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetIp4Dns1() string {
+	if x != nil && x.Ip4Dns1 != nil {
+		return *x.Ip4Dns1
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetIp4Dns2() string {
+	if x != nil && x.Ip4Dns2 != nil {
+		return *x.Ip4Dns2
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetIp6Dns1() string {
+	if x != nil && x.Ip6Dns1 != nil {
+		return *x.Ip6Dns1
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetIp6Dns2() string {
+	if x != nil && x.Ip6Dns2 != nil {
+		return *x.Ip6Dns2
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetSourceNatIP() string {
+	if x != nil && x.SourceNatIP != nil {
+		return *x.SourceNatIP
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetAsNumber() int64 {
+	if x != nil && x.AsNumber != nil {
+		return *x.AsNumber
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateVPCCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVPCCmdByAdminResponse represents the response from creates a vpc
+type CreateVPCCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVPCCmdByAdminResponse) Reset() {
+	*x = CreateVPCCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVPCCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVPCCmdByAdminResponse) ProtoMessage() {}
+
+func (x *CreateVPCCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVPCCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*CreateVPCCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *CreateVPCCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RestartVPCRequest represents the parameters for restarts a vpc
+type RestartVPCRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the id of the VPC
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// If cleanup old network elements
+	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
+	// Turn a single VPC into a redundant one.
+	Makeredundant *bool `protobuf:"varint,3,opt,name=makeredundant" json:"makeredundant,omitempty"`
+	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
+	LivePatch *bool `protobuf:"varint,4,opt,name=live_patch,json=livePatch" json:"live_patch,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestartVPCRequest) Reset() {
+	*x = RestartVPCRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestartVPCRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestartVPCRequest) ProtoMessage() {}
+
+func (x *RestartVPCRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestartVPCRequest.ProtoReflect.Descriptor instead.
+func (*RestartVPCRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *RestartVPCRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RestartVPCRequest) GetCleanup() bool {
+	if x != nil && x.Cleanup != nil {
+		return *x.Cleanup
+	}
+	return false
+}
+
+func (x *RestartVPCRequest) GetMakeredundant() bool {
+	if x != nil && x.Makeredundant != nil {
+		return *x.Makeredundant
+	}
+	return false
+}
+
+func (x *RestartVPCRequest) GetLivePatch() bool {
+	if x != nil && x.LivePatch != nil {
+		return *x.LivePatch
+	}
+	return false
+}
+
+func (x *RestartVPCRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RestartVPCRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RestartVPCRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RestartVPCResponse represents the response from restarts a vpc
+type RestartVPCResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestartVPCResponse) Reset() {
+	*x = RestartVPCResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestartVPCResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestartVPCResponse) ProtoMessage() {}
+
+func (x *RestartVPCResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestartVPCResponse.ProtoReflect.Descriptor instead.
+func (*RestartVPCResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *RestartVPCResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeletePrivateGatewayRequest represents the parameters for deletes a private gateway
+type DeletePrivateGatewayRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the private gateway
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePrivateGatewayRequest) Reset() {
+	*x = DeletePrivateGatewayRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePrivateGatewayRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePrivateGatewayRequest) ProtoMessage() {}
+
+func (x *DeletePrivateGatewayRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePrivateGatewayRequest.ProtoReflect.Descriptor instead.
+func (*DeletePrivateGatewayRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *DeletePrivateGatewayRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeletePrivateGatewayRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeletePrivateGatewayRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeletePrivateGatewayRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeletePrivateGatewayResponse represents the response from deletes a private gateway
+type DeletePrivateGatewayResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePrivateGatewayResponse) Reset() {
+	*x = DeletePrivateGatewayResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePrivateGatewayResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePrivateGatewayResponse) ProtoMessage() {}
+
+func (x *DeletePrivateGatewayResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePrivateGatewayResponse.ProtoReflect.Descriptor instead.
+func (*DeletePrivateGatewayResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *DeletePrivateGatewayResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListPrivateGatewaysCmdByAdminRequest represents the parameters for list private gateways
+type ListPrivateGatewaysCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list private gateway by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list gateways by ip address
+	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// list gateways by vlan
+	Vlan *string `protobuf:"bytes,3,opt,name=vlan" json:"vlan,omitempty"`
+	// list gateways by vpc
+	VpcId *int64 `protobuf:"varint,4,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// list gateways by state
+	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) Reset() {
+	*x = ListPrivateGatewaysCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPrivateGatewaysCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPrivateGatewaysCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ListPrivateGatewaysCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListPrivateGatewaysCmdByAdminResponse represents the response from list private gateways
+type ListPrivateGatewaysCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of PrivateGateways
+	Items []*PrivateGateway `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of PrivateGateways
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPrivateGatewaysCmdByAdminResponse) Reset() {
+	*x = ListPrivateGatewaysCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPrivateGatewaysCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPrivateGatewaysCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ListPrivateGatewaysCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPrivateGatewaysCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ListPrivateGatewaysCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *ListPrivateGatewaysCmdByAdminResponse) GetItems() []*PrivateGateway {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListPrivateGatewaysCmdByAdminResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListPrivateGatewaysRequest represents the parameters for list private gateways
+type ListPrivateGatewaysRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list private gateway by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list gateways by ip address
+	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// list gateways by vlan
+	Vlan *string `protobuf:"bytes,3,opt,name=vlan" json:"vlan,omitempty"`
+	// list gateways by vpc
+	VpcId *int64 `protobuf:"varint,4,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// list gateways by state
+	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPrivateGatewaysRequest) Reset() {
+	*x = ListPrivateGatewaysRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPrivateGatewaysRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPrivateGatewaysRequest) ProtoMessage() {}
+
+func (x *ListPrivateGatewaysRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPrivateGatewaysRequest.ProtoReflect.Descriptor instead.
+func (*ListPrivateGatewaysRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *ListPrivateGatewaysRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListPrivateGatewaysRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListPrivateGatewaysRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListPrivateGatewaysRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListPrivateGatewaysRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListPrivateGatewaysResponse represents the response from list private gateways
+type ListPrivateGatewaysResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of PrivateGateways
+	Items []*PrivateGateway `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of PrivateGateways
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPrivateGatewaysResponse) Reset() {
+	*x = ListPrivateGatewaysResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPrivateGatewaysResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPrivateGatewaysResponse) ProtoMessage() {}
+
+func (x *ListPrivateGatewaysResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPrivateGatewaysResponse.ProtoReflect.Descriptor instead.
+func (*ListPrivateGatewaysResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *ListPrivateGatewaysResponse) GetItems() []*PrivateGateway {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListPrivateGatewaysResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// DeleteVPCRequest represents the parameters for deletes a vpc
+type DeleteVPCRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the VPC
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVPCRequest) Reset() {
+	*x = DeleteVPCRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVPCRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVPCRequest) ProtoMessage() {}
+
+func (x *DeleteVPCRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVPCRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVPCRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *DeleteVPCRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVPCRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteVPCRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteVPCRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVPCResponse represents the response from deletes a vpc
+type DeleteVPCResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVPCResponse) Reset() {
+	*x = DeleteVPCResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVPCResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVPCResponse) ProtoMessage() {}
+
+func (x *DeleteVPCResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVPCResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVPCResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *DeleteVPCResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateVPCOfferingRequest represents the parameters for updates vpc offering
+type UpdateVPCOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the id of the VPC offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the name of the VPC offering
+	VpcOffName *string `protobuf:"bytes,2,opt,name=vpc_off_name,json=vpcOffName" json:"vpc_off_name,omitempty"`
+	// the display text of the VPC offering
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// update state for the VPC offering; supported states - Enabled/Disabled
+	State *string `protobuf:"bytes,4,opt,name=state" json:"state,omitempty"`
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	DomainIds *string `protobuf:"bytes,5,opt,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	ZoneIds *string `protobuf:"bytes,6,opt,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
+	// sort key of the VPC offering, integer
+	SortKey *int32 `protobuf:"varint,7,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVPCOfferingRequest) Reset() {
+	*x = UpdateVPCOfferingRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVPCOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVPCOfferingRequest) ProtoMessage() {}
+
+func (x *UpdateVPCOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVPCOfferingRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVPCOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *UpdateVPCOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVPCOfferingRequest) GetVpcOffName() string {
+	if x != nil && x.VpcOffName != nil {
+		return *x.VpcOffName
+	}
+	return ""
+}
+
+func (x *UpdateVPCOfferingRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *UpdateVPCOfferingRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *UpdateVPCOfferingRequest) GetDomainIds() string {
+	if x != nil && x.DomainIds != nil {
+		return *x.DomainIds
+	}
+	return ""
+}
+
+func (x *UpdateVPCOfferingRequest) GetZoneIds() string {
+	if x != nil && x.ZoneIds != nil {
+		return *x.ZoneIds
+	}
+	return ""
+}
+
+func (x *UpdateVPCOfferingRequest) GetSortKey() int32 {
+	if x != nil && x.SortKey != nil {
+		return *x.SortKey
+	}
+	return 0
+}
+
+func (x *UpdateVPCOfferingRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVPCOfferingRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVPCOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVPCOfferingResponse represents the response from updates vpc offering
+type UpdateVPCOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVPCOfferingResponse) Reset() {
+	*x = UpdateVPCOfferingResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVPCOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVPCOfferingResponse) ProtoMessage() {}
+
+func (x *UpdateVPCOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVPCOfferingResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVPCOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *UpdateVPCOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListVPCsRequest represents the parameters for lists vpcs
+type ListVPCsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// list VPC by id
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// list by zone
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list by name of the VPC
+	VpcName *string `protobuf:"bytes,4,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
+	// List by display text of the VPC
+	DisplayText *string `protobuf:"bytes,5,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
+	Cidr *string `protobuf:"bytes,6,opt,name=cidr" json:"cidr,omitempty"`
+	// list by ID of the VPC offering
+	VpcOffId *int64 `protobuf:"varint,7,opt,name=vpc_off_id,json=vpcOffId" json:"vpc_off_id,omitempty"`
+	// list VPC supporting certain services
+	SupportedServices []string `protobuf:"bytes,8,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
+	// list VPCs by state
+	State *string `protobuf:"bytes,9,opt,name=state" json:"state,omitempty"`
+	// list VPCs by restartRequired option
+	RestartRequired *bool `protobuf:"varint,10,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,11,opt,name=display" json:"display,omitempty"`
+	// flag to display the resource icon for VPCs
+	ShowIcon *bool `protobuf:"varint,12,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,13,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,14,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,15,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,16,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,17,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,18,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,19,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,20,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,21,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,22,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVPCsRequest) Reset() {
+	*x = ListVPCsRequest{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVPCsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVPCsRequest) ProtoMessage() {}
+
+func (x *ListVPCsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVPCsRequest.ProtoReflect.Descriptor instead.
+func (*ListVPCsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *ListVPCsRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListVPCsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetVpcName() string {
+	if x != nil && x.VpcName != nil {
+		return *x.VpcName
+	}
+	return ""
+}
+
+func (x *ListVPCsRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *ListVPCsRequest) GetCidr() string {
+	if x != nil && x.Cidr != nil {
+		return *x.Cidr
+	}
+	return ""
+}
+
+func (x *ListVPCsRequest) GetVpcOffId() int64 {
+	if x != nil && x.VpcOffId != nil {
+		return *x.VpcOffId
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetSupportedServices() []string {
+	if x != nil {
+		return x.SupportedServices
+	}
+	return nil
+}
+
+func (x *ListVPCsRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListVPCsRequest) GetRestartRequired() bool {
+	if x != nil && x.RestartRequired != nil {
+		return *x.RestartRequired
+	}
+	return false
+}
+
+func (x *ListVPCsRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListVPCsRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListVPCsRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListVPCsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListVPCsRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListVPCsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListVPCsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVPCsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVPCsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVPCsResponse represents the response from lists vpcs
+type ListVPCsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Vpcs
+	Items []*Vpc `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Vpcs
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVPCsResponse) Reset() {
+	*x = ListVPCsResponse{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVPCsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVPCsResponse) ProtoMessage() {}
+
+func (x *ListVPCsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVPCsResponse.ProtoReflect.Descriptor instead.
+func (*ListVPCsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *ListVPCsResponse) GetItems() []*Vpc {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVPCsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // CreateVPCRequest represents the parameters for creates a vpc
@@ -193,7 +3265,7 @@ type CreateVPCRequest struct {
 
 func (x *CreateVPCRequest) Reset() {
 	*x = CreateVPCRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -205,7 +3277,7 @@ func (x *CreateVPCRequest) String() string {
 func (*CreateVPCRequest) ProtoMessage() {}
 
 func (x *CreateVPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -218,7 +3290,7 @@ func (x *CreateVPCRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVPCRequest.ProtoReflect.Descriptor instead.
 func (*CreateVPCRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateVPCRequest) GetRunAsAdmin() bool {
@@ -393,7 +3465,7 @@ type CreateVPCResponse struct {
 
 func (x *CreateVPCResponse) Reset() {
 	*x = CreateVPCResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -405,7 +3477,7 @@ func (x *CreateVPCResponse) String() string {
 func (*CreateVPCResponse) ProtoMessage() {}
 
 func (x *CreateVPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -418,180 +3490,10 @@ func (x *CreateVPCResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVPCResponse.ProtoReflect.Descriptor instead.
 func (*CreateVPCResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CreateVPCResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVPCCmdByAdminRequest represents the parameters for updates a vpc
-type UpdateVPCCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the VPC
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name of the VPC
-	VpcName *string `protobuf:"bytes,2,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
-	// the display text of the VPC
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// an optional field, whether to the display the vpc to the end user or not
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	// MTU to be configured on the network VR's public facing interfaces
-	PublicMtu *int32 `protobuf:"varint,5,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
-	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
-	SourceNatIP *string `protobuf:"bytes,6,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,7,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVPCCmdByAdminRequest) Reset() {
-	*x = UpdateVPCCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVPCCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVPCCmdByAdminRequest) ProtoMessage() {}
-
-func (x *UpdateVPCCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVPCCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVPCCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetVpcName() string {
-	if x != nil && x.VpcName != nil {
-		return *x.VpcName
-	}
-	return ""
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetPublicMtu() int32 {
-	if x != nil && x.PublicMtu != nil {
-		return *x.PublicMtu
-	}
-	return 0
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetSourceNatIP() string {
-	if x != nil && x.SourceNatIP != nil {
-		return *x.SourceNatIP
-	}
-	return ""
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVPCCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVPCCmdByAdminResponse represents the response from updates a vpc
-type UpdateVPCCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVPCCmdByAdminResponse) Reset() {
-	*x = UpdateVPCCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVPCCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVPCCmdByAdminResponse) ProtoMessage() {}
-
-func (x *UpdateVPCCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVPCCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVPCCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateVPCCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -632,7 +3534,7 @@ type ListStaticRoutesRequest struct {
 
 func (x *ListStaticRoutesRequest) Reset() {
 	*x = ListStaticRoutesRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -644,7 +3546,7 @@ func (x *ListStaticRoutesRequest) String() string {
 func (*ListStaticRoutesRequest) ProtoMessage() {}
 
 func (x *ListStaticRoutesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -657,7 +3559,7 @@ func (x *ListStaticRoutesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStaticRoutesRequest.ProtoReflect.Descriptor instead.
 func (*ListStaticRoutesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ListStaticRoutesRequest) GetId() int64 {
@@ -771,7 +3673,7 @@ type ListStaticRoutesResponse struct {
 
 func (x *ListStaticRoutesResponse) Reset() {
 	*x = ListStaticRoutesResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -783,7 +3685,7 @@ func (x *ListStaticRoutesResponse) String() string {
 func (*ListStaticRoutesResponse) ProtoMessage() {}
 
 func (x *ListStaticRoutesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -796,7 +3698,7 @@ func (x *ListStaticRoutesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStaticRoutesResponse.ProtoReflect.Descriptor instead.
 func (*ListStaticRoutesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ListStaticRoutesResponse) GetItems() []*StaticRoute {
@@ -811,2872 +3713,6 @@ func (x *ListStaticRoutesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// ListVPCsCmdByAdminRequest represents the parameters for lists vpcs
-type ListVPCsCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list VPC by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list by zone
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list by name of the VPC
-	VpcName *string `protobuf:"bytes,3,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
-	// List by display text of the VPC
-	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
-	Cidr *string `protobuf:"bytes,5,opt,name=cidr" json:"cidr,omitempty"`
-	// list by ID of the VPC offering
-	VpcOffId *int64 `protobuf:"varint,6,opt,name=vpc_off_id,json=vpcOffId" json:"vpc_off_id,omitempty"`
-	// list VPC supporting certain services
-	SupportedServices []string `protobuf:"bytes,7,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
-	// list VPCs by state
-	State *string `protobuf:"bytes,8,opt,name=state" json:"state,omitempty"`
-	// list VPCs by restartRequired option
-	RestartRequired *bool `protobuf:"varint,9,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
-	// flag to display the resource icon for VPCs
-	ShowIcon *bool `protobuf:"varint,11,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,12,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,13,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,14,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,15,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,16,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,17,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,18,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,19,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,20,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,21,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVPCsCmdByAdminRequest) Reset() {
-	*x = ListVPCsCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVPCsCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVPCsCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ListVPCsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVPCsCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ListVPCsCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetVpcName() string {
-	if x != nil && x.VpcName != nil {
-		return *x.VpcName
-	}
-	return ""
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetCidr() string {
-	if x != nil && x.Cidr != nil {
-		return *x.Cidr
-	}
-	return ""
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetVpcOffId() int64 {
-	if x != nil && x.VpcOffId != nil {
-		return *x.VpcOffId
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetSupportedServices() []string {
-	if x != nil {
-		return x.SupportedServices
-	}
-	return nil
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetRestartRequired() bool {
-	if x != nil && x.RestartRequired != nil {
-		return *x.RestartRequired
-	}
-	return false
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVPCsCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVPCsCmdByAdminResponse represents the response from lists vpcs
-type ListVPCsCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Vpcs
-	Items []*Vpc `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Vpcs
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVPCsCmdByAdminResponse) Reset() {
-	*x = ListVPCsCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVPCsCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVPCsCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ListVPCsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVPCsCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ListVPCsCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ListVPCsCmdByAdminResponse) GetItems() []*Vpc {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVPCsCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ListPrivateGatewaysCmdByAdminRequest represents the parameters for list private gateways
-type ListPrivateGatewaysCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list private gateway by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list gateways by ip address
-	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	// list gateways by vlan
-	Vlan *string `protobuf:"bytes,3,opt,name=vlan" json:"vlan,omitempty"`
-	// list gateways by vpc
-	VpcId *int64 `protobuf:"varint,4,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// list gateways by state
-	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) Reset() {
-	*x = ListPrivateGatewaysCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPrivateGatewaysCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPrivateGatewaysCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ListPrivateGatewaysCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListPrivateGatewaysCmdByAdminResponse represents the response from list private gateways
-type ListPrivateGatewaysCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of PrivateGateways
-	Items []*PrivateGateway `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of PrivateGateways
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPrivateGatewaysCmdByAdminResponse) Reset() {
-	*x = ListPrivateGatewaysCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPrivateGatewaysCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPrivateGatewaysCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ListPrivateGatewaysCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPrivateGatewaysCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ListPrivateGatewaysCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListPrivateGatewaysCmdByAdminResponse) GetItems() []*PrivateGateway {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListPrivateGatewaysCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// CreatePrivateGatewayByAdminRequest represents the parameters for creates a private gateway
-type CreatePrivateGatewayByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Physical Network ID the network belongs to
-	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// the network implementation uri for the private gateway
-	BroadcastUri *string `protobuf:"bytes,2,opt,name=broadcast_uri,json=broadcastUri" json:"broadcast_uri,omitempty"`
-	// when true bypasses VLAN id/range overlap check during private gateway creation
-	BypassVlanOverlapCheck *bool `protobuf:"varint,3,opt,name=bypass_vlan_overlap_check,json=bypassVlanOverlapCheck" json:"bypass_vlan_overlap_check,omitempty"`
-	// the gateway of the Private gateway
-	Gateway *string `protobuf:"bytes,4,opt,name=gateway" json:"gateway,omitempty"`
-	// the netmask of the Private gateway
-	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
-	// the IP address of the Private gateaway
-	IpAddress *string `protobuf:"bytes,6,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	// the uuid of the network offering to use for the private gateways network connection
-	NetworkOfferingId *int64 `protobuf:"varint,7,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
-	// the VPC network belongs to
-	VpcId *int64 `protobuf:"varint,8,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
-	IsSourceNat *bool `protobuf:"varint,9,opt,name=is_source_nat,json=isSourceNat" json:"is_source_nat,omitempty"`
-	// the ID of the network ACL
-	AclId *int64 `protobuf:"varint,10,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
-	// The isolated network this private gateway is associated to.
-	AssociatedNetworkId *int64 `protobuf:"varint,11,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,12,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,13,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) Reset() {
-	*x = CreatePrivateGatewayByAdminRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePrivateGatewayByAdminRequest) ProtoMessage() {}
-
-func (x *CreatePrivateGatewayByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePrivateGatewayByAdminRequest.ProtoReflect.Descriptor instead.
-func (*CreatePrivateGatewayByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetBroadcastUri() string {
-	if x != nil && x.BroadcastUri != nil {
-		return *x.BroadcastUri
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetBypassVlanOverlapCheck() bool {
-	if x != nil && x.BypassVlanOverlapCheck != nil {
-		return *x.BypassVlanOverlapCheck
-	}
-	return false
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetNetworkOfferingId() int64 {
-	if x != nil && x.NetworkOfferingId != nil {
-		return *x.NetworkOfferingId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetIsSourceNat() bool {
-	if x != nil && x.IsSourceNat != nil {
-		return *x.IsSourceNat
-	}
-	return false
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetAclId() int64 {
-	if x != nil && x.AclId != nil {
-		return *x.AclId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetAssociatedNetworkId() int64 {
-	if x != nil && x.AssociatedNetworkId != nil {
-		return *x.AssociatedNetworkId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreatePrivateGatewayByAdminResponse represents the response from creates a private gateway
-type CreatePrivateGatewayByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePrivateGatewayByAdminResponse) Reset() {
-	*x = CreatePrivateGatewayByAdminResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePrivateGatewayByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePrivateGatewayByAdminResponse) ProtoMessage() {}
-
-func (x *CreatePrivateGatewayByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePrivateGatewayByAdminResponse.ProtoReflect.Descriptor instead.
-func (*CreatePrivateGatewayByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *CreatePrivateGatewayByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreatePrivateGatewayRequest represents the parameters for creates a private gateway
-type CreatePrivateGatewayRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the gateway of the Private gateway
-	Gateway *string `protobuf:"bytes,1,opt,name=gateway" json:"gateway,omitempty"`
-	// the netmask of the Private gateway
-	Netmask *string `protobuf:"bytes,2,opt,name=netmask" json:"netmask,omitempty"`
-	// the IP address of the Private gateaway
-	IpAddress *string `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	// the uuid of the network offering to use for the private gateways network connection
-	NetworkOfferingId *int64 `protobuf:"varint,4,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
-	// the VPC network belongs to
-	VpcId *int64 `protobuf:"varint,5,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
-	IsSourceNat *bool `protobuf:"varint,6,opt,name=is_source_nat,json=isSourceNat" json:"is_source_nat,omitempty"`
-	// the ID of the network ACL
-	AclId *int64 `protobuf:"varint,7,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
-	// The isolated network this private gateway is associated to.
-	AssociatedNetworkId *int64 `protobuf:"varint,8,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePrivateGatewayRequest) Reset() {
-	*x = CreatePrivateGatewayRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePrivateGatewayRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePrivateGatewayRequest) ProtoMessage() {}
-
-func (x *CreatePrivateGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePrivateGatewayRequest.ProtoReflect.Descriptor instead.
-func (*CreatePrivateGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *CreatePrivateGatewayRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayRequest) GetNetworkOfferingId() int64 {
-	if x != nil && x.NetworkOfferingId != nil {
-		return *x.NetworkOfferingId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayRequest) GetIsSourceNat() bool {
-	if x != nil && x.IsSourceNat != nil {
-		return *x.IsSourceNat
-	}
-	return false
-}
-
-func (x *CreatePrivateGatewayRequest) GetAclId() int64 {
-	if x != nil && x.AclId != nil {
-		return *x.AclId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayRequest) GetAssociatedNetworkId() int64 {
-	if x != nil && x.AssociatedNetworkId != nil {
-		return *x.AssociatedNetworkId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreatePrivateGatewayRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreatePrivateGatewayRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreatePrivateGatewayResponse represents the response from creates a private gateway
-type CreatePrivateGatewayResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePrivateGatewayResponse) Reset() {
-	*x = CreatePrivateGatewayResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePrivateGatewayResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePrivateGatewayResponse) ProtoMessage() {}
-
-func (x *CreatePrivateGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePrivateGatewayResponse.ProtoReflect.Descriptor instead.
-func (*CreatePrivateGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *CreatePrivateGatewayResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListVPCsRequest represents the parameters for lists vpcs
-type ListVPCsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// list VPC by id
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// list by zone
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list by name of the VPC
-	VpcName *string `protobuf:"bytes,4,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
-	// List by display text of the VPC
-	DisplayText *string `protobuf:"bytes,5,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
-	Cidr *string `protobuf:"bytes,6,opt,name=cidr" json:"cidr,omitempty"`
-	// list by ID of the VPC offering
-	VpcOffId *int64 `protobuf:"varint,7,opt,name=vpc_off_id,json=vpcOffId" json:"vpc_off_id,omitempty"`
-	// list VPC supporting certain services
-	SupportedServices []string `protobuf:"bytes,8,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
-	// list VPCs by state
-	State *string `protobuf:"bytes,9,opt,name=state" json:"state,omitempty"`
-	// list VPCs by restartRequired option
-	RestartRequired *bool `protobuf:"varint,10,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,11,opt,name=display" json:"display,omitempty"`
-	// flag to display the resource icon for VPCs
-	ShowIcon *bool `protobuf:"varint,12,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,13,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,14,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,15,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,16,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,17,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,18,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,19,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,20,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,21,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,22,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVPCsRequest) Reset() {
-	*x = ListVPCsRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVPCsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVPCsRequest) ProtoMessage() {}
-
-func (x *ListVPCsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVPCsRequest.ProtoReflect.Descriptor instead.
-func (*ListVPCsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *ListVPCsRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListVPCsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetVpcName() string {
-	if x != nil && x.VpcName != nil {
-		return *x.VpcName
-	}
-	return ""
-}
-
-func (x *ListVPCsRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *ListVPCsRequest) GetCidr() string {
-	if x != nil && x.Cidr != nil {
-		return *x.Cidr
-	}
-	return ""
-}
-
-func (x *ListVPCsRequest) GetVpcOffId() int64 {
-	if x != nil && x.VpcOffId != nil {
-		return *x.VpcOffId
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetSupportedServices() []string {
-	if x != nil {
-		return x.SupportedServices
-	}
-	return nil
-}
-
-func (x *ListVPCsRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListVPCsRequest) GetRestartRequired() bool {
-	if x != nil && x.RestartRequired != nil {
-		return *x.RestartRequired
-	}
-	return false
-}
-
-func (x *ListVPCsRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListVPCsRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListVPCsRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListVPCsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListVPCsRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListVPCsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListVPCsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVPCsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVPCsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVPCsResponse represents the response from lists vpcs
-type ListVPCsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Vpcs
-	Items []*Vpc `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Vpcs
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVPCsResponse) Reset() {
-	*x = ListVPCsResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVPCsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVPCsResponse) ProtoMessage() {}
-
-func (x *ListVPCsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVPCsResponse.ProtoReflect.Descriptor instead.
-func (*ListVPCsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ListVPCsResponse) GetItems() []*Vpc {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVPCsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateVPCOfferingRequest represents the parameters for updates vpc offering
-type UpdateVPCOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the VPC offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name of the VPC offering
-	VpcOffName *string `protobuf:"bytes,2,opt,name=vpc_off_name,json=vpcOffName" json:"vpc_off_name,omitempty"`
-	// the display text of the VPC offering
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// update state for the VPC offering; supported states - Enabled/Disabled
-	State *string `protobuf:"bytes,4,opt,name=state" json:"state,omitempty"`
-	// the ID of the containing domain(s) as comma separated string, public for public offerings
-	DomainIds *string `protobuf:"bytes,5,opt,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
-	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
-	ZoneIds *string `protobuf:"bytes,6,opt,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	// sort key of the VPC offering, integer
-	SortKey *int32 `protobuf:"varint,7,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVPCOfferingRequest) Reset() {
-	*x = UpdateVPCOfferingRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVPCOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVPCOfferingRequest) ProtoMessage() {}
-
-func (x *UpdateVPCOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVPCOfferingRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVPCOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *UpdateVPCOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVPCOfferingRequest) GetVpcOffName() string {
-	if x != nil && x.VpcOffName != nil {
-		return *x.VpcOffName
-	}
-	return ""
-}
-
-func (x *UpdateVPCOfferingRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateVPCOfferingRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *UpdateVPCOfferingRequest) GetDomainIds() string {
-	if x != nil && x.DomainIds != nil {
-		return *x.DomainIds
-	}
-	return ""
-}
-
-func (x *UpdateVPCOfferingRequest) GetZoneIds() string {
-	if x != nil && x.ZoneIds != nil {
-		return *x.ZoneIds
-	}
-	return ""
-}
-
-func (x *UpdateVPCOfferingRequest) GetSortKey() int32 {
-	if x != nil && x.SortKey != nil {
-		return *x.SortKey
-	}
-	return 0
-}
-
-func (x *UpdateVPCOfferingRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVPCOfferingRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVPCOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVPCOfferingResponse represents the response from updates vpc offering
-type UpdateVPCOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVPCOfferingResponse) Reset() {
-	*x = UpdateVPCOfferingResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVPCOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVPCOfferingResponse) ProtoMessage() {}
-
-func (x *UpdateVPCOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVPCOfferingResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVPCOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *UpdateVPCOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListPrivateGatewaysRequest represents the parameters for list private gateways
-type ListPrivateGatewaysRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list private gateway by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list gateways by ip address
-	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	// list gateways by vlan
-	Vlan *string `protobuf:"bytes,3,opt,name=vlan" json:"vlan,omitempty"`
-	// list gateways by vpc
-	VpcId *int64 `protobuf:"varint,4,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// list gateways by state
-	State *string `protobuf:"bytes,5,opt,name=state" json:"state,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPrivateGatewaysRequest) Reset() {
-	*x = ListPrivateGatewaysRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPrivateGatewaysRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPrivateGatewaysRequest) ProtoMessage() {}
-
-func (x *ListPrivateGatewaysRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPrivateGatewaysRequest.ProtoReflect.Descriptor instead.
-func (*ListPrivateGatewaysRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *ListPrivateGatewaysRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListPrivateGatewaysRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListPrivateGatewaysRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListPrivateGatewaysRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListPrivateGatewaysRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListPrivateGatewaysResponse represents the response from list private gateways
-type ListPrivateGatewaysResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of PrivateGateways
-	Items []*PrivateGateway `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of PrivateGateways
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPrivateGatewaysResponse) Reset() {
-	*x = ListPrivateGatewaysResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPrivateGatewaysResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPrivateGatewaysResponse) ProtoMessage() {}
-
-func (x *ListPrivateGatewaysResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPrivateGatewaysResponse.ProtoReflect.Descriptor instead.
-func (*ListPrivateGatewaysResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *ListPrivateGatewaysResponse) GetItems() []*PrivateGateway {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListPrivateGatewaysResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// CreateVPCOfferingRequest represents the parameters for creates vpc offering
-type CreateVPCOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the vpc offering
-	VpcOfferingName *string `protobuf:"bytes,1,opt,name=vpc_offering_name,json=vpcOfferingName" json:"vpc_offering_name,omitempty"`
-	// the display text of the vpc offering, defaults to the 'name'
-	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// services supported by the vpc offering
-	SupportedServices []string `protobuf:"bytes,3,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
-	// provider to service mapping. If not specified, the provider for the service will be mapped to the default provider on the physical network
-	ServiceProviderList map[string]string `protobuf:"bytes,4,rep,name=service_provider_list,json=serviceProviderList" json:"service_provider_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// desired service capabilities as part of vpc offering
-	ServiceCapabilityList map[string]string `protobuf:"bytes,5,rep,name=service_capability_list,json=serviceCapabilityList" json:"service_capability_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// The internet protocol of the offering. Options are ipv4 and dualstack. Default is ipv4. dualstack will create an offering that supports both IPv4 and IPv6
-	InternetProtocol *string `protobuf:"bytes,6,opt,name=internet_protocol,json=internetProtocol" json:"internet_protocol,omitempty"`
-	// the ID of the service offering for the VPC router appliance
-	ServiceOfferingId *int64 `protobuf:"varint,7,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// the ID of the containing domain(s), null for public offerings
-	DomainIds []string `protobuf:"bytes,8,rep,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
-	// the ID of the containing zone(s), null for public offerings
-	ZoneIds []string `protobuf:"bytes,9,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	// true if network offering is meant to be used for NSX, false otherwise.
-	ForNsx *bool `protobuf:"varint,10,opt,name=for_nsx,json=forNsx" json:"for_nsx,omitempty"`
-	// true if network offering for NSX VPC offering supports Load balancer service.
-	NsxSupportsLbService *bool `protobuf:"varint,11,opt,name=nsx_supports_lb_service,json=nsxSupportsLbService" json:"nsx_supports_lb_service,omitempty"`
-	// set to true if the offering is to be enabled during creation. Default is false
-	Enable *bool `protobuf:"varint,12,opt,name=enable" json:"enable,omitempty"`
-	// Indicates the mode with which the network will operate. Valid option: NATTED or ROUTED
-	NetworkMode *string `protobuf:"bytes,13,opt,name=network_mode,json=networkMode" json:"network_mode,omitempty"`
-	// true if the VPC offering supports choosing AS number
-	SpecifyAsNumber *bool `protobuf:"varint,14,opt,name=specify_as_number,json=specifyAsNumber" json:"specify_as_number,omitempty"`
-	// the routing mode for the VPC offering. Supported types are: Static or Dynamic.
-	RoutingMode *string `protobuf:"bytes,15,opt,name=routing_mode,json=routingMode" json:"routing_mode,omitempty"`
-	StartEventId *int64 `protobuf:"varint,16,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,17,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVPCOfferingRequest) Reset() {
-	*x = CreateVPCOfferingRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVPCOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVPCOfferingRequest) ProtoMessage() {}
-
-func (x *CreateVPCOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVPCOfferingRequest.ProtoReflect.Descriptor instead.
-func (*CreateVPCOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *CreateVPCOfferingRequest) GetVpcOfferingName() string {
-	if x != nil && x.VpcOfferingName != nil {
-		return *x.VpcOfferingName
-	}
-	return ""
-}
-
-func (x *CreateVPCOfferingRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *CreateVPCOfferingRequest) GetSupportedServices() []string {
-	if x != nil {
-		return x.SupportedServices
-	}
-	return nil
-}
-
-func (x *CreateVPCOfferingRequest) GetServiceProviderList() map[string]string {
-	if x != nil {
-		return x.ServiceProviderList
-	}
-	return nil
-}
-
-func (x *CreateVPCOfferingRequest) GetServiceCapabilityList() map[string]string {
-	if x != nil {
-		return x.ServiceCapabilityList
-	}
-	return nil
-}
-
-func (x *CreateVPCOfferingRequest) GetInternetProtocol() string {
-	if x != nil && x.InternetProtocol != nil {
-		return *x.InternetProtocol
-	}
-	return ""
-}
-
-func (x *CreateVPCOfferingRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *CreateVPCOfferingRequest) GetDomainIds() []string {
-	if x != nil {
-		return x.DomainIds
-	}
-	return nil
-}
-
-func (x *CreateVPCOfferingRequest) GetZoneIds() []string {
-	if x != nil {
-		return x.ZoneIds
-	}
-	return nil
-}
-
-func (x *CreateVPCOfferingRequest) GetForNsx() bool {
-	if x != nil && x.ForNsx != nil {
-		return *x.ForNsx
-	}
-	return false
-}
-
-func (x *CreateVPCOfferingRequest) GetNsxSupportsLbService() bool {
-	if x != nil && x.NsxSupportsLbService != nil {
-		return *x.NsxSupportsLbService
-	}
-	return false
-}
-
-func (x *CreateVPCOfferingRequest) GetEnable() bool {
-	if x != nil && x.Enable != nil {
-		return *x.Enable
-	}
-	return false
-}
-
-func (x *CreateVPCOfferingRequest) GetNetworkMode() string {
-	if x != nil && x.NetworkMode != nil {
-		return *x.NetworkMode
-	}
-	return ""
-}
-
-func (x *CreateVPCOfferingRequest) GetSpecifyAsNumber() bool {
-	if x != nil && x.SpecifyAsNumber != nil {
-		return *x.SpecifyAsNumber
-	}
-	return false
-}
-
-func (x *CreateVPCOfferingRequest) GetRoutingMode() string {
-	if x != nil && x.RoutingMode != nil {
-		return *x.RoutingMode
-	}
-	return ""
-}
-
-func (x *CreateVPCOfferingRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateVPCOfferingRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateVPCOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateVPCOfferingResponse represents the response from creates vpc offering
-type CreateVPCOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVPCOfferingResponse) Reset() {
-	*x = CreateVPCOfferingResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVPCOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVPCOfferingResponse) ProtoMessage() {}
-
-func (x *CreateVPCOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVPCOfferingResponse.ProtoReflect.Descriptor instead.
-func (*CreateVPCOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *CreateVPCOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeletePrivateGatewayRequest represents the parameters for deletes a private gateway
-type DeletePrivateGatewayRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the private gateway
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePrivateGatewayRequest) Reset() {
-	*x = DeletePrivateGatewayRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePrivateGatewayRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePrivateGatewayRequest) ProtoMessage() {}
-
-func (x *DeletePrivateGatewayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePrivateGatewayRequest.ProtoReflect.Descriptor instead.
-func (*DeletePrivateGatewayRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *DeletePrivateGatewayRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeletePrivateGatewayRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeletePrivateGatewayRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeletePrivateGatewayRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeletePrivateGatewayResponse represents the response from deletes a private gateway
-type DeletePrivateGatewayResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePrivateGatewayResponse) Reset() {
-	*x = DeletePrivateGatewayResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePrivateGatewayResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePrivateGatewayResponse) ProtoMessage() {}
-
-func (x *DeletePrivateGatewayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePrivateGatewayResponse.ProtoReflect.Descriptor instead.
-func (*DeletePrivateGatewayResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *DeletePrivateGatewayResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateStaticRouteRequest represents the parameters for creates a static route
-type CreateStaticRouteRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the gateway id we are creating static route for
-	GatewayId *int64 `protobuf:"varint,1,opt,name=gateway_id,json=gatewayId" json:"gateway_id,omitempty"`
-	// static route cidr
-	Cidr *string `protobuf:"bytes,2,opt,name=cidr" json:"cidr,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateStaticRouteRequest) Reset() {
-	*x = CreateStaticRouteRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateStaticRouteRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateStaticRouteRequest) ProtoMessage() {}
-
-func (x *CreateStaticRouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateStaticRouteRequest.ProtoReflect.Descriptor instead.
-func (*CreateStaticRouteRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *CreateStaticRouteRequest) GetGatewayId() int64 {
-	if x != nil && x.GatewayId != nil {
-		return *x.GatewayId
-	}
-	return 0
-}
-
-func (x *CreateStaticRouteRequest) GetCidr() string {
-	if x != nil && x.Cidr != nil {
-		return *x.Cidr
-	}
-	return ""
-}
-
-func (x *CreateStaticRouteRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateStaticRouteRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateStaticRouteRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateStaticRouteResponse represents the response from creates a static route
-type CreateStaticRouteResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateStaticRouteResponse) Reset() {
-	*x = CreateStaticRouteResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateStaticRouteResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateStaticRouteResponse) ProtoMessage() {}
-
-func (x *CreateStaticRouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateStaticRouteResponse.ProtoReflect.Descriptor instead.
-func (*CreateStaticRouteResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *CreateStaticRouteResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RestartVPCRequest represents the parameters for restarts a vpc
-type RestartVPCRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the VPC
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// If cleanup old network elements
-	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
-	// Turn a single VPC into a redundant one.
-	Makeredundant *bool `protobuf:"varint,3,opt,name=makeredundant" json:"makeredundant,omitempty"`
-	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
-	LivePatch *bool `protobuf:"varint,4,opt,name=live_patch,json=livePatch" json:"live_patch,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestartVPCRequest) Reset() {
-	*x = RestartVPCRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestartVPCRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestartVPCRequest) ProtoMessage() {}
-
-func (x *RestartVPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestartVPCRequest.ProtoReflect.Descriptor instead.
-func (*RestartVPCRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *RestartVPCRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RestartVPCRequest) GetCleanup() bool {
-	if x != nil && x.Cleanup != nil {
-		return *x.Cleanup
-	}
-	return false
-}
-
-func (x *RestartVPCRequest) GetMakeredundant() bool {
-	if x != nil && x.Makeredundant != nil {
-		return *x.Makeredundant
-	}
-	return false
-}
-
-func (x *RestartVPCRequest) GetLivePatch() bool {
-	if x != nil && x.LivePatch != nil {
-		return *x.LivePatch
-	}
-	return false
-}
-
-func (x *RestartVPCRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestartVPCRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestartVPCRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestartVPCResponse represents the response from restarts a vpc
-type RestartVPCResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestartVPCResponse) Reset() {
-	*x = RestartVPCResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestartVPCResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestartVPCResponse) ProtoMessage() {}
-
-func (x *RestartVPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestartVPCResponse.ProtoReflect.Descriptor instead.
-func (*RestartVPCResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *RestartVPCResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteVPCRequest represents the parameters for deletes a vpc
-type DeleteVPCRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the VPC
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVPCRequest) Reset() {
-	*x = DeleteVPCRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVPCRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVPCRequest) ProtoMessage() {}
-
-func (x *DeleteVPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVPCRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVPCRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *DeleteVPCRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVPCRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteVPCRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteVPCRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVPCResponse represents the response from deletes a vpc
-type DeleteVPCResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVPCResponse) Reset() {
-	*x = DeleteVPCResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVPCResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVPCResponse) ProtoMessage() {}
-
-func (x *DeleteVPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVPCResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVPCResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *DeleteVPCResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteVPCOfferingRequest represents the parameters for deletes vpc offering
-type DeleteVPCOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the VPC offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVPCOfferingRequest) Reset() {
-	*x = DeleteVPCOfferingRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVPCOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVPCOfferingRequest) ProtoMessage() {}
-
-func (x *DeleteVPCOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVPCOfferingRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVPCOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *DeleteVPCOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVPCOfferingRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteVPCOfferingRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteVPCOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVPCOfferingResponse represents the response from deletes vpc offering
-type DeleteVPCOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVPCOfferingResponse) Reset() {
-	*x = DeleteVPCOfferingResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVPCOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVPCOfferingResponse) ProtoMessage() {}
-
-func (x *DeleteVPCOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVPCOfferingResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVPCOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *DeleteVPCOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListVPCOfferingsRequest represents the parameters for lists vpc offerings
-type ListVPCOfferingsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list VPC offerings by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list VPC offerings by name
-	VpcOffName *string `protobuf:"bytes,2,opt,name=vpc_off_name,json=vpcOffName" json:"vpc_off_name,omitempty"`
-	// list VPC offerings by display text
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// true if need to list only default VPC offerings. Default value is false
-	IsDefault *bool `protobuf:"varint,4,opt,name=is_default,json=isDefault" json:"is_default,omitempty"`
-	// list VPC offerings supporting certain services
-	SupportedServices []string `protobuf:"bytes,5,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
-	// list VPC offerings by state
-	State *string `protobuf:"bytes,6,opt,name=state" json:"state,omitempty"`
-	// list VPC offerings available for VPC creation in specific domain
-	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// id of zone VPC offering is associated with
-	ZoneId *int64 `protobuf:"varint,8,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,9,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVPCOfferingsRequest) Reset() {
-	*x = ListVPCOfferingsRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVPCOfferingsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVPCOfferingsRequest) ProtoMessage() {}
-
-func (x *ListVPCOfferingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVPCOfferingsRequest.ProtoReflect.Descriptor instead.
-func (*ListVPCOfferingsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *ListVPCOfferingsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVPCOfferingsRequest) GetVpcOffName() string {
-	if x != nil && x.VpcOffName != nil {
-		return *x.VpcOffName
-	}
-	return ""
-}
-
-func (x *ListVPCOfferingsRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *ListVPCOfferingsRequest) GetIsDefault() bool {
-	if x != nil && x.IsDefault != nil {
-		return *x.IsDefault
-	}
-	return false
-}
-
-func (x *ListVPCOfferingsRequest) GetSupportedServices() []string {
-	if x != nil {
-		return x.SupportedServices
-	}
-	return nil
-}
-
-func (x *ListVPCOfferingsRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListVPCOfferingsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListVPCOfferingsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListVPCOfferingsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVPCOfferingsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVPCOfferingsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVPCOfferingsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVPCOfferingsResponse represents the response from lists vpc offerings
-type ListVPCOfferingsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of VpcOfferings
-	Items []*VpcOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of VpcOfferings
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVPCOfferingsResponse) Reset() {
-	*x = ListVPCOfferingsResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVPCOfferingsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVPCOfferingsResponse) ProtoMessage() {}
-
-func (x *ListVPCOfferingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVPCOfferingsResponse.ProtoReflect.Descriptor instead.
-func (*ListVPCOfferingsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *ListVPCOfferingsResponse) GetItems() []*VpcOffering {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVPCOfferingsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateVPCRequest represents the parameters for updates a vpc
-type UpdateVPCRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the id of the VPC
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the name of the VPC
-	VpcName *string `protobuf:"bytes,3,opt,name=vpc_name,json=vpcName" json:"vpc_name,omitempty"`
-	// the display text of the VPC
-	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// an optional field, whether to the display the vpc to the end user or not
-	Display *bool `protobuf:"varint,5,opt,name=display" json:"display,omitempty"`
-	// MTU to be configured on the network VR's public facing interfaces
-	PublicMtu *int32 `protobuf:"varint,6,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
-	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
-	SourceNatIP *string `protobuf:"bytes,7,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,8,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVPCRequest) Reset() {
-	*x = UpdateVPCRequest{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVPCRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVPCRequest) ProtoMessage() {}
-
-func (x *UpdateVPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVPCRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVPCRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{36}
-}
-
-func (x *UpdateVPCRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *UpdateVPCRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVPCRequest) GetVpcName() string {
-	if x != nil && x.VpcName != nil {
-		return *x.VpcName
-	}
-	return ""
-}
-
-func (x *UpdateVPCRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateVPCRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateVPCRequest) GetPublicMtu() int32 {
-	if x != nil && x.PublicMtu != nil {
-		return *x.PublicMtu
-	}
-	return 0
-}
-
-func (x *UpdateVPCRequest) GetSourceNatIP() string {
-	if x != nil && x.SourceNatIP != nil {
-		return *x.SourceNatIP
-	}
-	return ""
-}
-
-func (x *UpdateVPCRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateVPCRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVPCRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVPCRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVPCResponse represents the response from updates a vpc
-type UpdateVPCResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVPCResponse) Reset() {
-	*x = UpdateVPCResponse{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVPCResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVPCResponse) ProtoMessage() {}
-
-func (x *UpdateVPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVPCResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVPCResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{37}
-}
-
-func (x *UpdateVPCResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// StaticRoute represents a StaticRoute Item
-type StaticRoute struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the StaticRoute
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the StaticRoute
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the StaticRoute
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the StaticRoute
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StaticRoute) Reset() {
-	*x = StaticRoute{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StaticRoute) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StaticRoute) ProtoMessage() {}
-
-func (x *StaticRoute) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StaticRoute.ProtoReflect.Descriptor instead.
-func (*StaticRoute) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{38}
-}
-
-func (x *StaticRoute) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *StaticRoute) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *StaticRoute) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *StaticRoute) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *StaticRoute) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
 }
 
 // Vpc represents a Vpc Item
@@ -3698,7 +3734,7 @@ type Vpc struct {
 
 func (x *Vpc) Reset() {
 	*x = Vpc{}
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[39]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3710,7 +3746,7 @@ func (x *Vpc) String() string {
 func (*Vpc) ProtoMessage() {}
 
 func (x *Vpc) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[39]
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3723,7 +3759,7 @@ func (x *Vpc) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Vpc.ProtoReflect.Descriptor instead.
 func (*Vpc) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{39}
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *Vpc) GetId() string {
@@ -3755,6 +3791,88 @@ func (x *Vpc) GetDescription() string {
 }
 
 func (x *Vpc) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// VpcOffering represents a VpcOffering Item
+type VpcOffering struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the VpcOffering
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the VpcOffering
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the VpcOffering
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the VpcOffering
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VpcOffering) Reset() {
+	*x = VpcOffering{}
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VpcOffering) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VpcOffering) ProtoMessage() {}
+
+func (x *VpcOffering) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VpcOffering.ProtoReflect.Descriptor instead.
+func (*VpcOffering) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *VpcOffering) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *VpcOffering) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *VpcOffering) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *VpcOffering) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *VpcOffering) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -3843,16 +3961,16 @@ func (x *PrivateGateway) GetCreated() string {
 	return ""
 }
 
-// VpcOffering represents a VpcOffering Item
-type VpcOffering struct {
+// StaticRoute represents a StaticRoute Item
+type StaticRoute struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the VpcOffering
+	// The ID of the StaticRoute
 	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the VpcOffering
+	// The name of the StaticRoute
 	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the VpcOffering
+	// The display name of the StaticRoute
 	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the VpcOffering
+	// The description of the StaticRoute
 	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
 	// The date this entity was created
 	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
@@ -3860,20 +3978,20 @@ type VpcOffering struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VpcOffering) Reset() {
-	*x = VpcOffering{}
+func (x *StaticRoute) Reset() {
+	*x = StaticRoute{}
 	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VpcOffering) String() string {
+func (x *StaticRoute) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VpcOffering) ProtoMessage() {}
+func (*StaticRoute) ProtoMessage() {}
 
-func (x *VpcOffering) ProtoReflect() protoreflect.Message {
+func (x *StaticRoute) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3885,40 +4003,40 @@ func (x *VpcOffering) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VpcOffering.ProtoReflect.Descriptor instead.
-func (*VpcOffering) Descriptor() ([]byte, []int) {
+// Deprecated: Use StaticRoute.ProtoReflect.Descriptor instead.
+func (*StaticRoute) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *VpcOffering) GetId() string {
+func (x *StaticRoute) GetId() string {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return ""
 }
 
-func (x *VpcOffering) GetName() string {
+func (x *StaticRoute) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *VpcOffering) GetDisplayName() string {
+func (x *StaticRoute) GetDisplayName() string {
 	if x != nil && x.DisplayName != nil {
 		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *VpcOffering) GetDescription() string {
+func (x *StaticRoute) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *VpcOffering) GetCreated() string {
+func (x *StaticRoute) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -4211,88 +4329,64 @@ var File_cloudstack_management_vpc_v1_vpc_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/vpc/v1/vpc.gen.proto\x12\x1ccloudstack.management.vpc.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xaf\x01\n" +
-	"\x18DeleteStaticRouteRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
-	"\x19DeleteStaticRouteResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xa7\a\n" +
-	"\x10CreateVPCRequest\x12 \n" +
+	"*cloudstack/management/vpc/v1/vpc.gen.proto\x12\x1ccloudstack.management.vpc.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xa8\x03\n" +
+	"\x10UpdateVPCRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\xa0\x01\n" +
-	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1f\n" +
-	"\azone_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12(\n" +
-	"\bvpc_name\x18\x06 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\avpcName\x12!\n" +
-	"\fdisplay_text\x18\a \x01(\tR\vdisplayText\x12\x12\n" +
-	"\x04cidr\x18\b \x01(\tR\x04cidr\x12\x1b\n" +
-	"\tcidr_size\x18\t \x01(\x05R\bcidrSize\x12)\n" +
-	"\fvpc_offering\x18\n" +
-	" \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vvpcOffering\x12%\n" +
-	"\x0enetwork_domain\x18\v \x01(\tR\rnetworkDomain\x12\x1b\n" +
-	"\x05start\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\x05start\x12\x1f\n" +
-	"\adisplay\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
-	"\n" +
-	"public_mtu\x18\x0e \x01(\x05R\tpublicMtu\x12\x19\n" +
-	"\bip4_dns1\x18\x0f \x01(\tR\aip4Dns1\x12\x19\n" +
-	"\bip4_dns2\x18\x10 \x01(\tR\aip4Dns2\x12\"\n" +
-	"\bip6_dns1\x18\x11 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns1\x12\"\n" +
-	"\bip6_dns2\x18\x12 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns2\x12,\n" +
-	"\x0esource_nat_i_p\x18\x13 \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12\x1b\n" +
-	"\tas_number\x18\x14 \x01(\x03R\basNumber\x12$\n" +
-	"\x0estart_event_id\x18\x15 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x16 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\"Q\n" +
-	"\x11CreateVPCResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x90\x03\n" +
-	"\x1aUpdateVPCCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\bvpc_name\x18\x02 \x01(\tB\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\bvpc_name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\avpcName\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
+	"\fdisplay_text\x18\x04 \x01(\tR\vdisplayText\x12\x1f\n" +
+	"\adisplay\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
 	"\n" +
-	"public_mtu\x18\x05 \x01(\x05R\tpublicMtu\x12,\n" +
-	"\x0esource_nat_i_p\x18\x06 \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12%\n" +
-	"\tcustom_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"[\n" +
-	"\x1bUpdateVPCCmdByAdminResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x99\x05\n" +
-	"\x17ListStaticRoutesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
-	"\x06vpc_id\x18\x02 \x01(\x03R\x05vpcId\x12\x1d\n" +
+	"public_mtu\x18\x06 \x01(\x05R\tpublicMtu\x12,\n" +
+	"\x0esource_nat_i_p\x18\a \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12%\n" +
+	"\tcustom_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"Q\n" +
+	"\x11UpdateVPCResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xda\x01\n" +
+	"\x18CreateStaticRouteRequest\x12%\n" +
 	"\n" +
-	"gateway_id\x18\x03 \x01(\x03R\tgatewayId\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\tR\x05state\x12S\n" +
-	"\x04tags\x18\x05 \x03(\v2?.cloudstack.management.vpc.v1.ListStaticRoutesRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"gateway_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tgatewayId\x12\x1a\n" +
+	"\x04cidr\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04cidr\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
+	"\x19CreateStaticRouteResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xd5\b\n" +
+	"\x18CreateVPCOfferingRequest\x129\n" +
+	"\x11vpc_offering_name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x0fvpcOfferingName\x12!\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12-\n" +
+	"\x12supported_services\x18\x03 \x03(\tR\x11supportedServices\x12\x83\x01\n" +
+	"\x15service_provider_list\x18\x04 \x03(\v2O.cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceProviderListEntryR\x13serviceProviderList\x12\x89\x01\n" +
+	"\x17service_capability_list\x18\x05 \x03(\v2Q.cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceCapabilityListEntryR\x15serviceCapabilityList\x12+\n" +
+	"\x11internet_protocol\x18\x06 \x01(\tR\x10internetProtocol\x12.\n" +
+	"\x13service_offering_id\x18\a \x01(\x03R\x11serviceOfferingId\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
+	"domain_ids\x18\b \x03(\tR\tdomainIds\x12\x19\n" +
+	"\bzone_ids\x18\t \x03(\tR\azoneIds\x12\x1e\n" +
+	"\afor_nsx\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forNsx\x12<\n" +
+	"\x17nsx_supports_lb_service\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x14nsxSupportsLbService\x12\x1d\n" +
+	"\x06enable\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\x06enable\x12!\n" +
+	"\fnetwork_mode\x18\r \x01(\tR\vnetworkMode\x121\n" +
+	"\x11specify_as_number\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fspecifyAsNumber\x12!\n" +
+	"\frouting_mode\x18\x0f \x01(\tR\vroutingMode\x12$\n" +
+	"\x0estart_event_id\x18\x10 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x11 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\x1aF\n" +
+	"\x18ServiceProviderListEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x83\x01\n" +
-	"\x18ListStaticRoutesResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.vpc.v1.StaticRouteR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa2\a\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aH\n" +
+	"\x1aServiceCapabilityListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
+	"\x19CreateVPCOfferingResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xa2\a\n" +
 	"\x19ListVPCsCmdByAdminRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12%\n" +
@@ -4326,28 +4420,26 @@ const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\x1aListVPCsCmdByAdminResponse\x127\n" +
 	"\x05items\x18\x01 \x03(\v2!.cloudstack.management.vpc.v1.VpcR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x04\n" +
-	"$ListPrivateGatewaysCmdByAdminRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8b\x03\n" +
+	"\x17ListVPCOfferingsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12,\n" +
+	"\fvpc_off_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
+	"vpcOffName\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12$\n" +
 	"\n" +
-	"ip_address\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12\x12\n" +
-	"\x04vlan\x18\x03 \x01(\tR\x04vlan\x12\x15\n" +
-	"\x06vpc_id\x18\x04 \x01(\x03R\x05vpcId\x12\x14\n" +
-	"\x05state\x18\x05 \x01(\tR\x05state\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"\x93\x01\n" +
-	"%ListPrivateGatewaysCmdByAdminResponse\x12B\n" +
-	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.vpc.v1.PrivateGatewayR\x05items\x12\x1f\n" +
+	"is_default\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tisDefault\x12-\n" +
+	"\x12supported_services\x18\x05 \x03(\tR\x11supportedServices\x12\x14\n" +
+	"\x05state\x18\x06 \x01(\tR\x05state\x12\x1b\n" +
+	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12\x17\n" +
+	"\azone_id\x18\b \x01(\x03R\x06zoneId\x12\x18\n" +
+	"\akeyword\x18\t \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\n" +
+	" \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\v \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"\x83\x01\n" +
+	"\x18ListVPCOfferingsResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.vpc.v1.VpcOfferingR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xf0\x04\n" +
 	"\"CreatePrivateGatewayByAdminRequest\x12.\n" +
@@ -4388,6 +4480,140 @@ const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\\\n" +
 	"\x1cCreatePrivateGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xaf\x01\n" +
+	"\x18DeleteStaticRouteRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
+	"\x19DeleteStaticRouteResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xaf\x01\n" +
+	"\x18DeleteVPCOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
+	"\x19DeleteVPCOfferingResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xb1\a\n" +
+	"\x1aCreateVPCCmdByAdminRequest\x12 \n" +
+	"\fbgp_peer_ids\x18\x01 \x03(\tR\n" +
+	"bgpPeerIds\x12\xa0\x01\n" +
+	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1f\n" +
+	"\azone_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12(\n" +
+	"\bvpc_name\x18\x06 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\avpcName\x12!\n" +
+	"\fdisplay_text\x18\a \x01(\tR\vdisplayText\x12\x12\n" +
+	"\x04cidr\x18\b \x01(\tR\x04cidr\x12\x1b\n" +
+	"\tcidr_size\x18\t \x01(\x05R\bcidrSize\x12)\n" +
+	"\fvpc_offering\x18\n" +
+	" \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vvpcOffering\x12%\n" +
+	"\x0enetwork_domain\x18\v \x01(\tR\rnetworkDomain\x12\x1b\n" +
+	"\x05start\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\x05start\x12\x1f\n" +
+	"\adisplay\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
+	"\n" +
+	"public_mtu\x18\x0e \x01(\x05R\tpublicMtu\x12\x19\n" +
+	"\bip4_dns1\x18\x0f \x01(\tR\aip4Dns1\x12\x19\n" +
+	"\bip4_dns2\x18\x10 \x01(\tR\aip4Dns2\x12\"\n" +
+	"\bip6_dns1\x18\x11 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns1\x12\"\n" +
+	"\bip6_dns2\x18\x12 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns2\x12,\n" +
+	"\x0esource_nat_i_p\x18\x13 \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12\x1b\n" +
+	"\tas_number\x18\x14 \x01(\x03R\basNumber\x12$\n" +
+	"\x0estart_event_id\x18\x15 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x16 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\"[\n" +
+	"\x1bCreateVPCCmdByAdminResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x9c\x02\n" +
+	"\x11RestartVPCRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12+\n" +
+	"\rmakeredundant\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\rmakeredundant\x12$\n" +
+	"\n" +
+	"live_patch\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tlivePatch\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"R\n" +
+	"\x12RestartVPCResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xb2\x01\n" +
+	"\x1bDeletePrivateGatewayRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
+	"\x1cDeletePrivateGatewayResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xb5\x04\n" +
+	"$ListPrivateGatewaysCmdByAdminRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
+	"\n" +
+	"ip_address\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12\x12\n" +
+	"\x04vlan\x18\x03 \x01(\tR\x04vlan\x12\x15\n" +
+	"\x06vpc_id\x18\x04 \x01(\x03R\x05vpcId\x12\x14\n" +
+	"\x05state\x18\x05 \x01(\tR\x05state\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"\x93\x01\n" +
+	"%ListPrivateGatewaysCmdByAdminResponse\x12B\n" +
+	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.vpc.v1.PrivateGatewayR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xab\x04\n" +
+	"\x1aListPrivateGatewaysRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
+	"\n" +
+	"ip_address\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12\x12\n" +
+	"\x04vlan\x18\x03 \x01(\tR\x04vlan\x12\x15\n" +
+	"\x06vpc_id\x18\x04 \x01(\x03R\x05vpcId\x12\x14\n" +
+	"\x05state\x18\x05 \x01(\tR\x05state\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"\x89\x01\n" +
+	"\x1bListPrivateGatewaysResponse\x12B\n" +
+	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.vpc.v1.PrivateGatewayR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa7\x01\n" +
+	"\x10DeleteVPCRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Q\n" +
+	"\x11DeleteVPCResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xff\x02\n" +
+	"\x18UpdateVPCOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
+	"\fvpc_off_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
+	"vpcOffName\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x14\n" +
+	"\x05state\x18\x04 \x01(\tR\x05state\x12'\n" +
+	"\n" +
+	"domain_ids\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tdomainIds\x12#\n" +
+	"\bzone_ids\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\azoneIds\x12\x19\n" +
+	"\bsort_key\x18\a \x01(\x05R\asortKey\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"Y\n" +
+	"\x19UpdateVPCOfferingResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xb0\a\n" +
 	"\x0fListVPCsRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -4424,31 +4650,46 @@ const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\x10ListVPCsResponse\x127\n" +
 	"\x05items\x18\x01 \x03(\v2!.cloudstack.management.vpc.v1.VpcR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xff\x02\n" +
-	"\x18UpdateVPCOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
-	"\fvpc_off_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"vpcOffName\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\tR\x05state\x12'\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa7\a\n" +
+	"\x10CreateVPCRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\xa0\x01\n" +
+	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
 	"\n" +
-	"domain_ids\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tdomainIds\x12#\n" +
-	"\bzone_ids\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\azoneIds\x12\x19\n" +
-	"\bsort_key\x18\a \x01(\x05R\asortKey\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"Y\n" +
-	"\x19UpdateVPCOfferingResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xab\x04\n" +
-	"\x1aListPrivateGatewaysRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1f\n" +
+	"\azone_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12(\n" +
+	"\bvpc_name\x18\x06 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\avpcName\x12!\n" +
+	"\fdisplay_text\x18\a \x01(\tR\vdisplayText\x12\x12\n" +
+	"\x04cidr\x18\b \x01(\tR\x04cidr\x12\x1b\n" +
+	"\tcidr_size\x18\t \x01(\x05R\bcidrSize\x12)\n" +
+	"\fvpc_offering\x18\n" +
+	" \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vvpcOffering\x12%\n" +
+	"\x0enetwork_domain\x18\v \x01(\tR\rnetworkDomain\x12\x1b\n" +
+	"\x05start\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\x05start\x12\x1f\n" +
+	"\adisplay\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
 	"\n" +
-	"ip_address\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12\x12\n" +
-	"\x04vlan\x18\x03 \x01(\tR\x04vlan\x12\x15\n" +
-	"\x06vpc_id\x18\x04 \x01(\x03R\x05vpcId\x12\x14\n" +
-	"\x05state\x18\x05 \x01(\tR\x05state\x12\x1d\n" +
+	"public_mtu\x18\x0e \x01(\x05R\tpublicMtu\x12\x19\n" +
+	"\bip4_dns1\x18\x0f \x01(\tR\aip4Dns1\x12\x19\n" +
+	"\bip4_dns2\x18\x10 \x01(\tR\aip4Dns2\x12\"\n" +
+	"\bip6_dns1\x18\x11 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns1\x12\"\n" +
+	"\bip6_dns2\x18\x12 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns2\x12,\n" +
+	"\x0esource_nat_i_p\x18\x13 \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12\x1b\n" +
+	"\tas_number\x18\x14 \x01(\x03R\basNumber\x12$\n" +
+	"\x0estart_event_id\x18\x15 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x16 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\"Q\n" +
+	"\x11CreateVPCResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x99\x05\n" +
+	"\x17ListStaticRoutesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
+	"\x06vpc_id\x18\x02 \x01(\x03R\x05vpcId\x12\x1d\n" +
+	"\n" +
+	"gateway_id\x18\x03 \x01(\x03R\tgatewayId\x12\x14\n" +
+	"\x05state\x18\x04 \x01(\tR\x05state\x12S\n" +
+	"\x04tags\x18\x05 \x03(\v2?.cloudstack.management.vpc.v1.ListStaticRoutesRequest.TagsEntryR\x04tags\x12\x1d\n" +
 	"\n" +
 	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
 	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
@@ -4460,128 +4701,21 @@ const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
 	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"\x89\x01\n" +
-	"\x1bListPrivateGatewaysResponse\x12B\n" +
-	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.vpc.v1.PrivateGatewayR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xd5\b\n" +
-	"\x18CreateVPCOfferingRequest\x129\n" +
-	"\x11vpc_offering_name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x0fvpcOfferingName\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12-\n" +
-	"\x12supported_services\x18\x03 \x03(\tR\x11supportedServices\x12\x83\x01\n" +
-	"\x15service_provider_list\x18\x04 \x03(\v2O.cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceProviderListEntryR\x13serviceProviderList\x12\x89\x01\n" +
-	"\x17service_capability_list\x18\x05 \x03(\v2Q.cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceCapabilityListEntryR\x15serviceCapabilityList\x12+\n" +
-	"\x11internet_protocol\x18\x06 \x01(\tR\x10internetProtocol\x12.\n" +
-	"\x13service_offering_id\x18\a \x01(\x03R\x11serviceOfferingId\x12\x1d\n" +
-	"\n" +
-	"domain_ids\x18\b \x03(\tR\tdomainIds\x12\x19\n" +
-	"\bzone_ids\x18\t \x03(\tR\azoneIds\x12\x1e\n" +
-	"\afor_nsx\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forNsx\x12<\n" +
-	"\x17nsx_supports_lb_service\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x14nsxSupportsLbService\x12\x1d\n" +
-	"\x06enable\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\x06enable\x12!\n" +
-	"\fnetwork_mode\x18\r \x01(\tR\vnetworkMode\x121\n" +
-	"\x11specify_as_number\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fspecifyAsNumber\x12!\n" +
-	"\frouting_mode\x18\x0f \x01(\tR\vroutingMode\x12$\n" +
-	"\x0estart_event_id\x18\x10 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x11 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\x1aF\n" +
-	"\x18ServiceProviderListEntry\x12\x10\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aH\n" +
-	"\x1aServiceCapabilityListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
-	"\x19CreateVPCOfferingResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xb2\x01\n" +
-	"\x1bDeletePrivateGatewayRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
-	"\x1cDeletePrivateGatewayResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xda\x01\n" +
-	"\x18CreateStaticRouteRequest\x12%\n" +
-	"\n" +
-	"gateway_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tgatewayId\x12\x1a\n" +
-	"\x04cidr\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04cidr\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
-	"\x19CreateStaticRouteResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x9c\x02\n" +
-	"\x11RestartVPCRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12+\n" +
-	"\rmakeredundant\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\rmakeredundant\x12$\n" +
-	"\n" +
-	"live_patch\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tlivePatch\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"R\n" +
-	"\x12RestartVPCResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xa7\x01\n" +
-	"\x10DeleteVPCRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Q\n" +
-	"\x11DeleteVPCResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\xaf\x01\n" +
-	"\x18DeleteVPCOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
-	"\x19DeleteVPCOfferingResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x8b\x03\n" +
-	"\x17ListVPCOfferingsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12,\n" +
-	"\fvpc_off_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"vpcOffName\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12$\n" +
-	"\n" +
-	"is_default\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tisDefault\x12-\n" +
-	"\x12supported_services\x18\x05 \x03(\tR\x11supportedServices\x12\x14\n" +
-	"\x05state\x18\x06 \x01(\tR\x05state\x12\x1b\n" +
-	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12\x17\n" +
-	"\azone_id\x18\b \x01(\x03R\x06zoneId\x12\x18\n" +
-	"\akeyword\x18\t \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\n" +
-	" \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\v \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"\x83\x01\n" +
-	"\x18ListVPCOfferingsResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.vpc.v1.VpcOfferingR\x05items\x12\x1f\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x83\x01\n" +
+	"\x18ListStaticRoutesResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.vpc.v1.StaticRouteR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa8\x03\n" +
-	"\x10UpdateVPCRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\bvpc_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\avpcName\x12!\n" +
-	"\fdisplay_text\x18\x04 \x01(\tR\vdisplayText\x12\x1f\n" +
-	"\adisplay\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
-	"\n" +
-	"public_mtu\x18\x06 \x01(\x05R\tpublicMtu\x12,\n" +
-	"\x0esource_nat_i_p\x18\a \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12%\n" +
-	"\tcustom_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"Q\n" +
-	"\x11UpdateVPCResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.vpc.v1.ResultR\x06result\"\x9a\x01\n" +
-	"\vStaticRoute\x12\x18\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x92\x01\n" +
+	"\x03Vpc\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x92\x01\n" +
-	"\x03Vpc\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
+	"\vVpcOffering\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -4593,7 +4727,7 @@ const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
-	"\vVpcOffering\x12\x18\n" +
+	"\vStaticRoute\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -4629,27 +4763,27 @@ const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb1\x14\n" +
 	"\n" +
-	"VpcService\x12\x86\x01\n" +
-	"\x11DeleteStaticRoute\x126.cloudstack.management.vpc.v1.DeleteStaticRouteRequest\x1a7.cloudstack.management.vpc.v1.DeleteStaticRouteResponse\"\x00\x12t\n" +
-	"\tCreateVPC\x12..cloudstack.management.vpc.v1.CreateVPCRequest\x1a/.cloudstack.management.vpc.v1.CreateVPCResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8c\x01\n" +
-	"\x13UpdateVPCCmdByAdmin\x128.cloudstack.management.vpc.v1.UpdateVPCCmdByAdminRequest\x1a9.cloudstack.management.vpc.v1.UpdateVPCCmdByAdminResponse\"\x00\x12\x83\x01\n" +
-	"\x10ListStaticRoutes\x125.cloudstack.management.vpc.v1.ListStaticRoutesRequest\x1a6.cloudstack.management.vpc.v1.ListStaticRoutesResponse\"\x00\x12\x89\x01\n" +
-	"\x12ListVPCsCmdByAdmin\x127.cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest\x1a8.cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse\"\x00\x12\xaa\x01\n" +
-	"\x1dListPrivateGatewaysCmdByAdmin\x12B.cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminRequest\x1aC.cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse\"\x00\x12\xa4\x01\n" +
+	"VpcService\x12t\n" +
+	"\tUpdateVPC\x12..cloudstack.management.vpc.v1.UpdateVPCRequest\x1a/.cloudstack.management.vpc.v1.UpdateVPCResponse\"\x06\xc2>\x03\xc0>\x01\x12\x86\x01\n" +
+	"\x11CreateStaticRoute\x126.cloudstack.management.vpc.v1.CreateStaticRouteRequest\x1a7.cloudstack.management.vpc.v1.CreateStaticRouteResponse\"\x00\x12\x86\x01\n" +
+	"\x11CreateVPCOffering\x126.cloudstack.management.vpc.v1.CreateVPCOfferingRequest\x1a7.cloudstack.management.vpc.v1.CreateVPCOfferingResponse\"\x00\x12\x89\x01\n" +
+	"\x12ListVPCsCmdByAdmin\x127.cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest\x1a8.cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse\"\x00\x12\x83\x01\n" +
+	"\x10ListVPCOfferings\x125.cloudstack.management.vpc.v1.ListVPCOfferingsRequest\x1a6.cloudstack.management.vpc.v1.ListVPCOfferingsResponse\"\x00\x12\xa4\x01\n" +
 	"\x1bCreatePrivateGatewayByAdmin\x12@.cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminRequest\x1aA.cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminResponse\"\x00\x12\x8f\x01\n" +
-	"\x14CreatePrivateGateway\x129.cloudstack.management.vpc.v1.CreatePrivateGatewayRequest\x1a:.cloudstack.management.vpc.v1.CreatePrivateGatewayResponse\"\x00\x12q\n" +
-	"\bListVPCs\x12-.cloudstack.management.vpc.v1.ListVPCsRequest\x1a..cloudstack.management.vpc.v1.ListVPCsResponse\"\x06\xc2>\x03\xc0>\x01\x12\x86\x01\n" +
-	"\x11UpdateVPCOffering\x126.cloudstack.management.vpc.v1.UpdateVPCOfferingRequest\x1a7.cloudstack.management.vpc.v1.UpdateVPCOfferingResponse\"\x00\x12\x8c\x01\n" +
-	"\x13ListPrivateGateways\x128.cloudstack.management.vpc.v1.ListPrivateGatewaysRequest\x1a9.cloudstack.management.vpc.v1.ListPrivateGatewaysResponse\"\x00\x12\x86\x01\n" +
-	"\x11CreateVPCOffering\x126.cloudstack.management.vpc.v1.CreateVPCOfferingRequest\x1a7.cloudstack.management.vpc.v1.CreateVPCOfferingResponse\"\x00\x12\x8f\x01\n" +
-	"\x14DeletePrivateGateway\x129.cloudstack.management.vpc.v1.DeletePrivateGatewayRequest\x1a:.cloudstack.management.vpc.v1.DeletePrivateGatewayResponse\"\x00\x12\x86\x01\n" +
-	"\x11CreateStaticRoute\x126.cloudstack.management.vpc.v1.CreateStaticRouteRequest\x1a7.cloudstack.management.vpc.v1.CreateStaticRouteResponse\"\x00\x12q\n" +
+	"\x14CreatePrivateGateway\x129.cloudstack.management.vpc.v1.CreatePrivateGatewayRequest\x1a:.cloudstack.management.vpc.v1.CreatePrivateGatewayResponse\"\x00\x12\x86\x01\n" +
+	"\x11DeleteStaticRoute\x126.cloudstack.management.vpc.v1.DeleteStaticRouteRequest\x1a7.cloudstack.management.vpc.v1.DeleteStaticRouteResponse\"\x00\x12\x86\x01\n" +
+	"\x11DeleteVPCOffering\x126.cloudstack.management.vpc.v1.DeleteVPCOfferingRequest\x1a7.cloudstack.management.vpc.v1.DeleteVPCOfferingResponse\"\x00\x12\x8c\x01\n" +
+	"\x13CreateVPCCmdByAdmin\x128.cloudstack.management.vpc.v1.CreateVPCCmdByAdminRequest\x1a9.cloudstack.management.vpc.v1.CreateVPCCmdByAdminResponse\"\x00\x12q\n" +
 	"\n" +
-	"RestartVPC\x12/.cloudstack.management.vpc.v1.RestartVPCRequest\x1a0.cloudstack.management.vpc.v1.RestartVPCResponse\"\x00\x12n\n" +
+	"RestartVPC\x12/.cloudstack.management.vpc.v1.RestartVPCRequest\x1a0.cloudstack.management.vpc.v1.RestartVPCResponse\"\x00\x12\x8f\x01\n" +
+	"\x14DeletePrivateGateway\x129.cloudstack.management.vpc.v1.DeletePrivateGatewayRequest\x1a:.cloudstack.management.vpc.v1.DeletePrivateGatewayResponse\"\x00\x12\xaa\x01\n" +
+	"\x1dListPrivateGatewaysCmdByAdmin\x12B.cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminRequest\x1aC.cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse\"\x00\x12\x8c\x01\n" +
+	"\x13ListPrivateGateways\x128.cloudstack.management.vpc.v1.ListPrivateGatewaysRequest\x1a9.cloudstack.management.vpc.v1.ListPrivateGatewaysResponse\"\x00\x12n\n" +
 	"\tDeleteVPC\x12..cloudstack.management.vpc.v1.DeleteVPCRequest\x1a/.cloudstack.management.vpc.v1.DeleteVPCResponse\"\x00\x12\x86\x01\n" +
-	"\x11DeleteVPCOffering\x126.cloudstack.management.vpc.v1.DeleteVPCOfferingRequest\x1a7.cloudstack.management.vpc.v1.DeleteVPCOfferingResponse\"\x00\x12\x83\x01\n" +
-	"\x10ListVPCOfferings\x125.cloudstack.management.vpc.v1.ListVPCOfferingsRequest\x1a6.cloudstack.management.vpc.v1.ListVPCOfferingsResponse\"\x00\x12t\n" +
-	"\tUpdateVPC\x12..cloudstack.management.vpc.v1.UpdateVPCRequest\x1a/.cloudstack.management.vpc.v1.UpdateVPCResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"\x11UpdateVPCOffering\x126.cloudstack.management.vpc.v1.UpdateVPCOfferingRequest\x1a7.cloudstack.management.vpc.v1.UpdateVPCOfferingResponse\"\x00\x12q\n" +
+	"\bListVPCs\x12-.cloudstack.management.vpc.v1.ListVPCsRequest\x1a..cloudstack.management.vpc.v1.ListVPCsResponse\"\x06\xc2>\x03\xc0>\x01\x12t\n" +
+	"\tCreateVPC\x12..cloudstack.management.vpc.v1.CreateVPCRequest\x1a/.cloudstack.management.vpc.v1.CreateVPCResponse\"\x06\xc2>\x03\xc0>\x01\x12\x83\x01\n" +
+	"\x10ListStaticRoutes\x125.cloudstack.management.vpc.v1.ListStaticRoutesRequest\x1a6.cloudstack.management.vpc.v1.ListStaticRoutesResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
 	" com.cloudstack.management.vpc.v1B\vVpcGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/vpc/v1;vpcv1\xa2\x02\x03CMV\xaa\x02\x1cCloudstack.Management.Vpc.V1\xca\x02\x1cCloudstack\\Management\\Vpc\\V1\xe2\x02(Cloudstack\\Management\\Vpc\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Vpc::V1b\beditionsp\xe8\a"
 
 var (
@@ -4666,122 +4800,122 @@ func file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDescGZIP() []byte {
 
 var file_cloudstack_management_vpc_v1_vpc_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
 var file_cloudstack_management_vpc_v1_vpc_gen_proto_goTypes = []any{
-	(*DeleteStaticRouteRequest)(nil),              // 0: cloudstack.management.vpc.v1.DeleteStaticRouteRequest
-	(*DeleteStaticRouteResponse)(nil),             // 1: cloudstack.management.vpc.v1.DeleteStaticRouteResponse
-	(*CreateVPCRequest)(nil),                      // 2: cloudstack.management.vpc.v1.CreateVPCRequest
-	(*CreateVPCResponse)(nil),                     // 3: cloudstack.management.vpc.v1.CreateVPCResponse
-	(*UpdateVPCCmdByAdminRequest)(nil),            // 4: cloudstack.management.vpc.v1.UpdateVPCCmdByAdminRequest
-	(*UpdateVPCCmdByAdminResponse)(nil),           // 5: cloudstack.management.vpc.v1.UpdateVPCCmdByAdminResponse
-	(*ListStaticRoutesRequest)(nil),               // 6: cloudstack.management.vpc.v1.ListStaticRoutesRequest
-	(*ListStaticRoutesResponse)(nil),              // 7: cloudstack.management.vpc.v1.ListStaticRoutesResponse
-	(*ListVPCsCmdByAdminRequest)(nil),             // 8: cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest
-	(*ListVPCsCmdByAdminResponse)(nil),            // 9: cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse
-	(*ListPrivateGatewaysCmdByAdminRequest)(nil),  // 10: cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminRequest
-	(*ListPrivateGatewaysCmdByAdminResponse)(nil), // 11: cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse
-	(*CreatePrivateGatewayByAdminRequest)(nil),    // 12: cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminRequest
-	(*CreatePrivateGatewayByAdminResponse)(nil),   // 13: cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminResponse
-	(*CreatePrivateGatewayRequest)(nil),           // 14: cloudstack.management.vpc.v1.CreatePrivateGatewayRequest
-	(*CreatePrivateGatewayResponse)(nil),          // 15: cloudstack.management.vpc.v1.CreatePrivateGatewayResponse
-	(*ListVPCsRequest)(nil),                       // 16: cloudstack.management.vpc.v1.ListVPCsRequest
-	(*ListVPCsResponse)(nil),                      // 17: cloudstack.management.vpc.v1.ListVPCsResponse
-	(*UpdateVPCOfferingRequest)(nil),              // 18: cloudstack.management.vpc.v1.UpdateVPCOfferingRequest
-	(*UpdateVPCOfferingResponse)(nil),             // 19: cloudstack.management.vpc.v1.UpdateVPCOfferingResponse
-	(*ListPrivateGatewaysRequest)(nil),            // 20: cloudstack.management.vpc.v1.ListPrivateGatewaysRequest
-	(*ListPrivateGatewaysResponse)(nil),           // 21: cloudstack.management.vpc.v1.ListPrivateGatewaysResponse
-	(*CreateVPCOfferingRequest)(nil),              // 22: cloudstack.management.vpc.v1.CreateVPCOfferingRequest
-	(*CreateVPCOfferingResponse)(nil),             // 23: cloudstack.management.vpc.v1.CreateVPCOfferingResponse
-	(*DeletePrivateGatewayRequest)(nil),           // 24: cloudstack.management.vpc.v1.DeletePrivateGatewayRequest
-	(*DeletePrivateGatewayResponse)(nil),          // 25: cloudstack.management.vpc.v1.DeletePrivateGatewayResponse
-	(*CreateStaticRouteRequest)(nil),              // 26: cloudstack.management.vpc.v1.CreateStaticRouteRequest
-	(*CreateStaticRouteResponse)(nil),             // 27: cloudstack.management.vpc.v1.CreateStaticRouteResponse
-	(*RestartVPCRequest)(nil),                     // 28: cloudstack.management.vpc.v1.RestartVPCRequest
-	(*RestartVPCResponse)(nil),                    // 29: cloudstack.management.vpc.v1.RestartVPCResponse
-	(*DeleteVPCRequest)(nil),                      // 30: cloudstack.management.vpc.v1.DeleteVPCRequest
-	(*DeleteVPCResponse)(nil),                     // 31: cloudstack.management.vpc.v1.DeleteVPCResponse
-	(*DeleteVPCOfferingRequest)(nil),              // 32: cloudstack.management.vpc.v1.DeleteVPCOfferingRequest
-	(*DeleteVPCOfferingResponse)(nil),             // 33: cloudstack.management.vpc.v1.DeleteVPCOfferingResponse
-	(*ListVPCOfferingsRequest)(nil),               // 34: cloudstack.management.vpc.v1.ListVPCOfferingsRequest
-	(*ListVPCOfferingsResponse)(nil),              // 35: cloudstack.management.vpc.v1.ListVPCOfferingsResponse
-	(*UpdateVPCRequest)(nil),                      // 36: cloudstack.management.vpc.v1.UpdateVPCRequest
-	(*UpdateVPCResponse)(nil),                     // 37: cloudstack.management.vpc.v1.UpdateVPCResponse
-	(*StaticRoute)(nil),                           // 38: cloudstack.management.vpc.v1.StaticRoute
-	(*Vpc)(nil),                                   // 39: cloudstack.management.vpc.v1.Vpc
+	(*UpdateVPCRequest)(nil),                      // 0: cloudstack.management.vpc.v1.UpdateVPCRequest
+	(*UpdateVPCResponse)(nil),                     // 1: cloudstack.management.vpc.v1.UpdateVPCResponse
+	(*CreateStaticRouteRequest)(nil),              // 2: cloudstack.management.vpc.v1.CreateStaticRouteRequest
+	(*CreateStaticRouteResponse)(nil),             // 3: cloudstack.management.vpc.v1.CreateStaticRouteResponse
+	(*CreateVPCOfferingRequest)(nil),              // 4: cloudstack.management.vpc.v1.CreateVPCOfferingRequest
+	(*CreateVPCOfferingResponse)(nil),             // 5: cloudstack.management.vpc.v1.CreateVPCOfferingResponse
+	(*ListVPCsCmdByAdminRequest)(nil),             // 6: cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest
+	(*ListVPCsCmdByAdminResponse)(nil),            // 7: cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse
+	(*ListVPCOfferingsRequest)(nil),               // 8: cloudstack.management.vpc.v1.ListVPCOfferingsRequest
+	(*ListVPCOfferingsResponse)(nil),              // 9: cloudstack.management.vpc.v1.ListVPCOfferingsResponse
+	(*CreatePrivateGatewayByAdminRequest)(nil),    // 10: cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminRequest
+	(*CreatePrivateGatewayByAdminResponse)(nil),   // 11: cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminResponse
+	(*CreatePrivateGatewayRequest)(nil),           // 12: cloudstack.management.vpc.v1.CreatePrivateGatewayRequest
+	(*CreatePrivateGatewayResponse)(nil),          // 13: cloudstack.management.vpc.v1.CreatePrivateGatewayResponse
+	(*DeleteStaticRouteRequest)(nil),              // 14: cloudstack.management.vpc.v1.DeleteStaticRouteRequest
+	(*DeleteStaticRouteResponse)(nil),             // 15: cloudstack.management.vpc.v1.DeleteStaticRouteResponse
+	(*DeleteVPCOfferingRequest)(nil),              // 16: cloudstack.management.vpc.v1.DeleteVPCOfferingRequest
+	(*DeleteVPCOfferingResponse)(nil),             // 17: cloudstack.management.vpc.v1.DeleteVPCOfferingResponse
+	(*CreateVPCCmdByAdminRequest)(nil),            // 18: cloudstack.management.vpc.v1.CreateVPCCmdByAdminRequest
+	(*CreateVPCCmdByAdminResponse)(nil),           // 19: cloudstack.management.vpc.v1.CreateVPCCmdByAdminResponse
+	(*RestartVPCRequest)(nil),                     // 20: cloudstack.management.vpc.v1.RestartVPCRequest
+	(*RestartVPCResponse)(nil),                    // 21: cloudstack.management.vpc.v1.RestartVPCResponse
+	(*DeletePrivateGatewayRequest)(nil),           // 22: cloudstack.management.vpc.v1.DeletePrivateGatewayRequest
+	(*DeletePrivateGatewayResponse)(nil),          // 23: cloudstack.management.vpc.v1.DeletePrivateGatewayResponse
+	(*ListPrivateGatewaysCmdByAdminRequest)(nil),  // 24: cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminRequest
+	(*ListPrivateGatewaysCmdByAdminResponse)(nil), // 25: cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse
+	(*ListPrivateGatewaysRequest)(nil),            // 26: cloudstack.management.vpc.v1.ListPrivateGatewaysRequest
+	(*ListPrivateGatewaysResponse)(nil),           // 27: cloudstack.management.vpc.v1.ListPrivateGatewaysResponse
+	(*DeleteVPCRequest)(nil),                      // 28: cloudstack.management.vpc.v1.DeleteVPCRequest
+	(*DeleteVPCResponse)(nil),                     // 29: cloudstack.management.vpc.v1.DeleteVPCResponse
+	(*UpdateVPCOfferingRequest)(nil),              // 30: cloudstack.management.vpc.v1.UpdateVPCOfferingRequest
+	(*UpdateVPCOfferingResponse)(nil),             // 31: cloudstack.management.vpc.v1.UpdateVPCOfferingResponse
+	(*ListVPCsRequest)(nil),                       // 32: cloudstack.management.vpc.v1.ListVPCsRequest
+	(*ListVPCsResponse)(nil),                      // 33: cloudstack.management.vpc.v1.ListVPCsResponse
+	(*CreateVPCRequest)(nil),                      // 34: cloudstack.management.vpc.v1.CreateVPCRequest
+	(*CreateVPCResponse)(nil),                     // 35: cloudstack.management.vpc.v1.CreateVPCResponse
+	(*ListStaticRoutesRequest)(nil),               // 36: cloudstack.management.vpc.v1.ListStaticRoutesRequest
+	(*ListStaticRoutesResponse)(nil),              // 37: cloudstack.management.vpc.v1.ListStaticRoutesResponse
+	(*Vpc)(nil),                                   // 38: cloudstack.management.vpc.v1.Vpc
+	(*VpcOffering)(nil),                           // 39: cloudstack.management.vpc.v1.VpcOffering
 	(*PrivateGateway)(nil),                        // 40: cloudstack.management.vpc.v1.PrivateGateway
-	(*VpcOffering)(nil),                           // 41: cloudstack.management.vpc.v1.VpcOffering
+	(*StaticRoute)(nil),                           // 41: cloudstack.management.vpc.v1.StaticRoute
 	(*Success)(nil),                               // 42: cloudstack.management.vpc.v1.Success
 	(*Item)(nil),                                  // 43: cloudstack.management.vpc.v1.Item
 	(*Result)(nil),                                // 44: cloudstack.management.vpc.v1.Result
-	nil,                                           // 45: cloudstack.management.vpc.v1.ListStaticRoutesRequest.TagsEntry
-	nil,                                           // 46: cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest.TagsEntry
-	nil,                                           // 47: cloudstack.management.vpc.v1.ListVPCsRequest.TagsEntry
-	nil,                                           // 48: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceProviderListEntry
-	nil,                                           // 49: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceCapabilityListEntry
+	nil,                                           // 45: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceProviderListEntry
+	nil,                                           // 46: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceCapabilityListEntry
+	nil,                                           // 47: cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest.TagsEntry
+	nil,                                           // 48: cloudstack.management.vpc.v1.ListVPCsRequest.TagsEntry
+	nil,                                           // 49: cloudstack.management.vpc.v1.ListStaticRoutesRequest.TagsEntry
 	nil,                                           // 50: cloudstack.management.vpc.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_vpc_v1_vpc_gen_proto_depIdxs = []int32{
-	44, // 0: cloudstack.management.vpc.v1.DeleteStaticRouteResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 1: cloudstack.management.vpc.v1.CreateVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 2: cloudstack.management.vpc.v1.UpdateVPCCmdByAdminResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	45, // 3: cloudstack.management.vpc.v1.ListStaticRoutesRequest.tags:type_name -> cloudstack.management.vpc.v1.ListStaticRoutesRequest.TagsEntry
-	38, // 4: cloudstack.management.vpc.v1.ListStaticRoutesResponse.items:type_name -> cloudstack.management.vpc.v1.StaticRoute
-	46, // 5: cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest.tags:type_name -> cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest.TagsEntry
-	39, // 6: cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse.items:type_name -> cloudstack.management.vpc.v1.Vpc
-	40, // 7: cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse.items:type_name -> cloudstack.management.vpc.v1.PrivateGateway
+	44, // 0: cloudstack.management.vpc.v1.UpdateVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 1: cloudstack.management.vpc.v1.CreateStaticRouteResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	45, // 2: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.service_provider_list:type_name -> cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceProviderListEntry
+	46, // 3: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.service_capability_list:type_name -> cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceCapabilityListEntry
+	44, // 4: cloudstack.management.vpc.v1.CreateVPCOfferingResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	47, // 5: cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest.tags:type_name -> cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest.TagsEntry
+	38, // 6: cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse.items:type_name -> cloudstack.management.vpc.v1.Vpc
+	39, // 7: cloudstack.management.vpc.v1.ListVPCOfferingsResponse.items:type_name -> cloudstack.management.vpc.v1.VpcOffering
 	44, // 8: cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminResponse.result:type_name -> cloudstack.management.vpc.v1.Result
 	44, // 9: cloudstack.management.vpc.v1.CreatePrivateGatewayResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	47, // 10: cloudstack.management.vpc.v1.ListVPCsRequest.tags:type_name -> cloudstack.management.vpc.v1.ListVPCsRequest.TagsEntry
-	39, // 11: cloudstack.management.vpc.v1.ListVPCsResponse.items:type_name -> cloudstack.management.vpc.v1.Vpc
-	44, // 12: cloudstack.management.vpc.v1.UpdateVPCOfferingResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	40, // 13: cloudstack.management.vpc.v1.ListPrivateGatewaysResponse.items:type_name -> cloudstack.management.vpc.v1.PrivateGateway
-	48, // 14: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.service_provider_list:type_name -> cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceProviderListEntry
-	49, // 15: cloudstack.management.vpc.v1.CreateVPCOfferingRequest.service_capability_list:type_name -> cloudstack.management.vpc.v1.CreateVPCOfferingRequest.ServiceCapabilityListEntry
-	44, // 16: cloudstack.management.vpc.v1.CreateVPCOfferingResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 17: cloudstack.management.vpc.v1.DeletePrivateGatewayResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 18: cloudstack.management.vpc.v1.CreateStaticRouteResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 19: cloudstack.management.vpc.v1.RestartVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 20: cloudstack.management.vpc.v1.DeleteVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	44, // 21: cloudstack.management.vpc.v1.DeleteVPCOfferingResponse.result:type_name -> cloudstack.management.vpc.v1.Result
-	41, // 22: cloudstack.management.vpc.v1.ListVPCOfferingsResponse.items:type_name -> cloudstack.management.vpc.v1.VpcOffering
-	44, // 23: cloudstack.management.vpc.v1.UpdateVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 10: cloudstack.management.vpc.v1.DeleteStaticRouteResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 11: cloudstack.management.vpc.v1.DeleteVPCOfferingResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 12: cloudstack.management.vpc.v1.CreateVPCCmdByAdminResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 13: cloudstack.management.vpc.v1.RestartVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 14: cloudstack.management.vpc.v1.DeletePrivateGatewayResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	40, // 15: cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse.items:type_name -> cloudstack.management.vpc.v1.PrivateGateway
+	40, // 16: cloudstack.management.vpc.v1.ListPrivateGatewaysResponse.items:type_name -> cloudstack.management.vpc.v1.PrivateGateway
+	44, // 17: cloudstack.management.vpc.v1.DeleteVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	44, // 18: cloudstack.management.vpc.v1.UpdateVPCOfferingResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	48, // 19: cloudstack.management.vpc.v1.ListVPCsRequest.tags:type_name -> cloudstack.management.vpc.v1.ListVPCsRequest.TagsEntry
+	38, // 20: cloudstack.management.vpc.v1.ListVPCsResponse.items:type_name -> cloudstack.management.vpc.v1.Vpc
+	44, // 21: cloudstack.management.vpc.v1.CreateVPCResponse.result:type_name -> cloudstack.management.vpc.v1.Result
+	49, // 22: cloudstack.management.vpc.v1.ListStaticRoutesRequest.tags:type_name -> cloudstack.management.vpc.v1.ListStaticRoutesRequest.TagsEntry
+	41, // 23: cloudstack.management.vpc.v1.ListStaticRoutesResponse.items:type_name -> cloudstack.management.vpc.v1.StaticRoute
 	50, // 24: cloudstack.management.vpc.v1.Item.details:type_name -> cloudstack.management.vpc.v1.Item.DetailsEntry
-	0,  // 25: cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute:input_type -> cloudstack.management.vpc.v1.DeleteStaticRouteRequest
-	2,  // 26: cloudstack.management.vpc.v1.VpcService.CreateVPC:input_type -> cloudstack.management.vpc.v1.CreateVPCRequest
-	4,  // 27: cloudstack.management.vpc.v1.VpcService.UpdateVPCCmdByAdmin:input_type -> cloudstack.management.vpc.v1.UpdateVPCCmdByAdminRequest
-	6,  // 28: cloudstack.management.vpc.v1.VpcService.ListStaticRoutes:input_type -> cloudstack.management.vpc.v1.ListStaticRoutesRequest
-	8,  // 29: cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin:input_type -> cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest
-	10, // 30: cloudstack.management.vpc.v1.VpcService.ListPrivateGatewaysCmdByAdmin:input_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminRequest
-	12, // 31: cloudstack.management.vpc.v1.VpcService.CreatePrivateGatewayByAdmin:input_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminRequest
-	14, // 32: cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway:input_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayRequest
-	16, // 33: cloudstack.management.vpc.v1.VpcService.ListVPCs:input_type -> cloudstack.management.vpc.v1.ListVPCsRequest
-	18, // 34: cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering:input_type -> cloudstack.management.vpc.v1.UpdateVPCOfferingRequest
-	20, // 35: cloudstack.management.vpc.v1.VpcService.ListPrivateGateways:input_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysRequest
-	22, // 36: cloudstack.management.vpc.v1.VpcService.CreateVPCOffering:input_type -> cloudstack.management.vpc.v1.CreateVPCOfferingRequest
-	24, // 37: cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway:input_type -> cloudstack.management.vpc.v1.DeletePrivateGatewayRequest
-	26, // 38: cloudstack.management.vpc.v1.VpcService.CreateStaticRoute:input_type -> cloudstack.management.vpc.v1.CreateStaticRouteRequest
-	28, // 39: cloudstack.management.vpc.v1.VpcService.RestartVPC:input_type -> cloudstack.management.vpc.v1.RestartVPCRequest
-	30, // 40: cloudstack.management.vpc.v1.VpcService.DeleteVPC:input_type -> cloudstack.management.vpc.v1.DeleteVPCRequest
-	32, // 41: cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering:input_type -> cloudstack.management.vpc.v1.DeleteVPCOfferingRequest
-	34, // 42: cloudstack.management.vpc.v1.VpcService.ListVPCOfferings:input_type -> cloudstack.management.vpc.v1.ListVPCOfferingsRequest
-	36, // 43: cloudstack.management.vpc.v1.VpcService.UpdateVPC:input_type -> cloudstack.management.vpc.v1.UpdateVPCRequest
-	1,  // 44: cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute:output_type -> cloudstack.management.vpc.v1.DeleteStaticRouteResponse
-	3,  // 45: cloudstack.management.vpc.v1.VpcService.CreateVPC:output_type -> cloudstack.management.vpc.v1.CreateVPCResponse
-	5,  // 46: cloudstack.management.vpc.v1.VpcService.UpdateVPCCmdByAdmin:output_type -> cloudstack.management.vpc.v1.UpdateVPCCmdByAdminResponse
-	7,  // 47: cloudstack.management.vpc.v1.VpcService.ListStaticRoutes:output_type -> cloudstack.management.vpc.v1.ListStaticRoutesResponse
-	9,  // 48: cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin:output_type -> cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse
-	11, // 49: cloudstack.management.vpc.v1.VpcService.ListPrivateGatewaysCmdByAdmin:output_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse
-	13, // 50: cloudstack.management.vpc.v1.VpcService.CreatePrivateGatewayByAdmin:output_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminResponse
-	15, // 51: cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway:output_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayResponse
-	17, // 52: cloudstack.management.vpc.v1.VpcService.ListVPCs:output_type -> cloudstack.management.vpc.v1.ListVPCsResponse
-	19, // 53: cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering:output_type -> cloudstack.management.vpc.v1.UpdateVPCOfferingResponse
-	21, // 54: cloudstack.management.vpc.v1.VpcService.ListPrivateGateways:output_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysResponse
-	23, // 55: cloudstack.management.vpc.v1.VpcService.CreateVPCOffering:output_type -> cloudstack.management.vpc.v1.CreateVPCOfferingResponse
-	25, // 56: cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway:output_type -> cloudstack.management.vpc.v1.DeletePrivateGatewayResponse
-	27, // 57: cloudstack.management.vpc.v1.VpcService.CreateStaticRoute:output_type -> cloudstack.management.vpc.v1.CreateStaticRouteResponse
-	29, // 58: cloudstack.management.vpc.v1.VpcService.RestartVPC:output_type -> cloudstack.management.vpc.v1.RestartVPCResponse
-	31, // 59: cloudstack.management.vpc.v1.VpcService.DeleteVPC:output_type -> cloudstack.management.vpc.v1.DeleteVPCResponse
-	33, // 60: cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering:output_type -> cloudstack.management.vpc.v1.DeleteVPCOfferingResponse
-	35, // 61: cloudstack.management.vpc.v1.VpcService.ListVPCOfferings:output_type -> cloudstack.management.vpc.v1.ListVPCOfferingsResponse
-	37, // 62: cloudstack.management.vpc.v1.VpcService.UpdateVPC:output_type -> cloudstack.management.vpc.v1.UpdateVPCResponse
+	0,  // 25: cloudstack.management.vpc.v1.VpcService.UpdateVPC:input_type -> cloudstack.management.vpc.v1.UpdateVPCRequest
+	2,  // 26: cloudstack.management.vpc.v1.VpcService.CreateStaticRoute:input_type -> cloudstack.management.vpc.v1.CreateStaticRouteRequest
+	4,  // 27: cloudstack.management.vpc.v1.VpcService.CreateVPCOffering:input_type -> cloudstack.management.vpc.v1.CreateVPCOfferingRequest
+	6,  // 28: cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin:input_type -> cloudstack.management.vpc.v1.ListVPCsCmdByAdminRequest
+	8,  // 29: cloudstack.management.vpc.v1.VpcService.ListVPCOfferings:input_type -> cloudstack.management.vpc.v1.ListVPCOfferingsRequest
+	10, // 30: cloudstack.management.vpc.v1.VpcService.CreatePrivateGatewayByAdmin:input_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminRequest
+	12, // 31: cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway:input_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayRequest
+	14, // 32: cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute:input_type -> cloudstack.management.vpc.v1.DeleteStaticRouteRequest
+	16, // 33: cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering:input_type -> cloudstack.management.vpc.v1.DeleteVPCOfferingRequest
+	18, // 34: cloudstack.management.vpc.v1.VpcService.CreateVPCCmdByAdmin:input_type -> cloudstack.management.vpc.v1.CreateVPCCmdByAdminRequest
+	20, // 35: cloudstack.management.vpc.v1.VpcService.RestartVPC:input_type -> cloudstack.management.vpc.v1.RestartVPCRequest
+	22, // 36: cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway:input_type -> cloudstack.management.vpc.v1.DeletePrivateGatewayRequest
+	24, // 37: cloudstack.management.vpc.v1.VpcService.ListPrivateGatewaysCmdByAdmin:input_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminRequest
+	26, // 38: cloudstack.management.vpc.v1.VpcService.ListPrivateGateways:input_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysRequest
+	28, // 39: cloudstack.management.vpc.v1.VpcService.DeleteVPC:input_type -> cloudstack.management.vpc.v1.DeleteVPCRequest
+	30, // 40: cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering:input_type -> cloudstack.management.vpc.v1.UpdateVPCOfferingRequest
+	32, // 41: cloudstack.management.vpc.v1.VpcService.ListVPCs:input_type -> cloudstack.management.vpc.v1.ListVPCsRequest
+	34, // 42: cloudstack.management.vpc.v1.VpcService.CreateVPC:input_type -> cloudstack.management.vpc.v1.CreateVPCRequest
+	36, // 43: cloudstack.management.vpc.v1.VpcService.ListStaticRoutes:input_type -> cloudstack.management.vpc.v1.ListStaticRoutesRequest
+	1,  // 44: cloudstack.management.vpc.v1.VpcService.UpdateVPC:output_type -> cloudstack.management.vpc.v1.UpdateVPCResponse
+	3,  // 45: cloudstack.management.vpc.v1.VpcService.CreateStaticRoute:output_type -> cloudstack.management.vpc.v1.CreateStaticRouteResponse
+	5,  // 46: cloudstack.management.vpc.v1.VpcService.CreateVPCOffering:output_type -> cloudstack.management.vpc.v1.CreateVPCOfferingResponse
+	7,  // 47: cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin:output_type -> cloudstack.management.vpc.v1.ListVPCsCmdByAdminResponse
+	9,  // 48: cloudstack.management.vpc.v1.VpcService.ListVPCOfferings:output_type -> cloudstack.management.vpc.v1.ListVPCOfferingsResponse
+	11, // 49: cloudstack.management.vpc.v1.VpcService.CreatePrivateGatewayByAdmin:output_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayByAdminResponse
+	13, // 50: cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway:output_type -> cloudstack.management.vpc.v1.CreatePrivateGatewayResponse
+	15, // 51: cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute:output_type -> cloudstack.management.vpc.v1.DeleteStaticRouteResponse
+	17, // 52: cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering:output_type -> cloudstack.management.vpc.v1.DeleteVPCOfferingResponse
+	19, // 53: cloudstack.management.vpc.v1.VpcService.CreateVPCCmdByAdmin:output_type -> cloudstack.management.vpc.v1.CreateVPCCmdByAdminResponse
+	21, // 54: cloudstack.management.vpc.v1.VpcService.RestartVPC:output_type -> cloudstack.management.vpc.v1.RestartVPCResponse
+	23, // 55: cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway:output_type -> cloudstack.management.vpc.v1.DeletePrivateGatewayResponse
+	25, // 56: cloudstack.management.vpc.v1.VpcService.ListPrivateGatewaysCmdByAdmin:output_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysCmdByAdminResponse
+	27, // 57: cloudstack.management.vpc.v1.VpcService.ListPrivateGateways:output_type -> cloudstack.management.vpc.v1.ListPrivateGatewaysResponse
+	29, // 58: cloudstack.management.vpc.v1.VpcService.DeleteVPC:output_type -> cloudstack.management.vpc.v1.DeleteVPCResponse
+	31, // 59: cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering:output_type -> cloudstack.management.vpc.v1.UpdateVPCOfferingResponse
+	33, // 60: cloudstack.management.vpc.v1.VpcService.ListVPCs:output_type -> cloudstack.management.vpc.v1.ListVPCsResponse
+	35, // 61: cloudstack.management.vpc.v1.VpcService.CreateVPC:output_type -> cloudstack.management.vpc.v1.CreateVPCResponse
+	37, // 62: cloudstack.management.vpc.v1.VpcService.ListStaticRoutes:output_type -> cloudstack.management.vpc.v1.ListStaticRoutesResponse
 	44, // [44:63] is the sub-list for method output_type
 	25, // [25:44] is the sub-list for method input_type
 	25, // [25:25] is the sub-list for extension type_name

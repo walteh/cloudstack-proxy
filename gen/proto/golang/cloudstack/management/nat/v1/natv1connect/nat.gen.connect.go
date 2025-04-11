@@ -36,12 +36,12 @@ const (
 	// NatServiceListIpForwardingRulesProcedure is the fully-qualified name of the NatService's
 	// ListIpForwardingRules RPC.
 	NatServiceListIpForwardingRulesProcedure = "/cloudstack.management.nat.v1.NatService/ListIpForwardingRules"
-	// NatServiceDisableStaticNatProcedure is the fully-qualified name of the NatService's
-	// DisableStaticNat RPC.
-	NatServiceDisableStaticNatProcedure = "/cloudstack.management.nat.v1.NatService/DisableStaticNat"
 	// NatServiceDeleteIpForwardingRuleProcedure is the fully-qualified name of the NatService's
 	// DeleteIpForwardingRule RPC.
 	NatServiceDeleteIpForwardingRuleProcedure = "/cloudstack.management.nat.v1.NatService/DeleteIpForwardingRule"
+	// NatServiceDisableStaticNatProcedure is the fully-qualified name of the NatService's
+	// DisableStaticNat RPC.
+	NatServiceDisableStaticNatProcedure = "/cloudstack.management.nat.v1.NatService/DisableStaticNat"
 	// NatServiceCreateIpForwardingRuleProcedure is the fully-qualified name of the NatService's
 	// CreateIpForwardingRule RPC.
 	NatServiceCreateIpForwardingRuleProcedure = "/cloudstack.management.nat.v1.NatService/CreateIpForwardingRule"
@@ -54,10 +54,10 @@ const (
 type NatServiceClient interface {
 	// ListIpForwardingRules List the IP forwarding rules
 	ListIpForwardingRules(context.Context, *connect.Request[v1.ListIpForwardingRulesRequest]) (*connect.Response[v1.ListIpForwardingRulesResponse], error)
-	// DisableStaticNat Disables static rule for given IP address
-	DisableStaticNat(context.Context, *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error)
 	// DeleteIpForwardingRule Deletes an IP forwarding rule
 	DeleteIpForwardingRule(context.Context, *connect.Request[v1.DeleteIpForwardingRuleRequest]) (*connect.Response[v1.DeleteIpForwardingRuleResponse], error)
+	// DisableStaticNat Disables static rule for given IP address
+	DisableStaticNat(context.Context, *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error)
 	// CreateIpForwardingRule Creates an IP forwarding rule
 	CreateIpForwardingRule(context.Context, *connect.Request[v1.CreateIpForwardingRuleRequest]) (*connect.Response[v1.CreateIpForwardingRuleResponse], error)
 	// EnableStaticNat Enables static NAT for given IP address
@@ -81,16 +81,16 @@ func NewNatServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(natServiceMethods.ByName("ListIpForwardingRules")),
 			connect.WithClientOptions(opts...),
 		),
-		disableStaticNat: connect.NewClient[v1.DisableStaticNatRequest, v1.DisableStaticNatResponse](
-			httpClient,
-			baseURL+NatServiceDisableStaticNatProcedure,
-			connect.WithSchema(natServiceMethods.ByName("DisableStaticNat")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteIpForwardingRule: connect.NewClient[v1.DeleteIpForwardingRuleRequest, v1.DeleteIpForwardingRuleResponse](
 			httpClient,
 			baseURL+NatServiceDeleteIpForwardingRuleProcedure,
 			connect.WithSchema(natServiceMethods.ByName("DeleteIpForwardingRule")),
+			connect.WithClientOptions(opts...),
+		),
+		disableStaticNat: connect.NewClient[v1.DisableStaticNatRequest, v1.DisableStaticNatResponse](
+			httpClient,
+			baseURL+NatServiceDisableStaticNatProcedure,
+			connect.WithSchema(natServiceMethods.ByName("DisableStaticNat")),
 			connect.WithClientOptions(opts...),
 		),
 		createIpForwardingRule: connect.NewClient[v1.CreateIpForwardingRuleRequest, v1.CreateIpForwardingRuleResponse](
@@ -111,8 +111,8 @@ func NewNatServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 // natServiceClient implements NatServiceClient.
 type natServiceClient struct {
 	listIpForwardingRules  *connect.Client[v1.ListIpForwardingRulesRequest, v1.ListIpForwardingRulesResponse]
-	disableStaticNat       *connect.Client[v1.DisableStaticNatRequest, v1.DisableStaticNatResponse]
 	deleteIpForwardingRule *connect.Client[v1.DeleteIpForwardingRuleRequest, v1.DeleteIpForwardingRuleResponse]
+	disableStaticNat       *connect.Client[v1.DisableStaticNatRequest, v1.DisableStaticNatResponse]
 	createIpForwardingRule *connect.Client[v1.CreateIpForwardingRuleRequest, v1.CreateIpForwardingRuleResponse]
 	enableStaticNat        *connect.Client[v1.EnableStaticNatRequest, v1.EnableStaticNatResponse]
 }
@@ -122,14 +122,14 @@ func (c *natServiceClient) ListIpForwardingRules(ctx context.Context, req *conne
 	return c.listIpForwardingRules.CallUnary(ctx, req)
 }
 
-// DisableStaticNat calls cloudstack.management.nat.v1.NatService.DisableStaticNat.
-func (c *natServiceClient) DisableStaticNat(ctx context.Context, req *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error) {
-	return c.disableStaticNat.CallUnary(ctx, req)
-}
-
 // DeleteIpForwardingRule calls cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule.
 func (c *natServiceClient) DeleteIpForwardingRule(ctx context.Context, req *connect.Request[v1.DeleteIpForwardingRuleRequest]) (*connect.Response[v1.DeleteIpForwardingRuleResponse], error) {
 	return c.deleteIpForwardingRule.CallUnary(ctx, req)
+}
+
+// DisableStaticNat calls cloudstack.management.nat.v1.NatService.DisableStaticNat.
+func (c *natServiceClient) DisableStaticNat(ctx context.Context, req *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error) {
+	return c.disableStaticNat.CallUnary(ctx, req)
 }
 
 // CreateIpForwardingRule calls cloudstack.management.nat.v1.NatService.CreateIpForwardingRule.
@@ -146,10 +146,10 @@ func (c *natServiceClient) EnableStaticNat(ctx context.Context, req *connect.Req
 type NatServiceHandler interface {
 	// ListIpForwardingRules List the IP forwarding rules
 	ListIpForwardingRules(context.Context, *connect.Request[v1.ListIpForwardingRulesRequest]) (*connect.Response[v1.ListIpForwardingRulesResponse], error)
-	// DisableStaticNat Disables static rule for given IP address
-	DisableStaticNat(context.Context, *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error)
 	// DeleteIpForwardingRule Deletes an IP forwarding rule
 	DeleteIpForwardingRule(context.Context, *connect.Request[v1.DeleteIpForwardingRuleRequest]) (*connect.Response[v1.DeleteIpForwardingRuleResponse], error)
+	// DisableStaticNat Disables static rule for given IP address
+	DisableStaticNat(context.Context, *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error)
 	// CreateIpForwardingRule Creates an IP forwarding rule
 	CreateIpForwardingRule(context.Context, *connect.Request[v1.CreateIpForwardingRuleRequest]) (*connect.Response[v1.CreateIpForwardingRuleResponse], error)
 	// EnableStaticNat Enables static NAT for given IP address
@@ -169,16 +169,16 @@ func NewNatServiceHandler(svc NatServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(natServiceMethods.ByName("ListIpForwardingRules")),
 		connect.WithHandlerOptions(opts...),
 	)
-	natServiceDisableStaticNatHandler := connect.NewUnaryHandler(
-		NatServiceDisableStaticNatProcedure,
-		svc.DisableStaticNat,
-		connect.WithSchema(natServiceMethods.ByName("DisableStaticNat")),
-		connect.WithHandlerOptions(opts...),
-	)
 	natServiceDeleteIpForwardingRuleHandler := connect.NewUnaryHandler(
 		NatServiceDeleteIpForwardingRuleProcedure,
 		svc.DeleteIpForwardingRule,
 		connect.WithSchema(natServiceMethods.ByName("DeleteIpForwardingRule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	natServiceDisableStaticNatHandler := connect.NewUnaryHandler(
+		NatServiceDisableStaticNatProcedure,
+		svc.DisableStaticNat,
+		connect.WithSchema(natServiceMethods.ByName("DisableStaticNat")),
 		connect.WithHandlerOptions(opts...),
 	)
 	natServiceCreateIpForwardingRuleHandler := connect.NewUnaryHandler(
@@ -197,10 +197,10 @@ func NewNatServiceHandler(svc NatServiceHandler, opts ...connect.HandlerOption) 
 		switch r.URL.Path {
 		case NatServiceListIpForwardingRulesProcedure:
 			natServiceListIpForwardingRulesHandler.ServeHTTP(w, r)
-		case NatServiceDisableStaticNatProcedure:
-			natServiceDisableStaticNatHandler.ServeHTTP(w, r)
 		case NatServiceDeleteIpForwardingRuleProcedure:
 			natServiceDeleteIpForwardingRuleHandler.ServeHTTP(w, r)
+		case NatServiceDisableStaticNatProcedure:
+			natServiceDisableStaticNatHandler.ServeHTTP(w, r)
 		case NatServiceCreateIpForwardingRuleProcedure:
 			natServiceCreateIpForwardingRuleHandler.ServeHTTP(w, r)
 		case NatServiceEnableStaticNatProcedure:
@@ -218,12 +218,12 @@ func (UnimplementedNatServiceHandler) ListIpForwardingRules(context.Context, *co
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.nat.v1.NatService.ListIpForwardingRules is not implemented"))
 }
 
-func (UnimplementedNatServiceHandler) DisableStaticNat(context.Context, *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.nat.v1.NatService.DisableStaticNat is not implemented"))
-}
-
 func (UnimplementedNatServiceHandler) DeleteIpForwardingRule(context.Context, *connect.Request[v1.DeleteIpForwardingRuleRequest]) (*connect.Response[v1.DeleteIpForwardingRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule is not implemented"))
+}
+
+func (UnimplementedNatServiceHandler) DisableStaticNat(context.Context, *connect.Request[v1.DisableStaticNatRequest]) (*connect.Response[v1.DisableStaticNatResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.nat.v1.NatService.DisableStaticNat is not implemented"))
 }
 
 func (UnimplementedNatServiceHandler) CreateIpForwardingRule(context.Context, *connect.Request[v1.CreateIpForwardingRuleRequest]) (*connect.Response[v1.CreateIpForwardingRuleResponse], error) {

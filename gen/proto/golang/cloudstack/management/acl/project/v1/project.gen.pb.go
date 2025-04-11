@@ -24,38 +24,91 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateProjectRolePermissionRequest represents the parameters for updates a project role permission and/or order
-type UpdateProjectRolePermissionRequest struct {
+// ProjectRolePermissionType represents the possible values for Rule permission, can be: allow or deny
+type ProjectRolePermissionType int32
+
+const (
+	// Default unspecified value
+	ProjectRolePermissionType_PROJECT_ROLE_PERMISSION_TYPE_UNSPECIFIED ProjectRolePermissionType = 0
+	// ALLOW value
+	ProjectRolePermissionType_PROJECT_ROLE_PERMISSION_TYPE_ALLOW ProjectRolePermissionType = 1
+	// DENY value
+	ProjectRolePermissionType_PROJECT_ROLE_PERMISSION_TYPE_DENY ProjectRolePermissionType = 2
+)
+
+// Enum value maps for ProjectRolePermissionType.
+var (
+	ProjectRolePermissionType_name = map[int32]string{
+		0: "PROJECT_ROLE_PERMISSION_TYPE_UNSPECIFIED",
+		1: "PROJECT_ROLE_PERMISSION_TYPE_ALLOW",
+		2: "PROJECT_ROLE_PERMISSION_TYPE_DENY",
+	}
+	ProjectRolePermissionType_value = map[string]int32{
+		"PROJECT_ROLE_PERMISSION_TYPE_UNSPECIFIED": 0,
+		"PROJECT_ROLE_PERMISSION_TYPE_ALLOW":       1,
+		"PROJECT_ROLE_PERMISSION_TYPE_DENY":        2,
+	}
+)
+
+func (x ProjectRolePermissionType) Enum() *ProjectRolePermissionType {
+	p := new(ProjectRolePermissionType)
+	*p = x
+	return p
+}
+
+func (x ProjectRolePermissionType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProjectRolePermissionType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ProjectRolePermissionType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_acl_project_v1_project_gen_proto_enumTypes[0]
+}
+
+func (x ProjectRolePermissionType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProjectRolePermissionType.Descriptor instead.
+func (ProjectRolePermissionType) EnumDescriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{0}
+}
+
+// CreateProjectRolePermissionRequest represents the parameters for adds api permissions to a project role
+type CreateProjectRolePermissionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the project role
 	ProjectRoleId *int64 `protobuf:"varint,1,opt,name=project_role_id,json=projectRoleId" json:"project_role_id,omitempty"`
-	// ID of project where project role permission is to be updated
+	// ID of project where project role permission is to be created
 	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The parent role permission uuid, use 0 to move this rule at the top of the list
-	ProjectRulePermissionOrder []string `protobuf:"bytes,3,rep,name=project_rule_permission_order,json=projectRulePermissionOrder" json:"project_rule_permission_order,omitempty"`
-	// Project Role permission rule id
-	ProjectRuleId *int64 `protobuf:"varint,4,opt,name=project_rule_id,json=projectRuleId" json:"project_rule_id,omitempty"`
-	// Rule permission, can be: allow or deny
-	ProjectRolePermission *string `protobuf:"bytes,5,opt,name=project_role_permission,json=projectRolePermission" json:"project_role_permission,omitempty"`
+	// The API name or wildcard rule such as list*
+	Rule *string `protobuf:"bytes,3,opt,name=rule" json:"rule,omitempty"`
+	// The rule permission, allow or deny. Default: deny.
+	Permission *string `protobuf:"bytes,4,opt,name=permission" json:"permission,omitempty"`
+	// The description of the role permission
+	Description *string `protobuf:"bytes,5,opt,name=description" json:"description,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateProjectRolePermissionRequest) Reset() {
-	*x = UpdateProjectRolePermissionRequest{}
+func (x *CreateProjectRolePermissionRequest) Reset() {
+	*x = CreateProjectRolePermissionRequest{}
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateProjectRolePermissionRequest) String() string {
+func (x *CreateProjectRolePermissionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateProjectRolePermissionRequest) ProtoMessage() {}
+func (*CreateProjectRolePermissionRequest) ProtoMessage() {}
 
-func (x *UpdateProjectRolePermissionRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateProjectRolePermissionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -67,55 +120,55 @@ func (x *UpdateProjectRolePermissionRequest) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateProjectRolePermissionRequest.ProtoReflect.Descriptor instead.
-func (*UpdateProjectRolePermissionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateProjectRolePermissionRequest.ProtoReflect.Descriptor instead.
+func (*CreateProjectRolePermissionRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UpdateProjectRolePermissionRequest) GetProjectRoleId() int64 {
+func (x *CreateProjectRolePermissionRequest) GetProjectRoleId() int64 {
 	if x != nil && x.ProjectRoleId != nil {
 		return *x.ProjectRoleId
 	}
 	return 0
 }
 
-func (x *UpdateProjectRolePermissionRequest) GetProjectId() int64 {
+func (x *CreateProjectRolePermissionRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *UpdateProjectRolePermissionRequest) GetProjectRulePermissionOrder() []string {
-	if x != nil {
-		return x.ProjectRulePermissionOrder
-	}
-	return nil
-}
-
-func (x *UpdateProjectRolePermissionRequest) GetProjectRuleId() int64 {
-	if x != nil && x.ProjectRuleId != nil {
-		return *x.ProjectRuleId
-	}
-	return 0
-}
-
-func (x *UpdateProjectRolePermissionRequest) GetProjectRolePermission() string {
-	if x != nil && x.ProjectRolePermission != nil {
-		return *x.ProjectRolePermission
+func (x *CreateProjectRolePermissionRequest) GetRule() string {
+	if x != nil && x.Rule != nil {
+		return *x.Rule
 	}
 	return ""
 }
 
-func (x *UpdateProjectRolePermissionRequest) GetResponseType() string {
+func (x *CreateProjectRolePermissionRequest) GetPermission() string {
+	if x != nil && x.Permission != nil {
+		return *x.Permission
+	}
+	return ""
+}
+
+func (x *CreateProjectRolePermissionRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateProjectRolePermissionRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateProjectRolePermissionResponse represents the response from updates a project role permission and/or order
-type UpdateProjectRolePermissionResponse struct {
+// CreateProjectRolePermissionResponse represents the response from adds api permissions to a project role
+type CreateProjectRolePermissionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -123,20 +176,20 @@ type UpdateProjectRolePermissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateProjectRolePermissionResponse) Reset() {
-	*x = UpdateProjectRolePermissionResponse{}
+func (x *CreateProjectRolePermissionResponse) Reset() {
+	*x = CreateProjectRolePermissionResponse{}
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateProjectRolePermissionResponse) String() string {
+func (x *CreateProjectRolePermissionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateProjectRolePermissionResponse) ProtoMessage() {}
+func (*CreateProjectRolePermissionResponse) ProtoMessage() {}
 
-func (x *UpdateProjectRolePermissionResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateProjectRolePermissionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -148,12 +201,121 @@ func (x *UpdateProjectRolePermissionResponse) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateProjectRolePermissionResponse.ProtoReflect.Descriptor instead.
-func (*UpdateProjectRolePermissionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateProjectRolePermissionResponse.ProtoReflect.Descriptor instead.
+func (*CreateProjectRolePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateProjectRolePermissionResponse) GetResult() *Result {
+func (x *CreateProjectRolePermissionResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteProjectRoleRequest represents the parameters for delete project roles in cloudstack
+type DeleteProjectRoleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the project role to be deleted
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// ID of the project from where the role is to be deleted
+	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteProjectRoleRequest) Reset() {
+	*x = DeleteProjectRoleRequest{}
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectRoleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectRoleRequest) ProtoMessage() {}
+
+func (x *DeleteProjectRoleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProjectRoleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteProjectRoleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteProjectRoleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteProjectRoleRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DeleteProjectRoleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteProjectRoleResponse represents the response from delete project roles in cloudstack
+type DeleteProjectRoleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteProjectRoleResponse) Reset() {
+	*x = DeleteProjectRoleResponse{}
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectRoleResponse) ProtoMessage() {}
+
+func (x *DeleteProjectRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProjectRoleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteProjectRoleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteProjectRoleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -174,7 +336,7 @@ type ListProjectRolePermissionsRequest struct {
 
 func (x *ListProjectRolePermissionsRequest) Reset() {
 	*x = ListProjectRolePermissionsRequest{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -186,7 +348,7 @@ func (x *ListProjectRolePermissionsRequest) String() string {
 func (*ListProjectRolePermissionsRequest) ProtoMessage() {}
 
 func (x *ListProjectRolePermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -199,7 +361,7 @@ func (x *ListProjectRolePermissionsRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ListProjectRolePermissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListProjectRolePermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListProjectRolePermissionsRequest) GetProjectId() int64 {
@@ -236,7 +398,7 @@ type ListProjectRolePermissionsResponse struct {
 
 func (x *ListProjectRolePermissionsResponse) Reset() {
 	*x = ListProjectRolePermissionsResponse{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -248,7 +410,7 @@ func (x *ListProjectRolePermissionsResponse) String() string {
 func (*ListProjectRolePermissionsResponse) ProtoMessage() {}
 
 func (x *ListProjectRolePermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -261,7 +423,7 @@ func (x *ListProjectRolePermissionsResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListProjectRolePermissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListProjectRolePermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListProjectRolePermissionsResponse) GetItems() []*ProjectRolePermission {
@@ -276,115 +438,6 @@ func (x *ListProjectRolePermissionsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// DeleteProjectRoleRequest represents the parameters for delete project roles in cloudstack
-type DeleteProjectRoleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the project role to be deleted
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// ID of the project from where the role is to be deleted
-	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteProjectRoleRequest) Reset() {
-	*x = DeleteProjectRoleRequest{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteProjectRoleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteProjectRoleRequest) ProtoMessage() {}
-
-func (x *DeleteProjectRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteProjectRoleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteProjectRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteProjectRoleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteProjectRoleRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DeleteProjectRoleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteProjectRoleResponse represents the response from delete project roles in cloudstack
-type DeleteProjectRoleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteProjectRoleResponse) Reset() {
-	*x = DeleteProjectRoleResponse{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteProjectRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteProjectRoleResponse) ProtoMessage() {}
-
-func (x *DeleteProjectRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteProjectRoleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteProjectRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteProjectRoleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // DeleteProjectRolePermissionRequest represents the parameters for deletes a project role permission in the project
@@ -496,38 +549,38 @@ func (x *DeleteProjectRolePermissionResponse) GetResult() *Result {
 	return nil
 }
 
-// CreateProjectRolePermissionRequest represents the parameters for adds api permissions to a project role
-type CreateProjectRolePermissionRequest struct {
+// UpdateProjectRolePermissionRequest represents the parameters for updates a project role permission and/or order
+type UpdateProjectRolePermissionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the project role
 	ProjectRoleId *int64 `protobuf:"varint,1,opt,name=project_role_id,json=projectRoleId" json:"project_role_id,omitempty"`
-	// ID of project where project role permission is to be created
+	// ID of project where project role permission is to be updated
 	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The API name or wildcard rule such as list*
-	Rule *string `protobuf:"bytes,3,opt,name=rule" json:"rule,omitempty"`
-	// The rule permission, allow or deny. Default: deny.
-	Permission *string `protobuf:"bytes,4,opt,name=permission" json:"permission,omitempty"`
-	// The description of the role permission
-	Description *string `protobuf:"bytes,5,opt,name=description" json:"description,omitempty"`
+	// The parent role permission uuid, use 0 to move this rule at the top of the list
+	ProjectRulePermissionOrder []string `protobuf:"bytes,3,rep,name=project_rule_permission_order,json=projectRulePermissionOrder" json:"project_rule_permission_order,omitempty"`
+	// Project Role permission rule id
+	ProjectRuleId *int64 `protobuf:"varint,4,opt,name=project_rule_id,json=projectRuleId" json:"project_rule_id,omitempty"`
+	// Rule permission, can be: allow or deny
+	ProjectRolePermission *string `protobuf:"bytes,5,opt,name=project_role_permission,json=projectRolePermission" json:"project_role_permission,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateProjectRolePermissionRequest) Reset() {
-	*x = CreateProjectRolePermissionRequest{}
+func (x *UpdateProjectRolePermissionRequest) Reset() {
+	*x = UpdateProjectRolePermissionRequest{}
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateProjectRolePermissionRequest) String() string {
+func (x *UpdateProjectRolePermissionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateProjectRolePermissionRequest) ProtoMessage() {}
+func (*UpdateProjectRolePermissionRequest) ProtoMessage() {}
 
-func (x *CreateProjectRolePermissionRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateProjectRolePermissionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -539,55 +592,55 @@ func (x *CreateProjectRolePermissionRequest) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateProjectRolePermissionRequest.ProtoReflect.Descriptor instead.
-func (*CreateProjectRolePermissionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateProjectRolePermissionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateProjectRolePermissionRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *CreateProjectRolePermissionRequest) GetProjectRoleId() int64 {
+func (x *UpdateProjectRolePermissionRequest) GetProjectRoleId() int64 {
 	if x != nil && x.ProjectRoleId != nil {
 		return *x.ProjectRoleId
 	}
 	return 0
 }
 
-func (x *CreateProjectRolePermissionRequest) GetProjectId() int64 {
+func (x *UpdateProjectRolePermissionRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *CreateProjectRolePermissionRequest) GetRule() string {
-	if x != nil && x.Rule != nil {
-		return *x.Rule
+func (x *UpdateProjectRolePermissionRequest) GetProjectRulePermissionOrder() []string {
+	if x != nil {
+		return x.ProjectRulePermissionOrder
+	}
+	return nil
+}
+
+func (x *UpdateProjectRolePermissionRequest) GetProjectRuleId() int64 {
+	if x != nil && x.ProjectRuleId != nil {
+		return *x.ProjectRuleId
+	}
+	return 0
+}
+
+func (x *UpdateProjectRolePermissionRequest) GetProjectRolePermission() string {
+	if x != nil && x.ProjectRolePermission != nil {
+		return *x.ProjectRolePermission
 	}
 	return ""
 }
 
-func (x *CreateProjectRolePermissionRequest) GetPermission() string {
-	if x != nil && x.Permission != nil {
-		return *x.Permission
-	}
-	return ""
-}
-
-func (x *CreateProjectRolePermissionRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateProjectRolePermissionRequest) GetResponseType() string {
+func (x *UpdateProjectRolePermissionRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateProjectRolePermissionResponse represents the response from adds api permissions to a project role
-type CreateProjectRolePermissionResponse struct {
+// UpdateProjectRolePermissionResponse represents the response from updates a project role permission and/or order
+type UpdateProjectRolePermissionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -595,20 +648,20 @@ type CreateProjectRolePermissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateProjectRolePermissionResponse) Reset() {
-	*x = CreateProjectRolePermissionResponse{}
+func (x *UpdateProjectRolePermissionResponse) Reset() {
+	*x = UpdateProjectRolePermissionResponse{}
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateProjectRolePermissionResponse) String() string {
+func (x *UpdateProjectRolePermissionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateProjectRolePermissionResponse) ProtoMessage() {}
+func (*UpdateProjectRolePermissionResponse) ProtoMessage() {}
 
-func (x *CreateProjectRolePermissionResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateProjectRolePermissionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -620,12 +673,139 @@ func (x *CreateProjectRolePermissionResponse) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateProjectRolePermissionResponse.ProtoReflect.Descriptor instead.
-func (*CreateProjectRolePermissionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateProjectRolePermissionResponse.ProtoReflect.Descriptor instead.
+func (*UpdateProjectRolePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *CreateProjectRolePermissionResponse) GetResult() *Result {
+func (x *UpdateProjectRolePermissionResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateProjectRoleRequest represents the parameters for creates a project role
+type UpdateProjectRoleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the Project role
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// creates a project role with this unique name
+	ProjectRoleName *string `protobuf:"bytes,2,opt,name=project_role_name,json=projectRoleName" json:"project_role_name,omitempty"`
+	// ID of project where role is being created
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// The description of the Project role
+	ProjectRoleDescription *string `protobuf:"bytes,4,opt,name=project_role_description,json=projectRoleDescription" json:"project_role_description,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProjectRoleRequest) Reset() {
+	*x = UpdateProjectRoleRequest{}
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProjectRoleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProjectRoleRequest) ProtoMessage() {}
+
+func (x *UpdateProjectRoleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProjectRoleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateProjectRoleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateProjectRoleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateProjectRoleRequest) GetProjectRoleName() string {
+	if x != nil && x.ProjectRoleName != nil {
+		return *x.ProjectRoleName
+	}
+	return ""
+}
+
+func (x *UpdateProjectRoleRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *UpdateProjectRoleRequest) GetProjectRoleDescription() string {
+	if x != nil && x.ProjectRoleDescription != nil {
+		return *x.ProjectRoleDescription
+	}
+	return ""
+}
+
+func (x *UpdateProjectRoleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateProjectRoleResponse represents the response from creates a project role
+type UpdateProjectRoleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProjectRoleResponse) Reset() {
+	*x = UpdateProjectRoleResponse{}
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProjectRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProjectRoleResponse) ProtoMessage() {}
+
+func (x *UpdateProjectRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProjectRoleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateProjectRoleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateProjectRoleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -652,7 +832,7 @@ type ListProjectRolesRequest struct {
 
 func (x *ListProjectRolesRequest) Reset() {
 	*x = ListProjectRolesRequest{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -664,7 +844,7 @@ func (x *ListProjectRolesRequest) String() string {
 func (*ListProjectRolesRequest) ProtoMessage() {}
 
 func (x *ListProjectRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -677,7 +857,7 @@ func (x *ListProjectRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProjectRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListProjectRolesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListProjectRolesRequest) GetProjectRoleId() int64 {
@@ -742,7 +922,7 @@ type ListProjectRolesResponse struct {
 
 func (x *ListProjectRolesResponse) Reset() {
 	*x = ListProjectRolesResponse{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -754,7 +934,7 @@ func (x *ListProjectRolesResponse) String() string {
 func (*ListProjectRolesResponse) ProtoMessage() {}
 
 func (x *ListProjectRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -767,7 +947,7 @@ func (x *ListProjectRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProjectRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListProjectRolesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListProjectRolesResponse) GetItems() []*ProjectRole {
@@ -782,133 +962,6 @@ func (x *ListProjectRolesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// UpdateProjectRoleRequest represents the parameters for creates a project role
-type UpdateProjectRoleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the Project role
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// creates a project role with this unique name
-	ProjectRoleName *string `protobuf:"bytes,2,opt,name=project_role_name,json=projectRoleName" json:"project_role_name,omitempty"`
-	// ID of project where role is being created
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The description of the Project role
-	ProjectRoleDescription *string `protobuf:"bytes,4,opt,name=project_role_description,json=projectRoleDescription" json:"project_role_description,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateProjectRoleRequest) Reset() {
-	*x = UpdateProjectRoleRequest{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateProjectRoleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateProjectRoleRequest) ProtoMessage() {}
-
-func (x *UpdateProjectRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateProjectRoleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateProjectRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *UpdateProjectRoleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateProjectRoleRequest) GetProjectRoleName() string {
-	if x != nil && x.ProjectRoleName != nil {
-		return *x.ProjectRoleName
-	}
-	return ""
-}
-
-func (x *UpdateProjectRoleRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *UpdateProjectRoleRequest) GetProjectRoleDescription() string {
-	if x != nil && x.ProjectRoleDescription != nil {
-		return *x.ProjectRoleDescription
-	}
-	return ""
-}
-
-func (x *UpdateProjectRoleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateProjectRoleResponse represents the response from creates a project role
-type UpdateProjectRoleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateProjectRoleResponse) Reset() {
-	*x = UpdateProjectRoleResponse{}
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateProjectRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateProjectRoleResponse) ProtoMessage() {}
-
-func (x *UpdateProjectRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateProjectRoleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateProjectRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *UpdateProjectRoleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // CreateProjectRoleRequest represents the parameters for creates a project role
@@ -1479,40 +1532,7 @@ var File_cloudstack_management_acl_project_v1_project_gen_proto protoreflect.Fil
 
 const file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc = "" +
 	"\n" +
-	"6cloudstack/management/acl/project/v1/project.gen.proto\x12$cloudstack.management.acl.project.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc3\x02\n" +
-	"\"UpdateProjectRolePermissionRequest\x12.\n" +
-	"\x0fproject_role_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rprojectRoleId\x12%\n" +
-	"\n" +
-	"project_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12A\n" +
-	"\x1dproject_rule_permission_order\x18\x03 \x03(\tR\x1aprojectRulePermissionOrder\x12&\n" +
-	"\x0fproject_rule_id\x18\x04 \x01(\x03R\rprojectRuleId\x126\n" +
-	"\x17project_role_permission\x18\x05 \x01(\tR\x15projectRolePermission\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"k\n" +
-	"#UpdateProjectRolePermissionResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\x97\x01\n" +
-	"!ListProjectRolePermissionsRequest\x12%\n" +
-	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12&\n" +
-	"\x0fproject_role_id\x18\x02 \x01(\x03R\rprojectRoleId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\x9f\x01\n" +
-	"\"ListProjectRolePermissionsResponse\x12Q\n" +
-	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.acl.project.v1.ProjectRolePermissionR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"~\n" +
-	"\x18DeleteProjectRoleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\n" +
-	"project_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"a\n" +
-	"\x19DeleteProjectRoleResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\xb5\x01\n" +
-	"\"DeleteProjectRolePermissionRequest\x12%\n" +
-	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12C\n" +
-	"\x1aproject_role_permission_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x17projectRolePermissionId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"k\n" +
-	"#DeleteProjectRolePermissionResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\x92\x02\n" +
+	"6cloudstack/management/acl/project/v1/project.gen.proto\x12$cloudstack.management.acl.project.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x92\x02\n" +
 	"\"CreateProjectRolePermissionRequest\x12.\n" +
 	"\x0fproject_role_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rprojectRoleId\x12%\n" +
 	"\n" +
@@ -1525,6 +1545,50 @@ const file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"k\n" +
 	"#CreateProjectRolePermissionResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"~\n" +
+	"\x18DeleteProjectRoleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\n" +
+	"project_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"a\n" +
+	"\x19DeleteProjectRoleResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\x97\x01\n" +
+	"!ListProjectRolePermissionsRequest\x12%\n" +
+	"\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12&\n" +
+	"\x0fproject_role_id\x18\x02 \x01(\x03R\rprojectRoleId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\x9f\x01\n" +
+	"\"ListProjectRolePermissionsResponse\x12Q\n" +
+	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.acl.project.v1.ProjectRolePermissionR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x01\n" +
+	"\"DeleteProjectRolePermissionRequest\x12%\n" +
+	"\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12C\n" +
+	"\x1aproject_role_permission_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x17projectRolePermissionId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"k\n" +
+	"#DeleteProjectRolePermissionResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\xc3\x02\n" +
+	"\"UpdateProjectRolePermissionRequest\x12.\n" +
+	"\x0fproject_role_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rprojectRoleId\x12%\n" +
+	"\n" +
+	"project_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12A\n" +
+	"\x1dproject_rule_permission_order\x18\x03 \x03(\tR\x1aprojectRulePermissionOrder\x12&\n" +
+	"\x0fproject_rule_id\x18\x04 \x01(\x03R\rprojectRuleId\x126\n" +
+	"\x17project_role_permission\x18\x05 \x01(\tR\x15projectRolePermission\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"k\n" +
+	"#UpdateProjectRolePermissionResponse\x12D\n" +
+	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\xfc\x01\n" +
+	"\x18UpdateProjectRoleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
+	"\x11project_role_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x0fprojectRoleName\x12%\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12D\n" +
+	"\x18project_role_description\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\x16projectRoleDescription\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
+	"\x19UpdateProjectRoleResponse\x12D\n" +
 	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\x81\x02\n" +
 	"\x17ListProjectRolesRequest\x12&\n" +
 	"\x0fproject_role_id\x18\x01 \x01(\x03R\rprojectRoleId\x12%\n" +
@@ -1539,18 +1603,7 @@ const file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc = "" +
 	"\x18ListProjectRolesResponse\x12G\n" +
 	"\x05items\x18\x01 \x03(\v21.cloudstack.management.acl.project.v1.ProjectRoleR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xfc\x01\n" +
-	"\x18UpdateProjectRoleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
-	"\x11project_role_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x0fprojectRoleName\x12%\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12D\n" +
-	"\x18project_role_description\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\x16projectRoleDescription\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
-	"\x19UpdateProjectRoleResponse\x12D\n" +
-	"\x06result\x18\x01 \x01(\v2,.cloudstack.management.acl.project.v1.ResultR\x06result\"\xe7\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe7\x01\n" +
 	"\x18CreateProjectRoleRequest\x129\n" +
 	"\x11project_role_name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x0fprojectRoleName\x12%\n" +
@@ -1601,16 +1654,20 @@ const file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd2\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*\x98\x01\n" +
+	"\x19ProjectRolePermissionType\x12,\n" +
+	"(PROJECT_ROLE_PERMISSION_TYPE_UNSPECIFIED\x10\x00\x12&\n" +
+	"\"PROJECT_ROLE_PERMISSION_TYPE_ALLOW\x10\x01\x12%\n" +
+	"!PROJECT_ROLE_PERMISSION_TYPE_DENY\x10\x022\xd2\n" +
 	"\n" +
 	"\x0eProjectService\x12\xb4\x01\n" +
-	"\x1bUpdateProjectRolePermission\x12H.cloudstack.management.acl.project.v1.UpdateProjectRolePermissionRequest\x1aI.cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse\"\x00\x12\xb1\x01\n" +
-	"\x1aListProjectRolePermissions\x12G.cloudstack.management.acl.project.v1.ListProjectRolePermissionsRequest\x1aH.cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse\"\x00\x12\x96\x01\n" +
-	"\x11DeleteProjectRole\x12>.cloudstack.management.acl.project.v1.DeleteProjectRoleRequest\x1a?.cloudstack.management.acl.project.v1.DeleteProjectRoleResponse\"\x00\x12\xb4\x01\n" +
+	"\x1bCreateProjectRolePermission\x12H.cloudstack.management.acl.project.v1.CreateProjectRolePermissionRequest\x1aI.cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse\"\x00\x12\x96\x01\n" +
+	"\x11DeleteProjectRole\x12>.cloudstack.management.acl.project.v1.DeleteProjectRoleRequest\x1a?.cloudstack.management.acl.project.v1.DeleteProjectRoleResponse\"\x00\x12\xb1\x01\n" +
+	"\x1aListProjectRolePermissions\x12G.cloudstack.management.acl.project.v1.ListProjectRolePermissionsRequest\x1aH.cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse\"\x00\x12\xb4\x01\n" +
 	"\x1bDeleteProjectRolePermission\x12H.cloudstack.management.acl.project.v1.DeleteProjectRolePermissionRequest\x1aI.cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse\"\x00\x12\xb4\x01\n" +
-	"\x1bCreateProjectRolePermission\x12H.cloudstack.management.acl.project.v1.CreateProjectRolePermissionRequest\x1aI.cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse\"\x00\x12\x93\x01\n" +
+	"\x1bUpdateProjectRolePermission\x12H.cloudstack.management.acl.project.v1.UpdateProjectRolePermissionRequest\x1aI.cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse\"\x00\x12\x96\x01\n" +
+	"\x11UpdateProjectRole\x12>.cloudstack.management.acl.project.v1.UpdateProjectRoleRequest\x1a?.cloudstack.management.acl.project.v1.UpdateProjectRoleResponse\"\x00\x12\x93\x01\n" +
 	"\x10ListProjectRoles\x12=.cloudstack.management.acl.project.v1.ListProjectRolesRequest\x1a>.cloudstack.management.acl.project.v1.ListProjectRolesResponse\"\x00\x12\x96\x01\n" +
-	"\x11UpdateProjectRole\x12>.cloudstack.management.acl.project.v1.UpdateProjectRoleRequest\x1a?.cloudstack.management.acl.project.v1.UpdateProjectRoleResponse\"\x00\x12\x96\x01\n" +
 	"\x11CreateProjectRole\x12>.cloudstack.management.acl.project.v1.CreateProjectRoleRequest\x1a?.cloudstack.management.acl.project.v1.CreateProjectRoleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xd4\x02\n" +
 	"(com.cloudstack.management.acl.project.v1B\x0fProjectGenProtoP\x01Zbgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/acl/project/v1;projectv1\xa2\x02\x04CMAP\xaa\x02$Cloudstack.Management.Acl.Project.V1\xca\x02$Cloudstack\\Management\\Acl\\Project\\V1\xe2\x020Cloudstack\\Management\\Acl\\Project\\V1\\GPBMetadata\xea\x02(Cloudstack::Management::Acl::Project::V1b\beditionsp\xe8\a"
 
@@ -1626,57 +1683,59 @@ func file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescGZIP() [
 	return file_cloudstack_management_acl_project_v1_project_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_acl_project_v1_project_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_cloudstack_management_acl_project_v1_project_gen_proto_goTypes = []any{
-	(*UpdateProjectRolePermissionRequest)(nil),  // 0: cloudstack.management.acl.project.v1.UpdateProjectRolePermissionRequest
-	(*UpdateProjectRolePermissionResponse)(nil), // 1: cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse
-	(*ListProjectRolePermissionsRequest)(nil),   // 2: cloudstack.management.acl.project.v1.ListProjectRolePermissionsRequest
-	(*ListProjectRolePermissionsResponse)(nil),  // 3: cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse
-	(*DeleteProjectRoleRequest)(nil),            // 4: cloudstack.management.acl.project.v1.DeleteProjectRoleRequest
-	(*DeleteProjectRoleResponse)(nil),           // 5: cloudstack.management.acl.project.v1.DeleteProjectRoleResponse
-	(*DeleteProjectRolePermissionRequest)(nil),  // 6: cloudstack.management.acl.project.v1.DeleteProjectRolePermissionRequest
-	(*DeleteProjectRolePermissionResponse)(nil), // 7: cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse
-	(*CreateProjectRolePermissionRequest)(nil),  // 8: cloudstack.management.acl.project.v1.CreateProjectRolePermissionRequest
-	(*CreateProjectRolePermissionResponse)(nil), // 9: cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse
-	(*ListProjectRolesRequest)(nil),             // 10: cloudstack.management.acl.project.v1.ListProjectRolesRequest
-	(*ListProjectRolesResponse)(nil),            // 11: cloudstack.management.acl.project.v1.ListProjectRolesResponse
-	(*UpdateProjectRoleRequest)(nil),            // 12: cloudstack.management.acl.project.v1.UpdateProjectRoleRequest
-	(*UpdateProjectRoleResponse)(nil),           // 13: cloudstack.management.acl.project.v1.UpdateProjectRoleResponse
-	(*CreateProjectRoleRequest)(nil),            // 14: cloudstack.management.acl.project.v1.CreateProjectRoleRequest
-	(*CreateProjectRoleResponse)(nil),           // 15: cloudstack.management.acl.project.v1.CreateProjectRoleResponse
-	(*ProjectRolePermission)(nil),               // 16: cloudstack.management.acl.project.v1.ProjectRolePermission
-	(*ProjectRole)(nil),                         // 17: cloudstack.management.acl.project.v1.ProjectRole
-	(*Success)(nil),                             // 18: cloudstack.management.acl.project.v1.Success
-	(*Item)(nil),                                // 19: cloudstack.management.acl.project.v1.Item
-	(*Result)(nil),                              // 20: cloudstack.management.acl.project.v1.Result
-	nil,                                         // 21: cloudstack.management.acl.project.v1.Item.DetailsEntry
+	(ProjectRolePermissionType)(0),              // 0: cloudstack.management.acl.project.v1.ProjectRolePermissionType
+	(*CreateProjectRolePermissionRequest)(nil),  // 1: cloudstack.management.acl.project.v1.CreateProjectRolePermissionRequest
+	(*CreateProjectRolePermissionResponse)(nil), // 2: cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse
+	(*DeleteProjectRoleRequest)(nil),            // 3: cloudstack.management.acl.project.v1.DeleteProjectRoleRequest
+	(*DeleteProjectRoleResponse)(nil),           // 4: cloudstack.management.acl.project.v1.DeleteProjectRoleResponse
+	(*ListProjectRolePermissionsRequest)(nil),   // 5: cloudstack.management.acl.project.v1.ListProjectRolePermissionsRequest
+	(*ListProjectRolePermissionsResponse)(nil),  // 6: cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse
+	(*DeleteProjectRolePermissionRequest)(nil),  // 7: cloudstack.management.acl.project.v1.DeleteProjectRolePermissionRequest
+	(*DeleteProjectRolePermissionResponse)(nil), // 8: cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse
+	(*UpdateProjectRolePermissionRequest)(nil),  // 9: cloudstack.management.acl.project.v1.UpdateProjectRolePermissionRequest
+	(*UpdateProjectRolePermissionResponse)(nil), // 10: cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse
+	(*UpdateProjectRoleRequest)(nil),            // 11: cloudstack.management.acl.project.v1.UpdateProjectRoleRequest
+	(*UpdateProjectRoleResponse)(nil),           // 12: cloudstack.management.acl.project.v1.UpdateProjectRoleResponse
+	(*ListProjectRolesRequest)(nil),             // 13: cloudstack.management.acl.project.v1.ListProjectRolesRequest
+	(*ListProjectRolesResponse)(nil),            // 14: cloudstack.management.acl.project.v1.ListProjectRolesResponse
+	(*CreateProjectRoleRequest)(nil),            // 15: cloudstack.management.acl.project.v1.CreateProjectRoleRequest
+	(*CreateProjectRoleResponse)(nil),           // 16: cloudstack.management.acl.project.v1.CreateProjectRoleResponse
+	(*ProjectRolePermission)(nil),               // 17: cloudstack.management.acl.project.v1.ProjectRolePermission
+	(*ProjectRole)(nil),                         // 18: cloudstack.management.acl.project.v1.ProjectRole
+	(*Success)(nil),                             // 19: cloudstack.management.acl.project.v1.Success
+	(*Item)(nil),                                // 20: cloudstack.management.acl.project.v1.Item
+	(*Result)(nil),                              // 21: cloudstack.management.acl.project.v1.Result
+	nil,                                         // 22: cloudstack.management.acl.project.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_acl_project_v1_project_gen_proto_depIdxs = []int32{
-	20, // 0: cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
-	16, // 1: cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse.items:type_name -> cloudstack.management.acl.project.v1.ProjectRolePermission
-	20, // 2: cloudstack.management.acl.project.v1.DeleteProjectRoleResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
-	20, // 3: cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
-	20, // 4: cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
-	17, // 5: cloudstack.management.acl.project.v1.ListProjectRolesResponse.items:type_name -> cloudstack.management.acl.project.v1.ProjectRole
-	20, // 6: cloudstack.management.acl.project.v1.UpdateProjectRoleResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
-	20, // 7: cloudstack.management.acl.project.v1.CreateProjectRoleResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
-	21, // 8: cloudstack.management.acl.project.v1.Item.details:type_name -> cloudstack.management.acl.project.v1.Item.DetailsEntry
-	0,  // 9: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRolePermission:input_type -> cloudstack.management.acl.project.v1.UpdateProjectRolePermissionRequest
-	2,  // 10: cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions:input_type -> cloudstack.management.acl.project.v1.ListProjectRolePermissionsRequest
-	4,  // 11: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRole:input_type -> cloudstack.management.acl.project.v1.DeleteProjectRoleRequest
-	6,  // 12: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission:input_type -> cloudstack.management.acl.project.v1.DeleteProjectRolePermissionRequest
-	8,  // 13: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRolePermission:input_type -> cloudstack.management.acl.project.v1.CreateProjectRolePermissionRequest
-	10, // 14: cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles:input_type -> cloudstack.management.acl.project.v1.ListProjectRolesRequest
-	12, // 15: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole:input_type -> cloudstack.management.acl.project.v1.UpdateProjectRoleRequest
-	14, // 16: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole:input_type -> cloudstack.management.acl.project.v1.CreateProjectRoleRequest
-	1,  // 17: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRolePermission:output_type -> cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse
-	3,  // 18: cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions:output_type -> cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse
-	5,  // 19: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRole:output_type -> cloudstack.management.acl.project.v1.DeleteProjectRoleResponse
-	7,  // 20: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission:output_type -> cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse
-	9,  // 21: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRolePermission:output_type -> cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse
-	11, // 22: cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles:output_type -> cloudstack.management.acl.project.v1.ListProjectRolesResponse
-	13, // 23: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole:output_type -> cloudstack.management.acl.project.v1.UpdateProjectRoleResponse
-	15, // 24: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole:output_type -> cloudstack.management.acl.project.v1.CreateProjectRoleResponse
+	21, // 0: cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
+	21, // 1: cloudstack.management.acl.project.v1.DeleteProjectRoleResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
+	17, // 2: cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse.items:type_name -> cloudstack.management.acl.project.v1.ProjectRolePermission
+	21, // 3: cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
+	21, // 4: cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
+	21, // 5: cloudstack.management.acl.project.v1.UpdateProjectRoleResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
+	18, // 6: cloudstack.management.acl.project.v1.ListProjectRolesResponse.items:type_name -> cloudstack.management.acl.project.v1.ProjectRole
+	21, // 7: cloudstack.management.acl.project.v1.CreateProjectRoleResponse.result:type_name -> cloudstack.management.acl.project.v1.Result
+	22, // 8: cloudstack.management.acl.project.v1.Item.details:type_name -> cloudstack.management.acl.project.v1.Item.DetailsEntry
+	1,  // 9: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRolePermission:input_type -> cloudstack.management.acl.project.v1.CreateProjectRolePermissionRequest
+	3,  // 10: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRole:input_type -> cloudstack.management.acl.project.v1.DeleteProjectRoleRequest
+	5,  // 11: cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions:input_type -> cloudstack.management.acl.project.v1.ListProjectRolePermissionsRequest
+	7,  // 12: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission:input_type -> cloudstack.management.acl.project.v1.DeleteProjectRolePermissionRequest
+	9,  // 13: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRolePermission:input_type -> cloudstack.management.acl.project.v1.UpdateProjectRolePermissionRequest
+	11, // 14: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole:input_type -> cloudstack.management.acl.project.v1.UpdateProjectRoleRequest
+	13, // 15: cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles:input_type -> cloudstack.management.acl.project.v1.ListProjectRolesRequest
+	15, // 16: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole:input_type -> cloudstack.management.acl.project.v1.CreateProjectRoleRequest
+	2,  // 17: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRolePermission:output_type -> cloudstack.management.acl.project.v1.CreateProjectRolePermissionResponse
+	4,  // 18: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRole:output_type -> cloudstack.management.acl.project.v1.DeleteProjectRoleResponse
+	6,  // 19: cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions:output_type -> cloudstack.management.acl.project.v1.ListProjectRolePermissionsResponse
+	8,  // 20: cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission:output_type -> cloudstack.management.acl.project.v1.DeleteProjectRolePermissionResponse
+	10, // 21: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRolePermission:output_type -> cloudstack.management.acl.project.v1.UpdateProjectRolePermissionResponse
+	12, // 22: cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole:output_type -> cloudstack.management.acl.project.v1.UpdateProjectRoleResponse
+	14, // 23: cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles:output_type -> cloudstack.management.acl.project.v1.ListProjectRolesResponse
+	16, // 24: cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole:output_type -> cloudstack.management.acl.project.v1.CreateProjectRoleResponse
 	17, // [17:25] is the sub-list for method output_type
 	9,  // [9:17] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
@@ -1694,13 +1753,14 @@ func file_cloudstack_management_acl_project_v1_project_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc), len(file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_acl_project_v1_project_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_acl_project_v1_project_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_acl_project_v1_project_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_acl_project_v1_project_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_acl_project_v1_project_gen_proto = out.File

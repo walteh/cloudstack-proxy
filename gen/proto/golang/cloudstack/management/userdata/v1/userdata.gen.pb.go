@@ -151,46 +151,40 @@ func (x *DeleteUserDataResponse) GetResult() *Result {
 	return nil
 }
 
-// ListUserDataRequest represents the parameters for list registered userdatas
-type ListUserDataRequest struct {
+// RegisterUserDataRequest represents the parameters for register a new userdata.
+type RegisterUserDataRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the Userdata
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Userdata name to look for
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,5,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,7,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Name of the userdata
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// an optional account for the userdata. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the userdata. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional project for the userdata
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Base64 encoded userdata content. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,5,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// comma separated list of variables declared in userdata content
+	Params *string `protobuf:"bytes,6,opt,name=params" json:"params,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListUserDataRequest) Reset() {
-	*x = ListUserDataRequest{}
+func (x *RegisterUserDataRequest) Reset() {
+	*x = RegisterUserDataRequest{}
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListUserDataRequest) String() string {
+func (x *RegisterUserDataRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListUserDataRequest) ProtoMessage() {}
+func (*RegisterUserDataRequest) ProtoMessage() {}
 
-func (x *ListUserDataRequest) ProtoReflect() protoreflect.Message {
+func (x *RegisterUserDataRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -202,113 +196,83 @@ func (x *ListUserDataRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListUserDataRequest.ProtoReflect.Descriptor instead.
-func (*ListUserDataRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterUserDataRequest.ProtoReflect.Descriptor instead.
+func (*RegisterUserDataRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListUserDataRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListUserDataRequest) GetName() string {
+func (x *RegisterUserDataRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *ListUserDataRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListUserDataRequest) GetAccountName() string {
+func (x *RegisterUserDataRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *ListUserDataRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListUserDataRequest) GetDomainId() int64 {
+func (x *RegisterUserDataRequest) GetDomainId() int64 {
 	if x != nil && x.DomainId != nil {
 		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *ListUserDataRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
+func (x *RegisterUserDataRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
 	}
-	return false
+	return 0
 }
 
-func (x *ListUserDataRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *RegisterUserDataRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
 	}
 	return ""
 }
 
-func (x *ListUserDataRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
+func (x *RegisterUserDataRequest) GetParams() string {
+	if x != nil && x.Params != nil {
+		return *x.Params
 	}
-	return 0
+	return ""
 }
 
-func (x *ListUserDataRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListUserDataRequest) GetResponseType() string {
+func (x *RegisterUserDataRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListUserDataResponse represents the response from list registered userdatas
-type ListUserDataResponse struct {
+// RegisterUserDataResponse represents the response from register a new userdata.
+type RegisterUserDataResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of UserDatas
-	Items []*UserData `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of UserDatas
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListUserDataResponse) Reset() {
-	*x = ListUserDataResponse{}
+func (x *RegisterUserDataResponse) Reset() {
+	*x = RegisterUserDataResponse{}
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListUserDataResponse) String() string {
+func (x *RegisterUserDataResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListUserDataResponse) ProtoMessage() {}
+func (*RegisterUserDataResponse) ProtoMessage() {}
 
-func (x *ListUserDataResponse) ProtoReflect() protoreflect.Message {
+func (x *RegisterUserDataResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -320,23 +284,16 @@ func (x *ListUserDataResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListUserDataResponse.ProtoReflect.Descriptor instead.
-func (*ListUserDataResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterUserDataResponse.ProtoReflect.Descriptor instead.
+func (*RegisterUserDataResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListUserDataResponse) GetItems() []*UserData {
+func (x *RegisterUserDataResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListUserDataResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // LinkUserDataToTemplateRequest represents the parameters for link or unlink a userdata to a template.
@@ -466,40 +423,46 @@ func (x *LinkUserDataToTemplateResponse) GetResult() *Result {
 	return nil
 }
 
-// RegisterUserDataRequest represents the parameters for register a new userdata.
-type RegisterUserDataRequest struct {
+// ListUserDataRequest represents the parameters for list registered userdatas
+type ListUserDataRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the userdata
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// an optional account for the userdata. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the userdata. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional project for the userdata
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Base64 encoded userdata content. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	UserData *string `protobuf:"bytes,5,opt,name=user_data,json=userData" json:"user_data,omitempty"`
-	// comma separated list of variables declared in userdata content
-	Params *string `protobuf:"bytes,6,opt,name=params" json:"params,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the ID of the Userdata
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Userdata name to look for
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,5,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,7,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterUserDataRequest) Reset() {
-	*x = RegisterUserDataRequest{}
+func (x *ListUserDataRequest) Reset() {
+	*x = ListUserDataRequest{}
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterUserDataRequest) String() string {
+func (x *ListUserDataRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterUserDataRequest) ProtoMessage() {}
+func (*ListUserDataRequest) ProtoMessage() {}
 
-func (x *RegisterUserDataRequest) ProtoReflect() protoreflect.Message {
+func (x *ListUserDataRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -511,83 +474,113 @@ func (x *RegisterUserDataRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterUserDataRequest.ProtoReflect.Descriptor instead.
-func (*RegisterUserDataRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListUserDataRequest.ProtoReflect.Descriptor instead.
+func (*ListUserDataRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *RegisterUserDataRequest) GetName() string {
+func (x *ListUserDataRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListUserDataRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *RegisterUserDataRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *RegisterUserDataRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *RegisterUserDataRequest) GetProjectId() int64 {
+func (x *ListUserDataRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *RegisterUserDataRequest) GetUserData() string {
-	if x != nil && x.UserData != nil {
-		return *x.UserData
+func (x *ListUserDataRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *RegisterUserDataRequest) GetParams() string {
-	if x != nil && x.Params != nil {
-		return *x.Params
+func (x *ListUserDataRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListUserDataRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListUserDataRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListUserDataRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *RegisterUserDataRequest) GetResponseType() string {
+func (x *ListUserDataRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListUserDataRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListUserDataRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RegisterUserDataResponse represents the response from register a new userdata.
-type RegisterUserDataResponse struct {
+// ListUserDataResponse represents the response from list registered userdatas
+type ListUserDataResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of UserDatas
+	Items []*UserData `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of UserDatas
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterUserDataResponse) Reset() {
-	*x = RegisterUserDataResponse{}
+func (x *ListUserDataResponse) Reset() {
+	*x = ListUserDataResponse{}
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterUserDataResponse) String() string {
+func (x *ListUserDataResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterUserDataResponse) ProtoMessage() {}
+func (*ListUserDataResponse) ProtoMessage() {}
 
-func (x *RegisterUserDataResponse) ProtoReflect() protoreflect.Message {
+func (x *ListUserDataResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -599,16 +592,23 @@ func (x *RegisterUserDataResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterUserDataResponse.ProtoReflect.Descriptor instead.
-func (*RegisterUserDataResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListUserDataResponse.ProtoReflect.Descriptor instead.
+func (*ListUserDataResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *RegisterUserDataResponse) GetResult() *Result {
+func (x *ListUserDataResponse) GetItems() []*UserData {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
+}
+
+func (x *ListUserDataResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // UserData represents a UserData Item
@@ -988,6 +988,28 @@ const file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDesc = "" +
 	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
 	"\x16DeleteUserDataResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.userdata.v1.ResultR\x06result\"\xfd\x01\n" +
+	"\x17RegisterUserDataRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
+	"\tuser_data\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\buserData\x12\x16\n" +
+	"\x06params\x18\x06 \x01(\tR\x06params\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"]\n" +
+	"\x18RegisterUserDataResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.userdata.v1.ResultR\x06result\"\xc6\x01\n" +
+	"\x1dLinkUserDataToTemplateRequest\x12\x1f\n" +
+	"\vtemplate_id\x18\x01 \x01(\x03R\n" +
+	"templateId\x12\x15\n" +
+	"\x06iso_id\x18\x02 \x01(\x03R\x05isoId\x12\x1f\n" +
+	"\vuserdata_id\x18\x03 \x01(\x03R\n" +
+	"userdataId\x12'\n" +
+	"\x0fuserdata_policy\x18\x04 \x01(\tR\x0euserdataPolicy\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"c\n" +
+	"\x1eLinkUserDataToTemplateResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.userdata.v1.ResultR\x06result\"\xdb\x03\n" +
 	"\x13ListUserDataRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
@@ -1008,29 +1030,7 @@ const file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDesc = "" +
 	"\x14ListUserDataResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.userdata.v1.UserDataR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc6\x01\n" +
-	"\x1dLinkUserDataToTemplateRequest\x12\x1f\n" +
-	"\vtemplate_id\x18\x01 \x01(\x03R\n" +
-	"templateId\x12\x15\n" +
-	"\x06iso_id\x18\x02 \x01(\x03R\x05isoId\x12\x1f\n" +
-	"\vuserdata_id\x18\x03 \x01(\x03R\n" +
-	"userdataId\x12'\n" +
-	"\x0fuserdata_policy\x18\x04 \x01(\tR\x0euserdataPolicy\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"c\n" +
-	"\x1eLinkUserDataToTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.userdata.v1.ResultR\x06result\"\xfd\x01\n" +
-	"\x17RegisterUserDataRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
-	"\tuser_data\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\buserData\x12\x16\n" +
-	"\x06params\x18\x06 \x01(\tR\x06params\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"]\n" +
-	"\x18RegisterUserDataResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.userdata.v1.ResultR\x06result\"\x97\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x97\x01\n" +
 	"\bUserData\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1067,10 +1067,10 @@ const file_cloudstack_management_userdata_v1_userdata_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd9\x04\n" +
 	"\x0fUserdataService\x12\x87\x01\n" +
-	"\x0eDeleteUserData\x128.cloudstack.management.userdata.v1.DeleteUserDataRequest\x1a9.cloudstack.management.userdata.v1.DeleteUserDataResponse\"\x00\x12\x81\x01\n" +
-	"\fListUserData\x126.cloudstack.management.userdata.v1.ListUserDataRequest\x1a7.cloudstack.management.userdata.v1.ListUserDataResponse\"\x00\x12\x9f\x01\n" +
-	"\x16LinkUserDataToTemplate\x12@.cloudstack.management.userdata.v1.LinkUserDataToTemplateRequest\x1aA.cloudstack.management.userdata.v1.LinkUserDataToTemplateResponse\"\x00\x12\x8d\x01\n" +
-	"\x10RegisterUserData\x12:.cloudstack.management.userdata.v1.RegisterUserDataRequest\x1a;.cloudstack.management.userdata.v1.RegisterUserDataResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
+	"\x0eDeleteUserData\x128.cloudstack.management.userdata.v1.DeleteUserDataRequest\x1a9.cloudstack.management.userdata.v1.DeleteUserDataResponse\"\x00\x12\x8d\x01\n" +
+	"\x10RegisterUserData\x12:.cloudstack.management.userdata.v1.RegisterUserDataRequest\x1a;.cloudstack.management.userdata.v1.RegisterUserDataResponse\"\x00\x12\x9f\x01\n" +
+	"\x16LinkUserDataToTemplate\x12@.cloudstack.management.userdata.v1.LinkUserDataToTemplateRequest\x1aA.cloudstack.management.userdata.v1.LinkUserDataToTemplateResponse\"\x00\x12\x81\x01\n" +
+	"\fListUserData\x126.cloudstack.management.userdata.v1.ListUserDataRequest\x1a7.cloudstack.management.userdata.v1.ListUserDataResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
 	"%com.cloudstack.management.userdata.v1B\x10UserdataGenProtoP\x01Z`github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/userdata/v1;userdatav1\xa2\x02\x03CMU\xaa\x02!Cloudstack.Management.Userdata.V1\xca\x02!Cloudstack\\Management\\Userdata\\V1\xe2\x02-Cloudstack\\Management\\Userdata\\V1\\GPBMetadata\xea\x02$Cloudstack::Management::Userdata::V1b\beditionsp\xe8\a"
 
 var (
@@ -1089,12 +1089,12 @@ var file_cloudstack_management_userdata_v1_userdata_gen_proto_msgTypes = make([]
 var file_cloudstack_management_userdata_v1_userdata_gen_proto_goTypes = []any{
 	(*DeleteUserDataRequest)(nil),          // 0: cloudstack.management.userdata.v1.DeleteUserDataRequest
 	(*DeleteUserDataResponse)(nil),         // 1: cloudstack.management.userdata.v1.DeleteUserDataResponse
-	(*ListUserDataRequest)(nil),            // 2: cloudstack.management.userdata.v1.ListUserDataRequest
-	(*ListUserDataResponse)(nil),           // 3: cloudstack.management.userdata.v1.ListUserDataResponse
+	(*RegisterUserDataRequest)(nil),        // 2: cloudstack.management.userdata.v1.RegisterUserDataRequest
+	(*RegisterUserDataResponse)(nil),       // 3: cloudstack.management.userdata.v1.RegisterUserDataResponse
 	(*LinkUserDataToTemplateRequest)(nil),  // 4: cloudstack.management.userdata.v1.LinkUserDataToTemplateRequest
 	(*LinkUserDataToTemplateResponse)(nil), // 5: cloudstack.management.userdata.v1.LinkUserDataToTemplateResponse
-	(*RegisterUserDataRequest)(nil),        // 6: cloudstack.management.userdata.v1.RegisterUserDataRequest
-	(*RegisterUserDataResponse)(nil),       // 7: cloudstack.management.userdata.v1.RegisterUserDataResponse
+	(*ListUserDataRequest)(nil),            // 6: cloudstack.management.userdata.v1.ListUserDataRequest
+	(*ListUserDataResponse)(nil),           // 7: cloudstack.management.userdata.v1.ListUserDataResponse
 	(*UserData)(nil),                       // 8: cloudstack.management.userdata.v1.UserData
 	(*Success)(nil),                        // 9: cloudstack.management.userdata.v1.Success
 	(*Item)(nil),                           // 10: cloudstack.management.userdata.v1.Item
@@ -1103,18 +1103,18 @@ var file_cloudstack_management_userdata_v1_userdata_gen_proto_goTypes = []any{
 }
 var file_cloudstack_management_userdata_v1_userdata_gen_proto_depIdxs = []int32{
 	11, // 0: cloudstack.management.userdata.v1.DeleteUserDataResponse.result:type_name -> cloudstack.management.userdata.v1.Result
-	8,  // 1: cloudstack.management.userdata.v1.ListUserDataResponse.items:type_name -> cloudstack.management.userdata.v1.UserData
+	11, // 1: cloudstack.management.userdata.v1.RegisterUserDataResponse.result:type_name -> cloudstack.management.userdata.v1.Result
 	11, // 2: cloudstack.management.userdata.v1.LinkUserDataToTemplateResponse.result:type_name -> cloudstack.management.userdata.v1.Result
-	11, // 3: cloudstack.management.userdata.v1.RegisterUserDataResponse.result:type_name -> cloudstack.management.userdata.v1.Result
+	8,  // 3: cloudstack.management.userdata.v1.ListUserDataResponse.items:type_name -> cloudstack.management.userdata.v1.UserData
 	12, // 4: cloudstack.management.userdata.v1.Item.details:type_name -> cloudstack.management.userdata.v1.Item.DetailsEntry
 	0,  // 5: cloudstack.management.userdata.v1.UserdataService.DeleteUserData:input_type -> cloudstack.management.userdata.v1.DeleteUserDataRequest
-	2,  // 6: cloudstack.management.userdata.v1.UserdataService.ListUserData:input_type -> cloudstack.management.userdata.v1.ListUserDataRequest
+	2,  // 6: cloudstack.management.userdata.v1.UserdataService.RegisterUserData:input_type -> cloudstack.management.userdata.v1.RegisterUserDataRequest
 	4,  // 7: cloudstack.management.userdata.v1.UserdataService.LinkUserDataToTemplate:input_type -> cloudstack.management.userdata.v1.LinkUserDataToTemplateRequest
-	6,  // 8: cloudstack.management.userdata.v1.UserdataService.RegisterUserData:input_type -> cloudstack.management.userdata.v1.RegisterUserDataRequest
+	6,  // 8: cloudstack.management.userdata.v1.UserdataService.ListUserData:input_type -> cloudstack.management.userdata.v1.ListUserDataRequest
 	1,  // 9: cloudstack.management.userdata.v1.UserdataService.DeleteUserData:output_type -> cloudstack.management.userdata.v1.DeleteUserDataResponse
-	3,  // 10: cloudstack.management.userdata.v1.UserdataService.ListUserData:output_type -> cloudstack.management.userdata.v1.ListUserDataResponse
+	3,  // 10: cloudstack.management.userdata.v1.UserdataService.RegisterUserData:output_type -> cloudstack.management.userdata.v1.RegisterUserDataResponse
 	5,  // 11: cloudstack.management.userdata.v1.UserdataService.LinkUserDataToTemplate:output_type -> cloudstack.management.userdata.v1.LinkUserDataToTemplateResponse
-	7,  // 12: cloudstack.management.userdata.v1.UserdataService.RegisterUserData:output_type -> cloudstack.management.userdata.v1.RegisterUserDataResponse
+	7,  // 12: cloudstack.management.userdata.v1.UserdataService.ListUserData:output_type -> cloudstack.management.userdata.v1.ListUserDataResponse
 	9,  // [9:13] is the sub-list for method output_type
 	5,  // [5:9] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name

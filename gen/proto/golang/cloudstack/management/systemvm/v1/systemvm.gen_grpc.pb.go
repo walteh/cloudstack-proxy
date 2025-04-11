@@ -19,13 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SystemvmService_StartSystemVM_FullMethodName   = "/cloudstack.management.systemvm.v1.SystemvmService/StartSystemVM"
+	SystemvmService_UpgradeSystemVM_FullMethodName = "/cloudstack.management.systemvm.v1.SystemvmService/UpgradeSystemVM"
 	SystemvmService_ListSystemVMs_FullMethodName   = "/cloudstack.management.systemvm.v1.SystemvmService/ListSystemVMs"
 	SystemvmService_StopSystemVm_FullMethodName    = "/cloudstack.management.systemvm.v1.SystemvmService/StopSystemVm"
-	SystemvmService_DestroySystemVm_FullMethodName = "/cloudstack.management.systemvm.v1.SystemvmService/DestroySystemVm"
-	SystemvmService_RebootSystemVm_FullMethodName  = "/cloudstack.management.systemvm.v1.SystemvmService/RebootSystemVm"
-	SystemvmService_UpgradeSystemVM_FullMethodName = "/cloudstack.management.systemvm.v1.SystemvmService/UpgradeSystemVM"
 	SystemvmService_PatchSystemVM_FullMethodName   = "/cloudstack.management.systemvm.v1.SystemvmService/PatchSystemVM"
+	SystemvmService_RebootSystemVm_FullMethodName  = "/cloudstack.management.systemvm.v1.SystemvmService/RebootSystemVm"
+	SystemvmService_StartSystemVM_FullMethodName   = "/cloudstack.management.systemvm.v1.SystemvmService/StartSystemVM"
+	SystemvmService_DestroySystemVm_FullMethodName = "/cloudstack.management.systemvm.v1.SystemvmService/DestroySystemVm"
 	SystemvmService_ScaleSystemVM_FullMethodName   = "/cloudstack.management.systemvm.v1.SystemvmService/ScaleSystemVM"
 	SystemvmService_MigrateSystemVM_FullMethodName = "/cloudstack.management.systemvm.v1.SystemvmService/MigrateSystemVM"
 )
@@ -36,20 +36,20 @@ const (
 //
 // SystemvmService provides operations for managing Systemvms
 type SystemvmServiceClient interface {
-	// StartSystemVM Starts a system virtual machine.
-	StartSystemVM(ctx context.Context, in *StartSystemVMRequest, opts ...grpc.CallOption) (*StartSystemVMResponse, error)
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	UpgradeSystemVM(ctx context.Context, in *UpgradeSystemVMRequest, opts ...grpc.CallOption) (*UpgradeSystemVMResponse, error)
 	// ListSystemVMs List system virtual machines.
 	ListSystemVMs(ctx context.Context, in *ListSystemVMsRequest, opts ...grpc.CallOption) (*ListSystemVMsResponse, error)
 	// StopSystemVm Stops a system VM.
 	StopSystemVm(ctx context.Context, in *StopSystemVmRequest, opts ...grpc.CallOption) (*StopSystemVmResponse, error)
-	// DestroySystemVm Destroys a system virtual machine.
-	DestroySystemVm(ctx context.Context, in *DestroySystemVmRequest, opts ...grpc.CallOption) (*DestroySystemVmResponse, error)
-	// RebootSystemVm Reboots a system VM.
-	RebootSystemVm(ctx context.Context, in *RebootSystemVmRequest, opts ...grpc.CallOption) (*RebootSystemVmResponse, error)
-	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	UpgradeSystemVM(ctx context.Context, in *UpgradeSystemVMRequest, opts ...grpc.CallOption) (*UpgradeSystemVMResponse, error)
 	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
 	PatchSystemVM(ctx context.Context, in *PatchSystemVMRequest, opts ...grpc.CallOption) (*PatchSystemVMResponse, error)
+	// RebootSystemVm Reboots a system VM.
+	RebootSystemVm(ctx context.Context, in *RebootSystemVmRequest, opts ...grpc.CallOption) (*RebootSystemVmResponse, error)
+	// StartSystemVM Starts a system virtual machine.
+	StartSystemVM(ctx context.Context, in *StartSystemVMRequest, opts ...grpc.CallOption) (*StartSystemVMResponse, error)
+	// DestroySystemVm Destroys a system virtual machine.
+	DestroySystemVm(ctx context.Context, in *DestroySystemVmRequest, opts ...grpc.CallOption) (*DestroySystemVmResponse, error)
 	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
 	ScaleSystemVM(ctx context.Context, in *ScaleSystemVMRequest, opts ...grpc.CallOption) (*ScaleSystemVMResponse, error)
 	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
@@ -64,10 +64,10 @@ func NewSystemvmServiceClient(cc grpc.ClientConnInterface) SystemvmServiceClient
 	return &systemvmServiceClient{cc}
 }
 
-func (c *systemvmServiceClient) StartSystemVM(ctx context.Context, in *StartSystemVMRequest, opts ...grpc.CallOption) (*StartSystemVMResponse, error) {
+func (c *systemvmServiceClient) UpgradeSystemVM(ctx context.Context, in *UpgradeSystemVMRequest, opts ...grpc.CallOption) (*UpgradeSystemVMResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StartSystemVMResponse)
-	err := c.cc.Invoke(ctx, SystemvmService_StartSystemVM_FullMethodName, in, out, cOpts...)
+	out := new(UpgradeSystemVMResponse)
+	err := c.cc.Invoke(ctx, SystemvmService_UpgradeSystemVM_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -94,10 +94,10 @@ func (c *systemvmServiceClient) StopSystemVm(ctx context.Context, in *StopSystem
 	return out, nil
 }
 
-func (c *systemvmServiceClient) DestroySystemVm(ctx context.Context, in *DestroySystemVmRequest, opts ...grpc.CallOption) (*DestroySystemVmResponse, error) {
+func (c *systemvmServiceClient) PatchSystemVM(ctx context.Context, in *PatchSystemVMRequest, opts ...grpc.CallOption) (*PatchSystemVMResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DestroySystemVmResponse)
-	err := c.cc.Invoke(ctx, SystemvmService_DestroySystemVm_FullMethodName, in, out, cOpts...)
+	out := new(PatchSystemVMResponse)
+	err := c.cc.Invoke(ctx, SystemvmService_PatchSystemVM_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,20 +114,20 @@ func (c *systemvmServiceClient) RebootSystemVm(ctx context.Context, in *RebootSy
 	return out, nil
 }
 
-func (c *systemvmServiceClient) UpgradeSystemVM(ctx context.Context, in *UpgradeSystemVMRequest, opts ...grpc.CallOption) (*UpgradeSystemVMResponse, error) {
+func (c *systemvmServiceClient) StartSystemVM(ctx context.Context, in *StartSystemVMRequest, opts ...grpc.CallOption) (*StartSystemVMResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpgradeSystemVMResponse)
-	err := c.cc.Invoke(ctx, SystemvmService_UpgradeSystemVM_FullMethodName, in, out, cOpts...)
+	out := new(StartSystemVMResponse)
+	err := c.cc.Invoke(ctx, SystemvmService_StartSystemVM_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *systemvmServiceClient) PatchSystemVM(ctx context.Context, in *PatchSystemVMRequest, opts ...grpc.CallOption) (*PatchSystemVMResponse, error) {
+func (c *systemvmServiceClient) DestroySystemVm(ctx context.Context, in *DestroySystemVmRequest, opts ...grpc.CallOption) (*DestroySystemVmResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PatchSystemVMResponse)
-	err := c.cc.Invoke(ctx, SystemvmService_PatchSystemVM_FullMethodName, in, out, cOpts...)
+	out := new(DestroySystemVmResponse)
+	err := c.cc.Invoke(ctx, SystemvmService_DestroySystemVm_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -160,20 +160,20 @@ func (c *systemvmServiceClient) MigrateSystemVM(ctx context.Context, in *Migrate
 //
 // SystemvmService provides operations for managing Systemvms
 type SystemvmServiceServer interface {
-	// StartSystemVM Starts a system virtual machine.
-	StartSystemVM(context.Context, *StartSystemVMRequest) (*StartSystemVMResponse, error)
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	UpgradeSystemVM(context.Context, *UpgradeSystemVMRequest) (*UpgradeSystemVMResponse, error)
 	// ListSystemVMs List system virtual machines.
 	ListSystemVMs(context.Context, *ListSystemVMsRequest) (*ListSystemVMsResponse, error)
 	// StopSystemVm Stops a system VM.
 	StopSystemVm(context.Context, *StopSystemVmRequest) (*StopSystemVmResponse, error)
-	// DestroySystemVm Destroys a system virtual machine.
-	DestroySystemVm(context.Context, *DestroySystemVmRequest) (*DestroySystemVmResponse, error)
-	// RebootSystemVm Reboots a system VM.
-	RebootSystemVm(context.Context, *RebootSystemVmRequest) (*RebootSystemVmResponse, error)
-	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	UpgradeSystemVM(context.Context, *UpgradeSystemVMRequest) (*UpgradeSystemVMResponse, error)
 	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
 	PatchSystemVM(context.Context, *PatchSystemVMRequest) (*PatchSystemVMResponse, error)
+	// RebootSystemVm Reboots a system VM.
+	RebootSystemVm(context.Context, *RebootSystemVmRequest) (*RebootSystemVmResponse, error)
+	// StartSystemVM Starts a system virtual machine.
+	StartSystemVM(context.Context, *StartSystemVMRequest) (*StartSystemVMResponse, error)
+	// DestroySystemVm Destroys a system virtual machine.
+	DestroySystemVm(context.Context, *DestroySystemVmRequest) (*DestroySystemVmResponse, error)
 	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
 	ScaleSystemVM(context.Context, *ScaleSystemVMRequest) (*ScaleSystemVMResponse, error)
 	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
@@ -188,8 +188,8 @@ type SystemvmServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedSystemvmServiceServer struct{}
 
-func (UnimplementedSystemvmServiceServer) StartSystemVM(context.Context, *StartSystemVMRequest) (*StartSystemVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StartSystemVM not implemented")
+func (UnimplementedSystemvmServiceServer) UpgradeSystemVM(context.Context, *UpgradeSystemVMRequest) (*UpgradeSystemVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpgradeSystemVM not implemented")
 }
 func (UnimplementedSystemvmServiceServer) ListSystemVMs(context.Context, *ListSystemVMsRequest) (*ListSystemVMsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSystemVMs not implemented")
@@ -197,17 +197,17 @@ func (UnimplementedSystemvmServiceServer) ListSystemVMs(context.Context, *ListSy
 func (UnimplementedSystemvmServiceServer) StopSystemVm(context.Context, *StopSystemVmRequest) (*StopSystemVmResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopSystemVm not implemented")
 }
-func (UnimplementedSystemvmServiceServer) DestroySystemVm(context.Context, *DestroySystemVmRequest) (*DestroySystemVmResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DestroySystemVm not implemented")
+func (UnimplementedSystemvmServiceServer) PatchSystemVM(context.Context, *PatchSystemVMRequest) (*PatchSystemVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PatchSystemVM not implemented")
 }
 func (UnimplementedSystemvmServiceServer) RebootSystemVm(context.Context, *RebootSystemVmRequest) (*RebootSystemVmResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RebootSystemVm not implemented")
 }
-func (UnimplementedSystemvmServiceServer) UpgradeSystemVM(context.Context, *UpgradeSystemVMRequest) (*UpgradeSystemVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpgradeSystemVM not implemented")
+func (UnimplementedSystemvmServiceServer) StartSystemVM(context.Context, *StartSystemVMRequest) (*StartSystemVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartSystemVM not implemented")
 }
-func (UnimplementedSystemvmServiceServer) PatchSystemVM(context.Context, *PatchSystemVMRequest) (*PatchSystemVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PatchSystemVM not implemented")
+func (UnimplementedSystemvmServiceServer) DestroySystemVm(context.Context, *DestroySystemVmRequest) (*DestroySystemVmResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroySystemVm not implemented")
 }
 func (UnimplementedSystemvmServiceServer) ScaleSystemVM(context.Context, *ScaleSystemVMRequest) (*ScaleSystemVMResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ScaleSystemVM not implemented")
@@ -236,20 +236,20 @@ func RegisterSystemvmServiceServer(s grpc.ServiceRegistrar, srv SystemvmServiceS
 	s.RegisterService(&SystemvmService_ServiceDesc, srv)
 }
 
-func _SystemvmService_StartSystemVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartSystemVMRequest)
+func _SystemvmService_UpgradeSystemVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpgradeSystemVMRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SystemvmServiceServer).StartSystemVM(ctx, in)
+		return srv.(SystemvmServiceServer).UpgradeSystemVM(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SystemvmService_StartSystemVM_FullMethodName,
+		FullMethod: SystemvmService_UpgradeSystemVM_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SystemvmServiceServer).StartSystemVM(ctx, req.(*StartSystemVMRequest))
+		return srv.(SystemvmServiceServer).UpgradeSystemVM(ctx, req.(*UpgradeSystemVMRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -290,20 +290,20 @@ func _SystemvmService_StopSystemVm_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SystemvmService_DestroySystemVm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DestroySystemVmRequest)
+func _SystemvmService_PatchSystemVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PatchSystemVMRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SystemvmServiceServer).DestroySystemVm(ctx, in)
+		return srv.(SystemvmServiceServer).PatchSystemVM(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SystemvmService_DestroySystemVm_FullMethodName,
+		FullMethod: SystemvmService_PatchSystemVM_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SystemvmServiceServer).DestroySystemVm(ctx, req.(*DestroySystemVmRequest))
+		return srv.(SystemvmServiceServer).PatchSystemVM(ctx, req.(*PatchSystemVMRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -326,38 +326,38 @@ func _SystemvmService_RebootSystemVm_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SystemvmService_UpgradeSystemVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpgradeSystemVMRequest)
+func _SystemvmService_StartSystemVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartSystemVMRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SystemvmServiceServer).UpgradeSystemVM(ctx, in)
+		return srv.(SystemvmServiceServer).StartSystemVM(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SystemvmService_UpgradeSystemVM_FullMethodName,
+		FullMethod: SystemvmService_StartSystemVM_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SystemvmServiceServer).UpgradeSystemVM(ctx, req.(*UpgradeSystemVMRequest))
+		return srv.(SystemvmServiceServer).StartSystemVM(ctx, req.(*StartSystemVMRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SystemvmService_PatchSystemVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PatchSystemVMRequest)
+func _SystemvmService_DestroySystemVm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroySystemVmRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SystemvmServiceServer).PatchSystemVM(ctx, in)
+		return srv.(SystemvmServiceServer).DestroySystemVm(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SystemvmService_PatchSystemVM_FullMethodName,
+		FullMethod: SystemvmService_DestroySystemVm_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SystemvmServiceServer).PatchSystemVM(ctx, req.(*PatchSystemVMRequest))
+		return srv.(SystemvmServiceServer).DestroySystemVm(ctx, req.(*DestroySystemVmRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -406,8 +406,8 @@ var SystemvmService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SystemvmServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "StartSystemVM",
-			Handler:    _SystemvmService_StartSystemVM_Handler,
+			MethodName: "UpgradeSystemVM",
+			Handler:    _SystemvmService_UpgradeSystemVM_Handler,
 		},
 		{
 			MethodName: "ListSystemVMs",
@@ -418,20 +418,20 @@ var SystemvmService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SystemvmService_StopSystemVm_Handler,
 		},
 		{
-			MethodName: "DestroySystemVm",
-			Handler:    _SystemvmService_DestroySystemVm_Handler,
+			MethodName: "PatchSystemVM",
+			Handler:    _SystemvmService_PatchSystemVM_Handler,
 		},
 		{
 			MethodName: "RebootSystemVm",
 			Handler:    _SystemvmService_RebootSystemVm_Handler,
 		},
 		{
-			MethodName: "UpgradeSystemVM",
-			Handler:    _SystemvmService_UpgradeSystemVM_Handler,
+			MethodName: "StartSystemVM",
+			Handler:    _SystemvmService_StartSystemVM_Handler,
 		},
 		{
-			MethodName: "PatchSystemVM",
-			Handler:    _SystemvmService_PatchSystemVM_Handler,
+			MethodName: "DestroySystemVm",
+			Handler:    _SystemvmService_DestroySystemVm_Handler,
 		},
 		{
 			MethodName: "ScaleSystemVM",

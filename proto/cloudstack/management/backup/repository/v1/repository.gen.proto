@@ -13,11 +13,11 @@ service RepositoryService {
 	// ListBackupRepositories Lists all backup repositories
 	rpc ListBackupRepositories(ListBackupRepositoriesRequest) returns (ListBackupRepositoriesResponse) {}
 
-	// DeleteBackupRepository delete a backup repository
-	rpc DeleteBackupRepository(DeleteBackupRepositoryRequest) returns (DeleteBackupRepositoryResponse) {}
-
 	// AddBackupRepository Adds a backup repository to store NAS backups
 	rpc AddBackupRepository(AddBackupRepositoryRequest) returns (AddBackupRepositoryResponse) {}
+
+	// DeleteBackupRepository delete a backup repository
+	rpc DeleteBackupRepository(DeleteBackupRepositoryRequest) returns (DeleteBackupRepositoryResponse) {}
 }
 
 // ListBackupRepositoriesRequest represents the parameters for lists all backup repositories
@@ -62,23 +62,6 @@ message ListBackupRepositoriesResponse {
 	int32 total_count = 2;
 }
 
-// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
-message DeleteBackupRepositoryRequest {
-	// ID of the backup repository to be deleted
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteBackupRepositoryResponse represents the response from delete a backup repository
-message DeleteBackupRepositoryResponse {
-	// The Result
-	Result result = 1;
-}
-
 // AddBackupRepositoryRequest represents the parameters for adds a backup repository to store nas backups
 message AddBackupRepositoryRequest {
 	// name of the backup repository
@@ -120,6 +103,23 @@ message AddBackupRepositoryRequest {
 
 // AddBackupRepositoryResponse represents the response from adds a backup repository to store nas backups
 message AddBackupRepositoryResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
+message DeleteBackupRepositoryRequest {
+	// ID of the backup repository to be deleted
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteBackupRepositoryResponse represents the response from delete a backup repository
+message DeleteBackupRepositoryResponse {
 	// The Result
 	Result result = 1;
 }

@@ -33,18 +33,18 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// BgpServiceListASNumbersProcedure is the fully-qualified name of the BgpService's ListASNumbers
-	// RPC.
-	BgpServiceListASNumbersProcedure = "/cloudstack.management.bgp.v1.BgpService/ListASNumbers"
-	// BgpServiceCreateASNRangeProcedure is the fully-qualified name of the BgpService's CreateASNRange
-	// RPC.
-	BgpServiceCreateASNRangeProcedure = "/cloudstack.management.bgp.v1.BgpService/CreateASNRange"
 	// BgpServiceListASNRangesProcedure is the fully-qualified name of the BgpService's ListASNRanges
 	// RPC.
 	BgpServiceListASNRangesProcedure = "/cloudstack.management.bgp.v1.BgpService/ListASNRanges"
 	// BgpServiceReleaseASNumberProcedure is the fully-qualified name of the BgpService's
 	// ReleaseASNumber RPC.
 	BgpServiceReleaseASNumberProcedure = "/cloudstack.management.bgp.v1.BgpService/ReleaseASNumber"
+	// BgpServiceListASNumbersProcedure is the fully-qualified name of the BgpService's ListASNumbers
+	// RPC.
+	BgpServiceListASNumbersProcedure = "/cloudstack.management.bgp.v1.BgpService/ListASNumbers"
+	// BgpServiceCreateASNRangeProcedure is the fully-qualified name of the BgpService's CreateASNRange
+	// RPC.
+	BgpServiceCreateASNRangeProcedure = "/cloudstack.management.bgp.v1.BgpService/CreateASNRange"
 	// BgpServiceDeleteASNRangeProcedure is the fully-qualified name of the BgpService's DeleteASNRange
 	// RPC.
 	BgpServiceDeleteASNRangeProcedure = "/cloudstack.management.bgp.v1.BgpService/DeleteASNRange"
@@ -52,14 +52,14 @@ const (
 
 // BgpServiceClient is a client for the cloudstack.management.bgp.v1.BgpService service.
 type BgpServiceClient interface {
-	// ListASNumbers List Autonomous Systems Numbers
-	ListASNumbers(context.Context, *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error)
-	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
-	CreateASNRange(context.Context, *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error)
 	// ListASNRanges List Autonomous Systems Number Ranges
 	ListASNRanges(context.Context, *connect.Request[v1.ListASNRangesRequest]) (*connect.Response[v1.ListASNRangesResponse], error)
 	// ReleaseASNumber Releases an AS Number back to the pool
 	ReleaseASNumber(context.Context, *connect.Request[v1.ReleaseASNumberRequest]) (*connect.Response[v1.ReleaseASNumberResponse], error)
+	// ListASNumbers List Autonomous Systems Numbers
+	ListASNumbers(context.Context, *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error)
+	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
+	CreateASNRange(context.Context, *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error)
 	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
 	DeleteASNRange(context.Context, *connect.Request[v1.DeleteASNRangeRequest]) (*connect.Response[v1.DeleteASNRangeResponse], error)
 }
@@ -75,18 +75,6 @@ func NewBgpServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	bgpServiceMethods := v1.File_cloudstack_management_bgp_v1_bgp_gen_proto.Services().ByName("BgpService").Methods()
 	return &bgpServiceClient{
-		listASNumbers: connect.NewClient[v1.ListASNumbersRequest, v1.ListASNumbersResponse](
-			httpClient,
-			baseURL+BgpServiceListASNumbersProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("ListASNumbers")),
-			connect.WithClientOptions(opts...),
-		),
-		createASNRange: connect.NewClient[v1.CreateASNRangeRequest, v1.CreateASNRangeResponse](
-			httpClient,
-			baseURL+BgpServiceCreateASNRangeProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("CreateASNRange")),
-			connect.WithClientOptions(opts...),
-		),
 		listASNRanges: connect.NewClient[v1.ListASNRangesRequest, v1.ListASNRangesResponse](
 			httpClient,
 			baseURL+BgpServiceListASNRangesProcedure,
@@ -97,6 +85,18 @@ func NewBgpServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			httpClient,
 			baseURL+BgpServiceReleaseASNumberProcedure,
 			connect.WithSchema(bgpServiceMethods.ByName("ReleaseASNumber")),
+			connect.WithClientOptions(opts...),
+		),
+		listASNumbers: connect.NewClient[v1.ListASNumbersRequest, v1.ListASNumbersResponse](
+			httpClient,
+			baseURL+BgpServiceListASNumbersProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("ListASNumbers")),
+			connect.WithClientOptions(opts...),
+		),
+		createASNRange: connect.NewClient[v1.CreateASNRangeRequest, v1.CreateASNRangeResponse](
+			httpClient,
+			baseURL+BgpServiceCreateASNRangeProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("CreateASNRange")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteASNRange: connect.NewClient[v1.DeleteASNRangeRequest, v1.DeleteASNRangeResponse](
@@ -110,21 +110,11 @@ func NewBgpServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 
 // bgpServiceClient implements BgpServiceClient.
 type bgpServiceClient struct {
-	listASNumbers   *connect.Client[v1.ListASNumbersRequest, v1.ListASNumbersResponse]
-	createASNRange  *connect.Client[v1.CreateASNRangeRequest, v1.CreateASNRangeResponse]
 	listASNRanges   *connect.Client[v1.ListASNRangesRequest, v1.ListASNRangesResponse]
 	releaseASNumber *connect.Client[v1.ReleaseASNumberRequest, v1.ReleaseASNumberResponse]
+	listASNumbers   *connect.Client[v1.ListASNumbersRequest, v1.ListASNumbersResponse]
+	createASNRange  *connect.Client[v1.CreateASNRangeRequest, v1.CreateASNRangeResponse]
 	deleteASNRange  *connect.Client[v1.DeleteASNRangeRequest, v1.DeleteASNRangeResponse]
-}
-
-// ListASNumbers calls cloudstack.management.bgp.v1.BgpService.ListASNumbers.
-func (c *bgpServiceClient) ListASNumbers(ctx context.Context, req *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error) {
-	return c.listASNumbers.CallUnary(ctx, req)
-}
-
-// CreateASNRange calls cloudstack.management.bgp.v1.BgpService.CreateASNRange.
-func (c *bgpServiceClient) CreateASNRange(ctx context.Context, req *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error) {
-	return c.createASNRange.CallUnary(ctx, req)
 }
 
 // ListASNRanges calls cloudstack.management.bgp.v1.BgpService.ListASNRanges.
@@ -137,6 +127,16 @@ func (c *bgpServiceClient) ReleaseASNumber(ctx context.Context, req *connect.Req
 	return c.releaseASNumber.CallUnary(ctx, req)
 }
 
+// ListASNumbers calls cloudstack.management.bgp.v1.BgpService.ListASNumbers.
+func (c *bgpServiceClient) ListASNumbers(ctx context.Context, req *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error) {
+	return c.listASNumbers.CallUnary(ctx, req)
+}
+
+// CreateASNRange calls cloudstack.management.bgp.v1.BgpService.CreateASNRange.
+func (c *bgpServiceClient) CreateASNRange(ctx context.Context, req *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error) {
+	return c.createASNRange.CallUnary(ctx, req)
+}
+
 // DeleteASNRange calls cloudstack.management.bgp.v1.BgpService.DeleteASNRange.
 func (c *bgpServiceClient) DeleteASNRange(ctx context.Context, req *connect.Request[v1.DeleteASNRangeRequest]) (*connect.Response[v1.DeleteASNRangeResponse], error) {
 	return c.deleteASNRange.CallUnary(ctx, req)
@@ -144,14 +144,14 @@ func (c *bgpServiceClient) DeleteASNRange(ctx context.Context, req *connect.Requ
 
 // BgpServiceHandler is an implementation of the cloudstack.management.bgp.v1.BgpService service.
 type BgpServiceHandler interface {
-	// ListASNumbers List Autonomous Systems Numbers
-	ListASNumbers(context.Context, *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error)
-	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
-	CreateASNRange(context.Context, *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error)
 	// ListASNRanges List Autonomous Systems Number Ranges
 	ListASNRanges(context.Context, *connect.Request[v1.ListASNRangesRequest]) (*connect.Response[v1.ListASNRangesResponse], error)
 	// ReleaseASNumber Releases an AS Number back to the pool
 	ReleaseASNumber(context.Context, *connect.Request[v1.ReleaseASNumberRequest]) (*connect.Response[v1.ReleaseASNumberResponse], error)
+	// ListASNumbers List Autonomous Systems Numbers
+	ListASNumbers(context.Context, *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error)
+	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
+	CreateASNRange(context.Context, *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error)
 	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
 	DeleteASNRange(context.Context, *connect.Request[v1.DeleteASNRangeRequest]) (*connect.Response[v1.DeleteASNRangeResponse], error)
 }
@@ -163,18 +163,6 @@ type BgpServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	bgpServiceMethods := v1.File_cloudstack_management_bgp_v1_bgp_gen_proto.Services().ByName("BgpService").Methods()
-	bgpServiceListASNumbersHandler := connect.NewUnaryHandler(
-		BgpServiceListASNumbersProcedure,
-		svc.ListASNumbers,
-		connect.WithSchema(bgpServiceMethods.ByName("ListASNumbers")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bgpServiceCreateASNRangeHandler := connect.NewUnaryHandler(
-		BgpServiceCreateASNRangeProcedure,
-		svc.CreateASNRange,
-		connect.WithSchema(bgpServiceMethods.ByName("CreateASNRange")),
-		connect.WithHandlerOptions(opts...),
-	)
 	bgpServiceListASNRangesHandler := connect.NewUnaryHandler(
 		BgpServiceListASNRangesProcedure,
 		svc.ListASNRanges,
@@ -187,6 +175,18 @@ func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(bgpServiceMethods.ByName("ReleaseASNumber")),
 		connect.WithHandlerOptions(opts...),
 	)
+	bgpServiceListASNumbersHandler := connect.NewUnaryHandler(
+		BgpServiceListASNumbersProcedure,
+		svc.ListASNumbers,
+		connect.WithSchema(bgpServiceMethods.ByName("ListASNumbers")),
+		connect.WithHandlerOptions(opts...),
+	)
+	bgpServiceCreateASNRangeHandler := connect.NewUnaryHandler(
+		BgpServiceCreateASNRangeProcedure,
+		svc.CreateASNRange,
+		connect.WithSchema(bgpServiceMethods.ByName("CreateASNRange")),
+		connect.WithHandlerOptions(opts...),
+	)
 	bgpServiceDeleteASNRangeHandler := connect.NewUnaryHandler(
 		BgpServiceDeleteASNRangeProcedure,
 		svc.DeleteASNRange,
@@ -195,14 +195,14 @@ func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) 
 	)
 	return "/cloudstack.management.bgp.v1.BgpService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case BgpServiceListASNumbersProcedure:
-			bgpServiceListASNumbersHandler.ServeHTTP(w, r)
-		case BgpServiceCreateASNRangeProcedure:
-			bgpServiceCreateASNRangeHandler.ServeHTTP(w, r)
 		case BgpServiceListASNRangesProcedure:
 			bgpServiceListASNRangesHandler.ServeHTTP(w, r)
 		case BgpServiceReleaseASNumberProcedure:
 			bgpServiceReleaseASNumberHandler.ServeHTTP(w, r)
+		case BgpServiceListASNumbersProcedure:
+			bgpServiceListASNumbersHandler.ServeHTTP(w, r)
+		case BgpServiceCreateASNRangeProcedure:
+			bgpServiceCreateASNRangeHandler.ServeHTTP(w, r)
 		case BgpServiceDeleteASNRangeProcedure:
 			bgpServiceDeleteASNRangeHandler.ServeHTTP(w, r)
 		default:
@@ -214,20 +214,20 @@ func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedBgpServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBgpServiceHandler struct{}
 
-func (UnimplementedBgpServiceHandler) ListASNumbers(context.Context, *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bgp.v1.BgpService.ListASNumbers is not implemented"))
-}
-
-func (UnimplementedBgpServiceHandler) CreateASNRange(context.Context, *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bgp.v1.BgpService.CreateASNRange is not implemented"))
-}
-
 func (UnimplementedBgpServiceHandler) ListASNRanges(context.Context, *connect.Request[v1.ListASNRangesRequest]) (*connect.Response[v1.ListASNRangesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bgp.v1.BgpService.ListASNRanges is not implemented"))
 }
 
 func (UnimplementedBgpServiceHandler) ReleaseASNumber(context.Context, *connect.Request[v1.ReleaseASNumberRequest]) (*connect.Response[v1.ReleaseASNumberResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bgp.v1.BgpService.ReleaseASNumber is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) ListASNumbers(context.Context, *connect.Request[v1.ListASNumbersRequest]) (*connect.Response[v1.ListASNumbersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bgp.v1.BgpService.ListASNumbers is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) CreateASNRange(context.Context, *connect.Request[v1.CreateASNRangeRequest]) (*connect.Response[v1.CreateASNRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bgp.v1.BgpService.CreateASNRange is not implemented"))
 }
 
 func (UnimplementedBgpServiceHandler) DeleteASNRange(context.Context, *connect.Request[v1.DeleteASNRangeRequest]) (*connect.Response[v1.DeleteASNRangeResponse], error) {

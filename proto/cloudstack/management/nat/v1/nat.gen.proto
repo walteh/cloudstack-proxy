@@ -13,11 +13,11 @@ service NatService {
 	// ListIpForwardingRules List the IP forwarding rules
 	rpc ListIpForwardingRules(ListIpForwardingRulesRequest) returns (ListIpForwardingRulesResponse) {}
 
-	// DisableStaticNat Disables static rule for given IP address
-	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {}
-
 	// DeleteIpForwardingRule Deletes an IP forwarding rule
 	rpc DeleteIpForwardingRule(DeleteIpForwardingRuleRequest) returns (DeleteIpForwardingRuleResponse) {}
+
+	// DisableStaticNat Disables static rule for given IP address
+	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {}
 
 	// CreateIpForwardingRule Creates an IP forwarding rule
 	rpc CreateIpForwardingRule(CreateIpForwardingRuleRequest) returns (CreateIpForwardingRuleResponse) {}
@@ -85,31 +85,6 @@ message ListIpForwardingRulesResponse {
 	int32 total_count = 2;
 }
 
-// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
-message DisableStaticNatRequest {
-	// the public IP address ID for which static NAT feature is being disabled
-	int64 ip_address_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableStaticNatResponse represents the response from disables static rule for given ip address
-message DisableStaticNatResponse {
-	// The Result
-	Result result = 1;
-}
-
 // DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
 message DeleteIpForwardingRuleRequest {
 	// the ID of the forwarding rule
@@ -131,6 +106,31 @@ message DeleteIpForwardingRuleRequest {
 
 // DeleteIpForwardingRuleResponse represents the response from deletes an ip forwarding rule
 message DeleteIpForwardingRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
+message DisableStaticNatRequest {
+	// the public IP address ID for which static NAT feature is being disabled
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableStaticNatResponse represents the response from disables static rule for given ip address
+message DisableStaticNatResponse {
 	// The Result
 	Result result = 1;
 }
@@ -238,6 +238,16 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
+}
+
+// ProtocolType represents the possible values for the protocol for the rule. Valid values are TCP or UDP.
+enum ProtocolType {
+	// Default unspecified value
+	PROTOCOL_TYPE_UNSPECIFIED = 0;
+	// TCP value
+	PROTOCOL_TYPE_TCP = 1;
+	// UDP value
+	PROTOCOL_TYPE_UDP = 2;
 }
 
 // Item represents a generic item in a list response

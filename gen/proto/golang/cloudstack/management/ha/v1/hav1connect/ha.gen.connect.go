@@ -33,55 +33,55 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// HaServiceDisableHAForClusterProcedure is the fully-qualified name of the HaService's
-	// DisableHAForCluster RPC.
-	HaServiceDisableHAForClusterProcedure = "/cloudstack.management.ha.v1.HaService/DisableHAForCluster"
-	// HaServiceListHostHAProvidersProcedure is the fully-qualified name of the HaService's
-	// ListHostHAProviders RPC.
-	HaServiceListHostHAProvidersProcedure = "/cloudstack.management.ha.v1.HaService/ListHostHAProviders"
-	// HaServiceEnableHAForClusterProcedure is the fully-qualified name of the HaService's
-	// EnableHAForCluster RPC.
-	HaServiceEnableHAForClusterProcedure = "/cloudstack.management.ha.v1.HaService/EnableHAForCluster"
-	// HaServiceListHostHAResourcesProcedure is the fully-qualified name of the HaService's
-	// ListHostHAResources RPC.
-	HaServiceListHostHAResourcesProcedure = "/cloudstack.management.ha.v1.HaService/ListHostHAResources"
 	// HaServiceDisableHAForZoneProcedure is the fully-qualified name of the HaService's
 	// DisableHAForZone RPC.
 	HaServiceDisableHAForZoneProcedure = "/cloudstack.management.ha.v1.HaService/DisableHAForZone"
 	// HaServiceEnableHAForHostProcedure is the fully-qualified name of the HaService's EnableHAForHost
 	// RPC.
 	HaServiceEnableHAForHostProcedure = "/cloudstack.management.ha.v1.HaService/EnableHAForHost"
-	// HaServiceEnableHAForZoneProcedure is the fully-qualified name of the HaService's EnableHAForZone
-	// RPC.
-	HaServiceEnableHAForZoneProcedure = "/cloudstack.management.ha.v1.HaService/EnableHAForZone"
 	// HaServiceConfigureHAForHostProcedure is the fully-qualified name of the HaService's
 	// ConfigureHAForHost RPC.
 	HaServiceConfigureHAForHostProcedure = "/cloudstack.management.ha.v1.HaService/ConfigureHAForHost"
+	// HaServiceDisableHAForClusterProcedure is the fully-qualified name of the HaService's
+	// DisableHAForCluster RPC.
+	HaServiceDisableHAForClusterProcedure = "/cloudstack.management.ha.v1.HaService/DisableHAForCluster"
+	// HaServiceEnableHAForZoneProcedure is the fully-qualified name of the HaService's EnableHAForZone
+	// RPC.
+	HaServiceEnableHAForZoneProcedure = "/cloudstack.management.ha.v1.HaService/EnableHAForZone"
+	// HaServiceListHostHAResourcesProcedure is the fully-qualified name of the HaService's
+	// ListHostHAResources RPC.
+	HaServiceListHostHAResourcesProcedure = "/cloudstack.management.ha.v1.HaService/ListHostHAResources"
 	// HaServiceDisableHAForHostProcedure is the fully-qualified name of the HaService's
 	// DisableHAForHost RPC.
 	HaServiceDisableHAForHostProcedure = "/cloudstack.management.ha.v1.HaService/DisableHAForHost"
+	// HaServiceListHostHAProvidersProcedure is the fully-qualified name of the HaService's
+	// ListHostHAProviders RPC.
+	HaServiceListHostHAProvidersProcedure = "/cloudstack.management.ha.v1.HaService/ListHostHAProviders"
+	// HaServiceEnableHAForClusterProcedure is the fully-qualified name of the HaService's
+	// EnableHAForCluster RPC.
+	HaServiceEnableHAForClusterProcedure = "/cloudstack.management.ha.v1.HaService/EnableHAForCluster"
 )
 
 // HaServiceClient is a client for the cloudstack.management.ha.v1.HaService service.
 type HaServiceClient interface {
-	// DisableHAForCluster Disables HA cluster-wide
-	DisableHAForCluster(context.Context, *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error)
-	// ListHostHAProviders Lists HA providers
-	ListHostHAProviders(context.Context, *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error)
-	// EnableHAForCluster Enables HA cluster-wide
-	EnableHAForCluster(context.Context, *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error)
-	// ListHostHAResources Lists host HA resources
-	ListHostHAResources(context.Context, *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error)
 	// DisableHAForZone Disables HA for a zone
 	DisableHAForZone(context.Context, *connect.Request[v1.DisableHAForZoneRequest]) (*connect.Response[v1.DisableHAForZoneResponse], error)
 	// EnableHAForHost Enables HA for a host
 	EnableHAForHost(context.Context, *connect.Request[v1.EnableHAForHostRequest]) (*connect.Response[v1.EnableHAForHostResponse], error)
-	// EnableHAForZone Enables HA for a zone
-	EnableHAForZone(context.Context, *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error)
 	// ConfigureHAForHost Configures HA for a host
 	ConfigureHAForHost(context.Context, *connect.Request[v1.ConfigureHAForHostRequest]) (*connect.Response[v1.ConfigureHAForHostResponse], error)
+	// DisableHAForCluster Disables HA cluster-wide
+	DisableHAForCluster(context.Context, *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error)
+	// EnableHAForZone Enables HA for a zone
+	EnableHAForZone(context.Context, *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error)
+	// ListHostHAResources Lists host HA resources
+	ListHostHAResources(context.Context, *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error)
 	// DisableHAForHost Disables HA for a host
 	DisableHAForHost(context.Context, *connect.Request[v1.DisableHAForHostRequest]) (*connect.Response[v1.DisableHAForHostResponse], error)
+	// ListHostHAProviders Lists HA providers
+	ListHostHAProviders(context.Context, *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error)
+	// EnableHAForCluster Enables HA cluster-wide
+	EnableHAForCluster(context.Context, *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error)
 }
 
 // NewHaServiceClient constructs a client for the cloudstack.management.ha.v1.HaService service. By
@@ -95,10 +95,46 @@ func NewHaServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 	baseURL = strings.TrimRight(baseURL, "/")
 	haServiceMethods := v1.File_cloudstack_management_ha_v1_ha_gen_proto.Services().ByName("HaService").Methods()
 	return &haServiceClient{
+		disableHAForZone: connect.NewClient[v1.DisableHAForZoneRequest, v1.DisableHAForZoneResponse](
+			httpClient,
+			baseURL+HaServiceDisableHAForZoneProcedure,
+			connect.WithSchema(haServiceMethods.ByName("DisableHAForZone")),
+			connect.WithClientOptions(opts...),
+		),
+		enableHAForHost: connect.NewClient[v1.EnableHAForHostRequest, v1.EnableHAForHostResponse](
+			httpClient,
+			baseURL+HaServiceEnableHAForHostProcedure,
+			connect.WithSchema(haServiceMethods.ByName("EnableHAForHost")),
+			connect.WithClientOptions(opts...),
+		),
+		configureHAForHost: connect.NewClient[v1.ConfigureHAForHostRequest, v1.ConfigureHAForHostResponse](
+			httpClient,
+			baseURL+HaServiceConfigureHAForHostProcedure,
+			connect.WithSchema(haServiceMethods.ByName("ConfigureHAForHost")),
+			connect.WithClientOptions(opts...),
+		),
 		disableHAForCluster: connect.NewClient[v1.DisableHAForClusterRequest, v1.DisableHAForClusterResponse](
 			httpClient,
 			baseURL+HaServiceDisableHAForClusterProcedure,
 			connect.WithSchema(haServiceMethods.ByName("DisableHAForCluster")),
+			connect.WithClientOptions(opts...),
+		),
+		enableHAForZone: connect.NewClient[v1.EnableHAForZoneRequest, v1.EnableHAForZoneResponse](
+			httpClient,
+			baseURL+HaServiceEnableHAForZoneProcedure,
+			connect.WithSchema(haServiceMethods.ByName("EnableHAForZone")),
+			connect.WithClientOptions(opts...),
+		),
+		listHostHAResources: connect.NewClient[v1.ListHostHAResourcesRequest, v1.ListHostHAResourcesResponse](
+			httpClient,
+			baseURL+HaServiceListHostHAResourcesProcedure,
+			connect.WithSchema(haServiceMethods.ByName("ListHostHAResources")),
+			connect.WithClientOptions(opts...),
+		),
+		disableHAForHost: connect.NewClient[v1.DisableHAForHostRequest, v1.DisableHAForHostResponse](
+			httpClient,
+			baseURL+HaServiceDisableHAForHostProcedure,
+			connect.WithSchema(haServiceMethods.ByName("DisableHAForHost")),
 			connect.WithClientOptions(opts...),
 		),
 		listHostHAProviders: connect.NewClient[v1.ListHostHAProvidersRequest, v1.ListHostHAProvidersResponse](
@@ -113,76 +149,20 @@ func NewHaServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(haServiceMethods.ByName("EnableHAForCluster")),
 			connect.WithClientOptions(opts...),
 		),
-		listHostHAResources: connect.NewClient[v1.ListHostHAResourcesRequest, v1.ListHostHAResourcesResponse](
-			httpClient,
-			baseURL+HaServiceListHostHAResourcesProcedure,
-			connect.WithSchema(haServiceMethods.ByName("ListHostHAResources")),
-			connect.WithClientOptions(opts...),
-		),
-		disableHAForZone: connect.NewClient[v1.DisableHAForZoneRequest, v1.DisableHAForZoneResponse](
-			httpClient,
-			baseURL+HaServiceDisableHAForZoneProcedure,
-			connect.WithSchema(haServiceMethods.ByName("DisableHAForZone")),
-			connect.WithClientOptions(opts...),
-		),
-		enableHAForHost: connect.NewClient[v1.EnableHAForHostRequest, v1.EnableHAForHostResponse](
-			httpClient,
-			baseURL+HaServiceEnableHAForHostProcedure,
-			connect.WithSchema(haServiceMethods.ByName("EnableHAForHost")),
-			connect.WithClientOptions(opts...),
-		),
-		enableHAForZone: connect.NewClient[v1.EnableHAForZoneRequest, v1.EnableHAForZoneResponse](
-			httpClient,
-			baseURL+HaServiceEnableHAForZoneProcedure,
-			connect.WithSchema(haServiceMethods.ByName("EnableHAForZone")),
-			connect.WithClientOptions(opts...),
-		),
-		configureHAForHost: connect.NewClient[v1.ConfigureHAForHostRequest, v1.ConfigureHAForHostResponse](
-			httpClient,
-			baseURL+HaServiceConfigureHAForHostProcedure,
-			connect.WithSchema(haServiceMethods.ByName("ConfigureHAForHost")),
-			connect.WithClientOptions(opts...),
-		),
-		disableHAForHost: connect.NewClient[v1.DisableHAForHostRequest, v1.DisableHAForHostResponse](
-			httpClient,
-			baseURL+HaServiceDisableHAForHostProcedure,
-			connect.WithSchema(haServiceMethods.ByName("DisableHAForHost")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // haServiceClient implements HaServiceClient.
 type haServiceClient struct {
-	disableHAForCluster *connect.Client[v1.DisableHAForClusterRequest, v1.DisableHAForClusterResponse]
-	listHostHAProviders *connect.Client[v1.ListHostHAProvidersRequest, v1.ListHostHAProvidersResponse]
-	enableHAForCluster  *connect.Client[v1.EnableHAForClusterRequest, v1.EnableHAForClusterResponse]
-	listHostHAResources *connect.Client[v1.ListHostHAResourcesRequest, v1.ListHostHAResourcesResponse]
 	disableHAForZone    *connect.Client[v1.DisableHAForZoneRequest, v1.DisableHAForZoneResponse]
 	enableHAForHost     *connect.Client[v1.EnableHAForHostRequest, v1.EnableHAForHostResponse]
-	enableHAForZone     *connect.Client[v1.EnableHAForZoneRequest, v1.EnableHAForZoneResponse]
 	configureHAForHost  *connect.Client[v1.ConfigureHAForHostRequest, v1.ConfigureHAForHostResponse]
+	disableHAForCluster *connect.Client[v1.DisableHAForClusterRequest, v1.DisableHAForClusterResponse]
+	enableHAForZone     *connect.Client[v1.EnableHAForZoneRequest, v1.EnableHAForZoneResponse]
+	listHostHAResources *connect.Client[v1.ListHostHAResourcesRequest, v1.ListHostHAResourcesResponse]
 	disableHAForHost    *connect.Client[v1.DisableHAForHostRequest, v1.DisableHAForHostResponse]
-}
-
-// DisableHAForCluster calls cloudstack.management.ha.v1.HaService.DisableHAForCluster.
-func (c *haServiceClient) DisableHAForCluster(ctx context.Context, req *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error) {
-	return c.disableHAForCluster.CallUnary(ctx, req)
-}
-
-// ListHostHAProviders calls cloudstack.management.ha.v1.HaService.ListHostHAProviders.
-func (c *haServiceClient) ListHostHAProviders(ctx context.Context, req *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error) {
-	return c.listHostHAProviders.CallUnary(ctx, req)
-}
-
-// EnableHAForCluster calls cloudstack.management.ha.v1.HaService.EnableHAForCluster.
-func (c *haServiceClient) EnableHAForCluster(ctx context.Context, req *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error) {
-	return c.enableHAForCluster.CallUnary(ctx, req)
-}
-
-// ListHostHAResources calls cloudstack.management.ha.v1.HaService.ListHostHAResources.
-func (c *haServiceClient) ListHostHAResources(ctx context.Context, req *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error) {
-	return c.listHostHAResources.CallUnary(ctx, req)
+	listHostHAProviders *connect.Client[v1.ListHostHAProvidersRequest, v1.ListHostHAProvidersResponse]
+	enableHAForCluster  *connect.Client[v1.EnableHAForClusterRequest, v1.EnableHAForClusterResponse]
 }
 
 // DisableHAForZone calls cloudstack.management.ha.v1.HaService.DisableHAForZone.
@@ -195,14 +175,24 @@ func (c *haServiceClient) EnableHAForHost(ctx context.Context, req *connect.Requ
 	return c.enableHAForHost.CallUnary(ctx, req)
 }
 
+// ConfigureHAForHost calls cloudstack.management.ha.v1.HaService.ConfigureHAForHost.
+func (c *haServiceClient) ConfigureHAForHost(ctx context.Context, req *connect.Request[v1.ConfigureHAForHostRequest]) (*connect.Response[v1.ConfigureHAForHostResponse], error) {
+	return c.configureHAForHost.CallUnary(ctx, req)
+}
+
+// DisableHAForCluster calls cloudstack.management.ha.v1.HaService.DisableHAForCluster.
+func (c *haServiceClient) DisableHAForCluster(ctx context.Context, req *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error) {
+	return c.disableHAForCluster.CallUnary(ctx, req)
+}
+
 // EnableHAForZone calls cloudstack.management.ha.v1.HaService.EnableHAForZone.
 func (c *haServiceClient) EnableHAForZone(ctx context.Context, req *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error) {
 	return c.enableHAForZone.CallUnary(ctx, req)
 }
 
-// ConfigureHAForHost calls cloudstack.management.ha.v1.HaService.ConfigureHAForHost.
-func (c *haServiceClient) ConfigureHAForHost(ctx context.Context, req *connect.Request[v1.ConfigureHAForHostRequest]) (*connect.Response[v1.ConfigureHAForHostResponse], error) {
-	return c.configureHAForHost.CallUnary(ctx, req)
+// ListHostHAResources calls cloudstack.management.ha.v1.HaService.ListHostHAResources.
+func (c *haServiceClient) ListHostHAResources(ctx context.Context, req *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error) {
+	return c.listHostHAResources.CallUnary(ctx, req)
 }
 
 // DisableHAForHost calls cloudstack.management.ha.v1.HaService.DisableHAForHost.
@@ -210,26 +200,36 @@ func (c *haServiceClient) DisableHAForHost(ctx context.Context, req *connect.Req
 	return c.disableHAForHost.CallUnary(ctx, req)
 }
 
+// ListHostHAProviders calls cloudstack.management.ha.v1.HaService.ListHostHAProviders.
+func (c *haServiceClient) ListHostHAProviders(ctx context.Context, req *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error) {
+	return c.listHostHAProviders.CallUnary(ctx, req)
+}
+
+// EnableHAForCluster calls cloudstack.management.ha.v1.HaService.EnableHAForCluster.
+func (c *haServiceClient) EnableHAForCluster(ctx context.Context, req *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error) {
+	return c.enableHAForCluster.CallUnary(ctx, req)
+}
+
 // HaServiceHandler is an implementation of the cloudstack.management.ha.v1.HaService service.
 type HaServiceHandler interface {
-	// DisableHAForCluster Disables HA cluster-wide
-	DisableHAForCluster(context.Context, *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error)
-	// ListHostHAProviders Lists HA providers
-	ListHostHAProviders(context.Context, *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error)
-	// EnableHAForCluster Enables HA cluster-wide
-	EnableHAForCluster(context.Context, *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error)
-	// ListHostHAResources Lists host HA resources
-	ListHostHAResources(context.Context, *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error)
 	// DisableHAForZone Disables HA for a zone
 	DisableHAForZone(context.Context, *connect.Request[v1.DisableHAForZoneRequest]) (*connect.Response[v1.DisableHAForZoneResponse], error)
 	// EnableHAForHost Enables HA for a host
 	EnableHAForHost(context.Context, *connect.Request[v1.EnableHAForHostRequest]) (*connect.Response[v1.EnableHAForHostResponse], error)
-	// EnableHAForZone Enables HA for a zone
-	EnableHAForZone(context.Context, *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error)
 	// ConfigureHAForHost Configures HA for a host
 	ConfigureHAForHost(context.Context, *connect.Request[v1.ConfigureHAForHostRequest]) (*connect.Response[v1.ConfigureHAForHostResponse], error)
+	// DisableHAForCluster Disables HA cluster-wide
+	DisableHAForCluster(context.Context, *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error)
+	// EnableHAForZone Enables HA for a zone
+	EnableHAForZone(context.Context, *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error)
+	// ListHostHAResources Lists host HA resources
+	ListHostHAResources(context.Context, *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error)
 	// DisableHAForHost Disables HA for a host
 	DisableHAForHost(context.Context, *connect.Request[v1.DisableHAForHostRequest]) (*connect.Response[v1.DisableHAForHostResponse], error)
+	// ListHostHAProviders Lists HA providers
+	ListHostHAProviders(context.Context, *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error)
+	// EnableHAForCluster Enables HA cluster-wide
+	EnableHAForCluster(context.Context, *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error)
 }
 
 // NewHaServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -239,10 +239,46 @@ type HaServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewHaServiceHandler(svc HaServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	haServiceMethods := v1.File_cloudstack_management_ha_v1_ha_gen_proto.Services().ByName("HaService").Methods()
+	haServiceDisableHAForZoneHandler := connect.NewUnaryHandler(
+		HaServiceDisableHAForZoneProcedure,
+		svc.DisableHAForZone,
+		connect.WithSchema(haServiceMethods.ByName("DisableHAForZone")),
+		connect.WithHandlerOptions(opts...),
+	)
+	haServiceEnableHAForHostHandler := connect.NewUnaryHandler(
+		HaServiceEnableHAForHostProcedure,
+		svc.EnableHAForHost,
+		connect.WithSchema(haServiceMethods.ByName("EnableHAForHost")),
+		connect.WithHandlerOptions(opts...),
+	)
+	haServiceConfigureHAForHostHandler := connect.NewUnaryHandler(
+		HaServiceConfigureHAForHostProcedure,
+		svc.ConfigureHAForHost,
+		connect.WithSchema(haServiceMethods.ByName("ConfigureHAForHost")),
+		connect.WithHandlerOptions(opts...),
+	)
 	haServiceDisableHAForClusterHandler := connect.NewUnaryHandler(
 		HaServiceDisableHAForClusterProcedure,
 		svc.DisableHAForCluster,
 		connect.WithSchema(haServiceMethods.ByName("DisableHAForCluster")),
+		connect.WithHandlerOptions(opts...),
+	)
+	haServiceEnableHAForZoneHandler := connect.NewUnaryHandler(
+		HaServiceEnableHAForZoneProcedure,
+		svc.EnableHAForZone,
+		connect.WithSchema(haServiceMethods.ByName("EnableHAForZone")),
+		connect.WithHandlerOptions(opts...),
+	)
+	haServiceListHostHAResourcesHandler := connect.NewUnaryHandler(
+		HaServiceListHostHAResourcesProcedure,
+		svc.ListHostHAResources,
+		connect.WithSchema(haServiceMethods.ByName("ListHostHAResources")),
+		connect.WithHandlerOptions(opts...),
+	)
+	haServiceDisableHAForHostHandler := connect.NewUnaryHandler(
+		HaServiceDisableHAForHostProcedure,
+		svc.DisableHAForHost,
+		connect.WithSchema(haServiceMethods.ByName("DisableHAForHost")),
 		connect.WithHandlerOptions(opts...),
 	)
 	haServiceListHostHAProvidersHandler := connect.NewUnaryHandler(
@@ -257,62 +293,26 @@ func NewHaServiceHandler(svc HaServiceHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(haServiceMethods.ByName("EnableHAForCluster")),
 		connect.WithHandlerOptions(opts...),
 	)
-	haServiceListHostHAResourcesHandler := connect.NewUnaryHandler(
-		HaServiceListHostHAResourcesProcedure,
-		svc.ListHostHAResources,
-		connect.WithSchema(haServiceMethods.ByName("ListHostHAResources")),
-		connect.WithHandlerOptions(opts...),
-	)
-	haServiceDisableHAForZoneHandler := connect.NewUnaryHandler(
-		HaServiceDisableHAForZoneProcedure,
-		svc.DisableHAForZone,
-		connect.WithSchema(haServiceMethods.ByName("DisableHAForZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	haServiceEnableHAForHostHandler := connect.NewUnaryHandler(
-		HaServiceEnableHAForHostProcedure,
-		svc.EnableHAForHost,
-		connect.WithSchema(haServiceMethods.ByName("EnableHAForHost")),
-		connect.WithHandlerOptions(opts...),
-	)
-	haServiceEnableHAForZoneHandler := connect.NewUnaryHandler(
-		HaServiceEnableHAForZoneProcedure,
-		svc.EnableHAForZone,
-		connect.WithSchema(haServiceMethods.ByName("EnableHAForZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	haServiceConfigureHAForHostHandler := connect.NewUnaryHandler(
-		HaServiceConfigureHAForHostProcedure,
-		svc.ConfigureHAForHost,
-		connect.WithSchema(haServiceMethods.ByName("ConfigureHAForHost")),
-		connect.WithHandlerOptions(opts...),
-	)
-	haServiceDisableHAForHostHandler := connect.NewUnaryHandler(
-		HaServiceDisableHAForHostProcedure,
-		svc.DisableHAForHost,
-		connect.WithSchema(haServiceMethods.ByName("DisableHAForHost")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cloudstack.management.ha.v1.HaService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case HaServiceDisableHAForClusterProcedure:
-			haServiceDisableHAForClusterHandler.ServeHTTP(w, r)
-		case HaServiceListHostHAProvidersProcedure:
-			haServiceListHostHAProvidersHandler.ServeHTTP(w, r)
-		case HaServiceEnableHAForClusterProcedure:
-			haServiceEnableHAForClusterHandler.ServeHTTP(w, r)
-		case HaServiceListHostHAResourcesProcedure:
-			haServiceListHostHAResourcesHandler.ServeHTTP(w, r)
 		case HaServiceDisableHAForZoneProcedure:
 			haServiceDisableHAForZoneHandler.ServeHTTP(w, r)
 		case HaServiceEnableHAForHostProcedure:
 			haServiceEnableHAForHostHandler.ServeHTTP(w, r)
-		case HaServiceEnableHAForZoneProcedure:
-			haServiceEnableHAForZoneHandler.ServeHTTP(w, r)
 		case HaServiceConfigureHAForHostProcedure:
 			haServiceConfigureHAForHostHandler.ServeHTTP(w, r)
+		case HaServiceDisableHAForClusterProcedure:
+			haServiceDisableHAForClusterHandler.ServeHTTP(w, r)
+		case HaServiceEnableHAForZoneProcedure:
+			haServiceEnableHAForZoneHandler.ServeHTTP(w, r)
+		case HaServiceListHostHAResourcesProcedure:
+			haServiceListHostHAResourcesHandler.ServeHTTP(w, r)
 		case HaServiceDisableHAForHostProcedure:
 			haServiceDisableHAForHostHandler.ServeHTTP(w, r)
+		case HaServiceListHostHAProvidersProcedure:
+			haServiceListHostHAProvidersHandler.ServeHTTP(w, r)
+		case HaServiceEnableHAForClusterProcedure:
+			haServiceEnableHAForClusterHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -322,22 +322,6 @@ func NewHaServiceHandler(svc HaServiceHandler, opts ...connect.HandlerOption) (s
 // UnimplementedHaServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedHaServiceHandler struct{}
 
-func (UnimplementedHaServiceHandler) DisableHAForCluster(context.Context, *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.DisableHAForCluster is not implemented"))
-}
-
-func (UnimplementedHaServiceHandler) ListHostHAProviders(context.Context, *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.ListHostHAProviders is not implemented"))
-}
-
-func (UnimplementedHaServiceHandler) EnableHAForCluster(context.Context, *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.EnableHAForCluster is not implemented"))
-}
-
-func (UnimplementedHaServiceHandler) ListHostHAResources(context.Context, *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.ListHostHAResources is not implemented"))
-}
-
 func (UnimplementedHaServiceHandler) DisableHAForZone(context.Context, *connect.Request[v1.DisableHAForZoneRequest]) (*connect.Response[v1.DisableHAForZoneResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.DisableHAForZone is not implemented"))
 }
@@ -346,14 +330,30 @@ func (UnimplementedHaServiceHandler) EnableHAForHost(context.Context, *connect.R
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.EnableHAForHost is not implemented"))
 }
 
-func (UnimplementedHaServiceHandler) EnableHAForZone(context.Context, *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.EnableHAForZone is not implemented"))
-}
-
 func (UnimplementedHaServiceHandler) ConfigureHAForHost(context.Context, *connect.Request[v1.ConfigureHAForHostRequest]) (*connect.Response[v1.ConfigureHAForHostResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.ConfigureHAForHost is not implemented"))
 }
 
+func (UnimplementedHaServiceHandler) DisableHAForCluster(context.Context, *connect.Request[v1.DisableHAForClusterRequest]) (*connect.Response[v1.DisableHAForClusterResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.DisableHAForCluster is not implemented"))
+}
+
+func (UnimplementedHaServiceHandler) EnableHAForZone(context.Context, *connect.Request[v1.EnableHAForZoneRequest]) (*connect.Response[v1.EnableHAForZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.EnableHAForZone is not implemented"))
+}
+
+func (UnimplementedHaServiceHandler) ListHostHAResources(context.Context, *connect.Request[v1.ListHostHAResourcesRequest]) (*connect.Response[v1.ListHostHAResourcesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.ListHostHAResources is not implemented"))
+}
+
 func (UnimplementedHaServiceHandler) DisableHAForHost(context.Context, *connect.Request[v1.DisableHAForHostRequest]) (*connect.Response[v1.DisableHAForHostResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.DisableHAForHost is not implemented"))
+}
+
+func (UnimplementedHaServiceHandler) ListHostHAProviders(context.Context, *connect.Request[v1.ListHostHAProvidersRequest]) (*connect.Response[v1.ListHostHAProvidersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.ListHostHAProviders is not implemented"))
+}
+
+func (UnimplementedHaServiceHandler) EnableHAForCluster(context.Context, *connect.Request[v1.EnableHAForClusterRequest]) (*connect.Response[v1.EnableHAForClusterResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ha.v1.HaService.EnableHAForCluster is not implemented"))
 }

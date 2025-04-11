@@ -24,233 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// AddAnnotationRequest represents the parameters for add an annotation.
-type AddAnnotationRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the annotation text
-	Annotation *string `protobuf:"bytes,1,opt,name=annotation" json:"annotation,omitempty"`
-	// The following entity types are allowed VM, VOLUME, SNAPSHOT, VM_SNAPSHOT, INSTANCE_GROUP, SSH_KEYPAIR, USER_DATA, NETWORK, VPC, PUBLIC_IP_ADDRESS, VPN_CUSTOMER_GATEWAY, TEMPLATE, ISO, KUBERNETES_CLUSTER, SERVICE_OFFERING, DISK_OFFERING, NETWORK_OFFERING, ZONE, POD, CLUSTER, HOST, DOMAIN, PRIMARY_STORAGE, SECONDARY_STORAGE, VR, SYSTEM_VM, AUTOSCALE_VM_GROUP, MANAGEMENT_SERVER
-	EntityType *string `protobuf:"bytes,2,opt,name=entity_type,json=entityType" json:"entity_type,omitempty"`
-	// the id of the entity to annotate
-	EntityUuid *string `protobuf:"bytes,3,opt,name=entity_uuid,json=entityUuid" json:"entity_uuid,omitempty"`
-	// the annotation is visible for admins only
-	AdminsOnly *bool `protobuf:"varint,4,opt,name=admins_only,json=adminsOnly" json:"admins_only,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddAnnotationRequest) Reset() {
-	*x = AddAnnotationRequest{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddAnnotationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddAnnotationRequest) ProtoMessage() {}
-
-func (x *AddAnnotationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddAnnotationRequest.ProtoReflect.Descriptor instead.
-func (*AddAnnotationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *AddAnnotationRequest) GetAnnotation() string {
-	if x != nil && x.Annotation != nil {
-		return *x.Annotation
-	}
-	return ""
-}
-
-func (x *AddAnnotationRequest) GetEntityType() string {
-	if x != nil && x.EntityType != nil {
-		return *x.EntityType
-	}
-	return ""
-}
-
-func (x *AddAnnotationRequest) GetEntityUuid() string {
-	if x != nil && x.EntityUuid != nil {
-		return *x.EntityUuid
-	}
-	return ""
-}
-
-func (x *AddAnnotationRequest) GetAdminsOnly() bool {
-	if x != nil && x.AdminsOnly != nil {
-		return *x.AdminsOnly
-	}
-	return false
-}
-
-func (x *AddAnnotationRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddAnnotationResponse represents the response from add an annotation.
-type AddAnnotationResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddAnnotationResponse) Reset() {
-	*x = AddAnnotationResponse{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddAnnotationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddAnnotationResponse) ProtoMessage() {}
-
-func (x *AddAnnotationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddAnnotationResponse.ProtoReflect.Descriptor instead.
-func (*AddAnnotationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *AddAnnotationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveAnnotationRequest represents the parameters for remove an annotation.
-type RemoveAnnotationRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the annotation
-	Uuid *string `protobuf:"bytes,1,opt,name=uuid" json:"uuid,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveAnnotationRequest) Reset() {
-	*x = RemoveAnnotationRequest{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveAnnotationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveAnnotationRequest) ProtoMessage() {}
-
-func (x *RemoveAnnotationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveAnnotationRequest.ProtoReflect.Descriptor instead.
-func (*RemoveAnnotationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *RemoveAnnotationRequest) GetUuid() string {
-	if x != nil && x.Uuid != nil {
-		return *x.Uuid
-	}
-	return ""
-}
-
-func (x *RemoveAnnotationRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveAnnotationResponse represents the response from remove an annotation.
-type RemoveAnnotationResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveAnnotationResponse) Reset() {
-	*x = RemoveAnnotationResponse{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveAnnotationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveAnnotationResponse) ProtoMessage() {}
-
-func (x *RemoveAnnotationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveAnnotationResponse.ProtoReflect.Descriptor instead.
-func (*RemoveAnnotationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *RemoveAnnotationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ListAnnotationsRequest represents the parameters for lists annotations.
 type ListAnnotationsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -275,7 +48,7 @@ type ListAnnotationsRequest struct {
 
 func (x *ListAnnotationsRequest) Reset() {
 	*x = ListAnnotationsRequest{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -287,7 +60,7 @@ func (x *ListAnnotationsRequest) String() string {
 func (*ListAnnotationsRequest) ProtoMessage() {}
 
 func (x *ListAnnotationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -300,7 +73,7 @@ func (x *ListAnnotationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAnnotationsRequest.ProtoReflect.Descriptor instead.
 func (*ListAnnotationsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListAnnotationsRequest) GetUuid() string {
@@ -379,7 +152,7 @@ type ListAnnotationsResponse struct {
 
 func (x *ListAnnotationsResponse) Reset() {
 	*x = ListAnnotationsResponse{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -391,7 +164,7 @@ func (x *ListAnnotationsResponse) String() string {
 func (*ListAnnotationsResponse) ProtoMessage() {}
 
 func (x *ListAnnotationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -404,7 +177,7 @@ func (x *ListAnnotationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAnnotationsResponse.ProtoReflect.Descriptor instead.
 func (*ListAnnotationsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListAnnotationsResponse) GetItems() []*Annotation {
@@ -435,7 +208,7 @@ type UpdateAnnotationVisibilityRequest struct {
 
 func (x *UpdateAnnotationVisibilityRequest) Reset() {
 	*x = UpdateAnnotationVisibilityRequest{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -447,7 +220,7 @@ func (x *UpdateAnnotationVisibilityRequest) String() string {
 func (*UpdateAnnotationVisibilityRequest) ProtoMessage() {}
 
 func (x *UpdateAnnotationVisibilityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -460,7 +233,7 @@ func (x *UpdateAnnotationVisibilityRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use UpdateAnnotationVisibilityRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAnnotationVisibilityRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UpdateAnnotationVisibilityRequest) GetUuid() string {
@@ -495,7 +268,7 @@ type UpdateAnnotationVisibilityResponse struct {
 
 func (x *UpdateAnnotationVisibilityResponse) Reset() {
 	*x = UpdateAnnotationVisibilityResponse{}
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -507,7 +280,7 @@ func (x *UpdateAnnotationVisibilityResponse) String() string {
 func (*UpdateAnnotationVisibilityResponse) ProtoMessage() {}
 
 func (x *UpdateAnnotationVisibilityResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -520,10 +293,237 @@ func (x *UpdateAnnotationVisibilityResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use UpdateAnnotationVisibilityResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAnnotationVisibilityResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *UpdateAnnotationVisibilityResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddAnnotationRequest represents the parameters for add an annotation.
+type AddAnnotationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the annotation text
+	Annotation *string `protobuf:"bytes,1,opt,name=annotation" json:"annotation,omitempty"`
+	// The following entity types are allowed VM, VOLUME, SNAPSHOT, VM_SNAPSHOT, INSTANCE_GROUP, SSH_KEYPAIR, USER_DATA, NETWORK, VPC, PUBLIC_IP_ADDRESS, VPN_CUSTOMER_GATEWAY, TEMPLATE, ISO, KUBERNETES_CLUSTER, SERVICE_OFFERING, DISK_OFFERING, NETWORK_OFFERING, ZONE, POD, CLUSTER, HOST, DOMAIN, PRIMARY_STORAGE, SECONDARY_STORAGE, VR, SYSTEM_VM, AUTOSCALE_VM_GROUP, MANAGEMENT_SERVER
+	EntityType *string `protobuf:"bytes,2,opt,name=entity_type,json=entityType" json:"entity_type,omitempty"`
+	// the id of the entity to annotate
+	EntityUuid *string `protobuf:"bytes,3,opt,name=entity_uuid,json=entityUuid" json:"entity_uuid,omitempty"`
+	// the annotation is visible for admins only
+	AdminsOnly *bool `protobuf:"varint,4,opt,name=admins_only,json=adminsOnly" json:"admins_only,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddAnnotationRequest) Reset() {
+	*x = AddAnnotationRequest{}
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddAnnotationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddAnnotationRequest) ProtoMessage() {}
+
+func (x *AddAnnotationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddAnnotationRequest.ProtoReflect.Descriptor instead.
+func (*AddAnnotationRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AddAnnotationRequest) GetAnnotation() string {
+	if x != nil && x.Annotation != nil {
+		return *x.Annotation
+	}
+	return ""
+}
+
+func (x *AddAnnotationRequest) GetEntityType() string {
+	if x != nil && x.EntityType != nil {
+		return *x.EntityType
+	}
+	return ""
+}
+
+func (x *AddAnnotationRequest) GetEntityUuid() string {
+	if x != nil && x.EntityUuid != nil {
+		return *x.EntityUuid
+	}
+	return ""
+}
+
+func (x *AddAnnotationRequest) GetAdminsOnly() bool {
+	if x != nil && x.AdminsOnly != nil {
+		return *x.AdminsOnly
+	}
+	return false
+}
+
+func (x *AddAnnotationRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddAnnotationResponse represents the response from add an annotation.
+type AddAnnotationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddAnnotationResponse) Reset() {
+	*x = AddAnnotationResponse{}
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddAnnotationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddAnnotationResponse) ProtoMessage() {}
+
+func (x *AddAnnotationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddAnnotationResponse.ProtoReflect.Descriptor instead.
+func (*AddAnnotationResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *AddAnnotationResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveAnnotationRequest represents the parameters for remove an annotation.
+type RemoveAnnotationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the id of the annotation
+	Uuid *string `protobuf:"bytes,1,opt,name=uuid" json:"uuid,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveAnnotationRequest) Reset() {
+	*x = RemoveAnnotationRequest{}
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveAnnotationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveAnnotationRequest) ProtoMessage() {}
+
+func (x *RemoveAnnotationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveAnnotationRequest.ProtoReflect.Descriptor instead.
+func (*RemoveAnnotationRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *RemoveAnnotationRequest) GetUuid() string {
+	if x != nil && x.Uuid != nil {
+		return *x.Uuid
+	}
+	return ""
+}
+
+func (x *RemoveAnnotationRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveAnnotationResponse represents the response from remove an annotation.
+type RemoveAnnotationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveAnnotationResponse) Reset() {
+	*x = RemoveAnnotationResponse{}
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveAnnotationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveAnnotationResponse) ProtoMessage() {}
+
+func (x *RemoveAnnotationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveAnnotationResponse.ProtoReflect.Descriptor instead.
+func (*RemoveAnnotationResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RemoveAnnotationResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -898,25 +898,7 @@ var File_cloudstack_management_annotation_v1_annotation_gen_proto protoreflect.F
 
 const file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDesc = "" +
 	"\n" +
-	"8cloudstack/management/annotation/v1/annotation.gen.proto\x12#cloudstack.management.annotation.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xcf\x01\n" +
-	"\x14AddAnnotationRequest\x12\x1e\n" +
-	"\n" +
-	"annotation\x18\x01 \x01(\tR\n" +
-	"annotation\x12\x1f\n" +
-	"\ventity_type\x18\x02 \x01(\tR\n" +
-	"entityType\x12)\n" +
-	"\ventity_uuid\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\n" +
-	"entityUuid\x12&\n" +
-	"\vadmins_only\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"adminsOnly\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
-	"\x15AddAnnotationResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.annotation.v1.ResultR\x06result\"_\n" +
-	"\x17RemoveAnnotationRequest\x12\x1f\n" +
-	"\x04uuid\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\x04uuid\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
-	"\x18RemoveAnnotationResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.annotation.v1.ResultR\x06result\"\xc6\x02\n" +
+	"8cloudstack/management/annotation/v1/annotation.gen.proto\x12#cloudstack.management.annotation.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc6\x02\n" +
 	"\x16ListAnnotationsRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
 	"\ventity_type\x18\x02 \x01(\tR\n" +
@@ -939,6 +921,24 @@ const file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDesc = ""
 	"adminsOnly\x12#\n" +
 	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"i\n" +
 	"\"UpdateAnnotationVisibilityResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.annotation.v1.ResultR\x06result\"\xcf\x01\n" +
+	"\x14AddAnnotationRequest\x12\x1e\n" +
+	"\n" +
+	"annotation\x18\x01 \x01(\tR\n" +
+	"annotation\x12\x1f\n" +
+	"\ventity_type\x18\x02 \x01(\tR\n" +
+	"entityType\x12)\n" +
+	"\ventity_uuid\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\n" +
+	"entityUuid\x12&\n" +
+	"\vadmins_only\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"adminsOnly\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
+	"\x15AddAnnotationResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.annotation.v1.ResultR\x06result\"_\n" +
+	"\x17RemoveAnnotationRequest\x12\x1f\n" +
+	"\x04uuid\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\x04uuid\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
+	"\x18RemoveAnnotationResponse\x12C\n" +
 	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.annotation.v1.ResultR\x06result\"\x99\x01\n" +
 	"\n" +
 	"Annotation\x12\x18\n" +
@@ -976,11 +976,11 @@ const file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDesc = ""
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xfd\x04\n" +
-	"\x11AnnotationService\x12\x88\x01\n" +
-	"\rAddAnnotation\x129.cloudstack.management.annotation.v1.AddAnnotationRequest\x1a:.cloudstack.management.annotation.v1.AddAnnotationResponse\"\x00\x12\x91\x01\n" +
-	"\x10RemoveAnnotation\x12<.cloudstack.management.annotation.v1.RemoveAnnotationRequest\x1a=.cloudstack.management.annotation.v1.RemoveAnnotationResponse\"\x00\x12\x8e\x01\n" +
+	"\x11AnnotationService\x12\x8e\x01\n" +
 	"\x0fListAnnotations\x12;.cloudstack.management.annotation.v1.ListAnnotationsRequest\x1a<.cloudstack.management.annotation.v1.ListAnnotationsResponse\"\x00\x12\xaf\x01\n" +
-	"\x1aUpdateAnnotationVisibility\x12F.cloudstack.management.annotation.v1.UpdateAnnotationVisibilityRequest\x1aG.cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xd2\x02\n" +
+	"\x1aUpdateAnnotationVisibility\x12F.cloudstack.management.annotation.v1.UpdateAnnotationVisibilityRequest\x1aG.cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse\"\x00\x12\x88\x01\n" +
+	"\rAddAnnotation\x129.cloudstack.management.annotation.v1.AddAnnotationRequest\x1a:.cloudstack.management.annotation.v1.AddAnnotationResponse\"\x00\x12\x91\x01\n" +
+	"\x10RemoveAnnotation\x12<.cloudstack.management.annotation.v1.RemoveAnnotationRequest\x1a=.cloudstack.management.annotation.v1.RemoveAnnotationResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xd2\x02\n" +
 	"'com.cloudstack.management.annotation.v1B\x12AnnotationGenProtoP\x01Zdgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/annotation/v1;annotationv1\xa2\x02\x03CMA\xaa\x02#Cloudstack.Management.Annotation.V1\xca\x02#Cloudstack\\Management\\Annotation\\V1\xe2\x02/Cloudstack\\Management\\Annotation\\V1\\GPBMetadata\xea\x02&Cloudstack::Management::Annotation::V1b\beditionsp\xe8\a"
 
 var (
@@ -997,14 +997,14 @@ func file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDescGZIP()
 
 var file_cloudstack_management_annotation_v1_annotation_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_cloudstack_management_annotation_v1_annotation_gen_proto_goTypes = []any{
-	(*AddAnnotationRequest)(nil),               // 0: cloudstack.management.annotation.v1.AddAnnotationRequest
-	(*AddAnnotationResponse)(nil),              // 1: cloudstack.management.annotation.v1.AddAnnotationResponse
-	(*RemoveAnnotationRequest)(nil),            // 2: cloudstack.management.annotation.v1.RemoveAnnotationRequest
-	(*RemoveAnnotationResponse)(nil),           // 3: cloudstack.management.annotation.v1.RemoveAnnotationResponse
-	(*ListAnnotationsRequest)(nil),             // 4: cloudstack.management.annotation.v1.ListAnnotationsRequest
-	(*ListAnnotationsResponse)(nil),            // 5: cloudstack.management.annotation.v1.ListAnnotationsResponse
-	(*UpdateAnnotationVisibilityRequest)(nil),  // 6: cloudstack.management.annotation.v1.UpdateAnnotationVisibilityRequest
-	(*UpdateAnnotationVisibilityResponse)(nil), // 7: cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse
+	(*ListAnnotationsRequest)(nil),             // 0: cloudstack.management.annotation.v1.ListAnnotationsRequest
+	(*ListAnnotationsResponse)(nil),            // 1: cloudstack.management.annotation.v1.ListAnnotationsResponse
+	(*UpdateAnnotationVisibilityRequest)(nil),  // 2: cloudstack.management.annotation.v1.UpdateAnnotationVisibilityRequest
+	(*UpdateAnnotationVisibilityResponse)(nil), // 3: cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse
+	(*AddAnnotationRequest)(nil),               // 4: cloudstack.management.annotation.v1.AddAnnotationRequest
+	(*AddAnnotationResponse)(nil),              // 5: cloudstack.management.annotation.v1.AddAnnotationResponse
+	(*RemoveAnnotationRequest)(nil),            // 6: cloudstack.management.annotation.v1.RemoveAnnotationRequest
+	(*RemoveAnnotationResponse)(nil),           // 7: cloudstack.management.annotation.v1.RemoveAnnotationResponse
 	(*Annotation)(nil),                         // 8: cloudstack.management.annotation.v1.Annotation
 	(*Success)(nil),                            // 9: cloudstack.management.annotation.v1.Success
 	(*Item)(nil),                               // 10: cloudstack.management.annotation.v1.Item
@@ -1012,19 +1012,19 @@ var file_cloudstack_management_annotation_v1_annotation_gen_proto_goTypes = []an
 	nil,                                        // 12: cloudstack.management.annotation.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_annotation_v1_annotation_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.annotation.v1.AddAnnotationResponse.result:type_name -> cloudstack.management.annotation.v1.Result
-	11, // 1: cloudstack.management.annotation.v1.RemoveAnnotationResponse.result:type_name -> cloudstack.management.annotation.v1.Result
-	8,  // 2: cloudstack.management.annotation.v1.ListAnnotationsResponse.items:type_name -> cloudstack.management.annotation.v1.Annotation
-	11, // 3: cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse.result:type_name -> cloudstack.management.annotation.v1.Result
+	8,  // 0: cloudstack.management.annotation.v1.ListAnnotationsResponse.items:type_name -> cloudstack.management.annotation.v1.Annotation
+	11, // 1: cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse.result:type_name -> cloudstack.management.annotation.v1.Result
+	11, // 2: cloudstack.management.annotation.v1.AddAnnotationResponse.result:type_name -> cloudstack.management.annotation.v1.Result
+	11, // 3: cloudstack.management.annotation.v1.RemoveAnnotationResponse.result:type_name -> cloudstack.management.annotation.v1.Result
 	12, // 4: cloudstack.management.annotation.v1.Item.details:type_name -> cloudstack.management.annotation.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.annotation.v1.AnnotationService.AddAnnotation:input_type -> cloudstack.management.annotation.v1.AddAnnotationRequest
-	2,  // 6: cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation:input_type -> cloudstack.management.annotation.v1.RemoveAnnotationRequest
-	4,  // 7: cloudstack.management.annotation.v1.AnnotationService.ListAnnotations:input_type -> cloudstack.management.annotation.v1.ListAnnotationsRequest
-	6,  // 8: cloudstack.management.annotation.v1.AnnotationService.UpdateAnnotationVisibility:input_type -> cloudstack.management.annotation.v1.UpdateAnnotationVisibilityRequest
-	1,  // 9: cloudstack.management.annotation.v1.AnnotationService.AddAnnotation:output_type -> cloudstack.management.annotation.v1.AddAnnotationResponse
-	3,  // 10: cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation:output_type -> cloudstack.management.annotation.v1.RemoveAnnotationResponse
-	5,  // 11: cloudstack.management.annotation.v1.AnnotationService.ListAnnotations:output_type -> cloudstack.management.annotation.v1.ListAnnotationsResponse
-	7,  // 12: cloudstack.management.annotation.v1.AnnotationService.UpdateAnnotationVisibility:output_type -> cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse
+	0,  // 5: cloudstack.management.annotation.v1.AnnotationService.ListAnnotations:input_type -> cloudstack.management.annotation.v1.ListAnnotationsRequest
+	2,  // 6: cloudstack.management.annotation.v1.AnnotationService.UpdateAnnotationVisibility:input_type -> cloudstack.management.annotation.v1.UpdateAnnotationVisibilityRequest
+	4,  // 7: cloudstack.management.annotation.v1.AnnotationService.AddAnnotation:input_type -> cloudstack.management.annotation.v1.AddAnnotationRequest
+	6,  // 8: cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation:input_type -> cloudstack.management.annotation.v1.RemoveAnnotationRequest
+	1,  // 9: cloudstack.management.annotation.v1.AnnotationService.ListAnnotations:output_type -> cloudstack.management.annotation.v1.ListAnnotationsResponse
+	3,  // 10: cloudstack.management.annotation.v1.AnnotationService.UpdateAnnotationVisibility:output_type -> cloudstack.management.annotation.v1.UpdateAnnotationVisibilityResponse
+	5,  // 11: cloudstack.management.annotation.v1.AnnotationService.AddAnnotation:output_type -> cloudstack.management.annotation.v1.AddAnnotationResponse
+	7,  // 12: cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation:output_type -> cloudstack.management.annotation.v1.RemoveAnnotationResponse
 	9,  // [9:13] is the sub-list for method output_type
 	5,  // [5:9] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name

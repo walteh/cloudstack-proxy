@@ -24,36 +24,40 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// StopVMRequest represents the parameters for stops a virtual machine.
-type StopVMRequest struct {
+// AssignVMRequest represents the parameters for change ownership of a vm from one account to another. this api is available for basic zones with security groups and advanced zones with guest networks. a root administrator can reassign a vm from any account to any other account in any domain. a domain administrator can reassign a vm to any account in the same domain.
+type AssignVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
-	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// id of the VM to be moved
+	VirtualMachineId *int64 `protobuf:"varint,1,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// account name of the new VM owner.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// domain id of the new VM owner.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional project for the new VM owner.
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list of new network ids in which the moved VM will participate. In case no network ids are provided the VM will be part of the default network for that zone. In case there is no network yet created for the new account the default network will be created.
+	NetworkIds []string `protobuf:"bytes,5,rep,name=network_ids,json=networkIds" json:"network_ids,omitempty"`
+	// list of security group ids to be applied on the virtual machine. In case no security groups are provided the VM is part of the default security group.
+	SecurityGroupIdList []string `protobuf:"bytes,6,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StopVMRequest) Reset() {
-	*x = StopVMRequest{}
+func (x *AssignVMRequest) Reset() {
+	*x = AssignVMRequest{}
 	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StopVMRequest) String() string {
+func (x *AssignVMRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StopVMRequest) ProtoMessage() {}
+func (*AssignVMRequest) ProtoMessage() {}
 
-func (x *StopVMRequest) ProtoReflect() protoreflect.Message {
+func (x *AssignVMRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -65,55 +69,62 @@ func (x *StopVMRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StopVMRequest.ProtoReflect.Descriptor instead.
-func (*StopVMRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AssignVMRequest.ProtoReflect.Descriptor instead.
+func (*AssignVMRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *StopVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *StopVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *AssignVMRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
 	}
 	return 0
 }
 
-func (x *StopVMRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *StopVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *StopVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *AssignVMRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *StopVMRequest) GetResponseType() string {
+func (x *AssignVMRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *AssignVMRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *AssignVMRequest) GetNetworkIds() []string {
+	if x != nil {
+		return x.NetworkIds
+	}
+	return nil
+}
+
+func (x *AssignVMRequest) GetSecurityGroupIdList() []string {
+	if x != nil {
+		return x.SecurityGroupIdList
+	}
+	return nil
+}
+
+func (x *AssignVMRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// StopVMResponse represents the response from stops a virtual machine.
-type StopVMResponse struct {
+// AssignVMResponse represents the response from change ownership of a vm from one account to another. this api is available for basic zones with security groups and advanced zones with guest networks. a root administrator can reassign a vm from any account to any other account in any domain. a domain administrator can reassign a vm to any account in the same domain.
+type AssignVMResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -121,20 +132,20 @@ type StopVMResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StopVMResponse) Reset() {
-	*x = StopVMResponse{}
+func (x *AssignVMResponse) Reset() {
+	*x = AssignVMResponse{}
 	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StopVMResponse) String() string {
+func (x *AssignVMResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StopVMResponse) ProtoMessage() {}
+func (*AssignVMResponse) ProtoMessage() {}
 
-func (x *StopVMResponse) ProtoReflect() protoreflect.Message {
+func (x *AssignVMResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -146,16 +157,2553 @@ func (x *StopVMResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StopVMResponse.ProtoReflect.Descriptor instead.
-func (*StopVMResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AssignVMResponse.ProtoReflect.Descriptor instead.
+func (*AssignVMResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *StopVMResponse) GetResult() *Result {
+func (x *AssignVMResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
+}
+
+// DeployVMCmdByAdminRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+type DeployVMCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// destination Pod ID to deploy the VM to - parameter available for root admin only
+	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// destination Cluster ID to deploy the VM to - parameter available for root admin only
+	ClusterId *int64 `protobuf:"varint,2,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// availability zone for the virtual machine
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the ID of the service offering for the virtual machine
+	ServiceOfferingId *int64 `protobuf:"varint,4,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// the ID of the template for the virtual machine
+	TemplateId *int64 `protobuf:"varint,5,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// host name for the virtual machine
+	Name *string `protobuf:"bytes,6,opt,name=name" json:"name,omitempty"`
+	// an optional user generated name for the virtual machine
+	DisplayName *string `protobuf:"bytes,7,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The password of the virtual machine. If null, a random password will be generated for the VM.
+	Password *string `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
+	// an optional account for the virtual machine. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,9,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used. If account is NOT provided then virtual machine will be assigned to the caller account and domain.
+	DomainId *int64 `protobuf:"varint,10,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// list of network ids used by virtual machine. Can't be specified with ipToNetworkList parameter
+	NetworkIds []string `protobuf:"bytes,11,rep,name=network_ids,json=networkIds" json:"network_ids,omitempty"`
+	// Guest VM Boot option either custom[UEFI] or default boot [BIOS]. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	BootType *string `protobuf:"bytes,12,opt,name=boot_type,json=bootType" json:"boot_type,omitempty"`
+	// Boot Mode [Legacy] or [Secure] Applicable when Boot Type Selected is UEFI, otherwise Legacy only for BIOS. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	BootMode *string `protobuf:"bytes,13,opt,name=boot_mode,json=bootMode" json:"boot_mode,omitempty"`
+	// Boot into hardware setup or not (ignored if startVm = false, only valid for vmware)
+	BootIntoSetup *bool `protobuf:"varint,14,opt,name=boot_into_setup,json=bootIntoSetup" json:"boot_into_setup,omitempty"`
+	// the ID of the disk offering for the virtual machine. If the template is of ISO format, the diskOfferingId is for the root disk volume. Otherwise this parameter is used to indicate the offering for the data disk volume. If the templateId parameter passed is from a Template object, the diskOfferingId refers to a DATA Disk Volume created. If the templateId parameter passed is from an ISO object, the diskOfferingId refers to a ROOT Disk Volume created.
+	DiskOfferingId *int64 `protobuf:"varint,15,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// the arbitrary size for the DATADISK volume. Mutually exclusive with diskOfferingId
+	Size *int64 `protobuf:"varint,16,opt,name=size" json:"size,omitempty"`
+	// Optional field to resize root disk on deploy. Value is in GB. Only applies to template-based deployments. Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	Rootdisksize *int64 `protobuf:"varint,17,opt,name=rootdisksize" json:"rootdisksize,omitempty"`
+	// an optional group for the virtual machine
+	Group *string `protobuf:"bytes,18,opt,name=group" json:"group,omitempty"`
+	// the hypervisor on which to deploy the virtual machine. The parameter is required and respected only when hypervisor info is not set on the ISO/Template passed to the call
+	Hypervisor *string `protobuf:"bytes,19,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,20,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// the ID of the Userdata
+	UserdataId *int64 `protobuf:"varint,21,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
+	// used to specify the parameters values for the variables in userdata.
+	UserdataDetails map[string]string `protobuf:"bytes,22,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// name of the ssh key pair used to login to the virtual machine
+	SshKeyPairName *string `protobuf:"bytes,23,opt,name=ssh_key_pair_name,json=sshKeyPairName" json:"ssh_key_pair_name,omitempty"`
+	// names of the ssh key pairs used to login to the virtual machine
+	SshKeyPairNames []string `protobuf:"bytes,24,rep,name=ssh_key_pair_names,json=sshKeyPairNames" json:"ssh_key_pair_names,omitempty"`
+	// destination Host ID to deploy the VM to - parameter available for root admin only
+	HostId *int64 `protobuf:"varint,25,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	// comma separated list of security groups id that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	SecurityGroupIdList []string `protobuf:"bytes,26,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	SecurityGroupNameList []string `protobuf:"bytes,27,rep,name=security_group_name_list,json=securityGroupNameList" json:"security_group_name_list,omitempty"`
+	// ip to network mapping. Can't be specified with networkIds parameter. Example: iptonetworklist[0].ip=10.10.10.11&iptonetworklist[0].ipv6=fc00:1234:5678::abcd&iptonetworklist[0].networkid=uuid&iptonetworklist[0].mac=aa:bb:cc:dd:ee::ff - requests to use ip 10.10.10.11 in network id=uuid
+	IpToNetworkList map[string]string `protobuf:"bytes,28,rep,name=ip_to_network_list,json=ipToNetworkList" json:"ip_to_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// the ip address for default vm's network
+	IpAddress *string `protobuf:"bytes,29,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// the ipv6 address for default vm's network
+	Ip6Address *string `protobuf:"bytes,30,opt,name=ip6_address,json=ip6Address" json:"ip6_address,omitempty"`
+	// the mac address for default vm's network
+	MacAddress *string `protobuf:"bytes,31,opt,name=mac_address,json=macAddress" json:"mac_address,omitempty"`
+	// an optional keyboard device type for the virtual machine. valid value can be one of de,de-ch,es,fi,fr,fr-be,fr-ch,is,it,jp,nl-be,no,pt,uk,us
+	Keyboard *string `protobuf:"bytes,32,opt,name=keyboard" json:"keyboard,omitempty"`
+	// Deploy vm for the project
+	ProjectId *int64 `protobuf:"varint,33,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// true if start vm after creating; defaulted to true if not specified
+	StartVm *bool `protobuf:"varint,34,opt,name=start_vm,json=startVm" json:"start_vm,omitempty"`
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Mutually exclusive with affinitygroupnames parameter
+	AffinityGroupIdList []string `protobuf:"bytes,35,rep,name=affinity_group_id_list,json=affinityGroupIdList" json:"affinity_group_id_list,omitempty"`
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine.Mutually exclusive with affinitygroupids parameter
+	AffinityGroupNameList []string `protobuf:"bytes,36,rep,name=affinity_group_name_list,json=affinityGroupNameList" json:"affinity_group_name_list,omitempty"`
+	// an optional field, whether to the display the vm to the end user or not.
+	DisplayVm *bool `protobuf:"varint,37,opt,name=display_vm,json=displayVm" json:"display_vm,omitempty"`
+	// used to specify the custom parameters. 'extraconfig' is not allowed to be passed in details
+	Details map[string]string `protobuf:"bytes,38,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Deployment planner to use for vm allocation. Available to ROOT admin only
+	DeploymentPlanner *string `protobuf:"bytes,39,opt,name=deployment_planner,json=deploymentPlanner" json:"deployment_planner,omitempty"`
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	DhcpOptionsNetworkList map[string]string `protobuf:"bytes,40,rep,name=dhcp_options_network_list,json=dhcpOptionsNetworkList" json:"dhcp_options_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// datadisk template to disk-offering mapping; an optional parameter used to create additional data disks from datadisk templates; can't be specified with diskOfferingId parameter
+	DataDiskTemplateToDiskOfferingList map[string]string `protobuf:"bytes,41,rep,name=data_disk_template_to_disk_offering_list,json=dataDiskTemplateToDiskOfferingList" json:"data_disk_template_to_disk_offering_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	ExtraConfig *string `protobuf:"bytes,42,opt,name=extra_config,json=extraConfig" json:"extra_config,omitempty"`
+	// if true the image tags (if any) will be copied to the VM, default value is false
+	CopyImageTags *bool `protobuf:"varint,43,opt,name=copy_image_tags,json=copyImageTags" json:"copy_image_tags,omitempty"`
+	// used to specify the vApp properties.
+	VAppProperties map[string]string `protobuf:"bytes,44,rep,name=v_app_properties,json=vAppProperties" json:"v_app_properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// VMware only: used to specify network mapping of a vApp VMware template registered "as-is". Example nicnetworklist[0].ip=Nic-101&nicnetworklist[0].network=uuid
+	VAppNetworks map[string]string `protobuf:"bytes,45,rep,name=v_app_networks,json=vAppNetworks" json:"v_app_networks,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// true if virtual machine needs to be dynamically scalable
+	DynamicScalingEnabled *bool `protobuf:"varint,46,opt,name=dynamic_scaling_enabled,json=dynamicScalingEnabled" json:"dynamic_scaling_enabled,omitempty"`
+	// the ID of the disk offering for the virtual machine to be used for root volume instead of the disk offering mapped in service offering.In case of virtual machine deploying from ISO, then the diskofferingid specified for root volume is ignored and uses this override disk offering id
+	OverrideDiskOfferingId *int64 `protobuf:"varint,47,opt,name=override_disk_offering_id,json=overrideDiskOfferingId" json:"override_disk_offering_id,omitempty"`
+	// IOThreads are dedicated event loop threads for supported disk devices to perform block I/O requests in order to improve scalability especially on an SMP host/guest with many LUNs.
+	IothreadsEnabled *bool `protobuf:"varint,48,opt,name=iothreads_enabled,json=iothreadsEnabled" json:"iothreads_enabled,omitempty"`
+	// Controls specific policies on IO
+	IoDriverPolicy *string `protobuf:"bytes,49,opt,name=io_driver_policy,json=ioDriverPolicy" json:"io_driver_policy,omitempty"`
+	// The number of queues for multiqueue NICs.
+	NicMultiqueueNumber *int32 `protobuf:"varint,50,opt,name=nic_multiqueue_number,json=nicMultiqueueNumber" json:"nic_multiqueue_number,omitempty"`
+	// Enable packed virtqueues or not.
+	NicPackedVirtQueues *bool `protobuf:"varint,51,opt,name=nic_packed_virt_queues,json=nicPackedVirtQueues" json:"nic_packed_virt_queues,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,52,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,53,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,54,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,55,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeployVMCmdByAdminRequest) Reset() {
+	*x = DeployVMCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeployVMCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeployVMCmdByAdminRequest) ProtoMessage() {}
+
+func (x *DeployVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeployVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*DeployVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeployVMCmdByAdminRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetNetworkIds() []string {
+	if x != nil {
+		return x.NetworkIds
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetBootType() string {
+	if x != nil && x.BootType != nil {
+		return *x.BootType
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetBootMode() string {
+	if x != nil && x.BootMode != nil {
+		return *x.BootMode
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetBootIntoSetup() bool {
+	if x != nil && x.BootIntoSetup != nil {
+		return *x.BootIntoSetup
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetSize() int64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetRootdisksize() int64 {
+	if x != nil && x.Rootdisksize != nil {
+		return *x.Rootdisksize
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetGroup() string {
+	if x != nil && x.Group != nil {
+		return *x.Group
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetUserdataId() int64 {
+	if x != nil && x.UserdataId != nil {
+		return *x.UserdataId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetUserdataDetails() map[string]string {
+	if x != nil {
+		return x.UserdataDetails
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetSshKeyPairName() string {
+	if x != nil && x.SshKeyPairName != nil {
+		return *x.SshKeyPairName
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetSshKeyPairNames() []string {
+	if x != nil {
+		return x.SshKeyPairNames
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetSecurityGroupIdList() []string {
+	if x != nil {
+		return x.SecurityGroupIdList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetSecurityGroupNameList() []string {
+	if x != nil {
+		return x.SecurityGroupNameList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetIpToNetworkList() map[string]string {
+	if x != nil {
+		return x.IpToNetworkList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetIp6Address() string {
+	if x != nil && x.Ip6Address != nil {
+		return *x.Ip6Address
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetMacAddress() string {
+	if x != nil && x.MacAddress != nil {
+		return *x.MacAddress
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetKeyboard() string {
+	if x != nil && x.Keyboard != nil {
+		return *x.Keyboard
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetStartVm() bool {
+	if x != nil && x.StartVm != nil {
+		return *x.StartVm
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetAffinityGroupIdList() []string {
+	if x != nil {
+		return x.AffinityGroupIdList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetAffinityGroupNameList() []string {
+	if x != nil {
+		return x.AffinityGroupNameList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDisplayVm() bool {
+	if x != nil && x.DisplayVm != nil {
+		return *x.DisplayVm
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDeploymentPlanner() string {
+	if x != nil && x.DeploymentPlanner != nil {
+		return *x.DeploymentPlanner
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDhcpOptionsNetworkList() map[string]string {
+	if x != nil {
+		return x.DhcpOptionsNetworkList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDataDiskTemplateToDiskOfferingList() map[string]string {
+	if x != nil {
+		return x.DataDiskTemplateToDiskOfferingList
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetExtraConfig() string {
+	if x != nil && x.ExtraConfig != nil {
+		return *x.ExtraConfig
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetCopyImageTags() bool {
+	if x != nil && x.CopyImageTags != nil {
+		return *x.CopyImageTags
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetVAppProperties() map[string]string {
+	if x != nil {
+		return x.VAppProperties
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetVAppNetworks() map[string]string {
+	if x != nil {
+		return x.VAppNetworks
+	}
+	return nil
+}
+
+func (x *DeployVMCmdByAdminRequest) GetDynamicScalingEnabled() bool {
+	if x != nil && x.DynamicScalingEnabled != nil {
+		return *x.DynamicScalingEnabled
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetOverrideDiskOfferingId() int64 {
+	if x != nil && x.OverrideDiskOfferingId != nil {
+		return *x.OverrideDiskOfferingId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetIothreadsEnabled() bool {
+	if x != nil && x.IothreadsEnabled != nil {
+		return *x.IothreadsEnabled
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetIoDriverPolicy() string {
+	if x != nil && x.IoDriverPolicy != nil {
+		return *x.IoDriverPolicy
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetNicMultiqueueNumber() int32 {
+	if x != nil && x.NicMultiqueueNumber != nil {
+		return *x.NicMultiqueueNumber
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetNicPackedVirtQueues() bool {
+	if x != nil && x.NicPackedVirtQueues != nil {
+		return *x.NicPackedVirtQueues
+	}
+	return false
+}
+
+func (x *DeployVMCmdByAdminRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeployVMCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeployVMCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeployVMCmdByAdminResponse represents the response from creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+type DeployVMCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeployVMCmdByAdminResponse) Reset() {
+	*x = DeployVMCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeployVMCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeployVMCmdByAdminResponse) ProtoMessage() {}
+
+func (x *DeployVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeployVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*DeployVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeployVMCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateDefaultNicForVMRequest represents the parameters for changes the default nic on a vm
+type UpdateDefaultNicForVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// Virtual Machine ID
+	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// NIC ID
+	NicId *int64 `protobuf:"varint,3,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateDefaultNicForVMRequest) Reset() {
+	*x = UpdateDefaultNicForVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateDefaultNicForVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateDefaultNicForVMRequest) ProtoMessage() {}
+
+func (x *UpdateDefaultNicForVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateDefaultNicForVMRequest.ProtoReflect.Descriptor instead.
+func (*UpdateDefaultNicForVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateDefaultNicForVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UpdateDefaultNicForVMRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *UpdateDefaultNicForVMRequest) GetNicId() int64 {
+	if x != nil && x.NicId != nil {
+		return *x.NicId
+	}
+	return 0
+}
+
+func (x *UpdateDefaultNicForVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateDefaultNicForVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateDefaultNicForVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateDefaultNicForVMResponse represents the response from changes the default nic on a vm
+type UpdateDefaultNicForVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateDefaultNicForVMResponse) Reset() {
+	*x = UpdateDefaultNicForVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateDefaultNicForVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateDefaultNicForVMResponse) ProtoMessage() {}
+
+func (x *UpdateDefaultNicForVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateDefaultNicForVMResponse.ProtoReflect.Descriptor instead.
+func (*UpdateDefaultNicForVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateDefaultNicForVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ExpungeVMRequest represents the parameters for expunge a virtual machine. once expunged, it cannot be recoverd.
+type ExpungeVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExpungeVMRequest) Reset() {
+	*x = ExpungeVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExpungeVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExpungeVMRequest) ProtoMessage() {}
+
+func (x *ExpungeVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExpungeVMRequest.ProtoReflect.Descriptor instead.
+func (*ExpungeVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ExpungeVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ExpungeVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ExpungeVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ExpungeVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ExpungeVMResponse represents the response from expunge a virtual machine. once expunged, it cannot be recoverd.
+type ExpungeVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExpungeVMResponse) Reset() {
+	*x = ExpungeVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExpungeVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExpungeVMResponse) ProtoMessage() {}
+
+func (x *ExpungeVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExpungeVMResponse.ProtoReflect.Descriptor instead.
+func (*ExpungeVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ExpungeVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpgradeVMRequest represents the parameters for (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
+type UpgradeVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the service offering ID to apply to the virtual machine
+	ServiceOfferingId *int64 `protobuf:"varint,3,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// New minimum number of IOPS for the custom disk offering
+	MinIops *int64 `protobuf:"varint,5,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// New maximum number of IOPS for the custom disk offering
+	MaxIops *int64 `protobuf:"varint,6,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
+	AutoMigrate *bool `protobuf:"varint,7,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
+	// Verify OK to Shrink
+	ShrinkOk *bool `protobuf:"varint,8,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpgradeVMRequest) Reset() {
+	*x = UpgradeVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpgradeVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpgradeVMRequest) ProtoMessage() {}
+
+func (x *UpgradeVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpgradeVMRequest.ProtoReflect.Descriptor instead.
+func (*UpgradeVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *UpgradeVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UpgradeVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpgradeVMRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
+	}
+	return 0
+}
+
+func (x *UpgradeVMRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpgradeVMRequest) GetMinIops() int64 {
+	if x != nil && x.MinIops != nil {
+		return *x.MinIops
+	}
+	return 0
+}
+
+func (x *UpgradeVMRequest) GetMaxIops() int64 {
+	if x != nil && x.MaxIops != nil {
+		return *x.MaxIops
+	}
+	return 0
+}
+
+func (x *UpgradeVMRequest) GetAutoMigrate() bool {
+	if x != nil && x.AutoMigrate != nil {
+		return *x.AutoMigrate
+	}
+	return false
+}
+
+func (x *UpgradeVMRequest) GetShrinkOk() bool {
+	if x != nil && x.ShrinkOk != nil {
+		return *x.ShrinkOk
+	}
+	return false
+}
+
+func (x *UpgradeVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpgradeVMResponse represents the response from (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
+type UpgradeVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpgradeVMResponse) Reset() {
+	*x = UpgradeVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpgradeVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpgradeVMResponse) ProtoMessage() {}
+
+func (x *UpgradeVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpgradeVMResponse.ProtoReflect.Descriptor instead.
+func (*UpgradeVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UpgradeVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DestroyVMRequest represents the parameters for destroys a virtual machine.
+type DestroyVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// If true is passed, the vm is expunged immediately. False by default.
+	Expunge *bool `protobuf:"varint,3,opt,name=expunge" json:"expunge,omitempty"`
+	// Comma separated list of UUIDs for volumes that will be deleted
+	VolumeIds []string `protobuf:"bytes,4,rep,name=volume_ids,json=volumeIds" json:"volume_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DestroyVMRequest) Reset() {
+	*x = DestroyVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DestroyVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DestroyVMRequest) ProtoMessage() {}
+
+func (x *DestroyVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DestroyVMRequest.ProtoReflect.Descriptor instead.
+func (*DestroyVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DestroyVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *DestroyVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DestroyVMRequest) GetExpunge() bool {
+	if x != nil && x.Expunge != nil {
+		return *x.Expunge
+	}
+	return false
+}
+
+func (x *DestroyVMRequest) GetVolumeIds() []string {
+	if x != nil {
+		return x.VolumeIds
+	}
+	return nil
+}
+
+func (x *DestroyVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DestroyVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DestroyVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DestroyVMResponse represents the response from destroys a virtual machine.
+type DestroyVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DestroyVMResponse) Reset() {
+	*x = DestroyVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DestroyVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DestroyVMResponse) ProtoMessage() {}
+
+func (x *DestroyVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DestroyVMResponse.ProtoReflect.Descriptor instead.
+func (*DestroyVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DestroyVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveNicFromVMCmdByAdminRequest represents the parameters for removes vm from specified network by deleting a nic
+type RemoveNicFromVMCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Virtual Machine ID
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// NIC ID
+	NicId *int64 `protobuf:"varint,2,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) Reset() {
+	*x = RemoveNicFromVMCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveNicFromVMCmdByAdminRequest) ProtoMessage() {}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveNicFromVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*RemoveNicFromVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) GetNicId() int64 {
+	if x != nil && x.NicId != nil {
+		return *x.NicId
+	}
+	return 0
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveNicFromVMCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveNicFromVMCmdByAdminResponse represents the response from removes vm from specified network by deleting a nic
+type RemoveNicFromVMCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveNicFromVMCmdByAdminResponse) Reset() {
+	*x = RemoveNicFromVMCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveNicFromVMCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveNicFromVMCmdByAdminResponse) ProtoMessage() {}
+
+func (x *RemoveNicFromVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveNicFromVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*RemoveNicFromVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *RemoveNicFromVMCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddNicToVMCmdByAdminRequest represents the parameters for adds vm to specified network by creating a nic
+type AddNicToVMCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Virtual Machine ID
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// Network ID
+	NetId *int64 `protobuf:"varint,2,opt,name=net_id,json=netId" json:"net_id,omitempty"`
+	// IP Address for the new network
+	Ipaddr *string `protobuf:"bytes,3,opt,name=ipaddr" json:"ipaddr,omitempty"`
+	// Mac Address for the new network
+	Macaddr *string `protobuf:"bytes,4,opt,name=macaddr" json:"macaddr,omitempty"`
+	// DHCP options which are passed to the nic Example: dhcpoptions[0].dhcp:114=url&dhcpoptions[0].dhcp:66=www.test.com
+	DhcpOptions map[string]string `protobuf:"bytes,5,rep,name=dhcp_options,json=dhcpOptions" json:"dhcp_options,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddNicToVMCmdByAdminRequest) Reset() {
+	*x = AddNicToVMCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddNicToVMCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddNicToVMCmdByAdminRequest) ProtoMessage() {}
+
+func (x *AddNicToVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddNicToVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*AddNicToVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetNetId() int64 {
+	if x != nil && x.NetId != nil {
+		return *x.NetId
+	}
+	return 0
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetIpaddr() string {
+	if x != nil && x.Ipaddr != nil {
+		return *x.Ipaddr
+	}
+	return ""
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetMacaddr() string {
+	if x != nil && x.Macaddr != nil {
+		return *x.Macaddr
+	}
+	return ""
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetDhcpOptions() map[string]string {
+	if x != nil {
+		return x.DhcpOptions
+	}
+	return nil
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddNicToVMCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddNicToVMCmdByAdminResponse represents the response from adds vm to specified network by creating a nic
+type AddNicToVMCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddNicToVMCmdByAdminResponse) Reset() {
+	*x = AddNicToVMCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddNicToVMCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddNicToVMCmdByAdminResponse) ProtoMessage() {}
+
+func (x *AddNicToVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddNicToVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*AddNicToVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *AddNicToVMCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListUnmanagedInstancesRequest represents the parameters for lists unmanaged virtual machines for a given cluster.
+type ListUnmanagedInstancesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the cluster ID
+	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// the hypervisor name of the instance
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUnmanagedInstancesRequest) Reset() {
+	*x = ListUnmanagedInstancesRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUnmanagedInstancesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUnmanagedInstancesRequest) ProtoMessage() {}
+
+func (x *ListUnmanagedInstancesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUnmanagedInstancesRequest.ProtoReflect.Descriptor instead.
+func (*ListUnmanagedInstancesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ListUnmanagedInstancesRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *ListUnmanagedInstancesRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListUnmanagedInstancesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListUnmanagedInstancesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListUnmanagedInstancesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListUnmanagedInstancesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListUnmanagedInstancesResponse represents the response from lists unmanaged virtual machines for a given cluster.
+type ListUnmanagedInstancesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of UnmanagedInstances
+	Items []*UnmanagedInstance `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of UnmanagedInstances
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUnmanagedInstancesResponse) Reset() {
+	*x = ListUnmanagedInstancesResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUnmanagedInstancesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUnmanagedInstancesResponse) ProtoMessage() {}
+
+func (x *ListUnmanagedInstancesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUnmanagedInstancesResponse.ProtoReflect.Descriptor instead.
+func (*ListUnmanagedInstancesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ListUnmanagedInstancesResponse) GetItems() []*UnmanagedInstance {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListUnmanagedInstancesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UnmanageVMInstanceRequest represents the parameters for unmanage a guest virtual machine.
+type UnmanageVMInstanceRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the virtual machine to unmanage
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnmanageVMInstanceRequest) Reset() {
+	*x = UnmanageVMInstanceRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnmanageVMInstanceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnmanageVMInstanceRequest) ProtoMessage() {}
+
+func (x *UnmanageVMInstanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnmanageVMInstanceRequest.ProtoReflect.Descriptor instead.
+func (*UnmanageVMInstanceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *UnmanageVMInstanceRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *UnmanageVMInstanceRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UnmanageVMInstanceRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UnmanageVMInstanceRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UnmanageVMInstanceResponse represents the response from unmanage a guest virtual machine.
+type UnmanageVMInstanceResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnmanageVMInstanceResponse) Reset() {
+	*x = UnmanageVMInstanceResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnmanageVMInstanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnmanageVMInstanceResponse) ProtoMessage() {}
+
+func (x *UnmanageVMInstanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnmanageVMInstanceResponse.ProtoReflect.Descriptor instead.
+func (*UnmanageVMInstanceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *UnmanageVMInstanceResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ResetVMPasswordRequest represents the parameters for resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
+type ResetVMPasswordRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// The new password of the virtual machine. If null, a random password will be generated for the VM.
+	Password *string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetVMPasswordRequest) Reset() {
+	*x = ResetVMPasswordRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetVMPasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetVMPasswordRequest) ProtoMessage() {}
+
+func (x *ResetVMPasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetVMPasswordRequest.ProtoReflect.Descriptor instead.
+func (*ResetVMPasswordRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ResetVMPasswordRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ResetVMPasswordRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ResetVMPasswordRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *ResetVMPasswordRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ResetVMPasswordRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ResetVMPasswordRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ResetVMPasswordResponse represents the response from resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
+type ResetVMPasswordResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetVMPasswordResponse) Reset() {
+	*x = ResetVMPasswordResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetVMPasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetVMPasswordResponse) ProtoMessage() {}
+
+func (x *ResetVMPasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetVMPasswordResponse.ProtoReflect.Descriptor instead.
+func (*ResetVMPasswordResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ResetVMPasswordResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeployVnfApplianceCmdByAdminRequest represents the parameters for creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
+type DeployVnfApplianceCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// True by default, security group or network rules (source nat and firewall rules) will be configured for VNF management interfaces. False otherwise. Network rules are configured if management network is an isolated network or shared network with security groups.
+	VnfConfigureManagement *bool `protobuf:"varint,1,opt,name=vnf_configure_management,json=vnfConfigureManagement" json:"vnf_configure_management,omitempty"`
+	// the CIDR list to forward traffic from to the VNF management interface. Multiple entries must be separated by a single comma character (,). The default value is 0.0.0.0/0.
+	VnfCidrlist []string `protobuf:"bytes,2,rep,name=vnf_cidrlist,json=vnfCidrlist" json:"vnf_cidrlist,omitempty"`
+	// availability zone for the virtual machine
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the ID of the service offering for the virtual machine
+	ServiceOfferingId *int64 `protobuf:"varint,4,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// the ID of the template for the virtual machine
+	TemplateId *int64 `protobuf:"varint,5,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// host name for the virtual machine
+	Name *string `protobuf:"bytes,6,opt,name=name" json:"name,omitempty"`
+	// an optional user generated name for the virtual machine
+	DisplayName *string `protobuf:"bytes,7,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The password of the virtual machine. If null, a random password will be generated for the VM.
+	Password *string `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
+	// an optional account for the virtual machine. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,9,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used. If account is NOT provided then virtual machine will be assigned to the caller account and domain.
+	DomainId *int64 `protobuf:"varint,10,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// list of network ids used by virtual machine. Can't be specified with ipToNetworkList parameter
+	NetworkIds []string `protobuf:"bytes,11,rep,name=network_ids,json=networkIds" json:"network_ids,omitempty"`
+	// Guest VM Boot option either custom[UEFI] or default boot [BIOS]. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	BootType *string `protobuf:"bytes,12,opt,name=boot_type,json=bootType" json:"boot_type,omitempty"`
+	// Boot Mode [Legacy] or [Secure] Applicable when Boot Type Selected is UEFI, otherwise Legacy only for BIOS. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
+	BootMode *string `protobuf:"bytes,13,opt,name=boot_mode,json=bootMode" json:"boot_mode,omitempty"`
+	// Boot into hardware setup or not (ignored if startVm = false, only valid for vmware)
+	BootIntoSetup *bool `protobuf:"varint,14,opt,name=boot_into_setup,json=bootIntoSetup" json:"boot_into_setup,omitempty"`
+	// the ID of the disk offering for the virtual machine. If the template is of ISO format, the diskOfferingId is for the root disk volume. Otherwise this parameter is used to indicate the offering for the data disk volume. If the templateId parameter passed is from a Template object, the diskOfferingId refers to a DATA Disk Volume created. If the templateId parameter passed is from an ISO object, the diskOfferingId refers to a ROOT Disk Volume created.
+	DiskOfferingId *int64 `protobuf:"varint,15,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// the arbitrary size for the DATADISK volume. Mutually exclusive with diskOfferingId
+	Size *int64 `protobuf:"varint,16,opt,name=size" json:"size,omitempty"`
+	// Optional field to resize root disk on deploy. Value is in GB. Only applies to template-based deployments. Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	Rootdisksize *int64 `protobuf:"varint,17,opt,name=rootdisksize" json:"rootdisksize,omitempty"`
+	// an optional group for the virtual machine
+	Group *string `protobuf:"bytes,18,opt,name=group" json:"group,omitempty"`
+	// the hypervisor on which to deploy the virtual machine. The parameter is required and respected only when hypervisor info is not set on the ISO/Template passed to the call
+	Hypervisor *string `protobuf:"bytes,19,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,20,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// the ID of the Userdata
+	UserdataId *int64 `protobuf:"varint,21,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
+	// used to specify the parameters values for the variables in userdata.
+	UserdataDetails map[string]string `protobuf:"bytes,22,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// name of the ssh key pair used to login to the virtual machine
+	SshKeyPairName *string `protobuf:"bytes,23,opt,name=ssh_key_pair_name,json=sshKeyPairName" json:"ssh_key_pair_name,omitempty"`
+	// names of the ssh key pairs used to login to the virtual machine
+	SshKeyPairNames []string `protobuf:"bytes,24,rep,name=ssh_key_pair_names,json=sshKeyPairNames" json:"ssh_key_pair_names,omitempty"`
+	// destination Host ID to deploy the VM to - parameter available for root admin only
+	HostId *int64 `protobuf:"varint,25,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	// comma separated list of security groups id that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	SecurityGroupIdList []string `protobuf:"bytes,26,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	SecurityGroupNameList []string `protobuf:"bytes,27,rep,name=security_group_name_list,json=securityGroupNameList" json:"security_group_name_list,omitempty"`
+	// ip to network mapping. Can't be specified with networkIds parameter. Example: iptonetworklist[0].ip=10.10.10.11&iptonetworklist[0].ipv6=fc00:1234:5678::abcd&iptonetworklist[0].networkid=uuid&iptonetworklist[0].mac=aa:bb:cc:dd:ee::ff - requests to use ip 10.10.10.11 in network id=uuid
+	IpToNetworkList map[string]string `protobuf:"bytes,28,rep,name=ip_to_network_list,json=ipToNetworkList" json:"ip_to_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// the ip address for default vm's network
+	IpAddress *string `protobuf:"bytes,29,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// the ipv6 address for default vm's network
+	Ip6Address *string `protobuf:"bytes,30,opt,name=ip6_address,json=ip6Address" json:"ip6_address,omitempty"`
+	// the mac address for default vm's network
+	MacAddress *string `protobuf:"bytes,31,opt,name=mac_address,json=macAddress" json:"mac_address,omitempty"`
+	// an optional keyboard device type for the virtual machine. valid value can be one of de,de-ch,es,fi,fr,fr-be,fr-ch,is,it,jp,nl-be,no,pt,uk,us
+	Keyboard *string `protobuf:"bytes,32,opt,name=keyboard" json:"keyboard,omitempty"`
+	// Deploy vm for the project
+	ProjectId *int64 `protobuf:"varint,33,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// true if start vm after creating; defaulted to true if not specified
+	StartVm *bool `protobuf:"varint,34,opt,name=start_vm,json=startVm" json:"start_vm,omitempty"`
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Mutually exclusive with affinitygroupnames parameter
+	AffinityGroupIdList []string `protobuf:"bytes,35,rep,name=affinity_group_id_list,json=affinityGroupIdList" json:"affinity_group_id_list,omitempty"`
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine.Mutually exclusive with affinitygroupids parameter
+	AffinityGroupNameList []string `protobuf:"bytes,36,rep,name=affinity_group_name_list,json=affinityGroupNameList" json:"affinity_group_name_list,omitempty"`
+	// an optional field, whether to the display the vm to the end user or not.
+	DisplayVm *bool `protobuf:"varint,37,opt,name=display_vm,json=displayVm" json:"display_vm,omitempty"`
+	// used to specify the custom parameters. 'extraconfig' is not allowed to be passed in details
+	Details map[string]string `protobuf:"bytes,38,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Deployment planner to use for vm allocation. Available to ROOT admin only
+	DeploymentPlanner *string `protobuf:"bytes,39,opt,name=deployment_planner,json=deploymentPlanner" json:"deployment_planner,omitempty"`
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	DhcpOptionsNetworkList map[string]string `protobuf:"bytes,40,rep,name=dhcp_options_network_list,json=dhcpOptionsNetworkList" json:"dhcp_options_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// datadisk template to disk-offering mapping; an optional parameter used to create additional data disks from datadisk templates; can't be specified with diskOfferingId parameter
+	DataDiskTemplateToDiskOfferingList map[string]string `protobuf:"bytes,41,rep,name=data_disk_template_to_disk_offering_list,json=dataDiskTemplateToDiskOfferingList" json:"data_disk_template_to_disk_offering_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	ExtraConfig *string `protobuf:"bytes,42,opt,name=extra_config,json=extraConfig" json:"extra_config,omitempty"`
+	// if true the image tags (if any) will be copied to the VM, default value is false
+	CopyImageTags *bool `protobuf:"varint,43,opt,name=copy_image_tags,json=copyImageTags" json:"copy_image_tags,omitempty"`
+	// used to specify the vApp properties.
+	VAppProperties map[string]string `protobuf:"bytes,44,rep,name=v_app_properties,json=vAppProperties" json:"v_app_properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// VMware only: used to specify network mapping of a vApp VMware template registered "as-is". Example nicnetworklist[0].ip=Nic-101&nicnetworklist[0].network=uuid
+	VAppNetworks map[string]string `protobuf:"bytes,45,rep,name=v_app_networks,json=vAppNetworks" json:"v_app_networks,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// true if virtual machine needs to be dynamically scalable
+	DynamicScalingEnabled *bool `protobuf:"varint,46,opt,name=dynamic_scaling_enabled,json=dynamicScalingEnabled" json:"dynamic_scaling_enabled,omitempty"`
+	// the ID of the disk offering for the virtual machine to be used for root volume instead of the disk offering mapped in service offering.In case of virtual machine deploying from ISO, then the diskofferingid specified for root volume is ignored and uses this override disk offering id
+	OverrideDiskOfferingId *int64 `protobuf:"varint,47,opt,name=override_disk_offering_id,json=overrideDiskOfferingId" json:"override_disk_offering_id,omitempty"`
+	// IOThreads are dedicated event loop threads for supported disk devices to perform block I/O requests in order to improve scalability especially on an SMP host/guest with many LUNs.
+	IothreadsEnabled *bool `protobuf:"varint,48,opt,name=iothreads_enabled,json=iothreadsEnabled" json:"iothreads_enabled,omitempty"`
+	// Controls specific policies on IO
+	IoDriverPolicy *string `protobuf:"bytes,49,opt,name=io_driver_policy,json=ioDriverPolicy" json:"io_driver_policy,omitempty"`
+	// The number of queues for multiqueue NICs.
+	NicMultiqueueNumber *int32 `protobuf:"varint,50,opt,name=nic_multiqueue_number,json=nicMultiqueueNumber" json:"nic_multiqueue_number,omitempty"`
+	// Enable packed virtqueues or not.
+	NicPackedVirtQueues *bool `protobuf:"varint,51,opt,name=nic_packed_virt_queues,json=nicPackedVirtQueues" json:"nic_packed_virt_queues,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,52,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,53,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,54,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,55,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) Reset() {
+	*x = DeployVnfApplianceCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeployVnfApplianceCmdByAdminRequest) ProtoMessage() {}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeployVnfApplianceCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*DeployVnfApplianceCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetVnfConfigureManagement() bool {
+	if x != nil && x.VnfConfigureManagement != nil {
+		return *x.VnfConfigureManagement
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetVnfCidrlist() []string {
+	if x != nil {
+		return x.VnfCidrlist
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetNetworkIds() []string {
+	if x != nil {
+		return x.NetworkIds
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetBootType() string {
+	if x != nil && x.BootType != nil {
+		return *x.BootType
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetBootMode() string {
+	if x != nil && x.BootMode != nil {
+		return *x.BootMode
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetBootIntoSetup() bool {
+	if x != nil && x.BootIntoSetup != nil {
+		return *x.BootIntoSetup
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetSize() int64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetRootdisksize() int64 {
+	if x != nil && x.Rootdisksize != nil {
+		return *x.Rootdisksize
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetGroup() string {
+	if x != nil && x.Group != nil {
+		return *x.Group
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetUserdataId() int64 {
+	if x != nil && x.UserdataId != nil {
+		return *x.UserdataId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetUserdataDetails() map[string]string {
+	if x != nil {
+		return x.UserdataDetails
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetSshKeyPairName() string {
+	if x != nil && x.SshKeyPairName != nil {
+		return *x.SshKeyPairName
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetSshKeyPairNames() []string {
+	if x != nil {
+		return x.SshKeyPairNames
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetSecurityGroupIdList() []string {
+	if x != nil {
+		return x.SecurityGroupIdList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetSecurityGroupNameList() []string {
+	if x != nil {
+		return x.SecurityGroupNameList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetIpToNetworkList() map[string]string {
+	if x != nil {
+		return x.IpToNetworkList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetIp6Address() string {
+	if x != nil && x.Ip6Address != nil {
+		return *x.Ip6Address
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetMacAddress() string {
+	if x != nil && x.MacAddress != nil {
+		return *x.MacAddress
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetKeyboard() string {
+	if x != nil && x.Keyboard != nil {
+		return *x.Keyboard
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetStartVm() bool {
+	if x != nil && x.StartVm != nil {
+		return *x.StartVm
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetAffinityGroupIdList() []string {
+	if x != nil {
+		return x.AffinityGroupIdList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetAffinityGroupNameList() []string {
+	if x != nil {
+		return x.AffinityGroupNameList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDisplayVm() bool {
+	if x != nil && x.DisplayVm != nil {
+		return *x.DisplayVm
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDeploymentPlanner() string {
+	if x != nil && x.DeploymentPlanner != nil {
+		return *x.DeploymentPlanner
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDhcpOptionsNetworkList() map[string]string {
+	if x != nil {
+		return x.DhcpOptionsNetworkList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDataDiskTemplateToDiskOfferingList() map[string]string {
+	if x != nil {
+		return x.DataDiskTemplateToDiskOfferingList
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetExtraConfig() string {
+	if x != nil && x.ExtraConfig != nil {
+		return *x.ExtraConfig
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetCopyImageTags() bool {
+	if x != nil && x.CopyImageTags != nil {
+		return *x.CopyImageTags
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetVAppProperties() map[string]string {
+	if x != nil {
+		return x.VAppProperties
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetVAppNetworks() map[string]string {
+	if x != nil {
+		return x.VAppNetworks
+	}
+	return nil
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetDynamicScalingEnabled() bool {
+	if x != nil && x.DynamicScalingEnabled != nil {
+		return *x.DynamicScalingEnabled
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetOverrideDiskOfferingId() int64 {
+	if x != nil && x.OverrideDiskOfferingId != nil {
+		return *x.OverrideDiskOfferingId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetIothreadsEnabled() bool {
+	if x != nil && x.IothreadsEnabled != nil {
+		return *x.IothreadsEnabled
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetIoDriverPolicy() string {
+	if x != nil && x.IoDriverPolicy != nil {
+		return *x.IoDriverPolicy
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetNicMultiqueueNumber() int32 {
+	if x != nil && x.NicMultiqueueNumber != nil {
+		return *x.NicMultiqueueNumber
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetNicPackedVirtQueues() bool {
+	if x != nil && x.NicPackedVirtQueues != nil {
+		return *x.NicPackedVirtQueues
+	}
+	return false
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeployVnfApplianceCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeployVnfApplianceCmdByAdminResponse represents the response from creates and automatically starts a vnf appliance based on a service offering, disk offering, and template.
+type DeployVnfApplianceCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeployVnfApplianceCmdByAdminResponse) Reset() {
+	*x = DeployVnfApplianceCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeployVnfApplianceCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeployVnfApplianceCmdByAdminResponse) ProtoMessage() {}
+
+func (x *DeployVnfApplianceCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeployVnfApplianceCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*DeployVnfApplianceCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *DeployVnfApplianceCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListNicsRequest represents the parameters for list the vm nics  ip to nic
+type ListNicsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the nic to list IPs
+	NicId *int64 `protobuf:"varint,1,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
+	// the ID of the vm
+	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// list nic of the specific vm's network
+	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,5,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,6,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,7,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNicsRequest) Reset() {
+	*x = ListNicsRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNicsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNicsRequest) ProtoMessage() {}
+
+func (x *ListNicsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNicsRequest.ProtoReflect.Descriptor instead.
+func (*ListNicsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *ListNicsRequest) GetNicId() int64 {
+	if x != nil && x.NicId != nil {
+		return *x.NicId
+	}
+	return 0
+}
+
+func (x *ListNicsRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *ListNicsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListNicsRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListNicsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListNicsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListNicsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListNicsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListNicsResponse represents the response from list the vm nics  ip to nic
+type ListNicsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Nics
+	Items []*Nic `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Nics
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNicsResponse) Reset() {
+	*x = ListNicsResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNicsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNicsResponse) ProtoMessage() {}
+
+func (x *ListNicsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNicsResponse.ProtoReflect.Descriptor instead.
+func (*ListNicsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *ListNicsResponse) GetItems() []*Nic {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListNicsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListVMScheduleRequest represents the parameters for list vm schedules.
@@ -180,7 +2728,7 @@ type ListVMScheduleRequest struct {
 
 func (x *ListVMScheduleRequest) Reset() {
 	*x = ListVMScheduleRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +2740,7 @@ func (x *ListVMScheduleRequest) String() string {
 func (*ListVMScheduleRequest) ProtoMessage() {}
 
 func (x *ListVMScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +2753,7 @@ func (x *ListVMScheduleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVMScheduleRequest.ProtoReflect.Descriptor instead.
 func (*ListVMScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListVMScheduleRequest) GetVmId() int64 {
@@ -277,7 +2825,7 @@ type ListVMScheduleResponse struct {
 
 func (x *ListVMScheduleResponse) Reset() {
 	*x = ListVMScheduleResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -289,7 +2837,7 @@ func (x *ListVMScheduleResponse) String() string {
 func (*ListVMScheduleResponse) ProtoMessage() {}
 
 func (x *ListVMScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -302,7 +2850,7 @@ func (x *ListVMScheduleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVMScheduleResponse.ProtoReflect.Descriptor instead.
 func (*ListVMScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ListVMScheduleResponse) GetItems() []*VMSchedule {
@@ -317,6 +2865,176 @@ func (x *ListVMScheduleResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// RestoreVMRequest represents the parameters for restore a vm to original template/iso or new template/iso
+type RestoreVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// Virtual Machine ID
+	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
+	TemplateId *int64 `protobuf:"varint,3,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// Override root volume's diskoffering.
+	RootDiskOfferingId *int64 `protobuf:"varint,4,opt,name=root_disk_offering_id,json=rootDiskOfferingId" json:"root_disk_offering_id,omitempty"`
+	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	RootDiskSize *int64 `protobuf:"varint,5,opt,name=root_disk_size,json=rootDiskSize" json:"root_disk_size,omitempty"`
+	// used to specify the custom parameters
+	Details map[string]string `protobuf:"bytes,6,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Optional field to expunge old root volume after restore.
+	ExpungeRootDisk *bool `protobuf:"varint,7,opt,name=expunge_root_disk,json=expungeRootDisk" json:"expunge_root_disk,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestoreVMRequest) Reset() {
+	*x = RestoreVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestoreVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestoreVMRequest) ProtoMessage() {}
+
+func (x *RestoreVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestoreVMRequest.ProtoReflect.Descriptor instead.
+func (*RestoreVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *RestoreVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *RestoreVMRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *RestoreVMRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *RestoreVMRequest) GetRootDiskOfferingId() int64 {
+	if x != nil && x.RootDiskOfferingId != nil {
+		return *x.RootDiskOfferingId
+	}
+	return 0
+}
+
+func (x *RestoreVMRequest) GetRootDiskSize() int64 {
+	if x != nil && x.RootDiskSize != nil {
+		return *x.RootDiskSize
+	}
+	return 0
+}
+
+func (x *RestoreVMRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *RestoreVMRequest) GetExpungeRootDisk() bool {
+	if x != nil && x.ExpungeRootDisk != nil {
+		return *x.ExpungeRootDisk
+	}
+	return false
+}
+
+func (x *RestoreVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RestoreVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RestoreVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RestoreVMResponse represents the response from restore a vm to original template/iso or new template/iso
+type RestoreVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestoreVMResponse) Reset() {
+	*x = RestoreVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestoreVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestoreVMResponse) ProtoMessage() {}
+
+func (x *RestoreVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestoreVMResponse.ProtoReflect.Descriptor instead.
+func (*RestoreVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *RestoreVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // StartVMRequest represents the parameters for starts a virtual machine.
@@ -347,7 +3065,7 @@ type StartVMRequest struct {
 
 func (x *StartVMRequest) Reset() {
 	*x = StartVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -359,7 +3077,7 @@ func (x *StartVMRequest) String() string {
 func (*StartVMRequest) ProtoMessage() {}
 
 func (x *StartVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -372,7 +3090,7 @@ func (x *StartVMRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartVMRequest.ProtoReflect.Descriptor instead.
 func (*StartVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *StartVMRequest) GetRunAsAdmin() bool {
@@ -463,7 +3181,7 @@ type StartVMResponse struct {
 
 func (x *StartVMResponse) Reset() {
 	*x = StartVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -475,7 +3193,7 @@ func (x *StartVMResponse) String() string {
 func (*StartVMResponse) ProtoMessage() {}
 
 func (x *StartVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -488,1539 +3206,10 @@ func (x *StartVMResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartVMResponse.ProtoReflect.Descriptor instead.
 func (*StartVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *StartVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AssignVMRequest represents the parameters for change ownership of a vm from one account to another. this api is available for basic zones with security groups and advanced zones with guest networks. a root administrator can reassign a vm from any account to any other account in any domain. a domain administrator can reassign a vm to any account in the same domain.
-type AssignVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the VM to be moved
-	VirtualMachineId *int64 `protobuf:"varint,1,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// account name of the new VM owner.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// domain id of the new VM owner.
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional project for the new VM owner.
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list of new network ids in which the moved VM will participate. In case no network ids are provided the VM will be part of the default network for that zone. In case there is no network yet created for the new account the default network will be created.
-	NetworkIds []string `protobuf:"bytes,5,rep,name=network_ids,json=networkIds" json:"network_ids,omitempty"`
-	// list of security group ids to be applied on the virtual machine. In case no security groups are provided the VM is part of the default security group.
-	SecurityGroupIdList []string `protobuf:"bytes,6,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignVMRequest) Reset() {
-	*x = AssignVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignVMRequest) ProtoMessage() {}
-
-func (x *AssignVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignVMRequest.ProtoReflect.Descriptor instead.
-func (*AssignVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *AssignVMRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *AssignVMRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *AssignVMRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *AssignVMRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *AssignVMRequest) GetNetworkIds() []string {
-	if x != nil {
-		return x.NetworkIds
-	}
-	return nil
-}
-
-func (x *AssignVMRequest) GetSecurityGroupIdList() []string {
-	if x != nil {
-		return x.SecurityGroupIdList
-	}
-	return nil
-}
-
-func (x *AssignVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AssignVMResponse represents the response from change ownership of a vm from one account to another. this api is available for basic zones with security groups and advanced zones with guest networks. a root administrator can reassign a vm from any account to any other account in any domain. a domain administrator can reassign a vm to any account in the same domain.
-type AssignVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignVMResponse) Reset() {
-	*x = AssignVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignVMResponse) ProtoMessage() {}
-
-func (x *AssignVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignVMResponse.ProtoReflect.Descriptor instead.
-func (*AssignVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *AssignVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListNicsRequest represents the parameters for list the vm nics  ip to nic
-type ListNicsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the nic to list IPs
-	NicId *int64 `protobuf:"varint,1,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	// the ID of the vm
-	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// list nic of the specific vm's network
-	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,5,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,6,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,7,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNicsRequest) Reset() {
-	*x = ListNicsRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNicsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNicsRequest) ProtoMessage() {}
-
-func (x *ListNicsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNicsRequest.ProtoReflect.Descriptor instead.
-func (*ListNicsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ListNicsRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *ListNicsRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *ListNicsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListNicsRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListNicsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListNicsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListNicsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListNicsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListNicsResponse represents the response from list the vm nics  ip to nic
-type ListNicsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Nics
-	Items []*Nic `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Nics
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNicsResponse) Reset() {
-	*x = ListNicsResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNicsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNicsResponse) ProtoMessage() {}
-
-func (x *ListNicsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNicsResponse.ProtoReflect.Descriptor instead.
-func (*ListNicsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ListNicsResponse) GetItems() []*Nic {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListNicsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// MigrateVirtualMachineWithVolumeRequest represents the parameters for attempts migration of a vm with its volumes to a different host
-type MigrateVirtualMachineWithVolumeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Destination Host ID to migrate VM to.
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	// the ID of the virtual machine
-	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// Storage to pool mapping. This parameter specifies the mapping between a volume and a pool where you want to migrate that volume. Format of this parameter: migrateto[volume-index].volume=<uuid>&migrateto[volume-index].pool=<uuid>Where, [volume-index] indicates the index to identify the volume that you want to migrate, volume=<uuid> indicates the UUID of the volume that you want to migrate, and pool=<uuid> indicates the UUID of the pool where you want to migrate the volume. Example: migrateto[0].volume=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].pool=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].volume=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].pool=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].volume=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].pool=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
-	MigrateVolumeTo map[string]string `protobuf:"bytes,3,rep,name=migrate_volume_to,json=migrateVolumeTo" json:"migrate_volume_to,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Automatically select a destination host for a running instance, if hostId is not specified. false by default
-	AutoSelect *bool `protobuf:"varint,4,opt,name=auto_select,json=autoSelect" json:"auto_select,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) Reset() {
-	*x = MigrateVirtualMachineWithVolumeRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateVirtualMachineWithVolumeRequest) ProtoMessage() {}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateVirtualMachineWithVolumeRequest.ProtoReflect.Descriptor instead.
-func (*MigrateVirtualMachineWithVolumeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetMigrateVolumeTo() map[string]string {
-	if x != nil {
-		return x.MigrateVolumeTo
-	}
-	return nil
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetAutoSelect() bool {
-	if x != nil && x.AutoSelect != nil {
-		return *x.AutoSelect
-	}
-	return false
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MigrateVirtualMachineWithVolumeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// MigrateVirtualMachineWithVolumeResponse represents the response from attempts migration of a vm with its volumes to a different host
-type MigrateVirtualMachineWithVolumeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateVirtualMachineWithVolumeResponse) Reset() {
-	*x = MigrateVirtualMachineWithVolumeResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateVirtualMachineWithVolumeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateVirtualMachineWithVolumeResponse) ProtoMessage() {}
-
-func (x *MigrateVirtualMachineWithVolumeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateVirtualMachineWithVolumeResponse.ProtoReflect.Descriptor instead.
-func (*MigrateVirtualMachineWithVolumeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *MigrateVirtualMachineWithVolumeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ResetVMPasswordCmdByAdminRequest represents the parameters for resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-type ResetVMPasswordCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The new password of the virtual machine. If null, a random password will be generated for the VM.
-	Password *string `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) Reset() {
-	*x = ResetVMPasswordCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMPasswordCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ResetVMPasswordCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMPasswordCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ResetVMPasswordCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ResetVMPasswordCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResetVMPasswordCmdByAdminResponse represents the response from resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-type ResetVMPasswordCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMPasswordCmdByAdminResponse) Reset() {
-	*x = ResetVMPasswordCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMPasswordCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMPasswordCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ResetVMPasswordCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMPasswordCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ResetVMPasswordCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *ResetVMPasswordCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DestroyVMCmdByAdminRequest represents the parameters for destroys a virtual machine. once destroyed, only the administrator can recover it.
-type DestroyVMCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// If true is passed, the vm is expunged immediately. False by default.
-	Expunge *bool `protobuf:"varint,2,opt,name=expunge" json:"expunge,omitempty"`
-	// Comma separated list of UUIDs for volumes that will be deleted
-	VolumeIds []string `protobuf:"bytes,3,rep,name=volume_ids,json=volumeIds" json:"volume_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DestroyVMCmdByAdminRequest) Reset() {
-	*x = DestroyVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DestroyVMCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DestroyVMCmdByAdminRequest) ProtoMessage() {}
-
-func (x *DestroyVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DestroyVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*DestroyVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *DestroyVMCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DestroyVMCmdByAdminRequest) GetExpunge() bool {
-	if x != nil && x.Expunge != nil {
-		return *x.Expunge
-	}
-	return false
-}
-
-func (x *DestroyVMCmdByAdminRequest) GetVolumeIds() []string {
-	if x != nil {
-		return x.VolumeIds
-	}
-	return nil
-}
-
-func (x *DestroyVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DestroyVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DestroyVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DestroyVMCmdByAdminResponse represents the response from destroys a virtual machine. once destroyed, only the administrator can recover it.
-type DestroyVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DestroyVMCmdByAdminResponse) Reset() {
-	*x = DestroyVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DestroyVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DestroyVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *DestroyVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DestroyVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*DestroyVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *DestroyVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListVMsRequest represents the parameters for list the virtual machines owned by the account.
-type ListVMsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the group ID
-	GroupId *int64 `protobuf:"varint,2,opt,name=group_id,json=groupId" json:"group_id,omitempty"`
-	// the ID of the virtual machine
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// the IDs of the virtual machines, mutually exclusive with id
-	Ids []string `protobuf:"bytes,4,rep,name=ids" json:"ids,omitempty"`
-	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
-	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
-	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
-	State *string `protobuf:"bytes,6,opt,name=state" json:"state,omitempty"`
-	// the availability zone ID
-	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list by network type; true if need to list vms using Virtual Network, false otherwise
-	ForVirtualNetwork *bool `protobuf:"varint,8,opt,name=for_virtual_network,json=forVirtualNetwork" json:"for_virtual_network,omitempty"`
-	// list by network id
-	NetworkId *int64 `protobuf:"varint,9,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// the target hypervisor for the template
-	Hypervisor *string `protobuf:"bytes,10,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
-	ViewDetails []string `protobuf:"bytes,11,rep,name=view_details,json=viewDetails" json:"view_details,omitempty"`
-	// list vms by template
-	TemplateId *int64 `protobuf:"varint,12,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// list vms by iso
-	IsoId *int64 `protobuf:"varint,13,opt,name=iso_id,json=isoId" json:"iso_id,omitempty"`
-	// list vms by vpc
-	VpcId *int64 `protobuf:"varint,14,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// list vms by affinity group
-	AffinityGroupId *int64 `protobuf:"varint,15,opt,name=affinity_group_id,json=affinityGroupId" json:"affinity_group_id,omitempty"`
-	// list vms by ssh keypair name
-	Keypair *string `protobuf:"bytes,16,opt,name=keypair" json:"keypair,omitempty"`
-	// list by the service offering
-	ServiceOffId *int64 `protobuf:"varint,17,opt,name=service_off_id,json=serviceOffId" json:"service_off_id,omitempty"`
-	// list by the backup offering
-	BackupOffId *int64 `protobuf:"varint,18,opt,name=backup_off_id,json=backupOffId" json:"backup_off_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,19,opt,name=display" json:"display,omitempty"`
-	// the user ID that created the VM and is under the account that owns the VM
-	UserId *int64 `protobuf:"varint,20,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	// the security group ID
-	SecurityGroupId *int64 `protobuf:"varint,21,opt,name=security_group_id,json=securityGroupId" json:"security_group_id,omitempty"`
-	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
-	HaEnabled *bool `protobuf:"varint,22,opt,name=ha_enabled,json=haEnabled" json:"ha_enabled,omitempty"`
-	// the ID of AutoScaling VM Group
-	AutoScaleVmGroupId *int64 `protobuf:"varint,23,opt,name=auto_scale_vm_group_id,json=autoScaleVmGroupId" json:"auto_scale_vm_group_id,omitempty"`
-	// flag to display the resource icon for VMs
-	ShowIcon *bool `protobuf:"varint,24,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
-	Accumulate *bool `protobuf:"varint,25,opt,name=accumulate" json:"accumulate,omitempty"`
-	// Whether to return the VMs' user data or not. By default, user data will not be returned.
-	ShowUserData *bool `protobuf:"varint,26,opt,name=show_user_data,json=showUserData" json:"show_user_data,omitempty"`
-	// the instances by userdata
-	UserdataId *int64 `protobuf:"varint,27,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
-	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
-	IsVnf *bool `protobuf:"varint,28,opt,name=is_vnf,json=isVnf" json:"is_vnf,omitempty"`
-	// makes the API's response contains only the resource count
-	RetrieveOnlyResourceCount *bool `protobuf:"varint,29,opt,name=retrieve_only_resource_count,json=retrieveOnlyResourceCount" json:"retrieve_only_resource_count,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,30,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,31,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,32,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,33,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,34,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,35,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,36,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,37,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,38,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,39,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVMsRequest) Reset() {
-	*x = ListVMsRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVMsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVMsRequest) ProtoMessage() {}
-
-func (x *ListVMsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVMsRequest.ProtoReflect.Descriptor instead.
-func (*ListVMsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *ListVMsRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetGroupId() int64 {
-	if x != nil && x.GroupId != nil {
-		return *x.GroupId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetIds() []string {
-	if x != nil {
-		return x.Ids
-	}
-	return nil
-}
-
-func (x *ListVMsRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListVMsRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListVMsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetForVirtualNetwork() bool {
-	if x != nil && x.ForVirtualNetwork != nil {
-		return *x.ForVirtualNetwork
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *ListVMsRequest) GetViewDetails() []string {
-	if x != nil {
-		return x.ViewDetails
-	}
-	return nil
-}
-
-func (x *ListVMsRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetIsoId() int64 {
-	if x != nil && x.IsoId != nil {
-		return *x.IsoId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetAffinityGroupId() int64 {
-	if x != nil && x.AffinityGroupId != nil {
-		return *x.AffinityGroupId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetKeypair() string {
-	if x != nil && x.Keypair != nil {
-		return *x.Keypair
-	}
-	return ""
-}
-
-func (x *ListVMsRequest) GetServiceOffId() int64 {
-	if x != nil && x.ServiceOffId != nil {
-		return *x.ServiceOffId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetBackupOffId() int64 {
-	if x != nil && x.BackupOffId != nil {
-		return *x.BackupOffId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetUserId() int64 {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetSecurityGroupId() int64 {
-	if x != nil && x.SecurityGroupId != nil {
-		return *x.SecurityGroupId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetHaEnabled() bool {
-	if x != nil && x.HaEnabled != nil {
-		return *x.HaEnabled
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetAutoScaleVmGroupId() int64 {
-	if x != nil && x.AutoScaleVmGroupId != nil {
-		return *x.AutoScaleVmGroupId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetAccumulate() bool {
-	if x != nil && x.Accumulate != nil {
-		return *x.Accumulate
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetShowUserData() bool {
-	if x != nil && x.ShowUserData != nil {
-		return *x.ShowUserData
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetUserdataId() int64 {
-	if x != nil && x.UserdataId != nil {
-		return *x.UserdataId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetIsVnf() bool {
-	if x != nil && x.IsVnf != nil {
-		return *x.IsVnf
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetRetrieveOnlyResourceCount() bool {
-	if x != nil && x.RetrieveOnlyResourceCount != nil {
-		return *x.RetrieveOnlyResourceCount
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListVMsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListVMsRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListVMsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVMsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVMsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVMsResponse represents the response from list the virtual machines owned by the account.
-type ListVMsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of UserVms
-	Items []*UserVm `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of UserVms
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVMsResponse) Reset() {
-	*x = ListVMsResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVMsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVMsResponse) ProtoMessage() {}
-
-func (x *ListVMsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVMsResponse.ProtoReflect.Descriptor instead.
-func (*ListVMsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ListVMsResponse) GetItems() []*UserVm {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVMsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteVMScheduleRequest represents the parameters for delete vm schedule.
-type DeleteVMScheduleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of VM
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// ID of VM schedule
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// IDs of VM schedule
-	Ids []string `protobuf:"bytes,3,rep,name=ids" json:"ids,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVMScheduleRequest) Reset() {
-	*x = DeleteVMScheduleRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVMScheduleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVMScheduleRequest) ProtoMessage() {}
-
-func (x *DeleteVMScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVMScheduleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVMScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *DeleteVMScheduleRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *DeleteVMScheduleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVMScheduleRequest) GetIds() []string {
-	if x != nil {
-		return x.Ids
-	}
-	return nil
-}
-
-func (x *DeleteVMScheduleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVMScheduleResponse represents the response from delete vm schedule.
-type DeleteVMScheduleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVMScheduleResponse) Reset() {
-	*x = DeleteVMScheduleResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVMScheduleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVMScheduleResponse) ProtoMessage() {}
-
-func (x *DeleteVMScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVMScheduleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVMScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *DeleteVMScheduleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ResetVMUserDataRequest represents the parameters for resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
-type ResetVMUserDataRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	UserData *string `protobuf:"bytes,3,opt,name=user_data,json=userData" json:"user_data,omitempty"`
-	// the ID of the userdata
-	UserdataId *int64 `protobuf:"varint,4,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
-	// used to specify the parameters values for the variables in userdata.
-	UserdataDetails map[string]string `protobuf:"bytes,5,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional account for the virtual machine. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,6,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional project for the virtual machine
-	ProjectId *int64 `protobuf:"varint,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMUserDataRequest) Reset() {
-	*x = ResetVMUserDataRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMUserDataRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMUserDataRequest) ProtoMessage() {}
-
-func (x *ResetVMUserDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMUserDataRequest.ProtoReflect.Descriptor instead.
-func (*ResetVMUserDataRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *ResetVMUserDataRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ResetVMUserDataRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ResetVMUserDataRequest) GetUserData() string {
-	if x != nil && x.UserData != nil {
-		return *x.UserData
-	}
-	return ""
-}
-
-func (x *ResetVMUserDataRequest) GetUserdataId() int64 {
-	if x != nil && x.UserdataId != nil {
-		return *x.UserdataId
-	}
-	return 0
-}
-
-func (x *ResetVMUserDataRequest) GetUserdataDetails() map[string]string {
-	if x != nil {
-		return x.UserdataDetails
-	}
-	return nil
-}
-
-func (x *ResetVMUserDataRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ResetVMUserDataRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ResetVMUserDataRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ResetVMUserDataRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResetVMUserDataResponse represents the response from resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
-type ResetVMUserDataResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMUserDataResponse) Reset() {
-	*x = ResetVMUserDataResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMUserDataResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMUserDataResponse) ProtoMessage() {}
-
-func (x *ResetVMUserDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMUserDataResponse.ProtoReflect.Descriptor instead.
-func (*ResetVMUserDataResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *ResetVMUserDataResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// GetVMPasswordRequest represents the parameters for returns an encrypted password for the vm
-type GetVMPasswordRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetVMPasswordRequest) Reset() {
-	*x = GetVMPasswordRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetVMPasswordRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetVMPasswordRequest) ProtoMessage() {}
-
-func (x *GetVMPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetVMPasswordRequest.ProtoReflect.Descriptor instead.
-func (*GetVMPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *GetVMPasswordRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *GetVMPasswordRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// GetVMPasswordResponse represents the response from returns an encrypted password for the vm
-type GetVMPasswordResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetVMPasswordResponse) Reset() {
-	*x = GetVMPasswordResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetVMPasswordResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetVMPasswordResponse) ProtoMessage() {}
-
-func (x *GetVMPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetVMPasswordResponse.ProtoReflect.Descriptor instead.
-func (*GetVMPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *GetVMPasswordResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2145,7 +3334,7 @@ type DeployVnfApplianceRequest struct {
 
 func (x *DeployVnfApplianceRequest) Reset() {
 	*x = DeployVnfApplianceRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2157,7 +3346,7 @@ func (x *DeployVnfApplianceRequest) String() string {
 func (*DeployVnfApplianceRequest) ProtoMessage() {}
 
 func (x *DeployVnfApplianceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2170,7 +3359,7 @@ func (x *DeployVnfApplianceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeployVnfApplianceRequest.ProtoReflect.Descriptor instead.
 func (*DeployVnfApplianceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{24}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DeployVnfApplianceRequest) GetRunAsAdmin() bool {
@@ -2576,7 +3765,7 @@ type DeployVnfApplianceResponse struct {
 
 func (x *DeployVnfApplianceResponse) Reset() {
 	*x = DeployVnfApplianceResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2588,7 +3777,7 @@ func (x *DeployVnfApplianceResponse) String() string {
 func (*DeployVnfApplianceResponse) ProtoMessage() {}
 
 func (x *DeployVnfApplianceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2601,7 +3790,7 @@ func (x *DeployVnfApplianceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeployVnfApplianceResponse.ProtoReflect.Descriptor instead.
 func (*DeployVnfApplianceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *DeployVnfApplianceResponse) GetResult() *Result {
@@ -2611,45 +3800,39 @@ func (x *DeployVnfApplianceResponse) GetResult() *Result {
 	return nil
 }
 
-// ScaleVMCmdByAdminRequest represents the parameters for scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-type ScaleVMCmdByAdminRequest struct {
+// MigrateVMRequest represents the parameters for attempts migration of a vm to a different host or root volume of the vm to a different storage pool
+type MigrateVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the ID of the service offering for the virtual machine
-	ServiceOfferingId *int64 `protobuf:"varint,2,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	Details map[string]string `protobuf:"bytes,3,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// New minimum number of IOPS for the custom disk offering
-	MinIops *int64 `protobuf:"varint,4,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// New maximum number of IOPS for the custom disk offering
-	MaxIops *int64 `protobuf:"varint,5,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
-	AutoMigrate *bool `protobuf:"varint,6,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
-	// Verify OK to Shrink
-	ShrinkOk *bool `protobuf:"varint,7,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Destination Host ID to migrate VM to.
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	// the ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
+	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
+	AutoSelect *bool `protobuf:"varint,4,opt,name=auto_select,json=autoSelect" json:"auto_select,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ScaleVMCmdByAdminRequest) Reset() {
-	*x = ScaleVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[26]
+func (x *MigrateVMRequest) Reset() {
+	*x = MigrateVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ScaleVMCmdByAdminRequest) String() string {
+func (x *MigrateVMRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ScaleVMCmdByAdminRequest) ProtoMessage() {}
+func (*MigrateVMRequest) ProtoMessage() {}
 
-func (x *ScaleVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[26]
+func (x *MigrateVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2660,505 +3843,62 @@ func (x *ScaleVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ScaleVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ScaleVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{26}
+// Deprecated: Use MigrateVMRequest.ProtoReflect.Descriptor instead.
+func (*MigrateVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *ScaleVMCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetMinIops() int64 {
-	if x != nil && x.MinIops != nil {
-		return *x.MinIops
-	}
-	return 0
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetMaxIops() int64 {
-	if x != nil && x.MaxIops != nil {
-		return *x.MaxIops
-	}
-	return 0
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetAutoMigrate() bool {
-	if x != nil && x.AutoMigrate != nil {
-		return *x.AutoMigrate
-	}
-	return false
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetShrinkOk() bool {
-	if x != nil && x.ShrinkOk != nil {
-		return *x.ShrinkOk
-	}
-	return false
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ScaleVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ScaleVMCmdByAdminResponse represents the response from scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-type ScaleVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ScaleVMCmdByAdminResponse) Reset() {
-	*x = ScaleVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ScaleVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ScaleVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ScaleVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ScaleVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ScaleVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *ScaleVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ImportVmRequest represents the parameters for import virtual machine from a unmanaged host into cloudstack
-type ImportVmRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the zone ID
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the username for the host
-	Username *string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
-	// the password for the host
-	Password *string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
-	// the host name or IP address
-	Host *string `protobuf:"bytes,4,opt,name=host" json:"host,omitempty"`
-	// hypervisor type of the host
-	Hypervisor *string `protobuf:"bytes,5,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// path of the disk image
-	DiskPath *string `protobuf:"bytes,6,opt,name=disk_path,json=diskPath" json:"disk_path,omitempty"`
-	// Source location for Import
-	ImportSource *string `protobuf:"bytes,7,opt,name=import_source,json=importSource" json:"import_source,omitempty"`
-	// the network ID
-	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// Host where local disk is located
-	HostId *int64 `protobuf:"varint,9,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	// Shared storage pool where disk is located
-	StoragePoolId *int64 `protobuf:"varint,10,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
-	// Temp Path on external host for disk image copy
-	TmpPath *string `protobuf:"bytes,11,opt,name=tmp_path,json=tmpPath" json:"tmp_path,omitempty"`
-	// (only for importing VMs from VMware to KVM) UUID of a linked existing vCenter
-	ExistingVcenterId *int64 `protobuf:"varint,12,opt,name=existing_vcenter_id,json=existingVcenterId" json:"existing_vcenter_id,omitempty"`
-	// (only for importing VMs from VMware to KVM) VMware ESXi host IP/Name.
-	Hostip *string `protobuf:"bytes,13,opt,name=hostip" json:"hostip,omitempty"`
-	// (only for importing VMs from VMware to KVM) The name/ip of vCenter. Make sure it is IP address or full qualified domain name for host running vCenter server.
-	Vcenter *string `protobuf:"bytes,14,opt,name=vcenter" json:"vcenter,omitempty"`
-	// (only for importing VMs from VMware to KVM) Name of VMware datacenter.
-	DatacenterName *string `protobuf:"bytes,15,opt,name=datacenter_name,json=datacenterName" json:"datacenter_name,omitempty"`
-	// (only for importing VMs from VMware to KVM) Name of VMware cluster.
-	ClusterName *string `protobuf:"bytes,16,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
-	// (only for importing VMs from VMware to KVM) optional - the host to perform the virt-v2v conversion from VMware to KVM.
-	ConvertInstanceHostId *int64 `protobuf:"varint,17,opt,name=convert_instance_host_id,json=convertInstanceHostId" json:"convert_instance_host_id,omitempty"`
-	// (only for importing VMs from VMware to KVM) optional - the host to import the converted instance from VMware to KVM.
-	ImportInstanceHostId *int64 `protobuf:"varint,18,opt,name=import_instance_host_id,json=importInstanceHostId" json:"import_instance_host_id,omitempty"`
-	// (only for importing VMs from VMware to KVM) optional - the temporary storage pool to perform the virt-v2v migration from VMware to KVM.
-	ConvertStoragePoolId *int64 `protobuf:"varint,19,opt,name=convert_storage_pool_id,json=convertStoragePoolId" json:"convert_storage_pool_id,omitempty"`
-	// (only for importing VMs from VMware to KVM) optional - if true, forces MS to export OVF from VMware to temporary storage, else uses KVM Host if ovftool is available, falls back to MS if not.
-	ForceMsToImportVmFiles *bool `protobuf:"varint,20,opt,name=force_ms_to_import_vm_files,json=forceMsToImportVmFiles" json:"force_ms_to_import_vm_files,omitempty"`
-	// the cluster ID
-	ClusterId *int64 `protobuf:"varint,21,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// the name of the instance as it is known to the hypervisor
-	Name *string `protobuf:"bytes,22,opt,name=name" json:"name,omitempty"`
-	// the display name of the instance
-	DisplayName *string `protobuf:"bytes,23,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// the host name of the instance
-	HostName *string `protobuf:"bytes,24,opt,name=host_name,json=hostName" json:"host_name,omitempty"`
-	// an optional account for the virtual machine. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,25,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// import instance to the domain specified
-	DomainId *int64 `protobuf:"varint,26,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// import instance for the project
-	ProjectId *int64 `protobuf:"varint,27,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// the ID of the template for the virtual machine
-	TemplateId *int64 `protobuf:"varint,28,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// the service offering for the virtual machine
-	ServiceOfferingId *int64 `protobuf:"varint,29,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// VM nic to network id mapping using keys nic and network
-	NicNetworkList map[string]string `protobuf:"bytes,30,rep,name=nic_network_list,json=nicNetworkList" json:"nic_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// VM nic to ip address mapping using keys nic, ip4Address
-	NicIpAddressList map[string]string `protobuf:"bytes,31,rep,name=nic_ip_address_list,json=nicIpAddressList" json:"nic_ip_address_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// datadisk template to disk-offering mapping using keys disk and diskOffering
-	DataDiskToDiskOfferingList map[string]string `protobuf:"bytes,32,rep,name=data_disk_to_disk_offering_list,json=dataDiskToDiskOfferingList" json:"data_disk_to_disk_offering_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// used to specify the custom parameters.
-	Details map[string]string `protobuf:"bytes,33,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// vm and its volumes are allowed to migrate to different host/pool when offerings passed are incompatible with current host/pool
-	MigrateAllowed *bool `protobuf:"varint,34,opt,name=migrate_allowed,json=migrateAllowed" json:"migrate_allowed,omitempty"`
-	// VM is imported despite some of its NIC's MAC addresses are already present, in case the MAC address exists then a new MAC address is generated
-	Forced *bool `protobuf:"varint,35,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,36,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,37,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,38,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImportVmRequest) Reset() {
-	*x = ImportVmRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportVmRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportVmRequest) ProtoMessage() {}
-
-func (x *ImportVmRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportVmRequest.ProtoReflect.Descriptor instead.
-func (*ImportVmRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *ImportVmRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetHost() string {
-	if x != nil && x.Host != nil {
-		return *x.Host
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetDiskPath() string {
-	if x != nil && x.DiskPath != nil {
-		return *x.DiskPath
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetImportSource() string {
-	if x != nil && x.ImportSource != nil {
-		return *x.ImportSource
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetHostId() int64 {
+func (x *MigrateVMRequest) GetHostId() int64 {
 	if x != nil && x.HostId != nil {
 		return *x.HostId
 	}
 	return 0
 }
 
-func (x *ImportVmRequest) GetStoragePoolId() int64 {
-	if x != nil && x.StoragePoolId != nil {
-		return *x.StoragePoolId
+func (x *MigrateVMRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
 	}
 	return 0
 }
 
-func (x *ImportVmRequest) GetTmpPath() string {
-	if x != nil && x.TmpPath != nil {
-		return *x.TmpPath
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetExistingVcenterId() int64 {
-	if x != nil && x.ExistingVcenterId != nil {
-		return *x.ExistingVcenterId
+func (x *MigrateVMRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
 	}
 	return 0
 }
 
-func (x *ImportVmRequest) GetHostip() string {
-	if x != nil && x.Hostip != nil {
-		return *x.Hostip
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetVcenter() string {
-	if x != nil && x.Vcenter != nil {
-		return *x.Vcenter
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetDatacenterName() string {
-	if x != nil && x.DatacenterName != nil {
-		return *x.DatacenterName
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetClusterName() string {
-	if x != nil && x.ClusterName != nil {
-		return *x.ClusterName
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetConvertInstanceHostId() int64 {
-	if x != nil && x.ConvertInstanceHostId != nil {
-		return *x.ConvertInstanceHostId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetImportInstanceHostId() int64 {
-	if x != nil && x.ImportInstanceHostId != nil {
-		return *x.ImportInstanceHostId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetConvertStoragePoolId() int64 {
-	if x != nil && x.ConvertStoragePoolId != nil {
-		return *x.ConvertStoragePoolId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetForceMsToImportVmFiles() bool {
-	if x != nil && x.ForceMsToImportVmFiles != nil {
-		return *x.ForceMsToImportVmFiles
+func (x *MigrateVMRequest) GetAutoSelect() bool {
+	if x != nil && x.AutoSelect != nil {
+		return *x.AutoSelect
 	}
 	return false
 }
 
-func (x *ImportVmRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetHostName() string {
-	if x != nil && x.HostName != nil {
-		return *x.HostName
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ImportVmRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *ImportVmRequest) GetNicNetworkList() map[string]string {
-	if x != nil {
-		return x.NicNetworkList
-	}
-	return nil
-}
-
-func (x *ImportVmRequest) GetNicIpAddressList() map[string]string {
-	if x != nil {
-		return x.NicIpAddressList
-	}
-	return nil
-}
-
-func (x *ImportVmRequest) GetDataDiskToDiskOfferingList() map[string]string {
-	if x != nil {
-		return x.DataDiskToDiskOfferingList
-	}
-	return nil
-}
-
-func (x *ImportVmRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *ImportVmRequest) GetMigrateAllowed() bool {
-	if x != nil && x.MigrateAllowed != nil {
-		return *x.MigrateAllowed
-	}
-	return false
-}
-
-func (x *ImportVmRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *ImportVmRequest) GetStartEventId() int64 {
+func (x *MigrateVMRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ImportVmRequest) GetInjectedJobId() string {
+func (x *MigrateVMRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ImportVmRequest) GetResponseType() string {
+func (x *MigrateVMRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ImportVmResponse represents the response from import virtual machine from a unmanaged host into cloudstack
-type ImportVmResponse struct {
+// MigrateVMResponse represents the response from attempts migration of a vm to a different host or root volume of the vm to a different storage pool
+type MigrateVMResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3166,561 +3906,20 @@ type ImportVmResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ImportVmResponse) Reset() {
-	*x = ImportVmResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportVmResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportVmResponse) ProtoMessage() {}
-
-func (x *ImportVmResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportVmResponse.ProtoReflect.Descriptor instead.
-func (*ImportVmResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *ImportVmResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVMRequest represents the parameters for updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
-type UpdateVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// user generated name
-	DisplayName *string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// group of the virtual machine
-	Group *string `protobuf:"bytes,3,opt,name=group" json:"group,omitempty"`
-	// true if high-availability is enabled for the virtual machine, false otherwise
-	HaEnable *bool `protobuf:"varint,4,opt,name=ha_enable,json=haEnable" json:"ha_enable,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
-	// the ID of the OS type that best represents this VM.
-	OsTypeId *int64 `protobuf:"varint,6,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	UserData *string `protobuf:"bytes,7,opt,name=user_data,json=userData" json:"user_data,omitempty"`
-	// the ID of the userdata
-	UserdataId *int64 `protobuf:"varint,8,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
-	// used to specify the parameters values for the variables in userdata.
-	UserdataDetails map[string]string `protobuf:"bytes,9,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional field, whether to the display the vm to the end user or not.
-	DisplayVm *bool `protobuf:"varint,10,opt,name=display_vm,json=displayVm" json:"display_vm,omitempty"`
-	// true if VM contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory. This can be updated only when dynamic scaling is enabled on template, service offering and the corresponding global setting
-	IsDynamicallyScalable *bool `protobuf:"varint,11,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
-	// new host name of the vm. The VM has to be stopped/started for this update to take affect
-	Name *string `protobuf:"bytes,12,opt,name=name" json:"name,omitempty"`
-	// instance name of the user vm
-	InstanceName *string `protobuf:"bytes,13,opt,name=instance_name,json=instanceName" json:"instance_name,omitempty"`
-	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
-	Details map[string]string `protobuf:"bytes,14,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list of security group ids to be applied on the virtual machine.
-	SecurityGroupIdList []string `protobuf:"bytes,15,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
-	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
-	SecurityGroupNameList []string `protobuf:"bytes,16,rep,name=security_group_name_list,json=securityGroupNameList" json:"security_group_name_list,omitempty"`
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	CleanupDetails *bool `protobuf:"varint,17,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
-	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
-	DhcpOptionsNetworkList map[string]string `protobuf:"bytes,18,rep,name=dhcp_options_network_list,json=dhcpOptionsNetworkList" json:"dhcp_options_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
-	ExtraConfig *string `protobuf:"bytes,19,opt,name=extra_config,json=extraConfig" json:"extra_config,omitempty"`
-	// Set delete protection for the virtual machine. If true, the instance will be protected from deletion. Note: If the instance is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
-	DeleteProtection *bool `protobuf:"varint,20,opt,name=delete_protection,json=deleteProtection" json:"delete_protection,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,21,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,22,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVMRequest) Reset() {
-	*x = UpdateVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVMRequest) ProtoMessage() {}
-
-func (x *UpdateVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVMRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *UpdateVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *UpdateVMRequest) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetGroup() string {
-	if x != nil && x.Group != nil {
-		return *x.Group
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetHaEnable() bool {
-	if x != nil && x.HaEnable != nil {
-		return *x.HaEnable
-	}
-	return false
-}
-
-func (x *UpdateVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVMRequest) GetOsTypeId() int64 {
-	if x != nil && x.OsTypeId != nil {
-		return *x.OsTypeId
-	}
-	return 0
-}
-
-func (x *UpdateVMRequest) GetUserData() string {
-	if x != nil && x.UserData != nil {
-		return *x.UserData
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetUserdataId() int64 {
-	if x != nil && x.UserdataId != nil {
-		return *x.UserdataId
-	}
-	return 0
-}
-
-func (x *UpdateVMRequest) GetUserdataDetails() map[string]string {
-	if x != nil {
-		return x.UserdataDetails
-	}
-	return nil
-}
-
-func (x *UpdateVMRequest) GetDisplayVm() bool {
-	if x != nil && x.DisplayVm != nil {
-		return *x.DisplayVm
-	}
-	return false
-}
-
-func (x *UpdateVMRequest) GetIsDynamicallyScalable() bool {
-	if x != nil && x.IsDynamicallyScalable != nil {
-		return *x.IsDynamicallyScalable
-	}
-	return false
-}
-
-func (x *UpdateVMRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetInstanceName() string {
-	if x != nil && x.InstanceName != nil {
-		return *x.InstanceName
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpdateVMRequest) GetSecurityGroupIdList() []string {
-	if x != nil {
-		return x.SecurityGroupIdList
-	}
-	return nil
-}
-
-func (x *UpdateVMRequest) GetSecurityGroupNameList() []string {
-	if x != nil {
-		return x.SecurityGroupNameList
-	}
-	return nil
-}
-
-func (x *UpdateVMRequest) GetCleanupDetails() bool {
-	if x != nil && x.CleanupDetails != nil {
-		return *x.CleanupDetails
-	}
-	return false
-}
-
-func (x *UpdateVMRequest) GetDhcpOptionsNetworkList() map[string]string {
-	if x != nil {
-		return x.DhcpOptionsNetworkList
-	}
-	return nil
-}
-
-func (x *UpdateVMRequest) GetExtraConfig() string {
-	if x != nil && x.ExtraConfig != nil {
-		return *x.ExtraConfig
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetDeleteProtection() bool {
-	if x != nil && x.DeleteProtection != nil {
-		return *x.DeleteProtection
-	}
-	return false
-}
-
-func (x *UpdateVMRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVMResponse represents the response from updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
-type UpdateVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVMResponse) Reset() {
-	*x = UpdateVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVMResponse) ProtoMessage() {}
-
-func (x *UpdateVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVMResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *UpdateVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateDefaultNicForVMCmdByAdminRequest represents the parameters for changes the default nic on a vm
-type UpdateDefaultNicForVMCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// NIC ID
-	NicId *int64 `protobuf:"varint,2,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) Reset() {
-	*x = UpdateDefaultNicForVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateDefaultNicForVMCmdByAdminRequest) ProtoMessage() {}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateDefaultNicForVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*UpdateDefaultNicForVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateDefaultNicForVMCmdByAdminResponse represents the response from changes the default nic on a vm
-type UpdateDefaultNicForVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminResponse) Reset() {
-	*x = UpdateDefaultNicForVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateDefaultNicForVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *UpdateDefaultNicForVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateDefaultNicForVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*UpdateDefaultNicForVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *UpdateDefaultNicForVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListUnmanagedInstancesRequest represents the parameters for lists unmanaged virtual machines for a given cluster.
-type ListUnmanagedInstancesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the cluster ID
-	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// the hypervisor name of the instance
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListUnmanagedInstancesRequest) Reset() {
-	*x = ListUnmanagedInstancesRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListUnmanagedInstancesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListUnmanagedInstancesRequest) ProtoMessage() {}
-
-func (x *ListUnmanagedInstancesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListUnmanagedInstancesRequest.ProtoReflect.Descriptor instead.
-func (*ListUnmanagedInstancesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *ListUnmanagedInstancesRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *ListUnmanagedInstancesRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListUnmanagedInstancesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListUnmanagedInstancesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListUnmanagedInstancesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListUnmanagedInstancesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListUnmanagedInstancesResponse represents the response from lists unmanaged virtual machines for a given cluster.
-type ListUnmanagedInstancesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of UnmanagedInstances
-	Items []*UnmanagedInstance `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of UnmanagedInstances
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListUnmanagedInstancesResponse) Reset() {
-	*x = ListUnmanagedInstancesResponse{}
+func (x *MigrateVMResponse) Reset() {
+	*x = MigrateVMResponse{}
 	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListUnmanagedInstancesResponse) String() string {
+func (x *MigrateVMResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListUnmanagedInstancesResponse) ProtoMessage() {}
+func (*MigrateVMResponse) ProtoMessage() {}
 
-func (x *ListUnmanagedInstancesResponse) ProtoReflect() protoreflect.Message {
+func (x *MigrateVMResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3732,23 +3931,16 @@ func (x *ListUnmanagedInstancesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListUnmanagedInstancesResponse.ProtoReflect.Descriptor instead.
-func (*ListUnmanagedInstancesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MigrateVMResponse.ProtoReflect.Descriptor instead.
+func (*MigrateVMResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *ListUnmanagedInstancesResponse) GetItems() []*UnmanagedInstance {
+func (x *MigrateVMResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListUnmanagedInstancesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // ListVnfAppliancesRequest represents the parameters for list vnf appliance owned by the account.
@@ -4191,3277 +4383,6 @@ func (x *ListVnfAppliancesResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// RestoreVMCmdByAdminRequest represents the parameters for restore a vm to original template/iso or new template/iso
-type RestoreVMCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
-	TemplateId *int64 `protobuf:"varint,2,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// Override root volume's diskoffering.
-	RootDiskOfferingId *int64 `protobuf:"varint,3,opt,name=root_disk_offering_id,json=rootDiskOfferingId" json:"root_disk_offering_id,omitempty"`
-	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
-	RootDiskSize *int64 `protobuf:"varint,4,opt,name=root_disk_size,json=rootDiskSize" json:"root_disk_size,omitempty"`
-	// used to specify the custom parameters
-	Details map[string]string `protobuf:"bytes,5,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Optional field to expunge old root volume after restore.
-	ExpungeRootDisk *bool `protobuf:"varint,6,opt,name=expunge_root_disk,json=expungeRootDisk" json:"expunge_root_disk,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreVMCmdByAdminRequest) Reset() {
-	*x = RestoreVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreVMCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreVMCmdByAdminRequest) ProtoMessage() {}
-
-func (x *RestoreVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*RestoreVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{38}
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetRootDiskOfferingId() int64 {
-	if x != nil && x.RootDiskOfferingId != nil {
-		return *x.RootDiskOfferingId
-	}
-	return 0
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetRootDiskSize() int64 {
-	if x != nil && x.RootDiskSize != nil {
-		return *x.RootDiskSize
-	}
-	return 0
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetExpungeRootDisk() bool {
-	if x != nil && x.ExpungeRootDisk != nil {
-		return *x.ExpungeRootDisk
-	}
-	return false
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestoreVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestoreVMCmdByAdminResponse represents the response from restore a vm to original template/iso or new template/iso
-type RestoreVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreVMCmdByAdminResponse) Reset() {
-	*x = RestoreVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *RestoreVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*RestoreVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{39}
-}
-
-func (x *RestoreVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpgradeVMRequest represents the parameters for (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
-type UpgradeVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the service offering ID to apply to the virtual machine
-	ServiceOfferingId *int64 `protobuf:"varint,3,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// New minimum number of IOPS for the custom disk offering
-	MinIops *int64 `protobuf:"varint,5,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// New maximum number of IOPS for the custom disk offering
-	MaxIops *int64 `protobuf:"varint,6,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
-	AutoMigrate *bool `protobuf:"varint,7,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
-	// Verify OK to Shrink
-	ShrinkOk *bool `protobuf:"varint,8,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpgradeVMRequest) Reset() {
-	*x = UpgradeVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpgradeVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpgradeVMRequest) ProtoMessage() {}
-
-func (x *UpgradeVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpgradeVMRequest.ProtoReflect.Descriptor instead.
-func (*UpgradeVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{40}
-}
-
-func (x *UpgradeVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *UpgradeVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpgradeVMRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *UpgradeVMRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpgradeVMRequest) GetMinIops() int64 {
-	if x != nil && x.MinIops != nil {
-		return *x.MinIops
-	}
-	return 0
-}
-
-func (x *UpgradeVMRequest) GetMaxIops() int64 {
-	if x != nil && x.MaxIops != nil {
-		return *x.MaxIops
-	}
-	return 0
-}
-
-func (x *UpgradeVMRequest) GetAutoMigrate() bool {
-	if x != nil && x.AutoMigrate != nil {
-		return *x.AutoMigrate
-	}
-	return false
-}
-
-func (x *UpgradeVMRequest) GetShrinkOk() bool {
-	if x != nil && x.ShrinkOk != nil {
-		return *x.ShrinkOk
-	}
-	return false
-}
-
-func (x *UpgradeVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpgradeVMResponse represents the response from (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
-type UpgradeVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpgradeVMResponse) Reset() {
-	*x = UpgradeVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[41]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpgradeVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpgradeVMResponse) ProtoMessage() {}
-
-func (x *UpgradeVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[41]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpgradeVMResponse.ProtoReflect.Descriptor instead.
-func (*UpgradeVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{41}
-}
-
-func (x *UpgradeVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RebootVMCmdByAdminRequest represents the parameters for reboots a virtual machine.
-type RebootVMCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force reboot the VM (VM is Stopped and then Started)
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	// Boot into hardware setup menu or not
-	BootIntoSetup *bool `protobuf:"varint,3,opt,name=boot_into_setup,json=bootIntoSetup" json:"boot_into_setup,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RebootVMCmdByAdminRequest) Reset() {
-	*x = RebootVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[42]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RebootVMCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RebootVMCmdByAdminRequest) ProtoMessage() {}
-
-func (x *RebootVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[42]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RebootVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*RebootVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{42}
-}
-
-func (x *RebootVMCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RebootVMCmdByAdminRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *RebootVMCmdByAdminRequest) GetBootIntoSetup() bool {
-	if x != nil && x.BootIntoSetup != nil {
-		return *x.BootIntoSetup
-	}
-	return false
-}
-
-func (x *RebootVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RebootVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RebootVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RebootVMCmdByAdminResponse represents the response from reboots a virtual machine.
-type RebootVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RebootVMCmdByAdminResponse) Reset() {
-	*x = RebootVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[43]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RebootVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RebootVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *RebootVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[43]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RebootVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*RebootVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{43}
-}
-
-func (x *RebootVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVmNicIpRequest represents the parameters for update the default ip of a vm nic
-type UpdateVmNicIpRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the nic to which you want to assign private IP
-	NicId *int64 `protobuf:"varint,1,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	// Secondary IP Address
-	IpAddr *string `protobuf:"bytes,2,opt,name=ip_addr,json=ipAddr" json:"ip_addr,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVmNicIpRequest) Reset() {
-	*x = UpdateVmNicIpRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVmNicIpRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVmNicIpRequest) ProtoMessage() {}
-
-func (x *UpdateVmNicIpRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVmNicIpRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVmNicIpRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{44}
-}
-
-func (x *UpdateVmNicIpRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *UpdateVmNicIpRequest) GetIpAddr() string {
-	if x != nil && x.IpAddr != nil {
-		return *x.IpAddr
-	}
-	return ""
-}
-
-func (x *UpdateVmNicIpRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateVmNicIpRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateVmNicIpRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVmNicIpResponse represents the response from update the default ip of a vm nic
-type UpdateVmNicIpResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVmNicIpResponse) Reset() {
-	*x = UpdateVmNicIpResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[45]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVmNicIpResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVmNicIpResponse) ProtoMessage() {}
-
-func (x *UpdateVmNicIpResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[45]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVmNicIpResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVmNicIpResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{45}
-}
-
-func (x *UpdateVmNicIpResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ResetVMSSHKeyCmdByAdminRequest represents the parameters for resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-type ResetVMSSHKeyCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// name of the ssh key pair used to login to the virtual machine
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// names of the ssh key pairs to be used to login to the virtual machine
-	Names []string `protobuf:"bytes,3,rep,name=names" json:"names,omitempty"`
-	// an optional account for the ssh key. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,4,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional project for the ssh key
-	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) Reset() {
-	*x = ResetVMSSHKeyCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[46]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMSSHKeyCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[46]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMSSHKeyCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ResetVMSSHKeyCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{46}
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetNames() []string {
-	if x != nil {
-		return x.Names
-	}
-	return nil
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ResetVMSSHKeyCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResetVMSSHKeyCmdByAdminResponse represents the response from resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-type ResetVMSSHKeyCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMSSHKeyCmdByAdminResponse) Reset() {
-	*x = ResetVMSSHKeyCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[47]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMSSHKeyCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMSSHKeyCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ResetVMSSHKeyCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[47]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMSSHKeyCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ResetVMSSHKeyCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{47}
-}
-
-func (x *ResetVMSSHKeyCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// MigrateVMRequest represents the parameters for attempts migration of a vm to a different host or root volume of the vm to a different storage pool
-type MigrateVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Destination Host ID to migrate VM to.
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	// the ID of the virtual machine
-	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
-	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
-	AutoSelect *bool `protobuf:"varint,4,opt,name=auto_select,json=autoSelect" json:"auto_select,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateVMRequest) Reset() {
-	*x = MigrateVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[48]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateVMRequest) ProtoMessage() {}
-
-func (x *MigrateVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[48]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateVMRequest.ProtoReflect.Descriptor instead.
-func (*MigrateVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{48}
-}
-
-func (x *MigrateVMRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *MigrateVMRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *MigrateVMRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
-	}
-	return 0
-}
-
-func (x *MigrateVMRequest) GetAutoSelect() bool {
-	if x != nil && x.AutoSelect != nil {
-		return *x.AutoSelect
-	}
-	return false
-}
-
-func (x *MigrateVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MigrateVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MigrateVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// MigrateVMResponse represents the response from attempts migration of a vm to a different host or root volume of the vm to a different storage pool
-type MigrateVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateVMResponse) Reset() {
-	*x = MigrateVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[49]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateVMResponse) ProtoMessage() {}
-
-func (x *MigrateVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[49]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateVMResponse.ProtoReflect.Descriptor instead.
-func (*MigrateVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{49}
-}
-
-func (x *MigrateVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ResetVMPasswordRequest represents the parameters for resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-type ResetVMPasswordRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// The new password of the virtual machine. If null, a random password will be generated for the VM.
-	Password *string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMPasswordRequest) Reset() {
-	*x = ResetVMPasswordRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[50]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMPasswordRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMPasswordRequest) ProtoMessage() {}
-
-func (x *ResetVMPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[50]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMPasswordRequest.ProtoReflect.Descriptor instead.
-func (*ResetVMPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{50}
-}
-
-func (x *ResetVMPasswordRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ResetVMPasswordRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ResetVMPasswordRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *ResetVMPasswordRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ResetVMPasswordRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ResetVMPasswordRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResetVMPasswordResponse represents the response from resets the password for virtual machine. the virtual machine must be in a "stopped" state and the template must already support this feature for this command to take effect. [async]
-type ResetVMPasswordResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetVMPasswordResponse) Reset() {
-	*x = ResetVMPasswordResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[51]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetVMPasswordResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetVMPasswordResponse) ProtoMessage() {}
-
-func (x *ResetVMPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[51]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetVMPasswordResponse.ProtoReflect.Descriptor instead.
-func (*ResetVMPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{51}
-}
-
-func (x *ResetVMPasswordResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateVMScheduleRequest represents the parameters for create vm schedule
-type CreateVMScheduleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the VM for which schedule is to be defined
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// Description of the schedule
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
-	Schedule *string `protobuf:"bytes,3,opt,name=schedule" json:"schedule,omitempty"`
-	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
-	TimeZone *string `protobuf:"bytes,4,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	// Action to take on the VM (start/stop/reboot/force_stop/force_reboot).
-	Action *string `protobuf:"bytes,5,opt,name=action" json:"action,omitempty"`
-	// start date from which the schedule becomes active. Defaults to current date plus 1 minute.Use format "yyyy-MM-dd hh:mm:ss")
-	StartDate *string `protobuf:"bytes,6,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
-	EndDate *string `protobuf:"bytes,7,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
-	// Enable VM schedule. Defaults to true
-	Enabled *bool `protobuf:"varint,8,opt,name=enabled" json:"enabled,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVMScheduleRequest) Reset() {
-	*x = CreateVMScheduleRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[52]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVMScheduleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVMScheduleRequest) ProtoMessage() {}
-
-func (x *CreateVMScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[52]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVMScheduleRequest.ProtoReflect.Descriptor instead.
-func (*CreateVMScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{52}
-}
-
-func (x *CreateVMScheduleRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *CreateVMScheduleRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateVMScheduleRequest) GetSchedule() string {
-	if x != nil && x.Schedule != nil {
-		return *x.Schedule
-	}
-	return ""
-}
-
-func (x *CreateVMScheduleRequest) GetTimeZone() string {
-	if x != nil && x.TimeZone != nil {
-		return *x.TimeZone
-	}
-	return ""
-}
-
-func (x *CreateVMScheduleRequest) GetAction() string {
-	if x != nil && x.Action != nil {
-		return *x.Action
-	}
-	return ""
-}
-
-func (x *CreateVMScheduleRequest) GetStartDate() string {
-	if x != nil && x.StartDate != nil {
-		return *x.StartDate
-	}
-	return ""
-}
-
-func (x *CreateVMScheduleRequest) GetEndDate() string {
-	if x != nil && x.EndDate != nil {
-		return *x.EndDate
-	}
-	return ""
-}
-
-func (x *CreateVMScheduleRequest) GetEnabled() bool {
-	if x != nil && x.Enabled != nil {
-		return *x.Enabled
-	}
-	return false
-}
-
-func (x *CreateVMScheduleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateVMScheduleResponse represents the response from create vm schedule
-type CreateVMScheduleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVMScheduleResponse) Reset() {
-	*x = CreateVMScheduleResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[53]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVMScheduleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVMScheduleResponse) ProtoMessage() {}
-
-func (x *CreateVMScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[53]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVMScheduleResponse.ProtoReflect.Descriptor instead.
-func (*CreateVMScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{53}
-}
-
-func (x *CreateVMScheduleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RecoverVMRequest represents the parameters for recovers a virtual machine.
-type RecoverVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RecoverVMRequest) Reset() {
-	*x = RecoverVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[54]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RecoverVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecoverVMRequest) ProtoMessage() {}
-
-func (x *RecoverVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[54]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecoverVMRequest.ProtoReflect.Descriptor instead.
-func (*RecoverVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{54}
-}
-
-func (x *RecoverVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RecoverVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RecoverVMResponse represents the response from recovers a virtual machine.
-type RecoverVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RecoverVMResponse) Reset() {
-	*x = RecoverVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[55]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RecoverVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecoverVMResponse) ProtoMessage() {}
-
-func (x *RecoverVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[55]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecoverVMResponse.ProtoReflect.Descriptor instead.
-func (*RecoverVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{55}
-}
-
-func (x *RecoverVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddNicToVMRequest represents the parameters for adds vm to specified network by creating a nic
-type AddNicToVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// Network ID
-	NetId *int64 `protobuf:"varint,3,opt,name=net_id,json=netId" json:"net_id,omitempty"`
-	// IP Address for the new network
-	Ipaddr *string `protobuf:"bytes,4,opt,name=ipaddr" json:"ipaddr,omitempty"`
-	// Mac Address for the new network
-	Macaddr *string `protobuf:"bytes,5,opt,name=macaddr" json:"macaddr,omitempty"`
-	// DHCP options which are passed to the nic Example: dhcpoptions[0].dhcp:114=url&dhcpoptions[0].dhcp:66=www.test.com
-	DhcpOptions map[string]string `protobuf:"bytes,6,rep,name=dhcp_options,json=dhcpOptions" json:"dhcp_options,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddNicToVMRequest) Reset() {
-	*x = AddNicToVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[56]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddNicToVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddNicToVMRequest) ProtoMessage() {}
-
-func (x *AddNicToVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[56]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddNicToVMRequest.ProtoReflect.Descriptor instead.
-func (*AddNicToVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{56}
-}
-
-func (x *AddNicToVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *AddNicToVMRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *AddNicToVMRequest) GetNetId() int64 {
-	if x != nil && x.NetId != nil {
-		return *x.NetId
-	}
-	return 0
-}
-
-func (x *AddNicToVMRequest) GetIpaddr() string {
-	if x != nil && x.Ipaddr != nil {
-		return *x.Ipaddr
-	}
-	return ""
-}
-
-func (x *AddNicToVMRequest) GetMacaddr() string {
-	if x != nil && x.Macaddr != nil {
-		return *x.Macaddr
-	}
-	return ""
-}
-
-func (x *AddNicToVMRequest) GetDhcpOptions() map[string]string {
-	if x != nil {
-		return x.DhcpOptions
-	}
-	return nil
-}
-
-func (x *AddNicToVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddNicToVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddNicToVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddNicToVMResponse represents the response from adds vm to specified network by creating a nic
-type AddNicToVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddNicToVMResponse) Reset() {
-	*x = AddNicToVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[57]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddNicToVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddNicToVMResponse) ProtoMessage() {}
-
-func (x *AddNicToVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[57]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddNicToVMResponse.ProtoReflect.Descriptor instead.
-func (*AddNicToVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{57}
-}
-
-func (x *AddNicToVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateDefaultNicForVMRequest represents the parameters for changes the default nic on a vm
-type UpdateDefaultNicForVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// NIC ID
-	NicId *int64 `protobuf:"varint,3,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateDefaultNicForVMRequest) Reset() {
-	*x = UpdateDefaultNicForVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[58]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateDefaultNicForVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateDefaultNicForVMRequest) ProtoMessage() {}
-
-func (x *UpdateDefaultNicForVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[58]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateDefaultNicForVMRequest.ProtoReflect.Descriptor instead.
-func (*UpdateDefaultNicForVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{58}
-}
-
-func (x *UpdateDefaultNicForVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *UpdateDefaultNicForVMRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *UpdateDefaultNicForVMRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *UpdateDefaultNicForVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateDefaultNicForVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateDefaultNicForVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateDefaultNicForVMResponse represents the response from changes the default nic on a vm
-type UpdateDefaultNicForVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateDefaultNicForVMResponse) Reset() {
-	*x = UpdateDefaultNicForVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[59]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateDefaultNicForVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateDefaultNicForVMResponse) ProtoMessage() {}
-
-func (x *UpdateDefaultNicForVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[59]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateDefaultNicForVMResponse.ProtoReflect.Descriptor instead.
-func (*UpdateDefaultNicForVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{59}
-}
-
-func (x *UpdateDefaultNicForVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddIpToVmNicRequest represents the parameters for assigns secondary ip to nic
-type AddIpToVmNicRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the nic to which you want to assign private IP
-	NicId *int64 `protobuf:"varint,1,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	// Secondary IP Address
-	IpAddr *string `protobuf:"bytes,2,opt,name=ip_addr,json=ipAddr" json:"ip_addr,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddIpToVmNicRequest) Reset() {
-	*x = AddIpToVmNicRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[60]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddIpToVmNicRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddIpToVmNicRequest) ProtoMessage() {}
-
-func (x *AddIpToVmNicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[60]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddIpToVmNicRequest.ProtoReflect.Descriptor instead.
-func (*AddIpToVmNicRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{60}
-}
-
-func (x *AddIpToVmNicRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *AddIpToVmNicRequest) GetIpAddr() string {
-	if x != nil && x.IpAddr != nil {
-		return *x.IpAddr
-	}
-	return ""
-}
-
-func (x *AddIpToVmNicRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddIpToVmNicRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddIpToVmNicRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddIpToVmNicResponse represents the response from assigns secondary ip to nic
-type AddIpToVmNicResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddIpToVmNicResponse) Reset() {
-	*x = AddIpToVmNicResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[61]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddIpToVmNicResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddIpToVmNicResponse) ProtoMessage() {}
-
-func (x *AddIpToVmNicResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[61]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddIpToVmNicResponse.ProtoReflect.Descriptor instead.
-func (*AddIpToVmNicResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{61}
-}
-
-func (x *AddIpToVmNicResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveIpFromVmNicRequest represents the parameters for removes secondary ip from the nic.
-type RemoveIpFromVmNicRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the secondary ip address to nic
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveIpFromVmNicRequest) Reset() {
-	*x = RemoveIpFromVmNicRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[62]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveIpFromVmNicRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveIpFromVmNicRequest) ProtoMessage() {}
-
-func (x *RemoveIpFromVmNicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[62]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveIpFromVmNicRequest.ProtoReflect.Descriptor instead.
-func (*RemoveIpFromVmNicRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{62}
-}
-
-func (x *RemoveIpFromVmNicRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RemoveIpFromVmNicRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveIpFromVmNicRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveIpFromVmNicRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveIpFromVmNicResponse represents the response from removes secondary ip from the nic.
-type RemoveIpFromVmNicResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveIpFromVmNicResponse) Reset() {
-	*x = RemoveIpFromVmNicResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[63]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveIpFromVmNicResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveIpFromVmNicResponse) ProtoMessage() {}
-
-func (x *RemoveIpFromVmNicResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[63]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveIpFromVmNicResponse.ProtoReflect.Descriptor instead.
-func (*RemoveIpFromVmNicResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{63}
-}
-
-func (x *RemoveIpFromVmNicResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ExpungeVMRequest represents the parameters for expunge a virtual machine. once expunged, it cannot be recoverd.
-type ExpungeVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExpungeVMRequest) Reset() {
-	*x = ExpungeVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[64]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExpungeVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExpungeVMRequest) ProtoMessage() {}
-
-func (x *ExpungeVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[64]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExpungeVMRequest.ProtoReflect.Descriptor instead.
-func (*ExpungeVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{64}
-}
-
-func (x *ExpungeVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ExpungeVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ExpungeVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ExpungeVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ExpungeVMResponse represents the response from expunge a virtual machine. once expunged, it cannot be recoverd.
-type ExpungeVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExpungeVMResponse) Reset() {
-	*x = ExpungeVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[65]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExpungeVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExpungeVMResponse) ProtoMessage() {}
-
-func (x *ExpungeVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[65]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExpungeVMResponse.ProtoReflect.Descriptor instead.
-func (*ExpungeVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{65}
-}
-
-func (x *ExpungeVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListVmsForImportRequest represents the parameters for lists virtual machines on a unmanaged host
-type ListVmsForImportRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the zone ID
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the username for the host
-	Username *string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
-	// the password for the host
-	Password *string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
-	// the host name or IP address
-	Host *string `protobuf:"bytes,4,opt,name=host" json:"host,omitempty"`
-	// hypervisor type of the host
-	Hypervisor *string `protobuf:"bytes,5,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,6,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,7,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,8,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVmsForImportRequest) Reset() {
-	*x = ListVmsForImportRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[66]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVmsForImportRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVmsForImportRequest) ProtoMessage() {}
-
-func (x *ListVmsForImportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[66]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVmsForImportRequest.ProtoReflect.Descriptor instead.
-func (*ListVmsForImportRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{66}
-}
-
-func (x *ListVmsForImportRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListVmsForImportRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *ListVmsForImportRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *ListVmsForImportRequest) GetHost() string {
-	if x != nil && x.Host != nil {
-		return *x.Host
-	}
-	return ""
-}
-
-func (x *ListVmsForImportRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *ListVmsForImportRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVmsForImportRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVmsForImportRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVmsForImportRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVmsForImportResponse represents the response from lists virtual machines on a unmanaged host
-type ListVmsForImportResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of UnmanagedInstances
-	Items []*UnmanagedInstance `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of UnmanagedInstances
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVmsForImportResponse) Reset() {
-	*x = ListVmsForImportResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[67]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVmsForImportResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVmsForImportResponse) ProtoMessage() {}
-
-func (x *ListVmsForImportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[67]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVmsForImportResponse.ProtoReflect.Descriptor instead.
-func (*ListVmsForImportResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{67}
-}
-
-func (x *ListVmsForImportResponse) GetItems() []*UnmanagedInstance {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVmsForImportResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// RestoreVMRequest represents the parameters for restore a vm to original template/iso or new template/iso
-type RestoreVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
-	TemplateId *int64 `protobuf:"varint,3,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// Override root volume's diskoffering.
-	RootDiskOfferingId *int64 `protobuf:"varint,4,opt,name=root_disk_offering_id,json=rootDiskOfferingId" json:"root_disk_offering_id,omitempty"`
-	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
-	RootDiskSize *int64 `protobuf:"varint,5,opt,name=root_disk_size,json=rootDiskSize" json:"root_disk_size,omitempty"`
-	// used to specify the custom parameters
-	Details map[string]string `protobuf:"bytes,6,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Optional field to expunge old root volume after restore.
-	ExpungeRootDisk *bool `protobuf:"varint,7,opt,name=expunge_root_disk,json=expungeRootDisk" json:"expunge_root_disk,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreVMRequest) Reset() {
-	*x = RestoreVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[68]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreVMRequest) ProtoMessage() {}
-
-func (x *RestoreVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[68]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreVMRequest.ProtoReflect.Descriptor instead.
-func (*RestoreVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{68}
-}
-
-func (x *RestoreVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *RestoreVMRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *RestoreVMRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *RestoreVMRequest) GetRootDiskOfferingId() int64 {
-	if x != nil && x.RootDiskOfferingId != nil {
-		return *x.RootDiskOfferingId
-	}
-	return 0
-}
-
-func (x *RestoreVMRequest) GetRootDiskSize() int64 {
-	if x != nil && x.RootDiskSize != nil {
-		return *x.RootDiskSize
-	}
-	return 0
-}
-
-func (x *RestoreVMRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *RestoreVMRequest) GetExpungeRootDisk() bool {
-	if x != nil && x.ExpungeRootDisk != nil {
-		return *x.ExpungeRootDisk
-	}
-	return false
-}
-
-func (x *RestoreVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestoreVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestoreVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestoreVMResponse represents the response from restore a vm to original template/iso or new template/iso
-type RestoreVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestoreVMResponse) Reset() {
-	*x = RestoreVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[69]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestoreVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestoreVMResponse) ProtoMessage() {}
-
-func (x *RestoreVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[69]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestoreVMResponse.ProtoReflect.Descriptor instead.
-func (*RestoreVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{69}
-}
-
-func (x *RestoreVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ScaleVMRequest represents the parameters for scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-type ScaleVMRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the ID of the service offering for the virtual machine
-	ServiceOfferingId *int64 `protobuf:"varint,3,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// New minimum number of IOPS for the custom disk offering
-	MinIops *int64 `protobuf:"varint,5,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// New maximum number of IOPS for the custom disk offering
-	MaxIops *int64 `protobuf:"varint,6,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
-	AutoMigrate *bool `protobuf:"varint,7,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
-	// Verify OK to Shrink
-	ShrinkOk *bool `protobuf:"varint,8,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ScaleVMRequest) Reset() {
-	*x = ScaleVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[70]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ScaleVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ScaleVMRequest) ProtoMessage() {}
-
-func (x *ScaleVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[70]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ScaleVMRequest.ProtoReflect.Descriptor instead.
-func (*ScaleVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{70}
-}
-
-func (x *ScaleVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ScaleVMRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ScaleVMRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *ScaleVMRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *ScaleVMRequest) GetMinIops() int64 {
-	if x != nil && x.MinIops != nil {
-		return *x.MinIops
-	}
-	return 0
-}
-
-func (x *ScaleVMRequest) GetMaxIops() int64 {
-	if x != nil && x.MaxIops != nil {
-		return *x.MaxIops
-	}
-	return 0
-}
-
-func (x *ScaleVMRequest) GetAutoMigrate() bool {
-	if x != nil && x.AutoMigrate != nil {
-		return *x.AutoMigrate
-	}
-	return false
-}
-
-func (x *ScaleVMRequest) GetShrinkOk() bool {
-	if x != nil && x.ShrinkOk != nil {
-		return *x.ShrinkOk
-	}
-	return false
-}
-
-func (x *ScaleVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ScaleVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ScaleVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ScaleVMResponse represents the response from scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-type ScaleVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ScaleVMResponse) Reset() {
-	*x = ScaleVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[71]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ScaleVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ScaleVMResponse) ProtoMessage() {}
-
-func (x *ScaleVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[71]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ScaleVMResponse.ProtoReflect.Descriptor instead.
-func (*ScaleVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{71}
-}
-
-func (x *ScaleVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveNicFromVMCmdByAdminRequest represents the parameters for removes vm from specified network by deleting a nic
-type RemoveNicFromVMCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// NIC ID
-	NicId *int64 `protobuf:"varint,2,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) Reset() {
-	*x = RemoveNicFromVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[72]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveNicFromVMCmdByAdminRequest) ProtoMessage() {}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[72]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveNicFromVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*RemoveNicFromVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{72}
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveNicFromVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveNicFromVMCmdByAdminResponse represents the response from removes vm from specified network by deleting a nic
-type RemoveNicFromVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveNicFromVMCmdByAdminResponse) Reset() {
-	*x = RemoveNicFromVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[73]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveNicFromVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveNicFromVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *RemoveNicFromVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[73]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveNicFromVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*RemoveNicFromVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{73}
-}
-
-func (x *RemoveNicFromVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeployVMCmdByAdminRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-type DeployVMCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// destination Pod ID to deploy the VM to - parameter available for root admin only
-	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// destination Cluster ID to deploy the VM to - parameter available for root admin only
-	ClusterId *int64 `protobuf:"varint,2,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// availability zone for the virtual machine
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the ID of the service offering for the virtual machine
-	ServiceOfferingId *int64 `protobuf:"varint,4,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// the ID of the template for the virtual machine
-	TemplateId *int64 `protobuf:"varint,5,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// host name for the virtual machine
-	Name *string `protobuf:"bytes,6,opt,name=name" json:"name,omitempty"`
-	// an optional user generated name for the virtual machine
-	DisplayName *string `protobuf:"bytes,7,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The password of the virtual machine. If null, a random password will be generated for the VM.
-	Password *string `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
-	// an optional account for the virtual machine. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,9,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used. If account is NOT provided then virtual machine will be assigned to the caller account and domain.
-	DomainId *int64 `protobuf:"varint,10,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// list of network ids used by virtual machine. Can't be specified with ipToNetworkList parameter
-	NetworkIds []string `protobuf:"bytes,11,rep,name=network_ids,json=networkIds" json:"network_ids,omitempty"`
-	// Guest VM Boot option either custom[UEFI] or default boot [BIOS]. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
-	BootType *string `protobuf:"bytes,12,opt,name=boot_type,json=bootType" json:"boot_type,omitempty"`
-	// Boot Mode [Legacy] or [Secure] Applicable when Boot Type Selected is UEFI, otherwise Legacy only for BIOS. Not applicable with VMware if the template is marked as deploy-as-is, as we honour what is defined in the template.
-	BootMode *string `protobuf:"bytes,13,opt,name=boot_mode,json=bootMode" json:"boot_mode,omitempty"`
-	// Boot into hardware setup or not (ignored if startVm = false, only valid for vmware)
-	BootIntoSetup *bool `protobuf:"varint,14,opt,name=boot_into_setup,json=bootIntoSetup" json:"boot_into_setup,omitempty"`
-	// the ID of the disk offering for the virtual machine. If the template is of ISO format, the diskOfferingId is for the root disk volume. Otherwise this parameter is used to indicate the offering for the data disk volume. If the templateId parameter passed is from a Template object, the diskOfferingId refers to a DATA Disk Volume created. If the templateId parameter passed is from an ISO object, the diskOfferingId refers to a ROOT Disk Volume created.
-	DiskOfferingId *int64 `protobuf:"varint,15,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
-	// the arbitrary size for the DATADISK volume. Mutually exclusive with diskOfferingId
-	Size *int64 `protobuf:"varint,16,opt,name=size" json:"size,omitempty"`
-	// Optional field to resize root disk on deploy. Value is in GB. Only applies to template-based deployments. Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
-	Rootdisksize *int64 `protobuf:"varint,17,opt,name=rootdisksize" json:"rootdisksize,omitempty"`
-	// an optional group for the virtual machine
-	Group *string `protobuf:"bytes,18,opt,name=group" json:"group,omitempty"`
-	// the hypervisor on which to deploy the virtual machine. The parameter is required and respected only when hypervisor info is not set on the ISO/Template passed to the call
-	Hypervisor *string `protobuf:"bytes,19,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	UserData *string `protobuf:"bytes,20,opt,name=user_data,json=userData" json:"user_data,omitempty"`
-	// the ID of the Userdata
-	UserdataId *int64 `protobuf:"varint,21,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
-	// used to specify the parameters values for the variables in userdata.
-	UserdataDetails map[string]string `protobuf:"bytes,22,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// name of the ssh key pair used to login to the virtual machine
-	SshKeyPairName *string `protobuf:"bytes,23,opt,name=ssh_key_pair_name,json=sshKeyPairName" json:"ssh_key_pair_name,omitempty"`
-	// names of the ssh key pairs used to login to the virtual machine
-	SshKeyPairNames []string `protobuf:"bytes,24,rep,name=ssh_key_pair_names,json=sshKeyPairNames" json:"ssh_key_pair_names,omitempty"`
-	// destination Host ID to deploy the VM to - parameter available for root admin only
-	HostId *int64 `protobuf:"varint,25,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	// comma separated list of security groups id that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
-	SecurityGroupIdList []string `protobuf:"bytes,26,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
-	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
-	SecurityGroupNameList []string `protobuf:"bytes,27,rep,name=security_group_name_list,json=securityGroupNameList" json:"security_group_name_list,omitempty"`
-	// ip to network mapping. Can't be specified with networkIds parameter. Example: iptonetworklist[0].ip=10.10.10.11&iptonetworklist[0].ipv6=fc00:1234:5678::abcd&iptonetworklist[0].networkid=uuid&iptonetworklist[0].mac=aa:bb:cc:dd:ee::ff - requests to use ip 10.10.10.11 in network id=uuid
-	IpToNetworkList map[string]string `protobuf:"bytes,28,rep,name=ip_to_network_list,json=ipToNetworkList" json:"ip_to_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// the ip address for default vm's network
-	IpAddress *string `protobuf:"bytes,29,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	// the ipv6 address for default vm's network
-	Ip6Address *string `protobuf:"bytes,30,opt,name=ip6_address,json=ip6Address" json:"ip6_address,omitempty"`
-	// the mac address for default vm's network
-	MacAddress *string `protobuf:"bytes,31,opt,name=mac_address,json=macAddress" json:"mac_address,omitempty"`
-	// an optional keyboard device type for the virtual machine. valid value can be one of de,de-ch,es,fi,fr,fr-be,fr-ch,is,it,jp,nl-be,no,pt,uk,us
-	Keyboard *string `protobuf:"bytes,32,opt,name=keyboard" json:"keyboard,omitempty"`
-	// Deploy vm for the project
-	ProjectId *int64 `protobuf:"varint,33,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// true if start vm after creating; defaulted to true if not specified
-	StartVm *bool `protobuf:"varint,34,opt,name=start_vm,json=startVm" json:"start_vm,omitempty"`
-	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Mutually exclusive with affinitygroupnames parameter
-	AffinityGroupIdList []string `protobuf:"bytes,35,rep,name=affinity_group_id_list,json=affinityGroupIdList" json:"affinity_group_id_list,omitempty"`
-	// comma separated list of affinity groups names that are going to be applied to the virtual machine.Mutually exclusive with affinitygroupids parameter
-	AffinityGroupNameList []string `protobuf:"bytes,36,rep,name=affinity_group_name_list,json=affinityGroupNameList" json:"affinity_group_name_list,omitempty"`
-	// an optional field, whether to the display the vm to the end user or not.
-	DisplayVm *bool `protobuf:"varint,37,opt,name=display_vm,json=displayVm" json:"display_vm,omitempty"`
-	// used to specify the custom parameters. 'extraconfig' is not allowed to be passed in details
-	Details map[string]string `protobuf:"bytes,38,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Deployment planner to use for vm allocation. Available to ROOT admin only
-	DeploymentPlanner *string `protobuf:"bytes,39,opt,name=deployment_planner,json=deploymentPlanner" json:"deployment_planner,omitempty"`
-	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
-	DhcpOptionsNetworkList map[string]string `protobuf:"bytes,40,rep,name=dhcp_options_network_list,json=dhcpOptionsNetworkList" json:"dhcp_options_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// datadisk template to disk-offering mapping; an optional parameter used to create additional data disks from datadisk templates; can't be specified with diskOfferingId parameter
-	DataDiskTemplateToDiskOfferingList map[string]string `protobuf:"bytes,41,rep,name=data_disk_template_to_disk_offering_list,json=dataDiskTemplateToDiskOfferingList" json:"data_disk_template_to_disk_offering_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
-	ExtraConfig *string `protobuf:"bytes,42,opt,name=extra_config,json=extraConfig" json:"extra_config,omitempty"`
-	// if true the image tags (if any) will be copied to the VM, default value is false
-	CopyImageTags *bool `protobuf:"varint,43,opt,name=copy_image_tags,json=copyImageTags" json:"copy_image_tags,omitempty"`
-	// used to specify the vApp properties.
-	VAppProperties map[string]string `protobuf:"bytes,44,rep,name=v_app_properties,json=vAppProperties" json:"v_app_properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// VMware only: used to specify network mapping of a vApp VMware template registered "as-is". Example nicnetworklist[0].ip=Nic-101&nicnetworklist[0].network=uuid
-	VAppNetworks map[string]string `protobuf:"bytes,45,rep,name=v_app_networks,json=vAppNetworks" json:"v_app_networks,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// true if virtual machine needs to be dynamically scalable
-	DynamicScalingEnabled *bool `protobuf:"varint,46,opt,name=dynamic_scaling_enabled,json=dynamicScalingEnabled" json:"dynamic_scaling_enabled,omitempty"`
-	// the ID of the disk offering for the virtual machine to be used for root volume instead of the disk offering mapped in service offering.In case of virtual machine deploying from ISO, then the diskofferingid specified for root volume is ignored and uses this override disk offering id
-	OverrideDiskOfferingId *int64 `protobuf:"varint,47,opt,name=override_disk_offering_id,json=overrideDiskOfferingId" json:"override_disk_offering_id,omitempty"`
-	// IOThreads are dedicated event loop threads for supported disk devices to perform block I/O requests in order to improve scalability especially on an SMP host/guest with many LUNs.
-	IothreadsEnabled *bool `protobuf:"varint,48,opt,name=iothreads_enabled,json=iothreadsEnabled" json:"iothreads_enabled,omitempty"`
-	// Controls specific policies on IO
-	IoDriverPolicy *string `protobuf:"bytes,49,opt,name=io_driver_policy,json=ioDriverPolicy" json:"io_driver_policy,omitempty"`
-	// The number of queues for multiqueue NICs.
-	NicMultiqueueNumber *int32 `protobuf:"varint,50,opt,name=nic_multiqueue_number,json=nicMultiqueueNumber" json:"nic_multiqueue_number,omitempty"`
-	// Enable packed virtqueues or not.
-	NicPackedVirtQueues *bool `protobuf:"varint,51,opt,name=nic_packed_virt_queues,json=nicPackedVirtQueues" json:"nic_packed_virt_queues,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,52,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,53,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,54,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,55,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeployVMCmdByAdminRequest) Reset() {
-	*x = DeployVMCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[74]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeployVMCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeployVMCmdByAdminRequest) ProtoMessage() {}
-
-func (x *DeployVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[74]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeployVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*DeployVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{74}
-}
-
-func (x *DeployVMCmdByAdminRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetNetworkIds() []string {
-	if x != nil {
-		return x.NetworkIds
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetBootType() string {
-	if x != nil && x.BootType != nil {
-		return *x.BootType
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetBootMode() string {
-	if x != nil && x.BootMode != nil {
-		return *x.BootMode
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetBootIntoSetup() bool {
-	if x != nil && x.BootIntoSetup != nil {
-		return *x.BootIntoSetup
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDiskOfferingId() int64 {
-	if x != nil && x.DiskOfferingId != nil {
-		return *x.DiskOfferingId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetSize() int64 {
-	if x != nil && x.Size != nil {
-		return *x.Size
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetRootdisksize() int64 {
-	if x != nil && x.Rootdisksize != nil {
-		return *x.Rootdisksize
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetGroup() string {
-	if x != nil && x.Group != nil {
-		return *x.Group
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetUserData() string {
-	if x != nil && x.UserData != nil {
-		return *x.UserData
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetUserdataId() int64 {
-	if x != nil && x.UserdataId != nil {
-		return *x.UserdataId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetUserdataDetails() map[string]string {
-	if x != nil {
-		return x.UserdataDetails
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetSshKeyPairName() string {
-	if x != nil && x.SshKeyPairName != nil {
-		return *x.SshKeyPairName
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetSshKeyPairNames() []string {
-	if x != nil {
-		return x.SshKeyPairNames
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetSecurityGroupIdList() []string {
-	if x != nil {
-		return x.SecurityGroupIdList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetSecurityGroupNameList() []string {
-	if x != nil {
-		return x.SecurityGroupNameList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetIpToNetworkList() map[string]string {
-	if x != nil {
-		return x.IpToNetworkList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetIp6Address() string {
-	if x != nil && x.Ip6Address != nil {
-		return *x.Ip6Address
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetMacAddress() string {
-	if x != nil && x.MacAddress != nil {
-		return *x.MacAddress
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetKeyboard() string {
-	if x != nil && x.Keyboard != nil {
-		return *x.Keyboard
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetStartVm() bool {
-	if x != nil && x.StartVm != nil {
-		return *x.StartVm
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetAffinityGroupIdList() []string {
-	if x != nil {
-		return x.AffinityGroupIdList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetAffinityGroupNameList() []string {
-	if x != nil {
-		return x.AffinityGroupNameList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDisplayVm() bool {
-	if x != nil && x.DisplayVm != nil {
-		return *x.DisplayVm
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDeploymentPlanner() string {
-	if x != nil && x.DeploymentPlanner != nil {
-		return *x.DeploymentPlanner
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDhcpOptionsNetworkList() map[string]string {
-	if x != nil {
-		return x.DhcpOptionsNetworkList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDataDiskTemplateToDiskOfferingList() map[string]string {
-	if x != nil {
-		return x.DataDiskTemplateToDiskOfferingList
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetExtraConfig() string {
-	if x != nil && x.ExtraConfig != nil {
-		return *x.ExtraConfig
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetCopyImageTags() bool {
-	if x != nil && x.CopyImageTags != nil {
-		return *x.CopyImageTags
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetVAppProperties() map[string]string {
-	if x != nil {
-		return x.VAppProperties
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetVAppNetworks() map[string]string {
-	if x != nil {
-		return x.VAppNetworks
-	}
-	return nil
-}
-
-func (x *DeployVMCmdByAdminRequest) GetDynamicScalingEnabled() bool {
-	if x != nil && x.DynamicScalingEnabled != nil {
-		return *x.DynamicScalingEnabled
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetOverrideDiskOfferingId() int64 {
-	if x != nil && x.OverrideDiskOfferingId != nil {
-		return *x.OverrideDiskOfferingId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetIothreadsEnabled() bool {
-	if x != nil && x.IothreadsEnabled != nil {
-		return *x.IothreadsEnabled
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetIoDriverPolicy() string {
-	if x != nil && x.IoDriverPolicy != nil {
-		return *x.IoDriverPolicy
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetNicMultiqueueNumber() int32 {
-	if x != nil && x.NicMultiqueueNumber != nil {
-		return *x.NicMultiqueueNumber
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetNicPackedVirtQueues() bool {
-	if x != nil && x.NicPackedVirtQueues != nil {
-		return *x.NicPackedVirtQueues
-	}
-	return false
-}
-
-func (x *DeployVMCmdByAdminRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeployVMCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeployVMCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeployVMCmdByAdminResponse represents the response from creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-type DeployVMCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeployVMCmdByAdminResponse) Reset() {
-	*x = DeployVMCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[75]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeployVMCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeployVMCmdByAdminResponse) ProtoMessage() {}
-
-func (x *DeployVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[75]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeployVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*DeployVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{75}
-}
-
-func (x *DeployVMCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UnmanageVMInstanceRequest represents the parameters for unmanage a guest virtual machine.
-type UnmanageVMInstanceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine to unmanage
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UnmanageVMInstanceRequest) Reset() {
-	*x = UnmanageVMInstanceRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[76]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UnmanageVMInstanceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UnmanageVMInstanceRequest) ProtoMessage() {}
-
-func (x *UnmanageVMInstanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[76]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UnmanageVMInstanceRequest.ProtoReflect.Descriptor instead.
-func (*UnmanageVMInstanceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{76}
-}
-
-func (x *UnmanageVMInstanceRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *UnmanageVMInstanceRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UnmanageVMInstanceRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UnmanageVMInstanceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UnmanageVMInstanceResponse represents the response from unmanage a guest virtual machine.
-type UnmanageVMInstanceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UnmanageVMInstanceResponse) Reset() {
-	*x = UnmanageVMInstanceResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[77]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UnmanageVMInstanceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UnmanageVMInstanceResponse) ProtoMessage() {}
-
-func (x *UnmanageVMInstanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[77]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UnmanageVMInstanceResponse.ProtoReflect.Descriptor instead.
-func (*UnmanageVMInstanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{77}
-}
-
-func (x *UnmanageVMInstanceResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ListAffectedVmsForStorageScopeChangeRequest represents the parameters for list user and system vms that need to be stopped and destroyed respectively for changing the scope of the storage pool from zone to cluster.
 type ListAffectedVmsForStorageScopeChangeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -7480,7 +4401,7 @@ type ListAffectedVmsForStorageScopeChangeRequest struct {
 
 func (x *ListAffectedVmsForStorageScopeChangeRequest) Reset() {
 	*x = ListAffectedVmsForStorageScopeChangeRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[78]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7492,7 +4413,7 @@ func (x *ListAffectedVmsForStorageScopeChangeRequest) String() string {
 func (*ListAffectedVmsForStorageScopeChangeRequest) ProtoMessage() {}
 
 func (x *ListAffectedVmsForStorageScopeChangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[78]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7505,7 +4426,7 @@ func (x *ListAffectedVmsForStorageScopeChangeRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use ListAffectedVmsForStorageScopeChangeRequest.ProtoReflect.Descriptor instead.
 func (*ListAffectedVmsForStorageScopeChangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{78}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ListAffectedVmsForStorageScopeChangeRequest) GetClusterIdForScopeChange() int64 {
@@ -7563,7 +4484,7 @@ type ListAffectedVmsForStorageScopeChangeResponse struct {
 
 func (x *ListAffectedVmsForStorageScopeChangeResponse) Reset() {
 	*x = ListAffectedVmsForStorageScopeChangeResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[79]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7575,7 +4496,7 @@ func (x *ListAffectedVmsForStorageScopeChangeResponse) String() string {
 func (*ListAffectedVmsForStorageScopeChangeResponse) ProtoMessage() {}
 
 func (x *ListAffectedVmsForStorageScopeChangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[79]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7588,7 +4509,7 @@ func (x *ListAffectedVmsForStorageScopeChangeResponse) ProtoReflect() protorefle
 
 // Deprecated: Use ListAffectedVmsForStorageScopeChangeResponse.ProtoReflect.Descriptor instead.
 func (*ListAffectedVmsForStorageScopeChangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{79}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ListAffectedVmsForStorageScopeChangeResponse) GetItems() []*VirtualMachine {
@@ -7605,177 +4526,35 @@ func (x *ListAffectedVmsForStorageScopeChangeResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// RemoveNicFromVMRequest represents the parameters for removes vm from specified network by deleting a nic
-type RemoveNicFromVMRequest struct {
+// StopVMCmdByAdminRequest represents the parameters for stops a virtual machine.
+type StopVMCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// Virtual Machine ID
-	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// NIC ID
-	NicId *int64 `protobuf:"varint,3,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveNicFromVMRequest) Reset() {
-	*x = RemoveNicFromVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[80]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveNicFromVMRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveNicFromVMRequest) ProtoMessage() {}
-
-func (x *RemoveNicFromVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[80]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveNicFromVMRequest.ProtoReflect.Descriptor instead.
-func (*RemoveNicFromVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{80}
-}
-
-func (x *RemoveNicFromVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *RemoveNicFromVMRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *RemoveNicFromVMRequest) GetNicId() int64 {
-	if x != nil && x.NicId != nil {
-		return *x.NicId
-	}
-	return 0
-}
-
-func (x *RemoveNicFromVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveNicFromVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveNicFromVMRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveNicFromVMResponse represents the response from removes vm from specified network by deleting a nic
-type RemoveNicFromVMResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveNicFromVMResponse) Reset() {
-	*x = RemoveNicFromVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[81]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveNicFromVMResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveNicFromVMResponse) ProtoMessage() {}
-
-func (x *RemoveNicFromVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[81]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveNicFromVMResponse.ProtoReflect.Descriptor instead.
-func (*RemoveNicFromVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{81}
-}
-
-func (x *RemoveNicFromVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVMScheduleRequest represents the parameters for update vm schedule.
-type UpdateVMScheduleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of VM schedule
+	// The ID of the virtual machine
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Name of the schedule
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
-	Schedule *string `protobuf:"bytes,3,opt,name=schedule" json:"schedule,omitempty"`
-	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
-	TimeZone *string `protobuf:"bytes,4,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	// start date from which the schedule becomes activeUse format "yyyy-MM-dd hh:mm:ss")
-	StartDate *string `protobuf:"bytes,5,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
-	EndDate *string `protobuf:"bytes,6,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
-	// Enable VM schedule
-	Enabled *bool `protobuf:"varint,7,opt,name=enabled" json:"enabled,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateVMScheduleRequest) Reset() {
-	*x = UpdateVMScheduleRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[82]
+func (x *StopVMCmdByAdminRequest) Reset() {
+	*x = StopVMCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateVMScheduleRequest) String() string {
+func (x *StopVMCmdByAdminRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateVMScheduleRequest) ProtoMessage() {}
+func (*StopVMCmdByAdminRequest) ProtoMessage() {}
 
-func (x *UpdateVMScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[82]
+func (x *StopVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7786,69 +4565,48 @@ func (x *UpdateVMScheduleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateVMScheduleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVMScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{82}
+// Deprecated: Use StopVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*StopVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{40}
 }
 
-func (x *UpdateVMScheduleRequest) GetId() int64 {
+func (x *StopVMCmdByAdminRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateVMScheduleRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *UpdateVMScheduleRequest) GetSchedule() string {
-	if x != nil && x.Schedule != nil {
-		return *x.Schedule
-	}
-	return ""
-}
-
-func (x *UpdateVMScheduleRequest) GetTimeZone() string {
-	if x != nil && x.TimeZone != nil {
-		return *x.TimeZone
-	}
-	return ""
-}
-
-func (x *UpdateVMScheduleRequest) GetStartDate() string {
-	if x != nil && x.StartDate != nil {
-		return *x.StartDate
-	}
-	return ""
-}
-
-func (x *UpdateVMScheduleRequest) GetEndDate() string {
-	if x != nil && x.EndDate != nil {
-		return *x.EndDate
-	}
-	return ""
-}
-
-func (x *UpdateVMScheduleRequest) GetEnabled() bool {
-	if x != nil && x.Enabled != nil {
-		return *x.Enabled
+func (x *StopVMCmdByAdminRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
 	}
 	return false
 }
 
-func (x *UpdateVMScheduleRequest) GetResponseType() string {
+func (x *StopVMCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StopVMCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StopVMCmdByAdminRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateVMScheduleResponse represents the response from update vm schedule.
-type UpdateVMScheduleResponse struct {
+// StopVMCmdByAdminResponse represents the response from stops a virtual machine.
+type StopVMCmdByAdminResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -7856,21 +4614,21 @@ type UpdateVMScheduleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateVMScheduleResponse) Reset() {
-	*x = UpdateVMScheduleResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[83]
+func (x *StopVMCmdByAdminResponse) Reset() {
+	*x = StopVMCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateVMScheduleResponse) String() string {
+func (x *StopVMCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateVMScheduleResponse) ProtoMessage() {}
+func (*StopVMCmdByAdminResponse) ProtoMessage() {}
 
-func (x *UpdateVMScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[83]
+func (x *StopVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7881,43 +4639,47 @@ func (x *UpdateVMScheduleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateVMScheduleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVMScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{83}
+// Deprecated: Use StopVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*StopVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *UpdateVMScheduleResponse) GetResult() *Result {
+func (x *StopVMCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// GetVMUserDataRequest represents the parameters for returns user data associated with the vm
-type GetVMUserDataRequest struct {
+// UpdateVmNicIpRequest represents the parameters for update the default ip of a vm nic
+type UpdateVmNicIpRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the ID of the nic to which you want to assign private IP
+	NicId *int64 `protobuf:"varint,1,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
+	// Secondary IP Address
+	IpAddr *string `protobuf:"bytes,2,opt,name=ip_addr,json=ipAddr" json:"ip_addr,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetVMUserDataRequest) Reset() {
-	*x = GetVMUserDataRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[84]
+func (x *UpdateVmNicIpRequest) Reset() {
+	*x = UpdateVmNicIpRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetVMUserDataRequest) String() string {
+func (x *UpdateVmNicIpRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetVMUserDataRequest) ProtoMessage() {}
+func (*UpdateVmNicIpRequest) ProtoMessage() {}
 
-func (x *GetVMUserDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[84]
+func (x *UpdateVmNicIpRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7928,27 +4690,48 @@ func (x *GetVMUserDataRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetVMUserDataRequest.ProtoReflect.Descriptor instead.
-func (*GetVMUserDataRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{84}
+// Deprecated: Use UpdateVmNicIpRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVmNicIpRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{42}
 }
 
-func (x *GetVMUserDataRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
+func (x *UpdateVmNicIpRequest) GetNicId() int64 {
+	if x != nil && x.NicId != nil {
+		return *x.NicId
 	}
 	return 0
 }
 
-func (x *GetVMUserDataRequest) GetResponseType() string {
+func (x *UpdateVmNicIpRequest) GetIpAddr() string {
+	if x != nil && x.IpAddr != nil {
+		return *x.IpAddr
+	}
+	return ""
+}
+
+func (x *UpdateVmNicIpRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVmNicIpRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateVmNicIpRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// GetVMUserDataResponse represents the response from returns user data associated with the vm
-type GetVMUserDataResponse struct {
+// UpdateVmNicIpResponse represents the response from update the default ip of a vm nic
+type UpdateVmNicIpResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -7956,21 +4739,21 @@ type GetVMUserDataResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetVMUserDataResponse) Reset() {
-	*x = GetVMUserDataResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[85]
+func (x *UpdateVmNicIpResponse) Reset() {
+	*x = UpdateVmNicIpResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetVMUserDataResponse) String() string {
+func (x *UpdateVmNicIpResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetVMUserDataResponse) ProtoMessage() {}
+func (*UpdateVmNicIpResponse) ProtoMessage() {}
 
-func (x *GetVMUserDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[85]
+func (x *UpdateVmNicIpResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7981,12 +4764,12 @@ func (x *GetVMUserDataResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetVMUserDataResponse.ProtoReflect.Descriptor instead.
-func (*GetVMUserDataResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{85}
+// Deprecated: Use UpdateVmNicIpResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVmNicIpResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{43}
 }
 
-func (x *GetVMUserDataResponse) GetResult() *Result {
+func (x *UpdateVmNicIpResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -8035,7 +4818,7 @@ type ImportUnmanagedInstanceRequest struct {
 
 func (x *ImportUnmanagedInstanceRequest) Reset() {
 	*x = ImportUnmanagedInstanceRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[86]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8047,7 +4830,7 @@ func (x *ImportUnmanagedInstanceRequest) String() string {
 func (*ImportUnmanagedInstanceRequest) ProtoMessage() {}
 
 func (x *ImportUnmanagedInstanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[86]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8060,7 +4843,7 @@ func (x *ImportUnmanagedInstanceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportUnmanagedInstanceRequest.ProtoReflect.Descriptor instead.
 func (*ImportUnmanagedInstanceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{86}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ImportUnmanagedInstanceRequest) GetClusterId() int64 {
@@ -8200,7 +4983,7 @@ type ImportUnmanagedInstanceResponse struct {
 
 func (x *ImportUnmanagedInstanceResponse) Reset() {
 	*x = ImportUnmanagedInstanceResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[87]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8212,7 +4995,7 @@ func (x *ImportUnmanagedInstanceResponse) String() string {
 func (*ImportUnmanagedInstanceResponse) ProtoMessage() {}
 
 func (x *ImportUnmanagedInstanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[87]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8225,7 +5008,7 @@ func (x *ImportUnmanagedInstanceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportUnmanagedInstanceResponse.ProtoReflect.Descriptor instead.
 func (*ImportUnmanagedInstanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{87}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ImportUnmanagedInstanceResponse) GetResult() *Result {
@@ -8235,39 +5018,35 @@ func (x *ImportUnmanagedInstanceResponse) GetResult() *Result {
 	return nil
 }
 
-// DestroyVMRequest represents the parameters for destroys a virtual machine.
-type DestroyVMRequest struct {
+// DeleteVMScheduleRequest represents the parameters for delete vm schedule.
+type DeleteVMScheduleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
+	// ID of VM
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// ID of VM schedule
 	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// If true is passed, the vm is expunged immediately. False by default.
-	Expunge *bool `protobuf:"varint,3,opt,name=expunge" json:"expunge,omitempty"`
-	// Comma separated list of UUIDs for volumes that will be deleted
-	VolumeIds []string `protobuf:"bytes,4,rep,name=volume_ids,json=volumeIds" json:"volume_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// IDs of VM schedule
+	Ids []string `protobuf:"bytes,3,rep,name=ids" json:"ids,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DestroyVMRequest) Reset() {
-	*x = DestroyVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[88]
+func (x *DeleteVMScheduleRequest) Reset() {
+	*x = DeleteVMScheduleRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DestroyVMRequest) String() string {
+func (x *DeleteVMScheduleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DestroyVMRequest) ProtoMessage() {}
+func (*DeleteVMScheduleRequest) ProtoMessage() {}
 
-func (x *DestroyVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[88]
+func (x *DeleteVMScheduleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8278,62 +5057,41 @@ func (x *DestroyVMRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DestroyVMRequest.ProtoReflect.Descriptor instead.
-func (*DestroyVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{88}
+// Deprecated: Use DeleteVMScheduleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVMScheduleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{46}
 }
 
-func (x *DestroyVMRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
+func (x *DeleteVMScheduleRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
 	}
-	return false
+	return 0
 }
 
-func (x *DestroyVMRequest) GetId() int64 {
+func (x *DeleteVMScheduleRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DestroyVMRequest) GetExpunge() bool {
-	if x != nil && x.Expunge != nil {
-		return *x.Expunge
-	}
-	return false
-}
-
-func (x *DestroyVMRequest) GetVolumeIds() []string {
+func (x *DeleteVMScheduleRequest) GetIds() []string {
 	if x != nil {
-		return x.VolumeIds
+		return x.Ids
 	}
 	return nil
 }
 
-func (x *DestroyVMRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DestroyVMRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DestroyVMRequest) GetResponseType() string {
+func (x *DeleteVMScheduleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DestroyVMResponse represents the response from destroys a virtual machine.
-type DestroyVMResponse struct {
+// DeleteVMScheduleResponse represents the response from delete vm schedule.
+type DeleteVMScheduleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -8341,21 +5099,21 @@ type DestroyVMResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DestroyVMResponse) Reset() {
-	*x = DestroyVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[89]
+func (x *DeleteVMScheduleResponse) Reset() {
+	*x = DeleteVMScheduleResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DestroyVMResponse) String() string {
+func (x *DeleteVMScheduleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DestroyVMResponse) ProtoMessage() {}
+func (*DeleteVMScheduleResponse) ProtoMessage() {}
 
-func (x *DestroyVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[89]
+func (x *DeleteVMScheduleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8366,51 +5124,57 @@ func (x *DestroyVMResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DestroyVMResponse.ProtoReflect.Descriptor instead.
-func (*DestroyVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{89}
+// Deprecated: Use DeleteVMScheduleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVMScheduleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{47}
 }
 
-func (x *DestroyVMResponse) GetResult() *Result {
+func (x *DeleteVMScheduleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// RebootVMRequest represents the parameters for reboots a virtual machine.
-type RebootVMRequest struct {
+// ResetVMSSHKeyRequest represents the parameters for resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
+type ResetVMSSHKeyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Whether to run this operation as an administrator
 	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
 	// The ID of the virtual machine
 	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// Force reboot the VM (VM is Stopped and then Started)
-	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
-	// Boot into hardware setup menu or not
-	BootIntoSetup *bool `protobuf:"varint,4,opt,name=boot_into_setup,json=bootIntoSetup" json:"boot_into_setup,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// name of the ssh key pair used to login to the virtual machine
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// names of the ssh key pairs to be used to login to the virtual machine
+	Names []string `protobuf:"bytes,4,rep,name=names" json:"names,omitempty"`
+	// an optional account for the ssh key. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional project for the ssh key
+	ProjectId *int64 `protobuf:"varint,7,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RebootVMRequest) Reset() {
-	*x = RebootVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[90]
+func (x *ResetVMSSHKeyRequest) Reset() {
+	*x = ResetVMSSHKeyRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RebootVMRequest) String() string {
+func (x *ResetVMSSHKeyRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RebootVMRequest) ProtoMessage() {}
+func (*ResetVMSSHKeyRequest) ProtoMessage() {}
 
-func (x *RebootVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[90]
+func (x *ResetVMSSHKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8421,62 +5185,83 @@ func (x *RebootVMRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RebootVMRequest.ProtoReflect.Descriptor instead.
-func (*RebootVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{90}
+// Deprecated: Use ResetVMSSHKeyRequest.ProtoReflect.Descriptor instead.
+func (*ResetVMSSHKeyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{48}
 }
 
-func (x *RebootVMRequest) GetRunAsAdmin() bool {
+func (x *ResetVMSSHKeyRequest) GetRunAsAdmin() bool {
 	if x != nil && x.RunAsAdmin != nil {
 		return *x.RunAsAdmin
 	}
 	return false
 }
 
-func (x *RebootVMRequest) GetId() int64 {
+func (x *ResetVMSSHKeyRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *RebootVMRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
+func (x *ResetVMSSHKeyRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
-	return false
+	return ""
 }
 
-func (x *RebootVMRequest) GetBootIntoSetup() bool {
-	if x != nil && x.BootIntoSetup != nil {
-		return *x.BootIntoSetup
+func (x *ResetVMSSHKeyRequest) GetNames() []string {
+	if x != nil {
+		return x.Names
 	}
-	return false
+	return nil
 }
 
-func (x *RebootVMRequest) GetStartEventId() int64 {
+func (x *ResetVMSSHKeyRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ResetVMSSHKeyRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ResetVMSSHKeyRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ResetVMSSHKeyRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *RebootVMRequest) GetInjectedJobId() string {
+func (x *ResetVMSSHKeyRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *RebootVMRequest) GetResponseType() string {
+func (x *ResetVMSSHKeyRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RebootVMResponse represents the response from reboots a virtual machine.
-type RebootVMResponse struct {
+// ResetVMSSHKeyResponse represents the response from resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
+type ResetVMSSHKeyResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -8484,21 +5269,21 @@ type RebootVMResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RebootVMResponse) Reset() {
-	*x = RebootVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[91]
+func (x *ResetVMSSHKeyResponse) Reset() {
+	*x = ResetVMSSHKeyResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RebootVMResponse) String() string {
+func (x *ResetVMSSHKeyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RebootVMResponse) ProtoMessage() {}
+func (*ResetVMSSHKeyResponse) ProtoMessage() {}
 
-func (x *RebootVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[91]
+func (x *ResetVMSSHKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8509,16 +5294,286 @@ func (x *RebootVMResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RebootVMResponse.ProtoReflect.Descriptor instead.
-func (*RebootVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{91}
+// Deprecated: Use ResetVMSSHKeyResponse.ProtoReflect.Descriptor instead.
+func (*ResetVMSSHKeyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{49}
 }
 
-func (x *RebootVMResponse) GetResult() *Result {
+func (x *ResetVMSSHKeyResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
+}
+
+// GetVMPasswordRequest represents the parameters for returns an encrypted password for the vm
+type GetVMPasswordRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVMPasswordRequest) Reset() {
+	*x = GetVMPasswordRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVMPasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVMPasswordRequest) ProtoMessage() {}
+
+func (x *GetVMPasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVMPasswordRequest.ProtoReflect.Descriptor instead.
+func (*GetVMPasswordRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *GetVMPasswordRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *GetVMPasswordRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GetVMPasswordResponse represents the response from returns an encrypted password for the vm
+type GetVMPasswordResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVMPasswordResponse) Reset() {
+	*x = GetVMPasswordResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVMPasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVMPasswordResponse) ProtoMessage() {}
+
+func (x *GetVMPasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVMPasswordResponse.ProtoReflect.Descriptor instead.
+func (*GetVMPasswordResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *GetVMPasswordResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListVmsForImportRequest represents the parameters for lists virtual machines on a unmanaged host
+type ListVmsForImportRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the zone ID
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the username for the host
+	Username *string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
+	// the password for the host
+	Password *string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
+	// the host name or IP address
+	Host *string `protobuf:"bytes,4,opt,name=host" json:"host,omitempty"`
+	// hypervisor type of the host
+	Hypervisor *string `protobuf:"bytes,5,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,6,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,7,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,8,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVmsForImportRequest) Reset() {
+	*x = ListVmsForImportRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVmsForImportRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVmsForImportRequest) ProtoMessage() {}
+
+func (x *ListVmsForImportRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVmsForImportRequest.ProtoReflect.Descriptor instead.
+func (*ListVmsForImportRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *ListVmsForImportRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListVmsForImportRequest) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
+	}
+	return ""
+}
+
+func (x *ListVmsForImportRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *ListVmsForImportRequest) GetHost() string {
+	if x != nil && x.Host != nil {
+		return *x.Host
+	}
+	return ""
+}
+
+func (x *ListVmsForImportRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *ListVmsForImportRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVmsForImportRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVmsForImportRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVmsForImportRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVmsForImportResponse represents the response from lists virtual machines on a unmanaged host
+type ListVmsForImportResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of UnmanagedInstances
+	Items []*UnmanagedInstance `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of UnmanagedInstances
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVmsForImportResponse) Reset() {
+	*x = ListVmsForImportResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVmsForImportResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVmsForImportResponse) ProtoMessage() {}
+
+func (x *ListVmsForImportResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVmsForImportResponse.ProtoReflect.Descriptor instead.
+func (*ListVmsForImportResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *ListVmsForImportResponse) GetItems() []*UnmanagedInstance {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVmsForImportResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // DeployVMRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
@@ -8635,7 +5690,7 @@ type DeployVMRequest struct {
 
 func (x *DeployVMRequest) Reset() {
 	*x = DeployVMRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[92]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8647,7 +5702,7 @@ func (x *DeployVMRequest) String() string {
 func (*DeployVMRequest) ProtoMessage() {}
 
 func (x *DeployVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[92]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8660,7 +5715,7 @@ func (x *DeployVMRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeployVMRequest.ProtoReflect.Descriptor instead.
 func (*DeployVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{92}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *DeployVMRequest) GetRunAsAdmin() bool {
@@ -9052,7 +6107,7 @@ type DeployVMResponse struct {
 
 func (x *DeployVMResponse) Reset() {
 	*x = DeployVMResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[93]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9064,7 +6119,7 @@ func (x *DeployVMResponse) String() string {
 func (*DeployVMResponse) ProtoMessage() {}
 
 func (x *DeployVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[93]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9077,7 +6132,7 @@ func (x *DeployVMResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeployVMResponse.ProtoReflect.Descriptor instead.
 func (*DeployVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{93}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *DeployVMResponse) GetResult() *Result {
@@ -9087,45 +6142,47 @@ func (x *DeployVMResponse) GetResult() *Result {
 	return nil
 }
 
-// ResetVMSSHKeyRequest represents the parameters for resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-type ResetVMSSHKeyRequest struct {
+// ScaleVMRequest represents the parameters for scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+type ScaleVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Whether to run this operation as an administrator
 	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
 	// The ID of the virtual machine
 	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// name of the ssh key pair used to login to the virtual machine
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// names of the ssh key pairs to be used to login to the virtual machine
-	Names []string `protobuf:"bytes,4,rep,name=names" json:"names,omitempty"`
-	// an optional account for the ssh key. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional project for the ssh key
-	ProjectId *int64 `protobuf:"varint,7,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the ID of the service offering for the virtual machine
+	ServiceOfferingId *int64 `protobuf:"varint,3,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// New minimum number of IOPS for the custom disk offering
+	MinIops *int64 `protobuf:"varint,5,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// New maximum number of IOPS for the custom disk offering
+	MaxIops *int64 `protobuf:"varint,6,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
+	AutoMigrate *bool `protobuf:"varint,7,opt,name=auto_migrate,json=autoMigrate" json:"auto_migrate,omitempty"`
+	// Verify OK to Shrink
+	ShrinkOk *bool `protobuf:"varint,8,opt,name=shrink_ok,json=shrinkOk" json:"shrink_ok,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ResetVMSSHKeyRequest) Reset() {
-	*x = ResetVMSSHKeyRequest{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[94]
+func (x *ScaleVMRequest) Reset() {
+	*x = ScaleVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ResetVMSSHKeyRequest) String() string {
+func (x *ScaleVMRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ResetVMSSHKeyRequest) ProtoMessage() {}
+func (*ScaleVMRequest) ProtoMessage() {}
 
-func (x *ResetVMSSHKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[94]
+func (x *ScaleVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9136,83 +6193,90 @@ func (x *ResetVMSSHKeyRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ResetVMSSHKeyRequest.ProtoReflect.Descriptor instead.
-func (*ResetVMSSHKeyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{94}
+// Deprecated: Use ScaleVMRequest.ProtoReflect.Descriptor instead.
+func (*ScaleVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{56}
 }
 
-func (x *ResetVMSSHKeyRequest) GetRunAsAdmin() bool {
+func (x *ScaleVMRequest) GetRunAsAdmin() bool {
 	if x != nil && x.RunAsAdmin != nil {
 		return *x.RunAsAdmin
 	}
 	return false
 }
 
-func (x *ResetVMSSHKeyRequest) GetId() int64 {
+func (x *ScaleVMRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ResetVMSSHKeyRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ScaleVMRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
 	}
-	return ""
+	return 0
 }
 
-func (x *ResetVMSSHKeyRequest) GetNames() []string {
+func (x *ScaleVMRequest) GetDetails() map[string]string {
 	if x != nil {
-		return x.Names
+		return x.Details
 	}
 	return nil
 }
 
-func (x *ResetVMSSHKeyRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ResetVMSSHKeyRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *ScaleVMRequest) GetMinIops() int64 {
+	if x != nil && x.MinIops != nil {
+		return *x.MinIops
 	}
 	return 0
 }
 
-func (x *ResetVMSSHKeyRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
+func (x *ScaleVMRequest) GetMaxIops() int64 {
+	if x != nil && x.MaxIops != nil {
+		return *x.MaxIops
 	}
 	return 0
 }
 
-func (x *ResetVMSSHKeyRequest) GetStartEventId() int64 {
+func (x *ScaleVMRequest) GetAutoMigrate() bool {
+	if x != nil && x.AutoMigrate != nil {
+		return *x.AutoMigrate
+	}
+	return false
+}
+
+func (x *ScaleVMRequest) GetShrinkOk() bool {
+	if x != nil && x.ShrinkOk != nil {
+		return *x.ShrinkOk
+	}
+	return false
+}
+
+func (x *ScaleVMRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ResetVMSSHKeyRequest) GetInjectedJobId() string {
+func (x *ScaleVMRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ResetVMSSHKeyRequest) GetResponseType() string {
+func (x *ScaleVMRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ResetVMSSHKeyResponse represents the response from resets the ssh key for virtual machine. the virtual machine must be in a "stopped" state. [async]
-type ResetVMSSHKeyResponse struct {
+// ScaleVMResponse represents the response from scales the virtual machine to a new service offering. this command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+type ScaleVMResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -9220,21 +6284,21 @@ type ResetVMSSHKeyResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ResetVMSSHKeyResponse) Reset() {
-	*x = ResetVMSSHKeyResponse{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[95]
+func (x *ScaleVMResponse) Reset() {
+	*x = ScaleVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ResetVMSSHKeyResponse) String() string {
+func (x *ScaleVMResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ResetVMSSHKeyResponse) ProtoMessage() {}
+func (*ScaleVMResponse) ProtoMessage() {}
 
-func (x *ResetVMSSHKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[95]
+func (x *ScaleVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9245,50 +6309,81 @@ func (x *ResetVMSSHKeyResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ResetVMSSHKeyResponse.ProtoReflect.Descriptor instead.
-func (*ResetVMSSHKeyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{95}
+// Deprecated: Use ScaleVMResponse.ProtoReflect.Descriptor instead.
+func (*ScaleVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{57}
 }
 
-func (x *ResetVMSSHKeyResponse) GetResult() *Result {
+func (x *ScaleVMResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// VMSchedule represents a VMSchedule Item
-type VMSchedule struct {
+// UpdateVMCmdByAdminRequest represents the parameters for updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+type UpdateVMCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the VMSchedule
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the VMSchedule
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the VMSchedule
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the VMSchedule
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// user generated name
+	DisplayName *string `protobuf:"bytes,1,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// group of the virtual machine
+	Group *string `protobuf:"bytes,2,opt,name=group" json:"group,omitempty"`
+	// true if high-availability is enabled for the virtual machine, false otherwise
+	HaEnable *bool `protobuf:"varint,3,opt,name=ha_enable,json=haEnable" json:"ha_enable,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// the ID of the OS type that best represents this VM.
+	OsTypeId *int64 `protobuf:"varint,5,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,6,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// the ID of the userdata
+	UserdataId *int64 `protobuf:"varint,7,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
+	// used to specify the parameters values for the variables in userdata.
+	UserdataDetails map[string]string `protobuf:"bytes,8,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional field, whether to the display the vm to the end user or not.
+	DisplayVm *bool `protobuf:"varint,9,opt,name=display_vm,json=displayVm" json:"display_vm,omitempty"`
+	// true if VM contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory. This can be updated only when dynamic scaling is enabled on template, service offering and the corresponding global setting
+	IsDynamicallyScalable *bool `protobuf:"varint,10,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// new host name of the vm. The VM has to be stopped/started for this update to take affect
+	Name *string `protobuf:"bytes,11,opt,name=name" json:"name,omitempty"`
+	// instance name of the user vm
+	InstanceName *string `protobuf:"bytes,12,opt,name=instance_name,json=instanceName" json:"instance_name,omitempty"`
+	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
+	Details map[string]string `protobuf:"bytes,13,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list of security group ids to be applied on the virtual machine.
+	SecurityGroupIdList []string `protobuf:"bytes,14,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	SecurityGroupNameList []string `protobuf:"bytes,15,rep,name=security_group_name_list,json=securityGroupNameList" json:"security_group_name_list,omitempty"`
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	CleanupDetails *bool `protobuf:"varint,16,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	DhcpOptionsNetworkList map[string]string `protobuf:"bytes,17,rep,name=dhcp_options_network_list,json=dhcpOptionsNetworkList" json:"dhcp_options_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	ExtraConfig *string `protobuf:"bytes,18,opt,name=extra_config,json=extraConfig" json:"extra_config,omitempty"`
+	// Set delete protection for the virtual machine. If true, the instance will be protected from deletion. Note: If the instance is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	DeleteProtection *bool `protobuf:"varint,19,opt,name=delete_protection,json=deleteProtection" json:"delete_protection,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,20,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,21,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VMSchedule) Reset() {
-	*x = VMSchedule{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[96]
+func (x *UpdateVMCmdByAdminRequest) Reset() {
+	*x = UpdateVMCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VMSchedule) String() string {
+func (x *UpdateVMCmdByAdminRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VMSchedule) ProtoMessage() {}
+func (*UpdateVMCmdByAdminRequest) ProtoMessage() {}
 
-func (x *VMSchedule) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[96]
+func (x *UpdateVMCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9299,78 +6394,182 @@ func (x *VMSchedule) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VMSchedule.ProtoReflect.Descriptor instead.
-func (*VMSchedule) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{96}
+// Deprecated: Use UpdateVMCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVMCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{58}
 }
 
-func (x *VMSchedule) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *VMSchedule) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *VMSchedule) GetDisplayName() string {
+func (x *UpdateVMCmdByAdminRequest) GetDisplayName() string {
 	if x != nil && x.DisplayName != nil {
 		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *VMSchedule) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *UpdateVMCmdByAdminRequest) GetGroup() string {
+	if x != nil && x.Group != nil {
+		return *x.Group
 	}
 	return ""
 }
 
-func (x *VMSchedule) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *UpdateVMCmdByAdminRequest) GetHaEnable() bool {
+	if x != nil && x.HaEnable != nil {
+		return *x.HaEnable
+	}
+	return false
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
 	}
 	return ""
 }
 
-// Nic represents a Nic Item
-type Nic struct {
+func (x *UpdateVMCmdByAdminRequest) GetUserdataId() int64 {
+	if x != nil && x.UserdataId != nil {
+		return *x.UserdataId
+	}
+	return 0
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetUserdataDetails() map[string]string {
+	if x != nil {
+		return x.UserdataDetails
+	}
+	return nil
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetDisplayVm() bool {
+	if x != nil && x.DisplayVm != nil {
+		return *x.DisplayVm
+	}
+	return false
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetInstanceName() string {
+	if x != nil && x.InstanceName != nil {
+		return *x.InstanceName
+	}
+	return ""
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetSecurityGroupIdList() []string {
+	if x != nil {
+		return x.SecurityGroupIdList
+	}
+	return nil
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetSecurityGroupNameList() []string {
+	if x != nil {
+		return x.SecurityGroupNameList
+	}
+	return nil
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetCleanupDetails() bool {
+	if x != nil && x.CleanupDetails != nil {
+		return *x.CleanupDetails
+	}
+	return false
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetDhcpOptionsNetworkList() map[string]string {
+	if x != nil {
+		return x.DhcpOptionsNetworkList
+	}
+	return nil
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetExtraConfig() string {
+	if x != nil && x.ExtraConfig != nil {
+		return *x.ExtraConfig
+	}
+	return ""
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetDeleteProtection() bool {
+	if x != nil && x.DeleteProtection != nil {
+		return *x.DeleteProtection
+	}
+	return false
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateVMCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVMCmdByAdminResponse represents the response from updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+type UpdateVMCmdByAdminResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Nic
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Nic
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Nic
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Nic
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Nic) Reset() {
-	*x = Nic{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[97]
+func (x *UpdateVMCmdByAdminResponse) Reset() {
+	*x = UpdateVMCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Nic) String() string {
+func (x *UpdateVMCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Nic) ProtoMessage() {}
+func (*UpdateVMCmdByAdminResponse) ProtoMessage() {}
 
-func (x *Nic) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[97]
+func (x *UpdateVMCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9381,78 +6580,57 @@ func (x *Nic) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Nic.ProtoReflect.Descriptor instead.
-func (*Nic) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{97}
+// Deprecated: Use UpdateVMCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVMCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{59}
 }
 
-func (x *Nic) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *UpdateVMCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
+	return nil
 }
 
-func (x *Nic) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Nic) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Nic) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Nic) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// UserVm represents a UserVm Item
-type UserVm struct {
+// ResetVMUserDataRequest represents the parameters for resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
+type ResetVMUserDataRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the UserVm
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the UserVm
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the UserVm
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the UserVm
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,3,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// the ID of the userdata
+	UserdataId *int64 `protobuf:"varint,4,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
+	// used to specify the parameters values for the variables in userdata.
+	UserdataDetails map[string]string `protobuf:"bytes,5,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional account for the virtual machine. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,6,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional project for the virtual machine
+	ProjectId *int64 `protobuf:"varint,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UserVm) Reset() {
-	*x = UserVm{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[98]
+func (x *ResetVMUserDataRequest) Reset() {
+	*x = ResetVMUserDataRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UserVm) String() string {
+func (x *ResetVMUserDataRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UserVm) ProtoMessage() {}
+func (*ResetVMUserDataRequest) ProtoMessage() {}
 
-func (x *UserVm) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[98]
+func (x *ResetVMUserDataRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9463,44 +6641,2733 @@ func (x *UserVm) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UserVm.ProtoReflect.Descriptor instead.
-func (*UserVm) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{98}
+// Deprecated: Use ResetVMUserDataRequest.ProtoReflect.Descriptor instead.
+func (*ResetVMUserDataRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{60}
 }
 
-func (x *UserVm) GetId() string {
+func (x *ResetVMUserDataRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ResetVMUserDataRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *UserVm) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ResetVMUserDataRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
 	}
 	return ""
 }
 
-func (x *UserVm) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *ResetVMUserDataRequest) GetUserdataId() int64 {
+	if x != nil && x.UserdataId != nil {
+		return *x.UserdataId
+	}
+	return 0
+}
+
+func (x *ResetVMUserDataRequest) GetUserdataDetails() map[string]string {
+	if x != nil {
+		return x.UserdataDetails
+	}
+	return nil
+}
+
+func (x *ResetVMUserDataRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *UserVm) GetDescription() string {
+func (x *ResetVMUserDataRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ResetVMUserDataRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ResetVMUserDataRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ResetVMUserDataResponse represents the response from resets the userdata for virtual machine. the virtual machine must be in a "stopped" state.
+type ResetVMUserDataResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetVMUserDataResponse) Reset() {
+	*x = ResetVMUserDataResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetVMUserDataResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetVMUserDataResponse) ProtoMessage() {}
+
+func (x *ResetVMUserDataResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetVMUserDataResponse.ProtoReflect.Descriptor instead.
+func (*ResetVMUserDataResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{61}
+}
+
+func (x *ResetVMUserDataResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVMScheduleRequest represents the parameters for create vm schedule
+type CreateVMScheduleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the VM for which schedule is to be defined
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// Description of the schedule
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
+	Schedule *string `protobuf:"bytes,3,opt,name=schedule" json:"schedule,omitempty"`
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	TimeZone *string `protobuf:"bytes,4,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	// Action to take on the VM (start/stop/reboot/force_stop/force_reboot).
+	Action *string `protobuf:"bytes,5,opt,name=action" json:"action,omitempty"`
+	// start date from which the schedule becomes active. Defaults to current date plus 1 minute.Use format "yyyy-MM-dd hh:mm:ss")
+	StartDate *string `protobuf:"bytes,6,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
+	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
+	EndDate *string `protobuf:"bytes,7,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
+	// Enable VM schedule. Defaults to true
+	Enabled *bool `protobuf:"varint,8,opt,name=enabled" json:"enabled,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVMScheduleRequest) Reset() {
+	*x = CreateVMScheduleRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVMScheduleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVMScheduleRequest) ProtoMessage() {}
+
+func (x *CreateVMScheduleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVMScheduleRequest.ProtoReflect.Descriptor instead.
+func (*CreateVMScheduleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *CreateVMScheduleRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *CreateVMScheduleRequest) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *UserVm) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *CreateVMScheduleRequest) GetSchedule() string {
+	if x != nil && x.Schedule != nil {
+		return *x.Schedule
 	}
 	return ""
+}
+
+func (x *CreateVMScheduleRequest) GetTimeZone() string {
+	if x != nil && x.TimeZone != nil {
+		return *x.TimeZone
+	}
+	return ""
+}
+
+func (x *CreateVMScheduleRequest) GetAction() string {
+	if x != nil && x.Action != nil {
+		return *x.Action
+	}
+	return ""
+}
+
+func (x *CreateVMScheduleRequest) GetStartDate() string {
+	if x != nil && x.StartDate != nil {
+		return *x.StartDate
+	}
+	return ""
+}
+
+func (x *CreateVMScheduleRequest) GetEndDate() string {
+	if x != nil && x.EndDate != nil {
+		return *x.EndDate
+	}
+	return ""
+}
+
+func (x *CreateVMScheduleRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *CreateVMScheduleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVMScheduleResponse represents the response from create vm schedule
+type CreateVMScheduleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVMScheduleResponse) Reset() {
+	*x = CreateVMScheduleResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVMScheduleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVMScheduleResponse) ProtoMessage() {}
+
+func (x *CreateVMScheduleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVMScheduleResponse.ProtoReflect.Descriptor instead.
+func (*CreateVMScheduleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *CreateVMScheduleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveNicFromVMRequest represents the parameters for removes vm from specified network by deleting a nic
+type RemoveNicFromVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// Virtual Machine ID
+	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// NIC ID
+	NicId *int64 `protobuf:"varint,3,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveNicFromVMRequest) Reset() {
+	*x = RemoveNicFromVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveNicFromVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveNicFromVMRequest) ProtoMessage() {}
+
+func (x *RemoveNicFromVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveNicFromVMRequest.ProtoReflect.Descriptor instead.
+func (*RemoveNicFromVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *RemoveNicFromVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *RemoveNicFromVMRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *RemoveNicFromVMRequest) GetNicId() int64 {
+	if x != nil && x.NicId != nil {
+		return *x.NicId
+	}
+	return 0
+}
+
+func (x *RemoveNicFromVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveNicFromVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveNicFromVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveNicFromVMResponse represents the response from removes vm from specified network by deleting a nic
+type RemoveNicFromVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveNicFromVMResponse) Reset() {
+	*x = RemoveNicFromVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveNicFromVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveNicFromVMResponse) ProtoMessage() {}
+
+func (x *RemoveNicFromVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveNicFromVMResponse.ProtoReflect.Descriptor instead.
+func (*RemoveNicFromVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *RemoveNicFromVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListVMsRequest represents the parameters for list the virtual machines owned by the account.
+type ListVMsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the group ID
+	GroupId *int64 `protobuf:"varint,2,opt,name=group_id,json=groupId" json:"group_id,omitempty"`
+	// the ID of the virtual machine
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// the IDs of the virtual machines, mutually exclusive with id
+	Ids []string `protobuf:"bytes,4,rep,name=ids" json:"ids,omitempty"`
+	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
+	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
+	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
+	State *string `protobuf:"bytes,6,opt,name=state" json:"state,omitempty"`
+	// the availability zone ID
+	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list by network type; true if need to list vms using Virtual Network, false otherwise
+	ForVirtualNetwork *bool `protobuf:"varint,8,opt,name=for_virtual_network,json=forVirtualNetwork" json:"for_virtual_network,omitempty"`
+	// list by network id
+	NetworkId *int64 `protobuf:"varint,9,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// the target hypervisor for the template
+	Hypervisor *string `protobuf:"bytes,10,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
+	ViewDetails []string `protobuf:"bytes,11,rep,name=view_details,json=viewDetails" json:"view_details,omitempty"`
+	// list vms by template
+	TemplateId *int64 `protobuf:"varint,12,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// list vms by iso
+	IsoId *int64 `protobuf:"varint,13,opt,name=iso_id,json=isoId" json:"iso_id,omitempty"`
+	// list vms by vpc
+	VpcId *int64 `protobuf:"varint,14,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// list vms by affinity group
+	AffinityGroupId *int64 `protobuf:"varint,15,opt,name=affinity_group_id,json=affinityGroupId" json:"affinity_group_id,omitempty"`
+	// list vms by ssh keypair name
+	Keypair *string `protobuf:"bytes,16,opt,name=keypair" json:"keypair,omitempty"`
+	// list by the service offering
+	ServiceOffId *int64 `protobuf:"varint,17,opt,name=service_off_id,json=serviceOffId" json:"service_off_id,omitempty"`
+	// list by the backup offering
+	BackupOffId *int64 `protobuf:"varint,18,opt,name=backup_off_id,json=backupOffId" json:"backup_off_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,19,opt,name=display" json:"display,omitempty"`
+	// the user ID that created the VM and is under the account that owns the VM
+	UserId *int64 `protobuf:"varint,20,opt,name=user_id,json=userId" json:"user_id,omitempty"`
+	// the security group ID
+	SecurityGroupId *int64 `protobuf:"varint,21,opt,name=security_group_id,json=securityGroupId" json:"security_group_id,omitempty"`
+	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
+	HaEnabled *bool `protobuf:"varint,22,opt,name=ha_enabled,json=haEnabled" json:"ha_enabled,omitempty"`
+	// the ID of AutoScaling VM Group
+	AutoScaleVmGroupId *int64 `protobuf:"varint,23,opt,name=auto_scale_vm_group_id,json=autoScaleVmGroupId" json:"auto_scale_vm_group_id,omitempty"`
+	// flag to display the resource icon for VMs
+	ShowIcon *bool `protobuf:"varint,24,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
+	Accumulate *bool `protobuf:"varint,25,opt,name=accumulate" json:"accumulate,omitempty"`
+	// Whether to return the VMs' user data or not. By default, user data will not be returned.
+	ShowUserData *bool `protobuf:"varint,26,opt,name=show_user_data,json=showUserData" json:"show_user_data,omitempty"`
+	// the instances by userdata
+	UserdataId *int64 `protobuf:"varint,27,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
+	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
+	IsVnf *bool `protobuf:"varint,28,opt,name=is_vnf,json=isVnf" json:"is_vnf,omitempty"`
+	// makes the API's response contains only the resource count
+	RetrieveOnlyResourceCount *bool `protobuf:"varint,29,opt,name=retrieve_only_resource_count,json=retrieveOnlyResourceCount" json:"retrieve_only_resource_count,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,30,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,31,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,32,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,33,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,34,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,35,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,36,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,37,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,38,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,39,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVMsRequest) Reset() {
+	*x = ListVMsRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[66]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVMsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVMsRequest) ProtoMessage() {}
+
+func (x *ListVMsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[66]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVMsRequest.ProtoReflect.Descriptor instead.
+func (*ListVMsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{66}
+}
+
+func (x *ListVMsRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetGroupId() int64 {
+	if x != nil && x.GroupId != nil {
+		return *x.GroupId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *ListVMsRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListVMsRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListVMsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetForVirtualNetwork() bool {
+	if x != nil && x.ForVirtualNetwork != nil {
+		return *x.ForVirtualNetwork
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *ListVMsRequest) GetViewDetails() []string {
+	if x != nil {
+		return x.ViewDetails
+	}
+	return nil
+}
+
+func (x *ListVMsRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetIsoId() int64 {
+	if x != nil && x.IsoId != nil {
+		return *x.IsoId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetAffinityGroupId() int64 {
+	if x != nil && x.AffinityGroupId != nil {
+		return *x.AffinityGroupId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetKeypair() string {
+	if x != nil && x.Keypair != nil {
+		return *x.Keypair
+	}
+	return ""
+}
+
+func (x *ListVMsRequest) GetServiceOffId() int64 {
+	if x != nil && x.ServiceOffId != nil {
+		return *x.ServiceOffId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetBackupOffId() int64 {
+	if x != nil && x.BackupOffId != nil {
+		return *x.BackupOffId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetUserId() int64 {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetSecurityGroupId() int64 {
+	if x != nil && x.SecurityGroupId != nil {
+		return *x.SecurityGroupId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetHaEnabled() bool {
+	if x != nil && x.HaEnabled != nil {
+		return *x.HaEnabled
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetAutoScaleVmGroupId() int64 {
+	if x != nil && x.AutoScaleVmGroupId != nil {
+		return *x.AutoScaleVmGroupId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetAccumulate() bool {
+	if x != nil && x.Accumulate != nil {
+		return *x.Accumulate
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetShowUserData() bool {
+	if x != nil && x.ShowUserData != nil {
+		return *x.ShowUserData
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetUserdataId() int64 {
+	if x != nil && x.UserdataId != nil {
+		return *x.UserdataId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetIsVnf() bool {
+	if x != nil && x.IsVnf != nil {
+		return *x.IsVnf
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetRetrieveOnlyResourceCount() bool {
+	if x != nil && x.RetrieveOnlyResourceCount != nil {
+		return *x.RetrieveOnlyResourceCount
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListVMsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListVMsRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListVMsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVMsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVMsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVMsResponse represents the response from list the virtual machines owned by the account.
+type ListVMsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of UserVms
+	Items []*UserVm `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of UserVms
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVMsResponse) Reset() {
+	*x = ListVMsResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[67]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVMsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVMsResponse) ProtoMessage() {}
+
+func (x *ListVMsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[67]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVMsResponse.ProtoReflect.Descriptor instead.
+func (*ListVMsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *ListVMsResponse) GetItems() []*UserVm {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVMsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// RebootVMRequest represents the parameters for reboots a virtual machine.
+type RebootVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// Force reboot the VM (VM is Stopped and then Started)
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	// Boot into hardware setup menu or not
+	BootIntoSetup *bool `protobuf:"varint,4,opt,name=boot_into_setup,json=bootIntoSetup" json:"boot_into_setup,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RebootVMRequest) Reset() {
+	*x = RebootVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[68]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RebootVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RebootVMRequest) ProtoMessage() {}
+
+func (x *RebootVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[68]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RebootVMRequest.ProtoReflect.Descriptor instead.
+func (*RebootVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{68}
+}
+
+func (x *RebootVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *RebootVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RebootVMRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *RebootVMRequest) GetBootIntoSetup() bool {
+	if x != nil && x.BootIntoSetup != nil {
+		return *x.BootIntoSetup
+	}
+	return false
+}
+
+func (x *RebootVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RebootVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RebootVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RebootVMResponse represents the response from reboots a virtual machine.
+type RebootVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RebootVMResponse) Reset() {
+	*x = RebootVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[69]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RebootVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RebootVMResponse) ProtoMessage() {}
+
+func (x *RebootVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[69]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RebootVMResponse.ProtoReflect.Descriptor instead.
+func (*RebootVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{69}
+}
+
+func (x *RebootVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ImportVmRequest represents the parameters for import virtual machine from a unmanaged host into cloudstack
+type ImportVmRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the zone ID
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the username for the host
+	Username *string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
+	// the password for the host
+	Password *string `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
+	// the host name or IP address
+	Host *string `protobuf:"bytes,4,opt,name=host" json:"host,omitempty"`
+	// hypervisor type of the host
+	Hypervisor *string `protobuf:"bytes,5,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// path of the disk image
+	DiskPath *string `protobuf:"bytes,6,opt,name=disk_path,json=diskPath" json:"disk_path,omitempty"`
+	// Source location for Import
+	ImportSource *string `protobuf:"bytes,7,opt,name=import_source,json=importSource" json:"import_source,omitempty"`
+	// the network ID
+	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// Host where local disk is located
+	HostId *int64 `protobuf:"varint,9,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	// Shared storage pool where disk is located
+	StoragePoolId *int64 `protobuf:"varint,10,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
+	// Temp Path on external host for disk image copy
+	TmpPath *string `protobuf:"bytes,11,opt,name=tmp_path,json=tmpPath" json:"tmp_path,omitempty"`
+	// (only for importing VMs from VMware to KVM) UUID of a linked existing vCenter
+	ExistingVcenterId *int64 `protobuf:"varint,12,opt,name=existing_vcenter_id,json=existingVcenterId" json:"existing_vcenter_id,omitempty"`
+	// (only for importing VMs from VMware to KVM) VMware ESXi host IP/Name.
+	Hostip *string `protobuf:"bytes,13,opt,name=hostip" json:"hostip,omitempty"`
+	// (only for importing VMs from VMware to KVM) The name/ip of vCenter. Make sure it is IP address or full qualified domain name for host running vCenter server.
+	Vcenter *string `protobuf:"bytes,14,opt,name=vcenter" json:"vcenter,omitempty"`
+	// (only for importing VMs from VMware to KVM) Name of VMware datacenter.
+	DatacenterName *string `protobuf:"bytes,15,opt,name=datacenter_name,json=datacenterName" json:"datacenter_name,omitempty"`
+	// (only for importing VMs from VMware to KVM) Name of VMware cluster.
+	ClusterName *string `protobuf:"bytes,16,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	// (only for importing VMs from VMware to KVM) optional - the host to perform the virt-v2v conversion from VMware to KVM.
+	ConvertInstanceHostId *int64 `protobuf:"varint,17,opt,name=convert_instance_host_id,json=convertInstanceHostId" json:"convert_instance_host_id,omitempty"`
+	// (only for importing VMs from VMware to KVM) optional - the host to import the converted instance from VMware to KVM.
+	ImportInstanceHostId *int64 `protobuf:"varint,18,opt,name=import_instance_host_id,json=importInstanceHostId" json:"import_instance_host_id,omitempty"`
+	// (only for importing VMs from VMware to KVM) optional - the temporary storage pool to perform the virt-v2v migration from VMware to KVM.
+	ConvertStoragePoolId *int64 `protobuf:"varint,19,opt,name=convert_storage_pool_id,json=convertStoragePoolId" json:"convert_storage_pool_id,omitempty"`
+	// (only for importing VMs from VMware to KVM) optional - if true, forces MS to export OVF from VMware to temporary storage, else uses KVM Host if ovftool is available, falls back to MS if not.
+	ForceMsToImportVmFiles *bool `protobuf:"varint,20,opt,name=force_ms_to_import_vm_files,json=forceMsToImportVmFiles" json:"force_ms_to_import_vm_files,omitempty"`
+	// the cluster ID
+	ClusterId *int64 `protobuf:"varint,21,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// the name of the instance as it is known to the hypervisor
+	Name *string `protobuf:"bytes,22,opt,name=name" json:"name,omitempty"`
+	// the display name of the instance
+	DisplayName *string `protobuf:"bytes,23,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// the host name of the instance
+	HostName *string `protobuf:"bytes,24,opt,name=host_name,json=hostName" json:"host_name,omitempty"`
+	// an optional account for the virtual machine. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,25,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// import instance to the domain specified
+	DomainId *int64 `protobuf:"varint,26,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// import instance for the project
+	ProjectId *int64 `protobuf:"varint,27,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the ID of the template for the virtual machine
+	TemplateId *int64 `protobuf:"varint,28,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// the service offering for the virtual machine
+	ServiceOfferingId *int64 `protobuf:"varint,29,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// VM nic to network id mapping using keys nic and network
+	NicNetworkList map[string]string `protobuf:"bytes,30,rep,name=nic_network_list,json=nicNetworkList" json:"nic_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// VM nic to ip address mapping using keys nic, ip4Address
+	NicIpAddressList map[string]string `protobuf:"bytes,31,rep,name=nic_ip_address_list,json=nicIpAddressList" json:"nic_ip_address_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// datadisk template to disk-offering mapping using keys disk and diskOffering
+	DataDiskToDiskOfferingList map[string]string `protobuf:"bytes,32,rep,name=data_disk_to_disk_offering_list,json=dataDiskToDiskOfferingList" json:"data_disk_to_disk_offering_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// used to specify the custom parameters.
+	Details map[string]string `protobuf:"bytes,33,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// vm and its volumes are allowed to migrate to different host/pool when offerings passed are incompatible with current host/pool
+	MigrateAllowed *bool `protobuf:"varint,34,opt,name=migrate_allowed,json=migrateAllowed" json:"migrate_allowed,omitempty"`
+	// VM is imported despite some of its NIC's MAC addresses are already present, in case the MAC address exists then a new MAC address is generated
+	Forced *bool `protobuf:"varint,35,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,36,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,37,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,38,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportVmRequest) Reset() {
+	*x = ImportVmRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[70]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportVmRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportVmRequest) ProtoMessage() {}
+
+func (x *ImportVmRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[70]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportVmRequest.ProtoReflect.Descriptor instead.
+func (*ImportVmRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{70}
+}
+
+func (x *ImportVmRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetHost() string {
+	if x != nil && x.Host != nil {
+		return *x.Host
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetDiskPath() string {
+	if x != nil && x.DiskPath != nil {
+		return *x.DiskPath
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetImportSource() string {
+	if x != nil && x.ImportSource != nil {
+		return *x.ImportSource
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetStoragePoolId() int64 {
+	if x != nil && x.StoragePoolId != nil {
+		return *x.StoragePoolId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetTmpPath() string {
+	if x != nil && x.TmpPath != nil {
+		return *x.TmpPath
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetExistingVcenterId() int64 {
+	if x != nil && x.ExistingVcenterId != nil {
+		return *x.ExistingVcenterId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetHostip() string {
+	if x != nil && x.Hostip != nil {
+		return *x.Hostip
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetVcenter() string {
+	if x != nil && x.Vcenter != nil {
+		return *x.Vcenter
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetDatacenterName() string {
+	if x != nil && x.DatacenterName != nil {
+		return *x.DatacenterName
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetClusterName() string {
+	if x != nil && x.ClusterName != nil {
+		return *x.ClusterName
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetConvertInstanceHostId() int64 {
+	if x != nil && x.ConvertInstanceHostId != nil {
+		return *x.ConvertInstanceHostId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetImportInstanceHostId() int64 {
+	if x != nil && x.ImportInstanceHostId != nil {
+		return *x.ImportInstanceHostId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetConvertStoragePoolId() int64 {
+	if x != nil && x.ConvertStoragePoolId != nil {
+		return *x.ConvertStoragePoolId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetForceMsToImportVmFiles() bool {
+	if x != nil && x.ForceMsToImportVmFiles != nil {
+		return *x.ForceMsToImportVmFiles
+	}
+	return false
+}
+
+func (x *ImportVmRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetHostName() string {
+	if x != nil && x.HostName != nil {
+		return *x.HostName
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetNicNetworkList() map[string]string {
+	if x != nil {
+		return x.NicNetworkList
+	}
+	return nil
+}
+
+func (x *ImportVmRequest) GetNicIpAddressList() map[string]string {
+	if x != nil {
+		return x.NicIpAddressList
+	}
+	return nil
+}
+
+func (x *ImportVmRequest) GetDataDiskToDiskOfferingList() map[string]string {
+	if x != nil {
+		return x.DataDiskToDiskOfferingList
+	}
+	return nil
+}
+
+func (x *ImportVmRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *ImportVmRequest) GetMigrateAllowed() bool {
+	if x != nil && x.MigrateAllowed != nil {
+		return *x.MigrateAllowed
+	}
+	return false
+}
+
+func (x *ImportVmRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *ImportVmRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ImportVmRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ImportVmRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ImportVmResponse represents the response from import virtual machine from a unmanaged host into cloudstack
+type ImportVmResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportVmResponse) Reset() {
+	*x = ImportVmResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[71]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportVmResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportVmResponse) ProtoMessage() {}
+
+func (x *ImportVmResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[71]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportVmResponse.ProtoReflect.Descriptor instead.
+func (*ImportVmResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{71}
+}
+
+func (x *ImportVmResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddIpToVmNicRequest represents the parameters for assigns secondary ip to nic
+type AddIpToVmNicRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the nic to which you want to assign private IP
+	NicId *int64 `protobuf:"varint,1,opt,name=nic_id,json=nicId" json:"nic_id,omitempty"`
+	// Secondary IP Address
+	IpAddr *string `protobuf:"bytes,2,opt,name=ip_addr,json=ipAddr" json:"ip_addr,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddIpToVmNicRequest) Reset() {
+	*x = AddIpToVmNicRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[72]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddIpToVmNicRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddIpToVmNicRequest) ProtoMessage() {}
+
+func (x *AddIpToVmNicRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[72]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddIpToVmNicRequest.ProtoReflect.Descriptor instead.
+func (*AddIpToVmNicRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{72}
+}
+
+func (x *AddIpToVmNicRequest) GetNicId() int64 {
+	if x != nil && x.NicId != nil {
+		return *x.NicId
+	}
+	return 0
+}
+
+func (x *AddIpToVmNicRequest) GetIpAddr() string {
+	if x != nil && x.IpAddr != nil {
+		return *x.IpAddr
+	}
+	return ""
+}
+
+func (x *AddIpToVmNicRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddIpToVmNicRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddIpToVmNicRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddIpToVmNicResponse represents the response from assigns secondary ip to nic
+type AddIpToVmNicResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddIpToVmNicResponse) Reset() {
+	*x = AddIpToVmNicResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[73]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddIpToVmNicResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddIpToVmNicResponse) ProtoMessage() {}
+
+func (x *AddIpToVmNicResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[73]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddIpToVmNicResponse.ProtoReflect.Descriptor instead.
+func (*AddIpToVmNicResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{73}
+}
+
+func (x *AddIpToVmNicResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// GetVMUserDataRequest represents the parameters for returns user data associated with the vm
+type GetVMUserDataRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the virtual machine
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVMUserDataRequest) Reset() {
+	*x = GetVMUserDataRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[74]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVMUserDataRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVMUserDataRequest) ProtoMessage() {}
+
+func (x *GetVMUserDataRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[74]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVMUserDataRequest.ProtoReflect.Descriptor instead.
+func (*GetVMUserDataRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{74}
+}
+
+func (x *GetVMUserDataRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *GetVMUserDataRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GetVMUserDataResponse represents the response from returns user data associated with the vm
+type GetVMUserDataResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVMUserDataResponse) Reset() {
+	*x = GetVMUserDataResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[75]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVMUserDataResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVMUserDataResponse) ProtoMessage() {}
+
+func (x *GetVMUserDataResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[75]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVMUserDataResponse.ProtoReflect.Descriptor instead.
+func (*GetVMUserDataResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{75}
+}
+
+func (x *GetVMUserDataResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateVMScheduleRequest represents the parameters for update vm schedule.
+type UpdateVMScheduleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of VM schedule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Name of the schedule
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
+	Schedule *string `protobuf:"bytes,3,opt,name=schedule" json:"schedule,omitempty"`
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	TimeZone *string `protobuf:"bytes,4,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	// start date from which the schedule becomes activeUse format "yyyy-MM-dd hh:mm:ss")
+	StartDate *string `protobuf:"bytes,5,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
+	// end date after which the schedule becomes inactiveUse format "yyyy-MM-dd hh:mm:ss")
+	EndDate *string `protobuf:"bytes,6,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
+	// Enable VM schedule
+	Enabled *bool `protobuf:"varint,7,opt,name=enabled" json:"enabled,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVMScheduleRequest) Reset() {
+	*x = UpdateVMScheduleRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[76]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMScheduleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMScheduleRequest) ProtoMessage() {}
+
+func (x *UpdateVMScheduleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[76]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMScheduleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVMScheduleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{76}
+}
+
+func (x *UpdateVMScheduleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVMScheduleRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UpdateVMScheduleRequest) GetSchedule() string {
+	if x != nil && x.Schedule != nil {
+		return *x.Schedule
+	}
+	return ""
+}
+
+func (x *UpdateVMScheduleRequest) GetTimeZone() string {
+	if x != nil && x.TimeZone != nil {
+		return *x.TimeZone
+	}
+	return ""
+}
+
+func (x *UpdateVMScheduleRequest) GetStartDate() string {
+	if x != nil && x.StartDate != nil {
+		return *x.StartDate
+	}
+	return ""
+}
+
+func (x *UpdateVMScheduleRequest) GetEndDate() string {
+	if x != nil && x.EndDate != nil {
+		return *x.EndDate
+	}
+	return ""
+}
+
+func (x *UpdateVMScheduleRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *UpdateVMScheduleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVMScheduleResponse represents the response from update vm schedule.
+type UpdateVMScheduleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVMScheduleResponse) Reset() {
+	*x = UpdateVMScheduleResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[77]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMScheduleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMScheduleResponse) ProtoMessage() {}
+
+func (x *UpdateVMScheduleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[77]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMScheduleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVMScheduleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{77}
+}
+
+func (x *UpdateVMScheduleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// MigrateVirtualMachineWithVolumeRequest represents the parameters for attempts migration of a vm with its volumes to a different host
+type MigrateVirtualMachineWithVolumeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Destination Host ID to migrate VM to.
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	// the ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// Storage to pool mapping. This parameter specifies the mapping between a volume and a pool where you want to migrate that volume. Format of this parameter: migrateto[volume-index].volume=<uuid>&migrateto[volume-index].pool=<uuid>Where, [volume-index] indicates the index to identify the volume that you want to migrate, volume=<uuid> indicates the UUID of the volume that you want to migrate, and pool=<uuid> indicates the UUID of the pool where you want to migrate the volume. Example: migrateto[0].volume=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].pool=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].volume=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].pool=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].volume=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].pool=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
+	MigrateVolumeTo map[string]string `protobuf:"bytes,3,rep,name=migrate_volume_to,json=migrateVolumeTo" json:"migrate_volume_to,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Automatically select a destination host for a running instance, if hostId is not specified. false by default
+	AutoSelect *bool `protobuf:"varint,4,opt,name=auto_select,json=autoSelect" json:"auto_select,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) Reset() {
+	*x = MigrateVirtualMachineWithVolumeRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[78]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVirtualMachineWithVolumeRequest) ProtoMessage() {}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[78]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVirtualMachineWithVolumeRequest.ProtoReflect.Descriptor instead.
+func (*MigrateVirtualMachineWithVolumeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{78}
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetMigrateVolumeTo() map[string]string {
+	if x != nil {
+		return x.MigrateVolumeTo
+	}
+	return nil
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetAutoSelect() bool {
+	if x != nil && x.AutoSelect != nil {
+		return *x.AutoSelect
+	}
+	return false
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *MigrateVirtualMachineWithVolumeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MigrateVirtualMachineWithVolumeResponse represents the response from attempts migration of a vm with its volumes to a different host
+type MigrateVirtualMachineWithVolumeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVirtualMachineWithVolumeResponse) Reset() {
+	*x = MigrateVirtualMachineWithVolumeResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[79]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVirtualMachineWithVolumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVirtualMachineWithVolumeResponse) ProtoMessage() {}
+
+func (x *MigrateVirtualMachineWithVolumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[79]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVirtualMachineWithVolumeResponse.ProtoReflect.Descriptor instead.
+func (*MigrateVirtualMachineWithVolumeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{79}
+}
+
+func (x *MigrateVirtualMachineWithVolumeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddNicToVMRequest represents the parameters for adds vm to specified network by creating a nic
+type AddNicToVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// Virtual Machine ID
+	VmId *int64 `protobuf:"varint,2,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// Network ID
+	NetId *int64 `protobuf:"varint,3,opt,name=net_id,json=netId" json:"net_id,omitempty"`
+	// IP Address for the new network
+	Ipaddr *string `protobuf:"bytes,4,opt,name=ipaddr" json:"ipaddr,omitempty"`
+	// Mac Address for the new network
+	Macaddr *string `protobuf:"bytes,5,opt,name=macaddr" json:"macaddr,omitempty"`
+	// DHCP options which are passed to the nic Example: dhcpoptions[0].dhcp:114=url&dhcpoptions[0].dhcp:66=www.test.com
+	DhcpOptions map[string]string `protobuf:"bytes,6,rep,name=dhcp_options,json=dhcpOptions" json:"dhcp_options,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddNicToVMRequest) Reset() {
+	*x = AddNicToVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[80]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddNicToVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddNicToVMRequest) ProtoMessage() {}
+
+func (x *AddNicToVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[80]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddNicToVMRequest.ProtoReflect.Descriptor instead.
+func (*AddNicToVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{80}
+}
+
+func (x *AddNicToVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *AddNicToVMRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *AddNicToVMRequest) GetNetId() int64 {
+	if x != nil && x.NetId != nil {
+		return *x.NetId
+	}
+	return 0
+}
+
+func (x *AddNicToVMRequest) GetIpaddr() string {
+	if x != nil && x.Ipaddr != nil {
+		return *x.Ipaddr
+	}
+	return ""
+}
+
+func (x *AddNicToVMRequest) GetMacaddr() string {
+	if x != nil && x.Macaddr != nil {
+		return *x.Macaddr
+	}
+	return ""
+}
+
+func (x *AddNicToVMRequest) GetDhcpOptions() map[string]string {
+	if x != nil {
+		return x.DhcpOptions
+	}
+	return nil
+}
+
+func (x *AddNicToVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddNicToVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddNicToVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddNicToVMResponse represents the response from adds vm to specified network by creating a nic
+type AddNicToVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddNicToVMResponse) Reset() {
+	*x = AddNicToVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[81]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddNicToVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddNicToVMResponse) ProtoMessage() {}
+
+func (x *AddNicToVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[81]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddNicToVMResponse.ProtoReflect.Descriptor instead.
+func (*AddNicToVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{81}
+}
+
+func (x *AddNicToVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveIpFromVmNicRequest represents the parameters for removes secondary ip from the nic.
+type RemoveIpFromVmNicRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the secondary ip address to nic
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveIpFromVmNicRequest) Reset() {
+	*x = RemoveIpFromVmNicRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[82]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveIpFromVmNicRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveIpFromVmNicRequest) ProtoMessage() {}
+
+func (x *RemoveIpFromVmNicRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[82]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveIpFromVmNicRequest.ProtoReflect.Descriptor instead.
+func (*RemoveIpFromVmNicRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{82}
+}
+
+func (x *RemoveIpFromVmNicRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RemoveIpFromVmNicRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveIpFromVmNicRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveIpFromVmNicRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveIpFromVmNicResponse represents the response from removes secondary ip from the nic.
+type RemoveIpFromVmNicResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveIpFromVmNicResponse) Reset() {
+	*x = RemoveIpFromVmNicResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[83]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveIpFromVmNicResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveIpFromVmNicResponse) ProtoMessage() {}
+
+func (x *RemoveIpFromVmNicResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[83]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveIpFromVmNicResponse.ProtoReflect.Descriptor instead.
+func (*RemoveIpFromVmNicResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{83}
+}
+
+func (x *RemoveIpFromVmNicResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// StopVMRequest represents the parameters for stops a virtual machine.
+type StopVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopVMRequest) Reset() {
+	*x = StopVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[84]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopVMRequest) ProtoMessage() {}
+
+func (x *StopVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[84]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopVMRequest.ProtoReflect.Descriptor instead.
+func (*StopVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{84}
+}
+
+func (x *StopVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *StopVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *StopVMRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *StopVMRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StopVMRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StopVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// StopVMResponse represents the response from stops a virtual machine.
+type StopVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopVMResponse) Reset() {
+	*x = StopVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[85]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopVMResponse) ProtoMessage() {}
+
+func (x *StopVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[85]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopVMResponse.ProtoReflect.Descriptor instead.
+func (*StopVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{85}
+}
+
+func (x *StopVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateVMRequest represents the parameters for updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+type UpdateVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// user generated name
+	DisplayName *string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// group of the virtual machine
+	Group *string `protobuf:"bytes,3,opt,name=group" json:"group,omitempty"`
+	// true if high-availability is enabled for the virtual machine, false otherwise
+	HaEnable *bool `protobuf:"varint,4,opt,name=ha_enable,json=haEnable" json:"ha_enable,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
+	// the ID of the OS type that best represents this VM.
+	OsTypeId *int64 `protobuf:"varint,6,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,7,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// the ID of the userdata
+	UserdataId *int64 `protobuf:"varint,8,opt,name=userdata_id,json=userdataId" json:"userdata_id,omitempty"`
+	// used to specify the parameters values for the variables in userdata.
+	UserdataDetails map[string]string `protobuf:"bytes,9,rep,name=userdata_details,json=userdataDetails" json:"userdata_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional field, whether to the display the vm to the end user or not.
+	DisplayVm *bool `protobuf:"varint,10,opt,name=display_vm,json=displayVm" json:"display_vm,omitempty"`
+	// true if VM contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory. This can be updated only when dynamic scaling is enabled on template, service offering and the corresponding global setting
+	IsDynamicallyScalable *bool `protobuf:"varint,11,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// new host name of the vm. The VM has to be stopped/started for this update to take affect
+	Name *string `protobuf:"bytes,12,opt,name=name" json:"name,omitempty"`
+	// instance name of the user vm
+	InstanceName *string `protobuf:"bytes,13,opt,name=instance_name,json=instanceName" json:"instance_name,omitempty"`
+	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
+	Details map[string]string `protobuf:"bytes,14,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list of security group ids to be applied on the virtual machine.
+	SecurityGroupIdList []string `protobuf:"bytes,15,rep,name=security_group_id_list,json=securityGroupIdList" json:"security_group_id_list,omitempty"`
+	// comma separated list of security groups names that going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	SecurityGroupNameList []string `protobuf:"bytes,16,rep,name=security_group_name_list,json=securityGroupNameList" json:"security_group_name_list,omitempty"`
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	CleanupDetails *bool `protobuf:"varint,17,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
+	// DHCP options which are passed to the VM on start up Example: dhcpoptionsnetworklist[0].dhcp:114=url&dhcpoptionsetworklist[0].networkid=networkid&dhcpoptionsetworklist[0].dhcp:66=www.test.com
+	DhcpOptionsNetworkList map[string]string `protobuf:"bytes,18,rep,name=dhcp_options_network_list,json=dhcpOptionsNetworkList" json:"dhcp_options_network_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional URL encoded string that can be passed to the virtual machine upon successful deployment
+	ExtraConfig *string `protobuf:"bytes,19,opt,name=extra_config,json=extraConfig" json:"extra_config,omitempty"`
+	// Set delete protection for the virtual machine. If true, the instance will be protected from deletion. Note: If the instance is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	DeleteProtection *bool `protobuf:"varint,20,opt,name=delete_protection,json=deleteProtection" json:"delete_protection,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,21,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,22,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVMRequest) Reset() {
+	*x = UpdateVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[86]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMRequest) ProtoMessage() {}
+
+func (x *UpdateVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[86]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{86}
+}
+
+func (x *UpdateVMRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UpdateVMRequest) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetGroup() string {
+	if x != nil && x.Group != nil {
+		return *x.Group
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetHaEnable() bool {
+	if x != nil && x.HaEnable != nil {
+		return *x.HaEnable
+	}
+	return false
+}
+
+func (x *UpdateVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVMRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *UpdateVMRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetUserdataId() int64 {
+	if x != nil && x.UserdataId != nil {
+		return *x.UserdataId
+	}
+	return 0
+}
+
+func (x *UpdateVMRequest) GetUserdataDetails() map[string]string {
+	if x != nil {
+		return x.UserdataDetails
+	}
+	return nil
+}
+
+func (x *UpdateVMRequest) GetDisplayVm() bool {
+	if x != nil && x.DisplayVm != nil {
+		return *x.DisplayVm
+	}
+	return false
+}
+
+func (x *UpdateVMRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *UpdateVMRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetInstanceName() string {
+	if x != nil && x.InstanceName != nil {
+		return *x.InstanceName
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateVMRequest) GetSecurityGroupIdList() []string {
+	if x != nil {
+		return x.SecurityGroupIdList
+	}
+	return nil
+}
+
+func (x *UpdateVMRequest) GetSecurityGroupNameList() []string {
+	if x != nil {
+		return x.SecurityGroupNameList
+	}
+	return nil
+}
+
+func (x *UpdateVMRequest) GetCleanupDetails() bool {
+	if x != nil && x.CleanupDetails != nil {
+		return *x.CleanupDetails
+	}
+	return false
+}
+
+func (x *UpdateVMRequest) GetDhcpOptionsNetworkList() map[string]string {
+	if x != nil {
+		return x.DhcpOptionsNetworkList
+	}
+	return nil
+}
+
+func (x *UpdateVMRequest) GetExtraConfig() string {
+	if x != nil && x.ExtraConfig != nil {
+		return *x.ExtraConfig
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetDeleteProtection() bool {
+	if x != nil && x.DeleteProtection != nil {
+		return *x.DeleteProtection
+	}
+	return false
+}
+
+func (x *UpdateVMRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVMResponse represents the response from updates properties of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect. updatevirtualmachine does not first check whether the vm is stopped. therefore, stop the vm manually before issuing this call.
+type UpdateVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVMResponse) Reset() {
+	*x = UpdateVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[87]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMResponse) ProtoMessage() {}
+
+func (x *UpdateVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[87]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{87}
+}
+
+func (x *UpdateVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RecoverVMRequest represents the parameters for recovers a virtual machine.
+type RecoverVMRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverVMRequest) Reset() {
+	*x = RecoverVMRequest{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[88]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverVMRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverVMRequest) ProtoMessage() {}
+
+func (x *RecoverVMRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[88]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverVMRequest.ProtoReflect.Descriptor instead.
+func (*RecoverVMRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{88}
+}
+
+func (x *RecoverVMRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RecoverVMRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RecoverVMResponse represents the response from recovers a virtual machine.
+type RecoverVMResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverVMResponse) Reset() {
+	*x = RecoverVMResponse{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[89]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverVMResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverVMResponse) ProtoMessage() {}
+
+func (x *RecoverVMResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[89]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverVMResponse.ProtoReflect.Descriptor instead.
+func (*RecoverVMResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{89}
+}
+
+func (x *RecoverVMResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // UnmanagedInstance represents a UnmanagedInstance Item
@@ -9522,7 +9389,7 @@ type UnmanagedInstance struct {
 
 func (x *UnmanagedInstance) Reset() {
 	*x = UnmanagedInstance{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[99]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9534,7 +9401,7 @@ func (x *UnmanagedInstance) String() string {
 func (*UnmanagedInstance) ProtoMessage() {}
 
 func (x *UnmanagedInstance) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[99]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9547,7 +9414,7 @@ func (x *UnmanagedInstance) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnmanagedInstance.ProtoReflect.Descriptor instead.
 func (*UnmanagedInstance) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{99}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *UnmanagedInstance) GetId() string {
@@ -9585,6 +9452,252 @@ func (x *UnmanagedInstance) GetCreated() string {
 	return ""
 }
 
+// Nic represents a Nic Item
+type Nic struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Nic
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Nic
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Nic
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Nic
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Nic) Reset() {
+	*x = Nic{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[91]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Nic) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Nic) ProtoMessage() {}
+
+func (x *Nic) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[91]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Nic.ProtoReflect.Descriptor instead.
+func (*Nic) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{91}
+}
+
+func (x *Nic) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Nic) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Nic) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Nic) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Nic) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// VMSchedule represents a VMSchedule Item
+type VMSchedule struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the VMSchedule
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the VMSchedule
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the VMSchedule
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the VMSchedule
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VMSchedule) Reset() {
+	*x = VMSchedule{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[92]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VMSchedule) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VMSchedule) ProtoMessage() {}
+
+func (x *VMSchedule) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[92]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VMSchedule.ProtoReflect.Descriptor instead.
+func (*VMSchedule) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{92}
+}
+
+func (x *VMSchedule) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *VMSchedule) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *VMSchedule) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *VMSchedule) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *VMSchedule) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// UserVm represents a UserVm Item
+type UserVm struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the UserVm
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the UserVm
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the UserVm
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the UserVm
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserVm) Reset() {
+	*x = UserVm{}
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[93]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserVm) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserVm) ProtoMessage() {}
+
+func (x *UserVm) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[93]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserVm.ProtoReflect.Descriptor instead.
+func (*UserVm) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{93}
+}
+
+func (x *UserVm) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *UserVm) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UserVm) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *UserVm) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UserVm) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
 // VirtualMachine represents a VirtualMachine Item
 type VirtualMachine struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -9604,7 +9717,7 @@ type VirtualMachine struct {
 
 func (x *VirtualMachine) Reset() {
 	*x = VirtualMachine{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[100]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9616,7 +9729,7 @@ func (x *VirtualMachine) String() string {
 func (*VirtualMachine) ProtoMessage() {}
 
 func (x *VirtualMachine) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[100]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9629,7 +9742,7 @@ func (x *VirtualMachine) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtualMachine.ProtoReflect.Descriptor instead.
 func (*VirtualMachine) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{100}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *VirtualMachine) GetId() string {
@@ -9680,7 +9793,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[101]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[95]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9692,7 +9805,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[101]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[95]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9705,7 +9818,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{101}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -9755,7 +9868,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[102]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9767,7 +9880,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[102]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9780,7 +9893,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{102}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *Item) GetId() string {
@@ -9886,7 +9999,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[103]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[97]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9898,7 +10011,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[103]
+	mi := &file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes[97]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9911,7 +10024,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{103}
+	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -9953,17 +10066,315 @@ var File_cloudstack_management_vm_v1_vm_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\n" +
-	"(cloudstack/management/vm/v1/vm.gen.proto\x12\x1bcloudstack.management.vm.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe5\x01\n" +
-	"\rStopVMRequest\x12 \n" +
+	"(cloudstack/management/vm/v1/vm.gen.proto\x12\x1bcloudstack.management.vm.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xa1\x02\n" +
+	"\x0fAssignVMRequest\x124\n" +
+	"\x12virtual_machine_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1f\n" +
+	"\vnetwork_ids\x18\x05 \x03(\tR\n" +
+	"networkIds\x123\n" +
+	"\x16security_group_id_list\x18\x06 \x03(\tR\x13securityGroupIdList\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"O\n" +
+	"\x10AssignVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf6\x19\n" +
+	"\x19DeployVMCmdByAdminRequest\x12\x15\n" +
+	"\x06pod_id\x18\x01 \x01(\x03R\x05podId\x12\x1d\n" +
+	"\n" +
+	"cluster_id\x18\x02 \x01(\x03R\tclusterId\x12\x1f\n" +
+	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x126\n" +
+	"\x13service_offering_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12'\n" +
+	"\vtemplate_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"templateId\x12\x1e\n" +
+	"\x04name\x18\x06 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12-\n" +
+	"\fdisplay_name\x18\a \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12\x1a\n" +
+	"\bpassword\x18\b \x01(\tR\bpassword\x12!\n" +
+	"\faccount_name\x18\t \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\n" +
+	" \x01(\x03R\bdomainId\x12\x1f\n" +
+	"\vnetwork_ids\x18\v \x03(\tR\n" +
+	"networkIds\x12\x1b\n" +
+	"\tboot_type\x18\f \x01(\tR\bbootType\x12\x1b\n" +
+	"\tboot_mode\x18\r \x01(\tR\bbootMode\x12-\n" +
+	"\x0fboot_into_setup\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\rbootIntoSetup\x12(\n" +
+	"\x10disk_offering_id\x18\x0f \x01(\x03R\x0ediskOfferingId\x12\x12\n" +
+	"\x04size\x18\x10 \x01(\x03R\x04size\x12\"\n" +
+	"\frootdisksize\x18\x11 \x01(\x03R\frootdisksize\x12\x14\n" +
+	"\x05group\x18\x12 \x01(\tR\x05group\x12\x1e\n" +
+	"\n" +
+	"hypervisor\x18\x13 \x01(\tR\n" +
+	"hypervisor\x12\x1b\n" +
+	"\tuser_data\x18\x14 \x01(\tR\buserData\x12\x1f\n" +
+	"\vuserdata_id\x18\x15 \x01(\x03R\n" +
+	"userdataId\x12v\n" +
+	"\x10userdata_details\x18\x16 \x03(\v2K.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12)\n" +
+	"\x11ssh_key_pair_name\x18\x17 \x01(\tR\x0esshKeyPairName\x12+\n" +
+	"\x12ssh_key_pair_names\x18\x18 \x03(\tR\x0fsshKeyPairNames\x12\x17\n" +
+	"\ahost_id\x18\x19 \x01(\x03R\x06hostId\x123\n" +
+	"\x16security_group_id_list\x18\x1a \x03(\tR\x13securityGroupIdList\x127\n" +
+	"\x18security_group_name_list\x18\x1b \x03(\tR\x15securityGroupNameList\x12x\n" +
+	"\x12ip_to_network_list\x18\x1c \x03(\v2K.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.IpToNetworkListEntryR\x0fipToNetworkList\x12&\n" +
+	"\n" +
+	"ip_address\x18\x1d \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12(\n" +
+	"\vip6_address\x18\x1e \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
+	"ip6Address\x12\x1f\n" +
+	"\vmac_address\x18\x1f \x01(\tR\n" +
+	"macAddress\x12\x1a\n" +
+	"\bkeyboard\x18  \x01(\tR\bkeyboard\x12\x1d\n" +
+	"\n" +
+	"project_id\x18! \x01(\x03R\tprojectId\x12 \n" +
+	"\bstart_vm\x18\" \x01(\bB\x05\xaa\x01\x02\b\x01R\astartVm\x123\n" +
+	"\x16affinity_group_id_list\x18# \x03(\tR\x13affinityGroupIdList\x127\n" +
+	"\x18affinity_group_name_list\x18$ \x03(\tR\x15affinityGroupNameList\x12$\n" +
+	"\n" +
+	"display_vm\x18% \x01(\bB\x05\xaa\x01\x02\b\x01R\tdisplayVm\x12]\n" +
+	"\adetails\x18& \x03(\v2C.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DetailsEntryR\adetails\x12-\n" +
+	"\x12deployment_planner\x18' \x01(\tR\x11deploymentPlanner\x12\x8d\x01\n" +
+	"\x19dhcp_options_network_list\x18( \x03(\v2R.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DhcpOptionsNetworkListEntryR\x16dhcpOptionsNetworkList\x12\xb4\x01\n" +
+	"(data_disk_template_to_disk_offering_list\x18) \x03(\v2^.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntryR\"dataDiskTemplateToDiskOfferingList\x12!\n" +
+	"\fextra_config\x18* \x01(\tR\vextraConfig\x12-\n" +
+	"\x0fcopy_image_tags\x18+ \x01(\bB\x05\xaa\x01\x02\b\x01R\rcopyImageTags\x12t\n" +
+	"\x10v_app_properties\x18, \x03(\v2J.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppPropertiesEntryR\x0evAppProperties\x12n\n" +
+	"\x0ev_app_networks\x18- \x03(\v2H.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppNetworksEntryR\fvAppNetworks\x12=\n" +
+	"\x17dynamic_scaling_enabled\x18. \x01(\bB\x05\xaa\x01\x02\b\x01R\x15dynamicScalingEnabled\x129\n" +
+	"\x19override_disk_offering_id\x18/ \x01(\x03R\x16overrideDiskOfferingId\x122\n" +
+	"\x11iothreads_enabled\x180 \x01(\bB\x05\xaa\x01\x02\b\x01R\x10iothreadsEnabled\x12(\n" +
+	"\x10io_driver_policy\x181 \x01(\tR\x0eioDriverPolicy\x122\n" +
+	"\x15nic_multiqueue_number\x182 \x01(\x05R\x13nicMultiqueueNumber\x12:\n" +
+	"\x16nic_packed_virt_queues\x183 \x01(\bB\x05\xaa\x01\x02\b\x01R\x13nicPackedVirtQueues\x12%\n" +
+	"\tcustom_id\x184 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x185 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x186 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x187 \x01(\tR\fresponseType\x1aB\n" +
+	"\x14UserdataDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aB\n" +
+	"\x14IpToNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aI\n" +
+	"\x1bDhcpOptionsNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aU\n" +
+	"'DataDiskTemplateToDiskOfferingListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aA\n" +
+	"\x13VAppPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a?\n" +
+	"\x11VAppNetworksEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
+	"\x1aDeployVMCmdByAdminResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf9\x01\n" +
+	"\x1cUpdateDefaultNicForVMRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"runAsAdmin\x12\x1b\n" +
+	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
+	"\x06nic_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
 	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"M\n" +
-	"\x0eStopVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xed\x01\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\\\n" +
+	"\x1dUpdateDefaultNicForVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa7\x01\n" +
+	"\x10ExpungeVMRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"P\n" +
+	"\x11ExpungeVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xbf\x03\n" +
+	"\x10UpgradeVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
+	"\x13service_offering_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12T\n" +
+	"\adetails\x18\x04 \x03(\v2:.cloudstack.management.vm.v1.UpgradeVMRequest.DetailsEntryR\adetails\x12\x19\n" +
+	"\bmin_iops\x18\x05 \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\x06 \x01(\x03R\amaxIops\x12(\n" +
+	"\fauto_migrate\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
+	"\tshrink_ok\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"P\n" +
+	"\x11UpgradeVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x89\x02\n" +
+	"\x10DestroyVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\aexpunge\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\aexpunge\x12\x1d\n" +
+	"\n" +
+	"volume_ids\x18\x04 \x03(\tR\tvolumeIds\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"P\n" +
+	"\x11DestroyVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xdb\x01\n" +
+	" RemoveNicFromVMCmdByAdminRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
+	"\x06nic_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"`\n" +
+	"!RemoveNicFromVMCmdByAdminResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xbf\x03\n" +
+	"\x1bAddNicToVMCmdByAdminRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
+	"\x06net_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05netId\x12\x1f\n" +
+	"\x06ipaddr\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipaddr\x12\x18\n" +
+	"\amacaddr\x18\x04 \x01(\tR\amacaddr\x12l\n" +
+	"\fdhcp_options\x18\x05 \x03(\v2I.cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest.DhcpOptionsEntryR\vdhcpOptions\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\x1a>\n" +
+	"\x10DhcpOptionsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
+	"\x1cAddNicToVMCmdByAdminResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd6\x01\n" +
+	"\x1dListUnmanagedInstancesRequest\x12%\n" +
+	"\n" +
+	"cluster_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8e\x01\n" +
+	"\x1eListUnmanagedInstancesResponse\x12D\n" +
+	"\x05items\x18\x01 \x03(\v2..cloudstack.management.vm.v1.UnmanagedInstanceR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x01\n" +
+	"\x19UnmanageVMInstanceRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
+	"\x1aUnmanageVMInstanceResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xeb\x01\n" +
+	"\x16ResetVMPasswordRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"V\n" +
+	"\x17ResetVMPasswordResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf6\x1a\n" +
+	"#DeployVnfApplianceCmdByAdminRequest\x12?\n" +
+	"\x18vnf_configure_management\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\x16vnfConfigureManagement\x12!\n" +
+	"\fvnf_cidrlist\x18\x02 \x03(\tR\vvnfCidrlist\x12\x1f\n" +
+	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x126\n" +
+	"\x13service_offering_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12'\n" +
+	"\vtemplate_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"templateId\x12\x1e\n" +
+	"\x04name\x18\x06 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12-\n" +
+	"\fdisplay_name\x18\a \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12\x1a\n" +
+	"\bpassword\x18\b \x01(\tR\bpassword\x12!\n" +
+	"\faccount_name\x18\t \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\n" +
+	" \x01(\x03R\bdomainId\x12\x1f\n" +
+	"\vnetwork_ids\x18\v \x03(\tR\n" +
+	"networkIds\x12\x1b\n" +
+	"\tboot_type\x18\f \x01(\tR\bbootType\x12\x1b\n" +
+	"\tboot_mode\x18\r \x01(\tR\bbootMode\x12-\n" +
+	"\x0fboot_into_setup\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\rbootIntoSetup\x12(\n" +
+	"\x10disk_offering_id\x18\x0f \x01(\x03R\x0ediskOfferingId\x12\x12\n" +
+	"\x04size\x18\x10 \x01(\x03R\x04size\x12\"\n" +
+	"\frootdisksize\x18\x11 \x01(\x03R\frootdisksize\x12\x14\n" +
+	"\x05group\x18\x12 \x01(\tR\x05group\x12\x1e\n" +
+	"\n" +
+	"hypervisor\x18\x13 \x01(\tR\n" +
+	"hypervisor\x12\x1b\n" +
+	"\tuser_data\x18\x14 \x01(\tR\buserData\x12\x1f\n" +
+	"\vuserdata_id\x18\x15 \x01(\x03R\n" +
+	"userdataId\x12\x80\x01\n" +
+	"\x10userdata_details\x18\x16 \x03(\v2U.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12)\n" +
+	"\x11ssh_key_pair_name\x18\x17 \x01(\tR\x0esshKeyPairName\x12+\n" +
+	"\x12ssh_key_pair_names\x18\x18 \x03(\tR\x0fsshKeyPairNames\x12\x17\n" +
+	"\ahost_id\x18\x19 \x01(\x03R\x06hostId\x123\n" +
+	"\x16security_group_id_list\x18\x1a \x03(\tR\x13securityGroupIdList\x127\n" +
+	"\x18security_group_name_list\x18\x1b \x03(\tR\x15securityGroupNameList\x12\x82\x01\n" +
+	"\x12ip_to_network_list\x18\x1c \x03(\v2U.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.IpToNetworkListEntryR\x0fipToNetworkList\x12&\n" +
+	"\n" +
+	"ip_address\x18\x1d \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12(\n" +
+	"\vip6_address\x18\x1e \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
+	"ip6Address\x12\x1f\n" +
+	"\vmac_address\x18\x1f \x01(\tR\n" +
+	"macAddress\x12\x1a\n" +
+	"\bkeyboard\x18  \x01(\tR\bkeyboard\x12\x1d\n" +
+	"\n" +
+	"project_id\x18! \x01(\x03R\tprojectId\x12 \n" +
+	"\bstart_vm\x18\" \x01(\bB\x05\xaa\x01\x02\b\x01R\astartVm\x123\n" +
+	"\x16affinity_group_id_list\x18# \x03(\tR\x13affinityGroupIdList\x127\n" +
+	"\x18affinity_group_name_list\x18$ \x03(\tR\x15affinityGroupNameList\x12$\n" +
+	"\n" +
+	"display_vm\x18% \x01(\bB\x05\xaa\x01\x02\b\x01R\tdisplayVm\x12g\n" +
+	"\adetails\x18& \x03(\v2M.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DetailsEntryR\adetails\x12-\n" +
+	"\x12deployment_planner\x18' \x01(\tR\x11deploymentPlanner\x12\x97\x01\n" +
+	"\x19dhcp_options_network_list\x18( \x03(\v2\\.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DhcpOptionsNetworkListEntryR\x16dhcpOptionsNetworkList\x12\xbe\x01\n" +
+	"(data_disk_template_to_disk_offering_list\x18) \x03(\v2h.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntryR\"dataDiskTemplateToDiskOfferingList\x12!\n" +
+	"\fextra_config\x18* \x01(\tR\vextraConfig\x12-\n" +
+	"\x0fcopy_image_tags\x18+ \x01(\bB\x05\xaa\x01\x02\b\x01R\rcopyImageTags\x12~\n" +
+	"\x10v_app_properties\x18, \x03(\v2T.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.VAppPropertiesEntryR\x0evAppProperties\x12x\n" +
+	"\x0ev_app_networks\x18- \x03(\v2R.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.VAppNetworksEntryR\fvAppNetworks\x12=\n" +
+	"\x17dynamic_scaling_enabled\x18. \x01(\bB\x05\xaa\x01\x02\b\x01R\x15dynamicScalingEnabled\x129\n" +
+	"\x19override_disk_offering_id\x18/ \x01(\x03R\x16overrideDiskOfferingId\x122\n" +
+	"\x11iothreads_enabled\x180 \x01(\bB\x05\xaa\x01\x02\b\x01R\x10iothreadsEnabled\x12(\n" +
+	"\x10io_driver_policy\x181 \x01(\tR\x0eioDriverPolicy\x122\n" +
+	"\x15nic_multiqueue_number\x182 \x01(\x05R\x13nicMultiqueueNumber\x12:\n" +
+	"\x16nic_packed_virt_queues\x183 \x01(\bB\x05\xaa\x01\x02\b\x01R\x13nicPackedVirtQueues\x12%\n" +
+	"\tcustom_id\x184 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x185 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x186 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x187 \x01(\tR\fresponseType\x1aB\n" +
+	"\x14UserdataDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aB\n" +
+	"\x14IpToNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aI\n" +
+	"\x1bDhcpOptionsNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aU\n" +
+	"'DataDiskTemplateToDiskOfferingListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aA\n" +
+	"\x13VAppPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a?\n" +
+	"\x11VAppNetworksEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"c\n" +
+	"$DeployVnfApplianceCmdByAdminResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf5\x01\n" +
+	"\x0fListNicsRequest\x12\x15\n" +
+	"\x06nic_id\x18\x01 \x01(\x03R\x05nicId\x12\x1b\n" +
+	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x18\n" +
+	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"r\n" +
+	"\x10ListNicsResponse\x126\n" +
+	"\x05items\x18\x01 \x03(\v2 .cloudstack.management.vm.v1.NicR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xed\x01\n" +
 	"\x15ListVMScheduleRequest\x12\x1b\n" +
 	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x16\n" +
@@ -9976,7 +10387,26 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x16ListVMScheduleResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.vm.v1.VMScheduleR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa9\x03\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8d\x04\n" +
+	"\x10RestoreVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x1b\n" +
+	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1f\n" +
+	"\vtemplate_id\x18\x03 \x01(\x03R\n" +
+	"templateId\x121\n" +
+	"\x15root_disk_offering_id\x18\x04 \x01(\x03R\x12rootDiskOfferingId\x12$\n" +
+	"\x0eroot_disk_size\x18\x05 \x01(\x03R\frootDiskSize\x12T\n" +
+	"\adetails\x18\x06 \x03(\v2:.cloudstack.management.vm.v1.RestoreVMRequest.DetailsEntryR\adetails\x121\n" +
+	"\x11expunge_root_disk\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fexpungeRootDisk\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"P\n" +
+	"\x11RestoreVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa9\x03\n" +
 	"\x0eStartVMRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x16\n" +
@@ -9993,154 +10423,6 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\v \x01(\tR\fresponseType\"N\n" +
 	"\x0fStartVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa1\x02\n" +
-	"\x0fAssignVMRequest\x124\n" +
-	"\x12virtual_machine_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1f\n" +
-	"\vnetwork_ids\x18\x05 \x03(\tR\n" +
-	"networkIds\x123\n" +
-	"\x16security_group_id_list\x18\x06 \x03(\tR\x13securityGroupIdList\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"O\n" +
-	"\x10AssignVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf5\x01\n" +
-	"\x0fListNicsRequest\x12\x15\n" +
-	"\x06nic_id\x18\x01 \x01(\x03R\x05nicId\x12\x1b\n" +
-	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x18\n" +
-	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"r\n" +
-	"\x10ListNicsResponse\x126\n" +
-	"\x05items\x18\x01 \x03(\v2 .cloudstack.management.vm.v1.NicR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xe7\x03\n" +
-	"&MigrateVirtualMachineWithVolumeRequest\x12\x17\n" +
-	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x124\n" +
-	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x84\x01\n" +
-	"\x11migrate_volume_to\x18\x03 \x03(\v2X.cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.MigrateVolumeToEntryR\x0fmigrateVolumeTo\x12&\n" +
-	"\vauto_select\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"autoSelect\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\x1aB\n" +
-	"\x14MigrateVolumeToEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"f\n" +
-	"'MigrateVirtualMachineWithVolumeResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd3\x01\n" +
-	" ResetVMPasswordCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"`\n" +
-	"!ResetVMPasswordCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf1\x01\n" +
-	"\x1aDestroyVMCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\aexpunge\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\aexpunge\x12\x1d\n" +
-	"\n" +
-	"volume_ids\x18\x03 \x03(\tR\tvolumeIds\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Z\n" +
-	"\x1bDestroyVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x8f\f\n" +
-	"\x0eListVMsRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x19\n" +
-	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\x03R\x02id\x12\x10\n" +
-	"\x03ids\x18\x04 \x03(\tR\x03ids\x12\x1e\n" +
-	"\x04name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x14\n" +
-	"\x05state\x18\x06 \x01(\tR\x05state\x12\x17\n" +
-	"\azone_id\x18\a \x01(\x03R\x06zoneId\x125\n" +
-	"\x13for_virtual_network\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x11forVirtualNetwork\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\t \x01(\x03R\tnetworkId\x12\x1e\n" +
-	"\n" +
-	"hypervisor\x18\n" +
-	" \x01(\tR\n" +
-	"hypervisor\x12!\n" +
-	"\fview_details\x18\v \x03(\tR\vviewDetails\x12\x1f\n" +
-	"\vtemplate_id\x18\f \x01(\x03R\n" +
-	"templateId\x12\x15\n" +
-	"\x06iso_id\x18\r \x01(\x03R\x05isoId\x12\x15\n" +
-	"\x06vpc_id\x18\x0e \x01(\x03R\x05vpcId\x12*\n" +
-	"\x11affinity_group_id\x18\x0f \x01(\x03R\x0faffinityGroupId\x12\x18\n" +
-	"\akeypair\x18\x10 \x01(\tR\akeypair\x12$\n" +
-	"\x0eservice_off_id\x18\x11 \x01(\x03R\fserviceOffId\x12\"\n" +
-	"\rbackup_off_id\x18\x12 \x01(\x03R\vbackupOffId\x12\x1f\n" +
-	"\adisplay\x18\x13 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x17\n" +
-	"\auser_id\x18\x14 \x01(\x03R\x06userId\x12*\n" +
-	"\x11security_group_id\x18\x15 \x01(\x03R\x0fsecurityGroupId\x12$\n" +
-	"\n" +
-	"ha_enabled\x18\x16 \x01(\bB\x05\xaa\x01\x02\b\x01R\thaEnabled\x122\n" +
-	"\x16auto_scale_vm_group_id\x18\x17 \x01(\x03R\x12autoScaleVmGroupId\x12\"\n" +
-	"\tshow_icon\x18\x18 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12%\n" +
-	"\n" +
-	"accumulate\x18\x19 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"accumulate\x12+\n" +
-	"\x0eshow_user_data\x18\x1a \x01(\bB\x05\xaa\x01\x02\b\x01R\fshowUserData\x12\x1f\n" +
-	"\vuserdata_id\x18\x1b \x01(\x03R\n" +
-	"userdataId\x12\x1c\n" +
-	"\x06is_vnf\x18\x1c \x01(\bB\x05\xaa\x01\x02\b\x01R\x05isVnf\x12F\n" +
-	"\x1cretrieve_only_resource_count\x18\x1d \x01(\bB\x05\xaa\x01\x02\b\x01R\x19retrieveOnlyResourceCount\x12I\n" +
-	"\x04tags\x18\x1e \x03(\v25.cloudstack.management.vm.v1.ListVMsRequest.TagsEntryR\x04tags\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x1f \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18  \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18! \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\" \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18# \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18$ \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18% \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18& \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18' \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"t\n" +
-	"\x0fListVMsResponse\x129\n" +
-	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.vm.v1.UserVmR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"}\n" +
-	"\x17DeleteVMScheduleRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x10\n" +
-	"\x03ids\x18\x03 \x03(\tR\x03ids\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
-	"\x18DeleteVMScheduleResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xcd\x03\n" +
-	"\x16ResetVMUserDataRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1b\n" +
-	"\tuser_data\x18\x03 \x01(\tR\buserData\x12\x1f\n" +
-	"\vuserdata_id\x18\x04 \x01(\x03R\n" +
-	"userdataId\x12s\n" +
-	"\x10userdata_details\x18\x05 \x03(\v2H.cloudstack.management.vm.v1.ResetVMUserDataRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12!\n" +
-	"\faccount_name\x18\x06 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\b \x01(\x03R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1aB\n" +
-	"\x14UserdataDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"V\n" +
-	"\x17ResetVMUserDataResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"S\n" +
-	"\x14GetVMPasswordRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"T\n" +
-	"\x15GetVMPasswordResponse\x12;\n" +
 	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xc6\x1a\n" +
 	"\x19DeployVnfApplianceRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -10235,154 +10517,19 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
 	"\x1aDeployVnfApplianceResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x85\x04\n" +
-	"\x18ScaleVMCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
-	"\x13service_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12\\\n" +
-	"\adetails\x18\x03 \x03(\v2B.cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest.DetailsEntryR\adetails\x12\x19\n" +
-	"\bmin_iops\x18\x04 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x05 \x01(\x03R\amaxIops\x12(\n" +
-	"\fauto_migrate\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
-	"\tshrink_ok\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"X\n" +
-	"\x19ScaleVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xb2\x10\n" +
-	"\x0fImportVmRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12&\n" +
-	"\busername\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04host\x18\x04 \x01(\tR\x04host\x12&\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa5\x02\n" +
+	"\x10MigrateVMRequest\x12\x17\n" +
+	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x124\n" +
+	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
 	"\n" +
-	"hypervisor\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"hypervisor\x12\x1b\n" +
-	"\tdisk_path\x18\x06 \x01(\tR\bdiskPath\x12+\n" +
-	"\rimport_source\x18\a \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fimportSource\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\b \x01(\x03R\tnetworkId\x12\x17\n" +
-	"\ahost_id\x18\t \x01(\x03R\x06hostId\x12&\n" +
-	"\x0fstorage_pool_id\x18\n" +
-	" \x01(\x03R\rstoragePoolId\x12\x19\n" +
-	"\btmp_path\x18\v \x01(\tR\atmpPath\x12.\n" +
-	"\x13existing_vcenter_id\x18\f \x01(\x03R\x11existingVcenterId\x12\x1f\n" +
-	"\x06hostip\x18\r \x01(\tB\a\xbaH\x04r\x02x\x01R\x06hostip\x12\x18\n" +
-	"\avcenter\x18\x0e \x01(\tR\avcenter\x123\n" +
-	"\x0fdatacenter_name\x18\x0f \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x0edatacenterName\x12-\n" +
-	"\fcluster_name\x18\x10 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x127\n" +
-	"\x18convert_instance_host_id\x18\x11 \x01(\x03R\x15convertInstanceHostId\x125\n" +
-	"\x17import_instance_host_id\x18\x12 \x01(\x03R\x14importInstanceHostId\x125\n" +
-	"\x17convert_storage_pool_id\x18\x13 \x01(\x03R\x14convertStoragePoolId\x12B\n" +
-	"\x1bforce_ms_to_import_vm_files\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\x16forceMsToImportVmFiles\x12%\n" +
-	"\n" +
-	"cluster_id\x18\x15 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12!\n" +
-	"\x04name\x18\x16 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12-\n" +
-	"\fdisplay_name\x18\x17 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12'\n" +
-	"\thost_name\x18\x18 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\bhostName\x12!\n" +
-	"\faccount_name\x18\x19 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x1a \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x1b \x01(\x03R\tprojectId\x12\x1f\n" +
-	"\vtemplate_id\x18\x1c \x01(\x03R\n" +
-	"templateId\x126\n" +
-	"\x13service_offering_id\x18\x1d \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12j\n" +
-	"\x10nic_network_list\x18\x1e \x03(\v2@.cloudstack.management.vm.v1.ImportVmRequest.NicNetworkListEntryR\x0enicNetworkList\x12q\n" +
-	"\x13nic_ip_address_list\x18\x1f \x03(\v2B.cloudstack.management.vm.v1.ImportVmRequest.NicIpAddressListEntryR\x10nicIpAddressList\x12\x91\x01\n" +
-	"\x1fdata_disk_to_disk_offering_list\x18  \x03(\v2L.cloudstack.management.vm.v1.ImportVmRequest.DataDiskToDiskOfferingListEntryR\x1adataDiskToDiskOfferingList\x12S\n" +
-	"\adetails\x18! \x03(\v29.cloudstack.management.vm.v1.ImportVmRequest.DetailsEntryR\adetails\x12.\n" +
-	"\x0fmigrate_allowed\x18\" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0emigrateAllowed\x12\x1d\n" +
-	"\x06forced\x18# \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18$ \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18% \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18& \x01(\tR\fresponseType\x1aA\n" +
-	"\x13NicNetworkListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aC\n" +
-	"\x15NicIpAddressListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aM\n" +
-	"\x1fDataDiskToDiskOfferingListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"O\n" +
-	"\x10ImportVmResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x9b\n" +
-	"\n" +
-	"\x0fUpdateVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12-\n" +
-	"\fdisplay_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12\x14\n" +
-	"\x05group\x18\x03 \x01(\tR\x05group\x12\"\n" +
-	"\tha_enable\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bhaEnable\x12\x16\n" +
-	"\x02id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1c\n" +
-	"\n" +
-	"os_type_id\x18\x06 \x01(\x03R\bosTypeId\x12\x1b\n" +
-	"\tuser_data\x18\a \x01(\tR\buserData\x12\x1f\n" +
-	"\vuserdata_id\x18\b \x01(\x03R\n" +
-	"userdataId\x12l\n" +
-	"\x10userdata_details\x18\t \x03(\v2A.cloudstack.management.vm.v1.UpdateVMRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12$\n" +
-	"\n" +
-	"display_vm\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\tdisplayVm\x12=\n" +
-	"\x17is_dynamically_scalable\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12\x1e\n" +
-	"\x04name\x18\f \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
-	"\rinstance_name\x18\r \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\finstanceName\x12S\n" +
-	"\adetails\x18\x0e \x03(\v29.cloudstack.management.vm.v1.UpdateVMRequest.DetailsEntryR\adetails\x123\n" +
-	"\x16security_group_id_list\x18\x0f \x03(\tR\x13securityGroupIdList\x127\n" +
-	"\x18security_group_name_list\x18\x10 \x03(\tR\x15securityGroupNameList\x12.\n" +
-	"\x0fcleanup_details\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x83\x01\n" +
-	"\x19dhcp_options_network_list\x18\x12 \x03(\v2H.cloudstack.management.vm.v1.UpdateVMRequest.DhcpOptionsNetworkListEntryR\x16dhcpOptionsNetworkList\x12!\n" +
-	"\fextra_config\x18\x13 \x01(\tR\vextraConfig\x122\n" +
-	"\x11delete_protection\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\x10deleteProtection\x12%\n" +
-	"\tcustom_id\x18\x15 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12#\n" +
-	"\rresponse_type\x18\x16 \x01(\tR\fresponseType\x1aB\n" +
-	"\x14UserdataDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aI\n" +
-	"\x1bDhcpOptionsNetworkListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"O\n" +
-	"\x10UpdateVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xe1\x01\n" +
-	"&UpdateDefaultNicForVMCmdByAdminRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
-	"\x06nic_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"f\n" +
-	"'UpdateDefaultNicForVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd6\x01\n" +
-	"\x1dListUnmanagedInstancesRequest\x12%\n" +
-	"\n" +
-	"cluster_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8e\x01\n" +
-	"\x1eListUnmanagedInstancesResponse\x12D\n" +
-	"\x05items\x18\x01 \x03(\v2..cloudstack.management.vm.v1.UnmanagedInstanceR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa3\f\n" +
+	"storage_id\x18\x03 \x01(\x03R\tstorageId\x12&\n" +
+	"\vauto_select\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"autoSelect\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"P\n" +
+	"\x11MigrateVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa3\f\n" +
 	"\x18ListVnfAppliancesRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x19\n" +
@@ -10442,321 +10589,7 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x19ListVnfAppliancesResponse\x129\n" +
 	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.vm.v1.UserVmR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xff\x03\n" +
-	"\x1aRestoreVMCmdByAdminRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1f\n" +
-	"\vtemplate_id\x18\x02 \x01(\x03R\n" +
-	"templateId\x121\n" +
-	"\x15root_disk_offering_id\x18\x03 \x01(\x03R\x12rootDiskOfferingId\x12$\n" +
-	"\x0eroot_disk_size\x18\x04 \x01(\x03R\frootDiskSize\x12^\n" +
-	"\adetails\x18\x05 \x03(\v2D.cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest.DetailsEntryR\adetails\x121\n" +
-	"\x11expunge_root_disk\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fexpungeRootDisk\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Z\n" +
-	"\x1bRestoreVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xbf\x03\n" +
-	"\x10UpgradeVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
-	"\x13service_offering_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12T\n" +
-	"\adetails\x18\x04 \x03(\v2:.cloudstack.management.vm.v1.UpgradeVMRequest.DetailsEntryR\adetails\x12\x19\n" +
-	"\bmin_iops\x18\x05 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x06 \x01(\x03R\amaxIops\x12(\n" +
-	"\fauto_migrate\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
-	"\tshrink_ok\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"P\n" +
-	"\x11UpgradeVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xfe\x01\n" +
-	"\x19RebootVMCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12-\n" +
-	"\x0fboot_into_setup\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\rbootIntoSetup\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Y\n" +
-	"\x1aRebootVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd4\x01\n" +
-	"\x14UpdateVmNicIpRequest\x12\x1d\n" +
-	"\x06nic_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12 \n" +
-	"\aip_addr\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipAddr\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"T\n" +
-	"\x15UpdateVmNicIpResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xbe\x02\n" +
-	"\x1eResetVMSSHKeyCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05names\x18\x03 \x03(\tR\x05names\x12!\n" +
-	"\faccount_name\x18\x04 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x06 \x01(\x03R\tprojectId\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"^\n" +
-	"\x1fResetVMSSHKeyCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa5\x02\n" +
-	"\x10MigrateVMRequest\x12\x17\n" +
-	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x124\n" +
-	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
-	"\n" +
-	"storage_id\x18\x03 \x01(\x03R\tstorageId\x12&\n" +
-	"\vauto_select\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"autoSelect\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"P\n" +
-	"\x11MigrateVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xeb\x01\n" +
-	"\x16ResetVMPasswordRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"V\n" +
-	"\x17ResetVMPasswordResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xcd\x02\n" +
-	"\x17CreateVMScheduleRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\"\n" +
-	"\bschedule\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bschedule\x12#\n" +
-	"\ttime_zone\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\btimeZone\x12\x1e\n" +
-	"\x06action\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06action\x12\x1d\n" +
-	"\n" +
-	"start_date\x18\x06 \x01(\tR\tstartDate\x12\x19\n" +
-	"\bend_date\x18\a \x01(\tR\aendDate\x12\x1f\n" +
-	"\aenabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"W\n" +
-	"\x18CreateVMScheduleResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"O\n" +
-	"\x10RecoverVMRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"P\n" +
-	"\x11RecoverVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xcd\x03\n" +
-	"\x11AddNicToVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x1b\n" +
-	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
-	"\x06net_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05netId\x12\x1f\n" +
-	"\x06ipaddr\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipaddr\x12\x18\n" +
-	"\amacaddr\x18\x05 \x01(\tR\amacaddr\x12b\n" +
-	"\fdhcp_options\x18\x06 \x03(\v2?.cloudstack.management.vm.v1.AddNicToVMRequest.DhcpOptionsEntryR\vdhcpOptions\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a>\n" +
-	"\x10DhcpOptionsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Q\n" +
-	"\x12AddNicToVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf9\x01\n" +
-	"\x1cUpdateDefaultNicForVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x1b\n" +
-	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
-	"\x06nic_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\\\n" +
-	"\x1dUpdateDefaultNicForVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd3\x01\n" +
-	"\x13AddIpToVmNicRequest\x12\x1d\n" +
-	"\x06nic_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12 \n" +
-	"\aip_addr\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipAddr\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"S\n" +
-	"\x14AddIpToVmNicResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xaf\x01\n" +
-	"\x18RemoveIpFromVmNicRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
-	"\x19RemoveIpFromVmNicResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa7\x01\n" +
-	"\x10ExpungeVMRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"P\n" +
-	"\x11ExpungeVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xb2\x02\n" +
-	"\x17ListVmsForImportRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12&\n" +
-	"\busername\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x1a\n" +
-	"\x04host\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04host\x12&\n" +
-	"\n" +
-	"hypervisor\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"hypervisor\x12\x18\n" +
-	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x88\x01\n" +
-	"\x18ListVmsForImportResponse\x12D\n" +
-	"\x05items\x18\x01 \x03(\v2..cloudstack.management.vm.v1.UnmanagedInstanceR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x8d\x04\n" +
-	"\x10RestoreVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x1b\n" +
-	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1f\n" +
-	"\vtemplate_id\x18\x03 \x01(\x03R\n" +
-	"templateId\x121\n" +
-	"\x15root_disk_offering_id\x18\x04 \x01(\x03R\x12rootDiskOfferingId\x12$\n" +
-	"\x0eroot_disk_size\x18\x05 \x01(\x03R\frootDiskSize\x12T\n" +
-	"\adetails\x18\x06 \x03(\v2:.cloudstack.management.vm.v1.RestoreVMRequest.DetailsEntryR\adetails\x121\n" +
-	"\x11expunge_root_disk\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fexpungeRootDisk\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"P\n" +
-	"\x11RestoreVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x93\x04\n" +
-	"\x0eScaleVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
-	"\x13service_offering_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12R\n" +
-	"\adetails\x18\x04 \x03(\v28.cloudstack.management.vm.v1.ScaleVMRequest.DetailsEntryR\adetails\x12\x19\n" +
-	"\bmin_iops\x18\x05 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x06 \x01(\x03R\amaxIops\x12(\n" +
-	"\fauto_migrate\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
-	"\tshrink_ok\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12$\n" +
-	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"N\n" +
-	"\x0fScaleVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xdb\x01\n" +
-	" RemoveNicFromVMCmdByAdminRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
-	"\x06nic_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"`\n" +
-	"!RemoveNicFromVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf6\x19\n" +
-	"\x19DeployVMCmdByAdminRequest\x12\x15\n" +
-	"\x06pod_id\x18\x01 \x01(\x03R\x05podId\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x02 \x01(\x03R\tclusterId\x12\x1f\n" +
-	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x126\n" +
-	"\x13service_offering_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12'\n" +
-	"\vtemplate_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"templateId\x12\x1e\n" +
-	"\x04name\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12-\n" +
-	"\fdisplay_name\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12\x1a\n" +
-	"\bpassword\x18\b \x01(\tR\bpassword\x12!\n" +
-	"\faccount_name\x18\t \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\n" +
-	" \x01(\x03R\bdomainId\x12\x1f\n" +
-	"\vnetwork_ids\x18\v \x03(\tR\n" +
-	"networkIds\x12\x1b\n" +
-	"\tboot_type\x18\f \x01(\tR\bbootType\x12\x1b\n" +
-	"\tboot_mode\x18\r \x01(\tR\bbootMode\x12-\n" +
-	"\x0fboot_into_setup\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\rbootIntoSetup\x12(\n" +
-	"\x10disk_offering_id\x18\x0f \x01(\x03R\x0ediskOfferingId\x12\x12\n" +
-	"\x04size\x18\x10 \x01(\x03R\x04size\x12\"\n" +
-	"\frootdisksize\x18\x11 \x01(\x03R\frootdisksize\x12\x14\n" +
-	"\x05group\x18\x12 \x01(\tR\x05group\x12\x1e\n" +
-	"\n" +
-	"hypervisor\x18\x13 \x01(\tR\n" +
-	"hypervisor\x12\x1b\n" +
-	"\tuser_data\x18\x14 \x01(\tR\buserData\x12\x1f\n" +
-	"\vuserdata_id\x18\x15 \x01(\x03R\n" +
-	"userdataId\x12v\n" +
-	"\x10userdata_details\x18\x16 \x03(\v2K.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12)\n" +
-	"\x11ssh_key_pair_name\x18\x17 \x01(\tR\x0esshKeyPairName\x12+\n" +
-	"\x12ssh_key_pair_names\x18\x18 \x03(\tR\x0fsshKeyPairNames\x12\x17\n" +
-	"\ahost_id\x18\x19 \x01(\x03R\x06hostId\x123\n" +
-	"\x16security_group_id_list\x18\x1a \x03(\tR\x13securityGroupIdList\x127\n" +
-	"\x18security_group_name_list\x18\x1b \x03(\tR\x15securityGroupNameList\x12x\n" +
-	"\x12ip_to_network_list\x18\x1c \x03(\v2K.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.IpToNetworkListEntryR\x0fipToNetworkList\x12&\n" +
-	"\n" +
-	"ip_address\x18\x1d \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12(\n" +
-	"\vip6_address\x18\x1e \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
-	"ip6Address\x12\x1f\n" +
-	"\vmac_address\x18\x1f \x01(\tR\n" +
-	"macAddress\x12\x1a\n" +
-	"\bkeyboard\x18  \x01(\tR\bkeyboard\x12\x1d\n" +
-	"\n" +
-	"project_id\x18! \x01(\x03R\tprojectId\x12 \n" +
-	"\bstart_vm\x18\" \x01(\bB\x05\xaa\x01\x02\b\x01R\astartVm\x123\n" +
-	"\x16affinity_group_id_list\x18# \x03(\tR\x13affinityGroupIdList\x127\n" +
-	"\x18affinity_group_name_list\x18$ \x03(\tR\x15affinityGroupNameList\x12$\n" +
-	"\n" +
-	"display_vm\x18% \x01(\bB\x05\xaa\x01\x02\b\x01R\tdisplayVm\x12]\n" +
-	"\adetails\x18& \x03(\v2C.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DetailsEntryR\adetails\x12-\n" +
-	"\x12deployment_planner\x18' \x01(\tR\x11deploymentPlanner\x12\x8d\x01\n" +
-	"\x19dhcp_options_network_list\x18( \x03(\v2R.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DhcpOptionsNetworkListEntryR\x16dhcpOptionsNetworkList\x12\xb4\x01\n" +
-	"(data_disk_template_to_disk_offering_list\x18) \x03(\v2^.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntryR\"dataDiskTemplateToDiskOfferingList\x12!\n" +
-	"\fextra_config\x18* \x01(\tR\vextraConfig\x12-\n" +
-	"\x0fcopy_image_tags\x18+ \x01(\bB\x05\xaa\x01\x02\b\x01R\rcopyImageTags\x12t\n" +
-	"\x10v_app_properties\x18, \x03(\v2J.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppPropertiesEntryR\x0evAppProperties\x12n\n" +
-	"\x0ev_app_networks\x18- \x03(\v2H.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppNetworksEntryR\fvAppNetworks\x12=\n" +
-	"\x17dynamic_scaling_enabled\x18. \x01(\bB\x05\xaa\x01\x02\b\x01R\x15dynamicScalingEnabled\x129\n" +
-	"\x19override_disk_offering_id\x18/ \x01(\x03R\x16overrideDiskOfferingId\x122\n" +
-	"\x11iothreads_enabled\x180 \x01(\bB\x05\xaa\x01\x02\b\x01R\x10iothreadsEnabled\x12(\n" +
-	"\x10io_driver_policy\x181 \x01(\tR\x0eioDriverPolicy\x122\n" +
-	"\x15nic_multiqueue_number\x182 \x01(\x05R\x13nicMultiqueueNumber\x12:\n" +
-	"\x16nic_packed_virt_queues\x183 \x01(\bB\x05\xaa\x01\x02\b\x01R\x13nicPackedVirtQueues\x12%\n" +
-	"\tcustom_id\x184 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x185 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x186 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x187 \x01(\tR\fresponseType\x1aB\n" +
-	"\x14UserdataDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aB\n" +
-	"\x14IpToNetworkListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aI\n" +
-	"\x1bDhcpOptionsNetworkListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aU\n" +
-	"'DataDiskTemplateToDiskOfferingListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aA\n" +
-	"\x13VAppPropertiesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a?\n" +
-	"\x11VAppNetworksEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
-	"\x1aDeployVMCmdByAdminResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xb5\x01\n" +
-	"\x19UnmanageVMInstanceRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
-	"\x1aUnmanageVMInstanceResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x8a\x02\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8a\x02\n" +
 	"+ListAffectedVmsForStorageScopeChangeRequest\x12D\n" +
 	"\x1bcluster_id_for_scope_change\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x17clusterIdForScopeChange\x12%\n" +
 	"\n" +
@@ -10768,34 +10601,22 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	",ListAffectedVmsForStorageScopeChangeResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.vm.v1.VirtualMachineR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xf3\x01\n" +
-	"\x16RemoveNicFromVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x1b\n" +
-	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
-	"\x06nic_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"V\n" +
-	"\x17RemoveNicFromVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x98\x02\n" +
-	"\x17UpdateVMScheduleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1a\n" +
-	"\bschedule\x18\x03 \x01(\tR\bschedule\x12\x1b\n" +
-	"\ttime_zone\x18\x04 \x01(\tR\btimeZone\x12\x1d\n" +
-	"\n" +
-	"start_date\x18\x05 \x01(\tR\tstartDate\x12\x19\n" +
-	"\bend_date\x18\x06 \x01(\tR\aendDate\x12\x1f\n" +
-	"\aenabled\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"W\n" +
-	"\x18UpdateVMScheduleResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"X\n" +
-	"\x14GetVMUserDataRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"T\n" +
-	"\x15GetVMUserDataResponse\x12;\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xcd\x01\n" +
+	"\x17StopVMCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
+	"\x18StopVMCmdByAdminResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd4\x01\n" +
+	"\x14UpdateVmNicIpRequest\x12\x1d\n" +
+	"\x06nic_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12 \n" +
+	"\aip_addr\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipAddr\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"T\n" +
+	"\x15UpdateVmNicIpResponse\x12;\n" +
 	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xde\n" +
 	"\n" +
 	"\x1eImportUnmanagedInstanceRequest\x12%\n" +
@@ -10837,30 +10658,52 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"^\n" +
 	"\x1fImportUnmanagedInstanceResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x89\x02\n" +
-	"\x10DestroyVMRequest\x12 \n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"}\n" +
+	"\x17DeleteVMScheduleRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x10\n" +
+	"\x03ids\x18\x03 \x03(\tR\x03ids\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
+	"\x18DeleteVMScheduleResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd6\x02\n" +
+	"\x14ResetVMSSHKeyRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\aexpunge\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\aexpunge\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
+	"\x05names\x18\x04 \x03(\tR\x05names\x12!\n" +
+	"\faccount_name\x18\x05 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12\x1d\n" +
 	"\n" +
-	"volume_ids\x18\x04 \x03(\tR\tvolumeIds\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"P\n" +
-	"\x11DestroyVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x96\x02\n" +
-	"\x0fRebootVMRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12-\n" +
-	"\x0fboot_into_setup\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\rbootIntoSetup\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"O\n" +
-	"\x10RebootVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x92\x19\n" +
+	"project_id\x18\a \x01(\x03R\tprojectId\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"T\n" +
+	"\x15ResetVMSSHKeyResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"S\n" +
+	"\x14GetVMPasswordRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"T\n" +
+	"\x15GetVMPasswordResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xb2\x02\n" +
+	"\x17ListVmsForImportRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12&\n" +
+	"\busername\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x1a\n" +
+	"\x04host\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04host\x12&\n" +
+	"\n" +
+	"hypervisor\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"hypervisor\x12\x18\n" +
+	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x88\x01\n" +
+	"\x18ListVmsForImportResponse\x12D\n" +
+	"\x05items\x18\x01 \x03(\v2..cloudstack.management.vm.v1.UnmanagedInstanceR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x92\x19\n" +
 	"\x0fDeployVMRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x1f\n" +
@@ -10952,25 +10795,368 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"O\n" +
 	"\x10DeployVMResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd6\x02\n" +
-	"\x14ResetVMSSHKeyRequest\x12 \n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x93\x04\n" +
+	"\x0eScaleVMRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
-	"\x05names\x18\x04 \x03(\tR\x05names\x12!\n" +
-	"\faccount_name\x18\x05 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
+	"\x13service_offering_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12R\n" +
+	"\adetails\x18\x04 \x03(\v28.cloudstack.management.vm.v1.ScaleVMRequest.DetailsEntryR\adetails\x12\x19\n" +
+	"\bmin_iops\x18\x05 \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\x06 \x01(\x03R\amaxIops\x12(\n" +
+	"\fauto_migrate\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\vautoMigrate\x12\"\n" +
+	"\tshrink_ok\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshrinkOk\x12$\n" +
+	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"N\n" +
+	"\x0fScaleVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa1\n" +
 	"\n" +
-	"project_id\x18\a \x01(\x03R\tprojectId\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"T\n" +
-	"\x15ResetVMSSHKeyResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x99\x01\n" +
+	"\x19UpdateVMCmdByAdminRequest\x12-\n" +
+	"\fdisplay_name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12\x14\n" +
+	"\x05group\x18\x02 \x01(\tR\x05group\x12\"\n" +
+	"\tha_enable\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bhaEnable\x12\x16\n" +
+	"\x02id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1c\n" +
 	"\n" +
-	"VMSchedule\x12\x18\n" +
+	"os_type_id\x18\x05 \x01(\x03R\bosTypeId\x12\x1b\n" +
+	"\tuser_data\x18\x06 \x01(\tR\buserData\x12\x1f\n" +
+	"\vuserdata_id\x18\a \x01(\x03R\n" +
+	"userdataId\x12v\n" +
+	"\x10userdata_details\x18\b \x03(\v2K.cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12$\n" +
+	"\n" +
+	"display_vm\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\tdisplayVm\x12=\n" +
+	"\x17is_dynamically_scalable\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12\x1e\n" +
+	"\x04name\x18\v \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
+	"\rinstance_name\x18\f \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\finstanceName\x12]\n" +
+	"\adetails\x18\r \x03(\v2C.cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.DetailsEntryR\adetails\x123\n" +
+	"\x16security_group_id_list\x18\x0e \x03(\tR\x13securityGroupIdList\x127\n" +
+	"\x18security_group_name_list\x18\x0f \x03(\tR\x15securityGroupNameList\x12.\n" +
+	"\x0fcleanup_details\x18\x10 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x8d\x01\n" +
+	"\x19dhcp_options_network_list\x18\x11 \x03(\v2R.cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.DhcpOptionsNetworkListEntryR\x16dhcpOptionsNetworkList\x12!\n" +
+	"\fextra_config\x18\x12 \x01(\tR\vextraConfig\x122\n" +
+	"\x11delete_protection\x18\x13 \x01(\bB\x05\xaa\x01\x02\b\x01R\x10deleteProtection\x12%\n" +
+	"\tcustom_id\x18\x14 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12#\n" +
+	"\rresponse_type\x18\x15 \x01(\tR\fresponseType\x1aB\n" +
+	"\x14UserdataDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aI\n" +
+	"\x1bDhcpOptionsNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
+	"\x1aUpdateVMCmdByAdminResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xcd\x03\n" +
+	"\x16ResetVMUserDataRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1b\n" +
+	"\tuser_data\x18\x03 \x01(\tR\buserData\x12\x1f\n" +
+	"\vuserdata_id\x18\x04 \x01(\x03R\n" +
+	"userdataId\x12s\n" +
+	"\x10userdata_details\x18\x05 \x03(\v2H.cloudstack.management.vm.v1.ResetVMUserDataRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12!\n" +
+	"\faccount_name\x18\x06 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\b \x01(\x03R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1aB\n" +
+	"\x14UserdataDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"V\n" +
+	"\x17ResetVMUserDataResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xcd\x02\n" +
+	"\x17CreateVMScheduleRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\"\n" +
+	"\bschedule\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bschedule\x12#\n" +
+	"\ttime_zone\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\btimeZone\x12\x1e\n" +
+	"\x06action\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06action\x12\x1d\n" +
+	"\n" +
+	"start_date\x18\x06 \x01(\tR\tstartDate\x12\x19\n" +
+	"\bend_date\x18\a \x01(\tR\aendDate\x12\x1f\n" +
+	"\aenabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"W\n" +
+	"\x18CreateVMScheduleResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xf3\x01\n" +
+	"\x16RemoveNicFromVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x1b\n" +
+	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
+	"\x06nic_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"V\n" +
+	"\x17RemoveNicFromVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x8f\f\n" +
+	"\x0eListVMsRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x19\n" +
+	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x0e\n" +
+	"\x02id\x18\x03 \x01(\x03R\x02id\x12\x10\n" +
+	"\x03ids\x18\x04 \x03(\tR\x03ids\x12\x1e\n" +
+	"\x04name\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x14\n" +
+	"\x05state\x18\x06 \x01(\tR\x05state\x12\x17\n" +
+	"\azone_id\x18\a \x01(\x03R\x06zoneId\x125\n" +
+	"\x13for_virtual_network\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x11forVirtualNetwork\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\t \x01(\x03R\tnetworkId\x12\x1e\n" +
+	"\n" +
+	"hypervisor\x18\n" +
+	" \x01(\tR\n" +
+	"hypervisor\x12!\n" +
+	"\fview_details\x18\v \x03(\tR\vviewDetails\x12\x1f\n" +
+	"\vtemplate_id\x18\f \x01(\x03R\n" +
+	"templateId\x12\x15\n" +
+	"\x06iso_id\x18\r \x01(\x03R\x05isoId\x12\x15\n" +
+	"\x06vpc_id\x18\x0e \x01(\x03R\x05vpcId\x12*\n" +
+	"\x11affinity_group_id\x18\x0f \x01(\x03R\x0faffinityGroupId\x12\x18\n" +
+	"\akeypair\x18\x10 \x01(\tR\akeypair\x12$\n" +
+	"\x0eservice_off_id\x18\x11 \x01(\x03R\fserviceOffId\x12\"\n" +
+	"\rbackup_off_id\x18\x12 \x01(\x03R\vbackupOffId\x12\x1f\n" +
+	"\adisplay\x18\x13 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x17\n" +
+	"\auser_id\x18\x14 \x01(\x03R\x06userId\x12*\n" +
+	"\x11security_group_id\x18\x15 \x01(\x03R\x0fsecurityGroupId\x12$\n" +
+	"\n" +
+	"ha_enabled\x18\x16 \x01(\bB\x05\xaa\x01\x02\b\x01R\thaEnabled\x122\n" +
+	"\x16auto_scale_vm_group_id\x18\x17 \x01(\x03R\x12autoScaleVmGroupId\x12\"\n" +
+	"\tshow_icon\x18\x18 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12%\n" +
+	"\n" +
+	"accumulate\x18\x19 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"accumulate\x12+\n" +
+	"\x0eshow_user_data\x18\x1a \x01(\bB\x05\xaa\x01\x02\b\x01R\fshowUserData\x12\x1f\n" +
+	"\vuserdata_id\x18\x1b \x01(\x03R\n" +
+	"userdataId\x12\x1c\n" +
+	"\x06is_vnf\x18\x1c \x01(\bB\x05\xaa\x01\x02\b\x01R\x05isVnf\x12F\n" +
+	"\x1cretrieve_only_resource_count\x18\x1d \x01(\bB\x05\xaa\x01\x02\b\x01R\x19retrieveOnlyResourceCount\x12I\n" +
+	"\x04tags\x18\x1e \x03(\v25.cloudstack.management.vm.v1.ListVMsRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x1f \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18  \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18! \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\" \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18# \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18$ \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18% \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18& \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18' \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"t\n" +
+	"\x0fListVMsResponse\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.vm.v1.UserVmR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x96\x02\n" +
+	"\x0fRebootVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12-\n" +
+	"\x0fboot_into_setup\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\rbootIntoSetup\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"O\n" +
+	"\x10RebootVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xb2\x10\n" +
+	"\x0fImportVmRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12&\n" +
+	"\busername\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x12\n" +
+	"\x04host\x18\x04 \x01(\tR\x04host\x12&\n" +
+	"\n" +
+	"hypervisor\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"hypervisor\x12\x1b\n" +
+	"\tdisk_path\x18\x06 \x01(\tR\bdiskPath\x12+\n" +
+	"\rimport_source\x18\a \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fimportSource\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\b \x01(\x03R\tnetworkId\x12\x17\n" +
+	"\ahost_id\x18\t \x01(\x03R\x06hostId\x12&\n" +
+	"\x0fstorage_pool_id\x18\n" +
+	" \x01(\x03R\rstoragePoolId\x12\x19\n" +
+	"\btmp_path\x18\v \x01(\tR\atmpPath\x12.\n" +
+	"\x13existing_vcenter_id\x18\f \x01(\x03R\x11existingVcenterId\x12\x1f\n" +
+	"\x06hostip\x18\r \x01(\tB\a\xbaH\x04r\x02x\x01R\x06hostip\x12\x18\n" +
+	"\avcenter\x18\x0e \x01(\tR\avcenter\x123\n" +
+	"\x0fdatacenter_name\x18\x0f \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x0edatacenterName\x12-\n" +
+	"\fcluster_name\x18\x10 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x127\n" +
+	"\x18convert_instance_host_id\x18\x11 \x01(\x03R\x15convertInstanceHostId\x125\n" +
+	"\x17import_instance_host_id\x18\x12 \x01(\x03R\x14importInstanceHostId\x125\n" +
+	"\x17convert_storage_pool_id\x18\x13 \x01(\x03R\x14convertStoragePoolId\x12B\n" +
+	"\x1bforce_ms_to_import_vm_files\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\x16forceMsToImportVmFiles\x12%\n" +
+	"\n" +
+	"cluster_id\x18\x15 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12!\n" +
+	"\x04name\x18\x16 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12-\n" +
+	"\fdisplay_name\x18\x17 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12'\n" +
+	"\thost_name\x18\x18 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\bhostName\x12!\n" +
+	"\faccount_name\x18\x19 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x1a \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x1b \x01(\x03R\tprojectId\x12\x1f\n" +
+	"\vtemplate_id\x18\x1c \x01(\x03R\n" +
+	"templateId\x126\n" +
+	"\x13service_offering_id\x18\x1d \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12j\n" +
+	"\x10nic_network_list\x18\x1e \x03(\v2@.cloudstack.management.vm.v1.ImportVmRequest.NicNetworkListEntryR\x0enicNetworkList\x12q\n" +
+	"\x13nic_ip_address_list\x18\x1f \x03(\v2B.cloudstack.management.vm.v1.ImportVmRequest.NicIpAddressListEntryR\x10nicIpAddressList\x12\x91\x01\n" +
+	"\x1fdata_disk_to_disk_offering_list\x18  \x03(\v2L.cloudstack.management.vm.v1.ImportVmRequest.DataDiskToDiskOfferingListEntryR\x1adataDiskToDiskOfferingList\x12S\n" +
+	"\adetails\x18! \x03(\v29.cloudstack.management.vm.v1.ImportVmRequest.DetailsEntryR\adetails\x12.\n" +
+	"\x0fmigrate_allowed\x18\" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0emigrateAllowed\x12\x1d\n" +
+	"\x06forced\x18# \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18$ \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18% \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18& \x01(\tR\fresponseType\x1aA\n" +
+	"\x13NicNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aC\n" +
+	"\x15NicIpAddressListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aM\n" +
+	"\x1fDataDiskToDiskOfferingListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"O\n" +
+	"\x10ImportVmResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xd3\x01\n" +
+	"\x13AddIpToVmNicRequest\x12\x1d\n" +
+	"\x06nic_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nicId\x12 \n" +
+	"\aip_addr\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipAddr\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"S\n" +
+	"\x14AddIpToVmNicResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"X\n" +
+	"\x14GetVMUserDataRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"T\n" +
+	"\x15GetVMUserDataResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x98\x02\n" +
+	"\x17UpdateVMScheduleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1a\n" +
+	"\bschedule\x18\x03 \x01(\tR\bschedule\x12\x1b\n" +
+	"\ttime_zone\x18\x04 \x01(\tR\btimeZone\x12\x1d\n" +
+	"\n" +
+	"start_date\x18\x05 \x01(\tR\tstartDate\x12\x19\n" +
+	"\bend_date\x18\x06 \x01(\tR\aendDate\x12\x1f\n" +
+	"\aenabled\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"W\n" +
+	"\x18UpdateVMScheduleResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xe7\x03\n" +
+	"&MigrateVirtualMachineWithVolumeRequest\x12\x17\n" +
+	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x124\n" +
+	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x84\x01\n" +
+	"\x11migrate_volume_to\x18\x03 \x03(\v2X.cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.MigrateVolumeToEntryR\x0fmigrateVolumeTo\x12&\n" +
+	"\vauto_select\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"autoSelect\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\x1aB\n" +
+	"\x14MigrateVolumeToEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"f\n" +
+	"'MigrateVirtualMachineWithVolumeResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xcd\x03\n" +
+	"\x11AddNicToVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x1b\n" +
+	"\x05vm_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12\x1d\n" +
+	"\x06net_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05netId\x12\x1f\n" +
+	"\x06ipaddr\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\x06ipaddr\x12\x18\n" +
+	"\amacaddr\x18\x05 \x01(\tR\amacaddr\x12b\n" +
+	"\fdhcp_options\x18\x06 \x03(\v2?.cloudstack.management.vm.v1.AddNicToVMRequest.DhcpOptionsEntryR\vdhcpOptions\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a>\n" +
+	"\x10DhcpOptionsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Q\n" +
+	"\x12AddNicToVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xaf\x01\n" +
+	"\x18RemoveIpFromVmNicRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
+	"\x19RemoveIpFromVmNicResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xe5\x01\n" +
+	"\rStopVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"M\n" +
+	"\x0eStopVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\x9b\n" +
+	"\n" +
+	"\x0fUpdateVMRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12-\n" +
+	"\fdisplay_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12\x14\n" +
+	"\x05group\x18\x03 \x01(\tR\x05group\x12\"\n" +
+	"\tha_enable\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bhaEnable\x12\x16\n" +
+	"\x02id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1c\n" +
+	"\n" +
+	"os_type_id\x18\x06 \x01(\x03R\bosTypeId\x12\x1b\n" +
+	"\tuser_data\x18\a \x01(\tR\buserData\x12\x1f\n" +
+	"\vuserdata_id\x18\b \x01(\x03R\n" +
+	"userdataId\x12l\n" +
+	"\x10userdata_details\x18\t \x03(\v2A.cloudstack.management.vm.v1.UpdateVMRequest.UserdataDetailsEntryR\x0fuserdataDetails\x12$\n" +
+	"\n" +
+	"display_vm\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\tdisplayVm\x12=\n" +
+	"\x17is_dynamically_scalable\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12\x1e\n" +
+	"\x04name\x18\f \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
+	"\rinstance_name\x18\r \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\finstanceName\x12S\n" +
+	"\adetails\x18\x0e \x03(\v29.cloudstack.management.vm.v1.UpdateVMRequest.DetailsEntryR\adetails\x123\n" +
+	"\x16security_group_id_list\x18\x0f \x03(\tR\x13securityGroupIdList\x127\n" +
+	"\x18security_group_name_list\x18\x10 \x03(\tR\x15securityGroupNameList\x12.\n" +
+	"\x0fcleanup_details\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x83\x01\n" +
+	"\x19dhcp_options_network_list\x18\x12 \x03(\v2H.cloudstack.management.vm.v1.UpdateVMRequest.DhcpOptionsNetworkListEntryR\x16dhcpOptionsNetworkList\x12!\n" +
+	"\fextra_config\x18\x13 \x01(\tR\vextraConfig\x122\n" +
+	"\x11delete_protection\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\x10deleteProtection\x12%\n" +
+	"\tcustom_id\x18\x15 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12#\n" +
+	"\rresponse_type\x18\x16 \x01(\tR\fresponseType\x1aB\n" +
+	"\x14UserdataDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aI\n" +
+	"\x1bDhcpOptionsNetworkListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"O\n" +
+	"\x10UpdateVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"O\n" +
+	"\x10RecoverVMRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"P\n" +
+	"\x11RecoverVMResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.vm.v1.ResultR\x06result\"\xa0\x01\n" +
+	"\x11UnmanagedInstance\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -10981,14 +11167,15 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x95\x01\n" +
-	"\x06UserVm\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x99\x01\n" +
+	"\n" +
+	"VMSchedule\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa0\x01\n" +
-	"\x11UnmanagedInstance\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x95\x01\n" +
+	"\x06UserVm\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -11028,57 +11215,54 @@ const file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa41\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd6-\n" +
 	"\tVmService\x12i\n" +
-	"\x06StopVM\x12*.cloudstack.management.vm.v1.StopVMRequest\x1a+.cloudstack.management.vm.v1.StopVMResponse\"\x06\xc2>\x03\xc0>\x01\x12{\n" +
-	"\x0eListVMSchedule\x122.cloudstack.management.vm.v1.ListVMScheduleRequest\x1a3.cloudstack.management.vm.v1.ListVMScheduleResponse\"\x00\x12l\n" +
-	"\aStartVM\x12+.cloudstack.management.vm.v1.StartVMRequest\x1a,.cloudstack.management.vm.v1.StartVMResponse\"\x06\xc2>\x03\xc0>\x01\x12i\n" +
-	"\bAssignVM\x12,.cloudstack.management.vm.v1.AssignVMRequest\x1a-.cloudstack.management.vm.v1.AssignVMResponse\"\x00\x12i\n" +
-	"\bListNics\x12,.cloudstack.management.vm.v1.ListNicsRequest\x1a-.cloudstack.management.vm.v1.ListNicsResponse\"\x00\x12\xae\x01\n" +
-	"\x1fMigrateVirtualMachineWithVolume\x12C.cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest\x1aD.cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse\"\x00\x12\x9c\x01\n" +
-	"\x19ResetVMPasswordCmdByAdmin\x12=.cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminRequest\x1a>.cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminResponse\"\x00\x12\x8a\x01\n" +
-	"\x13DestroyVMCmdByAdmin\x127.cloudstack.management.vm.v1.DestroyVMCmdByAdminRequest\x1a8.cloudstack.management.vm.v1.DestroyVMCmdByAdminResponse\"\x00\x12l\n" +
-	"\aListVMs\x12+.cloudstack.management.vm.v1.ListVMsRequest\x1a,.cloudstack.management.vm.v1.ListVMsResponse\"\x06\xc2>\x03\xc0>\x01\x12\x81\x01\n" +
-	"\x10DeleteVMSchedule\x124.cloudstack.management.vm.v1.DeleteVMScheduleRequest\x1a5.cloudstack.management.vm.v1.DeleteVMScheduleResponse\"\x00\x12\x84\x01\n" +
-	"\x0fResetVMUserData\x123.cloudstack.management.vm.v1.ResetVMUserDataRequest\x1a4.cloudstack.management.vm.v1.ResetVMUserDataResponse\"\x06\xc2>\x03\xc0>\x01\x12x\n" +
-	"\rGetVMPassword\x121.cloudstack.management.vm.v1.GetVMPasswordRequest\x1a2.cloudstack.management.vm.v1.GetVMPasswordResponse\"\x00\x12\x8d\x01\n" +
-	"\x12DeployVnfAppliance\x126.cloudstack.management.vm.v1.DeployVnfApplianceRequest\x1a7.cloudstack.management.vm.v1.DeployVnfApplianceResponse\"\x06\xc2>\x03\xc0>\x01\x12\x84\x01\n" +
-	"\x11ScaleVMCmdByAdmin\x125.cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest\x1a6.cloudstack.management.vm.v1.ScaleVMCmdByAdminResponse\"\x00\x12i\n" +
-	"\bImportVm\x12,.cloudstack.management.vm.v1.ImportVmRequest\x1a-.cloudstack.management.vm.v1.ImportVmResponse\"\x00\x12o\n" +
-	"\bUpdateVM\x12,.cloudstack.management.vm.v1.UpdateVMRequest\x1a-.cloudstack.management.vm.v1.UpdateVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\xae\x01\n" +
-	"\x1fUpdateDefaultNicForVMCmdByAdmin\x12C.cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminRequest\x1aD.cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminResponse\"\x00\x12\x93\x01\n" +
-	"\x16ListUnmanagedInstances\x12:.cloudstack.management.vm.v1.ListUnmanagedInstancesRequest\x1a;.cloudstack.management.vm.v1.ListUnmanagedInstancesResponse\"\x00\x12\x8a\x01\n" +
-	"\x11ListVnfAppliances\x125.cloudstack.management.vm.v1.ListVnfAppliancesRequest\x1a6.cloudstack.management.vm.v1.ListVnfAppliancesResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8a\x01\n" +
-	"\x13RestoreVMCmdByAdmin\x127.cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest\x1a8.cloudstack.management.vm.v1.RestoreVMCmdByAdminResponse\"\x00\x12r\n" +
-	"\tUpgradeVM\x12-.cloudstack.management.vm.v1.UpgradeVMRequest\x1a..cloudstack.management.vm.v1.UpgradeVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x87\x01\n" +
-	"\x12RebootVMCmdByAdmin\x126.cloudstack.management.vm.v1.RebootVMCmdByAdminRequest\x1a7.cloudstack.management.vm.v1.RebootVMCmdByAdminResponse\"\x00\x12x\n" +
-	"\rUpdateVmNicIp\x121.cloudstack.management.vm.v1.UpdateVmNicIpRequest\x1a2.cloudstack.management.vm.v1.UpdateVmNicIpResponse\"\x00\x12\x96\x01\n" +
-	"\x17ResetVMSSHKeyCmdByAdmin\x12;.cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminRequest\x1a<.cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminResponse\"\x00\x12l\n" +
-	"\tMigrateVM\x12-.cloudstack.management.vm.v1.MigrateVMRequest\x1a..cloudstack.management.vm.v1.MigrateVMResponse\"\x00\x12\x84\x01\n" +
-	"\x0fResetVMPassword\x123.cloudstack.management.vm.v1.ResetVMPasswordRequest\x1a4.cloudstack.management.vm.v1.ResetVMPasswordResponse\"\x06\xc2>\x03\xc0>\x01\x12\x81\x01\n" +
-	"\x10CreateVMSchedule\x124.cloudstack.management.vm.v1.CreateVMScheduleRequest\x1a5.cloudstack.management.vm.v1.CreateVMScheduleResponse\"\x00\x12l\n" +
-	"\tRecoverVM\x12-.cloudstack.management.vm.v1.RecoverVMRequest\x1a..cloudstack.management.vm.v1.RecoverVMResponse\"\x00\x12u\n" +
-	"\n" +
-	"AddNicToVM\x12..cloudstack.management.vm.v1.AddNicToVMRequest\x1a/.cloudstack.management.vm.v1.AddNicToVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x96\x01\n" +
-	"\x15UpdateDefaultNicForVM\x129.cloudstack.management.vm.v1.UpdateDefaultNicForVMRequest\x1a:.cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse\"\x06\xc2>\x03\xc0>\x01\x12u\n" +
-	"\fAddIpToVmNic\x120.cloudstack.management.vm.v1.AddIpToVmNicRequest\x1a1.cloudstack.management.vm.v1.AddIpToVmNicResponse\"\x00\x12\x84\x01\n" +
-	"\x11RemoveIpFromVmNic\x125.cloudstack.management.vm.v1.RemoveIpFromVmNicRequest\x1a6.cloudstack.management.vm.v1.RemoveIpFromVmNicResponse\"\x00\x12l\n" +
-	"\tExpungeVM\x12-.cloudstack.management.vm.v1.ExpungeVMRequest\x1a..cloudstack.management.vm.v1.ExpungeVMResponse\"\x00\x12\x81\x01\n" +
-	"\x10ListVmsForImport\x124.cloudstack.management.vm.v1.ListVmsForImportRequest\x1a5.cloudstack.management.vm.v1.ListVmsForImportResponse\"\x00\x12r\n" +
+	"\bAssignVM\x12,.cloudstack.management.vm.v1.AssignVMRequest\x1a-.cloudstack.management.vm.v1.AssignVMResponse\"\x00\x12\x87\x01\n" +
+	"\x12DeployVMCmdByAdmin\x126.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest\x1a7.cloudstack.management.vm.v1.DeployVMCmdByAdminResponse\"\x00\x12\x96\x01\n" +
+	"\x15UpdateDefaultNicForVM\x129.cloudstack.management.vm.v1.UpdateDefaultNicForVMRequest\x1a:.cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse\"\x06\xc2>\x03\xc0>\x01\x12l\n" +
+	"\tExpungeVM\x12-.cloudstack.management.vm.v1.ExpungeVMRequest\x1a..cloudstack.management.vm.v1.ExpungeVMResponse\"\x00\x12r\n" +
+	"\tUpgradeVM\x12-.cloudstack.management.vm.v1.UpgradeVMRequest\x1a..cloudstack.management.vm.v1.UpgradeVMResponse\"\x06\xc2>\x03\xc0>\x01\x12r\n" +
+	"\tDestroyVM\x12-.cloudstack.management.vm.v1.DestroyVMRequest\x1a..cloudstack.management.vm.v1.DestroyVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9c\x01\n" +
+	"\x19RemoveNicFromVMCmdByAdmin\x12=.cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminRequest\x1a>.cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse\"\x00\x12\x8d\x01\n" +
+	"\x14AddNicToVMCmdByAdmin\x128.cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest\x1a9.cloudstack.management.vm.v1.AddNicToVMCmdByAdminResponse\"\x00\x12\x93\x01\n" +
+	"\x16ListUnmanagedInstances\x12:.cloudstack.management.vm.v1.ListUnmanagedInstancesRequest\x1a;.cloudstack.management.vm.v1.ListUnmanagedInstancesResponse\"\x00\x12\x87\x01\n" +
+	"\x12UnmanageVMInstance\x126.cloudstack.management.vm.v1.UnmanageVMInstanceRequest\x1a7.cloudstack.management.vm.v1.UnmanageVMInstanceResponse\"\x00\x12\x84\x01\n" +
+	"\x0fResetVMPassword\x123.cloudstack.management.vm.v1.ResetVMPasswordRequest\x1a4.cloudstack.management.vm.v1.ResetVMPasswordResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa5\x01\n" +
+	"\x1cDeployVnfApplianceCmdByAdmin\x12@.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest\x1aA.cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminResponse\"\x00\x12i\n" +
+	"\bListNics\x12,.cloudstack.management.vm.v1.ListNicsRequest\x1a-.cloudstack.management.vm.v1.ListNicsResponse\"\x00\x12{\n" +
+	"\x0eListVMSchedule\x122.cloudstack.management.vm.v1.ListVMScheduleRequest\x1a3.cloudstack.management.vm.v1.ListVMScheduleResponse\"\x00\x12r\n" +
 	"\tRestoreVM\x12-.cloudstack.management.vm.v1.RestoreVMRequest\x1a..cloudstack.management.vm.v1.RestoreVMResponse\"\x06\xc2>\x03\xc0>\x01\x12l\n" +
-	"\aScaleVM\x12+.cloudstack.management.vm.v1.ScaleVMRequest\x1a,.cloudstack.management.vm.v1.ScaleVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9c\x01\n" +
-	"\x19RemoveNicFromVMCmdByAdmin\x12=.cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminRequest\x1a>.cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse\"\x00\x12\x87\x01\n" +
-	"\x12DeployVMCmdByAdmin\x126.cloudstack.management.vm.v1.DeployVMCmdByAdminRequest\x1a7.cloudstack.management.vm.v1.DeployVMCmdByAdminResponse\"\x00\x12\x87\x01\n" +
-	"\x12UnmanageVMInstance\x126.cloudstack.management.vm.v1.UnmanageVMInstanceRequest\x1a7.cloudstack.management.vm.v1.UnmanageVMInstanceResponse\"\x00\x12\xbd\x01\n" +
-	"$ListAffectedVmsForStorageScopeChange\x12H.cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeRequest\x1aI.cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse\"\x00\x12\x84\x01\n" +
-	"\x0fRemoveNicFromVM\x123.cloudstack.management.vm.v1.RemoveNicFromVMRequest\x1a4.cloudstack.management.vm.v1.RemoveNicFromVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x81\x01\n" +
-	"\x10UpdateVMSchedule\x124.cloudstack.management.vm.v1.UpdateVMScheduleRequest\x1a5.cloudstack.management.vm.v1.UpdateVMScheduleResponse\"\x00\x12x\n" +
-	"\rGetVMUserData\x121.cloudstack.management.vm.v1.GetVMUserDataRequest\x1a2.cloudstack.management.vm.v1.GetVMUserDataResponse\"\x00\x12\x96\x01\n" +
-	"\x17ImportUnmanagedInstance\x12;.cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest\x1a<.cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse\"\x00\x12r\n" +
-	"\tDestroyVM\x12-.cloudstack.management.vm.v1.DestroyVMRequest\x1a..cloudstack.management.vm.v1.DestroyVMResponse\"\x06\xc2>\x03\xc0>\x01\x12o\n" +
-	"\bRebootVM\x12,.cloudstack.management.vm.v1.RebootVMRequest\x1a-.cloudstack.management.vm.v1.RebootVMResponse\"\x06\xc2>\x03\xc0>\x01\x12o\n" +
-	"\bDeployVM\x12,.cloudstack.management.vm.v1.DeployVMRequest\x1a-.cloudstack.management.vm.v1.DeployVMResponse\"\x06\xc2>\x03\xc0>\x01\x12~\n" +
-	"\rResetVMSSHKey\x121.cloudstack.management.vm.v1.ResetVMSSHKeyRequest\x1a2.cloudstack.management.vm.v1.ResetVMSSHKeyResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\x92\x02\n" +
+	"\aStartVM\x12+.cloudstack.management.vm.v1.StartVMRequest\x1a,.cloudstack.management.vm.v1.StartVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8d\x01\n" +
+	"\x12DeployVnfAppliance\x126.cloudstack.management.vm.v1.DeployVnfApplianceRequest\x1a7.cloudstack.management.vm.v1.DeployVnfApplianceResponse\"\x06\xc2>\x03\xc0>\x01\x12l\n" +
+	"\tMigrateVM\x12-.cloudstack.management.vm.v1.MigrateVMRequest\x1a..cloudstack.management.vm.v1.MigrateVMResponse\"\x00\x12\x8a\x01\n" +
+	"\x11ListVnfAppliances\x125.cloudstack.management.vm.v1.ListVnfAppliancesRequest\x1a6.cloudstack.management.vm.v1.ListVnfAppliancesResponse\"\x06\xc2>\x03\xc0>\x01\x12\xbd\x01\n" +
+	"$ListAffectedVmsForStorageScopeChange\x12H.cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeRequest\x1aI.cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse\"\x00\x12\x81\x01\n" +
+	"\x10StopVMCmdByAdmin\x124.cloudstack.management.vm.v1.StopVMCmdByAdminRequest\x1a5.cloudstack.management.vm.v1.StopVMCmdByAdminResponse\"\x00\x12x\n" +
+	"\rUpdateVmNicIp\x121.cloudstack.management.vm.v1.UpdateVmNicIpRequest\x1a2.cloudstack.management.vm.v1.UpdateVmNicIpResponse\"\x00\x12\x96\x01\n" +
+	"\x17ImportUnmanagedInstance\x12;.cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest\x1a<.cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse\"\x00\x12\x81\x01\n" +
+	"\x10DeleteVMSchedule\x124.cloudstack.management.vm.v1.DeleteVMScheduleRequest\x1a5.cloudstack.management.vm.v1.DeleteVMScheduleResponse\"\x00\x12~\n" +
+	"\rResetVMSSHKey\x121.cloudstack.management.vm.v1.ResetVMSSHKeyRequest\x1a2.cloudstack.management.vm.v1.ResetVMSSHKeyResponse\"\x06\xc2>\x03\xc0>\x01\x12x\n" +
+	"\rGetVMPassword\x121.cloudstack.management.vm.v1.GetVMPasswordRequest\x1a2.cloudstack.management.vm.v1.GetVMPasswordResponse\"\x00\x12\x81\x01\n" +
+	"\x10ListVmsForImport\x124.cloudstack.management.vm.v1.ListVmsForImportRequest\x1a5.cloudstack.management.vm.v1.ListVmsForImportResponse\"\x00\x12o\n" +
+	"\bDeployVM\x12,.cloudstack.management.vm.v1.DeployVMRequest\x1a-.cloudstack.management.vm.v1.DeployVMResponse\"\x06\xc2>\x03\xc0>\x01\x12l\n" +
+	"\aScaleVM\x12+.cloudstack.management.vm.v1.ScaleVMRequest\x1a,.cloudstack.management.vm.v1.ScaleVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x87\x01\n" +
+	"\x12UpdateVMCmdByAdmin\x126.cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest\x1a7.cloudstack.management.vm.v1.UpdateVMCmdByAdminResponse\"\x00\x12\x84\x01\n" +
+	"\x0fResetVMUserData\x123.cloudstack.management.vm.v1.ResetVMUserDataRequest\x1a4.cloudstack.management.vm.v1.ResetVMUserDataResponse\"\x06\xc2>\x03\xc0>\x01\x12\x81\x01\n" +
+	"\x10CreateVMSchedule\x124.cloudstack.management.vm.v1.CreateVMScheduleRequest\x1a5.cloudstack.management.vm.v1.CreateVMScheduleResponse\"\x00\x12\x84\x01\n" +
+	"\x0fRemoveNicFromVM\x123.cloudstack.management.vm.v1.RemoveNicFromVMRequest\x1a4.cloudstack.management.vm.v1.RemoveNicFromVMResponse\"\x06\xc2>\x03\xc0>\x01\x12l\n" +
+	"\aListVMs\x12+.cloudstack.management.vm.v1.ListVMsRequest\x1a,.cloudstack.management.vm.v1.ListVMsResponse\"\x06\xc2>\x03\xc0>\x01\x12o\n" +
+	"\bRebootVM\x12,.cloudstack.management.vm.v1.RebootVMRequest\x1a-.cloudstack.management.vm.v1.RebootVMResponse\"\x06\xc2>\x03\xc0>\x01\x12i\n" +
+	"\bImportVm\x12,.cloudstack.management.vm.v1.ImportVmRequest\x1a-.cloudstack.management.vm.v1.ImportVmResponse\"\x00\x12u\n" +
+	"\fAddIpToVmNic\x120.cloudstack.management.vm.v1.AddIpToVmNicRequest\x1a1.cloudstack.management.vm.v1.AddIpToVmNicResponse\"\x00\x12x\n" +
+	"\rGetVMUserData\x121.cloudstack.management.vm.v1.GetVMUserDataRequest\x1a2.cloudstack.management.vm.v1.GetVMUserDataResponse\"\x00\x12\x81\x01\n" +
+	"\x10UpdateVMSchedule\x124.cloudstack.management.vm.v1.UpdateVMScheduleRequest\x1a5.cloudstack.management.vm.v1.UpdateVMScheduleResponse\"\x00\x12\xae\x01\n" +
+	"\x1fMigrateVirtualMachineWithVolume\x12C.cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest\x1aD.cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse\"\x00\x12u\n" +
+	"\n" +
+	"AddNicToVM\x12..cloudstack.management.vm.v1.AddNicToVMRequest\x1a/.cloudstack.management.vm.v1.AddNicToVMResponse\"\x06\xc2>\x03\xc0>\x01\x12\x84\x01\n" +
+	"\x11RemoveIpFromVmNic\x125.cloudstack.management.vm.v1.RemoveIpFromVmNicRequest\x1a6.cloudstack.management.vm.v1.RemoveIpFromVmNicResponse\"\x00\x12i\n" +
+	"\x06StopVM\x12*.cloudstack.management.vm.v1.StopVMRequest\x1a+.cloudstack.management.vm.v1.StopVMResponse\"\x06\xc2>\x03\xc0>\x01\x12o\n" +
+	"\bUpdateVM\x12,.cloudstack.management.vm.v1.UpdateVMRequest\x1a-.cloudstack.management.vm.v1.UpdateVMResponse\"\x06\xc2>\x03\xc0>\x01\x12l\n" +
+	"\tRecoverVM\x12-.cloudstack.management.vm.v1.RecoverVMRequest\x1a..cloudstack.management.vm.v1.RecoverVMResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x92\x02\n" +
 	"\x1fcom.cloudstack.management.vm.v1B\n" +
 	"VmGenProtoP\x01ZTgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/vm/v1;vmv1\xa2\x02\x03CMV\xaa\x02\x1bCloudstack.Management.Vm.V1\xca\x02\x1bCloudstack\\Management\\Vm\\V1\xe2\x02'Cloudstack\\Management\\Vm\\V1\\GPBMetadata\xea\x02\x1eCloudstack::Management::Vm::V1b\beditionsp\xe8\a"
 
@@ -11094,349 +11278,352 @@ func file_cloudstack_management_vm_v1_vm_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_vm_v1_vm_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 147)
+var file_cloudstack_management_vm_v1_vm_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 150)
 var file_cloudstack_management_vm_v1_vm_gen_proto_goTypes = []any{
-	(*StopVMRequest)(nil),                                // 0: cloudstack.management.vm.v1.StopVMRequest
-	(*StopVMResponse)(nil),                               // 1: cloudstack.management.vm.v1.StopVMResponse
-	(*ListVMScheduleRequest)(nil),                        // 2: cloudstack.management.vm.v1.ListVMScheduleRequest
-	(*ListVMScheduleResponse)(nil),                       // 3: cloudstack.management.vm.v1.ListVMScheduleResponse
-	(*StartVMRequest)(nil),                               // 4: cloudstack.management.vm.v1.StartVMRequest
-	(*StartVMResponse)(nil),                              // 5: cloudstack.management.vm.v1.StartVMResponse
-	(*AssignVMRequest)(nil),                              // 6: cloudstack.management.vm.v1.AssignVMRequest
-	(*AssignVMResponse)(nil),                             // 7: cloudstack.management.vm.v1.AssignVMResponse
-	(*ListNicsRequest)(nil),                              // 8: cloudstack.management.vm.v1.ListNicsRequest
-	(*ListNicsResponse)(nil),                             // 9: cloudstack.management.vm.v1.ListNicsResponse
-	(*MigrateVirtualMachineWithVolumeRequest)(nil),       // 10: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest
-	(*MigrateVirtualMachineWithVolumeResponse)(nil),      // 11: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse
-	(*ResetVMPasswordCmdByAdminRequest)(nil),             // 12: cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminRequest
-	(*ResetVMPasswordCmdByAdminResponse)(nil),            // 13: cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminResponse
-	(*DestroyVMCmdByAdminRequest)(nil),                   // 14: cloudstack.management.vm.v1.DestroyVMCmdByAdminRequest
-	(*DestroyVMCmdByAdminResponse)(nil),                  // 15: cloudstack.management.vm.v1.DestroyVMCmdByAdminResponse
-	(*ListVMsRequest)(nil),                               // 16: cloudstack.management.vm.v1.ListVMsRequest
-	(*ListVMsResponse)(nil),                              // 17: cloudstack.management.vm.v1.ListVMsResponse
-	(*DeleteVMScheduleRequest)(nil),                      // 18: cloudstack.management.vm.v1.DeleteVMScheduleRequest
-	(*DeleteVMScheduleResponse)(nil),                     // 19: cloudstack.management.vm.v1.DeleteVMScheduleResponse
-	(*ResetVMUserDataRequest)(nil),                       // 20: cloudstack.management.vm.v1.ResetVMUserDataRequest
-	(*ResetVMUserDataResponse)(nil),                      // 21: cloudstack.management.vm.v1.ResetVMUserDataResponse
-	(*GetVMPasswordRequest)(nil),                         // 22: cloudstack.management.vm.v1.GetVMPasswordRequest
-	(*GetVMPasswordResponse)(nil),                        // 23: cloudstack.management.vm.v1.GetVMPasswordResponse
-	(*DeployVnfApplianceRequest)(nil),                    // 24: cloudstack.management.vm.v1.DeployVnfApplianceRequest
-	(*DeployVnfApplianceResponse)(nil),                   // 25: cloudstack.management.vm.v1.DeployVnfApplianceResponse
-	(*ScaleVMCmdByAdminRequest)(nil),                     // 26: cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest
-	(*ScaleVMCmdByAdminResponse)(nil),                    // 27: cloudstack.management.vm.v1.ScaleVMCmdByAdminResponse
-	(*ImportVmRequest)(nil),                              // 28: cloudstack.management.vm.v1.ImportVmRequest
-	(*ImportVmResponse)(nil),                             // 29: cloudstack.management.vm.v1.ImportVmResponse
-	(*UpdateVMRequest)(nil),                              // 30: cloudstack.management.vm.v1.UpdateVMRequest
-	(*UpdateVMResponse)(nil),                             // 31: cloudstack.management.vm.v1.UpdateVMResponse
-	(*UpdateDefaultNicForVMCmdByAdminRequest)(nil),       // 32: cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminRequest
-	(*UpdateDefaultNicForVMCmdByAdminResponse)(nil),      // 33: cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminResponse
-	(*ListUnmanagedInstancesRequest)(nil),                // 34: cloudstack.management.vm.v1.ListUnmanagedInstancesRequest
-	(*ListUnmanagedInstancesResponse)(nil),               // 35: cloudstack.management.vm.v1.ListUnmanagedInstancesResponse
+	(*AssignVMRequest)(nil),                              // 0: cloudstack.management.vm.v1.AssignVMRequest
+	(*AssignVMResponse)(nil),                             // 1: cloudstack.management.vm.v1.AssignVMResponse
+	(*DeployVMCmdByAdminRequest)(nil),                    // 2: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest
+	(*DeployVMCmdByAdminResponse)(nil),                   // 3: cloudstack.management.vm.v1.DeployVMCmdByAdminResponse
+	(*UpdateDefaultNicForVMRequest)(nil),                 // 4: cloudstack.management.vm.v1.UpdateDefaultNicForVMRequest
+	(*UpdateDefaultNicForVMResponse)(nil),                // 5: cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse
+	(*ExpungeVMRequest)(nil),                             // 6: cloudstack.management.vm.v1.ExpungeVMRequest
+	(*ExpungeVMResponse)(nil),                            // 7: cloudstack.management.vm.v1.ExpungeVMResponse
+	(*UpgradeVMRequest)(nil),                             // 8: cloudstack.management.vm.v1.UpgradeVMRequest
+	(*UpgradeVMResponse)(nil),                            // 9: cloudstack.management.vm.v1.UpgradeVMResponse
+	(*DestroyVMRequest)(nil),                             // 10: cloudstack.management.vm.v1.DestroyVMRequest
+	(*DestroyVMResponse)(nil),                            // 11: cloudstack.management.vm.v1.DestroyVMResponse
+	(*RemoveNicFromVMCmdByAdminRequest)(nil),             // 12: cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminRequest
+	(*RemoveNicFromVMCmdByAdminResponse)(nil),            // 13: cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse
+	(*AddNicToVMCmdByAdminRequest)(nil),                  // 14: cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest
+	(*AddNicToVMCmdByAdminResponse)(nil),                 // 15: cloudstack.management.vm.v1.AddNicToVMCmdByAdminResponse
+	(*ListUnmanagedInstancesRequest)(nil),                // 16: cloudstack.management.vm.v1.ListUnmanagedInstancesRequest
+	(*ListUnmanagedInstancesResponse)(nil),               // 17: cloudstack.management.vm.v1.ListUnmanagedInstancesResponse
+	(*UnmanageVMInstanceRequest)(nil),                    // 18: cloudstack.management.vm.v1.UnmanageVMInstanceRequest
+	(*UnmanageVMInstanceResponse)(nil),                   // 19: cloudstack.management.vm.v1.UnmanageVMInstanceResponse
+	(*ResetVMPasswordRequest)(nil),                       // 20: cloudstack.management.vm.v1.ResetVMPasswordRequest
+	(*ResetVMPasswordResponse)(nil),                      // 21: cloudstack.management.vm.v1.ResetVMPasswordResponse
+	(*DeployVnfApplianceCmdByAdminRequest)(nil),          // 22: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest
+	(*DeployVnfApplianceCmdByAdminResponse)(nil),         // 23: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminResponse
+	(*ListNicsRequest)(nil),                              // 24: cloudstack.management.vm.v1.ListNicsRequest
+	(*ListNicsResponse)(nil),                             // 25: cloudstack.management.vm.v1.ListNicsResponse
+	(*ListVMScheduleRequest)(nil),                        // 26: cloudstack.management.vm.v1.ListVMScheduleRequest
+	(*ListVMScheduleResponse)(nil),                       // 27: cloudstack.management.vm.v1.ListVMScheduleResponse
+	(*RestoreVMRequest)(nil),                             // 28: cloudstack.management.vm.v1.RestoreVMRequest
+	(*RestoreVMResponse)(nil),                            // 29: cloudstack.management.vm.v1.RestoreVMResponse
+	(*StartVMRequest)(nil),                               // 30: cloudstack.management.vm.v1.StartVMRequest
+	(*StartVMResponse)(nil),                              // 31: cloudstack.management.vm.v1.StartVMResponse
+	(*DeployVnfApplianceRequest)(nil),                    // 32: cloudstack.management.vm.v1.DeployVnfApplianceRequest
+	(*DeployVnfApplianceResponse)(nil),                   // 33: cloudstack.management.vm.v1.DeployVnfApplianceResponse
+	(*MigrateVMRequest)(nil),                             // 34: cloudstack.management.vm.v1.MigrateVMRequest
+	(*MigrateVMResponse)(nil),                            // 35: cloudstack.management.vm.v1.MigrateVMResponse
 	(*ListVnfAppliancesRequest)(nil),                     // 36: cloudstack.management.vm.v1.ListVnfAppliancesRequest
 	(*ListVnfAppliancesResponse)(nil),                    // 37: cloudstack.management.vm.v1.ListVnfAppliancesResponse
-	(*RestoreVMCmdByAdminRequest)(nil),                   // 38: cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest
-	(*RestoreVMCmdByAdminResponse)(nil),                  // 39: cloudstack.management.vm.v1.RestoreVMCmdByAdminResponse
-	(*UpgradeVMRequest)(nil),                             // 40: cloudstack.management.vm.v1.UpgradeVMRequest
-	(*UpgradeVMResponse)(nil),                            // 41: cloudstack.management.vm.v1.UpgradeVMResponse
-	(*RebootVMCmdByAdminRequest)(nil),                    // 42: cloudstack.management.vm.v1.RebootVMCmdByAdminRequest
-	(*RebootVMCmdByAdminResponse)(nil),                   // 43: cloudstack.management.vm.v1.RebootVMCmdByAdminResponse
-	(*UpdateVmNicIpRequest)(nil),                         // 44: cloudstack.management.vm.v1.UpdateVmNicIpRequest
-	(*UpdateVmNicIpResponse)(nil),                        // 45: cloudstack.management.vm.v1.UpdateVmNicIpResponse
-	(*ResetVMSSHKeyCmdByAdminRequest)(nil),               // 46: cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminRequest
-	(*ResetVMSSHKeyCmdByAdminResponse)(nil),              // 47: cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminResponse
-	(*MigrateVMRequest)(nil),                             // 48: cloudstack.management.vm.v1.MigrateVMRequest
-	(*MigrateVMResponse)(nil),                            // 49: cloudstack.management.vm.v1.MigrateVMResponse
-	(*ResetVMPasswordRequest)(nil),                       // 50: cloudstack.management.vm.v1.ResetVMPasswordRequest
-	(*ResetVMPasswordResponse)(nil),                      // 51: cloudstack.management.vm.v1.ResetVMPasswordResponse
-	(*CreateVMScheduleRequest)(nil),                      // 52: cloudstack.management.vm.v1.CreateVMScheduleRequest
-	(*CreateVMScheduleResponse)(nil),                     // 53: cloudstack.management.vm.v1.CreateVMScheduleResponse
-	(*RecoverVMRequest)(nil),                             // 54: cloudstack.management.vm.v1.RecoverVMRequest
-	(*RecoverVMResponse)(nil),                            // 55: cloudstack.management.vm.v1.RecoverVMResponse
-	(*AddNicToVMRequest)(nil),                            // 56: cloudstack.management.vm.v1.AddNicToVMRequest
-	(*AddNicToVMResponse)(nil),                           // 57: cloudstack.management.vm.v1.AddNicToVMResponse
-	(*UpdateDefaultNicForVMRequest)(nil),                 // 58: cloudstack.management.vm.v1.UpdateDefaultNicForVMRequest
-	(*UpdateDefaultNicForVMResponse)(nil),                // 59: cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse
-	(*AddIpToVmNicRequest)(nil),                          // 60: cloudstack.management.vm.v1.AddIpToVmNicRequest
-	(*AddIpToVmNicResponse)(nil),                         // 61: cloudstack.management.vm.v1.AddIpToVmNicResponse
-	(*RemoveIpFromVmNicRequest)(nil),                     // 62: cloudstack.management.vm.v1.RemoveIpFromVmNicRequest
-	(*RemoveIpFromVmNicResponse)(nil),                    // 63: cloudstack.management.vm.v1.RemoveIpFromVmNicResponse
-	(*ExpungeVMRequest)(nil),                             // 64: cloudstack.management.vm.v1.ExpungeVMRequest
-	(*ExpungeVMResponse)(nil),                            // 65: cloudstack.management.vm.v1.ExpungeVMResponse
-	(*ListVmsForImportRequest)(nil),                      // 66: cloudstack.management.vm.v1.ListVmsForImportRequest
-	(*ListVmsForImportResponse)(nil),                     // 67: cloudstack.management.vm.v1.ListVmsForImportResponse
-	(*RestoreVMRequest)(nil),                             // 68: cloudstack.management.vm.v1.RestoreVMRequest
-	(*RestoreVMResponse)(nil),                            // 69: cloudstack.management.vm.v1.RestoreVMResponse
-	(*ScaleVMRequest)(nil),                               // 70: cloudstack.management.vm.v1.ScaleVMRequest
-	(*ScaleVMResponse)(nil),                              // 71: cloudstack.management.vm.v1.ScaleVMResponse
-	(*RemoveNicFromVMCmdByAdminRequest)(nil),             // 72: cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminRequest
-	(*RemoveNicFromVMCmdByAdminResponse)(nil),            // 73: cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse
-	(*DeployVMCmdByAdminRequest)(nil),                    // 74: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest
-	(*DeployVMCmdByAdminResponse)(nil),                   // 75: cloudstack.management.vm.v1.DeployVMCmdByAdminResponse
-	(*UnmanageVMInstanceRequest)(nil),                    // 76: cloudstack.management.vm.v1.UnmanageVMInstanceRequest
-	(*UnmanageVMInstanceResponse)(nil),                   // 77: cloudstack.management.vm.v1.UnmanageVMInstanceResponse
-	(*ListAffectedVmsForStorageScopeChangeRequest)(nil),  // 78: cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeRequest
-	(*ListAffectedVmsForStorageScopeChangeResponse)(nil), // 79: cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse
-	(*RemoveNicFromVMRequest)(nil),                       // 80: cloudstack.management.vm.v1.RemoveNicFromVMRequest
-	(*RemoveNicFromVMResponse)(nil),                      // 81: cloudstack.management.vm.v1.RemoveNicFromVMResponse
-	(*UpdateVMScheduleRequest)(nil),                      // 82: cloudstack.management.vm.v1.UpdateVMScheduleRequest
-	(*UpdateVMScheduleResponse)(nil),                     // 83: cloudstack.management.vm.v1.UpdateVMScheduleResponse
-	(*GetVMUserDataRequest)(nil),                         // 84: cloudstack.management.vm.v1.GetVMUserDataRequest
-	(*GetVMUserDataResponse)(nil),                        // 85: cloudstack.management.vm.v1.GetVMUserDataResponse
-	(*ImportUnmanagedInstanceRequest)(nil),               // 86: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest
-	(*ImportUnmanagedInstanceResponse)(nil),              // 87: cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse
-	(*DestroyVMRequest)(nil),                             // 88: cloudstack.management.vm.v1.DestroyVMRequest
-	(*DestroyVMResponse)(nil),                            // 89: cloudstack.management.vm.v1.DestroyVMResponse
-	(*RebootVMRequest)(nil),                              // 90: cloudstack.management.vm.v1.RebootVMRequest
-	(*RebootVMResponse)(nil),                             // 91: cloudstack.management.vm.v1.RebootVMResponse
-	(*DeployVMRequest)(nil),                              // 92: cloudstack.management.vm.v1.DeployVMRequest
-	(*DeployVMResponse)(nil),                             // 93: cloudstack.management.vm.v1.DeployVMResponse
-	(*ResetVMSSHKeyRequest)(nil),                         // 94: cloudstack.management.vm.v1.ResetVMSSHKeyRequest
-	(*ResetVMSSHKeyResponse)(nil),                        // 95: cloudstack.management.vm.v1.ResetVMSSHKeyResponse
-	(*VMSchedule)(nil),                                   // 96: cloudstack.management.vm.v1.VMSchedule
-	(*Nic)(nil),                                          // 97: cloudstack.management.vm.v1.Nic
-	(*UserVm)(nil),                                       // 98: cloudstack.management.vm.v1.UserVm
-	(*UnmanagedInstance)(nil),                            // 99: cloudstack.management.vm.v1.UnmanagedInstance
-	(*VirtualMachine)(nil),                               // 100: cloudstack.management.vm.v1.VirtualMachine
-	(*Success)(nil),                                      // 101: cloudstack.management.vm.v1.Success
-	(*Item)(nil),                                         // 102: cloudstack.management.vm.v1.Item
-	(*Result)(nil),                                       // 103: cloudstack.management.vm.v1.Result
-	nil,                                                  // 104: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.MigrateVolumeToEntry
-	nil,                                                  // 105: cloudstack.management.vm.v1.ListVMsRequest.TagsEntry
-	nil,                                                  // 106: cloudstack.management.vm.v1.ResetVMUserDataRequest.UserdataDetailsEntry
-	nil,                                                  // 107: cloudstack.management.vm.v1.DeployVnfApplianceRequest.UserdataDetailsEntry
-	nil,                                                  // 108: cloudstack.management.vm.v1.DeployVnfApplianceRequest.IpToNetworkListEntry
-	nil,                                                  // 109: cloudstack.management.vm.v1.DeployVnfApplianceRequest.DetailsEntry
-	nil,                                                  // 110: cloudstack.management.vm.v1.DeployVnfApplianceRequest.DhcpOptionsNetworkListEntry
-	nil,                                                  // 111: cloudstack.management.vm.v1.DeployVnfApplianceRequest.DataDiskTemplateToDiskOfferingListEntry
-	nil,                                                  // 112: cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppPropertiesEntry
-	nil,                                                  // 113: cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppNetworksEntry
-	nil,                                                  // 114: cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest.DetailsEntry
-	nil,                                                  // 115: cloudstack.management.vm.v1.ImportVmRequest.NicNetworkListEntry
-	nil,                                                  // 116: cloudstack.management.vm.v1.ImportVmRequest.NicIpAddressListEntry
-	nil,                                                  // 117: cloudstack.management.vm.v1.ImportVmRequest.DataDiskToDiskOfferingListEntry
-	nil,                                                  // 118: cloudstack.management.vm.v1.ImportVmRequest.DetailsEntry
-	nil,                                                  // 119: cloudstack.management.vm.v1.UpdateVMRequest.UserdataDetailsEntry
-	nil,                                                  // 120: cloudstack.management.vm.v1.UpdateVMRequest.DetailsEntry
-	nil,                                                  // 121: cloudstack.management.vm.v1.UpdateVMRequest.DhcpOptionsNetworkListEntry
+	(*ListAffectedVmsForStorageScopeChangeRequest)(nil),  // 38: cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeRequest
+	(*ListAffectedVmsForStorageScopeChangeResponse)(nil), // 39: cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse
+	(*StopVMCmdByAdminRequest)(nil),                      // 40: cloudstack.management.vm.v1.StopVMCmdByAdminRequest
+	(*StopVMCmdByAdminResponse)(nil),                     // 41: cloudstack.management.vm.v1.StopVMCmdByAdminResponse
+	(*UpdateVmNicIpRequest)(nil),                         // 42: cloudstack.management.vm.v1.UpdateVmNicIpRequest
+	(*UpdateVmNicIpResponse)(nil),                        // 43: cloudstack.management.vm.v1.UpdateVmNicIpResponse
+	(*ImportUnmanagedInstanceRequest)(nil),               // 44: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest
+	(*ImportUnmanagedInstanceResponse)(nil),              // 45: cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse
+	(*DeleteVMScheduleRequest)(nil),                      // 46: cloudstack.management.vm.v1.DeleteVMScheduleRequest
+	(*DeleteVMScheduleResponse)(nil),                     // 47: cloudstack.management.vm.v1.DeleteVMScheduleResponse
+	(*ResetVMSSHKeyRequest)(nil),                         // 48: cloudstack.management.vm.v1.ResetVMSSHKeyRequest
+	(*ResetVMSSHKeyResponse)(nil),                        // 49: cloudstack.management.vm.v1.ResetVMSSHKeyResponse
+	(*GetVMPasswordRequest)(nil),                         // 50: cloudstack.management.vm.v1.GetVMPasswordRequest
+	(*GetVMPasswordResponse)(nil),                        // 51: cloudstack.management.vm.v1.GetVMPasswordResponse
+	(*ListVmsForImportRequest)(nil),                      // 52: cloudstack.management.vm.v1.ListVmsForImportRequest
+	(*ListVmsForImportResponse)(nil),                     // 53: cloudstack.management.vm.v1.ListVmsForImportResponse
+	(*DeployVMRequest)(nil),                              // 54: cloudstack.management.vm.v1.DeployVMRequest
+	(*DeployVMResponse)(nil),                             // 55: cloudstack.management.vm.v1.DeployVMResponse
+	(*ScaleVMRequest)(nil),                               // 56: cloudstack.management.vm.v1.ScaleVMRequest
+	(*ScaleVMResponse)(nil),                              // 57: cloudstack.management.vm.v1.ScaleVMResponse
+	(*UpdateVMCmdByAdminRequest)(nil),                    // 58: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest
+	(*UpdateVMCmdByAdminResponse)(nil),                   // 59: cloudstack.management.vm.v1.UpdateVMCmdByAdminResponse
+	(*ResetVMUserDataRequest)(nil),                       // 60: cloudstack.management.vm.v1.ResetVMUserDataRequest
+	(*ResetVMUserDataResponse)(nil),                      // 61: cloudstack.management.vm.v1.ResetVMUserDataResponse
+	(*CreateVMScheduleRequest)(nil),                      // 62: cloudstack.management.vm.v1.CreateVMScheduleRequest
+	(*CreateVMScheduleResponse)(nil),                     // 63: cloudstack.management.vm.v1.CreateVMScheduleResponse
+	(*RemoveNicFromVMRequest)(nil),                       // 64: cloudstack.management.vm.v1.RemoveNicFromVMRequest
+	(*RemoveNicFromVMResponse)(nil),                      // 65: cloudstack.management.vm.v1.RemoveNicFromVMResponse
+	(*ListVMsRequest)(nil),                               // 66: cloudstack.management.vm.v1.ListVMsRequest
+	(*ListVMsResponse)(nil),                              // 67: cloudstack.management.vm.v1.ListVMsResponse
+	(*RebootVMRequest)(nil),                              // 68: cloudstack.management.vm.v1.RebootVMRequest
+	(*RebootVMResponse)(nil),                             // 69: cloudstack.management.vm.v1.RebootVMResponse
+	(*ImportVmRequest)(nil),                              // 70: cloudstack.management.vm.v1.ImportVmRequest
+	(*ImportVmResponse)(nil),                             // 71: cloudstack.management.vm.v1.ImportVmResponse
+	(*AddIpToVmNicRequest)(nil),                          // 72: cloudstack.management.vm.v1.AddIpToVmNicRequest
+	(*AddIpToVmNicResponse)(nil),                         // 73: cloudstack.management.vm.v1.AddIpToVmNicResponse
+	(*GetVMUserDataRequest)(nil),                         // 74: cloudstack.management.vm.v1.GetVMUserDataRequest
+	(*GetVMUserDataResponse)(nil),                        // 75: cloudstack.management.vm.v1.GetVMUserDataResponse
+	(*UpdateVMScheduleRequest)(nil),                      // 76: cloudstack.management.vm.v1.UpdateVMScheduleRequest
+	(*UpdateVMScheduleResponse)(nil),                     // 77: cloudstack.management.vm.v1.UpdateVMScheduleResponse
+	(*MigrateVirtualMachineWithVolumeRequest)(nil),       // 78: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest
+	(*MigrateVirtualMachineWithVolumeResponse)(nil),      // 79: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse
+	(*AddNicToVMRequest)(nil),                            // 80: cloudstack.management.vm.v1.AddNicToVMRequest
+	(*AddNicToVMResponse)(nil),                           // 81: cloudstack.management.vm.v1.AddNicToVMResponse
+	(*RemoveIpFromVmNicRequest)(nil),                     // 82: cloudstack.management.vm.v1.RemoveIpFromVmNicRequest
+	(*RemoveIpFromVmNicResponse)(nil),                    // 83: cloudstack.management.vm.v1.RemoveIpFromVmNicResponse
+	(*StopVMRequest)(nil),                                // 84: cloudstack.management.vm.v1.StopVMRequest
+	(*StopVMResponse)(nil),                               // 85: cloudstack.management.vm.v1.StopVMResponse
+	(*UpdateVMRequest)(nil),                              // 86: cloudstack.management.vm.v1.UpdateVMRequest
+	(*UpdateVMResponse)(nil),                             // 87: cloudstack.management.vm.v1.UpdateVMResponse
+	(*RecoverVMRequest)(nil),                             // 88: cloudstack.management.vm.v1.RecoverVMRequest
+	(*RecoverVMResponse)(nil),                            // 89: cloudstack.management.vm.v1.RecoverVMResponse
+	(*UnmanagedInstance)(nil),                            // 90: cloudstack.management.vm.v1.UnmanagedInstance
+	(*Nic)(nil),                                          // 91: cloudstack.management.vm.v1.Nic
+	(*VMSchedule)(nil),                                   // 92: cloudstack.management.vm.v1.VMSchedule
+	(*UserVm)(nil),                                       // 93: cloudstack.management.vm.v1.UserVm
+	(*VirtualMachine)(nil),                               // 94: cloudstack.management.vm.v1.VirtualMachine
+	(*Success)(nil),                                      // 95: cloudstack.management.vm.v1.Success
+	(*Item)(nil),                                         // 96: cloudstack.management.vm.v1.Item
+	(*Result)(nil),                                       // 97: cloudstack.management.vm.v1.Result
+	nil,                                                  // 98: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.UserdataDetailsEntry
+	nil,                                                  // 99: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.IpToNetworkListEntry
+	nil,                                                  // 100: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DetailsEntry
+	nil,                                                  // 101: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DhcpOptionsNetworkListEntry
+	nil,                                                  // 102: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntry
+	nil,                                                  // 103: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppPropertiesEntry
+	nil,                                                  // 104: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppNetworksEntry
+	nil,                                                  // 105: cloudstack.management.vm.v1.UpgradeVMRequest.DetailsEntry
+	nil,                                                  // 106: cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest.DhcpOptionsEntry
+	nil,                                                  // 107: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.UserdataDetailsEntry
+	nil,                                                  // 108: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.IpToNetworkListEntry
+	nil,                                                  // 109: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DetailsEntry
+	nil,                                                  // 110: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DhcpOptionsNetworkListEntry
+	nil,                                                  // 111: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntry
+	nil,                                                  // 112: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.VAppPropertiesEntry
+	nil,                                                  // 113: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.VAppNetworksEntry
+	nil,                                                  // 114: cloudstack.management.vm.v1.RestoreVMRequest.DetailsEntry
+	nil,                                                  // 115: cloudstack.management.vm.v1.DeployVnfApplianceRequest.UserdataDetailsEntry
+	nil,                                                  // 116: cloudstack.management.vm.v1.DeployVnfApplianceRequest.IpToNetworkListEntry
+	nil,                                                  // 117: cloudstack.management.vm.v1.DeployVnfApplianceRequest.DetailsEntry
+	nil,                                                  // 118: cloudstack.management.vm.v1.DeployVnfApplianceRequest.DhcpOptionsNetworkListEntry
+	nil,                                                  // 119: cloudstack.management.vm.v1.DeployVnfApplianceRequest.DataDiskTemplateToDiskOfferingListEntry
+	nil,                                                  // 120: cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppPropertiesEntry
+	nil,                                                  // 121: cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppNetworksEntry
 	nil,                                                  // 122: cloudstack.management.vm.v1.ListVnfAppliancesRequest.TagsEntry
-	nil,                                                  // 123: cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest.DetailsEntry
-	nil,                                                  // 124: cloudstack.management.vm.v1.UpgradeVMRequest.DetailsEntry
-	nil,                                                  // 125: cloudstack.management.vm.v1.AddNicToVMRequest.DhcpOptionsEntry
-	nil,                                                  // 126: cloudstack.management.vm.v1.RestoreVMRequest.DetailsEntry
-	nil,                                                  // 127: cloudstack.management.vm.v1.ScaleVMRequest.DetailsEntry
-	nil,                                                  // 128: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.UserdataDetailsEntry
-	nil,                                                  // 129: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.IpToNetworkListEntry
-	nil,                                                  // 130: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DetailsEntry
-	nil,                                                  // 131: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DhcpOptionsNetworkListEntry
-	nil,                                                  // 132: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntry
-	nil,                                                  // 133: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppPropertiesEntry
-	nil,                                                  // 134: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppNetworksEntry
-	nil,                                                  // 135: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicNetworkListEntry
-	nil,                                                  // 136: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicIpAddressListEntry
-	nil,                                                  // 137: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DataDiskToDiskOfferingListEntry
-	nil,                                                  // 138: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DetailsEntry
-	nil,                                                  // 139: cloudstack.management.vm.v1.DeployVMRequest.UserdataDetailsEntry
-	nil,                                                  // 140: cloudstack.management.vm.v1.DeployVMRequest.IpToNetworkListEntry
-	nil,                                                  // 141: cloudstack.management.vm.v1.DeployVMRequest.DetailsEntry
-	nil,                                                  // 142: cloudstack.management.vm.v1.DeployVMRequest.DhcpOptionsNetworkListEntry
-	nil,                                                  // 143: cloudstack.management.vm.v1.DeployVMRequest.DataDiskTemplateToDiskOfferingListEntry
-	nil,                                                  // 144: cloudstack.management.vm.v1.DeployVMRequest.VAppPropertiesEntry
-	nil,                                                  // 145: cloudstack.management.vm.v1.DeployVMRequest.VAppNetworksEntry
-	nil,                                                  // 146: cloudstack.management.vm.v1.Item.DetailsEntry
+	nil,                                                  // 123: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicNetworkListEntry
+	nil,                                                  // 124: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicIpAddressListEntry
+	nil,                                                  // 125: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DataDiskToDiskOfferingListEntry
+	nil,                                                  // 126: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DetailsEntry
+	nil,                                                  // 127: cloudstack.management.vm.v1.DeployVMRequest.UserdataDetailsEntry
+	nil,                                                  // 128: cloudstack.management.vm.v1.DeployVMRequest.IpToNetworkListEntry
+	nil,                                                  // 129: cloudstack.management.vm.v1.DeployVMRequest.DetailsEntry
+	nil,                                                  // 130: cloudstack.management.vm.v1.DeployVMRequest.DhcpOptionsNetworkListEntry
+	nil,                                                  // 131: cloudstack.management.vm.v1.DeployVMRequest.DataDiskTemplateToDiskOfferingListEntry
+	nil,                                                  // 132: cloudstack.management.vm.v1.DeployVMRequest.VAppPropertiesEntry
+	nil,                                                  // 133: cloudstack.management.vm.v1.DeployVMRequest.VAppNetworksEntry
+	nil,                                                  // 134: cloudstack.management.vm.v1.ScaleVMRequest.DetailsEntry
+	nil,                                                  // 135: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.UserdataDetailsEntry
+	nil,                                                  // 136: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.DetailsEntry
+	nil,                                                  // 137: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.DhcpOptionsNetworkListEntry
+	nil,                                                  // 138: cloudstack.management.vm.v1.ResetVMUserDataRequest.UserdataDetailsEntry
+	nil,                                                  // 139: cloudstack.management.vm.v1.ListVMsRequest.TagsEntry
+	nil,                                                  // 140: cloudstack.management.vm.v1.ImportVmRequest.NicNetworkListEntry
+	nil,                                                  // 141: cloudstack.management.vm.v1.ImportVmRequest.NicIpAddressListEntry
+	nil,                                                  // 142: cloudstack.management.vm.v1.ImportVmRequest.DataDiskToDiskOfferingListEntry
+	nil,                                                  // 143: cloudstack.management.vm.v1.ImportVmRequest.DetailsEntry
+	nil,                                                  // 144: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.MigrateVolumeToEntry
+	nil,                                                  // 145: cloudstack.management.vm.v1.AddNicToVMRequest.DhcpOptionsEntry
+	nil,                                                  // 146: cloudstack.management.vm.v1.UpdateVMRequest.UserdataDetailsEntry
+	nil,                                                  // 147: cloudstack.management.vm.v1.UpdateVMRequest.DetailsEntry
+	nil,                                                  // 148: cloudstack.management.vm.v1.UpdateVMRequest.DhcpOptionsNetworkListEntry
+	nil,                                                  // 149: cloudstack.management.vm.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_vm_v1_vm_gen_proto_depIdxs = []int32{
-	103, // 0: cloudstack.management.vm.v1.StopVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	96,  // 1: cloudstack.management.vm.v1.ListVMScheduleResponse.items:type_name -> cloudstack.management.vm.v1.VMSchedule
-	103, // 2: cloudstack.management.vm.v1.StartVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 3: cloudstack.management.vm.v1.AssignVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	97,  // 4: cloudstack.management.vm.v1.ListNicsResponse.items:type_name -> cloudstack.management.vm.v1.Nic
-	104, // 5: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.migrate_volume_to:type_name -> cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.MigrateVolumeToEntry
-	103, // 6: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 7: cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 8: cloudstack.management.vm.v1.DestroyVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	105, // 9: cloudstack.management.vm.v1.ListVMsRequest.tags:type_name -> cloudstack.management.vm.v1.ListVMsRequest.TagsEntry
-	98,  // 10: cloudstack.management.vm.v1.ListVMsResponse.items:type_name -> cloudstack.management.vm.v1.UserVm
-	103, // 11: cloudstack.management.vm.v1.DeleteVMScheduleResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	106, // 12: cloudstack.management.vm.v1.ResetVMUserDataRequest.userdata_details:type_name -> cloudstack.management.vm.v1.ResetVMUserDataRequest.UserdataDetailsEntry
-	103, // 13: cloudstack.management.vm.v1.ResetVMUserDataResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 14: cloudstack.management.vm.v1.GetVMPasswordResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	107, // 15: cloudstack.management.vm.v1.DeployVnfApplianceRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.UserdataDetailsEntry
-	108, // 16: cloudstack.management.vm.v1.DeployVnfApplianceRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.IpToNetworkListEntry
-	109, // 17: cloudstack.management.vm.v1.DeployVnfApplianceRequest.details:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.DetailsEntry
-	110, // 18: cloudstack.management.vm.v1.DeployVnfApplianceRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.DhcpOptionsNetworkListEntry
-	111, // 19: cloudstack.management.vm.v1.DeployVnfApplianceRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.DataDiskTemplateToDiskOfferingListEntry
-	112, // 20: cloudstack.management.vm.v1.DeployVnfApplianceRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppPropertiesEntry
-	113, // 21: cloudstack.management.vm.v1.DeployVnfApplianceRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppNetworksEntry
-	103, // 22: cloudstack.management.vm.v1.DeployVnfApplianceResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	114, // 23: cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest.details:type_name -> cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest.DetailsEntry
-	103, // 24: cloudstack.management.vm.v1.ScaleVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	115, // 25: cloudstack.management.vm.v1.ImportVmRequest.nic_network_list:type_name -> cloudstack.management.vm.v1.ImportVmRequest.NicNetworkListEntry
-	116, // 26: cloudstack.management.vm.v1.ImportVmRequest.nic_ip_address_list:type_name -> cloudstack.management.vm.v1.ImportVmRequest.NicIpAddressListEntry
-	117, // 27: cloudstack.management.vm.v1.ImportVmRequest.data_disk_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.ImportVmRequest.DataDiskToDiskOfferingListEntry
-	118, // 28: cloudstack.management.vm.v1.ImportVmRequest.details:type_name -> cloudstack.management.vm.v1.ImportVmRequest.DetailsEntry
-	103, // 29: cloudstack.management.vm.v1.ImportVmResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	119, // 30: cloudstack.management.vm.v1.UpdateVMRequest.userdata_details:type_name -> cloudstack.management.vm.v1.UpdateVMRequest.UserdataDetailsEntry
-	120, // 31: cloudstack.management.vm.v1.UpdateVMRequest.details:type_name -> cloudstack.management.vm.v1.UpdateVMRequest.DetailsEntry
-	121, // 32: cloudstack.management.vm.v1.UpdateVMRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.UpdateVMRequest.DhcpOptionsNetworkListEntry
-	103, // 33: cloudstack.management.vm.v1.UpdateVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 34: cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	99,  // 35: cloudstack.management.vm.v1.ListUnmanagedInstancesResponse.items:type_name -> cloudstack.management.vm.v1.UnmanagedInstance
-	122, // 36: cloudstack.management.vm.v1.ListVnfAppliancesRequest.tags:type_name -> cloudstack.management.vm.v1.ListVnfAppliancesRequest.TagsEntry
-	98,  // 37: cloudstack.management.vm.v1.ListVnfAppliancesResponse.items:type_name -> cloudstack.management.vm.v1.UserVm
-	123, // 38: cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest.details:type_name -> cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest.DetailsEntry
-	103, // 39: cloudstack.management.vm.v1.RestoreVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	124, // 40: cloudstack.management.vm.v1.UpgradeVMRequest.details:type_name -> cloudstack.management.vm.v1.UpgradeVMRequest.DetailsEntry
-	103, // 41: cloudstack.management.vm.v1.UpgradeVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 42: cloudstack.management.vm.v1.RebootVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 43: cloudstack.management.vm.v1.UpdateVmNicIpResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 44: cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 45: cloudstack.management.vm.v1.MigrateVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 46: cloudstack.management.vm.v1.ResetVMPasswordResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 47: cloudstack.management.vm.v1.CreateVMScheduleResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 48: cloudstack.management.vm.v1.RecoverVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	125, // 49: cloudstack.management.vm.v1.AddNicToVMRequest.dhcp_options:type_name -> cloudstack.management.vm.v1.AddNicToVMRequest.DhcpOptionsEntry
-	103, // 50: cloudstack.management.vm.v1.AddNicToVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 51: cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 52: cloudstack.management.vm.v1.AddIpToVmNicResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 53: cloudstack.management.vm.v1.RemoveIpFromVmNicResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 54: cloudstack.management.vm.v1.ExpungeVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	99,  // 55: cloudstack.management.vm.v1.ListVmsForImportResponse.items:type_name -> cloudstack.management.vm.v1.UnmanagedInstance
-	126, // 56: cloudstack.management.vm.v1.RestoreVMRequest.details:type_name -> cloudstack.management.vm.v1.RestoreVMRequest.DetailsEntry
-	103, // 57: cloudstack.management.vm.v1.RestoreVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	127, // 58: cloudstack.management.vm.v1.ScaleVMRequest.details:type_name -> cloudstack.management.vm.v1.ScaleVMRequest.DetailsEntry
-	103, // 59: cloudstack.management.vm.v1.ScaleVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 60: cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	128, // 61: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.UserdataDetailsEntry
-	129, // 62: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.IpToNetworkListEntry
-	130, // 63: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.details:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DetailsEntry
-	131, // 64: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DhcpOptionsNetworkListEntry
-	132, // 65: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntry
-	133, // 66: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppPropertiesEntry
-	134, // 67: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppNetworksEntry
-	103, // 68: cloudstack.management.vm.v1.DeployVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 69: cloudstack.management.vm.v1.UnmanageVMInstanceResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	100, // 70: cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse.items:type_name -> cloudstack.management.vm.v1.VirtualMachine
-	103, // 71: cloudstack.management.vm.v1.RemoveNicFromVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 72: cloudstack.management.vm.v1.UpdateVMScheduleResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 73: cloudstack.management.vm.v1.GetVMUserDataResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	135, // 74: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.nic_network_list:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicNetworkListEntry
-	136, // 75: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.nic_ip_address_list:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicIpAddressListEntry
-	137, // 76: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.data_disk_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DataDiskToDiskOfferingListEntry
-	138, // 77: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.details:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DetailsEntry
-	103, // 78: cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 79: cloudstack.management.vm.v1.DestroyVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 80: cloudstack.management.vm.v1.RebootVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	139, // 81: cloudstack.management.vm.v1.DeployVMRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVMRequest.UserdataDetailsEntry
-	140, // 82: cloudstack.management.vm.v1.DeployVMRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVMRequest.IpToNetworkListEntry
-	141, // 83: cloudstack.management.vm.v1.DeployVMRequest.details:type_name -> cloudstack.management.vm.v1.DeployVMRequest.DetailsEntry
-	142, // 84: cloudstack.management.vm.v1.DeployVMRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVMRequest.DhcpOptionsNetworkListEntry
-	143, // 85: cloudstack.management.vm.v1.DeployVMRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVMRequest.DataDiskTemplateToDiskOfferingListEntry
-	144, // 86: cloudstack.management.vm.v1.DeployVMRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVMRequest.VAppPropertiesEntry
-	145, // 87: cloudstack.management.vm.v1.DeployVMRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVMRequest.VAppNetworksEntry
-	103, // 88: cloudstack.management.vm.v1.DeployVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	103, // 89: cloudstack.management.vm.v1.ResetVMSSHKeyResponse.result:type_name -> cloudstack.management.vm.v1.Result
-	146, // 90: cloudstack.management.vm.v1.Item.details:type_name -> cloudstack.management.vm.v1.Item.DetailsEntry
-	0,   // 91: cloudstack.management.vm.v1.VmService.StopVM:input_type -> cloudstack.management.vm.v1.StopVMRequest
-	2,   // 92: cloudstack.management.vm.v1.VmService.ListVMSchedule:input_type -> cloudstack.management.vm.v1.ListVMScheduleRequest
-	4,   // 93: cloudstack.management.vm.v1.VmService.StartVM:input_type -> cloudstack.management.vm.v1.StartVMRequest
-	6,   // 94: cloudstack.management.vm.v1.VmService.AssignVM:input_type -> cloudstack.management.vm.v1.AssignVMRequest
-	8,   // 95: cloudstack.management.vm.v1.VmService.ListNics:input_type -> cloudstack.management.vm.v1.ListNicsRequest
-	10,  // 96: cloudstack.management.vm.v1.VmService.MigrateVirtualMachineWithVolume:input_type -> cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest
-	12,  // 97: cloudstack.management.vm.v1.VmService.ResetVMPasswordCmdByAdmin:input_type -> cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminRequest
-	14,  // 98: cloudstack.management.vm.v1.VmService.DestroyVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.DestroyVMCmdByAdminRequest
-	16,  // 99: cloudstack.management.vm.v1.VmService.ListVMs:input_type -> cloudstack.management.vm.v1.ListVMsRequest
-	18,  // 100: cloudstack.management.vm.v1.VmService.DeleteVMSchedule:input_type -> cloudstack.management.vm.v1.DeleteVMScheduleRequest
-	20,  // 101: cloudstack.management.vm.v1.VmService.ResetVMUserData:input_type -> cloudstack.management.vm.v1.ResetVMUserDataRequest
-	22,  // 102: cloudstack.management.vm.v1.VmService.GetVMPassword:input_type -> cloudstack.management.vm.v1.GetVMPasswordRequest
-	24,  // 103: cloudstack.management.vm.v1.VmService.DeployVnfAppliance:input_type -> cloudstack.management.vm.v1.DeployVnfApplianceRequest
-	26,  // 104: cloudstack.management.vm.v1.VmService.ScaleVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.ScaleVMCmdByAdminRequest
-	28,  // 105: cloudstack.management.vm.v1.VmService.ImportVm:input_type -> cloudstack.management.vm.v1.ImportVmRequest
-	30,  // 106: cloudstack.management.vm.v1.VmService.UpdateVM:input_type -> cloudstack.management.vm.v1.UpdateVMRequest
-	32,  // 107: cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminRequest
-	34,  // 108: cloudstack.management.vm.v1.VmService.ListUnmanagedInstances:input_type -> cloudstack.management.vm.v1.ListUnmanagedInstancesRequest
-	36,  // 109: cloudstack.management.vm.v1.VmService.ListVnfAppliances:input_type -> cloudstack.management.vm.v1.ListVnfAppliancesRequest
-	38,  // 110: cloudstack.management.vm.v1.VmService.RestoreVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.RestoreVMCmdByAdminRequest
-	40,  // 111: cloudstack.management.vm.v1.VmService.UpgradeVM:input_type -> cloudstack.management.vm.v1.UpgradeVMRequest
-	42,  // 112: cloudstack.management.vm.v1.VmService.RebootVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.RebootVMCmdByAdminRequest
-	44,  // 113: cloudstack.management.vm.v1.VmService.UpdateVmNicIp:input_type -> cloudstack.management.vm.v1.UpdateVmNicIpRequest
-	46,  // 114: cloudstack.management.vm.v1.VmService.ResetVMSSHKeyCmdByAdmin:input_type -> cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminRequest
-	48,  // 115: cloudstack.management.vm.v1.VmService.MigrateVM:input_type -> cloudstack.management.vm.v1.MigrateVMRequest
-	50,  // 116: cloudstack.management.vm.v1.VmService.ResetVMPassword:input_type -> cloudstack.management.vm.v1.ResetVMPasswordRequest
-	52,  // 117: cloudstack.management.vm.v1.VmService.CreateVMSchedule:input_type -> cloudstack.management.vm.v1.CreateVMScheduleRequest
-	54,  // 118: cloudstack.management.vm.v1.VmService.RecoverVM:input_type -> cloudstack.management.vm.v1.RecoverVMRequest
-	56,  // 119: cloudstack.management.vm.v1.VmService.AddNicToVM:input_type -> cloudstack.management.vm.v1.AddNicToVMRequest
-	58,  // 120: cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM:input_type -> cloudstack.management.vm.v1.UpdateDefaultNicForVMRequest
-	60,  // 121: cloudstack.management.vm.v1.VmService.AddIpToVmNic:input_type -> cloudstack.management.vm.v1.AddIpToVmNicRequest
-	62,  // 122: cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic:input_type -> cloudstack.management.vm.v1.RemoveIpFromVmNicRequest
-	64,  // 123: cloudstack.management.vm.v1.VmService.ExpungeVM:input_type -> cloudstack.management.vm.v1.ExpungeVMRequest
-	66,  // 124: cloudstack.management.vm.v1.VmService.ListVmsForImport:input_type -> cloudstack.management.vm.v1.ListVmsForImportRequest
-	68,  // 125: cloudstack.management.vm.v1.VmService.RestoreVM:input_type -> cloudstack.management.vm.v1.RestoreVMRequest
-	70,  // 126: cloudstack.management.vm.v1.VmService.ScaleVM:input_type -> cloudstack.management.vm.v1.ScaleVMRequest
-	72,  // 127: cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminRequest
-	74,  // 128: cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest
-	76,  // 129: cloudstack.management.vm.v1.VmService.UnmanageVMInstance:input_type -> cloudstack.management.vm.v1.UnmanageVMInstanceRequest
-	78,  // 130: cloudstack.management.vm.v1.VmService.ListAffectedVmsForStorageScopeChange:input_type -> cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeRequest
-	80,  // 131: cloudstack.management.vm.v1.VmService.RemoveNicFromVM:input_type -> cloudstack.management.vm.v1.RemoveNicFromVMRequest
-	82,  // 132: cloudstack.management.vm.v1.VmService.UpdateVMSchedule:input_type -> cloudstack.management.vm.v1.UpdateVMScheduleRequest
-	84,  // 133: cloudstack.management.vm.v1.VmService.GetVMUserData:input_type -> cloudstack.management.vm.v1.GetVMUserDataRequest
-	86,  // 134: cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance:input_type -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest
-	88,  // 135: cloudstack.management.vm.v1.VmService.DestroyVM:input_type -> cloudstack.management.vm.v1.DestroyVMRequest
-	90,  // 136: cloudstack.management.vm.v1.VmService.RebootVM:input_type -> cloudstack.management.vm.v1.RebootVMRequest
-	92,  // 137: cloudstack.management.vm.v1.VmService.DeployVM:input_type -> cloudstack.management.vm.v1.DeployVMRequest
-	94,  // 138: cloudstack.management.vm.v1.VmService.ResetVMSSHKey:input_type -> cloudstack.management.vm.v1.ResetVMSSHKeyRequest
-	1,   // 139: cloudstack.management.vm.v1.VmService.StopVM:output_type -> cloudstack.management.vm.v1.StopVMResponse
-	3,   // 140: cloudstack.management.vm.v1.VmService.ListVMSchedule:output_type -> cloudstack.management.vm.v1.ListVMScheduleResponse
-	5,   // 141: cloudstack.management.vm.v1.VmService.StartVM:output_type -> cloudstack.management.vm.v1.StartVMResponse
-	7,   // 142: cloudstack.management.vm.v1.VmService.AssignVM:output_type -> cloudstack.management.vm.v1.AssignVMResponse
-	9,   // 143: cloudstack.management.vm.v1.VmService.ListNics:output_type -> cloudstack.management.vm.v1.ListNicsResponse
-	11,  // 144: cloudstack.management.vm.v1.VmService.MigrateVirtualMachineWithVolume:output_type -> cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse
-	13,  // 145: cloudstack.management.vm.v1.VmService.ResetVMPasswordCmdByAdmin:output_type -> cloudstack.management.vm.v1.ResetVMPasswordCmdByAdminResponse
-	15,  // 146: cloudstack.management.vm.v1.VmService.DestroyVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.DestroyVMCmdByAdminResponse
-	17,  // 147: cloudstack.management.vm.v1.VmService.ListVMs:output_type -> cloudstack.management.vm.v1.ListVMsResponse
-	19,  // 148: cloudstack.management.vm.v1.VmService.DeleteVMSchedule:output_type -> cloudstack.management.vm.v1.DeleteVMScheduleResponse
-	21,  // 149: cloudstack.management.vm.v1.VmService.ResetVMUserData:output_type -> cloudstack.management.vm.v1.ResetVMUserDataResponse
-	23,  // 150: cloudstack.management.vm.v1.VmService.GetVMPassword:output_type -> cloudstack.management.vm.v1.GetVMPasswordResponse
-	25,  // 151: cloudstack.management.vm.v1.VmService.DeployVnfAppliance:output_type -> cloudstack.management.vm.v1.DeployVnfApplianceResponse
-	27,  // 152: cloudstack.management.vm.v1.VmService.ScaleVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.ScaleVMCmdByAdminResponse
-	29,  // 153: cloudstack.management.vm.v1.VmService.ImportVm:output_type -> cloudstack.management.vm.v1.ImportVmResponse
-	31,  // 154: cloudstack.management.vm.v1.VmService.UpdateVM:output_type -> cloudstack.management.vm.v1.UpdateVMResponse
-	33,  // 155: cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.UpdateDefaultNicForVMCmdByAdminResponse
-	35,  // 156: cloudstack.management.vm.v1.VmService.ListUnmanagedInstances:output_type -> cloudstack.management.vm.v1.ListUnmanagedInstancesResponse
-	37,  // 157: cloudstack.management.vm.v1.VmService.ListVnfAppliances:output_type -> cloudstack.management.vm.v1.ListVnfAppliancesResponse
-	39,  // 158: cloudstack.management.vm.v1.VmService.RestoreVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.RestoreVMCmdByAdminResponse
-	41,  // 159: cloudstack.management.vm.v1.VmService.UpgradeVM:output_type -> cloudstack.management.vm.v1.UpgradeVMResponse
-	43,  // 160: cloudstack.management.vm.v1.VmService.RebootVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.RebootVMCmdByAdminResponse
-	45,  // 161: cloudstack.management.vm.v1.VmService.UpdateVmNicIp:output_type -> cloudstack.management.vm.v1.UpdateVmNicIpResponse
-	47,  // 162: cloudstack.management.vm.v1.VmService.ResetVMSSHKeyCmdByAdmin:output_type -> cloudstack.management.vm.v1.ResetVMSSHKeyCmdByAdminResponse
-	49,  // 163: cloudstack.management.vm.v1.VmService.MigrateVM:output_type -> cloudstack.management.vm.v1.MigrateVMResponse
-	51,  // 164: cloudstack.management.vm.v1.VmService.ResetVMPassword:output_type -> cloudstack.management.vm.v1.ResetVMPasswordResponse
-	53,  // 165: cloudstack.management.vm.v1.VmService.CreateVMSchedule:output_type -> cloudstack.management.vm.v1.CreateVMScheduleResponse
-	55,  // 166: cloudstack.management.vm.v1.VmService.RecoverVM:output_type -> cloudstack.management.vm.v1.RecoverVMResponse
-	57,  // 167: cloudstack.management.vm.v1.VmService.AddNicToVM:output_type -> cloudstack.management.vm.v1.AddNicToVMResponse
-	59,  // 168: cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM:output_type -> cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse
-	61,  // 169: cloudstack.management.vm.v1.VmService.AddIpToVmNic:output_type -> cloudstack.management.vm.v1.AddIpToVmNicResponse
-	63,  // 170: cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic:output_type -> cloudstack.management.vm.v1.RemoveIpFromVmNicResponse
-	65,  // 171: cloudstack.management.vm.v1.VmService.ExpungeVM:output_type -> cloudstack.management.vm.v1.ExpungeVMResponse
-	67,  // 172: cloudstack.management.vm.v1.VmService.ListVmsForImport:output_type -> cloudstack.management.vm.v1.ListVmsForImportResponse
-	69,  // 173: cloudstack.management.vm.v1.VmService.RestoreVM:output_type -> cloudstack.management.vm.v1.RestoreVMResponse
-	71,  // 174: cloudstack.management.vm.v1.VmService.ScaleVM:output_type -> cloudstack.management.vm.v1.ScaleVMResponse
-	73,  // 175: cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse
-	75,  // 176: cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.DeployVMCmdByAdminResponse
-	77,  // 177: cloudstack.management.vm.v1.VmService.UnmanageVMInstance:output_type -> cloudstack.management.vm.v1.UnmanageVMInstanceResponse
-	79,  // 178: cloudstack.management.vm.v1.VmService.ListAffectedVmsForStorageScopeChange:output_type -> cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse
-	81,  // 179: cloudstack.management.vm.v1.VmService.RemoveNicFromVM:output_type -> cloudstack.management.vm.v1.RemoveNicFromVMResponse
-	83,  // 180: cloudstack.management.vm.v1.VmService.UpdateVMSchedule:output_type -> cloudstack.management.vm.v1.UpdateVMScheduleResponse
-	85,  // 181: cloudstack.management.vm.v1.VmService.GetVMUserData:output_type -> cloudstack.management.vm.v1.GetVMUserDataResponse
-	87,  // 182: cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance:output_type -> cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse
-	89,  // 183: cloudstack.management.vm.v1.VmService.DestroyVM:output_type -> cloudstack.management.vm.v1.DestroyVMResponse
-	91,  // 184: cloudstack.management.vm.v1.VmService.RebootVM:output_type -> cloudstack.management.vm.v1.RebootVMResponse
-	93,  // 185: cloudstack.management.vm.v1.VmService.DeployVM:output_type -> cloudstack.management.vm.v1.DeployVMResponse
-	95,  // 186: cloudstack.management.vm.v1.VmService.ResetVMSSHKey:output_type -> cloudstack.management.vm.v1.ResetVMSSHKeyResponse
-	139, // [139:187] is the sub-list for method output_type
-	91,  // [91:139] is the sub-list for method input_type
-	91,  // [91:91] is the sub-list for extension type_name
-	91,  // [91:91] is the sub-list for extension extendee
-	0,   // [0:91] is the sub-list for field type_name
+	97,  // 0: cloudstack.management.vm.v1.AssignVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	98,  // 1: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.UserdataDetailsEntry
+	99,  // 2: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.IpToNetworkListEntry
+	100, // 3: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.details:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DetailsEntry
+	101, // 4: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DhcpOptionsNetworkListEntry
+	102, // 5: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntry
+	103, // 6: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppPropertiesEntry
+	104, // 7: cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest.VAppNetworksEntry
+	97,  // 8: cloudstack.management.vm.v1.DeployVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 9: cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 10: cloudstack.management.vm.v1.ExpungeVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	105, // 11: cloudstack.management.vm.v1.UpgradeVMRequest.details:type_name -> cloudstack.management.vm.v1.UpgradeVMRequest.DetailsEntry
+	97,  // 12: cloudstack.management.vm.v1.UpgradeVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 13: cloudstack.management.vm.v1.DestroyVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 14: cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	106, // 15: cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest.dhcp_options:type_name -> cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest.DhcpOptionsEntry
+	97,  // 16: cloudstack.management.vm.v1.AddNicToVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	90,  // 17: cloudstack.management.vm.v1.ListUnmanagedInstancesResponse.items:type_name -> cloudstack.management.vm.v1.UnmanagedInstance
+	97,  // 18: cloudstack.management.vm.v1.UnmanageVMInstanceResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 19: cloudstack.management.vm.v1.ResetVMPasswordResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	107, // 20: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.UserdataDetailsEntry
+	108, // 21: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.IpToNetworkListEntry
+	109, // 22: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.details:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DetailsEntry
+	110, // 23: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DhcpOptionsNetworkListEntry
+	111, // 24: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.DataDiskTemplateToDiskOfferingListEntry
+	112, // 25: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.VAppPropertiesEntry
+	113, // 26: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest.VAppNetworksEntry
+	97,  // 27: cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	91,  // 28: cloudstack.management.vm.v1.ListNicsResponse.items:type_name -> cloudstack.management.vm.v1.Nic
+	92,  // 29: cloudstack.management.vm.v1.ListVMScheduleResponse.items:type_name -> cloudstack.management.vm.v1.VMSchedule
+	114, // 30: cloudstack.management.vm.v1.RestoreVMRequest.details:type_name -> cloudstack.management.vm.v1.RestoreVMRequest.DetailsEntry
+	97,  // 31: cloudstack.management.vm.v1.RestoreVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 32: cloudstack.management.vm.v1.StartVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	115, // 33: cloudstack.management.vm.v1.DeployVnfApplianceRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.UserdataDetailsEntry
+	116, // 34: cloudstack.management.vm.v1.DeployVnfApplianceRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.IpToNetworkListEntry
+	117, // 35: cloudstack.management.vm.v1.DeployVnfApplianceRequest.details:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.DetailsEntry
+	118, // 36: cloudstack.management.vm.v1.DeployVnfApplianceRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.DhcpOptionsNetworkListEntry
+	119, // 37: cloudstack.management.vm.v1.DeployVnfApplianceRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.DataDiskTemplateToDiskOfferingListEntry
+	120, // 38: cloudstack.management.vm.v1.DeployVnfApplianceRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppPropertiesEntry
+	121, // 39: cloudstack.management.vm.v1.DeployVnfApplianceRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVnfApplianceRequest.VAppNetworksEntry
+	97,  // 40: cloudstack.management.vm.v1.DeployVnfApplianceResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 41: cloudstack.management.vm.v1.MigrateVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	122, // 42: cloudstack.management.vm.v1.ListVnfAppliancesRequest.tags:type_name -> cloudstack.management.vm.v1.ListVnfAppliancesRequest.TagsEntry
+	93,  // 43: cloudstack.management.vm.v1.ListVnfAppliancesResponse.items:type_name -> cloudstack.management.vm.v1.UserVm
+	94,  // 44: cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse.items:type_name -> cloudstack.management.vm.v1.VirtualMachine
+	97,  // 45: cloudstack.management.vm.v1.StopVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 46: cloudstack.management.vm.v1.UpdateVmNicIpResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	123, // 47: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.nic_network_list:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicNetworkListEntry
+	124, // 48: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.nic_ip_address_list:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.NicIpAddressListEntry
+	125, // 49: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.data_disk_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DataDiskToDiskOfferingListEntry
+	126, // 50: cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.details:type_name -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest.DetailsEntry
+	97,  // 51: cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 52: cloudstack.management.vm.v1.DeleteVMScheduleResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 53: cloudstack.management.vm.v1.ResetVMSSHKeyResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 54: cloudstack.management.vm.v1.GetVMPasswordResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	90,  // 55: cloudstack.management.vm.v1.ListVmsForImportResponse.items:type_name -> cloudstack.management.vm.v1.UnmanagedInstance
+	127, // 56: cloudstack.management.vm.v1.DeployVMRequest.userdata_details:type_name -> cloudstack.management.vm.v1.DeployVMRequest.UserdataDetailsEntry
+	128, // 57: cloudstack.management.vm.v1.DeployVMRequest.ip_to_network_list:type_name -> cloudstack.management.vm.v1.DeployVMRequest.IpToNetworkListEntry
+	129, // 58: cloudstack.management.vm.v1.DeployVMRequest.details:type_name -> cloudstack.management.vm.v1.DeployVMRequest.DetailsEntry
+	130, // 59: cloudstack.management.vm.v1.DeployVMRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.DeployVMRequest.DhcpOptionsNetworkListEntry
+	131, // 60: cloudstack.management.vm.v1.DeployVMRequest.data_disk_template_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.DeployVMRequest.DataDiskTemplateToDiskOfferingListEntry
+	132, // 61: cloudstack.management.vm.v1.DeployVMRequest.v_app_properties:type_name -> cloudstack.management.vm.v1.DeployVMRequest.VAppPropertiesEntry
+	133, // 62: cloudstack.management.vm.v1.DeployVMRequest.v_app_networks:type_name -> cloudstack.management.vm.v1.DeployVMRequest.VAppNetworksEntry
+	97,  // 63: cloudstack.management.vm.v1.DeployVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	134, // 64: cloudstack.management.vm.v1.ScaleVMRequest.details:type_name -> cloudstack.management.vm.v1.ScaleVMRequest.DetailsEntry
+	97,  // 65: cloudstack.management.vm.v1.ScaleVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	135, // 66: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.userdata_details:type_name -> cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.UserdataDetailsEntry
+	136, // 67: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.details:type_name -> cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.DetailsEntry
+	137, // 68: cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest.DhcpOptionsNetworkListEntry
+	97,  // 69: cloudstack.management.vm.v1.UpdateVMCmdByAdminResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	138, // 70: cloudstack.management.vm.v1.ResetVMUserDataRequest.userdata_details:type_name -> cloudstack.management.vm.v1.ResetVMUserDataRequest.UserdataDetailsEntry
+	97,  // 71: cloudstack.management.vm.v1.ResetVMUserDataResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 72: cloudstack.management.vm.v1.CreateVMScheduleResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 73: cloudstack.management.vm.v1.RemoveNicFromVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	139, // 74: cloudstack.management.vm.v1.ListVMsRequest.tags:type_name -> cloudstack.management.vm.v1.ListVMsRequest.TagsEntry
+	93,  // 75: cloudstack.management.vm.v1.ListVMsResponse.items:type_name -> cloudstack.management.vm.v1.UserVm
+	97,  // 76: cloudstack.management.vm.v1.RebootVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	140, // 77: cloudstack.management.vm.v1.ImportVmRequest.nic_network_list:type_name -> cloudstack.management.vm.v1.ImportVmRequest.NicNetworkListEntry
+	141, // 78: cloudstack.management.vm.v1.ImportVmRequest.nic_ip_address_list:type_name -> cloudstack.management.vm.v1.ImportVmRequest.NicIpAddressListEntry
+	142, // 79: cloudstack.management.vm.v1.ImportVmRequest.data_disk_to_disk_offering_list:type_name -> cloudstack.management.vm.v1.ImportVmRequest.DataDiskToDiskOfferingListEntry
+	143, // 80: cloudstack.management.vm.v1.ImportVmRequest.details:type_name -> cloudstack.management.vm.v1.ImportVmRequest.DetailsEntry
+	97,  // 81: cloudstack.management.vm.v1.ImportVmResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 82: cloudstack.management.vm.v1.AddIpToVmNicResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 83: cloudstack.management.vm.v1.GetVMUserDataResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 84: cloudstack.management.vm.v1.UpdateVMScheduleResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	144, // 85: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.migrate_volume_to:type_name -> cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest.MigrateVolumeToEntry
+	97,  // 86: cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	145, // 87: cloudstack.management.vm.v1.AddNicToVMRequest.dhcp_options:type_name -> cloudstack.management.vm.v1.AddNicToVMRequest.DhcpOptionsEntry
+	97,  // 88: cloudstack.management.vm.v1.AddNicToVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 89: cloudstack.management.vm.v1.RemoveIpFromVmNicResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 90: cloudstack.management.vm.v1.StopVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	146, // 91: cloudstack.management.vm.v1.UpdateVMRequest.userdata_details:type_name -> cloudstack.management.vm.v1.UpdateVMRequest.UserdataDetailsEntry
+	147, // 92: cloudstack.management.vm.v1.UpdateVMRequest.details:type_name -> cloudstack.management.vm.v1.UpdateVMRequest.DetailsEntry
+	148, // 93: cloudstack.management.vm.v1.UpdateVMRequest.dhcp_options_network_list:type_name -> cloudstack.management.vm.v1.UpdateVMRequest.DhcpOptionsNetworkListEntry
+	97,  // 94: cloudstack.management.vm.v1.UpdateVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	97,  // 95: cloudstack.management.vm.v1.RecoverVMResponse.result:type_name -> cloudstack.management.vm.v1.Result
+	149, // 96: cloudstack.management.vm.v1.Item.details:type_name -> cloudstack.management.vm.v1.Item.DetailsEntry
+	0,   // 97: cloudstack.management.vm.v1.VmService.AssignVM:input_type -> cloudstack.management.vm.v1.AssignVMRequest
+	2,   // 98: cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.DeployVMCmdByAdminRequest
+	4,   // 99: cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM:input_type -> cloudstack.management.vm.v1.UpdateDefaultNicForVMRequest
+	6,   // 100: cloudstack.management.vm.v1.VmService.ExpungeVM:input_type -> cloudstack.management.vm.v1.ExpungeVMRequest
+	8,   // 101: cloudstack.management.vm.v1.VmService.UpgradeVM:input_type -> cloudstack.management.vm.v1.UpgradeVMRequest
+	10,  // 102: cloudstack.management.vm.v1.VmService.DestroyVM:input_type -> cloudstack.management.vm.v1.DestroyVMRequest
+	12,  // 103: cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminRequest
+	14,  // 104: cloudstack.management.vm.v1.VmService.AddNicToVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.AddNicToVMCmdByAdminRequest
+	16,  // 105: cloudstack.management.vm.v1.VmService.ListUnmanagedInstances:input_type -> cloudstack.management.vm.v1.ListUnmanagedInstancesRequest
+	18,  // 106: cloudstack.management.vm.v1.VmService.UnmanageVMInstance:input_type -> cloudstack.management.vm.v1.UnmanageVMInstanceRequest
+	20,  // 107: cloudstack.management.vm.v1.VmService.ResetVMPassword:input_type -> cloudstack.management.vm.v1.ResetVMPasswordRequest
+	22,  // 108: cloudstack.management.vm.v1.VmService.DeployVnfApplianceCmdByAdmin:input_type -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminRequest
+	24,  // 109: cloudstack.management.vm.v1.VmService.ListNics:input_type -> cloudstack.management.vm.v1.ListNicsRequest
+	26,  // 110: cloudstack.management.vm.v1.VmService.ListVMSchedule:input_type -> cloudstack.management.vm.v1.ListVMScheduleRequest
+	28,  // 111: cloudstack.management.vm.v1.VmService.RestoreVM:input_type -> cloudstack.management.vm.v1.RestoreVMRequest
+	30,  // 112: cloudstack.management.vm.v1.VmService.StartVM:input_type -> cloudstack.management.vm.v1.StartVMRequest
+	32,  // 113: cloudstack.management.vm.v1.VmService.DeployVnfAppliance:input_type -> cloudstack.management.vm.v1.DeployVnfApplianceRequest
+	34,  // 114: cloudstack.management.vm.v1.VmService.MigrateVM:input_type -> cloudstack.management.vm.v1.MigrateVMRequest
+	36,  // 115: cloudstack.management.vm.v1.VmService.ListVnfAppliances:input_type -> cloudstack.management.vm.v1.ListVnfAppliancesRequest
+	38,  // 116: cloudstack.management.vm.v1.VmService.ListAffectedVmsForStorageScopeChange:input_type -> cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeRequest
+	40,  // 117: cloudstack.management.vm.v1.VmService.StopVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.StopVMCmdByAdminRequest
+	42,  // 118: cloudstack.management.vm.v1.VmService.UpdateVmNicIp:input_type -> cloudstack.management.vm.v1.UpdateVmNicIpRequest
+	44,  // 119: cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance:input_type -> cloudstack.management.vm.v1.ImportUnmanagedInstanceRequest
+	46,  // 120: cloudstack.management.vm.v1.VmService.DeleteVMSchedule:input_type -> cloudstack.management.vm.v1.DeleteVMScheduleRequest
+	48,  // 121: cloudstack.management.vm.v1.VmService.ResetVMSSHKey:input_type -> cloudstack.management.vm.v1.ResetVMSSHKeyRequest
+	50,  // 122: cloudstack.management.vm.v1.VmService.GetVMPassword:input_type -> cloudstack.management.vm.v1.GetVMPasswordRequest
+	52,  // 123: cloudstack.management.vm.v1.VmService.ListVmsForImport:input_type -> cloudstack.management.vm.v1.ListVmsForImportRequest
+	54,  // 124: cloudstack.management.vm.v1.VmService.DeployVM:input_type -> cloudstack.management.vm.v1.DeployVMRequest
+	56,  // 125: cloudstack.management.vm.v1.VmService.ScaleVM:input_type -> cloudstack.management.vm.v1.ScaleVMRequest
+	58,  // 126: cloudstack.management.vm.v1.VmService.UpdateVMCmdByAdmin:input_type -> cloudstack.management.vm.v1.UpdateVMCmdByAdminRequest
+	60,  // 127: cloudstack.management.vm.v1.VmService.ResetVMUserData:input_type -> cloudstack.management.vm.v1.ResetVMUserDataRequest
+	62,  // 128: cloudstack.management.vm.v1.VmService.CreateVMSchedule:input_type -> cloudstack.management.vm.v1.CreateVMScheduleRequest
+	64,  // 129: cloudstack.management.vm.v1.VmService.RemoveNicFromVM:input_type -> cloudstack.management.vm.v1.RemoveNicFromVMRequest
+	66,  // 130: cloudstack.management.vm.v1.VmService.ListVMs:input_type -> cloudstack.management.vm.v1.ListVMsRequest
+	68,  // 131: cloudstack.management.vm.v1.VmService.RebootVM:input_type -> cloudstack.management.vm.v1.RebootVMRequest
+	70,  // 132: cloudstack.management.vm.v1.VmService.ImportVm:input_type -> cloudstack.management.vm.v1.ImportVmRequest
+	72,  // 133: cloudstack.management.vm.v1.VmService.AddIpToVmNic:input_type -> cloudstack.management.vm.v1.AddIpToVmNicRequest
+	74,  // 134: cloudstack.management.vm.v1.VmService.GetVMUserData:input_type -> cloudstack.management.vm.v1.GetVMUserDataRequest
+	76,  // 135: cloudstack.management.vm.v1.VmService.UpdateVMSchedule:input_type -> cloudstack.management.vm.v1.UpdateVMScheduleRequest
+	78,  // 136: cloudstack.management.vm.v1.VmService.MigrateVirtualMachineWithVolume:input_type -> cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeRequest
+	80,  // 137: cloudstack.management.vm.v1.VmService.AddNicToVM:input_type -> cloudstack.management.vm.v1.AddNicToVMRequest
+	82,  // 138: cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic:input_type -> cloudstack.management.vm.v1.RemoveIpFromVmNicRequest
+	84,  // 139: cloudstack.management.vm.v1.VmService.StopVM:input_type -> cloudstack.management.vm.v1.StopVMRequest
+	86,  // 140: cloudstack.management.vm.v1.VmService.UpdateVM:input_type -> cloudstack.management.vm.v1.UpdateVMRequest
+	88,  // 141: cloudstack.management.vm.v1.VmService.RecoverVM:input_type -> cloudstack.management.vm.v1.RecoverVMRequest
+	1,   // 142: cloudstack.management.vm.v1.VmService.AssignVM:output_type -> cloudstack.management.vm.v1.AssignVMResponse
+	3,   // 143: cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.DeployVMCmdByAdminResponse
+	5,   // 144: cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM:output_type -> cloudstack.management.vm.v1.UpdateDefaultNicForVMResponse
+	7,   // 145: cloudstack.management.vm.v1.VmService.ExpungeVM:output_type -> cloudstack.management.vm.v1.ExpungeVMResponse
+	9,   // 146: cloudstack.management.vm.v1.VmService.UpgradeVM:output_type -> cloudstack.management.vm.v1.UpgradeVMResponse
+	11,  // 147: cloudstack.management.vm.v1.VmService.DestroyVM:output_type -> cloudstack.management.vm.v1.DestroyVMResponse
+	13,  // 148: cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.RemoveNicFromVMCmdByAdminResponse
+	15,  // 149: cloudstack.management.vm.v1.VmService.AddNicToVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.AddNicToVMCmdByAdminResponse
+	17,  // 150: cloudstack.management.vm.v1.VmService.ListUnmanagedInstances:output_type -> cloudstack.management.vm.v1.ListUnmanagedInstancesResponse
+	19,  // 151: cloudstack.management.vm.v1.VmService.UnmanageVMInstance:output_type -> cloudstack.management.vm.v1.UnmanageVMInstanceResponse
+	21,  // 152: cloudstack.management.vm.v1.VmService.ResetVMPassword:output_type -> cloudstack.management.vm.v1.ResetVMPasswordResponse
+	23,  // 153: cloudstack.management.vm.v1.VmService.DeployVnfApplianceCmdByAdmin:output_type -> cloudstack.management.vm.v1.DeployVnfApplianceCmdByAdminResponse
+	25,  // 154: cloudstack.management.vm.v1.VmService.ListNics:output_type -> cloudstack.management.vm.v1.ListNicsResponse
+	27,  // 155: cloudstack.management.vm.v1.VmService.ListVMSchedule:output_type -> cloudstack.management.vm.v1.ListVMScheduleResponse
+	29,  // 156: cloudstack.management.vm.v1.VmService.RestoreVM:output_type -> cloudstack.management.vm.v1.RestoreVMResponse
+	31,  // 157: cloudstack.management.vm.v1.VmService.StartVM:output_type -> cloudstack.management.vm.v1.StartVMResponse
+	33,  // 158: cloudstack.management.vm.v1.VmService.DeployVnfAppliance:output_type -> cloudstack.management.vm.v1.DeployVnfApplianceResponse
+	35,  // 159: cloudstack.management.vm.v1.VmService.MigrateVM:output_type -> cloudstack.management.vm.v1.MigrateVMResponse
+	37,  // 160: cloudstack.management.vm.v1.VmService.ListVnfAppliances:output_type -> cloudstack.management.vm.v1.ListVnfAppliancesResponse
+	39,  // 161: cloudstack.management.vm.v1.VmService.ListAffectedVmsForStorageScopeChange:output_type -> cloudstack.management.vm.v1.ListAffectedVmsForStorageScopeChangeResponse
+	41,  // 162: cloudstack.management.vm.v1.VmService.StopVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.StopVMCmdByAdminResponse
+	43,  // 163: cloudstack.management.vm.v1.VmService.UpdateVmNicIp:output_type -> cloudstack.management.vm.v1.UpdateVmNicIpResponse
+	45,  // 164: cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance:output_type -> cloudstack.management.vm.v1.ImportUnmanagedInstanceResponse
+	47,  // 165: cloudstack.management.vm.v1.VmService.DeleteVMSchedule:output_type -> cloudstack.management.vm.v1.DeleteVMScheduleResponse
+	49,  // 166: cloudstack.management.vm.v1.VmService.ResetVMSSHKey:output_type -> cloudstack.management.vm.v1.ResetVMSSHKeyResponse
+	51,  // 167: cloudstack.management.vm.v1.VmService.GetVMPassword:output_type -> cloudstack.management.vm.v1.GetVMPasswordResponse
+	53,  // 168: cloudstack.management.vm.v1.VmService.ListVmsForImport:output_type -> cloudstack.management.vm.v1.ListVmsForImportResponse
+	55,  // 169: cloudstack.management.vm.v1.VmService.DeployVM:output_type -> cloudstack.management.vm.v1.DeployVMResponse
+	57,  // 170: cloudstack.management.vm.v1.VmService.ScaleVM:output_type -> cloudstack.management.vm.v1.ScaleVMResponse
+	59,  // 171: cloudstack.management.vm.v1.VmService.UpdateVMCmdByAdmin:output_type -> cloudstack.management.vm.v1.UpdateVMCmdByAdminResponse
+	61,  // 172: cloudstack.management.vm.v1.VmService.ResetVMUserData:output_type -> cloudstack.management.vm.v1.ResetVMUserDataResponse
+	63,  // 173: cloudstack.management.vm.v1.VmService.CreateVMSchedule:output_type -> cloudstack.management.vm.v1.CreateVMScheduleResponse
+	65,  // 174: cloudstack.management.vm.v1.VmService.RemoveNicFromVM:output_type -> cloudstack.management.vm.v1.RemoveNicFromVMResponse
+	67,  // 175: cloudstack.management.vm.v1.VmService.ListVMs:output_type -> cloudstack.management.vm.v1.ListVMsResponse
+	69,  // 176: cloudstack.management.vm.v1.VmService.RebootVM:output_type -> cloudstack.management.vm.v1.RebootVMResponse
+	71,  // 177: cloudstack.management.vm.v1.VmService.ImportVm:output_type -> cloudstack.management.vm.v1.ImportVmResponse
+	73,  // 178: cloudstack.management.vm.v1.VmService.AddIpToVmNic:output_type -> cloudstack.management.vm.v1.AddIpToVmNicResponse
+	75,  // 179: cloudstack.management.vm.v1.VmService.GetVMUserData:output_type -> cloudstack.management.vm.v1.GetVMUserDataResponse
+	77,  // 180: cloudstack.management.vm.v1.VmService.UpdateVMSchedule:output_type -> cloudstack.management.vm.v1.UpdateVMScheduleResponse
+	79,  // 181: cloudstack.management.vm.v1.VmService.MigrateVirtualMachineWithVolume:output_type -> cloudstack.management.vm.v1.MigrateVirtualMachineWithVolumeResponse
+	81,  // 182: cloudstack.management.vm.v1.VmService.AddNicToVM:output_type -> cloudstack.management.vm.v1.AddNicToVMResponse
+	83,  // 183: cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic:output_type -> cloudstack.management.vm.v1.RemoveIpFromVmNicResponse
+	85,  // 184: cloudstack.management.vm.v1.VmService.StopVM:output_type -> cloudstack.management.vm.v1.StopVMResponse
+	87,  // 185: cloudstack.management.vm.v1.VmService.UpdateVM:output_type -> cloudstack.management.vm.v1.UpdateVMResponse
+	89,  // 186: cloudstack.management.vm.v1.VmService.RecoverVM:output_type -> cloudstack.management.vm.v1.RecoverVMResponse
+	142, // [142:187] is the sub-list for method output_type
+	97,  // [97:142] is the sub-list for method input_type
+	97,  // [97:97] is the sub-list for extension type_name
+	97,  // [97:97] is the sub-list for extension extendee
+	0,   // [0:97] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_vm_v1_vm_gen_proto_init() }
@@ -11450,7 +11637,7 @@ func file_cloudstack_management_vm_v1_vm_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc), len(file_cloudstack_management_vm_v1_vm_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   147,
+			NumMessages:   150,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

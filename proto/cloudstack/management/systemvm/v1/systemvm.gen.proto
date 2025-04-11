@@ -10,8 +10,8 @@ import "google/protobuf/descriptor.proto";
 service SystemvmService {
 	option (annotations.service).scope = Scope_USER;
 
-	// StartSystemVM Starts a system virtual machine.
-	rpc StartSystemVM(StartSystemVMRequest) returns (StartSystemVMResponse) {}
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	rpc UpgradeSystemVM(UpgradeSystemVMRequest) returns (UpgradeSystemVMResponse) {}
 
 	// ListSystemVMs List system virtual machines.
 	rpc ListSystemVMs(ListSystemVMsRequest) returns (ListSystemVMsResponse) {}
@@ -19,17 +19,17 @@ service SystemvmService {
 	// StopSystemVm Stops a system VM.
 	rpc StopSystemVm(StopSystemVmRequest) returns (StopSystemVmResponse) {}
 
-	// DestroySystemVm Destroys a system virtual machine.
-	rpc DestroySystemVm(DestroySystemVmRequest) returns (DestroySystemVmResponse) {}
+	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
+	rpc PatchSystemVM(PatchSystemVMRequest) returns (PatchSystemVMResponse) {}
 
 	// RebootSystemVm Reboots a system VM.
 	rpc RebootSystemVm(RebootSystemVmRequest) returns (RebootSystemVmResponse) {}
 
-	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	rpc UpgradeSystemVM(UpgradeSystemVMRequest) returns (UpgradeSystemVMResponse) {}
+	// StartSystemVM Starts a system virtual machine.
+	rpc StartSystemVM(StartSystemVMRequest) returns (StartSystemVMResponse) {}
 
-	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
-	rpc PatchSystemVM(PatchSystemVMRequest) returns (PatchSystemVMResponse) {}
+	// DestroySystemVm Destroys a system virtual machine.
+	rpc DestroySystemVm(DestroySystemVmRequest) returns (DestroySystemVmResponse) {}
 
 	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
 	rpc ScaleSystemVM(ScaleSystemVMRequest) returns (ScaleSystemVMResponse) {}
@@ -38,27 +38,27 @@ service SystemvmService {
 	rpc MigrateSystemVM(MigrateSystemVMRequest) returns (MigrateSystemVMResponse) {}
 }
 
-// StartSystemVMRequest represents the parameters for starts a system virtual machine.
-message StartSystemVMRequest {
-	// The ID of the system virtual machine
+// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message UpgradeSystemVMRequest {
+	// The ID of the system vm
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+	// the service offering ID to apply to the system vm
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
 	];
+
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 3;
 
 	//
 	string response_type = 4;
 }
 
-// StartSystemVMResponse represents the response from starts a system virtual machine.
-message StartSystemVMResponse {
+// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message UpgradeSystemVMResponse {
 	// The Result
 	Result result = 1;
 }
@@ -145,27 +145,30 @@ message StopSystemVmResponse {
 	Result result = 1;
 }
 
-// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
-message DestroySystemVmRequest {
-	// The ID of the system virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
+// PatchSystemVMRequest represents the parameters for attempts to live patch systemvms - cpvm, ssvm
+message PatchSystemVMRequest {
+	// patches systemVM - CPVM/SSVM with the specified ID
+	int64 id = 1;
+
+	// If true, initiates copy of scripts and restart of the agent, even if the scripts version matches.To be used with ID parameter only
+	bool force = 2 [
+		features.field_presence = EXPLICIT
 	];
 
 	//
-	int64 start_event_id = 2;
+	int64 start_event_id = 3;
 
 	//
-	string injected_job_id = 3 [
+	string injected_job_id = 4 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 5;
 }
 
-// DestroySystemVmResponse represents the response from destroys a system virtual machine.
-message DestroySystemVmResponse {
+// PatchSystemVMResponse represents the response from attempts to live patch systemvms - cpvm, ssvm
+message PatchSystemVMResponse {
 	// The Result
 	Result result = 1;
 }
@@ -200,55 +203,52 @@ message RebootSystemVmResponse {
 	Result result = 1;
 }
 
-// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-message UpgradeSystemVMRequest {
-	// The ID of the system vm
+// StartSystemVMRequest represents the parameters for starts a system virtual machine.
+message StartSystemVMRequest {
+	// The ID of the system virtual machine
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// the service offering ID to apply to the system vm
-	int64 service_offering_id = 2 [
-		(validate.field).required = true
-	];
+	//
+	int64 start_event_id = 2;
 
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	map<string, string> details = 3;
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
 
 	//
 	string response_type = 4;
 }
 
-// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-message UpgradeSystemVMResponse {
+// StartSystemVMResponse represents the response from starts a system virtual machine.
+message StartSystemVMResponse {
 	// The Result
 	Result result = 1;
 }
 
-// PatchSystemVMRequest represents the parameters for attempts to live patch systemvms - cpvm, ssvm
-message PatchSystemVMRequest {
-	// patches systemVM - CPVM/SSVM with the specified ID
-	int64 id = 1;
-
-	// If true, initiates copy of scripts and restart of the agent, even if the scripts version matches.To be used with ID parameter only
-	bool force = 2 [
-		features.field_presence = EXPLICIT
+// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
+message DestroySystemVmRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
 	];
 
 	//
-	int64 start_event_id = 3;
+	int64 start_event_id = 2;
 
 	//
-	string injected_job_id = 4 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 5;
+	string response_type = 4;
 }
 
-// PatchSystemVMResponse represents the response from attempts to live patch systemvms - cpvm, ssvm
-message PatchSystemVMResponse {
+// DestroySystemVmResponse represents the response from destroys a system virtual machine.
+message DestroySystemVmResponse {
 	// The Result
 	Result result = 1;
 }

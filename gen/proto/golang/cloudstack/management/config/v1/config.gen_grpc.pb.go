@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ConfigService_ListCfgGroupsBy_FullMethodName              = "/cloudstack.management.config.v1.ConfigService/ListCfgGroupsBy"
-	ConfigService_ListHypervisorCapabilities_FullMethodName   = "/cloudstack.management.config.v1.ConfigService/ListHypervisorCapabilities"
-	ConfigService_ResetCfg_FullMethodName                     = "/cloudstack.management.config.v1.ConfigService/ResetCfg"
+	ConfigService_UpdateHypervisorCapabilities_FullMethodName = "/cloudstack.management.config.v1.ConfigService/UpdateHypervisorCapabilities"
 	ConfigService_ListDeploymentPlanners_FullMethodName       = "/cloudstack.management.config.v1.ConfigService/ListDeploymentPlanners"
 	ConfigService_UpdateCfg_FullMethodName                    = "/cloudstack.management.config.v1.ConfigService/UpdateCfg"
-	ConfigService_ListCapabilities_FullMethodName             = "/cloudstack.management.config.v1.ConfigService/ListCapabilities"
-	ConfigService_UpdateHypervisorCapabilities_FullMethodName = "/cloudstack.management.config.v1.ConfigService/UpdateHypervisorCapabilities"
 	ConfigService_ListCfgsBy_FullMethodName                   = "/cloudstack.management.config.v1.ConfigService/ListCfgsBy"
+	ConfigService_ListCfgGroupsBy_FullMethodName              = "/cloudstack.management.config.v1.ConfigService/ListCfgGroupsBy"
+	ConfigService_ListCapabilities_FullMethodName             = "/cloudstack.management.config.v1.ConfigService/ListCapabilities"
+	ConfigService_ResetCfg_FullMethodName                     = "/cloudstack.management.config.v1.ConfigService/ResetCfg"
+	ConfigService_ListHypervisorCapabilities_FullMethodName   = "/cloudstack.management.config.v1.ConfigService/ListHypervisorCapabilities"
 )
 
 // ConfigServiceClient is the client API for ConfigService service.
@@ -35,22 +35,22 @@ const (
 //
 // ConfigService provides operations for managing Configs
 type ConfigServiceClient interface {
-	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
-	ListCfgGroupsBy(ctx context.Context, in *ListCfgGroupsByRequest, opts ...grpc.CallOption) (*ListCfgGroupsByResponse, error)
-	// ListHypervisorCapabilities Lists all hypervisor capabilities.
-	ListHypervisorCapabilities(ctx context.Context, in *ListHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*ListHypervisorCapabilitiesResponse, error)
-	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
-	ResetCfg(ctx context.Context, in *ResetCfgRequest, opts ...grpc.CallOption) (*ResetCfgResponse, error)
+	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
+	UpdateHypervisorCapabilities(ctx context.Context, in *UpdateHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateHypervisorCapabilitiesResponse, error)
 	// ListDeploymentPlanners Lists all DeploymentPlanners available.
 	ListDeploymentPlanners(ctx context.Context, in *ListDeploymentPlannersRequest, opts ...grpc.CallOption) (*ListDeploymentPlannersResponse, error)
 	// UpdateCfg Updates a configuration.
 	UpdateCfg(ctx context.Context, in *UpdateCfgRequest, opts ...grpc.CallOption) (*UpdateCfgResponse, error)
-	// ListCapabilities Lists capabilities
-	ListCapabilities(ctx context.Context, in *ListCapabilitiesRequest, opts ...grpc.CallOption) (*ListCapabilitiesResponse, error)
-	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
-	UpdateHypervisorCapabilities(ctx context.Context, in *UpdateHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateHypervisorCapabilitiesResponse, error)
 	// ListCfgsBy Lists all configurations.
 	ListCfgsBy(ctx context.Context, in *ListCfgsByRequest, opts ...grpc.CallOption) (*ListCfgsByResponse, error)
+	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
+	ListCfgGroupsBy(ctx context.Context, in *ListCfgGroupsByRequest, opts ...grpc.CallOption) (*ListCfgGroupsByResponse, error)
+	// ListCapabilities Lists capabilities
+	ListCapabilities(ctx context.Context, in *ListCapabilitiesRequest, opts ...grpc.CallOption) (*ListCapabilitiesResponse, error)
+	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
+	ResetCfg(ctx context.Context, in *ResetCfgRequest, opts ...grpc.CallOption) (*ResetCfgResponse, error)
+	// ListHypervisorCapabilities Lists all hypervisor capabilities.
+	ListHypervisorCapabilities(ctx context.Context, in *ListHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*ListHypervisorCapabilitiesResponse, error)
 }
 
 type configServiceClient struct {
@@ -61,30 +61,10 @@ func NewConfigServiceClient(cc grpc.ClientConnInterface) ConfigServiceClient {
 	return &configServiceClient{cc}
 }
 
-func (c *configServiceClient) ListCfgGroupsBy(ctx context.Context, in *ListCfgGroupsByRequest, opts ...grpc.CallOption) (*ListCfgGroupsByResponse, error) {
+func (c *configServiceClient) UpdateHypervisorCapabilities(ctx context.Context, in *UpdateHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateHypervisorCapabilitiesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListCfgGroupsByResponse)
-	err := c.cc.Invoke(ctx, ConfigService_ListCfgGroupsBy_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *configServiceClient) ListHypervisorCapabilities(ctx context.Context, in *ListHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*ListHypervisorCapabilitiesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListHypervisorCapabilitiesResponse)
-	err := c.cc.Invoke(ctx, ConfigService_ListHypervisorCapabilities_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *configServiceClient) ResetCfg(ctx context.Context, in *ResetCfgRequest, opts ...grpc.CallOption) (*ResetCfgResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetCfgResponse)
-	err := c.cc.Invoke(ctx, ConfigService_ResetCfg_FullMethodName, in, out, cOpts...)
+	out := new(UpdateHypervisorCapabilitiesResponse)
+	err := c.cc.Invoke(ctx, ConfigService_UpdateHypervisorCapabilities_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -111,6 +91,26 @@ func (c *configServiceClient) UpdateCfg(ctx context.Context, in *UpdateCfgReques
 	return out, nil
 }
 
+func (c *configServiceClient) ListCfgsBy(ctx context.Context, in *ListCfgsByRequest, opts ...grpc.CallOption) (*ListCfgsByResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCfgsByResponse)
+	err := c.cc.Invoke(ctx, ConfigService_ListCfgsBy_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *configServiceClient) ListCfgGroupsBy(ctx context.Context, in *ListCfgGroupsByRequest, opts ...grpc.CallOption) (*ListCfgGroupsByResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCfgGroupsByResponse)
+	err := c.cc.Invoke(ctx, ConfigService_ListCfgGroupsBy_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *configServiceClient) ListCapabilities(ctx context.Context, in *ListCapabilitiesRequest, opts ...grpc.CallOption) (*ListCapabilitiesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListCapabilitiesResponse)
@@ -121,20 +121,20 @@ func (c *configServiceClient) ListCapabilities(ctx context.Context, in *ListCapa
 	return out, nil
 }
 
-func (c *configServiceClient) UpdateHypervisorCapabilities(ctx context.Context, in *UpdateHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateHypervisorCapabilitiesResponse, error) {
+func (c *configServiceClient) ResetCfg(ctx context.Context, in *ResetCfgRequest, opts ...grpc.CallOption) (*ResetCfgResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateHypervisorCapabilitiesResponse)
-	err := c.cc.Invoke(ctx, ConfigService_UpdateHypervisorCapabilities_FullMethodName, in, out, cOpts...)
+	out := new(ResetCfgResponse)
+	err := c.cc.Invoke(ctx, ConfigService_ResetCfg_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *configServiceClient) ListCfgsBy(ctx context.Context, in *ListCfgsByRequest, opts ...grpc.CallOption) (*ListCfgsByResponse, error) {
+func (c *configServiceClient) ListHypervisorCapabilities(ctx context.Context, in *ListHypervisorCapabilitiesRequest, opts ...grpc.CallOption) (*ListHypervisorCapabilitiesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListCfgsByResponse)
-	err := c.cc.Invoke(ctx, ConfigService_ListCfgsBy_FullMethodName, in, out, cOpts...)
+	out := new(ListHypervisorCapabilitiesResponse)
+	err := c.cc.Invoke(ctx, ConfigService_ListHypervisorCapabilities_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -147,22 +147,22 @@ func (c *configServiceClient) ListCfgsBy(ctx context.Context, in *ListCfgsByRequ
 //
 // ConfigService provides operations for managing Configs
 type ConfigServiceServer interface {
-	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
-	ListCfgGroupsBy(context.Context, *ListCfgGroupsByRequest) (*ListCfgGroupsByResponse, error)
-	// ListHypervisorCapabilities Lists all hypervisor capabilities.
-	ListHypervisorCapabilities(context.Context, *ListHypervisorCapabilitiesRequest) (*ListHypervisorCapabilitiesResponse, error)
-	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
-	ResetCfg(context.Context, *ResetCfgRequest) (*ResetCfgResponse, error)
+	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
+	UpdateHypervisorCapabilities(context.Context, *UpdateHypervisorCapabilitiesRequest) (*UpdateHypervisorCapabilitiesResponse, error)
 	// ListDeploymentPlanners Lists all DeploymentPlanners available.
 	ListDeploymentPlanners(context.Context, *ListDeploymentPlannersRequest) (*ListDeploymentPlannersResponse, error)
 	// UpdateCfg Updates a configuration.
 	UpdateCfg(context.Context, *UpdateCfgRequest) (*UpdateCfgResponse, error)
-	// ListCapabilities Lists capabilities
-	ListCapabilities(context.Context, *ListCapabilitiesRequest) (*ListCapabilitiesResponse, error)
-	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
-	UpdateHypervisorCapabilities(context.Context, *UpdateHypervisorCapabilitiesRequest) (*UpdateHypervisorCapabilitiesResponse, error)
 	// ListCfgsBy Lists all configurations.
 	ListCfgsBy(context.Context, *ListCfgsByRequest) (*ListCfgsByResponse, error)
+	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
+	ListCfgGroupsBy(context.Context, *ListCfgGroupsByRequest) (*ListCfgGroupsByResponse, error)
+	// ListCapabilities Lists capabilities
+	ListCapabilities(context.Context, *ListCapabilitiesRequest) (*ListCapabilitiesResponse, error)
+	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
+	ResetCfg(context.Context, *ResetCfgRequest) (*ResetCfgResponse, error)
+	// ListHypervisorCapabilities Lists all hypervisor capabilities.
+	ListHypervisorCapabilities(context.Context, *ListHypervisorCapabilitiesRequest) (*ListHypervisorCapabilitiesResponse, error)
 	mustEmbedUnimplementedConfigServiceServer()
 }
 
@@ -173,14 +173,8 @@ type ConfigServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedConfigServiceServer struct{}
 
-func (UnimplementedConfigServiceServer) ListCfgGroupsBy(context.Context, *ListCfgGroupsByRequest) (*ListCfgGroupsByResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListCfgGroupsBy not implemented")
-}
-func (UnimplementedConfigServiceServer) ListHypervisorCapabilities(context.Context, *ListHypervisorCapabilitiesRequest) (*ListHypervisorCapabilitiesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListHypervisorCapabilities not implemented")
-}
-func (UnimplementedConfigServiceServer) ResetCfg(context.Context, *ResetCfgRequest) (*ResetCfgResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetCfg not implemented")
+func (UnimplementedConfigServiceServer) UpdateHypervisorCapabilities(context.Context, *UpdateHypervisorCapabilitiesRequest) (*UpdateHypervisorCapabilitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateHypervisorCapabilities not implemented")
 }
 func (UnimplementedConfigServiceServer) ListDeploymentPlanners(context.Context, *ListDeploymentPlannersRequest) (*ListDeploymentPlannersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDeploymentPlanners not implemented")
@@ -188,14 +182,20 @@ func (UnimplementedConfigServiceServer) ListDeploymentPlanners(context.Context, 
 func (UnimplementedConfigServiceServer) UpdateCfg(context.Context, *UpdateCfgRequest) (*UpdateCfgResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCfg not implemented")
 }
+func (UnimplementedConfigServiceServer) ListCfgsBy(context.Context, *ListCfgsByRequest) (*ListCfgsByResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCfgsBy not implemented")
+}
+func (UnimplementedConfigServiceServer) ListCfgGroupsBy(context.Context, *ListCfgGroupsByRequest) (*ListCfgGroupsByResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCfgGroupsBy not implemented")
+}
 func (UnimplementedConfigServiceServer) ListCapabilities(context.Context, *ListCapabilitiesRequest) (*ListCapabilitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCapabilities not implemented")
 }
-func (UnimplementedConfigServiceServer) UpdateHypervisorCapabilities(context.Context, *UpdateHypervisorCapabilitiesRequest) (*UpdateHypervisorCapabilitiesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHypervisorCapabilities not implemented")
+func (UnimplementedConfigServiceServer) ResetCfg(context.Context, *ResetCfgRequest) (*ResetCfgResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetCfg not implemented")
 }
-func (UnimplementedConfigServiceServer) ListCfgsBy(context.Context, *ListCfgsByRequest) (*ListCfgsByResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListCfgsBy not implemented")
+func (UnimplementedConfigServiceServer) ListHypervisorCapabilities(context.Context, *ListHypervisorCapabilitiesRequest) (*ListHypervisorCapabilitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListHypervisorCapabilities not implemented")
 }
 func (UnimplementedConfigServiceServer) mustEmbedUnimplementedConfigServiceServer() {}
 func (UnimplementedConfigServiceServer) testEmbeddedByValue()                       {}
@@ -218,56 +218,20 @@ func RegisterConfigServiceServer(s grpc.ServiceRegistrar, srv ConfigServiceServe
 	s.RegisterService(&ConfigService_ServiceDesc, srv)
 }
 
-func _ConfigService_ListCfgGroupsBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListCfgGroupsByRequest)
+func _ConfigService_UpdateHypervisorCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateHypervisorCapabilitiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ConfigServiceServer).ListCfgGroupsBy(ctx, in)
+		return srv.(ConfigServiceServer).UpdateHypervisorCapabilities(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ConfigService_ListCfgGroupsBy_FullMethodName,
+		FullMethod: ConfigService_UpdateHypervisorCapabilities_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigServiceServer).ListCfgGroupsBy(ctx, req.(*ListCfgGroupsByRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ConfigService_ListHypervisorCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListHypervisorCapabilitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConfigServiceServer).ListHypervisorCapabilities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ConfigService_ListHypervisorCapabilities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigServiceServer).ListHypervisorCapabilities(ctx, req.(*ListHypervisorCapabilitiesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ConfigService_ResetCfg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetCfgRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConfigServiceServer).ResetCfg(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ConfigService_ResetCfg_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigServiceServer).ResetCfg(ctx, req.(*ResetCfgRequest))
+		return srv.(ConfigServiceServer).UpdateHypervisorCapabilities(ctx, req.(*UpdateHypervisorCapabilitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -308,42 +272,6 @@ func _ConfigService_UpdateCfg_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ConfigService_ListCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListCapabilitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConfigServiceServer).ListCapabilities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ConfigService_ListCapabilities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigServiceServer).ListCapabilities(ctx, req.(*ListCapabilitiesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ConfigService_UpdateHypervisorCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHypervisorCapabilitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConfigServiceServer).UpdateHypervisorCapabilities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ConfigService_UpdateHypervisorCapabilities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigServiceServer).UpdateHypervisorCapabilities(ctx, req.(*UpdateHypervisorCapabilitiesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ConfigService_ListCfgsBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListCfgsByRequest)
 	if err := dec(in); err != nil {
@@ -362,6 +290,78 @@ func _ConfigService_ListCfgsBy_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ConfigService_ListCfgGroupsBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCfgGroupsByRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).ListCfgGroupsBy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_ListCfgGroupsBy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).ListCfgGroupsBy(ctx, req.(*ListCfgGroupsByRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ConfigService_ListCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCapabilitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).ListCapabilities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_ListCapabilities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).ListCapabilities(ctx, req.(*ListCapabilitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ConfigService_ResetCfg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetCfgRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).ResetCfg(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_ResetCfg_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).ResetCfg(ctx, req.(*ResetCfgRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ConfigService_ListHypervisorCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHypervisorCapabilitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).ListHypervisorCapabilities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_ListHypervisorCapabilities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).ListHypervisorCapabilities(ctx, req.(*ListHypervisorCapabilitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ConfigService_ServiceDesc is the grpc.ServiceDesc for ConfigService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -370,16 +370,8 @@ var ConfigService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ConfigServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListCfgGroupsBy",
-			Handler:    _ConfigService_ListCfgGroupsBy_Handler,
-		},
-		{
-			MethodName: "ListHypervisorCapabilities",
-			Handler:    _ConfigService_ListHypervisorCapabilities_Handler,
-		},
-		{
-			MethodName: "ResetCfg",
-			Handler:    _ConfigService_ResetCfg_Handler,
+			MethodName: "UpdateHypervisorCapabilities",
+			Handler:    _ConfigService_UpdateHypervisorCapabilities_Handler,
 		},
 		{
 			MethodName: "ListDeploymentPlanners",
@@ -390,16 +382,24 @@ var ConfigService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ConfigService_UpdateCfg_Handler,
 		},
 		{
+			MethodName: "ListCfgsBy",
+			Handler:    _ConfigService_ListCfgsBy_Handler,
+		},
+		{
+			MethodName: "ListCfgGroupsBy",
+			Handler:    _ConfigService_ListCfgGroupsBy_Handler,
+		},
+		{
 			MethodName: "ListCapabilities",
 			Handler:    _ConfigService_ListCapabilities_Handler,
 		},
 		{
-			MethodName: "UpdateHypervisorCapabilities",
-			Handler:    _ConfigService_UpdateHypervisorCapabilities_Handler,
+			MethodName: "ResetCfg",
+			Handler:    _ConfigService_ResetCfg_Handler,
 		},
 		{
-			MethodName: "ListCfgsBy",
-			Handler:    _ConfigService_ListCfgsBy_Handler,
+			MethodName: "ListHypervisorCapabilities",
+			Handler:    _ConfigService_ListHypervisorCapabilities_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -33,76 +33,76 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// HostServiceUpdateHostProcedure is the fully-qualified name of the HostService's UpdateHost RPC.
-	HostServiceUpdateHostProcedure = "/cloudstack.management.host.v1.HostService/UpdateHost"
-	// HostServiceAddHostProcedure is the fully-qualified name of the HostService's AddHost RPC.
-	HostServiceAddHostProcedure = "/cloudstack.management.host.v1.HostService/AddHost"
-	// HostServiceListHostsProcedure is the fully-qualified name of the HostService's ListHosts RPC.
-	HostServiceListHostsProcedure = "/cloudstack.management.host.v1.HostService/ListHosts"
-	// HostServiceUpdateHostPasswordProcedure is the fully-qualified name of the HostService's
-	// UpdateHostPassword RPC.
-	HostServiceUpdateHostPasswordProcedure = "/cloudstack.management.host.v1.HostService/UpdateHostPassword"
-	// HostServiceAddSecondaryStorageProcedure is the fully-qualified name of the HostService's
-	// AddSecondaryStorage RPC.
-	HostServiceAddSecondaryStorageProcedure = "/cloudstack.management.host.v1.HostService/AddSecondaryStorage"
-	// HostServiceDeclareHostAsDegradedProcedure is the fully-qualified name of the HostService's
-	// DeclareHostAsDegraded RPC.
-	HostServiceDeclareHostAsDegradedProcedure = "/cloudstack.management.host.v1.HostService/DeclareHostAsDegraded"
 	// HostServicePrepareForHostMaintenanceProcedure is the fully-qualified name of the HostService's
 	// PrepareForHostMaintenance RPC.
 	HostServicePrepareForHostMaintenanceProcedure = "/cloudstack.management.host.v1.HostService/PrepareForHostMaintenance"
-	// HostServiceListHostTagsProcedure is the fully-qualified name of the HostService's ListHostTags
-	// RPC.
-	HostServiceListHostTagsProcedure = "/cloudstack.management.host.v1.HostService/ListHostTags"
-	// HostServiceFindHostsForMigrationProcedure is the fully-qualified name of the HostService's
-	// FindHostsForMigration RPC.
-	HostServiceFindHostsForMigrationProcedure = "/cloudstack.management.host.v1.HostService/FindHostsForMigration"
-	// HostServiceReleaseHostReservationProcedure is the fully-qualified name of the HostService's
-	// ReleaseHostReservation RPC.
-	HostServiceReleaseHostReservationProcedure = "/cloudstack.management.host.v1.HostService/ReleaseHostReservation"
-	// HostServiceCancelHostMaintenanceProcedure is the fully-qualified name of the HostService's
-	// CancelHostMaintenance RPC.
-	HostServiceCancelHostMaintenanceProcedure = "/cloudstack.management.host.v1.HostService/CancelHostMaintenance"
-	// HostServiceDeleteHostProcedure is the fully-qualified name of the HostService's DeleteHost RPC.
-	HostServiceDeleteHostProcedure = "/cloudstack.management.host.v1.HostService/DeleteHost"
+	// HostServiceListHostsProcedure is the fully-qualified name of the HostService's ListHosts RPC.
+	HostServiceListHostsProcedure = "/cloudstack.management.host.v1.HostService/ListHosts"
 	// HostServiceCancelHostAsDegradedProcedure is the fully-qualified name of the HostService's
 	// CancelHostAsDegraded RPC.
 	HostServiceCancelHostAsDegradedProcedure = "/cloudstack.management.host.v1.HostService/CancelHostAsDegraded"
+	// HostServiceReleaseHostReservationProcedure is the fully-qualified name of the HostService's
+	// ReleaseHostReservation RPC.
+	HostServiceReleaseHostReservationProcedure = "/cloudstack.management.host.v1.HostService/ReleaseHostReservation"
+	// HostServiceDeleteHostProcedure is the fully-qualified name of the HostService's DeleteHost RPC.
+	HostServiceDeleteHostProcedure = "/cloudstack.management.host.v1.HostService/DeleteHost"
+	// HostServiceUpdateHostProcedure is the fully-qualified name of the HostService's UpdateHost RPC.
+	HostServiceUpdateHostProcedure = "/cloudstack.management.host.v1.HostService/UpdateHost"
+	// HostServiceListHostTagsProcedure is the fully-qualified name of the HostService's ListHostTags
+	// RPC.
+	HostServiceListHostTagsProcedure = "/cloudstack.management.host.v1.HostService/ListHostTags"
+	// HostServiceAddSecondaryStorageProcedure is the fully-qualified name of the HostService's
+	// AddSecondaryStorage RPC.
+	HostServiceAddSecondaryStorageProcedure = "/cloudstack.management.host.v1.HostService/AddSecondaryStorage"
+	// HostServiceFindHostsForMigrationProcedure is the fully-qualified name of the HostService's
+	// FindHostsForMigration RPC.
+	HostServiceFindHostsForMigrationProcedure = "/cloudstack.management.host.v1.HostService/FindHostsForMigration"
+	// HostServiceAddHostProcedure is the fully-qualified name of the HostService's AddHost RPC.
+	HostServiceAddHostProcedure = "/cloudstack.management.host.v1.HostService/AddHost"
+	// HostServiceUpdateHostPasswordProcedure is the fully-qualified name of the HostService's
+	// UpdateHostPassword RPC.
+	HostServiceUpdateHostPasswordProcedure = "/cloudstack.management.host.v1.HostService/UpdateHostPassword"
+	// HostServiceCancelHostMaintenanceProcedure is the fully-qualified name of the HostService's
+	// CancelHostMaintenance RPC.
+	HostServiceCancelHostMaintenanceProcedure = "/cloudstack.management.host.v1.HostService/CancelHostMaintenance"
 	// HostServiceReconnectHostProcedure is the fully-qualified name of the HostService's ReconnectHost
 	// RPC.
 	HostServiceReconnectHostProcedure = "/cloudstack.management.host.v1.HostService/ReconnectHost"
+	// HostServiceDeclareHostAsDegradedProcedure is the fully-qualified name of the HostService's
+	// DeclareHostAsDegraded RPC.
+	HostServiceDeclareHostAsDegradedProcedure = "/cloudstack.management.host.v1.HostService/DeclareHostAsDegraded"
 )
 
 // HostServiceClient is a client for the cloudstack.management.host.v1.HostService service.
 type HostServiceClient interface {
-	// UpdateHost Updates a host.
-	UpdateHost(context.Context, *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error)
-	// AddHost Adds a new host.
-	AddHost(context.Context, *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error)
-	// ListHosts Lists hosts.
-	ListHosts(context.Context, *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error)
-	// UpdateHostPassword Update password of a host/pool on management server.
-	UpdateHostPassword(context.Context, *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error)
-	// AddSecondaryStorage Adds secondary storage.
-	AddSecondaryStorage(context.Context, *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error)
-	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
-	DeclareHostAsDegraded(context.Context, *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error)
 	// PrepareForHostMaintenance Prepares a host for maintenance.
 	PrepareForHostMaintenance(context.Context, *connect.Request[v1.PrepareForHostMaintenanceRequest]) (*connect.Response[v1.PrepareForHostMaintenanceResponse], error)
-	// ListHostTags Lists host tags
-	ListHostTags(context.Context, *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error)
-	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
-	FindHostsForMigration(context.Context, *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error)
-	// ReleaseHostReservation Releases host reservation.
-	ReleaseHostReservation(context.Context, *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error)
-	// CancelHostMaintenance Cancels host maintenance.
-	CancelHostMaintenance(context.Context, *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error)
-	// DeleteHost Deletes a host.
-	DeleteHost(context.Context, *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error)
+	// ListHosts Lists hosts.
+	ListHosts(context.Context, *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error)
 	// CancelHostAsDegraded Cancel host status from 'Degraded'. Host will transit back to status 'Enabled'.
 	CancelHostAsDegraded(context.Context, *connect.Request[v1.CancelHostAsDegradedRequest]) (*connect.Response[v1.CancelHostAsDegradedResponse], error)
+	// ReleaseHostReservation Releases host reservation.
+	ReleaseHostReservation(context.Context, *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error)
+	// DeleteHost Deletes a host.
+	DeleteHost(context.Context, *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error)
+	// UpdateHost Updates a host.
+	UpdateHost(context.Context, *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error)
+	// ListHostTags Lists host tags
+	ListHostTags(context.Context, *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error)
+	// AddSecondaryStorage Adds secondary storage.
+	AddSecondaryStorage(context.Context, *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error)
+	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
+	FindHostsForMigration(context.Context, *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error)
+	// AddHost Adds a new host.
+	AddHost(context.Context, *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error)
+	// UpdateHostPassword Update password of a host/pool on management server.
+	UpdateHostPassword(context.Context, *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error)
+	// CancelHostMaintenance Cancels host maintenance.
+	CancelHostMaintenance(context.Context, *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error)
 	// ReconnectHost Reconnects a host.
 	ReconnectHost(context.Context, *connect.Request[v1.ReconnectHostRequest]) (*connect.Response[v1.ReconnectHostResponse], error)
+	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
+	DeclareHostAsDegraded(context.Context, *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error)
 }
 
 // NewHostServiceClient constructs a client for the cloudstack.management.host.v1.HostService
@@ -116,16 +116,10 @@ func NewHostServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	hostServiceMethods := v1.File_cloudstack_management_host_v1_host_gen_proto.Services().ByName("HostService").Methods()
 	return &hostServiceClient{
-		updateHost: connect.NewClient[v1.UpdateHostRequest, v1.UpdateHostResponse](
+		prepareForHostMaintenance: connect.NewClient[v1.PrepareForHostMaintenanceRequest, v1.PrepareForHostMaintenanceResponse](
 			httpClient,
-			baseURL+HostServiceUpdateHostProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("UpdateHost")),
-			connect.WithClientOptions(opts...),
-		),
-		addHost: connect.NewClient[v1.AddHostRequest, v1.AddHostResponse](
-			httpClient,
-			baseURL+HostServiceAddHostProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("AddHost")),
+			baseURL+HostServicePrepareForHostMaintenanceProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("PrepareForHostMaintenance")),
 			connect.WithClientOptions(opts...),
 		),
 		listHosts: connect.NewClient[v1.ListHostsRequest, v1.ListHostsResponse](
@@ -134,40 +128,10 @@ func NewHostServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(hostServiceMethods.ByName("ListHosts")),
 			connect.WithClientOptions(opts...),
 		),
-		updateHostPassword: connect.NewClient[v1.UpdateHostPasswordRequest, v1.UpdateHostPasswordResponse](
+		cancelHostAsDegraded: connect.NewClient[v1.CancelHostAsDegradedRequest, v1.CancelHostAsDegradedResponse](
 			httpClient,
-			baseURL+HostServiceUpdateHostPasswordProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("UpdateHostPassword")),
-			connect.WithClientOptions(opts...),
-		),
-		addSecondaryStorage: connect.NewClient[v1.AddSecondaryStorageRequest, v1.AddSecondaryStorageResponse](
-			httpClient,
-			baseURL+HostServiceAddSecondaryStorageProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("AddSecondaryStorage")),
-			connect.WithClientOptions(opts...),
-		),
-		declareHostAsDegraded: connect.NewClient[v1.DeclareHostAsDegradedRequest, v1.DeclareHostAsDegradedResponse](
-			httpClient,
-			baseURL+HostServiceDeclareHostAsDegradedProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("DeclareHostAsDegraded")),
-			connect.WithClientOptions(opts...),
-		),
-		prepareForHostMaintenance: connect.NewClient[v1.PrepareForHostMaintenanceRequest, v1.PrepareForHostMaintenanceResponse](
-			httpClient,
-			baseURL+HostServicePrepareForHostMaintenanceProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("PrepareForHostMaintenance")),
-			connect.WithClientOptions(opts...),
-		),
-		listHostTags: connect.NewClient[v1.ListHostTagsRequest, v1.ListHostTagsResponse](
-			httpClient,
-			baseURL+HostServiceListHostTagsProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("ListHostTags")),
-			connect.WithClientOptions(opts...),
-		),
-		findHostsForMigration: connect.NewClient[v1.FindHostsForMigrationRequest, v1.FindHostsForMigrationResponse](
-			httpClient,
-			baseURL+HostServiceFindHostsForMigrationProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("FindHostsForMigration")),
+			baseURL+HostServiceCancelHostAsDegradedProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("CancelHostAsDegraded")),
 			connect.WithClientOptions(opts...),
 		),
 		releaseHostReservation: connect.NewClient[v1.ReleaseHostReservationRequest, v1.ReleaseHostReservationResponse](
@@ -176,22 +140,52 @@ func NewHostServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(hostServiceMethods.ByName("ReleaseHostReservation")),
 			connect.WithClientOptions(opts...),
 		),
-		cancelHostMaintenance: connect.NewClient[v1.CancelHostMaintenanceRequest, v1.CancelHostMaintenanceResponse](
-			httpClient,
-			baseURL+HostServiceCancelHostMaintenanceProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("CancelHostMaintenance")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteHost: connect.NewClient[v1.DeleteHostRequest, v1.DeleteHostResponse](
 			httpClient,
 			baseURL+HostServiceDeleteHostProcedure,
 			connect.WithSchema(hostServiceMethods.ByName("DeleteHost")),
 			connect.WithClientOptions(opts...),
 		),
-		cancelHostAsDegraded: connect.NewClient[v1.CancelHostAsDegradedRequest, v1.CancelHostAsDegradedResponse](
+		updateHost: connect.NewClient[v1.UpdateHostRequest, v1.UpdateHostResponse](
 			httpClient,
-			baseURL+HostServiceCancelHostAsDegradedProcedure,
-			connect.WithSchema(hostServiceMethods.ByName("CancelHostAsDegraded")),
+			baseURL+HostServiceUpdateHostProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("UpdateHost")),
+			connect.WithClientOptions(opts...),
+		),
+		listHostTags: connect.NewClient[v1.ListHostTagsRequest, v1.ListHostTagsResponse](
+			httpClient,
+			baseURL+HostServiceListHostTagsProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("ListHostTags")),
+			connect.WithClientOptions(opts...),
+		),
+		addSecondaryStorage: connect.NewClient[v1.AddSecondaryStorageRequest, v1.AddSecondaryStorageResponse](
+			httpClient,
+			baseURL+HostServiceAddSecondaryStorageProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("AddSecondaryStorage")),
+			connect.WithClientOptions(opts...),
+		),
+		findHostsForMigration: connect.NewClient[v1.FindHostsForMigrationRequest, v1.FindHostsForMigrationResponse](
+			httpClient,
+			baseURL+HostServiceFindHostsForMigrationProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("FindHostsForMigration")),
+			connect.WithClientOptions(opts...),
+		),
+		addHost: connect.NewClient[v1.AddHostRequest, v1.AddHostResponse](
+			httpClient,
+			baseURL+HostServiceAddHostProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("AddHost")),
+			connect.WithClientOptions(opts...),
+		),
+		updateHostPassword: connect.NewClient[v1.UpdateHostPasswordRequest, v1.UpdateHostPasswordResponse](
+			httpClient,
+			baseURL+HostServiceUpdateHostPasswordProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("UpdateHostPassword")),
+			connect.WithClientOptions(opts...),
+		),
+		cancelHostMaintenance: connect.NewClient[v1.CancelHostMaintenanceRequest, v1.CancelHostMaintenanceResponse](
+			httpClient,
+			baseURL+HostServiceCancelHostMaintenanceProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("CancelHostMaintenance")),
 			connect.WithClientOptions(opts...),
 		),
 		reconnectHost: connect.NewClient[v1.ReconnectHostRequest, v1.ReconnectHostResponse](
@@ -200,55 +194,31 @@ func NewHostServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(hostServiceMethods.ByName("ReconnectHost")),
 			connect.WithClientOptions(opts...),
 		),
+		declareHostAsDegraded: connect.NewClient[v1.DeclareHostAsDegradedRequest, v1.DeclareHostAsDegradedResponse](
+			httpClient,
+			baseURL+HostServiceDeclareHostAsDegradedProcedure,
+			connect.WithSchema(hostServiceMethods.ByName("DeclareHostAsDegraded")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // hostServiceClient implements HostServiceClient.
 type hostServiceClient struct {
-	updateHost                *connect.Client[v1.UpdateHostRequest, v1.UpdateHostResponse]
-	addHost                   *connect.Client[v1.AddHostRequest, v1.AddHostResponse]
-	listHosts                 *connect.Client[v1.ListHostsRequest, v1.ListHostsResponse]
-	updateHostPassword        *connect.Client[v1.UpdateHostPasswordRequest, v1.UpdateHostPasswordResponse]
-	addSecondaryStorage       *connect.Client[v1.AddSecondaryStorageRequest, v1.AddSecondaryStorageResponse]
-	declareHostAsDegraded     *connect.Client[v1.DeclareHostAsDegradedRequest, v1.DeclareHostAsDegradedResponse]
 	prepareForHostMaintenance *connect.Client[v1.PrepareForHostMaintenanceRequest, v1.PrepareForHostMaintenanceResponse]
-	listHostTags              *connect.Client[v1.ListHostTagsRequest, v1.ListHostTagsResponse]
-	findHostsForMigration     *connect.Client[v1.FindHostsForMigrationRequest, v1.FindHostsForMigrationResponse]
-	releaseHostReservation    *connect.Client[v1.ReleaseHostReservationRequest, v1.ReleaseHostReservationResponse]
-	cancelHostMaintenance     *connect.Client[v1.CancelHostMaintenanceRequest, v1.CancelHostMaintenanceResponse]
-	deleteHost                *connect.Client[v1.DeleteHostRequest, v1.DeleteHostResponse]
+	listHosts                 *connect.Client[v1.ListHostsRequest, v1.ListHostsResponse]
 	cancelHostAsDegraded      *connect.Client[v1.CancelHostAsDegradedRequest, v1.CancelHostAsDegradedResponse]
+	releaseHostReservation    *connect.Client[v1.ReleaseHostReservationRequest, v1.ReleaseHostReservationResponse]
+	deleteHost                *connect.Client[v1.DeleteHostRequest, v1.DeleteHostResponse]
+	updateHost                *connect.Client[v1.UpdateHostRequest, v1.UpdateHostResponse]
+	listHostTags              *connect.Client[v1.ListHostTagsRequest, v1.ListHostTagsResponse]
+	addSecondaryStorage       *connect.Client[v1.AddSecondaryStorageRequest, v1.AddSecondaryStorageResponse]
+	findHostsForMigration     *connect.Client[v1.FindHostsForMigrationRequest, v1.FindHostsForMigrationResponse]
+	addHost                   *connect.Client[v1.AddHostRequest, v1.AddHostResponse]
+	updateHostPassword        *connect.Client[v1.UpdateHostPasswordRequest, v1.UpdateHostPasswordResponse]
+	cancelHostMaintenance     *connect.Client[v1.CancelHostMaintenanceRequest, v1.CancelHostMaintenanceResponse]
 	reconnectHost             *connect.Client[v1.ReconnectHostRequest, v1.ReconnectHostResponse]
-}
-
-// UpdateHost calls cloudstack.management.host.v1.HostService.UpdateHost.
-func (c *hostServiceClient) UpdateHost(ctx context.Context, req *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error) {
-	return c.updateHost.CallUnary(ctx, req)
-}
-
-// AddHost calls cloudstack.management.host.v1.HostService.AddHost.
-func (c *hostServiceClient) AddHost(ctx context.Context, req *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error) {
-	return c.addHost.CallUnary(ctx, req)
-}
-
-// ListHosts calls cloudstack.management.host.v1.HostService.ListHosts.
-func (c *hostServiceClient) ListHosts(ctx context.Context, req *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error) {
-	return c.listHosts.CallUnary(ctx, req)
-}
-
-// UpdateHostPassword calls cloudstack.management.host.v1.HostService.UpdateHostPassword.
-func (c *hostServiceClient) UpdateHostPassword(ctx context.Context, req *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error) {
-	return c.updateHostPassword.CallUnary(ctx, req)
-}
-
-// AddSecondaryStorage calls cloudstack.management.host.v1.HostService.AddSecondaryStorage.
-func (c *hostServiceClient) AddSecondaryStorage(ctx context.Context, req *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error) {
-	return c.addSecondaryStorage.CallUnary(ctx, req)
-}
-
-// DeclareHostAsDegraded calls cloudstack.management.host.v1.HostService.DeclareHostAsDegraded.
-func (c *hostServiceClient) DeclareHostAsDegraded(ctx context.Context, req *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error) {
-	return c.declareHostAsDegraded.CallUnary(ctx, req)
+	declareHostAsDegraded     *connect.Client[v1.DeclareHostAsDegradedRequest, v1.DeclareHostAsDegradedResponse]
 }
 
 // PrepareForHostMaintenance calls
@@ -257,29 +227,9 @@ func (c *hostServiceClient) PrepareForHostMaintenance(ctx context.Context, req *
 	return c.prepareForHostMaintenance.CallUnary(ctx, req)
 }
 
-// ListHostTags calls cloudstack.management.host.v1.HostService.ListHostTags.
-func (c *hostServiceClient) ListHostTags(ctx context.Context, req *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error) {
-	return c.listHostTags.CallUnary(ctx, req)
-}
-
-// FindHostsForMigration calls cloudstack.management.host.v1.HostService.FindHostsForMigration.
-func (c *hostServiceClient) FindHostsForMigration(ctx context.Context, req *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error) {
-	return c.findHostsForMigration.CallUnary(ctx, req)
-}
-
-// ReleaseHostReservation calls cloudstack.management.host.v1.HostService.ReleaseHostReservation.
-func (c *hostServiceClient) ReleaseHostReservation(ctx context.Context, req *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error) {
-	return c.releaseHostReservation.CallUnary(ctx, req)
-}
-
-// CancelHostMaintenance calls cloudstack.management.host.v1.HostService.CancelHostMaintenance.
-func (c *hostServiceClient) CancelHostMaintenance(ctx context.Context, req *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error) {
-	return c.cancelHostMaintenance.CallUnary(ctx, req)
-}
-
-// DeleteHost calls cloudstack.management.host.v1.HostService.DeleteHost.
-func (c *hostServiceClient) DeleteHost(ctx context.Context, req *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error) {
-	return c.deleteHost.CallUnary(ctx, req)
+// ListHosts calls cloudstack.management.host.v1.HostService.ListHosts.
+func (c *hostServiceClient) ListHosts(ctx context.Context, req *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error) {
+	return c.listHosts.CallUnary(ctx, req)
 }
 
 // CancelHostAsDegraded calls cloudstack.management.host.v1.HostService.CancelHostAsDegraded.
@@ -287,41 +237,91 @@ func (c *hostServiceClient) CancelHostAsDegraded(ctx context.Context, req *conne
 	return c.cancelHostAsDegraded.CallUnary(ctx, req)
 }
 
+// ReleaseHostReservation calls cloudstack.management.host.v1.HostService.ReleaseHostReservation.
+func (c *hostServiceClient) ReleaseHostReservation(ctx context.Context, req *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error) {
+	return c.releaseHostReservation.CallUnary(ctx, req)
+}
+
+// DeleteHost calls cloudstack.management.host.v1.HostService.DeleteHost.
+func (c *hostServiceClient) DeleteHost(ctx context.Context, req *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error) {
+	return c.deleteHost.CallUnary(ctx, req)
+}
+
+// UpdateHost calls cloudstack.management.host.v1.HostService.UpdateHost.
+func (c *hostServiceClient) UpdateHost(ctx context.Context, req *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error) {
+	return c.updateHost.CallUnary(ctx, req)
+}
+
+// ListHostTags calls cloudstack.management.host.v1.HostService.ListHostTags.
+func (c *hostServiceClient) ListHostTags(ctx context.Context, req *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error) {
+	return c.listHostTags.CallUnary(ctx, req)
+}
+
+// AddSecondaryStorage calls cloudstack.management.host.v1.HostService.AddSecondaryStorage.
+func (c *hostServiceClient) AddSecondaryStorage(ctx context.Context, req *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error) {
+	return c.addSecondaryStorage.CallUnary(ctx, req)
+}
+
+// FindHostsForMigration calls cloudstack.management.host.v1.HostService.FindHostsForMigration.
+func (c *hostServiceClient) FindHostsForMigration(ctx context.Context, req *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error) {
+	return c.findHostsForMigration.CallUnary(ctx, req)
+}
+
+// AddHost calls cloudstack.management.host.v1.HostService.AddHost.
+func (c *hostServiceClient) AddHost(ctx context.Context, req *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error) {
+	return c.addHost.CallUnary(ctx, req)
+}
+
+// UpdateHostPassword calls cloudstack.management.host.v1.HostService.UpdateHostPassword.
+func (c *hostServiceClient) UpdateHostPassword(ctx context.Context, req *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error) {
+	return c.updateHostPassword.CallUnary(ctx, req)
+}
+
+// CancelHostMaintenance calls cloudstack.management.host.v1.HostService.CancelHostMaintenance.
+func (c *hostServiceClient) CancelHostMaintenance(ctx context.Context, req *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error) {
+	return c.cancelHostMaintenance.CallUnary(ctx, req)
+}
+
 // ReconnectHost calls cloudstack.management.host.v1.HostService.ReconnectHost.
 func (c *hostServiceClient) ReconnectHost(ctx context.Context, req *connect.Request[v1.ReconnectHostRequest]) (*connect.Response[v1.ReconnectHostResponse], error) {
 	return c.reconnectHost.CallUnary(ctx, req)
 }
 
+// DeclareHostAsDegraded calls cloudstack.management.host.v1.HostService.DeclareHostAsDegraded.
+func (c *hostServiceClient) DeclareHostAsDegraded(ctx context.Context, req *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error) {
+	return c.declareHostAsDegraded.CallUnary(ctx, req)
+}
+
 // HostServiceHandler is an implementation of the cloudstack.management.host.v1.HostService service.
 type HostServiceHandler interface {
-	// UpdateHost Updates a host.
-	UpdateHost(context.Context, *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error)
-	// AddHost Adds a new host.
-	AddHost(context.Context, *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error)
-	// ListHosts Lists hosts.
-	ListHosts(context.Context, *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error)
-	// UpdateHostPassword Update password of a host/pool on management server.
-	UpdateHostPassword(context.Context, *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error)
-	// AddSecondaryStorage Adds secondary storage.
-	AddSecondaryStorage(context.Context, *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error)
-	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
-	DeclareHostAsDegraded(context.Context, *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error)
 	// PrepareForHostMaintenance Prepares a host for maintenance.
 	PrepareForHostMaintenance(context.Context, *connect.Request[v1.PrepareForHostMaintenanceRequest]) (*connect.Response[v1.PrepareForHostMaintenanceResponse], error)
-	// ListHostTags Lists host tags
-	ListHostTags(context.Context, *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error)
-	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
-	FindHostsForMigration(context.Context, *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error)
-	// ReleaseHostReservation Releases host reservation.
-	ReleaseHostReservation(context.Context, *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error)
-	// CancelHostMaintenance Cancels host maintenance.
-	CancelHostMaintenance(context.Context, *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error)
-	// DeleteHost Deletes a host.
-	DeleteHost(context.Context, *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error)
+	// ListHosts Lists hosts.
+	ListHosts(context.Context, *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error)
 	// CancelHostAsDegraded Cancel host status from 'Degraded'. Host will transit back to status 'Enabled'.
 	CancelHostAsDegraded(context.Context, *connect.Request[v1.CancelHostAsDegradedRequest]) (*connect.Response[v1.CancelHostAsDegradedResponse], error)
+	// ReleaseHostReservation Releases host reservation.
+	ReleaseHostReservation(context.Context, *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error)
+	// DeleteHost Deletes a host.
+	DeleteHost(context.Context, *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error)
+	// UpdateHost Updates a host.
+	UpdateHost(context.Context, *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error)
+	// ListHostTags Lists host tags
+	ListHostTags(context.Context, *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error)
+	// AddSecondaryStorage Adds secondary storage.
+	AddSecondaryStorage(context.Context, *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error)
+	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
+	FindHostsForMigration(context.Context, *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error)
+	// AddHost Adds a new host.
+	AddHost(context.Context, *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error)
+	// UpdateHostPassword Update password of a host/pool on management server.
+	UpdateHostPassword(context.Context, *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error)
+	// CancelHostMaintenance Cancels host maintenance.
+	CancelHostMaintenance(context.Context, *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error)
 	// ReconnectHost Reconnects a host.
 	ReconnectHost(context.Context, *connect.Request[v1.ReconnectHostRequest]) (*connect.Response[v1.ReconnectHostResponse], error)
+	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
+	DeclareHostAsDegraded(context.Context, *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error)
 }
 
 // NewHostServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -331,16 +331,10 @@ type HostServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewHostServiceHandler(svc HostServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	hostServiceMethods := v1.File_cloudstack_management_host_v1_host_gen_proto.Services().ByName("HostService").Methods()
-	hostServiceUpdateHostHandler := connect.NewUnaryHandler(
-		HostServiceUpdateHostProcedure,
-		svc.UpdateHost,
-		connect.WithSchema(hostServiceMethods.ByName("UpdateHost")),
-		connect.WithHandlerOptions(opts...),
-	)
-	hostServiceAddHostHandler := connect.NewUnaryHandler(
-		HostServiceAddHostProcedure,
-		svc.AddHost,
-		connect.WithSchema(hostServiceMethods.ByName("AddHost")),
+	hostServicePrepareForHostMaintenanceHandler := connect.NewUnaryHandler(
+		HostServicePrepareForHostMaintenanceProcedure,
+		svc.PrepareForHostMaintenance,
+		connect.WithSchema(hostServiceMethods.ByName("PrepareForHostMaintenance")),
 		connect.WithHandlerOptions(opts...),
 	)
 	hostServiceListHostsHandler := connect.NewUnaryHandler(
@@ -349,40 +343,10 @@ func NewHostServiceHandler(svc HostServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(hostServiceMethods.ByName("ListHosts")),
 		connect.WithHandlerOptions(opts...),
 	)
-	hostServiceUpdateHostPasswordHandler := connect.NewUnaryHandler(
-		HostServiceUpdateHostPasswordProcedure,
-		svc.UpdateHostPassword,
-		connect.WithSchema(hostServiceMethods.ByName("UpdateHostPassword")),
-		connect.WithHandlerOptions(opts...),
-	)
-	hostServiceAddSecondaryStorageHandler := connect.NewUnaryHandler(
-		HostServiceAddSecondaryStorageProcedure,
-		svc.AddSecondaryStorage,
-		connect.WithSchema(hostServiceMethods.ByName("AddSecondaryStorage")),
-		connect.WithHandlerOptions(opts...),
-	)
-	hostServiceDeclareHostAsDegradedHandler := connect.NewUnaryHandler(
-		HostServiceDeclareHostAsDegradedProcedure,
-		svc.DeclareHostAsDegraded,
-		connect.WithSchema(hostServiceMethods.ByName("DeclareHostAsDegraded")),
-		connect.WithHandlerOptions(opts...),
-	)
-	hostServicePrepareForHostMaintenanceHandler := connect.NewUnaryHandler(
-		HostServicePrepareForHostMaintenanceProcedure,
-		svc.PrepareForHostMaintenance,
-		connect.WithSchema(hostServiceMethods.ByName("PrepareForHostMaintenance")),
-		connect.WithHandlerOptions(opts...),
-	)
-	hostServiceListHostTagsHandler := connect.NewUnaryHandler(
-		HostServiceListHostTagsProcedure,
-		svc.ListHostTags,
-		connect.WithSchema(hostServiceMethods.ByName("ListHostTags")),
-		connect.WithHandlerOptions(opts...),
-	)
-	hostServiceFindHostsForMigrationHandler := connect.NewUnaryHandler(
-		HostServiceFindHostsForMigrationProcedure,
-		svc.FindHostsForMigration,
-		connect.WithSchema(hostServiceMethods.ByName("FindHostsForMigration")),
+	hostServiceCancelHostAsDegradedHandler := connect.NewUnaryHandler(
+		HostServiceCancelHostAsDegradedProcedure,
+		svc.CancelHostAsDegraded,
+		connect.WithSchema(hostServiceMethods.ByName("CancelHostAsDegraded")),
 		connect.WithHandlerOptions(opts...),
 	)
 	hostServiceReleaseHostReservationHandler := connect.NewUnaryHandler(
@@ -391,22 +355,52 @@ func NewHostServiceHandler(svc HostServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(hostServiceMethods.ByName("ReleaseHostReservation")),
 		connect.WithHandlerOptions(opts...),
 	)
-	hostServiceCancelHostMaintenanceHandler := connect.NewUnaryHandler(
-		HostServiceCancelHostMaintenanceProcedure,
-		svc.CancelHostMaintenance,
-		connect.WithSchema(hostServiceMethods.ByName("CancelHostMaintenance")),
-		connect.WithHandlerOptions(opts...),
-	)
 	hostServiceDeleteHostHandler := connect.NewUnaryHandler(
 		HostServiceDeleteHostProcedure,
 		svc.DeleteHost,
 		connect.WithSchema(hostServiceMethods.ByName("DeleteHost")),
 		connect.WithHandlerOptions(opts...),
 	)
-	hostServiceCancelHostAsDegradedHandler := connect.NewUnaryHandler(
-		HostServiceCancelHostAsDegradedProcedure,
-		svc.CancelHostAsDegraded,
-		connect.WithSchema(hostServiceMethods.ByName("CancelHostAsDegraded")),
+	hostServiceUpdateHostHandler := connect.NewUnaryHandler(
+		HostServiceUpdateHostProcedure,
+		svc.UpdateHost,
+		connect.WithSchema(hostServiceMethods.ByName("UpdateHost")),
+		connect.WithHandlerOptions(opts...),
+	)
+	hostServiceListHostTagsHandler := connect.NewUnaryHandler(
+		HostServiceListHostTagsProcedure,
+		svc.ListHostTags,
+		connect.WithSchema(hostServiceMethods.ByName("ListHostTags")),
+		connect.WithHandlerOptions(opts...),
+	)
+	hostServiceAddSecondaryStorageHandler := connect.NewUnaryHandler(
+		HostServiceAddSecondaryStorageProcedure,
+		svc.AddSecondaryStorage,
+		connect.WithSchema(hostServiceMethods.ByName("AddSecondaryStorage")),
+		connect.WithHandlerOptions(opts...),
+	)
+	hostServiceFindHostsForMigrationHandler := connect.NewUnaryHandler(
+		HostServiceFindHostsForMigrationProcedure,
+		svc.FindHostsForMigration,
+		connect.WithSchema(hostServiceMethods.ByName("FindHostsForMigration")),
+		connect.WithHandlerOptions(opts...),
+	)
+	hostServiceAddHostHandler := connect.NewUnaryHandler(
+		HostServiceAddHostProcedure,
+		svc.AddHost,
+		connect.WithSchema(hostServiceMethods.ByName("AddHost")),
+		connect.WithHandlerOptions(opts...),
+	)
+	hostServiceUpdateHostPasswordHandler := connect.NewUnaryHandler(
+		HostServiceUpdateHostPasswordProcedure,
+		svc.UpdateHostPassword,
+		connect.WithSchema(hostServiceMethods.ByName("UpdateHostPassword")),
+		connect.WithHandlerOptions(opts...),
+	)
+	hostServiceCancelHostMaintenanceHandler := connect.NewUnaryHandler(
+		HostServiceCancelHostMaintenanceProcedure,
+		svc.CancelHostMaintenance,
+		connect.WithSchema(hostServiceMethods.ByName("CancelHostMaintenance")),
 		connect.WithHandlerOptions(opts...),
 	)
 	hostServiceReconnectHostHandler := connect.NewUnaryHandler(
@@ -415,36 +409,42 @@ func NewHostServiceHandler(svc HostServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(hostServiceMethods.ByName("ReconnectHost")),
 		connect.WithHandlerOptions(opts...),
 	)
+	hostServiceDeclareHostAsDegradedHandler := connect.NewUnaryHandler(
+		HostServiceDeclareHostAsDegradedProcedure,
+		svc.DeclareHostAsDegraded,
+		connect.WithSchema(hostServiceMethods.ByName("DeclareHostAsDegraded")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.host.v1.HostService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case HostServiceUpdateHostProcedure:
-			hostServiceUpdateHostHandler.ServeHTTP(w, r)
-		case HostServiceAddHostProcedure:
-			hostServiceAddHostHandler.ServeHTTP(w, r)
-		case HostServiceListHostsProcedure:
-			hostServiceListHostsHandler.ServeHTTP(w, r)
-		case HostServiceUpdateHostPasswordProcedure:
-			hostServiceUpdateHostPasswordHandler.ServeHTTP(w, r)
-		case HostServiceAddSecondaryStorageProcedure:
-			hostServiceAddSecondaryStorageHandler.ServeHTTP(w, r)
-		case HostServiceDeclareHostAsDegradedProcedure:
-			hostServiceDeclareHostAsDegradedHandler.ServeHTTP(w, r)
 		case HostServicePrepareForHostMaintenanceProcedure:
 			hostServicePrepareForHostMaintenanceHandler.ServeHTTP(w, r)
-		case HostServiceListHostTagsProcedure:
-			hostServiceListHostTagsHandler.ServeHTTP(w, r)
-		case HostServiceFindHostsForMigrationProcedure:
-			hostServiceFindHostsForMigrationHandler.ServeHTTP(w, r)
-		case HostServiceReleaseHostReservationProcedure:
-			hostServiceReleaseHostReservationHandler.ServeHTTP(w, r)
-		case HostServiceCancelHostMaintenanceProcedure:
-			hostServiceCancelHostMaintenanceHandler.ServeHTTP(w, r)
-		case HostServiceDeleteHostProcedure:
-			hostServiceDeleteHostHandler.ServeHTTP(w, r)
+		case HostServiceListHostsProcedure:
+			hostServiceListHostsHandler.ServeHTTP(w, r)
 		case HostServiceCancelHostAsDegradedProcedure:
 			hostServiceCancelHostAsDegradedHandler.ServeHTTP(w, r)
+		case HostServiceReleaseHostReservationProcedure:
+			hostServiceReleaseHostReservationHandler.ServeHTTP(w, r)
+		case HostServiceDeleteHostProcedure:
+			hostServiceDeleteHostHandler.ServeHTTP(w, r)
+		case HostServiceUpdateHostProcedure:
+			hostServiceUpdateHostHandler.ServeHTTP(w, r)
+		case HostServiceListHostTagsProcedure:
+			hostServiceListHostTagsHandler.ServeHTTP(w, r)
+		case HostServiceAddSecondaryStorageProcedure:
+			hostServiceAddSecondaryStorageHandler.ServeHTTP(w, r)
+		case HostServiceFindHostsForMigrationProcedure:
+			hostServiceFindHostsForMigrationHandler.ServeHTTP(w, r)
+		case HostServiceAddHostProcedure:
+			hostServiceAddHostHandler.ServeHTTP(w, r)
+		case HostServiceUpdateHostPasswordProcedure:
+			hostServiceUpdateHostPasswordHandler.ServeHTTP(w, r)
+		case HostServiceCancelHostMaintenanceProcedure:
+			hostServiceCancelHostMaintenanceHandler.ServeHTTP(w, r)
 		case HostServiceReconnectHostProcedure:
 			hostServiceReconnectHostHandler.ServeHTTP(w, r)
+		case HostServiceDeclareHostAsDegradedProcedure:
+			hostServiceDeclareHostAsDegradedHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -454,58 +454,58 @@ func NewHostServiceHandler(svc HostServiceHandler, opts ...connect.HandlerOption
 // UnimplementedHostServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedHostServiceHandler struct{}
 
-func (UnimplementedHostServiceHandler) UpdateHost(context.Context, *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.UpdateHost is not implemented"))
-}
-
-func (UnimplementedHostServiceHandler) AddHost(context.Context, *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.AddHost is not implemented"))
+func (UnimplementedHostServiceHandler) PrepareForHostMaintenance(context.Context, *connect.Request[v1.PrepareForHostMaintenanceRequest]) (*connect.Response[v1.PrepareForHostMaintenanceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.PrepareForHostMaintenance is not implemented"))
 }
 
 func (UnimplementedHostServiceHandler) ListHosts(context.Context, *connect.Request[v1.ListHostsRequest]) (*connect.Response[v1.ListHostsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.ListHosts is not implemented"))
 }
 
-func (UnimplementedHostServiceHandler) UpdateHostPassword(context.Context, *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.UpdateHostPassword is not implemented"))
-}
-
-func (UnimplementedHostServiceHandler) AddSecondaryStorage(context.Context, *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.AddSecondaryStorage is not implemented"))
-}
-
-func (UnimplementedHostServiceHandler) DeclareHostAsDegraded(context.Context, *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.DeclareHostAsDegraded is not implemented"))
-}
-
-func (UnimplementedHostServiceHandler) PrepareForHostMaintenance(context.Context, *connect.Request[v1.PrepareForHostMaintenanceRequest]) (*connect.Response[v1.PrepareForHostMaintenanceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.PrepareForHostMaintenance is not implemented"))
-}
-
-func (UnimplementedHostServiceHandler) ListHostTags(context.Context, *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.ListHostTags is not implemented"))
-}
-
-func (UnimplementedHostServiceHandler) FindHostsForMigration(context.Context, *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.FindHostsForMigration is not implemented"))
+func (UnimplementedHostServiceHandler) CancelHostAsDegraded(context.Context, *connect.Request[v1.CancelHostAsDegradedRequest]) (*connect.Response[v1.CancelHostAsDegradedResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.CancelHostAsDegraded is not implemented"))
 }
 
 func (UnimplementedHostServiceHandler) ReleaseHostReservation(context.Context, *connect.Request[v1.ReleaseHostReservationRequest]) (*connect.Response[v1.ReleaseHostReservationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.ReleaseHostReservation is not implemented"))
 }
 
-func (UnimplementedHostServiceHandler) CancelHostMaintenance(context.Context, *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.CancelHostMaintenance is not implemented"))
-}
-
 func (UnimplementedHostServiceHandler) DeleteHost(context.Context, *connect.Request[v1.DeleteHostRequest]) (*connect.Response[v1.DeleteHostResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.DeleteHost is not implemented"))
 }
 
-func (UnimplementedHostServiceHandler) CancelHostAsDegraded(context.Context, *connect.Request[v1.CancelHostAsDegradedRequest]) (*connect.Response[v1.CancelHostAsDegradedResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.CancelHostAsDegraded is not implemented"))
+func (UnimplementedHostServiceHandler) UpdateHost(context.Context, *connect.Request[v1.UpdateHostRequest]) (*connect.Response[v1.UpdateHostResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.UpdateHost is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) ListHostTags(context.Context, *connect.Request[v1.ListHostTagsRequest]) (*connect.Response[v1.ListHostTagsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.ListHostTags is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) AddSecondaryStorage(context.Context, *connect.Request[v1.AddSecondaryStorageRequest]) (*connect.Response[v1.AddSecondaryStorageResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.AddSecondaryStorage is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) FindHostsForMigration(context.Context, *connect.Request[v1.FindHostsForMigrationRequest]) (*connect.Response[v1.FindHostsForMigrationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.FindHostsForMigration is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) AddHost(context.Context, *connect.Request[v1.AddHostRequest]) (*connect.Response[v1.AddHostResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.AddHost is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) UpdateHostPassword(context.Context, *connect.Request[v1.UpdateHostPasswordRequest]) (*connect.Response[v1.UpdateHostPasswordResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.UpdateHostPassword is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) CancelHostMaintenance(context.Context, *connect.Request[v1.CancelHostMaintenanceRequest]) (*connect.Response[v1.CancelHostMaintenanceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.CancelHostMaintenance is not implemented"))
 }
 
 func (UnimplementedHostServiceHandler) ReconnectHost(context.Context, *connect.Request[v1.ReconnectHostRequest]) (*connect.Response[v1.ReconnectHostResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.ReconnectHost is not implemented"))
+}
+
+func (UnimplementedHostServiceHandler) DeclareHostAsDegraded(context.Context, *connect.Request[v1.DeclareHostAsDegradedRequest]) (*connect.Response[v1.DeclareHostAsDegradedResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.host.v1.HostService.DeclareHostAsDegraded is not implemented"))
 }

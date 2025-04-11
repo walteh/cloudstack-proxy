@@ -10,6 +10,9 @@ import "google/protobuf/descriptor.proto";
 service RoutingService {
 	option (annotations.service).scope = Scope_USER;
 
+	// ListRoutingFirewallRules Lists all Routing firewall rules
+	rpc ListRoutingFirewallRules(ListRoutingFirewallRulesRequest) returns (ListRoutingFirewallRulesResponse) {}
+
 	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
 	rpc CreateRoutingFirewallRule(CreateRoutingFirewallRuleRequest) returns (CreateRoutingFirewallRuleResponse) {}
 
@@ -18,9 +21,73 @@ service RoutingService {
 
 	// DeleteRoutingFirewallRule Deletes a routing firewall rule
 	rpc DeleteRoutingFirewallRule(DeleteRoutingFirewallRuleRequest) returns (DeleteRoutingFirewallRuleResponse) {}
+}
 
-	// ListRoutingFirewallRules Lists all Routing firewall rules
-	rpc ListRoutingFirewallRules(ListRoutingFirewallRulesRequest) returns (ListRoutingFirewallRulesResponse) {}
+// ListRoutingFirewallRulesRequest represents the parameters for lists all routing firewall rules
+message ListRoutingFirewallRulesRequest {
+	// Lists Routing firewall rule with the specified ID
+	int64 id = 1;
+
+	// list Routing firewall rules by network ID
+	int64 network_id = 2;
+
+	// list Routing firewall rules by traffic type - ingress or egress
+	string traffic_type = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListRoutingFirewallRulesResponse represents the response from lists all routing firewall rules
+message ListRoutingFirewallRulesResponse {
+	option (validate.message).disabled = false;
+	// The list of FirewallRules
+	repeated FirewallRule items = 1;
+
+	// The total count of FirewallRules
+	int32 total_count = 2;
 }
 
 // CreateRoutingFirewallRuleRequest represents the parameters for creates a routing firewall rule in the given network in routed mode
@@ -145,73 +212,6 @@ message DeleteRoutingFirewallRuleResponse {
 	Result result = 1;
 }
 
-// ListRoutingFirewallRulesRequest represents the parameters for lists all routing firewall rules
-message ListRoutingFirewallRulesRequest {
-	// Lists Routing firewall rule with the specified ID
-	int64 id = 1;
-
-	// list Routing firewall rules by network ID
-	int64 network_id = 2;
-
-	// list Routing firewall rules by traffic type - ingress or egress
-	string traffic_type = 3;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListRoutingFirewallRulesResponse represents the response from lists all routing firewall rules
-message ListRoutingFirewallRulesResponse {
-	option (validate.message).disabled = false;
-	// The list of FirewallRules
-	repeated FirewallRule items = 1;
-
-	// The total count of FirewallRules
-	int32 total_count = 2;
-}
-
 // FirewallRule represents a FirewallRule Item
 message FirewallRule {
 	// The ID of the FirewallRule
@@ -234,6 +234,20 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
+}
+
+// ProtocolType represents the possible values for the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+enum ProtocolType {
+	// Default unspecified value
+	PROTOCOL_TYPE_UNSPECIFIED = 0;
+	// TCP value
+	PROTOCOL_TYPE_TCP = 1;
+	// UDP value
+	PROTOCOL_TYPE_UDP = 2;
+	// ICMP value
+	PROTOCOL_TYPE_ICMP = 3;
+	// ALL value
+	PROTOCOL_TYPE_ALL = 4;
 }
 
 // Item represents a generic item in a list response

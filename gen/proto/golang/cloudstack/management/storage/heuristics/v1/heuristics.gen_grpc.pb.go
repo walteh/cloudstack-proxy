@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	HeuristicsService_RemoveSecondaryStorageSelector_FullMethodName = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/RemoveSecondaryStorageSelector"
-	HeuristicsService_CreateSecondaryStorageSelector_FullMethodName = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/CreateSecondaryStorageSelector"
 	HeuristicsService_UpdateSecondaryStorageSelector_FullMethodName = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/UpdateSecondaryStorageSelector"
+	HeuristicsService_RemoveSecondaryStorageSelector_FullMethodName = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/RemoveSecondaryStorageSelector"
 	HeuristicsService_ListSecondaryStorageSelectors_FullMethodName  = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/ListSecondaryStorageSelectors"
+	HeuristicsService_CreateSecondaryStorageSelector_FullMethodName = "/cloudstack.management.storage.heuristics.v1.HeuristicsService/CreateSecondaryStorageSelector"
 )
 
 // HeuristicsServiceClient is the client API for HeuristicsService service.
@@ -31,14 +31,14 @@ const (
 //
 // HeuristicsService provides operations for managing Storage.Heuristicss
 type HeuristicsServiceClient interface {
-	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
-	RemoveSecondaryStorageSelector(ctx context.Context, in *RemoveSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*RemoveSecondaryStorageSelectorResponse, error)
-	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
-	CreateSecondaryStorageSelector(ctx context.Context, in *CreateSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*CreateSecondaryStorageSelectorResponse, error)
 	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
 	UpdateSecondaryStorageSelector(ctx context.Context, in *UpdateSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*UpdateSecondaryStorageSelectorResponse, error)
+	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
+	RemoveSecondaryStorageSelector(ctx context.Context, in *RemoveSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*RemoveSecondaryStorageSelectorResponse, error)
 	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
 	ListSecondaryStorageSelectors(ctx context.Context, in *ListSecondaryStorageSelectorsRequest, opts ...grpc.CallOption) (*ListSecondaryStorageSelectorsResponse, error)
+	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
+	CreateSecondaryStorageSelector(ctx context.Context, in *CreateSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*CreateSecondaryStorageSelectorResponse, error)
 }
 
 type heuristicsServiceClient struct {
@@ -49,30 +49,20 @@ func NewHeuristicsServiceClient(cc grpc.ClientConnInterface) HeuristicsServiceCl
 	return &heuristicsServiceClient{cc}
 }
 
-func (c *heuristicsServiceClient) RemoveSecondaryStorageSelector(ctx context.Context, in *RemoveSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*RemoveSecondaryStorageSelectorResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveSecondaryStorageSelectorResponse)
-	err := c.cc.Invoke(ctx, HeuristicsService_RemoveSecondaryStorageSelector_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *heuristicsServiceClient) CreateSecondaryStorageSelector(ctx context.Context, in *CreateSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*CreateSecondaryStorageSelectorResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateSecondaryStorageSelectorResponse)
-	err := c.cc.Invoke(ctx, HeuristicsService_CreateSecondaryStorageSelector_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *heuristicsServiceClient) UpdateSecondaryStorageSelector(ctx context.Context, in *UpdateSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*UpdateSecondaryStorageSelectorResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateSecondaryStorageSelectorResponse)
 	err := c.cc.Invoke(ctx, HeuristicsService_UpdateSecondaryStorageSelector_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *heuristicsServiceClient) RemoveSecondaryStorageSelector(ctx context.Context, in *RemoveSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*RemoveSecondaryStorageSelectorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveSecondaryStorageSelectorResponse)
+	err := c.cc.Invoke(ctx, HeuristicsService_RemoveSecondaryStorageSelector_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,20 +79,30 @@ func (c *heuristicsServiceClient) ListSecondaryStorageSelectors(ctx context.Cont
 	return out, nil
 }
 
+func (c *heuristicsServiceClient) CreateSecondaryStorageSelector(ctx context.Context, in *CreateSecondaryStorageSelectorRequest, opts ...grpc.CallOption) (*CreateSecondaryStorageSelectorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateSecondaryStorageSelectorResponse)
+	err := c.cc.Invoke(ctx, HeuristicsService_CreateSecondaryStorageSelector_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HeuristicsServiceServer is the server API for HeuristicsService service.
 // All implementations must embed UnimplementedHeuristicsServiceServer
 // for forward compatibility.
 //
 // HeuristicsService provides operations for managing Storage.Heuristicss
 type HeuristicsServiceServer interface {
-	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
-	RemoveSecondaryStorageSelector(context.Context, *RemoveSecondaryStorageSelectorRequest) (*RemoveSecondaryStorageSelectorResponse, error)
-	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
-	CreateSecondaryStorageSelector(context.Context, *CreateSecondaryStorageSelectorRequest) (*CreateSecondaryStorageSelectorResponse, error)
 	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
 	UpdateSecondaryStorageSelector(context.Context, *UpdateSecondaryStorageSelectorRequest) (*UpdateSecondaryStorageSelectorResponse, error)
+	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
+	RemoveSecondaryStorageSelector(context.Context, *RemoveSecondaryStorageSelectorRequest) (*RemoveSecondaryStorageSelectorResponse, error)
 	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
 	ListSecondaryStorageSelectors(context.Context, *ListSecondaryStorageSelectorsRequest) (*ListSecondaryStorageSelectorsResponse, error)
+	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
+	CreateSecondaryStorageSelector(context.Context, *CreateSecondaryStorageSelectorRequest) (*CreateSecondaryStorageSelectorResponse, error)
 	mustEmbedUnimplementedHeuristicsServiceServer()
 }
 
@@ -113,17 +113,17 @@ type HeuristicsServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedHeuristicsServiceServer struct{}
 
-func (UnimplementedHeuristicsServiceServer) RemoveSecondaryStorageSelector(context.Context, *RemoveSecondaryStorageSelectorRequest) (*RemoveSecondaryStorageSelectorResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveSecondaryStorageSelector not implemented")
-}
-func (UnimplementedHeuristicsServiceServer) CreateSecondaryStorageSelector(context.Context, *CreateSecondaryStorageSelectorRequest) (*CreateSecondaryStorageSelectorResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSecondaryStorageSelector not implemented")
-}
 func (UnimplementedHeuristicsServiceServer) UpdateSecondaryStorageSelector(context.Context, *UpdateSecondaryStorageSelectorRequest) (*UpdateSecondaryStorageSelectorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSecondaryStorageSelector not implemented")
 }
+func (UnimplementedHeuristicsServiceServer) RemoveSecondaryStorageSelector(context.Context, *RemoveSecondaryStorageSelectorRequest) (*RemoveSecondaryStorageSelectorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveSecondaryStorageSelector not implemented")
+}
 func (UnimplementedHeuristicsServiceServer) ListSecondaryStorageSelectors(context.Context, *ListSecondaryStorageSelectorsRequest) (*ListSecondaryStorageSelectorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSecondaryStorageSelectors not implemented")
+}
+func (UnimplementedHeuristicsServiceServer) CreateSecondaryStorageSelector(context.Context, *CreateSecondaryStorageSelectorRequest) (*CreateSecondaryStorageSelectorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSecondaryStorageSelector not implemented")
 }
 func (UnimplementedHeuristicsServiceServer) mustEmbedUnimplementedHeuristicsServiceServer() {}
 func (UnimplementedHeuristicsServiceServer) testEmbeddedByValue()                           {}
@@ -146,42 +146,6 @@ func RegisterHeuristicsServiceServer(s grpc.ServiceRegistrar, srv HeuristicsServ
 	s.RegisterService(&HeuristicsService_ServiceDesc, srv)
 }
 
-func _HeuristicsService_RemoveSecondaryStorageSelector_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveSecondaryStorageSelectorRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HeuristicsServiceServer).RemoveSecondaryStorageSelector(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HeuristicsService_RemoveSecondaryStorageSelector_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HeuristicsServiceServer).RemoveSecondaryStorageSelector(ctx, req.(*RemoveSecondaryStorageSelectorRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HeuristicsService_CreateSecondaryStorageSelector_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateSecondaryStorageSelectorRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HeuristicsServiceServer).CreateSecondaryStorageSelector(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HeuristicsService_CreateSecondaryStorageSelector_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HeuristicsServiceServer).CreateSecondaryStorageSelector(ctx, req.(*CreateSecondaryStorageSelectorRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _HeuristicsService_UpdateSecondaryStorageSelector_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateSecondaryStorageSelectorRequest)
 	if err := dec(in); err != nil {
@@ -196,6 +160,24 @@ func _HeuristicsService_UpdateSecondaryStorageSelector_Handler(srv interface{}, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(HeuristicsServiceServer).UpdateSecondaryStorageSelector(ctx, req.(*UpdateSecondaryStorageSelectorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HeuristicsService_RemoveSecondaryStorageSelector_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveSecondaryStorageSelectorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HeuristicsServiceServer).RemoveSecondaryStorageSelector(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HeuristicsService_RemoveSecondaryStorageSelector_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HeuristicsServiceServer).RemoveSecondaryStorageSelector(ctx, req.(*RemoveSecondaryStorageSelectorRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,6 +200,24 @@ func _HeuristicsService_ListSecondaryStorageSelectors_Handler(srv interface{}, c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HeuristicsService_CreateSecondaryStorageSelector_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateSecondaryStorageSelectorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HeuristicsServiceServer).CreateSecondaryStorageSelector(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HeuristicsService_CreateSecondaryStorageSelector_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HeuristicsServiceServer).CreateSecondaryStorageSelector(ctx, req.(*CreateSecondaryStorageSelectorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HeuristicsService_ServiceDesc is the grpc.ServiceDesc for HeuristicsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -226,20 +226,20 @@ var HeuristicsService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*HeuristicsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RemoveSecondaryStorageSelector",
-			Handler:    _HeuristicsService_RemoveSecondaryStorageSelector_Handler,
-		},
-		{
-			MethodName: "CreateSecondaryStorageSelector",
-			Handler:    _HeuristicsService_CreateSecondaryStorageSelector_Handler,
-		},
-		{
 			MethodName: "UpdateSecondaryStorageSelector",
 			Handler:    _HeuristicsService_UpdateSecondaryStorageSelector_Handler,
 		},
 		{
+			MethodName: "RemoveSecondaryStorageSelector",
+			Handler:    _HeuristicsService_RemoveSecondaryStorageSelector_Handler,
+		},
+		{
 			MethodName: "ListSecondaryStorageSelectors",
 			Handler:    _HeuristicsService_ListSecondaryStorageSelectors_Handler,
+		},
+		{
+			MethodName: "CreateSecondaryStorageSelector",
+			Handler:    _HeuristicsService_CreateSecondaryStorageSelector_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

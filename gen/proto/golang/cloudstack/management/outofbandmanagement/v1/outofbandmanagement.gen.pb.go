@@ -24,8 +24,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DisableOutOfBandManagementForZoneRequest represents the parameters for disables out-of-band management for a zone
-type DisableOutOfBandManagementForZoneRequest struct {
+// EnableOutOfBandManagementForZoneRequest represents the parameters for enables out-of-band management for a zone
+type EnableOutOfBandManagementForZoneRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the ID of the zone
 	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
@@ -36,20 +36,20 @@ type DisableOutOfBandManagementForZoneRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DisableOutOfBandManagementForZoneRequest) Reset() {
-	*x = DisableOutOfBandManagementForZoneRequest{}
+func (x *EnableOutOfBandManagementForZoneRequest) Reset() {
+	*x = EnableOutOfBandManagementForZoneRequest{}
 	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DisableOutOfBandManagementForZoneRequest) String() string {
+func (x *EnableOutOfBandManagementForZoneRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DisableOutOfBandManagementForZoneRequest) ProtoMessage() {}
+func (*EnableOutOfBandManagementForZoneRequest) ProtoMessage() {}
 
-func (x *DisableOutOfBandManagementForZoneRequest) ProtoReflect() protoreflect.Message {
+func (x *EnableOutOfBandManagementForZoneRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,41 +61,41 @@ func (x *DisableOutOfBandManagementForZoneRequest) ProtoReflect() protoreflect.M
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DisableOutOfBandManagementForZoneRequest.ProtoReflect.Descriptor instead.
-func (*DisableOutOfBandManagementForZoneRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use EnableOutOfBandManagementForZoneRequest.ProtoReflect.Descriptor instead.
+func (*EnableOutOfBandManagementForZoneRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *DisableOutOfBandManagementForZoneRequest) GetZoneId() int64 {
+func (x *EnableOutOfBandManagementForZoneRequest) GetZoneId() int64 {
 	if x != nil && x.ZoneId != nil {
 		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *DisableOutOfBandManagementForZoneRequest) GetStartEventId() int64 {
+func (x *EnableOutOfBandManagementForZoneRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DisableOutOfBandManagementForZoneRequest) GetInjectedJobId() string {
+func (x *EnableOutOfBandManagementForZoneRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DisableOutOfBandManagementForZoneRequest) GetResponseType() string {
+func (x *EnableOutOfBandManagementForZoneRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DisableOutOfBandManagementForZoneResponse represents the response from disables out-of-band management for a zone
-type DisableOutOfBandManagementForZoneResponse struct {
+// EnableOutOfBandManagementForZoneResponse represents the response from enables out-of-band management for a zone
+type EnableOutOfBandManagementForZoneResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -103,20 +103,20 @@ type DisableOutOfBandManagementForZoneResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DisableOutOfBandManagementForZoneResponse) Reset() {
-	*x = DisableOutOfBandManagementForZoneResponse{}
+func (x *EnableOutOfBandManagementForZoneResponse) Reset() {
+	*x = EnableOutOfBandManagementForZoneResponse{}
 	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DisableOutOfBandManagementForZoneResponse) String() string {
+func (x *EnableOutOfBandManagementForZoneResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DisableOutOfBandManagementForZoneResponse) ProtoMessage() {}
+func (*EnableOutOfBandManagementForZoneResponse) ProtoMessage() {}
 
-func (x *DisableOutOfBandManagementForZoneResponse) ProtoReflect() protoreflect.Message {
+func (x *EnableOutOfBandManagementForZoneResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -128,12 +128,262 @@ func (x *DisableOutOfBandManagementForZoneResponse) ProtoReflect() protoreflect.
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DisableOutOfBandManagementForZoneResponse.ProtoReflect.Descriptor instead.
-func (*DisableOutOfBandManagementForZoneResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use EnableOutOfBandManagementForZoneResponse.ProtoReflect.Descriptor instead.
+func (*EnableOutOfBandManagementForZoneResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *DisableOutOfBandManagementForZoneResponse) GetResult() *Result {
+func (x *EnableOutOfBandManagementForZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// IssueOutOfBandManagementPowerActionRequest represents the parameters for initiates the specified power action to the host's out-of-band management interface
+type IssueOutOfBandManagementPowerActionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the host
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	// optional operation timeout in seconds that overrides the global or cluster-level out-of-band management timeout setting
+	ActionTimeout *int64 `protobuf:"varint,2,opt,name=action_timeout,json=actionTimeout" json:"action_timeout,omitempty"`
+	// out-of-band management power actions, valid actions are: ON, OFF, CYCLE, RESET, SOFT, STATUS
+	PowerAction *string `protobuf:"bytes,3,opt,name=power_action,json=powerAction" json:"power_action,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) Reset() {
+	*x = IssueOutOfBandManagementPowerActionRequest{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IssueOutOfBandManagementPowerActionRequest) ProtoMessage() {}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IssueOutOfBandManagementPowerActionRequest.ProtoReflect.Descriptor instead.
+func (*IssueOutOfBandManagementPowerActionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) GetActionTimeout() int64 {
+	if x != nil && x.ActionTimeout != nil {
+		return *x.ActionTimeout
+	}
+	return 0
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) GetPowerAction() string {
+	if x != nil && x.PowerAction != nil {
+		return *x.PowerAction
+	}
+	return ""
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *IssueOutOfBandManagementPowerActionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// IssueOutOfBandManagementPowerActionResponse represents the response from initiates the specified power action to the host's out-of-band management interface
+type IssueOutOfBandManagementPowerActionResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IssueOutOfBandManagementPowerActionResponse) Reset() {
+	*x = IssueOutOfBandManagementPowerActionResponse{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IssueOutOfBandManagementPowerActionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IssueOutOfBandManagementPowerActionResponse) ProtoMessage() {}
+
+func (x *IssueOutOfBandManagementPowerActionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IssueOutOfBandManagementPowerActionResponse.ProtoReflect.Descriptor instead.
+func (*IssueOutOfBandManagementPowerActionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *IssueOutOfBandManagementPowerActionResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisableOutOfBandManagementForHostRequest represents the parameters for disables out-of-band management for a host
+type DisableOutOfBandManagementForHostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the host
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableOutOfBandManagementForHostRequest) Reset() {
+	*x = DisableOutOfBandManagementForHostRequest{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableOutOfBandManagementForHostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableOutOfBandManagementForHostRequest) ProtoMessage() {}
+
+func (x *DisableOutOfBandManagementForHostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableOutOfBandManagementForHostRequest.ProtoReflect.Descriptor instead.
+func (*DisableOutOfBandManagementForHostRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DisableOutOfBandManagementForHostRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *DisableOutOfBandManagementForHostRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisableOutOfBandManagementForHostRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisableOutOfBandManagementForHostRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisableOutOfBandManagementForHostResponse represents the response from disables out-of-band management for a host
+type DisableOutOfBandManagementForHostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableOutOfBandManagementForHostResponse) Reset() {
+	*x = DisableOutOfBandManagementForHostResponse{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableOutOfBandManagementForHostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableOutOfBandManagementForHostResponse) ProtoMessage() {}
+
+func (x *DisableOutOfBandManagementForHostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableOutOfBandManagementForHostResponse.ProtoReflect.Descriptor instead.
+func (*DisableOutOfBandManagementForHostResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DisableOutOfBandManagementForHostResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -162,7 +412,7 @@ type ConfigureOutOfBandManagementRequest struct {
 
 func (x *ConfigureOutOfBandManagementRequest) Reset() {
 	*x = ConfigureOutOfBandManagementRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -174,7 +424,7 @@ func (x *ConfigureOutOfBandManagementRequest) String() string {
 func (*ConfigureOutOfBandManagementRequest) ProtoMessage() {}
 
 func (x *ConfigureOutOfBandManagementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -187,7 +437,7 @@ func (x *ConfigureOutOfBandManagementRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ConfigureOutOfBandManagementRequest.ProtoReflect.Descriptor instead.
 func (*ConfigureOutOfBandManagementRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ConfigureOutOfBandManagementRequest) GetHostId() int64 {
@@ -250,7 +500,7 @@ type ConfigureOutOfBandManagementResponse struct {
 
 func (x *ConfigureOutOfBandManagementResponse) Reset() {
 	*x = ConfigureOutOfBandManagementResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -262,7 +512,7 @@ func (x *ConfigureOutOfBandManagementResponse) String() string {
 func (*ConfigureOutOfBandManagementResponse) ProtoMessage() {}
 
 func (x *ConfigureOutOfBandManagementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -275,242 +525,10 @@ func (x *ConfigureOutOfBandManagementResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ConfigureOutOfBandManagementResponse.ProtoReflect.Descriptor instead.
 func (*ConfigureOutOfBandManagementResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ConfigureOutOfBandManagementResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// EnableOutOfBandManagementForHostRequest represents the parameters for enables out-of-band management for a host
-type EnableOutOfBandManagementForHostRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the host
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableOutOfBandManagementForHostRequest) Reset() {
-	*x = EnableOutOfBandManagementForHostRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableOutOfBandManagementForHostRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableOutOfBandManagementForHostRequest) ProtoMessage() {}
-
-func (x *EnableOutOfBandManagementForHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableOutOfBandManagementForHostRequest.ProtoReflect.Descriptor instead.
-func (*EnableOutOfBandManagementForHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *EnableOutOfBandManagementForHostRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *EnableOutOfBandManagementForHostRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *EnableOutOfBandManagementForHostRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *EnableOutOfBandManagementForHostRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// EnableOutOfBandManagementForHostResponse represents the response from enables out-of-band management for a host
-type EnableOutOfBandManagementForHostResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableOutOfBandManagementForHostResponse) Reset() {
-	*x = EnableOutOfBandManagementForHostResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableOutOfBandManagementForHostResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableOutOfBandManagementForHostResponse) ProtoMessage() {}
-
-func (x *EnableOutOfBandManagementForHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableOutOfBandManagementForHostResponse.ProtoReflect.Descriptor instead.
-func (*EnableOutOfBandManagementForHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *EnableOutOfBandManagementForHostResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DisableOutOfBandManagementForHostRequest represents the parameters for disables out-of-band management for a host
-type DisableOutOfBandManagementForHostRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the host
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableOutOfBandManagementForHostRequest) Reset() {
-	*x = DisableOutOfBandManagementForHostRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableOutOfBandManagementForHostRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableOutOfBandManagementForHostRequest) ProtoMessage() {}
-
-func (x *DisableOutOfBandManagementForHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableOutOfBandManagementForHostRequest.ProtoReflect.Descriptor instead.
-func (*DisableOutOfBandManagementForHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DisableOutOfBandManagementForHostRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *DisableOutOfBandManagementForHostRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DisableOutOfBandManagementForHostRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DisableOutOfBandManagementForHostRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DisableOutOfBandManagementForHostResponse represents the response from disables out-of-band management for a host
-type DisableOutOfBandManagementForHostResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableOutOfBandManagementForHostResponse) Reset() {
-	*x = DisableOutOfBandManagementForHostResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableOutOfBandManagementForHostResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableOutOfBandManagementForHostResponse) ProtoMessage() {}
-
-func (x *DisableOutOfBandManagementForHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableOutOfBandManagementForHostResponse.ProtoReflect.Descriptor instead.
-func (*DisableOutOfBandManagementForHostResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DisableOutOfBandManagementForHostResponse) GetResult() *Result {
+func (x *ConfigureOutOfBandManagementResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -633,372 +651,6 @@ func (x *EnableOutOfBandManagementForClusterResponse) GetResult() *Result {
 	return nil
 }
 
-// EnableOutOfBandManagementForZoneRequest represents the parameters for enables out-of-band management for a zone
-type EnableOutOfBandManagementForZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the zone
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableOutOfBandManagementForZoneRequest) Reset() {
-	*x = EnableOutOfBandManagementForZoneRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableOutOfBandManagementForZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableOutOfBandManagementForZoneRequest) ProtoMessage() {}
-
-func (x *EnableOutOfBandManagementForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableOutOfBandManagementForZoneRequest.ProtoReflect.Descriptor instead.
-func (*EnableOutOfBandManagementForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *EnableOutOfBandManagementForZoneRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *EnableOutOfBandManagementForZoneRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *EnableOutOfBandManagementForZoneRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *EnableOutOfBandManagementForZoneRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// EnableOutOfBandManagementForZoneResponse represents the response from enables out-of-band management for a zone
-type EnableOutOfBandManagementForZoneResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableOutOfBandManagementForZoneResponse) Reset() {
-	*x = EnableOutOfBandManagementForZoneResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableOutOfBandManagementForZoneResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableOutOfBandManagementForZoneResponse) ProtoMessage() {}
-
-func (x *EnableOutOfBandManagementForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableOutOfBandManagementForZoneResponse.ProtoReflect.Descriptor instead.
-func (*EnableOutOfBandManagementForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *EnableOutOfBandManagementForZoneResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// IssueOutOfBandManagementPowerActionRequest represents the parameters for initiates the specified power action to the host's out-of-band management interface
-type IssueOutOfBandManagementPowerActionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the host
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	// optional operation timeout in seconds that overrides the global or cluster-level out-of-band management timeout setting
-	ActionTimeout *int64 `protobuf:"varint,2,opt,name=action_timeout,json=actionTimeout" json:"action_timeout,omitempty"`
-	// out-of-band management power actions, valid actions are: ON, OFF, CYCLE, RESET, SOFT, STATUS
-	PowerAction *string `protobuf:"bytes,3,opt,name=power_action,json=powerAction" json:"power_action,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) Reset() {
-	*x = IssueOutOfBandManagementPowerActionRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*IssueOutOfBandManagementPowerActionRequest) ProtoMessage() {}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use IssueOutOfBandManagementPowerActionRequest.ProtoReflect.Descriptor instead.
-func (*IssueOutOfBandManagementPowerActionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) GetActionTimeout() int64 {
-	if x != nil && x.ActionTimeout != nil {
-		return *x.ActionTimeout
-	}
-	return 0
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) GetPowerAction() string {
-	if x != nil && x.PowerAction != nil {
-		return *x.PowerAction
-	}
-	return ""
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *IssueOutOfBandManagementPowerActionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// IssueOutOfBandManagementPowerActionResponse represents the response from initiates the specified power action to the host's out-of-band management interface
-type IssueOutOfBandManagementPowerActionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *IssueOutOfBandManagementPowerActionResponse) Reset() {
-	*x = IssueOutOfBandManagementPowerActionResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *IssueOutOfBandManagementPowerActionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*IssueOutOfBandManagementPowerActionResponse) ProtoMessage() {}
-
-func (x *IssueOutOfBandManagementPowerActionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use IssueOutOfBandManagementPowerActionResponse.ProtoReflect.Descriptor instead.
-func (*IssueOutOfBandManagementPowerActionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *IssueOutOfBandManagementPowerActionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DisableOutOfBandManagementForClusterRequest represents the parameters for disables out-of-band management for a cluster
-type DisableOutOfBandManagementForClusterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the cluster
-	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableOutOfBandManagementForClusterRequest) Reset() {
-	*x = DisableOutOfBandManagementForClusterRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableOutOfBandManagementForClusterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableOutOfBandManagementForClusterRequest) ProtoMessage() {}
-
-func (x *DisableOutOfBandManagementForClusterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableOutOfBandManagementForClusterRequest.ProtoReflect.Descriptor instead.
-func (*DisableOutOfBandManagementForClusterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *DisableOutOfBandManagementForClusterRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *DisableOutOfBandManagementForClusterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DisableOutOfBandManagementForClusterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DisableOutOfBandManagementForClusterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DisableOutOfBandManagementForClusterResponse represents the response from disables out-of-band management for a cluster
-type DisableOutOfBandManagementForClusterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableOutOfBandManagementForClusterResponse) Reset() {
-	*x = DisableOutOfBandManagementForClusterResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableOutOfBandManagementForClusterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableOutOfBandManagementForClusterResponse) ProtoMessage() {}
-
-func (x *DisableOutOfBandManagementForClusterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableOutOfBandManagementForClusterResponse.ProtoReflect.Descriptor instead.
-func (*DisableOutOfBandManagementForClusterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *DisableOutOfBandManagementForClusterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ChangeOutOfBandManagementPasswordRequest represents the parameters for changes out-of-band management interface password on the host and updates the interface configuration in cloudstack if the operation succeeds, else reverts the old password
 type ChangeOutOfBandManagementPasswordRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1015,7 +667,7 @@ type ChangeOutOfBandManagementPasswordRequest struct {
 
 func (x *ChangeOutOfBandManagementPasswordRequest) Reset() {
 	*x = ChangeOutOfBandManagementPasswordRequest{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1027,7 +679,7 @@ func (x *ChangeOutOfBandManagementPasswordRequest) String() string {
 func (*ChangeOutOfBandManagementPasswordRequest) ProtoMessage() {}
 
 func (x *ChangeOutOfBandManagementPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1040,7 +692,7 @@ func (x *ChangeOutOfBandManagementPasswordRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use ChangeOutOfBandManagementPasswordRequest.ProtoReflect.Descriptor instead.
 func (*ChangeOutOfBandManagementPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{16}
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ChangeOutOfBandManagementPasswordRequest) GetHostId() int64 {
@@ -1089,7 +741,7 @@ type ChangeOutOfBandManagementPasswordResponse struct {
 
 func (x *ChangeOutOfBandManagementPasswordResponse) Reset() {
 	*x = ChangeOutOfBandManagementPasswordResponse{}
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1101,7 +753,7 @@ func (x *ChangeOutOfBandManagementPasswordResponse) String() string {
 func (*ChangeOutOfBandManagementPasswordResponse) ProtoMessage() {}
 
 func (x *ChangeOutOfBandManagementPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1114,10 +766,358 @@ func (x *ChangeOutOfBandManagementPasswordResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use ChangeOutOfBandManagementPasswordResponse.ProtoReflect.Descriptor instead.
 func (*ChangeOutOfBandManagementPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{17}
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ChangeOutOfBandManagementPasswordResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisableOutOfBandManagementForClusterRequest represents the parameters for disables out-of-band management for a cluster
+type DisableOutOfBandManagementForClusterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the cluster
+	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableOutOfBandManagementForClusterRequest) Reset() {
+	*x = DisableOutOfBandManagementForClusterRequest{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableOutOfBandManagementForClusterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableOutOfBandManagementForClusterRequest) ProtoMessage() {}
+
+func (x *DisableOutOfBandManagementForClusterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableOutOfBandManagementForClusterRequest.ProtoReflect.Descriptor instead.
+func (*DisableOutOfBandManagementForClusterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DisableOutOfBandManagementForClusterRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *DisableOutOfBandManagementForClusterRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisableOutOfBandManagementForClusterRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisableOutOfBandManagementForClusterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisableOutOfBandManagementForClusterResponse represents the response from disables out-of-band management for a cluster
+type DisableOutOfBandManagementForClusterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableOutOfBandManagementForClusterResponse) Reset() {
+	*x = DisableOutOfBandManagementForClusterResponse{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableOutOfBandManagementForClusterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableOutOfBandManagementForClusterResponse) ProtoMessage() {}
+
+func (x *DisableOutOfBandManagementForClusterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableOutOfBandManagementForClusterResponse.ProtoReflect.Descriptor instead.
+func (*DisableOutOfBandManagementForClusterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DisableOutOfBandManagementForClusterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisableOutOfBandManagementForZoneRequest represents the parameters for disables out-of-band management for a zone
+type DisableOutOfBandManagementForZoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the zone
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableOutOfBandManagementForZoneRequest) Reset() {
+	*x = DisableOutOfBandManagementForZoneRequest{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableOutOfBandManagementForZoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableOutOfBandManagementForZoneRequest) ProtoMessage() {}
+
+func (x *DisableOutOfBandManagementForZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableOutOfBandManagementForZoneRequest.ProtoReflect.Descriptor instead.
+func (*DisableOutOfBandManagementForZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *DisableOutOfBandManagementForZoneRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *DisableOutOfBandManagementForZoneRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisableOutOfBandManagementForZoneRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisableOutOfBandManagementForZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisableOutOfBandManagementForZoneResponse represents the response from disables out-of-band management for a zone
+type DisableOutOfBandManagementForZoneResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableOutOfBandManagementForZoneResponse) Reset() {
+	*x = DisableOutOfBandManagementForZoneResponse{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableOutOfBandManagementForZoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableOutOfBandManagementForZoneResponse) ProtoMessage() {}
+
+func (x *DisableOutOfBandManagementForZoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableOutOfBandManagementForZoneResponse.ProtoReflect.Descriptor instead.
+func (*DisableOutOfBandManagementForZoneResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *DisableOutOfBandManagementForZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// EnableOutOfBandManagementForHostRequest represents the parameters for enables out-of-band management for a host
+type EnableOutOfBandManagementForHostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the host
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableOutOfBandManagementForHostRequest) Reset() {
+	*x = EnableOutOfBandManagementForHostRequest{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableOutOfBandManagementForHostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableOutOfBandManagementForHostRequest) ProtoMessage() {}
+
+func (x *EnableOutOfBandManagementForHostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableOutOfBandManagementForHostRequest.ProtoReflect.Descriptor instead.
+func (*EnableOutOfBandManagementForHostRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *EnableOutOfBandManagementForHostRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *EnableOutOfBandManagementForHostRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *EnableOutOfBandManagementForHostRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *EnableOutOfBandManagementForHostRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// EnableOutOfBandManagementForHostResponse represents the response from enables out-of-band management for a host
+type EnableOutOfBandManagementForHostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableOutOfBandManagementForHostResponse) Reset() {
+	*x = EnableOutOfBandManagementForHostResponse{}
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableOutOfBandManagementForHostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableOutOfBandManagementForHostResponse) ProtoMessage() {}
+
+func (x *EnableOutOfBandManagementForHostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableOutOfBandManagementForHostResponse.ProtoReflect.Descriptor instead.
+func (*EnableOutOfBandManagementForHostResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *EnableOutOfBandManagementForHostResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1410,47 +1410,7 @@ var File_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_pr
 
 const file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDesc = "" +
 	"\n" +
-	"Jcloudstack/management/outofbandmanagement/v1/outofbandmanagement.gen.proto\x12,cloudstack.management.outofbandmanagement.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc8\x01\n" +
-	"(DisableOutOfBandManagementForZoneRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"y\n" +
-	")DisableOutOfBandManagementForZoneResponse\x12L\n" +
-	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\x98\x02\n" +
-	"#ConfigureOutOfBandManagementRequest\x12\x1f\n" +
-	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12\x1e\n" +
-	"\x06driver\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06driver\x12 \n" +
-	"\aaddress\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\aaddress\x12\x1a\n" +
-	"\x04port\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04port\x12)\n" +
-	"\busername\x18\x05 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\busername\x12\"\n" +
-	"\bpassword\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"t\n" +
-	"$ConfigureOutOfBandManagementResponse\x12L\n" +
-	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xc7\x01\n" +
-	"'EnableOutOfBandManagementForHostRequest\x12\x1f\n" +
-	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"x\n" +
-	"(EnableOutOfBandManagementForHostResponse\x12L\n" +
-	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xc8\x01\n" +
-	"(DisableOutOfBandManagementForHostRequest\x12\x1f\n" +
-	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"y\n" +
-	")DisableOutOfBandManagementForHostResponse\x12L\n" +
-	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xd0\x01\n" +
-	"*EnableOutOfBandManagementForClusterRequest\x12%\n" +
-	"\n" +
-	"cluster_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"{\n" +
-	"+EnableOutOfBandManagementForClusterResponse\x12L\n" +
-	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xc7\x01\n" +
+	"Jcloudstack/management/outofbandmanagement/v1/outofbandmanagement.gen.proto\x12,cloudstack.management.outofbandmanagement.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc7\x01\n" +
 	"'EnableOutOfBandManagementForZoneRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
@@ -1466,14 +1426,32 @@ const file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"{\n" +
 	"+IssueOutOfBandManagementPowerActionResponse\x12L\n" +
-	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xd1\x01\n" +
-	"+DisableOutOfBandManagementForClusterRequest\x12%\n" +
+	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xc8\x01\n" +
+	"(DisableOutOfBandManagementForHostRequest\x12\x1f\n" +
+	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"y\n" +
+	")DisableOutOfBandManagementForHostResponse\x12L\n" +
+	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\x98\x02\n" +
+	"#ConfigureOutOfBandManagementRequest\x12\x1f\n" +
+	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12\x1e\n" +
+	"\x06driver\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06driver\x12 \n" +
+	"\aaddress\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\aaddress\x12\x1a\n" +
+	"\x04port\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04port\x12)\n" +
+	"\busername\x18\x05 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\busername\x12\"\n" +
+	"\bpassword\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"t\n" +
+	"$ConfigureOutOfBandManagementResponse\x12L\n" +
+	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xd0\x01\n" +
+	"*EnableOutOfBandManagementForClusterRequest\x12%\n" +
 	"\n" +
 	"cluster_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"|\n" +
-	",DisableOutOfBandManagementForClusterResponse\x12L\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"{\n" +
+	"+EnableOutOfBandManagementForClusterResponse\x12L\n" +
 	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xe4\x01\n" +
 	"(ChangeOutOfBandManagementPasswordRequest\x12\x1f\n" +
 	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12\x1a\n" +
@@ -1482,6 +1460,28 @@ const file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"y\n" +
 	")ChangeOutOfBandManagementPasswordResponse\x12L\n" +
+	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xd1\x01\n" +
+	"+DisableOutOfBandManagementForClusterRequest\x12%\n" +
+	"\n" +
+	"cluster_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"|\n" +
+	",DisableOutOfBandManagementForClusterResponse\x12L\n" +
+	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xc8\x01\n" +
+	"(DisableOutOfBandManagementForZoneRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"y\n" +
+	")DisableOutOfBandManagementForZoneResponse\x12L\n" +
+	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"\xc7\x01\n" +
+	"'EnableOutOfBandManagementForHostRequest\x12\x1f\n" +
+	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"x\n" +
+	"(EnableOutOfBandManagementForHostResponse\x12L\n" +
 	"\x06result\x18\x01 \x01(\v24.cloudstack.management.outofbandmanagement.v1.ResultR\x06result\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
@@ -1512,16 +1512,16 @@ const file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc5\x0f\n" +
-	"\x1aOutofbandmanagementService\x12\xd6\x01\n" +
-	"!DisableOutOfBandManagementForZone\x12V.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneRequest\x1aW.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse\"\x00\x12\xc7\x01\n" +
-	"\x1cConfigureOutOfBandManagement\x12Q.cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementRequest\x1aR.cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse\"\x00\x12\xd3\x01\n" +
-	" EnableOutOfBandManagementForHost\x12U.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostRequest\x1aV.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse\"\x00\x12\xd6\x01\n" +
-	"!DisableOutOfBandManagementForHost\x12V.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostRequest\x1aW.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse\"\x00\x12\xdc\x01\n" +
-	"#EnableOutOfBandManagementForCluster\x12X.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterRequest\x1aY.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterResponse\"\x00\x12\xd3\x01\n" +
+	"\x1aOutofbandmanagementService\x12\xd3\x01\n" +
 	" EnableOutOfBandManagementForZone\x12U.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneRequest\x1aV.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse\"\x00\x12\xdc\x01\n" +
-	"#IssueOutOfBandManagementPowerAction\x12X.cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionRequest\x1aY.cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse\"\x00\x12\xdf\x01\n" +
+	"#IssueOutOfBandManagementPowerAction\x12X.cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionRequest\x1aY.cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse\"\x00\x12\xd6\x01\n" +
+	"!DisableOutOfBandManagementForHost\x12V.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostRequest\x1aW.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse\"\x00\x12\xc7\x01\n" +
+	"\x1cConfigureOutOfBandManagement\x12Q.cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementRequest\x1aR.cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse\"\x00\x12\xdc\x01\n" +
+	"#EnableOutOfBandManagementForCluster\x12X.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterRequest\x1aY.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterResponse\"\x00\x12\xd6\x01\n" +
+	"!ChangeOutOfBandManagementPassword\x12V.cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordRequest\x1aW.cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse\"\x00\x12\xdf\x01\n" +
 	"$DisableOutOfBandManagementForCluster\x12Y.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterRequest\x1aZ.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse\"\x00\x12\xd6\x01\n" +
-	"!ChangeOutOfBandManagementPassword\x12V.cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordRequest\x1aW.cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x03\n" +
+	"!DisableOutOfBandManagementForZone\x12V.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneRequest\x1aW.cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse\"\x00\x12\xd3\x01\n" +
+	" EnableOutOfBandManagementForHost\x12U.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostRequest\x1aV.cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x03\n" +
 	"0com.cloudstack.management.outofbandmanagement.v1B\x1bOutofbandmanagementGenProtoP\x01Zvgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/outofbandmanagement/v1;outofbandmanagementv1\xa2\x02\x03CMO\xaa\x02,Cloudstack.Management.Outofbandmanagement.V1\xca\x02,Cloudstack\\Management\\Outofbandmanagement\\V1\xe2\x028Cloudstack\\Management\\Outofbandmanagement\\V1\\GPBMetadata\xea\x02/Cloudstack::Management::Outofbandmanagement::V1b\beditionsp\xe8\a"
 
 var (
@@ -1538,58 +1538,58 @@ func file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_p
 
 var file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_goTypes = []any{
-	(*DisableOutOfBandManagementForZoneRequest)(nil),     // 0: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneRequest
-	(*DisableOutOfBandManagementForZoneResponse)(nil),    // 1: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse
-	(*ConfigureOutOfBandManagementRequest)(nil),          // 2: cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementRequest
-	(*ConfigureOutOfBandManagementResponse)(nil),         // 3: cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse
-	(*EnableOutOfBandManagementForHostRequest)(nil),      // 4: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostRequest
-	(*EnableOutOfBandManagementForHostResponse)(nil),     // 5: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse
-	(*DisableOutOfBandManagementForHostRequest)(nil),     // 6: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostRequest
-	(*DisableOutOfBandManagementForHostResponse)(nil),    // 7: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse
+	(*EnableOutOfBandManagementForZoneRequest)(nil),      // 0: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneRequest
+	(*EnableOutOfBandManagementForZoneResponse)(nil),     // 1: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse
+	(*IssueOutOfBandManagementPowerActionRequest)(nil),   // 2: cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionRequest
+	(*IssueOutOfBandManagementPowerActionResponse)(nil),  // 3: cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse
+	(*DisableOutOfBandManagementForHostRequest)(nil),     // 4: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostRequest
+	(*DisableOutOfBandManagementForHostResponse)(nil),    // 5: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse
+	(*ConfigureOutOfBandManagementRequest)(nil),          // 6: cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementRequest
+	(*ConfigureOutOfBandManagementResponse)(nil),         // 7: cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse
 	(*EnableOutOfBandManagementForClusterRequest)(nil),   // 8: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterRequest
 	(*EnableOutOfBandManagementForClusterResponse)(nil),  // 9: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterResponse
-	(*EnableOutOfBandManagementForZoneRequest)(nil),      // 10: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneRequest
-	(*EnableOutOfBandManagementForZoneResponse)(nil),     // 11: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse
-	(*IssueOutOfBandManagementPowerActionRequest)(nil),   // 12: cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionRequest
-	(*IssueOutOfBandManagementPowerActionResponse)(nil),  // 13: cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse
-	(*DisableOutOfBandManagementForClusterRequest)(nil),  // 14: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterRequest
-	(*DisableOutOfBandManagementForClusterResponse)(nil), // 15: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse
-	(*ChangeOutOfBandManagementPasswordRequest)(nil),     // 16: cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordRequest
-	(*ChangeOutOfBandManagementPasswordResponse)(nil),    // 17: cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse
+	(*ChangeOutOfBandManagementPasswordRequest)(nil),     // 10: cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordRequest
+	(*ChangeOutOfBandManagementPasswordResponse)(nil),    // 11: cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse
+	(*DisableOutOfBandManagementForClusterRequest)(nil),  // 12: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterRequest
+	(*DisableOutOfBandManagementForClusterResponse)(nil), // 13: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse
+	(*DisableOutOfBandManagementForZoneRequest)(nil),     // 14: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneRequest
+	(*DisableOutOfBandManagementForZoneResponse)(nil),    // 15: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse
+	(*EnableOutOfBandManagementForHostRequest)(nil),      // 16: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostRequest
+	(*EnableOutOfBandManagementForHostResponse)(nil),     // 17: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse
 	(*Success)(nil), // 18: cloudstack.management.outofbandmanagement.v1.Success
 	(*Item)(nil),    // 19: cloudstack.management.outofbandmanagement.v1.Item
 	(*Result)(nil),  // 20: cloudstack.management.outofbandmanagement.v1.Result
 	nil,             // 21: cloudstack.management.outofbandmanagement.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_depIdxs = []int32{
-	20, // 0: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 1: cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 2: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 3: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 0: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 1: cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 2: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 3: cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
 	20, // 4: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 5: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 6: cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 7: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
-	20, // 8: cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 5: cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 6: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 7: cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
+	20, // 8: cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse.result:type_name -> cloudstack.management.outofbandmanagement.v1.Result
 	21, // 9: cloudstack.management.outofbandmanagement.v1.Item.details:type_name -> cloudstack.management.outofbandmanagement.v1.Item.DetailsEntry
-	0,  // 10: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone:input_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneRequest
-	2,  // 11: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement:input_type -> cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementRequest
-	4,  // 12: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost:input_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostRequest
-	6,  // 13: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost:input_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostRequest
+	0,  // 10: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForZone:input_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneRequest
+	2,  // 11: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.IssueOutOfBandManagementPowerAction:input_type -> cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionRequest
+	4,  // 12: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost:input_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostRequest
+	6,  // 13: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement:input_type -> cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementRequest
 	8,  // 14: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForCluster:input_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterRequest
-	10, // 15: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForZone:input_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneRequest
-	12, // 16: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.IssueOutOfBandManagementPowerAction:input_type -> cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionRequest
-	14, // 17: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster:input_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterRequest
-	16, // 18: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ChangeOutOfBandManagementPassword:input_type -> cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordRequest
-	1,  // 19: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone:output_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse
-	3,  // 20: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement:output_type -> cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse
-	5,  // 21: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost:output_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse
-	7,  // 22: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost:output_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse
+	10, // 15: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ChangeOutOfBandManagementPassword:input_type -> cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordRequest
+	12, // 16: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster:input_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterRequest
+	14, // 17: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone:input_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneRequest
+	16, // 18: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost:input_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostRequest
+	1,  // 19: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForZone:output_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse
+	3,  // 20: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.IssueOutOfBandManagementPowerAction:output_type -> cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse
+	5,  // 21: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost:output_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForHostResponse
+	7,  // 22: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement:output_type -> cloudstack.management.outofbandmanagement.v1.ConfigureOutOfBandManagementResponse
 	9,  // 23: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForCluster:output_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForClusterResponse
-	11, // 24: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForZone:output_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForZoneResponse
-	13, // 25: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.IssueOutOfBandManagementPowerAction:output_type -> cloudstack.management.outofbandmanagement.v1.IssueOutOfBandManagementPowerActionResponse
-	15, // 26: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster:output_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse
-	17, // 27: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ChangeOutOfBandManagementPassword:output_type -> cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse
+	11, // 24: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ChangeOutOfBandManagementPassword:output_type -> cloudstack.management.outofbandmanagement.v1.ChangeOutOfBandManagementPasswordResponse
+	13, // 25: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster:output_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForClusterResponse
+	15, // 26: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone:output_type -> cloudstack.management.outofbandmanagement.v1.DisableOutOfBandManagementForZoneResponse
+	17, // 27: cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost:output_type -> cloudstack.management.outofbandmanagement.v1.EnableOutOfBandManagementForHostResponse
 	19, // [19:28] is the sub-list for method output_type
 	10, // [10:19] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name

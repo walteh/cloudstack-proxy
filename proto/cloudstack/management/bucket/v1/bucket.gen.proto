@@ -10,85 +10,17 @@ import "google/protobuf/descriptor.proto";
 service BucketService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ListBuckets Lists all Buckets.
-	rpc ListBuckets(ListBucketsRequest) returns (ListBucketsResponse) {}
-
 	// DeleteBucket Deletes an empty Bucket.
 	rpc DeleteBucket(DeleteBucketRequest) returns (DeleteBucketResponse) {}
+
+	// CreateBucket Creates a bucket in the specified object storage pool.
+	rpc CreateBucket(CreateBucketRequest) returns (CreateBucketResponse) {}
 
 	// UpdateBucket Updates Bucket properties
 	rpc UpdateBucket(UpdateBucketRequest) returns (UpdateBucketResponse) {}
 
-	// CreateBucket Creates a bucket in the specified object storage pool.
-	rpc CreateBucket(CreateBucketRequest) returns (CreateBucketResponse) {}
-}
-
-// ListBucketsRequest represents the parameters for lists all buckets.
-message ListBucketsRequest {
-	// the ID of the bucket
-	int64 id = 1;
-
-	// the IDs of the Buckets, mutually exclusive with id
-	repeated string ids = 2;
-
-	// the name of the bucket
-	string bucket_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the ID of the object storage pool, available to ROOT admin only
-	int64 object_storage_id = 4;
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListBucketsResponse represents the response from lists all buckets.
-message ListBucketsResponse {
-	option (validate.message).disabled = false;
-	// The list of Buckets
-	repeated Bucket items = 1;
-
-	// The total count of Buckets
-	int32 total_count = 2;
+	// ListBuckets Lists all Buckets.
+	rpc ListBuckets(ListBucketsRequest) returns (ListBucketsResponse) {}
 }
 
 // DeleteBucketRequest represents the parameters for deletes an empty bucket.
@@ -104,39 +36,6 @@ message DeleteBucketRequest {
 
 // DeleteBucketResponse represents the response from deletes an empty bucket.
 message DeleteBucketResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateBucketRequest represents the parameters for updates bucket properties
-message UpdateBucketRequest {
-	// The ID of the Bucket
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Enable/Disable Bucket Versioning
-	bool versioning = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Enable/Disable Bucket encryption
-	bool encryption = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Bucket Access Policy
-	string policy = 4;
-
-	// Bucket Quota in GiB
-	int32 quota = 5;
-
-	//
-	string response_type = 6;
-}
-
-// UpdateBucketResponse represents the response from updates bucket properties
-message UpdateBucketResponse {
 	// The Result
 	Result result = 1;
 }
@@ -209,6 +108,107 @@ message CreateBucketRequest {
 message CreateBucketResponse {
 	// The Result
 	Result result = 1;
+}
+
+// UpdateBucketRequest represents the parameters for updates bucket properties
+message UpdateBucketRequest {
+	// The ID of the Bucket
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Enable/Disable Bucket Versioning
+	bool versioning = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Enable/Disable Bucket encryption
+	bool encryption = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Bucket Access Policy
+	string policy = 4;
+
+	// Bucket Quota in GiB
+	int32 quota = 5;
+
+	//
+	string response_type = 6;
+}
+
+// UpdateBucketResponse represents the response from updates bucket properties
+message UpdateBucketResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListBucketsRequest represents the parameters for lists all buckets.
+message ListBucketsRequest {
+	// the ID of the bucket
+	int64 id = 1;
+
+	// the IDs of the Buckets, mutually exclusive with id
+	repeated string ids = 2;
+
+	// the name of the bucket
+	string bucket_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the object storage pool, available to ROOT admin only
+	int64 object_storage_id = 4;
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListBucketsResponse represents the response from lists all buckets.
+message ListBucketsResponse {
+	option (validate.message).disabled = false;
+	// The list of Buckets
+	repeated Bucket items = 1;
+
+	// The total count of Buckets
+	int32 total_count = 2;
 }
 
 // Bucket represents a Bucket Item

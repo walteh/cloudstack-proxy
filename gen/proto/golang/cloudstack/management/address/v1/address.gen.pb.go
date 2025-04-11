@@ -24,6 +24,203 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// AssociateIPAddrCmdByAdminRequest represents the parameters for acquires and associates a public ip to an account.
+type AssociateIPAddrCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the account to associate with this IP address
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the ID of the domain to associate with this IP address
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the availability zone you want to acquire an public IP address from
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// The network this IP address should be associated to.
+	NetworkId *int64 `protobuf:"varint,4,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// Deploy VM for the project
+	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the VPC you want the IP address to be associated with
+	VpcId *int64 `protobuf:"varint,6,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// should be set to true if public IP is required to be transferable across zones, if not specified defaults to false
+	IsPortable *bool `protobuf:"varint,7,opt,name=is_portable,json=isPortable" json:"is_portable,omitempty"`
+	// region ID from where portable IP is to be associated.
+	RegionId *int32 `protobuf:"varint,8,opt,name=region_id,json=regionId" json:"region_id,omitempty"`
+	// an optional field, whether to the display the IP to the end user or not
+	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
+	// IP Address to be associated
+	IpAddress *string `protobuf:"bytes,10,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) Reset() {
+	*x = AssociateIPAddrCmdByAdminRequest{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssociateIPAddrCmdByAdminRequest) ProtoMessage() {}
+
+func (x *AssociateIPAddrCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssociateIPAddrCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*AssociateIPAddrCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetIsPortable() bool {
+	if x != nil && x.IsPortable != nil {
+		return *x.IsPortable
+	}
+	return false
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetRegionId() int32 {
+	if x != nil && x.RegionId != nil {
+		return *x.RegionId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AssociateIPAddrCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AssociateIPAddrCmdByAdminResponse represents the response from acquires and associates a public ip to an account.
+type AssociateIPAddrCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssociateIPAddrCmdByAdminResponse) Reset() {
+	*x = AssociateIPAddrCmdByAdminResponse{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssociateIPAddrCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssociateIPAddrCmdByAdminResponse) ProtoMessage() {}
+
+func (x *AssociateIPAddrCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssociateIPAddrCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*AssociateIPAddrCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AssociateIPAddrCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // AssociateIPAddrRequest represents the parameters for acquires and associates a public ip to an account. either of the parameters are required, i.e. either zoneid, or networkid, or vpcid
 type AssociateIPAddrRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -58,7 +255,7 @@ type AssociateIPAddrRequest struct {
 
 func (x *AssociateIPAddrRequest) Reset() {
 	*x = AssociateIPAddrRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -70,7 +267,7 @@ func (x *AssociateIPAddrRequest) String() string {
 func (*AssociateIPAddrRequest) ProtoMessage() {}
 
 func (x *AssociateIPAddrRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -83,7 +280,7 @@ func (x *AssociateIPAddrRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssociateIPAddrRequest.ProtoReflect.Descriptor instead.
 func (*AssociateIPAddrRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AssociateIPAddrRequest) GetRunAsAdmin() bool {
@@ -195,7 +392,7 @@ type AssociateIPAddrResponse struct {
 
 func (x *AssociateIPAddrResponse) Reset() {
 	*x = AssociateIPAddrResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -207,7 +404,7 @@ func (x *AssociateIPAddrResponse) String() string {
 func (*AssociateIPAddrResponse) ProtoMessage() {}
 
 func (x *AssociateIPAddrResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -220,146 +417,10 @@ func (x *AssociateIPAddrResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssociateIPAddrResponse.ProtoReflect.Descriptor instead.
 func (*AssociateIPAddrResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *AssociateIPAddrResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ReserveIPAddrRequest represents the parameters for reserve a public ip to an account.
-type ReserveIPAddrRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the account to reserve with this IP address
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the ID of the domain to reserve with this IP address
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the ID of the project to reserve with this IP address
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// an optional field, whether to the display the IP to the end user or not
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	// the ID of the public IP address to reserve
-	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReserveIPAddrRequest) Reset() {
-	*x = ReserveIPAddrRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReserveIPAddrRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReserveIPAddrRequest) ProtoMessage() {}
-
-func (x *ReserveIPAddrRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReserveIPAddrRequest.ProtoReflect.Descriptor instead.
-func (*ReserveIPAddrRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ReserveIPAddrRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ReserveIPAddrRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ReserveIPAddrRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ReserveIPAddrRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ReserveIPAddrRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ReserveIPAddrRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ReserveIPAddrResponse represents the response from reserve a public ip to an account.
-type ReserveIPAddrResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReserveIPAddrResponse) Reset() {
-	*x = ReserveIPAddrResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReserveIPAddrResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReserveIPAddrResponse) ProtoMessage() {}
-
-func (x *ReserveIPAddrResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReserveIPAddrResponse.ProtoReflect.Descriptor instead.
-func (*ReserveIPAddrResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ReserveIPAddrResponse) GetResult() *Result {
+func (x *AssociateIPAddrResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -707,6 +768,115 @@ func (x *ListPublicIpAddressesResponse) GetTotalCount() int32 {
 	return 0
 }
 
+// AcquirePodIpCmdByAdminRequest represents the parameters for allocates ip addresses in respective pod of a zone
+type AcquirePodIpCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the zone
+	ZoneId *string `protobuf:"bytes,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// Pod ID
+	PodId *string `protobuf:"bytes,2,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AcquirePodIpCmdByAdminRequest) Reset() {
+	*x = AcquirePodIpCmdByAdminRequest{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AcquirePodIpCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AcquirePodIpCmdByAdminRequest) ProtoMessage() {}
+
+func (x *AcquirePodIpCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AcquirePodIpCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*AcquirePodIpCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *AcquirePodIpCmdByAdminRequest) GetZoneId() string {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return ""
+}
+
+func (x *AcquirePodIpCmdByAdminRequest) GetPodId() string {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return ""
+}
+
+func (x *AcquirePodIpCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AcquirePodIpCmdByAdminResponse represents the response from allocates ip addresses in respective pod of a zone
+type AcquirePodIpCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AcquirePodIpCmdByAdminResponse) Reset() {
+	*x = AcquirePodIpCmdByAdminResponse{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AcquirePodIpCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AcquirePodIpCmdByAdminResponse) ProtoMessage() {}
+
+func (x *AcquirePodIpCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AcquirePodIpCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*AcquirePodIpCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *AcquirePodIpCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // RemoveQuarantinedIpRequest represents the parameters for removes a public ip address from quarantine. only ips in active quarantine can be removed.
 type RemoveQuarantinedIpRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -723,7 +893,7 @@ type RemoveQuarantinedIpRequest struct {
 
 func (x *RemoveQuarantinedIpRequest) Reset() {
 	*x = RemoveQuarantinedIpRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -735,7 +905,7 @@ func (x *RemoveQuarantinedIpRequest) String() string {
 func (*RemoveQuarantinedIpRequest) ProtoMessage() {}
 
 func (x *RemoveQuarantinedIpRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +918,7 @@ func (x *RemoveQuarantinedIpRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveQuarantinedIpRequest.ProtoReflect.Descriptor instead.
 func (*RemoveQuarantinedIpRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RemoveQuarantinedIpRequest) GetId() int64 {
@@ -790,7 +960,7 @@ type RemoveQuarantinedIpResponse struct {
 
 func (x *RemoveQuarantinedIpResponse) Reset() {
 	*x = RemoveQuarantinedIpResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -802,7 +972,7 @@ func (x *RemoveQuarantinedIpResponse) String() string {
 func (*RemoveQuarantinedIpResponse) ProtoMessage() {}
 
 func (x *RemoveQuarantinedIpResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -815,7 +985,7 @@ func (x *RemoveQuarantinedIpResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveQuarantinedIpResponse.ProtoReflect.Descriptor instead.
 func (*RemoveQuarantinedIpResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RemoveQuarantinedIpResponse) GetResult() *Result {
@@ -825,33 +995,35 @@ func (x *RemoveQuarantinedIpResponse) GetResult() *Result {
 	return nil
 }
 
-// AcquirePodIpCmdByAdminRequest represents the parameters for allocates ip addresses in respective pod of a zone
-type AcquirePodIpCmdByAdminRequest struct {
+// UpdateQuarantinedIpRequest represents the parameters for updates the quarantine end date for the given public ip address.
+type UpdateQuarantinedIpRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the zone
-	ZoneId *string `protobuf:"bytes,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// Pod ID
-	PodId *string `protobuf:"bytes,2,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The ID of the public IP address in active quarantine.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The public IP address in active quarantine. Either the IP address is informed, or the ID of the IP address in quarantine.
+	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	// The date when the quarantine will no longer be active.
+	EndDate *string `protobuf:"bytes,3,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AcquirePodIpCmdByAdminRequest) Reset() {
-	*x = AcquirePodIpCmdByAdminRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[8]
+func (x *UpdateQuarantinedIpRequest) Reset() {
+	*x = UpdateQuarantinedIpRequest{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AcquirePodIpCmdByAdminRequest) String() string {
+func (x *UpdateQuarantinedIpRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AcquirePodIpCmdByAdminRequest) ProtoMessage() {}
+func (*UpdateQuarantinedIpRequest) ProtoMessage() {}
 
-func (x *AcquirePodIpCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[8]
+func (x *UpdateQuarantinedIpRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -862,34 +1034,41 @@ func (x *AcquirePodIpCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AcquirePodIpCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*AcquirePodIpCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{8}
+// Deprecated: Use UpdateQuarantinedIpRequest.ProtoReflect.Descriptor instead.
+func (*UpdateQuarantinedIpRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *AcquirePodIpCmdByAdminRequest) GetZoneId() string {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
+func (x *UpdateQuarantinedIpRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateQuarantinedIpRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
 	}
 	return ""
 }
 
-func (x *AcquirePodIpCmdByAdminRequest) GetPodId() string {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
+func (x *UpdateQuarantinedIpRequest) GetEndDate() string {
+	if x != nil && x.EndDate != nil {
+		return *x.EndDate
 	}
 	return ""
 }
 
-func (x *AcquirePodIpCmdByAdminRequest) GetResponseType() string {
+func (x *UpdateQuarantinedIpRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// AcquirePodIpCmdByAdminResponse represents the response from allocates ip addresses in respective pod of a zone
-type AcquirePodIpCmdByAdminResponse struct {
+// UpdateQuarantinedIpResponse represents the response from updates the quarantine end date for the given public ip address.
+type UpdateQuarantinedIpResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -897,21 +1076,21 @@ type AcquirePodIpCmdByAdminResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AcquirePodIpCmdByAdminResponse) Reset() {
-	*x = AcquirePodIpCmdByAdminResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[9]
+func (x *UpdateQuarantinedIpResponse) Reset() {
+	*x = UpdateQuarantinedIpResponse{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AcquirePodIpCmdByAdminResponse) String() string {
+func (x *UpdateQuarantinedIpResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AcquirePodIpCmdByAdminResponse) ProtoMessage() {}
+func (*UpdateQuarantinedIpResponse) ProtoMessage() {}
 
-func (x *AcquirePodIpCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[9]
+func (x *UpdateQuarantinedIpResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -922,12 +1101,112 @@ func (x *AcquirePodIpCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AcquirePodIpCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*AcquirePodIpCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{9}
+// Deprecated: Use UpdateQuarantinedIpResponse.ProtoReflect.Descriptor instead.
+func (*UpdateQuarantinedIpResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *AcquirePodIpCmdByAdminResponse) GetResult() *Result {
+func (x *UpdateQuarantinedIpResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ReleasePodIpCmdByAdminRequest represents the parameters for releases a pod ip back to the pod
+type ReleasePodIpCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the Pod IP
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReleasePodIpCmdByAdminRequest) Reset() {
+	*x = ReleasePodIpCmdByAdminRequest{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReleasePodIpCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReleasePodIpCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ReleasePodIpCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReleasePodIpCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ReleasePodIpCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ReleasePodIpCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ReleasePodIpCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ReleasePodIpCmdByAdminResponse represents the response from releases a pod ip back to the pod
+type ReleasePodIpCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReleasePodIpCmdByAdminResponse) Reset() {
+	*x = ReleasePodIpCmdByAdminResponse{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReleasePodIpCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReleasePodIpCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ReleasePodIpCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReleasePodIpCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ReleasePodIpCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ReleasePodIpCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -952,7 +1231,7 @@ type UpdateIPAddrRequest struct {
 
 func (x *UpdateIPAddrRequest) Reset() {
 	*x = UpdateIPAddrRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -964,7 +1243,7 @@ func (x *UpdateIPAddrRequest) String() string {
 func (*UpdateIPAddrRequest) ProtoMessage() {}
 
 func (x *UpdateIPAddrRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -977,7 +1256,7 @@ func (x *UpdateIPAddrRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateIPAddrRequest.ProtoReflect.Descriptor instead.
 func (*UpdateIPAddrRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateIPAddrRequest) GetId() int64 {
@@ -1033,7 +1312,7 @@ type UpdateIPAddrResponse struct {
 
 func (x *UpdateIPAddrResponse) Reset() {
 	*x = UpdateIPAddrResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1045,7 +1324,7 @@ func (x *UpdateIPAddrResponse) String() string {
 func (*UpdateIPAddrResponse) ProtoMessage() {}
 
 func (x *UpdateIPAddrResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1058,353 +1337,10 @@ func (x *UpdateIPAddrResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateIPAddrResponse.ProtoReflect.Descriptor instead.
 func (*UpdateIPAddrResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *UpdateIPAddrResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DisassociateIPAddrRequest represents the parameters for disassociates an ip address from the account.
-type DisassociateIPAddrRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the public IP address to disassociate. Mutually exclusive with the ipaddress parameter
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// IP Address to be disassociated. Mutually exclusive with the id parameter
-	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisassociateIPAddrRequest) Reset() {
-	*x = DisassociateIPAddrRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisassociateIPAddrRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisassociateIPAddrRequest) ProtoMessage() {}
-
-func (x *DisassociateIPAddrRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisassociateIPAddrRequest.ProtoReflect.Descriptor instead.
-func (*DisassociateIPAddrRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *DisassociateIPAddrRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DisassociateIPAddrRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *DisassociateIPAddrRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DisassociateIPAddrRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DisassociateIPAddrRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DisassociateIPAddrResponse represents the response from disassociates an ip address from the account.
-type DisassociateIPAddrResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisassociateIPAddrResponse) Reset() {
-	*x = DisassociateIPAddrResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisassociateIPAddrResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisassociateIPAddrResponse) ProtoMessage() {}
-
-func (x *DisassociateIPAddrResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisassociateIPAddrResponse.ProtoReflect.Descriptor instead.
-func (*DisassociateIPAddrResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *DisassociateIPAddrResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateQuarantinedIpRequest represents the parameters for updates the quarantine end date for the given public ip address.
-type UpdateQuarantinedIpRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the public IP address in active quarantine.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The public IP address in active quarantine. Either the IP address is informed, or the ID of the IP address in quarantine.
-	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
-	// The date when the quarantine will no longer be active.
-	EndDate *string `protobuf:"bytes,3,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateQuarantinedIpRequest) Reset() {
-	*x = UpdateQuarantinedIpRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateQuarantinedIpRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateQuarantinedIpRequest) ProtoMessage() {}
-
-func (x *UpdateQuarantinedIpRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateQuarantinedIpRequest.ProtoReflect.Descriptor instead.
-func (*UpdateQuarantinedIpRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *UpdateQuarantinedIpRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateQuarantinedIpRequest) GetIpAddress() string {
-	if x != nil && x.IpAddress != nil {
-		return *x.IpAddress
-	}
-	return ""
-}
-
-func (x *UpdateQuarantinedIpRequest) GetEndDate() string {
-	if x != nil && x.EndDate != nil {
-		return *x.EndDate
-	}
-	return ""
-}
-
-func (x *UpdateQuarantinedIpRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateQuarantinedIpResponse represents the response from updates the quarantine end date for the given public ip address.
-type UpdateQuarantinedIpResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateQuarantinedIpResponse) Reset() {
-	*x = UpdateQuarantinedIpResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateQuarantinedIpResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateQuarantinedIpResponse) ProtoMessage() {}
-
-func (x *UpdateQuarantinedIpResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateQuarantinedIpResponse.ProtoReflect.Descriptor instead.
-func (*UpdateQuarantinedIpResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *UpdateQuarantinedIpResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ReleasePodIpCmdByAdminRequest represents the parameters for releases a pod ip back to the pod
-type ReleasePodIpCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the Pod IP
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReleasePodIpCmdByAdminRequest) Reset() {
-	*x = ReleasePodIpCmdByAdminRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReleasePodIpCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReleasePodIpCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ReleasePodIpCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReleasePodIpCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ReleasePodIpCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *ReleasePodIpCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ReleasePodIpCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ReleasePodIpCmdByAdminResponse represents the response from releases a pod ip back to the pod
-type ReleasePodIpCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReleasePodIpCmdByAdminResponse) Reset() {
-	*x = ReleasePodIpCmdByAdminResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReleasePodIpCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReleasePodIpCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ReleasePodIpCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReleasePodIpCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ReleasePodIpCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ReleasePodIpCmdByAdminResponse) GetResult() *Result {
+func (x *UpdateIPAddrResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1429,7 +1365,7 @@ type ListQuarantinedIpsRequest struct {
 
 func (x *ListQuarantinedIpsRequest) Reset() {
 	*x = ListQuarantinedIpsRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1441,7 +1377,7 @@ func (x *ListQuarantinedIpsRequest) String() string {
 func (*ListQuarantinedIpsRequest) ProtoMessage() {}
 
 func (x *ListQuarantinedIpsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1454,7 +1390,7 @@ func (x *ListQuarantinedIpsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListQuarantinedIpsRequest.ProtoReflect.Descriptor instead.
 func (*ListQuarantinedIpsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{18}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListQuarantinedIpsRequest) GetShowRemoved() bool {
@@ -1512,7 +1448,7 @@ type ListQuarantinedIpsResponse struct {
 
 func (x *ListQuarantinedIpsResponse) Reset() {
 	*x = ListQuarantinedIpsResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1524,7 +1460,7 @@ func (x *ListQuarantinedIpsResponse) String() string {
 func (*ListQuarantinedIpsResponse) ProtoMessage() {}
 
 func (x *ListQuarantinedIpsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1537,7 +1473,7 @@ func (x *ListQuarantinedIpsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListQuarantinedIpsResponse.ProtoReflect.Descriptor instead.
 func (*ListQuarantinedIpsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{19}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListQuarantinedIpsResponse) GetItems() []*IpQuarantine {
@@ -1554,6 +1490,267 @@ func (x *ListQuarantinedIpsResponse) GetTotalCount() int32 {
 	return 0
 }
 
+// ReserveIPAddrRequest represents the parameters for reserve a public ip to an account.
+type ReserveIPAddrRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the account to reserve with this IP address
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the ID of the domain to reserve with this IP address
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the project to reserve with this IP address
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// an optional field, whether to the display the IP to the end user or not
+	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
+	// the ID of the public IP address to reserve
+	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReserveIPAddrRequest) Reset() {
+	*x = ReserveIPAddrRequest{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReserveIPAddrRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReserveIPAddrRequest) ProtoMessage() {}
+
+func (x *ReserveIPAddrRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReserveIPAddrRequest.ProtoReflect.Descriptor instead.
+func (*ReserveIPAddrRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *ReserveIPAddrRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ReserveIPAddrRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ReserveIPAddrRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ReserveIPAddrRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ReserveIPAddrRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ReserveIPAddrRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ReserveIPAddrResponse represents the response from reserve a public ip to an account.
+type ReserveIPAddrResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReserveIPAddrResponse) Reset() {
+	*x = ReserveIPAddrResponse{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReserveIPAddrResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReserveIPAddrResponse) ProtoMessage() {}
+
+func (x *ReserveIPAddrResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReserveIPAddrResponse.ProtoReflect.Descriptor instead.
+func (*ReserveIPAddrResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *ReserveIPAddrResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisassociateIPAddrRequest represents the parameters for disassociates an ip address from the account.
+type DisassociateIPAddrRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the public IP address to disassociate. Mutually exclusive with the ipaddress parameter
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// IP Address to be disassociated. Mutually exclusive with the id parameter
+	IpAddress *string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress" json:"ip_address,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisassociateIPAddrRequest) Reset() {
+	*x = DisassociateIPAddrRequest{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisassociateIPAddrRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisassociateIPAddrRequest) ProtoMessage() {}
+
+func (x *DisassociateIPAddrRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisassociateIPAddrRequest.ProtoReflect.Descriptor instead.
+func (*DisassociateIPAddrRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *DisassociateIPAddrRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DisassociateIPAddrRequest) GetIpAddress() string {
+	if x != nil && x.IpAddress != nil {
+		return *x.IpAddress
+	}
+	return ""
+}
+
+func (x *DisassociateIPAddrRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisassociateIPAddrRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisassociateIPAddrRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisassociateIPAddrResponse represents the response from disassociates an ip address from the account.
+type DisassociateIPAddrResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisassociateIPAddrResponse) Reset() {
+	*x = DisassociateIPAddrResponse{}
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisassociateIPAddrResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisassociateIPAddrResponse) ProtoMessage() {}
+
+func (x *DisassociateIPAddrResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisassociateIPAddrResponse.ProtoReflect.Descriptor instead.
+func (*DisassociateIPAddrResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *DisassociateIPAddrResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ReleaseIPAddrRequest represents the parameters for releases an ip address from the account.
 type ReleaseIPAddrRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1566,7 +1763,7 @@ type ReleaseIPAddrRequest struct {
 
 func (x *ReleaseIPAddrRequest) Reset() {
 	*x = ReleaseIPAddrRequest{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1578,7 +1775,7 @@ func (x *ReleaseIPAddrRequest) String() string {
 func (*ReleaseIPAddrRequest) ProtoMessage() {}
 
 func (x *ReleaseIPAddrRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1591,7 +1788,7 @@ func (x *ReleaseIPAddrRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseIPAddrRequest.ProtoReflect.Descriptor instead.
 func (*ReleaseIPAddrRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{20}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ReleaseIPAddrRequest) GetId() int64 {
@@ -1619,7 +1816,7 @@ type ReleaseIPAddrResponse struct {
 
 func (x *ReleaseIPAddrResponse) Reset() {
 	*x = ReleaseIPAddrResponse{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1631,7 +1828,7 @@ func (x *ReleaseIPAddrResponse) String() string {
 func (*ReleaseIPAddrResponse) ProtoMessage() {}
 
 func (x *ReleaseIPAddrResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1644,7 +1841,7 @@ func (x *ReleaseIPAddrResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseIPAddrResponse.ProtoReflect.Descriptor instead.
 func (*ReleaseIPAddrResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{21}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ReleaseIPAddrResponse) GetResult() *Result {
@@ -1673,7 +1870,7 @@ type IPAddress struct {
 
 func (x *IPAddress) Reset() {
 	*x = IPAddress{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1685,7 +1882,7 @@ func (x *IPAddress) String() string {
 func (*IPAddress) ProtoMessage() {}
 
 func (x *IPAddress) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1698,7 +1895,7 @@ func (x *IPAddress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IPAddress.ProtoReflect.Descriptor instead.
 func (*IPAddress) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{22}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *IPAddress) GetId() string {
@@ -1755,7 +1952,7 @@ type IpQuarantine struct {
 
 func (x *IpQuarantine) Reset() {
 	*x = IpQuarantine{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[23]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1767,7 +1964,7 @@ func (x *IpQuarantine) String() string {
 func (*IpQuarantine) ProtoMessage() {}
 
 func (x *IpQuarantine) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[23]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1780,7 +1977,7 @@ func (x *IpQuarantine) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IpQuarantine.ProtoReflect.Descriptor instead.
 func (*IpQuarantine) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{23}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *IpQuarantine) GetId() string {
@@ -1831,7 +2028,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1843,7 +2040,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1856,7 +2053,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{24}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -1906,7 +2103,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1918,7 +2115,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1931,7 +2128,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *Item) GetId() string {
@@ -2037,7 +2234,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2049,7 +2246,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_address_v1_address_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2062,7 +2259,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{26}
+	return file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2104,7 +2301,28 @@ var File_cloudstack_management_address_v1_address_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/address/v1/address.gen.proto\x12 cloudstack.management.address.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf3\x03\n" +
+	"2cloudstack/management/address/v1/address.gen.proto\x12 cloudstack.management.address.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xdb\x03\n" +
+	" AssociateIPAddrCmdByAdminRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x17\n" +
+	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x04 \x01(\x03R\tnetworkId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x05 \x01(\x03R\tprojectId\x12\x15\n" +
+	"\x06vpc_id\x18\x06 \x01(\x03R\x05vpcId\x12&\n" +
+	"\vis_portable\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"isPortable\x12\x1b\n" +
+	"\tregion_id\x18\b \x01(\x05R\bregionId\x12\x1f\n" +
+	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12&\n" +
+	"\n" +
+	"ip_address\x18\n" +
+	" \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12$\n" +
+	"\x0estart_event_id\x18\v \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\"e\n" +
+	"!AssociateIPAddrCmdByAdminResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xf3\x03\n" +
 	"\x16AssociateIPAddrRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12!\n" +
@@ -2127,16 +2345,6 @@ const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\r \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"[\n" +
 	"\x17AssociateIPAddrResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xd3\x01\n" +
-	"\x14ReserveIPAddrRequest\x12!\n" +
-	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x16\n" +
-	"\x02id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Y\n" +
-	"\x15ReserveIPAddrResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\x8e\n" +
 	"\n" +
 	"\x1cListPublicIpAddressesRequest\x12 \n" +
@@ -2180,7 +2388,13 @@ const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\x1dListPublicIpAddressesResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.address.v1.IPAddressR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa8\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8b\x01\n" +
+	"\x1dAcquirePodIpCmdByAdminRequest\x12$\n" +
+	"\azone_id\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\x06zoneId\x12\x1f\n" +
+	"\x06pod_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05podId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"b\n" +
+	"\x1eAcquirePodIpCmdByAdminResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xa8\x01\n" +
 	"\x1aRemoveQuarantinedIpRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
 	"\n" +
@@ -2188,30 +2402,6 @@ const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\x0eremoval_reason\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rremovalReason\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
 	"\x1bRemoveQuarantinedIpResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\x8b\x01\n" +
-	"\x1dAcquirePodIpCmdByAdminRequest\x12$\n" +
-	"\azone_id\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\x06zoneId\x12\x1f\n" +
-	"\x06pod_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05podId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"b\n" +
-	"\x1eAcquirePodIpCmdByAdminResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xf2\x01\n" +
-	"\x13UpdateIPAddrRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
-	"\x14UpdateIPAddrResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xd0\x01\n" +
-	"\x19DisassociateIPAddrRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
-	"\n" +
-	"ip_address\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
-	"\x1aDisassociateIPAddrResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\x9c\x01\n" +
 	"\x1aUpdateQuarantinedIpRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
@@ -2225,6 +2415,15 @@ const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"b\n" +
 	"\x1eReleasePodIpCmdByAdminResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xf2\x01\n" +
+	"\x13UpdateIPAddrRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"X\n" +
+	"\x14UpdateIPAddrResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xe1\x01\n" +
 	"\x19ListQuarantinedIpsRequest\x12(\n" +
 	"\fshow_removed\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\vshowRemoved\x12*\n" +
@@ -2236,7 +2435,26 @@ const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\x1aListQuarantinedIpsResponse\x12D\n" +
 	"\x05items\x18\x01 \x03(\v2..cloudstack.management.address.v1.IpQuarantineR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"S\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xd3\x01\n" +
+	"\x14ReserveIPAddrRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x16\n" +
+	"\x02id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Y\n" +
+	"\x15ReserveIPAddrResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"\xd0\x01\n" +
+	"\x19DisassociateIPAddrRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12&\n" +
+	"\n" +
+	"ip_address\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\tipAddress\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
+	"\x1aDisassociateIPAddrResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.address.v1.ResultR\x06result\"S\n" +
 	"\x14ReleaseIPAddrRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Y\n" +
@@ -2282,18 +2500,19 @@ const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xed\f\n" +
-	"\x0eAddressService\x12\x8e\x01\n" +
-	"\x0fAssociateIPAddr\x128.cloudstack.management.address.v1.AssociateIPAddrRequest\x1a9.cloudstack.management.address.v1.AssociateIPAddrResponse\"\x06\xc2>\x03\xc0>\x01\x12\x82\x01\n" +
-	"\rReserveIPAddr\x126.cloudstack.management.address.v1.ReserveIPAddrRequest\x1a7.cloudstack.management.address.v1.ReserveIPAddrResponse\"\x00\x12\xa0\x01\n" +
-	"\x15ListPublicIpAddresses\x12>.cloudstack.management.address.v1.ListPublicIpAddressesRequest\x1a?.cloudstack.management.address.v1.ListPublicIpAddressesResponse\"\x06\xc2>\x03\xc0>\x01\x12\x94\x01\n" +
-	"\x13RemoveQuarantinedIp\x12<.cloudstack.management.address.v1.RemoveQuarantinedIpRequest\x1a=.cloudstack.management.address.v1.RemoveQuarantinedIpResponse\"\x00\x12\x9d\x01\n" +
-	"\x16AcquirePodIpCmdByAdmin\x12?.cloudstack.management.address.v1.AcquirePodIpCmdByAdminRequest\x1a@.cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse\"\x00\x12\x7f\n" +
-	"\fUpdateIPAddr\x125.cloudstack.management.address.v1.UpdateIPAddrRequest\x1a6.cloudstack.management.address.v1.UpdateIPAddrResponse\"\x00\x12\x91\x01\n" +
-	"\x12DisassociateIPAddr\x12;.cloudstack.management.address.v1.DisassociateIPAddrRequest\x1a<.cloudstack.management.address.v1.DisassociateIPAddrResponse\"\x00\x12\x94\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x96\x0e\n" +
+	"\x0eAddressService\x12\xa6\x01\n" +
+	"\x19AssociateIPAddrCmdByAdmin\x12B.cloudstack.management.address.v1.AssociateIPAddrCmdByAdminRequest\x1aC.cloudstack.management.address.v1.AssociateIPAddrCmdByAdminResponse\"\x00\x12\x8e\x01\n" +
+	"\x0fAssociateIPAddr\x128.cloudstack.management.address.v1.AssociateIPAddrRequest\x1a9.cloudstack.management.address.v1.AssociateIPAddrResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa0\x01\n" +
+	"\x15ListPublicIpAddresses\x12>.cloudstack.management.address.v1.ListPublicIpAddressesRequest\x1a?.cloudstack.management.address.v1.ListPublicIpAddressesResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9d\x01\n" +
+	"\x16AcquirePodIpCmdByAdmin\x12?.cloudstack.management.address.v1.AcquirePodIpCmdByAdminRequest\x1a@.cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse\"\x00\x12\x94\x01\n" +
+	"\x13RemoveQuarantinedIp\x12<.cloudstack.management.address.v1.RemoveQuarantinedIpRequest\x1a=.cloudstack.management.address.v1.RemoveQuarantinedIpResponse\"\x00\x12\x94\x01\n" +
 	"\x13UpdateQuarantinedIp\x12<.cloudstack.management.address.v1.UpdateQuarantinedIpRequest\x1a=.cloudstack.management.address.v1.UpdateQuarantinedIpResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ReleasePodIpCmdByAdmin\x12?.cloudstack.management.address.v1.ReleasePodIpCmdByAdminRequest\x1a@.cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse\"\x00\x12\x91\x01\n" +
+	"\x16ReleasePodIpCmdByAdmin\x12?.cloudstack.management.address.v1.ReleasePodIpCmdByAdminRequest\x1a@.cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse\"\x00\x12\x7f\n" +
+	"\fUpdateIPAddr\x125.cloudstack.management.address.v1.UpdateIPAddrRequest\x1a6.cloudstack.management.address.v1.UpdateIPAddrResponse\"\x00\x12\x91\x01\n" +
 	"\x12ListQuarantinedIps\x12;.cloudstack.management.address.v1.ListQuarantinedIpsRequest\x1a<.cloudstack.management.address.v1.ListQuarantinedIpsResponse\"\x00\x12\x82\x01\n" +
+	"\rReserveIPAddr\x126.cloudstack.management.address.v1.ReserveIPAddrRequest\x1a7.cloudstack.management.address.v1.ReserveIPAddrResponse\"\x00\x12\x91\x01\n" +
+	"\x12DisassociateIPAddr\x12;.cloudstack.management.address.v1.DisassociateIPAddrRequest\x1a<.cloudstack.management.address.v1.DisassociateIPAddrResponse\"\x00\x12\x82\x01\n" +
 	"\rReleaseIPAddr\x126.cloudstack.management.address.v1.ReleaseIPAddrRequest\x1a7.cloudstack.management.address.v1.ReleaseIPAddrResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
 	"$com.cloudstack.management.address.v1B\x0fAddressGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/address/v1;addressv1\xa2\x02\x03CMA\xaa\x02 Cloudstack.Management.Address.V1\xca\x02 Cloudstack\\Management\\Address\\V1\xe2\x02,Cloudstack\\Management\\Address\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Address::V1b\beditionsp\xe8\a"
 
@@ -2309,79 +2528,84 @@ func file_cloudstack_management_address_v1_address_gen_proto_rawDescGZIP() []byt
 	return file_cloudstack_management_address_v1_address_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_address_v1_address_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_cloudstack_management_address_v1_address_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_cloudstack_management_address_v1_address_gen_proto_goTypes = []any{
-	(*AssociateIPAddrRequest)(nil),         // 0: cloudstack.management.address.v1.AssociateIPAddrRequest
-	(*AssociateIPAddrResponse)(nil),        // 1: cloudstack.management.address.v1.AssociateIPAddrResponse
-	(*ReserveIPAddrRequest)(nil),           // 2: cloudstack.management.address.v1.ReserveIPAddrRequest
-	(*ReserveIPAddrResponse)(nil),          // 3: cloudstack.management.address.v1.ReserveIPAddrResponse
-	(*ListPublicIpAddressesRequest)(nil),   // 4: cloudstack.management.address.v1.ListPublicIpAddressesRequest
-	(*ListPublicIpAddressesResponse)(nil),  // 5: cloudstack.management.address.v1.ListPublicIpAddressesResponse
-	(*RemoveQuarantinedIpRequest)(nil),     // 6: cloudstack.management.address.v1.RemoveQuarantinedIpRequest
-	(*RemoveQuarantinedIpResponse)(nil),    // 7: cloudstack.management.address.v1.RemoveQuarantinedIpResponse
-	(*AcquirePodIpCmdByAdminRequest)(nil),  // 8: cloudstack.management.address.v1.AcquirePodIpCmdByAdminRequest
-	(*AcquirePodIpCmdByAdminResponse)(nil), // 9: cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse
-	(*UpdateIPAddrRequest)(nil),            // 10: cloudstack.management.address.v1.UpdateIPAddrRequest
-	(*UpdateIPAddrResponse)(nil),           // 11: cloudstack.management.address.v1.UpdateIPAddrResponse
-	(*DisassociateIPAddrRequest)(nil),      // 12: cloudstack.management.address.v1.DisassociateIPAddrRequest
-	(*DisassociateIPAddrResponse)(nil),     // 13: cloudstack.management.address.v1.DisassociateIPAddrResponse
-	(*UpdateQuarantinedIpRequest)(nil),     // 14: cloudstack.management.address.v1.UpdateQuarantinedIpRequest
-	(*UpdateQuarantinedIpResponse)(nil),    // 15: cloudstack.management.address.v1.UpdateQuarantinedIpResponse
-	(*ReleasePodIpCmdByAdminRequest)(nil),  // 16: cloudstack.management.address.v1.ReleasePodIpCmdByAdminRequest
-	(*ReleasePodIpCmdByAdminResponse)(nil), // 17: cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse
-	(*ListQuarantinedIpsRequest)(nil),      // 18: cloudstack.management.address.v1.ListQuarantinedIpsRequest
-	(*ListQuarantinedIpsResponse)(nil),     // 19: cloudstack.management.address.v1.ListQuarantinedIpsResponse
-	(*ReleaseIPAddrRequest)(nil),           // 20: cloudstack.management.address.v1.ReleaseIPAddrRequest
-	(*ReleaseIPAddrResponse)(nil),          // 21: cloudstack.management.address.v1.ReleaseIPAddrResponse
-	(*IPAddress)(nil),                      // 22: cloudstack.management.address.v1.IPAddress
-	(*IpQuarantine)(nil),                   // 23: cloudstack.management.address.v1.IpQuarantine
-	(*Success)(nil),                        // 24: cloudstack.management.address.v1.Success
-	(*Item)(nil),                           // 25: cloudstack.management.address.v1.Item
-	(*Result)(nil),                         // 26: cloudstack.management.address.v1.Result
-	nil,                                    // 27: cloudstack.management.address.v1.ListPublicIpAddressesRequest.TagsEntry
-	nil,                                    // 28: cloudstack.management.address.v1.Item.DetailsEntry
+	(*AssociateIPAddrCmdByAdminRequest)(nil),  // 0: cloudstack.management.address.v1.AssociateIPAddrCmdByAdminRequest
+	(*AssociateIPAddrCmdByAdminResponse)(nil), // 1: cloudstack.management.address.v1.AssociateIPAddrCmdByAdminResponse
+	(*AssociateIPAddrRequest)(nil),            // 2: cloudstack.management.address.v1.AssociateIPAddrRequest
+	(*AssociateIPAddrResponse)(nil),           // 3: cloudstack.management.address.v1.AssociateIPAddrResponse
+	(*ListPublicIpAddressesRequest)(nil),      // 4: cloudstack.management.address.v1.ListPublicIpAddressesRequest
+	(*ListPublicIpAddressesResponse)(nil),     // 5: cloudstack.management.address.v1.ListPublicIpAddressesResponse
+	(*AcquirePodIpCmdByAdminRequest)(nil),     // 6: cloudstack.management.address.v1.AcquirePodIpCmdByAdminRequest
+	(*AcquirePodIpCmdByAdminResponse)(nil),    // 7: cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse
+	(*RemoveQuarantinedIpRequest)(nil),        // 8: cloudstack.management.address.v1.RemoveQuarantinedIpRequest
+	(*RemoveQuarantinedIpResponse)(nil),       // 9: cloudstack.management.address.v1.RemoveQuarantinedIpResponse
+	(*UpdateQuarantinedIpRequest)(nil),        // 10: cloudstack.management.address.v1.UpdateQuarantinedIpRequest
+	(*UpdateQuarantinedIpResponse)(nil),       // 11: cloudstack.management.address.v1.UpdateQuarantinedIpResponse
+	(*ReleasePodIpCmdByAdminRequest)(nil),     // 12: cloudstack.management.address.v1.ReleasePodIpCmdByAdminRequest
+	(*ReleasePodIpCmdByAdminResponse)(nil),    // 13: cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse
+	(*UpdateIPAddrRequest)(nil),               // 14: cloudstack.management.address.v1.UpdateIPAddrRequest
+	(*UpdateIPAddrResponse)(nil),              // 15: cloudstack.management.address.v1.UpdateIPAddrResponse
+	(*ListQuarantinedIpsRequest)(nil),         // 16: cloudstack.management.address.v1.ListQuarantinedIpsRequest
+	(*ListQuarantinedIpsResponse)(nil),        // 17: cloudstack.management.address.v1.ListQuarantinedIpsResponse
+	(*ReserveIPAddrRequest)(nil),              // 18: cloudstack.management.address.v1.ReserveIPAddrRequest
+	(*ReserveIPAddrResponse)(nil),             // 19: cloudstack.management.address.v1.ReserveIPAddrResponse
+	(*DisassociateIPAddrRequest)(nil),         // 20: cloudstack.management.address.v1.DisassociateIPAddrRequest
+	(*DisassociateIPAddrResponse)(nil),        // 21: cloudstack.management.address.v1.DisassociateIPAddrResponse
+	(*ReleaseIPAddrRequest)(nil),              // 22: cloudstack.management.address.v1.ReleaseIPAddrRequest
+	(*ReleaseIPAddrResponse)(nil),             // 23: cloudstack.management.address.v1.ReleaseIPAddrResponse
+	(*IPAddress)(nil),                         // 24: cloudstack.management.address.v1.IPAddress
+	(*IpQuarantine)(nil),                      // 25: cloudstack.management.address.v1.IpQuarantine
+	(*Success)(nil),                           // 26: cloudstack.management.address.v1.Success
+	(*Item)(nil),                              // 27: cloudstack.management.address.v1.Item
+	(*Result)(nil),                            // 28: cloudstack.management.address.v1.Result
+	nil,                                       // 29: cloudstack.management.address.v1.ListPublicIpAddressesRequest.TagsEntry
+	nil,                                       // 30: cloudstack.management.address.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_address_v1_address_gen_proto_depIdxs = []int32{
-	26, // 0: cloudstack.management.address.v1.AssociateIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
-	26, // 1: cloudstack.management.address.v1.ReserveIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
-	27, // 2: cloudstack.management.address.v1.ListPublicIpAddressesRequest.tags:type_name -> cloudstack.management.address.v1.ListPublicIpAddressesRequest.TagsEntry
-	22, // 3: cloudstack.management.address.v1.ListPublicIpAddressesResponse.items:type_name -> cloudstack.management.address.v1.IPAddress
-	26, // 4: cloudstack.management.address.v1.RemoveQuarantinedIpResponse.result:type_name -> cloudstack.management.address.v1.Result
-	26, // 5: cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse.result:type_name -> cloudstack.management.address.v1.Result
-	26, // 6: cloudstack.management.address.v1.UpdateIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
-	26, // 7: cloudstack.management.address.v1.DisassociateIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
-	26, // 8: cloudstack.management.address.v1.UpdateQuarantinedIpResponse.result:type_name -> cloudstack.management.address.v1.Result
-	26, // 9: cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse.result:type_name -> cloudstack.management.address.v1.Result
-	23, // 10: cloudstack.management.address.v1.ListQuarantinedIpsResponse.items:type_name -> cloudstack.management.address.v1.IpQuarantine
-	26, // 11: cloudstack.management.address.v1.ReleaseIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
-	28, // 12: cloudstack.management.address.v1.Item.details:type_name -> cloudstack.management.address.v1.Item.DetailsEntry
-	0,  // 13: cloudstack.management.address.v1.AddressService.AssociateIPAddr:input_type -> cloudstack.management.address.v1.AssociateIPAddrRequest
-	2,  // 14: cloudstack.management.address.v1.AddressService.ReserveIPAddr:input_type -> cloudstack.management.address.v1.ReserveIPAddrRequest
-	4,  // 15: cloudstack.management.address.v1.AddressService.ListPublicIpAddresses:input_type -> cloudstack.management.address.v1.ListPublicIpAddressesRequest
-	6,  // 16: cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp:input_type -> cloudstack.management.address.v1.RemoveQuarantinedIpRequest
-	8,  // 17: cloudstack.management.address.v1.AddressService.AcquirePodIpCmdByAdmin:input_type -> cloudstack.management.address.v1.AcquirePodIpCmdByAdminRequest
-	10, // 18: cloudstack.management.address.v1.AddressService.UpdateIPAddr:input_type -> cloudstack.management.address.v1.UpdateIPAddrRequest
-	12, // 19: cloudstack.management.address.v1.AddressService.DisassociateIPAddr:input_type -> cloudstack.management.address.v1.DisassociateIPAddrRequest
-	14, // 20: cloudstack.management.address.v1.AddressService.UpdateQuarantinedIp:input_type -> cloudstack.management.address.v1.UpdateQuarantinedIpRequest
-	16, // 21: cloudstack.management.address.v1.AddressService.ReleasePodIpCmdByAdmin:input_type -> cloudstack.management.address.v1.ReleasePodIpCmdByAdminRequest
-	18, // 22: cloudstack.management.address.v1.AddressService.ListQuarantinedIps:input_type -> cloudstack.management.address.v1.ListQuarantinedIpsRequest
-	20, // 23: cloudstack.management.address.v1.AddressService.ReleaseIPAddr:input_type -> cloudstack.management.address.v1.ReleaseIPAddrRequest
-	1,  // 24: cloudstack.management.address.v1.AddressService.AssociateIPAddr:output_type -> cloudstack.management.address.v1.AssociateIPAddrResponse
-	3,  // 25: cloudstack.management.address.v1.AddressService.ReserveIPAddr:output_type -> cloudstack.management.address.v1.ReserveIPAddrResponse
-	5,  // 26: cloudstack.management.address.v1.AddressService.ListPublicIpAddresses:output_type -> cloudstack.management.address.v1.ListPublicIpAddressesResponse
-	7,  // 27: cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp:output_type -> cloudstack.management.address.v1.RemoveQuarantinedIpResponse
-	9,  // 28: cloudstack.management.address.v1.AddressService.AcquirePodIpCmdByAdmin:output_type -> cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse
-	11, // 29: cloudstack.management.address.v1.AddressService.UpdateIPAddr:output_type -> cloudstack.management.address.v1.UpdateIPAddrResponse
-	13, // 30: cloudstack.management.address.v1.AddressService.DisassociateIPAddr:output_type -> cloudstack.management.address.v1.DisassociateIPAddrResponse
-	15, // 31: cloudstack.management.address.v1.AddressService.UpdateQuarantinedIp:output_type -> cloudstack.management.address.v1.UpdateQuarantinedIpResponse
-	17, // 32: cloudstack.management.address.v1.AddressService.ReleasePodIpCmdByAdmin:output_type -> cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse
-	19, // 33: cloudstack.management.address.v1.AddressService.ListQuarantinedIps:output_type -> cloudstack.management.address.v1.ListQuarantinedIpsResponse
-	21, // 34: cloudstack.management.address.v1.AddressService.ReleaseIPAddr:output_type -> cloudstack.management.address.v1.ReleaseIPAddrResponse
-	24, // [24:35] is the sub-list for method output_type
-	13, // [13:24] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	28, // 0: cloudstack.management.address.v1.AssociateIPAddrCmdByAdminResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 1: cloudstack.management.address.v1.AssociateIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
+	29, // 2: cloudstack.management.address.v1.ListPublicIpAddressesRequest.tags:type_name -> cloudstack.management.address.v1.ListPublicIpAddressesRequest.TagsEntry
+	24, // 3: cloudstack.management.address.v1.ListPublicIpAddressesResponse.items:type_name -> cloudstack.management.address.v1.IPAddress
+	28, // 4: cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 5: cloudstack.management.address.v1.RemoveQuarantinedIpResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 6: cloudstack.management.address.v1.UpdateQuarantinedIpResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 7: cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 8: cloudstack.management.address.v1.UpdateIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
+	25, // 9: cloudstack.management.address.v1.ListQuarantinedIpsResponse.items:type_name -> cloudstack.management.address.v1.IpQuarantine
+	28, // 10: cloudstack.management.address.v1.ReserveIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 11: cloudstack.management.address.v1.DisassociateIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
+	28, // 12: cloudstack.management.address.v1.ReleaseIPAddrResponse.result:type_name -> cloudstack.management.address.v1.Result
+	30, // 13: cloudstack.management.address.v1.Item.details:type_name -> cloudstack.management.address.v1.Item.DetailsEntry
+	0,  // 14: cloudstack.management.address.v1.AddressService.AssociateIPAddrCmdByAdmin:input_type -> cloudstack.management.address.v1.AssociateIPAddrCmdByAdminRequest
+	2,  // 15: cloudstack.management.address.v1.AddressService.AssociateIPAddr:input_type -> cloudstack.management.address.v1.AssociateIPAddrRequest
+	4,  // 16: cloudstack.management.address.v1.AddressService.ListPublicIpAddresses:input_type -> cloudstack.management.address.v1.ListPublicIpAddressesRequest
+	6,  // 17: cloudstack.management.address.v1.AddressService.AcquirePodIpCmdByAdmin:input_type -> cloudstack.management.address.v1.AcquirePodIpCmdByAdminRequest
+	8,  // 18: cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp:input_type -> cloudstack.management.address.v1.RemoveQuarantinedIpRequest
+	10, // 19: cloudstack.management.address.v1.AddressService.UpdateQuarantinedIp:input_type -> cloudstack.management.address.v1.UpdateQuarantinedIpRequest
+	12, // 20: cloudstack.management.address.v1.AddressService.ReleasePodIpCmdByAdmin:input_type -> cloudstack.management.address.v1.ReleasePodIpCmdByAdminRequest
+	14, // 21: cloudstack.management.address.v1.AddressService.UpdateIPAddr:input_type -> cloudstack.management.address.v1.UpdateIPAddrRequest
+	16, // 22: cloudstack.management.address.v1.AddressService.ListQuarantinedIps:input_type -> cloudstack.management.address.v1.ListQuarantinedIpsRequest
+	18, // 23: cloudstack.management.address.v1.AddressService.ReserveIPAddr:input_type -> cloudstack.management.address.v1.ReserveIPAddrRequest
+	20, // 24: cloudstack.management.address.v1.AddressService.DisassociateIPAddr:input_type -> cloudstack.management.address.v1.DisassociateIPAddrRequest
+	22, // 25: cloudstack.management.address.v1.AddressService.ReleaseIPAddr:input_type -> cloudstack.management.address.v1.ReleaseIPAddrRequest
+	1,  // 26: cloudstack.management.address.v1.AddressService.AssociateIPAddrCmdByAdmin:output_type -> cloudstack.management.address.v1.AssociateIPAddrCmdByAdminResponse
+	3,  // 27: cloudstack.management.address.v1.AddressService.AssociateIPAddr:output_type -> cloudstack.management.address.v1.AssociateIPAddrResponse
+	5,  // 28: cloudstack.management.address.v1.AddressService.ListPublicIpAddresses:output_type -> cloudstack.management.address.v1.ListPublicIpAddressesResponse
+	7,  // 29: cloudstack.management.address.v1.AddressService.AcquirePodIpCmdByAdmin:output_type -> cloudstack.management.address.v1.AcquirePodIpCmdByAdminResponse
+	9,  // 30: cloudstack.management.address.v1.AddressService.RemoveQuarantinedIp:output_type -> cloudstack.management.address.v1.RemoveQuarantinedIpResponse
+	11, // 31: cloudstack.management.address.v1.AddressService.UpdateQuarantinedIp:output_type -> cloudstack.management.address.v1.UpdateQuarantinedIpResponse
+	13, // 32: cloudstack.management.address.v1.AddressService.ReleasePodIpCmdByAdmin:output_type -> cloudstack.management.address.v1.ReleasePodIpCmdByAdminResponse
+	15, // 33: cloudstack.management.address.v1.AddressService.UpdateIPAddr:output_type -> cloudstack.management.address.v1.UpdateIPAddrResponse
+	17, // 34: cloudstack.management.address.v1.AddressService.ListQuarantinedIps:output_type -> cloudstack.management.address.v1.ListQuarantinedIpsResponse
+	19, // 35: cloudstack.management.address.v1.AddressService.ReserveIPAddr:output_type -> cloudstack.management.address.v1.ReserveIPAddrResponse
+	21, // 36: cloudstack.management.address.v1.AddressService.DisassociateIPAddr:output_type -> cloudstack.management.address.v1.DisassociateIPAddrResponse
+	23, // 37: cloudstack.management.address.v1.AddressService.ReleaseIPAddr:output_type -> cloudstack.management.address.v1.ReleaseIPAddrResponse
+	26, // [26:38] is the sub-list for method output_type
+	14, // [14:26] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_address_v1_address_gen_proto_init() }
@@ -2395,7 +2619,7 @@ func file_cloudstack_management_address_v1_address_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_address_v1_address_gen_proto_rawDesc), len(file_cloudstack_management_address_v1_address_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

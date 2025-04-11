@@ -36,27 +36,27 @@ const (
 	// ProjectServiceListProjectsProcedure is the fully-qualified name of the ProjectService's
 	// ListProjects RPC.
 	ProjectServiceListProjectsProcedure = "/cloudstack.management.project.v1.ProjectService/ListProjects"
-	// ProjectServiceDeleteProjectProcedure is the fully-qualified name of the ProjectService's
-	// DeleteProject RPC.
-	ProjectServiceDeleteProjectProcedure = "/cloudstack.management.project.v1.ProjectService/DeleteProject"
-	// ProjectServiceListProjectInvitationsProcedure is the fully-qualified name of the ProjectService's
-	// ListProjectInvitations RPC.
-	ProjectServiceListProjectInvitationsProcedure = "/cloudstack.management.project.v1.ProjectService/ListProjectInvitations"
-	// ProjectServiceCreateProjectProcedure is the fully-qualified name of the ProjectService's
-	// CreateProject RPC.
-	ProjectServiceCreateProjectProcedure = "/cloudstack.management.project.v1.ProjectService/CreateProject"
-	// ProjectServiceUpdateProjectInvitationProcedure is the fully-qualified name of the
-	// ProjectService's UpdateProjectInvitation RPC.
-	ProjectServiceUpdateProjectInvitationProcedure = "/cloudstack.management.project.v1.ProjectService/UpdateProjectInvitation"
 	// ProjectServiceDeleteProjectInvitationProcedure is the fully-qualified name of the
 	// ProjectService's DeleteProjectInvitation RPC.
 	ProjectServiceDeleteProjectInvitationProcedure = "/cloudstack.management.project.v1.ProjectService/DeleteProjectInvitation"
-	// ProjectServiceSuspendProjectProcedure is the fully-qualified name of the ProjectService's
-	// SuspendProject RPC.
-	ProjectServiceSuspendProjectProcedure = "/cloudstack.management.project.v1.ProjectService/SuspendProject"
+	// ProjectServiceListProjectInvitationsProcedure is the fully-qualified name of the ProjectService's
+	// ListProjectInvitations RPC.
+	ProjectServiceListProjectInvitationsProcedure = "/cloudstack.management.project.v1.ProjectService/ListProjectInvitations"
+	// ProjectServiceDeleteProjectProcedure is the fully-qualified name of the ProjectService's
+	// DeleteProject RPC.
+	ProjectServiceDeleteProjectProcedure = "/cloudstack.management.project.v1.ProjectService/DeleteProject"
+	// ProjectServiceUpdateProjectInvitationProcedure is the fully-qualified name of the
+	// ProjectService's UpdateProjectInvitation RPC.
+	ProjectServiceUpdateProjectInvitationProcedure = "/cloudstack.management.project.v1.ProjectService/UpdateProjectInvitation"
 	// ProjectServiceActivateProjectProcedure is the fully-qualified name of the ProjectService's
 	// ActivateProject RPC.
 	ProjectServiceActivateProjectProcedure = "/cloudstack.management.project.v1.ProjectService/ActivateProject"
+	// ProjectServiceSuspendProjectProcedure is the fully-qualified name of the ProjectService's
+	// SuspendProject RPC.
+	ProjectServiceSuspendProjectProcedure = "/cloudstack.management.project.v1.ProjectService/SuspendProject"
+	// ProjectServiceCreateProjectProcedure is the fully-qualified name of the ProjectService's
+	// CreateProject RPC.
+	ProjectServiceCreateProjectProcedure = "/cloudstack.management.project.v1.ProjectService/CreateProject"
 	// ProjectServiceUpdateProjectProcedure is the fully-qualified name of the ProjectService's
 	// UpdateProject RPC.
 	ProjectServiceUpdateProjectProcedure = "/cloudstack.management.project.v1.ProjectService/UpdateProject"
@@ -66,20 +66,20 @@ const (
 type ProjectServiceClient interface {
 	// ListProjects Lists projects and provides detailed information for listed projects
 	ListProjects(context.Context, *connect.Request[v1.ListProjectsRequest]) (*connect.Response[v1.ListProjectsResponse], error)
-	// DeleteProject Deletes a project
-	DeleteProject(context.Context, *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error)
-	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
-	ListProjectInvitations(context.Context, *connect.Request[v1.ListProjectInvitationsRequest]) (*connect.Response[v1.ListProjectInvitationsResponse], error)
-	// CreateProject Creates a project
-	CreateProject(context.Context, *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error)
-	// UpdateProjectInvitation Accepts or declines project invitation
-	UpdateProjectInvitation(context.Context, *connect.Request[v1.UpdateProjectInvitationRequest]) (*connect.Response[v1.UpdateProjectInvitationResponse], error)
 	// DeleteProjectInvitation Deletes project invitation
 	DeleteProjectInvitation(context.Context, *connect.Request[v1.DeleteProjectInvitationRequest]) (*connect.Response[v1.DeleteProjectInvitationResponse], error)
-	// SuspendProject Suspends a project
-	SuspendProject(context.Context, *connect.Request[v1.SuspendProjectRequest]) (*connect.Response[v1.SuspendProjectResponse], error)
+	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
+	ListProjectInvitations(context.Context, *connect.Request[v1.ListProjectInvitationsRequest]) (*connect.Response[v1.ListProjectInvitationsResponse], error)
+	// DeleteProject Deletes a project
+	DeleteProject(context.Context, *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error)
+	// UpdateProjectInvitation Accepts or declines project invitation
+	UpdateProjectInvitation(context.Context, *connect.Request[v1.UpdateProjectInvitationRequest]) (*connect.Response[v1.UpdateProjectInvitationResponse], error)
 	// ActivateProject Activates a project
 	ActivateProject(context.Context, *connect.Request[v1.ActivateProjectRequest]) (*connect.Response[v1.ActivateProjectResponse], error)
+	// SuspendProject Suspends a project
+	SuspendProject(context.Context, *connect.Request[v1.SuspendProjectRequest]) (*connect.Response[v1.SuspendProjectResponse], error)
+	// CreateProject Creates a project
+	CreateProject(context.Context, *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error)
 	// UpdateProject Updates a project
 	UpdateProject(context.Context, *connect.Request[v1.UpdateProjectRequest]) (*connect.Response[v1.UpdateProjectResponse], error)
 }
@@ -102,10 +102,10 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("ListProjects")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteProject: connect.NewClient[v1.DeleteProjectRequest, v1.DeleteProjectResponse](
+		deleteProjectInvitation: connect.NewClient[v1.DeleteProjectInvitationRequest, v1.DeleteProjectInvitationResponse](
 			httpClient,
-			baseURL+ProjectServiceDeleteProjectProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("DeleteProject")),
+			baseURL+ProjectServiceDeleteProjectInvitationProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("DeleteProjectInvitation")),
 			connect.WithClientOptions(opts...),
 		),
 		listProjectInvitations: connect.NewClient[v1.ListProjectInvitationsRequest, v1.ListProjectInvitationsResponse](
@@ -114,10 +114,10 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("ListProjectInvitations")),
 			connect.WithClientOptions(opts...),
 		),
-		createProject: connect.NewClient[v1.CreateProjectRequest, v1.CreateProjectResponse](
+		deleteProject: connect.NewClient[v1.DeleteProjectRequest, v1.DeleteProjectResponse](
 			httpClient,
-			baseURL+ProjectServiceCreateProjectProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("CreateProject")),
+			baseURL+ProjectServiceDeleteProjectProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("DeleteProject")),
 			connect.WithClientOptions(opts...),
 		),
 		updateProjectInvitation: connect.NewClient[v1.UpdateProjectInvitationRequest, v1.UpdateProjectInvitationResponse](
@@ -126,10 +126,10 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("UpdateProjectInvitation")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteProjectInvitation: connect.NewClient[v1.DeleteProjectInvitationRequest, v1.DeleteProjectInvitationResponse](
+		activateProject: connect.NewClient[v1.ActivateProjectRequest, v1.ActivateProjectResponse](
 			httpClient,
-			baseURL+ProjectServiceDeleteProjectInvitationProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("DeleteProjectInvitation")),
+			baseURL+ProjectServiceActivateProjectProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("ActivateProject")),
 			connect.WithClientOptions(opts...),
 		),
 		suspendProject: connect.NewClient[v1.SuspendProjectRequest, v1.SuspendProjectResponse](
@@ -138,10 +138,10 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("SuspendProject")),
 			connect.WithClientOptions(opts...),
 		),
-		activateProject: connect.NewClient[v1.ActivateProjectRequest, v1.ActivateProjectResponse](
+		createProject: connect.NewClient[v1.CreateProjectRequest, v1.CreateProjectResponse](
 			httpClient,
-			baseURL+ProjectServiceActivateProjectProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("ActivateProject")),
+			baseURL+ProjectServiceCreateProjectProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("CreateProject")),
 			connect.WithClientOptions(opts...),
 		),
 		updateProject: connect.NewClient[v1.UpdateProjectRequest, v1.UpdateProjectResponse](
@@ -156,13 +156,13 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 // projectServiceClient implements ProjectServiceClient.
 type projectServiceClient struct {
 	listProjects            *connect.Client[v1.ListProjectsRequest, v1.ListProjectsResponse]
-	deleteProject           *connect.Client[v1.DeleteProjectRequest, v1.DeleteProjectResponse]
-	listProjectInvitations  *connect.Client[v1.ListProjectInvitationsRequest, v1.ListProjectInvitationsResponse]
-	createProject           *connect.Client[v1.CreateProjectRequest, v1.CreateProjectResponse]
-	updateProjectInvitation *connect.Client[v1.UpdateProjectInvitationRequest, v1.UpdateProjectInvitationResponse]
 	deleteProjectInvitation *connect.Client[v1.DeleteProjectInvitationRequest, v1.DeleteProjectInvitationResponse]
-	suspendProject          *connect.Client[v1.SuspendProjectRequest, v1.SuspendProjectResponse]
+	listProjectInvitations  *connect.Client[v1.ListProjectInvitationsRequest, v1.ListProjectInvitationsResponse]
+	deleteProject           *connect.Client[v1.DeleteProjectRequest, v1.DeleteProjectResponse]
+	updateProjectInvitation *connect.Client[v1.UpdateProjectInvitationRequest, v1.UpdateProjectInvitationResponse]
 	activateProject         *connect.Client[v1.ActivateProjectRequest, v1.ActivateProjectResponse]
+	suspendProject          *connect.Client[v1.SuspendProjectRequest, v1.SuspendProjectResponse]
+	createProject           *connect.Client[v1.CreateProjectRequest, v1.CreateProjectResponse]
 	updateProject           *connect.Client[v1.UpdateProjectRequest, v1.UpdateProjectResponse]
 }
 
@@ -171,9 +171,10 @@ func (c *projectServiceClient) ListProjects(ctx context.Context, req *connect.Re
 	return c.listProjects.CallUnary(ctx, req)
 }
 
-// DeleteProject calls cloudstack.management.project.v1.ProjectService.DeleteProject.
-func (c *projectServiceClient) DeleteProject(ctx context.Context, req *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error) {
-	return c.deleteProject.CallUnary(ctx, req)
+// DeleteProjectInvitation calls
+// cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation.
+func (c *projectServiceClient) DeleteProjectInvitation(ctx context.Context, req *connect.Request[v1.DeleteProjectInvitationRequest]) (*connect.Response[v1.DeleteProjectInvitationResponse], error) {
+	return c.deleteProjectInvitation.CallUnary(ctx, req)
 }
 
 // ListProjectInvitations calls
@@ -182,9 +183,9 @@ func (c *projectServiceClient) ListProjectInvitations(ctx context.Context, req *
 	return c.listProjectInvitations.CallUnary(ctx, req)
 }
 
-// CreateProject calls cloudstack.management.project.v1.ProjectService.CreateProject.
-func (c *projectServiceClient) CreateProject(ctx context.Context, req *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error) {
-	return c.createProject.CallUnary(ctx, req)
+// DeleteProject calls cloudstack.management.project.v1.ProjectService.DeleteProject.
+func (c *projectServiceClient) DeleteProject(ctx context.Context, req *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error) {
+	return c.deleteProject.CallUnary(ctx, req)
 }
 
 // UpdateProjectInvitation calls
@@ -193,10 +194,9 @@ func (c *projectServiceClient) UpdateProjectInvitation(ctx context.Context, req 
 	return c.updateProjectInvitation.CallUnary(ctx, req)
 }
 
-// DeleteProjectInvitation calls
-// cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation.
-func (c *projectServiceClient) DeleteProjectInvitation(ctx context.Context, req *connect.Request[v1.DeleteProjectInvitationRequest]) (*connect.Response[v1.DeleteProjectInvitationResponse], error) {
-	return c.deleteProjectInvitation.CallUnary(ctx, req)
+// ActivateProject calls cloudstack.management.project.v1.ProjectService.ActivateProject.
+func (c *projectServiceClient) ActivateProject(ctx context.Context, req *connect.Request[v1.ActivateProjectRequest]) (*connect.Response[v1.ActivateProjectResponse], error) {
+	return c.activateProject.CallUnary(ctx, req)
 }
 
 // SuspendProject calls cloudstack.management.project.v1.ProjectService.SuspendProject.
@@ -204,9 +204,9 @@ func (c *projectServiceClient) SuspendProject(ctx context.Context, req *connect.
 	return c.suspendProject.CallUnary(ctx, req)
 }
 
-// ActivateProject calls cloudstack.management.project.v1.ProjectService.ActivateProject.
-func (c *projectServiceClient) ActivateProject(ctx context.Context, req *connect.Request[v1.ActivateProjectRequest]) (*connect.Response[v1.ActivateProjectResponse], error) {
-	return c.activateProject.CallUnary(ctx, req)
+// CreateProject calls cloudstack.management.project.v1.ProjectService.CreateProject.
+func (c *projectServiceClient) CreateProject(ctx context.Context, req *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error) {
+	return c.createProject.CallUnary(ctx, req)
 }
 
 // UpdateProject calls cloudstack.management.project.v1.ProjectService.UpdateProject.
@@ -219,20 +219,20 @@ func (c *projectServiceClient) UpdateProject(ctx context.Context, req *connect.R
 type ProjectServiceHandler interface {
 	// ListProjects Lists projects and provides detailed information for listed projects
 	ListProjects(context.Context, *connect.Request[v1.ListProjectsRequest]) (*connect.Response[v1.ListProjectsResponse], error)
-	// DeleteProject Deletes a project
-	DeleteProject(context.Context, *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error)
-	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
-	ListProjectInvitations(context.Context, *connect.Request[v1.ListProjectInvitationsRequest]) (*connect.Response[v1.ListProjectInvitationsResponse], error)
-	// CreateProject Creates a project
-	CreateProject(context.Context, *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error)
-	// UpdateProjectInvitation Accepts or declines project invitation
-	UpdateProjectInvitation(context.Context, *connect.Request[v1.UpdateProjectInvitationRequest]) (*connect.Response[v1.UpdateProjectInvitationResponse], error)
 	// DeleteProjectInvitation Deletes project invitation
 	DeleteProjectInvitation(context.Context, *connect.Request[v1.DeleteProjectInvitationRequest]) (*connect.Response[v1.DeleteProjectInvitationResponse], error)
-	// SuspendProject Suspends a project
-	SuspendProject(context.Context, *connect.Request[v1.SuspendProjectRequest]) (*connect.Response[v1.SuspendProjectResponse], error)
+	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
+	ListProjectInvitations(context.Context, *connect.Request[v1.ListProjectInvitationsRequest]) (*connect.Response[v1.ListProjectInvitationsResponse], error)
+	// DeleteProject Deletes a project
+	DeleteProject(context.Context, *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error)
+	// UpdateProjectInvitation Accepts or declines project invitation
+	UpdateProjectInvitation(context.Context, *connect.Request[v1.UpdateProjectInvitationRequest]) (*connect.Response[v1.UpdateProjectInvitationResponse], error)
 	// ActivateProject Activates a project
 	ActivateProject(context.Context, *connect.Request[v1.ActivateProjectRequest]) (*connect.Response[v1.ActivateProjectResponse], error)
+	// SuspendProject Suspends a project
+	SuspendProject(context.Context, *connect.Request[v1.SuspendProjectRequest]) (*connect.Response[v1.SuspendProjectResponse], error)
+	// CreateProject Creates a project
+	CreateProject(context.Context, *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error)
 	// UpdateProject Updates a project
 	UpdateProject(context.Context, *connect.Request[v1.UpdateProjectRequest]) (*connect.Response[v1.UpdateProjectResponse], error)
 }
@@ -250,10 +250,10 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("ListProjects")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceDeleteProjectHandler := connect.NewUnaryHandler(
-		ProjectServiceDeleteProjectProcedure,
-		svc.DeleteProject,
-		connect.WithSchema(projectServiceMethods.ByName("DeleteProject")),
+	projectServiceDeleteProjectInvitationHandler := connect.NewUnaryHandler(
+		ProjectServiceDeleteProjectInvitationProcedure,
+		svc.DeleteProjectInvitation,
+		connect.WithSchema(projectServiceMethods.ByName("DeleteProjectInvitation")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceListProjectInvitationsHandler := connect.NewUnaryHandler(
@@ -262,10 +262,10 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("ListProjectInvitations")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceCreateProjectHandler := connect.NewUnaryHandler(
-		ProjectServiceCreateProjectProcedure,
-		svc.CreateProject,
-		connect.WithSchema(projectServiceMethods.ByName("CreateProject")),
+	projectServiceDeleteProjectHandler := connect.NewUnaryHandler(
+		ProjectServiceDeleteProjectProcedure,
+		svc.DeleteProject,
+		connect.WithSchema(projectServiceMethods.ByName("DeleteProject")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceUpdateProjectInvitationHandler := connect.NewUnaryHandler(
@@ -274,10 +274,10 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("UpdateProjectInvitation")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceDeleteProjectInvitationHandler := connect.NewUnaryHandler(
-		ProjectServiceDeleteProjectInvitationProcedure,
-		svc.DeleteProjectInvitation,
-		connect.WithSchema(projectServiceMethods.ByName("DeleteProjectInvitation")),
+	projectServiceActivateProjectHandler := connect.NewUnaryHandler(
+		ProjectServiceActivateProjectProcedure,
+		svc.ActivateProject,
+		connect.WithSchema(projectServiceMethods.ByName("ActivateProject")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceSuspendProjectHandler := connect.NewUnaryHandler(
@@ -286,10 +286,10 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("SuspendProject")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceActivateProjectHandler := connect.NewUnaryHandler(
-		ProjectServiceActivateProjectProcedure,
-		svc.ActivateProject,
-		connect.WithSchema(projectServiceMethods.ByName("ActivateProject")),
+	projectServiceCreateProjectHandler := connect.NewUnaryHandler(
+		ProjectServiceCreateProjectProcedure,
+		svc.CreateProject,
+		connect.WithSchema(projectServiceMethods.ByName("CreateProject")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceUpdateProjectHandler := connect.NewUnaryHandler(
@@ -302,20 +302,20 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		switch r.URL.Path {
 		case ProjectServiceListProjectsProcedure:
 			projectServiceListProjectsHandler.ServeHTTP(w, r)
-		case ProjectServiceDeleteProjectProcedure:
-			projectServiceDeleteProjectHandler.ServeHTTP(w, r)
-		case ProjectServiceListProjectInvitationsProcedure:
-			projectServiceListProjectInvitationsHandler.ServeHTTP(w, r)
-		case ProjectServiceCreateProjectProcedure:
-			projectServiceCreateProjectHandler.ServeHTTP(w, r)
-		case ProjectServiceUpdateProjectInvitationProcedure:
-			projectServiceUpdateProjectInvitationHandler.ServeHTTP(w, r)
 		case ProjectServiceDeleteProjectInvitationProcedure:
 			projectServiceDeleteProjectInvitationHandler.ServeHTTP(w, r)
-		case ProjectServiceSuspendProjectProcedure:
-			projectServiceSuspendProjectHandler.ServeHTTP(w, r)
+		case ProjectServiceListProjectInvitationsProcedure:
+			projectServiceListProjectInvitationsHandler.ServeHTTP(w, r)
+		case ProjectServiceDeleteProjectProcedure:
+			projectServiceDeleteProjectHandler.ServeHTTP(w, r)
+		case ProjectServiceUpdateProjectInvitationProcedure:
+			projectServiceUpdateProjectInvitationHandler.ServeHTTP(w, r)
 		case ProjectServiceActivateProjectProcedure:
 			projectServiceActivateProjectHandler.ServeHTTP(w, r)
+		case ProjectServiceSuspendProjectProcedure:
+			projectServiceSuspendProjectHandler.ServeHTTP(w, r)
+		case ProjectServiceCreateProjectProcedure:
+			projectServiceCreateProjectHandler.ServeHTTP(w, r)
 		case ProjectServiceUpdateProjectProcedure:
 			projectServiceUpdateProjectHandler.ServeHTTP(w, r)
 		default:
@@ -331,32 +331,32 @@ func (UnimplementedProjectServiceHandler) ListProjects(context.Context, *connect
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.ListProjects is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) DeleteProject(context.Context, *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.DeleteProject is not implemented"))
+func (UnimplementedProjectServiceHandler) DeleteProjectInvitation(context.Context, *connect.Request[v1.DeleteProjectInvitationRequest]) (*connect.Response[v1.DeleteProjectInvitationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) ListProjectInvitations(context.Context, *connect.Request[v1.ListProjectInvitationsRequest]) (*connect.Response[v1.ListProjectInvitationsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.ListProjectInvitations is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) CreateProject(context.Context, *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.CreateProject is not implemented"))
+func (UnimplementedProjectServiceHandler) DeleteProject(context.Context, *connect.Request[v1.DeleteProjectRequest]) (*connect.Response[v1.DeleteProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.DeleteProject is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) UpdateProjectInvitation(context.Context, *connect.Request[v1.UpdateProjectInvitationRequest]) (*connect.Response[v1.UpdateProjectInvitationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.UpdateProjectInvitation is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) DeleteProjectInvitation(context.Context, *connect.Request[v1.DeleteProjectInvitationRequest]) (*connect.Response[v1.DeleteProjectInvitationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation is not implemented"))
+func (UnimplementedProjectServiceHandler) ActivateProject(context.Context, *connect.Request[v1.ActivateProjectRequest]) (*connect.Response[v1.ActivateProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.ActivateProject is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) SuspendProject(context.Context, *connect.Request[v1.SuspendProjectRequest]) (*connect.Response[v1.SuspendProjectResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.SuspendProject is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) ActivateProject(context.Context, *connect.Request[v1.ActivateProjectRequest]) (*connect.Response[v1.ActivateProjectResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.ActivateProject is not implemented"))
+func (UnimplementedProjectServiceHandler) CreateProject(context.Context, *connect.Request[v1.CreateProjectRequest]) (*connect.Response[v1.CreateProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.project.v1.ProjectService.CreateProject is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) UpdateProject(context.Context, *connect.Request[v1.UpdateProjectRequest]) (*connect.Response[v1.UpdateProjectResponse], error) {

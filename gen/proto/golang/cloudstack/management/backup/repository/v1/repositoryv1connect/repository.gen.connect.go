@@ -36,12 +36,12 @@ const (
 	// RepositoryServiceListBackupRepositoriesProcedure is the fully-qualified name of the
 	// RepositoryService's ListBackupRepositories RPC.
 	RepositoryServiceListBackupRepositoriesProcedure = "/cloudstack.management.backup.repository.v1.RepositoryService/ListBackupRepositories"
-	// RepositoryServiceDeleteBackupRepositoryProcedure is the fully-qualified name of the
-	// RepositoryService's DeleteBackupRepository RPC.
-	RepositoryServiceDeleteBackupRepositoryProcedure = "/cloudstack.management.backup.repository.v1.RepositoryService/DeleteBackupRepository"
 	// RepositoryServiceAddBackupRepositoryProcedure is the fully-qualified name of the
 	// RepositoryService's AddBackupRepository RPC.
 	RepositoryServiceAddBackupRepositoryProcedure = "/cloudstack.management.backup.repository.v1.RepositoryService/AddBackupRepository"
+	// RepositoryServiceDeleteBackupRepositoryProcedure is the fully-qualified name of the
+	// RepositoryService's DeleteBackupRepository RPC.
+	RepositoryServiceDeleteBackupRepositoryProcedure = "/cloudstack.management.backup.repository.v1.RepositoryService/DeleteBackupRepository"
 )
 
 // RepositoryServiceClient is a client for the
@@ -49,10 +49,10 @@ const (
 type RepositoryServiceClient interface {
 	// ListBackupRepositories Lists all backup repositories
 	ListBackupRepositories(context.Context, *connect.Request[v1.ListBackupRepositoriesRequest]) (*connect.Response[v1.ListBackupRepositoriesResponse], error)
-	// DeleteBackupRepository delete a backup repository
-	DeleteBackupRepository(context.Context, *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error)
 	// AddBackupRepository Adds a backup repository to store NAS backups
 	AddBackupRepository(context.Context, *connect.Request[v1.AddBackupRepositoryRequest]) (*connect.Response[v1.AddBackupRepositoryResponse], error)
+	// DeleteBackupRepository delete a backup repository
+	DeleteBackupRepository(context.Context, *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error)
 }
 
 // NewRepositoryServiceClient constructs a client for the
@@ -73,16 +73,16 @@ func NewRepositoryServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(repositoryServiceMethods.ByName("ListBackupRepositories")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteBackupRepository: connect.NewClient[v1.DeleteBackupRepositoryRequest, v1.DeleteBackupRepositoryResponse](
-			httpClient,
-			baseURL+RepositoryServiceDeleteBackupRepositoryProcedure,
-			connect.WithSchema(repositoryServiceMethods.ByName("DeleteBackupRepository")),
-			connect.WithClientOptions(opts...),
-		),
 		addBackupRepository: connect.NewClient[v1.AddBackupRepositoryRequest, v1.AddBackupRepositoryResponse](
 			httpClient,
 			baseURL+RepositoryServiceAddBackupRepositoryProcedure,
 			connect.WithSchema(repositoryServiceMethods.ByName("AddBackupRepository")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteBackupRepository: connect.NewClient[v1.DeleteBackupRepositoryRequest, v1.DeleteBackupRepositoryResponse](
+			httpClient,
+			baseURL+RepositoryServiceDeleteBackupRepositoryProcedure,
+			connect.WithSchema(repositoryServiceMethods.ByName("DeleteBackupRepository")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -91,8 +91,8 @@ func NewRepositoryServiceClient(httpClient connect.HTTPClient, baseURL string, o
 // repositoryServiceClient implements RepositoryServiceClient.
 type repositoryServiceClient struct {
 	listBackupRepositories *connect.Client[v1.ListBackupRepositoriesRequest, v1.ListBackupRepositoriesResponse]
-	deleteBackupRepository *connect.Client[v1.DeleteBackupRepositoryRequest, v1.DeleteBackupRepositoryResponse]
 	addBackupRepository    *connect.Client[v1.AddBackupRepositoryRequest, v1.AddBackupRepositoryResponse]
+	deleteBackupRepository *connect.Client[v1.DeleteBackupRepositoryRequest, v1.DeleteBackupRepositoryResponse]
 }
 
 // ListBackupRepositories calls
@@ -101,16 +101,16 @@ func (c *repositoryServiceClient) ListBackupRepositories(ctx context.Context, re
 	return c.listBackupRepositories.CallUnary(ctx, req)
 }
 
-// DeleteBackupRepository calls
-// cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository.
-func (c *repositoryServiceClient) DeleteBackupRepository(ctx context.Context, req *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error) {
-	return c.deleteBackupRepository.CallUnary(ctx, req)
-}
-
 // AddBackupRepository calls
 // cloudstack.management.backup.repository.v1.RepositoryService.AddBackupRepository.
 func (c *repositoryServiceClient) AddBackupRepository(ctx context.Context, req *connect.Request[v1.AddBackupRepositoryRequest]) (*connect.Response[v1.AddBackupRepositoryResponse], error) {
 	return c.addBackupRepository.CallUnary(ctx, req)
+}
+
+// DeleteBackupRepository calls
+// cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository.
+func (c *repositoryServiceClient) DeleteBackupRepository(ctx context.Context, req *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error) {
+	return c.deleteBackupRepository.CallUnary(ctx, req)
 }
 
 // RepositoryServiceHandler is an implementation of the
@@ -118,10 +118,10 @@ func (c *repositoryServiceClient) AddBackupRepository(ctx context.Context, req *
 type RepositoryServiceHandler interface {
 	// ListBackupRepositories Lists all backup repositories
 	ListBackupRepositories(context.Context, *connect.Request[v1.ListBackupRepositoriesRequest]) (*connect.Response[v1.ListBackupRepositoriesResponse], error)
-	// DeleteBackupRepository delete a backup repository
-	DeleteBackupRepository(context.Context, *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error)
 	// AddBackupRepository Adds a backup repository to store NAS backups
 	AddBackupRepository(context.Context, *connect.Request[v1.AddBackupRepositoryRequest]) (*connect.Response[v1.AddBackupRepositoryResponse], error)
+	// DeleteBackupRepository delete a backup repository
+	DeleteBackupRepository(context.Context, *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error)
 }
 
 // NewRepositoryServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -137,26 +137,26 @@ func NewRepositoryServiceHandler(svc RepositoryServiceHandler, opts ...connect.H
 		connect.WithSchema(repositoryServiceMethods.ByName("ListBackupRepositories")),
 		connect.WithHandlerOptions(opts...),
 	)
-	repositoryServiceDeleteBackupRepositoryHandler := connect.NewUnaryHandler(
-		RepositoryServiceDeleteBackupRepositoryProcedure,
-		svc.DeleteBackupRepository,
-		connect.WithSchema(repositoryServiceMethods.ByName("DeleteBackupRepository")),
-		connect.WithHandlerOptions(opts...),
-	)
 	repositoryServiceAddBackupRepositoryHandler := connect.NewUnaryHandler(
 		RepositoryServiceAddBackupRepositoryProcedure,
 		svc.AddBackupRepository,
 		connect.WithSchema(repositoryServiceMethods.ByName("AddBackupRepository")),
 		connect.WithHandlerOptions(opts...),
 	)
+	repositoryServiceDeleteBackupRepositoryHandler := connect.NewUnaryHandler(
+		RepositoryServiceDeleteBackupRepositoryProcedure,
+		svc.DeleteBackupRepository,
+		connect.WithSchema(repositoryServiceMethods.ByName("DeleteBackupRepository")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.backup.repository.v1.RepositoryService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case RepositoryServiceListBackupRepositoriesProcedure:
 			repositoryServiceListBackupRepositoriesHandler.ServeHTTP(w, r)
-		case RepositoryServiceDeleteBackupRepositoryProcedure:
-			repositoryServiceDeleteBackupRepositoryHandler.ServeHTTP(w, r)
 		case RepositoryServiceAddBackupRepositoryProcedure:
 			repositoryServiceAddBackupRepositoryHandler.ServeHTTP(w, r)
+		case RepositoryServiceDeleteBackupRepositoryProcedure:
+			repositoryServiceDeleteBackupRepositoryHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -170,10 +170,10 @@ func (UnimplementedRepositoryServiceHandler) ListBackupRepositories(context.Cont
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.repository.v1.RepositoryService.ListBackupRepositories is not implemented"))
 }
 
-func (UnimplementedRepositoryServiceHandler) DeleteBackupRepository(context.Context, *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository is not implemented"))
-}
-
 func (UnimplementedRepositoryServiceHandler) AddBackupRepository(context.Context, *connect.Request[v1.AddBackupRepositoryRequest]) (*connect.Response[v1.AddBackupRepositoryResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.repository.v1.RepositoryService.AddBackupRepository is not implemented"))
+}
+
+func (UnimplementedRepositoryServiceHandler) DeleteBackupRepository(context.Context, *connect.Request[v1.DeleteBackupRepositoryRequest]) (*connect.Response[v1.DeleteBackupRepositoryResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository is not implemented"))
 }

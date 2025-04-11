@@ -24,353 +24,69 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// CreateAutoScalePolicyRequest represents the parameters for creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
-type CreateAutoScalePolicyRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the autoscale policy
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// the action to be executed if all the conditions evaluate to true for the specified duration.
-	Action *string `protobuf:"bytes,2,opt,name=action" json:"action,omitempty"`
-	// the duration in which the conditions have to be true before action is taken
-	Duration *int32 `protobuf:"varint,3,opt,name=duration" json:"duration,omitempty"`
-	// the cool down period in which the policy should not be evaluated after the action has been taken
-	QuietTime *int32 `protobuf:"varint,4,opt,name=quiet_time,json=quietTime" json:"quiet_time,omitempty"`
-	// the list of IDs of the conditions that are being evaluated on every interval
-	ConditionIds []string `protobuf:"bytes,5,rep,name=condition_ids,json=conditionIds" json:"condition_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
+// RelationalOperatorType represents the possible values for Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
+type RelationalOperatorType int32
 
-func (x *CreateAutoScalePolicyRequest) Reset() {
-	*x = CreateAutoScalePolicyRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
+const (
+	// Default unspecified value
+	RelationalOperatorType_RELATIONAL_OPERATOR_TYPE_UNSPECIFIED RelationalOperatorType = 0
+	// EQ value
+	RelationalOperatorType_RELATIONAL_OPERATOR_TYPE_EQ RelationalOperatorType = 1
+	// GT value
+	RelationalOperatorType_RELATIONAL_OPERATOR_TYPE_GT RelationalOperatorType = 2
+	// LT value
+	RelationalOperatorType_RELATIONAL_OPERATOR_TYPE_LT RelationalOperatorType = 3
+	// GE value
+	RelationalOperatorType_RELATIONAL_OPERATOR_TYPE_GE RelationalOperatorType = 4
+	// LE value
+	RelationalOperatorType_RELATIONAL_OPERATOR_TYPE_LE RelationalOperatorType = 5
+)
 
-func (x *CreateAutoScalePolicyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateAutoScalePolicyRequest) ProtoMessage() {}
-
-func (x *CreateAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+// Enum value maps for RelationalOperatorType.
+var (
+	RelationalOperatorType_name = map[int32]string{
+		0: "RELATIONAL_OPERATOR_TYPE_UNSPECIFIED",
+		1: "RELATIONAL_OPERATOR_TYPE_EQ",
+		2: "RELATIONAL_OPERATOR_TYPE_GT",
+		3: "RELATIONAL_OPERATOR_TYPE_LT",
+		4: "RELATIONAL_OPERATOR_TYPE_GE",
+		5: "RELATIONAL_OPERATOR_TYPE_LE",
 	}
-	return mi.MessageOf(x)
+	RelationalOperatorType_value = map[string]int32{
+		"RELATIONAL_OPERATOR_TYPE_UNSPECIFIED": 0,
+		"RELATIONAL_OPERATOR_TYPE_EQ":          1,
+		"RELATIONAL_OPERATOR_TYPE_GT":          2,
+		"RELATIONAL_OPERATOR_TYPE_LT":          3,
+		"RELATIONAL_OPERATOR_TYPE_GE":          4,
+		"RELATIONAL_OPERATOR_TYPE_LE":          5,
+	}
+)
+
+func (x RelationalOperatorType) Enum() *RelationalOperatorType {
+	p := new(RelationalOperatorType)
+	*p = x
+	return p
 }
 
-// Deprecated: Use CreateAutoScalePolicyRequest.ProtoReflect.Descriptor instead.
-func (*CreateAutoScalePolicyRequest) Descriptor() ([]byte, []int) {
+func (x RelationalOperatorType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (RelationalOperatorType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (RelationalOperatorType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_enumTypes[0]
+}
+
+func (x RelationalOperatorType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use RelationalOperatorType.Descriptor instead.
+func (RelationalOperatorType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateAutoScalePolicyRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *CreateAutoScalePolicyRequest) GetAction() string {
-	if x != nil && x.Action != nil {
-		return *x.Action
-	}
-	return ""
-}
-
-func (x *CreateAutoScalePolicyRequest) GetDuration() int32 {
-	if x != nil && x.Duration != nil {
-		return *x.Duration
-	}
-	return 0
-}
-
-func (x *CreateAutoScalePolicyRequest) GetQuietTime() int32 {
-	if x != nil && x.QuietTime != nil {
-		return *x.QuietTime
-	}
-	return 0
-}
-
-func (x *CreateAutoScalePolicyRequest) GetConditionIds() []string {
-	if x != nil {
-		return x.ConditionIds
-	}
-	return nil
-}
-
-func (x *CreateAutoScalePolicyRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateAutoScalePolicyRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateAutoScalePolicyRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateAutoScalePolicyResponse represents the response from creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
-type CreateAutoScalePolicyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateAutoScalePolicyResponse) Reset() {
-	*x = CreateAutoScalePolicyResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateAutoScalePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateAutoScalePolicyResponse) ProtoMessage() {}
-
-func (x *CreateAutoScalePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateAutoScalePolicyResponse.ProtoReflect.Descriptor instead.
-func (*CreateAutoScalePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateAutoScalePolicyResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListConditionsRequest represents the parameters for list conditions for vm auto scaling
-type ListConditionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the Condition.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Counter-id of the condition.
-	CounterId *int64 `protobuf:"varint,2,opt,name=counter_id,json=counterId" json:"counter_id,omitempty"`
-	// the ID of the policy
-	PolicyId *int64 `protobuf:"varint,3,opt,name=policy_id,json=policyId" json:"policy_id,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,6,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,8,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,9,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListConditionsRequest) Reset() {
-	*x = ListConditionsRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListConditionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListConditionsRequest) ProtoMessage() {}
-
-func (x *ListConditionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListConditionsRequest.ProtoReflect.Descriptor instead.
-func (*ListConditionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListConditionsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetCounterId() int64 {
-	if x != nil && x.CounterId != nil {
-		return *x.CounterId
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetPolicyId() int64 {
-	if x != nil && x.PolicyId != nil {
-		return *x.PolicyId
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListConditionsRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListConditionsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListConditionsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListConditionsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListConditionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListConditionsResponse represents the response from list conditions for vm auto scaling
-type ListConditionsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Conditions
-	Items []*Condition `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Conditions
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListConditionsResponse) Reset() {
-	*x = ListConditionsResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListConditionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListConditionsResponse) ProtoMessage() {}
-
-func (x *ListConditionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListConditionsResponse.ProtoReflect.Descriptor instead.
-func (*ListConditionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListConditionsResponse) GetItems() []*Condition {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListConditionsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // CreateConditionRequest represents the parameters for creates a condition for vm auto scaling
@@ -397,7 +113,7 @@ type CreateConditionRequest struct {
 
 func (x *CreateConditionRequest) Reset() {
 	*x = CreateConditionRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -409,7 +125,7 @@ func (x *CreateConditionRequest) String() string {
 func (*CreateConditionRequest) ProtoMessage() {}
 
 func (x *CreateConditionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -422,7 +138,7 @@ func (x *CreateConditionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateConditionRequest.ProtoReflect.Descriptor instead.
 func (*CreateConditionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateConditionRequest) GetCounterId() int64 {
@@ -499,7 +215,7 @@ type CreateConditionResponse struct {
 
 func (x *CreateConditionResponse) Reset() {
 	*x = CreateConditionResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -511,7 +227,7 @@ func (x *CreateConditionResponse) String() string {
 func (*CreateConditionResponse) ProtoMessage() {}
 
 func (x *CreateConditionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -524,7 +240,7 @@ func (x *CreateConditionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateConditionResponse.ProtoReflect.Descriptor instead.
 func (*CreateConditionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateConditionResponse) GetResult() *Result {
@@ -534,10 +250,565 @@ func (x *CreateConditionResponse) GetResult() *Result {
 	return nil
 }
 
-// DeleteCounterRequest represents the parameters for deletes a counter for vm auto scaling
-type DeleteCounterRequest struct {
+// CreateAutoScaleVmGroupRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+type CreateAutoScaleVmGroupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the counter
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	// the name of the autoscale vmgroup
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
+	MinMembers *int32 `protobuf:"varint,3,opt,name=min_members,json=minMembers" json:"min_members,omitempty"`
+	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
+	MaxMembers *int32 `protobuf:"varint,4,opt,name=max_members,json=maxMembers" json:"max_members,omitempty"`
+	// the frequency in which the performance counters to be collected
+	Interval *int32 `protobuf:"varint,5,opt,name=interval" json:"interval,omitempty"`
+	// list of scaleup autoscale policies
+	ScaleUpPolicyIds []string `protobuf:"bytes,6,rep,name=scale_up_policy_ids,json=scaleUpPolicyIds" json:"scale_up_policy_ids,omitempty"`
+	// list of scaledown autoscale policies
+	ScaleDownPolicyIds []string `protobuf:"bytes,7,rep,name=scale_down_policy_ids,json=scaleDownPolicyIds" json:"scale_down_policy_ids,omitempty"`
+	// the autoscale profile that contains information about the vms in the vm group.
+	ProfileId *int64 `protobuf:"varint,8,opt,name=profile_id,json=profileId" json:"profile_id,omitempty"`
+	// an optional field, whether to the display the group to the end user or not
+	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAutoScaleVmGroupRequest) Reset() {
+	*x = CreateAutoScaleVmGroupRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAutoScaleVmGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAutoScaleVmGroupRequest) ProtoMessage() {}
+
+func (x *CreateAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
+func (*CreateAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetMinMembers() int32 {
+	if x != nil && x.MinMembers != nil {
+		return *x.MinMembers
+	}
+	return 0
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetMaxMembers() int32 {
+	if x != nil && x.MaxMembers != nil {
+		return *x.MaxMembers
+	}
+	return 0
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetInterval() int32 {
+	if x != nil && x.Interval != nil {
+		return *x.Interval
+	}
+	return 0
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetScaleUpPolicyIds() []string {
+	if x != nil {
+		return x.ScaleUpPolicyIds
+	}
+	return nil
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetScaleDownPolicyIds() []string {
+	if x != nil {
+		return x.ScaleDownPolicyIds
+	}
+	return nil
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetProfileId() int64 {
+	if x != nil && x.ProfileId != nil {
+		return *x.ProfileId
+	}
+	return 0
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateAutoScaleVmGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateAutoScaleVmGroupResponse represents the response from creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+type CreateAutoScaleVmGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAutoScaleVmGroupResponse) Reset() {
+	*x = CreateAutoScaleVmGroupResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAutoScaleVmGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAutoScaleVmGroupResponse) ProtoMessage() {}
+
+func (x *CreateAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
+func (*CreateAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreateAutoScaleVmGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListAutoScalePoliciesRequest represents the parameters for lists autoscale policies.
+type ListAutoScalePoliciesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the autoscale policy
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the name of the autoscale policy
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// the ID of the condition of the policy
+	ConditionId *int64 `protobuf:"varint,3,opt,name=condition_id,json=conditionId" json:"condition_id,omitempty"`
+	// the action to be executed if all the conditions evaluate to true for the specified duration.
+	Action *string `protobuf:"bytes,4,opt,name=action" json:"action,omitempty"`
+	// the ID of the autoscale vm group
+	VmGroupId *int64 `protobuf:"varint,5,opt,name=vm_group_id,json=vmGroupId" json:"vm_group_id,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAutoScalePoliciesRequest) Reset() {
+	*x = ListAutoScalePoliciesRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAutoScalePoliciesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAutoScalePoliciesRequest) ProtoMessage() {}
+
+func (x *ListAutoScalePoliciesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAutoScalePoliciesRequest.ProtoReflect.Descriptor instead.
+func (*ListAutoScalePoliciesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListAutoScalePoliciesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListAutoScalePoliciesRequest) GetConditionId() int64 {
+	if x != nil && x.ConditionId != nil {
+		return *x.ConditionId
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetAction() string {
+	if x != nil && x.Action != nil {
+		return *x.Action
+	}
+	return ""
+}
+
+func (x *ListAutoScalePoliciesRequest) GetVmGroupId() int64 {
+	if x != nil && x.VmGroupId != nil {
+		return *x.VmGroupId
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListAutoScalePoliciesRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListAutoScalePoliciesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListAutoScalePoliciesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListAutoScalePoliciesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListAutoScalePoliciesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListAutoScalePoliciesResponse represents the response from lists autoscale policies.
+type ListAutoScalePoliciesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of AutoScalePolicys
+	Items []*AutoScalePolicy `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of AutoScalePolicys
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAutoScalePoliciesResponse) Reset() {
+	*x = ListAutoScalePoliciesResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAutoScalePoliciesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAutoScalePoliciesResponse) ProtoMessage() {}
+
+func (x *ListAutoScalePoliciesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAutoScalePoliciesResponse.ProtoReflect.Descriptor instead.
+func (*ListAutoScalePoliciesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListAutoScalePoliciesResponse) GetItems() []*AutoScalePolicy {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListAutoScalePoliciesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// CreateAutoScalePolicyRequest represents the parameters for creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
+type CreateAutoScalePolicyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the autoscale policy
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// the action to be executed if all the conditions evaluate to true for the specified duration.
+	Action *string `protobuf:"bytes,2,opt,name=action" json:"action,omitempty"`
+	// the duration in which the conditions have to be true before action is taken
+	Duration *int32 `protobuf:"varint,3,opt,name=duration" json:"duration,omitempty"`
+	// the cool down period in which the policy should not be evaluated after the action has been taken
+	QuietTime *int32 `protobuf:"varint,4,opt,name=quiet_time,json=quietTime" json:"quiet_time,omitempty"`
+	// the list of IDs of the conditions that are being evaluated on every interval
+	ConditionIds []string `protobuf:"bytes,5,rep,name=condition_ids,json=conditionIds" json:"condition_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAutoScalePolicyRequest) Reset() {
+	*x = CreateAutoScalePolicyRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAutoScalePolicyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAutoScalePolicyRequest) ProtoMessage() {}
+
+func (x *CreateAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAutoScalePolicyRequest.ProtoReflect.Descriptor instead.
+func (*CreateAutoScalePolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreateAutoScalePolicyRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateAutoScalePolicyRequest) GetAction() string {
+	if x != nil && x.Action != nil {
+		return *x.Action
+	}
+	return ""
+}
+
+func (x *CreateAutoScalePolicyRequest) GetDuration() int32 {
+	if x != nil && x.Duration != nil {
+		return *x.Duration
+	}
+	return 0
+}
+
+func (x *CreateAutoScalePolicyRequest) GetQuietTime() int32 {
+	if x != nil && x.QuietTime != nil {
+		return *x.QuietTime
+	}
+	return 0
+}
+
+func (x *CreateAutoScalePolicyRequest) GetConditionIds() []string {
+	if x != nil {
+		return x.ConditionIds
+	}
+	return nil
+}
+
+func (x *CreateAutoScalePolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateAutoScalePolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateAutoScalePolicyRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateAutoScalePolicyResponse represents the response from creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
+type CreateAutoScalePolicyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAutoScalePolicyResponse) Reset() {
+	*x = CreateAutoScalePolicyResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAutoScalePolicyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAutoScalePolicyResponse) ProtoMessage() {}
+
+func (x *CreateAutoScalePolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAutoScalePolicyResponse.ProtoReflect.Descriptor instead.
+func (*CreateAutoScalePolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CreateAutoScalePolicyResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteConditionRequest represents the parameters for removes a condition for vm auto scaling
+type DeleteConditionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the condition.
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
@@ -546,21 +817,21 @@ type DeleteCounterRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteCounterRequest) Reset() {
-	*x = DeleteCounterRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[6]
+func (x *DeleteConditionRequest) Reset() {
+	*x = DeleteConditionRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteCounterRequest) String() string {
+func (x *DeleteConditionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteCounterRequest) ProtoMessage() {}
+func (*DeleteConditionRequest) ProtoMessage() {}
 
-func (x *DeleteCounterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[6]
+func (x *DeleteConditionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -571,41 +842,41 @@ func (x *DeleteCounterRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteCounterRequest.ProtoReflect.Descriptor instead.
-func (*DeleteCounterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use DeleteConditionRequest.ProtoReflect.Descriptor instead.
+func (*DeleteConditionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DeleteCounterRequest) GetId() int64 {
+func (x *DeleteConditionRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteCounterRequest) GetStartEventId() int64 {
+func (x *DeleteConditionRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeleteCounterRequest) GetInjectedJobId() string {
+func (x *DeleteConditionRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteCounterRequest) GetResponseType() string {
+func (x *DeleteConditionRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteCounterResponse represents the response from deletes a counter for vm auto scaling
-type DeleteCounterResponse struct {
+// DeleteConditionResponse represents the response from removes a condition for vm auto scaling
+type DeleteConditionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -613,21 +884,21 @@ type DeleteCounterResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteCounterResponse) Reset() {
-	*x = DeleteCounterResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[7]
+func (x *DeleteConditionResponse) Reset() {
+	*x = DeleteConditionResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteCounterResponse) String() string {
+func (x *DeleteConditionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteCounterResponse) ProtoMessage() {}
+func (*DeleteConditionResponse) ProtoMessage() {}
 
-func (x *DeleteCounterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[7]
+func (x *DeleteConditionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -638,177 +909,16 @@ func (x *DeleteCounterResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteCounterResponse.ProtoReflect.Descriptor instead.
-func (*DeleteCounterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use DeleteConditionResponse.ProtoReflect.Descriptor instead.
+func (*DeleteConditionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DeleteCounterResponse) GetResult() *Result {
+func (x *DeleteConditionResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
-}
-
-// ListCountersRequest represents the parameters for list the counters for vm auto scaling
-type ListCountersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the Counter.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Name of the counter.
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// Source of the counter.
-	Source *string `protobuf:"bytes,3,opt,name=source" json:"source,omitempty"`
-	// Network provider of the counter.
-	Provider *string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,5,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,6,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,7,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCountersRequest) Reset() {
-	*x = ListCountersRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCountersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCountersRequest) ProtoMessage() {}
-
-func (x *ListCountersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCountersRequest.ProtoReflect.Descriptor instead.
-func (*ListCountersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ListCountersRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListCountersRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListCountersRequest) GetSource() string {
-	if x != nil && x.Source != nil {
-		return *x.Source
-	}
-	return ""
-}
-
-func (x *ListCountersRequest) GetProvider() string {
-	if x != nil && x.Provider != nil {
-		return *x.Provider
-	}
-	return ""
-}
-
-func (x *ListCountersRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListCountersRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListCountersRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListCountersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListCountersResponse represents the response from list the counters for vm auto scaling
-type ListCountersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Counters
-	Items []*Counter `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Counters
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCountersResponse) Reset() {
-	*x = ListCountersResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCountersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCountersResponse) ProtoMessage() {}
-
-func (x *ListCountersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCountersResponse.ProtoReflect.Descriptor instead.
-func (*ListCountersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ListCountersResponse) GetItems() []*Counter {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListCountersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // DeleteAutoScaleVmProfileRequest represents the parameters for deletes a autoscale vm profile.
@@ -927,52 +1037,54 @@ func (x *DeleteAutoScaleVmProfileResponse) GetResult() *Result {
 	return nil
 }
 
-// ListAutoScalePoliciesRequest represents the parameters for lists autoscale policies.
-type ListAutoScalePoliciesRequest struct {
+// ListAutoScaleVmProfilesRequest represents the parameters for lists autoscale vm profiles.
+type ListAutoScaleVmProfilesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the autoscale policy
+	// the ID of the autoscale vm profile
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name of the autoscale policy
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// the ID of the condition of the policy
-	ConditionId *int64 `protobuf:"varint,3,opt,name=condition_id,json=conditionId" json:"condition_id,omitempty"`
-	// the action to be executed if all the conditions evaluate to true for the specified duration.
-	Action *string `protobuf:"bytes,4,opt,name=action" json:"action,omitempty"`
-	// the ID of the autoscale vm group
-	VmGroupId *int64 `protobuf:"varint,5,opt,name=vm_group_id,json=vmGroupId" json:"vm_group_id,omitempty"`
+	// the templateid of the autoscale vm profile
+	TemplateId *int64 `protobuf:"varint,2,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// list profiles by service offering id
+	ServiceOffId *int64 `protobuf:"varint,3,opt,name=service_off_id,json=serviceOffId" json:"service_off_id,omitempty"`
+	// the otherdeployparameters of the autoscale vm profile
+	OtherDeployParams *string `protobuf:"bytes,4,opt,name=other_deploy_params,json=otherDeployParams" json:"other_deploy_params,omitempty"`
+	// availability zone for the auto deployed virtual machine
+	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
 	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId *int64 `protobuf:"varint,7,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
 	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	AccountName *string `protobuf:"bytes,8,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
 	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	ListAll *bool `protobuf:"varint,9,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
 	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	DomainId *int64 `protobuf:"varint,10,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
 	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
+	Recursive *bool `protobuf:"varint,11,opt,name=recursive" json:"recursive,omitempty"`
 	// List by keyword
-	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	Keyword *string `protobuf:"bytes,12,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,13,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,14,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListAutoScalePoliciesRequest) Reset() {
-	*x = ListAutoScalePoliciesRequest{}
+func (x *ListAutoScaleVmProfilesRequest) Reset() {
+	*x = ListAutoScaleVmProfilesRequest{}
 	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListAutoScalePoliciesRequest) String() string {
+func (x *ListAutoScaleVmProfilesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListAutoScalePoliciesRequest) ProtoMessage() {}
+func (*ListAutoScaleVmProfilesRequest) ProtoMessage() {}
 
-func (x *ListAutoScalePoliciesRequest) ProtoReflect() protoreflect.Message {
+func (x *ListAutoScaleVmProfilesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -984,134 +1096,141 @@ func (x *ListAutoScalePoliciesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListAutoScalePoliciesRequest.ProtoReflect.Descriptor instead.
-func (*ListAutoScalePoliciesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListAutoScaleVmProfilesRequest.ProtoReflect.Descriptor instead.
+func (*ListAutoScaleVmProfilesRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *ListAutoScalePoliciesRequest) GetId() int64 {
+func (x *ListAutoScaleVmProfilesRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListAutoScalePoliciesRequest) GetConditionId() int64 {
-	if x != nil && x.ConditionId != nil {
-		return *x.ConditionId
+func (x *ListAutoScaleVmProfilesRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetAction() string {
-	if x != nil && x.Action != nil {
-		return *x.Action
-	}
-	return ""
-}
-
-func (x *ListAutoScalePoliciesRequest) GetVmGroupId() int64 {
-	if x != nil && x.VmGroupId != nil {
-		return *x.VmGroupId
+func (x *ListAutoScaleVmProfilesRequest) GetServiceOffId() int64 {
+	if x != nil && x.ServiceOffId != nil {
+		return *x.ServiceOffId
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetProjectId() int64 {
+func (x *ListAutoScaleVmProfilesRequest) GetOtherDeployParams() string {
+	if x != nil && x.OtherDeployParams != nil {
+		return *x.OtherDeployParams
+	}
+	return ""
+}
+
+func (x *ListAutoScaleVmProfilesRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListAutoScaleVmProfilesRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListAutoScaleVmProfilesRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetAccountName() string {
+func (x *ListAutoScaleVmProfilesRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *ListAutoScalePoliciesRequest) GetListAll() bool {
+func (x *ListAutoScaleVmProfilesRequest) GetListAll() bool {
 	if x != nil && x.ListAll != nil {
 		return *x.ListAll
 	}
 	return false
 }
 
-func (x *ListAutoScalePoliciesRequest) GetDomainId() int64 {
+func (x *ListAutoScaleVmProfilesRequest) GetDomainId() int64 {
 	if x != nil && x.DomainId != nil {
 		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetRecursive() bool {
+func (x *ListAutoScaleVmProfilesRequest) GetRecursive() bool {
 	if x != nil && x.Recursive != nil {
 		return *x.Recursive
 	}
 	return false
 }
 
-func (x *ListAutoScalePoliciesRequest) GetKeyword() string {
+func (x *ListAutoScaleVmProfilesRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListAutoScalePoliciesRequest) GetPage() int32 {
+func (x *ListAutoScaleVmProfilesRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetPageSize() int32 {
+func (x *ListAutoScaleVmProfilesRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListAutoScalePoliciesRequest) GetResponseType() string {
+func (x *ListAutoScaleVmProfilesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListAutoScalePoliciesResponse represents the response from lists autoscale policies.
-type ListAutoScalePoliciesResponse struct {
+// ListAutoScaleVmProfilesResponse represents the response from lists autoscale vm profiles.
+type ListAutoScaleVmProfilesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of AutoScalePolicys
-	Items []*AutoScalePolicy `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of AutoScalePolicys
+	// The list of AutoScaleVmProfiles
+	Items []*AutoScaleVmProfile `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of AutoScaleVmProfiles
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListAutoScalePoliciesResponse) Reset() {
-	*x = ListAutoScalePoliciesResponse{}
+func (x *ListAutoScaleVmProfilesResponse) Reset() {
+	*x = ListAutoScaleVmProfilesResponse{}
 	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListAutoScalePoliciesResponse) String() string {
+func (x *ListAutoScaleVmProfilesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListAutoScalePoliciesResponse) ProtoMessage() {}
+func (*ListAutoScaleVmProfilesResponse) ProtoMessage() {}
 
-func (x *ListAutoScalePoliciesResponse) ProtoReflect() protoreflect.Message {
+func (x *ListAutoScaleVmProfilesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1123,23 +1242,696 @@ func (x *ListAutoScalePoliciesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListAutoScalePoliciesResponse.ProtoReflect.Descriptor instead.
-func (*ListAutoScalePoliciesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListAutoScaleVmProfilesResponse.ProtoReflect.Descriptor instead.
+func (*ListAutoScaleVmProfilesResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *ListAutoScalePoliciesResponse) GetItems() []*AutoScalePolicy {
+func (x *ListAutoScaleVmProfilesResponse) GetItems() []*AutoScaleVmProfile {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListAutoScalePoliciesResponse) GetTotalCount() int32 {
+func (x *ListAutoScaleVmProfilesResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// UpdateAutoScalePolicyRequest represents the parameters for updates an existing autoscale policy.
+type UpdateAutoScalePolicyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the autoscale policy
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// the duration in which the conditions have to be true before action is taken
+	Duration *int32 `protobuf:"varint,2,opt,name=duration" json:"duration,omitempty"`
+	// the cool down period in which the policy should not be evaluated after the action has been taken
+	QuietTime *int32 `protobuf:"varint,3,opt,name=quiet_time,json=quietTime" json:"quiet_time,omitempty"`
+	// the list of IDs of the conditions that are being evaluated on every interval
+	ConditionIds []string `protobuf:"bytes,4,rep,name=condition_ids,json=conditionIds" json:"condition_ids,omitempty"`
+	// the ID of the autoscale policy
+	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAutoScalePolicyRequest) Reset() {
+	*x = UpdateAutoScalePolicyRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAutoScalePolicyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAutoScalePolicyRequest) ProtoMessage() {}
+
+func (x *UpdateAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAutoScalePolicyRequest.ProtoReflect.Descriptor instead.
+func (*UpdateAutoScalePolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetDuration() int32 {
+	if x != nil && x.Duration != nil {
+		return *x.Duration
+	}
+	return 0
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetQuietTime() int32 {
+	if x != nil && x.QuietTime != nil {
+		return *x.QuietTime
+	}
+	return 0
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetConditionIds() []string {
+	if x != nil {
+		return x.ConditionIds
+	}
+	return nil
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateAutoScalePolicyRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateAutoScalePolicyResponse represents the response from updates an existing autoscale policy.
+type UpdateAutoScalePolicyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAutoScalePolicyResponse) Reset() {
+	*x = UpdateAutoScalePolicyResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAutoScalePolicyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAutoScalePolicyResponse) ProtoMessage() {}
+
+func (x *UpdateAutoScalePolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAutoScalePolicyResponse.ProtoReflect.Descriptor instead.
+func (*UpdateAutoScalePolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdateAutoScalePolicyResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateAutoScaleVmProfileRequest represents the parameters for updates an existing autoscale vm profile.
+type UpdateAutoScaleVmProfileRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the autoscale vm profile
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the service offering of the auto deployed virtual machine
+	ServiceOfferingId *int64 `protobuf:"varint,2,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
+	// the template of the auto deployed virtual machine
+	TemplateId *int64 `protobuf:"varint,3,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// the time allowed for existing connections to get closed before a vm is destroyed
+	ExpungeVmGracePeriod *int32 `protobuf:"varint,4,opt,name=expunge_vm_grace_period,json=expungeVmGracePeriod" json:"expunge_vm_grace_period,omitempty"`
+	// counterparam list. Example: counterparam[0].name=snmpcommunity&counterparam[0].value=public&counterparam[1].name=snmpport&counterparam[1].value=161
+	CounterParamList map[string]string `protobuf:"bytes,5,rep,name=counter_param_list,json=counterParamList" json:"counter_param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine.
+	// Example: otherdeployparams[0].name=serviceofferingid&otherdeployparams[0].value=a7fb50f6-01d9-11ed-8bc1-77f8f0228926&otherdeployparams[1].name=rootdisksize&otherdeployparams[1].value=10 .
+	// Possible parameters are "rootdisksize", "diskofferingid","size", "securitygroupids", "overridediskofferingid", "keypairs", "affinitygroupids'" and "networkids".
+	OtherDeployParams map[string]string `protobuf:"bytes,6,rep,name=other_deploy_params,json=otherDeployParams" json:"other_deploy_params,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	UserData *string `protobuf:"bytes,7,opt,name=user_data,json=userData" json:"user_data,omitempty"`
+	// the ID of the userdata
+	UserDataId *int64 `protobuf:"varint,8,opt,name=user_data_id,json=userDataId" json:"user_data_id,omitempty"`
+	// used to specify the parameters values for the variables in userdata.
+	UserDataDetails map[string]string `protobuf:"bytes,9,rep,name=user_data_details,json=userDataDetails" json:"user_data_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// the ID of the user used to launch and destroy the VMs
+	AutoscaleUserId *int64 `protobuf:"varint,10,opt,name=autoscale_user_id,json=autoscaleUserId" json:"autoscale_user_id,omitempty"`
+	// an optional field, whether to the display the profile to the end user or not
+	Display *bool `protobuf:"varint,11,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,12,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,13,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,14,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) Reset() {
+	*x = UpdateAutoScaleVmProfileRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAutoScaleVmProfileRequest) ProtoMessage() {}
+
+func (x *UpdateAutoScaleVmProfileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAutoScaleVmProfileRequest.ProtoReflect.Descriptor instead.
+func (*UpdateAutoScaleVmProfileRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetServiceOfferingId() int64 {
+	if x != nil && x.ServiceOfferingId != nil {
+		return *x.ServiceOfferingId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetExpungeVmGracePeriod() int32 {
+	if x != nil && x.ExpungeVmGracePeriod != nil {
+		return *x.ExpungeVmGracePeriod
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetCounterParamList() map[string]string {
+	if x != nil {
+		return x.CounterParamList
+	}
+	return nil
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetOtherDeployParams() map[string]string {
+	if x != nil {
+		return x.OtherDeployParams
+	}
+	return nil
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetUserData() string {
+	if x != nil && x.UserData != nil {
+		return *x.UserData
+	}
+	return ""
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetUserDataId() int64 {
+	if x != nil && x.UserDataId != nil {
+		return *x.UserDataId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetUserDataDetails() map[string]string {
+	if x != nil {
+		return x.UserDataDetails
+	}
+	return nil
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetAutoscaleUserId() int64 {
+	if x != nil && x.AutoscaleUserId != nil {
+		return *x.AutoscaleUserId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateAutoScaleVmProfileRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateAutoScaleVmProfileResponse represents the response from updates an existing autoscale vm profile.
+type UpdateAutoScaleVmProfileResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAutoScaleVmProfileResponse) Reset() {
+	*x = UpdateAutoScaleVmProfileResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAutoScaleVmProfileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAutoScaleVmProfileResponse) ProtoMessage() {}
+
+func (x *UpdateAutoScaleVmProfileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAutoScaleVmProfileResponse.ProtoReflect.Descriptor instead.
+func (*UpdateAutoScaleVmProfileResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateAutoScaleVmProfileResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateAutoScaleVmGroupRequest represents the parameters for updates an existing autoscale vm group.
+type UpdateAutoScaleVmGroupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the autoscale vmgroup
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
+	MinMembers *int32 `protobuf:"varint,2,opt,name=min_members,json=minMembers" json:"min_members,omitempty"`
+	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
+	MaxMembers *int32 `protobuf:"varint,3,opt,name=max_members,json=maxMembers" json:"max_members,omitempty"`
+	// the frequency in which the performance counters to be collected
+	Interval *int32 `protobuf:"varint,4,opt,name=interval" json:"interval,omitempty"`
+	// list of scaleup autoscale policies
+	ScaleUpPolicyIds []string `protobuf:"bytes,5,rep,name=scale_up_policy_ids,json=scaleUpPolicyIds" json:"scale_up_policy_ids,omitempty"`
+	// list of scaledown autoscale policies
+	ScaleDownPolicyIds []string `protobuf:"bytes,6,rep,name=scale_down_policy_ids,json=scaleDownPolicyIds" json:"scale_down_policy_ids,omitempty"`
+	// the ID of the autoscale group
+	Id *int64 `protobuf:"varint,7,opt,name=id" json:"id,omitempty"`
+	// an optional field, whether to the display the group to the end user or not
+	Display *bool `protobuf:"varint,8,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,9,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) Reset() {
+	*x = UpdateAutoScaleVmGroupRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAutoScaleVmGroupRequest) ProtoMessage() {}
+
+func (x *UpdateAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
+func (*UpdateAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetMinMembers() int32 {
+	if x != nil && x.MinMembers != nil {
+		return *x.MinMembers
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetMaxMembers() int32 {
+	if x != nil && x.MaxMembers != nil {
+		return *x.MaxMembers
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetInterval() int32 {
+	if x != nil && x.Interval != nil {
+		return *x.Interval
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetScaleUpPolicyIds() []string {
+	if x != nil {
+		return x.ScaleUpPolicyIds
+	}
+	return nil
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetScaleDownPolicyIds() []string {
+	if x != nil {
+		return x.ScaleDownPolicyIds
+	}
+	return nil
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateAutoScaleVmGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateAutoScaleVmGroupResponse represents the response from updates an existing autoscale vm group.
+type UpdateAutoScaleVmGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAutoScaleVmGroupResponse) Reset() {
+	*x = UpdateAutoScaleVmGroupResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAutoScaleVmGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAutoScaleVmGroupResponse) ProtoMessage() {}
+
+func (x *UpdateAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
+func (*UpdateAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *UpdateAutoScaleVmGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// EnableAutoScaleVmGroupRequest represents the parameters for enables an autoscale vm group
+type EnableAutoScaleVmGroupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the autoscale group
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableAutoScaleVmGroupRequest) Reset() {
+	*x = EnableAutoScaleVmGroupRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableAutoScaleVmGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableAutoScaleVmGroupRequest) ProtoMessage() {}
+
+func (x *EnableAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
+func (*EnableAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *EnableAutoScaleVmGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *EnableAutoScaleVmGroupRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *EnableAutoScaleVmGroupRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *EnableAutoScaleVmGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// EnableAutoScaleVmGroupResponse represents the response from enables an autoscale vm group
+type EnableAutoScaleVmGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableAutoScaleVmGroupResponse) Reset() {
+	*x = EnableAutoScaleVmGroupResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableAutoScaleVmGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableAutoScaleVmGroupResponse) ProtoMessage() {}
+
+func (x *EnableAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
+func (*EnableAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *EnableAutoScaleVmGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // CreateAutoScaleVmProfileRequest represents the parameters for creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
@@ -1184,7 +1976,7 @@ type CreateAutoScaleVmProfileRequest struct {
 
 func (x *CreateAutoScaleVmProfileRequest) Reset() {
 	*x = CreateAutoScaleVmProfileRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1196,7 +1988,7 @@ func (x *CreateAutoScaleVmProfileRequest) String() string {
 func (*CreateAutoScaleVmProfileRequest) ProtoMessage() {}
 
 func (x *CreateAutoScaleVmProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1209,7 +2001,7 @@ func (x *CreateAutoScaleVmProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAutoScaleVmProfileRequest.ProtoReflect.Descriptor instead.
 func (*CreateAutoScaleVmProfileRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CreateAutoScaleVmProfileRequest) GetZoneId() int64 {
@@ -1342,7 +2134,7 @@ type CreateAutoScaleVmProfileResponse struct {
 
 func (x *CreateAutoScaleVmProfileResponse) Reset() {
 	*x = CreateAutoScaleVmProfileResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1354,7 +2146,7 @@ func (x *CreateAutoScaleVmProfileResponse) String() string {
 func (*CreateAutoScaleVmProfileResponse) ProtoMessage() {}
 
 func (x *CreateAutoScaleVmProfileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1367,251 +2159,10 @@ func (x *CreateAutoScaleVmProfileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAutoScaleVmProfileResponse.ProtoReflect.Descriptor instead.
 func (*CreateAutoScaleVmProfileResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateAutoScaleVmProfileResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteConditionRequest represents the parameters for removes a condition for vm auto scaling
-type DeleteConditionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the condition.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteConditionRequest) Reset() {
-	*x = DeleteConditionRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteConditionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteConditionRequest) ProtoMessage() {}
-
-func (x *DeleteConditionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteConditionRequest.ProtoReflect.Descriptor instead.
-func (*DeleteConditionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *DeleteConditionRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteConditionRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteConditionRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteConditionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteConditionResponse represents the response from removes a condition for vm auto scaling
-type DeleteConditionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteConditionResponse) Reset() {
-	*x = DeleteConditionResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteConditionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteConditionResponse) ProtoMessage() {}
-
-func (x *DeleteConditionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteConditionResponse.ProtoReflect.Descriptor instead.
-func (*DeleteConditionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *DeleteConditionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteAutoScaleVmGroupRequest represents the parameters for deletes a autoscale vm group.
-type DeleteAutoScaleVmGroupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the autoscale group
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// true if all VMs have to be cleaned up, false otherwise
-	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) Reset() {
-	*x = DeleteAutoScaleVmGroupRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAutoScaleVmGroupRequest) ProtoMessage() {}
-
-func (x *DeleteAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
-func (*DeleteAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) GetCleanup() bool {
-	if x != nil && x.Cleanup != nil {
-		return *x.Cleanup
-	}
-	return false
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteAutoScaleVmGroupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteAutoScaleVmGroupResponse represents the response from deletes a autoscale vm group.
-type DeleteAutoScaleVmGroupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAutoScaleVmGroupResponse) Reset() {
-	*x = DeleteAutoScaleVmGroupResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAutoScaleVmGroupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAutoScaleVmGroupResponse) ProtoMessage() {}
-
-func (x *DeleteAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
-func (*DeleteAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *DeleteAutoScaleVmGroupResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1632,7 +2183,7 @@ type DisableAutoScaleVmGroupRequest struct {
 
 func (x *DisableAutoScaleVmGroupRequest) Reset() {
 	*x = DisableAutoScaleVmGroupRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1644,7 +2195,7 @@ func (x *DisableAutoScaleVmGroupRequest) String() string {
 func (*DisableAutoScaleVmGroupRequest) ProtoMessage() {}
 
 func (x *DisableAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1657,7 +2208,7 @@ func (x *DisableAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
 func (*DisableAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{20}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *DisableAutoScaleVmGroupRequest) GetId() int64 {
@@ -1699,7 +2250,7 @@ type DisableAutoScaleVmGroupResponse struct {
 
 func (x *DisableAutoScaleVmGroupResponse) Reset() {
 	*x = DisableAutoScaleVmGroupResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1711,7 +2262,7 @@ func (x *DisableAutoScaleVmGroupResponse) String() string {
 func (*DisableAutoScaleVmGroupResponse) ProtoMessage() {}
 
 func (x *DisableAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1724,7 +2275,7 @@ func (x *DisableAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
 func (*DisableAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{21}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *DisableAutoScaleVmGroupResponse) GetResult() *Result {
@@ -1734,57 +2285,39 @@ func (x *DisableAutoScaleVmGroupResponse) GetResult() *Result {
 	return nil
 }
 
-// UpdateAutoScaleVmProfileRequest represents the parameters for updates an existing autoscale vm profile.
-type UpdateAutoScaleVmProfileRequest struct {
+// CreateCounterRequest represents the parameters for adds metric counter for vm auto scaling
+type CreateCounterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the autoscale vm profile
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the service offering of the auto deployed virtual machine
-	ServiceOfferingId *int64 `protobuf:"varint,2,opt,name=service_offering_id,json=serviceOfferingId" json:"service_offering_id,omitempty"`
-	// the template of the auto deployed virtual machine
-	TemplateId *int64 `protobuf:"varint,3,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// the time allowed for existing connections to get closed before a vm is destroyed
-	ExpungeVmGracePeriod *int32 `protobuf:"varint,4,opt,name=expunge_vm_grace_period,json=expungeVmGracePeriod" json:"expunge_vm_grace_period,omitempty"`
-	// counterparam list. Example: counterparam[0].name=snmpcommunity&counterparam[0].value=public&counterparam[1].name=snmpport&counterparam[1].value=161
-	CounterParamList map[string]string `protobuf:"bytes,5,rep,name=counter_param_list,json=counterParamList" json:"counter_param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine.
-	// Example: otherdeployparams[0].name=serviceofferingid&otherdeployparams[0].value=a7fb50f6-01d9-11ed-8bc1-77f8f0228926&otherdeployparams[1].name=rootdisksize&otherdeployparams[1].value=10 .
-	// Possible parameters are "rootdisksize", "diskofferingid","size", "securitygroupids", "overridediskofferingid", "keypairs", "affinitygroupids'" and "networkids".
-	OtherDeployParams map[string]string `protobuf:"bytes,6,rep,name=other_deploy_params,json=otherDeployParams" json:"other_deploy_params,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	UserData *string `protobuf:"bytes,7,opt,name=user_data,json=userData" json:"user_data,omitempty"`
-	// the ID of the userdata
-	UserDataId *int64 `protobuf:"varint,8,opt,name=user_data_id,json=userDataId" json:"user_data_id,omitempty"`
-	// used to specify the parameters values for the variables in userdata.
-	UserDataDetails map[string]string `protobuf:"bytes,9,rep,name=user_data_details,json=userDataDetails" json:"user_data_details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// the ID of the user used to launch and destroy the VMs
-	AutoscaleUserId *int64 `protobuf:"varint,10,opt,name=autoscale_user_id,json=autoscaleUserId" json:"autoscale_user_id,omitempty"`
-	// an optional field, whether to the display the profile to the end user or not
-	Display *bool `protobuf:"varint,11,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,12,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,13,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,14,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Name of the counter.
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// Source of the counter.
+	Source *string `protobuf:"bytes,2,opt,name=source" json:"source,omitempty"`
+	// Value of the counter e.g. oid in case of snmp.
+	Value *string `protobuf:"bytes,3,opt,name=value" json:"value,omitempty"`
+	// Network provider of the counter.
+	Provider *string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) Reset() {
-	*x = UpdateAutoScaleVmProfileRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[22]
+func (x *CreateCounterRequest) Reset() {
+	*x = CreateCounterRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) String() string {
+func (x *CreateCounterRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateAutoScaleVmProfileRequest) ProtoMessage() {}
+func (*CreateCounterRequest) ProtoMessage() {}
 
-func (x *UpdateAutoScaleVmProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[22]
+func (x *CreateCounterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1795,118 +2328,62 @@ func (x *UpdateAutoScaleVmProfileRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateAutoScaleVmProfileRequest.ProtoReflect.Descriptor instead.
-func (*UpdateAutoScaleVmProfileRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{22}
+// Deprecated: Use CreateCounterRequest.ProtoReflect.Descriptor instead.
+func (*CreateCounterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetServiceOfferingId() int64 {
-	if x != nil && x.ServiceOfferingId != nil {
-		return *x.ServiceOfferingId
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetExpungeVmGracePeriod() int32 {
-	if x != nil && x.ExpungeVmGracePeriod != nil {
-		return *x.ExpungeVmGracePeriod
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetCounterParamList() map[string]string {
-	if x != nil {
-		return x.CounterParamList
-	}
-	return nil
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetOtherDeployParams() map[string]string {
-	if x != nil {
-		return x.OtherDeployParams
-	}
-	return nil
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetUserData() string {
-	if x != nil && x.UserData != nil {
-		return *x.UserData
+func (x *CreateCounterRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) GetUserDataId() int64 {
-	if x != nil && x.UserDataId != nil {
-		return *x.UserDataId
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetUserDataDetails() map[string]string {
-	if x != nil {
-		return x.UserDataDetails
-	}
-	return nil
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetAutoscaleUserId() int64 {
-	if x != nil && x.AutoscaleUserId != nil {
-		return *x.AutoscaleUserId
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateAutoScaleVmProfileRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
+func (x *CreateCounterRequest) GetSource() string {
+	if x != nil && x.Source != nil {
+		return *x.Source
 	}
 	return ""
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) GetStartEventId() int64 {
+func (x *CreateCounterRequest) GetValue() string {
+	if x != nil && x.Value != nil {
+		return *x.Value
+	}
+	return ""
+}
+
+func (x *CreateCounterRequest) GetProvider() string {
+	if x != nil && x.Provider != nil {
+		return *x.Provider
+	}
+	return ""
+}
+
+func (x *CreateCounterRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) GetInjectedJobId() string {
+func (x *CreateCounterRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateAutoScaleVmProfileRequest) GetResponseType() string {
+func (x *CreateCounterRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateAutoScaleVmProfileResponse represents the response from updates an existing autoscale vm profile.
-type UpdateAutoScaleVmProfileResponse struct {
+// CreateCounterResponse represents the response from adds metric counter for vm auto scaling
+type CreateCounterResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1914,21 +2391,21 @@ type UpdateAutoScaleVmProfileResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateAutoScaleVmProfileResponse) Reset() {
-	*x = UpdateAutoScaleVmProfileResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[23]
+func (x *CreateCounterResponse) Reset() {
+	*x = CreateCounterResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateAutoScaleVmProfileResponse) String() string {
+func (x *CreateCounterResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateAutoScaleVmProfileResponse) ProtoMessage() {}
+func (*CreateCounterResponse) ProtoMessage() {}
 
-func (x *UpdateAutoScaleVmProfileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[23]
+func (x *CreateCounterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1939,22 +2416,22 @@ func (x *UpdateAutoScaleVmProfileResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateAutoScaleVmProfileResponse.ProtoReflect.Descriptor instead.
-func (*UpdateAutoScaleVmProfileResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{23}
+// Deprecated: Use CreateCounterResponse.ProtoReflect.Descriptor instead.
+func (*CreateCounterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{27}
 }
 
-func (x *UpdateAutoScaleVmProfileResponse) GetResult() *Result {
+func (x *CreateCounterResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// EnableAutoScaleVmGroupRequest represents the parameters for enables an autoscale vm group
-type EnableAutoScaleVmGroupRequest struct {
+// DeleteCounterRequest represents the parameters for deletes a counter for vm auto scaling
+type DeleteCounterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the autoscale group
+	// the ID of the counter
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
@@ -1963,21 +2440,21 @@ type EnableAutoScaleVmGroupRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *EnableAutoScaleVmGroupRequest) Reset() {
-	*x = EnableAutoScaleVmGroupRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[24]
+func (x *DeleteCounterRequest) Reset() {
+	*x = DeleteCounterRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EnableAutoScaleVmGroupRequest) String() string {
+func (x *DeleteCounterRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EnableAutoScaleVmGroupRequest) ProtoMessage() {}
+func (*DeleteCounterRequest) ProtoMessage() {}
 
-func (x *EnableAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[24]
+func (x *DeleteCounterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1988,41 +2465,41 @@ func (x *EnableAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EnableAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
-func (*EnableAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{24}
+// Deprecated: Use DeleteCounterRequest.ProtoReflect.Descriptor instead.
+func (*DeleteCounterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{28}
 }
 
-func (x *EnableAutoScaleVmGroupRequest) GetId() int64 {
+func (x *DeleteCounterRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *EnableAutoScaleVmGroupRequest) GetStartEventId() int64 {
+func (x *DeleteCounterRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *EnableAutoScaleVmGroupRequest) GetInjectedJobId() string {
+func (x *DeleteCounterRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *EnableAutoScaleVmGroupRequest) GetResponseType() string {
+func (x *DeleteCounterRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// EnableAutoScaleVmGroupResponse represents the response from enables an autoscale vm group
-type EnableAutoScaleVmGroupResponse struct {
+// DeleteCounterResponse represents the response from deletes a counter for vm auto scaling
+type DeleteCounterResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2030,21 +2507,21 @@ type EnableAutoScaleVmGroupResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *EnableAutoScaleVmGroupResponse) Reset() {
-	*x = EnableAutoScaleVmGroupResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[25]
+func (x *DeleteCounterResponse) Reset() {
+	*x = DeleteCounterResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EnableAutoScaleVmGroupResponse) String() string {
+func (x *DeleteCounterResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EnableAutoScaleVmGroupResponse) ProtoMessage() {}
+func (*DeleteCounterResponse) ProtoMessage() {}
 
-func (x *EnableAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[25]
+func (x *DeleteCounterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2055,61 +2532,61 @@ func (x *EnableAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EnableAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
-func (*EnableAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{25}
+// Deprecated: Use DeleteCounterResponse.ProtoReflect.Descriptor instead.
+func (*DeleteCounterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{29}
 }
 
-func (x *EnableAutoScaleVmGroupResponse) GetResult() *Result {
+func (x *DeleteCounterResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// UpdateAutoScaleVmGroupRequest represents the parameters for updates an existing autoscale vm group.
-type UpdateAutoScaleVmGroupRequest struct {
+// ListConditionsRequest represents the parameters for list conditions for vm auto scaling
+type ListConditionsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the autoscale vmgroup
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
-	MinMembers *int32 `protobuf:"varint,2,opt,name=min_members,json=minMembers" json:"min_members,omitempty"`
-	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
-	MaxMembers *int32 `protobuf:"varint,3,opt,name=max_members,json=maxMembers" json:"max_members,omitempty"`
-	// the frequency in which the performance counters to be collected
-	Interval *int32 `protobuf:"varint,4,opt,name=interval" json:"interval,omitempty"`
-	// list of scaleup autoscale policies
-	ScaleUpPolicyIds []string `protobuf:"bytes,5,rep,name=scale_up_policy_ids,json=scaleUpPolicyIds" json:"scale_up_policy_ids,omitempty"`
-	// list of scaledown autoscale policies
-	ScaleDownPolicyIds []string `protobuf:"bytes,6,rep,name=scale_down_policy_ids,json=scaleDownPolicyIds" json:"scale_down_policy_ids,omitempty"`
-	// the ID of the autoscale group
-	Id *int64 `protobuf:"varint,7,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the group to the end user or not
-	Display *bool `protobuf:"varint,8,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,9,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	// ID of the Condition.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Counter-id of the condition.
+	CounterId *int64 `protobuf:"varint,2,opt,name=counter_id,json=counterId" json:"counter_id,omitempty"`
+	// the ID of the policy
+	PolicyId *int64 `protobuf:"varint,3,opt,name=policy_id,json=policyId" json:"policy_id,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,6,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,8,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,9,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
 	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateAutoScaleVmGroupRequest) Reset() {
-	*x = UpdateAutoScaleVmGroupRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[26]
+func (x *ListConditionsRequest) Reset() {
+	*x = ListConditionsRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateAutoScaleVmGroupRequest) String() string {
+func (x *ListConditionsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateAutoScaleVmGroupRequest) ProtoMessage() {}
+func (*ListConditionsRequest) ProtoMessage() {}
 
-func (x *UpdateAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[26]
+func (x *ListConditionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2120,97 +2597,240 @@ func (x *UpdateAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
-func (*UpdateAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{26}
+// Deprecated: Use ListConditionsRequest.ProtoReflect.Descriptor instead.
+func (*ListConditionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *UpdateAutoScaleVmGroupRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetMinMembers() int32 {
-	if x != nil && x.MinMembers != nil {
-		return *x.MinMembers
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetMaxMembers() int32 {
-	if x != nil && x.MaxMembers != nil {
-		return *x.MaxMembers
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetInterval() int32 {
-	if x != nil && x.Interval != nil {
-		return *x.Interval
-	}
-	return 0
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetScaleUpPolicyIds() []string {
-	if x != nil {
-		return x.ScaleUpPolicyIds
-	}
-	return nil
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetScaleDownPolicyIds() []string {
-	if x != nil {
-		return x.ScaleDownPolicyIds
-	}
-	return nil
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetId() int64 {
+func (x *ListConditionsRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateAutoScaleVmGroupRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateAutoScaleVmGroupRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *ListConditionsRequest) GetCounterId() int64 {
+	if x != nil && x.CounterId != nil {
+		return *x.CounterId
 	}
 	return 0
 }
 
-func (x *UpdateAutoScaleVmGroupRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *ListConditionsRequest) GetPolicyId() int64 {
+	if x != nil && x.PolicyId != nil {
+		return *x.PolicyId
+	}
+	return 0
+}
+
+func (x *ListConditionsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListConditionsRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *UpdateAutoScaleVmGroupRequest) GetResponseType() string {
+func (x *ListConditionsRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListConditionsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListConditionsRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListConditionsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListConditionsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListConditionsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListConditionsRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateAutoScaleVmGroupResponse represents the response from updates an existing autoscale vm group.
-type UpdateAutoScaleVmGroupResponse struct {
+// ListConditionsResponse represents the response from list conditions for vm auto scaling
+type ListConditionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Conditions
+	Items []*Condition `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Conditions
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListConditionsResponse) Reset() {
+	*x = ListConditionsResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListConditionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListConditionsResponse) ProtoMessage() {}
+
+func (x *ListConditionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListConditionsResponse.ProtoReflect.Descriptor instead.
+func (*ListConditionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ListConditionsResponse) GetItems() []*Condition {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListConditionsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateConditionRequest represents the parameters for updates a condition for vm auto scaling
+type UpdateConditionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the condition.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
+	RelationalOperator *string `protobuf:"bytes,2,opt,name=relational_operator,json=relationalOperator" json:"relational_operator,omitempty"`
+	// Value for which the Counter will be evaluated with the Operator selected.
+	Threshold *int64 `protobuf:"varint,3,opt,name=threshold" json:"threshold,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateConditionRequest) Reset() {
+	*x = UpdateConditionRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateConditionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateConditionRequest) ProtoMessage() {}
+
+func (x *UpdateConditionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateConditionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateConditionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *UpdateConditionRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateConditionRequest) GetRelationalOperator() string {
+	if x != nil && x.RelationalOperator != nil {
+		return *x.RelationalOperator
+	}
+	return ""
+}
+
+func (x *UpdateConditionRequest) GetThreshold() int64 {
+	if x != nil && x.Threshold != nil {
+		return *x.Threshold
+	}
+	return 0
+}
+
+func (x *UpdateConditionRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateConditionRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateConditionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateConditionResponse represents the response from updates a condition for vm auto scaling
+type UpdateConditionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2218,21 +2838,21 @@ type UpdateAutoScaleVmGroupResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateAutoScaleVmGroupResponse) Reset() {
-	*x = UpdateAutoScaleVmGroupResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[27]
+func (x *UpdateConditionResponse) Reset() {
+	*x = UpdateConditionResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateAutoScaleVmGroupResponse) String() string {
+func (x *UpdateConditionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateAutoScaleVmGroupResponse) ProtoMessage() {}
+func (*UpdateConditionResponse) ProtoMessage() {}
 
-func (x *UpdateAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[27]
+func (x *UpdateConditionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2243,53 +2863,53 @@ func (x *UpdateAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
-func (*UpdateAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{27}
+// Deprecated: Use UpdateConditionResponse.ProtoReflect.Descriptor instead.
+func (*UpdateConditionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *UpdateAutoScaleVmGroupResponse) GetResult() *Result {
+func (x *UpdateConditionResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// UpdateAutoScalePolicyRequest represents the parameters for updates an existing autoscale policy.
-type UpdateAutoScalePolicyRequest struct {
+// ListCountersRequest represents the parameters for list the counters for vm auto scaling
+type ListCountersRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the autoscale policy
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// the duration in which the conditions have to be true before action is taken
-	Duration *int32 `protobuf:"varint,2,opt,name=duration" json:"duration,omitempty"`
-	// the cool down period in which the policy should not be evaluated after the action has been taken
-	QuietTime *int32 `protobuf:"varint,3,opt,name=quiet_time,json=quietTime" json:"quiet_time,omitempty"`
-	// the list of IDs of the conditions that are being evaluated on every interval
-	ConditionIds []string `protobuf:"bytes,4,rep,name=condition_ids,json=conditionIds" json:"condition_ids,omitempty"`
-	// the ID of the autoscale policy
-	Id *int64 `protobuf:"varint,5,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	// ID of the Counter.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Name of the counter.
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// Source of the counter.
+	Source *string `protobuf:"bytes,3,opt,name=source" json:"source,omitempty"`
+	// Network provider of the counter.
+	Provider *string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,5,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,6,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,7,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
 	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateAutoScalePolicyRequest) Reset() {
-	*x = UpdateAutoScalePolicyRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[28]
+func (x *ListCountersRequest) Reset() {
+	*x = ListCountersRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateAutoScalePolicyRequest) String() string {
+func (x *ListCountersRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateAutoScalePolicyRequest) ProtoMessage() {}
+func (*ListCountersRequest) ProtoMessage() {}
 
-func (x *UpdateAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[28]
+func (x *ListCountersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2300,279 +2920,93 @@ func (x *UpdateAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateAutoScalePolicyRequest.ProtoReflect.Descriptor instead.
-func (*UpdateAutoScalePolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{28}
+// Deprecated: Use ListCountersRequest.ProtoReflect.Descriptor instead.
+func (*ListCountersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *UpdateAutoScalePolicyRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateAutoScalePolicyRequest) GetDuration() int32 {
-	if x != nil && x.Duration != nil {
-		return *x.Duration
-	}
-	return 0
-}
-
-func (x *UpdateAutoScalePolicyRequest) GetQuietTime() int32 {
-	if x != nil && x.QuietTime != nil {
-		return *x.QuietTime
-	}
-	return 0
-}
-
-func (x *UpdateAutoScalePolicyRequest) GetConditionIds() []string {
-	if x != nil {
-		return x.ConditionIds
-	}
-	return nil
-}
-
-func (x *UpdateAutoScalePolicyRequest) GetId() int64 {
+func (x *ListCountersRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateAutoScalePolicyRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateAutoScalePolicyRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateAutoScalePolicyRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateAutoScalePolicyResponse represents the response from updates an existing autoscale policy.
-type UpdateAutoScalePolicyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateAutoScalePolicyResponse) Reset() {
-	*x = UpdateAutoScalePolicyResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateAutoScalePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateAutoScalePolicyResponse) ProtoMessage() {}
-
-func (x *UpdateAutoScalePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateAutoScalePolicyResponse.ProtoReflect.Descriptor instead.
-func (*UpdateAutoScalePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *UpdateAutoScalePolicyResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateAutoScaleVmGroupRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-type CreateAutoScaleVmGroupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
-	// the name of the autoscale vmgroup
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
-	MinMembers *int32 `protobuf:"varint,3,opt,name=min_members,json=minMembers" json:"min_members,omitempty"`
-	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
-	MaxMembers *int32 `protobuf:"varint,4,opt,name=max_members,json=maxMembers" json:"max_members,omitempty"`
-	// the frequency in which the performance counters to be collected
-	Interval *int32 `protobuf:"varint,5,opt,name=interval" json:"interval,omitempty"`
-	// list of scaleup autoscale policies
-	ScaleUpPolicyIds []string `protobuf:"bytes,6,rep,name=scale_up_policy_ids,json=scaleUpPolicyIds" json:"scale_up_policy_ids,omitempty"`
-	// list of scaledown autoscale policies
-	ScaleDownPolicyIds []string `protobuf:"bytes,7,rep,name=scale_down_policy_ids,json=scaleDownPolicyIds" json:"scale_down_policy_ids,omitempty"`
-	// the autoscale profile that contains information about the vms in the vm group.
-	ProfileId *int64 `protobuf:"varint,8,opt,name=profile_id,json=profileId" json:"profile_id,omitempty"`
-	// an optional field, whether to the display the group to the end user or not
-	Display *bool `protobuf:"varint,9,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateAutoScaleVmGroupRequest) Reset() {
-	*x = CreateAutoScaleVmGroupRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateAutoScaleVmGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateAutoScaleVmGroupRequest) ProtoMessage() {}
-
-func (x *CreateAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
-func (*CreateAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetName() string {
+func (x *ListCountersRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *CreateAutoScaleVmGroupRequest) GetMinMembers() int32 {
-	if x != nil && x.MinMembers != nil {
-		return *x.MinMembers
-	}
-	return 0
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetMaxMembers() int32 {
-	if x != nil && x.MaxMembers != nil {
-		return *x.MaxMembers
-	}
-	return 0
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetInterval() int32 {
-	if x != nil && x.Interval != nil {
-		return *x.Interval
-	}
-	return 0
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetScaleUpPolicyIds() []string {
-	if x != nil {
-		return x.ScaleUpPolicyIds
-	}
-	return nil
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetScaleDownPolicyIds() []string {
-	if x != nil {
-		return x.ScaleDownPolicyIds
-	}
-	return nil
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetProfileId() int64 {
-	if x != nil && x.ProfileId != nil {
-		return *x.ProfileId
-	}
-	return 0
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateAutoScaleVmGroupRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *ListCountersRequest) GetSource() string {
+	if x != nil && x.Source != nil {
+		return *x.Source
 	}
 	return ""
 }
 
-func (x *CreateAutoScaleVmGroupRequest) GetResponseType() string {
+func (x *ListCountersRequest) GetProvider() string {
+	if x != nil && x.Provider != nil {
+		return *x.Provider
+	}
+	return ""
+}
+
+func (x *ListCountersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListCountersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListCountersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCountersRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateAutoScaleVmGroupResponse represents the response from creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-type CreateAutoScaleVmGroupResponse struct {
+// ListCountersResponse represents the response from list the counters for vm auto scaling
+type ListCountersResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of Counters
+	Items []*Counter `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Counters
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateAutoScaleVmGroupResponse) Reset() {
-	*x = CreateAutoScaleVmGroupResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[31]
+func (x *ListCountersResponse) Reset() {
+	*x = ListCountersResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateAutoScaleVmGroupResponse) String() string {
+func (x *ListCountersResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAutoScaleVmGroupResponse) ProtoMessage() {}
+func (*ListCountersResponse) ProtoMessage() {}
 
-func (x *CreateAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[31]
+func (x *ListCountersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2583,132 +3017,23 @@ func (x *CreateAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
-func (*CreateAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{31}
+// Deprecated: Use ListCountersResponse.ProtoReflect.Descriptor instead.
+func (*ListCountersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *CreateAutoScaleVmGroupResponse) GetResult() *Result {
+func (x *ListCountersResponse) GetItems() []*Counter {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
 }
 
-// DeleteAutoScalePolicyRequest represents the parameters for deletes a autoscale policy.
-type DeleteAutoScalePolicyRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the autoscale policy
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAutoScalePolicyRequest) Reset() {
-	*x = DeleteAutoScalePolicyRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAutoScalePolicyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAutoScalePolicyRequest) ProtoMessage() {}
-
-func (x *DeleteAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAutoScalePolicyRequest.ProtoReflect.Descriptor instead.
-func (*DeleteAutoScalePolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *DeleteAutoScalePolicyRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *ListCountersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
 	}
 	return 0
-}
-
-func (x *DeleteAutoScalePolicyRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteAutoScalePolicyRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteAutoScalePolicyRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteAutoScalePolicyResponse represents the response from deletes a autoscale policy.
-type DeleteAutoScalePolicyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteAutoScalePolicyResponse) Reset() {
-	*x = DeleteAutoScalePolicyResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteAutoScalePolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteAutoScalePolicyResponse) ProtoMessage() {}
-
-func (x *DeleteAutoScalePolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteAutoScalePolicyResponse.ProtoReflect.Descriptor instead.
-func (*DeleteAutoScalePolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *DeleteAutoScalePolicyResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListAutoScaleVmGroupsRequest represents the parameters for lists autoscale vm groups.
@@ -2749,7 +3074,7 @@ type ListAutoScaleVmGroupsRequest struct {
 
 func (x *ListAutoScaleVmGroupsRequest) Reset() {
 	*x = ListAutoScaleVmGroupsRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2761,7 +3086,7 @@ func (x *ListAutoScaleVmGroupsRequest) String() string {
 func (*ListAutoScaleVmGroupsRequest) ProtoMessage() {}
 
 func (x *ListAutoScaleVmGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2774,7 +3099,7 @@ func (x *ListAutoScaleVmGroupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAutoScaleVmGroupsRequest.ProtoReflect.Descriptor instead.
 func (*ListAutoScaleVmGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{34}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ListAutoScaleVmGroupsRequest) GetId() int64 {
@@ -2902,7 +3227,7 @@ type ListAutoScaleVmGroupsResponse struct {
 
 func (x *ListAutoScaleVmGroupsResponse) Reset() {
 	*x = ListAutoScaleVmGroupsResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[35]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2914,7 +3239,7 @@ func (x *ListAutoScaleVmGroupsResponse) String() string {
 func (*ListAutoScaleVmGroupsResponse) ProtoMessage() {}
 
 func (x *ListAutoScaleVmGroupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[35]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2927,7 +3252,7 @@ func (x *ListAutoScaleVmGroupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAutoScaleVmGroupsResponse.ProtoReflect.Descriptor instead.
 func (*ListAutoScaleVmGroupsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{35}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ListAutoScaleVmGroupsResponse) GetItems() []*AutoScaleVmGroup {
@@ -2944,39 +3269,33 @@ func (x *ListAutoScaleVmGroupsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateCounterRequest represents the parameters for adds metric counter for vm auto scaling
-type CreateCounterRequest struct {
+// DeleteAutoScalePolicyRequest represents the parameters for deletes a autoscale policy.
+type DeleteAutoScalePolicyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the counter.
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// Source of the counter.
-	Source *string `protobuf:"bytes,2,opt,name=source" json:"source,omitempty"`
-	// Value of the counter e.g. oid in case of snmp.
-	Value *string `protobuf:"bytes,3,opt,name=value" json:"value,omitempty"`
-	// Network provider of the counter.
-	Provider *string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the ID of the autoscale policy
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateCounterRequest) Reset() {
-	*x = CreateCounterRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[36]
+func (x *DeleteAutoScalePolicyRequest) Reset() {
+	*x = DeleteAutoScalePolicyRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateCounterRequest) String() string {
+func (x *DeleteAutoScalePolicyRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateCounterRequest) ProtoMessage() {}
+func (*DeleteAutoScalePolicyRequest) ProtoMessage() {}
 
-func (x *CreateCounterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[36]
+func (x *DeleteAutoScalePolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2987,84 +3306,324 @@ func (x *CreateCounterRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateCounterRequest.ProtoReflect.Descriptor instead.
-func (*CreateCounterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{36}
+// Deprecated: Use DeleteAutoScalePolicyRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAutoScalePolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{38}
 }
 
-func (x *CreateCounterRequest) GetName() string {
+func (x *DeleteAutoScalePolicyRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteAutoScalePolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteAutoScalePolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteAutoScalePolicyRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteAutoScalePolicyResponse represents the response from deletes a autoscale policy.
+type DeleteAutoScalePolicyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAutoScalePolicyResponse) Reset() {
+	*x = DeleteAutoScalePolicyResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAutoScalePolicyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAutoScalePolicyResponse) ProtoMessage() {}
+
+func (x *DeleteAutoScalePolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAutoScalePolicyResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAutoScalePolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *DeleteAutoScalePolicyResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteAutoScaleVmGroupRequest represents the parameters for deletes a autoscale vm group.
+type DeleteAutoScaleVmGroupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the autoscale group
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// true if all VMs have to be cleaned up, false otherwise
+	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) Reset() {
+	*x = DeleteAutoScaleVmGroupRequest{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAutoScaleVmGroupRequest) ProtoMessage() {}
+
+func (x *DeleteAutoScaleVmGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAutoScaleVmGroupRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAutoScaleVmGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) GetCleanup() bool {
+	if x != nil && x.Cleanup != nil {
+		return *x.Cleanup
+	}
+	return false
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteAutoScaleVmGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteAutoScaleVmGroupResponse represents the response from deletes a autoscale vm group.
+type DeleteAutoScaleVmGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAutoScaleVmGroupResponse) Reset() {
+	*x = DeleteAutoScaleVmGroupResponse{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAutoScaleVmGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAutoScaleVmGroupResponse) ProtoMessage() {}
+
+func (x *DeleteAutoScaleVmGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAutoScaleVmGroupResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAutoScaleVmGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *DeleteAutoScaleVmGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AutoScalePolicy represents a AutoScalePolicy Item
+type AutoScalePolicy struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the AutoScalePolicy
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the AutoScalePolicy
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the AutoScalePolicy
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the AutoScalePolicy
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AutoScalePolicy) Reset() {
+	*x = AutoScalePolicy{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AutoScalePolicy) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AutoScalePolicy) ProtoMessage() {}
+
+func (x *AutoScalePolicy) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AutoScalePolicy.ProtoReflect.Descriptor instead.
+func (*AutoScalePolicy) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *AutoScalePolicy) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *AutoScalePolicy) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *CreateCounterRequest) GetSource() string {
-	if x != nil && x.Source != nil {
-		return *x.Source
+func (x *AutoScalePolicy) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *CreateCounterRequest) GetValue() string {
-	if x != nil && x.Value != nil {
-		return *x.Value
+func (x *AutoScalePolicy) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
 
-func (x *CreateCounterRequest) GetProvider() string {
-	if x != nil && x.Provider != nil {
-		return *x.Provider
+func (x *AutoScalePolicy) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
 	}
 	return ""
 }
 
-func (x *CreateCounterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateCounterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateCounterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateCounterResponse represents the response from adds metric counter for vm auto scaling
-type CreateCounterResponse struct {
+// AutoScaleVmProfile represents a AutoScaleVmProfile Item
+type AutoScaleVmProfile struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The ID of the AutoScaleVmProfile
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the AutoScaleVmProfile
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the AutoScaleVmProfile
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the AutoScaleVmProfile
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateCounterResponse) Reset() {
-	*x = CreateCounterResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[37]
+func (x *AutoScaleVmProfile) Reset() {
+	*x = AutoScaleVmProfile{}
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateCounterResponse) String() string {
+func (x *AutoScaleVmProfile) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateCounterResponse) ProtoMessage() {}
+func (*AutoScaleVmProfile) ProtoMessage() {}
 
-func (x *CreateCounterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[37]
+func (x *AutoScaleVmProfile) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3075,374 +3634,44 @@ func (x *CreateCounterResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateCounterResponse.ProtoReflect.Descriptor instead.
-func (*CreateCounterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{37}
+// Deprecated: Use AutoScaleVmProfile.ProtoReflect.Descriptor instead.
+func (*AutoScaleVmProfile) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{43}
 }
 
-func (x *CreateCounterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListAutoScaleVmProfilesRequest represents the parameters for lists autoscale vm profiles.
-type ListAutoScaleVmProfilesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the autoscale vm profile
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the templateid of the autoscale vm profile
-	TemplateId *int64 `protobuf:"varint,2,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// list profiles by service offering id
-	ServiceOffId *int64 `protobuf:"varint,3,opt,name=service_off_id,json=serviceOffId" json:"service_off_id,omitempty"`
-	// the otherdeployparameters of the autoscale vm profile
-	OtherDeployParams *string `protobuf:"bytes,4,opt,name=other_deploy_params,json=otherDeployParams" json:"other_deploy_params,omitempty"`
-	// availability zone for the auto deployed virtual machine
-	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,7,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,8,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,9,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,10,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,11,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,12,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,13,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,14,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListAutoScaleVmProfilesRequest) Reset() {
-	*x = ListAutoScaleVmProfilesRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListAutoScaleVmProfilesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListAutoScaleVmProfilesRequest) ProtoMessage() {}
-
-func (x *ListAutoScaleVmProfilesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListAutoScaleVmProfilesRequest.ProtoReflect.Descriptor instead.
-func (*ListAutoScaleVmProfilesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{38}
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetId() int64 {
+func (x *AutoScaleVmProfile) GetId() string {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return 0
+	return ""
 }
 
-func (x *ListAutoScaleVmProfilesRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetServiceOffId() int64 {
-	if x != nil && x.ServiceOffId != nil {
-		return *x.ServiceOffId
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetOtherDeployParams() string {
-	if x != nil && x.OtherDeployParams != nil {
-		return *x.OtherDeployParams
+func (x *AutoScaleVmProfile) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-func (x *ListAutoScaleVmProfilesRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
+func (x *AutoScaleVmProfile) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *ListAutoScaleVmProfilesRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *AutoScaleVmProfile) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
 
-func (x *ListAutoScaleVmProfilesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListAutoScaleVmProfilesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *AutoScaleVmProfile) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
 	}
 	return ""
-}
-
-// ListAutoScaleVmProfilesResponse represents the response from lists autoscale vm profiles.
-type ListAutoScaleVmProfilesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of AutoScaleVmProfiles
-	Items []*AutoScaleVmProfile `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of AutoScaleVmProfiles
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListAutoScaleVmProfilesResponse) Reset() {
-	*x = ListAutoScaleVmProfilesResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListAutoScaleVmProfilesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListAutoScaleVmProfilesResponse) ProtoMessage() {}
-
-func (x *ListAutoScaleVmProfilesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListAutoScaleVmProfilesResponse.ProtoReflect.Descriptor instead.
-func (*ListAutoScaleVmProfilesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{39}
-}
-
-func (x *ListAutoScaleVmProfilesResponse) GetItems() []*AutoScaleVmProfile {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListAutoScaleVmProfilesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateConditionRequest represents the parameters for updates a condition for vm auto scaling
-type UpdateConditionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the condition.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
-	RelationalOperator *string `protobuf:"bytes,2,opt,name=relational_operator,json=relationalOperator" json:"relational_operator,omitempty"`
-	// Value for which the Counter will be evaluated with the Operator selected.
-	Threshold *int64 `protobuf:"varint,3,opt,name=threshold" json:"threshold,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateConditionRequest) Reset() {
-	*x = UpdateConditionRequest{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateConditionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateConditionRequest) ProtoMessage() {}
-
-func (x *UpdateConditionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateConditionRequest.ProtoReflect.Descriptor instead.
-func (*UpdateConditionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{40}
-}
-
-func (x *UpdateConditionRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateConditionRequest) GetRelationalOperator() string {
-	if x != nil && x.RelationalOperator != nil {
-		return *x.RelationalOperator
-	}
-	return ""
-}
-
-func (x *UpdateConditionRequest) GetThreshold() int64 {
-	if x != nil && x.Threshold != nil {
-		return *x.Threshold
-	}
-	return 0
-}
-
-func (x *UpdateConditionRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateConditionRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateConditionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateConditionResponse represents the response from updates a condition for vm auto scaling
-type UpdateConditionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateConditionResponse) Reset() {
-	*x = UpdateConditionResponse{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[41]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateConditionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateConditionResponse) ProtoMessage() {}
-
-func (x *UpdateConditionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[41]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateConditionResponse.ProtoReflect.Descriptor instead.
-func (*UpdateConditionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{41}
-}
-
-func (x *UpdateConditionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // Condition represents a Condition Item
@@ -3464,7 +3693,7 @@ type Condition struct {
 
 func (x *Condition) Reset() {
 	*x = Condition{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[42]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3476,7 +3705,7 @@ func (x *Condition) String() string {
 func (*Condition) ProtoMessage() {}
 
 func (x *Condition) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[42]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3489,7 +3718,7 @@ func (x *Condition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Condition.ProtoReflect.Descriptor instead.
 func (*Condition) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{42}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *Condition) GetId() string {
@@ -3546,7 +3775,7 @@ type Counter struct {
 
 func (x *Counter) Reset() {
 	*x = Counter{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[43]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3558,7 +3787,7 @@ func (x *Counter) String() string {
 func (*Counter) ProtoMessage() {}
 
 func (x *Counter) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[43]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3571,7 +3800,7 @@ func (x *Counter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Counter.ProtoReflect.Descriptor instead.
 func (*Counter) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{43}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *Counter) GetId() string {
@@ -3609,88 +3838,6 @@ func (x *Counter) GetCreated() string {
 	return ""
 }
 
-// AutoScalePolicy represents a AutoScalePolicy Item
-type AutoScalePolicy struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the AutoScalePolicy
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the AutoScalePolicy
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the AutoScalePolicy
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the AutoScalePolicy
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AutoScalePolicy) Reset() {
-	*x = AutoScalePolicy{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AutoScalePolicy) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AutoScalePolicy) ProtoMessage() {}
-
-func (x *AutoScalePolicy) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AutoScalePolicy.ProtoReflect.Descriptor instead.
-func (*AutoScalePolicy) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{44}
-}
-
-func (x *AutoScalePolicy) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *AutoScalePolicy) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *AutoScalePolicy) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *AutoScalePolicy) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *AutoScalePolicy) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // AutoScaleVmGroup represents a AutoScaleVmGroup Item
 type AutoScaleVmGroup struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -3710,7 +3857,7 @@ type AutoScaleVmGroup struct {
 
 func (x *AutoScaleVmGroup) Reset() {
 	*x = AutoScaleVmGroup{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[45]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3722,7 +3869,7 @@ func (x *AutoScaleVmGroup) String() string {
 func (*AutoScaleVmGroup) ProtoMessage() {}
 
 func (x *AutoScaleVmGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[45]
+	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3735,7 +3882,7 @@ func (x *AutoScaleVmGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AutoScaleVmGroup.ProtoReflect.Descriptor instead.
 func (*AutoScaleVmGroup) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{45}
+	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *AutoScaleVmGroup) GetId() string {
@@ -3767,88 +3914,6 @@ func (x *AutoScaleVmGroup) GetDescription() string {
 }
 
 func (x *AutoScaleVmGroup) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// AutoScaleVmProfile represents a AutoScaleVmProfile Item
-type AutoScaleVmProfile struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the AutoScaleVmProfile
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the AutoScaleVmProfile
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the AutoScaleVmProfile
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the AutoScaleVmProfile
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AutoScaleVmProfile) Reset() {
-	*x = AutoScaleVmProfile{}
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[46]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AutoScaleVmProfile) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AutoScaleVmProfile) ProtoMessage() {}
-
-func (x *AutoScaleVmProfile) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes[46]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AutoScaleVmProfile.ProtoReflect.Descriptor instead.
-func (*AutoScaleVmProfile) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP(), []int{46}
-}
-
-func (x *AutoScaleVmProfile) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *AutoScaleVmProfile) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *AutoScaleVmProfile) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *AutoScaleVmProfile) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *AutoScaleVmProfile) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -4141,41 +4206,7 @@ var File_cloudstack_management_autoscale_v1_autoscale_gen_proto protoreflect.Fil
 
 const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\n" +
-	"6cloudstack/management/autoscale/v1/autoscale.gen.proto\x12\"cloudstack.management.autoscale.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xcb\x02\n" +
-	"\x1cCreateAutoScalePolicyRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x1e\n" +
-	"\x06action\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06action\x12\"\n" +
-	"\bduration\x18\x03 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\bduration\x12\x1d\n" +
-	"\n" +
-	"quiet_time\x18\x04 \x01(\x05R\tquietTime\x12+\n" +
-	"\rcondition_ids\x18\x05 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\fconditionIds\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
-	"\x1dCreateAutoScalePolicyResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xf9\x03\n" +
-	"\x15ListConditionsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
-	"\n" +
-	"counter_id\x18\x02 \x01(\x03R\tcounterId\x12\x1b\n" +
-	"\tpolicy_id\x18\x03 \x01(\x03R\bpolicyId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\x05 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\t \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\n" +
-	" \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\v \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"\x85\x01\n" +
-	"\x16ListConditionsResponse\x12C\n" +
-	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.autoscale.v1.ConditionR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xfa\x03\n" +
+	"6cloudstack/management/autoscale/v1/autoscale.gen.proto\x12\"cloudstack.management.autoscale.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xfa\x03\n" +
 	"\x16CreateConditionRequest\x12%\n" +
 	"\n" +
 	"counter_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tcounterId\x127\n" +
@@ -4190,34 +4221,27 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\t \x01(\tR\fresponseType\"]\n" +
 	"\x17CreateConditionResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xab\x01\n" +
-	"\x14DeleteCounterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
-	"\x15DeleteCounterResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xf3\x01\n" +
-	"\x13ListCountersRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\x8a\x04\n" +
+	"\x1dCreateAutoScaleVmGroupRequest\x12$\n" +
+	"\n" +
+	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x16\n" +
-	"\x06source\x18\x03 \x01(\tR\x06source\x12$\n" +
-	"\bprovider\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x18\n" +
-	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"\x81\x01\n" +
-	"\x14ListCountersResponse\x12A\n" +
-	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.autoscale.v1.CounterR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb6\x01\n" +
-	"\x1fDeleteAutoScaleVmProfileRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"f\n" +
-	" DeleteAutoScaleVmProfileResponse\x12B\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12'\n" +
+	"\vmin_members\x18\x03 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"minMembers\x12'\n" +
+	"\vmax_members\x18\x04 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"maxMembers\x12\x1a\n" +
+	"\binterval\x18\x05 \x01(\x05R\binterval\x125\n" +
+	"\x13scale_up_policy_ids\x18\x06 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\x10scaleUpPolicyIds\x129\n" +
+	"\x15scale_down_policy_ids\x18\a \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\x12scaleDownPolicyIds\x12%\n" +
+	"\n" +
+	"profile_id\x18\b \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprofileId\x12\x1f\n" +
+	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\n" +
+	" \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"d\n" +
+	"\x1eCreateAutoScaleVmGroupResponse\x12B\n" +
 	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xbf\x04\n" +
 	"\x1cListAutoScalePoliciesRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
@@ -4241,7 +4265,127 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x1dListAutoScalePoliciesResponse\x12I\n" +
 	"\x05items\x18\x01 \x03(\v23.cloudstack.management.autoscale.v1.AutoScalePolicyR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xaf\t\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xcb\x02\n" +
+	"\x1cCreateAutoScalePolicyRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x1e\n" +
+	"\x06action\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06action\x12\"\n" +
+	"\bduration\x18\x03 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\bduration\x12\x1d\n" +
+	"\n" +
+	"quiet_time\x18\x04 \x01(\x05R\tquietTime\x12+\n" +
+	"\rcondition_ids\x18\x05 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\fconditionIds\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
+	"\x1dCreateAutoScalePolicyResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xad\x01\n" +
+	"\x16DeleteConditionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
+	"\x17DeleteConditionResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xb6\x01\n" +
+	"\x1fDeleteAutoScaleVmProfileRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"f\n" +
+	" DeleteAutoScaleVmProfileResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xf7\x04\n" +
+	"\x1eListAutoScaleVmProfilesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
+	"\vtemplate_id\x18\x02 \x01(\x03R\n" +
+	"templateId\x12$\n" +
+	"\x0eservice_off_id\x18\x03 \x01(\x03R\fserviceOffId\x12.\n" +
+	"\x13other_deploy_params\x18\x04 \x01(\tR\x11otherDeployParams\x12\x17\n" +
+	"\azone_id\x18\x05 \x01(\x03R\x06zoneId\x12\x1f\n" +
+	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\a \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\b \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\n" +
+	" \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\f \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\r \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x0e \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\"\x97\x01\n" +
+	"\x1fListAutoScaleVmProfilesResponse\x12L\n" +
+	"\x05items\x18\x01 \x03(\v26.cloudstack.management.autoscale.v1.AutoScaleVmProfileR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb3\x02\n" +
+	"\x1cUpdateAutoScalePolicyRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x1a\n" +
+	"\bduration\x18\x02 \x01(\x05R\bduration\x12\x1d\n" +
+	"\n" +
+	"quiet_time\x18\x03 \x01(\x05R\tquietTime\x12#\n" +
+	"\rcondition_ids\x18\x04 \x03(\tR\fconditionIds\x12\x16\n" +
+	"\x02id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
+	"\x1dUpdateAutoScalePolicyResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xde\b\n" +
+	"\x1fUpdateAutoScaleVmProfileRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
+	"\x13service_offering_id\x18\x02 \x01(\x03R\x11serviceOfferingId\x12\x1f\n" +
+	"\vtemplate_id\x18\x03 \x01(\x03R\n" +
+	"templateId\x125\n" +
+	"\x17expunge_vm_grace_period\x18\x04 \x01(\x05R\x14expungeVmGracePeriod\x12\x87\x01\n" +
+	"\x12counter_param_list\x18\x05 \x03(\v2Y.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.CounterParamListEntryR\x10counterParamList\x12\x8a\x01\n" +
+	"\x13other_deploy_params\x18\x06 \x03(\v2Z.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.OtherDeployParamsEntryR\x11otherDeployParams\x12\x1b\n" +
+	"\tuser_data\x18\a \x01(\tR\buserData\x12 \n" +
+	"\fuser_data_id\x18\b \x01(\x03R\n" +
+	"userDataId\x12\x84\x01\n" +
+	"\x11user_data_details\x18\t \x03(\v2X.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.UserDataDetailsEntryR\x0fuserDataDetails\x12*\n" +
+	"\x11autoscale_user_id\x18\n" +
+	" \x01(\x03R\x0fautoscaleUserId\x12\x1f\n" +
+	"\adisplay\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\r \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\x1aC\n" +
+	"\x15CounterParamListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aD\n" +
+	"\x16OtherDeployParamsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aB\n" +
+	"\x14UserDataDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"f\n" +
+	" UpdateAutoScaleVmProfileResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xdc\x03\n" +
+	"\x1dUpdateAutoScaleVmGroupRequest\x12\x1e\n" +
+	"\x04name\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x1f\n" +
+	"\vmin_members\x18\x02 \x01(\x05R\n" +
+	"minMembers\x12\x1f\n" +
+	"\vmax_members\x18\x03 \x01(\x05R\n" +
+	"maxMembers\x12\x1a\n" +
+	"\binterval\x18\x04 \x01(\x05R\binterval\x12-\n" +
+	"\x13scale_up_policy_ids\x18\x05 \x03(\tR\x10scaleUpPolicyIds\x121\n" +
+	"\x15scale_down_policy_ids\x18\x06 \x03(\tR\x12scaleDownPolicyIds\x12\x16\n" +
+	"\x02id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\n" +
+	" \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"d\n" +
+	"\x1eUpdateAutoScaleVmGroupResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xb4\x01\n" +
+	"\x1dEnableAutoScaleVmGroupRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"d\n" +
+	"\x1eEnableAutoScaleVmGroupResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xaf\t\n" +
 	"\x1fCreateAutoScaleVmProfileRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x126\n" +
 	"\x13service_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12'\n" +
@@ -4274,21 +4418,6 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"f\n" +
 	" CreateAutoScaleVmProfileResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xad\x01\n" +
-	"\x16DeleteConditionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
-	"\x17DeleteConditionResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xd5\x01\n" +
-	"\x1dDeleteAutoScaleVmGroupRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	"\x1eDeleteAutoScaleVmGroupResponse\x12B\n" +
 	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xb5\x01\n" +
 	"\x1eDisableAutoScaleVmGroupRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -4296,104 +4425,69 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"e\n" +
 	"\x1fDisableAutoScaleVmGroupResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xde\b\n" +
-	"\x1fUpdateAutoScaleVmProfileRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
-	"\x13service_offering_id\x18\x02 \x01(\x03R\x11serviceOfferingId\x12\x1f\n" +
-	"\vtemplate_id\x18\x03 \x01(\x03R\n" +
-	"templateId\x125\n" +
-	"\x17expunge_vm_grace_period\x18\x04 \x01(\x05R\x14expungeVmGracePeriod\x12\x87\x01\n" +
-	"\x12counter_param_list\x18\x05 \x03(\v2Y.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.CounterParamListEntryR\x10counterParamList\x12\x8a\x01\n" +
-	"\x13other_deploy_params\x18\x06 \x03(\v2Z.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.OtherDeployParamsEntryR\x11otherDeployParams\x12\x1b\n" +
-	"\tuser_data\x18\a \x01(\tR\buserData\x12 \n" +
-	"\fuser_data_id\x18\b \x01(\x03R\n" +
-	"userDataId\x12\x84\x01\n" +
-	"\x11user_data_details\x18\t \x03(\v2X.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.UserDataDetailsEntryR\x0fuserDataDetails\x12*\n" +
-	"\x11autoscale_user_id\x18\n" +
-	" \x01(\x03R\x0fautoscaleUserId\x12\x1f\n" +
-	"\adisplay\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\r \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\x1aC\n" +
-	"\x15CounterParamListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aD\n" +
-	"\x16OtherDeployParamsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aB\n" +
-	"\x14UserDataDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"f\n" +
-	" UpdateAutoScaleVmProfileResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xb4\x01\n" +
-	"\x1dEnableAutoScaleVmGroupRequest\x12\x16\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\x9d\x02\n" +
+	"\x14CreateCounterRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12\x1e\n" +
+	"\x06source\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06source\x12\x1c\n" +
+	"\x05value\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05value\x12'\n" +
+	"\bprovider\x18\x04 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\bprovider\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"[\n" +
+	"\x15CreateCounterResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xab\x01\n" +
+	"\x14DeleteCounterRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"d\n" +
-	"\x1eEnableAutoScaleVmGroupResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xdc\x03\n" +
-	"\x1dUpdateAutoScaleVmGroupRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x1f\n" +
-	"\vmin_members\x18\x02 \x01(\x05R\n" +
-	"minMembers\x12\x1f\n" +
-	"\vmax_members\x18\x03 \x01(\x05R\n" +
-	"maxMembers\x12\x1a\n" +
-	"\binterval\x18\x04 \x01(\x05R\binterval\x12-\n" +
-	"\x13scale_up_policy_ids\x18\x05 \x03(\tR\x10scaleUpPolicyIds\x121\n" +
-	"\x15scale_down_policy_ids\x18\x06 \x03(\tR\x12scaleDownPolicyIds\x12\x16\n" +
-	"\x02id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\n" +
-	" \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"d\n" +
-	"\x1eUpdateAutoScaleVmGroupResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xb3\x02\n" +
-	"\x1cUpdateAutoScalePolicyRequest\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x1a\n" +
-	"\bduration\x18\x02 \x01(\x05R\bduration\x12\x1d\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
+	"\x15DeleteCounterResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xf9\x03\n" +
+	"\x15ListConditionsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
 	"\n" +
-	"quiet_time\x18\x03 \x01(\x05R\tquietTime\x12#\n" +
-	"\rcondition_ids\x18\x04 \x03(\tR\fconditionIds\x12\x16\n" +
-	"\x02id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
-	"\x1dUpdateAutoScalePolicyResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\x8a\x04\n" +
-	"\x1dCreateAutoScaleVmGroupRequest\x12$\n" +
+	"counter_id\x18\x02 \x01(\x03R\tcounterId\x12\x1b\n" +
+	"\tpolicy_id\x18\x03 \x01(\x03R\bpolicyId\x12\x1d\n" +
 	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12\x1e\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\x05 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\t \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\n" +
+	" \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\v \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"\x85\x01\n" +
+	"\x16ListConditionsResponse\x12C\n" +
+	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.autoscale.v1.ConditionR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8c\x02\n" +
+	"\x16UpdateConditionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x127\n" +
+	"\x13relational_operator\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x12relationalOperator\x12$\n" +
+	"\tthreshold\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tthreshold\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"]\n" +
+	"\x17UpdateConditionResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xf3\x01\n" +
+	"\x13ListCountersRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12'\n" +
-	"\vmin_members\x18\x03 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"minMembers\x12'\n" +
-	"\vmax_members\x18\x04 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"maxMembers\x12\x1a\n" +
-	"\binterval\x18\x05 \x01(\x05R\binterval\x125\n" +
-	"\x13scale_up_policy_ids\x18\x06 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\x10scaleUpPolicyIds\x129\n" +
-	"\x15scale_down_policy_ids\x18\a \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\x12scaleDownPolicyIds\x12%\n" +
-	"\n" +
-	"profile_id\x18\b \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprofileId\x12\x1f\n" +
-	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\n" +
-	" \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"d\n" +
-	"\x1eCreateAutoScaleVmGroupResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xb3\x01\n" +
-	"\x1cDeleteAutoScalePolicyRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
-	"\x1dDeleteAutoScalePolicyResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\x84\x05\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x16\n" +
+	"\x06source\x18\x03 \x01(\tR\x06source\x12$\n" +
+	"\bprovider\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12\x18\n" +
+	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"\x81\x01\n" +
+	"\x14ListCountersResponse\x12A\n" +
+	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.autoscale.v1.CounterR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x84\x05\n" +
 	"\x1cListAutoScaleVmGroupsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -4419,51 +4513,34 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x1dListAutoScaleVmGroupsResponse\x12J\n" +
 	"\x05items\x18\x01 \x03(\v24.cloudstack.management.autoscale.v1.AutoScaleVmGroupR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9d\x02\n" +
-	"\x14CreateCounterRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12\x1e\n" +
-	"\x06source\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06source\x12\x1c\n" +
-	"\x05value\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05value\x12'\n" +
-	"\bprovider\x18\x04 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\bprovider\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"[\n" +
-	"\x15CreateCounterResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xf7\x04\n" +
-	"\x1eListAutoScaleVmProfilesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
-	"\vtemplate_id\x18\x02 \x01(\x03R\n" +
-	"templateId\x12$\n" +
-	"\x0eservice_off_id\x18\x03 \x01(\x03R\fserviceOffId\x12.\n" +
-	"\x13other_deploy_params\x18\x04 \x01(\tR\x11otherDeployParams\x12\x17\n" +
-	"\azone_id\x18\x05 \x01(\x03R\x06zoneId\x12\x1f\n" +
-	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\a \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\b \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\n" +
-	" \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\f \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\r \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x0e \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\"\x97\x01\n" +
-	"\x1fListAutoScaleVmProfilesResponse\x12L\n" +
-	"\x05items\x18\x01 \x03(\v26.cloudstack.management.autoscale.v1.AutoScaleVmProfileR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x8c\x02\n" +
-	"\x16UpdateConditionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x127\n" +
-	"\x13relational_operator\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x12relationalOperator\x12$\n" +
-	"\tthreshold\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tthreshold\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"]\n" +
-	"\x17UpdateConditionResponse\x12B\n" +
-	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\x98\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb3\x01\n" +
+	"\x1cDeleteAutoScalePolicyRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
+	"\x1dDeleteAutoScalePolicyResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\xd5\x01\n" +
+	"\x1dDeleteAutoScaleVmGroupRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	"\x1eDeleteAutoScaleVmGroupResponse\x12B\n" +
+	"\x06result\x18\x01 \x01(\v2*.cloudstack.management.autoscale.v1.ResultR\x06result\"\x9e\x01\n" +
+	"\x0fAutoScalePolicy\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\xa1\x01\n" +
+	"\x12AutoScaleVmProfile\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x98\x01\n" +
 	"\tCondition\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -4475,20 +4552,8 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
-	"\x0fAutoScalePolicy\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x9f\x01\n" +
 	"\x10AutoScaleVmGroup\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa1\x01\n" +
-	"\x12AutoScaleVmProfile\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -4522,29 +4587,36 @@ const file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xec\x19\n" +
-	"\x10AutoscaleService\x12\x9e\x01\n" +
-	"\x15CreateAutoScalePolicy\x12@.cloudstack.management.autoscale.v1.CreateAutoScalePolicyRequest\x1aA.cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse\"\x00\x12\x89\x01\n" +
-	"\x0eListConditions\x129.cloudstack.management.autoscale.v1.ListConditionsRequest\x1a:.cloudstack.management.autoscale.v1.ListConditionsResponse\"\x00\x12\x8c\x01\n" +
-	"\x0fCreateCondition\x12:.cloudstack.management.autoscale.v1.CreateConditionRequest\x1a;.cloudstack.management.autoscale.v1.CreateConditionResponse\"\x00\x12\x86\x01\n" +
-	"\rDeleteCounter\x128.cloudstack.management.autoscale.v1.DeleteCounterRequest\x1a9.cloudstack.management.autoscale.v1.DeleteCounterResponse\"\x00\x12\x83\x01\n" +
-	"\fListCounters\x127.cloudstack.management.autoscale.v1.ListCountersRequest\x1a8.cloudstack.management.autoscale.v1.ListCountersResponse\"\x00\x12\xa7\x01\n" +
-	"\x18DeleteAutoScaleVmProfile\x12C.cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileRequest\x1aD.cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse\"\x00\x12\x9e\x01\n" +
-	"\x15ListAutoScalePolicies\x12@.cloudstack.management.autoscale.v1.ListAutoScalePoliciesRequest\x1aA.cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse\"\x00\x12\xa7\x01\n" +
-	"\x18CreateAutoScaleVmProfile\x12C.cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest\x1aD.cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse\"\x00\x12\x8c\x01\n" +
-	"\x0fDeleteCondition\x12:.cloudstack.management.autoscale.v1.DeleteConditionRequest\x1a;.cloudstack.management.autoscale.v1.DeleteConditionResponse\"\x00\x12\xa1\x01\n" +
-	"\x16DeleteAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse\"\x00\x12\xa4\x01\n" +
-	"\x17DisableAutoScaleVmGroup\x12B.cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupRequest\x1aC.cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse\"\x00\x12\xa7\x01\n" +
-	"\x18UpdateAutoScaleVmProfile\x12C.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest\x1aD.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse\"\x00\x12\xa1\x01\n" +
-	"\x16EnableAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse\"\x00\x12\xa1\x01\n" +
-	"\x16UpdateAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse\"\x00\x12\x9e\x01\n" +
-	"\x15UpdateAutoScalePolicy\x12@.cloudstack.management.autoscale.v1.UpdateAutoScalePolicyRequest\x1aA.cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse\"\x00\x12\xa1\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*\xe7\x01\n" +
+	"\x16RelationalOperatorType\x12(\n" +
+	"$RELATIONAL_OPERATOR_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n" +
+	"\x1bRELATIONAL_OPERATOR_TYPE_EQ\x10\x01\x12\x1f\n" +
+	"\x1bRELATIONAL_OPERATOR_TYPE_GT\x10\x02\x12\x1f\n" +
+	"\x1bRELATIONAL_OPERATOR_TYPE_LT\x10\x03\x12\x1f\n" +
+	"\x1bRELATIONAL_OPERATOR_TYPE_GE\x10\x04\x12\x1f\n" +
+	"\x1bRELATIONAL_OPERATOR_TYPE_LE\x10\x052\xec\x19\n" +
+	"\x10AutoscaleService\x12\x8c\x01\n" +
+	"\x0fCreateCondition\x12:.cloudstack.management.autoscale.v1.CreateConditionRequest\x1a;.cloudstack.management.autoscale.v1.CreateConditionResponse\"\x00\x12\xa1\x01\n" +
 	"\x16CreateAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse\"\x00\x12\x9e\x01\n" +
-	"\x15DeleteAutoScalePolicy\x12@.cloudstack.management.autoscale.v1.DeleteAutoScalePolicyRequest\x1aA.cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse\"\x00\x12\x9e\x01\n" +
-	"\x15ListAutoScaleVmGroups\x12@.cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsRequest\x1aA.cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse\"\x00\x12\x86\x01\n" +
-	"\rCreateCounter\x128.cloudstack.management.autoscale.v1.CreateCounterRequest\x1a9.cloudstack.management.autoscale.v1.CreateCounterResponse\"\x00\x12\xa4\x01\n" +
-	"\x17ListAutoScaleVmProfiles\x12B.cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesRequest\x1aC.cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse\"\x00\x12\x8c\x01\n" +
-	"\x0fUpdateCondition\x12:.cloudstack.management.autoscale.v1.UpdateConditionRequest\x1a;.cloudstack.management.autoscale.v1.UpdateConditionResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xca\x02\n" +
+	"\x15ListAutoScalePolicies\x12@.cloudstack.management.autoscale.v1.ListAutoScalePoliciesRequest\x1aA.cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse\"\x00\x12\x9e\x01\n" +
+	"\x15CreateAutoScalePolicy\x12@.cloudstack.management.autoscale.v1.CreateAutoScalePolicyRequest\x1aA.cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse\"\x00\x12\x8c\x01\n" +
+	"\x0fDeleteCondition\x12:.cloudstack.management.autoscale.v1.DeleteConditionRequest\x1a;.cloudstack.management.autoscale.v1.DeleteConditionResponse\"\x00\x12\xa7\x01\n" +
+	"\x18DeleteAutoScaleVmProfile\x12C.cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileRequest\x1aD.cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse\"\x00\x12\xa4\x01\n" +
+	"\x17ListAutoScaleVmProfiles\x12B.cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesRequest\x1aC.cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse\"\x00\x12\x9e\x01\n" +
+	"\x15UpdateAutoScalePolicy\x12@.cloudstack.management.autoscale.v1.UpdateAutoScalePolicyRequest\x1aA.cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse\"\x00\x12\xa7\x01\n" +
+	"\x18UpdateAutoScaleVmProfile\x12C.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest\x1aD.cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse\"\x00\x12\xa1\x01\n" +
+	"\x16UpdateAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse\"\x00\x12\xa1\x01\n" +
+	"\x16EnableAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse\"\x00\x12\xa7\x01\n" +
+	"\x18CreateAutoScaleVmProfile\x12C.cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest\x1aD.cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse\"\x00\x12\xa4\x01\n" +
+	"\x17DisableAutoScaleVmGroup\x12B.cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupRequest\x1aC.cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse\"\x00\x12\x86\x01\n" +
+	"\rCreateCounter\x128.cloudstack.management.autoscale.v1.CreateCounterRequest\x1a9.cloudstack.management.autoscale.v1.CreateCounterResponse\"\x00\x12\x86\x01\n" +
+	"\rDeleteCounter\x128.cloudstack.management.autoscale.v1.DeleteCounterRequest\x1a9.cloudstack.management.autoscale.v1.DeleteCounterResponse\"\x00\x12\x89\x01\n" +
+	"\x0eListConditions\x129.cloudstack.management.autoscale.v1.ListConditionsRequest\x1a:.cloudstack.management.autoscale.v1.ListConditionsResponse\"\x00\x12\x8c\x01\n" +
+	"\x0fUpdateCondition\x12:.cloudstack.management.autoscale.v1.UpdateConditionRequest\x1a;.cloudstack.management.autoscale.v1.UpdateConditionResponse\"\x00\x12\x83\x01\n" +
+	"\fListCounters\x127.cloudstack.management.autoscale.v1.ListCountersRequest\x1a8.cloudstack.management.autoscale.v1.ListCountersResponse\"\x00\x12\x9e\x01\n" +
+	"\x15ListAutoScaleVmGroups\x12@.cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsRequest\x1aA.cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse\"\x00\x12\x9e\x01\n" +
+	"\x15DeleteAutoScalePolicy\x12@.cloudstack.management.autoscale.v1.DeleteAutoScalePolicyRequest\x1aA.cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse\"\x00\x12\xa1\x01\n" +
+	"\x16DeleteAutoScaleVmGroup\x12A.cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupRequest\x1aB.cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xca\x02\n" +
 	"&com.cloudstack.management.autoscale.v1B\x11AutoscaleGenProtoP\x01Zbgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/autoscale/v1;autoscalev1\xa2\x02\x03CMA\xaa\x02\"Cloudstack.Management.Autoscale.V1\xca\x02\"Cloudstack\\Management\\Autoscale\\V1\xe2\x02.Cloudstack\\Management\\Autoscale\\V1\\GPBMetadata\xea\x02%Cloudstack::Management::Autoscale::V1b\beditionsp\xe8\a"
 
 var (
@@ -4559,137 +4631,139 @@ func file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescGZIP() [
 	return file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_autoscale_v1_autoscale_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 57)
 var file_cloudstack_management_autoscale_v1_autoscale_gen_proto_goTypes = []any{
-	(*CreateAutoScalePolicyRequest)(nil),     // 0: cloudstack.management.autoscale.v1.CreateAutoScalePolicyRequest
-	(*CreateAutoScalePolicyResponse)(nil),    // 1: cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse
-	(*ListConditionsRequest)(nil),            // 2: cloudstack.management.autoscale.v1.ListConditionsRequest
-	(*ListConditionsResponse)(nil),           // 3: cloudstack.management.autoscale.v1.ListConditionsResponse
-	(*CreateConditionRequest)(nil),           // 4: cloudstack.management.autoscale.v1.CreateConditionRequest
-	(*CreateConditionResponse)(nil),          // 5: cloudstack.management.autoscale.v1.CreateConditionResponse
-	(*DeleteCounterRequest)(nil),             // 6: cloudstack.management.autoscale.v1.DeleteCounterRequest
-	(*DeleteCounterResponse)(nil),            // 7: cloudstack.management.autoscale.v1.DeleteCounterResponse
-	(*ListCountersRequest)(nil),              // 8: cloudstack.management.autoscale.v1.ListCountersRequest
-	(*ListCountersResponse)(nil),             // 9: cloudstack.management.autoscale.v1.ListCountersResponse
-	(*DeleteAutoScaleVmProfileRequest)(nil),  // 10: cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileRequest
-	(*DeleteAutoScaleVmProfileResponse)(nil), // 11: cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse
-	(*ListAutoScalePoliciesRequest)(nil),     // 12: cloudstack.management.autoscale.v1.ListAutoScalePoliciesRequest
-	(*ListAutoScalePoliciesResponse)(nil),    // 13: cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse
-	(*CreateAutoScaleVmProfileRequest)(nil),  // 14: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest
-	(*CreateAutoScaleVmProfileResponse)(nil), // 15: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse
-	(*DeleteConditionRequest)(nil),           // 16: cloudstack.management.autoscale.v1.DeleteConditionRequest
-	(*DeleteConditionResponse)(nil),          // 17: cloudstack.management.autoscale.v1.DeleteConditionResponse
-	(*DeleteAutoScaleVmGroupRequest)(nil),    // 18: cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupRequest
-	(*DeleteAutoScaleVmGroupResponse)(nil),   // 19: cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse
-	(*DisableAutoScaleVmGroupRequest)(nil),   // 20: cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupRequest
-	(*DisableAutoScaleVmGroupResponse)(nil),  // 21: cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse
-	(*UpdateAutoScaleVmProfileRequest)(nil),  // 22: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest
-	(*UpdateAutoScaleVmProfileResponse)(nil), // 23: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse
-	(*EnableAutoScaleVmGroupRequest)(nil),    // 24: cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupRequest
-	(*EnableAutoScaleVmGroupResponse)(nil),   // 25: cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse
-	(*UpdateAutoScaleVmGroupRequest)(nil),    // 26: cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupRequest
-	(*UpdateAutoScaleVmGroupResponse)(nil),   // 27: cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse
-	(*UpdateAutoScalePolicyRequest)(nil),     // 28: cloudstack.management.autoscale.v1.UpdateAutoScalePolicyRequest
-	(*UpdateAutoScalePolicyResponse)(nil),    // 29: cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse
-	(*CreateAutoScaleVmGroupRequest)(nil),    // 30: cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupRequest
-	(*CreateAutoScaleVmGroupResponse)(nil),   // 31: cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse
-	(*DeleteAutoScalePolicyRequest)(nil),     // 32: cloudstack.management.autoscale.v1.DeleteAutoScalePolicyRequest
-	(*DeleteAutoScalePolicyResponse)(nil),    // 33: cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse
-	(*ListAutoScaleVmGroupsRequest)(nil),     // 34: cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsRequest
-	(*ListAutoScaleVmGroupsResponse)(nil),    // 35: cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse
-	(*CreateCounterRequest)(nil),             // 36: cloudstack.management.autoscale.v1.CreateCounterRequest
-	(*CreateCounterResponse)(nil),            // 37: cloudstack.management.autoscale.v1.CreateCounterResponse
-	(*ListAutoScaleVmProfilesRequest)(nil),   // 38: cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesRequest
-	(*ListAutoScaleVmProfilesResponse)(nil),  // 39: cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse
-	(*UpdateConditionRequest)(nil),           // 40: cloudstack.management.autoscale.v1.UpdateConditionRequest
-	(*UpdateConditionResponse)(nil),          // 41: cloudstack.management.autoscale.v1.UpdateConditionResponse
-	(*Condition)(nil),                        // 42: cloudstack.management.autoscale.v1.Condition
-	(*Counter)(nil),                          // 43: cloudstack.management.autoscale.v1.Counter
-	(*AutoScalePolicy)(nil),                  // 44: cloudstack.management.autoscale.v1.AutoScalePolicy
-	(*AutoScaleVmGroup)(nil),                 // 45: cloudstack.management.autoscale.v1.AutoScaleVmGroup
-	(*AutoScaleVmProfile)(nil),               // 46: cloudstack.management.autoscale.v1.AutoScaleVmProfile
-	(*Success)(nil),                          // 47: cloudstack.management.autoscale.v1.Success
-	(*Item)(nil),                             // 48: cloudstack.management.autoscale.v1.Item
-	(*Result)(nil),                           // 49: cloudstack.management.autoscale.v1.Result
-	nil,                                      // 50: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.OtherDeployParamsEntry
-	nil,                                      // 51: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.CounterParamListEntry
-	nil,                                      // 52: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.UserDataDetailsEntry
-	nil,                                      // 53: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.CounterParamListEntry
-	nil,                                      // 54: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.OtherDeployParamsEntry
-	nil,                                      // 55: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.UserDataDetailsEntry
-	nil,                                      // 56: cloudstack.management.autoscale.v1.Item.DetailsEntry
+	(RelationalOperatorType)(0),              // 0: cloudstack.management.autoscale.v1.RelationalOperatorType
+	(*CreateConditionRequest)(nil),           // 1: cloudstack.management.autoscale.v1.CreateConditionRequest
+	(*CreateConditionResponse)(nil),          // 2: cloudstack.management.autoscale.v1.CreateConditionResponse
+	(*CreateAutoScaleVmGroupRequest)(nil),    // 3: cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupRequest
+	(*CreateAutoScaleVmGroupResponse)(nil),   // 4: cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse
+	(*ListAutoScalePoliciesRequest)(nil),     // 5: cloudstack.management.autoscale.v1.ListAutoScalePoliciesRequest
+	(*ListAutoScalePoliciesResponse)(nil),    // 6: cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse
+	(*CreateAutoScalePolicyRequest)(nil),     // 7: cloudstack.management.autoscale.v1.CreateAutoScalePolicyRequest
+	(*CreateAutoScalePolicyResponse)(nil),    // 8: cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse
+	(*DeleteConditionRequest)(nil),           // 9: cloudstack.management.autoscale.v1.DeleteConditionRequest
+	(*DeleteConditionResponse)(nil),          // 10: cloudstack.management.autoscale.v1.DeleteConditionResponse
+	(*DeleteAutoScaleVmProfileRequest)(nil),  // 11: cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileRequest
+	(*DeleteAutoScaleVmProfileResponse)(nil), // 12: cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse
+	(*ListAutoScaleVmProfilesRequest)(nil),   // 13: cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesRequest
+	(*ListAutoScaleVmProfilesResponse)(nil),  // 14: cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse
+	(*UpdateAutoScalePolicyRequest)(nil),     // 15: cloudstack.management.autoscale.v1.UpdateAutoScalePolicyRequest
+	(*UpdateAutoScalePolicyResponse)(nil),    // 16: cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse
+	(*UpdateAutoScaleVmProfileRequest)(nil),  // 17: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest
+	(*UpdateAutoScaleVmProfileResponse)(nil), // 18: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse
+	(*UpdateAutoScaleVmGroupRequest)(nil),    // 19: cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupRequest
+	(*UpdateAutoScaleVmGroupResponse)(nil),   // 20: cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse
+	(*EnableAutoScaleVmGroupRequest)(nil),    // 21: cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupRequest
+	(*EnableAutoScaleVmGroupResponse)(nil),   // 22: cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse
+	(*CreateAutoScaleVmProfileRequest)(nil),  // 23: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest
+	(*CreateAutoScaleVmProfileResponse)(nil), // 24: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse
+	(*DisableAutoScaleVmGroupRequest)(nil),   // 25: cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupRequest
+	(*DisableAutoScaleVmGroupResponse)(nil),  // 26: cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse
+	(*CreateCounterRequest)(nil),             // 27: cloudstack.management.autoscale.v1.CreateCounterRequest
+	(*CreateCounterResponse)(nil),            // 28: cloudstack.management.autoscale.v1.CreateCounterResponse
+	(*DeleteCounterRequest)(nil),             // 29: cloudstack.management.autoscale.v1.DeleteCounterRequest
+	(*DeleteCounterResponse)(nil),            // 30: cloudstack.management.autoscale.v1.DeleteCounterResponse
+	(*ListConditionsRequest)(nil),            // 31: cloudstack.management.autoscale.v1.ListConditionsRequest
+	(*ListConditionsResponse)(nil),           // 32: cloudstack.management.autoscale.v1.ListConditionsResponse
+	(*UpdateConditionRequest)(nil),           // 33: cloudstack.management.autoscale.v1.UpdateConditionRequest
+	(*UpdateConditionResponse)(nil),          // 34: cloudstack.management.autoscale.v1.UpdateConditionResponse
+	(*ListCountersRequest)(nil),              // 35: cloudstack.management.autoscale.v1.ListCountersRequest
+	(*ListCountersResponse)(nil),             // 36: cloudstack.management.autoscale.v1.ListCountersResponse
+	(*ListAutoScaleVmGroupsRequest)(nil),     // 37: cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsRequest
+	(*ListAutoScaleVmGroupsResponse)(nil),    // 38: cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse
+	(*DeleteAutoScalePolicyRequest)(nil),     // 39: cloudstack.management.autoscale.v1.DeleteAutoScalePolicyRequest
+	(*DeleteAutoScalePolicyResponse)(nil),    // 40: cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse
+	(*DeleteAutoScaleVmGroupRequest)(nil),    // 41: cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupRequest
+	(*DeleteAutoScaleVmGroupResponse)(nil),   // 42: cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse
+	(*AutoScalePolicy)(nil),                  // 43: cloudstack.management.autoscale.v1.AutoScalePolicy
+	(*AutoScaleVmProfile)(nil),               // 44: cloudstack.management.autoscale.v1.AutoScaleVmProfile
+	(*Condition)(nil),                        // 45: cloudstack.management.autoscale.v1.Condition
+	(*Counter)(nil),                          // 46: cloudstack.management.autoscale.v1.Counter
+	(*AutoScaleVmGroup)(nil),                 // 47: cloudstack.management.autoscale.v1.AutoScaleVmGroup
+	(*Success)(nil),                          // 48: cloudstack.management.autoscale.v1.Success
+	(*Item)(nil),                             // 49: cloudstack.management.autoscale.v1.Item
+	(*Result)(nil),                           // 50: cloudstack.management.autoscale.v1.Result
+	nil,                                      // 51: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.CounterParamListEntry
+	nil,                                      // 52: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.OtherDeployParamsEntry
+	nil,                                      // 53: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.UserDataDetailsEntry
+	nil,                                      // 54: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.OtherDeployParamsEntry
+	nil,                                      // 55: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.CounterParamListEntry
+	nil,                                      // 56: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.UserDataDetailsEntry
+	nil,                                      // 57: cloudstack.management.autoscale.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_autoscale_v1_autoscale_gen_proto_depIdxs = []int32{
-	49, // 0: cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	42, // 1: cloudstack.management.autoscale.v1.ListConditionsResponse.items:type_name -> cloudstack.management.autoscale.v1.Condition
-	49, // 2: cloudstack.management.autoscale.v1.CreateConditionResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 3: cloudstack.management.autoscale.v1.DeleteCounterResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	43, // 4: cloudstack.management.autoscale.v1.ListCountersResponse.items:type_name -> cloudstack.management.autoscale.v1.Counter
-	49, // 5: cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	44, // 6: cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse.items:type_name -> cloudstack.management.autoscale.v1.AutoScalePolicy
-	50, // 7: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.other_deploy_params:type_name -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.OtherDeployParamsEntry
-	51, // 8: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.counter_param_list:type_name -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.CounterParamListEntry
-	52, // 9: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.user_data_details:type_name -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.UserDataDetailsEntry
-	49, // 10: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 11: cloudstack.management.autoscale.v1.DeleteConditionResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 12: cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 13: cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	53, // 14: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.counter_param_list:type_name -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.CounterParamListEntry
-	54, // 15: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.other_deploy_params:type_name -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.OtherDeployParamsEntry
-	55, // 16: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.user_data_details:type_name -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.UserDataDetailsEntry
-	49, // 17: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 18: cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 19: cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 20: cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 21: cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	49, // 22: cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	45, // 23: cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse.items:type_name -> cloudstack.management.autoscale.v1.AutoScaleVmGroup
-	49, // 24: cloudstack.management.autoscale.v1.CreateCounterResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	46, // 25: cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse.items:type_name -> cloudstack.management.autoscale.v1.AutoScaleVmProfile
-	49, // 26: cloudstack.management.autoscale.v1.UpdateConditionResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
-	56, // 27: cloudstack.management.autoscale.v1.Item.details:type_name -> cloudstack.management.autoscale.v1.Item.DetailsEntry
-	0,  // 28: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScalePolicy:input_type -> cloudstack.management.autoscale.v1.CreateAutoScalePolicyRequest
-	2,  // 29: cloudstack.management.autoscale.v1.AutoscaleService.ListConditions:input_type -> cloudstack.management.autoscale.v1.ListConditionsRequest
-	4,  // 30: cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition:input_type -> cloudstack.management.autoscale.v1.CreateConditionRequest
-	6,  // 31: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter:input_type -> cloudstack.management.autoscale.v1.DeleteCounterRequest
-	8,  // 32: cloudstack.management.autoscale.v1.AutoscaleService.ListCounters:input_type -> cloudstack.management.autoscale.v1.ListCountersRequest
-	10, // 33: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile:input_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileRequest
-	12, // 34: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies:input_type -> cloudstack.management.autoscale.v1.ListAutoScalePoliciesRequest
-	14, // 35: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmProfile:input_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest
-	16, // 36: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition:input_type -> cloudstack.management.autoscale.v1.DeleteConditionRequest
-	18, // 37: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupRequest
-	20, // 38: cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupRequest
-	22, // 39: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile:input_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest
-	24, // 40: cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupRequest
-	26, // 41: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupRequest
-	28, // 42: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy:input_type -> cloudstack.management.autoscale.v1.UpdateAutoScalePolicyRequest
-	30, // 43: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupRequest
-	32, // 44: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScalePolicy:input_type -> cloudstack.management.autoscale.v1.DeleteAutoScalePolicyRequest
-	34, // 45: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups:input_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsRequest
-	36, // 46: cloudstack.management.autoscale.v1.AutoscaleService.CreateCounter:input_type -> cloudstack.management.autoscale.v1.CreateCounterRequest
-	38, // 47: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles:input_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesRequest
-	40, // 48: cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition:input_type -> cloudstack.management.autoscale.v1.UpdateConditionRequest
-	1,  // 49: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScalePolicy:output_type -> cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse
-	3,  // 50: cloudstack.management.autoscale.v1.AutoscaleService.ListConditions:output_type -> cloudstack.management.autoscale.v1.ListConditionsResponse
-	5,  // 51: cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition:output_type -> cloudstack.management.autoscale.v1.CreateConditionResponse
-	7,  // 52: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter:output_type -> cloudstack.management.autoscale.v1.DeleteCounterResponse
-	9,  // 53: cloudstack.management.autoscale.v1.AutoscaleService.ListCounters:output_type -> cloudstack.management.autoscale.v1.ListCountersResponse
-	11, // 54: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile:output_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse
-	13, // 55: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies:output_type -> cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse
-	15, // 56: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmProfile:output_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse
-	17, // 57: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition:output_type -> cloudstack.management.autoscale.v1.DeleteConditionResponse
-	19, // 58: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse
-	21, // 59: cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse
-	23, // 60: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile:output_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse
-	25, // 61: cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse
-	27, // 62: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse
-	29, // 63: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy:output_type -> cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse
-	31, // 64: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse
-	33, // 65: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScalePolicy:output_type -> cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse
-	35, // 66: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups:output_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse
-	37, // 67: cloudstack.management.autoscale.v1.AutoscaleService.CreateCounter:output_type -> cloudstack.management.autoscale.v1.CreateCounterResponse
-	39, // 68: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles:output_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse
-	41, // 69: cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition:output_type -> cloudstack.management.autoscale.v1.UpdateConditionResponse
+	50, // 0: cloudstack.management.autoscale.v1.CreateConditionResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 1: cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	43, // 2: cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse.items:type_name -> cloudstack.management.autoscale.v1.AutoScalePolicy
+	50, // 3: cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 4: cloudstack.management.autoscale.v1.DeleteConditionResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 5: cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	44, // 6: cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse.items:type_name -> cloudstack.management.autoscale.v1.AutoScaleVmProfile
+	50, // 7: cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	51, // 8: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.counter_param_list:type_name -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.CounterParamListEntry
+	52, // 9: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.other_deploy_params:type_name -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.OtherDeployParamsEntry
+	53, // 10: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.user_data_details:type_name -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest.UserDataDetailsEntry
+	50, // 11: cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 12: cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 13: cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	54, // 14: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.other_deploy_params:type_name -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.OtherDeployParamsEntry
+	55, // 15: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.counter_param_list:type_name -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.CounterParamListEntry
+	56, // 16: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.user_data_details:type_name -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest.UserDataDetailsEntry
+	50, // 17: cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 18: cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 19: cloudstack.management.autoscale.v1.CreateCounterResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 20: cloudstack.management.autoscale.v1.DeleteCounterResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	45, // 21: cloudstack.management.autoscale.v1.ListConditionsResponse.items:type_name -> cloudstack.management.autoscale.v1.Condition
+	50, // 22: cloudstack.management.autoscale.v1.UpdateConditionResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	46, // 23: cloudstack.management.autoscale.v1.ListCountersResponse.items:type_name -> cloudstack.management.autoscale.v1.Counter
+	47, // 24: cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse.items:type_name -> cloudstack.management.autoscale.v1.AutoScaleVmGroup
+	50, // 25: cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	50, // 26: cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse.result:type_name -> cloudstack.management.autoscale.v1.Result
+	57, // 27: cloudstack.management.autoscale.v1.Item.details:type_name -> cloudstack.management.autoscale.v1.Item.DetailsEntry
+	1,  // 28: cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition:input_type -> cloudstack.management.autoscale.v1.CreateConditionRequest
+	3,  // 29: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupRequest
+	5,  // 30: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies:input_type -> cloudstack.management.autoscale.v1.ListAutoScalePoliciesRequest
+	7,  // 31: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScalePolicy:input_type -> cloudstack.management.autoscale.v1.CreateAutoScalePolicyRequest
+	9,  // 32: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition:input_type -> cloudstack.management.autoscale.v1.DeleteConditionRequest
+	11, // 33: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile:input_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileRequest
+	13, // 34: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles:input_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesRequest
+	15, // 35: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy:input_type -> cloudstack.management.autoscale.v1.UpdateAutoScalePolicyRequest
+	17, // 36: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile:input_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileRequest
+	19, // 37: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupRequest
+	21, // 38: cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupRequest
+	23, // 39: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmProfile:input_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileRequest
+	25, // 40: cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupRequest
+	27, // 41: cloudstack.management.autoscale.v1.AutoscaleService.CreateCounter:input_type -> cloudstack.management.autoscale.v1.CreateCounterRequest
+	29, // 42: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter:input_type -> cloudstack.management.autoscale.v1.DeleteCounterRequest
+	31, // 43: cloudstack.management.autoscale.v1.AutoscaleService.ListConditions:input_type -> cloudstack.management.autoscale.v1.ListConditionsRequest
+	33, // 44: cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition:input_type -> cloudstack.management.autoscale.v1.UpdateConditionRequest
+	35, // 45: cloudstack.management.autoscale.v1.AutoscaleService.ListCounters:input_type -> cloudstack.management.autoscale.v1.ListCountersRequest
+	37, // 46: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups:input_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsRequest
+	39, // 47: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScalePolicy:input_type -> cloudstack.management.autoscale.v1.DeleteAutoScalePolicyRequest
+	41, // 48: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmGroup:input_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupRequest
+	2,  // 49: cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition:output_type -> cloudstack.management.autoscale.v1.CreateConditionResponse
+	4,  // 50: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmGroupResponse
+	6,  // 51: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies:output_type -> cloudstack.management.autoscale.v1.ListAutoScalePoliciesResponse
+	8,  // 52: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScalePolicy:output_type -> cloudstack.management.autoscale.v1.CreateAutoScalePolicyResponse
+	10, // 53: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition:output_type -> cloudstack.management.autoscale.v1.DeleteConditionResponse
+	12, // 54: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile:output_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmProfileResponse
+	14, // 55: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles:output_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmProfilesResponse
+	16, // 56: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy:output_type -> cloudstack.management.autoscale.v1.UpdateAutoScalePolicyResponse
+	18, // 57: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile:output_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmProfileResponse
+	20, // 58: cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.UpdateAutoScaleVmGroupResponse
+	22, // 59: cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.EnableAutoScaleVmGroupResponse
+	24, // 60: cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmProfile:output_type -> cloudstack.management.autoscale.v1.CreateAutoScaleVmProfileResponse
+	26, // 61: cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.DisableAutoScaleVmGroupResponse
+	28, // 62: cloudstack.management.autoscale.v1.AutoscaleService.CreateCounter:output_type -> cloudstack.management.autoscale.v1.CreateCounterResponse
+	30, // 63: cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter:output_type -> cloudstack.management.autoscale.v1.DeleteCounterResponse
+	32, // 64: cloudstack.management.autoscale.v1.AutoscaleService.ListConditions:output_type -> cloudstack.management.autoscale.v1.ListConditionsResponse
+	34, // 65: cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition:output_type -> cloudstack.management.autoscale.v1.UpdateConditionResponse
+	36, // 66: cloudstack.management.autoscale.v1.AutoscaleService.ListCounters:output_type -> cloudstack.management.autoscale.v1.ListCountersResponse
+	38, // 67: cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups:output_type -> cloudstack.management.autoscale.v1.ListAutoScaleVmGroupsResponse
+	40, // 68: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScalePolicy:output_type -> cloudstack.management.autoscale.v1.DeleteAutoScalePolicyResponse
+	42, // 69: cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmGroup:output_type -> cloudstack.management.autoscale.v1.DeleteAutoScaleVmGroupResponse
 	49, // [49:70] is the sub-list for method output_type
 	28, // [28:49] is the sub-list for method input_type
 	28, // [28:28] is the sub-list for extension type_name
@@ -4707,13 +4781,14 @@ func file_cloudstack_management_autoscale_v1_autoscale_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc), len(file_cloudstack_management_autoscale_v1_autoscale_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   57,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_autoscale_v1_autoscale_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_autoscale_v1_autoscale_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_autoscale_v1_autoscale_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_autoscale_v1_autoscale_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_autoscale_v1_autoscale_gen_proto = out.File

@@ -36,327 +36,322 @@ const (
 	// NetworkServiceDedicateIpv4SubnetForZoneProcedure is the fully-qualified name of the
 	// NetworkService's DedicateIpv4SubnetForZone RPC.
 	NetworkServiceDedicateIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/DedicateIpv4SubnetForZone"
-	// NetworkServiceListNetworkOfferingsProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworkOfferings RPC.
-	NetworkServiceListNetworkOfferingsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkOfferings"
-	// NetworkServiceResetNetworkPermissionsProcedure is the fully-qualified name of the
-	// NetworkService's ResetNetworkPermissions RPC.
-	NetworkServiceResetNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/ResetNetworkPermissions"
-	// NetworkServiceUpdateNetworkACLItemProcedure is the fully-qualified name of the NetworkService's
-	// UpdateNetworkACLItem RPC.
-	NetworkServiceUpdateNetworkACLItemProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLItem"
-	// NetworkServiceDeleteNetworkACLProcedure is the fully-qualified name of the NetworkService's
-	// DeleteNetworkACL RPC.
-	NetworkServiceDeleteNetworkACLProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACL"
-	// NetworkServiceRestartNetworkProcedure is the fully-qualified name of the NetworkService's
-	// RestartNetwork RPC.
-	NetworkServiceRestartNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/RestartNetwork"
-	// NetworkServiceCreateIpv4SubnetForZoneProcedure is the fully-qualified name of the
-	// NetworkService's CreateIpv4SubnetForZone RPC.
-	NetworkServiceCreateIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/CreateIpv4SubnetForZone"
-	// NetworkServiceAddNetworkDeviceProcedure is the fully-qualified name of the NetworkService's
-	// AddNetworkDevice RPC.
-	NetworkServiceAddNetworkDeviceProcedure = "/cloudstack.management.network.v1.NetworkService/AddNetworkDevice"
-	// NetworkServiceUpdateNetworkACLListProcedure is the fully-qualified name of the NetworkService's
-	// UpdateNetworkACLList RPC.
-	NetworkServiceUpdateNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLList"
-	// NetworkServiceCreateNetworkACLProcedure is the fully-qualified name of the NetworkService's
-	// CreateNetworkACL RPC.
-	NetworkServiceCreateNetworkACLProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACL"
-	// NetworkServiceUpdatePodManagementNetworkIpRangeProcedure is the fully-qualified name of the
-	// NetworkService's UpdatePodManagementNetworkIpRange RPC.
-	NetworkServiceUpdatePodManagementNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/UpdatePodManagementNetworkIpRange"
-	// NetworkServiceListGuestNetworkIpv6PrefixesProcedure is the fully-qualified name of the
-	// NetworkService's ListGuestNetworkIpv6Prefixes RPC.
-	NetworkServiceListGuestNetworkIpv6PrefixesProcedure = "/cloudstack.management.network.v1.NetworkService/ListGuestNetworkIpv6Prefixes"
-	// NetworkServiceUpdateNetworkCmdByAdminProcedure is the fully-qualified name of the
-	// NetworkService's UpdateNetworkCmdByAdmin RPC.
-	NetworkServiceUpdateNetworkCmdByAdminProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkCmdByAdmin"
-	// NetworkServiceCreateGuestNetworkIpv6PrefixProcedure is the fully-qualified name of the
-	// NetworkService's CreateGuestNetworkIpv6Prefix RPC.
-	NetworkServiceCreateGuestNetworkIpv6PrefixProcedure = "/cloudstack.management.network.v1.NetworkService/CreateGuestNetworkIpv6Prefix"
-	// NetworkServiceListStorageNetworkIpRangeProcedure is the fully-qualified name of the
-	// NetworkService's ListStorageNetworkIpRange RPC.
-	NetworkServiceListStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/ListStorageNetworkIpRange"
-	// NetworkServiceListPhysicalNetworksProcedure is the fully-qualified name of the NetworkService's
-	// ListPhysicalNetworks RPC.
-	NetworkServiceListPhysicalNetworksProcedure = "/cloudstack.management.network.v1.NetworkService/ListPhysicalNetworks"
-	// NetworkServiceUpdateNetworkProcedure is the fully-qualified name of the NetworkService's
-	// UpdateNetwork RPC.
-	NetworkServiceUpdateNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetwork"
-	// NetworkServiceCreateNetworkPermissionsProcedure is the fully-qualified name of the
-	// NetworkService's CreateNetworkPermissions RPC.
-	NetworkServiceCreateNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkPermissions"
-	// NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure is the fully-qualified name of the
-	// NetworkService's DeleteIpv4SubnetForGuestNetwork RPC.
-	NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForGuestNetwork"
-	// NetworkServiceReplaceNetworkACLListProcedure is the fully-qualified name of the NetworkService's
-	// ReplaceNetworkACLList RPC.
-	NetworkServiceReplaceNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/ReplaceNetworkACLList"
-	// NetworkServiceDeletePhysicalNetworkProcedure is the fully-qualified name of the NetworkService's
-	// DeletePhysicalNetwork RPC.
-	NetworkServiceDeletePhysicalNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/DeletePhysicalNetwork"
-	// NetworkServiceListNetworkDeviceProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworkDevice RPC.
-	NetworkServiceListNetworkDeviceProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkDevice"
-	// NetworkServiceRemoveNetworkPermissionsProcedure is the fully-qualified name of the
-	// NetworkService's RemoveNetworkPermissions RPC.
-	NetworkServiceRemoveNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/RemoveNetworkPermissions"
-	// NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure is the fully-qualified name of the
-	// NetworkService's ReleaseDedicatedIpv4SubnetForZone RPC.
-	NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedIpv4SubnetForZone"
-	// NetworkServiceListNetworkACLListsProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworkACLLists RPC.
-	NetworkServiceListNetworkACLListsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLLists"
 	// NetworkServiceDeleteManagementNetworkIpRangeProcedure is the fully-qualified name of the
 	// NetworkService's DeleteManagementNetworkIpRange RPC.
 	NetworkServiceDeleteManagementNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteManagementNetworkIpRange"
-	// NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure is the fully-qualified name of the
-	// NetworkService's DeleteGuestNetworkIpv6Prefix RPC.
-	NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteGuestNetworkIpv6Prefix"
-	// NetworkServiceMigrateNetworkProcedure is the fully-qualified name of the NetworkService's
-	// MigrateNetwork RPC.
-	NetworkServiceMigrateNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/MigrateNetwork"
+	// NetworkServiceListDedicatedGuestVlanRangesProcedure is the fully-qualified name of the
+	// NetworkService's ListDedicatedGuestVlanRanges RPC.
+	NetworkServiceListDedicatedGuestVlanRangesProcedure = "/cloudstack.management.network.v1.NetworkService/ListDedicatedGuestVlanRanges"
+	// NetworkServiceDeleteIpv4SubnetForZoneProcedure is the fully-qualified name of the
+	// NetworkService's DeleteIpv4SubnetForZone RPC.
+	NetworkServiceDeleteIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForZone"
+	// NetworkServiceDeleteNetworkACLListProcedure is the fully-qualified name of the NetworkService's
+	// DeleteNetworkACLList RPC.
+	NetworkServiceDeleteNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACLList"
+	// NetworkServiceReleaseDedicatedGuestVlanRangeProcedure is the fully-qualified name of the
+	// NetworkService's ReleaseDedicatedGuestVlanRange RPC.
+	NetworkServiceReleaseDedicatedGuestVlanRangeProcedure = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedGuestVlanRange"
+	// NetworkServiceDeletePhysicalNetworkProcedure is the fully-qualified name of the NetworkService's
+	// DeletePhysicalNetwork RPC.
+	NetworkServiceDeletePhysicalNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/DeletePhysicalNetwork"
+	// NetworkServiceUpdateIpv4SubnetForZoneProcedure is the fully-qualified name of the
+	// NetworkService's UpdateIpv4SubnetForZone RPC.
+	NetworkServiceUpdateIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateIpv4SubnetForZone"
+	// NetworkServiceListNetworkIsolationMethodsProcedure is the fully-qualified name of the
+	// NetworkService's ListNetworkIsolationMethods RPC.
+	NetworkServiceListNetworkIsolationMethodsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkIsolationMethods"
+	// NetworkServiceCreatePhysicalNetworkProcedure is the fully-qualified name of the NetworkService's
+	// CreatePhysicalNetwork RPC.
+	NetworkServiceCreatePhysicalNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/CreatePhysicalNetwork"
+	// NetworkServiceListNetworkProtocolsProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworkProtocols RPC.
+	NetworkServiceListNetworkProtocolsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkProtocols"
+	// NetworkServiceCreateNetworkACLListProcedure is the fully-qualified name of the NetworkService's
+	// CreateNetworkACLList RPC.
+	NetworkServiceCreateNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACLList"
 	// NetworkServiceDedicateGuestVlanRangeProcedure is the fully-qualified name of the NetworkService's
 	// DedicateGuestVlanRange RPC.
 	NetworkServiceDedicateGuestVlanRangeProcedure = "/cloudstack.management.network.v1.NetworkService/DedicateGuestVlanRange"
-	// NetworkServiceUpdateStorageNetworkIpRangeProcedure is the fully-qualified name of the
-	// NetworkService's UpdateStorageNetworkIpRange RPC.
-	NetworkServiceUpdateStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateStorageNetworkIpRange"
-	// NetworkServiceDeleteNetworkServiceProviderProcedure is the fully-qualified name of the
-	// NetworkService's DeleteNetworkServiceProvider RPC.
-	NetworkServiceDeleteNetworkServiceProviderProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkServiceProvider"
-	// NetworkServiceMigrateVPCProcedure is the fully-qualified name of the NetworkService's MigrateVPC
-	// RPC.
-	NetworkServiceMigrateVPCProcedure = "/cloudstack.management.network.v1.NetworkService/MigrateVPC"
-	// NetworkServiceListNetworkServiceProvidersProcedure is the fully-qualified name of the
-	// NetworkService's ListNetworkServiceProviders RPC.
-	NetworkServiceListNetworkServiceProvidersProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkServiceProviders"
-	// NetworkServiceListIpv4SubnetsForZoneProcedure is the fully-qualified name of the NetworkService's
-	// ListIpv4SubnetsForZone RPC.
-	NetworkServiceListIpv4SubnetsForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForZone"
+	// NetworkServiceDeleteNetworkACLProcedure is the fully-qualified name of the NetworkService's
+	// DeleteNetworkACL RPC.
+	NetworkServiceDeleteNetworkACLProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACL"
+	// NetworkServiceUpdateNetworkCmdByAdminProcedure is the fully-qualified name of the
+	// NetworkService's UpdateNetworkCmdByAdmin RPC.
+	NetworkServiceUpdateNetworkCmdByAdminProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkCmdByAdmin"
+	// NetworkServiceListStorageNetworkIpRangeProcedure is the fully-qualified name of the
+	// NetworkService's ListStorageNetworkIpRange RPC.
+	NetworkServiceListStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/ListStorageNetworkIpRange"
+	// NetworkServiceMigrateNetworkProcedure is the fully-qualified name of the NetworkService's
+	// MigrateNetwork RPC.
+	NetworkServiceMigrateNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/MigrateNetwork"
+	// NetworkServiceUpdatePodManagementNetworkIpRangeProcedure is the fully-qualified name of the
+	// NetworkService's UpdatePodManagementNetworkIpRange RPC.
+	NetworkServiceUpdatePodManagementNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/UpdatePodManagementNetworkIpRange"
+	// NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure is the fully-qualified name of the
+	// NetworkService's ReleaseDedicatedIpv4SubnetForZone RPC.
+	NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedIpv4SubnetForZone"
+	// NetworkServiceAddNetworkDeviceProcedure is the fully-qualified name of the NetworkService's
+	// AddNetworkDevice RPC.
+	NetworkServiceAddNetworkDeviceProcedure = "/cloudstack.management.network.v1.NetworkService/AddNetworkDevice"
+	// NetworkServiceDeleteNetworkOfferingProcedure is the fully-qualified name of the NetworkService's
+	// DeleteNetworkOffering RPC.
+	NetworkServiceDeleteNetworkOfferingProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkOffering"
+	// NetworkServiceUpdatePhysicalNetworkProcedure is the fully-qualified name of the NetworkService's
+	// UpdatePhysicalNetwork RPC.
+	NetworkServiceUpdatePhysicalNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/UpdatePhysicalNetwork"
+	// NetworkServiceCreateManagementNetworkIpRangeProcedure is the fully-qualified name of the
+	// NetworkService's CreateManagementNetworkIpRange RPC.
+	NetworkServiceCreateManagementNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/CreateManagementNetworkIpRange"
 	// NetworkServiceDeleteNetworkProcedure is the fully-qualified name of the NetworkService's
 	// DeleteNetwork RPC.
 	NetworkServiceDeleteNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetwork"
+	// NetworkServiceListNetworkServiceProvidersProcedure is the fully-qualified name of the
+	// NetworkService's ListNetworkServiceProviders RPC.
+	NetworkServiceListNetworkServiceProvidersProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkServiceProviders"
+	// NetworkServiceCreateNetworkACLProcedure is the fully-qualified name of the NetworkService's
+	// CreateNetworkACL RPC.
+	NetworkServiceCreateNetworkACLProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACL"
+	// NetworkServiceListSupportedNetworkServicesProcedure is the fully-qualified name of the
+	// NetworkService's ListSupportedNetworkServices RPC.
+	NetworkServiceListSupportedNetworkServicesProcedure = "/cloudstack.management.network.v1.NetworkService/ListSupportedNetworkServices"
+	// NetworkServiceListNetworkACLListsProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworkACLLists RPC.
+	NetworkServiceListNetworkACLListsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLLists"
+	// NetworkServiceListIpv4SubnetsForZoneProcedure is the fully-qualified name of the NetworkService's
+	// ListIpv4SubnetsForZone RPC.
+	NetworkServiceListIpv4SubnetsForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForZone"
+	// NetworkServiceListNetworkDeviceProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworkDevice RPC.
+	NetworkServiceListNetworkDeviceProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkDevice"
+	// NetworkServiceListNetworkACLsProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworkACLs RPC.
+	NetworkServiceListNetworkACLsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLs"
+	// NetworkServiceUpdateNetworkACLListProcedure is the fully-qualified name of the NetworkService's
+	// UpdateNetworkACLList RPC.
+	NetworkServiceUpdateNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLList"
+	// NetworkServiceCreateGuestNetworkIpv6PrefixProcedure is the fully-qualified name of the
+	// NetworkService's CreateGuestNetworkIpv6Prefix RPC.
+	NetworkServiceCreateGuestNetworkIpv6PrefixProcedure = "/cloudstack.management.network.v1.NetworkService/CreateGuestNetworkIpv6Prefix"
+	// NetworkServiceDeleteStorageNetworkIpRangeProcedure is the fully-qualified name of the
+	// NetworkService's DeleteStorageNetworkIpRange RPC.
+	NetworkServiceDeleteStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteStorageNetworkIpRange"
+	// NetworkServiceListNetworkPermissionsProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworkPermissions RPC.
+	NetworkServiceListNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkPermissions"
+	// NetworkServiceListGuestNetworkIpv6PrefixesProcedure is the fully-qualified name of the
+	// NetworkService's ListGuestNetworkIpv6Prefixes RPC.
+	NetworkServiceListGuestNetworkIpv6PrefixesProcedure = "/cloudstack.management.network.v1.NetworkService/ListGuestNetworkIpv6Prefixes"
+	// NetworkServiceMoveNetworkAclItemProcedure is the fully-qualified name of the NetworkService's
+	// MoveNetworkAclItem RPC.
+	NetworkServiceMoveNetworkAclItemProcedure = "/cloudstack.management.network.v1.NetworkService/MoveNetworkAclItem"
+	// NetworkServiceAddNetworkServiceProviderProcedure is the fully-qualified name of the
+	// NetworkService's AddNetworkServiceProvider RPC.
+	NetworkServiceAddNetworkServiceProviderProcedure = "/cloudstack.management.network.v1.NetworkService/AddNetworkServiceProvider"
+	// NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure is the fully-qualified name of the
+	// NetworkService's DeleteIpv4SubnetForGuestNetwork RPC.
+	NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForGuestNetwork"
+	// NetworkServiceRemoveNetworkPermissionsProcedure is the fully-qualified name of the
+	// NetworkService's RemoveNetworkPermissions RPC.
+	NetworkServiceRemoveNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/RemoveNetworkPermissions"
+	// NetworkServiceCreateNetworkOfferingProcedure is the fully-qualified name of the NetworkService's
+	// CreateNetworkOffering RPC.
+	NetworkServiceCreateNetworkOfferingProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkOffering"
+	// NetworkServiceUpdateNetworkACLItemProcedure is the fully-qualified name of the NetworkService's
+	// UpdateNetworkACLItem RPC.
+	NetworkServiceUpdateNetworkACLItemProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkACLItem"
+	// NetworkServiceCreateNetworkProcedure is the fully-qualified name of the NetworkService's
+	// CreateNetwork RPC.
+	NetworkServiceCreateNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetwork"
+	// NetworkServiceDeleteNetworkServiceProviderProcedure is the fully-qualified name of the
+	// NetworkService's DeleteNetworkServiceProvider RPC.
+	NetworkServiceDeleteNetworkServiceProviderProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkServiceProvider"
 	// NetworkServiceUpdateNetworkOfferingProcedure is the fully-qualified name of the NetworkService's
 	// UpdateNetworkOffering RPC.
 	NetworkServiceUpdateNetworkOfferingProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkOffering"
 	// NetworkServiceCreateIpv4SubnetForGuestNetworkProcedure is the fully-qualified name of the
 	// NetworkService's CreateIpv4SubnetForGuestNetwork RPC.
 	NetworkServiceCreateIpv4SubnetForGuestNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/CreateIpv4SubnetForGuestNetwork"
-	// NetworkServiceListNetworkIsolationMethodsProcedure is the fully-qualified name of the
-	// NetworkService's ListNetworkIsolationMethods RPC.
-	NetworkServiceListNetworkIsolationMethodsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkIsolationMethods"
-	// NetworkServiceAddNetworkServiceProviderProcedure is the fully-qualified name of the
-	// NetworkService's AddNetworkServiceProvider RPC.
-	NetworkServiceAddNetworkServiceProviderProcedure = "/cloudstack.management.network.v1.NetworkService/AddNetworkServiceProvider"
-	// NetworkServiceListNetworksProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworks RPC.
-	NetworkServiceListNetworksProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworks"
-	// NetworkServiceListNetworkACLsProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworkACLs RPC.
-	NetworkServiceListNetworkACLsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkACLs"
-	// NetworkServiceCreateManagementNetworkIpRangeProcedure is the fully-qualified name of the
-	// NetworkService's CreateManagementNetworkIpRange RPC.
-	NetworkServiceCreateManagementNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/CreateManagementNetworkIpRange"
-	// NetworkServiceListSupportedNetworkServicesProcedure is the fully-qualified name of the
-	// NetworkService's ListSupportedNetworkServices RPC.
-	NetworkServiceListSupportedNetworkServicesProcedure = "/cloudstack.management.network.v1.NetworkService/ListSupportedNetworkServices"
-	// NetworkServiceUpdatePhysicalNetworkProcedure is the fully-qualified name of the NetworkService's
-	// UpdatePhysicalNetwork RPC.
-	NetworkServiceUpdatePhysicalNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/UpdatePhysicalNetwork"
-	// NetworkServiceCreateNetworkACLListProcedure is the fully-qualified name of the NetworkService's
-	// CreateNetworkACLList RPC.
-	NetworkServiceCreateNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkACLList"
-	// NetworkServiceCreateNetworkCmdByAdminProcedure is the fully-qualified name of the
-	// NetworkService's CreateNetworkCmdByAdmin RPC.
-	NetworkServiceCreateNetworkCmdByAdminProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkCmdByAdmin"
-	// NetworkServiceDeleteStorageNetworkIpRangeProcedure is the fully-qualified name of the
-	// NetworkService's DeleteStorageNetworkIpRange RPC.
-	NetworkServiceDeleteStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteStorageNetworkIpRange"
-	// NetworkServiceDeleteIpv4SubnetForZoneProcedure is the fully-qualified name of the
-	// NetworkService's DeleteIpv4SubnetForZone RPC.
-	NetworkServiceDeleteIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteIpv4SubnetForZone"
-	// NetworkServiceListNetworkPermissionsProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworkPermissions RPC.
-	NetworkServiceListNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkPermissions"
-	// NetworkServiceListDedicatedGuestVlanRangesProcedure is the fully-qualified name of the
-	// NetworkService's ListDedicatedGuestVlanRanges RPC.
-	NetworkServiceListDedicatedGuestVlanRangesProcedure = "/cloudstack.management.network.v1.NetworkService/ListDedicatedGuestVlanRanges"
-	// NetworkServiceDeleteNetworkACLListProcedure is the fully-qualified name of the NetworkService's
-	// DeleteNetworkACLList RPC.
-	NetworkServiceDeleteNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkACLList"
-	// NetworkServiceDeleteNetworkOfferingProcedure is the fully-qualified name of the NetworkService's
-	// DeleteNetworkOffering RPC.
-	NetworkServiceDeleteNetworkOfferingProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkOffering"
-	// NetworkServiceMoveNetworkAclItemProcedure is the fully-qualified name of the NetworkService's
-	// MoveNetworkAclItem RPC.
-	NetworkServiceMoveNetworkAclItemProcedure = "/cloudstack.management.network.v1.NetworkService/MoveNetworkAclItem"
-	// NetworkServiceListGuestVlansProcedure is the fully-qualified name of the NetworkService's
-	// ListGuestVlans RPC.
-	NetworkServiceListGuestVlansProcedure = "/cloudstack.management.network.v1.NetworkService/ListGuestVlans"
-	// NetworkServiceUpdateIpv4SubnetForZoneProcedure is the fully-qualified name of the
-	// NetworkService's UpdateIpv4SubnetForZone RPC.
-	NetworkServiceUpdateIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateIpv4SubnetForZone"
-	// NetworkServiceCreatePhysicalNetworkProcedure is the fully-qualified name of the NetworkService's
-	// CreatePhysicalNetwork RPC.
-	NetworkServiceCreatePhysicalNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/CreatePhysicalNetwork"
-	// NetworkServiceCreateNetworkOfferingProcedure is the fully-qualified name of the NetworkService's
-	// CreateNetworkOffering RPC.
-	NetworkServiceCreateNetworkOfferingProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkOffering"
-	// NetworkServiceUpdateNetworkServiceProviderProcedure is the fully-qualified name of the
-	// NetworkService's UpdateNetworkServiceProvider RPC.
-	NetworkServiceUpdateNetworkServiceProviderProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkServiceProvider"
-	// NetworkServiceCreateStorageNetworkIpRangeProcedure is the fully-qualified name of the
-	// NetworkService's CreateStorageNetworkIpRange RPC.
-	NetworkServiceCreateStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/CreateStorageNetworkIpRange"
-	// NetworkServiceListIpv4SubnetsForGuestNetworkProcedure is the fully-qualified name of the
-	// NetworkService's ListIpv4SubnetsForGuestNetwork RPC.
-	NetworkServiceListIpv4SubnetsForGuestNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForGuestNetwork"
+	// NetworkServiceResetNetworkPermissionsProcedure is the fully-qualified name of the
+	// NetworkService's ResetNetworkPermissions RPC.
+	NetworkServiceResetNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/ResetNetworkPermissions"
 	// NetworkServiceDeleteNetworkDeviceProcedure is the fully-qualified name of the NetworkService's
 	// DeleteNetworkDevice RPC.
 	NetworkServiceDeleteNetworkDeviceProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteNetworkDevice"
-	// NetworkServiceCreateNetworkProcedure is the fully-qualified name of the NetworkService's
-	// CreateNetwork RPC.
-	NetworkServiceCreateNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetwork"
-	// NetworkServiceReleaseDedicatedGuestVlanRangeProcedure is the fully-qualified name of the
-	// NetworkService's ReleaseDedicatedGuestVlanRange RPC.
-	NetworkServiceReleaseDedicatedGuestVlanRangeProcedure = "/cloudstack.management.network.v1.NetworkService/ReleaseDedicatedGuestVlanRange"
-	// NetworkServiceListNetworkProtocolsProcedure is the fully-qualified name of the NetworkService's
-	// ListNetworkProtocols RPC.
-	NetworkServiceListNetworkProtocolsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkProtocols"
+	// NetworkServiceListNetworkOfferingsProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworkOfferings RPC.
+	NetworkServiceListNetworkOfferingsProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworkOfferings"
+	// NetworkServiceRestartNetworkProcedure is the fully-qualified name of the NetworkService's
+	// RestartNetwork RPC.
+	NetworkServiceRestartNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/RestartNetwork"
+	// NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure is the fully-qualified name of the
+	// NetworkService's DeleteGuestNetworkIpv6Prefix RPC.
+	NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure = "/cloudstack.management.network.v1.NetworkService/DeleteGuestNetworkIpv6Prefix"
+	// NetworkServiceCreateIpv4SubnetForZoneProcedure is the fully-qualified name of the
+	// NetworkService's CreateIpv4SubnetForZone RPC.
+	NetworkServiceCreateIpv4SubnetForZoneProcedure = "/cloudstack.management.network.v1.NetworkService/CreateIpv4SubnetForZone"
+	// NetworkServiceUpdateStorageNetworkIpRangeProcedure is the fully-qualified name of the
+	// NetworkService's UpdateStorageNetworkIpRange RPC.
+	NetworkServiceUpdateStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateStorageNetworkIpRange"
+	// NetworkServiceListNetworksProcedure is the fully-qualified name of the NetworkService's
+	// ListNetworks RPC.
+	NetworkServiceListNetworksProcedure = "/cloudstack.management.network.v1.NetworkService/ListNetworks"
+	// NetworkServiceReplaceNetworkACLListProcedure is the fully-qualified name of the NetworkService's
+	// ReplaceNetworkACLList RPC.
+	NetworkServiceReplaceNetworkACLListProcedure = "/cloudstack.management.network.v1.NetworkService/ReplaceNetworkACLList"
+	// NetworkServiceCreateNetworkPermissionsProcedure is the fully-qualified name of the
+	// NetworkService's CreateNetworkPermissions RPC.
+	NetworkServiceCreateNetworkPermissionsProcedure = "/cloudstack.management.network.v1.NetworkService/CreateNetworkPermissions"
+	// NetworkServiceListGuestVlansProcedure is the fully-qualified name of the NetworkService's
+	// ListGuestVlans RPC.
+	NetworkServiceListGuestVlansProcedure = "/cloudstack.management.network.v1.NetworkService/ListGuestVlans"
+	// NetworkServiceCreateStorageNetworkIpRangeProcedure is the fully-qualified name of the
+	// NetworkService's CreateStorageNetworkIpRange RPC.
+	NetworkServiceCreateStorageNetworkIpRangeProcedure = "/cloudstack.management.network.v1.NetworkService/CreateStorageNetworkIpRange"
+	// NetworkServiceUpdateNetworkProcedure is the fully-qualified name of the NetworkService's
+	// UpdateNetwork RPC.
+	NetworkServiceUpdateNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetwork"
+	// NetworkServiceMigrateVPCProcedure is the fully-qualified name of the NetworkService's MigrateVPC
+	// RPC.
+	NetworkServiceMigrateVPCProcedure = "/cloudstack.management.network.v1.NetworkService/MigrateVPC"
+	// NetworkServiceListPhysicalNetworksProcedure is the fully-qualified name of the NetworkService's
+	// ListPhysicalNetworks RPC.
+	NetworkServiceListPhysicalNetworksProcedure = "/cloudstack.management.network.v1.NetworkService/ListPhysicalNetworks"
+	// NetworkServiceListIpv4SubnetsForGuestNetworkProcedure is the fully-qualified name of the
+	// NetworkService's ListIpv4SubnetsForGuestNetwork RPC.
+	NetworkServiceListIpv4SubnetsForGuestNetworkProcedure = "/cloudstack.management.network.v1.NetworkService/ListIpv4SubnetsForGuestNetwork"
+	// NetworkServiceUpdateNetworkServiceProviderProcedure is the fully-qualified name of the
+	// NetworkService's UpdateNetworkServiceProvider RPC.
+	NetworkServiceUpdateNetworkServiceProviderProcedure = "/cloudstack.management.network.v1.NetworkService/UpdateNetworkServiceProvider"
 )
 
 // NetworkServiceClient is a client for the cloudstack.management.network.v1.NetworkService service.
 type NetworkServiceClient interface {
 	// DedicateIpv4SubnetForZone Dedicates an existing IPv4 subnet for a zone to an account or a domain.
 	DedicateIpv4SubnetForZone(context.Context, *connect.Request[v1.DedicateIpv4SubnetForZoneRequest]) (*connect.Response[v1.DedicateIpv4SubnetForZoneResponse], error)
-	// ListNetworkOfferings Lists all available network offerings.
-	ListNetworkOfferings(context.Context, *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error)
-	// ResetNetworkPermissions Resets network permissions.
-	ResetNetworkPermissions(context.Context, *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error)
-	// UpdateNetworkACLItem Updates ACL item with specified ID
-	UpdateNetworkACLItem(context.Context, *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error)
-	// DeleteNetworkACL Deletes a network ACL
-	DeleteNetworkACL(context.Context, *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error)
-	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
-	RestartNetwork(context.Context, *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error)
-	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
-	CreateIpv4SubnetForZone(context.Context, *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error)
-	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
-	AddNetworkDevice(context.Context, *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error)
-	// UpdateNetworkACLList Updates network ACL list
-	UpdateNetworkACLList(context.Context, *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error)
-	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
-	CreateNetworkACL(context.Context, *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error)
-	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
-	UpdatePodManagementNetworkIpRange(context.Context, *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error)
-	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
-	ListGuestNetworkIpv6Prefixes(context.Context, *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error)
-	// UpdateNetworkCmdByAdmin Updates a network
-	UpdateNetworkCmdByAdmin(context.Context, *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error)
-	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
-	CreateGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error)
-	// ListStorageNetworkIpRange List a storage network IP range.
-	ListStorageNetworkIpRange(context.Context, *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error)
-	// ListPhysicalNetworks Lists physical networks
-	ListPhysicalNetworks(context.Context, *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error)
-	// UpdateNetwork Updates a network
-	UpdateNetwork(context.Context, *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error)
-	// CreateNetworkPermissions Updates network permissions.
-	CreateNetworkPermissions(context.Context, *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error)
-	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
-	DeleteIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error)
-	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
-	ReplaceNetworkACLList(context.Context, *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error)
-	// DeletePhysicalNetwork Deletes a Physical Network.
-	DeletePhysicalNetwork(context.Context, *connect.Request[v1.DeletePhysicalNetworkRequest]) (*connect.Response[v1.DeletePhysicalNetworkResponse], error)
-	// ListNetworkDevice List network devices
-	ListNetworkDevice(context.Context, *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error)
-	// RemoveNetworkPermissions Removes network permissions.
-	RemoveNetworkPermissions(context.Context, *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error)
-	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
-	ReleaseDedicatedIpv4SubnetForZone(context.Context, *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error)
-	// ListNetworkACLLists Lists all network ACLs
-	ListNetworkACLLists(context.Context, *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error)
 	// DeleteManagementNetworkIpRange Deletes a management network IP range. This action is only allowed when no IPs in this range are allocated.
 	DeleteManagementNetworkIpRange(context.Context, *connect.Request[v1.DeleteManagementNetworkIpRangeRequest]) (*connect.Response[v1.DeleteManagementNetworkIpRangeResponse], error)
-	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
-	DeleteGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error)
-	// MigrateNetwork moves a network to another physical network
-	MigrateNetwork(context.Context, *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error)
+	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
+	ListDedicatedGuestVlanRanges(context.Context, *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error)
+	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
+	DeleteIpv4SubnetForZone(context.Context, *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error)
+	// DeleteNetworkACLList Deletes a network ACL
+	DeleteNetworkACLList(context.Context, *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error)
+	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
+	ReleaseDedicatedGuestVlanRange(context.Context, *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error)
+	// DeletePhysicalNetwork Deletes a Physical Network.
+	DeletePhysicalNetwork(context.Context, *connect.Request[v1.DeletePhysicalNetworkRequest]) (*connect.Response[v1.DeletePhysicalNetworkResponse], error)
+	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
+	UpdateIpv4SubnetForZone(context.Context, *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error)
+	// ListNetworkIsolationMethods Lists supported methods of network isolation
+	ListNetworkIsolationMethods(context.Context, *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error)
+	// CreatePhysicalNetwork Creates a physical network
+	CreatePhysicalNetwork(context.Context, *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error)
+	// ListNetworkProtocols Lists details of network protocols
+	ListNetworkProtocols(context.Context, *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error)
+	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
+	CreateNetworkACLList(context.Context, *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error)
 	// DedicateGuestVlanRange Dedicates a guest vlan range to an account
 	DedicateGuestVlanRange(context.Context, *connect.Request[v1.DedicateGuestVlanRangeRequest]) (*connect.Response[v1.DedicateGuestVlanRangeResponse], error)
-	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
-	UpdateStorageNetworkIpRange(context.Context, *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error)
-	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
-	DeleteNetworkServiceProvider(context.Context, *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error)
-	// MigrateVPC moves a vpc to another physical network
-	MigrateVPC(context.Context, *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error)
-	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
-	ListNetworkServiceProviders(context.Context, *connect.Request[v1.ListNetworkServiceProvidersRequest]) (*connect.Response[v1.ListNetworkServiceProvidersResponse], error)
-	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
-	ListIpv4SubnetsForZone(context.Context, *connect.Request[v1.ListIpv4SubnetsForZoneRequest]) (*connect.Response[v1.ListIpv4SubnetsForZoneResponse], error)
+	// DeleteNetworkACL Deletes a network ACL
+	DeleteNetworkACL(context.Context, *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error)
+	// UpdateNetworkCmdByAdmin Updates a network
+	UpdateNetworkCmdByAdmin(context.Context, *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error)
+	// ListStorageNetworkIpRange List a storage network IP range.
+	ListStorageNetworkIpRange(context.Context, *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error)
+	// MigrateNetwork moves a network to another physical network
+	MigrateNetwork(context.Context, *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error)
+	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
+	UpdatePodManagementNetworkIpRange(context.Context, *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error)
+	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
+	ReleaseDedicatedIpv4SubnetForZone(context.Context, *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error)
+	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
+	AddNetworkDevice(context.Context, *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error)
+	// DeleteNetworkOffering Deletes a network offering.
+	DeleteNetworkOffering(context.Context, *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error)
+	// UpdatePhysicalNetwork Updates a physical network
+	UpdatePhysicalNetwork(context.Context, *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error)
+	// CreateManagementNetworkIpRange Creates a Management network IP range.
+	CreateManagementNetworkIpRange(context.Context, *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error)
 	// DeleteNetwork Deletes a network
 	DeleteNetwork(context.Context, *connect.Request[v1.DeleteNetworkRequest]) (*connect.Response[v1.DeleteNetworkResponse], error)
+	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
+	ListNetworkServiceProviders(context.Context, *connect.Request[v1.ListNetworkServiceProvidersRequest]) (*connect.Response[v1.ListNetworkServiceProvidersResponse], error)
+	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
+	CreateNetworkACL(context.Context, *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error)
+	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
+	ListSupportedNetworkServices(context.Context, *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error)
+	// ListNetworkACLLists Lists all network ACLs
+	ListNetworkACLLists(context.Context, *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error)
+	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
+	ListIpv4SubnetsForZone(context.Context, *connect.Request[v1.ListIpv4SubnetsForZoneRequest]) (*connect.Response[v1.ListIpv4SubnetsForZoneResponse], error)
+	// ListNetworkDevice List network devices
+	ListNetworkDevice(context.Context, *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error)
+	// ListNetworkACLs Lists all network ACL items
+	ListNetworkACLs(context.Context, *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error)
+	// UpdateNetworkACLList Updates network ACL list
+	UpdateNetworkACLList(context.Context, *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error)
+	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
+	CreateGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error)
+	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
+	DeleteStorageNetworkIpRange(context.Context, *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error)
+	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
+	ListNetworkPermissions(context.Context, *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error)
+	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
+	ListGuestNetworkIpv6Prefixes(context.Context, *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error)
+	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
+	MoveNetworkAclItem(context.Context, *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error)
+	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
+	AddNetworkServiceProvider(context.Context, *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error)
+	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
+	DeleteIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error)
+	// RemoveNetworkPermissions Removes network permissions.
+	RemoveNetworkPermissions(context.Context, *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error)
+	// CreateNetworkOffering Creates a network offering.
+	CreateNetworkOffering(context.Context, *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error)
+	// UpdateNetworkACLItem Updates ACL item with specified ID
+	UpdateNetworkACLItem(context.Context, *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error)
+	// CreateNetwork Creates a network
+	CreateNetwork(context.Context, *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error)
+	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
+	DeleteNetworkServiceProvider(context.Context, *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error)
 	// UpdateNetworkOffering Updates a network offering.
 	UpdateNetworkOffering(context.Context, *connect.Request[v1.UpdateNetworkOfferingRequest]) (*connect.Response[v1.UpdateNetworkOfferingResponse], error)
 	// CreateIpv4SubnetForGuestNetwork Creates a IPv4 subnet for guest networks.
 	CreateIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.CreateIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.CreateIpv4SubnetForGuestNetworkResponse], error)
-	// ListNetworkIsolationMethods Lists supported methods of network isolation
-	ListNetworkIsolationMethods(context.Context, *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error)
-	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
-	AddNetworkServiceProvider(context.Context, *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error)
-	// ListNetworks Lists all available networks.
-	ListNetworks(context.Context, *connect.Request[v1.ListNetworksRequest]) (*connect.Response[v1.ListNetworksResponse], error)
-	// ListNetworkACLs Lists all network ACL items
-	ListNetworkACLs(context.Context, *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error)
-	// CreateManagementNetworkIpRange Creates a Management network IP range.
-	CreateManagementNetworkIpRange(context.Context, *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error)
-	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
-	ListSupportedNetworkServices(context.Context, *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error)
-	// UpdatePhysicalNetwork Updates a physical network
-	UpdatePhysicalNetwork(context.Context, *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error)
-	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
-	CreateNetworkACLList(context.Context, *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error)
-	// CreateNetworkCmdByAdmin Creates a network
-	CreateNetworkCmdByAdmin(context.Context, *connect.Request[v1.CreateNetworkCmdByAdminRequest]) (*connect.Response[v1.CreateNetworkCmdByAdminResponse], error)
-	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
-	DeleteStorageNetworkIpRange(context.Context, *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error)
-	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
-	DeleteIpv4SubnetForZone(context.Context, *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error)
-	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
-	ListNetworkPermissions(context.Context, *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error)
-	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
-	ListDedicatedGuestVlanRanges(context.Context, *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error)
-	// DeleteNetworkACLList Deletes a network ACL
-	DeleteNetworkACLList(context.Context, *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error)
-	// DeleteNetworkOffering Deletes a network offering.
-	DeleteNetworkOffering(context.Context, *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error)
-	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
-	MoveNetworkAclItem(context.Context, *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error)
-	// ListGuestVlans Lists all guest vlans
-	ListGuestVlans(context.Context, *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error)
-	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
-	UpdateIpv4SubnetForZone(context.Context, *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error)
-	// CreatePhysicalNetwork Creates a physical network
-	CreatePhysicalNetwork(context.Context, *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error)
-	// CreateNetworkOffering Creates a network offering.
-	CreateNetworkOffering(context.Context, *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error)
-	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
-	UpdateNetworkServiceProvider(context.Context, *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error)
-	// CreateStorageNetworkIpRange Creates a Storage network IP range.
-	CreateStorageNetworkIpRange(context.Context, *connect.Request[v1.CreateStorageNetworkIpRangeRequest]) (*connect.Response[v1.CreateStorageNetworkIpRangeResponse], error)
-	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
-	ListIpv4SubnetsForGuestNetwork(context.Context, *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error)
+	// ResetNetworkPermissions Resets network permissions.
+	ResetNetworkPermissions(context.Context, *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error)
 	// DeleteNetworkDevice Deletes network device.
 	DeleteNetworkDevice(context.Context, *connect.Request[v1.DeleteNetworkDeviceRequest]) (*connect.Response[v1.DeleteNetworkDeviceResponse], error)
-	// CreateNetwork Creates a network
-	CreateNetwork(context.Context, *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error)
-	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
-	ReleaseDedicatedGuestVlanRange(context.Context, *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error)
-	// ListNetworkProtocols Lists details of network protocols
-	ListNetworkProtocols(context.Context, *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error)
+	// ListNetworkOfferings Lists all available network offerings.
+	ListNetworkOfferings(context.Context, *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error)
+	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
+	RestartNetwork(context.Context, *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error)
+	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
+	DeleteGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error)
+	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
+	CreateIpv4SubnetForZone(context.Context, *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error)
+	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
+	UpdateStorageNetworkIpRange(context.Context, *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error)
+	// ListNetworks Lists all available networks.
+	ListNetworks(context.Context, *connect.Request[v1.ListNetworksRequest]) (*connect.Response[v1.ListNetworksResponse], error)
+	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
+	ReplaceNetworkACLList(context.Context, *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error)
+	// CreateNetworkPermissions Updates network permissions.
+	CreateNetworkPermissions(context.Context, *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error)
+	// ListGuestVlans Lists all guest vlans
+	ListGuestVlans(context.Context, *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error)
+	// CreateStorageNetworkIpRange Creates a Storage network IP range.
+	CreateStorageNetworkIpRange(context.Context, *connect.Request[v1.CreateStorageNetworkIpRangeRequest]) (*connect.Response[v1.CreateStorageNetworkIpRangeResponse], error)
+	// UpdateNetwork Updates a network
+	UpdateNetwork(context.Context, *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error)
+	// MigrateVPC moves a vpc to another physical network
+	MigrateVPC(context.Context, *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error)
+	// ListPhysicalNetworks Lists physical networks
+	ListPhysicalNetworks(context.Context, *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error)
+	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
+	ListIpv4SubnetsForGuestNetwork(context.Context, *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error)
+	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
+	UpdateNetworkServiceProvider(context.Context, *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error)
 }
 
 // NewNetworkServiceClient constructs a client for the
@@ -377,118 +372,34 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("DedicateIpv4SubnetForZone")),
 			connect.WithClientOptions(opts...),
 		),
-		listNetworkOfferings: connect.NewClient[v1.ListNetworkOfferingsRequest, v1.ListNetworkOfferingsResponse](
+		deleteManagementNetworkIpRange: connect.NewClient[v1.DeleteManagementNetworkIpRangeRequest, v1.DeleteManagementNetworkIpRangeResponse](
 			httpClient,
-			baseURL+NetworkServiceListNetworkOfferingsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkOfferings")),
+			baseURL+NetworkServiceDeleteManagementNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteManagementNetworkIpRange")),
 			connect.WithClientOptions(opts...),
 		),
-		resetNetworkPermissions: connect.NewClient[v1.ResetNetworkPermissionsRequest, v1.ResetNetworkPermissionsResponse](
+		listDedicatedGuestVlanRanges: connect.NewClient[v1.ListDedicatedGuestVlanRangesRequest, v1.ListDedicatedGuestVlanRangesResponse](
 			httpClient,
-			baseURL+NetworkServiceResetNetworkPermissionsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ResetNetworkPermissions")),
+			baseURL+NetworkServiceListDedicatedGuestVlanRangesProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListDedicatedGuestVlanRanges")),
 			connect.WithClientOptions(opts...),
 		),
-		updateNetworkACLItem: connect.NewClient[v1.UpdateNetworkACLItemRequest, v1.UpdateNetworkACLItemResponse](
+		deleteIpv4SubnetForZone: connect.NewClient[v1.DeleteIpv4SubnetForZoneRequest, v1.DeleteIpv4SubnetForZoneResponse](
 			httpClient,
-			baseURL+NetworkServiceUpdateNetworkACLItemProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLItem")),
+			baseURL+NetworkServiceDeleteIpv4SubnetForZoneProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForZone")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteNetworkACL: connect.NewClient[v1.DeleteNetworkACLRequest, v1.DeleteNetworkACLResponse](
+		deleteNetworkACLList: connect.NewClient[v1.DeleteNetworkACLListRequest, v1.DeleteNetworkACLListResponse](
 			httpClient,
-			baseURL+NetworkServiceDeleteNetworkACLProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACL")),
+			baseURL+NetworkServiceDeleteNetworkACLListProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACLList")),
 			connect.WithClientOptions(opts...),
 		),
-		restartNetwork: connect.NewClient[v1.RestartNetworkRequest, v1.RestartNetworkResponse](
+		releaseDedicatedGuestVlanRange: connect.NewClient[v1.ReleaseDedicatedGuestVlanRangeRequest, v1.ReleaseDedicatedGuestVlanRangeResponse](
 			httpClient,
-			baseURL+NetworkServiceRestartNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("RestartNetwork")),
-			connect.WithClientOptions(opts...),
-		),
-		createIpv4SubnetForZone: connect.NewClient[v1.CreateIpv4SubnetForZoneRequest, v1.CreateIpv4SubnetForZoneResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateIpv4SubnetForZoneProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateIpv4SubnetForZone")),
-			connect.WithClientOptions(opts...),
-		),
-		addNetworkDevice: connect.NewClient[v1.AddNetworkDeviceRequest, v1.AddNetworkDeviceResponse](
-			httpClient,
-			baseURL+NetworkServiceAddNetworkDeviceProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("AddNetworkDevice")),
-			connect.WithClientOptions(opts...),
-		),
-		updateNetworkACLList: connect.NewClient[v1.UpdateNetworkACLListRequest, v1.UpdateNetworkACLListResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdateNetworkACLListProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLList")),
-			connect.WithClientOptions(opts...),
-		),
-		createNetworkACL: connect.NewClient[v1.CreateNetworkACLRequest, v1.CreateNetworkACLResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateNetworkACLProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACL")),
-			connect.WithClientOptions(opts...),
-		),
-		updatePodManagementNetworkIpRange: connect.NewClient[v1.UpdatePodManagementNetworkIpRangeRequest, v1.UpdatePodManagementNetworkIpRangeResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdatePodManagementNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdatePodManagementNetworkIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		listGuestNetworkIpv6Prefixes: connect.NewClient[v1.ListGuestNetworkIpv6PrefixesRequest, v1.ListGuestNetworkIpv6PrefixesResponse](
-			httpClient,
-			baseURL+NetworkServiceListGuestNetworkIpv6PrefixesProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListGuestNetworkIpv6Prefixes")),
-			connect.WithClientOptions(opts...),
-		),
-		updateNetworkCmdByAdmin: connect.NewClient[v1.UpdateNetworkCmdByAdminRequest, v1.UpdateNetworkCmdByAdminResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdateNetworkCmdByAdminProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		createGuestNetworkIpv6Prefix: connect.NewClient[v1.CreateGuestNetworkIpv6PrefixRequest, v1.CreateGuestNetworkIpv6PrefixResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateGuestNetworkIpv6PrefixProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateGuestNetworkIpv6Prefix")),
-			connect.WithClientOptions(opts...),
-		),
-		listStorageNetworkIpRange: connect.NewClient[v1.ListStorageNetworkIpRangeRequest, v1.ListStorageNetworkIpRangeResponse](
-			httpClient,
-			baseURL+NetworkServiceListStorageNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListStorageNetworkIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		listPhysicalNetworks: connect.NewClient[v1.ListPhysicalNetworksRequest, v1.ListPhysicalNetworksResponse](
-			httpClient,
-			baseURL+NetworkServiceListPhysicalNetworksProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListPhysicalNetworks")),
-			connect.WithClientOptions(opts...),
-		),
-		updateNetwork: connect.NewClient[v1.UpdateNetworkRequest, v1.UpdateNetworkResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdateNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateNetwork")),
-			connect.WithClientOptions(opts...),
-		),
-		createNetworkPermissions: connect.NewClient[v1.CreateNetworkPermissionsRequest, v1.CreateNetworkPermissionsResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateNetworkPermissionsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkPermissions")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteIpv4SubnetForGuestNetwork: connect.NewClient[v1.DeleteIpv4SubnetForGuestNetworkRequest, v1.DeleteIpv4SubnetForGuestNetworkResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForGuestNetwork")),
-			connect.WithClientOptions(opts...),
-		),
-		replaceNetworkACLList: connect.NewClient[v1.ReplaceNetworkACLListRequest, v1.ReplaceNetworkACLListResponse](
-			httpClient,
-			baseURL+NetworkServiceReplaceNetworkACLListProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ReplaceNetworkACLList")),
+			baseURL+NetworkServiceReleaseDedicatedGuestVlanRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedGuestVlanRange")),
 			connect.WithClientOptions(opts...),
 		),
 		deletePhysicalNetwork: connect.NewClient[v1.DeletePhysicalNetworkRequest, v1.DeletePhysicalNetworkResponse](
@@ -497,46 +408,34 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("DeletePhysicalNetwork")),
 			connect.WithClientOptions(opts...),
 		),
-		listNetworkDevice: connect.NewClient[v1.ListNetworkDeviceRequest, v1.ListNetworkDeviceResponse](
+		updateIpv4SubnetForZone: connect.NewClient[v1.UpdateIpv4SubnetForZoneRequest, v1.UpdateIpv4SubnetForZoneResponse](
 			httpClient,
-			baseURL+NetworkServiceListNetworkDeviceProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkDevice")),
+			baseURL+NetworkServiceUpdateIpv4SubnetForZoneProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateIpv4SubnetForZone")),
 			connect.WithClientOptions(opts...),
 		),
-		removeNetworkPermissions: connect.NewClient[v1.RemoveNetworkPermissionsRequest, v1.RemoveNetworkPermissionsResponse](
+		listNetworkIsolationMethods: connect.NewClient[v1.ListNetworkIsolationMethodsRequest, v1.ListNetworkIsolationMethodsResponse](
 			httpClient,
-			baseURL+NetworkServiceRemoveNetworkPermissionsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("RemoveNetworkPermissions")),
+			baseURL+NetworkServiceListNetworkIsolationMethodsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkIsolationMethods")),
 			connect.WithClientOptions(opts...),
 		),
-		releaseDedicatedIpv4SubnetForZone: connect.NewClient[v1.ReleaseDedicatedIpv4SubnetForZoneRequest, v1.ReleaseDedicatedIpv4SubnetForZoneResponse](
+		createPhysicalNetwork: connect.NewClient[v1.CreatePhysicalNetworkRequest, v1.CreatePhysicalNetworkResponse](
 			httpClient,
-			baseURL+NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedIpv4SubnetForZone")),
+			baseURL+NetworkServiceCreatePhysicalNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreatePhysicalNetwork")),
 			connect.WithClientOptions(opts...),
 		),
-		listNetworkACLLists: connect.NewClient[v1.ListNetworkACLListsRequest, v1.ListNetworkACLListsResponse](
+		listNetworkProtocols: connect.NewClient[v1.ListNetworkProtocolsRequest, v1.ListNetworkProtocolsResponse](
 			httpClient,
-			baseURL+NetworkServiceListNetworkACLListsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLLists")),
+			baseURL+NetworkServiceListNetworkProtocolsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkProtocols")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteManagementNetworkIpRange: connect.NewClient[v1.DeleteManagementNetworkIpRangeRequest, v1.DeleteManagementNetworkIpRangeResponse](
+		createNetworkACLList: connect.NewClient[v1.CreateNetworkACLListRequest, v1.CreateNetworkACLListResponse](
 			httpClient,
-			baseURL+NetworkServiceDeleteManagementNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteManagementNetworkIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteGuestNetworkIpv6Prefix: connect.NewClient[v1.DeleteGuestNetworkIpv6PrefixRequest, v1.DeleteGuestNetworkIpv6PrefixResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteGuestNetworkIpv6Prefix")),
-			connect.WithClientOptions(opts...),
-		),
-		migrateNetwork: connect.NewClient[v1.MigrateNetworkRequest, v1.MigrateNetworkResponse](
-			httpClient,
-			baseURL+NetworkServiceMigrateNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("MigrateNetwork")),
+			baseURL+NetworkServiceCreateNetworkACLListProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACLList")),
 			connect.WithClientOptions(opts...),
 		),
 		dedicateGuestVlanRange: connect.NewClient[v1.DedicateGuestVlanRangeRequest, v1.DedicateGuestVlanRangeResponse](
@@ -545,22 +444,70 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("DedicateGuestVlanRange")),
 			connect.WithClientOptions(opts...),
 		),
-		updateStorageNetworkIpRange: connect.NewClient[v1.UpdateStorageNetworkIpRangeRequest, v1.UpdateStorageNetworkIpRangeResponse](
+		deleteNetworkACL: connect.NewClient[v1.DeleteNetworkACLRequest, v1.DeleteNetworkACLResponse](
 			httpClient,
-			baseURL+NetworkServiceUpdateStorageNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateStorageNetworkIpRange")),
+			baseURL+NetworkServiceDeleteNetworkACLProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACL")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteNetworkServiceProvider: connect.NewClient[v1.DeleteNetworkServiceProviderRequest, v1.DeleteNetworkServiceProviderResponse](
+		updateNetworkCmdByAdmin: connect.NewClient[v1.UpdateNetworkCmdByAdminRequest, v1.UpdateNetworkCmdByAdminResponse](
 			httpClient,
-			baseURL+NetworkServiceDeleteNetworkServiceProviderProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkServiceProvider")),
+			baseURL+NetworkServiceUpdateNetworkCmdByAdminProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
-		migrateVPC: connect.NewClient[v1.MigrateVPCRequest, v1.MigrateVPCResponse](
+		listStorageNetworkIpRange: connect.NewClient[v1.ListStorageNetworkIpRangeRequest, v1.ListStorageNetworkIpRangeResponse](
 			httpClient,
-			baseURL+NetworkServiceMigrateVPCProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("MigrateVPC")),
+			baseURL+NetworkServiceListStorageNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListStorageNetworkIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		migrateNetwork: connect.NewClient[v1.MigrateNetworkRequest, v1.MigrateNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceMigrateNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("MigrateNetwork")),
+			connect.WithClientOptions(opts...),
+		),
+		updatePodManagementNetworkIpRange: connect.NewClient[v1.UpdatePodManagementNetworkIpRangeRequest, v1.UpdatePodManagementNetworkIpRangeResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdatePodManagementNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdatePodManagementNetworkIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		releaseDedicatedIpv4SubnetForZone: connect.NewClient[v1.ReleaseDedicatedIpv4SubnetForZoneRequest, v1.ReleaseDedicatedIpv4SubnetForZoneResponse](
+			httpClient,
+			baseURL+NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedIpv4SubnetForZone")),
+			connect.WithClientOptions(opts...),
+		),
+		addNetworkDevice: connect.NewClient[v1.AddNetworkDeviceRequest, v1.AddNetworkDeviceResponse](
+			httpClient,
+			baseURL+NetworkServiceAddNetworkDeviceProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("AddNetworkDevice")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteNetworkOffering: connect.NewClient[v1.DeleteNetworkOfferingRequest, v1.DeleteNetworkOfferingResponse](
+			httpClient,
+			baseURL+NetworkServiceDeleteNetworkOfferingProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		updatePhysicalNetwork: connect.NewClient[v1.UpdatePhysicalNetworkRequest, v1.UpdatePhysicalNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdatePhysicalNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdatePhysicalNetwork")),
+			connect.WithClientOptions(opts...),
+		),
+		createManagementNetworkIpRange: connect.NewClient[v1.CreateManagementNetworkIpRangeRequest, v1.CreateManagementNetworkIpRangeResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateManagementNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateManagementNetworkIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteNetwork: connect.NewClient[v1.DeleteNetworkRequest, v1.DeleteNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceDeleteNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteNetwork")),
 			connect.WithClientOptions(opts...),
 		),
 		listNetworkServiceProviders: connect.NewClient[v1.ListNetworkServiceProvidersRequest, v1.ListNetworkServiceProvidersResponse](
@@ -569,16 +516,118 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("ListNetworkServiceProviders")),
 			connect.WithClientOptions(opts...),
 		),
+		createNetworkACL: connect.NewClient[v1.CreateNetworkACLRequest, v1.CreateNetworkACLResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateNetworkACLProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACL")),
+			connect.WithClientOptions(opts...),
+		),
+		listSupportedNetworkServices: connect.NewClient[v1.ListSupportedNetworkServicesRequest, v1.ListSupportedNetworkServicesResponse](
+			httpClient,
+			baseURL+NetworkServiceListSupportedNetworkServicesProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListSupportedNetworkServices")),
+			connect.WithClientOptions(opts...),
+		),
+		listNetworkACLLists: connect.NewClient[v1.ListNetworkACLListsRequest, v1.ListNetworkACLListsResponse](
+			httpClient,
+			baseURL+NetworkServiceListNetworkACLListsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLLists")),
+			connect.WithClientOptions(opts...),
+		),
 		listIpv4SubnetsForZone: connect.NewClient[v1.ListIpv4SubnetsForZoneRequest, v1.ListIpv4SubnetsForZoneResponse](
 			httpClient,
 			baseURL+NetworkServiceListIpv4SubnetsForZoneProcedure,
 			connect.WithSchema(networkServiceMethods.ByName("ListIpv4SubnetsForZone")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteNetwork: connect.NewClient[v1.DeleteNetworkRequest, v1.DeleteNetworkResponse](
+		listNetworkDevice: connect.NewClient[v1.ListNetworkDeviceRequest, v1.ListNetworkDeviceResponse](
 			httpClient,
-			baseURL+NetworkServiceDeleteNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteNetwork")),
+			baseURL+NetworkServiceListNetworkDeviceProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkDevice")),
+			connect.WithClientOptions(opts...),
+		),
+		listNetworkACLs: connect.NewClient[v1.ListNetworkACLsRequest, v1.ListNetworkACLsResponse](
+			httpClient,
+			baseURL+NetworkServiceListNetworkACLsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLs")),
+			connect.WithClientOptions(opts...),
+		),
+		updateNetworkACLList: connect.NewClient[v1.UpdateNetworkACLListRequest, v1.UpdateNetworkACLListResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdateNetworkACLListProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLList")),
+			connect.WithClientOptions(opts...),
+		),
+		createGuestNetworkIpv6Prefix: connect.NewClient[v1.CreateGuestNetworkIpv6PrefixRequest, v1.CreateGuestNetworkIpv6PrefixResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateGuestNetworkIpv6PrefixProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateGuestNetworkIpv6Prefix")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteStorageNetworkIpRange: connect.NewClient[v1.DeleteStorageNetworkIpRangeRequest, v1.DeleteStorageNetworkIpRangeResponse](
+			httpClient,
+			baseURL+NetworkServiceDeleteStorageNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteStorageNetworkIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		listNetworkPermissions: connect.NewClient[v1.ListNetworkPermissionsRequest, v1.ListNetworkPermissionsResponse](
+			httpClient,
+			baseURL+NetworkServiceListNetworkPermissionsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkPermissions")),
+			connect.WithClientOptions(opts...),
+		),
+		listGuestNetworkIpv6Prefixes: connect.NewClient[v1.ListGuestNetworkIpv6PrefixesRequest, v1.ListGuestNetworkIpv6PrefixesResponse](
+			httpClient,
+			baseURL+NetworkServiceListGuestNetworkIpv6PrefixesProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListGuestNetworkIpv6Prefixes")),
+			connect.WithClientOptions(opts...),
+		),
+		moveNetworkAclItem: connect.NewClient[v1.MoveNetworkAclItemRequest, v1.MoveNetworkAclItemResponse](
+			httpClient,
+			baseURL+NetworkServiceMoveNetworkAclItemProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("MoveNetworkAclItem")),
+			connect.WithClientOptions(opts...),
+		),
+		addNetworkServiceProvider: connect.NewClient[v1.AddNetworkServiceProviderRequest, v1.AddNetworkServiceProviderResponse](
+			httpClient,
+			baseURL+NetworkServiceAddNetworkServiceProviderProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("AddNetworkServiceProvider")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteIpv4SubnetForGuestNetwork: connect.NewClient[v1.DeleteIpv4SubnetForGuestNetworkRequest, v1.DeleteIpv4SubnetForGuestNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForGuestNetwork")),
+			connect.WithClientOptions(opts...),
+		),
+		removeNetworkPermissions: connect.NewClient[v1.RemoveNetworkPermissionsRequest, v1.RemoveNetworkPermissionsResponse](
+			httpClient,
+			baseURL+NetworkServiceRemoveNetworkPermissionsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("RemoveNetworkPermissions")),
+			connect.WithClientOptions(opts...),
+		),
+		createNetworkOffering: connect.NewClient[v1.CreateNetworkOfferingRequest, v1.CreateNetworkOfferingResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateNetworkOfferingProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		updateNetworkACLItem: connect.NewClient[v1.UpdateNetworkACLItemRequest, v1.UpdateNetworkACLItemResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdateNetworkACLItemProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLItem")),
+			connect.WithClientOptions(opts...),
+		),
+		createNetwork: connect.NewClient[v1.CreateNetworkRequest, v1.CreateNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateNetwork")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteNetworkServiceProvider: connect.NewClient[v1.DeleteNetworkServiceProviderRequest, v1.DeleteNetworkServiceProviderResponse](
+			httpClient,
+			baseURL+NetworkServiceDeleteNetworkServiceProviderProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkServiceProvider")),
 			connect.WithClientOptions(opts...),
 		),
 		updateNetworkOffering: connect.NewClient[v1.UpdateNetworkOfferingRequest, v1.UpdateNetworkOfferingResponse](
@@ -593,142 +642,10 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("CreateIpv4SubnetForGuestNetwork")),
 			connect.WithClientOptions(opts...),
 		),
-		listNetworkIsolationMethods: connect.NewClient[v1.ListNetworkIsolationMethodsRequest, v1.ListNetworkIsolationMethodsResponse](
+		resetNetworkPermissions: connect.NewClient[v1.ResetNetworkPermissionsRequest, v1.ResetNetworkPermissionsResponse](
 			httpClient,
-			baseURL+NetworkServiceListNetworkIsolationMethodsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkIsolationMethods")),
-			connect.WithClientOptions(opts...),
-		),
-		addNetworkServiceProvider: connect.NewClient[v1.AddNetworkServiceProviderRequest, v1.AddNetworkServiceProviderResponse](
-			httpClient,
-			baseURL+NetworkServiceAddNetworkServiceProviderProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("AddNetworkServiceProvider")),
-			connect.WithClientOptions(opts...),
-		),
-		listNetworks: connect.NewClient[v1.ListNetworksRequest, v1.ListNetworksResponse](
-			httpClient,
-			baseURL+NetworkServiceListNetworksProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworks")),
-			connect.WithClientOptions(opts...),
-		),
-		listNetworkACLs: connect.NewClient[v1.ListNetworkACLsRequest, v1.ListNetworkACLsResponse](
-			httpClient,
-			baseURL+NetworkServiceListNetworkACLsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLs")),
-			connect.WithClientOptions(opts...),
-		),
-		createManagementNetworkIpRange: connect.NewClient[v1.CreateManagementNetworkIpRangeRequest, v1.CreateManagementNetworkIpRangeResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateManagementNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateManagementNetworkIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		listSupportedNetworkServices: connect.NewClient[v1.ListSupportedNetworkServicesRequest, v1.ListSupportedNetworkServicesResponse](
-			httpClient,
-			baseURL+NetworkServiceListSupportedNetworkServicesProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListSupportedNetworkServices")),
-			connect.WithClientOptions(opts...),
-		),
-		updatePhysicalNetwork: connect.NewClient[v1.UpdatePhysicalNetworkRequest, v1.UpdatePhysicalNetworkResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdatePhysicalNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdatePhysicalNetwork")),
-			connect.WithClientOptions(opts...),
-		),
-		createNetworkACLList: connect.NewClient[v1.CreateNetworkACLListRequest, v1.CreateNetworkACLListResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateNetworkACLListProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACLList")),
-			connect.WithClientOptions(opts...),
-		),
-		createNetworkCmdByAdmin: connect.NewClient[v1.CreateNetworkCmdByAdminRequest, v1.CreateNetworkCmdByAdminResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateNetworkCmdByAdminProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteStorageNetworkIpRange: connect.NewClient[v1.DeleteStorageNetworkIpRangeRequest, v1.DeleteStorageNetworkIpRangeResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteStorageNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteStorageNetworkIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteIpv4SubnetForZone: connect.NewClient[v1.DeleteIpv4SubnetForZoneRequest, v1.DeleteIpv4SubnetForZoneResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteIpv4SubnetForZoneProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForZone")),
-			connect.WithClientOptions(opts...),
-		),
-		listNetworkPermissions: connect.NewClient[v1.ListNetworkPermissionsRequest, v1.ListNetworkPermissionsResponse](
-			httpClient,
-			baseURL+NetworkServiceListNetworkPermissionsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkPermissions")),
-			connect.WithClientOptions(opts...),
-		),
-		listDedicatedGuestVlanRanges: connect.NewClient[v1.ListDedicatedGuestVlanRangesRequest, v1.ListDedicatedGuestVlanRangesResponse](
-			httpClient,
-			baseURL+NetworkServiceListDedicatedGuestVlanRangesProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListDedicatedGuestVlanRanges")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteNetworkACLList: connect.NewClient[v1.DeleteNetworkACLListRequest, v1.DeleteNetworkACLListResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteNetworkACLListProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACLList")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteNetworkOffering: connect.NewClient[v1.DeleteNetworkOfferingRequest, v1.DeleteNetworkOfferingResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteNetworkOfferingProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		moveNetworkAclItem: connect.NewClient[v1.MoveNetworkAclItemRequest, v1.MoveNetworkAclItemResponse](
-			httpClient,
-			baseURL+NetworkServiceMoveNetworkAclItemProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("MoveNetworkAclItem")),
-			connect.WithClientOptions(opts...),
-		),
-		listGuestVlans: connect.NewClient[v1.ListGuestVlansRequest, v1.ListGuestVlansResponse](
-			httpClient,
-			baseURL+NetworkServiceListGuestVlansProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListGuestVlans")),
-			connect.WithClientOptions(opts...),
-		),
-		updateIpv4SubnetForZone: connect.NewClient[v1.UpdateIpv4SubnetForZoneRequest, v1.UpdateIpv4SubnetForZoneResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdateIpv4SubnetForZoneProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateIpv4SubnetForZone")),
-			connect.WithClientOptions(opts...),
-		),
-		createPhysicalNetwork: connect.NewClient[v1.CreatePhysicalNetworkRequest, v1.CreatePhysicalNetworkResponse](
-			httpClient,
-			baseURL+NetworkServiceCreatePhysicalNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreatePhysicalNetwork")),
-			connect.WithClientOptions(opts...),
-		),
-		createNetworkOffering: connect.NewClient[v1.CreateNetworkOfferingRequest, v1.CreateNetworkOfferingResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateNetworkOfferingProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		updateNetworkServiceProvider: connect.NewClient[v1.UpdateNetworkServiceProviderRequest, v1.UpdateNetworkServiceProviderResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdateNetworkServiceProviderProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkServiceProvider")),
-			connect.WithClientOptions(opts...),
-		),
-		createStorageNetworkIpRange: connect.NewClient[v1.CreateStorageNetworkIpRangeRequest, v1.CreateStorageNetworkIpRangeResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateStorageNetworkIpRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateStorageNetworkIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		listIpv4SubnetsForGuestNetwork: connect.NewClient[v1.ListIpv4SubnetsForGuestNetworkRequest, v1.ListIpv4SubnetsForGuestNetworkResponse](
-			httpClient,
-			baseURL+NetworkServiceListIpv4SubnetsForGuestNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListIpv4SubnetsForGuestNetwork")),
+			baseURL+NetworkServiceResetNetworkPermissionsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ResetNetworkPermissions")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteNetworkDevice: connect.NewClient[v1.DeleteNetworkDeviceRequest, v1.DeleteNetworkDeviceResponse](
@@ -737,22 +654,94 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkDevice")),
 			connect.WithClientOptions(opts...),
 		),
-		createNetwork: connect.NewClient[v1.CreateNetworkRequest, v1.CreateNetworkResponse](
+		listNetworkOfferings: connect.NewClient[v1.ListNetworkOfferingsRequest, v1.ListNetworkOfferingsResponse](
 			httpClient,
-			baseURL+NetworkServiceCreateNetworkProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("CreateNetwork")),
+			baseURL+NetworkServiceListNetworkOfferingsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworkOfferings")),
 			connect.WithClientOptions(opts...),
 		),
-		releaseDedicatedGuestVlanRange: connect.NewClient[v1.ReleaseDedicatedGuestVlanRangeRequest, v1.ReleaseDedicatedGuestVlanRangeResponse](
+		restartNetwork: connect.NewClient[v1.RestartNetworkRequest, v1.RestartNetworkResponse](
 			httpClient,
-			baseURL+NetworkServiceReleaseDedicatedGuestVlanRangeProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedGuestVlanRange")),
+			baseURL+NetworkServiceRestartNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("RestartNetwork")),
 			connect.WithClientOptions(opts...),
 		),
-		listNetworkProtocols: connect.NewClient[v1.ListNetworkProtocolsRequest, v1.ListNetworkProtocolsResponse](
+		deleteGuestNetworkIpv6Prefix: connect.NewClient[v1.DeleteGuestNetworkIpv6PrefixRequest, v1.DeleteGuestNetworkIpv6PrefixResponse](
 			httpClient,
-			baseURL+NetworkServiceListNetworkProtocolsProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListNetworkProtocols")),
+			baseURL+NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("DeleteGuestNetworkIpv6Prefix")),
+			connect.WithClientOptions(opts...),
+		),
+		createIpv4SubnetForZone: connect.NewClient[v1.CreateIpv4SubnetForZoneRequest, v1.CreateIpv4SubnetForZoneResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateIpv4SubnetForZoneProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateIpv4SubnetForZone")),
+			connect.WithClientOptions(opts...),
+		),
+		updateStorageNetworkIpRange: connect.NewClient[v1.UpdateStorageNetworkIpRangeRequest, v1.UpdateStorageNetworkIpRangeResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdateStorageNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateStorageNetworkIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		listNetworks: connect.NewClient[v1.ListNetworksRequest, v1.ListNetworksResponse](
+			httpClient,
+			baseURL+NetworkServiceListNetworksProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListNetworks")),
+			connect.WithClientOptions(opts...),
+		),
+		replaceNetworkACLList: connect.NewClient[v1.ReplaceNetworkACLListRequest, v1.ReplaceNetworkACLListResponse](
+			httpClient,
+			baseURL+NetworkServiceReplaceNetworkACLListProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ReplaceNetworkACLList")),
+			connect.WithClientOptions(opts...),
+		),
+		createNetworkPermissions: connect.NewClient[v1.CreateNetworkPermissionsRequest, v1.CreateNetworkPermissionsResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateNetworkPermissionsProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateNetworkPermissions")),
+			connect.WithClientOptions(opts...),
+		),
+		listGuestVlans: connect.NewClient[v1.ListGuestVlansRequest, v1.ListGuestVlansResponse](
+			httpClient,
+			baseURL+NetworkServiceListGuestVlansProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListGuestVlans")),
+			connect.WithClientOptions(opts...),
+		),
+		createStorageNetworkIpRange: connect.NewClient[v1.CreateStorageNetworkIpRangeRequest, v1.CreateStorageNetworkIpRangeResponse](
+			httpClient,
+			baseURL+NetworkServiceCreateStorageNetworkIpRangeProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("CreateStorageNetworkIpRange")),
+			connect.WithClientOptions(opts...),
+		),
+		updateNetwork: connect.NewClient[v1.UpdateNetworkRequest, v1.UpdateNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdateNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateNetwork")),
+			connect.WithClientOptions(opts...),
+		),
+		migrateVPC: connect.NewClient[v1.MigrateVPCRequest, v1.MigrateVPCResponse](
+			httpClient,
+			baseURL+NetworkServiceMigrateVPCProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("MigrateVPC")),
+			connect.WithClientOptions(opts...),
+		),
+		listPhysicalNetworks: connect.NewClient[v1.ListPhysicalNetworksRequest, v1.ListPhysicalNetworksResponse](
+			httpClient,
+			baseURL+NetworkServiceListPhysicalNetworksProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListPhysicalNetworks")),
+			connect.WithClientOptions(opts...),
+		),
+		listIpv4SubnetsForGuestNetwork: connect.NewClient[v1.ListIpv4SubnetsForGuestNetworkRequest, v1.ListIpv4SubnetsForGuestNetworkResponse](
+			httpClient,
+			baseURL+NetworkServiceListIpv4SubnetsForGuestNetworkProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListIpv4SubnetsForGuestNetwork")),
+			connect.WithClientOptions(opts...),
+		),
+		updateNetworkServiceProvider: connect.NewClient[v1.UpdateNetworkServiceProviderRequest, v1.UpdateNetworkServiceProviderResponse](
+			httpClient,
+			baseURL+NetworkServiceUpdateNetworkServiceProviderProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkServiceProvider")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -761,69 +750,68 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 // networkServiceClient implements NetworkServiceClient.
 type networkServiceClient struct {
 	dedicateIpv4SubnetForZone         *connect.Client[v1.DedicateIpv4SubnetForZoneRequest, v1.DedicateIpv4SubnetForZoneResponse]
-	listNetworkOfferings              *connect.Client[v1.ListNetworkOfferingsRequest, v1.ListNetworkOfferingsResponse]
-	resetNetworkPermissions           *connect.Client[v1.ResetNetworkPermissionsRequest, v1.ResetNetworkPermissionsResponse]
-	updateNetworkACLItem              *connect.Client[v1.UpdateNetworkACLItemRequest, v1.UpdateNetworkACLItemResponse]
-	deleteNetworkACL                  *connect.Client[v1.DeleteNetworkACLRequest, v1.DeleteNetworkACLResponse]
-	restartNetwork                    *connect.Client[v1.RestartNetworkRequest, v1.RestartNetworkResponse]
-	createIpv4SubnetForZone           *connect.Client[v1.CreateIpv4SubnetForZoneRequest, v1.CreateIpv4SubnetForZoneResponse]
-	addNetworkDevice                  *connect.Client[v1.AddNetworkDeviceRequest, v1.AddNetworkDeviceResponse]
-	updateNetworkACLList              *connect.Client[v1.UpdateNetworkACLListRequest, v1.UpdateNetworkACLListResponse]
-	createNetworkACL                  *connect.Client[v1.CreateNetworkACLRequest, v1.CreateNetworkACLResponse]
-	updatePodManagementNetworkIpRange *connect.Client[v1.UpdatePodManagementNetworkIpRangeRequest, v1.UpdatePodManagementNetworkIpRangeResponse]
-	listGuestNetworkIpv6Prefixes      *connect.Client[v1.ListGuestNetworkIpv6PrefixesRequest, v1.ListGuestNetworkIpv6PrefixesResponse]
-	updateNetworkCmdByAdmin           *connect.Client[v1.UpdateNetworkCmdByAdminRequest, v1.UpdateNetworkCmdByAdminResponse]
-	createGuestNetworkIpv6Prefix      *connect.Client[v1.CreateGuestNetworkIpv6PrefixRequest, v1.CreateGuestNetworkIpv6PrefixResponse]
-	listStorageNetworkIpRange         *connect.Client[v1.ListStorageNetworkIpRangeRequest, v1.ListStorageNetworkIpRangeResponse]
-	listPhysicalNetworks              *connect.Client[v1.ListPhysicalNetworksRequest, v1.ListPhysicalNetworksResponse]
-	updateNetwork                     *connect.Client[v1.UpdateNetworkRequest, v1.UpdateNetworkResponse]
-	createNetworkPermissions          *connect.Client[v1.CreateNetworkPermissionsRequest, v1.CreateNetworkPermissionsResponse]
-	deleteIpv4SubnetForGuestNetwork   *connect.Client[v1.DeleteIpv4SubnetForGuestNetworkRequest, v1.DeleteIpv4SubnetForGuestNetworkResponse]
-	replaceNetworkACLList             *connect.Client[v1.ReplaceNetworkACLListRequest, v1.ReplaceNetworkACLListResponse]
-	deletePhysicalNetwork             *connect.Client[v1.DeletePhysicalNetworkRequest, v1.DeletePhysicalNetworkResponse]
-	listNetworkDevice                 *connect.Client[v1.ListNetworkDeviceRequest, v1.ListNetworkDeviceResponse]
-	removeNetworkPermissions          *connect.Client[v1.RemoveNetworkPermissionsRequest, v1.RemoveNetworkPermissionsResponse]
-	releaseDedicatedIpv4SubnetForZone *connect.Client[v1.ReleaseDedicatedIpv4SubnetForZoneRequest, v1.ReleaseDedicatedIpv4SubnetForZoneResponse]
-	listNetworkACLLists               *connect.Client[v1.ListNetworkACLListsRequest, v1.ListNetworkACLListsResponse]
 	deleteManagementNetworkIpRange    *connect.Client[v1.DeleteManagementNetworkIpRangeRequest, v1.DeleteManagementNetworkIpRangeResponse]
-	deleteGuestNetworkIpv6Prefix      *connect.Client[v1.DeleteGuestNetworkIpv6PrefixRequest, v1.DeleteGuestNetworkIpv6PrefixResponse]
-	migrateNetwork                    *connect.Client[v1.MigrateNetworkRequest, v1.MigrateNetworkResponse]
+	listDedicatedGuestVlanRanges      *connect.Client[v1.ListDedicatedGuestVlanRangesRequest, v1.ListDedicatedGuestVlanRangesResponse]
+	deleteIpv4SubnetForZone           *connect.Client[v1.DeleteIpv4SubnetForZoneRequest, v1.DeleteIpv4SubnetForZoneResponse]
+	deleteNetworkACLList              *connect.Client[v1.DeleteNetworkACLListRequest, v1.DeleteNetworkACLListResponse]
+	releaseDedicatedGuestVlanRange    *connect.Client[v1.ReleaseDedicatedGuestVlanRangeRequest, v1.ReleaseDedicatedGuestVlanRangeResponse]
+	deletePhysicalNetwork             *connect.Client[v1.DeletePhysicalNetworkRequest, v1.DeletePhysicalNetworkResponse]
+	updateIpv4SubnetForZone           *connect.Client[v1.UpdateIpv4SubnetForZoneRequest, v1.UpdateIpv4SubnetForZoneResponse]
+	listNetworkIsolationMethods       *connect.Client[v1.ListNetworkIsolationMethodsRequest, v1.ListNetworkIsolationMethodsResponse]
+	createPhysicalNetwork             *connect.Client[v1.CreatePhysicalNetworkRequest, v1.CreatePhysicalNetworkResponse]
+	listNetworkProtocols              *connect.Client[v1.ListNetworkProtocolsRequest, v1.ListNetworkProtocolsResponse]
+	createNetworkACLList              *connect.Client[v1.CreateNetworkACLListRequest, v1.CreateNetworkACLListResponse]
 	dedicateGuestVlanRange            *connect.Client[v1.DedicateGuestVlanRangeRequest, v1.DedicateGuestVlanRangeResponse]
-	updateStorageNetworkIpRange       *connect.Client[v1.UpdateStorageNetworkIpRangeRequest, v1.UpdateStorageNetworkIpRangeResponse]
-	deleteNetworkServiceProvider      *connect.Client[v1.DeleteNetworkServiceProviderRequest, v1.DeleteNetworkServiceProviderResponse]
-	migrateVPC                        *connect.Client[v1.MigrateVPCRequest, v1.MigrateVPCResponse]
-	listNetworkServiceProviders       *connect.Client[v1.ListNetworkServiceProvidersRequest, v1.ListNetworkServiceProvidersResponse]
-	listIpv4SubnetsForZone            *connect.Client[v1.ListIpv4SubnetsForZoneRequest, v1.ListIpv4SubnetsForZoneResponse]
+	deleteNetworkACL                  *connect.Client[v1.DeleteNetworkACLRequest, v1.DeleteNetworkACLResponse]
+	updateNetworkCmdByAdmin           *connect.Client[v1.UpdateNetworkCmdByAdminRequest, v1.UpdateNetworkCmdByAdminResponse]
+	listStorageNetworkIpRange         *connect.Client[v1.ListStorageNetworkIpRangeRequest, v1.ListStorageNetworkIpRangeResponse]
+	migrateNetwork                    *connect.Client[v1.MigrateNetworkRequest, v1.MigrateNetworkResponse]
+	updatePodManagementNetworkIpRange *connect.Client[v1.UpdatePodManagementNetworkIpRangeRequest, v1.UpdatePodManagementNetworkIpRangeResponse]
+	releaseDedicatedIpv4SubnetForZone *connect.Client[v1.ReleaseDedicatedIpv4SubnetForZoneRequest, v1.ReleaseDedicatedIpv4SubnetForZoneResponse]
+	addNetworkDevice                  *connect.Client[v1.AddNetworkDeviceRequest, v1.AddNetworkDeviceResponse]
+	deleteNetworkOffering             *connect.Client[v1.DeleteNetworkOfferingRequest, v1.DeleteNetworkOfferingResponse]
+	updatePhysicalNetwork             *connect.Client[v1.UpdatePhysicalNetworkRequest, v1.UpdatePhysicalNetworkResponse]
+	createManagementNetworkIpRange    *connect.Client[v1.CreateManagementNetworkIpRangeRequest, v1.CreateManagementNetworkIpRangeResponse]
 	deleteNetwork                     *connect.Client[v1.DeleteNetworkRequest, v1.DeleteNetworkResponse]
+	listNetworkServiceProviders       *connect.Client[v1.ListNetworkServiceProvidersRequest, v1.ListNetworkServiceProvidersResponse]
+	createNetworkACL                  *connect.Client[v1.CreateNetworkACLRequest, v1.CreateNetworkACLResponse]
+	listSupportedNetworkServices      *connect.Client[v1.ListSupportedNetworkServicesRequest, v1.ListSupportedNetworkServicesResponse]
+	listNetworkACLLists               *connect.Client[v1.ListNetworkACLListsRequest, v1.ListNetworkACLListsResponse]
+	listIpv4SubnetsForZone            *connect.Client[v1.ListIpv4SubnetsForZoneRequest, v1.ListIpv4SubnetsForZoneResponse]
+	listNetworkDevice                 *connect.Client[v1.ListNetworkDeviceRequest, v1.ListNetworkDeviceResponse]
+	listNetworkACLs                   *connect.Client[v1.ListNetworkACLsRequest, v1.ListNetworkACLsResponse]
+	updateNetworkACLList              *connect.Client[v1.UpdateNetworkACLListRequest, v1.UpdateNetworkACLListResponse]
+	createGuestNetworkIpv6Prefix      *connect.Client[v1.CreateGuestNetworkIpv6PrefixRequest, v1.CreateGuestNetworkIpv6PrefixResponse]
+	deleteStorageNetworkIpRange       *connect.Client[v1.DeleteStorageNetworkIpRangeRequest, v1.DeleteStorageNetworkIpRangeResponse]
+	listNetworkPermissions            *connect.Client[v1.ListNetworkPermissionsRequest, v1.ListNetworkPermissionsResponse]
+	listGuestNetworkIpv6Prefixes      *connect.Client[v1.ListGuestNetworkIpv6PrefixesRequest, v1.ListGuestNetworkIpv6PrefixesResponse]
+	moveNetworkAclItem                *connect.Client[v1.MoveNetworkAclItemRequest, v1.MoveNetworkAclItemResponse]
+	addNetworkServiceProvider         *connect.Client[v1.AddNetworkServiceProviderRequest, v1.AddNetworkServiceProviderResponse]
+	deleteIpv4SubnetForGuestNetwork   *connect.Client[v1.DeleteIpv4SubnetForGuestNetworkRequest, v1.DeleteIpv4SubnetForGuestNetworkResponse]
+	removeNetworkPermissions          *connect.Client[v1.RemoveNetworkPermissionsRequest, v1.RemoveNetworkPermissionsResponse]
+	createNetworkOffering             *connect.Client[v1.CreateNetworkOfferingRequest, v1.CreateNetworkOfferingResponse]
+	updateNetworkACLItem              *connect.Client[v1.UpdateNetworkACLItemRequest, v1.UpdateNetworkACLItemResponse]
+	createNetwork                     *connect.Client[v1.CreateNetworkRequest, v1.CreateNetworkResponse]
+	deleteNetworkServiceProvider      *connect.Client[v1.DeleteNetworkServiceProviderRequest, v1.DeleteNetworkServiceProviderResponse]
 	updateNetworkOffering             *connect.Client[v1.UpdateNetworkOfferingRequest, v1.UpdateNetworkOfferingResponse]
 	createIpv4SubnetForGuestNetwork   *connect.Client[v1.CreateIpv4SubnetForGuestNetworkRequest, v1.CreateIpv4SubnetForGuestNetworkResponse]
-	listNetworkIsolationMethods       *connect.Client[v1.ListNetworkIsolationMethodsRequest, v1.ListNetworkIsolationMethodsResponse]
-	addNetworkServiceProvider         *connect.Client[v1.AddNetworkServiceProviderRequest, v1.AddNetworkServiceProviderResponse]
-	listNetworks                      *connect.Client[v1.ListNetworksRequest, v1.ListNetworksResponse]
-	listNetworkACLs                   *connect.Client[v1.ListNetworkACLsRequest, v1.ListNetworkACLsResponse]
-	createManagementNetworkIpRange    *connect.Client[v1.CreateManagementNetworkIpRangeRequest, v1.CreateManagementNetworkIpRangeResponse]
-	listSupportedNetworkServices      *connect.Client[v1.ListSupportedNetworkServicesRequest, v1.ListSupportedNetworkServicesResponse]
-	updatePhysicalNetwork             *connect.Client[v1.UpdatePhysicalNetworkRequest, v1.UpdatePhysicalNetworkResponse]
-	createNetworkACLList              *connect.Client[v1.CreateNetworkACLListRequest, v1.CreateNetworkACLListResponse]
-	createNetworkCmdByAdmin           *connect.Client[v1.CreateNetworkCmdByAdminRequest, v1.CreateNetworkCmdByAdminResponse]
-	deleteStorageNetworkIpRange       *connect.Client[v1.DeleteStorageNetworkIpRangeRequest, v1.DeleteStorageNetworkIpRangeResponse]
-	deleteIpv4SubnetForZone           *connect.Client[v1.DeleteIpv4SubnetForZoneRequest, v1.DeleteIpv4SubnetForZoneResponse]
-	listNetworkPermissions            *connect.Client[v1.ListNetworkPermissionsRequest, v1.ListNetworkPermissionsResponse]
-	listDedicatedGuestVlanRanges      *connect.Client[v1.ListDedicatedGuestVlanRangesRequest, v1.ListDedicatedGuestVlanRangesResponse]
-	deleteNetworkACLList              *connect.Client[v1.DeleteNetworkACLListRequest, v1.DeleteNetworkACLListResponse]
-	deleteNetworkOffering             *connect.Client[v1.DeleteNetworkOfferingRequest, v1.DeleteNetworkOfferingResponse]
-	moveNetworkAclItem                *connect.Client[v1.MoveNetworkAclItemRequest, v1.MoveNetworkAclItemResponse]
-	listGuestVlans                    *connect.Client[v1.ListGuestVlansRequest, v1.ListGuestVlansResponse]
-	updateIpv4SubnetForZone           *connect.Client[v1.UpdateIpv4SubnetForZoneRequest, v1.UpdateIpv4SubnetForZoneResponse]
-	createPhysicalNetwork             *connect.Client[v1.CreatePhysicalNetworkRequest, v1.CreatePhysicalNetworkResponse]
-	createNetworkOffering             *connect.Client[v1.CreateNetworkOfferingRequest, v1.CreateNetworkOfferingResponse]
-	updateNetworkServiceProvider      *connect.Client[v1.UpdateNetworkServiceProviderRequest, v1.UpdateNetworkServiceProviderResponse]
-	createStorageNetworkIpRange       *connect.Client[v1.CreateStorageNetworkIpRangeRequest, v1.CreateStorageNetworkIpRangeResponse]
-	listIpv4SubnetsForGuestNetwork    *connect.Client[v1.ListIpv4SubnetsForGuestNetworkRequest, v1.ListIpv4SubnetsForGuestNetworkResponse]
+	resetNetworkPermissions           *connect.Client[v1.ResetNetworkPermissionsRequest, v1.ResetNetworkPermissionsResponse]
 	deleteNetworkDevice               *connect.Client[v1.DeleteNetworkDeviceRequest, v1.DeleteNetworkDeviceResponse]
-	createNetwork                     *connect.Client[v1.CreateNetworkRequest, v1.CreateNetworkResponse]
-	releaseDedicatedGuestVlanRange    *connect.Client[v1.ReleaseDedicatedGuestVlanRangeRequest, v1.ReleaseDedicatedGuestVlanRangeResponse]
-	listNetworkProtocols              *connect.Client[v1.ListNetworkProtocolsRequest, v1.ListNetworkProtocolsResponse]
+	listNetworkOfferings              *connect.Client[v1.ListNetworkOfferingsRequest, v1.ListNetworkOfferingsResponse]
+	restartNetwork                    *connect.Client[v1.RestartNetworkRequest, v1.RestartNetworkResponse]
+	deleteGuestNetworkIpv6Prefix      *connect.Client[v1.DeleteGuestNetworkIpv6PrefixRequest, v1.DeleteGuestNetworkIpv6PrefixResponse]
+	createIpv4SubnetForZone           *connect.Client[v1.CreateIpv4SubnetForZoneRequest, v1.CreateIpv4SubnetForZoneResponse]
+	updateStorageNetworkIpRange       *connect.Client[v1.UpdateStorageNetworkIpRangeRequest, v1.UpdateStorageNetworkIpRangeResponse]
+	listNetworks                      *connect.Client[v1.ListNetworksRequest, v1.ListNetworksResponse]
+	replaceNetworkACLList             *connect.Client[v1.ReplaceNetworkACLListRequest, v1.ReplaceNetworkACLListResponse]
+	createNetworkPermissions          *connect.Client[v1.CreateNetworkPermissionsRequest, v1.CreateNetworkPermissionsResponse]
+	listGuestVlans                    *connect.Client[v1.ListGuestVlansRequest, v1.ListGuestVlansResponse]
+	createStorageNetworkIpRange       *connect.Client[v1.CreateStorageNetworkIpRangeRequest, v1.CreateStorageNetworkIpRangeResponse]
+	updateNetwork                     *connect.Client[v1.UpdateNetworkRequest, v1.UpdateNetworkResponse]
+	migrateVPC                        *connect.Client[v1.MigrateVPCRequest, v1.MigrateVPCResponse]
+	listPhysicalNetworks              *connect.Client[v1.ListPhysicalNetworksRequest, v1.ListPhysicalNetworksResponse]
+	listIpv4SubnetsForGuestNetwork    *connect.Client[v1.ListIpv4SubnetsForGuestNetworkRequest, v1.ListIpv4SubnetsForGuestNetworkResponse]
+	updateNetworkServiceProvider      *connect.Client[v1.UpdateNetworkServiceProviderRequest, v1.UpdateNetworkServiceProviderResponse]
 }
 
 // DedicateIpv4SubnetForZone calls
@@ -832,109 +820,33 @@ func (c *networkServiceClient) DedicateIpv4SubnetForZone(ctx context.Context, re
 	return c.dedicateIpv4SubnetForZone.CallUnary(ctx, req)
 }
 
-// ListNetworkOfferings calls cloudstack.management.network.v1.NetworkService.ListNetworkOfferings.
-func (c *networkServiceClient) ListNetworkOfferings(ctx context.Context, req *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error) {
-	return c.listNetworkOfferings.CallUnary(ctx, req)
+// DeleteManagementNetworkIpRange calls
+// cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange.
+func (c *networkServiceClient) DeleteManagementNetworkIpRange(ctx context.Context, req *connect.Request[v1.DeleteManagementNetworkIpRangeRequest]) (*connect.Response[v1.DeleteManagementNetworkIpRangeResponse], error) {
+	return c.deleteManagementNetworkIpRange.CallUnary(ctx, req)
 }
 
-// ResetNetworkPermissions calls
-// cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions.
-func (c *networkServiceClient) ResetNetworkPermissions(ctx context.Context, req *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error) {
-	return c.resetNetworkPermissions.CallUnary(ctx, req)
+// ListDedicatedGuestVlanRanges calls
+// cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges.
+func (c *networkServiceClient) ListDedicatedGuestVlanRanges(ctx context.Context, req *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error) {
+	return c.listDedicatedGuestVlanRanges.CallUnary(ctx, req)
 }
 
-// UpdateNetworkACLItem calls cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem.
-func (c *networkServiceClient) UpdateNetworkACLItem(ctx context.Context, req *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error) {
-	return c.updateNetworkACLItem.CallUnary(ctx, req)
+// DeleteIpv4SubnetForZone calls
+// cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone.
+func (c *networkServiceClient) DeleteIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error) {
+	return c.deleteIpv4SubnetForZone.CallUnary(ctx, req)
 }
 
-// DeleteNetworkACL calls cloudstack.management.network.v1.NetworkService.DeleteNetworkACL.
-func (c *networkServiceClient) DeleteNetworkACL(ctx context.Context, req *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error) {
-	return c.deleteNetworkACL.CallUnary(ctx, req)
+// DeleteNetworkACLList calls cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList.
+func (c *networkServiceClient) DeleteNetworkACLList(ctx context.Context, req *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error) {
+	return c.deleteNetworkACLList.CallUnary(ctx, req)
 }
 
-// RestartNetwork calls cloudstack.management.network.v1.NetworkService.RestartNetwork.
-func (c *networkServiceClient) RestartNetwork(ctx context.Context, req *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error) {
-	return c.restartNetwork.CallUnary(ctx, req)
-}
-
-// CreateIpv4SubnetForZone calls
-// cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone.
-func (c *networkServiceClient) CreateIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error) {
-	return c.createIpv4SubnetForZone.CallUnary(ctx, req)
-}
-
-// AddNetworkDevice calls cloudstack.management.network.v1.NetworkService.AddNetworkDevice.
-func (c *networkServiceClient) AddNetworkDevice(ctx context.Context, req *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error) {
-	return c.addNetworkDevice.CallUnary(ctx, req)
-}
-
-// UpdateNetworkACLList calls cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList.
-func (c *networkServiceClient) UpdateNetworkACLList(ctx context.Context, req *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error) {
-	return c.updateNetworkACLList.CallUnary(ctx, req)
-}
-
-// CreateNetworkACL calls cloudstack.management.network.v1.NetworkService.CreateNetworkACL.
-func (c *networkServiceClient) CreateNetworkACL(ctx context.Context, req *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error) {
-	return c.createNetworkACL.CallUnary(ctx, req)
-}
-
-// UpdatePodManagementNetworkIpRange calls
-// cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange.
-func (c *networkServiceClient) UpdatePodManagementNetworkIpRange(ctx context.Context, req *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error) {
-	return c.updatePodManagementNetworkIpRange.CallUnary(ctx, req)
-}
-
-// ListGuestNetworkIpv6Prefixes calls
-// cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes.
-func (c *networkServiceClient) ListGuestNetworkIpv6Prefixes(ctx context.Context, req *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error) {
-	return c.listGuestNetworkIpv6Prefixes.CallUnary(ctx, req)
-}
-
-// UpdateNetworkCmdByAdmin calls
-// cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin.
-func (c *networkServiceClient) UpdateNetworkCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error) {
-	return c.updateNetworkCmdByAdmin.CallUnary(ctx, req)
-}
-
-// CreateGuestNetworkIpv6Prefix calls
-// cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix.
-func (c *networkServiceClient) CreateGuestNetworkIpv6Prefix(ctx context.Context, req *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error) {
-	return c.createGuestNetworkIpv6Prefix.CallUnary(ctx, req)
-}
-
-// ListStorageNetworkIpRange calls
-// cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange.
-func (c *networkServiceClient) ListStorageNetworkIpRange(ctx context.Context, req *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error) {
-	return c.listStorageNetworkIpRange.CallUnary(ctx, req)
-}
-
-// ListPhysicalNetworks calls cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks.
-func (c *networkServiceClient) ListPhysicalNetworks(ctx context.Context, req *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error) {
-	return c.listPhysicalNetworks.CallUnary(ctx, req)
-}
-
-// UpdateNetwork calls cloudstack.management.network.v1.NetworkService.UpdateNetwork.
-func (c *networkServiceClient) UpdateNetwork(ctx context.Context, req *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error) {
-	return c.updateNetwork.CallUnary(ctx, req)
-}
-
-// CreateNetworkPermissions calls
-// cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions.
-func (c *networkServiceClient) CreateNetworkPermissions(ctx context.Context, req *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error) {
-	return c.createNetworkPermissions.CallUnary(ctx, req)
-}
-
-// DeleteIpv4SubnetForGuestNetwork calls
-// cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork.
-func (c *networkServiceClient) DeleteIpv4SubnetForGuestNetwork(ctx context.Context, req *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error) {
-	return c.deleteIpv4SubnetForGuestNetwork.CallUnary(ctx, req)
-}
-
-// ReplaceNetworkACLList calls
-// cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList.
-func (c *networkServiceClient) ReplaceNetworkACLList(ctx context.Context, req *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error) {
-	return c.replaceNetworkACLList.CallUnary(ctx, req)
+// ReleaseDedicatedGuestVlanRange calls
+// cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange.
+func (c *networkServiceClient) ReleaseDedicatedGuestVlanRange(ctx context.Context, req *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error) {
+	return c.releaseDedicatedGuestVlanRange.CallUnary(ctx, req)
 }
 
 // DeletePhysicalNetwork calls
@@ -943,43 +855,32 @@ func (c *networkServiceClient) DeletePhysicalNetwork(ctx context.Context, req *c
 	return c.deletePhysicalNetwork.CallUnary(ctx, req)
 }
 
-// ListNetworkDevice calls cloudstack.management.network.v1.NetworkService.ListNetworkDevice.
-func (c *networkServiceClient) ListNetworkDevice(ctx context.Context, req *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error) {
-	return c.listNetworkDevice.CallUnary(ctx, req)
+// UpdateIpv4SubnetForZone calls
+// cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone.
+func (c *networkServiceClient) UpdateIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error) {
+	return c.updateIpv4SubnetForZone.CallUnary(ctx, req)
 }
 
-// RemoveNetworkPermissions calls
-// cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions.
-func (c *networkServiceClient) RemoveNetworkPermissions(ctx context.Context, req *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error) {
-	return c.removeNetworkPermissions.CallUnary(ctx, req)
+// ListNetworkIsolationMethods calls
+// cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods.
+func (c *networkServiceClient) ListNetworkIsolationMethods(ctx context.Context, req *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error) {
+	return c.listNetworkIsolationMethods.CallUnary(ctx, req)
 }
 
-// ReleaseDedicatedIpv4SubnetForZone calls
-// cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone.
-func (c *networkServiceClient) ReleaseDedicatedIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error) {
-	return c.releaseDedicatedIpv4SubnetForZone.CallUnary(ctx, req)
+// CreatePhysicalNetwork calls
+// cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork.
+func (c *networkServiceClient) CreatePhysicalNetwork(ctx context.Context, req *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error) {
+	return c.createPhysicalNetwork.CallUnary(ctx, req)
 }
 
-// ListNetworkACLLists calls cloudstack.management.network.v1.NetworkService.ListNetworkACLLists.
-func (c *networkServiceClient) ListNetworkACLLists(ctx context.Context, req *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error) {
-	return c.listNetworkACLLists.CallUnary(ctx, req)
+// ListNetworkProtocols calls cloudstack.management.network.v1.NetworkService.ListNetworkProtocols.
+func (c *networkServiceClient) ListNetworkProtocols(ctx context.Context, req *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error) {
+	return c.listNetworkProtocols.CallUnary(ctx, req)
 }
 
-// DeleteManagementNetworkIpRange calls
-// cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange.
-func (c *networkServiceClient) DeleteManagementNetworkIpRange(ctx context.Context, req *connect.Request[v1.DeleteManagementNetworkIpRangeRequest]) (*connect.Response[v1.DeleteManagementNetworkIpRangeResponse], error) {
-	return c.deleteManagementNetworkIpRange.CallUnary(ctx, req)
-}
-
-// DeleteGuestNetworkIpv6Prefix calls
-// cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix.
-func (c *networkServiceClient) DeleteGuestNetworkIpv6Prefix(ctx context.Context, req *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error) {
-	return c.deleteGuestNetworkIpv6Prefix.CallUnary(ctx, req)
-}
-
-// MigrateNetwork calls cloudstack.management.network.v1.NetworkService.MigrateNetwork.
-func (c *networkServiceClient) MigrateNetwork(ctx context.Context, req *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error) {
-	return c.migrateNetwork.CallUnary(ctx, req)
+// CreateNetworkACLList calls cloudstack.management.network.v1.NetworkService.CreateNetworkACLList.
+func (c *networkServiceClient) CreateNetworkACLList(ctx context.Context, req *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error) {
+	return c.createNetworkACLList.CallUnary(ctx, req)
 }
 
 // DedicateGuestVlanRange calls
@@ -988,21 +889,66 @@ func (c *networkServiceClient) DedicateGuestVlanRange(ctx context.Context, req *
 	return c.dedicateGuestVlanRange.CallUnary(ctx, req)
 }
 
-// UpdateStorageNetworkIpRange calls
-// cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange.
-func (c *networkServiceClient) UpdateStorageNetworkIpRange(ctx context.Context, req *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error) {
-	return c.updateStorageNetworkIpRange.CallUnary(ctx, req)
+// DeleteNetworkACL calls cloudstack.management.network.v1.NetworkService.DeleteNetworkACL.
+func (c *networkServiceClient) DeleteNetworkACL(ctx context.Context, req *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error) {
+	return c.deleteNetworkACL.CallUnary(ctx, req)
 }
 
-// DeleteNetworkServiceProvider calls
-// cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider.
-func (c *networkServiceClient) DeleteNetworkServiceProvider(ctx context.Context, req *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error) {
-	return c.deleteNetworkServiceProvider.CallUnary(ctx, req)
+// UpdateNetworkCmdByAdmin calls
+// cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin.
+func (c *networkServiceClient) UpdateNetworkCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error) {
+	return c.updateNetworkCmdByAdmin.CallUnary(ctx, req)
 }
 
-// MigrateVPC calls cloudstack.management.network.v1.NetworkService.MigrateVPC.
-func (c *networkServiceClient) MigrateVPC(ctx context.Context, req *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error) {
-	return c.migrateVPC.CallUnary(ctx, req)
+// ListStorageNetworkIpRange calls
+// cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange.
+func (c *networkServiceClient) ListStorageNetworkIpRange(ctx context.Context, req *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error) {
+	return c.listStorageNetworkIpRange.CallUnary(ctx, req)
+}
+
+// MigrateNetwork calls cloudstack.management.network.v1.NetworkService.MigrateNetwork.
+func (c *networkServiceClient) MigrateNetwork(ctx context.Context, req *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error) {
+	return c.migrateNetwork.CallUnary(ctx, req)
+}
+
+// UpdatePodManagementNetworkIpRange calls
+// cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange.
+func (c *networkServiceClient) UpdatePodManagementNetworkIpRange(ctx context.Context, req *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error) {
+	return c.updatePodManagementNetworkIpRange.CallUnary(ctx, req)
+}
+
+// ReleaseDedicatedIpv4SubnetForZone calls
+// cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone.
+func (c *networkServiceClient) ReleaseDedicatedIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error) {
+	return c.releaseDedicatedIpv4SubnetForZone.CallUnary(ctx, req)
+}
+
+// AddNetworkDevice calls cloudstack.management.network.v1.NetworkService.AddNetworkDevice.
+func (c *networkServiceClient) AddNetworkDevice(ctx context.Context, req *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error) {
+	return c.addNetworkDevice.CallUnary(ctx, req)
+}
+
+// DeleteNetworkOffering calls
+// cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering.
+func (c *networkServiceClient) DeleteNetworkOffering(ctx context.Context, req *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error) {
+	return c.deleteNetworkOffering.CallUnary(ctx, req)
+}
+
+// UpdatePhysicalNetwork calls
+// cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork.
+func (c *networkServiceClient) UpdatePhysicalNetwork(ctx context.Context, req *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error) {
+	return c.updatePhysicalNetwork.CallUnary(ctx, req)
+}
+
+// CreateManagementNetworkIpRange calls
+// cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange.
+func (c *networkServiceClient) CreateManagementNetworkIpRange(ctx context.Context, req *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error) {
+	return c.createManagementNetworkIpRange.CallUnary(ctx, req)
+}
+
+// DeleteNetwork calls cloudstack.management.network.v1.NetworkService.DeleteNetwork.
+func (c *networkServiceClient) DeleteNetwork(ctx context.Context, req *connect.Request[v1.DeleteNetworkRequest]) (*connect.Response[v1.DeleteNetworkResponse], error) {
+	return c.deleteNetwork.CallUnary(ctx, req)
 }
 
 // ListNetworkServiceProviders calls
@@ -1011,15 +957,110 @@ func (c *networkServiceClient) ListNetworkServiceProviders(ctx context.Context, 
 	return c.listNetworkServiceProviders.CallUnary(ctx, req)
 }
 
+// CreateNetworkACL calls cloudstack.management.network.v1.NetworkService.CreateNetworkACL.
+func (c *networkServiceClient) CreateNetworkACL(ctx context.Context, req *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error) {
+	return c.createNetworkACL.CallUnary(ctx, req)
+}
+
+// ListSupportedNetworkServices calls
+// cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices.
+func (c *networkServiceClient) ListSupportedNetworkServices(ctx context.Context, req *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error) {
+	return c.listSupportedNetworkServices.CallUnary(ctx, req)
+}
+
+// ListNetworkACLLists calls cloudstack.management.network.v1.NetworkService.ListNetworkACLLists.
+func (c *networkServiceClient) ListNetworkACLLists(ctx context.Context, req *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error) {
+	return c.listNetworkACLLists.CallUnary(ctx, req)
+}
+
 // ListIpv4SubnetsForZone calls
 // cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForZone.
 func (c *networkServiceClient) ListIpv4SubnetsForZone(ctx context.Context, req *connect.Request[v1.ListIpv4SubnetsForZoneRequest]) (*connect.Response[v1.ListIpv4SubnetsForZoneResponse], error) {
 	return c.listIpv4SubnetsForZone.CallUnary(ctx, req)
 }
 
-// DeleteNetwork calls cloudstack.management.network.v1.NetworkService.DeleteNetwork.
-func (c *networkServiceClient) DeleteNetwork(ctx context.Context, req *connect.Request[v1.DeleteNetworkRequest]) (*connect.Response[v1.DeleteNetworkResponse], error) {
-	return c.deleteNetwork.CallUnary(ctx, req)
+// ListNetworkDevice calls cloudstack.management.network.v1.NetworkService.ListNetworkDevice.
+func (c *networkServiceClient) ListNetworkDevice(ctx context.Context, req *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error) {
+	return c.listNetworkDevice.CallUnary(ctx, req)
+}
+
+// ListNetworkACLs calls cloudstack.management.network.v1.NetworkService.ListNetworkACLs.
+func (c *networkServiceClient) ListNetworkACLs(ctx context.Context, req *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error) {
+	return c.listNetworkACLs.CallUnary(ctx, req)
+}
+
+// UpdateNetworkACLList calls cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList.
+func (c *networkServiceClient) UpdateNetworkACLList(ctx context.Context, req *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error) {
+	return c.updateNetworkACLList.CallUnary(ctx, req)
+}
+
+// CreateGuestNetworkIpv6Prefix calls
+// cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix.
+func (c *networkServiceClient) CreateGuestNetworkIpv6Prefix(ctx context.Context, req *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error) {
+	return c.createGuestNetworkIpv6Prefix.CallUnary(ctx, req)
+}
+
+// DeleteStorageNetworkIpRange calls
+// cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange.
+func (c *networkServiceClient) DeleteStorageNetworkIpRange(ctx context.Context, req *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error) {
+	return c.deleteStorageNetworkIpRange.CallUnary(ctx, req)
+}
+
+// ListNetworkPermissions calls
+// cloudstack.management.network.v1.NetworkService.ListNetworkPermissions.
+func (c *networkServiceClient) ListNetworkPermissions(ctx context.Context, req *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error) {
+	return c.listNetworkPermissions.CallUnary(ctx, req)
+}
+
+// ListGuestNetworkIpv6Prefixes calls
+// cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes.
+func (c *networkServiceClient) ListGuestNetworkIpv6Prefixes(ctx context.Context, req *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error) {
+	return c.listGuestNetworkIpv6Prefixes.CallUnary(ctx, req)
+}
+
+// MoveNetworkAclItem calls cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem.
+func (c *networkServiceClient) MoveNetworkAclItem(ctx context.Context, req *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error) {
+	return c.moveNetworkAclItem.CallUnary(ctx, req)
+}
+
+// AddNetworkServiceProvider calls
+// cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider.
+func (c *networkServiceClient) AddNetworkServiceProvider(ctx context.Context, req *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error) {
+	return c.addNetworkServiceProvider.CallUnary(ctx, req)
+}
+
+// DeleteIpv4SubnetForGuestNetwork calls
+// cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork.
+func (c *networkServiceClient) DeleteIpv4SubnetForGuestNetwork(ctx context.Context, req *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error) {
+	return c.deleteIpv4SubnetForGuestNetwork.CallUnary(ctx, req)
+}
+
+// RemoveNetworkPermissions calls
+// cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions.
+func (c *networkServiceClient) RemoveNetworkPermissions(ctx context.Context, req *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error) {
+	return c.removeNetworkPermissions.CallUnary(ctx, req)
+}
+
+// CreateNetworkOffering calls
+// cloudstack.management.network.v1.NetworkService.CreateNetworkOffering.
+func (c *networkServiceClient) CreateNetworkOffering(ctx context.Context, req *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error) {
+	return c.createNetworkOffering.CallUnary(ctx, req)
+}
+
+// UpdateNetworkACLItem calls cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem.
+func (c *networkServiceClient) UpdateNetworkACLItem(ctx context.Context, req *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error) {
+	return c.updateNetworkACLItem.CallUnary(ctx, req)
+}
+
+// CreateNetwork calls cloudstack.management.network.v1.NetworkService.CreateNetwork.
+func (c *networkServiceClient) CreateNetwork(ctx context.Context, req *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error) {
+	return c.createNetwork.CallUnary(ctx, req)
+}
+
+// DeleteNetworkServiceProvider calls
+// cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider.
+func (c *networkServiceClient) DeleteNetworkServiceProvider(ctx context.Context, req *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error) {
+	return c.deleteNetworkServiceProvider.CallUnary(ctx, req)
 }
 
 // UpdateNetworkOffering calls
@@ -1034,16 +1075,43 @@ func (c *networkServiceClient) CreateIpv4SubnetForGuestNetwork(ctx context.Conte
 	return c.createIpv4SubnetForGuestNetwork.CallUnary(ctx, req)
 }
 
-// ListNetworkIsolationMethods calls
-// cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods.
-func (c *networkServiceClient) ListNetworkIsolationMethods(ctx context.Context, req *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error) {
-	return c.listNetworkIsolationMethods.CallUnary(ctx, req)
+// ResetNetworkPermissions calls
+// cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions.
+func (c *networkServiceClient) ResetNetworkPermissions(ctx context.Context, req *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error) {
+	return c.resetNetworkPermissions.CallUnary(ctx, req)
 }
 
-// AddNetworkServiceProvider calls
-// cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider.
-func (c *networkServiceClient) AddNetworkServiceProvider(ctx context.Context, req *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error) {
-	return c.addNetworkServiceProvider.CallUnary(ctx, req)
+// DeleteNetworkDevice calls cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice.
+func (c *networkServiceClient) DeleteNetworkDevice(ctx context.Context, req *connect.Request[v1.DeleteNetworkDeviceRequest]) (*connect.Response[v1.DeleteNetworkDeviceResponse], error) {
+	return c.deleteNetworkDevice.CallUnary(ctx, req)
+}
+
+// ListNetworkOfferings calls cloudstack.management.network.v1.NetworkService.ListNetworkOfferings.
+func (c *networkServiceClient) ListNetworkOfferings(ctx context.Context, req *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error) {
+	return c.listNetworkOfferings.CallUnary(ctx, req)
+}
+
+// RestartNetwork calls cloudstack.management.network.v1.NetworkService.RestartNetwork.
+func (c *networkServiceClient) RestartNetwork(ctx context.Context, req *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error) {
+	return c.restartNetwork.CallUnary(ctx, req)
+}
+
+// DeleteGuestNetworkIpv6Prefix calls
+// cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix.
+func (c *networkServiceClient) DeleteGuestNetworkIpv6Prefix(ctx context.Context, req *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error) {
+	return c.deleteGuestNetworkIpv6Prefix.CallUnary(ctx, req)
+}
+
+// CreateIpv4SubnetForZone calls
+// cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone.
+func (c *networkServiceClient) CreateIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error) {
+	return c.createIpv4SubnetForZone.CallUnary(ctx, req)
+}
+
+// UpdateStorageNetworkIpRange calls
+// cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange.
+func (c *networkServiceClient) UpdateStorageNetworkIpRange(ctx context.Context, req *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error) {
+	return c.updateStorageNetworkIpRange.CallUnary(ctx, req)
 }
 
 // ListNetworks calls cloudstack.management.network.v1.NetworkService.ListNetworks.
@@ -1051,107 +1119,21 @@ func (c *networkServiceClient) ListNetworks(ctx context.Context, req *connect.Re
 	return c.listNetworks.CallUnary(ctx, req)
 }
 
-// ListNetworkACLs calls cloudstack.management.network.v1.NetworkService.ListNetworkACLs.
-func (c *networkServiceClient) ListNetworkACLs(ctx context.Context, req *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error) {
-	return c.listNetworkACLs.CallUnary(ctx, req)
+// ReplaceNetworkACLList calls
+// cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList.
+func (c *networkServiceClient) ReplaceNetworkACLList(ctx context.Context, req *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error) {
+	return c.replaceNetworkACLList.CallUnary(ctx, req)
 }
 
-// CreateManagementNetworkIpRange calls
-// cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange.
-func (c *networkServiceClient) CreateManagementNetworkIpRange(ctx context.Context, req *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error) {
-	return c.createManagementNetworkIpRange.CallUnary(ctx, req)
-}
-
-// ListSupportedNetworkServices calls
-// cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices.
-func (c *networkServiceClient) ListSupportedNetworkServices(ctx context.Context, req *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error) {
-	return c.listSupportedNetworkServices.CallUnary(ctx, req)
-}
-
-// UpdatePhysicalNetwork calls
-// cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork.
-func (c *networkServiceClient) UpdatePhysicalNetwork(ctx context.Context, req *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error) {
-	return c.updatePhysicalNetwork.CallUnary(ctx, req)
-}
-
-// CreateNetworkACLList calls cloudstack.management.network.v1.NetworkService.CreateNetworkACLList.
-func (c *networkServiceClient) CreateNetworkACLList(ctx context.Context, req *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error) {
-	return c.createNetworkACLList.CallUnary(ctx, req)
-}
-
-// CreateNetworkCmdByAdmin calls
-// cloudstack.management.network.v1.NetworkService.CreateNetworkCmdByAdmin.
-func (c *networkServiceClient) CreateNetworkCmdByAdmin(ctx context.Context, req *connect.Request[v1.CreateNetworkCmdByAdminRequest]) (*connect.Response[v1.CreateNetworkCmdByAdminResponse], error) {
-	return c.createNetworkCmdByAdmin.CallUnary(ctx, req)
-}
-
-// DeleteStorageNetworkIpRange calls
-// cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange.
-func (c *networkServiceClient) DeleteStorageNetworkIpRange(ctx context.Context, req *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error) {
-	return c.deleteStorageNetworkIpRange.CallUnary(ctx, req)
-}
-
-// DeleteIpv4SubnetForZone calls
-// cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone.
-func (c *networkServiceClient) DeleteIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error) {
-	return c.deleteIpv4SubnetForZone.CallUnary(ctx, req)
-}
-
-// ListNetworkPermissions calls
-// cloudstack.management.network.v1.NetworkService.ListNetworkPermissions.
-func (c *networkServiceClient) ListNetworkPermissions(ctx context.Context, req *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error) {
-	return c.listNetworkPermissions.CallUnary(ctx, req)
-}
-
-// ListDedicatedGuestVlanRanges calls
-// cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges.
-func (c *networkServiceClient) ListDedicatedGuestVlanRanges(ctx context.Context, req *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error) {
-	return c.listDedicatedGuestVlanRanges.CallUnary(ctx, req)
-}
-
-// DeleteNetworkACLList calls cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList.
-func (c *networkServiceClient) DeleteNetworkACLList(ctx context.Context, req *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error) {
-	return c.deleteNetworkACLList.CallUnary(ctx, req)
-}
-
-// DeleteNetworkOffering calls
-// cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering.
-func (c *networkServiceClient) DeleteNetworkOffering(ctx context.Context, req *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error) {
-	return c.deleteNetworkOffering.CallUnary(ctx, req)
-}
-
-// MoveNetworkAclItem calls cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem.
-func (c *networkServiceClient) MoveNetworkAclItem(ctx context.Context, req *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error) {
-	return c.moveNetworkAclItem.CallUnary(ctx, req)
+// CreateNetworkPermissions calls
+// cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions.
+func (c *networkServiceClient) CreateNetworkPermissions(ctx context.Context, req *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error) {
+	return c.createNetworkPermissions.CallUnary(ctx, req)
 }
 
 // ListGuestVlans calls cloudstack.management.network.v1.NetworkService.ListGuestVlans.
 func (c *networkServiceClient) ListGuestVlans(ctx context.Context, req *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error) {
 	return c.listGuestVlans.CallUnary(ctx, req)
-}
-
-// UpdateIpv4SubnetForZone calls
-// cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone.
-func (c *networkServiceClient) UpdateIpv4SubnetForZone(ctx context.Context, req *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error) {
-	return c.updateIpv4SubnetForZone.CallUnary(ctx, req)
-}
-
-// CreatePhysicalNetwork calls
-// cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork.
-func (c *networkServiceClient) CreatePhysicalNetwork(ctx context.Context, req *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error) {
-	return c.createPhysicalNetwork.CallUnary(ctx, req)
-}
-
-// CreateNetworkOffering calls
-// cloudstack.management.network.v1.NetworkService.CreateNetworkOffering.
-func (c *networkServiceClient) CreateNetworkOffering(ctx context.Context, req *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error) {
-	return c.createNetworkOffering.CallUnary(ctx, req)
-}
-
-// UpdateNetworkServiceProvider calls
-// cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider.
-func (c *networkServiceClient) UpdateNetworkServiceProvider(ctx context.Context, req *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error) {
-	return c.updateNetworkServiceProvider.CallUnary(ctx, req)
 }
 
 // CreateStorageNetworkIpRange calls
@@ -1160,31 +1142,31 @@ func (c *networkServiceClient) CreateStorageNetworkIpRange(ctx context.Context, 
 	return c.createStorageNetworkIpRange.CallUnary(ctx, req)
 }
 
+// UpdateNetwork calls cloudstack.management.network.v1.NetworkService.UpdateNetwork.
+func (c *networkServiceClient) UpdateNetwork(ctx context.Context, req *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error) {
+	return c.updateNetwork.CallUnary(ctx, req)
+}
+
+// MigrateVPC calls cloudstack.management.network.v1.NetworkService.MigrateVPC.
+func (c *networkServiceClient) MigrateVPC(ctx context.Context, req *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error) {
+	return c.migrateVPC.CallUnary(ctx, req)
+}
+
+// ListPhysicalNetworks calls cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks.
+func (c *networkServiceClient) ListPhysicalNetworks(ctx context.Context, req *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error) {
+	return c.listPhysicalNetworks.CallUnary(ctx, req)
+}
+
 // ListIpv4SubnetsForGuestNetwork calls
 // cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork.
 func (c *networkServiceClient) ListIpv4SubnetsForGuestNetwork(ctx context.Context, req *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error) {
 	return c.listIpv4SubnetsForGuestNetwork.CallUnary(ctx, req)
 }
 
-// DeleteNetworkDevice calls cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice.
-func (c *networkServiceClient) DeleteNetworkDevice(ctx context.Context, req *connect.Request[v1.DeleteNetworkDeviceRequest]) (*connect.Response[v1.DeleteNetworkDeviceResponse], error) {
-	return c.deleteNetworkDevice.CallUnary(ctx, req)
-}
-
-// CreateNetwork calls cloudstack.management.network.v1.NetworkService.CreateNetwork.
-func (c *networkServiceClient) CreateNetwork(ctx context.Context, req *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error) {
-	return c.createNetwork.CallUnary(ctx, req)
-}
-
-// ReleaseDedicatedGuestVlanRange calls
-// cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange.
-func (c *networkServiceClient) ReleaseDedicatedGuestVlanRange(ctx context.Context, req *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error) {
-	return c.releaseDedicatedGuestVlanRange.CallUnary(ctx, req)
-}
-
-// ListNetworkProtocols calls cloudstack.management.network.v1.NetworkService.ListNetworkProtocols.
-func (c *networkServiceClient) ListNetworkProtocols(ctx context.Context, req *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error) {
-	return c.listNetworkProtocols.CallUnary(ctx, req)
+// UpdateNetworkServiceProvider calls
+// cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider.
+func (c *networkServiceClient) UpdateNetworkServiceProvider(ctx context.Context, req *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error) {
+	return c.updateNetworkServiceProvider.CallUnary(ctx, req)
 }
 
 // NetworkServiceHandler is an implementation of the cloudstack.management.network.v1.NetworkService
@@ -1192,132 +1174,130 @@ func (c *networkServiceClient) ListNetworkProtocols(ctx context.Context, req *co
 type NetworkServiceHandler interface {
 	// DedicateIpv4SubnetForZone Dedicates an existing IPv4 subnet for a zone to an account or a domain.
 	DedicateIpv4SubnetForZone(context.Context, *connect.Request[v1.DedicateIpv4SubnetForZoneRequest]) (*connect.Response[v1.DedicateIpv4SubnetForZoneResponse], error)
-	// ListNetworkOfferings Lists all available network offerings.
-	ListNetworkOfferings(context.Context, *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error)
-	// ResetNetworkPermissions Resets network permissions.
-	ResetNetworkPermissions(context.Context, *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error)
-	// UpdateNetworkACLItem Updates ACL item with specified ID
-	UpdateNetworkACLItem(context.Context, *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error)
-	// DeleteNetworkACL Deletes a network ACL
-	DeleteNetworkACL(context.Context, *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error)
-	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
-	RestartNetwork(context.Context, *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error)
-	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
-	CreateIpv4SubnetForZone(context.Context, *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error)
-	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
-	AddNetworkDevice(context.Context, *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error)
-	// UpdateNetworkACLList Updates network ACL list
-	UpdateNetworkACLList(context.Context, *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error)
-	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
-	CreateNetworkACL(context.Context, *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error)
-	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
-	UpdatePodManagementNetworkIpRange(context.Context, *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error)
-	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
-	ListGuestNetworkIpv6Prefixes(context.Context, *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error)
-	// UpdateNetworkCmdByAdmin Updates a network
-	UpdateNetworkCmdByAdmin(context.Context, *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error)
-	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
-	CreateGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error)
-	// ListStorageNetworkIpRange List a storage network IP range.
-	ListStorageNetworkIpRange(context.Context, *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error)
-	// ListPhysicalNetworks Lists physical networks
-	ListPhysicalNetworks(context.Context, *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error)
-	// UpdateNetwork Updates a network
-	UpdateNetwork(context.Context, *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error)
-	// CreateNetworkPermissions Updates network permissions.
-	CreateNetworkPermissions(context.Context, *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error)
-	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
-	DeleteIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error)
-	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
-	ReplaceNetworkACLList(context.Context, *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error)
-	// DeletePhysicalNetwork Deletes a Physical Network.
-	DeletePhysicalNetwork(context.Context, *connect.Request[v1.DeletePhysicalNetworkRequest]) (*connect.Response[v1.DeletePhysicalNetworkResponse], error)
-	// ListNetworkDevice List network devices
-	ListNetworkDevice(context.Context, *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error)
-	// RemoveNetworkPermissions Removes network permissions.
-	RemoveNetworkPermissions(context.Context, *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error)
-	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
-	ReleaseDedicatedIpv4SubnetForZone(context.Context, *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error)
-	// ListNetworkACLLists Lists all network ACLs
-	ListNetworkACLLists(context.Context, *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error)
 	// DeleteManagementNetworkIpRange Deletes a management network IP range. This action is only allowed when no IPs in this range are allocated.
 	DeleteManagementNetworkIpRange(context.Context, *connect.Request[v1.DeleteManagementNetworkIpRangeRequest]) (*connect.Response[v1.DeleteManagementNetworkIpRangeResponse], error)
-	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
-	DeleteGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error)
-	// MigrateNetwork moves a network to another physical network
-	MigrateNetwork(context.Context, *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error)
+	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
+	ListDedicatedGuestVlanRanges(context.Context, *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error)
+	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
+	DeleteIpv4SubnetForZone(context.Context, *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error)
+	// DeleteNetworkACLList Deletes a network ACL
+	DeleteNetworkACLList(context.Context, *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error)
+	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
+	ReleaseDedicatedGuestVlanRange(context.Context, *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error)
+	// DeletePhysicalNetwork Deletes a Physical Network.
+	DeletePhysicalNetwork(context.Context, *connect.Request[v1.DeletePhysicalNetworkRequest]) (*connect.Response[v1.DeletePhysicalNetworkResponse], error)
+	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
+	UpdateIpv4SubnetForZone(context.Context, *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error)
+	// ListNetworkIsolationMethods Lists supported methods of network isolation
+	ListNetworkIsolationMethods(context.Context, *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error)
+	// CreatePhysicalNetwork Creates a physical network
+	CreatePhysicalNetwork(context.Context, *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error)
+	// ListNetworkProtocols Lists details of network protocols
+	ListNetworkProtocols(context.Context, *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error)
+	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
+	CreateNetworkACLList(context.Context, *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error)
 	// DedicateGuestVlanRange Dedicates a guest vlan range to an account
 	DedicateGuestVlanRange(context.Context, *connect.Request[v1.DedicateGuestVlanRangeRequest]) (*connect.Response[v1.DedicateGuestVlanRangeResponse], error)
-	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
-	UpdateStorageNetworkIpRange(context.Context, *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error)
-	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
-	DeleteNetworkServiceProvider(context.Context, *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error)
-	// MigrateVPC moves a vpc to another physical network
-	MigrateVPC(context.Context, *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error)
-	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
-	ListNetworkServiceProviders(context.Context, *connect.Request[v1.ListNetworkServiceProvidersRequest]) (*connect.Response[v1.ListNetworkServiceProvidersResponse], error)
-	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
-	ListIpv4SubnetsForZone(context.Context, *connect.Request[v1.ListIpv4SubnetsForZoneRequest]) (*connect.Response[v1.ListIpv4SubnetsForZoneResponse], error)
+	// DeleteNetworkACL Deletes a network ACL
+	DeleteNetworkACL(context.Context, *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error)
+	// UpdateNetworkCmdByAdmin Updates a network
+	UpdateNetworkCmdByAdmin(context.Context, *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error)
+	// ListStorageNetworkIpRange List a storage network IP range.
+	ListStorageNetworkIpRange(context.Context, *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error)
+	// MigrateNetwork moves a network to another physical network
+	MigrateNetwork(context.Context, *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error)
+	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
+	UpdatePodManagementNetworkIpRange(context.Context, *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error)
+	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
+	ReleaseDedicatedIpv4SubnetForZone(context.Context, *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error)
+	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
+	AddNetworkDevice(context.Context, *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error)
+	// DeleteNetworkOffering Deletes a network offering.
+	DeleteNetworkOffering(context.Context, *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error)
+	// UpdatePhysicalNetwork Updates a physical network
+	UpdatePhysicalNetwork(context.Context, *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error)
+	// CreateManagementNetworkIpRange Creates a Management network IP range.
+	CreateManagementNetworkIpRange(context.Context, *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error)
 	// DeleteNetwork Deletes a network
 	DeleteNetwork(context.Context, *connect.Request[v1.DeleteNetworkRequest]) (*connect.Response[v1.DeleteNetworkResponse], error)
+	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
+	ListNetworkServiceProviders(context.Context, *connect.Request[v1.ListNetworkServiceProvidersRequest]) (*connect.Response[v1.ListNetworkServiceProvidersResponse], error)
+	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
+	CreateNetworkACL(context.Context, *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error)
+	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
+	ListSupportedNetworkServices(context.Context, *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error)
+	// ListNetworkACLLists Lists all network ACLs
+	ListNetworkACLLists(context.Context, *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error)
+	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
+	ListIpv4SubnetsForZone(context.Context, *connect.Request[v1.ListIpv4SubnetsForZoneRequest]) (*connect.Response[v1.ListIpv4SubnetsForZoneResponse], error)
+	// ListNetworkDevice List network devices
+	ListNetworkDevice(context.Context, *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error)
+	// ListNetworkACLs Lists all network ACL items
+	ListNetworkACLs(context.Context, *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error)
+	// UpdateNetworkACLList Updates network ACL list
+	UpdateNetworkACLList(context.Context, *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error)
+	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
+	CreateGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error)
+	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
+	DeleteStorageNetworkIpRange(context.Context, *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error)
+	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
+	ListNetworkPermissions(context.Context, *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error)
+	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
+	ListGuestNetworkIpv6Prefixes(context.Context, *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error)
+	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
+	MoveNetworkAclItem(context.Context, *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error)
+	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
+	AddNetworkServiceProvider(context.Context, *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error)
+	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
+	DeleteIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error)
+	// RemoveNetworkPermissions Removes network permissions.
+	RemoveNetworkPermissions(context.Context, *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error)
+	// CreateNetworkOffering Creates a network offering.
+	CreateNetworkOffering(context.Context, *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error)
+	// UpdateNetworkACLItem Updates ACL item with specified ID
+	UpdateNetworkACLItem(context.Context, *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error)
+	// CreateNetwork Creates a network
+	CreateNetwork(context.Context, *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error)
+	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
+	DeleteNetworkServiceProvider(context.Context, *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error)
 	// UpdateNetworkOffering Updates a network offering.
 	UpdateNetworkOffering(context.Context, *connect.Request[v1.UpdateNetworkOfferingRequest]) (*connect.Response[v1.UpdateNetworkOfferingResponse], error)
 	// CreateIpv4SubnetForGuestNetwork Creates a IPv4 subnet for guest networks.
 	CreateIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.CreateIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.CreateIpv4SubnetForGuestNetworkResponse], error)
-	// ListNetworkIsolationMethods Lists supported methods of network isolation
-	ListNetworkIsolationMethods(context.Context, *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error)
-	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
-	AddNetworkServiceProvider(context.Context, *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error)
-	// ListNetworks Lists all available networks.
-	ListNetworks(context.Context, *connect.Request[v1.ListNetworksRequest]) (*connect.Response[v1.ListNetworksResponse], error)
-	// ListNetworkACLs Lists all network ACL items
-	ListNetworkACLs(context.Context, *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error)
-	// CreateManagementNetworkIpRange Creates a Management network IP range.
-	CreateManagementNetworkIpRange(context.Context, *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error)
-	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
-	ListSupportedNetworkServices(context.Context, *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error)
-	// UpdatePhysicalNetwork Updates a physical network
-	UpdatePhysicalNetwork(context.Context, *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error)
-	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
-	CreateNetworkACLList(context.Context, *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error)
-	// CreateNetworkCmdByAdmin Creates a network
-	CreateNetworkCmdByAdmin(context.Context, *connect.Request[v1.CreateNetworkCmdByAdminRequest]) (*connect.Response[v1.CreateNetworkCmdByAdminResponse], error)
-	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
-	DeleteStorageNetworkIpRange(context.Context, *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error)
-	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
-	DeleteIpv4SubnetForZone(context.Context, *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error)
-	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
-	ListNetworkPermissions(context.Context, *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error)
-	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
-	ListDedicatedGuestVlanRanges(context.Context, *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error)
-	// DeleteNetworkACLList Deletes a network ACL
-	DeleteNetworkACLList(context.Context, *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error)
-	// DeleteNetworkOffering Deletes a network offering.
-	DeleteNetworkOffering(context.Context, *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error)
-	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
-	MoveNetworkAclItem(context.Context, *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error)
-	// ListGuestVlans Lists all guest vlans
-	ListGuestVlans(context.Context, *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error)
-	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
-	UpdateIpv4SubnetForZone(context.Context, *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error)
-	// CreatePhysicalNetwork Creates a physical network
-	CreatePhysicalNetwork(context.Context, *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error)
-	// CreateNetworkOffering Creates a network offering.
-	CreateNetworkOffering(context.Context, *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error)
-	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
-	UpdateNetworkServiceProvider(context.Context, *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error)
-	// CreateStorageNetworkIpRange Creates a Storage network IP range.
-	CreateStorageNetworkIpRange(context.Context, *connect.Request[v1.CreateStorageNetworkIpRangeRequest]) (*connect.Response[v1.CreateStorageNetworkIpRangeResponse], error)
-	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
-	ListIpv4SubnetsForGuestNetwork(context.Context, *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error)
+	// ResetNetworkPermissions Resets network permissions.
+	ResetNetworkPermissions(context.Context, *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error)
 	// DeleteNetworkDevice Deletes network device.
 	DeleteNetworkDevice(context.Context, *connect.Request[v1.DeleteNetworkDeviceRequest]) (*connect.Response[v1.DeleteNetworkDeviceResponse], error)
-	// CreateNetwork Creates a network
-	CreateNetwork(context.Context, *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error)
-	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
-	ReleaseDedicatedGuestVlanRange(context.Context, *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error)
-	// ListNetworkProtocols Lists details of network protocols
-	ListNetworkProtocols(context.Context, *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error)
+	// ListNetworkOfferings Lists all available network offerings.
+	ListNetworkOfferings(context.Context, *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error)
+	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
+	RestartNetwork(context.Context, *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error)
+	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
+	DeleteGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error)
+	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
+	CreateIpv4SubnetForZone(context.Context, *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error)
+	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
+	UpdateStorageNetworkIpRange(context.Context, *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error)
+	// ListNetworks Lists all available networks.
+	ListNetworks(context.Context, *connect.Request[v1.ListNetworksRequest]) (*connect.Response[v1.ListNetworksResponse], error)
+	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
+	ReplaceNetworkACLList(context.Context, *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error)
+	// CreateNetworkPermissions Updates network permissions.
+	CreateNetworkPermissions(context.Context, *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error)
+	// ListGuestVlans Lists all guest vlans
+	ListGuestVlans(context.Context, *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error)
+	// CreateStorageNetworkIpRange Creates a Storage network IP range.
+	CreateStorageNetworkIpRange(context.Context, *connect.Request[v1.CreateStorageNetworkIpRangeRequest]) (*connect.Response[v1.CreateStorageNetworkIpRangeResponse], error)
+	// UpdateNetwork Updates a network
+	UpdateNetwork(context.Context, *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error)
+	// MigrateVPC moves a vpc to another physical network
+	MigrateVPC(context.Context, *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error)
+	// ListPhysicalNetworks Lists physical networks
+	ListPhysicalNetworks(context.Context, *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error)
+	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
+	ListIpv4SubnetsForGuestNetwork(context.Context, *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error)
+	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
+	UpdateNetworkServiceProvider(context.Context, *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error)
 }
 
 // NewNetworkServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -1333,118 +1313,34 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("DedicateIpv4SubnetForZone")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceListNetworkOfferingsHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkOfferingsProcedure,
-		svc.ListNetworkOfferings,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkOfferings")),
+	networkServiceDeleteManagementNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteManagementNetworkIpRangeProcedure,
+		svc.DeleteManagementNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteManagementNetworkIpRange")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceResetNetworkPermissionsHandler := connect.NewUnaryHandler(
-		NetworkServiceResetNetworkPermissionsProcedure,
-		svc.ResetNetworkPermissions,
-		connect.WithSchema(networkServiceMethods.ByName("ResetNetworkPermissions")),
+	networkServiceListDedicatedGuestVlanRangesHandler := connect.NewUnaryHandler(
+		NetworkServiceListDedicatedGuestVlanRangesProcedure,
+		svc.ListDedicatedGuestVlanRanges,
+		connect.WithSchema(networkServiceMethods.ByName("ListDedicatedGuestVlanRanges")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceUpdateNetworkACLItemHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateNetworkACLItemProcedure,
-		svc.UpdateNetworkACLItem,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLItem")),
+	networkServiceDeleteIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteIpv4SubnetForZoneProcedure,
+		svc.DeleteIpv4SubnetForZone,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForZone")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceDeleteNetworkACLHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteNetworkACLProcedure,
-		svc.DeleteNetworkACL,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACL")),
+	networkServiceDeleteNetworkACLListHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteNetworkACLListProcedure,
+		svc.DeleteNetworkACLList,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACLList")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceRestartNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceRestartNetworkProcedure,
-		svc.RestartNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("RestartNetwork")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateIpv4SubnetForZoneProcedure,
-		svc.CreateIpv4SubnetForZone,
-		connect.WithSchema(networkServiceMethods.ByName("CreateIpv4SubnetForZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceAddNetworkDeviceHandler := connect.NewUnaryHandler(
-		NetworkServiceAddNetworkDeviceProcedure,
-		svc.AddNetworkDevice,
-		connect.WithSchema(networkServiceMethods.ByName("AddNetworkDevice")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdateNetworkACLListHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateNetworkACLListProcedure,
-		svc.UpdateNetworkACLList,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLList")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateNetworkACLHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateNetworkACLProcedure,
-		svc.CreateNetworkACL,
-		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACL")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdatePodManagementNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdatePodManagementNetworkIpRangeProcedure,
-		svc.UpdatePodManagementNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("UpdatePodManagementNetworkIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListGuestNetworkIpv6PrefixesHandler := connect.NewUnaryHandler(
-		NetworkServiceListGuestNetworkIpv6PrefixesProcedure,
-		svc.ListGuestNetworkIpv6Prefixes,
-		connect.WithSchema(networkServiceMethods.ByName("ListGuestNetworkIpv6Prefixes")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdateNetworkCmdByAdminHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateNetworkCmdByAdminProcedure,
-		svc.UpdateNetworkCmdByAdmin,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateGuestNetworkIpv6PrefixHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateGuestNetworkIpv6PrefixProcedure,
-		svc.CreateGuestNetworkIpv6Prefix,
-		connect.WithSchema(networkServiceMethods.ByName("CreateGuestNetworkIpv6Prefix")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceListStorageNetworkIpRangeProcedure,
-		svc.ListStorageNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("ListStorageNetworkIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListPhysicalNetworksHandler := connect.NewUnaryHandler(
-		NetworkServiceListPhysicalNetworksProcedure,
-		svc.ListPhysicalNetworks,
-		connect.WithSchema(networkServiceMethods.ByName("ListPhysicalNetworks")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdateNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateNetworkProcedure,
-		svc.UpdateNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateNetwork")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateNetworkPermissionsHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateNetworkPermissionsProcedure,
-		svc.CreateNetworkPermissions,
-		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkPermissions")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteIpv4SubnetForGuestNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure,
-		svc.DeleteIpv4SubnetForGuestNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForGuestNetwork")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceReplaceNetworkACLListHandler := connect.NewUnaryHandler(
-		NetworkServiceReplaceNetworkACLListProcedure,
-		svc.ReplaceNetworkACLList,
-		connect.WithSchema(networkServiceMethods.ByName("ReplaceNetworkACLList")),
+	networkServiceReleaseDedicatedGuestVlanRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceReleaseDedicatedGuestVlanRangeProcedure,
+		svc.ReleaseDedicatedGuestVlanRange,
+		connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedGuestVlanRange")),
 		connect.WithHandlerOptions(opts...),
 	)
 	networkServiceDeletePhysicalNetworkHandler := connect.NewUnaryHandler(
@@ -1453,46 +1349,34 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("DeletePhysicalNetwork")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceListNetworkDeviceHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkDeviceProcedure,
-		svc.ListNetworkDevice,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkDevice")),
+	networkServiceUpdateIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateIpv4SubnetForZoneProcedure,
+		svc.UpdateIpv4SubnetForZone,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateIpv4SubnetForZone")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceRemoveNetworkPermissionsHandler := connect.NewUnaryHandler(
-		NetworkServiceRemoveNetworkPermissionsProcedure,
-		svc.RemoveNetworkPermissions,
-		connect.WithSchema(networkServiceMethods.ByName("RemoveNetworkPermissions")),
+	networkServiceListNetworkIsolationMethodsHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkIsolationMethodsProcedure,
+		svc.ListNetworkIsolationMethods,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkIsolationMethods")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceReleaseDedicatedIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
-		NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure,
-		svc.ReleaseDedicatedIpv4SubnetForZone,
-		connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedIpv4SubnetForZone")),
+	networkServiceCreatePhysicalNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceCreatePhysicalNetworkProcedure,
+		svc.CreatePhysicalNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("CreatePhysicalNetwork")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceListNetworkACLListsHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkACLListsProcedure,
-		svc.ListNetworkACLLists,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLLists")),
+	networkServiceListNetworkProtocolsHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkProtocolsProcedure,
+		svc.ListNetworkProtocols,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkProtocols")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceDeleteManagementNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteManagementNetworkIpRangeProcedure,
-		svc.DeleteManagementNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteManagementNetworkIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteGuestNetworkIpv6PrefixHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure,
-		svc.DeleteGuestNetworkIpv6Prefix,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteGuestNetworkIpv6Prefix")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceMigrateNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceMigrateNetworkProcedure,
-		svc.MigrateNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("MigrateNetwork")),
+	networkServiceCreateNetworkACLListHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateNetworkACLListProcedure,
+		svc.CreateNetworkACLList,
+		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACLList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	networkServiceDedicateGuestVlanRangeHandler := connect.NewUnaryHandler(
@@ -1501,22 +1385,70 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("DedicateGuestVlanRange")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceUpdateStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateStorageNetworkIpRangeProcedure,
-		svc.UpdateStorageNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateStorageNetworkIpRange")),
+	networkServiceDeleteNetworkACLHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteNetworkACLProcedure,
+		svc.DeleteNetworkACL,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACL")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceDeleteNetworkServiceProviderHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteNetworkServiceProviderProcedure,
-		svc.DeleteNetworkServiceProvider,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkServiceProvider")),
+	networkServiceUpdateNetworkCmdByAdminHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateNetworkCmdByAdminProcedure,
+		svc.UpdateNetworkCmdByAdmin,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceMigrateVPCHandler := connect.NewUnaryHandler(
-		NetworkServiceMigrateVPCProcedure,
-		svc.MigrateVPC,
-		connect.WithSchema(networkServiceMethods.ByName("MigrateVPC")),
+	networkServiceListStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceListStorageNetworkIpRangeProcedure,
+		svc.ListStorageNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("ListStorageNetworkIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceMigrateNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceMigrateNetworkProcedure,
+		svc.MigrateNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("MigrateNetwork")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdatePodManagementNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdatePodManagementNetworkIpRangeProcedure,
+		svc.UpdatePodManagementNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("UpdatePodManagementNetworkIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceReleaseDedicatedIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
+		NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure,
+		svc.ReleaseDedicatedIpv4SubnetForZone,
+		connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedIpv4SubnetForZone")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceAddNetworkDeviceHandler := connect.NewUnaryHandler(
+		NetworkServiceAddNetworkDeviceProcedure,
+		svc.AddNetworkDevice,
+		connect.WithSchema(networkServiceMethods.ByName("AddNetworkDevice")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceDeleteNetworkOfferingHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteNetworkOfferingProcedure,
+		svc.DeleteNetworkOffering,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdatePhysicalNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdatePhysicalNetworkProcedure,
+		svc.UpdatePhysicalNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("UpdatePhysicalNetwork")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateManagementNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateManagementNetworkIpRangeProcedure,
+		svc.CreateManagementNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("CreateManagementNetworkIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceDeleteNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteNetworkProcedure,
+		svc.DeleteNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteNetwork")),
 		connect.WithHandlerOptions(opts...),
 	)
 	networkServiceListNetworkServiceProvidersHandler := connect.NewUnaryHandler(
@@ -1525,16 +1457,118 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("ListNetworkServiceProviders")),
 		connect.WithHandlerOptions(opts...),
 	)
+	networkServiceCreateNetworkACLHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateNetworkACLProcedure,
+		svc.CreateNetworkACL,
+		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACL")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListSupportedNetworkServicesHandler := connect.NewUnaryHandler(
+		NetworkServiceListSupportedNetworkServicesProcedure,
+		svc.ListSupportedNetworkServices,
+		connect.WithSchema(networkServiceMethods.ByName("ListSupportedNetworkServices")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListNetworkACLListsHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkACLListsProcedure,
+		svc.ListNetworkACLLists,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLLists")),
+		connect.WithHandlerOptions(opts...),
+	)
 	networkServiceListIpv4SubnetsForZoneHandler := connect.NewUnaryHandler(
 		NetworkServiceListIpv4SubnetsForZoneProcedure,
 		svc.ListIpv4SubnetsForZone,
 		connect.WithSchema(networkServiceMethods.ByName("ListIpv4SubnetsForZone")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceDeleteNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteNetworkProcedure,
-		svc.DeleteNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteNetwork")),
+	networkServiceListNetworkDeviceHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkDeviceProcedure,
+		svc.ListNetworkDevice,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkDevice")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListNetworkACLsHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkACLsProcedure,
+		svc.ListNetworkACLs,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLs")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdateNetworkACLListHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateNetworkACLListProcedure,
+		svc.UpdateNetworkACLList,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLList")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateGuestNetworkIpv6PrefixHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateGuestNetworkIpv6PrefixProcedure,
+		svc.CreateGuestNetworkIpv6Prefix,
+		connect.WithSchema(networkServiceMethods.ByName("CreateGuestNetworkIpv6Prefix")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceDeleteStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteStorageNetworkIpRangeProcedure,
+		svc.DeleteStorageNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteStorageNetworkIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListNetworkPermissionsHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkPermissionsProcedure,
+		svc.ListNetworkPermissions,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkPermissions")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListGuestNetworkIpv6PrefixesHandler := connect.NewUnaryHandler(
+		NetworkServiceListGuestNetworkIpv6PrefixesProcedure,
+		svc.ListGuestNetworkIpv6Prefixes,
+		connect.WithSchema(networkServiceMethods.ByName("ListGuestNetworkIpv6Prefixes")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceMoveNetworkAclItemHandler := connect.NewUnaryHandler(
+		NetworkServiceMoveNetworkAclItemProcedure,
+		svc.MoveNetworkAclItem,
+		connect.WithSchema(networkServiceMethods.ByName("MoveNetworkAclItem")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceAddNetworkServiceProviderHandler := connect.NewUnaryHandler(
+		NetworkServiceAddNetworkServiceProviderProcedure,
+		svc.AddNetworkServiceProvider,
+		connect.WithSchema(networkServiceMethods.ByName("AddNetworkServiceProvider")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceDeleteIpv4SubnetForGuestNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure,
+		svc.DeleteIpv4SubnetForGuestNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForGuestNetwork")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceRemoveNetworkPermissionsHandler := connect.NewUnaryHandler(
+		NetworkServiceRemoveNetworkPermissionsProcedure,
+		svc.RemoveNetworkPermissions,
+		connect.WithSchema(networkServiceMethods.ByName("RemoveNetworkPermissions")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateNetworkOfferingHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateNetworkOfferingProcedure,
+		svc.CreateNetworkOffering,
+		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdateNetworkACLItemHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateNetworkACLItemProcedure,
+		svc.UpdateNetworkACLItem,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkACLItem")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateNetworkProcedure,
+		svc.CreateNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("CreateNetwork")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceDeleteNetworkServiceProviderHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteNetworkServiceProviderProcedure,
+		svc.DeleteNetworkServiceProvider,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkServiceProvider")),
 		connect.WithHandlerOptions(opts...),
 	)
 	networkServiceUpdateNetworkOfferingHandler := connect.NewUnaryHandler(
@@ -1549,142 +1583,10 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("CreateIpv4SubnetForGuestNetwork")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceListNetworkIsolationMethodsHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkIsolationMethodsProcedure,
-		svc.ListNetworkIsolationMethods,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkIsolationMethods")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceAddNetworkServiceProviderHandler := connect.NewUnaryHandler(
-		NetworkServiceAddNetworkServiceProviderProcedure,
-		svc.AddNetworkServiceProvider,
-		connect.WithSchema(networkServiceMethods.ByName("AddNetworkServiceProvider")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListNetworksHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworksProcedure,
-		svc.ListNetworks,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworks")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListNetworkACLsHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkACLsProcedure,
-		svc.ListNetworkACLs,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkACLs")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateManagementNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateManagementNetworkIpRangeProcedure,
-		svc.CreateManagementNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("CreateManagementNetworkIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListSupportedNetworkServicesHandler := connect.NewUnaryHandler(
-		NetworkServiceListSupportedNetworkServicesProcedure,
-		svc.ListSupportedNetworkServices,
-		connect.WithSchema(networkServiceMethods.ByName("ListSupportedNetworkServices")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdatePhysicalNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdatePhysicalNetworkProcedure,
-		svc.UpdatePhysicalNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("UpdatePhysicalNetwork")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateNetworkACLListHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateNetworkACLListProcedure,
-		svc.CreateNetworkACLList,
-		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkACLList")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateNetworkCmdByAdminHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateNetworkCmdByAdminProcedure,
-		svc.CreateNetworkCmdByAdmin,
-		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteStorageNetworkIpRangeProcedure,
-		svc.DeleteStorageNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteStorageNetworkIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteIpv4SubnetForZoneProcedure,
-		svc.DeleteIpv4SubnetForZone,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteIpv4SubnetForZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListNetworkPermissionsHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkPermissionsProcedure,
-		svc.ListNetworkPermissions,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkPermissions")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListDedicatedGuestVlanRangesHandler := connect.NewUnaryHandler(
-		NetworkServiceListDedicatedGuestVlanRangesProcedure,
-		svc.ListDedicatedGuestVlanRanges,
-		connect.WithSchema(networkServiceMethods.ByName("ListDedicatedGuestVlanRanges")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteNetworkACLListHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteNetworkACLListProcedure,
-		svc.DeleteNetworkACLList,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkACLList")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteNetworkOfferingHandler := connect.NewUnaryHandler(
-		NetworkServiceDeleteNetworkOfferingProcedure,
-		svc.DeleteNetworkOffering,
-		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceMoveNetworkAclItemHandler := connect.NewUnaryHandler(
-		NetworkServiceMoveNetworkAclItemProcedure,
-		svc.MoveNetworkAclItem,
-		connect.WithSchema(networkServiceMethods.ByName("MoveNetworkAclItem")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListGuestVlansHandler := connect.NewUnaryHandler(
-		NetworkServiceListGuestVlansProcedure,
-		svc.ListGuestVlans,
-		connect.WithSchema(networkServiceMethods.ByName("ListGuestVlans")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdateIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateIpv4SubnetForZoneProcedure,
-		svc.UpdateIpv4SubnetForZone,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateIpv4SubnetForZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreatePhysicalNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceCreatePhysicalNetworkProcedure,
-		svc.CreatePhysicalNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("CreatePhysicalNetwork")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateNetworkOfferingHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateNetworkOfferingProcedure,
-		svc.CreateNetworkOffering,
-		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdateNetworkServiceProviderHandler := connect.NewUnaryHandler(
-		NetworkServiceUpdateNetworkServiceProviderProcedure,
-		svc.UpdateNetworkServiceProvider,
-		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkServiceProvider")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceCreateStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateStorageNetworkIpRangeProcedure,
-		svc.CreateStorageNetworkIpRange,
-		connect.WithSchema(networkServiceMethods.ByName("CreateStorageNetworkIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListIpv4SubnetsForGuestNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceListIpv4SubnetsForGuestNetworkProcedure,
-		svc.ListIpv4SubnetsForGuestNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("ListIpv4SubnetsForGuestNetwork")),
+	networkServiceResetNetworkPermissionsHandler := connect.NewUnaryHandler(
+		NetworkServiceResetNetworkPermissionsProcedure,
+		svc.ResetNetworkPermissions,
+		connect.WithSchema(networkServiceMethods.ByName("ResetNetworkPermissions")),
 		connect.WithHandlerOptions(opts...),
 	)
 	networkServiceDeleteNetworkDeviceHandler := connect.NewUnaryHandler(
@@ -1693,154 +1595,224 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("DeleteNetworkDevice")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceCreateNetworkHandler := connect.NewUnaryHandler(
-		NetworkServiceCreateNetworkProcedure,
-		svc.CreateNetwork,
-		connect.WithSchema(networkServiceMethods.ByName("CreateNetwork")),
+	networkServiceListNetworkOfferingsHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworkOfferingsProcedure,
+		svc.ListNetworkOfferings,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworkOfferings")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceReleaseDedicatedGuestVlanRangeHandler := connect.NewUnaryHandler(
-		NetworkServiceReleaseDedicatedGuestVlanRangeProcedure,
-		svc.ReleaseDedicatedGuestVlanRange,
-		connect.WithSchema(networkServiceMethods.ByName("ReleaseDedicatedGuestVlanRange")),
+	networkServiceRestartNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceRestartNetworkProcedure,
+		svc.RestartNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("RestartNetwork")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceListNetworkProtocolsHandler := connect.NewUnaryHandler(
-		NetworkServiceListNetworkProtocolsProcedure,
-		svc.ListNetworkProtocols,
-		connect.WithSchema(networkServiceMethods.ByName("ListNetworkProtocols")),
+	networkServiceDeleteGuestNetworkIpv6PrefixHandler := connect.NewUnaryHandler(
+		NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure,
+		svc.DeleteGuestNetworkIpv6Prefix,
+		connect.WithSchema(networkServiceMethods.ByName("DeleteGuestNetworkIpv6Prefix")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateIpv4SubnetForZoneHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateIpv4SubnetForZoneProcedure,
+		svc.CreateIpv4SubnetForZone,
+		connect.WithSchema(networkServiceMethods.ByName("CreateIpv4SubnetForZone")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdateStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateStorageNetworkIpRangeProcedure,
+		svc.UpdateStorageNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateStorageNetworkIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListNetworksHandler := connect.NewUnaryHandler(
+		NetworkServiceListNetworksProcedure,
+		svc.ListNetworks,
+		connect.WithSchema(networkServiceMethods.ByName("ListNetworks")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceReplaceNetworkACLListHandler := connect.NewUnaryHandler(
+		NetworkServiceReplaceNetworkACLListProcedure,
+		svc.ReplaceNetworkACLList,
+		connect.WithSchema(networkServiceMethods.ByName("ReplaceNetworkACLList")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateNetworkPermissionsHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateNetworkPermissionsProcedure,
+		svc.CreateNetworkPermissions,
+		connect.WithSchema(networkServiceMethods.ByName("CreateNetworkPermissions")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListGuestVlansHandler := connect.NewUnaryHandler(
+		NetworkServiceListGuestVlansProcedure,
+		svc.ListGuestVlans,
+		connect.WithSchema(networkServiceMethods.ByName("ListGuestVlans")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceCreateStorageNetworkIpRangeHandler := connect.NewUnaryHandler(
+		NetworkServiceCreateStorageNetworkIpRangeProcedure,
+		svc.CreateStorageNetworkIpRange,
+		connect.WithSchema(networkServiceMethods.ByName("CreateStorageNetworkIpRange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdateNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateNetworkProcedure,
+		svc.UpdateNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateNetwork")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceMigrateVPCHandler := connect.NewUnaryHandler(
+		NetworkServiceMigrateVPCProcedure,
+		svc.MigrateVPC,
+		connect.WithSchema(networkServiceMethods.ByName("MigrateVPC")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListPhysicalNetworksHandler := connect.NewUnaryHandler(
+		NetworkServiceListPhysicalNetworksProcedure,
+		svc.ListPhysicalNetworks,
+		connect.WithSchema(networkServiceMethods.ByName("ListPhysicalNetworks")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceListIpv4SubnetsForGuestNetworkHandler := connect.NewUnaryHandler(
+		NetworkServiceListIpv4SubnetsForGuestNetworkProcedure,
+		svc.ListIpv4SubnetsForGuestNetwork,
+		connect.WithSchema(networkServiceMethods.ByName("ListIpv4SubnetsForGuestNetwork")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceUpdateNetworkServiceProviderHandler := connect.NewUnaryHandler(
+		NetworkServiceUpdateNetworkServiceProviderProcedure,
+		svc.UpdateNetworkServiceProvider,
+		connect.WithSchema(networkServiceMethods.ByName("UpdateNetworkServiceProvider")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.network.v1.NetworkService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case NetworkServiceDedicateIpv4SubnetForZoneProcedure:
 			networkServiceDedicateIpv4SubnetForZoneHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkOfferingsProcedure:
-			networkServiceListNetworkOfferingsHandler.ServeHTTP(w, r)
-		case NetworkServiceResetNetworkPermissionsProcedure:
-			networkServiceResetNetworkPermissionsHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateNetworkACLItemProcedure:
-			networkServiceUpdateNetworkACLItemHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteNetworkACLProcedure:
-			networkServiceDeleteNetworkACLHandler.ServeHTTP(w, r)
-		case NetworkServiceRestartNetworkProcedure:
-			networkServiceRestartNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateIpv4SubnetForZoneProcedure:
-			networkServiceCreateIpv4SubnetForZoneHandler.ServeHTTP(w, r)
-		case NetworkServiceAddNetworkDeviceProcedure:
-			networkServiceAddNetworkDeviceHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateNetworkACLListProcedure:
-			networkServiceUpdateNetworkACLListHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateNetworkACLProcedure:
-			networkServiceCreateNetworkACLHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdatePodManagementNetworkIpRangeProcedure:
-			networkServiceUpdatePodManagementNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceListGuestNetworkIpv6PrefixesProcedure:
-			networkServiceListGuestNetworkIpv6PrefixesHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateNetworkCmdByAdminProcedure:
-			networkServiceUpdateNetworkCmdByAdminHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateGuestNetworkIpv6PrefixProcedure:
-			networkServiceCreateGuestNetworkIpv6PrefixHandler.ServeHTTP(w, r)
-		case NetworkServiceListStorageNetworkIpRangeProcedure:
-			networkServiceListStorageNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceListPhysicalNetworksProcedure:
-			networkServiceListPhysicalNetworksHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateNetworkProcedure:
-			networkServiceUpdateNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateNetworkPermissionsProcedure:
-			networkServiceCreateNetworkPermissionsHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure:
-			networkServiceDeleteIpv4SubnetForGuestNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceReplaceNetworkACLListProcedure:
-			networkServiceReplaceNetworkACLListHandler.ServeHTTP(w, r)
-		case NetworkServiceDeletePhysicalNetworkProcedure:
-			networkServiceDeletePhysicalNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkDeviceProcedure:
-			networkServiceListNetworkDeviceHandler.ServeHTTP(w, r)
-		case NetworkServiceRemoveNetworkPermissionsProcedure:
-			networkServiceRemoveNetworkPermissionsHandler.ServeHTTP(w, r)
-		case NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure:
-			networkServiceReleaseDedicatedIpv4SubnetForZoneHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkACLListsProcedure:
-			networkServiceListNetworkACLListsHandler.ServeHTTP(w, r)
 		case NetworkServiceDeleteManagementNetworkIpRangeProcedure:
 			networkServiceDeleteManagementNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure:
-			networkServiceDeleteGuestNetworkIpv6PrefixHandler.ServeHTTP(w, r)
-		case NetworkServiceMigrateNetworkProcedure:
-			networkServiceMigrateNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceListDedicatedGuestVlanRangesProcedure:
+			networkServiceListDedicatedGuestVlanRangesHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteIpv4SubnetForZoneProcedure:
+			networkServiceDeleteIpv4SubnetForZoneHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteNetworkACLListProcedure:
+			networkServiceDeleteNetworkACLListHandler.ServeHTTP(w, r)
+		case NetworkServiceReleaseDedicatedGuestVlanRangeProcedure:
+			networkServiceReleaseDedicatedGuestVlanRangeHandler.ServeHTTP(w, r)
+		case NetworkServiceDeletePhysicalNetworkProcedure:
+			networkServiceDeletePhysicalNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateIpv4SubnetForZoneProcedure:
+			networkServiceUpdateIpv4SubnetForZoneHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkIsolationMethodsProcedure:
+			networkServiceListNetworkIsolationMethodsHandler.ServeHTTP(w, r)
+		case NetworkServiceCreatePhysicalNetworkProcedure:
+			networkServiceCreatePhysicalNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkProtocolsProcedure:
+			networkServiceListNetworkProtocolsHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateNetworkACLListProcedure:
+			networkServiceCreateNetworkACLListHandler.ServeHTTP(w, r)
 		case NetworkServiceDedicateGuestVlanRangeProcedure:
 			networkServiceDedicateGuestVlanRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateStorageNetworkIpRangeProcedure:
-			networkServiceUpdateStorageNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteNetworkServiceProviderProcedure:
-			networkServiceDeleteNetworkServiceProviderHandler.ServeHTTP(w, r)
-		case NetworkServiceMigrateVPCProcedure:
-			networkServiceMigrateVPCHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkServiceProvidersProcedure:
-			networkServiceListNetworkServiceProvidersHandler.ServeHTTP(w, r)
-		case NetworkServiceListIpv4SubnetsForZoneProcedure:
-			networkServiceListIpv4SubnetsForZoneHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteNetworkACLProcedure:
+			networkServiceDeleteNetworkACLHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateNetworkCmdByAdminProcedure:
+			networkServiceUpdateNetworkCmdByAdminHandler.ServeHTTP(w, r)
+		case NetworkServiceListStorageNetworkIpRangeProcedure:
+			networkServiceListStorageNetworkIpRangeHandler.ServeHTTP(w, r)
+		case NetworkServiceMigrateNetworkProcedure:
+			networkServiceMigrateNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdatePodManagementNetworkIpRangeProcedure:
+			networkServiceUpdatePodManagementNetworkIpRangeHandler.ServeHTTP(w, r)
+		case NetworkServiceReleaseDedicatedIpv4SubnetForZoneProcedure:
+			networkServiceReleaseDedicatedIpv4SubnetForZoneHandler.ServeHTTP(w, r)
+		case NetworkServiceAddNetworkDeviceProcedure:
+			networkServiceAddNetworkDeviceHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteNetworkOfferingProcedure:
+			networkServiceDeleteNetworkOfferingHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdatePhysicalNetworkProcedure:
+			networkServiceUpdatePhysicalNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateManagementNetworkIpRangeProcedure:
+			networkServiceCreateManagementNetworkIpRangeHandler.ServeHTTP(w, r)
 		case NetworkServiceDeleteNetworkProcedure:
 			networkServiceDeleteNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkServiceProvidersProcedure:
+			networkServiceListNetworkServiceProvidersHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateNetworkACLProcedure:
+			networkServiceCreateNetworkACLHandler.ServeHTTP(w, r)
+		case NetworkServiceListSupportedNetworkServicesProcedure:
+			networkServiceListSupportedNetworkServicesHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkACLListsProcedure:
+			networkServiceListNetworkACLListsHandler.ServeHTTP(w, r)
+		case NetworkServiceListIpv4SubnetsForZoneProcedure:
+			networkServiceListIpv4SubnetsForZoneHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkDeviceProcedure:
+			networkServiceListNetworkDeviceHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkACLsProcedure:
+			networkServiceListNetworkACLsHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateNetworkACLListProcedure:
+			networkServiceUpdateNetworkACLListHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateGuestNetworkIpv6PrefixProcedure:
+			networkServiceCreateGuestNetworkIpv6PrefixHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteStorageNetworkIpRangeProcedure:
+			networkServiceDeleteStorageNetworkIpRangeHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkPermissionsProcedure:
+			networkServiceListNetworkPermissionsHandler.ServeHTTP(w, r)
+		case NetworkServiceListGuestNetworkIpv6PrefixesProcedure:
+			networkServiceListGuestNetworkIpv6PrefixesHandler.ServeHTTP(w, r)
+		case NetworkServiceMoveNetworkAclItemProcedure:
+			networkServiceMoveNetworkAclItemHandler.ServeHTTP(w, r)
+		case NetworkServiceAddNetworkServiceProviderProcedure:
+			networkServiceAddNetworkServiceProviderHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteIpv4SubnetForGuestNetworkProcedure:
+			networkServiceDeleteIpv4SubnetForGuestNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceRemoveNetworkPermissionsProcedure:
+			networkServiceRemoveNetworkPermissionsHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateNetworkOfferingProcedure:
+			networkServiceCreateNetworkOfferingHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateNetworkACLItemProcedure:
+			networkServiceUpdateNetworkACLItemHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateNetworkProcedure:
+			networkServiceCreateNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteNetworkServiceProviderProcedure:
+			networkServiceDeleteNetworkServiceProviderHandler.ServeHTTP(w, r)
 		case NetworkServiceUpdateNetworkOfferingProcedure:
 			networkServiceUpdateNetworkOfferingHandler.ServeHTTP(w, r)
 		case NetworkServiceCreateIpv4SubnetForGuestNetworkProcedure:
 			networkServiceCreateIpv4SubnetForGuestNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkIsolationMethodsProcedure:
-			networkServiceListNetworkIsolationMethodsHandler.ServeHTTP(w, r)
-		case NetworkServiceAddNetworkServiceProviderProcedure:
-			networkServiceAddNetworkServiceProviderHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworksProcedure:
-			networkServiceListNetworksHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkACLsProcedure:
-			networkServiceListNetworkACLsHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateManagementNetworkIpRangeProcedure:
-			networkServiceCreateManagementNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceListSupportedNetworkServicesProcedure:
-			networkServiceListSupportedNetworkServicesHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdatePhysicalNetworkProcedure:
-			networkServiceUpdatePhysicalNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateNetworkACLListProcedure:
-			networkServiceCreateNetworkACLListHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateNetworkCmdByAdminProcedure:
-			networkServiceCreateNetworkCmdByAdminHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteStorageNetworkIpRangeProcedure:
-			networkServiceDeleteStorageNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteIpv4SubnetForZoneProcedure:
-			networkServiceDeleteIpv4SubnetForZoneHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkPermissionsProcedure:
-			networkServiceListNetworkPermissionsHandler.ServeHTTP(w, r)
-		case NetworkServiceListDedicatedGuestVlanRangesProcedure:
-			networkServiceListDedicatedGuestVlanRangesHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteNetworkACLListProcedure:
-			networkServiceDeleteNetworkACLListHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteNetworkOfferingProcedure:
-			networkServiceDeleteNetworkOfferingHandler.ServeHTTP(w, r)
-		case NetworkServiceMoveNetworkAclItemProcedure:
-			networkServiceMoveNetworkAclItemHandler.ServeHTTP(w, r)
-		case NetworkServiceListGuestVlansProcedure:
-			networkServiceListGuestVlansHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateIpv4SubnetForZoneProcedure:
-			networkServiceUpdateIpv4SubnetForZoneHandler.ServeHTTP(w, r)
-		case NetworkServiceCreatePhysicalNetworkProcedure:
-			networkServiceCreatePhysicalNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateNetworkOfferingProcedure:
-			networkServiceCreateNetworkOfferingHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateNetworkServiceProviderProcedure:
-			networkServiceUpdateNetworkServiceProviderHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateStorageNetworkIpRangeProcedure:
-			networkServiceCreateStorageNetworkIpRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceListIpv4SubnetsForGuestNetworkProcedure:
-			networkServiceListIpv4SubnetsForGuestNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceResetNetworkPermissionsProcedure:
+			networkServiceResetNetworkPermissionsHandler.ServeHTTP(w, r)
 		case NetworkServiceDeleteNetworkDeviceProcedure:
 			networkServiceDeleteNetworkDeviceHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateNetworkProcedure:
-			networkServiceCreateNetworkHandler.ServeHTTP(w, r)
-		case NetworkServiceReleaseDedicatedGuestVlanRangeProcedure:
-			networkServiceReleaseDedicatedGuestVlanRangeHandler.ServeHTTP(w, r)
-		case NetworkServiceListNetworkProtocolsProcedure:
-			networkServiceListNetworkProtocolsHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworkOfferingsProcedure:
+			networkServiceListNetworkOfferingsHandler.ServeHTTP(w, r)
+		case NetworkServiceRestartNetworkProcedure:
+			networkServiceRestartNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceDeleteGuestNetworkIpv6PrefixProcedure:
+			networkServiceDeleteGuestNetworkIpv6PrefixHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateIpv4SubnetForZoneProcedure:
+			networkServiceCreateIpv4SubnetForZoneHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateStorageNetworkIpRangeProcedure:
+			networkServiceUpdateStorageNetworkIpRangeHandler.ServeHTTP(w, r)
+		case NetworkServiceListNetworksProcedure:
+			networkServiceListNetworksHandler.ServeHTTP(w, r)
+		case NetworkServiceReplaceNetworkACLListProcedure:
+			networkServiceReplaceNetworkACLListHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateNetworkPermissionsProcedure:
+			networkServiceCreateNetworkPermissionsHandler.ServeHTTP(w, r)
+		case NetworkServiceListGuestVlansProcedure:
+			networkServiceListGuestVlansHandler.ServeHTTP(w, r)
+		case NetworkServiceCreateStorageNetworkIpRangeProcedure:
+			networkServiceCreateStorageNetworkIpRangeHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateNetworkProcedure:
+			networkServiceUpdateNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceMigrateVPCProcedure:
+			networkServiceMigrateVPCHandler.ServeHTTP(w, r)
+		case NetworkServiceListPhysicalNetworksProcedure:
+			networkServiceListPhysicalNetworksHandler.ServeHTTP(w, r)
+		case NetworkServiceListIpv4SubnetsForGuestNetworkProcedure:
+			networkServiceListIpv4SubnetsForGuestNetworkHandler.ServeHTTP(w, r)
+		case NetworkServiceUpdateNetworkServiceProviderProcedure:
+			networkServiceUpdateNetworkServiceProviderHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -1854,140 +1826,176 @@ func (UnimplementedNetworkServiceHandler) DedicateIpv4SubnetForZone(context.Cont
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DedicateIpv4SubnetForZone is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ListNetworkOfferings(context.Context, *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkOfferings is not implemented"))
+func (UnimplementedNetworkServiceHandler) DeleteManagementNetworkIpRange(context.Context, *connect.Request[v1.DeleteManagementNetworkIpRangeRequest]) (*connect.Response[v1.DeleteManagementNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ResetNetworkPermissions(context.Context, *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions is not implemented"))
+func (UnimplementedNetworkServiceHandler) ListDedicatedGuestVlanRanges(context.Context, *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) UpdateNetworkACLItem(context.Context, *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem is not implemented"))
+func (UnimplementedNetworkServiceHandler) DeleteIpv4SubnetForZone(context.Context, *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) DeleteNetworkACL(context.Context, *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkACL is not implemented"))
+func (UnimplementedNetworkServiceHandler) DeleteNetworkACLList(context.Context, *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) RestartNetwork(context.Context, *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.RestartNetwork is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateIpv4SubnetForZone(context.Context, *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) AddNetworkDevice(context.Context, *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.AddNetworkDevice is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdateNetworkACLList(context.Context, *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateNetworkACL(context.Context, *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkACL is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdatePodManagementNetworkIpRange(context.Context, *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListGuestNetworkIpv6Prefixes(context.Context, *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdateNetworkCmdByAdmin(context.Context, *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListStorageNetworkIpRange(context.Context, *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListPhysicalNetworks(context.Context, *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdateNetwork(context.Context, *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetwork is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateNetworkPermissions(context.Context, *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) DeleteIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ReplaceNetworkACLList(context.Context, *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList is not implemented"))
+func (UnimplementedNetworkServiceHandler) ReleaseDedicatedGuestVlanRange(context.Context, *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange is not implemented"))
 }
 
 func (UnimplementedNetworkServiceHandler) DeletePhysicalNetwork(context.Context, *connect.Request[v1.DeletePhysicalNetworkRequest]) (*connect.Response[v1.DeletePhysicalNetworkResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeletePhysicalNetwork is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ListNetworkDevice(context.Context, *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkDevice is not implemented"))
+func (UnimplementedNetworkServiceHandler) UpdateIpv4SubnetForZone(context.Context, *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) RemoveNetworkPermissions(context.Context, *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions is not implemented"))
+func (UnimplementedNetworkServiceHandler) ListNetworkIsolationMethods(context.Context, *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ReleaseDedicatedIpv4SubnetForZone(context.Context, *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone is not implemented"))
+func (UnimplementedNetworkServiceHandler) CreatePhysicalNetwork(context.Context, *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ListNetworkACLLists(context.Context, *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkACLLists is not implemented"))
+func (UnimplementedNetworkServiceHandler) ListNetworkProtocols(context.Context, *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkProtocols is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) DeleteManagementNetworkIpRange(context.Context, *connect.Request[v1.DeleteManagementNetworkIpRangeRequest]) (*connect.Response[v1.DeleteManagementNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) DeleteGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) MigrateNetwork(context.Context, *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.MigrateNetwork is not implemented"))
+func (UnimplementedNetworkServiceHandler) CreateNetworkACLList(context.Context, *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkACLList is not implemented"))
 }
 
 func (UnimplementedNetworkServiceHandler) DedicateGuestVlanRange(context.Context, *connect.Request[v1.DedicateGuestVlanRangeRequest]) (*connect.Response[v1.DedicateGuestVlanRangeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DedicateGuestVlanRange is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) UpdateStorageNetworkIpRange(context.Context, *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange is not implemented"))
+func (UnimplementedNetworkServiceHandler) DeleteNetworkACL(context.Context, *connect.Request[v1.DeleteNetworkACLRequest]) (*connect.Response[v1.DeleteNetworkACLResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkACL is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) DeleteNetworkServiceProvider(context.Context, *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider is not implemented"))
+func (UnimplementedNetworkServiceHandler) UpdateNetworkCmdByAdmin(context.Context, *connect.Request[v1.UpdateNetworkCmdByAdminRequest]) (*connect.Response[v1.UpdateNetworkCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) MigrateVPC(context.Context, *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.MigrateVPC is not implemented"))
+func (UnimplementedNetworkServiceHandler) ListStorageNetworkIpRange(context.Context, *connect.Request[v1.ListStorageNetworkIpRangeRequest]) (*connect.Response[v1.ListStorageNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) MigrateNetwork(context.Context, *connect.Request[v1.MigrateNetworkRequest]) (*connect.Response[v1.MigrateNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.MigrateNetwork is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdatePodManagementNetworkIpRange(context.Context, *connect.Request[v1.UpdatePodManagementNetworkIpRangeRequest]) (*connect.Response[v1.UpdatePodManagementNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ReleaseDedicatedIpv4SubnetForZone(context.Context, *connect.Request[v1.ReleaseDedicatedIpv4SubnetForZoneRequest]) (*connect.Response[v1.ReleaseDedicatedIpv4SubnetForZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) AddNetworkDevice(context.Context, *connect.Request[v1.AddNetworkDeviceRequest]) (*connect.Response[v1.AddNetworkDeviceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.AddNetworkDevice is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) DeleteNetworkOffering(context.Context, *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdatePhysicalNetwork(context.Context, *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateManagementNetworkIpRange(context.Context, *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) DeleteNetwork(context.Context, *connect.Request[v1.DeleteNetworkRequest]) (*connect.Response[v1.DeleteNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetwork is not implemented"))
 }
 
 func (UnimplementedNetworkServiceHandler) ListNetworkServiceProviders(context.Context, *connect.Request[v1.ListNetworkServiceProvidersRequest]) (*connect.Response[v1.ListNetworkServiceProvidersResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkServiceProviders is not implemented"))
 }
 
+func (UnimplementedNetworkServiceHandler) CreateNetworkACL(context.Context, *connect.Request[v1.CreateNetworkACLRequest]) (*connect.Response[v1.CreateNetworkACLResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkACL is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListSupportedNetworkServices(context.Context, *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListNetworkACLLists(context.Context, *connect.Request[v1.ListNetworkACLListsRequest]) (*connect.Response[v1.ListNetworkACLListsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkACLLists is not implemented"))
+}
+
 func (UnimplementedNetworkServiceHandler) ListIpv4SubnetsForZone(context.Context, *connect.Request[v1.ListIpv4SubnetsForZoneRequest]) (*connect.Response[v1.ListIpv4SubnetsForZoneResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForZone is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) DeleteNetwork(context.Context, *connect.Request[v1.DeleteNetworkRequest]) (*connect.Response[v1.DeleteNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetwork is not implemented"))
+func (UnimplementedNetworkServiceHandler) ListNetworkDevice(context.Context, *connect.Request[v1.ListNetworkDeviceRequest]) (*connect.Response[v1.ListNetworkDeviceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkDevice is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListNetworkACLs(context.Context, *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkACLs is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdateNetworkACLList(context.Context, *connect.Request[v1.UpdateNetworkACLListRequest]) (*connect.Response[v1.UpdateNetworkACLListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.CreateGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.CreateGuestNetworkIpv6PrefixResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) DeleteStorageNetworkIpRange(context.Context, *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListNetworkPermissions(context.Context, *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkPermissions is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListGuestNetworkIpv6Prefixes(context.Context, *connect.Request[v1.ListGuestNetworkIpv6PrefixesRequest]) (*connect.Response[v1.ListGuestNetworkIpv6PrefixesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) MoveNetworkAclItem(context.Context, *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) AddNetworkServiceProvider(context.Context, *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) DeleteIpv4SubnetForGuestNetwork(context.Context, *connect.Request[v1.DeleteIpv4SubnetForGuestNetworkRequest]) (*connect.Response[v1.DeleteIpv4SubnetForGuestNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) RemoveNetworkPermissions(context.Context, *connect.Request[v1.RemoveNetworkPermissionsRequest]) (*connect.Response[v1.RemoveNetworkPermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateNetworkOffering(context.Context, *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkOffering is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdateNetworkACLItem(context.Context, *connect.Request[v1.UpdateNetworkACLItemRequest]) (*connect.Response[v1.UpdateNetworkACLItemResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateNetwork(context.Context, *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetwork is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) DeleteNetworkServiceProvider(context.Context, *connect.Request[v1.DeleteNetworkServiceProviderRequest]) (*connect.Response[v1.DeleteNetworkServiceProviderResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider is not implemented"))
 }
 
 func (UnimplementedNetworkServiceHandler) UpdateNetworkOffering(context.Context, *connect.Request[v1.UpdateNetworkOfferingRequest]) (*connect.Response[v1.UpdateNetworkOfferingResponse], error) {
@@ -1998,110 +2006,70 @@ func (UnimplementedNetworkServiceHandler) CreateIpv4SubnetForGuestNetwork(contex
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForGuestNetwork is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ListNetworkIsolationMethods(context.Context, *connect.Request[v1.ListNetworkIsolationMethodsRequest]) (*connect.Response[v1.ListNetworkIsolationMethodsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) AddNetworkServiceProvider(context.Context, *connect.Request[v1.AddNetworkServiceProviderRequest]) (*connect.Response[v1.AddNetworkServiceProviderResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListNetworks(context.Context, *connect.Request[v1.ListNetworksRequest]) (*connect.Response[v1.ListNetworksResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworks is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListNetworkACLs(context.Context, *connect.Request[v1.ListNetworkACLsRequest]) (*connect.Response[v1.ListNetworkACLsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkACLs is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateManagementNetworkIpRange(context.Context, *connect.Request[v1.CreateManagementNetworkIpRangeRequest]) (*connect.Response[v1.CreateManagementNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListSupportedNetworkServices(context.Context, *connect.Request[v1.ListSupportedNetworkServicesRequest]) (*connect.Response[v1.ListSupportedNetworkServicesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdatePhysicalNetwork(context.Context, *connect.Request[v1.UpdatePhysicalNetworkRequest]) (*connect.Response[v1.UpdatePhysicalNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateNetworkACLList(context.Context, *connect.Request[v1.CreateNetworkACLListRequest]) (*connect.Response[v1.CreateNetworkACLListResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkACLList is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateNetworkCmdByAdmin(context.Context, *connect.Request[v1.CreateNetworkCmdByAdminRequest]) (*connect.Response[v1.CreateNetworkCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) DeleteStorageNetworkIpRange(context.Context, *connect.Request[v1.DeleteStorageNetworkIpRangeRequest]) (*connect.Response[v1.DeleteStorageNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) DeleteIpv4SubnetForZone(context.Context, *connect.Request[v1.DeleteIpv4SubnetForZoneRequest]) (*connect.Response[v1.DeleteIpv4SubnetForZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListNetworkPermissions(context.Context, *connect.Request[v1.ListNetworkPermissionsRequest]) (*connect.Response[v1.ListNetworkPermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkPermissions is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListDedicatedGuestVlanRanges(context.Context, *connect.Request[v1.ListDedicatedGuestVlanRangesRequest]) (*connect.Response[v1.ListDedicatedGuestVlanRangesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) DeleteNetworkACLList(context.Context, *connect.Request[v1.DeleteNetworkACLListRequest]) (*connect.Response[v1.DeleteNetworkACLListResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) DeleteNetworkOffering(context.Context, *connect.Request[v1.DeleteNetworkOfferingRequest]) (*connect.Response[v1.DeleteNetworkOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) MoveNetworkAclItem(context.Context, *connect.Request[v1.MoveNetworkAclItemRequest]) (*connect.Response[v1.MoveNetworkAclItemResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListGuestVlans(context.Context, *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListGuestVlans is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdateIpv4SubnetForZone(context.Context, *connect.Request[v1.UpdateIpv4SubnetForZoneRequest]) (*connect.Response[v1.UpdateIpv4SubnetForZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreatePhysicalNetwork(context.Context, *connect.Request[v1.CreatePhysicalNetworkRequest]) (*connect.Response[v1.CreatePhysicalNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateNetworkOffering(context.Context, *connect.Request[v1.CreateNetworkOfferingRequest]) (*connect.Response[v1.CreateNetworkOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkOffering is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) UpdateNetworkServiceProvider(context.Context, *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) CreateStorageNetworkIpRange(context.Context, *connect.Request[v1.CreateStorageNetworkIpRangeRequest]) (*connect.Response[v1.CreateStorageNetworkIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateStorageNetworkIpRange is not implemented"))
-}
-
-func (UnimplementedNetworkServiceHandler) ListIpv4SubnetsForGuestNetwork(context.Context, *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork is not implemented"))
+func (UnimplementedNetworkServiceHandler) ResetNetworkPermissions(context.Context, *connect.Request[v1.ResetNetworkPermissionsRequest]) (*connect.Response[v1.ResetNetworkPermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions is not implemented"))
 }
 
 func (UnimplementedNetworkServiceHandler) DeleteNetworkDevice(context.Context, *connect.Request[v1.DeleteNetworkDeviceRequest]) (*connect.Response[v1.DeleteNetworkDeviceResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) CreateNetwork(context.Context, *connect.Request[v1.CreateNetworkRequest]) (*connect.Response[v1.CreateNetworkResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetwork is not implemented"))
+func (UnimplementedNetworkServiceHandler) ListNetworkOfferings(context.Context, *connect.Request[v1.ListNetworkOfferingsRequest]) (*connect.Response[v1.ListNetworkOfferingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkOfferings is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ReleaseDedicatedGuestVlanRange(context.Context, *connect.Request[v1.ReleaseDedicatedGuestVlanRangeRequest]) (*connect.Response[v1.ReleaseDedicatedGuestVlanRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange is not implemented"))
+func (UnimplementedNetworkServiceHandler) RestartNetwork(context.Context, *connect.Request[v1.RestartNetworkRequest]) (*connect.Response[v1.RestartNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.RestartNetwork is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) ListNetworkProtocols(context.Context, *connect.Request[v1.ListNetworkProtocolsRequest]) (*connect.Response[v1.ListNetworkProtocolsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworkProtocols is not implemented"))
+func (UnimplementedNetworkServiceHandler) DeleteGuestNetworkIpv6Prefix(context.Context, *connect.Request[v1.DeleteGuestNetworkIpv6PrefixRequest]) (*connect.Response[v1.DeleteGuestNetworkIpv6PrefixResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateIpv4SubnetForZone(context.Context, *connect.Request[v1.CreateIpv4SubnetForZoneRequest]) (*connect.Response[v1.CreateIpv4SubnetForZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdateStorageNetworkIpRange(context.Context, *connect.Request[v1.UpdateStorageNetworkIpRangeRequest]) (*connect.Response[v1.UpdateStorageNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListNetworks(context.Context, *connect.Request[v1.ListNetworksRequest]) (*connect.Response[v1.ListNetworksResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListNetworks is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ReplaceNetworkACLList(context.Context, *connect.Request[v1.ReplaceNetworkACLListRequest]) (*connect.Response[v1.ReplaceNetworkACLListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateNetworkPermissions(context.Context, *connect.Request[v1.CreateNetworkPermissionsRequest]) (*connect.Response[v1.CreateNetworkPermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListGuestVlans(context.Context, *connect.Request[v1.ListGuestVlansRequest]) (*connect.Response[v1.ListGuestVlansResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListGuestVlans is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) CreateStorageNetworkIpRange(context.Context, *connect.Request[v1.CreateStorageNetworkIpRangeRequest]) (*connect.Response[v1.CreateStorageNetworkIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.CreateStorageNetworkIpRange is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdateNetwork(context.Context, *connect.Request[v1.UpdateNetworkRequest]) (*connect.Response[v1.UpdateNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetwork is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) MigrateVPC(context.Context, *connect.Request[v1.MigrateVPCRequest]) (*connect.Response[v1.MigrateVPCResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.MigrateVPC is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListPhysicalNetworks(context.Context, *connect.Request[v1.ListPhysicalNetworksRequest]) (*connect.Response[v1.ListPhysicalNetworksResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListIpv4SubnetsForGuestNetwork(context.Context, *connect.Request[v1.ListIpv4SubnetsForGuestNetworkRequest]) (*connect.Response[v1.ListIpv4SubnetsForGuestNetworkResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) UpdateNetworkServiceProvider(context.Context, *connect.Request[v1.UpdateNetworkServiceProviderRequest]) (*connect.Response[v1.UpdateNetworkServiceProviderResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider is not implemented"))
 }

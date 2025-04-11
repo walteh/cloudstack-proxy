@@ -33,9 +33,9 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SecuritygroupServiceRevokeSecurityGroupIngressProcedure is the fully-qualified name of the
-	// SecuritygroupService's RevokeSecurityGroupIngress RPC.
-	SecuritygroupServiceRevokeSecurityGroupIngressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/RevokeSecurityGroupIngress"
+	// SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure is the fully-qualified name of the
+	// SecuritygroupService's AuthorizeSecurityGroupIngress RPC.
+	SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupIngress"
 	// SecuritygroupServiceRevokeSecurityGroupEgressProcedure is the fully-qualified name of the
 	// SecuritygroupService's RevokeSecurityGroupEgress RPC.
 	SecuritygroupServiceRevokeSecurityGroupEgressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/RevokeSecurityGroupEgress"
@@ -45,39 +45,39 @@ const (
 	// SecuritygroupServiceCreateSecurityGroupProcedure is the fully-qualified name of the
 	// SecuritygroupService's CreateSecurityGroup RPC.
 	SecuritygroupServiceCreateSecurityGroupProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/CreateSecurityGroup"
-	// SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure is the fully-qualified name of the
-	// SecuritygroupService's AuthorizeSecurityGroupIngress RPC.
-	SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupIngress"
 	// SecuritygroupServiceUpdateSecurityGroupProcedure is the fully-qualified name of the
 	// SecuritygroupService's UpdateSecurityGroup RPC.
 	SecuritygroupServiceUpdateSecurityGroupProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/UpdateSecurityGroup"
-	// SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure is the fully-qualified name of the
-	// SecuritygroupService's AuthorizeSecurityGroupEgress RPC.
-	SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupEgress"
 	// SecuritygroupServiceDeleteSecurityGroupProcedure is the fully-qualified name of the
 	// SecuritygroupService's DeleteSecurityGroup RPC.
 	SecuritygroupServiceDeleteSecurityGroupProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/DeleteSecurityGroup"
+	// SecuritygroupServiceRevokeSecurityGroupIngressProcedure is the fully-qualified name of the
+	// SecuritygroupService's RevokeSecurityGroupIngress RPC.
+	SecuritygroupServiceRevokeSecurityGroupIngressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/RevokeSecurityGroupIngress"
+	// SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure is the fully-qualified name of the
+	// SecuritygroupService's AuthorizeSecurityGroupEgress RPC.
+	SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure = "/cloudstack.management.securitygroup.v1.SecuritygroupService/AuthorizeSecurityGroupEgress"
 )
 
 // SecuritygroupServiceClient is a client for the
 // cloudstack.management.securitygroup.v1.SecuritygroupService service.
 type SecuritygroupServiceClient interface {
-	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
-	RevokeSecurityGroupIngress(context.Context, *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error)
+	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
+	AuthorizeSecurityGroupIngress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error)
 	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
 	RevokeSecurityGroupEgress(context.Context, *connect.Request[v1.RevokeSecurityGroupEgressRequest]) (*connect.Response[v1.RevokeSecurityGroupEgressResponse], error)
 	// ListSecurityGroups Lists security groups
 	ListSecurityGroups(context.Context, *connect.Request[v1.ListSecurityGroupsRequest]) (*connect.Response[v1.ListSecurityGroupsResponse], error)
 	// CreateSecurityGroup Creates a security group
 	CreateSecurityGroup(context.Context, *connect.Request[v1.CreateSecurityGroupRequest]) (*connect.Response[v1.CreateSecurityGroupResponse], error)
-	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
-	AuthorizeSecurityGroupIngress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error)
 	// UpdateSecurityGroup Updates a security group
 	UpdateSecurityGroup(context.Context, *connect.Request[v1.UpdateSecurityGroupRequest]) (*connect.Response[v1.UpdateSecurityGroupResponse], error)
-	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	AuthorizeSecurityGroupEgress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error)
 	// DeleteSecurityGroup Deletes security group
 	DeleteSecurityGroup(context.Context, *connect.Request[v1.DeleteSecurityGroupRequest]) (*connect.Response[v1.DeleteSecurityGroupResponse], error)
+	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
+	RevokeSecurityGroupIngress(context.Context, *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error)
+	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
+	AuthorizeSecurityGroupEgress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error)
 }
 
 // NewSecuritygroupServiceClient constructs a client for the
@@ -92,10 +92,10 @@ func NewSecuritygroupServiceClient(httpClient connect.HTTPClient, baseURL string
 	baseURL = strings.TrimRight(baseURL, "/")
 	securitygroupServiceMethods := v1.File_cloudstack_management_securitygroup_v1_securitygroup_gen_proto.Services().ByName("SecuritygroupService").Methods()
 	return &securitygroupServiceClient{
-		revokeSecurityGroupIngress: connect.NewClient[v1.RevokeSecurityGroupIngressRequest, v1.RevokeSecurityGroupIngressResponse](
+		authorizeSecurityGroupIngress: connect.NewClient[v1.AuthorizeSecurityGroupIngressRequest, v1.AuthorizeSecurityGroupIngressResponse](
 			httpClient,
-			baseURL+SecuritygroupServiceRevokeSecurityGroupIngressProcedure,
-			connect.WithSchema(securitygroupServiceMethods.ByName("RevokeSecurityGroupIngress")),
+			baseURL+SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure,
+			connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupIngress")),
 			connect.WithClientOptions(opts...),
 		),
 		revokeSecurityGroupEgress: connect.NewClient[v1.RevokeSecurityGroupEgressRequest, v1.RevokeSecurityGroupEgressResponse](
@@ -116,22 +116,10 @@ func NewSecuritygroupServiceClient(httpClient connect.HTTPClient, baseURL string
 			connect.WithSchema(securitygroupServiceMethods.ByName("CreateSecurityGroup")),
 			connect.WithClientOptions(opts...),
 		),
-		authorizeSecurityGroupIngress: connect.NewClient[v1.AuthorizeSecurityGroupIngressRequest, v1.AuthorizeSecurityGroupIngressResponse](
-			httpClient,
-			baseURL+SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure,
-			connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupIngress")),
-			connect.WithClientOptions(opts...),
-		),
 		updateSecurityGroup: connect.NewClient[v1.UpdateSecurityGroupRequest, v1.UpdateSecurityGroupResponse](
 			httpClient,
 			baseURL+SecuritygroupServiceUpdateSecurityGroupProcedure,
 			connect.WithSchema(securitygroupServiceMethods.ByName("UpdateSecurityGroup")),
-			connect.WithClientOptions(opts...),
-		),
-		authorizeSecurityGroupEgress: connect.NewClient[v1.AuthorizeSecurityGroupEgressRequest, v1.AuthorizeSecurityGroupEgressResponse](
-			httpClient,
-			baseURL+SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure,
-			connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupEgress")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteSecurityGroup: connect.NewClient[v1.DeleteSecurityGroupRequest, v1.DeleteSecurityGroupResponse](
@@ -140,25 +128,37 @@ func NewSecuritygroupServiceClient(httpClient connect.HTTPClient, baseURL string
 			connect.WithSchema(securitygroupServiceMethods.ByName("DeleteSecurityGroup")),
 			connect.WithClientOptions(opts...),
 		),
+		revokeSecurityGroupIngress: connect.NewClient[v1.RevokeSecurityGroupIngressRequest, v1.RevokeSecurityGroupIngressResponse](
+			httpClient,
+			baseURL+SecuritygroupServiceRevokeSecurityGroupIngressProcedure,
+			connect.WithSchema(securitygroupServiceMethods.ByName("RevokeSecurityGroupIngress")),
+			connect.WithClientOptions(opts...),
+		),
+		authorizeSecurityGroupEgress: connect.NewClient[v1.AuthorizeSecurityGroupEgressRequest, v1.AuthorizeSecurityGroupEgressResponse](
+			httpClient,
+			baseURL+SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure,
+			connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupEgress")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // securitygroupServiceClient implements SecuritygroupServiceClient.
 type securitygroupServiceClient struct {
-	revokeSecurityGroupIngress    *connect.Client[v1.RevokeSecurityGroupIngressRequest, v1.RevokeSecurityGroupIngressResponse]
+	authorizeSecurityGroupIngress *connect.Client[v1.AuthorizeSecurityGroupIngressRequest, v1.AuthorizeSecurityGroupIngressResponse]
 	revokeSecurityGroupEgress     *connect.Client[v1.RevokeSecurityGroupEgressRequest, v1.RevokeSecurityGroupEgressResponse]
 	listSecurityGroups            *connect.Client[v1.ListSecurityGroupsRequest, v1.ListSecurityGroupsResponse]
 	createSecurityGroup           *connect.Client[v1.CreateSecurityGroupRequest, v1.CreateSecurityGroupResponse]
-	authorizeSecurityGroupIngress *connect.Client[v1.AuthorizeSecurityGroupIngressRequest, v1.AuthorizeSecurityGroupIngressResponse]
 	updateSecurityGroup           *connect.Client[v1.UpdateSecurityGroupRequest, v1.UpdateSecurityGroupResponse]
-	authorizeSecurityGroupEgress  *connect.Client[v1.AuthorizeSecurityGroupEgressRequest, v1.AuthorizeSecurityGroupEgressResponse]
 	deleteSecurityGroup           *connect.Client[v1.DeleteSecurityGroupRequest, v1.DeleteSecurityGroupResponse]
+	revokeSecurityGroupIngress    *connect.Client[v1.RevokeSecurityGroupIngressRequest, v1.RevokeSecurityGroupIngressResponse]
+	authorizeSecurityGroupEgress  *connect.Client[v1.AuthorizeSecurityGroupEgressRequest, v1.AuthorizeSecurityGroupEgressResponse]
 }
 
-// RevokeSecurityGroupIngress calls
-// cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress.
-func (c *securitygroupServiceClient) RevokeSecurityGroupIngress(ctx context.Context, req *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error) {
-	return c.revokeSecurityGroupIngress.CallUnary(ctx, req)
+// AuthorizeSecurityGroupIngress calls
+// cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress.
+func (c *securitygroupServiceClient) AuthorizeSecurityGroupIngress(ctx context.Context, req *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error) {
+	return c.authorizeSecurityGroupIngress.CallUnary(ctx, req)
 }
 
 // RevokeSecurityGroupEgress calls
@@ -179,22 +179,10 @@ func (c *securitygroupServiceClient) CreateSecurityGroup(ctx context.Context, re
 	return c.createSecurityGroup.CallUnary(ctx, req)
 }
 
-// AuthorizeSecurityGroupIngress calls
-// cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress.
-func (c *securitygroupServiceClient) AuthorizeSecurityGroupIngress(ctx context.Context, req *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error) {
-	return c.authorizeSecurityGroupIngress.CallUnary(ctx, req)
-}
-
 // UpdateSecurityGroup calls
 // cloudstack.management.securitygroup.v1.SecuritygroupService.UpdateSecurityGroup.
 func (c *securitygroupServiceClient) UpdateSecurityGroup(ctx context.Context, req *connect.Request[v1.UpdateSecurityGroupRequest]) (*connect.Response[v1.UpdateSecurityGroupResponse], error) {
 	return c.updateSecurityGroup.CallUnary(ctx, req)
-}
-
-// AuthorizeSecurityGroupEgress calls
-// cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress.
-func (c *securitygroupServiceClient) AuthorizeSecurityGroupEgress(ctx context.Context, req *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error) {
-	return c.authorizeSecurityGroupEgress.CallUnary(ctx, req)
 }
 
 // DeleteSecurityGroup calls
@@ -203,25 +191,37 @@ func (c *securitygroupServiceClient) DeleteSecurityGroup(ctx context.Context, re
 	return c.deleteSecurityGroup.CallUnary(ctx, req)
 }
 
+// RevokeSecurityGroupIngress calls
+// cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress.
+func (c *securitygroupServiceClient) RevokeSecurityGroupIngress(ctx context.Context, req *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error) {
+	return c.revokeSecurityGroupIngress.CallUnary(ctx, req)
+}
+
+// AuthorizeSecurityGroupEgress calls
+// cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress.
+func (c *securitygroupServiceClient) AuthorizeSecurityGroupEgress(ctx context.Context, req *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error) {
+	return c.authorizeSecurityGroupEgress.CallUnary(ctx, req)
+}
+
 // SecuritygroupServiceHandler is an implementation of the
 // cloudstack.management.securitygroup.v1.SecuritygroupService service.
 type SecuritygroupServiceHandler interface {
-	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
-	RevokeSecurityGroupIngress(context.Context, *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error)
+	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
+	AuthorizeSecurityGroupIngress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error)
 	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
 	RevokeSecurityGroupEgress(context.Context, *connect.Request[v1.RevokeSecurityGroupEgressRequest]) (*connect.Response[v1.RevokeSecurityGroupEgressResponse], error)
 	// ListSecurityGroups Lists security groups
 	ListSecurityGroups(context.Context, *connect.Request[v1.ListSecurityGroupsRequest]) (*connect.Response[v1.ListSecurityGroupsResponse], error)
 	// CreateSecurityGroup Creates a security group
 	CreateSecurityGroup(context.Context, *connect.Request[v1.CreateSecurityGroupRequest]) (*connect.Response[v1.CreateSecurityGroupResponse], error)
-	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
-	AuthorizeSecurityGroupIngress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error)
 	// UpdateSecurityGroup Updates a security group
 	UpdateSecurityGroup(context.Context, *connect.Request[v1.UpdateSecurityGroupRequest]) (*connect.Response[v1.UpdateSecurityGroupResponse], error)
-	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	AuthorizeSecurityGroupEgress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error)
 	// DeleteSecurityGroup Deletes security group
 	DeleteSecurityGroup(context.Context, *connect.Request[v1.DeleteSecurityGroupRequest]) (*connect.Response[v1.DeleteSecurityGroupResponse], error)
+	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
+	RevokeSecurityGroupIngress(context.Context, *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error)
+	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
+	AuthorizeSecurityGroupEgress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error)
 }
 
 // NewSecuritygroupServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -231,10 +231,10 @@ type SecuritygroupServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSecuritygroupServiceHandler(svc SecuritygroupServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	securitygroupServiceMethods := v1.File_cloudstack_management_securitygroup_v1_securitygroup_gen_proto.Services().ByName("SecuritygroupService").Methods()
-	securitygroupServiceRevokeSecurityGroupIngressHandler := connect.NewUnaryHandler(
-		SecuritygroupServiceRevokeSecurityGroupIngressProcedure,
-		svc.RevokeSecurityGroupIngress,
-		connect.WithSchema(securitygroupServiceMethods.ByName("RevokeSecurityGroupIngress")),
+	securitygroupServiceAuthorizeSecurityGroupIngressHandler := connect.NewUnaryHandler(
+		SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure,
+		svc.AuthorizeSecurityGroupIngress,
+		connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupIngress")),
 		connect.WithHandlerOptions(opts...),
 	)
 	securitygroupServiceRevokeSecurityGroupEgressHandler := connect.NewUnaryHandler(
@@ -255,22 +255,10 @@ func NewSecuritygroupServiceHandler(svc SecuritygroupServiceHandler, opts ...con
 		connect.WithSchema(securitygroupServiceMethods.ByName("CreateSecurityGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
-	securitygroupServiceAuthorizeSecurityGroupIngressHandler := connect.NewUnaryHandler(
-		SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure,
-		svc.AuthorizeSecurityGroupIngress,
-		connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupIngress")),
-		connect.WithHandlerOptions(opts...),
-	)
 	securitygroupServiceUpdateSecurityGroupHandler := connect.NewUnaryHandler(
 		SecuritygroupServiceUpdateSecurityGroupProcedure,
 		svc.UpdateSecurityGroup,
 		connect.WithSchema(securitygroupServiceMethods.ByName("UpdateSecurityGroup")),
-		connect.WithHandlerOptions(opts...),
-	)
-	securitygroupServiceAuthorizeSecurityGroupEgressHandler := connect.NewUnaryHandler(
-		SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure,
-		svc.AuthorizeSecurityGroupEgress,
-		connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupEgress")),
 		connect.WithHandlerOptions(opts...),
 	)
 	securitygroupServiceDeleteSecurityGroupHandler := connect.NewUnaryHandler(
@@ -279,24 +267,36 @@ func NewSecuritygroupServiceHandler(svc SecuritygroupServiceHandler, opts ...con
 		connect.WithSchema(securitygroupServiceMethods.ByName("DeleteSecurityGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
+	securitygroupServiceRevokeSecurityGroupIngressHandler := connect.NewUnaryHandler(
+		SecuritygroupServiceRevokeSecurityGroupIngressProcedure,
+		svc.RevokeSecurityGroupIngress,
+		connect.WithSchema(securitygroupServiceMethods.ByName("RevokeSecurityGroupIngress")),
+		connect.WithHandlerOptions(opts...),
+	)
+	securitygroupServiceAuthorizeSecurityGroupEgressHandler := connect.NewUnaryHandler(
+		SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure,
+		svc.AuthorizeSecurityGroupEgress,
+		connect.WithSchema(securitygroupServiceMethods.ByName("AuthorizeSecurityGroupEgress")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.securitygroup.v1.SecuritygroupService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case SecuritygroupServiceRevokeSecurityGroupIngressProcedure:
-			securitygroupServiceRevokeSecurityGroupIngressHandler.ServeHTTP(w, r)
+		case SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure:
+			securitygroupServiceAuthorizeSecurityGroupIngressHandler.ServeHTTP(w, r)
 		case SecuritygroupServiceRevokeSecurityGroupEgressProcedure:
 			securitygroupServiceRevokeSecurityGroupEgressHandler.ServeHTTP(w, r)
 		case SecuritygroupServiceListSecurityGroupsProcedure:
 			securitygroupServiceListSecurityGroupsHandler.ServeHTTP(w, r)
 		case SecuritygroupServiceCreateSecurityGroupProcedure:
 			securitygroupServiceCreateSecurityGroupHandler.ServeHTTP(w, r)
-		case SecuritygroupServiceAuthorizeSecurityGroupIngressProcedure:
-			securitygroupServiceAuthorizeSecurityGroupIngressHandler.ServeHTTP(w, r)
 		case SecuritygroupServiceUpdateSecurityGroupProcedure:
 			securitygroupServiceUpdateSecurityGroupHandler.ServeHTTP(w, r)
-		case SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure:
-			securitygroupServiceAuthorizeSecurityGroupEgressHandler.ServeHTTP(w, r)
 		case SecuritygroupServiceDeleteSecurityGroupProcedure:
 			securitygroupServiceDeleteSecurityGroupHandler.ServeHTTP(w, r)
+		case SecuritygroupServiceRevokeSecurityGroupIngressProcedure:
+			securitygroupServiceRevokeSecurityGroupIngressHandler.ServeHTTP(w, r)
+		case SecuritygroupServiceAuthorizeSecurityGroupEgressProcedure:
+			securitygroupServiceAuthorizeSecurityGroupEgressHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -306,8 +306,8 @@ func NewSecuritygroupServiceHandler(svc SecuritygroupServiceHandler, opts ...con
 // UnimplementedSecuritygroupServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSecuritygroupServiceHandler struct{}
 
-func (UnimplementedSecuritygroupServiceHandler) RevokeSecurityGroupIngress(context.Context, *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress is not implemented"))
+func (UnimplementedSecuritygroupServiceHandler) AuthorizeSecurityGroupIngress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress is not implemented"))
 }
 
 func (UnimplementedSecuritygroupServiceHandler) RevokeSecurityGroupEgress(context.Context, *connect.Request[v1.RevokeSecurityGroupEgressRequest]) (*connect.Response[v1.RevokeSecurityGroupEgressResponse], error) {
@@ -322,18 +322,18 @@ func (UnimplementedSecuritygroupServiceHandler) CreateSecurityGroup(context.Cont
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.CreateSecurityGroup is not implemented"))
 }
 
-func (UnimplementedSecuritygroupServiceHandler) AuthorizeSecurityGroupIngress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupIngressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupIngressResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress is not implemented"))
-}
-
 func (UnimplementedSecuritygroupServiceHandler) UpdateSecurityGroup(context.Context, *connect.Request[v1.UpdateSecurityGroupRequest]) (*connect.Response[v1.UpdateSecurityGroupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.UpdateSecurityGroup is not implemented"))
 }
 
-func (UnimplementedSecuritygroupServiceHandler) AuthorizeSecurityGroupEgress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress is not implemented"))
-}
-
 func (UnimplementedSecuritygroupServiceHandler) DeleteSecurityGroup(context.Context, *connect.Request[v1.DeleteSecurityGroupRequest]) (*connect.Response[v1.DeleteSecurityGroupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.DeleteSecurityGroup is not implemented"))
+}
+
+func (UnimplementedSecuritygroupServiceHandler) RevokeSecurityGroupIngress(context.Context, *connect.Request[v1.RevokeSecurityGroupIngressRequest]) (*connect.Response[v1.RevokeSecurityGroupIngressResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress is not implemented"))
+}
+
+func (UnimplementedSecuritygroupServiceHandler) AuthorizeSecurityGroupEgress(context.Context, *connect.Request[v1.AuthorizeSecurityGroupEgressRequest]) (*connect.Response[v1.AuthorizeSecurityGroupEgressResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress is not implemented"))
 }

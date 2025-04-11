@@ -24,87 +24,38 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// RegisterTemplateCmdByAdminRequest represents the parameters for registers an existing template into the cloudstack cloud.
-type RegisterTemplateCmdByAdminRequest struct {
+// DeleteVnfTemplateRequest represents the parameters for deletes a vnf template from the system. all virtual machines using the deleted template will not be affected.
+type DeleteVnfTemplateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// 32 or 64 bits support. 64 by default
-	Bits *int32 `protobuf:"varint,1,opt,name=bits" json:"bits,omitempty"`
-	// The display text of the template, defaults to 'name'.
-	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
-	Format *string `protobuf:"bytes,3,opt,name=format" json:"format,omitempty"`
-	// the target hypervisor for the template
-	Hypervisor *string `protobuf:"bytes,4,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// true if this template is a featured template, false otherwise
-	Featured *bool `protobuf:"varint,5,opt,name=featured" json:"featured,omitempty"`
-	// true if the template is available to all accounts; default is true
-	PublicTemplate *bool `protobuf:"varint,6,opt,name=public_template,json=publicTemplate" json:"public_template,omitempty"`
-	// the name of the template
-	TemplateName *string `protobuf:"bytes,7,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
-	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
-	OsTypeId *int64 `protobuf:"varint,8,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
-	// true if the template supports the password reset feature; default is false
-	PasswordEnabled *bool `protobuf:"varint,9,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
-	// true if the template supports the sshkey upload feature; default is false
-	SshKeyEnabled *bool `protobuf:"varint,10,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
-	// true if the template or its derivatives are extractable; default is false
-	Extractable *bool `protobuf:"varint,11,opt,name=extractable" json:"extractable,omitempty"`
-	// true if this template requires HVM
-	RequiresHvm *bool `protobuf:"varint,12,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
-	// the URL of where the template is hosted. Possible URL include http:// and https://
-	Url *string `protobuf:"bytes,13,opt,name=url" json:"url,omitempty"`
-	// the ID of the zone the template is to be hosted on
-	ZoneId *int64 `protobuf:"varint,14,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// an optional domainId. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,15,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional accountName. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,16,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the checksum value of this template. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
-	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
-	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
-	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
-	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
-	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
-	Checksum *string `protobuf:"bytes,17,opt,name=checksum" json:"checksum,omitempty"`
-	// the tag for this template.
-	TemplateTag *string `protobuf:"bytes,18,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
-	// Register template for the project
-	ProjectId *int64 `protobuf:"varint,19,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Template details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	Details map[string]string `protobuf:"bytes,20,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// true if template contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	IsDynamicallyScalable *bool `protobuf:"varint,21,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
-	// true if the template type is routing i.e., if template is used to deploy router
-	IsRoutingType *bool `protobuf:"varint,22,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
-	// A list of zone ids where the template will be hosted. Use this parameter if the template needs to be registered to multiple zones in one go. Use zoneid if the template needs to be registered to only one zone.Passing only -1 to this will cause the template to be registered as a cross zone template and will be copied to all zones.
-	ZoneIds []string `protobuf:"bytes,23,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	// true if template should bypass Secondary Storage and be downloaded to Primary Storage on deployment
-	DirectDownload *bool `protobuf:"varint,24,opt,name=direct_download,json=directDownload" json:"direct_download,omitempty"`
-	// (VMware only) true if VM deployments should preserve all the configurations defined for this template
-	DeployAsIs *bool `protobuf:"varint,25,opt,name=deploy_as_is,json=deployAsIs" json:"deploy_as_is,omitempty"`
-	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
-	TemplateType *string `protobuf:"bytes,26,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
-	// the CPU arch of the template. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,27,opt,name=arch" json:"arch,omitempty"`
-	ResponseType  *string `protobuf:"bytes,28,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the ID of the template
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the ID of zone of the template
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// Force delete a template.
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	// Necessary if the template's type is system.
+	IsSystem *bool `protobuf:"varint,4,opt,name=is_system,json=isSystem" json:"is_system,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) Reset() {
-	*x = RegisterTemplateCmdByAdminRequest{}
+func (x *DeleteVnfTemplateRequest) Reset() {
+	*x = DeleteVnfTemplateRequest{}
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) String() string {
+func (x *DeleteVnfTemplateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterTemplateCmdByAdminRequest) ProtoMessage() {}
+func (*DeleteVnfTemplateRequest) ProtoMessage() {}
 
-func (x *RegisterTemplateCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteVnfTemplateRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -116,209 +67,62 @@ func (x *RegisterTemplateCmdByAdminRequest) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterTemplateCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*RegisterTemplateCmdByAdminRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteVnfTemplateRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVnfTemplateRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) GetBits() int32 {
-	if x != nil && x.Bits != nil {
-		return *x.Bits
+func (x *DeleteVnfTemplateRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetFormat() string {
-	if x != nil && x.Format != nil {
-		return *x.Format
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetFeatured() bool {
-	if x != nil && x.Featured != nil {
-		return *x.Featured
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetPublicTemplate() bool {
-	if x != nil && x.PublicTemplate != nil {
-		return *x.PublicTemplate
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetTemplateName() string {
-	if x != nil && x.TemplateName != nil {
-		return *x.TemplateName
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetOsTypeId() int64 {
-	if x != nil && x.OsTypeId != nil {
-		return *x.OsTypeId
-	}
-	return 0
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetPasswordEnabled() bool {
-	if x != nil && x.PasswordEnabled != nil {
-		return *x.PasswordEnabled
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetSshKeyEnabled() bool {
-	if x != nil && x.SshKeyEnabled != nil {
-		return *x.SshKeyEnabled
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetExtractable() bool {
-	if x != nil && x.Extractable != nil {
-		return *x.Extractable
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetRequiresHvm() bool {
-	if x != nil && x.RequiresHvm != nil {
-		return *x.RequiresHvm
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetZoneId() int64 {
+func (x *DeleteVnfTemplateRequest) GetZoneId() int64 {
 	if x != nil && x.ZoneId != nil {
 		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *DeleteVnfTemplateRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DeleteVnfTemplateRequest) GetIsSystem() bool {
+	if x != nil && x.IsSystem != nil {
+		return *x.IsSystem
+	}
+	return false
+}
+
+func (x *DeleteVnfTemplateRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
+func (x *DeleteVnfTemplateRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *RegisterTemplateCmdByAdminRequest) GetChecksum() string {
-	if x != nil && x.Checksum != nil {
-		return *x.Checksum
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetTemplateTag() string {
-	if x != nil && x.TemplateTag != nil {
-		return *x.TemplateTag
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetIsDynamicallyScalable() bool {
-	if x != nil && x.IsDynamicallyScalable != nil {
-		return *x.IsDynamicallyScalable
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetIsRoutingType() bool {
-	if x != nil && x.IsRoutingType != nil {
-		return *x.IsRoutingType
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetZoneIds() []string {
-	if x != nil {
-		return x.ZoneIds
-	}
-	return nil
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetDirectDownload() bool {
-	if x != nil && x.DirectDownload != nil {
-		return *x.DirectDownload
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetDeployAsIs() bool {
-	if x != nil && x.DeployAsIs != nil {
-		return *x.DeployAsIs
-	}
-	return false
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetTemplateType() string {
-	if x != nil && x.TemplateType != nil {
-		return *x.TemplateType
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *RegisterTemplateCmdByAdminRequest) GetResponseType() string {
+func (x *DeleteVnfTemplateRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RegisterTemplateCmdByAdminResponse represents the response from registers an existing template into the cloudstack cloud.
-type RegisterTemplateCmdByAdminResponse struct {
+// DeleteVnfTemplateResponse represents the response from deletes a vnf template from the system. all virtual machines using the deleted template will not be affected.
+type DeleteVnfTemplateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -326,20 +130,20 @@ type RegisterTemplateCmdByAdminResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterTemplateCmdByAdminResponse) Reset() {
-	*x = RegisterTemplateCmdByAdminResponse{}
+func (x *DeleteVnfTemplateResponse) Reset() {
+	*x = DeleteVnfTemplateResponse{}
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterTemplateCmdByAdminResponse) String() string {
+func (x *DeleteVnfTemplateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterTemplateCmdByAdminResponse) ProtoMessage() {}
+func (*DeleteVnfTemplateResponse) ProtoMessage() {}
 
-func (x *RegisterTemplateCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteVnfTemplateResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -351,16 +155,125 @@ func (x *RegisterTemplateCmdByAdminResponse) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterTemplateCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*RegisterTemplateCmdByAdminResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteVnfTemplateResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVnfTemplateResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RegisterTemplateCmdByAdminResponse) GetResult() *Result {
+func (x *DeleteVnfTemplateResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
+}
+
+// ListTemplatePermissionsCmdByAdminRequest represents the parameters for list template visibility and all accounts that have permissions to view this template.
+type ListTemplatePermissionsCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the template ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTemplatePermissionsCmdByAdminRequest) Reset() {
+	*x = ListTemplatePermissionsCmdByAdminRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTemplatePermissionsCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTemplatePermissionsCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ListTemplatePermissionsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTemplatePermissionsCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ListTemplatePermissionsCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListTemplatePermissionsCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListTemplatePermissionsCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListTemplatePermissionsCmdByAdminResponse represents the response from list template visibility and all accounts that have permissions to view this template.
+type ListTemplatePermissionsCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of TemplatePermissionss
+	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of TemplatePermissionss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTemplatePermissionsCmdByAdminResponse) Reset() {
+	*x = ListTemplatePermissionsCmdByAdminResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTemplatePermissionsCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTemplatePermissionsCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ListTemplatePermissionsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTemplatePermissionsCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ListTemplatePermissionsCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListTemplatePermissionsCmdByAdminResponse) GetItems() []*TemplatePermissions {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListTemplatePermissionsCmdByAdminResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListVnfTemplatesRequest represents the parameters for list all public, private, and privileged vnf templates.
@@ -419,7 +332,7 @@ type ListVnfTemplatesRequest struct {
 
 func (x *ListVnfTemplatesRequest) Reset() {
 	*x = ListVnfTemplatesRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -431,7 +344,7 @@ func (x *ListVnfTemplatesRequest) String() string {
 func (*ListVnfTemplatesRequest) ProtoMessage() {}
 
 func (x *ListVnfTemplatesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -444,7 +357,7 @@ func (x *ListVnfTemplatesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVnfTemplatesRequest.ProtoReflect.Descriptor instead.
 func (*ListVnfTemplatesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListVnfTemplatesRequest) GetRunAsAdmin() bool {
@@ -635,7 +548,7 @@ type ListVnfTemplatesResponse struct {
 
 func (x *ListVnfTemplatesResponse) Reset() {
 	*x = ListVnfTemplatesResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -647,7 +560,7 @@ func (x *ListVnfTemplatesResponse) String() string {
 func (*ListVnfTemplatesResponse) ProtoMessage() {}
 
 func (x *ListVnfTemplatesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -660,7 +573,7 @@ func (x *ListVnfTemplatesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVnfTemplatesResponse.ProtoReflect.Descriptor instead.
 func (*ListVnfTemplatesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListVnfTemplatesResponse) GetItems() []*Template {
@@ -675,160 +588,6 @@ func (x *ListVnfTemplatesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// UpdateTemplatePermissionsRequest represents the parameters for updates a template visibility permissions. a public template is visible to all accounts within the same domain. a private template is visible only to the owner of the template. a privileged template is a private template with account permissions added. only accounts specified under the template permissions are visible to them.
-type UpdateTemplatePermissionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// a comma delimited list of accounts within caller's domain. If specified, "op" parameter has to be passed in.
-	AccountNames []string `protobuf:"bytes,1,rep,name=account_names,json=accountNames" json:"account_names,omitempty"`
-	// the template ID
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// true for featured template/iso, false otherwise
-	Featured *bool `protobuf:"varint,3,opt,name=featured" json:"featured,omitempty"`
-	// true for public template/iso, false for private templates/isos
-	IsPublic *bool `protobuf:"varint,4,opt,name=is_public,json=isPublic" json:"is_public,omitempty"`
-	// true if the template/iso is extractable, false other wise. Can be set only by root admin
-	IsExtractable *bool `protobuf:"varint,5,opt,name=is_extractable,json=isExtractable" json:"is_extractable,omitempty"`
-	// permission operator (add, remove, reset)
-	Operation *string `protobuf:"bytes,6,opt,name=operation" json:"operation,omitempty"`
-	// a comma delimited list of projects. If specified, "op" parameter has to be passed in.
-	ProjectIds []string `protobuf:"bytes,7,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateTemplatePermissionsRequest) Reset() {
-	*x = UpdateTemplatePermissionsRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateTemplatePermissionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateTemplatePermissionsRequest) ProtoMessage() {}
-
-func (x *UpdateTemplatePermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateTemplatePermissionsRequest.ProtoReflect.Descriptor instead.
-func (*UpdateTemplatePermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetAccountNames() []string {
-	if x != nil {
-		return x.AccountNames
-	}
-	return nil
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetFeatured() bool {
-	if x != nil && x.Featured != nil {
-		return *x.Featured
-	}
-	return false
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetIsPublic() bool {
-	if x != nil && x.IsPublic != nil {
-		return *x.IsPublic
-	}
-	return false
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetIsExtractable() bool {
-	if x != nil && x.IsExtractable != nil {
-		return *x.IsExtractable
-	}
-	return false
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetOperation() string {
-	if x != nil && x.Operation != nil {
-		return *x.Operation
-	}
-	return ""
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetProjectIds() []string {
-	if x != nil {
-		return x.ProjectIds
-	}
-	return nil
-}
-
-func (x *UpdateTemplatePermissionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateTemplatePermissionsResponse represents the response from updates a template visibility permissions. a public template is visible to all accounts within the same domain. a private template is visible only to the owner of the template. a privileged template is a private template with account permissions added. only accounts specified under the template permissions are visible to them.
-type UpdateTemplatePermissionsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateTemplatePermissionsResponse) Reset() {
-	*x = UpdateTemplatePermissionsResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateTemplatePermissionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateTemplatePermissionsResponse) ProtoMessage() {}
-
-func (x *UpdateTemplatePermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateTemplatePermissionsResponse.ProtoReflect.Descriptor instead.
-func (*UpdateTemplatePermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateTemplatePermissionsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // UpdateVnfTemplateRequest represents the parameters for updates a template to vnf template or attributes of a vnf template.
@@ -1434,6 +1193,1104 @@ func (x *ListTemplatesResponse) GetTotalCount() int32 {
 	return 0
 }
 
+// CreateTemplateCmdByAdminRequest represents the parameters for creates a template of a virtual machine. the virtual machine must be in a stopped state. a template created from this command is automatically designated as a private template visible to the account that created it.
+type CreateTemplateCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 32 or 64 bit
+	Bits *int32 `protobuf:"varint,1,opt,name=bits" json:"bits,omitempty"`
+	// The display text of the template, defaults to the 'name'.
+	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// true if this template is a featured template, false otherwise
+	Featured *bool `protobuf:"varint,3,opt,name=featured" json:"featured,omitempty"`
+	// true if this template is a public template, false otherwise
+	PublicTemplate *bool `protobuf:"varint,4,opt,name=public_template,json=publicTemplate" json:"public_template,omitempty"`
+	// the name of the template
+	TemplateName *string `protobuf:"bytes,5,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
+	// the ID of the OS Type that best represents the OS of this template.
+	OsTypeId *int64 `protobuf:"varint,6,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// true if the template supports the password reset feature; default is false
+	PasswordEnabled *bool `protobuf:"varint,7,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
+	// true if the template supports the sshkey upload feature; default is false
+	SshKeyEnabled *bool `protobuf:"varint,8,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
+	// true if the template requires HVM, false otherwise
+	RequiresHvm *bool `protobuf:"varint,9,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
+	// the ID of the snapshot the template is being created from. Either this parameter, or volumeId has to be passed in
+	SnapshotId *int64 `protobuf:"varint,10,opt,name=snapshot_id,json=snapshotId" json:"snapshot_id,omitempty"`
+	// the ID of the disk volume the template is being created from. Either this parameter, or snapshotId has to be passed in
+	VolumeId *int64 `protobuf:"varint,11,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
+	// Optional, VM ID. If this presents, it is going to create a baremetal template for VM this ID refers to. This is only for VM whose hypervisor type is BareMetal
+	VmId *int64 `protobuf:"varint,12,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// Optional, only for baremetal hypervisor. The directory name where template stored on CIFS server
+	Url *string `protobuf:"bytes,13,opt,name=url" json:"url,omitempty"`
+	// the tag for this template.
+	TemplateTag *string `protobuf:"bytes,14,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
+	// Template details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	Details map[string]string `protobuf:"bytes,15,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// true if template contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	IsDynamicallyScalable *bool `protobuf:"varint,16,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// create template for the project
+	ProjectId *int64 `protobuf:"varint,17,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the zone for the template. Can be specified with snapshot only
+	ZoneId *int64 `protobuf:"varint,18,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,19,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional accountName. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,20,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	StartEventId *int64 `protobuf:"varint,21,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,22,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,23,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateTemplateCmdByAdminRequest) Reset() {
+	*x = CreateTemplateCmdByAdminRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateTemplateCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateTemplateCmdByAdminRequest) ProtoMessage() {}
+
+func (x *CreateTemplateCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateTemplateCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*CreateTemplateCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetBits() int32 {
+	if x != nil && x.Bits != nil {
+		return *x.Bits
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetFeatured() bool {
+	if x != nil && x.Featured != nil {
+		return *x.Featured
+	}
+	return false
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetPublicTemplate() bool {
+	if x != nil && x.PublicTemplate != nil {
+		return *x.PublicTemplate
+	}
+	return false
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetTemplateName() string {
+	if x != nil && x.TemplateName != nil {
+		return *x.TemplateName
+	}
+	return ""
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetPasswordEnabled() bool {
+	if x != nil && x.PasswordEnabled != nil {
+		return *x.PasswordEnabled
+	}
+	return false
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetSshKeyEnabled() bool {
+	if x != nil && x.SshKeyEnabled != nil {
+		return *x.SshKeyEnabled
+	}
+	return false
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetRequiresHvm() bool {
+	if x != nil && x.RequiresHvm != nil {
+		return *x.RequiresHvm
+	}
+	return false
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetSnapshotId() int64 {
+	if x != nil && x.SnapshotId != nil {
+		return *x.SnapshotId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetVolumeId() int64 {
+	if x != nil && x.VolumeId != nil {
+		return *x.VolumeId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetTemplateTag() string {
+	if x != nil && x.TemplateTag != nil {
+		return *x.TemplateTag
+	}
+	return ""
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateTemplateCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateTemplateCmdByAdminResponse represents the response from creates a template of a virtual machine. the virtual machine must be in a stopped state. a template created from this command is automatically designated as a private template visible to the account that created it.
+type CreateTemplateCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateTemplateCmdByAdminResponse) Reset() {
+	*x = CreateTemplateCmdByAdminResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateTemplateCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateTemplateCmdByAdminResponse) ProtoMessage() {}
+
+func (x *CreateTemplateCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateTemplateCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*CreateTemplateCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CreateTemplateCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CopyTemplateRequest represents the parameters for copies a template from one zone to another.
+type CopyTemplateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// ID of the zone the template is being copied to.
+	DestZoneId *int64 `protobuf:"varint,2,opt,name=dest_zone_id,json=destZoneId" json:"dest_zone_id,omitempty"`
+	// Template ID.
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
+	SourceZoneId *int64 `protobuf:"varint,4,opt,name=source_zone_id,json=sourceZoneId" json:"source_zone_id,omitempty"`
+	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	DestZoneIds []string `protobuf:"bytes,5,rep,name=dest_zone_ids,json=destZoneIds" json:"dest_zone_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CopyTemplateRequest) Reset() {
+	*x = CopyTemplateRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CopyTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CopyTemplateRequest) ProtoMessage() {}
+
+func (x *CopyTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CopyTemplateRequest.ProtoReflect.Descriptor instead.
+func (*CopyTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CopyTemplateRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *CopyTemplateRequest) GetDestZoneId() int64 {
+	if x != nil && x.DestZoneId != nil {
+		return *x.DestZoneId
+	}
+	return 0
+}
+
+func (x *CopyTemplateRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CopyTemplateRequest) GetSourceZoneId() int64 {
+	if x != nil && x.SourceZoneId != nil {
+		return *x.SourceZoneId
+	}
+	return 0
+}
+
+func (x *CopyTemplateRequest) GetDestZoneIds() []string {
+	if x != nil {
+		return x.DestZoneIds
+	}
+	return nil
+}
+
+func (x *CopyTemplateRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CopyTemplateRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CopyTemplateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CopyTemplateResponse represents the response from copies a template from one zone to another.
+type CopyTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CopyTemplateResponse) Reset() {
+	*x = CopyTemplateResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CopyTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CopyTemplateResponse) ProtoMessage() {}
+
+func (x *CopyTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CopyTemplateResponse.ProtoReflect.Descriptor instead.
+func (*CopyTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *CopyTemplateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteTemplateRequest represents the parameters for deletes a template from the system. all virtual machines using the deleted template will not be affected.
+type DeleteTemplateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the template
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the ID of zone of the template
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// Force delete a template.
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	// Necessary if the template's type is system.
+	IsSystem *bool `protobuf:"varint,4,opt,name=is_system,json=isSystem" json:"is_system,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTemplateRequest) Reset() {
+	*x = DeleteTemplateRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTemplateRequest) ProtoMessage() {}
+
+func (x *DeleteTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTemplateRequest.ProtoReflect.Descriptor instead.
+func (*DeleteTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *DeleteTemplateRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteTemplateRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *DeleteTemplateRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DeleteTemplateRequest) GetIsSystem() bool {
+	if x != nil && x.IsSystem != nil {
+		return *x.IsSystem
+	}
+	return false
+}
+
+func (x *DeleteTemplateRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteTemplateRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteTemplateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteTemplateResponse represents the response from deletes a template from the system. all virtual machines using the deleted template will not be affected.
+type DeleteTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTemplateResponse) Reset() {
+	*x = DeleteTemplateResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTemplateResponse) ProtoMessage() {}
+
+func (x *DeleteTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTemplateResponse.ProtoReflect.Descriptor instead.
+func (*DeleteTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *DeleteTemplateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListTemplatePermissionsRequest represents the parameters for list template visibility and all accounts that have permissions to view this template.
+type ListTemplatePermissionsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the template ID
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTemplatePermissionsRequest) Reset() {
+	*x = ListTemplatePermissionsRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTemplatePermissionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTemplatePermissionsRequest) ProtoMessage() {}
+
+func (x *ListTemplatePermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTemplatePermissionsRequest.ProtoReflect.Descriptor instead.
+func (*ListTemplatePermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ListTemplatePermissionsRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListTemplatePermissionsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListTemplatePermissionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListTemplatePermissionsResponse represents the response from list template visibility and all accounts that have permissions to view this template.
+type ListTemplatePermissionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of TemplatePermissionss
+	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of TemplatePermissionss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTemplatePermissionsResponse) Reset() {
+	*x = ListTemplatePermissionsResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTemplatePermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTemplatePermissionsResponse) ProtoMessage() {}
+
+func (x *ListTemplatePermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTemplatePermissionsResponse.ProtoReflect.Descriptor instead.
+func (*ListTemplatePermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ListTemplatePermissionsResponse) GetItems() []*TemplatePermissions {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListTemplatePermissionsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateTemplateCmdByAdminRequest represents the parameters for updates attributes of a template.
+type UpdateTemplateCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
+	TemplateType *string `protobuf:"bytes,1,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
+	// the tag for this template.
+	TemplateTag *string `protobuf:"bytes,2,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
+	// true if image is bootable, false otherwise; available only for updateIso API
+	Bootable *bool `protobuf:"varint,3,opt,name=bootable" json:"bootable,omitempty"`
+	// true if the template requires HVM, false otherwise; available only for updateTemplate API
+	RequiresHvm *bool `protobuf:"varint,4,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
+	// the display text of the image
+	DisplayText *string `protobuf:"bytes,5,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the ID of the image file
+	Id *int64 `protobuf:"varint,6,opt,name=id" json:"id,omitempty"`
+	// the name of the image file
+	TemplateName *string `protobuf:"bytes,7,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
+	// the ID of the OS type that best represents the OS of this image.
+	OsTypeId *int64 `protobuf:"varint,8,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// the format for the image
+	Format *string `protobuf:"bytes,9,opt,name=format" json:"format,omitempty"`
+	// true if the image supports the password reset feature; default is false
+	PasswordEnabled *bool `protobuf:"varint,10,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
+	// true if the template supports the sshkey upload feature; default is false
+	SshKeyEnabled *bool `protobuf:"varint,11,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
+	// sort key of the template, integer
+	SortKey *int32 `protobuf:"varint,12,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
+	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	IsDynamicallyScalable *bool `protobuf:"varint,13,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// true if the template type is routing i.e., if template is used to deploy router
+	IsRoutingType *bool `protobuf:"varint,14,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
+	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	Details map[string]string `protobuf:"bytes,15,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	CleanupDetails *bool `protobuf:"varint,16,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
+	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,17,opt,name=arch" json:"arch,omitempty"`
+	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) Reset() {
+	*x = UpdateTemplateCmdByAdminRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTemplateCmdByAdminRequest) ProtoMessage() {}
+
+func (x *UpdateTemplateCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTemplateCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTemplateCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetTemplateType() string {
+	if x != nil && x.TemplateType != nil {
+		return *x.TemplateType
+	}
+	return ""
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetTemplateTag() string {
+	if x != nil && x.TemplateTag != nil {
+		return *x.TemplateTag
+	}
+	return ""
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetBootable() bool {
+	if x != nil && x.Bootable != nil {
+		return *x.Bootable
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetRequiresHvm() bool {
+	if x != nil && x.RequiresHvm != nil {
+		return *x.RequiresHvm
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetTemplateName() string {
+	if x != nil && x.TemplateName != nil {
+		return *x.TemplateName
+	}
+	return ""
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetFormat() string {
+	if x != nil && x.Format != nil {
+		return *x.Format
+	}
+	return ""
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetPasswordEnabled() bool {
+	if x != nil && x.PasswordEnabled != nil {
+		return *x.PasswordEnabled
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetSshKeyEnabled() bool {
+	if x != nil && x.SshKeyEnabled != nil {
+		return *x.SshKeyEnabled
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetSortKey() int32 {
+	if x != nil && x.SortKey != nil {
+		return *x.SortKey
+	}
+	return 0
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetIsRoutingType() bool {
+	if x != nil && x.IsRoutingType != nil {
+		return *x.IsRoutingType
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetCleanupDetails() bool {
+	if x != nil && x.CleanupDetails != nil {
+		return *x.CleanupDetails
+	}
+	return false
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *UpdateTemplateCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateTemplateCmdByAdminResponse represents the response from updates attributes of a template.
+type UpdateTemplateCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTemplateCmdByAdminResponse) Reset() {
+	*x = UpdateTemplateCmdByAdminResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTemplateCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTemplateCmdByAdminResponse) ProtoMessage() {}
+
+func (x *UpdateTemplateCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTemplateCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTemplateCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *UpdateTemplateCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateTemplatePermissionsRequest represents the parameters for updates a template visibility permissions. a public template is visible to all accounts within the same domain. a private template is visible only to the owner of the template. a privileged template is a private template with account permissions added. only accounts specified under the template permissions are visible to them.
+type UpdateTemplatePermissionsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// a comma delimited list of accounts within caller's domain. If specified, "op" parameter has to be passed in.
+	AccountNames []string `protobuf:"bytes,1,rep,name=account_names,json=accountNames" json:"account_names,omitempty"`
+	// the template ID
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// true for featured template/iso, false otherwise
+	Featured *bool `protobuf:"varint,3,opt,name=featured" json:"featured,omitempty"`
+	// true for public template/iso, false for private templates/isos
+	IsPublic *bool `protobuf:"varint,4,opt,name=is_public,json=isPublic" json:"is_public,omitempty"`
+	// true if the template/iso is extractable, false other wise. Can be set only by root admin
+	IsExtractable *bool `protobuf:"varint,5,opt,name=is_extractable,json=isExtractable" json:"is_extractable,omitempty"`
+	// permission operator (add, remove, reset)
+	Operation *string `protobuf:"bytes,6,opt,name=operation" json:"operation,omitempty"`
+	// a comma delimited list of projects. If specified, "op" parameter has to be passed in.
+	ProjectIds []string `protobuf:"bytes,7,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTemplatePermissionsRequest) Reset() {
+	*x = UpdateTemplatePermissionsRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTemplatePermissionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTemplatePermissionsRequest) ProtoMessage() {}
+
+func (x *UpdateTemplatePermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTemplatePermissionsRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTemplatePermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetAccountNames() []string {
+	if x != nil {
+		return x.AccountNames
+	}
+	return nil
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetFeatured() bool {
+	if x != nil && x.Featured != nil {
+		return *x.Featured
+	}
+	return false
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetIsPublic() bool {
+	if x != nil && x.IsPublic != nil {
+		return *x.IsPublic
+	}
+	return false
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetIsExtractable() bool {
+	if x != nil && x.IsExtractable != nil {
+		return *x.IsExtractable
+	}
+	return false
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetOperation() string {
+	if x != nil && x.Operation != nil {
+		return *x.Operation
+	}
+	return ""
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetProjectIds() []string {
+	if x != nil {
+		return x.ProjectIds
+	}
+	return nil
+}
+
+func (x *UpdateTemplatePermissionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateTemplatePermissionsResponse represents the response from updates a template visibility permissions. a public template is visible to all accounts within the same domain. a private template is visible only to the owner of the template. a privileged template is a private template with account permissions added. only accounts specified under the template permissions are visible to them.
+type UpdateTemplatePermissionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTemplatePermissionsResponse) Reset() {
+	*x = UpdateTemplatePermissionsResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTemplatePermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTemplatePermissionsResponse) ProtoMessage() {}
+
+func (x *UpdateTemplatePermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTemplatePermissionsResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTemplatePermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UpdateTemplatePermissionsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // CreateTemplateRequest represents the parameters for creates a template of a virtual machine. the virtual machine must be in a stopped state. a template created from this command is automatically designated as a private template visible to the account that created it.
 type CreateTemplateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1488,7 +2345,7 @@ type CreateTemplateRequest struct {
 
 func (x *CreateTemplateRequest) Reset() {
 	*x = CreateTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1500,7 +2357,7 @@ func (x *CreateTemplateRequest) String() string {
 func (*CreateTemplateRequest) ProtoMessage() {}
 
 func (x *CreateTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1513,7 +2370,7 @@ func (x *CreateTemplateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTemplateRequest.ProtoReflect.Descriptor instead.
 func (*CreateTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CreateTemplateRequest) GetRunAsAdmin() bool {
@@ -1695,7 +2552,7 @@ type CreateTemplateResponse struct {
 
 func (x *CreateTemplateResponse) Reset() {
 	*x = CreateTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1707,7 +2564,7 @@ func (x *CreateTemplateResponse) String() string {
 func (*CreateTemplateResponse) ProtoMessage() {}
 
 func (x *CreateTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1720,7 +2577,7 @@ func (x *CreateTemplateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTemplateResponse.ProtoReflect.Descriptor instead.
 func (*CreateTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateTemplateResponse) GetResult() *Result {
@@ -1730,570 +2587,90 @@ func (x *CreateTemplateResponse) GetResult() *Result {
 	return nil
 }
 
-// ListTemplatePermissionsRequest represents the parameters for list template visibility and all accounts that have permissions to view this template.
-type ListTemplatePermissionsRequest struct {
+// RegisterTemplateRequest represents the parameters for registers an existing template into the cloudstack cloud.
+type RegisterTemplateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Whether to run this operation as an administrator
 	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the template ID
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListTemplatePermissionsRequest) Reset() {
-	*x = ListTemplatePermissionsRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListTemplatePermissionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListTemplatePermissionsRequest) ProtoMessage() {}
-
-func (x *ListTemplatePermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListTemplatePermissionsRequest.ProtoReflect.Descriptor instead.
-func (*ListTemplatePermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *ListTemplatePermissionsRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListTemplatePermissionsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListTemplatePermissionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListTemplatePermissionsResponse represents the response from list template visibility and all accounts that have permissions to view this template.
-type ListTemplatePermissionsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of TemplatePermissionss
-	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of TemplatePermissionss
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListTemplatePermissionsResponse) Reset() {
-	*x = ListTemplatePermissionsResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListTemplatePermissionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListTemplatePermissionsResponse) ProtoMessage() {}
-
-func (x *ListTemplatePermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListTemplatePermissionsResponse.ProtoReflect.Descriptor instead.
-func (*ListTemplatePermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *ListTemplatePermissionsResponse) GetItems() []*TemplatePermissions {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListTemplatePermissionsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateTemplateCmdByAdminRequest represents the parameters for updates attributes of a template.
-type UpdateTemplateCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
-	TemplateType *string `protobuf:"bytes,1,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
-	// the tag for this template.
-	TemplateTag *string `protobuf:"bytes,2,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
-	// true if image is bootable, false otherwise; available only for updateIso API
-	Bootable *bool `protobuf:"varint,3,opt,name=bootable" json:"bootable,omitempty"`
-	// true if the template requires HVM, false otherwise; available only for updateTemplate API
-	RequiresHvm *bool `protobuf:"varint,4,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
-	// the display text of the image
-	DisplayText *string `protobuf:"bytes,5,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the ID of the image file
-	Id *int64 `protobuf:"varint,6,opt,name=id" json:"id,omitempty"`
-	// the name of the image file
-	TemplateName *string `protobuf:"bytes,7,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
-	// the ID of the OS type that best represents the OS of this image.
-	OsTypeId *int64 `protobuf:"varint,8,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
-	// the format for the image
-	Format *string `protobuf:"bytes,9,opt,name=format" json:"format,omitempty"`
-	// true if the image supports the password reset feature; default is false
+	// 32 or 64 bits support. 64 by default
+	Bits *int32 `protobuf:"varint,2,opt,name=bits" json:"bits,omitempty"`
+	// The display text of the template, defaults to 'name'.
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
+	Format *string `protobuf:"bytes,4,opt,name=format" json:"format,omitempty"`
+	// the target hypervisor for the template
+	Hypervisor *string `protobuf:"bytes,5,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// true if this template is a featured template, false otherwise
+	Featured *bool `protobuf:"varint,6,opt,name=featured" json:"featured,omitempty"`
+	// true if the template is available to all accounts; default is true
+	PublicTemplate *bool `protobuf:"varint,7,opt,name=public_template,json=publicTemplate" json:"public_template,omitempty"`
+	// the name of the template
+	TemplateName *string `protobuf:"bytes,8,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
+	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
+	OsTypeId *int64 `protobuf:"varint,9,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// true if the template supports the password reset feature; default is false
 	PasswordEnabled *bool `protobuf:"varint,10,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
 	// true if the template supports the sshkey upload feature; default is false
 	SshKeyEnabled *bool `protobuf:"varint,11,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
-	// sort key of the template, integer
-	SortKey *int32 `protobuf:"varint,12,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
-	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	IsDynamicallyScalable *bool `protobuf:"varint,13,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
-	// true if the template type is routing i.e., if template is used to deploy router
-	IsRoutingType *bool `protobuf:"varint,14,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
-	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	Details map[string]string `protobuf:"bytes,15,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	CleanupDetails *bool `protobuf:"varint,16,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
-	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,17,opt,name=arch" json:"arch,omitempty"`
-	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) Reset() {
-	*x = UpdateTemplateCmdByAdminRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateTemplateCmdByAdminRequest) ProtoMessage() {}
-
-func (x *UpdateTemplateCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateTemplateCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*UpdateTemplateCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetTemplateType() string {
-	if x != nil && x.TemplateType != nil {
-		return *x.TemplateType
-	}
-	return ""
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetTemplateTag() string {
-	if x != nil && x.TemplateTag != nil {
-		return *x.TemplateTag
-	}
-	return ""
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetBootable() bool {
-	if x != nil && x.Bootable != nil {
-		return *x.Bootable
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetRequiresHvm() bool {
-	if x != nil && x.RequiresHvm != nil {
-		return *x.RequiresHvm
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetTemplateName() string {
-	if x != nil && x.TemplateName != nil {
-		return *x.TemplateName
-	}
-	return ""
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetOsTypeId() int64 {
-	if x != nil && x.OsTypeId != nil {
-		return *x.OsTypeId
-	}
-	return 0
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetFormat() string {
-	if x != nil && x.Format != nil {
-		return *x.Format
-	}
-	return ""
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetPasswordEnabled() bool {
-	if x != nil && x.PasswordEnabled != nil {
-		return *x.PasswordEnabled
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetSshKeyEnabled() bool {
-	if x != nil && x.SshKeyEnabled != nil {
-		return *x.SshKeyEnabled
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetSortKey() int32 {
-	if x != nil && x.SortKey != nil {
-		return *x.SortKey
-	}
-	return 0
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetIsDynamicallyScalable() bool {
-	if x != nil && x.IsDynamicallyScalable != nil {
-		return *x.IsDynamicallyScalable
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetIsRoutingType() bool {
-	if x != nil && x.IsRoutingType != nil {
-		return *x.IsRoutingType
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetCleanupDetails() bool {
-	if x != nil && x.CleanupDetails != nil {
-		return *x.CleanupDetails
-	}
-	return false
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *UpdateTemplateCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateTemplateCmdByAdminResponse represents the response from updates attributes of a template.
-type UpdateTemplateCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateTemplateCmdByAdminResponse) Reset() {
-	*x = UpdateTemplateCmdByAdminResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateTemplateCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateTemplateCmdByAdminResponse) ProtoMessage() {}
-
-func (x *UpdateTemplateCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateTemplateCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*UpdateTemplateCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *UpdateTemplateCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteTemplateRequest represents the parameters for deletes a template from the system. all virtual machines using the deleted template will not be affected.
-type DeleteTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the template
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the ID of zone of the template
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// Force delete a template.
-	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
-	// Necessary if the template's type is system.
-	IsSystem *bool `protobuf:"varint,4,opt,name=is_system,json=isSystem" json:"is_system,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTemplateRequest) Reset() {
-	*x = DeleteTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTemplateRequest) ProtoMessage() {}
-
-func (x *DeleteTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTemplateRequest.ProtoReflect.Descriptor instead.
-func (*DeleteTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *DeleteTemplateRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteTemplateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *DeleteTemplateRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DeleteTemplateRequest) GetIsSystem() bool {
-	if x != nil && x.IsSystem != nil {
-		return *x.IsSystem
-	}
-	return false
-}
-
-func (x *DeleteTemplateRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteTemplateRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteTemplateResponse represents the response from deletes a template from the system. all virtual machines using the deleted template will not be affected.
-type DeleteTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTemplateResponse) Reset() {
-	*x = DeleteTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTemplateResponse) ProtoMessage() {}
-
-func (x *DeleteTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTemplateResponse.ProtoReflect.Descriptor instead.
-func (*DeleteTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *DeleteTemplateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateTemplateRequest represents the parameters for updates attributes of a template.
-type UpdateTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
-	TemplateType *string `protobuf:"bytes,2,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
+	// true if the template or its derivatives are extractable; default is false
+	Extractable *bool `protobuf:"varint,12,opt,name=extractable" json:"extractable,omitempty"`
+	// true if this template requires HVM
+	RequiresHvm *bool `protobuf:"varint,13,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
+	// the URL of where the template is hosted. Possible URL include http:// and https://
+	Url *string `protobuf:"bytes,14,opt,name=url" json:"url,omitempty"`
+	// the ID of the zone the template is to be hosted on
+	ZoneId *int64 `protobuf:"varint,15,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,16,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional accountName. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,17,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the checksum value of this template. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	Checksum *string `protobuf:"bytes,18,opt,name=checksum" json:"checksum,omitempty"`
 	// the tag for this template.
-	TemplateTag *string `protobuf:"bytes,3,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
-	// true if image is bootable, false otherwise; available only for updateIso API
-	Bootable *bool `protobuf:"varint,4,opt,name=bootable" json:"bootable,omitempty"`
-	// true if the template requires HVM, false otherwise; available only for updateTemplate API
-	RequiresHvm *bool `protobuf:"varint,5,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
-	// the display text of the image
-	DisplayText *string `protobuf:"bytes,6,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the ID of the image file
-	Id *int64 `protobuf:"varint,7,opt,name=id" json:"id,omitempty"`
-	// the name of the image file
-	TemplateName *string `protobuf:"bytes,8,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
-	// the ID of the OS type that best represents the OS of this image.
-	OsTypeId *int64 `protobuf:"varint,9,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
-	// the format for the image
-	Format *string `protobuf:"bytes,10,opt,name=format" json:"format,omitempty"`
-	// true if the image supports the password reset feature; default is false
-	PasswordEnabled *bool `protobuf:"varint,11,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
-	// true if the template supports the sshkey upload feature; default is false
-	SshKeyEnabled *bool `protobuf:"varint,12,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
-	// sort key of the template, integer
-	SortKey *int32 `protobuf:"varint,13,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
-	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	IsDynamicallyScalable *bool `protobuf:"varint,14,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	TemplateTag *string `protobuf:"bytes,19,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
+	// Register template for the project
+	ProjectId *int64 `protobuf:"varint,20,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Template details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	Details map[string]string `protobuf:"bytes,21,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// true if template contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	IsDynamicallyScalable *bool `protobuf:"varint,22,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
 	// true if the template type is routing i.e., if template is used to deploy router
-	IsRoutingType *bool `protobuf:"varint,15,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
-	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	Details map[string]string `protobuf:"bytes,16,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	CleanupDetails *bool `protobuf:"varint,17,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
-	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,18,opt,name=arch" json:"arch,omitempty"`
-	ResponseType  *string `protobuf:"bytes,19,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	IsRoutingType *bool `protobuf:"varint,23,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
+	// A list of zone ids where the template will be hosted. Use this parameter if the template needs to be registered to multiple zones in one go. Use zoneid if the template needs to be registered to only one zone.Passing only -1 to this will cause the template to be registered as a cross zone template and will be copied to all zones.
+	ZoneIds []string `protobuf:"bytes,24,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
+	// true if template should bypass Secondary Storage and be downloaded to Primary Storage on deployment
+	DirectDownload *bool `protobuf:"varint,25,opt,name=direct_download,json=directDownload" json:"direct_download,omitempty"`
+	// (VMware only) true if VM deployments should preserve all the configurations defined for this template
+	DeployAsIs *bool `protobuf:"varint,26,opt,name=deploy_as_is,json=deployAsIs" json:"deploy_as_is,omitempty"`
+	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
+	TemplateType *string `protobuf:"bytes,27,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
+	// the CPU arch of the template. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,28,opt,name=arch" json:"arch,omitempty"`
+	ResponseType  *string `protobuf:"bytes,29,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateTemplateRequest) Reset() {
-	*x = UpdateTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[18]
+func (x *RegisterTemplateRequest) Reset() {
+	*x = RegisterTemplateRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateTemplateRequest) String() string {
+func (x *RegisterTemplateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateTemplateRequest) ProtoMessage() {}
+func (*RegisterTemplateRequest) ProtoMessage() {}
 
-func (x *UpdateTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[18]
+func (x *RegisterTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2304,559 +2681,216 @@ func (x *UpdateTemplateRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateTemplateRequest.ProtoReflect.Descriptor instead.
-func (*UpdateTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{18}
+// Deprecated: Use RegisterTemplateRequest.ProtoReflect.Descriptor instead.
+func (*RegisterTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *UpdateTemplateRequest) GetRunAsAdmin() bool {
+func (x *RegisterTemplateRequest) GetRunAsAdmin() bool {
 	if x != nil && x.RunAsAdmin != nil {
 		return *x.RunAsAdmin
 	}
 	return false
 }
 
-func (x *UpdateTemplateRequest) GetTemplateType() string {
-	if x != nil && x.TemplateType != nil {
-		return *x.TemplateType
+func (x *RegisterTemplateRequest) GetBits() int32 {
+	if x != nil && x.Bits != nil {
+		return *x.Bits
 	}
-	return ""
+	return 0
 }
 
-func (x *UpdateTemplateRequest) GetTemplateTag() string {
-	if x != nil && x.TemplateTag != nil {
-		return *x.TemplateTag
-	}
-	return ""
-}
-
-func (x *UpdateTemplateRequest) GetBootable() bool {
-	if x != nil && x.Bootable != nil {
-		return *x.Bootable
-	}
-	return false
-}
-
-func (x *UpdateTemplateRequest) GetRequiresHvm() bool {
-	if x != nil && x.RequiresHvm != nil {
-		return *x.RequiresHvm
-	}
-	return false
-}
-
-func (x *UpdateTemplateRequest) GetDisplayText() string {
+func (x *RegisterTemplateRequest) GetDisplayText() string {
 	if x != nil && x.DisplayText != nil {
 		return *x.DisplayText
 	}
 	return ""
 }
 
-func (x *UpdateTemplateRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateTemplateRequest) GetTemplateName() string {
-	if x != nil && x.TemplateName != nil {
-		return *x.TemplateName
-	}
-	return ""
-}
-
-func (x *UpdateTemplateRequest) GetOsTypeId() int64 {
-	if x != nil && x.OsTypeId != nil {
-		return *x.OsTypeId
-	}
-	return 0
-}
-
-func (x *UpdateTemplateRequest) GetFormat() string {
+func (x *RegisterTemplateRequest) GetFormat() string {
 	if x != nil && x.Format != nil {
 		return *x.Format
 	}
 	return ""
 }
 
-func (x *UpdateTemplateRequest) GetPasswordEnabled() bool {
+func (x *RegisterTemplateRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *RegisterTemplateRequest) GetFeatured() bool {
+	if x != nil && x.Featured != nil {
+		return *x.Featured
+	}
+	return false
+}
+
+func (x *RegisterTemplateRequest) GetPublicTemplate() bool {
+	if x != nil && x.PublicTemplate != nil {
+		return *x.PublicTemplate
+	}
+	return false
+}
+
+func (x *RegisterTemplateRequest) GetTemplateName() string {
+	if x != nil && x.TemplateName != nil {
+		return *x.TemplateName
+	}
+	return ""
+}
+
+func (x *RegisterTemplateRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *RegisterTemplateRequest) GetPasswordEnabled() bool {
 	if x != nil && x.PasswordEnabled != nil {
 		return *x.PasswordEnabled
 	}
 	return false
 }
 
-func (x *UpdateTemplateRequest) GetSshKeyEnabled() bool {
+func (x *RegisterTemplateRequest) GetSshKeyEnabled() bool {
 	if x != nil && x.SshKeyEnabled != nil {
 		return *x.SshKeyEnabled
 	}
 	return false
 }
 
-func (x *UpdateTemplateRequest) GetSortKey() int32 {
-	if x != nil && x.SortKey != nil {
-		return *x.SortKey
-	}
-	return 0
-}
-
-func (x *UpdateTemplateRequest) GetIsDynamicallyScalable() bool {
-	if x != nil && x.IsDynamicallyScalable != nil {
-		return *x.IsDynamicallyScalable
+func (x *RegisterTemplateRequest) GetExtractable() bool {
+	if x != nil && x.Extractable != nil {
+		return *x.Extractable
 	}
 	return false
 }
 
-func (x *UpdateTemplateRequest) GetIsRoutingType() bool {
-	if x != nil && x.IsRoutingType != nil {
-		return *x.IsRoutingType
+func (x *RegisterTemplateRequest) GetRequiresHvm() bool {
+	if x != nil && x.RequiresHvm != nil {
+		return *x.RequiresHvm
 	}
 	return false
 }
 
-func (x *UpdateTemplateRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpdateTemplateRequest) GetCleanupDetails() bool {
-	if x != nil && x.CleanupDetails != nil {
-		return *x.CleanupDetails
-	}
-	return false
-}
-
-func (x *UpdateTemplateRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *UpdateTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateTemplateResponse represents the response from updates attributes of a template.
-type UpdateTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateTemplateResponse) Reset() {
-	*x = UpdateTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateTemplateResponse) ProtoMessage() {}
-
-func (x *UpdateTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateTemplateResponse.ProtoReflect.Descriptor instead.
-func (*UpdateTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *UpdateTemplateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// PrepareTemplateRequest represents the parameters for load template into primary storage
-type PrepareTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// zone ID of the template to be prepared in primary storage(s).
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// template ID of the template to be prepared in primary storage(s).
-	TemplateId *int64 `protobuf:"varint,2,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
-	// storage pool ID of the primary storage pool to which the template should be prepared. If it is not provided the template is prepared on all the available primary storage pools.
-	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PrepareTemplateRequest) Reset() {
-	*x = PrepareTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PrepareTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PrepareTemplateRequest) ProtoMessage() {}
-
-func (x *PrepareTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PrepareTemplateRequest.ProtoReflect.Descriptor instead.
-func (*PrepareTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *PrepareTemplateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *PrepareTemplateRequest) GetTemplateId() int64 {
-	if x != nil && x.TemplateId != nil {
-		return *x.TemplateId
-	}
-	return 0
-}
-
-func (x *PrepareTemplateRequest) GetStorageId() int64 {
-	if x != nil && x.StorageId != nil {
-		return *x.StorageId
-	}
-	return 0
-}
-
-func (x *PrepareTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// PrepareTemplateResponse represents the response from load template into primary storage
-type PrepareTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PrepareTemplateResponse) Reset() {
-	*x = PrepareTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PrepareTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PrepareTemplateResponse) ProtoMessage() {}
-
-func (x *PrepareTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PrepareTemplateResponse.ProtoReflect.Descriptor instead.
-func (*PrepareTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *PrepareTemplateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ExtractTemplateRequest represents the parameters for extracts a template
-type ExtractTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the template
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the url to which the ISO would be extracted
-	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
-	// the ID of the zone where the ISO is originally located
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
-	Mode *string `protobuf:"bytes,4,opt,name=mode" json:"mode,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExtractTemplateRequest) Reset() {
-	*x = ExtractTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExtractTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExtractTemplateRequest) ProtoMessage() {}
-
-func (x *ExtractTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExtractTemplateRequest.ProtoReflect.Descriptor instead.
-func (*ExtractTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *ExtractTemplateRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ExtractTemplateRequest) GetUrl() string {
+func (x *RegisterTemplateRequest) GetUrl() string {
 	if x != nil && x.Url != nil {
 		return *x.Url
 	}
 	return ""
 }
 
-func (x *ExtractTemplateRequest) GetZoneId() int64 {
+func (x *RegisterTemplateRequest) GetZoneId() int64 {
 	if x != nil && x.ZoneId != nil {
 		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *ExtractTemplateRequest) GetMode() string {
-	if x != nil && x.Mode != nil {
-		return *x.Mode
-	}
-	return ""
-}
-
-func (x *ExtractTemplateRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *RegisterTemplateRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *ExtractTemplateRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *RegisterTemplateRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *ExtractTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *RegisterTemplateRequest) GetChecksum() string {
+	if x != nil && x.Checksum != nil {
+		return *x.Checksum
 	}
 	return ""
 }
 
-// ExtractTemplateResponse represents the response from extracts a template
-type ExtractTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExtractTemplateResponse) Reset() {
-	*x = ExtractTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExtractTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExtractTemplateResponse) ProtoMessage() {}
-
-func (x *ExtractTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+func (x *RegisterTemplateRequest) GetTemplateTag() string {
+	if x != nil && x.TemplateTag != nil {
+		return *x.TemplateTag
 	}
-	return mi.MessageOf(x)
+	return ""
 }
 
-// Deprecated: Use ExtractTemplateResponse.ProtoReflect.Descriptor instead.
-func (*ExtractTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{23}
+func (x *RegisterTemplateRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
 }
 
-func (x *ExtractTemplateResponse) GetResult() *Result {
+func (x *RegisterTemplateRequest) GetDetails() map[string]string {
 	if x != nil {
-		return x.Result
+		return x.Details
 	}
 	return nil
 }
 
-// CopyTemplateRequest represents the parameters for copies a template from one zone to another.
-type CopyTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// ID of the zone the template is being copied to.
-	DestZoneId *int64 `protobuf:"varint,2,opt,name=dest_zone_id,json=destZoneId" json:"dest_zone_id,omitempty"`
-	// Template ID.
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
-	SourceZoneId *int64 `protobuf:"varint,4,opt,name=source_zone_id,json=sourceZoneId" json:"source_zone_id,omitempty"`
-	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	DestZoneIds []string `protobuf:"bytes,5,rep,name=dest_zone_ids,json=destZoneIds" json:"dest_zone_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CopyTemplateRequest) Reset() {
-	*x = CopyTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CopyTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CopyTemplateRequest) ProtoMessage() {}
-
-func (x *CopyTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CopyTemplateRequest.ProtoReflect.Descriptor instead.
-func (*CopyTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *CopyTemplateRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
+func (x *RegisterTemplateRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
 	}
 	return false
 }
 
-func (x *CopyTemplateRequest) GetDestZoneId() int64 {
-	if x != nil && x.DestZoneId != nil {
-		return *x.DestZoneId
+func (x *RegisterTemplateRequest) GetIsRoutingType() bool {
+	if x != nil && x.IsRoutingType != nil {
+		return *x.IsRoutingType
 	}
-	return 0
+	return false
 }
 
-func (x *CopyTemplateRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *CopyTemplateRequest) GetSourceZoneId() int64 {
-	if x != nil && x.SourceZoneId != nil {
-		return *x.SourceZoneId
-	}
-	return 0
-}
-
-func (x *CopyTemplateRequest) GetDestZoneIds() []string {
+func (x *RegisterTemplateRequest) GetZoneIds() []string {
 	if x != nil {
-		return x.DestZoneIds
+		return x.ZoneIds
 	}
 	return nil
 }
 
-func (x *CopyTemplateRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *RegisterTemplateRequest) GetDirectDownload() bool {
+	if x != nil && x.DirectDownload != nil {
+		return *x.DirectDownload
 	}
-	return 0
+	return false
 }
 
-func (x *CopyTemplateRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *RegisterTemplateRequest) GetDeployAsIs() bool {
+	if x != nil && x.DeployAsIs != nil {
+		return *x.DeployAsIs
+	}
+	return false
+}
+
+func (x *RegisterTemplateRequest) GetTemplateType() string {
+	if x != nil && x.TemplateType != nil {
+		return *x.TemplateType
 	}
 	return ""
 }
 
-func (x *CopyTemplateRequest) GetResponseType() string {
+func (x *RegisterTemplateRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *RegisterTemplateRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CopyTemplateResponse represents the response from copies a template from one zone to another.
-type CopyTemplateResponse struct {
+// RegisterTemplateResponse represents the response from registers an existing template into the cloudstack cloud.
+type RegisterTemplateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2864,20 +2898,20 @@ type CopyTemplateResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CopyTemplateResponse) Reset() {
-	*x = CopyTemplateResponse{}
+func (x *RegisterTemplateResponse) Reset() {
+	*x = RegisterTemplateResponse{}
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CopyTemplateResponse) String() string {
+func (x *RegisterTemplateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CopyTemplateResponse) ProtoMessage() {}
+func (*RegisterTemplateResponse) ProtoMessage() {}
 
-func (x *CopyTemplateResponse) ProtoReflect() protoreflect.Message {
+func (x *RegisterTemplateResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2889,12 +2923,12 @@ func (x *CopyTemplateResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CopyTemplateResponse.ProtoReflect.Descriptor instead.
-func (*CopyTemplateResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RegisterTemplateResponse.ProtoReflect.Descriptor instead.
+func (*RegisterTemplateResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *CopyTemplateResponse) GetResult() *Result {
+func (x *RegisterTemplateResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -3267,6 +3301,402 @@ func (x *RegisterVnfTemplateResponse) GetResult() *Result {
 	return nil
 }
 
+// ExtractTemplateRequest represents the parameters for extracts a template
+type ExtractTemplateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the template
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the url to which the ISO would be extracted
+	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
+	// the ID of the zone where the ISO is originally located
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
+	Mode *string `protobuf:"bytes,4,opt,name=mode" json:"mode,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExtractTemplateRequest) Reset() {
+	*x = ExtractTemplateRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExtractTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExtractTemplateRequest) ProtoMessage() {}
+
+func (x *ExtractTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExtractTemplateRequest.ProtoReflect.Descriptor instead.
+func (*ExtractTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *ExtractTemplateRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ExtractTemplateRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *ExtractTemplateRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ExtractTemplateRequest) GetMode() string {
+	if x != nil && x.Mode != nil {
+		return *x.Mode
+	}
+	return ""
+}
+
+func (x *ExtractTemplateRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ExtractTemplateRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ExtractTemplateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ExtractTemplateResponse represents the response from extracts a template
+type ExtractTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExtractTemplateResponse) Reset() {
+	*x = ExtractTemplateResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExtractTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExtractTemplateResponse) ProtoMessage() {}
+
+func (x *ExtractTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExtractTemplateResponse.ProtoReflect.Descriptor instead.
+func (*ExtractTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *ExtractTemplateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateTemplateRequest represents the parameters for updates attributes of a template.
+type UpdateTemplateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
+	TemplateType *string `protobuf:"bytes,2,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
+	// the tag for this template.
+	TemplateTag *string `protobuf:"bytes,3,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
+	// true if image is bootable, false otherwise; available only for updateIso API
+	Bootable *bool `protobuf:"varint,4,opt,name=bootable" json:"bootable,omitempty"`
+	// true if the template requires HVM, false otherwise; available only for updateTemplate API
+	RequiresHvm *bool `protobuf:"varint,5,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
+	// the display text of the image
+	DisplayText *string `protobuf:"bytes,6,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the ID of the image file
+	Id *int64 `protobuf:"varint,7,opt,name=id" json:"id,omitempty"`
+	// the name of the image file
+	TemplateName *string `protobuf:"bytes,8,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
+	// the ID of the OS type that best represents the OS of this image.
+	OsTypeId *int64 `protobuf:"varint,9,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// the format for the image
+	Format *string `protobuf:"bytes,10,opt,name=format" json:"format,omitempty"`
+	// true if the image supports the password reset feature; default is false
+	PasswordEnabled *bool `protobuf:"varint,11,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
+	// true if the template supports the sshkey upload feature; default is false
+	SshKeyEnabled *bool `protobuf:"varint,12,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
+	// sort key of the template, integer
+	SortKey *int32 `protobuf:"varint,13,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
+	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	IsDynamicallyScalable *bool `protobuf:"varint,14,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// true if the template type is routing i.e., if template is used to deploy router
+	IsRoutingType *bool `protobuf:"varint,15,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
+	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	Details map[string]string `protobuf:"bytes,16,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	CleanupDetails *bool `protobuf:"varint,17,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
+	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,18,opt,name=arch" json:"arch,omitempty"`
+	ResponseType  *string `protobuf:"bytes,19,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTemplateRequest) Reset() {
+	*x = UpdateTemplateRequest{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTemplateRequest) ProtoMessage() {}
+
+func (x *UpdateTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTemplateRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *UpdateTemplateRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetTemplateType() string {
+	if x != nil && x.TemplateType != nil {
+		return *x.TemplateType
+	}
+	return ""
+}
+
+func (x *UpdateTemplateRequest) GetTemplateTag() string {
+	if x != nil && x.TemplateTag != nil {
+		return *x.TemplateTag
+	}
+	return ""
+}
+
+func (x *UpdateTemplateRequest) GetBootable() bool {
+	if x != nil && x.Bootable != nil {
+		return *x.Bootable
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetRequiresHvm() bool {
+	if x != nil && x.RequiresHvm != nil {
+		return *x.RequiresHvm
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *UpdateTemplateRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateTemplateRequest) GetTemplateName() string {
+	if x != nil && x.TemplateName != nil {
+		return *x.TemplateName
+	}
+	return ""
+}
+
+func (x *UpdateTemplateRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *UpdateTemplateRequest) GetFormat() string {
+	if x != nil && x.Format != nil {
+		return *x.Format
+	}
+	return ""
+}
+
+func (x *UpdateTemplateRequest) GetPasswordEnabled() bool {
+	if x != nil && x.PasswordEnabled != nil {
+		return *x.PasswordEnabled
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetSshKeyEnabled() bool {
+	if x != nil && x.SshKeyEnabled != nil {
+		return *x.SshKeyEnabled
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetSortKey() int32 {
+	if x != nil && x.SortKey != nil {
+		return *x.SortKey
+	}
+	return 0
+}
+
+func (x *UpdateTemplateRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetIsRoutingType() bool {
+	if x != nil && x.IsRoutingType != nil {
+		return *x.IsRoutingType
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateTemplateRequest) GetCleanupDetails() bool {
+	if x != nil && x.CleanupDetails != nil {
+		return *x.CleanupDetails
+	}
+	return false
+}
+
+func (x *UpdateTemplateRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *UpdateTemplateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateTemplateResponse represents the response from updates attributes of a template.
+type UpdateTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTemplateResponse) Reset() {
+	*x = UpdateTemplateResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTemplateResponse) ProtoMessage() {}
+
+func (x *UpdateTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTemplateResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *UpdateTemplateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // GetUploadParamsForTemplateRequest represents the parameters for upload an existing template into the cloudstack cloud.
 type GetUploadParamsForTemplateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -3328,7 +3758,7 @@ type GetUploadParamsForTemplateRequest struct {
 
 func (x *GetUploadParamsForTemplateRequest) Reset() {
 	*x = GetUploadParamsForTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3340,7 +3770,7 @@ func (x *GetUploadParamsForTemplateRequest) String() string {
 func (*GetUploadParamsForTemplateRequest) ProtoMessage() {}
 
 func (x *GetUploadParamsForTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3353,7 +3783,7 @@ func (x *GetUploadParamsForTemplateRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetUploadParamsForTemplateRequest.ProtoReflect.Descriptor instead.
 func (*GetUploadParamsForTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetUploadParamsForTemplateRequest) GetDisplayText() string {
@@ -3535,7 +3965,7 @@ type GetUploadParamsForTemplateResponse struct {
 
 func (x *GetUploadParamsForTemplateResponse) Reset() {
 	*x = GetUploadParamsForTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3547,7 +3977,7 @@ func (x *GetUploadParamsForTemplateResponse) String() string {
 func (*GetUploadParamsForTemplateResponse) ProtoMessage() {}
 
 func (x *GetUploadParamsForTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3560,7 +3990,7 @@ func (x *GetUploadParamsForTemplateResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetUploadParamsForTemplateResponse.ProtoReflect.Descriptor instead.
 func (*GetUploadParamsForTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{29}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetUploadParamsForTemplateResponse) GetResult() *Result {
@@ -3570,528 +4000,34 @@ func (x *GetUploadParamsForTemplateResponse) GetResult() *Result {
 	return nil
 }
 
-// DeleteVnfTemplateRequest represents the parameters for deletes a vnf template from the system. all virtual machines using the deleted template will not be affected.
-type DeleteVnfTemplateRequest struct {
+// PrepareTemplateRequest represents the parameters for load template into primary storage
+type PrepareTemplateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the template
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the ID of zone of the template
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// Force delete a template.
-	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
-	// Necessary if the template's type is system.
-	IsSystem *bool `protobuf:"varint,4,opt,name=is_system,json=isSystem" json:"is_system,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// zone ID of the template to be prepared in primary storage(s).
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// template ID of the template to be prepared in primary storage(s).
+	TemplateId *int64 `protobuf:"varint,2,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	// storage pool ID of the primary storage pool to which the template should be prepared. If it is not provided the template is prepared on all the available primary storage pools.
+	StorageId *int64 `protobuf:"varint,3,opt,name=storage_id,json=storageId" json:"storage_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteVnfTemplateRequest) Reset() {
-	*x = DeleteVnfTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVnfTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVnfTemplateRequest) ProtoMessage() {}
-
-func (x *DeleteVnfTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVnfTemplateRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVnfTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *DeleteVnfTemplateRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVnfTemplateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *DeleteVnfTemplateRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DeleteVnfTemplateRequest) GetIsSystem() bool {
-	if x != nil && x.IsSystem != nil {
-		return *x.IsSystem
-	}
-	return false
-}
-
-func (x *DeleteVnfTemplateRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteVnfTemplateRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteVnfTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVnfTemplateResponse represents the response from deletes a vnf template from the system. all virtual machines using the deleted template will not be affected.
-type DeleteVnfTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVnfTemplateResponse) Reset() {
-	*x = DeleteVnfTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVnfTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVnfTemplateResponse) ProtoMessage() {}
-
-func (x *DeleteVnfTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVnfTemplateResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVnfTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *DeleteVnfTemplateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RegisterTemplateRequest represents the parameters for registers an existing template into the cloudstack cloud.
-type RegisterTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// 32 or 64 bits support. 64 by default
-	Bits *int32 `protobuf:"varint,2,opt,name=bits" json:"bits,omitempty"`
-	// The display text of the template, defaults to 'name'.
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
-	Format *string `protobuf:"bytes,4,opt,name=format" json:"format,omitempty"`
-	// the target hypervisor for the template
-	Hypervisor *string `protobuf:"bytes,5,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// true if this template is a featured template, false otherwise
-	Featured *bool `protobuf:"varint,6,opt,name=featured" json:"featured,omitempty"`
-	// true if the template is available to all accounts; default is true
-	PublicTemplate *bool `protobuf:"varint,7,opt,name=public_template,json=publicTemplate" json:"public_template,omitempty"`
-	// the name of the template
-	TemplateName *string `protobuf:"bytes,8,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
-	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
-	OsTypeId *int64 `protobuf:"varint,9,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
-	// true if the template supports the password reset feature; default is false
-	PasswordEnabled *bool `protobuf:"varint,10,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
-	// true if the template supports the sshkey upload feature; default is false
-	SshKeyEnabled *bool `protobuf:"varint,11,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
-	// true if the template or its derivatives are extractable; default is false
-	Extractable *bool `protobuf:"varint,12,opt,name=extractable" json:"extractable,omitempty"`
-	// true if this template requires HVM
-	RequiresHvm *bool `protobuf:"varint,13,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
-	// the URL of where the template is hosted. Possible URL include http:// and https://
-	Url *string `protobuf:"bytes,14,opt,name=url" json:"url,omitempty"`
-	// the ID of the zone the template is to be hosted on
-	ZoneId *int64 `protobuf:"varint,15,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// an optional domainId. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,16,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional accountName. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,17,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the checksum value of this template. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
-	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
-	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
-	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
-	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
-	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
-	Checksum *string `protobuf:"bytes,18,opt,name=checksum" json:"checksum,omitempty"`
-	// the tag for this template.
-	TemplateTag *string `protobuf:"bytes,19,opt,name=template_tag,json=templateTag" json:"template_tag,omitempty"`
-	// Register template for the project
-	ProjectId *int64 `protobuf:"varint,20,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// Template details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	Details map[string]string `protobuf:"bytes,21,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// true if template contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	IsDynamicallyScalable *bool `protobuf:"varint,22,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
-	// true if the template type is routing i.e., if template is used to deploy router
-	IsRoutingType *bool `protobuf:"varint,23,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
-	// A list of zone ids where the template will be hosted. Use this parameter if the template needs to be registered to multiple zones in one go. Use zoneid if the template needs to be registered to only one zone.Passing only -1 to this will cause the template to be registered as a cross zone template and will be copied to all zones.
-	ZoneIds []string `protobuf:"bytes,24,rep,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	// true if template should bypass Secondary Storage and be downloaded to Primary Storage on deployment
-	DirectDownload *bool `protobuf:"varint,25,opt,name=direct_download,json=directDownload" json:"direct_download,omitempty"`
-	// (VMware only) true if VM deployments should preserve all the configurations defined for this template
-	DeployAsIs *bool `protobuf:"varint,26,opt,name=deploy_as_is,json=deployAsIs" json:"deploy_as_is,omitempty"`
-	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
-	TemplateType *string `protobuf:"bytes,27,opt,name=template_type,json=templateType" json:"template_type,omitempty"`
-	// the CPU arch of the template. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,28,opt,name=arch" json:"arch,omitempty"`
-	ResponseType  *string `protobuf:"bytes,29,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RegisterTemplateRequest) Reset() {
-	*x = RegisterTemplateRequest{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RegisterTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RegisterTemplateRequest) ProtoMessage() {}
-
-func (x *RegisterTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RegisterTemplateRequest.ProtoReflect.Descriptor instead.
-func (*RegisterTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *RegisterTemplateRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetBits() int32 {
-	if x != nil && x.Bits != nil {
-		return *x.Bits
-	}
-	return 0
-}
-
-func (x *RegisterTemplateRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetFormat() string {
-	if x != nil && x.Format != nil {
-		return *x.Format
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetFeatured() bool {
-	if x != nil && x.Featured != nil {
-		return *x.Featured
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetPublicTemplate() bool {
-	if x != nil && x.PublicTemplate != nil {
-		return *x.PublicTemplate
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetTemplateName() string {
-	if x != nil && x.TemplateName != nil {
-		return *x.TemplateName
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetOsTypeId() int64 {
-	if x != nil && x.OsTypeId != nil {
-		return *x.OsTypeId
-	}
-	return 0
-}
-
-func (x *RegisterTemplateRequest) GetPasswordEnabled() bool {
-	if x != nil && x.PasswordEnabled != nil {
-		return *x.PasswordEnabled
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetSshKeyEnabled() bool {
-	if x != nil && x.SshKeyEnabled != nil {
-		return *x.SshKeyEnabled
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetExtractable() bool {
-	if x != nil && x.Extractable != nil {
-		return *x.Extractable
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetRequiresHvm() bool {
-	if x != nil && x.RequiresHvm != nil {
-		return *x.RequiresHvm
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *RegisterTemplateRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *RegisterTemplateRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetChecksum() string {
-	if x != nil && x.Checksum != nil {
-		return *x.Checksum
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetTemplateTag() string {
-	if x != nil && x.TemplateTag != nil {
-		return *x.TemplateTag
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *RegisterTemplateRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *RegisterTemplateRequest) GetIsDynamicallyScalable() bool {
-	if x != nil && x.IsDynamicallyScalable != nil {
-		return *x.IsDynamicallyScalable
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetIsRoutingType() bool {
-	if x != nil && x.IsRoutingType != nil {
-		return *x.IsRoutingType
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetZoneIds() []string {
-	if x != nil {
-		return x.ZoneIds
-	}
-	return nil
-}
-
-func (x *RegisterTemplateRequest) GetDirectDownload() bool {
-	if x != nil && x.DirectDownload != nil {
-		return *x.DirectDownload
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetDeployAsIs() bool {
-	if x != nil && x.DeployAsIs != nil {
-		return *x.DeployAsIs
-	}
-	return false
-}
-
-func (x *RegisterTemplateRequest) GetTemplateType() string {
-	if x != nil && x.TemplateType != nil {
-		return *x.TemplateType
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *RegisterTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RegisterTemplateResponse represents the response from registers an existing template into the cloudstack cloud.
-type RegisterTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RegisterTemplateResponse) Reset() {
-	*x = RegisterTemplateResponse{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RegisterTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RegisterTemplateResponse) ProtoMessage() {}
-
-func (x *RegisterTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RegisterTemplateResponse.ProtoReflect.Descriptor instead.
-func (*RegisterTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *RegisterTemplateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// Template represents a Template Item
-type Template struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Template
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Template
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Template
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Template
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Template) Reset() {
-	*x = Template{}
+func (x *PrepareTemplateRequest) Reset() {
+	*x = PrepareTemplateRequest{}
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Template) String() string {
+func (x *PrepareTemplateRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Template) ProtoMessage() {}
+func (*PrepareTemplateRequest) ProtoMessage() {}
 
-func (x *Template) ProtoReflect() protoreflect.Message {
+func (x *PrepareTemplateRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -4103,44 +4039,83 @@ func (x *Template) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Template.ProtoReflect.Descriptor instead.
-func (*Template) Descriptor() ([]byte, []int) {
+// Deprecated: Use PrepareTemplateRequest.ProtoReflect.Descriptor instead.
+func (*PrepareTemplateRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *Template) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *PrepareTemplateRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *PrepareTemplateRequest) GetTemplateId() int64 {
+	if x != nil && x.TemplateId != nil {
+		return *x.TemplateId
+	}
+	return 0
+}
+
+func (x *PrepareTemplateRequest) GetStorageId() int64 {
+	if x != nil && x.StorageId != nil {
+		return *x.StorageId
+	}
+	return 0
+}
+
+func (x *PrepareTemplateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *Template) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
+// PrepareTemplateResponse represents the response from load template into primary storage
+type PrepareTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Template) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
+func (x *PrepareTemplateResponse) Reset() {
+	*x = PrepareTemplateResponse{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
-func (x *Template) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
+func (x *PrepareTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
 }
 
-func (x *Template) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (*PrepareTemplateResponse) ProtoMessage() {}
+
+func (x *PrepareTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
 	}
-	return ""
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PrepareTemplateResponse.ProtoReflect.Descriptor instead.
+func (*PrepareTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *PrepareTemplateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // TemplatePermissions represents a TemplatePermissions Item
@@ -4162,7 +4137,7 @@ type TemplatePermissions struct {
 
 func (x *TemplatePermissions) Reset() {
 	*x = TemplatePermissions{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[35]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4174,7 +4149,7 @@ func (x *TemplatePermissions) String() string {
 func (*TemplatePermissions) ProtoMessage() {}
 
 func (x *TemplatePermissions) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[35]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4187,7 +4162,7 @@ func (x *TemplatePermissions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TemplatePermissions.ProtoReflect.Descriptor instead.
 func (*TemplatePermissions) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{35}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *TemplatePermissions) GetId() string {
@@ -4225,6 +4200,88 @@ func (x *TemplatePermissions) GetCreated() string {
 	return ""
 }
 
+// Template represents a Template Item
+type Template struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Template
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Template
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Template
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Template
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Template) Reset() {
+	*x = Template{}
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Template) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Template) ProtoMessage() {}
+
+func (x *Template) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Template.ProtoReflect.Descriptor instead.
+func (*Template) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *Template) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Template) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Template) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Template) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Template) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
 // Success represents a Success Operation Response
 type Success struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4238,7 +4295,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[36]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4250,7 +4307,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[36]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4263,7 +4320,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{36}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -4313,7 +4370,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[37]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4325,7 +4382,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[37]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4338,7 +4395,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{37}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *Item) GetId() string {
@@ -4444,7 +4501,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[38]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4456,7 +4513,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[38]
+	mi := &file_cloudstack_management_template_v1_template_gen_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4469,7 +4526,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{38}
+	return file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -4511,48 +4568,24 @@ var File_cloudstack_management_template_v1_template_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/template/v1/template.gen.proto\x12!cloudstack.management.template.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb5\t\n" +
-	"!RegisterTemplateCmdByAdminRequest\x12\x12\n" +
-	"\x04bits\x18\x01 \x01(\x05R\x04bits\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x1e\n" +
-	"\x06format\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06format\x12&\n" +
-	"\n" +
-	"hypervisor\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"hypervisor\x12!\n" +
-	"\bfeatured\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12.\n" +
-	"\x0fpublic_template\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epublicTemplate\x122\n" +
-	"\rtemplate_name\x18\a \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
-	"\n" +
-	"os_type_id\x18\b \x01(\x03R\bosTypeId\x120\n" +
-	"\x10password_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
-	"\x0fssh_key_enabled\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12'\n" +
-	"\vextractable\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\vextractable\x12(\n" +
-	"\frequires_hvm\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12\x18\n" +
-	"\x03url\x18\r \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
-	"\azone_id\x18\x0e \x01(\x03R\x06zoneId\x12\x1b\n" +
-	"\tdomain_id\x18\x0f \x01(\x03R\bdomainId\x12!\n" +
-	"\faccount_name\x18\x10 \x01(\tR\vaccountName\x12\x1a\n" +
-	"\bchecksum\x18\x11 \x01(\tR\bchecksum\x12!\n" +
-	"\ftemplate_tag\x18\x12 \x01(\tR\vtemplateTag\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x13 \x01(\x03R\tprojectId\x12k\n" +
-	"\adetails\x18\x14 \x03(\v2Q.cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest.DetailsEntryR\adetails\x12=\n" +
-	"\x17is_dynamically_scalable\x18\x15 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
-	"\x0fis_routing_type\x18\x16 \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12\x19\n" +
-	"\bzone_ids\x18\x17 \x03(\tR\azoneIds\x12.\n" +
-	"\x0fdirect_download\x18\x18 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edirectDownload\x12'\n" +
-	"\fdeploy_as_is\x18\x19 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"deployAsIs\x12#\n" +
-	"\rtemplate_type\x18\x1a \x01(\tR\ftemplateType\x12\x12\n" +
-	"\x04arch\x18\x1b \x01(\tR\x04arch\x12#\n" +
-	"\rresponse_type\x18\x1c \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"g\n" +
-	"\"RegisterTemplateCmdByAdminResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xbf\b\n" +
+	"4cloudstack/management/template/v1/template.gen.proto\x12!cloudstack.management.template.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8b\x02\n" +
+	"\x18DeleteVnfTemplateRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\"\n" +
+	"\tis_system\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisSystem\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"^\n" +
+	"\x19DeleteVnfTemplateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"g\n" +
+	"(ListTemplatePermissionsCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\xa1\x01\n" +
+	")ListTemplatePermissionsCmdByAdminResponse\x12L\n" +
+	"\x05items\x18\x01 \x03(\v26.cloudstack.management.template.v1.TemplatePermissionsR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xbf\b\n" +
 	"\x17ListVnfTemplatesRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x1e\n" +
@@ -4593,19 +4626,7 @@ const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\x18ListVnfTemplatesResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.template.v1.TemplateR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb8\x02\n" +
-	" UpdateTemplatePermissionsRequest\x12#\n" +
-	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
-	"\bfeatured\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12\"\n" +
-	"\tis_public\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisPublic\x12,\n" +
-	"\x0eis_extractable\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\risExtractable\x12\x1c\n" +
-	"\toperation\x18\x06 \x01(\tR\toperation\x12\x1f\n" +
-	"\vproject_ids\x18\a \x03(\tR\n" +
-	"projectIds\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"f\n" +
-	"!UpdateTemplatePermissionsResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x9c\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9c\n" +
 	"\n" +
 	"\x18UpdateVnfTemplateRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -4687,42 +4708,63 @@ const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\x15ListTemplatesResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.template.v1.TemplateR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x81\b\n" +
-	"\x15CreateTemplateRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x12\n" +
-	"\x04bits\x18\x02 \x01(\x05R\x04bits\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12!\n" +
-	"\bfeatured\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12.\n" +
-	"\x0fpublic_template\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epublicTemplate\x122\n" +
-	"\rtemplate_name\x18\x06 \x01(\tB\r\xbaH\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf3\a\n" +
+	"\x1fCreateTemplateCmdByAdminRequest\x12\x12\n" +
+	"\x04bits\x18\x01 \x01(\x05R\x04bits\x12!\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12!\n" +
+	"\bfeatured\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12.\n" +
+	"\x0fpublic_template\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epublicTemplate\x122\n" +
+	"\rtemplate_name\x18\x05 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\ftemplateName\x12$\n" +
 	"\n" +
-	"os_type_id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bosTypeId\x120\n" +
-	"\x10password_enabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
-	"\x0fssh_key_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12(\n" +
-	"\frequires_hvm\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12\x1f\n" +
-	"\vsnapshot_id\x18\v \x01(\x03R\n" +
+	"os_type_id\x18\x06 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bosTypeId\x120\n" +
+	"\x10password_enabled\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
+	"\x0fssh_key_enabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12(\n" +
+	"\frequires_hvm\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12\x1f\n" +
+	"\vsnapshot_id\x18\n" +
+	" \x01(\x03R\n" +
 	"snapshotId\x12\x1b\n" +
-	"\tvolume_id\x18\f \x01(\x03R\bvolumeId\x12\x13\n" +
-	"\x05vm_id\x18\r \x01(\x03R\x04vmId\x12\x10\n" +
-	"\x03url\x18\x0e \x01(\tR\x03url\x12!\n" +
-	"\ftemplate_tag\x18\x0f \x01(\tR\vtemplateTag\x12_\n" +
-	"\adetails\x18\x10 \x03(\v2E.cloudstack.management.template.v1.CreateTemplateRequest.DetailsEntryR\adetails\x12=\n" +
-	"\x17is_dynamically_scalable\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12\x1d\n" +
+	"\tvolume_id\x18\v \x01(\x03R\bvolumeId\x12\x13\n" +
+	"\x05vm_id\x18\f \x01(\x03R\x04vmId\x12\x10\n" +
+	"\x03url\x18\r \x01(\tR\x03url\x12!\n" +
+	"\ftemplate_tag\x18\x0e \x01(\tR\vtemplateTag\x12i\n" +
+	"\adetails\x18\x0f \x03(\v2O.cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest.DetailsEntryR\adetails\x12=\n" +
+	"\x17is_dynamically_scalable\x18\x10 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x12 \x01(\x03R\tprojectId\x12\x17\n" +
-	"\azone_id\x18\x13 \x01(\x03R\x06zoneId\x12\x1b\n" +
-	"\tdomain_id\x18\x14 \x01(\x03R\bdomainId\x12!\n" +
-	"\faccount_name\x18\x15 \x01(\tR\vaccountName\x12$\n" +
-	"\x0estart_event_id\x18\x16 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x17 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x18 \x01(\tR\fresponseType\x1a:\n" +
+	"project_id\x18\x11 \x01(\x03R\tprojectId\x12\x17\n" +
+	"\azone_id\x18\x12 \x01(\x03R\x06zoneId\x12\x1b\n" +
+	"\tdomain_id\x18\x13 \x01(\x03R\bdomainId\x12!\n" +
+	"\faccount_name\x18\x14 \x01(\tR\vaccountName\x12$\n" +
+	"\x0estart_event_id\x18\x15 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x16 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\x1a:\n" +
 	"\fDetailsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
-	"\x16CreateTemplateResponse\x12A\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"e\n" +
+	" CreateTemplateCmdByAdminResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xb8\x02\n" +
+	"\x13CopyTemplateRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12 \n" +
+	"\fdest_zone_id\x18\x02 \x01(\x03R\n" +
+	"destZoneId\x12\x16\n" +
+	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0esource_zone_id\x18\x04 \x01(\x03R\fsourceZoneId\x12\"\n" +
+	"\rdest_zone_ids\x18\x05 \x03(\tR\vdestZoneIds\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"Y\n" +
+	"\x14CopyTemplateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x88\x02\n" +
+	"\x15DeleteTemplateRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\"\n" +
+	"\tis_system\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisSystem\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"[\n" +
+	"\x16DeleteTemplateResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x7f\n" +
 	"\x1eListTemplatePermissionsRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -4759,77 +4801,97 @@ const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"e\n" +
 	" UpdateTemplateCmdByAdminResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x88\x02\n" +
-	"\x15DeleteTemplateRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1d\n" +
-	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\"\n" +
-	"\tis_system\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisSystem\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"[\n" +
-	"\x16DeleteTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xe0\x06\n" +
-	"\x15UpdateTemplateRequest\x12 \n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xb8\x02\n" +
+	" UpdateTemplatePermissionsRequest\x12#\n" +
+	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
+	"\bfeatured\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12\"\n" +
+	"\tis_public\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisPublic\x12,\n" +
+	"\x0eis_extractable\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\risExtractable\x12\x1c\n" +
+	"\toperation\x18\x06 \x01(\tR\toperation\x12\x1f\n" +
+	"\vproject_ids\x18\a \x03(\tR\n" +
+	"projectIds\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"f\n" +
+	"!UpdateTemplatePermissionsResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x81\b\n" +
+	"\x15CreateTemplateRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12#\n" +
-	"\rtemplate_type\x18\x02 \x01(\tR\ftemplateType\x12!\n" +
-	"\ftemplate_tag\x18\x03 \x01(\tR\vtemplateTag\x12!\n" +
-	"\bbootable\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12(\n" +
-	"\frequires_hvm\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12!\n" +
-	"\fdisplay_text\x18\x06 \x01(\tR\vdisplayText\x12\x16\n" +
-	"\x02id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12/\n" +
-	"\rtemplate_name\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
+	"runAsAdmin\x12\x12\n" +
+	"\x04bits\x18\x02 \x01(\x05R\x04bits\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12!\n" +
+	"\bfeatured\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12.\n" +
+	"\x0fpublic_template\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epublicTemplate\x122\n" +
+	"\rtemplate_name\x18\x06 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\ftemplateName\x12$\n" +
 	"\n" +
-	"os_type_id\x18\t \x01(\x03R\bosTypeId\x12\x16\n" +
-	"\x06format\x18\n" +
-	" \x01(\tR\x06format\x120\n" +
-	"\x10password_enabled\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
-	"\x0fssh_key_enabled\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12\x19\n" +
-	"\bsort_key\x18\r \x01(\x05R\asortKey\x12=\n" +
-	"\x17is_dynamically_scalable\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
-	"\x0fis_routing_type\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12_\n" +
-	"\adetails\x18\x10 \x03(\v2E.cloudstack.management.template.v1.UpdateTemplateRequest.DetailsEntryR\adetails\x12.\n" +
-	"\x0fcleanup_details\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x12\n" +
-	"\x04arch\x18\x12 \x01(\tR\x04arch\x12#\n" +
-	"\rresponse_type\x18\x13 \x01(\tR\fresponseType\x1a:\n" +
+	"os_type_id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bosTypeId\x120\n" +
+	"\x10password_enabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
+	"\x0fssh_key_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12(\n" +
+	"\frequires_hvm\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12\x1f\n" +
+	"\vsnapshot_id\x18\v \x01(\x03R\n" +
+	"snapshotId\x12\x1b\n" +
+	"\tvolume_id\x18\f \x01(\x03R\bvolumeId\x12\x13\n" +
+	"\x05vm_id\x18\r \x01(\x03R\x04vmId\x12\x10\n" +
+	"\x03url\x18\x0e \x01(\tR\x03url\x12!\n" +
+	"\ftemplate_tag\x18\x0f \x01(\tR\vtemplateTag\x12_\n" +
+	"\adetails\x18\x10 \x03(\v2E.cloudstack.management.template.v1.CreateTemplateRequest.DetailsEntryR\adetails\x12=\n" +
+	"\x17is_dynamically_scalable\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x12 \x01(\x03R\tprojectId\x12\x17\n" +
+	"\azone_id\x18\x13 \x01(\x03R\x06zoneId\x12\x1b\n" +
+	"\tdomain_id\x18\x14 \x01(\x03R\bdomainId\x12!\n" +
+	"\faccount_name\x18\x15 \x01(\tR\vaccountName\x12$\n" +
+	"\x0estart_event_id\x18\x16 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x17 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x18 \x01(\tR\fresponseType\x1a:\n" +
 	"\fDetailsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
-	"\x16UpdateTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xa6\x01\n" +
-	"\x16PrepareTemplateRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12'\n" +
-	"\vtemplate_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"templateId\x12\x1d\n" +
-	"\n" +
-	"storage_id\x18\x03 \x01(\x03R\tstorageId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
-	"\x17PrepareTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xf4\x01\n" +
-	"\x16ExtractTemplateRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x10\n" +
-	"\x03url\x18\x02 \x01(\tR\x03url\x12\x17\n" +
-	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1a\n" +
-	"\x04mode\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04mode\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\\\n" +
-	"\x17ExtractTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xb8\x02\n" +
-	"\x13CopyTemplateRequest\x12 \n" +
+	"\x16CreateTemplateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xc3\t\n" +
+	"\x17RegisterTemplateRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12 \n" +
-	"\fdest_zone_id\x18\x02 \x01(\x03R\n" +
-	"destZoneId\x12\x16\n" +
-	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0esource_zone_id\x18\x04 \x01(\x03R\fsourceZoneId\x12\"\n" +
-	"\rdest_zone_ids\x18\x05 \x03(\tR\vdestZoneIds\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"Y\n" +
-	"\x14CopyTemplateResponse\x12A\n" +
+	"runAsAdmin\x12\x12\n" +
+	"\x04bits\x18\x02 \x01(\x05R\x04bits\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x1e\n" +
+	"\x06format\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06format\x12&\n" +
+	"\n" +
+	"hypervisor\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"hypervisor\x12!\n" +
+	"\bfeatured\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12.\n" +
+	"\x0fpublic_template\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epublicTemplate\x122\n" +
+	"\rtemplate_name\x18\b \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
+	"\n" +
+	"os_type_id\x18\t \x01(\x03R\bosTypeId\x120\n" +
+	"\x10password_enabled\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
+	"\x0fssh_key_enabled\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12'\n" +
+	"\vextractable\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\vextractable\x12(\n" +
+	"\frequires_hvm\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12\x18\n" +
+	"\x03url\x18\x0e \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
+	"\azone_id\x18\x0f \x01(\x03R\x06zoneId\x12\x1b\n" +
+	"\tdomain_id\x18\x10 \x01(\x03R\bdomainId\x12!\n" +
+	"\faccount_name\x18\x11 \x01(\tR\vaccountName\x12\x1a\n" +
+	"\bchecksum\x18\x12 \x01(\tR\bchecksum\x12!\n" +
+	"\ftemplate_tag\x18\x13 \x01(\tR\vtemplateTag\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x14 \x01(\x03R\tprojectId\x12a\n" +
+	"\adetails\x18\x15 \x03(\v2G.cloudstack.management.template.v1.RegisterTemplateRequest.DetailsEntryR\adetails\x12=\n" +
+	"\x17is_dynamically_scalable\x18\x16 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
+	"\x0fis_routing_type\x18\x17 \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12\x19\n" +
+	"\bzone_ids\x18\x18 \x03(\tR\azoneIds\x12.\n" +
+	"\x0fdirect_download\x18\x19 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edirectDownload\x12'\n" +
+	"\fdeploy_as_is\x18\x1a \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"deployAsIs\x12#\n" +
+	"\rtemplate_type\x18\x1b \x01(\tR\ftemplateType\x12\x12\n" +
+	"\x04arch\x18\x1c \x01(\tR\x04arch\x12#\n" +
+	"\rresponse_type\x18\x1d \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
+	"\x18RegisterTemplateResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x9b\f\n" +
 	"\x1aRegisterVnfTemplateRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -4882,6 +4944,45 @@ const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"`\n" +
 	"\x1bRegisterVnfTemplateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xf4\x01\n" +
+	"\x16ExtractTemplateRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x10\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\x12\x17\n" +
+	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1a\n" +
+	"\x04mode\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04mode\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\\\n" +
+	"\x17ExtractTemplateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xe0\x06\n" +
+	"\x15UpdateTemplateRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12#\n" +
+	"\rtemplate_type\x18\x02 \x01(\tR\ftemplateType\x12!\n" +
+	"\ftemplate_tag\x18\x03 \x01(\tR\vtemplateTag\x12!\n" +
+	"\bbootable\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12(\n" +
+	"\frequires_hvm\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12!\n" +
+	"\fdisplay_text\x18\x06 \x01(\tR\vdisplayText\x12\x16\n" +
+	"\x02id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12/\n" +
+	"\rtemplate_name\x18\b \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
+	"\n" +
+	"os_type_id\x18\t \x01(\x03R\bosTypeId\x12\x16\n" +
+	"\x06format\x18\n" +
+	" \x01(\tR\x06format\x120\n" +
+	"\x10password_enabled\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
+	"\x0fssh_key_enabled\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12\x19\n" +
+	"\bsort_key\x18\r \x01(\x05R\asortKey\x12=\n" +
+	"\x17is_dynamically_scalable\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
+	"\x0fis_routing_type\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12_\n" +
+	"\adetails\x18\x10 \x03(\v2E.cloudstack.management.template.v1.UpdateTemplateRequest.DetailsEntryR\adetails\x12.\n" +
+	"\x0fcleanup_details\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x12\n" +
+	"\x04arch\x18\x12 \x01(\tR\x04arch\x12#\n" +
+	"\rresponse_type\x18\x13 \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
+	"\x16UpdateTemplateResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xa2\b\n" +
 	"!GetUploadParamsForTemplateRequest\x12!\n" +
 	"\fdisplay_text\x18\x01 \x01(\tR\vdisplayText\x12&\n" +
@@ -4919,67 +5020,23 @@ const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"g\n" +
 	"\"GetUploadParamsForTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x8b\x02\n" +
-	"\x18DeleteVnfTemplateRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x1d\n" +
-	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\"\n" +
-	"\tis_system\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisSystem\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"^\n" +
-	"\x19DeleteVnfTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xc3\t\n" +
-	"\x17RegisterTemplateRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x12\n" +
-	"\x04bits\x18\x02 \x01(\x05R\x04bits\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x1e\n" +
-	"\x06format\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06format\x12&\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xa6\x01\n" +
+	"\x16PrepareTemplateRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12'\n" +
+	"\vtemplate_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"templateId\x12\x1d\n" +
 	"\n" +
-	"hypervisor\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"hypervisor\x12!\n" +
-	"\bfeatured\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12.\n" +
-	"\x0fpublic_template\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epublicTemplate\x122\n" +
-	"\rtemplate_name\x18\b \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
-	"\n" +
-	"os_type_id\x18\t \x01(\x03R\bosTypeId\x120\n" +
-	"\x10password_enabled\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
-	"\x0fssh_key_enabled\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12'\n" +
-	"\vextractable\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\vextractable\x12(\n" +
-	"\frequires_hvm\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12\x18\n" +
-	"\x03url\x18\x0e \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
-	"\azone_id\x18\x0f \x01(\x03R\x06zoneId\x12\x1b\n" +
-	"\tdomain_id\x18\x10 \x01(\x03R\bdomainId\x12!\n" +
-	"\faccount_name\x18\x11 \x01(\tR\vaccountName\x12\x1a\n" +
-	"\bchecksum\x18\x12 \x01(\tR\bchecksum\x12!\n" +
-	"\ftemplate_tag\x18\x13 \x01(\tR\vtemplateTag\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x14 \x01(\x03R\tprojectId\x12a\n" +
-	"\adetails\x18\x15 \x03(\v2G.cloudstack.management.template.v1.RegisterTemplateRequest.DetailsEntryR\adetails\x12=\n" +
-	"\x17is_dynamically_scalable\x18\x16 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
-	"\x0fis_routing_type\x18\x17 \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12\x19\n" +
-	"\bzone_ids\x18\x18 \x03(\tR\azoneIds\x12.\n" +
-	"\x0fdirect_download\x18\x19 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edirectDownload\x12'\n" +
-	"\fdeploy_as_is\x18\x1a \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"deployAsIs\x12#\n" +
-	"\rtemplate_type\x18\x1b \x01(\tR\ftemplateType\x12\x12\n" +
-	"\x04arch\x18\x1c \x01(\tR\x04arch\x12#\n" +
-	"\rresponse_type\x18\x1d \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"]\n" +
-	"\x18RegisterTemplateResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\x97\x01\n" +
-	"\bTemplate\x12\x18\n" +
+	"storage_id\x18\x03 \x01(\x03R\tstorageId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
+	"\x17PrepareTemplateResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.template.v1.ResultR\x06result\"\xa2\x01\n" +
+	"\x13TemplatePermissions\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa2\x01\n" +
-	"\x13TemplatePermissions\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
+	"\bTemplate\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -5013,25 +5070,26 @@ const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc5\x14\n" +
-	"\x0fTemplateService\x12\xab\x01\n" +
-	"\x1aRegisterTemplateCmdByAdmin\x12D.cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest\x1aE.cloudstack.management.template.v1.RegisterTemplateCmdByAdminResponse\"\x00\x12\x93\x01\n" +
-	"\x10ListVnfTemplates\x12:.cloudstack.management.template.v1.ListVnfTemplatesRequest\x1a;.cloudstack.management.template.v1.ListVnfTemplatesResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa8\x01\n" +
-	"\x19UpdateTemplatePermissions\x12C.cloudstack.management.template.v1.UpdateTemplatePermissionsRequest\x1aD.cloudstack.management.template.v1.UpdateTemplatePermissionsResponse\"\x00\x12\x96\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x82\x16\n" +
+	"\x0fTemplateService\x12\x90\x01\n" +
+	"\x11DeleteVnfTemplate\x12;.cloudstack.management.template.v1.DeleteVnfTemplateRequest\x1a<.cloudstack.management.template.v1.DeleteVnfTemplateResponse\"\x00\x12\xc0\x01\n" +
+	"!ListTemplatePermissionsCmdByAdmin\x12K.cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminRequest\x1aL.cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminResponse\"\x00\x12\x93\x01\n" +
+	"\x10ListVnfTemplates\x12:.cloudstack.management.template.v1.ListVnfTemplatesRequest\x1a;.cloudstack.management.template.v1.ListVnfTemplatesResponse\"\x06\xc2>\x03\xc0>\x01\x12\x96\x01\n" +
 	"\x11UpdateVnfTemplate\x12;.cloudstack.management.template.v1.UpdateVnfTemplateRequest\x1a<.cloudstack.management.template.v1.UpdateVnfTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8a\x01\n" +
-	"\rListTemplates\x127.cloudstack.management.template.v1.ListTemplatesRequest\x1a8.cloudstack.management.template.v1.ListTemplatesResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8d\x01\n" +
-	"\x0eCreateTemplate\x128.cloudstack.management.template.v1.CreateTemplateRequest\x1a9.cloudstack.management.template.v1.CreateTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa8\x01\n" +
+	"\rListTemplates\x127.cloudstack.management.template.v1.ListTemplatesRequest\x1a8.cloudstack.management.template.v1.ListTemplatesResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa5\x01\n" +
+	"\x18CreateTemplateCmdByAdmin\x12B.cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest\x1aC.cloudstack.management.template.v1.CreateTemplateCmdByAdminResponse\"\x00\x12\x87\x01\n" +
+	"\fCopyTemplate\x126.cloudstack.management.template.v1.CopyTemplateRequest\x1a7.cloudstack.management.template.v1.CopyTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x87\x01\n" +
+	"\x0eDeleteTemplate\x128.cloudstack.management.template.v1.DeleteTemplateRequest\x1a9.cloudstack.management.template.v1.DeleteTemplateResponse\"\x00\x12\xa8\x01\n" +
 	"\x17ListTemplatePermissions\x12A.cloudstack.management.template.v1.ListTemplatePermissionsRequest\x1aB.cloudstack.management.template.v1.ListTemplatePermissionsResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa5\x01\n" +
-	"\x18UpdateTemplateCmdByAdmin\x12B.cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest\x1aC.cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse\"\x00\x12\x87\x01\n" +
-	"\x0eDeleteTemplate\x128.cloudstack.management.template.v1.DeleteTemplateRequest\x1a9.cloudstack.management.template.v1.DeleteTemplateResponse\"\x00\x12\x8d\x01\n" +
-	"\x0eUpdateTemplate\x128.cloudstack.management.template.v1.UpdateTemplateRequest\x1a9.cloudstack.management.template.v1.UpdateTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8a\x01\n" +
-	"\x0fPrepareTemplate\x129.cloudstack.management.template.v1.PrepareTemplateRequest\x1a:.cloudstack.management.template.v1.PrepareTemplateResponse\"\x00\x12\x8a\x01\n" +
-	"\x0fExtractTemplate\x129.cloudstack.management.template.v1.ExtractTemplateRequest\x1a:.cloudstack.management.template.v1.ExtractTemplateResponse\"\x00\x12\x87\x01\n" +
-	"\fCopyTemplate\x126.cloudstack.management.template.v1.CopyTemplateRequest\x1a7.cloudstack.management.template.v1.CopyTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9c\x01\n" +
-	"\x13RegisterVnfTemplate\x12=.cloudstack.management.template.v1.RegisterVnfTemplateRequest\x1a>.cloudstack.management.template.v1.RegisterVnfTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\xab\x01\n" +
-	"\x1aGetUploadParamsForTemplate\x12D.cloudstack.management.template.v1.GetUploadParamsForTemplateRequest\x1aE.cloudstack.management.template.v1.GetUploadParamsForTemplateResponse\"\x00\x12\x90\x01\n" +
-	"\x11DeleteVnfTemplate\x12;.cloudstack.management.template.v1.DeleteVnfTemplateRequest\x1a<.cloudstack.management.template.v1.DeleteVnfTemplateResponse\"\x00\x12\x93\x01\n" +
-	"\x10RegisterTemplate\x12:.cloudstack.management.template.v1.RegisterTemplateRequest\x1a;.cloudstack.management.template.v1.RegisterTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x01B\xc2\x02\n" +
+	"\x18UpdateTemplateCmdByAdmin\x12B.cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest\x1aC.cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse\"\x00\x12\xa8\x01\n" +
+	"\x19UpdateTemplatePermissions\x12C.cloudstack.management.template.v1.UpdateTemplatePermissionsRequest\x1aD.cloudstack.management.template.v1.UpdateTemplatePermissionsResponse\"\x00\x12\x8d\x01\n" +
+	"\x0eCreateTemplate\x128.cloudstack.management.template.v1.CreateTemplateRequest\x1a9.cloudstack.management.template.v1.CreateTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x93\x01\n" +
+	"\x10RegisterTemplate\x12:.cloudstack.management.template.v1.RegisterTemplateRequest\x1a;.cloudstack.management.template.v1.RegisterTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9c\x01\n" +
+	"\x13RegisterVnfTemplate\x12=.cloudstack.management.template.v1.RegisterVnfTemplateRequest\x1a>.cloudstack.management.template.v1.RegisterVnfTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8a\x01\n" +
+	"\x0fExtractTemplate\x129.cloudstack.management.template.v1.ExtractTemplateRequest\x1a:.cloudstack.management.template.v1.ExtractTemplateResponse\"\x00\x12\x8d\x01\n" +
+	"\x0eUpdateTemplate\x128.cloudstack.management.template.v1.UpdateTemplateRequest\x1a9.cloudstack.management.template.v1.UpdateTemplateResponse\"\x06\xc2>\x03\xc0>\x01\x12\xab\x01\n" +
+	"\x1aGetUploadParamsForTemplate\x12D.cloudstack.management.template.v1.GetUploadParamsForTemplateRequest\x1aE.cloudstack.management.template.v1.GetUploadParamsForTemplateResponse\"\x00\x12\x8a\x01\n" +
+	"\x0fPrepareTemplate\x129.cloudstack.management.template.v1.PrepareTemplateRequest\x1a:.cloudstack.management.template.v1.PrepareTemplateResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
 	"%com.cloudstack.management.template.v1B\x10TemplateGenProtoP\x01Z`github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/template/v1;templatev1\xa2\x02\x03CMT\xaa\x02!Cloudstack.Management.Template.V1\xca\x02!Cloudstack\\Management\\Template\\V1\xe2\x02-Cloudstack\\Management\\Template\\V1\\GPBMetadata\xea\x02$Cloudstack::Management::Template::V1b\beditionsp\xe8\a"
 
 var (
@@ -5046,135 +5104,140 @@ func file_cloudstack_management_template_v1_template_gen_proto_rawDescGZIP() []b
 	return file_cloudstack_management_template_v1_template_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_template_v1_template_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 54)
+var file_cloudstack_management_template_v1_template_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
 var file_cloudstack_management_template_v1_template_gen_proto_goTypes = []any{
-	(*RegisterTemplateCmdByAdminRequest)(nil),  // 0: cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest
-	(*RegisterTemplateCmdByAdminResponse)(nil), // 1: cloudstack.management.template.v1.RegisterTemplateCmdByAdminResponse
-	(*ListVnfTemplatesRequest)(nil),            // 2: cloudstack.management.template.v1.ListVnfTemplatesRequest
-	(*ListVnfTemplatesResponse)(nil),           // 3: cloudstack.management.template.v1.ListVnfTemplatesResponse
-	(*UpdateTemplatePermissionsRequest)(nil),   // 4: cloudstack.management.template.v1.UpdateTemplatePermissionsRequest
-	(*UpdateTemplatePermissionsResponse)(nil),  // 5: cloudstack.management.template.v1.UpdateTemplatePermissionsResponse
-	(*UpdateVnfTemplateRequest)(nil),           // 6: cloudstack.management.template.v1.UpdateVnfTemplateRequest
-	(*UpdateVnfTemplateResponse)(nil),          // 7: cloudstack.management.template.v1.UpdateVnfTemplateResponse
-	(*ListTemplatesRequest)(nil),               // 8: cloudstack.management.template.v1.ListTemplatesRequest
-	(*ListTemplatesResponse)(nil),              // 9: cloudstack.management.template.v1.ListTemplatesResponse
-	(*CreateTemplateRequest)(nil),              // 10: cloudstack.management.template.v1.CreateTemplateRequest
-	(*CreateTemplateResponse)(nil),             // 11: cloudstack.management.template.v1.CreateTemplateResponse
-	(*ListTemplatePermissionsRequest)(nil),     // 12: cloudstack.management.template.v1.ListTemplatePermissionsRequest
-	(*ListTemplatePermissionsResponse)(nil),    // 13: cloudstack.management.template.v1.ListTemplatePermissionsResponse
-	(*UpdateTemplateCmdByAdminRequest)(nil),    // 14: cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest
-	(*UpdateTemplateCmdByAdminResponse)(nil),   // 15: cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse
-	(*DeleteTemplateRequest)(nil),              // 16: cloudstack.management.template.v1.DeleteTemplateRequest
-	(*DeleteTemplateResponse)(nil),             // 17: cloudstack.management.template.v1.DeleteTemplateResponse
-	(*UpdateTemplateRequest)(nil),              // 18: cloudstack.management.template.v1.UpdateTemplateRequest
-	(*UpdateTemplateResponse)(nil),             // 19: cloudstack.management.template.v1.UpdateTemplateResponse
-	(*PrepareTemplateRequest)(nil),             // 20: cloudstack.management.template.v1.PrepareTemplateRequest
-	(*PrepareTemplateResponse)(nil),            // 21: cloudstack.management.template.v1.PrepareTemplateResponse
-	(*ExtractTemplateRequest)(nil),             // 22: cloudstack.management.template.v1.ExtractTemplateRequest
-	(*ExtractTemplateResponse)(nil),            // 23: cloudstack.management.template.v1.ExtractTemplateResponse
-	(*CopyTemplateRequest)(nil),                // 24: cloudstack.management.template.v1.CopyTemplateRequest
-	(*CopyTemplateResponse)(nil),               // 25: cloudstack.management.template.v1.CopyTemplateResponse
-	(*RegisterVnfTemplateRequest)(nil),         // 26: cloudstack.management.template.v1.RegisterVnfTemplateRequest
-	(*RegisterVnfTemplateResponse)(nil),        // 27: cloudstack.management.template.v1.RegisterVnfTemplateResponse
-	(*GetUploadParamsForTemplateRequest)(nil),  // 28: cloudstack.management.template.v1.GetUploadParamsForTemplateRequest
-	(*GetUploadParamsForTemplateResponse)(nil), // 29: cloudstack.management.template.v1.GetUploadParamsForTemplateResponse
-	(*DeleteVnfTemplateRequest)(nil),           // 30: cloudstack.management.template.v1.DeleteVnfTemplateRequest
-	(*DeleteVnfTemplateResponse)(nil),          // 31: cloudstack.management.template.v1.DeleteVnfTemplateResponse
-	(*RegisterTemplateRequest)(nil),            // 32: cloudstack.management.template.v1.RegisterTemplateRequest
-	(*RegisterTemplateResponse)(nil),           // 33: cloudstack.management.template.v1.RegisterTemplateResponse
-	(*Template)(nil),                           // 34: cloudstack.management.template.v1.Template
-	(*TemplatePermissions)(nil),                // 35: cloudstack.management.template.v1.TemplatePermissions
-	(*Success)(nil),                            // 36: cloudstack.management.template.v1.Success
-	(*Item)(nil),                               // 37: cloudstack.management.template.v1.Item
-	(*Result)(nil),                             // 38: cloudstack.management.template.v1.Result
-	nil,                                        // 39: cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest.DetailsEntry
-	nil,                                        // 40: cloudstack.management.template.v1.ListVnfTemplatesRequest.TagsEntry
-	nil,                                        // 41: cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfNicsEntry
-	nil,                                        // 42: cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfDetailsEntry
-	nil,                                        // 43: cloudstack.management.template.v1.UpdateVnfTemplateRequest.DetailsEntry
-	nil,                                        // 44: cloudstack.management.template.v1.ListTemplatesRequest.TagsEntry
-	nil,                                        // 45: cloudstack.management.template.v1.CreateTemplateRequest.DetailsEntry
-	nil,                                        // 46: cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest.DetailsEntry
-	nil,                                        // 47: cloudstack.management.template.v1.UpdateTemplateRequest.DetailsEntry
-	nil,                                        // 48: cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfNicsEntry
-	nil,                                        // 49: cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfDetailsEntry
-	nil,                                        // 50: cloudstack.management.template.v1.RegisterVnfTemplateRequest.DetailsEntry
-	nil,                                        // 51: cloudstack.management.template.v1.GetUploadParamsForTemplateRequest.DetailsEntry
-	nil,                                        // 52: cloudstack.management.template.v1.RegisterTemplateRequest.DetailsEntry
-	nil,                                        // 53: cloudstack.management.template.v1.Item.DetailsEntry
+	(*DeleteVnfTemplateRequest)(nil),                  // 0: cloudstack.management.template.v1.DeleteVnfTemplateRequest
+	(*DeleteVnfTemplateResponse)(nil),                 // 1: cloudstack.management.template.v1.DeleteVnfTemplateResponse
+	(*ListTemplatePermissionsCmdByAdminRequest)(nil),  // 2: cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminRequest
+	(*ListTemplatePermissionsCmdByAdminResponse)(nil), // 3: cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminResponse
+	(*ListVnfTemplatesRequest)(nil),                   // 4: cloudstack.management.template.v1.ListVnfTemplatesRequest
+	(*ListVnfTemplatesResponse)(nil),                  // 5: cloudstack.management.template.v1.ListVnfTemplatesResponse
+	(*UpdateVnfTemplateRequest)(nil),                  // 6: cloudstack.management.template.v1.UpdateVnfTemplateRequest
+	(*UpdateVnfTemplateResponse)(nil),                 // 7: cloudstack.management.template.v1.UpdateVnfTemplateResponse
+	(*ListTemplatesRequest)(nil),                      // 8: cloudstack.management.template.v1.ListTemplatesRequest
+	(*ListTemplatesResponse)(nil),                     // 9: cloudstack.management.template.v1.ListTemplatesResponse
+	(*CreateTemplateCmdByAdminRequest)(nil),           // 10: cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest
+	(*CreateTemplateCmdByAdminResponse)(nil),          // 11: cloudstack.management.template.v1.CreateTemplateCmdByAdminResponse
+	(*CopyTemplateRequest)(nil),                       // 12: cloudstack.management.template.v1.CopyTemplateRequest
+	(*CopyTemplateResponse)(nil),                      // 13: cloudstack.management.template.v1.CopyTemplateResponse
+	(*DeleteTemplateRequest)(nil),                     // 14: cloudstack.management.template.v1.DeleteTemplateRequest
+	(*DeleteTemplateResponse)(nil),                    // 15: cloudstack.management.template.v1.DeleteTemplateResponse
+	(*ListTemplatePermissionsRequest)(nil),            // 16: cloudstack.management.template.v1.ListTemplatePermissionsRequest
+	(*ListTemplatePermissionsResponse)(nil),           // 17: cloudstack.management.template.v1.ListTemplatePermissionsResponse
+	(*UpdateTemplateCmdByAdminRequest)(nil),           // 18: cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest
+	(*UpdateTemplateCmdByAdminResponse)(nil),          // 19: cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse
+	(*UpdateTemplatePermissionsRequest)(nil),          // 20: cloudstack.management.template.v1.UpdateTemplatePermissionsRequest
+	(*UpdateTemplatePermissionsResponse)(nil),         // 21: cloudstack.management.template.v1.UpdateTemplatePermissionsResponse
+	(*CreateTemplateRequest)(nil),                     // 22: cloudstack.management.template.v1.CreateTemplateRequest
+	(*CreateTemplateResponse)(nil),                    // 23: cloudstack.management.template.v1.CreateTemplateResponse
+	(*RegisterTemplateRequest)(nil),                   // 24: cloudstack.management.template.v1.RegisterTemplateRequest
+	(*RegisterTemplateResponse)(nil),                  // 25: cloudstack.management.template.v1.RegisterTemplateResponse
+	(*RegisterVnfTemplateRequest)(nil),                // 26: cloudstack.management.template.v1.RegisterVnfTemplateRequest
+	(*RegisterVnfTemplateResponse)(nil),               // 27: cloudstack.management.template.v1.RegisterVnfTemplateResponse
+	(*ExtractTemplateRequest)(nil),                    // 28: cloudstack.management.template.v1.ExtractTemplateRequest
+	(*ExtractTemplateResponse)(nil),                   // 29: cloudstack.management.template.v1.ExtractTemplateResponse
+	(*UpdateTemplateRequest)(nil),                     // 30: cloudstack.management.template.v1.UpdateTemplateRequest
+	(*UpdateTemplateResponse)(nil),                    // 31: cloudstack.management.template.v1.UpdateTemplateResponse
+	(*GetUploadParamsForTemplateRequest)(nil),         // 32: cloudstack.management.template.v1.GetUploadParamsForTemplateRequest
+	(*GetUploadParamsForTemplateResponse)(nil),        // 33: cloudstack.management.template.v1.GetUploadParamsForTemplateResponse
+	(*PrepareTemplateRequest)(nil),                    // 34: cloudstack.management.template.v1.PrepareTemplateRequest
+	(*PrepareTemplateResponse)(nil),                   // 35: cloudstack.management.template.v1.PrepareTemplateResponse
+	(*TemplatePermissions)(nil),                       // 36: cloudstack.management.template.v1.TemplatePermissions
+	(*Template)(nil),                                  // 37: cloudstack.management.template.v1.Template
+	(*Success)(nil),                                   // 38: cloudstack.management.template.v1.Success
+	(*Item)(nil),                                      // 39: cloudstack.management.template.v1.Item
+	(*Result)(nil),                                    // 40: cloudstack.management.template.v1.Result
+	nil,                                               // 41: cloudstack.management.template.v1.ListVnfTemplatesRequest.TagsEntry
+	nil,                                               // 42: cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfNicsEntry
+	nil,                                               // 43: cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfDetailsEntry
+	nil,                                               // 44: cloudstack.management.template.v1.UpdateVnfTemplateRequest.DetailsEntry
+	nil,                                               // 45: cloudstack.management.template.v1.ListTemplatesRequest.TagsEntry
+	nil,                                               // 46: cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest.DetailsEntry
+	nil,                                               // 47: cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest.DetailsEntry
+	nil,                                               // 48: cloudstack.management.template.v1.CreateTemplateRequest.DetailsEntry
+	nil,                                               // 49: cloudstack.management.template.v1.RegisterTemplateRequest.DetailsEntry
+	nil,                                               // 50: cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfNicsEntry
+	nil,                                               // 51: cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfDetailsEntry
+	nil,                                               // 52: cloudstack.management.template.v1.RegisterVnfTemplateRequest.DetailsEntry
+	nil,                                               // 53: cloudstack.management.template.v1.UpdateTemplateRequest.DetailsEntry
+	nil,                                               // 54: cloudstack.management.template.v1.GetUploadParamsForTemplateRequest.DetailsEntry
+	nil,                                               // 55: cloudstack.management.template.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_template_v1_template_gen_proto_depIdxs = []int32{
-	39, // 0: cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest.details:type_name -> cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest.DetailsEntry
-	38, // 1: cloudstack.management.template.v1.RegisterTemplateCmdByAdminResponse.result:type_name -> cloudstack.management.template.v1.Result
-	40, // 2: cloudstack.management.template.v1.ListVnfTemplatesRequest.tags:type_name -> cloudstack.management.template.v1.ListVnfTemplatesRequest.TagsEntry
-	34, // 3: cloudstack.management.template.v1.ListVnfTemplatesResponse.items:type_name -> cloudstack.management.template.v1.Template
-	38, // 4: cloudstack.management.template.v1.UpdateTemplatePermissionsResponse.result:type_name -> cloudstack.management.template.v1.Result
-	41, // 5: cloudstack.management.template.v1.UpdateVnfTemplateRequest.vnf_nics:type_name -> cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfNicsEntry
-	42, // 6: cloudstack.management.template.v1.UpdateVnfTemplateRequest.vnf_details:type_name -> cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfDetailsEntry
-	43, // 7: cloudstack.management.template.v1.UpdateVnfTemplateRequest.details:type_name -> cloudstack.management.template.v1.UpdateVnfTemplateRequest.DetailsEntry
-	38, // 8: cloudstack.management.template.v1.UpdateVnfTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	44, // 9: cloudstack.management.template.v1.ListTemplatesRequest.tags:type_name -> cloudstack.management.template.v1.ListTemplatesRequest.TagsEntry
-	34, // 10: cloudstack.management.template.v1.ListTemplatesResponse.items:type_name -> cloudstack.management.template.v1.Template
-	45, // 11: cloudstack.management.template.v1.CreateTemplateRequest.details:type_name -> cloudstack.management.template.v1.CreateTemplateRequest.DetailsEntry
-	38, // 12: cloudstack.management.template.v1.CreateTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	35, // 13: cloudstack.management.template.v1.ListTemplatePermissionsResponse.items:type_name -> cloudstack.management.template.v1.TemplatePermissions
-	46, // 14: cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest.details:type_name -> cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest.DetailsEntry
-	38, // 15: cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse.result:type_name -> cloudstack.management.template.v1.Result
-	38, // 16: cloudstack.management.template.v1.DeleteTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	47, // 17: cloudstack.management.template.v1.UpdateTemplateRequest.details:type_name -> cloudstack.management.template.v1.UpdateTemplateRequest.DetailsEntry
-	38, // 18: cloudstack.management.template.v1.UpdateTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	38, // 19: cloudstack.management.template.v1.PrepareTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	38, // 20: cloudstack.management.template.v1.ExtractTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	38, // 21: cloudstack.management.template.v1.CopyTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	48, // 22: cloudstack.management.template.v1.RegisterVnfTemplateRequest.vnf_nics:type_name -> cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfNicsEntry
-	49, // 23: cloudstack.management.template.v1.RegisterVnfTemplateRequest.vnf_details:type_name -> cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfDetailsEntry
-	50, // 24: cloudstack.management.template.v1.RegisterVnfTemplateRequest.details:type_name -> cloudstack.management.template.v1.RegisterVnfTemplateRequest.DetailsEntry
-	38, // 25: cloudstack.management.template.v1.RegisterVnfTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	51, // 26: cloudstack.management.template.v1.GetUploadParamsForTemplateRequest.details:type_name -> cloudstack.management.template.v1.GetUploadParamsForTemplateRequest.DetailsEntry
-	38, // 27: cloudstack.management.template.v1.GetUploadParamsForTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	38, // 28: cloudstack.management.template.v1.DeleteVnfTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	52, // 29: cloudstack.management.template.v1.RegisterTemplateRequest.details:type_name -> cloudstack.management.template.v1.RegisterTemplateRequest.DetailsEntry
-	38, // 30: cloudstack.management.template.v1.RegisterTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
-	53, // 31: cloudstack.management.template.v1.Item.details:type_name -> cloudstack.management.template.v1.Item.DetailsEntry
-	0,  // 32: cloudstack.management.template.v1.TemplateService.RegisterTemplateCmdByAdmin:input_type -> cloudstack.management.template.v1.RegisterTemplateCmdByAdminRequest
-	2,  // 33: cloudstack.management.template.v1.TemplateService.ListVnfTemplates:input_type -> cloudstack.management.template.v1.ListVnfTemplatesRequest
-	4,  // 34: cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions:input_type -> cloudstack.management.template.v1.UpdateTemplatePermissionsRequest
-	6,  // 35: cloudstack.management.template.v1.TemplateService.UpdateVnfTemplate:input_type -> cloudstack.management.template.v1.UpdateVnfTemplateRequest
-	8,  // 36: cloudstack.management.template.v1.TemplateService.ListTemplates:input_type -> cloudstack.management.template.v1.ListTemplatesRequest
-	10, // 37: cloudstack.management.template.v1.TemplateService.CreateTemplate:input_type -> cloudstack.management.template.v1.CreateTemplateRequest
-	12, // 38: cloudstack.management.template.v1.TemplateService.ListTemplatePermissions:input_type -> cloudstack.management.template.v1.ListTemplatePermissionsRequest
-	14, // 39: cloudstack.management.template.v1.TemplateService.UpdateTemplateCmdByAdmin:input_type -> cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest
-	16, // 40: cloudstack.management.template.v1.TemplateService.DeleteTemplate:input_type -> cloudstack.management.template.v1.DeleteTemplateRequest
-	18, // 41: cloudstack.management.template.v1.TemplateService.UpdateTemplate:input_type -> cloudstack.management.template.v1.UpdateTemplateRequest
-	20, // 42: cloudstack.management.template.v1.TemplateService.PrepareTemplate:input_type -> cloudstack.management.template.v1.PrepareTemplateRequest
-	22, // 43: cloudstack.management.template.v1.TemplateService.ExtractTemplate:input_type -> cloudstack.management.template.v1.ExtractTemplateRequest
-	24, // 44: cloudstack.management.template.v1.TemplateService.CopyTemplate:input_type -> cloudstack.management.template.v1.CopyTemplateRequest
-	26, // 45: cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate:input_type -> cloudstack.management.template.v1.RegisterVnfTemplateRequest
-	28, // 46: cloudstack.management.template.v1.TemplateService.GetUploadParamsForTemplate:input_type -> cloudstack.management.template.v1.GetUploadParamsForTemplateRequest
-	30, // 47: cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate:input_type -> cloudstack.management.template.v1.DeleteVnfTemplateRequest
-	32, // 48: cloudstack.management.template.v1.TemplateService.RegisterTemplate:input_type -> cloudstack.management.template.v1.RegisterTemplateRequest
-	1,  // 49: cloudstack.management.template.v1.TemplateService.RegisterTemplateCmdByAdmin:output_type -> cloudstack.management.template.v1.RegisterTemplateCmdByAdminResponse
-	3,  // 50: cloudstack.management.template.v1.TemplateService.ListVnfTemplates:output_type -> cloudstack.management.template.v1.ListVnfTemplatesResponse
-	5,  // 51: cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions:output_type -> cloudstack.management.template.v1.UpdateTemplatePermissionsResponse
-	7,  // 52: cloudstack.management.template.v1.TemplateService.UpdateVnfTemplate:output_type -> cloudstack.management.template.v1.UpdateVnfTemplateResponse
-	9,  // 53: cloudstack.management.template.v1.TemplateService.ListTemplates:output_type -> cloudstack.management.template.v1.ListTemplatesResponse
-	11, // 54: cloudstack.management.template.v1.TemplateService.CreateTemplate:output_type -> cloudstack.management.template.v1.CreateTemplateResponse
-	13, // 55: cloudstack.management.template.v1.TemplateService.ListTemplatePermissions:output_type -> cloudstack.management.template.v1.ListTemplatePermissionsResponse
-	15, // 56: cloudstack.management.template.v1.TemplateService.UpdateTemplateCmdByAdmin:output_type -> cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse
-	17, // 57: cloudstack.management.template.v1.TemplateService.DeleteTemplate:output_type -> cloudstack.management.template.v1.DeleteTemplateResponse
-	19, // 58: cloudstack.management.template.v1.TemplateService.UpdateTemplate:output_type -> cloudstack.management.template.v1.UpdateTemplateResponse
-	21, // 59: cloudstack.management.template.v1.TemplateService.PrepareTemplate:output_type -> cloudstack.management.template.v1.PrepareTemplateResponse
-	23, // 60: cloudstack.management.template.v1.TemplateService.ExtractTemplate:output_type -> cloudstack.management.template.v1.ExtractTemplateResponse
-	25, // 61: cloudstack.management.template.v1.TemplateService.CopyTemplate:output_type -> cloudstack.management.template.v1.CopyTemplateResponse
-	27, // 62: cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate:output_type -> cloudstack.management.template.v1.RegisterVnfTemplateResponse
-	29, // 63: cloudstack.management.template.v1.TemplateService.GetUploadParamsForTemplate:output_type -> cloudstack.management.template.v1.GetUploadParamsForTemplateResponse
-	31, // 64: cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate:output_type -> cloudstack.management.template.v1.DeleteVnfTemplateResponse
-	33, // 65: cloudstack.management.template.v1.TemplateService.RegisterTemplate:output_type -> cloudstack.management.template.v1.RegisterTemplateResponse
-	49, // [49:66] is the sub-list for method output_type
-	32, // [32:49] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	40, // 0: cloudstack.management.template.v1.DeleteVnfTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	36, // 1: cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminResponse.items:type_name -> cloudstack.management.template.v1.TemplatePermissions
+	41, // 2: cloudstack.management.template.v1.ListVnfTemplatesRequest.tags:type_name -> cloudstack.management.template.v1.ListVnfTemplatesRequest.TagsEntry
+	37, // 3: cloudstack.management.template.v1.ListVnfTemplatesResponse.items:type_name -> cloudstack.management.template.v1.Template
+	42, // 4: cloudstack.management.template.v1.UpdateVnfTemplateRequest.vnf_nics:type_name -> cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfNicsEntry
+	43, // 5: cloudstack.management.template.v1.UpdateVnfTemplateRequest.vnf_details:type_name -> cloudstack.management.template.v1.UpdateVnfTemplateRequest.VnfDetailsEntry
+	44, // 6: cloudstack.management.template.v1.UpdateVnfTemplateRequest.details:type_name -> cloudstack.management.template.v1.UpdateVnfTemplateRequest.DetailsEntry
+	40, // 7: cloudstack.management.template.v1.UpdateVnfTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	45, // 8: cloudstack.management.template.v1.ListTemplatesRequest.tags:type_name -> cloudstack.management.template.v1.ListTemplatesRequest.TagsEntry
+	37, // 9: cloudstack.management.template.v1.ListTemplatesResponse.items:type_name -> cloudstack.management.template.v1.Template
+	46, // 10: cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest.details:type_name -> cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest.DetailsEntry
+	40, // 11: cloudstack.management.template.v1.CreateTemplateCmdByAdminResponse.result:type_name -> cloudstack.management.template.v1.Result
+	40, // 12: cloudstack.management.template.v1.CopyTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	40, // 13: cloudstack.management.template.v1.DeleteTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	36, // 14: cloudstack.management.template.v1.ListTemplatePermissionsResponse.items:type_name -> cloudstack.management.template.v1.TemplatePermissions
+	47, // 15: cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest.details:type_name -> cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest.DetailsEntry
+	40, // 16: cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse.result:type_name -> cloudstack.management.template.v1.Result
+	40, // 17: cloudstack.management.template.v1.UpdateTemplatePermissionsResponse.result:type_name -> cloudstack.management.template.v1.Result
+	48, // 18: cloudstack.management.template.v1.CreateTemplateRequest.details:type_name -> cloudstack.management.template.v1.CreateTemplateRequest.DetailsEntry
+	40, // 19: cloudstack.management.template.v1.CreateTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	49, // 20: cloudstack.management.template.v1.RegisterTemplateRequest.details:type_name -> cloudstack.management.template.v1.RegisterTemplateRequest.DetailsEntry
+	40, // 21: cloudstack.management.template.v1.RegisterTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	50, // 22: cloudstack.management.template.v1.RegisterVnfTemplateRequest.vnf_nics:type_name -> cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfNicsEntry
+	51, // 23: cloudstack.management.template.v1.RegisterVnfTemplateRequest.vnf_details:type_name -> cloudstack.management.template.v1.RegisterVnfTemplateRequest.VnfDetailsEntry
+	52, // 24: cloudstack.management.template.v1.RegisterVnfTemplateRequest.details:type_name -> cloudstack.management.template.v1.RegisterVnfTemplateRequest.DetailsEntry
+	40, // 25: cloudstack.management.template.v1.RegisterVnfTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	40, // 26: cloudstack.management.template.v1.ExtractTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	53, // 27: cloudstack.management.template.v1.UpdateTemplateRequest.details:type_name -> cloudstack.management.template.v1.UpdateTemplateRequest.DetailsEntry
+	40, // 28: cloudstack.management.template.v1.UpdateTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	54, // 29: cloudstack.management.template.v1.GetUploadParamsForTemplateRequest.details:type_name -> cloudstack.management.template.v1.GetUploadParamsForTemplateRequest.DetailsEntry
+	40, // 30: cloudstack.management.template.v1.GetUploadParamsForTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	40, // 31: cloudstack.management.template.v1.PrepareTemplateResponse.result:type_name -> cloudstack.management.template.v1.Result
+	55, // 32: cloudstack.management.template.v1.Item.details:type_name -> cloudstack.management.template.v1.Item.DetailsEntry
+	0,  // 33: cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate:input_type -> cloudstack.management.template.v1.DeleteVnfTemplateRequest
+	2,  // 34: cloudstack.management.template.v1.TemplateService.ListTemplatePermissionsCmdByAdmin:input_type -> cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminRequest
+	4,  // 35: cloudstack.management.template.v1.TemplateService.ListVnfTemplates:input_type -> cloudstack.management.template.v1.ListVnfTemplatesRequest
+	6,  // 36: cloudstack.management.template.v1.TemplateService.UpdateVnfTemplate:input_type -> cloudstack.management.template.v1.UpdateVnfTemplateRequest
+	8,  // 37: cloudstack.management.template.v1.TemplateService.ListTemplates:input_type -> cloudstack.management.template.v1.ListTemplatesRequest
+	10, // 38: cloudstack.management.template.v1.TemplateService.CreateTemplateCmdByAdmin:input_type -> cloudstack.management.template.v1.CreateTemplateCmdByAdminRequest
+	12, // 39: cloudstack.management.template.v1.TemplateService.CopyTemplate:input_type -> cloudstack.management.template.v1.CopyTemplateRequest
+	14, // 40: cloudstack.management.template.v1.TemplateService.DeleteTemplate:input_type -> cloudstack.management.template.v1.DeleteTemplateRequest
+	16, // 41: cloudstack.management.template.v1.TemplateService.ListTemplatePermissions:input_type -> cloudstack.management.template.v1.ListTemplatePermissionsRequest
+	18, // 42: cloudstack.management.template.v1.TemplateService.UpdateTemplateCmdByAdmin:input_type -> cloudstack.management.template.v1.UpdateTemplateCmdByAdminRequest
+	20, // 43: cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions:input_type -> cloudstack.management.template.v1.UpdateTemplatePermissionsRequest
+	22, // 44: cloudstack.management.template.v1.TemplateService.CreateTemplate:input_type -> cloudstack.management.template.v1.CreateTemplateRequest
+	24, // 45: cloudstack.management.template.v1.TemplateService.RegisterTemplate:input_type -> cloudstack.management.template.v1.RegisterTemplateRequest
+	26, // 46: cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate:input_type -> cloudstack.management.template.v1.RegisterVnfTemplateRequest
+	28, // 47: cloudstack.management.template.v1.TemplateService.ExtractTemplate:input_type -> cloudstack.management.template.v1.ExtractTemplateRequest
+	30, // 48: cloudstack.management.template.v1.TemplateService.UpdateTemplate:input_type -> cloudstack.management.template.v1.UpdateTemplateRequest
+	32, // 49: cloudstack.management.template.v1.TemplateService.GetUploadParamsForTemplate:input_type -> cloudstack.management.template.v1.GetUploadParamsForTemplateRequest
+	34, // 50: cloudstack.management.template.v1.TemplateService.PrepareTemplate:input_type -> cloudstack.management.template.v1.PrepareTemplateRequest
+	1,  // 51: cloudstack.management.template.v1.TemplateService.DeleteVnfTemplate:output_type -> cloudstack.management.template.v1.DeleteVnfTemplateResponse
+	3,  // 52: cloudstack.management.template.v1.TemplateService.ListTemplatePermissionsCmdByAdmin:output_type -> cloudstack.management.template.v1.ListTemplatePermissionsCmdByAdminResponse
+	5,  // 53: cloudstack.management.template.v1.TemplateService.ListVnfTemplates:output_type -> cloudstack.management.template.v1.ListVnfTemplatesResponse
+	7,  // 54: cloudstack.management.template.v1.TemplateService.UpdateVnfTemplate:output_type -> cloudstack.management.template.v1.UpdateVnfTemplateResponse
+	9,  // 55: cloudstack.management.template.v1.TemplateService.ListTemplates:output_type -> cloudstack.management.template.v1.ListTemplatesResponse
+	11, // 56: cloudstack.management.template.v1.TemplateService.CreateTemplateCmdByAdmin:output_type -> cloudstack.management.template.v1.CreateTemplateCmdByAdminResponse
+	13, // 57: cloudstack.management.template.v1.TemplateService.CopyTemplate:output_type -> cloudstack.management.template.v1.CopyTemplateResponse
+	15, // 58: cloudstack.management.template.v1.TemplateService.DeleteTemplate:output_type -> cloudstack.management.template.v1.DeleteTemplateResponse
+	17, // 59: cloudstack.management.template.v1.TemplateService.ListTemplatePermissions:output_type -> cloudstack.management.template.v1.ListTemplatePermissionsResponse
+	19, // 60: cloudstack.management.template.v1.TemplateService.UpdateTemplateCmdByAdmin:output_type -> cloudstack.management.template.v1.UpdateTemplateCmdByAdminResponse
+	21, // 61: cloudstack.management.template.v1.TemplateService.UpdateTemplatePermissions:output_type -> cloudstack.management.template.v1.UpdateTemplatePermissionsResponse
+	23, // 62: cloudstack.management.template.v1.TemplateService.CreateTemplate:output_type -> cloudstack.management.template.v1.CreateTemplateResponse
+	25, // 63: cloudstack.management.template.v1.TemplateService.RegisterTemplate:output_type -> cloudstack.management.template.v1.RegisterTemplateResponse
+	27, // 64: cloudstack.management.template.v1.TemplateService.RegisterVnfTemplate:output_type -> cloudstack.management.template.v1.RegisterVnfTemplateResponse
+	29, // 65: cloudstack.management.template.v1.TemplateService.ExtractTemplate:output_type -> cloudstack.management.template.v1.ExtractTemplateResponse
+	31, // 66: cloudstack.management.template.v1.TemplateService.UpdateTemplate:output_type -> cloudstack.management.template.v1.UpdateTemplateResponse
+	33, // 67: cloudstack.management.template.v1.TemplateService.GetUploadParamsForTemplate:output_type -> cloudstack.management.template.v1.GetUploadParamsForTemplateResponse
+	35, // 68: cloudstack.management.template.v1.TemplateService.PrepareTemplate:output_type -> cloudstack.management.template.v1.PrepareTemplateResponse
+	51, // [51:69] is the sub-list for method output_type
+	33, // [33:51] is the sub-list for method input_type
+	33, // [33:33] is the sub-list for extension type_name
+	33, // [33:33] is the sub-list for extension extendee
+	0,  // [0:33] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_template_v1_template_gen_proto_init() }
@@ -5188,7 +5251,7 @@ func file_cloudstack_management_template_v1_template_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_template_v1_template_gen_proto_rawDesc), len(file_cloudstack_management_template_v1_template_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   54,
+			NumMessages:   56,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

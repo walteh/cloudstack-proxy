@@ -33,71 +33,71 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// FirewallServiceDeleteFirewallRuleProcedure is the fully-qualified name of the FirewallService's
-	// DeleteFirewallRule RPC.
-	FirewallServiceDeleteFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/DeleteFirewallRule"
-	// FirewallServiceListPortForwardingRulesProcedure is the fully-qualified name of the
-	// FirewallService's ListPortForwardingRules RPC.
-	FirewallServiceListPortForwardingRulesProcedure = "/cloudstack.management.firewall.v1.FirewallService/ListPortForwardingRules"
-	// FirewallServiceCreateEgressFirewallRuleProcedure is the fully-qualified name of the
-	// FirewallService's CreateEgressFirewallRule RPC.
-	FirewallServiceCreateEgressFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/CreateEgressFirewallRule"
-	// FirewallServiceDeletePortForwardingRuleProcedure is the fully-qualified name of the
-	// FirewallService's DeletePortForwardingRule RPC.
-	FirewallServiceDeletePortForwardingRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/DeletePortForwardingRule"
-	// FirewallServiceUpdateFirewallRuleProcedure is the fully-qualified name of the FirewallService's
-	// UpdateFirewallRule RPC.
-	FirewallServiceUpdateFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/UpdateFirewallRule"
-	// FirewallServiceListFirewallRulesProcedure is the fully-qualified name of the FirewallService's
-	// ListFirewallRules RPC.
-	FirewallServiceListFirewallRulesProcedure = "/cloudstack.management.firewall.v1.FirewallService/ListFirewallRules"
-	// FirewallServiceUpdateEgressFirewallRuleProcedure is the fully-qualified name of the
-	// FirewallService's UpdateEgressFirewallRule RPC.
-	FirewallServiceUpdateEgressFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/UpdateEgressFirewallRule"
-	// FirewallServiceListEgressFirewallRulesProcedure is the fully-qualified name of the
-	// FirewallService's ListEgressFirewallRules RPC.
-	FirewallServiceListEgressFirewallRulesProcedure = "/cloudstack.management.firewall.v1.FirewallService/ListEgressFirewallRules"
 	// FirewallServiceDeleteEgressFirewallRuleProcedure is the fully-qualified name of the
 	// FirewallService's DeleteEgressFirewallRule RPC.
 	FirewallServiceDeleteEgressFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/DeleteEgressFirewallRule"
-	// FirewallServiceCreateFirewallRuleProcedure is the fully-qualified name of the FirewallService's
-	// CreateFirewallRule RPC.
-	FirewallServiceCreateFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/CreateFirewallRule"
-	// FirewallServiceCreatePortForwardingRuleProcedure is the fully-qualified name of the
-	// FirewallService's CreatePortForwardingRule RPC.
-	FirewallServiceCreatePortForwardingRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/CreatePortForwardingRule"
+	// FirewallServiceCreateEgressFirewallRuleProcedure is the fully-qualified name of the
+	// FirewallService's CreateEgressFirewallRule RPC.
+	FirewallServiceCreateEgressFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/CreateEgressFirewallRule"
 	// FirewallServiceUpdatePortForwardingRuleProcedure is the fully-qualified name of the
 	// FirewallService's UpdatePortForwardingRule RPC.
 	FirewallServiceUpdatePortForwardingRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/UpdatePortForwardingRule"
+	// FirewallServiceListFirewallRulesProcedure is the fully-qualified name of the FirewallService's
+	// ListFirewallRules RPC.
+	FirewallServiceListFirewallRulesProcedure = "/cloudstack.management.firewall.v1.FirewallService/ListFirewallRules"
+	// FirewallServiceCreatePortForwardingRuleProcedure is the fully-qualified name of the
+	// FirewallService's CreatePortForwardingRule RPC.
+	FirewallServiceCreatePortForwardingRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/CreatePortForwardingRule"
+	// FirewallServiceDeleteFirewallRuleProcedure is the fully-qualified name of the FirewallService's
+	// DeleteFirewallRule RPC.
+	FirewallServiceDeleteFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/DeleteFirewallRule"
+	// FirewallServiceUpdateEgressFirewallRuleProcedure is the fully-qualified name of the
+	// FirewallService's UpdateEgressFirewallRule RPC.
+	FirewallServiceUpdateEgressFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/UpdateEgressFirewallRule"
+	// FirewallServiceListPortForwardingRulesProcedure is the fully-qualified name of the
+	// FirewallService's ListPortForwardingRules RPC.
+	FirewallServiceListPortForwardingRulesProcedure = "/cloudstack.management.firewall.v1.FirewallService/ListPortForwardingRules"
+	// FirewallServiceUpdateFirewallRuleProcedure is the fully-qualified name of the FirewallService's
+	// UpdateFirewallRule RPC.
+	FirewallServiceUpdateFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/UpdateFirewallRule"
+	// FirewallServiceCreateFirewallRuleProcedure is the fully-qualified name of the FirewallService's
+	// CreateFirewallRule RPC.
+	FirewallServiceCreateFirewallRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/CreateFirewallRule"
+	// FirewallServiceListEgressFirewallRulesProcedure is the fully-qualified name of the
+	// FirewallService's ListEgressFirewallRules RPC.
+	FirewallServiceListEgressFirewallRulesProcedure = "/cloudstack.management.firewall.v1.FirewallService/ListEgressFirewallRules"
+	// FirewallServiceDeletePortForwardingRuleProcedure is the fully-qualified name of the
+	// FirewallService's DeletePortForwardingRule RPC.
+	FirewallServiceDeletePortForwardingRuleProcedure = "/cloudstack.management.firewall.v1.FirewallService/DeletePortForwardingRule"
 )
 
 // FirewallServiceClient is a client for the cloudstack.management.firewall.v1.FirewallService
 // service.
 type FirewallServiceClient interface {
-	// DeleteFirewallRule Deletes a firewall rule
-	DeleteFirewallRule(context.Context, *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error)
-	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
-	ListPortForwardingRules(context.Context, *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error)
-	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
-	CreateEgressFirewallRule(context.Context, *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error)
-	// DeletePortForwardingRule Deletes a port forwarding rule
-	DeletePortForwardingRule(context.Context, *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error)
-	// UpdateFirewallRule Updates firewall rule
-	UpdateFirewallRule(context.Context, *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error)
-	// ListFirewallRules Lists all firewall rules for an IP address.
-	ListFirewallRules(context.Context, *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error)
-	// UpdateEgressFirewallRule Updates egress firewall rule
-	UpdateEgressFirewallRule(context.Context, *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error)
-	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
-	ListEgressFirewallRules(context.Context, *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error)
 	// DeleteEgressFirewallRule Deletes an egress firewall rule
 	DeleteEgressFirewallRule(context.Context, *connect.Request[v1.DeleteEgressFirewallRuleRequest]) (*connect.Response[v1.DeleteEgressFirewallRuleResponse], error)
-	// CreateFirewallRule Creates a firewall rule for a given IP address
-	CreateFirewallRule(context.Context, *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error)
-	// CreatePortForwardingRule Creates a port forwarding rule
-	CreatePortForwardingRule(context.Context, *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error)
+	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
+	CreateEgressFirewallRule(context.Context, *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error)
 	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
 	UpdatePortForwardingRule(context.Context, *connect.Request[v1.UpdatePortForwardingRuleRequest]) (*connect.Response[v1.UpdatePortForwardingRuleResponse], error)
+	// ListFirewallRules Lists all firewall rules for an IP address.
+	ListFirewallRules(context.Context, *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error)
+	// CreatePortForwardingRule Creates a port forwarding rule
+	CreatePortForwardingRule(context.Context, *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error)
+	// DeleteFirewallRule Deletes a firewall rule
+	DeleteFirewallRule(context.Context, *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error)
+	// UpdateEgressFirewallRule Updates egress firewall rule
+	UpdateEgressFirewallRule(context.Context, *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error)
+	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
+	ListPortForwardingRules(context.Context, *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error)
+	// UpdateFirewallRule Updates firewall rule
+	UpdateFirewallRule(context.Context, *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error)
+	// CreateFirewallRule Creates a firewall rule for a given IP address
+	CreateFirewallRule(context.Context, *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error)
+	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
+	ListEgressFirewallRules(context.Context, *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error)
+	// DeletePortForwardingRule Deletes a port forwarding rule
+	DeletePortForwardingRule(context.Context, *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error)
 }
 
 // NewFirewallServiceClient constructs a client for the
@@ -112,16 +112,10 @@ func NewFirewallServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	firewallServiceMethods := v1.File_cloudstack_management_firewall_v1_firewall_gen_proto.Services().ByName("FirewallService").Methods()
 	return &firewallServiceClient{
-		deleteFirewallRule: connect.NewClient[v1.DeleteFirewallRuleRequest, v1.DeleteFirewallRuleResponse](
+		deleteEgressFirewallRule: connect.NewClient[v1.DeleteEgressFirewallRuleRequest, v1.DeleteEgressFirewallRuleResponse](
 			httpClient,
-			baseURL+FirewallServiceDeleteFirewallRuleProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("DeleteFirewallRule")),
-			connect.WithClientOptions(opts...),
-		),
-		listPortForwardingRules: connect.NewClient[v1.ListPortForwardingRulesRequest, v1.ListPortForwardingRulesResponse](
-			httpClient,
-			baseURL+FirewallServiceListPortForwardingRulesProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("ListPortForwardingRules")),
+			baseURL+FirewallServiceDeleteEgressFirewallRuleProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("DeleteEgressFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
 		createEgressFirewallRule: connect.NewClient[v1.CreateEgressFirewallRuleRequest, v1.CreateEgressFirewallRuleResponse](
@@ -130,16 +124,10 @@ func NewFirewallServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(firewallServiceMethods.ByName("CreateEgressFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
-		deletePortForwardingRule: connect.NewClient[v1.DeletePortForwardingRuleRequest, v1.DeletePortForwardingRuleResponse](
+		updatePortForwardingRule: connect.NewClient[v1.UpdatePortForwardingRuleRequest, v1.UpdatePortForwardingRuleResponse](
 			httpClient,
-			baseURL+FirewallServiceDeletePortForwardingRuleProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("DeletePortForwardingRule")),
-			connect.WithClientOptions(opts...),
-		),
-		updateFirewallRule: connect.NewClient[v1.UpdateFirewallRuleRequest, v1.UpdateFirewallRuleResponse](
-			httpClient,
-			baseURL+FirewallServiceUpdateFirewallRuleProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("UpdateFirewallRule")),
+			baseURL+FirewallServiceUpdatePortForwardingRuleProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("UpdatePortForwardingRule")),
 			connect.WithClientOptions(opts...),
 		),
 		listFirewallRules: connect.NewClient[v1.ListFirewallRulesRequest, v1.ListFirewallRulesResponse](
@@ -148,22 +136,34 @@ func NewFirewallServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(firewallServiceMethods.ByName("ListFirewallRules")),
 			connect.WithClientOptions(opts...),
 		),
+		createPortForwardingRule: connect.NewClient[v1.CreatePortForwardingRuleRequest, v1.CreatePortForwardingRuleResponse](
+			httpClient,
+			baseURL+FirewallServiceCreatePortForwardingRuleProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("CreatePortForwardingRule")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteFirewallRule: connect.NewClient[v1.DeleteFirewallRuleRequest, v1.DeleteFirewallRuleResponse](
+			httpClient,
+			baseURL+FirewallServiceDeleteFirewallRuleProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("DeleteFirewallRule")),
+			connect.WithClientOptions(opts...),
+		),
 		updateEgressFirewallRule: connect.NewClient[v1.UpdateEgressFirewallRuleRequest, v1.UpdateEgressFirewallRuleResponse](
 			httpClient,
 			baseURL+FirewallServiceUpdateEgressFirewallRuleProcedure,
 			connect.WithSchema(firewallServiceMethods.ByName("UpdateEgressFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
-		listEgressFirewallRules: connect.NewClient[v1.ListEgressFirewallRulesRequest, v1.ListEgressFirewallRulesResponse](
+		listPortForwardingRules: connect.NewClient[v1.ListPortForwardingRulesRequest, v1.ListPortForwardingRulesResponse](
 			httpClient,
-			baseURL+FirewallServiceListEgressFirewallRulesProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("ListEgressFirewallRules")),
+			baseURL+FirewallServiceListPortForwardingRulesProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("ListPortForwardingRules")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteEgressFirewallRule: connect.NewClient[v1.DeleteEgressFirewallRuleRequest, v1.DeleteEgressFirewallRuleResponse](
+		updateFirewallRule: connect.NewClient[v1.UpdateFirewallRuleRequest, v1.UpdateFirewallRuleResponse](
 			httpClient,
-			baseURL+FirewallServiceDeleteEgressFirewallRuleProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("DeleteEgressFirewallRule")),
+			baseURL+FirewallServiceUpdateFirewallRuleProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("UpdateFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
 		createFirewallRule: connect.NewClient[v1.CreateFirewallRuleRequest, v1.CreateFirewallRuleResponse](
@@ -172,16 +172,16 @@ func NewFirewallServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(firewallServiceMethods.ByName("CreateFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
-		createPortForwardingRule: connect.NewClient[v1.CreatePortForwardingRuleRequest, v1.CreatePortForwardingRuleResponse](
+		listEgressFirewallRules: connect.NewClient[v1.ListEgressFirewallRulesRequest, v1.ListEgressFirewallRulesResponse](
 			httpClient,
-			baseURL+FirewallServiceCreatePortForwardingRuleProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("CreatePortForwardingRule")),
+			baseURL+FirewallServiceListEgressFirewallRulesProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("ListEgressFirewallRules")),
 			connect.WithClientOptions(opts...),
 		),
-		updatePortForwardingRule: connect.NewClient[v1.UpdatePortForwardingRuleRequest, v1.UpdatePortForwardingRuleResponse](
+		deletePortForwardingRule: connect.NewClient[v1.DeletePortForwardingRuleRequest, v1.DeletePortForwardingRuleResponse](
 			httpClient,
-			baseURL+FirewallServiceUpdatePortForwardingRuleProcedure,
-			connect.WithSchema(firewallServiceMethods.ByName("UpdatePortForwardingRule")),
+			baseURL+FirewallServiceDeletePortForwardingRuleProcedure,
+			connect.WithSchema(firewallServiceMethods.ByName("DeletePortForwardingRule")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -189,63 +189,18 @@ func NewFirewallServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // firewallServiceClient implements FirewallServiceClient.
 type firewallServiceClient struct {
-	deleteFirewallRule       *connect.Client[v1.DeleteFirewallRuleRequest, v1.DeleteFirewallRuleResponse]
-	listPortForwardingRules  *connect.Client[v1.ListPortForwardingRulesRequest, v1.ListPortForwardingRulesResponse]
-	createEgressFirewallRule *connect.Client[v1.CreateEgressFirewallRuleRequest, v1.CreateEgressFirewallRuleResponse]
-	deletePortForwardingRule *connect.Client[v1.DeletePortForwardingRuleRequest, v1.DeletePortForwardingRuleResponse]
-	updateFirewallRule       *connect.Client[v1.UpdateFirewallRuleRequest, v1.UpdateFirewallRuleResponse]
-	listFirewallRules        *connect.Client[v1.ListFirewallRulesRequest, v1.ListFirewallRulesResponse]
-	updateEgressFirewallRule *connect.Client[v1.UpdateEgressFirewallRuleRequest, v1.UpdateEgressFirewallRuleResponse]
-	listEgressFirewallRules  *connect.Client[v1.ListEgressFirewallRulesRequest, v1.ListEgressFirewallRulesResponse]
 	deleteEgressFirewallRule *connect.Client[v1.DeleteEgressFirewallRuleRequest, v1.DeleteEgressFirewallRuleResponse]
-	createFirewallRule       *connect.Client[v1.CreateFirewallRuleRequest, v1.CreateFirewallRuleResponse]
-	createPortForwardingRule *connect.Client[v1.CreatePortForwardingRuleRequest, v1.CreatePortForwardingRuleResponse]
+	createEgressFirewallRule *connect.Client[v1.CreateEgressFirewallRuleRequest, v1.CreateEgressFirewallRuleResponse]
 	updatePortForwardingRule *connect.Client[v1.UpdatePortForwardingRuleRequest, v1.UpdatePortForwardingRuleResponse]
-}
-
-// DeleteFirewallRule calls cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule.
-func (c *firewallServiceClient) DeleteFirewallRule(ctx context.Context, req *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error) {
-	return c.deleteFirewallRule.CallUnary(ctx, req)
-}
-
-// ListPortForwardingRules calls
-// cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules.
-func (c *firewallServiceClient) ListPortForwardingRules(ctx context.Context, req *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error) {
-	return c.listPortForwardingRules.CallUnary(ctx, req)
-}
-
-// CreateEgressFirewallRule calls
-// cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule.
-func (c *firewallServiceClient) CreateEgressFirewallRule(ctx context.Context, req *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error) {
-	return c.createEgressFirewallRule.CallUnary(ctx, req)
-}
-
-// DeletePortForwardingRule calls
-// cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule.
-func (c *firewallServiceClient) DeletePortForwardingRule(ctx context.Context, req *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error) {
-	return c.deletePortForwardingRule.CallUnary(ctx, req)
-}
-
-// UpdateFirewallRule calls cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule.
-func (c *firewallServiceClient) UpdateFirewallRule(ctx context.Context, req *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error) {
-	return c.updateFirewallRule.CallUnary(ctx, req)
-}
-
-// ListFirewallRules calls cloudstack.management.firewall.v1.FirewallService.ListFirewallRules.
-func (c *firewallServiceClient) ListFirewallRules(ctx context.Context, req *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error) {
-	return c.listFirewallRules.CallUnary(ctx, req)
-}
-
-// UpdateEgressFirewallRule calls
-// cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule.
-func (c *firewallServiceClient) UpdateEgressFirewallRule(ctx context.Context, req *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error) {
-	return c.updateEgressFirewallRule.CallUnary(ctx, req)
-}
-
-// ListEgressFirewallRules calls
-// cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules.
-func (c *firewallServiceClient) ListEgressFirewallRules(ctx context.Context, req *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error) {
-	return c.listEgressFirewallRules.CallUnary(ctx, req)
+	listFirewallRules        *connect.Client[v1.ListFirewallRulesRequest, v1.ListFirewallRulesResponse]
+	createPortForwardingRule *connect.Client[v1.CreatePortForwardingRuleRequest, v1.CreatePortForwardingRuleResponse]
+	deleteFirewallRule       *connect.Client[v1.DeleteFirewallRuleRequest, v1.DeleteFirewallRuleResponse]
+	updateEgressFirewallRule *connect.Client[v1.UpdateEgressFirewallRuleRequest, v1.UpdateEgressFirewallRuleResponse]
+	listPortForwardingRules  *connect.Client[v1.ListPortForwardingRulesRequest, v1.ListPortForwardingRulesResponse]
+	updateFirewallRule       *connect.Client[v1.UpdateFirewallRuleRequest, v1.UpdateFirewallRuleResponse]
+	createFirewallRule       *connect.Client[v1.CreateFirewallRuleRequest, v1.CreateFirewallRuleResponse]
+	listEgressFirewallRules  *connect.Client[v1.ListEgressFirewallRulesRequest, v1.ListEgressFirewallRulesResponse]
+	deletePortForwardingRule *connect.Client[v1.DeletePortForwardingRuleRequest, v1.DeletePortForwardingRuleResponse]
 }
 
 // DeleteEgressFirewallRule calls
@@ -254,15 +209,10 @@ func (c *firewallServiceClient) DeleteEgressFirewallRule(ctx context.Context, re
 	return c.deleteEgressFirewallRule.CallUnary(ctx, req)
 }
 
-// CreateFirewallRule calls cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule.
-func (c *firewallServiceClient) CreateFirewallRule(ctx context.Context, req *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error) {
-	return c.createFirewallRule.CallUnary(ctx, req)
-}
-
-// CreatePortForwardingRule calls
-// cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule.
-func (c *firewallServiceClient) CreatePortForwardingRule(ctx context.Context, req *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error) {
-	return c.createPortForwardingRule.CallUnary(ctx, req)
+// CreateEgressFirewallRule calls
+// cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule.
+func (c *firewallServiceClient) CreateEgressFirewallRule(ctx context.Context, req *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error) {
+	return c.createEgressFirewallRule.CallUnary(ctx, req)
 }
 
 // UpdatePortForwardingRule calls
@@ -271,33 +221,83 @@ func (c *firewallServiceClient) UpdatePortForwardingRule(ctx context.Context, re
 	return c.updatePortForwardingRule.CallUnary(ctx, req)
 }
 
+// ListFirewallRules calls cloudstack.management.firewall.v1.FirewallService.ListFirewallRules.
+func (c *firewallServiceClient) ListFirewallRules(ctx context.Context, req *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error) {
+	return c.listFirewallRules.CallUnary(ctx, req)
+}
+
+// CreatePortForwardingRule calls
+// cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule.
+func (c *firewallServiceClient) CreatePortForwardingRule(ctx context.Context, req *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error) {
+	return c.createPortForwardingRule.CallUnary(ctx, req)
+}
+
+// DeleteFirewallRule calls cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule.
+func (c *firewallServiceClient) DeleteFirewallRule(ctx context.Context, req *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error) {
+	return c.deleteFirewallRule.CallUnary(ctx, req)
+}
+
+// UpdateEgressFirewallRule calls
+// cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule.
+func (c *firewallServiceClient) UpdateEgressFirewallRule(ctx context.Context, req *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error) {
+	return c.updateEgressFirewallRule.CallUnary(ctx, req)
+}
+
+// ListPortForwardingRules calls
+// cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules.
+func (c *firewallServiceClient) ListPortForwardingRules(ctx context.Context, req *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error) {
+	return c.listPortForwardingRules.CallUnary(ctx, req)
+}
+
+// UpdateFirewallRule calls cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule.
+func (c *firewallServiceClient) UpdateFirewallRule(ctx context.Context, req *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error) {
+	return c.updateFirewallRule.CallUnary(ctx, req)
+}
+
+// CreateFirewallRule calls cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule.
+func (c *firewallServiceClient) CreateFirewallRule(ctx context.Context, req *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error) {
+	return c.createFirewallRule.CallUnary(ctx, req)
+}
+
+// ListEgressFirewallRules calls
+// cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules.
+func (c *firewallServiceClient) ListEgressFirewallRules(ctx context.Context, req *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error) {
+	return c.listEgressFirewallRules.CallUnary(ctx, req)
+}
+
+// DeletePortForwardingRule calls
+// cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule.
+func (c *firewallServiceClient) DeletePortForwardingRule(ctx context.Context, req *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error) {
+	return c.deletePortForwardingRule.CallUnary(ctx, req)
+}
+
 // FirewallServiceHandler is an implementation of the
 // cloudstack.management.firewall.v1.FirewallService service.
 type FirewallServiceHandler interface {
-	// DeleteFirewallRule Deletes a firewall rule
-	DeleteFirewallRule(context.Context, *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error)
-	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
-	ListPortForwardingRules(context.Context, *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error)
-	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
-	CreateEgressFirewallRule(context.Context, *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error)
-	// DeletePortForwardingRule Deletes a port forwarding rule
-	DeletePortForwardingRule(context.Context, *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error)
-	// UpdateFirewallRule Updates firewall rule
-	UpdateFirewallRule(context.Context, *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error)
-	// ListFirewallRules Lists all firewall rules for an IP address.
-	ListFirewallRules(context.Context, *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error)
-	// UpdateEgressFirewallRule Updates egress firewall rule
-	UpdateEgressFirewallRule(context.Context, *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error)
-	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
-	ListEgressFirewallRules(context.Context, *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error)
 	// DeleteEgressFirewallRule Deletes an egress firewall rule
 	DeleteEgressFirewallRule(context.Context, *connect.Request[v1.DeleteEgressFirewallRuleRequest]) (*connect.Response[v1.DeleteEgressFirewallRuleResponse], error)
-	// CreateFirewallRule Creates a firewall rule for a given IP address
-	CreateFirewallRule(context.Context, *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error)
-	// CreatePortForwardingRule Creates a port forwarding rule
-	CreatePortForwardingRule(context.Context, *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error)
+	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
+	CreateEgressFirewallRule(context.Context, *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error)
 	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
 	UpdatePortForwardingRule(context.Context, *connect.Request[v1.UpdatePortForwardingRuleRequest]) (*connect.Response[v1.UpdatePortForwardingRuleResponse], error)
+	// ListFirewallRules Lists all firewall rules for an IP address.
+	ListFirewallRules(context.Context, *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error)
+	// CreatePortForwardingRule Creates a port forwarding rule
+	CreatePortForwardingRule(context.Context, *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error)
+	// DeleteFirewallRule Deletes a firewall rule
+	DeleteFirewallRule(context.Context, *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error)
+	// UpdateEgressFirewallRule Updates egress firewall rule
+	UpdateEgressFirewallRule(context.Context, *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error)
+	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
+	ListPortForwardingRules(context.Context, *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error)
+	// UpdateFirewallRule Updates firewall rule
+	UpdateFirewallRule(context.Context, *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error)
+	// CreateFirewallRule Creates a firewall rule for a given IP address
+	CreateFirewallRule(context.Context, *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error)
+	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
+	ListEgressFirewallRules(context.Context, *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error)
+	// DeletePortForwardingRule Deletes a port forwarding rule
+	DeletePortForwardingRule(context.Context, *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error)
 }
 
 // NewFirewallServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -307,16 +307,10 @@ type FirewallServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewFirewallServiceHandler(svc FirewallServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	firewallServiceMethods := v1.File_cloudstack_management_firewall_v1_firewall_gen_proto.Services().ByName("FirewallService").Methods()
-	firewallServiceDeleteFirewallRuleHandler := connect.NewUnaryHandler(
-		FirewallServiceDeleteFirewallRuleProcedure,
-		svc.DeleteFirewallRule,
-		connect.WithSchema(firewallServiceMethods.ByName("DeleteFirewallRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	firewallServiceListPortForwardingRulesHandler := connect.NewUnaryHandler(
-		FirewallServiceListPortForwardingRulesProcedure,
-		svc.ListPortForwardingRules,
-		connect.WithSchema(firewallServiceMethods.ByName("ListPortForwardingRules")),
+	firewallServiceDeleteEgressFirewallRuleHandler := connect.NewUnaryHandler(
+		FirewallServiceDeleteEgressFirewallRuleProcedure,
+		svc.DeleteEgressFirewallRule,
+		connect.WithSchema(firewallServiceMethods.ByName("DeleteEgressFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	firewallServiceCreateEgressFirewallRuleHandler := connect.NewUnaryHandler(
@@ -325,16 +319,10 @@ func NewFirewallServiceHandler(svc FirewallServiceHandler, opts ...connect.Handl
 		connect.WithSchema(firewallServiceMethods.ByName("CreateEgressFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
-	firewallServiceDeletePortForwardingRuleHandler := connect.NewUnaryHandler(
-		FirewallServiceDeletePortForwardingRuleProcedure,
-		svc.DeletePortForwardingRule,
-		connect.WithSchema(firewallServiceMethods.ByName("DeletePortForwardingRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	firewallServiceUpdateFirewallRuleHandler := connect.NewUnaryHandler(
-		FirewallServiceUpdateFirewallRuleProcedure,
-		svc.UpdateFirewallRule,
-		connect.WithSchema(firewallServiceMethods.ByName("UpdateFirewallRule")),
+	firewallServiceUpdatePortForwardingRuleHandler := connect.NewUnaryHandler(
+		FirewallServiceUpdatePortForwardingRuleProcedure,
+		svc.UpdatePortForwardingRule,
+		connect.WithSchema(firewallServiceMethods.ByName("UpdatePortForwardingRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	firewallServiceListFirewallRulesHandler := connect.NewUnaryHandler(
@@ -343,22 +331,34 @@ func NewFirewallServiceHandler(svc FirewallServiceHandler, opts ...connect.Handl
 		connect.WithSchema(firewallServiceMethods.ByName("ListFirewallRules")),
 		connect.WithHandlerOptions(opts...),
 	)
+	firewallServiceCreatePortForwardingRuleHandler := connect.NewUnaryHandler(
+		FirewallServiceCreatePortForwardingRuleProcedure,
+		svc.CreatePortForwardingRule,
+		connect.WithSchema(firewallServiceMethods.ByName("CreatePortForwardingRule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	firewallServiceDeleteFirewallRuleHandler := connect.NewUnaryHandler(
+		FirewallServiceDeleteFirewallRuleProcedure,
+		svc.DeleteFirewallRule,
+		connect.WithSchema(firewallServiceMethods.ByName("DeleteFirewallRule")),
+		connect.WithHandlerOptions(opts...),
+	)
 	firewallServiceUpdateEgressFirewallRuleHandler := connect.NewUnaryHandler(
 		FirewallServiceUpdateEgressFirewallRuleProcedure,
 		svc.UpdateEgressFirewallRule,
 		connect.WithSchema(firewallServiceMethods.ByName("UpdateEgressFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
-	firewallServiceListEgressFirewallRulesHandler := connect.NewUnaryHandler(
-		FirewallServiceListEgressFirewallRulesProcedure,
-		svc.ListEgressFirewallRules,
-		connect.WithSchema(firewallServiceMethods.ByName("ListEgressFirewallRules")),
+	firewallServiceListPortForwardingRulesHandler := connect.NewUnaryHandler(
+		FirewallServiceListPortForwardingRulesProcedure,
+		svc.ListPortForwardingRules,
+		connect.WithSchema(firewallServiceMethods.ByName("ListPortForwardingRules")),
 		connect.WithHandlerOptions(opts...),
 	)
-	firewallServiceDeleteEgressFirewallRuleHandler := connect.NewUnaryHandler(
-		FirewallServiceDeleteEgressFirewallRuleProcedure,
-		svc.DeleteEgressFirewallRule,
-		connect.WithSchema(firewallServiceMethods.ByName("DeleteEgressFirewallRule")),
+	firewallServiceUpdateFirewallRuleHandler := connect.NewUnaryHandler(
+		FirewallServiceUpdateFirewallRuleProcedure,
+		svc.UpdateFirewallRule,
+		connect.WithSchema(firewallServiceMethods.ByName("UpdateFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	firewallServiceCreateFirewallRuleHandler := connect.NewUnaryHandler(
@@ -367,44 +367,44 @@ func NewFirewallServiceHandler(svc FirewallServiceHandler, opts ...connect.Handl
 		connect.WithSchema(firewallServiceMethods.ByName("CreateFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
-	firewallServiceCreatePortForwardingRuleHandler := connect.NewUnaryHandler(
-		FirewallServiceCreatePortForwardingRuleProcedure,
-		svc.CreatePortForwardingRule,
-		connect.WithSchema(firewallServiceMethods.ByName("CreatePortForwardingRule")),
+	firewallServiceListEgressFirewallRulesHandler := connect.NewUnaryHandler(
+		FirewallServiceListEgressFirewallRulesProcedure,
+		svc.ListEgressFirewallRules,
+		connect.WithSchema(firewallServiceMethods.ByName("ListEgressFirewallRules")),
 		connect.WithHandlerOptions(opts...),
 	)
-	firewallServiceUpdatePortForwardingRuleHandler := connect.NewUnaryHandler(
-		FirewallServiceUpdatePortForwardingRuleProcedure,
-		svc.UpdatePortForwardingRule,
-		connect.WithSchema(firewallServiceMethods.ByName("UpdatePortForwardingRule")),
+	firewallServiceDeletePortForwardingRuleHandler := connect.NewUnaryHandler(
+		FirewallServiceDeletePortForwardingRuleProcedure,
+		svc.DeletePortForwardingRule,
+		connect.WithSchema(firewallServiceMethods.ByName("DeletePortForwardingRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.firewall.v1.FirewallService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case FirewallServiceDeleteFirewallRuleProcedure:
-			firewallServiceDeleteFirewallRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceListPortForwardingRulesProcedure:
-			firewallServiceListPortForwardingRulesHandler.ServeHTTP(w, r)
-		case FirewallServiceCreateEgressFirewallRuleProcedure:
-			firewallServiceCreateEgressFirewallRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceDeletePortForwardingRuleProcedure:
-			firewallServiceDeletePortForwardingRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceUpdateFirewallRuleProcedure:
-			firewallServiceUpdateFirewallRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceListFirewallRulesProcedure:
-			firewallServiceListFirewallRulesHandler.ServeHTTP(w, r)
-		case FirewallServiceUpdateEgressFirewallRuleProcedure:
-			firewallServiceUpdateEgressFirewallRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceListEgressFirewallRulesProcedure:
-			firewallServiceListEgressFirewallRulesHandler.ServeHTTP(w, r)
 		case FirewallServiceDeleteEgressFirewallRuleProcedure:
 			firewallServiceDeleteEgressFirewallRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceCreateFirewallRuleProcedure:
-			firewallServiceCreateFirewallRuleHandler.ServeHTTP(w, r)
-		case FirewallServiceCreatePortForwardingRuleProcedure:
-			firewallServiceCreatePortForwardingRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceCreateEgressFirewallRuleProcedure:
+			firewallServiceCreateEgressFirewallRuleHandler.ServeHTTP(w, r)
 		case FirewallServiceUpdatePortForwardingRuleProcedure:
 			firewallServiceUpdatePortForwardingRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceListFirewallRulesProcedure:
+			firewallServiceListFirewallRulesHandler.ServeHTTP(w, r)
+		case FirewallServiceCreatePortForwardingRuleProcedure:
+			firewallServiceCreatePortForwardingRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceDeleteFirewallRuleProcedure:
+			firewallServiceDeleteFirewallRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceUpdateEgressFirewallRuleProcedure:
+			firewallServiceUpdateEgressFirewallRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceListPortForwardingRulesProcedure:
+			firewallServiceListPortForwardingRulesHandler.ServeHTTP(w, r)
+		case FirewallServiceUpdateFirewallRuleProcedure:
+			firewallServiceUpdateFirewallRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceCreateFirewallRuleProcedure:
+			firewallServiceCreateFirewallRuleHandler.ServeHTTP(w, r)
+		case FirewallServiceListEgressFirewallRulesProcedure:
+			firewallServiceListEgressFirewallRulesHandler.ServeHTTP(w, r)
+		case FirewallServiceDeletePortForwardingRuleProcedure:
+			firewallServiceDeletePortForwardingRuleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -414,50 +414,50 @@ func NewFirewallServiceHandler(svc FirewallServiceHandler, opts ...connect.Handl
 // UnimplementedFirewallServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedFirewallServiceHandler struct{}
 
-func (UnimplementedFirewallServiceHandler) DeleteFirewallRule(context.Context, *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule is not implemented"))
-}
-
-func (UnimplementedFirewallServiceHandler) ListPortForwardingRules(context.Context, *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules is not implemented"))
+func (UnimplementedFirewallServiceHandler) DeleteEgressFirewallRule(context.Context, *connect.Request[v1.DeleteEgressFirewallRuleRequest]) (*connect.Response[v1.DeleteEgressFirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.DeleteEgressFirewallRule is not implemented"))
 }
 
 func (UnimplementedFirewallServiceHandler) CreateEgressFirewallRule(context.Context, *connect.Request[v1.CreateEgressFirewallRuleRequest]) (*connect.Response[v1.CreateEgressFirewallRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule is not implemented"))
 }
 
-func (UnimplementedFirewallServiceHandler) DeletePortForwardingRule(context.Context, *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule is not implemented"))
-}
-
-func (UnimplementedFirewallServiceHandler) UpdateFirewallRule(context.Context, *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule is not implemented"))
+func (UnimplementedFirewallServiceHandler) UpdatePortForwardingRule(context.Context, *connect.Request[v1.UpdatePortForwardingRuleRequest]) (*connect.Response[v1.UpdatePortForwardingRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.UpdatePortForwardingRule is not implemented"))
 }
 
 func (UnimplementedFirewallServiceHandler) ListFirewallRules(context.Context, *connect.Request[v1.ListFirewallRulesRequest]) (*connect.Response[v1.ListFirewallRulesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.ListFirewallRules is not implemented"))
 }
 
+func (UnimplementedFirewallServiceHandler) CreatePortForwardingRule(context.Context, *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule is not implemented"))
+}
+
+func (UnimplementedFirewallServiceHandler) DeleteFirewallRule(context.Context, *connect.Request[v1.DeleteFirewallRuleRequest]) (*connect.Response[v1.DeleteFirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule is not implemented"))
+}
+
 func (UnimplementedFirewallServiceHandler) UpdateEgressFirewallRule(context.Context, *connect.Request[v1.UpdateEgressFirewallRuleRequest]) (*connect.Response[v1.UpdateEgressFirewallRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule is not implemented"))
 }
 
-func (UnimplementedFirewallServiceHandler) ListEgressFirewallRules(context.Context, *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules is not implemented"))
+func (UnimplementedFirewallServiceHandler) ListPortForwardingRules(context.Context, *connect.Request[v1.ListPortForwardingRulesRequest]) (*connect.Response[v1.ListPortForwardingRulesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules is not implemented"))
 }
 
-func (UnimplementedFirewallServiceHandler) DeleteEgressFirewallRule(context.Context, *connect.Request[v1.DeleteEgressFirewallRuleRequest]) (*connect.Response[v1.DeleteEgressFirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.DeleteEgressFirewallRule is not implemented"))
+func (UnimplementedFirewallServiceHandler) UpdateFirewallRule(context.Context, *connect.Request[v1.UpdateFirewallRuleRequest]) (*connect.Response[v1.UpdateFirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule is not implemented"))
 }
 
 func (UnimplementedFirewallServiceHandler) CreateFirewallRule(context.Context, *connect.Request[v1.CreateFirewallRuleRequest]) (*connect.Response[v1.CreateFirewallRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule is not implemented"))
 }
 
-func (UnimplementedFirewallServiceHandler) CreatePortForwardingRule(context.Context, *connect.Request[v1.CreatePortForwardingRuleRequest]) (*connect.Response[v1.CreatePortForwardingRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule is not implemented"))
+func (UnimplementedFirewallServiceHandler) ListEgressFirewallRules(context.Context, *connect.Request[v1.ListEgressFirewallRulesRequest]) (*connect.Response[v1.ListEgressFirewallRulesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules is not implemented"))
 }
 
-func (UnimplementedFirewallServiceHandler) UpdatePortForwardingRule(context.Context, *connect.Request[v1.UpdatePortForwardingRuleRequest]) (*connect.Response[v1.UpdatePortForwardingRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.UpdatePortForwardingRule is not implemented"))
+func (UnimplementedFirewallServiceHandler) DeletePortForwardingRule(context.Context, *connect.Request[v1.DeletePortForwardingRuleRequest]) (*connect.Response[v1.DeletePortForwardingRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule is not implemented"))
 }

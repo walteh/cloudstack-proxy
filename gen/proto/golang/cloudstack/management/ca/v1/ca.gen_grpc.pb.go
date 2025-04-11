@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CaService_RevokeCertificate_FullMethodName    = "/cloudstack.management.ca.v1.CaService/RevokeCertificate"
-	CaService_ProvisionCertificate_FullMethodName = "/cloudstack.management.ca.v1.CaService/ProvisionCertificate"
-	CaService_ListCAProviders_FullMethodName      = "/cloudstack.management.ca.v1.CaService/ListCAProviders"
-	CaService_IssueCertificate_FullMethodName     = "/cloudstack.management.ca.v1.CaService/IssueCertificate"
 	CaService_ListCaCertificate_FullMethodName    = "/cloudstack.management.ca.v1.CaService/ListCaCertificate"
+	CaService_ListCAProviders_FullMethodName      = "/cloudstack.management.ca.v1.CaService/ListCAProviders"
+	CaService_ProvisionCertificate_FullMethodName = "/cloudstack.management.ca.v1.CaService/ProvisionCertificate"
+	CaService_RevokeCertificate_FullMethodName    = "/cloudstack.management.ca.v1.CaService/RevokeCertificate"
+	CaService_IssueCertificate_FullMethodName     = "/cloudstack.management.ca.v1.CaService/IssueCertificate"
 )
 
 // CaServiceClient is the client API for CaService service.
@@ -32,16 +32,16 @@ const (
 //
 // CaService provides operations for managing Cas
 type CaServiceClient interface {
-	// RevokeCertificate Revokes certificate using configured CA plugin
-	RevokeCertificate(ctx context.Context, in *RevokeCertificateRequest, opts ...grpc.CallOption) (*RevokeCertificateResponse, error)
-	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
-	ProvisionCertificate(ctx context.Context, in *ProvisionCertificateRequest, opts ...grpc.CallOption) (*ProvisionCertificateResponse, error)
-	// ListCAProviders Lists available certificate authority providers in CloudStack
-	ListCAProviders(ctx context.Context, in *ListCAProvidersRequest, opts ...grpc.CallOption) (*ListCAProvidersResponse, error)
-	// IssueCertificate Issues a client certificate using configured or provided CA plugin
-	IssueCertificate(ctx context.Context, in *IssueCertificateRequest, opts ...grpc.CallOption) (*IssueCertificateResponse, error)
 	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
 	ListCaCertificate(ctx context.Context, in *ListCaCertificateRequest, opts ...grpc.CallOption) (*ListCaCertificateResponse, error)
+	// ListCAProviders Lists available certificate authority providers in CloudStack
+	ListCAProviders(ctx context.Context, in *ListCAProvidersRequest, opts ...grpc.CallOption) (*ListCAProvidersResponse, error)
+	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
+	ProvisionCertificate(ctx context.Context, in *ProvisionCertificateRequest, opts ...grpc.CallOption) (*ProvisionCertificateResponse, error)
+	// RevokeCertificate Revokes certificate using configured CA plugin
+	RevokeCertificate(ctx context.Context, in *RevokeCertificateRequest, opts ...grpc.CallOption) (*RevokeCertificateResponse, error)
+	// IssueCertificate Issues a client certificate using configured or provided CA plugin
+	IssueCertificate(ctx context.Context, in *IssueCertificateRequest, opts ...grpc.CallOption) (*IssueCertificateResponse, error)
 }
 
 type caServiceClient struct {
@@ -52,20 +52,10 @@ func NewCaServiceClient(cc grpc.ClientConnInterface) CaServiceClient {
 	return &caServiceClient{cc}
 }
 
-func (c *caServiceClient) RevokeCertificate(ctx context.Context, in *RevokeCertificateRequest, opts ...grpc.CallOption) (*RevokeCertificateResponse, error) {
+func (c *caServiceClient) ListCaCertificate(ctx context.Context, in *ListCaCertificateRequest, opts ...grpc.CallOption) (*ListCaCertificateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RevokeCertificateResponse)
-	err := c.cc.Invoke(ctx, CaService_RevokeCertificate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *caServiceClient) ProvisionCertificate(ctx context.Context, in *ProvisionCertificateRequest, opts ...grpc.CallOption) (*ProvisionCertificateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ProvisionCertificateResponse)
-	err := c.cc.Invoke(ctx, CaService_ProvisionCertificate_FullMethodName, in, out, cOpts...)
+	out := new(ListCaCertificateResponse)
+	err := c.cc.Invoke(ctx, CaService_ListCaCertificate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,20 +72,30 @@ func (c *caServiceClient) ListCAProviders(ctx context.Context, in *ListCAProvide
 	return out, nil
 }
 
-func (c *caServiceClient) IssueCertificate(ctx context.Context, in *IssueCertificateRequest, opts ...grpc.CallOption) (*IssueCertificateResponse, error) {
+func (c *caServiceClient) ProvisionCertificate(ctx context.Context, in *ProvisionCertificateRequest, opts ...grpc.CallOption) (*ProvisionCertificateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(IssueCertificateResponse)
-	err := c.cc.Invoke(ctx, CaService_IssueCertificate_FullMethodName, in, out, cOpts...)
+	out := new(ProvisionCertificateResponse)
+	err := c.cc.Invoke(ctx, CaService_ProvisionCertificate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *caServiceClient) ListCaCertificate(ctx context.Context, in *ListCaCertificateRequest, opts ...grpc.CallOption) (*ListCaCertificateResponse, error) {
+func (c *caServiceClient) RevokeCertificate(ctx context.Context, in *RevokeCertificateRequest, opts ...grpc.CallOption) (*RevokeCertificateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListCaCertificateResponse)
-	err := c.cc.Invoke(ctx, CaService_ListCaCertificate_FullMethodName, in, out, cOpts...)
+	out := new(RevokeCertificateResponse)
+	err := c.cc.Invoke(ctx, CaService_RevokeCertificate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *caServiceClient) IssueCertificate(ctx context.Context, in *IssueCertificateRequest, opts ...grpc.CallOption) (*IssueCertificateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(IssueCertificateResponse)
+	err := c.cc.Invoke(ctx, CaService_IssueCertificate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,16 +108,16 @@ func (c *caServiceClient) ListCaCertificate(ctx context.Context, in *ListCaCerti
 //
 // CaService provides operations for managing Cas
 type CaServiceServer interface {
-	// RevokeCertificate Revokes certificate using configured CA plugin
-	RevokeCertificate(context.Context, *RevokeCertificateRequest) (*RevokeCertificateResponse, error)
-	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
-	ProvisionCertificate(context.Context, *ProvisionCertificateRequest) (*ProvisionCertificateResponse, error)
-	// ListCAProviders Lists available certificate authority providers in CloudStack
-	ListCAProviders(context.Context, *ListCAProvidersRequest) (*ListCAProvidersResponse, error)
-	// IssueCertificate Issues a client certificate using configured or provided CA plugin
-	IssueCertificate(context.Context, *IssueCertificateRequest) (*IssueCertificateResponse, error)
 	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
 	ListCaCertificate(context.Context, *ListCaCertificateRequest) (*ListCaCertificateResponse, error)
+	// ListCAProviders Lists available certificate authority providers in CloudStack
+	ListCAProviders(context.Context, *ListCAProvidersRequest) (*ListCAProvidersResponse, error)
+	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
+	ProvisionCertificate(context.Context, *ProvisionCertificateRequest) (*ProvisionCertificateResponse, error)
+	// RevokeCertificate Revokes certificate using configured CA plugin
+	RevokeCertificate(context.Context, *RevokeCertificateRequest) (*RevokeCertificateResponse, error)
+	// IssueCertificate Issues a client certificate using configured or provided CA plugin
+	IssueCertificate(context.Context, *IssueCertificateRequest) (*IssueCertificateResponse, error)
 	mustEmbedUnimplementedCaServiceServer()
 }
 
@@ -128,20 +128,20 @@ type CaServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCaServiceServer struct{}
 
-func (UnimplementedCaServiceServer) RevokeCertificate(context.Context, *RevokeCertificateRequest) (*RevokeCertificateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RevokeCertificate not implemented")
-}
-func (UnimplementedCaServiceServer) ProvisionCertificate(context.Context, *ProvisionCertificateRequest) (*ProvisionCertificateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProvisionCertificate not implemented")
+func (UnimplementedCaServiceServer) ListCaCertificate(context.Context, *ListCaCertificateRequest) (*ListCaCertificateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCaCertificate not implemented")
 }
 func (UnimplementedCaServiceServer) ListCAProviders(context.Context, *ListCAProvidersRequest) (*ListCAProvidersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCAProviders not implemented")
 }
+func (UnimplementedCaServiceServer) ProvisionCertificate(context.Context, *ProvisionCertificateRequest) (*ProvisionCertificateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProvisionCertificate not implemented")
+}
+func (UnimplementedCaServiceServer) RevokeCertificate(context.Context, *RevokeCertificateRequest) (*RevokeCertificateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeCertificate not implemented")
+}
 func (UnimplementedCaServiceServer) IssueCertificate(context.Context, *IssueCertificateRequest) (*IssueCertificateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IssueCertificate not implemented")
-}
-func (UnimplementedCaServiceServer) ListCaCertificate(context.Context, *ListCaCertificateRequest) (*ListCaCertificateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListCaCertificate not implemented")
 }
 func (UnimplementedCaServiceServer) mustEmbedUnimplementedCaServiceServer() {}
 func (UnimplementedCaServiceServer) testEmbeddedByValue()                   {}
@@ -164,38 +164,20 @@ func RegisterCaServiceServer(s grpc.ServiceRegistrar, srv CaServiceServer) {
 	s.RegisterService(&CaService_ServiceDesc, srv)
 }
 
-func _CaService_RevokeCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RevokeCertificateRequest)
+func _CaService_ListCaCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCaCertificateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CaServiceServer).RevokeCertificate(ctx, in)
+		return srv.(CaServiceServer).ListCaCertificate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CaService_RevokeCertificate_FullMethodName,
+		FullMethod: CaService_ListCaCertificate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CaServiceServer).RevokeCertificate(ctx, req.(*RevokeCertificateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CaService_ProvisionCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProvisionCertificateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CaServiceServer).ProvisionCertificate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CaService_ProvisionCertificate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CaServiceServer).ProvisionCertificate(ctx, req.(*ProvisionCertificateRequest))
+		return srv.(CaServiceServer).ListCaCertificate(ctx, req.(*ListCaCertificateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,6 +200,42 @@ func _CaService_ListCAProviders_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CaService_ProvisionCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProvisionCertificateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CaServiceServer).ProvisionCertificate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CaService_ProvisionCertificate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CaServiceServer).ProvisionCertificate(ctx, req.(*ProvisionCertificateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CaService_RevokeCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeCertificateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CaServiceServer).RevokeCertificate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CaService_RevokeCertificate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CaServiceServer).RevokeCertificate(ctx, req.(*RevokeCertificateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CaService_IssueCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IssueCertificateRequest)
 	if err := dec(in); err != nil {
@@ -236,24 +254,6 @@ func _CaService_IssueCertificate_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CaService_ListCaCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListCaCertificateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CaServiceServer).ListCaCertificate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CaService_ListCaCertificate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CaServiceServer).ListCaCertificate(ctx, req.(*ListCaCertificateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // CaService_ServiceDesc is the grpc.ServiceDesc for CaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -262,24 +262,24 @@ var CaService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CaServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RevokeCertificate",
-			Handler:    _CaService_RevokeCertificate_Handler,
-		},
-		{
-			MethodName: "ProvisionCertificate",
-			Handler:    _CaService_ProvisionCertificate_Handler,
+			MethodName: "ListCaCertificate",
+			Handler:    _CaService_ListCaCertificate_Handler,
 		},
 		{
 			MethodName: "ListCAProviders",
 			Handler:    _CaService_ListCAProviders_Handler,
 		},
 		{
-			MethodName: "IssueCertificate",
-			Handler:    _CaService_IssueCertificate_Handler,
+			MethodName: "ProvisionCertificate",
+			Handler:    _CaService_ProvisionCertificate_Handler,
 		},
 		{
-			MethodName: "ListCaCertificate",
-			Handler:    _CaService_ListCaCertificate_Handler,
+			MethodName: "RevokeCertificate",
+			Handler:    _CaService_RevokeCertificate_Handler,
+		},
+		{
+			MethodName: "IssueCertificate",
+			Handler:    _CaService_IssueCertificate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

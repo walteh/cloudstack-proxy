@@ -19,15 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OfferingService_DeleteServiceOffering_FullMethodName                     = "/cloudstack.management.offering.v1.OfferingService/DeleteServiceOffering"
-	OfferingService_IsAccountAllowedToCreateOfferingsWithTags_FullMethodName = "/cloudstack.management.offering.v1.OfferingService/IsAccountAllowedToCreateOfferingsWithTags"
-	OfferingService_UpdateDiskOffering_FullMethodName                        = "/cloudstack.management.offering.v1.OfferingService/UpdateDiskOffering"
-	OfferingService_CreateDiskOffering_FullMethodName                        = "/cloudstack.management.offering.v1.OfferingService/CreateDiskOffering"
-	OfferingService_CreateServiceOffering_FullMethodName                     = "/cloudstack.management.offering.v1.OfferingService/CreateServiceOffering"
 	OfferingService_ListDiskOfferings_FullMethodName                         = "/cloudstack.management.offering.v1.OfferingService/ListDiskOfferings"
+	OfferingService_CreateDiskOffering_FullMethodName                        = "/cloudstack.management.offering.v1.OfferingService/CreateDiskOffering"
 	OfferingService_DeleteDiskOffering_FullMethodName                        = "/cloudstack.management.offering.v1.OfferingService/DeleteDiskOffering"
+	OfferingService_DeleteServiceOffering_FullMethodName                     = "/cloudstack.management.offering.v1.OfferingService/DeleteServiceOffering"
+	OfferingService_CreateServiceOffering_FullMethodName                     = "/cloudstack.management.offering.v1.OfferingService/CreateServiceOffering"
+	OfferingService_IsAccountAllowedToCreateOfferingsWithTags_FullMethodName = "/cloudstack.management.offering.v1.OfferingService/IsAccountAllowedToCreateOfferingsWithTags"
 	OfferingService_ListServiceOfferings_FullMethodName                      = "/cloudstack.management.offering.v1.OfferingService/ListServiceOfferings"
 	OfferingService_UpdateServiceOffering_FullMethodName                     = "/cloudstack.management.offering.v1.OfferingService/UpdateServiceOffering"
+	OfferingService_UpdateDiskOffering_FullMethodName                        = "/cloudstack.management.offering.v1.OfferingService/UpdateDiskOffering"
 )
 
 // OfferingServiceClient is the client API for OfferingService service.
@@ -36,24 +36,24 @@ const (
 //
 // OfferingService provides operations for managing Offerings
 type OfferingServiceClient interface {
-	// DeleteServiceOffering Deletes a service offering.
-	DeleteServiceOffering(ctx context.Context, in *DeleteServiceOfferingRequest, opts ...grpc.CallOption) (*DeleteServiceOfferingResponse, error)
-	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
-	IsAccountAllowedToCreateOfferingsWithTags(ctx context.Context, in *IsAccountAllowedToCreateOfferingsWithTagsRequest, opts ...grpc.CallOption) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error)
-	// UpdateDiskOffering Updates a disk offering.
-	UpdateDiskOffering(ctx context.Context, in *UpdateDiskOfferingRequest, opts ...grpc.CallOption) (*UpdateDiskOfferingResponse, error)
-	// CreateDiskOffering Creates a disk offering.
-	CreateDiskOffering(ctx context.Context, in *CreateDiskOfferingRequest, opts ...grpc.CallOption) (*CreateDiskOfferingResponse, error)
-	// CreateServiceOffering Creates a service offering.
-	CreateServiceOffering(ctx context.Context, in *CreateServiceOfferingRequest, opts ...grpc.CallOption) (*CreateServiceOfferingResponse, error)
 	// ListDiskOfferings Lists all available disk offerings.
 	ListDiskOfferings(ctx context.Context, in *ListDiskOfferingsRequest, opts ...grpc.CallOption) (*ListDiskOfferingsResponse, error)
+	// CreateDiskOffering Creates a disk offering.
+	CreateDiskOffering(ctx context.Context, in *CreateDiskOfferingRequest, opts ...grpc.CallOption) (*CreateDiskOfferingResponse, error)
 	// DeleteDiskOffering Updates a disk offering.
 	DeleteDiskOffering(ctx context.Context, in *DeleteDiskOfferingRequest, opts ...grpc.CallOption) (*DeleteDiskOfferingResponse, error)
+	// DeleteServiceOffering Deletes a service offering.
+	DeleteServiceOffering(ctx context.Context, in *DeleteServiceOfferingRequest, opts ...grpc.CallOption) (*DeleteServiceOfferingResponse, error)
+	// CreateServiceOffering Creates a service offering.
+	CreateServiceOffering(ctx context.Context, in *CreateServiceOfferingRequest, opts ...grpc.CallOption) (*CreateServiceOfferingResponse, error)
+	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
+	IsAccountAllowedToCreateOfferingsWithTags(ctx context.Context, in *IsAccountAllowedToCreateOfferingsWithTagsRequest, opts ...grpc.CallOption) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error)
 	// ListServiceOfferings Lists all available service offerings.
 	ListServiceOfferings(ctx context.Context, in *ListServiceOfferingsRequest, opts ...grpc.CallOption) (*ListServiceOfferingsResponse, error)
 	// UpdateServiceOffering Updates a service offering.
 	UpdateServiceOffering(ctx context.Context, in *UpdateServiceOfferingRequest, opts ...grpc.CallOption) (*UpdateServiceOfferingResponse, error)
+	// UpdateDiskOffering Updates a disk offering.
+	UpdateDiskOffering(ctx context.Context, in *UpdateDiskOfferingRequest, opts ...grpc.CallOption) (*UpdateDiskOfferingResponse, error)
 }
 
 type offeringServiceClient struct {
@@ -64,30 +64,10 @@ func NewOfferingServiceClient(cc grpc.ClientConnInterface) OfferingServiceClient
 	return &offeringServiceClient{cc}
 }
 
-func (c *offeringServiceClient) DeleteServiceOffering(ctx context.Context, in *DeleteServiceOfferingRequest, opts ...grpc.CallOption) (*DeleteServiceOfferingResponse, error) {
+func (c *offeringServiceClient) ListDiskOfferings(ctx context.Context, in *ListDiskOfferingsRequest, opts ...grpc.CallOption) (*ListDiskOfferingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteServiceOfferingResponse)
-	err := c.cc.Invoke(ctx, OfferingService_DeleteServiceOffering_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *offeringServiceClient) IsAccountAllowedToCreateOfferingsWithTags(ctx context.Context, in *IsAccountAllowedToCreateOfferingsWithTagsRequest, opts ...grpc.CallOption) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(IsAccountAllowedToCreateOfferingsWithTagsResponse)
-	err := c.cc.Invoke(ctx, OfferingService_IsAccountAllowedToCreateOfferingsWithTags_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *offeringServiceClient) UpdateDiskOffering(ctx context.Context, in *UpdateDiskOfferingRequest, opts ...grpc.CallOption) (*UpdateDiskOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateDiskOfferingResponse)
-	err := c.cc.Invoke(ctx, OfferingService_UpdateDiskOffering_FullMethodName, in, out, cOpts...)
+	out := new(ListDiskOfferingsResponse)
+	err := c.cc.Invoke(ctx, OfferingService_ListDiskOfferings_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -104,6 +84,26 @@ func (c *offeringServiceClient) CreateDiskOffering(ctx context.Context, in *Crea
 	return out, nil
 }
 
+func (c *offeringServiceClient) DeleteDiskOffering(ctx context.Context, in *DeleteDiskOfferingRequest, opts ...grpc.CallOption) (*DeleteDiskOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteDiskOfferingResponse)
+	err := c.cc.Invoke(ctx, OfferingService_DeleteDiskOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *offeringServiceClient) DeleteServiceOffering(ctx context.Context, in *DeleteServiceOfferingRequest, opts ...grpc.CallOption) (*DeleteServiceOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteServiceOfferingResponse)
+	err := c.cc.Invoke(ctx, OfferingService_DeleteServiceOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *offeringServiceClient) CreateServiceOffering(ctx context.Context, in *CreateServiceOfferingRequest, opts ...grpc.CallOption) (*CreateServiceOfferingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateServiceOfferingResponse)
@@ -114,20 +114,10 @@ func (c *offeringServiceClient) CreateServiceOffering(ctx context.Context, in *C
 	return out, nil
 }
 
-func (c *offeringServiceClient) ListDiskOfferings(ctx context.Context, in *ListDiskOfferingsRequest, opts ...grpc.CallOption) (*ListDiskOfferingsResponse, error) {
+func (c *offeringServiceClient) IsAccountAllowedToCreateOfferingsWithTags(ctx context.Context, in *IsAccountAllowedToCreateOfferingsWithTagsRequest, opts ...grpc.CallOption) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListDiskOfferingsResponse)
-	err := c.cc.Invoke(ctx, OfferingService_ListDiskOfferings_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *offeringServiceClient) DeleteDiskOffering(ctx context.Context, in *DeleteDiskOfferingRequest, opts ...grpc.CallOption) (*DeleteDiskOfferingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteDiskOfferingResponse)
-	err := c.cc.Invoke(ctx, OfferingService_DeleteDiskOffering_FullMethodName, in, out, cOpts...)
+	out := new(IsAccountAllowedToCreateOfferingsWithTagsResponse)
+	err := c.cc.Invoke(ctx, OfferingService_IsAccountAllowedToCreateOfferingsWithTags_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -154,30 +144,40 @@ func (c *offeringServiceClient) UpdateServiceOffering(ctx context.Context, in *U
 	return out, nil
 }
 
+func (c *offeringServiceClient) UpdateDiskOffering(ctx context.Context, in *UpdateDiskOfferingRequest, opts ...grpc.CallOption) (*UpdateDiskOfferingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDiskOfferingResponse)
+	err := c.cc.Invoke(ctx, OfferingService_UpdateDiskOffering_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OfferingServiceServer is the server API for OfferingService service.
 // All implementations must embed UnimplementedOfferingServiceServer
 // for forward compatibility.
 //
 // OfferingService provides operations for managing Offerings
 type OfferingServiceServer interface {
-	// DeleteServiceOffering Deletes a service offering.
-	DeleteServiceOffering(context.Context, *DeleteServiceOfferingRequest) (*DeleteServiceOfferingResponse, error)
-	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
-	IsAccountAllowedToCreateOfferingsWithTags(context.Context, *IsAccountAllowedToCreateOfferingsWithTagsRequest) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error)
-	// UpdateDiskOffering Updates a disk offering.
-	UpdateDiskOffering(context.Context, *UpdateDiskOfferingRequest) (*UpdateDiskOfferingResponse, error)
-	// CreateDiskOffering Creates a disk offering.
-	CreateDiskOffering(context.Context, *CreateDiskOfferingRequest) (*CreateDiskOfferingResponse, error)
-	// CreateServiceOffering Creates a service offering.
-	CreateServiceOffering(context.Context, *CreateServiceOfferingRequest) (*CreateServiceOfferingResponse, error)
 	// ListDiskOfferings Lists all available disk offerings.
 	ListDiskOfferings(context.Context, *ListDiskOfferingsRequest) (*ListDiskOfferingsResponse, error)
+	// CreateDiskOffering Creates a disk offering.
+	CreateDiskOffering(context.Context, *CreateDiskOfferingRequest) (*CreateDiskOfferingResponse, error)
 	// DeleteDiskOffering Updates a disk offering.
 	DeleteDiskOffering(context.Context, *DeleteDiskOfferingRequest) (*DeleteDiskOfferingResponse, error)
+	// DeleteServiceOffering Deletes a service offering.
+	DeleteServiceOffering(context.Context, *DeleteServiceOfferingRequest) (*DeleteServiceOfferingResponse, error)
+	// CreateServiceOffering Creates a service offering.
+	CreateServiceOffering(context.Context, *CreateServiceOfferingRequest) (*CreateServiceOfferingResponse, error)
+	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
+	IsAccountAllowedToCreateOfferingsWithTags(context.Context, *IsAccountAllowedToCreateOfferingsWithTagsRequest) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error)
 	// ListServiceOfferings Lists all available service offerings.
 	ListServiceOfferings(context.Context, *ListServiceOfferingsRequest) (*ListServiceOfferingsResponse, error)
 	// UpdateServiceOffering Updates a service offering.
 	UpdateServiceOffering(context.Context, *UpdateServiceOfferingRequest) (*UpdateServiceOfferingResponse, error)
+	// UpdateDiskOffering Updates a disk offering.
+	UpdateDiskOffering(context.Context, *UpdateDiskOfferingRequest) (*UpdateDiskOfferingResponse, error)
 	mustEmbedUnimplementedOfferingServiceServer()
 }
 
@@ -188,32 +188,32 @@ type OfferingServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedOfferingServiceServer struct{}
 
-func (UnimplementedOfferingServiceServer) DeleteServiceOffering(context.Context, *DeleteServiceOfferingRequest) (*DeleteServiceOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteServiceOffering not implemented")
-}
-func (UnimplementedOfferingServiceServer) IsAccountAllowedToCreateOfferingsWithTags(context.Context, *IsAccountAllowedToCreateOfferingsWithTagsRequest) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method IsAccountAllowedToCreateOfferingsWithTags not implemented")
-}
-func (UnimplementedOfferingServiceServer) UpdateDiskOffering(context.Context, *UpdateDiskOfferingRequest) (*UpdateDiskOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateDiskOffering not implemented")
+func (UnimplementedOfferingServiceServer) ListDiskOfferings(context.Context, *ListDiskOfferingsRequest) (*ListDiskOfferingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDiskOfferings not implemented")
 }
 func (UnimplementedOfferingServiceServer) CreateDiskOffering(context.Context, *CreateDiskOfferingRequest) (*CreateDiskOfferingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDiskOffering not implemented")
 }
+func (UnimplementedOfferingServiceServer) DeleteDiskOffering(context.Context, *DeleteDiskOfferingRequest) (*DeleteDiskOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDiskOffering not implemented")
+}
+func (UnimplementedOfferingServiceServer) DeleteServiceOffering(context.Context, *DeleteServiceOfferingRequest) (*DeleteServiceOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteServiceOffering not implemented")
+}
 func (UnimplementedOfferingServiceServer) CreateServiceOffering(context.Context, *CreateServiceOfferingRequest) (*CreateServiceOfferingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateServiceOffering not implemented")
 }
-func (UnimplementedOfferingServiceServer) ListDiskOfferings(context.Context, *ListDiskOfferingsRequest) (*ListDiskOfferingsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListDiskOfferings not implemented")
-}
-func (UnimplementedOfferingServiceServer) DeleteDiskOffering(context.Context, *DeleteDiskOfferingRequest) (*DeleteDiskOfferingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteDiskOffering not implemented")
+func (UnimplementedOfferingServiceServer) IsAccountAllowedToCreateOfferingsWithTags(context.Context, *IsAccountAllowedToCreateOfferingsWithTagsRequest) (*IsAccountAllowedToCreateOfferingsWithTagsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IsAccountAllowedToCreateOfferingsWithTags not implemented")
 }
 func (UnimplementedOfferingServiceServer) ListServiceOfferings(context.Context, *ListServiceOfferingsRequest) (*ListServiceOfferingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListServiceOfferings not implemented")
 }
 func (UnimplementedOfferingServiceServer) UpdateServiceOffering(context.Context, *UpdateServiceOfferingRequest) (*UpdateServiceOfferingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateServiceOffering not implemented")
+}
+func (UnimplementedOfferingServiceServer) UpdateDiskOffering(context.Context, *UpdateDiskOfferingRequest) (*UpdateDiskOfferingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDiskOffering not implemented")
 }
 func (UnimplementedOfferingServiceServer) mustEmbedUnimplementedOfferingServiceServer() {}
 func (UnimplementedOfferingServiceServer) testEmbeddedByValue()                         {}
@@ -236,56 +236,20 @@ func RegisterOfferingServiceServer(s grpc.ServiceRegistrar, srv OfferingServiceS
 	s.RegisterService(&OfferingService_ServiceDesc, srv)
 }
 
-func _OfferingService_DeleteServiceOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteServiceOfferingRequest)
+func _OfferingService_ListDiskOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDiskOfferingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OfferingServiceServer).DeleteServiceOffering(ctx, in)
+		return srv.(OfferingServiceServer).ListDiskOfferings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OfferingService_DeleteServiceOffering_FullMethodName,
+		FullMethod: OfferingService_ListDiskOfferings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OfferingServiceServer).DeleteServiceOffering(ctx, req.(*DeleteServiceOfferingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OfferingService_IsAccountAllowedToCreateOfferingsWithTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(IsAccountAllowedToCreateOfferingsWithTagsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OfferingServiceServer).IsAccountAllowedToCreateOfferingsWithTags(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OfferingService_IsAccountAllowedToCreateOfferingsWithTags_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OfferingServiceServer).IsAccountAllowedToCreateOfferingsWithTags(ctx, req.(*IsAccountAllowedToCreateOfferingsWithTagsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OfferingService_UpdateDiskOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateDiskOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OfferingServiceServer).UpdateDiskOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OfferingService_UpdateDiskOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OfferingServiceServer).UpdateDiskOffering(ctx, req.(*UpdateDiskOfferingRequest))
+		return srv.(OfferingServiceServer).ListDiskOfferings(ctx, req.(*ListDiskOfferingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -308,6 +272,42 @@ func _OfferingService_CreateDiskOffering_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OfferingService_DeleteDiskOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDiskOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OfferingServiceServer).DeleteDiskOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OfferingService_DeleteDiskOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OfferingServiceServer).DeleteDiskOffering(ctx, req.(*DeleteDiskOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OfferingService_DeleteServiceOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteServiceOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OfferingServiceServer).DeleteServiceOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OfferingService_DeleteServiceOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OfferingServiceServer).DeleteServiceOffering(ctx, req.(*DeleteServiceOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OfferingService_CreateServiceOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateServiceOfferingRequest)
 	if err := dec(in); err != nil {
@@ -326,38 +326,20 @@ func _OfferingService_CreateServiceOffering_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OfferingService_ListDiskOfferings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListDiskOfferingsRequest)
+func _OfferingService_IsAccountAllowedToCreateOfferingsWithTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(IsAccountAllowedToCreateOfferingsWithTagsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OfferingServiceServer).ListDiskOfferings(ctx, in)
+		return srv.(OfferingServiceServer).IsAccountAllowedToCreateOfferingsWithTags(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OfferingService_ListDiskOfferings_FullMethodName,
+		FullMethod: OfferingService_IsAccountAllowedToCreateOfferingsWithTags_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OfferingServiceServer).ListDiskOfferings(ctx, req.(*ListDiskOfferingsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OfferingService_DeleteDiskOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteDiskOfferingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OfferingServiceServer).DeleteDiskOffering(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OfferingService_DeleteDiskOffering_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OfferingServiceServer).DeleteDiskOffering(ctx, req.(*DeleteDiskOfferingRequest))
+		return srv.(OfferingServiceServer).IsAccountAllowedToCreateOfferingsWithTags(ctx, req.(*IsAccountAllowedToCreateOfferingsWithTagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -398,6 +380,24 @@ func _OfferingService_UpdateServiceOffering_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OfferingService_UpdateDiskOffering_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDiskOfferingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OfferingServiceServer).UpdateDiskOffering(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OfferingService_UpdateDiskOffering_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OfferingServiceServer).UpdateDiskOffering(ctx, req.(*UpdateDiskOfferingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OfferingService_ServiceDesc is the grpc.ServiceDesc for OfferingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -406,32 +406,28 @@ var OfferingService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*OfferingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteServiceOffering",
-			Handler:    _OfferingService_DeleteServiceOffering_Handler,
-		},
-		{
-			MethodName: "IsAccountAllowedToCreateOfferingsWithTags",
-			Handler:    _OfferingService_IsAccountAllowedToCreateOfferingsWithTags_Handler,
-		},
-		{
-			MethodName: "UpdateDiskOffering",
-			Handler:    _OfferingService_UpdateDiskOffering_Handler,
+			MethodName: "ListDiskOfferings",
+			Handler:    _OfferingService_ListDiskOfferings_Handler,
 		},
 		{
 			MethodName: "CreateDiskOffering",
 			Handler:    _OfferingService_CreateDiskOffering_Handler,
 		},
 		{
+			MethodName: "DeleteDiskOffering",
+			Handler:    _OfferingService_DeleteDiskOffering_Handler,
+		},
+		{
+			MethodName: "DeleteServiceOffering",
+			Handler:    _OfferingService_DeleteServiceOffering_Handler,
+		},
+		{
 			MethodName: "CreateServiceOffering",
 			Handler:    _OfferingService_CreateServiceOffering_Handler,
 		},
 		{
-			MethodName: "ListDiskOfferings",
-			Handler:    _OfferingService_ListDiskOfferings_Handler,
-		},
-		{
-			MethodName: "DeleteDiskOffering",
-			Handler:    _OfferingService_DeleteDiskOffering_Handler,
+			MethodName: "IsAccountAllowedToCreateOfferingsWithTags",
+			Handler:    _OfferingService_IsAccountAllowedToCreateOfferingsWithTags_Handler,
 		},
 		{
 			MethodName: "ListServiceOfferings",
@@ -440,6 +436,10 @@ var OfferingService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateServiceOffering",
 			Handler:    _OfferingService_UpdateServiceOffering_Handler,
+		},
+		{
+			MethodName: "UpdateDiskOffering",
+			Handler:    _OfferingService_UpdateDiskOffering_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

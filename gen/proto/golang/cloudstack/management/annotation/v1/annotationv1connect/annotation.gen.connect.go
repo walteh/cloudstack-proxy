@@ -33,31 +33,31 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// AnnotationServiceAddAnnotationProcedure is the fully-qualified name of the AnnotationService's
-	// AddAnnotation RPC.
-	AnnotationServiceAddAnnotationProcedure = "/cloudstack.management.annotation.v1.AnnotationService/AddAnnotation"
-	// AnnotationServiceRemoveAnnotationProcedure is the fully-qualified name of the AnnotationService's
-	// RemoveAnnotation RPC.
-	AnnotationServiceRemoveAnnotationProcedure = "/cloudstack.management.annotation.v1.AnnotationService/RemoveAnnotation"
 	// AnnotationServiceListAnnotationsProcedure is the fully-qualified name of the AnnotationService's
 	// ListAnnotations RPC.
 	AnnotationServiceListAnnotationsProcedure = "/cloudstack.management.annotation.v1.AnnotationService/ListAnnotations"
 	// AnnotationServiceUpdateAnnotationVisibilityProcedure is the fully-qualified name of the
 	// AnnotationService's UpdateAnnotationVisibility RPC.
 	AnnotationServiceUpdateAnnotationVisibilityProcedure = "/cloudstack.management.annotation.v1.AnnotationService/UpdateAnnotationVisibility"
+	// AnnotationServiceAddAnnotationProcedure is the fully-qualified name of the AnnotationService's
+	// AddAnnotation RPC.
+	AnnotationServiceAddAnnotationProcedure = "/cloudstack.management.annotation.v1.AnnotationService/AddAnnotation"
+	// AnnotationServiceRemoveAnnotationProcedure is the fully-qualified name of the AnnotationService's
+	// RemoveAnnotation RPC.
+	AnnotationServiceRemoveAnnotationProcedure = "/cloudstack.management.annotation.v1.AnnotationService/RemoveAnnotation"
 )
 
 // AnnotationServiceClient is a client for the cloudstack.management.annotation.v1.AnnotationService
 // service.
 type AnnotationServiceClient interface {
-	// AddAnnotation add an annotation.
-	AddAnnotation(context.Context, *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error)
-	// RemoveAnnotation remove an annotation.
-	RemoveAnnotation(context.Context, *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error)
 	// ListAnnotations Lists annotations.
 	ListAnnotations(context.Context, *connect.Request[v1.ListAnnotationsRequest]) (*connect.Response[v1.ListAnnotationsResponse], error)
 	// UpdateAnnotationVisibility update an annotation visibility.
 	UpdateAnnotationVisibility(context.Context, *connect.Request[v1.UpdateAnnotationVisibilityRequest]) (*connect.Response[v1.UpdateAnnotationVisibilityResponse], error)
+	// AddAnnotation add an annotation.
+	AddAnnotation(context.Context, *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error)
+	// RemoveAnnotation remove an annotation.
+	RemoveAnnotation(context.Context, *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error)
 }
 
 // NewAnnotationServiceClient constructs a client for the
@@ -72,18 +72,6 @@ func NewAnnotationServiceClient(httpClient connect.HTTPClient, baseURL string, o
 	baseURL = strings.TrimRight(baseURL, "/")
 	annotationServiceMethods := v1.File_cloudstack_management_annotation_v1_annotation_gen_proto.Services().ByName("AnnotationService").Methods()
 	return &annotationServiceClient{
-		addAnnotation: connect.NewClient[v1.AddAnnotationRequest, v1.AddAnnotationResponse](
-			httpClient,
-			baseURL+AnnotationServiceAddAnnotationProcedure,
-			connect.WithSchema(annotationServiceMethods.ByName("AddAnnotation")),
-			connect.WithClientOptions(opts...),
-		),
-		removeAnnotation: connect.NewClient[v1.RemoveAnnotationRequest, v1.RemoveAnnotationResponse](
-			httpClient,
-			baseURL+AnnotationServiceRemoveAnnotationProcedure,
-			connect.WithSchema(annotationServiceMethods.ByName("RemoveAnnotation")),
-			connect.WithClientOptions(opts...),
-		),
 		listAnnotations: connect.NewClient[v1.ListAnnotationsRequest, v1.ListAnnotationsResponse](
 			httpClient,
 			baseURL+AnnotationServiceListAnnotationsProcedure,
@@ -96,25 +84,27 @@ func NewAnnotationServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(annotationServiceMethods.ByName("UpdateAnnotationVisibility")),
 			connect.WithClientOptions(opts...),
 		),
+		addAnnotation: connect.NewClient[v1.AddAnnotationRequest, v1.AddAnnotationResponse](
+			httpClient,
+			baseURL+AnnotationServiceAddAnnotationProcedure,
+			connect.WithSchema(annotationServiceMethods.ByName("AddAnnotation")),
+			connect.WithClientOptions(opts...),
+		),
+		removeAnnotation: connect.NewClient[v1.RemoveAnnotationRequest, v1.RemoveAnnotationResponse](
+			httpClient,
+			baseURL+AnnotationServiceRemoveAnnotationProcedure,
+			connect.WithSchema(annotationServiceMethods.ByName("RemoveAnnotation")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // annotationServiceClient implements AnnotationServiceClient.
 type annotationServiceClient struct {
-	addAnnotation              *connect.Client[v1.AddAnnotationRequest, v1.AddAnnotationResponse]
-	removeAnnotation           *connect.Client[v1.RemoveAnnotationRequest, v1.RemoveAnnotationResponse]
 	listAnnotations            *connect.Client[v1.ListAnnotationsRequest, v1.ListAnnotationsResponse]
 	updateAnnotationVisibility *connect.Client[v1.UpdateAnnotationVisibilityRequest, v1.UpdateAnnotationVisibilityResponse]
-}
-
-// AddAnnotation calls cloudstack.management.annotation.v1.AnnotationService.AddAnnotation.
-func (c *annotationServiceClient) AddAnnotation(ctx context.Context, req *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error) {
-	return c.addAnnotation.CallUnary(ctx, req)
-}
-
-// RemoveAnnotation calls cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation.
-func (c *annotationServiceClient) RemoveAnnotation(ctx context.Context, req *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error) {
-	return c.removeAnnotation.CallUnary(ctx, req)
+	addAnnotation              *connect.Client[v1.AddAnnotationRequest, v1.AddAnnotationResponse]
+	removeAnnotation           *connect.Client[v1.RemoveAnnotationRequest, v1.RemoveAnnotationResponse]
 }
 
 // ListAnnotations calls cloudstack.management.annotation.v1.AnnotationService.ListAnnotations.
@@ -128,17 +118,27 @@ func (c *annotationServiceClient) UpdateAnnotationVisibility(ctx context.Context
 	return c.updateAnnotationVisibility.CallUnary(ctx, req)
 }
 
+// AddAnnotation calls cloudstack.management.annotation.v1.AnnotationService.AddAnnotation.
+func (c *annotationServiceClient) AddAnnotation(ctx context.Context, req *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error) {
+	return c.addAnnotation.CallUnary(ctx, req)
+}
+
+// RemoveAnnotation calls cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation.
+func (c *annotationServiceClient) RemoveAnnotation(ctx context.Context, req *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error) {
+	return c.removeAnnotation.CallUnary(ctx, req)
+}
+
 // AnnotationServiceHandler is an implementation of the
 // cloudstack.management.annotation.v1.AnnotationService service.
 type AnnotationServiceHandler interface {
-	// AddAnnotation add an annotation.
-	AddAnnotation(context.Context, *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error)
-	// RemoveAnnotation remove an annotation.
-	RemoveAnnotation(context.Context, *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error)
 	// ListAnnotations Lists annotations.
 	ListAnnotations(context.Context, *connect.Request[v1.ListAnnotationsRequest]) (*connect.Response[v1.ListAnnotationsResponse], error)
 	// UpdateAnnotationVisibility update an annotation visibility.
 	UpdateAnnotationVisibility(context.Context, *connect.Request[v1.UpdateAnnotationVisibilityRequest]) (*connect.Response[v1.UpdateAnnotationVisibilityResponse], error)
+	// AddAnnotation add an annotation.
+	AddAnnotation(context.Context, *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error)
+	// RemoveAnnotation remove an annotation.
+	RemoveAnnotation(context.Context, *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error)
 }
 
 // NewAnnotationServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -148,18 +148,6 @@ type AnnotationServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAnnotationServiceHandler(svc AnnotationServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	annotationServiceMethods := v1.File_cloudstack_management_annotation_v1_annotation_gen_proto.Services().ByName("AnnotationService").Methods()
-	annotationServiceAddAnnotationHandler := connect.NewUnaryHandler(
-		AnnotationServiceAddAnnotationProcedure,
-		svc.AddAnnotation,
-		connect.WithSchema(annotationServiceMethods.ByName("AddAnnotation")),
-		connect.WithHandlerOptions(opts...),
-	)
-	annotationServiceRemoveAnnotationHandler := connect.NewUnaryHandler(
-		AnnotationServiceRemoveAnnotationProcedure,
-		svc.RemoveAnnotation,
-		connect.WithSchema(annotationServiceMethods.ByName("RemoveAnnotation")),
-		connect.WithHandlerOptions(opts...),
-	)
 	annotationServiceListAnnotationsHandler := connect.NewUnaryHandler(
 		AnnotationServiceListAnnotationsProcedure,
 		svc.ListAnnotations,
@@ -172,16 +160,28 @@ func NewAnnotationServiceHandler(svc AnnotationServiceHandler, opts ...connect.H
 		connect.WithSchema(annotationServiceMethods.ByName("UpdateAnnotationVisibility")),
 		connect.WithHandlerOptions(opts...),
 	)
+	annotationServiceAddAnnotationHandler := connect.NewUnaryHandler(
+		AnnotationServiceAddAnnotationProcedure,
+		svc.AddAnnotation,
+		connect.WithSchema(annotationServiceMethods.ByName("AddAnnotation")),
+		connect.WithHandlerOptions(opts...),
+	)
+	annotationServiceRemoveAnnotationHandler := connect.NewUnaryHandler(
+		AnnotationServiceRemoveAnnotationProcedure,
+		svc.RemoveAnnotation,
+		connect.WithSchema(annotationServiceMethods.ByName("RemoveAnnotation")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.annotation.v1.AnnotationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case AnnotationServiceAddAnnotationProcedure:
-			annotationServiceAddAnnotationHandler.ServeHTTP(w, r)
-		case AnnotationServiceRemoveAnnotationProcedure:
-			annotationServiceRemoveAnnotationHandler.ServeHTTP(w, r)
 		case AnnotationServiceListAnnotationsProcedure:
 			annotationServiceListAnnotationsHandler.ServeHTTP(w, r)
 		case AnnotationServiceUpdateAnnotationVisibilityProcedure:
 			annotationServiceUpdateAnnotationVisibilityHandler.ServeHTTP(w, r)
+		case AnnotationServiceAddAnnotationProcedure:
+			annotationServiceAddAnnotationHandler.ServeHTTP(w, r)
+		case AnnotationServiceRemoveAnnotationProcedure:
+			annotationServiceRemoveAnnotationHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -191,18 +191,18 @@ func NewAnnotationServiceHandler(svc AnnotationServiceHandler, opts ...connect.H
 // UnimplementedAnnotationServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAnnotationServiceHandler struct{}
 
-func (UnimplementedAnnotationServiceHandler) AddAnnotation(context.Context, *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.annotation.v1.AnnotationService.AddAnnotation is not implemented"))
-}
-
-func (UnimplementedAnnotationServiceHandler) RemoveAnnotation(context.Context, *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation is not implemented"))
-}
-
 func (UnimplementedAnnotationServiceHandler) ListAnnotations(context.Context, *connect.Request[v1.ListAnnotationsRequest]) (*connect.Response[v1.ListAnnotationsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.annotation.v1.AnnotationService.ListAnnotations is not implemented"))
 }
 
 func (UnimplementedAnnotationServiceHandler) UpdateAnnotationVisibility(context.Context, *connect.Request[v1.UpdateAnnotationVisibilityRequest]) (*connect.Response[v1.UpdateAnnotationVisibilityResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.annotation.v1.AnnotationService.UpdateAnnotationVisibility is not implemented"))
+}
+
+func (UnimplementedAnnotationServiceHandler) AddAnnotation(context.Context, *connect.Request[v1.AddAnnotationRequest]) (*connect.Response[v1.AddAnnotationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.annotation.v1.AnnotationService.AddAnnotation is not implemented"))
+}
+
+func (UnimplementedAnnotationServiceHandler) RemoveAnnotation(context.Context, *connect.Request[v1.RemoveAnnotationRequest]) (*connect.Response[v1.RemoveAnnotationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.annotation.v1.AnnotationService.RemoveAnnotation is not implemented"))
 }

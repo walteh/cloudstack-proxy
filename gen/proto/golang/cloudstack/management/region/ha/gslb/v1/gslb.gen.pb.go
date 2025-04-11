@@ -212,149 +212,6 @@ func (x *CreateGlobalLoadBalancerRuleResponse) GetResult() *Result {
 	return nil
 }
 
-// UpdateGlobalLoadBalancerRuleRequest represents the parameters for update global load balancer rules.
-type UpdateGlobalLoadBalancerRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the global load balancer rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the description of the load balancer rule
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// load balancer algorithm (roundrobin, leastconn, proximity) that is used to distributed traffic across the zones participating in global server load balancing, if not specified defaults to 'round robin'
-	Algorithm *string `protobuf:"bytes,3,opt,name=algorithm" json:"algorithm,omitempty"`
-	// session sticky method (sourceip) if not specified defaults to sourceip
-	StickyMethod *string `protobuf:"bytes,4,opt,name=sticky_method,json=stickyMethod" json:"sticky_method,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) Reset() {
-	*x = UpdateGlobalLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateGlobalLoadBalancerRuleRequest) ProtoMessage() {}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateGlobalLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateGlobalLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetAlgorithm() string {
-	if x != nil && x.Algorithm != nil {
-		return *x.Algorithm
-	}
-	return ""
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetStickyMethod() string {
-	if x != nil && x.StickyMethod != nil {
-		return *x.StickyMethod
-	}
-	return ""
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateGlobalLoadBalancerRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateGlobalLoadBalancerRuleResponse represents the response from update global load balancer rules.
-type UpdateGlobalLoadBalancerRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateGlobalLoadBalancerRuleResponse) Reset() {
-	*x = UpdateGlobalLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateGlobalLoadBalancerRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateGlobalLoadBalancerRuleResponse) ProtoMessage() {}
-
-func (x *UpdateGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateGlobalLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateGlobalLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UpdateGlobalLoadBalancerRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ListGlobalLoadBalancerRuleRequest represents the parameters for lists load balancer rules.
 type ListGlobalLoadBalancerRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -385,7 +242,7 @@ type ListGlobalLoadBalancerRuleRequest struct {
 
 func (x *ListGlobalLoadBalancerRuleRequest) Reset() {
 	*x = ListGlobalLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -397,7 +254,7 @@ func (x *ListGlobalLoadBalancerRuleRequest) String() string {
 func (*ListGlobalLoadBalancerRuleRequest) ProtoMessage() {}
 
 func (x *ListGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -410,7 +267,7 @@ func (x *ListGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ListGlobalLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
 func (*ListGlobalLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListGlobalLoadBalancerRuleRequest) GetId() int64 {
@@ -510,7 +367,7 @@ type ListGlobalLoadBalancerRuleResponse struct {
 
 func (x *ListGlobalLoadBalancerRuleResponse) Reset() {
 	*x = ListGlobalLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -522,7 +379,7 @@ func (x *ListGlobalLoadBalancerRuleResponse) String() string {
 func (*ListGlobalLoadBalancerRuleResponse) ProtoMessage() {}
 
 func (x *ListGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -535,7 +392,7 @@ func (x *ListGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListGlobalLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
 func (*ListGlobalLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListGlobalLoadBalancerRuleResponse) GetItems() []*GlobalLoadBalancer {
@@ -552,33 +409,39 @@ func (x *ListGlobalLoadBalancerRuleResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// DeleteGlobalLoadBalancerRuleRequest represents the parameters for deletes a global load balancer rule.
-type DeleteGlobalLoadBalancerRuleRequest struct {
+// UpdateGlobalLoadBalancerRuleRequest represents the parameters for update global load balancer rules.
+type UpdateGlobalLoadBalancerRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the ID of the global load balancer rule
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the description of the load balancer rule
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// load balancer algorithm (roundrobin, leastconn, proximity) that is used to distributed traffic across the zones participating in global server load balancing, if not specified defaults to 'round robin'
+	Algorithm *string `protobuf:"bytes,3,opt,name=algorithm" json:"algorithm,omitempty"`
+	// session sticky method (sourceip) if not specified defaults to sourceip
+	StickyMethod *string `protobuf:"bytes,4,opt,name=sticky_method,json=stickyMethod" json:"sticky_method,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) Reset() {
-	*x = DeleteGlobalLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[6]
+func (x *UpdateGlobalLoadBalancerRuleRequest) Reset() {
+	*x = UpdateGlobalLoadBalancerRuleRequest{}
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) String() string {
+func (x *UpdateGlobalLoadBalancerRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteGlobalLoadBalancerRuleRequest) ProtoMessage() {}
+func (*UpdateGlobalLoadBalancerRuleRequest) ProtoMessage() {}
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[6]
+func (x *UpdateGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -589,41 +452,62 @@ func (x *DeleteGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteGlobalLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteGlobalLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use UpdateGlobalLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateGlobalLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) GetId() int64 {
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) GetStartEventId() int64 {
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetAlgorithm() string {
+	if x != nil && x.Algorithm != nil {
+		return *x.Algorithm
+	}
+	return ""
+}
+
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetStickyMethod() string {
+	if x != nil && x.StickyMethod != nil {
+		return *x.StickyMethod
+	}
+	return ""
+}
+
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) GetInjectedJobId() string {
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteGlobalLoadBalancerRuleRequest) GetResponseType() string {
+func (x *UpdateGlobalLoadBalancerRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteGlobalLoadBalancerRuleResponse represents the response from deletes a global load balancer rule.
-type DeleteGlobalLoadBalancerRuleResponse struct {
+// UpdateGlobalLoadBalancerRuleResponse represents the response from update global load balancer rules.
+type UpdateGlobalLoadBalancerRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -631,21 +515,21 @@ type DeleteGlobalLoadBalancerRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteGlobalLoadBalancerRuleResponse) Reset() {
-	*x = DeleteGlobalLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[7]
+func (x *UpdateGlobalLoadBalancerRuleResponse) Reset() {
+	*x = UpdateGlobalLoadBalancerRuleResponse{}
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteGlobalLoadBalancerRuleResponse) String() string {
+func (x *UpdateGlobalLoadBalancerRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteGlobalLoadBalancerRuleResponse) ProtoMessage() {}
+func (*UpdateGlobalLoadBalancerRuleResponse) ProtoMessage() {}
 
-func (x *DeleteGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[7]
+func (x *UpdateGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -656,12 +540,12 @@ func (x *DeleteGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Messa
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteGlobalLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteGlobalLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use UpdateGlobalLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateGlobalLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DeleteGlobalLoadBalancerRuleResponse) GetResult() *Result {
+func (x *UpdateGlobalLoadBalancerRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -686,7 +570,7 @@ type AssignToGlobalLoadBalancerRuleRequest struct {
 
 func (x *AssignToGlobalLoadBalancerRuleRequest) Reset() {
 	*x = AssignToGlobalLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -698,7 +582,7 @@ func (x *AssignToGlobalLoadBalancerRuleRequest) String() string {
 func (*AssignToGlobalLoadBalancerRuleRequest) ProtoMessage() {}
 
 func (x *AssignToGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -711,7 +595,7 @@ func (x *AssignToGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use AssignToGlobalLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
 func (*AssignToGlobalLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AssignToGlobalLoadBalancerRuleRequest) GetId() int64 {
@@ -767,7 +651,7 @@ type AssignToGlobalLoadBalancerRuleResponse struct {
 
 func (x *AssignToGlobalLoadBalancerRuleResponse) Reset() {
 	*x = AssignToGlobalLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -779,7 +663,7 @@ func (x *AssignToGlobalLoadBalancerRuleResponse) String() string {
 func (*AssignToGlobalLoadBalancerRuleResponse) ProtoMessage() {}
 
 func (x *AssignToGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -792,10 +676,126 @@ func (x *AssignToGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use AssignToGlobalLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
 func (*AssignToGlobalLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AssignToGlobalLoadBalancerRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteGlobalLoadBalancerRuleRequest represents the parameters for deletes a global load balancer rule.
+type DeleteGlobalLoadBalancerRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the global load balancer rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) Reset() {
+	*x = DeleteGlobalLoadBalancerRuleRequest{}
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteGlobalLoadBalancerRuleRequest) ProtoMessage() {}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteGlobalLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteGlobalLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteGlobalLoadBalancerRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteGlobalLoadBalancerRuleResponse represents the response from deletes a global load balancer rule.
+type DeleteGlobalLoadBalancerRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteGlobalLoadBalancerRuleResponse) Reset() {
+	*x = DeleteGlobalLoadBalancerRuleResponse{}
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteGlobalLoadBalancerRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteGlobalLoadBalancerRuleResponse) ProtoMessage() {}
+
+func (x *DeleteGlobalLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteGlobalLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteGlobalLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DeleteGlobalLoadBalancerRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1316,18 +1316,6 @@ const file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\f \x01(\tR\fresponseType\"o\n" +
 	"$CreateGlobalLoadBalancerRuleResponse\x12G\n" +
-	"\x06result\x18\x01 \x01(\v2/.cloudstack.management.region.ha.gslb.v1.ResultR\x06result\"\xb7\x02\n" +
-	"#UpdateGlobalLoadBalancerRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1c\n" +
-	"\talgorithm\x18\x03 \x01(\tR\talgorithm\x12/\n" +
-	"\rsticky_method\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\fstickyMethod\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"o\n" +
-	"$UpdateGlobalLoadBalancerRuleResponse\x12G\n" +
 	"\x06result\x18\x01 \x01(\v2/.cloudstack.management.region.ha.gslb.v1.ResultR\x06result\"\x89\x05\n" +
 	"!ListGlobalLoadBalancerRuleRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
@@ -1351,13 +1339,18 @@ const file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDesc = "" +
 	"\"ListGlobalLoadBalancerRuleResponse\x12Q\n" +
 	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.region.ha.gslb.v1.GlobalLoadBalancerR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xba\x01\n" +
-	"#DeleteGlobalLoadBalancerRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"o\n" +
-	"$DeleteGlobalLoadBalancerRuleResponse\x12G\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb7\x02\n" +
+	"#UpdateGlobalLoadBalancerRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1c\n" +
+	"\talgorithm\x18\x03 \x01(\tR\talgorithm\x12/\n" +
+	"\rsticky_method\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\fstickyMethod\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"o\n" +
+	"$UpdateGlobalLoadBalancerRuleResponse\x12G\n" +
 	"\x06result\x18\x01 \x01(\v2/.cloudstack.management.region.ha.gslb.v1.ResultR\x06result\"\xe3\x03\n" +
 	"%AssignToGlobalLoadBalancerRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12=\n" +
@@ -1370,6 +1363,13 @@ const file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"q\n" +
 	"&AssignToGlobalLoadBalancerRuleResponse\x12G\n" +
+	"\x06result\x18\x01 \x01(\v2/.cloudstack.management.region.ha.gslb.v1.ResultR\x06result\"\xba\x01\n" +
+	"#DeleteGlobalLoadBalancerRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"o\n" +
+	"$DeleteGlobalLoadBalancerRuleResponse\x12G\n" +
 	"\x06result\x18\x01 \x01(\v2/.cloudstack.management.region.ha.gslb.v1.ResultR\x06result\"\xfd\x01\n" +
 	"'RemoveFromGlobalLoadBalancerRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12=\n" +
@@ -1415,11 +1415,11 @@ const file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa1\t\n" +
 	"\vGslbService\x12\xbd\x01\n" +
-	"\x1cCreateGlobalLoadBalancerRule\x12L.cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleRequest\x1aM.cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleResponse\"\x00\x12\xbd\x01\n" +
-	"\x1cUpdateGlobalLoadBalancerRule\x12L.cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleRequest\x1aM.cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse\"\x00\x12\xb7\x01\n" +
+	"\x1cCreateGlobalLoadBalancerRule\x12L.cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleRequest\x1aM.cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleResponse\"\x00\x12\xb7\x01\n" +
 	"\x1aListGlobalLoadBalancerRule\x12J.cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest\x1aK.cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse\"\x00\x12\xbd\x01\n" +
-	"\x1cDeleteGlobalLoadBalancerRule\x12L.cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleRequest\x1aM.cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse\"\x00\x12\xc3\x01\n" +
-	"\x1eAssignToGlobalLoadBalancerRule\x12N.cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest\x1aO.cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse\"\x00\x12\xc9\x01\n" +
+	"\x1cUpdateGlobalLoadBalancerRule\x12L.cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleRequest\x1aM.cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse\"\x00\x12\xc3\x01\n" +
+	"\x1eAssignToGlobalLoadBalancerRule\x12N.cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest\x1aO.cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse\"\x00\x12\xbd\x01\n" +
+	"\x1cDeleteGlobalLoadBalancerRule\x12L.cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleRequest\x1aM.cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse\"\x00\x12\xc9\x01\n" +
 	" RemoveFromGlobalLoadBalancerRule\x12P.cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleRequest\x1aQ.cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xe2\x02\n" +
 	"+com.cloudstack.management.region.ha.gslb.v1B\fGslbGenProtoP\x01Zbgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/region/ha/gslb/v1;gslbv1\xa2\x02\x05CMRHG\xaa\x02'Cloudstack.Management.Region.Ha.Gslb.V1\xca\x02'Cloudstack\\Management\\Region\\Ha\\Gslb\\V1\xe2\x023Cloudstack\\Management\\Region\\Ha\\Gslb\\V1\\GPBMetadata\xea\x02,Cloudstack::Management::Region::Ha::Gslb::V1b\beditionsp\xe8\a"
 
@@ -1439,14 +1439,14 @@ var file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_msgTypes = make(
 var file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_goTypes = []any{
 	(*CreateGlobalLoadBalancerRuleRequest)(nil),      // 0: cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleRequest
 	(*CreateGlobalLoadBalancerRuleResponse)(nil),     // 1: cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleResponse
-	(*UpdateGlobalLoadBalancerRuleRequest)(nil),      // 2: cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleRequest
-	(*UpdateGlobalLoadBalancerRuleResponse)(nil),     // 3: cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse
-	(*ListGlobalLoadBalancerRuleRequest)(nil),        // 4: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest
-	(*ListGlobalLoadBalancerRuleResponse)(nil),       // 5: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse
-	(*DeleteGlobalLoadBalancerRuleRequest)(nil),      // 6: cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleRequest
-	(*DeleteGlobalLoadBalancerRuleResponse)(nil),     // 7: cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse
-	(*AssignToGlobalLoadBalancerRuleRequest)(nil),    // 8: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest
-	(*AssignToGlobalLoadBalancerRuleResponse)(nil),   // 9: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse
+	(*ListGlobalLoadBalancerRuleRequest)(nil),        // 2: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest
+	(*ListGlobalLoadBalancerRuleResponse)(nil),       // 3: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse
+	(*UpdateGlobalLoadBalancerRuleRequest)(nil),      // 4: cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleRequest
+	(*UpdateGlobalLoadBalancerRuleResponse)(nil),     // 5: cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse
+	(*AssignToGlobalLoadBalancerRuleRequest)(nil),    // 6: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest
+	(*AssignToGlobalLoadBalancerRuleResponse)(nil),   // 7: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse
+	(*DeleteGlobalLoadBalancerRuleRequest)(nil),      // 8: cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleRequest
+	(*DeleteGlobalLoadBalancerRuleResponse)(nil),     // 9: cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse
 	(*RemoveFromGlobalLoadBalancerRuleRequest)(nil),  // 10: cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleRequest
 	(*RemoveFromGlobalLoadBalancerRuleResponse)(nil), // 11: cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleResponse
 	(*GlobalLoadBalancer)(nil),                       // 12: cloudstack.management.region.ha.gslb.v1.GlobalLoadBalancer
@@ -1459,25 +1459,25 @@ var file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_goTypes = []any{
 }
 var file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_depIdxs = []int32{
 	15, // 0: cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
-	15, // 1: cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
-	16, // 2: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest.tags:type_name -> cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest.TagsEntry
-	12, // 3: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse.items:type_name -> cloudstack.management.region.ha.gslb.v1.GlobalLoadBalancer
-	15, // 4: cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
-	17, // 5: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest.gslb_lb_rule_wieght_map:type_name -> cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest.GslbLbRuleWieghtMapEntry
-	15, // 6: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
+	16, // 1: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest.tags:type_name -> cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest.TagsEntry
+	12, // 2: cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse.items:type_name -> cloudstack.management.region.ha.gslb.v1.GlobalLoadBalancer
+	15, // 3: cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
+	17, // 4: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest.gslb_lb_rule_wieght_map:type_name -> cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest.GslbLbRuleWieghtMapEntry
+	15, // 5: cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
+	15, // 6: cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
 	15, // 7: cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleResponse.result:type_name -> cloudstack.management.region.ha.gslb.v1.Result
 	18, // 8: cloudstack.management.region.ha.gslb.v1.Item.details:type_name -> cloudstack.management.region.ha.gslb.v1.Item.DetailsEntry
 	0,  // 9: cloudstack.management.region.ha.gslb.v1.GslbService.CreateGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleRequest
-	2,  // 10: cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleRequest
-	4,  // 11: cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest
-	6,  // 12: cloudstack.management.region.ha.gslb.v1.GslbService.DeleteGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleRequest
-	8,  // 13: cloudstack.management.region.ha.gslb.v1.GslbService.AssignToGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest
+	2,  // 10: cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleRequest
+	4,  // 11: cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleRequest
+	6,  // 12: cloudstack.management.region.ha.gslb.v1.GslbService.AssignToGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleRequest
+	8,  // 13: cloudstack.management.region.ha.gslb.v1.GslbService.DeleteGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleRequest
 	10, // 14: cloudstack.management.region.ha.gslb.v1.GslbService.RemoveFromGlobalLoadBalancerRule:input_type -> cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleRequest
 	1,  // 15: cloudstack.management.region.ha.gslb.v1.GslbService.CreateGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.CreateGlobalLoadBalancerRuleResponse
-	3,  // 16: cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse
-	5,  // 17: cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse
-	7,  // 18: cloudstack.management.region.ha.gslb.v1.GslbService.DeleteGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse
-	9,  // 19: cloudstack.management.region.ha.gslb.v1.GslbService.AssignToGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse
+	3,  // 16: cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.ListGlobalLoadBalancerRuleResponse
+	5,  // 17: cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.UpdateGlobalLoadBalancerRuleResponse
+	7,  // 18: cloudstack.management.region.ha.gslb.v1.GslbService.AssignToGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.AssignToGlobalLoadBalancerRuleResponse
+	9,  // 19: cloudstack.management.region.ha.gslb.v1.GslbService.DeleteGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.DeleteGlobalLoadBalancerRuleResponse
 	11, // 20: cloudstack.management.region.ha.gslb.v1.GslbService.RemoveFromGlobalLoadBalancerRule:output_type -> cloudstack.management.region.ha.gslb.v1.RemoveFromGlobalLoadBalancerRuleResponse
 	15, // [15:21] is the sub-list for method output_type
 	9,  // [9:15] is the sub-list for method input_type

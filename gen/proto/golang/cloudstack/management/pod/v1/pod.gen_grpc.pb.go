@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PodService_UpdatePod_FullMethodName  = "/cloudstack.management.pod.v1.PodService/UpdatePod"
-	PodService_ListPodsBy_FullMethodName = "/cloudstack.management.pod.v1.PodService/ListPodsBy"
 	PodService_DeletePod_FullMethodName  = "/cloudstack.management.pod.v1.PodService/DeletePod"
+	PodService_ListPodsBy_FullMethodName = "/cloudstack.management.pod.v1.PodService/ListPodsBy"
 	PodService_CreatePod_FullMethodName  = "/cloudstack.management.pod.v1.PodService/CreatePod"
+	PodService_UpdatePod_FullMethodName  = "/cloudstack.management.pod.v1.PodService/UpdatePod"
 )
 
 // PodServiceClient is the client API for PodService service.
@@ -31,14 +31,14 @@ const (
 //
 // PodService provides operations for managing Pods
 type PodServiceClient interface {
-	// UpdatePod Updates a Pod.
-	UpdatePod(ctx context.Context, in *UpdatePodRequest, opts ...grpc.CallOption) (*UpdatePodResponse, error)
-	// ListPodsBy Lists all Pods.
-	ListPodsBy(ctx context.Context, in *ListPodsByRequest, opts ...grpc.CallOption) (*ListPodsByResponse, error)
 	// DeletePod Deletes a Pod.
 	DeletePod(ctx context.Context, in *DeletePodRequest, opts ...grpc.CallOption) (*DeletePodResponse, error)
+	// ListPodsBy Lists all Pods.
+	ListPodsBy(ctx context.Context, in *ListPodsByRequest, opts ...grpc.CallOption) (*ListPodsByResponse, error)
 	// CreatePod Creates a new Pod.
 	CreatePod(ctx context.Context, in *CreatePodRequest, opts ...grpc.CallOption) (*CreatePodResponse, error)
+	// UpdatePod Updates a Pod.
+	UpdatePod(ctx context.Context, in *UpdatePodRequest, opts ...grpc.CallOption) (*UpdatePodResponse, error)
 }
 
 type podServiceClient struct {
@@ -49,10 +49,10 @@ func NewPodServiceClient(cc grpc.ClientConnInterface) PodServiceClient {
 	return &podServiceClient{cc}
 }
 
-func (c *podServiceClient) UpdatePod(ctx context.Context, in *UpdatePodRequest, opts ...grpc.CallOption) (*UpdatePodResponse, error) {
+func (c *podServiceClient) DeletePod(ctx context.Context, in *DeletePodRequest, opts ...grpc.CallOption) (*DeletePodResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdatePodResponse)
-	err := c.cc.Invoke(ctx, PodService_UpdatePod_FullMethodName, in, out, cOpts...)
+	out := new(DeletePodResponse)
+	err := c.cc.Invoke(ctx, PodService_DeletePod_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,20 +69,20 @@ func (c *podServiceClient) ListPodsBy(ctx context.Context, in *ListPodsByRequest
 	return out, nil
 }
 
-func (c *podServiceClient) DeletePod(ctx context.Context, in *DeletePodRequest, opts ...grpc.CallOption) (*DeletePodResponse, error) {
+func (c *podServiceClient) CreatePod(ctx context.Context, in *CreatePodRequest, opts ...grpc.CallOption) (*CreatePodResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeletePodResponse)
-	err := c.cc.Invoke(ctx, PodService_DeletePod_FullMethodName, in, out, cOpts...)
+	out := new(CreatePodResponse)
+	err := c.cc.Invoke(ctx, PodService_CreatePod_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *podServiceClient) CreatePod(ctx context.Context, in *CreatePodRequest, opts ...grpc.CallOption) (*CreatePodResponse, error) {
+func (c *podServiceClient) UpdatePod(ctx context.Context, in *UpdatePodRequest, opts ...grpc.CallOption) (*UpdatePodResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreatePodResponse)
-	err := c.cc.Invoke(ctx, PodService_CreatePod_FullMethodName, in, out, cOpts...)
+	out := new(UpdatePodResponse)
+	err := c.cc.Invoke(ctx, PodService_UpdatePod_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -95,14 +95,14 @@ func (c *podServiceClient) CreatePod(ctx context.Context, in *CreatePodRequest, 
 //
 // PodService provides operations for managing Pods
 type PodServiceServer interface {
-	// UpdatePod Updates a Pod.
-	UpdatePod(context.Context, *UpdatePodRequest) (*UpdatePodResponse, error)
-	// ListPodsBy Lists all Pods.
-	ListPodsBy(context.Context, *ListPodsByRequest) (*ListPodsByResponse, error)
 	// DeletePod Deletes a Pod.
 	DeletePod(context.Context, *DeletePodRequest) (*DeletePodResponse, error)
+	// ListPodsBy Lists all Pods.
+	ListPodsBy(context.Context, *ListPodsByRequest) (*ListPodsByResponse, error)
 	// CreatePod Creates a new Pod.
 	CreatePod(context.Context, *CreatePodRequest) (*CreatePodResponse, error)
+	// UpdatePod Updates a Pod.
+	UpdatePod(context.Context, *UpdatePodRequest) (*UpdatePodResponse, error)
 	mustEmbedUnimplementedPodServiceServer()
 }
 
@@ -113,17 +113,17 @@ type PodServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedPodServiceServer struct{}
 
-func (UnimplementedPodServiceServer) UpdatePod(context.Context, *UpdatePodRequest) (*UpdatePodResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdatePod not implemented")
+func (UnimplementedPodServiceServer) DeletePod(context.Context, *DeletePodRequest) (*DeletePodResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePod not implemented")
 }
 func (UnimplementedPodServiceServer) ListPodsBy(context.Context, *ListPodsByRequest) (*ListPodsByResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPodsBy not implemented")
 }
-func (UnimplementedPodServiceServer) DeletePod(context.Context, *DeletePodRequest) (*DeletePodResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeletePod not implemented")
-}
 func (UnimplementedPodServiceServer) CreatePod(context.Context, *CreatePodRequest) (*CreatePodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePod not implemented")
+}
+func (UnimplementedPodServiceServer) UpdatePod(context.Context, *UpdatePodRequest) (*UpdatePodResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePod not implemented")
 }
 func (UnimplementedPodServiceServer) mustEmbedUnimplementedPodServiceServer() {}
 func (UnimplementedPodServiceServer) testEmbeddedByValue()                    {}
@@ -146,20 +146,20 @@ func RegisterPodServiceServer(s grpc.ServiceRegistrar, srv PodServiceServer) {
 	s.RegisterService(&PodService_ServiceDesc, srv)
 }
 
-func _PodService_UpdatePod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePodRequest)
+func _PodService_DeletePod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePodRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PodServiceServer).UpdatePod(ctx, in)
+		return srv.(PodServiceServer).DeletePod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PodService_UpdatePod_FullMethodName,
+		FullMethod: PodService_DeletePod_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PodServiceServer).UpdatePod(ctx, req.(*UpdatePodRequest))
+		return srv.(PodServiceServer).DeletePod(ctx, req.(*DeletePodRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -182,24 +182,6 @@ func _PodService_ListPodsBy_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PodService_DeletePod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeletePodRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PodServiceServer).DeletePod(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: PodService_DeletePod_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PodServiceServer).DeletePod(ctx, req.(*DeletePodRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _PodService_CreatePod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreatePodRequest)
 	if err := dec(in); err != nil {
@@ -218,6 +200,24 @@ func _PodService_CreatePod_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PodService_UpdatePod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePodRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PodServiceServer).UpdatePod(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PodService_UpdatePod_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PodServiceServer).UpdatePod(ctx, req.(*UpdatePodRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PodService_ServiceDesc is the grpc.ServiceDesc for PodService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -226,20 +226,20 @@ var PodService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*PodServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdatePod",
-			Handler:    _PodService_UpdatePod_Handler,
+			MethodName: "DeletePod",
+			Handler:    _PodService_DeletePod_Handler,
 		},
 		{
 			MethodName: "ListPodsBy",
 			Handler:    _PodService_ListPodsBy_Handler,
 		},
 		{
-			MethodName: "DeletePod",
-			Handler:    _PodService_DeletePod_Handler,
-		},
-		{
 			MethodName: "CreatePod",
 			Handler:    _PodService_CreatePod_Handler,
+		},
+		{
+			MethodName: "UpdatePod",
+			Handler:    _PodService_UpdatePod_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

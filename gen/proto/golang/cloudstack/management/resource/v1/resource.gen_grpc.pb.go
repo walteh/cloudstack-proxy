@@ -19,21 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ResourceService_ListResourceLimits_FullMethodName      = "/cloudstack.management.resource.v1.ResourceService/ListResourceLimits"
-	ResourceService_UpdateResourceCount_FullMethodName     = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceCount"
 	ResourceService_StartRollingMaintenance_FullMethodName = "/cloudstack.management.resource.v1.ResourceService/StartRollingMaintenance"
-	ResourceService_ListAlerts_FullMethodName              = "/cloudstack.management.resource.v1.ResourceService/ListAlerts"
-	ResourceService_UpdateResourceLimit_FullMethodName     = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceLimit"
-	ResourceService_ListDetailOptions_FullMethodName       = "/cloudstack.management.resource.v1.ResourceService/ListDetailOptions"
-	ResourceService_DeleteAlerts_FullMethodName            = "/cloudstack.management.resource.v1.ResourceService/DeleteAlerts"
-	ResourceService_ListCapacity_FullMethodName            = "/cloudstack.management.resource.v1.ResourceService/ListCapacity"
-	ResourceService_ListHypervisors_FullMethodName         = "/cloudstack.management.resource.v1.ResourceService/ListHypervisors"
-	ResourceService_CleanVMReservations_FullMethodName     = "/cloudstack.management.resource.v1.ResourceService/CleanVMReservations"
 	ResourceService_UploadCustomCertificate_FullMethodName = "/cloudstack.management.resource.v1.ResourceService/UploadCustomCertificate"
 	ResourceService_GetCloudIdentifier_FullMethodName      = "/cloudstack.management.resource.v1.ResourceService/GetCloudIdentifier"
-	ResourceService_ArchiveAlerts_FullMethodName           = "/cloudstack.management.resource.v1.ResourceService/ArchiveAlerts"
+	ResourceService_ListCapacity_FullMethodName            = "/cloudstack.management.resource.v1.ResourceService/ListCapacity"
+	ResourceService_ListAlerts_FullMethodName              = "/cloudstack.management.resource.v1.ResourceService/ListAlerts"
+	ResourceService_ListHypervisors_FullMethodName         = "/cloudstack.management.resource.v1.ResourceService/ListHypervisors"
+	ResourceService_UpdateResourceCount_FullMethodName     = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceCount"
 	ResourceService_PurgeExpungedResources_FullMethodName  = "/cloudstack.management.resource.v1.ResourceService/PurgeExpungedResources"
+	ResourceService_ListResourceLimits_FullMethodName      = "/cloudstack.management.resource.v1.ResourceService/ListResourceLimits"
+	ResourceService_CleanVMReservations_FullMethodName     = "/cloudstack.management.resource.v1.ResourceService/CleanVMReservations"
+	ResourceService_ArchiveAlerts_FullMethodName           = "/cloudstack.management.resource.v1.ResourceService/ArchiveAlerts"
+	ResourceService_UpdateResourceLimit_FullMethodName     = "/cloudstack.management.resource.v1.ResourceService/UpdateResourceLimit"
+	ResourceService_DeleteAlerts_FullMethodName            = "/cloudstack.management.resource.v1.ResourceService/DeleteAlerts"
 	ResourceService_ListAlertTypes_FullMethodName          = "/cloudstack.management.resource.v1.ResourceService/ListAlertTypes"
+	ResourceService_ListDetailOptions_FullMethodName       = "/cloudstack.management.resource.v1.ResourceService/ListDetailOptions"
 )
 
 // ResourceServiceClient is the client API for ResourceService service.
@@ -42,36 +42,36 @@ const (
 //
 // ResourceService provides operations for managing Resources
 type ResourceServiceClient interface {
-	// ListResourceLimits Lists resource limits.
-	ListResourceLimits(ctx context.Context, in *ListResourceLimitsRequest, opts ...grpc.CallOption) (*ListResourceLimitsResponse, error)
-	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
-	UpdateResourceCount(ctx context.Context, in *UpdateResourceCountRequest, opts ...grpc.CallOption) (*UpdateResourceCountResponse, error)
 	// StartRollingMaintenance Start rolling maintenance
 	StartRollingMaintenance(ctx context.Context, in *StartRollingMaintenanceRequest, opts ...grpc.CallOption) (*StartRollingMaintenanceResponse, error)
-	// ListAlerts Lists all alerts.
-	ListAlerts(ctx context.Context, in *ListAlertsRequest, opts ...grpc.CallOption) (*ListAlertsResponse, error)
-	// UpdateResourceLimit Updates resource limits for an account or domain.
-	UpdateResourceLimit(ctx context.Context, in *UpdateResourceLimitRequest, opts ...grpc.CallOption) (*UpdateResourceLimitResponse, error)
-	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
-	ListDetailOptions(ctx context.Context, in *ListDetailOptionsRequest, opts ...grpc.CallOption) (*ListDetailOptionsResponse, error)
-	// DeleteAlerts Delete one or more alerts.
-	DeleteAlerts(ctx context.Context, in *DeleteAlertsRequest, opts ...grpc.CallOption) (*DeleteAlertsResponse, error)
-	// ListCapacity Lists all the system wide capacities.
-	ListCapacity(ctx context.Context, in *ListCapacityRequest, opts ...grpc.CallOption) (*ListCapacityResponse, error)
-	// ListHypervisors List hypervisors
-	ListHypervisors(ctx context.Context, in *ListHypervisorsRequest, opts ...grpc.CallOption) (*ListHypervisorsResponse, error)
-	// CleanVMReservations Cleanups VM reservations in the database.
-	CleanVMReservations(ctx context.Context, in *CleanVMReservationsRequest, opts ...grpc.CallOption) (*CleanVMReservationsResponse, error)
 	// UploadCustomCertificate Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself.
 	UploadCustomCertificate(ctx context.Context, in *UploadCustomCertificateRequest, opts ...grpc.CallOption) (*UploadCustomCertificateResponse, error)
 	// GetCloudIdentifier Retrieves a cloud identifier.
 	GetCloudIdentifier(ctx context.Context, in *GetCloudIdentifierRequest, opts ...grpc.CallOption) (*GetCloudIdentifierResponse, error)
-	// ArchiveAlerts Archive one or more alerts.
-	ArchiveAlerts(ctx context.Context, in *ArchiveAlertsRequest, opts ...grpc.CallOption) (*ArchiveAlertsResponse, error)
+	// ListCapacity Lists all the system wide capacities.
+	ListCapacity(ctx context.Context, in *ListCapacityRequest, opts ...grpc.CallOption) (*ListCapacityResponse, error)
+	// ListAlerts Lists all alerts.
+	ListAlerts(ctx context.Context, in *ListAlertsRequest, opts ...grpc.CallOption) (*ListAlertsResponse, error)
+	// ListHypervisors List hypervisors
+	ListHypervisors(ctx context.Context, in *ListHypervisorsRequest, opts ...grpc.CallOption) (*ListHypervisorsResponse, error)
+	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
+	UpdateResourceCount(ctx context.Context, in *UpdateResourceCountRequest, opts ...grpc.CallOption) (*UpdateResourceCountResponse, error)
 	// PurgeExpungedResources Purge expunged resources
 	PurgeExpungedResources(ctx context.Context, in *PurgeExpungedResourcesRequest, opts ...grpc.CallOption) (*PurgeExpungedResourcesResponse, error)
+	// ListResourceLimits Lists resource limits.
+	ListResourceLimits(ctx context.Context, in *ListResourceLimitsRequest, opts ...grpc.CallOption) (*ListResourceLimitsResponse, error)
+	// CleanVMReservations Cleanups VM reservations in the database.
+	CleanVMReservations(ctx context.Context, in *CleanVMReservationsRequest, opts ...grpc.CallOption) (*CleanVMReservationsResponse, error)
+	// ArchiveAlerts Archive one or more alerts.
+	ArchiveAlerts(ctx context.Context, in *ArchiveAlertsRequest, opts ...grpc.CallOption) (*ArchiveAlertsResponse, error)
+	// UpdateResourceLimit Updates resource limits for an account or domain.
+	UpdateResourceLimit(ctx context.Context, in *UpdateResourceLimitRequest, opts ...grpc.CallOption) (*UpdateResourceLimitResponse, error)
+	// DeleteAlerts Delete one or more alerts.
+	DeleteAlerts(ctx context.Context, in *DeleteAlertsRequest, opts ...grpc.CallOption) (*DeleteAlertsResponse, error)
 	// ListAlertTypes Lists all alerts types
 	ListAlertTypes(ctx context.Context, in *ListAlertTypesRequest, opts ...grpc.CallOption) (*ListAlertTypesResponse, error)
+	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
+	ListDetailOptions(ctx context.Context, in *ListDetailOptionsRequest, opts ...grpc.CallOption) (*ListDetailOptionsResponse, error)
 }
 
 type resourceServiceClient struct {
@@ -82,100 +82,10 @@ func NewResourceServiceClient(cc grpc.ClientConnInterface) ResourceServiceClient
 	return &resourceServiceClient{cc}
 }
 
-func (c *resourceServiceClient) ListResourceLimits(ctx context.Context, in *ListResourceLimitsRequest, opts ...grpc.CallOption) (*ListResourceLimitsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListResourceLimitsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_ListResourceLimits_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) UpdateResourceCount(ctx context.Context, in *UpdateResourceCountRequest, opts ...grpc.CallOption) (*UpdateResourceCountResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateResourceCountResponse)
-	err := c.cc.Invoke(ctx, ResourceService_UpdateResourceCount_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *resourceServiceClient) StartRollingMaintenance(ctx context.Context, in *StartRollingMaintenanceRequest, opts ...grpc.CallOption) (*StartRollingMaintenanceResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(StartRollingMaintenanceResponse)
 	err := c.cc.Invoke(ctx, ResourceService_StartRollingMaintenance_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) ListAlerts(ctx context.Context, in *ListAlertsRequest, opts ...grpc.CallOption) (*ListAlertsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAlertsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_ListAlerts_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) UpdateResourceLimit(ctx context.Context, in *UpdateResourceLimitRequest, opts ...grpc.CallOption) (*UpdateResourceLimitResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateResourceLimitResponse)
-	err := c.cc.Invoke(ctx, ResourceService_UpdateResourceLimit_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) ListDetailOptions(ctx context.Context, in *ListDetailOptionsRequest, opts ...grpc.CallOption) (*ListDetailOptionsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListDetailOptionsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_ListDetailOptions_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) DeleteAlerts(ctx context.Context, in *DeleteAlertsRequest, opts ...grpc.CallOption) (*DeleteAlertsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteAlertsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_DeleteAlerts_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) ListCapacity(ctx context.Context, in *ListCapacityRequest, opts ...grpc.CallOption) (*ListCapacityResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListCapacityResponse)
-	err := c.cc.Invoke(ctx, ResourceService_ListCapacity_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) ListHypervisors(ctx context.Context, in *ListHypervisorsRequest, opts ...grpc.CallOption) (*ListHypervisorsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListHypervisorsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_ListHypervisors_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *resourceServiceClient) CleanVMReservations(ctx context.Context, in *CleanVMReservationsRequest, opts ...grpc.CallOption) (*CleanVMReservationsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CleanVMReservationsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_CleanVMReservations_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -202,10 +112,40 @@ func (c *resourceServiceClient) GetCloudIdentifier(ctx context.Context, in *GetC
 	return out, nil
 }
 
-func (c *resourceServiceClient) ArchiveAlerts(ctx context.Context, in *ArchiveAlertsRequest, opts ...grpc.CallOption) (*ArchiveAlertsResponse, error) {
+func (c *resourceServiceClient) ListCapacity(ctx context.Context, in *ListCapacityRequest, opts ...grpc.CallOption) (*ListCapacityResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ArchiveAlertsResponse)
-	err := c.cc.Invoke(ctx, ResourceService_ArchiveAlerts_FullMethodName, in, out, cOpts...)
+	out := new(ListCapacityResponse)
+	err := c.cc.Invoke(ctx, ResourceService_ListCapacity_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) ListAlerts(ctx context.Context, in *ListAlertsRequest, opts ...grpc.CallOption) (*ListAlertsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAlertsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_ListAlerts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) ListHypervisors(ctx context.Context, in *ListHypervisorsRequest, opts ...grpc.CallOption) (*ListHypervisorsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListHypervisorsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_ListHypervisors_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) UpdateResourceCount(ctx context.Context, in *UpdateResourceCountRequest, opts ...grpc.CallOption) (*UpdateResourceCountResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateResourceCountResponse)
+	err := c.cc.Invoke(ctx, ResourceService_UpdateResourceCount_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -222,10 +162,70 @@ func (c *resourceServiceClient) PurgeExpungedResources(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *resourceServiceClient) ListResourceLimits(ctx context.Context, in *ListResourceLimitsRequest, opts ...grpc.CallOption) (*ListResourceLimitsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListResourceLimitsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_ListResourceLimits_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) CleanVMReservations(ctx context.Context, in *CleanVMReservationsRequest, opts ...grpc.CallOption) (*CleanVMReservationsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CleanVMReservationsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_CleanVMReservations_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) ArchiveAlerts(ctx context.Context, in *ArchiveAlertsRequest, opts ...grpc.CallOption) (*ArchiveAlertsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ArchiveAlertsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_ArchiveAlerts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) UpdateResourceLimit(ctx context.Context, in *UpdateResourceLimitRequest, opts ...grpc.CallOption) (*UpdateResourceLimitResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateResourceLimitResponse)
+	err := c.cc.Invoke(ctx, ResourceService_UpdateResourceLimit_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) DeleteAlerts(ctx context.Context, in *DeleteAlertsRequest, opts ...grpc.CallOption) (*DeleteAlertsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteAlertsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_DeleteAlerts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *resourceServiceClient) ListAlertTypes(ctx context.Context, in *ListAlertTypesRequest, opts ...grpc.CallOption) (*ListAlertTypesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListAlertTypesResponse)
 	err := c.cc.Invoke(ctx, ResourceService_ListAlertTypes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resourceServiceClient) ListDetailOptions(ctx context.Context, in *ListDetailOptionsRequest, opts ...grpc.CallOption) (*ListDetailOptionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListDetailOptionsResponse)
+	err := c.cc.Invoke(ctx, ResourceService_ListDetailOptions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -238,36 +238,36 @@ func (c *resourceServiceClient) ListAlertTypes(ctx context.Context, in *ListAler
 //
 // ResourceService provides operations for managing Resources
 type ResourceServiceServer interface {
-	// ListResourceLimits Lists resource limits.
-	ListResourceLimits(context.Context, *ListResourceLimitsRequest) (*ListResourceLimitsResponse, error)
-	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
-	UpdateResourceCount(context.Context, *UpdateResourceCountRequest) (*UpdateResourceCountResponse, error)
 	// StartRollingMaintenance Start rolling maintenance
 	StartRollingMaintenance(context.Context, *StartRollingMaintenanceRequest) (*StartRollingMaintenanceResponse, error)
-	// ListAlerts Lists all alerts.
-	ListAlerts(context.Context, *ListAlertsRequest) (*ListAlertsResponse, error)
-	// UpdateResourceLimit Updates resource limits for an account or domain.
-	UpdateResourceLimit(context.Context, *UpdateResourceLimitRequest) (*UpdateResourceLimitResponse, error)
-	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
-	ListDetailOptions(context.Context, *ListDetailOptionsRequest) (*ListDetailOptionsResponse, error)
-	// DeleteAlerts Delete one or more alerts.
-	DeleteAlerts(context.Context, *DeleteAlertsRequest) (*DeleteAlertsResponse, error)
-	// ListCapacity Lists all the system wide capacities.
-	ListCapacity(context.Context, *ListCapacityRequest) (*ListCapacityResponse, error)
-	// ListHypervisors List hypervisors
-	ListHypervisors(context.Context, *ListHypervisorsRequest) (*ListHypervisorsResponse, error)
-	// CleanVMReservations Cleanups VM reservations in the database.
-	CleanVMReservations(context.Context, *CleanVMReservationsRequest) (*CleanVMReservationsResponse, error)
 	// UploadCustomCertificate Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself.
 	UploadCustomCertificate(context.Context, *UploadCustomCertificateRequest) (*UploadCustomCertificateResponse, error)
 	// GetCloudIdentifier Retrieves a cloud identifier.
 	GetCloudIdentifier(context.Context, *GetCloudIdentifierRequest) (*GetCloudIdentifierResponse, error)
-	// ArchiveAlerts Archive one or more alerts.
-	ArchiveAlerts(context.Context, *ArchiveAlertsRequest) (*ArchiveAlertsResponse, error)
+	// ListCapacity Lists all the system wide capacities.
+	ListCapacity(context.Context, *ListCapacityRequest) (*ListCapacityResponse, error)
+	// ListAlerts Lists all alerts.
+	ListAlerts(context.Context, *ListAlertsRequest) (*ListAlertsResponse, error)
+	// ListHypervisors List hypervisors
+	ListHypervisors(context.Context, *ListHypervisorsRequest) (*ListHypervisorsResponse, error)
+	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
+	UpdateResourceCount(context.Context, *UpdateResourceCountRequest) (*UpdateResourceCountResponse, error)
 	// PurgeExpungedResources Purge expunged resources
 	PurgeExpungedResources(context.Context, *PurgeExpungedResourcesRequest) (*PurgeExpungedResourcesResponse, error)
+	// ListResourceLimits Lists resource limits.
+	ListResourceLimits(context.Context, *ListResourceLimitsRequest) (*ListResourceLimitsResponse, error)
+	// CleanVMReservations Cleanups VM reservations in the database.
+	CleanVMReservations(context.Context, *CleanVMReservationsRequest) (*CleanVMReservationsResponse, error)
+	// ArchiveAlerts Archive one or more alerts.
+	ArchiveAlerts(context.Context, *ArchiveAlertsRequest) (*ArchiveAlertsResponse, error)
+	// UpdateResourceLimit Updates resource limits for an account or domain.
+	UpdateResourceLimit(context.Context, *UpdateResourceLimitRequest) (*UpdateResourceLimitResponse, error)
+	// DeleteAlerts Delete one or more alerts.
+	DeleteAlerts(context.Context, *DeleteAlertsRequest) (*DeleteAlertsResponse, error)
 	// ListAlertTypes Lists all alerts types
 	ListAlertTypes(context.Context, *ListAlertTypesRequest) (*ListAlertTypesResponse, error)
+	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
+	ListDetailOptions(context.Context, *ListDetailOptionsRequest) (*ListDetailOptionsResponse, error)
 	mustEmbedUnimplementedResourceServiceServer()
 }
 
@@ -278,35 +278,8 @@ type ResourceServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedResourceServiceServer struct{}
 
-func (UnimplementedResourceServiceServer) ListResourceLimits(context.Context, *ListResourceLimitsRequest) (*ListResourceLimitsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListResourceLimits not implemented")
-}
-func (UnimplementedResourceServiceServer) UpdateResourceCount(context.Context, *UpdateResourceCountRequest) (*UpdateResourceCountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateResourceCount not implemented")
-}
 func (UnimplementedResourceServiceServer) StartRollingMaintenance(context.Context, *StartRollingMaintenanceRequest) (*StartRollingMaintenanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartRollingMaintenance not implemented")
-}
-func (UnimplementedResourceServiceServer) ListAlerts(context.Context, *ListAlertsRequest) (*ListAlertsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAlerts not implemented")
-}
-func (UnimplementedResourceServiceServer) UpdateResourceLimit(context.Context, *UpdateResourceLimitRequest) (*UpdateResourceLimitResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateResourceLimit not implemented")
-}
-func (UnimplementedResourceServiceServer) ListDetailOptions(context.Context, *ListDetailOptionsRequest) (*ListDetailOptionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListDetailOptions not implemented")
-}
-func (UnimplementedResourceServiceServer) DeleteAlerts(context.Context, *DeleteAlertsRequest) (*DeleteAlertsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteAlerts not implemented")
-}
-func (UnimplementedResourceServiceServer) ListCapacity(context.Context, *ListCapacityRequest) (*ListCapacityResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListCapacity not implemented")
-}
-func (UnimplementedResourceServiceServer) ListHypervisors(context.Context, *ListHypervisorsRequest) (*ListHypervisorsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListHypervisors not implemented")
-}
-func (UnimplementedResourceServiceServer) CleanVMReservations(context.Context, *CleanVMReservationsRequest) (*CleanVMReservationsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CleanVMReservations not implemented")
 }
 func (UnimplementedResourceServiceServer) UploadCustomCertificate(context.Context, *UploadCustomCertificateRequest) (*UploadCustomCertificateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UploadCustomCertificate not implemented")
@@ -314,14 +287,41 @@ func (UnimplementedResourceServiceServer) UploadCustomCertificate(context.Contex
 func (UnimplementedResourceServiceServer) GetCloudIdentifier(context.Context, *GetCloudIdentifierRequest) (*GetCloudIdentifierResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCloudIdentifier not implemented")
 }
-func (UnimplementedResourceServiceServer) ArchiveAlerts(context.Context, *ArchiveAlertsRequest) (*ArchiveAlertsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ArchiveAlerts not implemented")
+func (UnimplementedResourceServiceServer) ListCapacity(context.Context, *ListCapacityRequest) (*ListCapacityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCapacity not implemented")
+}
+func (UnimplementedResourceServiceServer) ListAlerts(context.Context, *ListAlertsRequest) (*ListAlertsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAlerts not implemented")
+}
+func (UnimplementedResourceServiceServer) ListHypervisors(context.Context, *ListHypervisorsRequest) (*ListHypervisorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListHypervisors not implemented")
+}
+func (UnimplementedResourceServiceServer) UpdateResourceCount(context.Context, *UpdateResourceCountRequest) (*UpdateResourceCountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateResourceCount not implemented")
 }
 func (UnimplementedResourceServiceServer) PurgeExpungedResources(context.Context, *PurgeExpungedResourcesRequest) (*PurgeExpungedResourcesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PurgeExpungedResources not implemented")
 }
+func (UnimplementedResourceServiceServer) ListResourceLimits(context.Context, *ListResourceLimitsRequest) (*ListResourceLimitsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListResourceLimits not implemented")
+}
+func (UnimplementedResourceServiceServer) CleanVMReservations(context.Context, *CleanVMReservationsRequest) (*CleanVMReservationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CleanVMReservations not implemented")
+}
+func (UnimplementedResourceServiceServer) ArchiveAlerts(context.Context, *ArchiveAlertsRequest) (*ArchiveAlertsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ArchiveAlerts not implemented")
+}
+func (UnimplementedResourceServiceServer) UpdateResourceLimit(context.Context, *UpdateResourceLimitRequest) (*UpdateResourceLimitResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateResourceLimit not implemented")
+}
+func (UnimplementedResourceServiceServer) DeleteAlerts(context.Context, *DeleteAlertsRequest) (*DeleteAlertsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAlerts not implemented")
+}
 func (UnimplementedResourceServiceServer) ListAlertTypes(context.Context, *ListAlertTypesRequest) (*ListAlertTypesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAlertTypes not implemented")
+}
+func (UnimplementedResourceServiceServer) ListDetailOptions(context.Context, *ListDetailOptionsRequest) (*ListDetailOptionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDetailOptions not implemented")
 }
 func (UnimplementedResourceServiceServer) mustEmbedUnimplementedResourceServiceServer() {}
 func (UnimplementedResourceServiceServer) testEmbeddedByValue()                         {}
@@ -344,42 +344,6 @@ func RegisterResourceServiceServer(s grpc.ServiceRegistrar, srv ResourceServiceS
 	s.RegisterService(&ResourceService_ServiceDesc, srv)
 }
 
-func _ResourceService_ListResourceLimits_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListResourceLimitsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).ListResourceLimits(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_ListResourceLimits_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).ListResourceLimits(ctx, req.(*ListResourceLimitsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_UpdateResourceCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateResourceCountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).UpdateResourceCount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_UpdateResourceCount_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).UpdateResourceCount(ctx, req.(*UpdateResourceCountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ResourceService_StartRollingMaintenance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StartRollingMaintenanceRequest)
 	if err := dec(in); err != nil {
@@ -394,132 +358,6 @@ func _ResourceService_StartRollingMaintenance_Handler(srv interface{}, ctx conte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ResourceServiceServer).StartRollingMaintenance(ctx, req.(*StartRollingMaintenanceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_ListAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAlertsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).ListAlerts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_ListAlerts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).ListAlerts(ctx, req.(*ListAlertsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_UpdateResourceLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateResourceLimitRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).UpdateResourceLimit(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_UpdateResourceLimit_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).UpdateResourceLimit(ctx, req.(*UpdateResourceLimitRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_ListDetailOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListDetailOptionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).ListDetailOptions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_ListDetailOptions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).ListDetailOptions(ctx, req.(*ListDetailOptionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_DeleteAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteAlertsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).DeleteAlerts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_DeleteAlerts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).DeleteAlerts(ctx, req.(*DeleteAlertsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_ListCapacity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListCapacityRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).ListCapacity(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_ListCapacity_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).ListCapacity(ctx, req.(*ListCapacityRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_ListHypervisors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListHypervisorsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).ListHypervisors(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_ListHypervisors_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).ListHypervisors(ctx, req.(*ListHypervisorsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ResourceService_CleanVMReservations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CleanVMReservationsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ResourceServiceServer).CleanVMReservations(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ResourceService_CleanVMReservations_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).CleanVMReservations(ctx, req.(*CleanVMReservationsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -560,20 +398,74 @@ func _ResourceService_GetCloudIdentifier_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ResourceService_ArchiveAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ArchiveAlertsRequest)
+func _ResourceService_ListCapacity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCapacityRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ResourceServiceServer).ArchiveAlerts(ctx, in)
+		return srv.(ResourceServiceServer).ListCapacity(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ResourceService_ArchiveAlerts_FullMethodName,
+		FullMethod: ResourceService_ListCapacity_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResourceServiceServer).ArchiveAlerts(ctx, req.(*ArchiveAlertsRequest))
+		return srv.(ResourceServiceServer).ListCapacity(ctx, req.(*ListCapacityRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_ListAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAlertsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).ListAlerts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_ListAlerts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).ListAlerts(ctx, req.(*ListAlertsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_ListHypervisors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHypervisorsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).ListHypervisors(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_ListHypervisors_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).ListHypervisors(ctx, req.(*ListHypervisorsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_UpdateResourceCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateResourceCountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).UpdateResourceCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_UpdateResourceCount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).UpdateResourceCount(ctx, req.(*UpdateResourceCountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -596,6 +488,96 @@ func _ResourceService_PurgeExpungedResources_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ResourceService_ListResourceLimits_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListResourceLimitsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).ListResourceLimits(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_ListResourceLimits_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).ListResourceLimits(ctx, req.(*ListResourceLimitsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_CleanVMReservations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CleanVMReservationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).CleanVMReservations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_CleanVMReservations_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).CleanVMReservations(ctx, req.(*CleanVMReservationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_ArchiveAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ArchiveAlertsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).ArchiveAlerts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_ArchiveAlerts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).ArchiveAlerts(ctx, req.(*ArchiveAlertsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_UpdateResourceLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateResourceLimitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).UpdateResourceLimit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_UpdateResourceLimit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).UpdateResourceLimit(ctx, req.(*UpdateResourceLimitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResourceService_DeleteAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAlertsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).DeleteAlerts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_DeleteAlerts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).DeleteAlerts(ctx, req.(*DeleteAlertsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ResourceService_ListAlertTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListAlertTypesRequest)
 	if err := dec(in); err != nil {
@@ -614,6 +596,24 @@ func _ResourceService_ListAlertTypes_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ResourceService_ListDetailOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDetailOptionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResourceServiceServer).ListDetailOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ResourceService_ListDetailOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResourceServiceServer).ListDetailOptions(ctx, req.(*ListDetailOptionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ResourceService_ServiceDesc is the grpc.ServiceDesc for ResourceService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -622,44 +622,8 @@ var ResourceService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ResourceServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListResourceLimits",
-			Handler:    _ResourceService_ListResourceLimits_Handler,
-		},
-		{
-			MethodName: "UpdateResourceCount",
-			Handler:    _ResourceService_UpdateResourceCount_Handler,
-		},
-		{
 			MethodName: "StartRollingMaintenance",
 			Handler:    _ResourceService_StartRollingMaintenance_Handler,
-		},
-		{
-			MethodName: "ListAlerts",
-			Handler:    _ResourceService_ListAlerts_Handler,
-		},
-		{
-			MethodName: "UpdateResourceLimit",
-			Handler:    _ResourceService_UpdateResourceLimit_Handler,
-		},
-		{
-			MethodName: "ListDetailOptions",
-			Handler:    _ResourceService_ListDetailOptions_Handler,
-		},
-		{
-			MethodName: "DeleteAlerts",
-			Handler:    _ResourceService_DeleteAlerts_Handler,
-		},
-		{
-			MethodName: "ListCapacity",
-			Handler:    _ResourceService_ListCapacity_Handler,
-		},
-		{
-			MethodName: "ListHypervisors",
-			Handler:    _ResourceService_ListHypervisors_Handler,
-		},
-		{
-			MethodName: "CleanVMReservations",
-			Handler:    _ResourceService_CleanVMReservations_Handler,
 		},
 		{
 			MethodName: "UploadCustomCertificate",
@@ -670,16 +634,52 @@ var ResourceService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ResourceService_GetCloudIdentifier_Handler,
 		},
 		{
-			MethodName: "ArchiveAlerts",
-			Handler:    _ResourceService_ArchiveAlerts_Handler,
+			MethodName: "ListCapacity",
+			Handler:    _ResourceService_ListCapacity_Handler,
+		},
+		{
+			MethodName: "ListAlerts",
+			Handler:    _ResourceService_ListAlerts_Handler,
+		},
+		{
+			MethodName: "ListHypervisors",
+			Handler:    _ResourceService_ListHypervisors_Handler,
+		},
+		{
+			MethodName: "UpdateResourceCount",
+			Handler:    _ResourceService_UpdateResourceCount_Handler,
 		},
 		{
 			MethodName: "PurgeExpungedResources",
 			Handler:    _ResourceService_PurgeExpungedResources_Handler,
 		},
 		{
+			MethodName: "ListResourceLimits",
+			Handler:    _ResourceService_ListResourceLimits_Handler,
+		},
+		{
+			MethodName: "CleanVMReservations",
+			Handler:    _ResourceService_CleanVMReservations_Handler,
+		},
+		{
+			MethodName: "ArchiveAlerts",
+			Handler:    _ResourceService_ArchiveAlerts_Handler,
+		},
+		{
+			MethodName: "UpdateResourceLimit",
+			Handler:    _ResourceService_UpdateResourceLimit_Handler,
+		},
+		{
+			MethodName: "DeleteAlerts",
+			Handler:    _ResourceService_DeleteAlerts_Handler,
+		},
+		{
 			MethodName: "ListAlertTypes",
 			Handler:    _ResourceService_ListAlertTypes_Handler,
+		},
+		{
+			MethodName: "ListDetailOptions",
+			Handler:    _ResourceService_ListDetailOptions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

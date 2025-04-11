@@ -10,23 +10,79 @@ import "google/protobuf/descriptor.proto";
 service InternallbService {
 	option (annotations.service).scope = Scope_USER;
 
+	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
+	rpc ConfigureInternalLoadBalancerElement(ConfigureInternalLoadBalancerElementRequest) returns (ConfigureInternalLoadBalancerElementResponse) {}
+
+	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
+	rpc CreateInternalLoadBalancerElement(CreateInternalLoadBalancerElementRequest) returns (CreateInternalLoadBalancerElementResponse) {}
+
 	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
 	rpc ListInternalLoadBalancerElements(ListInternalLoadBalancerElementsRequest) returns (ListInternalLoadBalancerElementsResponse) {}
 
 	// ListInternalLBVMs List internal LB VMs.
 	rpc ListInternalLBVMs(ListInternalLBVMsRequest) returns (ListInternalLBVMsResponse) {}
 
-	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
-	rpc ConfigureInternalLoadBalancerElement(ConfigureInternalLoadBalancerElementRequest) returns (ConfigureInternalLoadBalancerElementResponse) {}
-
 	// StartInternalLBVM Starts an existing internal lb vm.
 	rpc StartInternalLBVM(StartInternalLBVMRequest) returns (StartInternalLBVMResponse) {}
 
 	// StopInternalLBVM Stops an Internal LB vm.
 	rpc StopInternalLBVM(StopInternalLBVMRequest) returns (StopInternalLBVMResponse) {}
+}
 
-	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
-	rpc CreateInternalLoadBalancerElement(CreateInternalLoadBalancerElementRequest) returns (CreateInternalLoadBalancerElementResponse) {}
+// ConfigureInternalLoadBalancerElementRequest represents the parameters for configures an internal load balancer element.
+message ConfigureInternalLoadBalancerElementRequest {
+	// the ID of the internal lb provider
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Enables/Disables the Internal Load Balancer element
+	bool enabled = 2 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ConfigureInternalLoadBalancerElementResponse represents the response from configures an internal load balancer element.
+message ConfigureInternalLoadBalancerElementResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateInternalLoadBalancerElementRequest represents the parameters for create an internal load balancer element.
+message CreateInternalLoadBalancerElementRequest {
+	// the network service provider ID of the internal load balancer element
+	int64 nsp_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CreateInternalLoadBalancerElementResponse represents the response from create an internal load balancer element.
+message CreateInternalLoadBalancerElementResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListInternalLoadBalancerElementsRequest represents the parameters for lists all available internal load balancer elements.
@@ -152,37 +208,6 @@ message ListInternalLBVMsResponse {
 	int32 total_count = 2;
 }
 
-// ConfigureInternalLoadBalancerElementRequest represents the parameters for configures an internal load balancer element.
-message ConfigureInternalLoadBalancerElementRequest {
-	// the ID of the internal lb provider
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Enables/Disables the Internal Load Balancer element
-	bool enabled = 2 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ConfigureInternalLoadBalancerElementResponse represents the response from configures an internal load balancer element.
-message ConfigureInternalLoadBalancerElementResponse {
-	// The Result
-	Result result = 1;
-}
-
 // StartInternalLBVMRequest represents the parameters for starts an existing internal lb vm.
 message StartInternalLBVMRequest {
 	// the ID of the internal lb vm
@@ -234,31 +259,6 @@ message StopInternalLBVMRequest {
 
 // StopInternalLBVMResponse represents the response from stops an internal lb vm.
 message StopInternalLBVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateInternalLoadBalancerElementRequest represents the parameters for create an internal load balancer element.
-message CreateInternalLoadBalancerElementRequest {
-	// the network service provider ID of the internal load balancer element
-	int64 nsp_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CreateInternalLoadBalancerElementResponse represents the response from create an internal load balancer element.
-message CreateInternalLoadBalancerElementResponse {
 	// The Result
 	Result result = 1;
 }

@@ -13,26 +13,26 @@ service ProjectService {
 	// ListProjects Lists projects and provides detailed information for listed projects
 	rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse) {}
 
-	// DeleteProject Deletes a project
-	rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse) {}
+	// DeleteProjectInvitation Deletes project invitation
+	rpc DeleteProjectInvitation(DeleteProjectInvitationRequest) returns (DeleteProjectInvitationResponse) {}
 
 	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
 	rpc ListProjectInvitations(ListProjectInvitationsRequest) returns (ListProjectInvitationsResponse) {}
 
-	// CreateProject Creates a project
-	rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {}
+	// DeleteProject Deletes a project
+	rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse) {}
 
 	// UpdateProjectInvitation Accepts or declines project invitation
 	rpc UpdateProjectInvitation(UpdateProjectInvitationRequest) returns (UpdateProjectInvitationResponse) {}
 
-	// DeleteProjectInvitation Deletes project invitation
-	rpc DeleteProjectInvitation(DeleteProjectInvitationRequest) returns (DeleteProjectInvitationResponse) {}
+	// ActivateProject Activates a project
+	rpc ActivateProject(ActivateProjectRequest) returns (ActivateProjectResponse) {}
 
 	// SuspendProject Suspends a project
 	rpc SuspendProject(SuspendProjectRequest) returns (SuspendProjectResponse) {}
 
-	// ActivateProject Activates a project
-	rpc ActivateProject(ActivateProjectRequest) returns (ActivateProjectResponse) {}
+	// CreateProject Creates a project
+	rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {}
 
 	// UpdateProject Updates a project
 	rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse) {}
@@ -117,32 +117,27 @@ message ListProjectsResponse {
 	int32 total_count = 2;
 }
 
-// DeleteProjectRequest represents the parameters for deletes a project
-message DeleteProjectRequest {
-	// id of the project to be deleted
+// DeleteProjectInvitationRequest represents the parameters for deletes project invitation
+message DeleteProjectInvitationRequest {
+	// id of the invitation
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// true if all project resources have to be cleaned up, false otherwise
-	bool cleanup = 2 [
-		features.field_presence = EXPLICIT
-	];
+	//
+	int64 start_event_id = 2;
 
 	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 5;
+	string response_type = 4;
 }
 
-// DeleteProjectResponse represents the response from deletes a project
-message DeleteProjectResponse {
+// DeleteProjectInvitationResponse represents the response from deletes project invitation
+message DeleteProjectInvitationResponse {
 	// The Result
 	Result result = 1;
 }
@@ -211,44 +206,32 @@ message ListProjectInvitationsResponse {
 	int32 total_count = 2;
 }
 
-// CreateProjectRequest represents the parameters for creates a project
-message CreateProjectRequest {
-	// account who will be Admin for the project
-	string account_name = 1;
-
-	// user ID of the account to be assigned as owner of the project i.e., Project Admin
-	int64 user_id = 2;
-
-	// domain ID of the account owning a project
-	int64 domain_id = 3;
-
-	// ID of the account owning a project
-	int64 account_id = 4;
-
-	// name of the project
-	string name = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// DeleteProjectRequest represents the parameters for deletes a project
+message DeleteProjectRequest {
+	// id of the project to be deleted
+	int64 id = 1 [
+		(validate.field).required = true
 	];
 
-	// The display text of the project, defaults to the 'name´.
-	string display_text = 6;
+	// true if all project resources have to be cleaned up, false otherwise
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
+	];
 
 	//
-	int64 start_event_id = 7;
+	int64 start_event_id = 3;
 
 	//
-	string injected_job_id = 8 [
+	string injected_job_id = 4 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 9;
+	string response_type = 5;
 }
 
-// CreateProjectResponse represents the response from creates a project
-message CreateProjectResponse {
+// DeleteProjectResponse represents the response from deletes a project
+message DeleteProjectResponse {
 	// The Result
 	Result result = 1;
 }
@@ -292,9 +275,9 @@ message UpdateProjectInvitationResponse {
 	Result result = 1;
 }
 
-// DeleteProjectInvitationRequest represents the parameters for deletes project invitation
-message DeleteProjectInvitationRequest {
-	// id of the invitation
+// ActivateProjectRequest represents the parameters for activates a project
+message ActivateProjectRequest {
+	// id of the project to be modified
 	int64 id = 1 [
 		(validate.field).required = true
 	];
@@ -311,8 +294,8 @@ message DeleteProjectInvitationRequest {
 	string response_type = 4;
 }
 
-// DeleteProjectInvitationResponse represents the response from deletes project invitation
-message DeleteProjectInvitationResponse {
+// ActivateProjectResponse represents the response from activates a project
+message ActivateProjectResponse {
 	// The Result
 	Result result = 1;
 }
@@ -342,27 +325,44 @@ message SuspendProjectResponse {
 	Result result = 1;
 }
 
-// ActivateProjectRequest represents the parameters for activates a project
-message ActivateProjectRequest {
-	// id of the project to be modified
-	int64 id = 1 [
-		(validate.field).required = true
+// CreateProjectRequest represents the parameters for creates a project
+message CreateProjectRequest {
+	// account who will be Admin for the project
+	string account_name = 1;
+
+	// user ID of the account to be assigned as owner of the project i.e., Project Admin
+	int64 user_id = 2;
+
+	// domain ID of the account owning a project
+	int64 domain_id = 3;
+
+	// ID of the account owning a project
+	int64 account_id = 4;
+
+	// name of the project
+	string name = 5 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
-	//
-	int64 start_event_id = 2;
+	// The display text of the project, defaults to the 'name´.
+	string display_text = 6;
 
 	//
-	string injected_job_id = 3 [
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 9;
 }
 
-// ActivateProjectResponse represents the response from activates a project
-message ActivateProjectResponse {
+// CreateProjectResponse represents the response from creates a project
+message CreateProjectResponse {
 	// The Result
 	Result result = 1;
 }

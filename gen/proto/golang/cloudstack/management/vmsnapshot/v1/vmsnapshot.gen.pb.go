@@ -24,515 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// CreateVMSnapshotRequest represents the parameters for creates snapshot for a vm.
-type CreateVMSnapshotRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the vm
-	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// The description of the snapshot
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// The display name of the snapshot
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// snapshot memory if true
-	SnapshotMemory *bool `protobuf:"varint,4,opt,name=snapshot_memory,json=snapshotMemory" json:"snapshot_memory,omitempty"`
-	// quiesce vm if true
-	Quiescevm *bool `protobuf:"varint,5,opt,name=quiescevm" json:"quiescevm,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVMSnapshotRequest) Reset() {
-	*x = CreateVMSnapshotRequest{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVMSnapshotRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVMSnapshotRequest) ProtoMessage() {}
-
-func (x *CreateVMSnapshotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVMSnapshotRequest.ProtoReflect.Descriptor instead.
-func (*CreateVMSnapshotRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateVMSnapshotRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
-	}
-	return 0
-}
-
-func (x *CreateVMSnapshotRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateVMSnapshotRequest) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *CreateVMSnapshotRequest) GetSnapshotMemory() bool {
-	if x != nil && x.SnapshotMemory != nil {
-		return *x.SnapshotMemory
-	}
-	return false
-}
-
-func (x *CreateVMSnapshotRequest) GetQuiescevm() bool {
-	if x != nil && x.Quiescevm != nil {
-		return *x.Quiescevm
-	}
-	return false
-}
-
-func (x *CreateVMSnapshotRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateVMSnapshotRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateVMSnapshotRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateVMSnapshotResponse represents the response from creates snapshot for a vm.
-type CreateVMSnapshotResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVMSnapshotResponse) Reset() {
-	*x = CreateVMSnapshotResponse{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVMSnapshotResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVMSnapshotResponse) ProtoMessage() {}
-
-func (x *CreateVMSnapshotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVMSnapshotResponse.ProtoReflect.Descriptor instead.
-func (*CreateVMSnapshotResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateVMSnapshotResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
-type RevertToVMSnapshotCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the vm snapshot
-	VmSnapShotId *int64 `protobuf:"varint,1,opt,name=vm_snap_shot_id,json=vmSnapShotId" json:"vm_snap_shot_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) Reset() {
-	*x = RevertToVMSnapshotCmdByAdminRequest{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevertToVMSnapshotCmdByAdminRequest) ProtoMessage() {}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevertToVMSnapshotCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*RevertToVMSnapshotCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) GetVmSnapShotId() int64 {
-	if x != nil && x.VmSnapShotId != nil {
-		return *x.VmSnapShotId
-	}
-	return 0
-}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RevertToVMSnapshotCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
-type RevertToVMSnapshotCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevertToVMSnapshotCmdByAdminResponse) Reset() {
-	*x = RevertToVMSnapshotCmdByAdminResponse{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevertToVMSnapshotCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevertToVMSnapshotCmdByAdminResponse) ProtoMessage() {}
-
-func (x *RevertToVMSnapshotCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevertToVMSnapshotCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*RevertToVMSnapshotCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *RevertToVMSnapshotCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
-type DeleteVMSnapshotRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the VM snapshot
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVMSnapshotRequest) Reset() {
-	*x = DeleteVMSnapshotRequest{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVMSnapshotRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVMSnapshotRequest) ProtoMessage() {}
-
-func (x *DeleteVMSnapshotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVMSnapshotRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVMSnapshotRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteVMSnapshotRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVMSnapshotRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteVMSnapshotRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteVMSnapshotRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
-type DeleteVMSnapshotResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVMSnapshotResponse) Reset() {
-	*x = DeleteVMSnapshotResponse{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVMSnapshotResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVMSnapshotResponse) ProtoMessage() {}
-
-func (x *DeleteVMSnapshotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVMSnapshotResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVMSnapshotResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteVMSnapshotResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
-type RevertToVMSnapshotRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the vm snapshot
-	VmSnapShotId *int64 `protobuf:"varint,2,opt,name=vm_snap_shot_id,json=vmSnapShotId" json:"vm_snap_shot_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevertToVMSnapshotRequest) Reset() {
-	*x = RevertToVMSnapshotRequest{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevertToVMSnapshotRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevertToVMSnapshotRequest) ProtoMessage() {}
-
-func (x *RevertToVMSnapshotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevertToVMSnapshotRequest.ProtoReflect.Descriptor instead.
-func (*RevertToVMSnapshotRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *RevertToVMSnapshotRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *RevertToVMSnapshotRequest) GetVmSnapShotId() int64 {
-	if x != nil && x.VmSnapShotId != nil {
-		return *x.VmSnapShotId
-	}
-	return 0
-}
-
-func (x *RevertToVMSnapshotRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RevertToVMSnapshotRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RevertToVMSnapshotRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
-type RevertToVMSnapshotResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevertToVMSnapshotResponse) Reset() {
-	*x = RevertToVMSnapshotResponse{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevertToVMSnapshotResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevertToVMSnapshotResponse) ProtoMessage() {}
-
-func (x *RevertToVMSnapshotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevertToVMSnapshotResponse.ProtoReflect.Descriptor instead.
-func (*RevertToVMSnapshotResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *RevertToVMSnapshotResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ListVMSnapshotRequest represents the parameters for list virtual machine snapshot by conditions
 type ListVMSnapshotRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -569,7 +60,7 @@ type ListVMSnapshotRequest struct {
 
 func (x *ListVMSnapshotRequest) Reset() {
 	*x = ListVMSnapshotRequest{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -581,7 +72,7 @@ func (x *ListVMSnapshotRequest) String() string {
 func (*ListVMSnapshotRequest) ProtoMessage() {}
 
 func (x *ListVMSnapshotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -594,7 +85,7 @@ func (x *ListVMSnapshotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVMSnapshotRequest.ProtoReflect.Descriptor instead.
 func (*ListVMSnapshotRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListVMSnapshotRequest) GetId() int64 {
@@ -715,7 +206,7 @@ type ListVMSnapshotResponse struct {
 
 func (x *ListVMSnapshotResponse) Reset() {
 	*x = ListVMSnapshotResponse{}
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -727,7 +218,7 @@ func (x *ListVMSnapshotResponse) String() string {
 func (*ListVMSnapshotResponse) ProtoMessage() {}
 
 func (x *ListVMSnapshotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -740,7 +231,7 @@ func (x *ListVMSnapshotResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVMSnapshotResponse.ProtoReflect.Descriptor instead.
 func (*ListVMSnapshotResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListVMSnapshotResponse) GetItems() []*VMSnapshot {
@@ -755,6 +246,515 @@ func (x *ListVMSnapshotResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
+type DeleteVMSnapshotRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the VM snapshot
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVMSnapshotRequest) Reset() {
+	*x = DeleteVMSnapshotRequest{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVMSnapshotRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVMSnapshotRequest) ProtoMessage() {}
+
+func (x *DeleteVMSnapshotRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVMSnapshotRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVMSnapshotRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteVMSnapshotRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVMSnapshotRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteVMSnapshotRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteVMSnapshotRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
+type DeleteVMSnapshotResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVMSnapshotResponse) Reset() {
+	*x = DeleteVMSnapshotResponse{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVMSnapshotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVMSnapshotResponse) ProtoMessage() {}
+
+func (x *DeleteVMSnapshotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVMSnapshotResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVMSnapshotResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteVMSnapshotResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVMSnapshotRequest represents the parameters for creates snapshot for a vm.
+type CreateVMSnapshotRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the vm
+	VmId *int64 `protobuf:"varint,1,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// The description of the snapshot
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// The display name of the snapshot
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// snapshot memory if true
+	SnapshotMemory *bool `protobuf:"varint,4,opt,name=snapshot_memory,json=snapshotMemory" json:"snapshot_memory,omitempty"`
+	// quiesce vm if true
+	Quiescevm *bool `protobuf:"varint,5,opt,name=quiescevm" json:"quiescevm,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVMSnapshotRequest) Reset() {
+	*x = CreateVMSnapshotRequest{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVMSnapshotRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVMSnapshotRequest) ProtoMessage() {}
+
+func (x *CreateVMSnapshotRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVMSnapshotRequest.ProtoReflect.Descriptor instead.
+func (*CreateVMSnapshotRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CreateVMSnapshotRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *CreateVMSnapshotRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateVMSnapshotRequest) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *CreateVMSnapshotRequest) GetSnapshotMemory() bool {
+	if x != nil && x.SnapshotMemory != nil {
+		return *x.SnapshotMemory
+	}
+	return false
+}
+
+func (x *CreateVMSnapshotRequest) GetQuiescevm() bool {
+	if x != nil && x.Quiescevm != nil {
+		return *x.Quiescevm
+	}
+	return false
+}
+
+func (x *CreateVMSnapshotRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateVMSnapshotRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateVMSnapshotRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVMSnapshotResponse represents the response from creates snapshot for a vm.
+type CreateVMSnapshotResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVMSnapshotResponse) Reset() {
+	*x = CreateVMSnapshotResponse{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVMSnapshotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVMSnapshotResponse) ProtoMessage() {}
+
+func (x *CreateVMSnapshotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVMSnapshotResponse.ProtoReflect.Descriptor instead.
+func (*CreateVMSnapshotResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CreateVMSnapshotResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
+type RevertToVMSnapshotCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the vm snapshot
+	VmSnapShotId *int64 `protobuf:"varint,1,opt,name=vm_snap_shot_id,json=vmSnapShotId" json:"vm_snap_shot_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) Reset() {
+	*x = RevertToVMSnapshotCmdByAdminRequest{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevertToVMSnapshotCmdByAdminRequest) ProtoMessage() {}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevertToVMSnapshotCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*RevertToVMSnapshotCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) GetVmSnapShotId() int64 {
+	if x != nil && x.VmSnapShotId != nil {
+		return *x.VmSnapShotId
+	}
+	return 0
+}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RevertToVMSnapshotCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
+type RevertToVMSnapshotCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevertToVMSnapshotCmdByAdminResponse) Reset() {
+	*x = RevertToVMSnapshotCmdByAdminResponse{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevertToVMSnapshotCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevertToVMSnapshotCmdByAdminResponse) ProtoMessage() {}
+
+func (x *RevertToVMSnapshotCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevertToVMSnapshotCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*RevertToVMSnapshotCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RevertToVMSnapshotCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
+type RevertToVMSnapshotRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the vm snapshot
+	VmSnapShotId *int64 `protobuf:"varint,2,opt,name=vm_snap_shot_id,json=vmSnapShotId" json:"vm_snap_shot_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevertToVMSnapshotRequest) Reset() {
+	*x = RevertToVMSnapshotRequest{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevertToVMSnapshotRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevertToVMSnapshotRequest) ProtoMessage() {}
+
+func (x *RevertToVMSnapshotRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevertToVMSnapshotRequest.ProtoReflect.Descriptor instead.
+func (*RevertToVMSnapshotRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *RevertToVMSnapshotRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *RevertToVMSnapshotRequest) GetVmSnapShotId() int64 {
+	if x != nil && x.VmSnapShotId != nil {
+		return *x.VmSnapShotId
+	}
+	return 0
+}
+
+func (x *RevertToVMSnapshotRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RevertToVMSnapshotRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RevertToVMSnapshotRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
+type RevertToVMSnapshotResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevertToVMSnapshotResponse) Reset() {
+	*x = RevertToVMSnapshotResponse{}
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevertToVMSnapshotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevertToVMSnapshotResponse) ProtoMessage() {}
+
+func (x *RevertToVMSnapshotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevertToVMSnapshotResponse.ProtoReflect.Descriptor instead.
+func (*RevertToVMSnapshotResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *RevertToVMSnapshotResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // VMSnapshot represents a VMSnapshot Item
@@ -1125,43 +1125,7 @@ var File_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto protoreflect.F
 
 const file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDesc = "" +
 	"\n" +
-	"8cloudstack/management/vmsnapshot/v1/vmsnapshot.gen.proto\x12#cloudstack.management.vmsnapshot.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe5\x02\n" +
-	"\x17CreateVMSnapshotRequest\x12\x1b\n" +
-	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12-\n" +
-	"\fdisplay_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12.\n" +
-	"\x0fsnapshot_memory\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0esnapshotMemory\x12#\n" +
-	"\tquiescevm\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\tquiescevm\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"_\n" +
-	"\x18CreateVMSnapshotResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xd1\x01\n" +
-	"#RevertToVMSnapshotCmdByAdminRequest\x12-\n" +
-	"\x0fvm_snap_shot_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fvmSnapShotId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
-	"$RevertToVMSnapshotCmdByAdminResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xae\x01\n" +
-	"\x17DeleteVMSnapshotRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
-	"\x18DeleteVMSnapshotResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xe9\x01\n" +
-	"\x19RevertToVMSnapshotRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12-\n" +
-	"\x0fvm_snap_shot_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fvmSnapShotId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
-	"\x1aRevertToVMSnapshotResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xc3\x05\n" +
+	"8cloudstack/management/vmsnapshot/v1/vmsnapshot.gen.proto\x12#cloudstack.management.vmsnapshot.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc3\x05\n" +
 	"\x15ListVMSnapshotRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
 	"\x03ids\x18\x02 \x03(\tR\x03ids\x12\x14\n" +
@@ -1188,7 +1152,43 @@ const file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDesc = ""
 	"\x16ListVMSnapshotResponse\x12E\n" +
 	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.vmsnapshot.v1.VMSnapshotR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x99\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xae\x01\n" +
+	"\x17DeleteVMSnapshotRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
+	"\x18DeleteVMSnapshotResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xe5\x02\n" +
+	"\x17CreateVMSnapshotRequest\x12\x1b\n" +
+	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12-\n" +
+	"\fdisplay_name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vdisplayName\x12.\n" +
+	"\x0fsnapshot_memory\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0esnapshotMemory\x12#\n" +
+	"\tquiescevm\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\tquiescevm\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"_\n" +
+	"\x18CreateVMSnapshotResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xd1\x01\n" +
+	"#RevertToVMSnapshotCmdByAdminRequest\x12-\n" +
+	"\x0fvm_snap_shot_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fvmSnapShotId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
+	"$RevertToVMSnapshotCmdByAdminResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\xe9\x01\n" +
+	"\x19RevertToVMSnapshotRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12-\n" +
+	"\x0fvm_snap_shot_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fvmSnapShotId\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
+	"\x1aRevertToVMSnapshotResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.vmsnapshot.v1.ResultR\x06result\"\x99\x01\n" +
 	"\n" +
 	"VMSnapshot\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1225,12 +1225,12 @@ const file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDesc = ""
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa9\x06\n" +
-	"\x11VmsnapshotService\x12\x91\x01\n" +
+	"\x11VmsnapshotService\x12\x8b\x01\n" +
+	"\x0eListVMSnapshot\x12:.cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest\x1a;.cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse\"\x00\x12\x91\x01\n" +
+	"\x10DeleteVMSnapshot\x12<.cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotRequest\x1a=.cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse\"\x00\x12\x91\x01\n" +
 	"\x10CreateVMSnapshot\x12<.cloudstack.management.vmsnapshot.v1.CreateVMSnapshotRequest\x1a=.cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse\"\x00\x12\xb5\x01\n" +
-	"\x1cRevertToVMSnapshotCmdByAdmin\x12H.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminRequest\x1aI.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse\"\x00\x12\x91\x01\n" +
-	"\x10DeleteVMSnapshot\x12<.cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotRequest\x1a=.cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse\"\x00\x12\x9d\x01\n" +
-	"\x12RevertToVMSnapshot\x12>.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotRequest\x1a?.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8b\x01\n" +
-	"\x0eListVMSnapshot\x12:.cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest\x1a;.cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xd2\x02\n" +
+	"\x1cRevertToVMSnapshotCmdByAdmin\x12H.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminRequest\x1aI.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse\"\x00\x12\x9d\x01\n" +
+	"\x12RevertToVMSnapshot\x12>.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotRequest\x1a?.cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\xd2\x02\n" +
 	"'com.cloudstack.management.vmsnapshot.v1B\x12VmsnapshotGenProtoP\x01Zdgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/vmsnapshot/v1;vmsnapshotv1\xa2\x02\x03CMV\xaa\x02#Cloudstack.Management.Vmsnapshot.V1\xca\x02#Cloudstack\\Management\\Vmsnapshot\\V1\xe2\x02/Cloudstack\\Management\\Vmsnapshot\\V1\\GPBMetadata\xea\x02&Cloudstack::Management::Vmsnapshot::V1b\beditionsp\xe8\a"
 
 var (
@@ -1247,16 +1247,16 @@ func file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_rawDescGZIP()
 
 var file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_goTypes = []any{
-	(*CreateVMSnapshotRequest)(nil),              // 0: cloudstack.management.vmsnapshot.v1.CreateVMSnapshotRequest
-	(*CreateVMSnapshotResponse)(nil),             // 1: cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse
-	(*RevertToVMSnapshotCmdByAdminRequest)(nil),  // 2: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminRequest
-	(*RevertToVMSnapshotCmdByAdminResponse)(nil), // 3: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse
-	(*DeleteVMSnapshotRequest)(nil),              // 4: cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotRequest
-	(*DeleteVMSnapshotResponse)(nil),             // 5: cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse
-	(*RevertToVMSnapshotRequest)(nil),            // 6: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotRequest
-	(*RevertToVMSnapshotResponse)(nil),           // 7: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse
-	(*ListVMSnapshotRequest)(nil),                // 8: cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest
-	(*ListVMSnapshotResponse)(nil),               // 9: cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse
+	(*ListVMSnapshotRequest)(nil),                // 0: cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest
+	(*ListVMSnapshotResponse)(nil),               // 1: cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse
+	(*DeleteVMSnapshotRequest)(nil),              // 2: cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotRequest
+	(*DeleteVMSnapshotResponse)(nil),             // 3: cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse
+	(*CreateVMSnapshotRequest)(nil),              // 4: cloudstack.management.vmsnapshot.v1.CreateVMSnapshotRequest
+	(*CreateVMSnapshotResponse)(nil),             // 5: cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse
+	(*RevertToVMSnapshotCmdByAdminRequest)(nil),  // 6: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminRequest
+	(*RevertToVMSnapshotCmdByAdminResponse)(nil), // 7: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse
+	(*RevertToVMSnapshotRequest)(nil),            // 8: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotRequest
+	(*RevertToVMSnapshotResponse)(nil),           // 9: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse
 	(*VMSnapshot)(nil),                           // 10: cloudstack.management.vmsnapshot.v1.VMSnapshot
 	(*Success)(nil),                              // 11: cloudstack.management.vmsnapshot.v1.Success
 	(*Item)(nil),                                 // 12: cloudstack.management.vmsnapshot.v1.Item
@@ -1265,23 +1265,23 @@ var file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_goTypes = []an
 	nil,                                          // 15: cloudstack.management.vmsnapshot.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto_depIdxs = []int32{
-	13, // 0: cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
-	13, // 1: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
+	14, // 0: cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest.tags:type_name -> cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest.TagsEntry
+	10, // 1: cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse.items:type_name -> cloudstack.management.vmsnapshot.v1.VMSnapshot
 	13, // 2: cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
-	13, // 3: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
-	14, // 4: cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest.tags:type_name -> cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest.TagsEntry
-	10, // 5: cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse.items:type_name -> cloudstack.management.vmsnapshot.v1.VMSnapshot
+	13, // 3: cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
+	13, // 4: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
+	13, // 5: cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse.result:type_name -> cloudstack.management.vmsnapshot.v1.Result
 	15, // 6: cloudstack.management.vmsnapshot.v1.Item.details:type_name -> cloudstack.management.vmsnapshot.v1.Item.DetailsEntry
-	0,  // 7: cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.CreateVMSnapshotRequest
-	2,  // 8: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin:input_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminRequest
-	4,  // 9: cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotRequest
-	6,  // 10: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotRequest
-	8,  // 11: cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest
-	1,  // 12: cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse
-	3,  // 13: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin:output_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse
-	5,  // 14: cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse
-	7,  // 15: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse
-	9,  // 16: cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse
+	0,  // 7: cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.ListVMSnapshotRequest
+	2,  // 8: cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotRequest
+	4,  // 9: cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.CreateVMSnapshotRequest
+	6,  // 10: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin:input_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminRequest
+	8,  // 11: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshot:input_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotRequest
+	1,  // 12: cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.ListVMSnapshotResponse
+	3,  // 13: cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.DeleteVMSnapshotResponse
+	5,  // 14: cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.CreateVMSnapshotResponse
+	7,  // 15: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin:output_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotCmdByAdminResponse
+	9,  // 16: cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshot:output_type -> cloudstack.management.vmsnapshot.v1.RevertToVMSnapshotResponse
 	12, // [12:17] is the sub-list for method output_type
 	7,  // [7:12] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name

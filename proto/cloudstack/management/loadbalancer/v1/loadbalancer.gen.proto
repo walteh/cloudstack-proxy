@@ -10,73 +10,37 @@ import "google/protobuf/descriptor.proto";
 service LoadbalancerService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ListSslCerts Lists SSL certificates
-	rpc ListSslCerts(ListSslCertsRequest) returns (ListSslCertsResponse) {}
+	// AssignToLoadBalancerRule Assigns virtual machine or a list of virtual machines to a load balancer rule.
+	rpc AssignToLoadBalancerRule(AssignToLoadBalancerRuleRequest) returns (AssignToLoadBalancerRuleResponse) {}
 
-	// DeleteSslCert Delete a certificate to CloudStack
-	rpc DeleteSslCert(DeleteSslCertRequest) returns (DeleteSslCertResponse) {}
-
-	// ListLoadBalancerRuleInstancesCmdByAdmin List all virtual machine instances that are assigned to a load balancer rule.
-	rpc ListLoadBalancerRuleInstancesCmdByAdmin(ListLoadBalancerRuleInstancesCmdByAdminRequest) returns (ListLoadBalancerRuleInstancesCmdByAdminResponse) {}
-
-	// ListLBStickinessPolicies Lists load balancer stickiness policies.
-	rpc ListLBStickinessPolicies(ListLBStickinessPoliciesRequest) returns (ListLBStickinessPoliciesResponse) {}
-
-	// CreateLoadBalancerRule Creates a load balancer rule
-	rpc CreateLoadBalancerRule(CreateLoadBalancerRuleRequest) returns (CreateLoadBalancerRuleResponse) {}
-
-	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
-	rpc CreateLBStickinessPolicy(CreateLBStickinessPolicyRequest) returns (CreateLBStickinessPolicyResponse) {}
+	// ListLoadBalancerRules Lists load balancer rules.
+	rpc ListLoadBalancerRules(ListLoadBalancerRulesRequest) returns (ListLoadBalancerRulesResponse) {}
 
 	// DeleteLBStickinessPolicy Deletes a load balancer stickiness policy.
 	rpc DeleteLBStickinessPolicy(DeleteLBStickinessPolicyRequest) returns (DeleteLBStickinessPolicyResponse) {}
+
+	// CreateLoadBalancerRule Creates a load balancer rule
+	rpc CreateLoadBalancerRule(CreateLoadBalancerRuleRequest) returns (CreateLoadBalancerRuleResponse) {}
 
 	// ListLoadBalancerRuleInstances List all virtual machine instances that are assigned to a load balancer rule.
 	rpc ListLoadBalancerRuleInstances(ListLoadBalancerRuleInstancesRequest) returns (ListLoadBalancerRuleInstancesResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// UpdateApplicationLoadBalancer Updates an internal load balancer
-	rpc UpdateApplicationLoadBalancer(UpdateApplicationLoadBalancerRequest) returns (UpdateApplicationLoadBalancerResponse) {}
-
-	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
-	rpc RemoveFromLoadBalancerRule(RemoveFromLoadBalancerRuleRequest) returns (RemoveFromLoadBalancerRuleResponse) {}
-
-	// ListLoadBalancerRules Lists load balancer rules.
-	rpc ListLoadBalancerRules(ListLoadBalancerRulesRequest) returns (ListLoadBalancerRulesResponse) {}
+	// CreateApplicationLoadBalancer Creates an internal load balancer
+	rpc CreateApplicationLoadBalancer(CreateApplicationLoadBalancerRequest) returns (CreateApplicationLoadBalancerResponse) {}
 
 	// DeleteLoadBalancerRule Deletes a load balancer rule.
 	rpc DeleteLoadBalancerRule(DeleteLoadBalancerRuleRequest) returns (DeleteLoadBalancerRuleResponse) {}
 
-	// ListApplicationLoadBalancers Lists internal load balancers
-	rpc ListApplicationLoadBalancers(ListApplicationLoadBalancersRequest) returns (ListApplicationLoadBalancersResponse) {}
-
-	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
-	rpc RemoveCertFromLoadBalancer(RemoveCertFromLoadBalancerRequest) returns (RemoveCertFromLoadBalancerResponse) {}
-
-	// UploadSslCert Upload a certificate to CloudStack
-	rpc UploadSslCert(UploadSslCertRequest) returns (UploadSslCertResponse) {}
-
-	// AssignToLoadBalancerRule Assigns virtual machine or a list of virtual machines to a load balancer rule.
-	rpc AssignToLoadBalancerRule(AssignToLoadBalancerRuleRequest) returns (AssignToLoadBalancerRuleResponse) {}
-
-	// CreateApplicationLoadBalancer Creates an internal load balancer
-	rpc CreateApplicationLoadBalancer(CreateApplicationLoadBalancerRequest) returns (CreateApplicationLoadBalancerResponse) {}
-
-	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
-	rpc UpdateLBHealthCheckPolicy(UpdateLBHealthCheckPolicyRequest) returns (UpdateLBHealthCheckPolicyResponse) {}
-
 	// AssignCertToLoadBalancer Assigns a certificate to a load balancer rule
 	rpc AssignCertToLoadBalancer(AssignCertToLoadBalancerRequest) returns (AssignCertToLoadBalancerResponse) {}
-
-	// ListLBHealthCheckPolicies Lists load balancer health check policies.
-	rpc ListLBHealthCheckPolicies(ListLBHealthCheckPoliciesRequest) returns (ListLBHealthCheckPoliciesResponse) {}
 
 	// DeleteApplicationLoadBalancer Deletes an internal load balancer
 	rpc DeleteApplicationLoadBalancer(DeleteApplicationLoadBalancerRequest) returns (DeleteApplicationLoadBalancerResponse) {}
 
-	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
-	rpc DeleteLBHealthCheckPolicy(DeleteLBHealthCheckPolicyRequest) returns (DeleteLBHealthCheckPolicyResponse) {}
+	// ListLBStickinessPolicies Lists load balancer stickiness policies.
+	rpc ListLBStickinessPolicies(ListLBStickinessPoliciesRequest) returns (ListLBStickinessPoliciesResponse) {}
 
 	// CreateLBHealthCheckPolicy Creates a load balancer health check policy
 	rpc CreateLBHealthCheckPolicy(CreateLBHealthCheckPolicyRequest) returns (CreateLBHealthCheckPolicyResponse) {}
@@ -84,129 +48,176 @@ service LoadbalancerService {
 	// UpdateLoadBalancerRule Updates load balancer
 	rpc UpdateLoadBalancerRule(UpdateLoadBalancerRuleRequest) returns (UpdateLoadBalancerRuleResponse) {}
 
+	// UpdateLBHealthCheckPolicy Updates load balancer health check policy
+	rpc UpdateLBHealthCheckPolicy(UpdateLBHealthCheckPolicyRequest) returns (UpdateLBHealthCheckPolicyResponse) {}
+
+	// DeleteSslCert Delete a certificate to CloudStack
+	rpc DeleteSslCert(DeleteSslCertRequest) returns (DeleteSslCertResponse) {}
+
+	// RemoveFromLoadBalancerRule Removes a virtual machine or a list of virtual machines from a load balancer rule.
+	rpc RemoveFromLoadBalancerRule(RemoveFromLoadBalancerRuleRequest) returns (RemoveFromLoadBalancerRuleResponse) {}
+
+	// ListSslCerts Lists SSL certificates
+	rpc ListSslCerts(ListSslCertsRequest) returns (ListSslCertsResponse) {}
+
+	// DeleteLBHealthCheckPolicy Deletes a load balancer health check policy.
+	rpc DeleteLBHealthCheckPolicy(DeleteLBHealthCheckPolicyRequest) returns (DeleteLBHealthCheckPolicyResponse) {}
+
+	// CreateLBStickinessPolicy Creates a load balancer stickiness policy
+	rpc CreateLBStickinessPolicy(CreateLBStickinessPolicyRequest) returns (CreateLBStickinessPolicyResponse) {}
+
+	// UpdateApplicationLoadBalancer Updates an internal load balancer
+	rpc UpdateApplicationLoadBalancer(UpdateApplicationLoadBalancerRequest) returns (UpdateApplicationLoadBalancerResponse) {}
+
+	// RemoveCertFromLoadBalancer Removes a certificate from a load balancer rule
+	rpc RemoveCertFromLoadBalancer(RemoveCertFromLoadBalancerRequest) returns (RemoveCertFromLoadBalancerResponse) {}
+
+	// ListLBHealthCheckPolicies Lists load balancer health check policies.
+	rpc ListLBHealthCheckPolicies(ListLBHealthCheckPoliciesRequest) returns (ListLBHealthCheckPoliciesResponse) {}
+
+	// UploadSslCert Upload a certificate to CloudStack
+	rpc UploadSslCert(UploadSslCertRequest) returns (UploadSslCertResponse) {}
+
+	// ListApplicationLoadBalancers Lists internal load balancers
+	rpc ListApplicationLoadBalancers(ListApplicationLoadBalancersRequest) returns (ListApplicationLoadBalancersResponse) {}
+
 	// UpdateLBStickinessPolicy Updates load balancer stickiness policy
 	rpc UpdateLBStickinessPolicy(UpdateLBStickinessPolicyRequest) returns (UpdateLBStickinessPolicyResponse) {}
 }
 
-// ListSslCertsRequest represents the parameters for lists ssl certificates
-message ListSslCertsRequest {
-	// ID of SSL certificate
-	int64 cert_id = 1;
+// AssignToLoadBalancerRuleRequest represents the parameters for assigns virtual machine or a list of virtual machines to a load balancer rule.
+message AssignToLoadBalancerRuleRequest {
+	// the ID of the load balancer rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
 
-	// Account ID
-	int64 account_id = 2;
+	// the list of IDs of the virtual machine that are being assigned to the load balancer rule(i.e. virtualMachineIds=1,2,3)
+	repeated string virtual_machine_ids = 2;
 
-	// Load balancer rule ID
-	int64 lb_id = 3;
-
-	// Project that owns the SSL certificate
-	int64 project_id = 4;
+	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].vmip=10.1.1.75
+	map<string, string> vm_id_ip_map = 3;
 
 	//
-	string response_type = 5;
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
 }
 
-// ListSslCertsResponse represents the response from lists ssl certificates
-message ListSslCertsResponse {
-	option (validate.message).disabled = false;
-	// The list of SslCerts
-	repeated SslCert items = 1;
+// AssignToLoadBalancerRuleResponse represents the response from assigns virtual machine or a list of virtual machines to a load balancer rule.
+message AssignToLoadBalancerRuleResponse {
+	// The Result
+	Result result = 1;
+}
 
-	// The total count of SslCerts
+// ListLoadBalancerRulesRequest represents the parameters for lists load balancer rules.
+message ListLoadBalancerRulesRequest {
+	// the ID of the load balancer rule
+	int64 id = 1;
+
+	// the name of the load balancer rule
+	string load_balancer_rule_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the public IP address ID of the load balancer rule
+	int64 public_ip_id = 3;
+
+	// the ID of the virtual machine of the load balancer rule
+	int64 virtual_machine_id = 4;
+
+	// the availability zone ID
+	int64 zone_id = 5;
+
+	// list by network ID the rule belongs to
+	int64 network_id = 6;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 8;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 9;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 10 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 12;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 14;
+
+	//
+	int32 page = 15;
+
+	//
+	int32 page_size = 16;
+
+	//
+	string response_type = 17;
+}
+
+// ListLoadBalancerRulesResponse represents the response from lists load balancer rules.
+message ListLoadBalancerRulesResponse {
+	option (validate.message).disabled = false;
+	// The list of LoadBalancers
+	repeated LoadBalancer items = 1;
+
+	// The total count of LoadBalancers
 	int32 total_count = 2;
 }
 
-// DeleteSslCertRequest represents the parameters for delete a certificate to cloudstack
-message DeleteSslCertRequest {
-	// Id of SSL certificate
+// DeleteLBStickinessPolicyRequest represents the parameters for deletes a load balancer stickiness policy.
+message DeleteLBStickinessPolicyRequest {
+	// the ID of the LB stickiness policy
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
 	//
-	string response_type = 2;
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
 }
 
-// DeleteSslCertResponse represents the response from delete a certificate to cloudstack
-message DeleteSslCertResponse {
+// DeleteLBStickinessPolicyResponse represents the response from deletes a load balancer stickiness policy.
+message DeleteLBStickinessPolicyResponse {
 	// The Result
 	Result result = 1;
-}
-
-// ListLoadBalancerRuleInstancesCmdByAdminRequest represents the parameters for list all virtual machine instances that are assigned to a load balancer rule.
-message ListLoadBalancerRuleInstancesCmdByAdminRequest {
-	// true if listing all virtual machines currently applied to the load balancer rule; default is true
-	bool applied = 1 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the ID of the load balancer rule
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-
-	// true if load balancer rule VM IP information to be included; default is false
-	bool is_list_lb_vmip = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 4;
-
-	//
-	int32 page = 5;
-
-	//
-	int32 page_size = 6;
-
-	//
-	string response_type = 7;
-}
-
-// ListLoadBalancerRuleInstancesCmdByAdminResponse represents the response from list all virtual machine instances that are assigned to a load balancer rule.
-message ListLoadBalancerRuleInstancesCmdByAdminResponse {
-	option (validate.message).disabled = false;
-	// The list of LoadBalancerRuleVmMaps
-	repeated LoadBalancerRuleVmMap items = 1;
-
-	// The total count of LoadBalancerRuleVmMaps
-	int32 total_count = 2;
-}
-
-// ListLBStickinessPoliciesRequest represents the parameters for lists load balancer stickiness policies.
-message ListLBStickinessPoliciesRequest {
-	// the ID of the load balancer rule
-	int64 lb_rule_id = 1;
-
-	// the ID of the load balancer stickiness policy
-	int64 id = 2;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 4;
-
-	//
-	int32 page = 5;
-
-	//
-	int32 page_size = 6;
-
-	//
-	string response_type = 7;
-}
-
-// ListLBStickinessPoliciesResponse represents the response from lists load balancer stickiness policies.
-message ListLBStickinessPoliciesResponse {
-	option (validate.message).disabled = false;
-	// The list of LBStickinesss
-	repeated LBStickiness items = 1;
-
-	// The total count of LBStickinesss
-	int32 total_count = 2;
 }
 
 // CreateLoadBalancerRuleRequest represents the parameters for creates a load balancer rule
@@ -298,84 +309,6 @@ message CreateLoadBalancerRuleResponse {
 	Result result = 1;
 }
 
-// CreateLBStickinessPolicyRequest represents the parameters for creates a load balancer stickiness policy
-message CreateLBStickinessPolicyRequest {
-	// the ID of the load balancer rule
-	int64 lb_rule_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the description of the load balancer stickiness policy
-	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// name of the load balancer stickiness policy
-	string lb_stickiness_policy_name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// name of the load balancer stickiness policy method, possible values are LbCookie, AppCookie, SourceBased
-	string stickiness_method_name = 4 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// param list. Example: param[0].name=cookiename&param[0].value=LBCookie
-	map<string, string> param_list = 5;
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 9;
-}
-
-// CreateLBStickinessPolicyResponse represents the response from creates a load balancer stickiness policy
-message CreateLBStickinessPolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteLBStickinessPolicyRequest represents the parameters for deletes a load balancer stickiness policy.
-message DeleteLBStickinessPolicyRequest {
-	// the ID of the LB stickiness policy
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteLBStickinessPolicyResponse represents the response from deletes a load balancer stickiness policy.
-message DeleteLBStickinessPolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListLoadBalancerRuleInstancesRequest represents the parameters for list all virtual machine instances that are assigned to a load balancer rule.
 message ListLoadBalancerRuleInstancesRequest {
 	// Whether to run this operation as an administrator
@@ -410,362 +343,6 @@ message ListLoadBalancerRuleInstancesResponse {
 
 	// The total count of LoadBalancerRuleVmMaps
 	int32 total_count = 2;
-}
-
-// UpdateApplicationLoadBalancerRequest represents the parameters for updates an internal load balancer
-message UpdateApplicationLoadBalancerRequest {
-	// the ID of the load balancer
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// UpdateApplicationLoadBalancerResponse represents the response from updates an internal load balancer
-message UpdateApplicationLoadBalancerResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveFromLoadBalancerRuleRequest represents the parameters for removes a virtual machine or a list of virtual machines from a load balancer rule.
-message RemoveFromLoadBalancerRuleRequest {
-	// The ID of the load balancer rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the list of IDs of the virtual machines that are being removed from the load balancer rule (i.e. virtualMachineIds=1,2,3)
-	repeated string virtual_machine_ids = 2;
-
-	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].ip=10.1.1.75
-	map<string, string> vm_id_ip_map = 3;
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// RemoveFromLoadBalancerRuleResponse represents the response from removes a virtual machine or a list of virtual machines from a load balancer rule.
-message RemoveFromLoadBalancerRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListLoadBalancerRulesRequest represents the parameters for lists load balancer rules.
-message ListLoadBalancerRulesRequest {
-	// the ID of the load balancer rule
-	int64 id = 1;
-
-	// the name of the load balancer rule
-	string load_balancer_rule_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the public IP address ID of the load balancer rule
-	int64 public_ip_id = 3;
-
-	// the ID of the virtual machine of the load balancer rule
-	int64 virtual_machine_id = 4;
-
-	// the availability zone ID
-	int64 zone_id = 5;
-
-	// list by network ID the rule belongs to
-	int64 network_id = 6;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 8;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 9;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 10 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 11 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 12;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 13 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 14;
-
-	//
-	int32 page = 15;
-
-	//
-	int32 page_size = 16;
-
-	//
-	string response_type = 17;
-}
-
-// ListLoadBalancerRulesResponse represents the response from lists load balancer rules.
-message ListLoadBalancerRulesResponse {
-	option (validate.message).disabled = false;
-	// The list of LoadBalancers
-	repeated LoadBalancer items = 1;
-
-	// The total count of LoadBalancers
-	int32 total_count = 2;
-}
-
-// DeleteLoadBalancerRuleRequest represents the parameters for deletes a load balancer rule.
-message DeleteLoadBalancerRuleRequest {
-	// the ID of the load balancer rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteLoadBalancerRuleResponse represents the response from deletes a load balancer rule.
-message DeleteLoadBalancerRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListApplicationLoadBalancersRequest represents the parameters for lists internal load balancers
-message ListApplicationLoadBalancersRequest {
-	// the ID of the load balancer
-	int64 id = 1;
-
-	// the name of the load balancer
-	string load_balancer_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the source IP address of the load balancer
-	string source_ip = 3 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// the network ID of the source IP address
-	int64 source_ip_network_id = 4;
-
-	// the scheme of the load balancer. Supported value is internal in the current release
-	string scheme = 5;
-
-	// the network ID of the load balancer
-	int64 network_id = 6;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 8;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 9;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 10 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 11 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 12;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 13 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 14;
-
-	//
-	int32 page = 15;
-
-	//
-	int32 page_size = 16;
-
-	//
-	string response_type = 17;
-}
-
-// ListApplicationLoadBalancersResponse represents the response from lists internal load balancers
-message ListApplicationLoadBalancersResponse {
-	option (validate.message).disabled = false;
-	// The list of ApplicationLoadBalancers
-	repeated ApplicationLoadBalancer items = 1;
-
-	// The total count of ApplicationLoadBalancers
-	int32 total_count = 2;
-}
-
-// RemoveCertFromLoadBalancerRequest represents the parameters for removes a certificate from a load balancer rule
-message RemoveCertFromLoadBalancerRequest {
-	// the ID of the load balancer rule
-	int64 lb_rule_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RemoveCertFromLoadBalancerResponse represents the response from removes a certificate from a load balancer rule
-message RemoveCertFromLoadBalancerResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UploadSslCertRequest represents the parameters for upload a certificate to cloudstack
-message UploadSslCertRequest {
-	// SSL certificate
-	string cert = 1 [
-		(validate.field).required = true
-	];
-
-	// Private key
-	string key = 2 [
-		(validate.field).required = true
-	];
-
-	// Certificate chain of trust
-	string chain = 3;
-
-	// Password for the private key
-	string password = 4;
-
-	// account that will own the SSL certificate
-	string account_name = 5;
-
-	// an optional project for the SSL certificate
-	int64 project_id = 6;
-
-	// domain ID of the account owning the SSL certificate
-	int64 domain_id = 7;
-
-	// Name for the uploaded certificate
-	string name = 8 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Enables revocation checking for certificates
-	bool enabled_revocation_check = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 10;
-}
-
-// UploadSslCertResponse represents the response from upload a certificate to cloudstack
-message UploadSslCertResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AssignToLoadBalancerRuleRequest represents the parameters for assigns virtual machine or a list of virtual machines to a load balancer rule.
-message AssignToLoadBalancerRuleRequest {
-	// the ID of the load balancer rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the list of IDs of the virtual machine that are being assigned to the load balancer rule(i.e. virtualMachineIds=1,2,3)
-	repeated string virtual_machine_ids = 2;
-
-	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].vmip=10.1.1.75
-	map<string, string> vm_id_ip_map = 3;
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// AssignToLoadBalancerRuleResponse represents the response from assigns virtual machine or a list of virtual machines to a load balancer rule.
-message AssignToLoadBalancerRuleResponse {
-	// The Result
-	Result result = 1;
 }
 
 // CreateApplicationLoadBalancerRequest represents the parameters for creates an internal load balancer
@@ -845,37 +422,27 @@ message CreateApplicationLoadBalancerResponse {
 	Result result = 1;
 }
 
-// UpdateLBHealthCheckPolicyRequest represents the parameters for updates load balancer health check policy
-message UpdateLBHealthCheckPolicyRequest {
-	// ID of load balancer health check policy
+// DeleteLoadBalancerRuleRequest represents the parameters for deletes a load balancer rule.
+message DeleteLoadBalancerRuleRequest {
+	// the ID of the load balancer rule
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// an optional field, whether to the display the policy to the end user or not
-	bool display = 2 [
-		features.field_presence = EXPLICIT
-	];
+	//
+	int64 start_event_id = 2;
 
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
+	//
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
+	string response_type = 4;
 }
 
-// UpdateLBHealthCheckPolicyResponse represents the response from updates load balancer health check policy
-message UpdateLBHealthCheckPolicyResponse {
+// DeleteLoadBalancerRuleResponse represents the response from deletes a load balancer rule.
+message DeleteLoadBalancerRuleResponse {
 	// The Result
 	Result result = 1;
 }
@@ -910,42 +477,6 @@ message AssignCertToLoadBalancerResponse {
 	Result result = 1;
 }
 
-// ListLBHealthCheckPoliciesRequest represents the parameters for lists load balancer health check policies.
-message ListLBHealthCheckPoliciesRequest {
-	// the ID of the load balancer rule
-	int64 lb_rule_id = 1;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the ID of the health check policy
-	int64 id = 3;
-
-	// List by keyword
-	string keyword = 4;
-
-	//
-	int32 page = 5;
-
-	//
-	int32 page_size = 6;
-
-	//
-	string response_type = 7;
-}
-
-// ListLBHealthCheckPoliciesResponse represents the response from lists load balancer health check policies.
-message ListLBHealthCheckPoliciesResponse {
-	option (validate.message).disabled = false;
-	// The list of LBHealthChecks
-	repeated LBHealthCheck items = 1;
-
-	// The total count of LBHealthChecks
-	int32 total_count = 2;
-}
-
 // DeleteApplicationLoadBalancerRequest represents the parameters for deletes an internal load balancer
 message DeleteApplicationLoadBalancerRequest {
 	// the ID of the Load Balancer
@@ -971,29 +502,40 @@ message DeleteApplicationLoadBalancerResponse {
 	Result result = 1;
 }
 
-// DeleteLBHealthCheckPolicyRequest represents the parameters for deletes a load balancer health check policy.
-message DeleteLBHealthCheckPolicyRequest {
-	// the ID of the load balancer health check policy
-	int64 id = 1 [
-		(validate.field).required = true
+// ListLBStickinessPoliciesRequest represents the parameters for lists load balancer stickiness policies.
+message ListLBStickinessPoliciesRequest {
+	// the ID of the load balancer rule
+	int64 lb_rule_id = 1;
+
+	// the ID of the load balancer stickiness policy
+	int64 id = 2;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 3 [
+		features.field_presence = EXPLICIT
 	];
 
-	//
-	int64 start_event_id = 2;
+	// List by keyword
+	string keyword = 4;
 
 	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
+	int32 page = 5;
 
 	//
-	string response_type = 4;
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
 }
 
-// DeleteLBHealthCheckPolicyResponse represents the response from deletes a load balancer health check policy.
-message DeleteLBHealthCheckPolicyResponse {
-	// The Result
-	Result result = 1;
+// ListLBStickinessPoliciesResponse represents the response from lists load balancer stickiness policies.
+message ListLBStickinessPoliciesResponse {
+	option (validate.message).disabled = false;
+	// The list of LBStickinesss
+	repeated LBStickiness items = 1;
+
+	// The total count of LBStickinesss
+	int32 total_count = 2;
 }
 
 // CreateLBHealthCheckPolicyRequest represents the parameters for creates a load balancer health check policy
@@ -1100,6 +642,421 @@ message UpdateLoadBalancerRuleResponse {
 	Result result = 1;
 }
 
+// UpdateLBHealthCheckPolicyRequest represents the parameters for updates load balancer health check policy
+message UpdateLBHealthCheckPolicyRequest {
+	// ID of load balancer health check policy
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the policy to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateLBHealthCheckPolicyResponse represents the response from updates load balancer health check policy
+message UpdateLBHealthCheckPolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSslCertRequest represents the parameters for delete a certificate to cloudstack
+message DeleteSslCertRequest {
+	// Id of SSL certificate
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteSslCertResponse represents the response from delete a certificate to cloudstack
+message DeleteSslCertResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveFromLoadBalancerRuleRequest represents the parameters for removes a virtual machine or a list of virtual machines from a load balancer rule.
+message RemoveFromLoadBalancerRuleRequest {
+	// The ID of the load balancer rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the list of IDs of the virtual machines that are being removed from the load balancer rule (i.e. virtualMachineIds=1,2,3)
+	repeated string virtual_machine_ids = 2;
+
+	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].ip=10.1.1.75
+	map<string, string> vm_id_ip_map = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// RemoveFromLoadBalancerRuleResponse represents the response from removes a virtual machine or a list of virtual machines from a load balancer rule.
+message RemoveFromLoadBalancerRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSslCertsRequest represents the parameters for lists ssl certificates
+message ListSslCertsRequest {
+	// ID of SSL certificate
+	int64 cert_id = 1;
+
+	// Account ID
+	int64 account_id = 2;
+
+	// Load balancer rule ID
+	int64 lb_id = 3;
+
+	// Project that owns the SSL certificate
+	int64 project_id = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListSslCertsResponse represents the response from lists ssl certificates
+message ListSslCertsResponse {
+	option (validate.message).disabled = false;
+	// The list of SslCerts
+	repeated SslCert items = 1;
+
+	// The total count of SslCerts
+	int32 total_count = 2;
+}
+
+// DeleteLBHealthCheckPolicyRequest represents the parameters for deletes a load balancer health check policy.
+message DeleteLBHealthCheckPolicyRequest {
+	// the ID of the load balancer health check policy
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteLBHealthCheckPolicyResponse represents the response from deletes a load balancer health check policy.
+message DeleteLBHealthCheckPolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateLBStickinessPolicyRequest represents the parameters for creates a load balancer stickiness policy
+message CreateLBStickinessPolicyRequest {
+	// the ID of the load balancer rule
+	int64 lb_rule_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the description of the load balancer stickiness policy
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// name of the load balancer stickiness policy
+	string lb_stickiness_policy_name = 3 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// name of the load balancer stickiness policy method, possible values are LbCookie, AppCookie, SourceBased
+	string stickiness_method_name = 4 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// param list. Example: param[0].name=cookiename&param[0].value=LBCookie
+	map<string, string> param_list = 5;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreateLBStickinessPolicyResponse represents the response from creates a load balancer stickiness policy
+message CreateLBStickinessPolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateApplicationLoadBalancerRequest represents the parameters for updates an internal load balancer
+message UpdateApplicationLoadBalancerRequest {
+	// the ID of the load balancer
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateApplicationLoadBalancerResponse represents the response from updates an internal load balancer
+message UpdateApplicationLoadBalancerResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveCertFromLoadBalancerRequest represents the parameters for removes a certificate from a load balancer rule
+message RemoveCertFromLoadBalancerRequest {
+	// the ID of the load balancer rule
+	int64 lb_rule_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RemoveCertFromLoadBalancerResponse represents the response from removes a certificate from a load balancer rule
+message RemoveCertFromLoadBalancerResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListLBHealthCheckPoliciesRequest represents the parameters for lists load balancer health check policies.
+message ListLBHealthCheckPoliciesRequest {
+	// the ID of the load balancer rule
+	int64 lb_rule_id = 1;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the health check policy
+	int64 id = 3;
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListLBHealthCheckPoliciesResponse represents the response from lists load balancer health check policies.
+message ListLBHealthCheckPoliciesResponse {
+	option (validate.message).disabled = false;
+	// The list of LBHealthChecks
+	repeated LBHealthCheck items = 1;
+
+	// The total count of LBHealthChecks
+	int32 total_count = 2;
+}
+
+// UploadSslCertRequest represents the parameters for upload a certificate to cloudstack
+message UploadSslCertRequest {
+	// SSL certificate
+	string cert = 1 [
+		(validate.field).required = true
+	];
+
+	// Private key
+	string key = 2 [
+		(validate.field).required = true
+	];
+
+	// Certificate chain of trust
+	string chain = 3;
+
+	// Password for the private key
+	string password = 4;
+
+	// account that will own the SSL certificate
+	string account_name = 5;
+
+	// an optional project for the SSL certificate
+	int64 project_id = 6;
+
+	// domain ID of the account owning the SSL certificate
+	int64 domain_id = 7;
+
+	// Name for the uploaded certificate
+	string name = 8 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Enables revocation checking for certificates
+	bool enabled_revocation_check = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 10;
+}
+
+// UploadSslCertResponse represents the response from upload a certificate to cloudstack
+message UploadSslCertResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListApplicationLoadBalancersRequest represents the parameters for lists internal load balancers
+message ListApplicationLoadBalancersRequest {
+	// the ID of the load balancer
+	int64 id = 1;
+
+	// the name of the load balancer
+	string load_balancer_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the source IP address of the load balancer
+	string source_ip = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the network ID of the source IP address
+	int64 source_ip_network_id = 4;
+
+	// the scheme of the load balancer. Supported value is internal in the current release
+	string scheme = 5;
+
+	// the network ID of the load balancer
+	int64 network_id = 6;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 8;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 9;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 10 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 12;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 14;
+
+	//
+	int32 page = 15;
+
+	//
+	int32 page_size = 16;
+
+	//
+	string response_type = 17;
+}
+
+// ListApplicationLoadBalancersResponse represents the response from lists internal load balancers
+message ListApplicationLoadBalancersResponse {
+	option (validate.message).disabled = false;
+	// The list of ApplicationLoadBalancers
+	repeated ApplicationLoadBalancer items = 1;
+
+	// The total count of ApplicationLoadBalancers
+	int32 total_count = 2;
+}
+
 // UpdateLBStickinessPolicyRequest represents the parameters for updates load balancer stickiness policy
 message UpdateLBStickinessPolicyRequest {
 	// id of lb stickiness policy
@@ -1135,17 +1092,17 @@ message UpdateLBStickinessPolicyResponse {
 	Result result = 1;
 }
 
-// SslCert represents a SslCert Item
-message SslCert {
-	// The ID of the SslCert
+// LoadBalancer represents a LoadBalancer Item
+message LoadBalancer {
+	// The ID of the LoadBalancer
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the SslCert
+	// The name of the LoadBalancer
 	string name = 2;
-	// The display name of the SslCert
+	// The display name of the LoadBalancer
 	string display_name = 3;
-	// The description of the SslCert
+	// The description of the LoadBalancer
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -1183,33 +1140,17 @@ message LBStickiness {
 	string created = 5;
 }
 
-// LoadBalancer represents a LoadBalancer Item
-message LoadBalancer {
-	// The ID of the LoadBalancer
+// SslCert represents a SslCert Item
+message SslCert {
+	// The ID of the SslCert
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the LoadBalancer
+	// The name of the SslCert
 	string name = 2;
-	// The display name of the LoadBalancer
+	// The display name of the SslCert
 	string display_name = 3;
-	// The description of the LoadBalancer
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
-// ApplicationLoadBalancer represents a ApplicationLoadBalancer Item
-message ApplicationLoadBalancer {
-	// The ID of the ApplicationLoadBalancer
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the ApplicationLoadBalancer
-	string name = 2;
-	// The display name of the ApplicationLoadBalancer
-	string display_name = 3;
-	// The description of the ApplicationLoadBalancer
+	// The description of the SslCert
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -1226,6 +1167,22 @@ message LBHealthCheck {
 	// The display name of the LBHealthCheck
 	string display_name = 3;
 	// The description of the LBHealthCheck
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ApplicationLoadBalancer represents a ApplicationLoadBalancer Item
+message ApplicationLoadBalancer {
+	// The ID of the ApplicationLoadBalancer
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ApplicationLoadBalancer
+	string name = 2;
+	// The display name of the ApplicationLoadBalancer
+	string display_name = 3;
+	// The description of the ApplicationLoadBalancer
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

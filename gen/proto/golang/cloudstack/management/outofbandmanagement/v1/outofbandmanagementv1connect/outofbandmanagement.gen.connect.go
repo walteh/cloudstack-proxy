@@ -34,56 +34,56 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure is the fully-qualified name
-	// of the OutofbandmanagementService's DisableOutOfBandManagementForZone RPC.
-	OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForZone"
-	// OutofbandmanagementServiceConfigureOutOfBandManagementProcedure is the fully-qualified name of
-	// the OutofbandmanagementService's ConfigureOutOfBandManagement RPC.
-	OutofbandmanagementServiceConfigureOutOfBandManagementProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ConfigureOutOfBandManagement"
-	// OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure is the fully-qualified name
-	// of the OutofbandmanagementService's EnableOutOfBandManagementForHost RPC.
-	OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForHost"
-	// OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure is the fully-qualified name
-	// of the OutofbandmanagementService's DisableOutOfBandManagementForHost RPC.
-	OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForHost"
-	// OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure is the fully-qualified
-	// name of the OutofbandmanagementService's EnableOutOfBandManagementForCluster RPC.
-	OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForCluster"
 	// OutofbandmanagementServiceEnableOutOfBandManagementForZoneProcedure is the fully-qualified name
 	// of the OutofbandmanagementService's EnableOutOfBandManagementForZone RPC.
 	OutofbandmanagementServiceEnableOutOfBandManagementForZoneProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForZone"
 	// OutofbandmanagementServiceIssueOutOfBandManagementPowerActionProcedure is the fully-qualified
 	// name of the OutofbandmanagementService's IssueOutOfBandManagementPowerAction RPC.
 	OutofbandmanagementServiceIssueOutOfBandManagementPowerActionProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/IssueOutOfBandManagementPowerAction"
-	// OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure is the fully-qualified
-	// name of the OutofbandmanagementService's DisableOutOfBandManagementForCluster RPC.
-	OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForCluster"
+	// OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure is the fully-qualified name
+	// of the OutofbandmanagementService's DisableOutOfBandManagementForHost RPC.
+	OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForHost"
+	// OutofbandmanagementServiceConfigureOutOfBandManagementProcedure is the fully-qualified name of
+	// the OutofbandmanagementService's ConfigureOutOfBandManagement RPC.
+	OutofbandmanagementServiceConfigureOutOfBandManagementProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ConfigureOutOfBandManagement"
+	// OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure is the fully-qualified
+	// name of the OutofbandmanagementService's EnableOutOfBandManagementForCluster RPC.
+	OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForCluster"
 	// OutofbandmanagementServiceChangeOutOfBandManagementPasswordProcedure is the fully-qualified name
 	// of the OutofbandmanagementService's ChangeOutOfBandManagementPassword RPC.
 	OutofbandmanagementServiceChangeOutOfBandManagementPasswordProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ChangeOutOfBandManagementPassword"
+	// OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure is the fully-qualified
+	// name of the OutofbandmanagementService's DisableOutOfBandManagementForCluster RPC.
+	OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForCluster"
+	// OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure is the fully-qualified name
+	// of the OutofbandmanagementService's DisableOutOfBandManagementForZone RPC.
+	OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForZone"
+	// OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure is the fully-qualified name
+	// of the OutofbandmanagementService's EnableOutOfBandManagementForHost RPC.
+	OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForHost"
 )
 
 // OutofbandmanagementServiceClient is a client for the
 // cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService service.
 type OutofbandmanagementServiceClient interface {
-	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
-	DisableOutOfBandManagementForZone(context.Context, *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error)
-	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
-	ConfigureOutOfBandManagement(context.Context, *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error)
-	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
-	EnableOutOfBandManagementForHost(context.Context, *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error)
-	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
-	DisableOutOfBandManagementForHost(context.Context, *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error)
-	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
-	EnableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error)
 	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
 	EnableOutOfBandManagementForZone(context.Context, *connect.Request[v1.EnableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.EnableOutOfBandManagementForZoneResponse], error)
 	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
 	IssueOutOfBandManagementPowerAction(context.Context, *connect.Request[v1.IssueOutOfBandManagementPowerActionRequest]) (*connect.Response[v1.IssueOutOfBandManagementPowerActionResponse], error)
-	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
-	DisableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error)
+	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
+	DisableOutOfBandManagementForHost(context.Context, *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error)
+	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
+	ConfigureOutOfBandManagement(context.Context, *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error)
+	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
+	EnableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error)
 	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
 	ChangeOutOfBandManagementPassword(context.Context, *connect.Request[v1.ChangeOutOfBandManagementPasswordRequest]) (*connect.Response[v1.ChangeOutOfBandManagementPasswordResponse], error)
+	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
+	DisableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error)
+	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
+	DisableOutOfBandManagementForZone(context.Context, *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error)
+	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
+	EnableOutOfBandManagementForHost(context.Context, *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error)
 }
 
 // NewOutofbandmanagementServiceClient constructs a client for the
@@ -98,36 +98,6 @@ func NewOutofbandmanagementServiceClient(httpClient connect.HTTPClient, baseURL 
 	baseURL = strings.TrimRight(baseURL, "/")
 	outofbandmanagementServiceMethods := v1.File_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto.Services().ByName("OutofbandmanagementService").Methods()
 	return &outofbandmanagementServiceClient{
-		disableOutOfBandManagementForZone: connect.NewClient[v1.DisableOutOfBandManagementForZoneRequest, v1.DisableOutOfBandManagementForZoneResponse](
-			httpClient,
-			baseURL+OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure,
-			connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForZone")),
-			connect.WithClientOptions(opts...),
-		),
-		configureOutOfBandManagement: connect.NewClient[v1.ConfigureOutOfBandManagementRequest, v1.ConfigureOutOfBandManagementResponse](
-			httpClient,
-			baseURL+OutofbandmanagementServiceConfigureOutOfBandManagementProcedure,
-			connect.WithSchema(outofbandmanagementServiceMethods.ByName("ConfigureOutOfBandManagement")),
-			connect.WithClientOptions(opts...),
-		),
-		enableOutOfBandManagementForHost: connect.NewClient[v1.EnableOutOfBandManagementForHostRequest, v1.EnableOutOfBandManagementForHostResponse](
-			httpClient,
-			baseURL+OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure,
-			connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForHost")),
-			connect.WithClientOptions(opts...),
-		),
-		disableOutOfBandManagementForHost: connect.NewClient[v1.DisableOutOfBandManagementForHostRequest, v1.DisableOutOfBandManagementForHostResponse](
-			httpClient,
-			baseURL+OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure,
-			connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForHost")),
-			connect.WithClientOptions(opts...),
-		),
-		enableOutOfBandManagementForCluster: connect.NewClient[v1.EnableOutOfBandManagementForClusterRequest, v1.EnableOutOfBandManagementForClusterResponse](
-			httpClient,
-			baseURL+OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure,
-			connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForCluster")),
-			connect.WithClientOptions(opts...),
-		),
 		enableOutOfBandManagementForZone: connect.NewClient[v1.EnableOutOfBandManagementForZoneRequest, v1.EnableOutOfBandManagementForZoneResponse](
 			httpClient,
 			baseURL+OutofbandmanagementServiceEnableOutOfBandManagementForZoneProcedure,
@@ -140,10 +110,22 @@ func NewOutofbandmanagementServiceClient(httpClient connect.HTTPClient, baseURL 
 			connect.WithSchema(outofbandmanagementServiceMethods.ByName("IssueOutOfBandManagementPowerAction")),
 			connect.WithClientOptions(opts...),
 		),
-		disableOutOfBandManagementForCluster: connect.NewClient[v1.DisableOutOfBandManagementForClusterRequest, v1.DisableOutOfBandManagementForClusterResponse](
+		disableOutOfBandManagementForHost: connect.NewClient[v1.DisableOutOfBandManagementForHostRequest, v1.DisableOutOfBandManagementForHostResponse](
 			httpClient,
-			baseURL+OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure,
-			connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForCluster")),
+			baseURL+OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure,
+			connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForHost")),
+			connect.WithClientOptions(opts...),
+		),
+		configureOutOfBandManagement: connect.NewClient[v1.ConfigureOutOfBandManagementRequest, v1.ConfigureOutOfBandManagementResponse](
+			httpClient,
+			baseURL+OutofbandmanagementServiceConfigureOutOfBandManagementProcedure,
+			connect.WithSchema(outofbandmanagementServiceMethods.ByName("ConfigureOutOfBandManagement")),
+			connect.WithClientOptions(opts...),
+		),
+		enableOutOfBandManagementForCluster: connect.NewClient[v1.EnableOutOfBandManagementForClusterRequest, v1.EnableOutOfBandManagementForClusterResponse](
+			httpClient,
+			baseURL+OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure,
+			connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForCluster")),
 			connect.WithClientOptions(opts...),
 		),
 		changeOutOfBandManagementPassword: connect.NewClient[v1.ChangeOutOfBandManagementPasswordRequest, v1.ChangeOutOfBandManagementPasswordResponse](
@@ -152,50 +134,38 @@ func NewOutofbandmanagementServiceClient(httpClient connect.HTTPClient, baseURL 
 			connect.WithSchema(outofbandmanagementServiceMethods.ByName("ChangeOutOfBandManagementPassword")),
 			connect.WithClientOptions(opts...),
 		),
+		disableOutOfBandManagementForCluster: connect.NewClient[v1.DisableOutOfBandManagementForClusterRequest, v1.DisableOutOfBandManagementForClusterResponse](
+			httpClient,
+			baseURL+OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure,
+			connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForCluster")),
+			connect.WithClientOptions(opts...),
+		),
+		disableOutOfBandManagementForZone: connect.NewClient[v1.DisableOutOfBandManagementForZoneRequest, v1.DisableOutOfBandManagementForZoneResponse](
+			httpClient,
+			baseURL+OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure,
+			connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForZone")),
+			connect.WithClientOptions(opts...),
+		),
+		enableOutOfBandManagementForHost: connect.NewClient[v1.EnableOutOfBandManagementForHostRequest, v1.EnableOutOfBandManagementForHostResponse](
+			httpClient,
+			baseURL+OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure,
+			connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForHost")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // outofbandmanagementServiceClient implements OutofbandmanagementServiceClient.
 type outofbandmanagementServiceClient struct {
-	disableOutOfBandManagementForZone    *connect.Client[v1.DisableOutOfBandManagementForZoneRequest, v1.DisableOutOfBandManagementForZoneResponse]
-	configureOutOfBandManagement         *connect.Client[v1.ConfigureOutOfBandManagementRequest, v1.ConfigureOutOfBandManagementResponse]
-	enableOutOfBandManagementForHost     *connect.Client[v1.EnableOutOfBandManagementForHostRequest, v1.EnableOutOfBandManagementForHostResponse]
-	disableOutOfBandManagementForHost    *connect.Client[v1.DisableOutOfBandManagementForHostRequest, v1.DisableOutOfBandManagementForHostResponse]
-	enableOutOfBandManagementForCluster  *connect.Client[v1.EnableOutOfBandManagementForClusterRequest, v1.EnableOutOfBandManagementForClusterResponse]
 	enableOutOfBandManagementForZone     *connect.Client[v1.EnableOutOfBandManagementForZoneRequest, v1.EnableOutOfBandManagementForZoneResponse]
 	issueOutOfBandManagementPowerAction  *connect.Client[v1.IssueOutOfBandManagementPowerActionRequest, v1.IssueOutOfBandManagementPowerActionResponse]
-	disableOutOfBandManagementForCluster *connect.Client[v1.DisableOutOfBandManagementForClusterRequest, v1.DisableOutOfBandManagementForClusterResponse]
+	disableOutOfBandManagementForHost    *connect.Client[v1.DisableOutOfBandManagementForHostRequest, v1.DisableOutOfBandManagementForHostResponse]
+	configureOutOfBandManagement         *connect.Client[v1.ConfigureOutOfBandManagementRequest, v1.ConfigureOutOfBandManagementResponse]
+	enableOutOfBandManagementForCluster  *connect.Client[v1.EnableOutOfBandManagementForClusterRequest, v1.EnableOutOfBandManagementForClusterResponse]
 	changeOutOfBandManagementPassword    *connect.Client[v1.ChangeOutOfBandManagementPasswordRequest, v1.ChangeOutOfBandManagementPasswordResponse]
-}
-
-// DisableOutOfBandManagementForZone calls
-// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone.
-func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForZone(ctx context.Context, req *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error) {
-	return c.disableOutOfBandManagementForZone.CallUnary(ctx, req)
-}
-
-// ConfigureOutOfBandManagement calls
-// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement.
-func (c *outofbandmanagementServiceClient) ConfigureOutOfBandManagement(ctx context.Context, req *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error) {
-	return c.configureOutOfBandManagement.CallUnary(ctx, req)
-}
-
-// EnableOutOfBandManagementForHost calls
-// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost.
-func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForHost(ctx context.Context, req *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error) {
-	return c.enableOutOfBandManagementForHost.CallUnary(ctx, req)
-}
-
-// DisableOutOfBandManagementForHost calls
-// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost.
-func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForHost(ctx context.Context, req *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error) {
-	return c.disableOutOfBandManagementForHost.CallUnary(ctx, req)
-}
-
-// EnableOutOfBandManagementForCluster calls
-// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForCluster.
-func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForCluster(ctx context.Context, req *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error) {
-	return c.enableOutOfBandManagementForCluster.CallUnary(ctx, req)
+	disableOutOfBandManagementForCluster *connect.Client[v1.DisableOutOfBandManagementForClusterRequest, v1.DisableOutOfBandManagementForClusterResponse]
+	disableOutOfBandManagementForZone    *connect.Client[v1.DisableOutOfBandManagementForZoneRequest, v1.DisableOutOfBandManagementForZoneResponse]
+	enableOutOfBandManagementForHost     *connect.Client[v1.EnableOutOfBandManagementForHostRequest, v1.EnableOutOfBandManagementForHostResponse]
 }
 
 // EnableOutOfBandManagementForZone calls
@@ -210,10 +180,22 @@ func (c *outofbandmanagementServiceClient) IssueOutOfBandManagementPowerAction(c
 	return c.issueOutOfBandManagementPowerAction.CallUnary(ctx, req)
 }
 
-// DisableOutOfBandManagementForCluster calls
-// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster.
-func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForCluster(ctx context.Context, req *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error) {
-	return c.disableOutOfBandManagementForCluster.CallUnary(ctx, req)
+// DisableOutOfBandManagementForHost calls
+// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost.
+func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForHost(ctx context.Context, req *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error) {
+	return c.disableOutOfBandManagementForHost.CallUnary(ctx, req)
+}
+
+// ConfigureOutOfBandManagement calls
+// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement.
+func (c *outofbandmanagementServiceClient) ConfigureOutOfBandManagement(ctx context.Context, req *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error) {
+	return c.configureOutOfBandManagement.CallUnary(ctx, req)
+}
+
+// EnableOutOfBandManagementForCluster calls
+// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForCluster.
+func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForCluster(ctx context.Context, req *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error) {
+	return c.enableOutOfBandManagementForCluster.CallUnary(ctx, req)
 }
 
 // ChangeOutOfBandManagementPassword calls
@@ -222,27 +204,45 @@ func (c *outofbandmanagementServiceClient) ChangeOutOfBandManagementPassword(ctx
 	return c.changeOutOfBandManagementPassword.CallUnary(ctx, req)
 }
 
+// DisableOutOfBandManagementForCluster calls
+// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster.
+func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForCluster(ctx context.Context, req *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error) {
+	return c.disableOutOfBandManagementForCluster.CallUnary(ctx, req)
+}
+
+// DisableOutOfBandManagementForZone calls
+// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone.
+func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForZone(ctx context.Context, req *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error) {
+	return c.disableOutOfBandManagementForZone.CallUnary(ctx, req)
+}
+
+// EnableOutOfBandManagementForHost calls
+// cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost.
+func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForHost(ctx context.Context, req *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error) {
+	return c.enableOutOfBandManagementForHost.CallUnary(ctx, req)
+}
+
 // OutofbandmanagementServiceHandler is an implementation of the
 // cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService service.
 type OutofbandmanagementServiceHandler interface {
-	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
-	DisableOutOfBandManagementForZone(context.Context, *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error)
-	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
-	ConfigureOutOfBandManagement(context.Context, *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error)
-	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
-	EnableOutOfBandManagementForHost(context.Context, *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error)
-	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
-	DisableOutOfBandManagementForHost(context.Context, *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error)
-	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
-	EnableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error)
 	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
 	EnableOutOfBandManagementForZone(context.Context, *connect.Request[v1.EnableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.EnableOutOfBandManagementForZoneResponse], error)
 	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
 	IssueOutOfBandManagementPowerAction(context.Context, *connect.Request[v1.IssueOutOfBandManagementPowerActionRequest]) (*connect.Response[v1.IssueOutOfBandManagementPowerActionResponse], error)
-	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
-	DisableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error)
+	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
+	DisableOutOfBandManagementForHost(context.Context, *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error)
+	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
+	ConfigureOutOfBandManagement(context.Context, *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error)
+	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
+	EnableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error)
 	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
 	ChangeOutOfBandManagementPassword(context.Context, *connect.Request[v1.ChangeOutOfBandManagementPasswordRequest]) (*connect.Response[v1.ChangeOutOfBandManagementPasswordResponse], error)
+	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
+	DisableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error)
+	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
+	DisableOutOfBandManagementForZone(context.Context, *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error)
+	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
+	EnableOutOfBandManagementForHost(context.Context, *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error)
 }
 
 // NewOutofbandmanagementServiceHandler builds an HTTP handler from the service implementation. It
@@ -252,36 +252,6 @@ type OutofbandmanagementServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewOutofbandmanagementServiceHandler(svc OutofbandmanagementServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	outofbandmanagementServiceMethods := v1.File_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto.Services().ByName("OutofbandmanagementService").Methods()
-	outofbandmanagementServiceDisableOutOfBandManagementForZoneHandler := connect.NewUnaryHandler(
-		OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure,
-		svc.DisableOutOfBandManagementForZone,
-		connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	outofbandmanagementServiceConfigureOutOfBandManagementHandler := connect.NewUnaryHandler(
-		OutofbandmanagementServiceConfigureOutOfBandManagementProcedure,
-		svc.ConfigureOutOfBandManagement,
-		connect.WithSchema(outofbandmanagementServiceMethods.ByName("ConfigureOutOfBandManagement")),
-		connect.WithHandlerOptions(opts...),
-	)
-	outofbandmanagementServiceEnableOutOfBandManagementForHostHandler := connect.NewUnaryHandler(
-		OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure,
-		svc.EnableOutOfBandManagementForHost,
-		connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForHost")),
-		connect.WithHandlerOptions(opts...),
-	)
-	outofbandmanagementServiceDisableOutOfBandManagementForHostHandler := connect.NewUnaryHandler(
-		OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure,
-		svc.DisableOutOfBandManagementForHost,
-		connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForHost")),
-		connect.WithHandlerOptions(opts...),
-	)
-	outofbandmanagementServiceEnableOutOfBandManagementForClusterHandler := connect.NewUnaryHandler(
-		OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure,
-		svc.EnableOutOfBandManagementForCluster,
-		connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForCluster")),
-		connect.WithHandlerOptions(opts...),
-	)
 	outofbandmanagementServiceEnableOutOfBandManagementForZoneHandler := connect.NewUnaryHandler(
 		OutofbandmanagementServiceEnableOutOfBandManagementForZoneProcedure,
 		svc.EnableOutOfBandManagementForZone,
@@ -294,10 +264,22 @@ func NewOutofbandmanagementServiceHandler(svc OutofbandmanagementServiceHandler,
 		connect.WithSchema(outofbandmanagementServiceMethods.ByName("IssueOutOfBandManagementPowerAction")),
 		connect.WithHandlerOptions(opts...),
 	)
-	outofbandmanagementServiceDisableOutOfBandManagementForClusterHandler := connect.NewUnaryHandler(
-		OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure,
-		svc.DisableOutOfBandManagementForCluster,
-		connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForCluster")),
+	outofbandmanagementServiceDisableOutOfBandManagementForHostHandler := connect.NewUnaryHandler(
+		OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure,
+		svc.DisableOutOfBandManagementForHost,
+		connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForHost")),
+		connect.WithHandlerOptions(opts...),
+	)
+	outofbandmanagementServiceConfigureOutOfBandManagementHandler := connect.NewUnaryHandler(
+		OutofbandmanagementServiceConfigureOutOfBandManagementProcedure,
+		svc.ConfigureOutOfBandManagement,
+		connect.WithSchema(outofbandmanagementServiceMethods.ByName("ConfigureOutOfBandManagement")),
+		connect.WithHandlerOptions(opts...),
+	)
+	outofbandmanagementServiceEnableOutOfBandManagementForClusterHandler := connect.NewUnaryHandler(
+		OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure,
+		svc.EnableOutOfBandManagementForCluster,
+		connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForCluster")),
 		connect.WithHandlerOptions(opts...),
 	)
 	outofbandmanagementServiceChangeOutOfBandManagementPasswordHandler := connect.NewUnaryHandler(
@@ -306,26 +288,44 @@ func NewOutofbandmanagementServiceHandler(svc OutofbandmanagementServiceHandler,
 		connect.WithSchema(outofbandmanagementServiceMethods.ByName("ChangeOutOfBandManagementPassword")),
 		connect.WithHandlerOptions(opts...),
 	)
+	outofbandmanagementServiceDisableOutOfBandManagementForClusterHandler := connect.NewUnaryHandler(
+		OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure,
+		svc.DisableOutOfBandManagementForCluster,
+		connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForCluster")),
+		connect.WithHandlerOptions(opts...),
+	)
+	outofbandmanagementServiceDisableOutOfBandManagementForZoneHandler := connect.NewUnaryHandler(
+		OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure,
+		svc.DisableOutOfBandManagementForZone,
+		connect.WithSchema(outofbandmanagementServiceMethods.ByName("DisableOutOfBandManagementForZone")),
+		connect.WithHandlerOptions(opts...),
+	)
+	outofbandmanagementServiceEnableOutOfBandManagementForHostHandler := connect.NewUnaryHandler(
+		OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure,
+		svc.EnableOutOfBandManagementForHost,
+		connect.WithSchema(outofbandmanagementServiceMethods.ByName("EnableOutOfBandManagementForHost")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure:
-			outofbandmanagementServiceDisableOutOfBandManagementForZoneHandler.ServeHTTP(w, r)
-		case OutofbandmanagementServiceConfigureOutOfBandManagementProcedure:
-			outofbandmanagementServiceConfigureOutOfBandManagementHandler.ServeHTTP(w, r)
-		case OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure:
-			outofbandmanagementServiceEnableOutOfBandManagementForHostHandler.ServeHTTP(w, r)
-		case OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure:
-			outofbandmanagementServiceDisableOutOfBandManagementForHostHandler.ServeHTTP(w, r)
-		case OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure:
-			outofbandmanagementServiceEnableOutOfBandManagementForClusterHandler.ServeHTTP(w, r)
 		case OutofbandmanagementServiceEnableOutOfBandManagementForZoneProcedure:
 			outofbandmanagementServiceEnableOutOfBandManagementForZoneHandler.ServeHTTP(w, r)
 		case OutofbandmanagementServiceIssueOutOfBandManagementPowerActionProcedure:
 			outofbandmanagementServiceIssueOutOfBandManagementPowerActionHandler.ServeHTTP(w, r)
-		case OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure:
-			outofbandmanagementServiceDisableOutOfBandManagementForClusterHandler.ServeHTTP(w, r)
+		case OutofbandmanagementServiceDisableOutOfBandManagementForHostProcedure:
+			outofbandmanagementServiceDisableOutOfBandManagementForHostHandler.ServeHTTP(w, r)
+		case OutofbandmanagementServiceConfigureOutOfBandManagementProcedure:
+			outofbandmanagementServiceConfigureOutOfBandManagementHandler.ServeHTTP(w, r)
+		case OutofbandmanagementServiceEnableOutOfBandManagementForClusterProcedure:
+			outofbandmanagementServiceEnableOutOfBandManagementForClusterHandler.ServeHTTP(w, r)
 		case OutofbandmanagementServiceChangeOutOfBandManagementPasswordProcedure:
 			outofbandmanagementServiceChangeOutOfBandManagementPasswordHandler.ServeHTTP(w, r)
+		case OutofbandmanagementServiceDisableOutOfBandManagementForClusterProcedure:
+			outofbandmanagementServiceDisableOutOfBandManagementForClusterHandler.ServeHTTP(w, r)
+		case OutofbandmanagementServiceDisableOutOfBandManagementForZoneProcedure:
+			outofbandmanagementServiceDisableOutOfBandManagementForZoneHandler.ServeHTTP(w, r)
+		case OutofbandmanagementServiceEnableOutOfBandManagementForHostProcedure:
+			outofbandmanagementServiceEnableOutOfBandManagementForHostHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -335,26 +335,6 @@ func NewOutofbandmanagementServiceHandler(svc OutofbandmanagementServiceHandler,
 // UnimplementedOutofbandmanagementServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedOutofbandmanagementServiceHandler struct{}
 
-func (UnimplementedOutofbandmanagementServiceHandler) DisableOutOfBandManagementForZone(context.Context, *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone is not implemented"))
-}
-
-func (UnimplementedOutofbandmanagementServiceHandler) ConfigureOutOfBandManagement(context.Context, *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement is not implemented"))
-}
-
-func (UnimplementedOutofbandmanagementServiceHandler) EnableOutOfBandManagementForHost(context.Context, *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost is not implemented"))
-}
-
-func (UnimplementedOutofbandmanagementServiceHandler) DisableOutOfBandManagementForHost(context.Context, *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost is not implemented"))
-}
-
-func (UnimplementedOutofbandmanagementServiceHandler) EnableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForCluster is not implemented"))
-}
-
 func (UnimplementedOutofbandmanagementServiceHandler) EnableOutOfBandManagementForZone(context.Context, *connect.Request[v1.EnableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.EnableOutOfBandManagementForZoneResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForZone is not implemented"))
 }
@@ -363,10 +343,30 @@ func (UnimplementedOutofbandmanagementServiceHandler) IssueOutOfBandManagementPo
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.IssueOutOfBandManagementPowerAction is not implemented"))
 }
 
-func (UnimplementedOutofbandmanagementServiceHandler) DisableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster is not implemented"))
+func (UnimplementedOutofbandmanagementServiceHandler) DisableOutOfBandManagementForHost(context.Context, *connect.Request[v1.DisableOutOfBandManagementForHostRequest]) (*connect.Response[v1.DisableOutOfBandManagementForHostResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForHost is not implemented"))
+}
+
+func (UnimplementedOutofbandmanagementServiceHandler) ConfigureOutOfBandManagement(context.Context, *connect.Request[v1.ConfigureOutOfBandManagementRequest]) (*connect.Response[v1.ConfigureOutOfBandManagementResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ConfigureOutOfBandManagement is not implemented"))
+}
+
+func (UnimplementedOutofbandmanagementServiceHandler) EnableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.EnableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.EnableOutOfBandManagementForClusterResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForCluster is not implemented"))
 }
 
 func (UnimplementedOutofbandmanagementServiceHandler) ChangeOutOfBandManagementPassword(context.Context, *connect.Request[v1.ChangeOutOfBandManagementPasswordRequest]) (*connect.Response[v1.ChangeOutOfBandManagementPasswordResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.ChangeOutOfBandManagementPassword is not implemented"))
+}
+
+func (UnimplementedOutofbandmanagementServiceHandler) DisableOutOfBandManagementForCluster(context.Context, *connect.Request[v1.DisableOutOfBandManagementForClusterRequest]) (*connect.Response[v1.DisableOutOfBandManagementForClusterResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForCluster is not implemented"))
+}
+
+func (UnimplementedOutofbandmanagementServiceHandler) DisableOutOfBandManagementForZone(context.Context, *connect.Request[v1.DisableOutOfBandManagementForZoneRequest]) (*connect.Response[v1.DisableOutOfBandManagementForZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.DisableOutOfBandManagementForZone is not implemented"))
+}
+
+func (UnimplementedOutofbandmanagementServiceHandler) EnableOutOfBandManagementForHost(context.Context, *connect.Request[v1.EnableOutOfBandManagementForHostRequest]) (*connect.Response[v1.EnableOutOfBandManagementForHostResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService.EnableOutOfBandManagementForHost is not implemented"))
 }

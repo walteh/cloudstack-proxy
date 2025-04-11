@@ -19,19 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	AccountService_UpdateAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/UpdateAccount"
+	AccountService_ListProjectAccounts_FullMethodName      = "/cloudstack.management.account.v1.AccountService/ListProjectAccounts"
+	AccountService_DeleteUserFromProject_FullMethodName    = "/cloudstack.management.account.v1.AccountService/DeleteUserFromProject"
+	AccountService_EnableAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/EnableAccount"
+	AccountService_DisableAccount_FullMethodName           = "/cloudstack.management.account.v1.AccountService/DisableAccount"
 	AccountService_DeleteAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/DeleteAccount"
 	AccountService_AddUserToProject_FullMethodName         = "/cloudstack.management.account.v1.AccountService/AddUserToProject"
-	AccountService_DeleteAccountFromProject_FullMethodName = "/cloudstack.management.account.v1.AccountService/DeleteAccountFromProject"
-	AccountService_UpdateAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/UpdateAccount"
-	AccountService_EnableAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/EnableAccount"
-	AccountService_ListAccountsCmdByAdmin_FullMethodName   = "/cloudstack.management.account.v1.AccountService/ListAccountsCmdByAdmin"
-	AccountService_DisableAccount_FullMethodName           = "/cloudstack.management.account.v1.AccountService/DisableAccount"
-	AccountService_LockAccount_FullMethodName              = "/cloudstack.management.account.v1.AccountService/LockAccount"
-	AccountService_DeleteUserFromProject_FullMethodName    = "/cloudstack.management.account.v1.AccountService/DeleteUserFromProject"
-	AccountService_ListProjectAccounts_FullMethodName      = "/cloudstack.management.account.v1.AccountService/ListProjectAccounts"
-	AccountService_CreateAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/CreateAccount"
-	AccountService_ListAccounts_FullMethodName             = "/cloudstack.management.account.v1.AccountService/ListAccounts"
 	AccountService_AddAccountToProject_FullMethodName      = "/cloudstack.management.account.v1.AccountService/AddAccountToProject"
+	AccountService_LockAccount_FullMethodName              = "/cloudstack.management.account.v1.AccountService/LockAccount"
+	AccountService_ListAccounts_FullMethodName             = "/cloudstack.management.account.v1.AccountService/ListAccounts"
+	AccountService_DeleteAccountFromProject_FullMethodName = "/cloudstack.management.account.v1.AccountService/DeleteAccountFromProject"
+	AccountService_CreateAccount_FullMethodName            = "/cloudstack.management.account.v1.AccountService/CreateAccount"
 )
 
 // AccountServiceClient is the client API for AccountService service.
@@ -40,32 +39,30 @@ const (
 //
 // AccountService provides operations for managing Accounts
 type AccountServiceClient interface {
+	// UpdateAccount Updates account information for the authenticated user
+	UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error)
+	// ListProjectAccounts Lists project's accounts
+	ListProjectAccounts(ctx context.Context, in *ListProjectAccountsRequest, opts ...grpc.CallOption) (*ListProjectAccountsResponse, error)
+	// DeleteUserFromProject Deletes user from the project
+	DeleteUserFromProject(ctx context.Context, in *DeleteUserFromProjectRequest, opts ...grpc.CallOption) (*DeleteUserFromProjectResponse, error)
+	// EnableAccount Enables an account
+	EnableAccount(ctx context.Context, in *EnableAccountRequest, opts ...grpc.CallOption) (*EnableAccountResponse, error)
+	// DisableAccount Disables an account
+	DisableAccount(ctx context.Context, in *DisableAccountRequest, opts ...grpc.CallOption) (*DisableAccountResponse, error)
 	// DeleteAccount Deletes a account, and all users associated with this account
 	DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*DeleteAccountResponse, error)
 	// AddUserToProject Adds user to a project
 	AddUserToProject(ctx context.Context, in *AddUserToProjectRequest, opts ...grpc.CallOption) (*AddUserToProjectResponse, error)
-	// DeleteAccountFromProject Deletes account from the project
-	DeleteAccountFromProject(ctx context.Context, in *DeleteAccountFromProjectRequest, opts ...grpc.CallOption) (*DeleteAccountFromProjectResponse, error)
-	// UpdateAccount Updates account information for the authenticated user
-	UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error)
-	// EnableAccount Enables an account
-	EnableAccount(ctx context.Context, in *EnableAccountRequest, opts ...grpc.CallOption) (*EnableAccountResponse, error)
-	// ListAccountsCmdByAdmin Lists accounts and provides detailed account information for listed accounts
-	ListAccountsCmdByAdmin(ctx context.Context, in *ListAccountsCmdByAdminRequest, opts ...grpc.CallOption) (*ListAccountsCmdByAdminResponse, error)
-	// DisableAccount Disables an account
-	DisableAccount(ctx context.Context, in *DisableAccountRequest, opts ...grpc.CallOption) (*DisableAccountResponse, error)
-	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
-	LockAccount(ctx context.Context, in *LockAccountRequest, opts ...grpc.CallOption) (*LockAccountResponse, error)
-	// DeleteUserFromProject Deletes user from the project
-	DeleteUserFromProject(ctx context.Context, in *DeleteUserFromProjectRequest, opts ...grpc.CallOption) (*DeleteUserFromProjectResponse, error)
-	// ListProjectAccounts Lists project's accounts
-	ListProjectAccounts(ctx context.Context, in *ListProjectAccountsRequest, opts ...grpc.CallOption) (*ListProjectAccountsResponse, error)
-	// CreateAccount Creates an account
-	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
-	// ListAccounts Lists accounts and provides detailed account information for listed accounts
-	ListAccounts(ctx context.Context, in *ListAccountsRequest, opts ...grpc.CallOption) (*ListAccountsResponse, error)
 	// AddAccountToProject Adds account to a project
 	AddAccountToProject(ctx context.Context, in *AddAccountToProjectRequest, opts ...grpc.CallOption) (*AddAccountToProjectResponse, error)
+	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
+	LockAccount(ctx context.Context, in *LockAccountRequest, opts ...grpc.CallOption) (*LockAccountResponse, error)
+	// ListAccounts Lists accounts and provides detailed account information for listed accounts
+	ListAccounts(ctx context.Context, in *ListAccountsRequest, opts ...grpc.CallOption) (*ListAccountsResponse, error)
+	// DeleteAccountFromProject Deletes account from the project
+	DeleteAccountFromProject(ctx context.Context, in *DeleteAccountFromProjectRequest, opts ...grpc.CallOption) (*DeleteAccountFromProjectResponse, error)
+	// CreateAccount Creates an account
+	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
 }
 
 type accountServiceClient struct {
@@ -74,6 +71,56 @@ type accountServiceClient struct {
 
 func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
 	return &accountServiceClient{cc}
+}
+
+func (c *accountServiceClient) UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateAccountResponse)
+	err := c.cc.Invoke(ctx, AccountService_UpdateAccount_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) ListProjectAccounts(ctx context.Context, in *ListProjectAccountsRequest, opts ...grpc.CallOption) (*ListProjectAccountsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListProjectAccountsResponse)
+	err := c.cc.Invoke(ctx, AccountService_ListProjectAccounts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) DeleteUserFromProject(ctx context.Context, in *DeleteUserFromProjectRequest, opts ...grpc.CallOption) (*DeleteUserFromProjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUserFromProjectResponse)
+	err := c.cc.Invoke(ctx, AccountService_DeleteUserFromProject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) EnableAccount(ctx context.Context, in *EnableAccountRequest, opts ...grpc.CallOption) (*EnableAccountResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnableAccountResponse)
+	err := c.cc.Invoke(ctx, AccountService_EnableAccount_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) DisableAccount(ctx context.Context, in *DisableAccountRequest, opts ...grpc.CallOption) (*DisableAccountResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DisableAccountResponse)
+	err := c.cc.Invoke(ctx, AccountService_DisableAccount_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *accountServiceClient) DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*DeleteAccountResponse, error) {
@@ -96,50 +143,10 @@ func (c *accountServiceClient) AddUserToProject(ctx context.Context, in *AddUser
 	return out, nil
 }
 
-func (c *accountServiceClient) DeleteAccountFromProject(ctx context.Context, in *DeleteAccountFromProjectRequest, opts ...grpc.CallOption) (*DeleteAccountFromProjectResponse, error) {
+func (c *accountServiceClient) AddAccountToProject(ctx context.Context, in *AddAccountToProjectRequest, opts ...grpc.CallOption) (*AddAccountToProjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteAccountFromProjectResponse)
-	err := c.cc.Invoke(ctx, AccountService_DeleteAccountFromProject_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateAccountResponse)
-	err := c.cc.Invoke(ctx, AccountService_UpdateAccount_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) EnableAccount(ctx context.Context, in *EnableAccountRequest, opts ...grpc.CallOption) (*EnableAccountResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableAccountResponse)
-	err := c.cc.Invoke(ctx, AccountService_EnableAccount_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) ListAccountsCmdByAdmin(ctx context.Context, in *ListAccountsCmdByAdminRequest, opts ...grpc.CallOption) (*ListAccountsCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAccountsCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, AccountService_ListAccountsCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) DisableAccount(ctx context.Context, in *DisableAccountRequest, opts ...grpc.CallOption) (*DisableAccountResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableAccountResponse)
-	err := c.cc.Invoke(ctx, AccountService_DisableAccount_FullMethodName, in, out, cOpts...)
+	out := new(AddAccountToProjectResponse)
+	err := c.cc.Invoke(ctx, AccountService_AddAccountToProject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -156,20 +163,20 @@ func (c *accountServiceClient) LockAccount(ctx context.Context, in *LockAccountR
 	return out, nil
 }
 
-func (c *accountServiceClient) DeleteUserFromProject(ctx context.Context, in *DeleteUserFromProjectRequest, opts ...grpc.CallOption) (*DeleteUserFromProjectResponse, error) {
+func (c *accountServiceClient) ListAccounts(ctx context.Context, in *ListAccountsRequest, opts ...grpc.CallOption) (*ListAccountsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteUserFromProjectResponse)
-	err := c.cc.Invoke(ctx, AccountService_DeleteUserFromProject_FullMethodName, in, out, cOpts...)
+	out := new(ListAccountsResponse)
+	err := c.cc.Invoke(ctx, AccountService_ListAccounts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *accountServiceClient) ListProjectAccounts(ctx context.Context, in *ListProjectAccountsRequest, opts ...grpc.CallOption) (*ListProjectAccountsResponse, error) {
+func (c *accountServiceClient) DeleteAccountFromProject(ctx context.Context, in *DeleteAccountFromProjectRequest, opts ...grpc.CallOption) (*DeleteAccountFromProjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListProjectAccountsResponse)
-	err := c.cc.Invoke(ctx, AccountService_ListProjectAccounts_FullMethodName, in, out, cOpts...)
+	out := new(DeleteAccountFromProjectResponse)
+	err := c.cc.Invoke(ctx, AccountService_DeleteAccountFromProject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -186,58 +193,36 @@ func (c *accountServiceClient) CreateAccount(ctx context.Context, in *CreateAcco
 	return out, nil
 }
 
-func (c *accountServiceClient) ListAccounts(ctx context.Context, in *ListAccountsRequest, opts ...grpc.CallOption) (*ListAccountsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAccountsResponse)
-	err := c.cc.Invoke(ctx, AccountService_ListAccounts_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) AddAccountToProject(ctx context.Context, in *AddAccountToProjectRequest, opts ...grpc.CallOption) (*AddAccountToProjectResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddAccountToProjectResponse)
-	err := c.cc.Invoke(ctx, AccountService_AddAccountToProject_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AccountServiceServer is the server API for AccountService service.
 // All implementations must embed UnimplementedAccountServiceServer
 // for forward compatibility.
 //
 // AccountService provides operations for managing Accounts
 type AccountServiceServer interface {
+	// UpdateAccount Updates account information for the authenticated user
+	UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error)
+	// ListProjectAccounts Lists project's accounts
+	ListProjectAccounts(context.Context, *ListProjectAccountsRequest) (*ListProjectAccountsResponse, error)
+	// DeleteUserFromProject Deletes user from the project
+	DeleteUserFromProject(context.Context, *DeleteUserFromProjectRequest) (*DeleteUserFromProjectResponse, error)
+	// EnableAccount Enables an account
+	EnableAccount(context.Context, *EnableAccountRequest) (*EnableAccountResponse, error)
+	// DisableAccount Disables an account
+	DisableAccount(context.Context, *DisableAccountRequest) (*DisableAccountResponse, error)
 	// DeleteAccount Deletes a account, and all users associated with this account
 	DeleteAccount(context.Context, *DeleteAccountRequest) (*DeleteAccountResponse, error)
 	// AddUserToProject Adds user to a project
 	AddUserToProject(context.Context, *AddUserToProjectRequest) (*AddUserToProjectResponse, error)
-	// DeleteAccountFromProject Deletes account from the project
-	DeleteAccountFromProject(context.Context, *DeleteAccountFromProjectRequest) (*DeleteAccountFromProjectResponse, error)
-	// UpdateAccount Updates account information for the authenticated user
-	UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error)
-	// EnableAccount Enables an account
-	EnableAccount(context.Context, *EnableAccountRequest) (*EnableAccountResponse, error)
-	// ListAccountsCmdByAdmin Lists accounts and provides detailed account information for listed accounts
-	ListAccountsCmdByAdmin(context.Context, *ListAccountsCmdByAdminRequest) (*ListAccountsCmdByAdminResponse, error)
-	// DisableAccount Disables an account
-	DisableAccount(context.Context, *DisableAccountRequest) (*DisableAccountResponse, error)
-	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
-	LockAccount(context.Context, *LockAccountRequest) (*LockAccountResponse, error)
-	// DeleteUserFromProject Deletes user from the project
-	DeleteUserFromProject(context.Context, *DeleteUserFromProjectRequest) (*DeleteUserFromProjectResponse, error)
-	// ListProjectAccounts Lists project's accounts
-	ListProjectAccounts(context.Context, *ListProjectAccountsRequest) (*ListProjectAccountsResponse, error)
-	// CreateAccount Creates an account
-	CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error)
-	// ListAccounts Lists accounts and provides detailed account information for listed accounts
-	ListAccounts(context.Context, *ListAccountsRequest) (*ListAccountsResponse, error)
 	// AddAccountToProject Adds account to a project
 	AddAccountToProject(context.Context, *AddAccountToProjectRequest) (*AddAccountToProjectResponse, error)
+	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
+	LockAccount(context.Context, *LockAccountRequest) (*LockAccountResponse, error)
+	// ListAccounts Lists accounts and provides detailed account information for listed accounts
+	ListAccounts(context.Context, *ListAccountsRequest) (*ListAccountsResponse, error)
+	// DeleteAccountFromProject Deletes account from the project
+	DeleteAccountFromProject(context.Context, *DeleteAccountFromProjectRequest) (*DeleteAccountFromProjectResponse, error)
+	// CreateAccount Creates an account
+	CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }
 
@@ -248,44 +233,41 @@ type AccountServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAccountServiceServer struct{}
 
+func (UnimplementedAccountServiceServer) UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAccount not implemented")
+}
+func (UnimplementedAccountServiceServer) ListProjectAccounts(context.Context, *ListProjectAccountsRequest) (*ListProjectAccountsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListProjectAccounts not implemented")
+}
+func (UnimplementedAccountServiceServer) DeleteUserFromProject(context.Context, *DeleteUserFromProjectRequest) (*DeleteUserFromProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserFromProject not implemented")
+}
+func (UnimplementedAccountServiceServer) EnableAccount(context.Context, *EnableAccountRequest) (*EnableAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableAccount not implemented")
+}
+func (UnimplementedAccountServiceServer) DisableAccount(context.Context, *DisableAccountRequest) (*DisableAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableAccount not implemented")
+}
 func (UnimplementedAccountServiceServer) DeleteAccount(context.Context, *DeleteAccountRequest) (*DeleteAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccount not implemented")
 }
 func (UnimplementedAccountServiceServer) AddUserToProject(context.Context, *AddUserToProjectRequest) (*AddUserToProjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddUserToProject not implemented")
 }
-func (UnimplementedAccountServiceServer) DeleteAccountFromProject(context.Context, *DeleteAccountFromProjectRequest) (*DeleteAccountFromProjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccountFromProject not implemented")
-}
-func (UnimplementedAccountServiceServer) UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAccount not implemented")
-}
-func (UnimplementedAccountServiceServer) EnableAccount(context.Context, *EnableAccountRequest) (*EnableAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableAccount not implemented")
-}
-func (UnimplementedAccountServiceServer) ListAccountsCmdByAdmin(context.Context, *ListAccountsCmdByAdminRequest) (*ListAccountsCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAccountsCmdByAdmin not implemented")
-}
-func (UnimplementedAccountServiceServer) DisableAccount(context.Context, *DisableAccountRequest) (*DisableAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableAccount not implemented")
+func (UnimplementedAccountServiceServer) AddAccountToProject(context.Context, *AddAccountToProjectRequest) (*AddAccountToProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddAccountToProject not implemented")
 }
 func (UnimplementedAccountServiceServer) LockAccount(context.Context, *LockAccountRequest) (*LockAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LockAccount not implemented")
 }
-func (UnimplementedAccountServiceServer) DeleteUserFromProject(context.Context, *DeleteUserFromProjectRequest) (*DeleteUserFromProjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserFromProject not implemented")
-}
-func (UnimplementedAccountServiceServer) ListProjectAccounts(context.Context, *ListProjectAccountsRequest) (*ListProjectAccountsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListProjectAccounts not implemented")
-}
-func (UnimplementedAccountServiceServer) CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAccount not implemented")
-}
 func (UnimplementedAccountServiceServer) ListAccounts(context.Context, *ListAccountsRequest) (*ListAccountsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAccounts not implemented")
 }
-func (UnimplementedAccountServiceServer) AddAccountToProject(context.Context, *AddAccountToProjectRequest) (*AddAccountToProjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddAccountToProject not implemented")
+func (UnimplementedAccountServiceServer) DeleteAccountFromProject(context.Context, *DeleteAccountFromProjectRequest) (*DeleteAccountFromProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccountFromProject not implemented")
+}
+func (UnimplementedAccountServiceServer) CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAccount not implemented")
 }
 func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}
 func (UnimplementedAccountServiceServer) testEmbeddedByValue()                        {}
@@ -306,6 +288,96 @@ func RegisterAccountServiceServer(s grpc.ServiceRegistrar, srv AccountServiceSer
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&AccountService_ServiceDesc, srv)
+}
+
+func _AccountService_UpdateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).UpdateAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_UpdateAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).UpdateAccount(ctx, req.(*UpdateAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_ListProjectAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListProjectAccountsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).ListProjectAccounts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_ListProjectAccounts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).ListProjectAccounts(ctx, req.(*ListProjectAccountsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_DeleteUserFromProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserFromProjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).DeleteUserFromProject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_DeleteUserFromProject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).DeleteUserFromProject(ctx, req.(*DeleteUserFromProjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_EnableAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).EnableAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_EnableAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).EnableAccount(ctx, req.(*EnableAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_DisableAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).DisableAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_DisableAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).DisableAccount(ctx, req.(*DisableAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _AccountService_DeleteAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -344,92 +416,20 @@ func _AccountService_AddUserToProject_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_DeleteAccountFromProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteAccountFromProjectRequest)
+func _AccountService_AddAccountToProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddAccountToProjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).DeleteAccountFromProject(ctx, in)
+		return srv.(AccountServiceServer).AddAccountToProject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AccountService_DeleteAccountFromProject_FullMethodName,
+		FullMethod: AccountService_AddAccountToProject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).DeleteAccountFromProject(ctx, req.(*DeleteAccountFromProjectRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_UpdateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateAccountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).UpdateAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_UpdateAccount_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).UpdateAccount(ctx, req.(*UpdateAccountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_EnableAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EnableAccountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).EnableAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_EnableAccount_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).EnableAccount(ctx, req.(*EnableAccountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_ListAccountsCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAccountsCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).ListAccountsCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_ListAccountsCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).ListAccountsCmdByAdmin(ctx, req.(*ListAccountsCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_DisableAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableAccountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).DisableAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_DisableAccount_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).DisableAccount(ctx, req.(*DisableAccountRequest))
+		return srv.(AccountServiceServer).AddAccountToProject(ctx, req.(*AddAccountToProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -452,38 +452,38 @@ func _AccountService_LockAccount_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_DeleteUserFromProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteUserFromProjectRequest)
+func _AccountService_ListAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAccountsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).DeleteUserFromProject(ctx, in)
+		return srv.(AccountServiceServer).ListAccounts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AccountService_DeleteUserFromProject_FullMethodName,
+		FullMethod: AccountService_ListAccounts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).DeleteUserFromProject(ctx, req.(*DeleteUserFromProjectRequest))
+		return srv.(AccountServiceServer).ListAccounts(ctx, req.(*ListAccountsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_ListProjectAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListProjectAccountsRequest)
+func _AccountService_DeleteAccountFromProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAccountFromProjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).ListProjectAccounts(ctx, in)
+		return srv.(AccountServiceServer).DeleteAccountFromProject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AccountService_ListProjectAccounts_FullMethodName,
+		FullMethod: AccountService_DeleteAccountFromProject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).ListProjectAccounts(ctx, req.(*ListProjectAccountsRequest))
+		return srv.(AccountServiceServer).DeleteAccountFromProject(ctx, req.(*DeleteAccountFromProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -506,42 +506,6 @@ func _AccountService_CreateAccount_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_ListAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAccountsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).ListAccounts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_ListAccounts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).ListAccounts(ctx, req.(*ListAccountsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_AddAccountToProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddAccountToProjectRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).AddAccountToProject(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_AddAccountToProject_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).AddAccountToProject(ctx, req.(*AddAccountToProjectRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AccountService_ServiceDesc is the grpc.ServiceDesc for AccountService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -549,6 +513,26 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "cloudstack.management.account.v1.AccountService",
 	HandlerType: (*AccountServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "UpdateAccount",
+			Handler:    _AccountService_UpdateAccount_Handler,
+		},
+		{
+			MethodName: "ListProjectAccounts",
+			Handler:    _AccountService_ListProjectAccounts_Handler,
+		},
+		{
+			MethodName: "DeleteUserFromProject",
+			Handler:    _AccountService_DeleteUserFromProject_Handler,
+		},
+		{
+			MethodName: "EnableAccount",
+			Handler:    _AccountService_EnableAccount_Handler,
+		},
+		{
+			MethodName: "DisableAccount",
+			Handler:    _AccountService_DisableAccount_Handler,
+		},
 		{
 			MethodName: "DeleteAccount",
 			Handler:    _AccountService_DeleteAccount_Handler,
@@ -558,48 +542,24 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccountService_AddUserToProject_Handler,
 		},
 		{
-			MethodName: "DeleteAccountFromProject",
-			Handler:    _AccountService_DeleteAccountFromProject_Handler,
-		},
-		{
-			MethodName: "UpdateAccount",
-			Handler:    _AccountService_UpdateAccount_Handler,
-		},
-		{
-			MethodName: "EnableAccount",
-			Handler:    _AccountService_EnableAccount_Handler,
-		},
-		{
-			MethodName: "ListAccountsCmdByAdmin",
-			Handler:    _AccountService_ListAccountsCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "DisableAccount",
-			Handler:    _AccountService_DisableAccount_Handler,
+			MethodName: "AddAccountToProject",
+			Handler:    _AccountService_AddAccountToProject_Handler,
 		},
 		{
 			MethodName: "LockAccount",
 			Handler:    _AccountService_LockAccount_Handler,
 		},
 		{
-			MethodName: "DeleteUserFromProject",
-			Handler:    _AccountService_DeleteUserFromProject_Handler,
-		},
-		{
-			MethodName: "ListProjectAccounts",
-			Handler:    _AccountService_ListProjectAccounts_Handler,
-		},
-		{
-			MethodName: "CreateAccount",
-			Handler:    _AccountService_CreateAccount_Handler,
-		},
-		{
 			MethodName: "ListAccounts",
 			Handler:    _AccountService_ListAccounts_Handler,
 		},
 		{
-			MethodName: "AddAccountToProject",
-			Handler:    _AccountService_AddAccountToProject_Handler,
+			MethodName: "DeleteAccountFromProject",
+			Handler:    _AccountService_DeleteAccountFromProject_Handler,
+		},
+		{
+			MethodName: "CreateAccount",
+			Handler:    _AccountService_CreateAccount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

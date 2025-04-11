@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VlanService_CreateVlanIpRange_FullMethodName     = "/cloudstack.management.vlan.v1.VlanService/CreateVlanIpRange"
-	VlanService_UpdateVlanIpRange_FullMethodName     = "/cloudstack.management.vlan.v1.VlanService/UpdateVlanIpRange"
-	VlanService_ReleasePublicIpRange_FullMethodName  = "/cloudstack.management.vlan.v1.VlanService/ReleasePublicIpRange"
-	VlanService_DedicatePublicIpRange_FullMethodName = "/cloudstack.management.vlan.v1.VlanService/DedicatePublicIpRange"
-	VlanService_DeleteVlanIpRange_FullMethodName     = "/cloudstack.management.vlan.v1.VlanService/DeleteVlanIpRange"
 	VlanService_ListVlanIpRanges_FullMethodName      = "/cloudstack.management.vlan.v1.VlanService/ListVlanIpRanges"
+	VlanService_DeleteVlanIpRange_FullMethodName     = "/cloudstack.management.vlan.v1.VlanService/DeleteVlanIpRange"
+	VlanService_UpdateVlanIpRange_FullMethodName     = "/cloudstack.management.vlan.v1.VlanService/UpdateVlanIpRange"
+	VlanService_DedicatePublicIpRange_FullMethodName = "/cloudstack.management.vlan.v1.VlanService/DedicatePublicIpRange"
+	VlanService_CreateVlanIpRange_FullMethodName     = "/cloudstack.management.vlan.v1.VlanService/CreateVlanIpRange"
+	VlanService_ReleasePublicIpRange_FullMethodName  = "/cloudstack.management.vlan.v1.VlanService/ReleasePublicIpRange"
 )
 
 // VlanServiceClient is the client API for VlanService service.
@@ -33,18 +33,18 @@ const (
 //
 // VlanService provides operations for managing Vlans
 type VlanServiceClient interface {
-	// CreateVlanIpRange Creates a VLAN IP range.
-	CreateVlanIpRange(ctx context.Context, in *CreateVlanIpRangeRequest, opts ...grpc.CallOption) (*CreateVlanIpRangeResponse, error)
-	// UpdateVlanIpRange Updates a VLAN IP range.
-	UpdateVlanIpRange(ctx context.Context, in *UpdateVlanIpRangeRequest, opts ...grpc.CallOption) (*UpdateVlanIpRangeResponse, error)
-	// ReleasePublicIpRange Releases a Public IP range back to the system pool
-	ReleasePublicIpRange(ctx context.Context, in *ReleasePublicIpRangeRequest, opts ...grpc.CallOption) (*ReleasePublicIpRangeResponse, error)
-	// DedicatePublicIpRange Dedicates a Public IP range to an account
-	DedicatePublicIpRange(ctx context.Context, in *DedicatePublicIpRangeRequest, opts ...grpc.CallOption) (*DedicatePublicIpRangeResponse, error)
-	// DeleteVlanIpRange Deletes a VLAN IP range.
-	DeleteVlanIpRange(ctx context.Context, in *DeleteVlanIpRangeRequest, opts ...grpc.CallOption) (*DeleteVlanIpRangeResponse, error)
 	// ListVlanIpRanges Lists all VLAN IP ranges.
 	ListVlanIpRanges(ctx context.Context, in *ListVlanIpRangesRequest, opts ...grpc.CallOption) (*ListVlanIpRangesResponse, error)
+	// DeleteVlanIpRange Deletes a VLAN IP range.
+	DeleteVlanIpRange(ctx context.Context, in *DeleteVlanIpRangeRequest, opts ...grpc.CallOption) (*DeleteVlanIpRangeResponse, error)
+	// UpdateVlanIpRange Updates a VLAN IP range.
+	UpdateVlanIpRange(ctx context.Context, in *UpdateVlanIpRangeRequest, opts ...grpc.CallOption) (*UpdateVlanIpRangeResponse, error)
+	// DedicatePublicIpRange Dedicates a Public IP range to an account
+	DedicatePublicIpRange(ctx context.Context, in *DedicatePublicIpRangeRequest, opts ...grpc.CallOption) (*DedicatePublicIpRangeResponse, error)
+	// CreateVlanIpRange Creates a VLAN IP range.
+	CreateVlanIpRange(ctx context.Context, in *CreateVlanIpRangeRequest, opts ...grpc.CallOption) (*CreateVlanIpRangeResponse, error)
+	// ReleasePublicIpRange Releases a Public IP range back to the system pool
+	ReleasePublicIpRange(ctx context.Context, in *ReleasePublicIpRangeRequest, opts ...grpc.CallOption) (*ReleasePublicIpRangeResponse, error)
 }
 
 type vlanServiceClient struct {
@@ -55,40 +55,10 @@ func NewVlanServiceClient(cc grpc.ClientConnInterface) VlanServiceClient {
 	return &vlanServiceClient{cc}
 }
 
-func (c *vlanServiceClient) CreateVlanIpRange(ctx context.Context, in *CreateVlanIpRangeRequest, opts ...grpc.CallOption) (*CreateVlanIpRangeResponse, error) {
+func (c *vlanServiceClient) ListVlanIpRanges(ctx context.Context, in *ListVlanIpRangesRequest, opts ...grpc.CallOption) (*ListVlanIpRangesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVlanIpRangeResponse)
-	err := c.cc.Invoke(ctx, VlanService_CreateVlanIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vlanServiceClient) UpdateVlanIpRange(ctx context.Context, in *UpdateVlanIpRangeRequest, opts ...grpc.CallOption) (*UpdateVlanIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVlanIpRangeResponse)
-	err := c.cc.Invoke(ctx, VlanService_UpdateVlanIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vlanServiceClient) ReleasePublicIpRange(ctx context.Context, in *ReleasePublicIpRangeRequest, opts ...grpc.CallOption) (*ReleasePublicIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleasePublicIpRangeResponse)
-	err := c.cc.Invoke(ctx, VlanService_ReleasePublicIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vlanServiceClient) DedicatePublicIpRange(ctx context.Context, in *DedicatePublicIpRangeRequest, opts ...grpc.CallOption) (*DedicatePublicIpRangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DedicatePublicIpRangeResponse)
-	err := c.cc.Invoke(ctx, VlanService_DedicatePublicIpRange_FullMethodName, in, out, cOpts...)
+	out := new(ListVlanIpRangesResponse)
+	err := c.cc.Invoke(ctx, VlanService_ListVlanIpRanges_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,10 +75,40 @@ func (c *vlanServiceClient) DeleteVlanIpRange(ctx context.Context, in *DeleteVla
 	return out, nil
 }
 
-func (c *vlanServiceClient) ListVlanIpRanges(ctx context.Context, in *ListVlanIpRangesRequest, opts ...grpc.CallOption) (*ListVlanIpRangesResponse, error) {
+func (c *vlanServiceClient) UpdateVlanIpRange(ctx context.Context, in *UpdateVlanIpRangeRequest, opts ...grpc.CallOption) (*UpdateVlanIpRangeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVlanIpRangesResponse)
-	err := c.cc.Invoke(ctx, VlanService_ListVlanIpRanges_FullMethodName, in, out, cOpts...)
+	out := new(UpdateVlanIpRangeResponse)
+	err := c.cc.Invoke(ctx, VlanService_UpdateVlanIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vlanServiceClient) DedicatePublicIpRange(ctx context.Context, in *DedicatePublicIpRangeRequest, opts ...grpc.CallOption) (*DedicatePublicIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DedicatePublicIpRangeResponse)
+	err := c.cc.Invoke(ctx, VlanService_DedicatePublicIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vlanServiceClient) CreateVlanIpRange(ctx context.Context, in *CreateVlanIpRangeRequest, opts ...grpc.CallOption) (*CreateVlanIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateVlanIpRangeResponse)
+	err := c.cc.Invoke(ctx, VlanService_CreateVlanIpRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vlanServiceClient) ReleasePublicIpRange(ctx context.Context, in *ReleasePublicIpRangeRequest, opts ...grpc.CallOption) (*ReleasePublicIpRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReleasePublicIpRangeResponse)
+	err := c.cc.Invoke(ctx, VlanService_ReleasePublicIpRange_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -121,18 +121,18 @@ func (c *vlanServiceClient) ListVlanIpRanges(ctx context.Context, in *ListVlanIp
 //
 // VlanService provides operations for managing Vlans
 type VlanServiceServer interface {
-	// CreateVlanIpRange Creates a VLAN IP range.
-	CreateVlanIpRange(context.Context, *CreateVlanIpRangeRequest) (*CreateVlanIpRangeResponse, error)
-	// UpdateVlanIpRange Updates a VLAN IP range.
-	UpdateVlanIpRange(context.Context, *UpdateVlanIpRangeRequest) (*UpdateVlanIpRangeResponse, error)
-	// ReleasePublicIpRange Releases a Public IP range back to the system pool
-	ReleasePublicIpRange(context.Context, *ReleasePublicIpRangeRequest) (*ReleasePublicIpRangeResponse, error)
-	// DedicatePublicIpRange Dedicates a Public IP range to an account
-	DedicatePublicIpRange(context.Context, *DedicatePublicIpRangeRequest) (*DedicatePublicIpRangeResponse, error)
-	// DeleteVlanIpRange Deletes a VLAN IP range.
-	DeleteVlanIpRange(context.Context, *DeleteVlanIpRangeRequest) (*DeleteVlanIpRangeResponse, error)
 	// ListVlanIpRanges Lists all VLAN IP ranges.
 	ListVlanIpRanges(context.Context, *ListVlanIpRangesRequest) (*ListVlanIpRangesResponse, error)
+	// DeleteVlanIpRange Deletes a VLAN IP range.
+	DeleteVlanIpRange(context.Context, *DeleteVlanIpRangeRequest) (*DeleteVlanIpRangeResponse, error)
+	// UpdateVlanIpRange Updates a VLAN IP range.
+	UpdateVlanIpRange(context.Context, *UpdateVlanIpRangeRequest) (*UpdateVlanIpRangeResponse, error)
+	// DedicatePublicIpRange Dedicates a Public IP range to an account
+	DedicatePublicIpRange(context.Context, *DedicatePublicIpRangeRequest) (*DedicatePublicIpRangeResponse, error)
+	// CreateVlanIpRange Creates a VLAN IP range.
+	CreateVlanIpRange(context.Context, *CreateVlanIpRangeRequest) (*CreateVlanIpRangeResponse, error)
+	// ReleasePublicIpRange Releases a Public IP range back to the system pool
+	ReleasePublicIpRange(context.Context, *ReleasePublicIpRangeRequest) (*ReleasePublicIpRangeResponse, error)
 	mustEmbedUnimplementedVlanServiceServer()
 }
 
@@ -143,23 +143,23 @@ type VlanServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVlanServiceServer struct{}
 
-func (UnimplementedVlanServiceServer) CreateVlanIpRange(context.Context, *CreateVlanIpRangeRequest) (*CreateVlanIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVlanIpRange not implemented")
-}
-func (UnimplementedVlanServiceServer) UpdateVlanIpRange(context.Context, *UpdateVlanIpRangeRequest) (*UpdateVlanIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVlanIpRange not implemented")
-}
-func (UnimplementedVlanServiceServer) ReleasePublicIpRange(context.Context, *ReleasePublicIpRangeRequest) (*ReleasePublicIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleasePublicIpRange not implemented")
-}
-func (UnimplementedVlanServiceServer) DedicatePublicIpRange(context.Context, *DedicatePublicIpRangeRequest) (*DedicatePublicIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DedicatePublicIpRange not implemented")
+func (UnimplementedVlanServiceServer) ListVlanIpRanges(context.Context, *ListVlanIpRangesRequest) (*ListVlanIpRangesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVlanIpRanges not implemented")
 }
 func (UnimplementedVlanServiceServer) DeleteVlanIpRange(context.Context, *DeleteVlanIpRangeRequest) (*DeleteVlanIpRangeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVlanIpRange not implemented")
 }
-func (UnimplementedVlanServiceServer) ListVlanIpRanges(context.Context, *ListVlanIpRangesRequest) (*ListVlanIpRangesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVlanIpRanges not implemented")
+func (UnimplementedVlanServiceServer) UpdateVlanIpRange(context.Context, *UpdateVlanIpRangeRequest) (*UpdateVlanIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVlanIpRange not implemented")
+}
+func (UnimplementedVlanServiceServer) DedicatePublicIpRange(context.Context, *DedicatePublicIpRangeRequest) (*DedicatePublicIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DedicatePublicIpRange not implemented")
+}
+func (UnimplementedVlanServiceServer) CreateVlanIpRange(context.Context, *CreateVlanIpRangeRequest) (*CreateVlanIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVlanIpRange not implemented")
+}
+func (UnimplementedVlanServiceServer) ReleasePublicIpRange(context.Context, *ReleasePublicIpRangeRequest) (*ReleasePublicIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleasePublicIpRange not implemented")
 }
 func (UnimplementedVlanServiceServer) mustEmbedUnimplementedVlanServiceServer() {}
 func (UnimplementedVlanServiceServer) testEmbeddedByValue()                     {}
@@ -182,74 +182,20 @@ func RegisterVlanServiceServer(s grpc.ServiceRegistrar, srv VlanServiceServer) {
 	s.RegisterService(&VlanService_ServiceDesc, srv)
 }
 
-func _VlanService_CreateVlanIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVlanIpRangeRequest)
+func _VlanService_ListVlanIpRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVlanIpRangesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VlanServiceServer).CreateVlanIpRange(ctx, in)
+		return srv.(VlanServiceServer).ListVlanIpRanges(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VlanService_CreateVlanIpRange_FullMethodName,
+		FullMethod: VlanService_ListVlanIpRanges_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VlanServiceServer).CreateVlanIpRange(ctx, req.(*CreateVlanIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VlanService_UpdateVlanIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVlanIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VlanServiceServer).UpdateVlanIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VlanService_UpdateVlanIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VlanServiceServer).UpdateVlanIpRange(ctx, req.(*UpdateVlanIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VlanService_ReleasePublicIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleasePublicIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VlanServiceServer).ReleasePublicIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VlanService_ReleasePublicIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VlanServiceServer).ReleasePublicIpRange(ctx, req.(*ReleasePublicIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VlanService_DedicatePublicIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DedicatePublicIpRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VlanServiceServer).DedicatePublicIpRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VlanService_DedicatePublicIpRange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VlanServiceServer).DedicatePublicIpRange(ctx, req.(*DedicatePublicIpRangeRequest))
+		return srv.(VlanServiceServer).ListVlanIpRanges(ctx, req.(*ListVlanIpRangesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -272,20 +218,74 @@ func _VlanService_DeleteVlanIpRange_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VlanService_ListVlanIpRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVlanIpRangesRequest)
+func _VlanService_UpdateVlanIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVlanIpRangeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VlanServiceServer).ListVlanIpRanges(ctx, in)
+		return srv.(VlanServiceServer).UpdateVlanIpRange(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VlanService_ListVlanIpRanges_FullMethodName,
+		FullMethod: VlanService_UpdateVlanIpRange_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VlanServiceServer).ListVlanIpRanges(ctx, req.(*ListVlanIpRangesRequest))
+		return srv.(VlanServiceServer).UpdateVlanIpRange(ctx, req.(*UpdateVlanIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VlanService_DedicatePublicIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DedicatePublicIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VlanServiceServer).DedicatePublicIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VlanService_DedicatePublicIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VlanServiceServer).DedicatePublicIpRange(ctx, req.(*DedicatePublicIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VlanService_CreateVlanIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVlanIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VlanServiceServer).CreateVlanIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VlanService_CreateVlanIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VlanServiceServer).CreateVlanIpRange(ctx, req.(*CreateVlanIpRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VlanService_ReleasePublicIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleasePublicIpRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VlanServiceServer).ReleasePublicIpRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VlanService_ReleasePublicIpRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VlanServiceServer).ReleasePublicIpRange(ctx, req.(*ReleasePublicIpRangeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -298,28 +298,28 @@ var VlanService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VlanServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateVlanIpRange",
-			Handler:    _VlanService_CreateVlanIpRange_Handler,
-		},
-		{
-			MethodName: "UpdateVlanIpRange",
-			Handler:    _VlanService_UpdateVlanIpRange_Handler,
-		},
-		{
-			MethodName: "ReleasePublicIpRange",
-			Handler:    _VlanService_ReleasePublicIpRange_Handler,
-		},
-		{
-			MethodName: "DedicatePublicIpRange",
-			Handler:    _VlanService_DedicatePublicIpRange_Handler,
+			MethodName: "ListVlanIpRanges",
+			Handler:    _VlanService_ListVlanIpRanges_Handler,
 		},
 		{
 			MethodName: "DeleteVlanIpRange",
 			Handler:    _VlanService_DeleteVlanIpRange_Handler,
 		},
 		{
-			MethodName: "ListVlanIpRanges",
-			Handler:    _VlanService_ListVlanIpRanges_Handler,
+			MethodName: "UpdateVlanIpRange",
+			Handler:    _VlanService_UpdateVlanIpRange_Handler,
+		},
+		{
+			MethodName: "DedicatePublicIpRange",
+			Handler:    _VlanService_DedicatePublicIpRange_Handler,
+		},
+		{
+			MethodName: "CreateVlanIpRange",
+			Handler:    _VlanService_CreateVlanIpRange_Handler,
+		},
+		{
+			MethodName: "ReleasePublicIpRange",
+			Handler:    _VlanService_ReleasePublicIpRange_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

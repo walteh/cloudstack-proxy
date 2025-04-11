@@ -33,54 +33,54 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// UserServiceListUsersProcedure is the fully-qualified name of the UserService's ListUsers RPC.
-	UserServiceListUsersProcedure = "/cloudstack.management.user.v1.UserService/ListUsers"
-	// UserServiceGetUserProcedure is the fully-qualified name of the UserService's GetUser RPC.
-	UserServiceGetUserProcedure = "/cloudstack.management.user.v1.UserService/GetUser"
-	// UserServiceDeleteUserProcedure is the fully-qualified name of the UserService's DeleteUser RPC.
-	UserServiceDeleteUserProcedure = "/cloudstack.management.user.v1.UserService/DeleteUser"
 	// UserServiceMoveUserProcedure is the fully-qualified name of the UserService's MoveUser RPC.
 	UserServiceMoveUserProcedure = "/cloudstack.management.user.v1.UserService/MoveUser"
 	// UserServiceDisableUserProcedure is the fully-qualified name of the UserService's DisableUser RPC.
 	UserServiceDisableUserProcedure = "/cloudstack.management.user.v1.UserService/DisableUser"
+	// UserServiceUpdateUserProcedure is the fully-qualified name of the UserService's UpdateUser RPC.
+	UserServiceUpdateUserProcedure = "/cloudstack.management.user.v1.UserService/UpdateUser"
+	// UserServiceGetUserProcedure is the fully-qualified name of the UserService's GetUser RPC.
+	UserServiceGetUserProcedure = "/cloudstack.management.user.v1.UserService/GetUser"
+	// UserServiceDeleteUserProcedure is the fully-qualified name of the UserService's DeleteUser RPC.
+	UserServiceDeleteUserProcedure = "/cloudstack.management.user.v1.UserService/DeleteUser"
 	// UserServiceGetUserKeysProcedure is the fully-qualified name of the UserService's GetUserKeys RPC.
 	UserServiceGetUserKeysProcedure = "/cloudstack.management.user.v1.UserService/GetUserKeys"
 	// UserServiceEnableUserProcedure is the fully-qualified name of the UserService's EnableUser RPC.
 	UserServiceEnableUserProcedure = "/cloudstack.management.user.v1.UserService/EnableUser"
+	// UserServiceListUsersProcedure is the fully-qualified name of the UserService's ListUsers RPC.
+	UserServiceListUsersProcedure = "/cloudstack.management.user.v1.UserService/ListUsers"
+	// UserServiceCreateUserProcedure is the fully-qualified name of the UserService's CreateUser RPC.
+	UserServiceCreateUserProcedure = "/cloudstack.management.user.v1.UserService/CreateUser"
 	// UserServiceRegisterProcedure is the fully-qualified name of the UserService's Register RPC.
 	UserServiceRegisterProcedure = "/cloudstack.management.user.v1.UserService/Register"
 	// UserServiceLockUserProcedure is the fully-qualified name of the UserService's LockUser RPC.
 	UserServiceLockUserProcedure = "/cloudstack.management.user.v1.UserService/LockUser"
-	// UserServiceUpdateUserProcedure is the fully-qualified name of the UserService's UpdateUser RPC.
-	UserServiceUpdateUserProcedure = "/cloudstack.management.user.v1.UserService/UpdateUser"
-	// UserServiceCreateUserProcedure is the fully-qualified name of the UserService's CreateUser RPC.
-	UserServiceCreateUserProcedure = "/cloudstack.management.user.v1.UserService/CreateUser"
 )
 
 // UserServiceClient is a client for the cloudstack.management.user.v1.UserService service.
 type UserServiceClient interface {
-	// ListUsers Lists user accounts
-	ListUsers(context.Context, *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error)
-	// GetUser Find user account by API key
-	GetUser(context.Context, *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error)
-	// DeleteUser Deletes a user for an account
-	DeleteUser(context.Context, *connect.Request[v1.DeleteUserRequest]) (*connect.Response[v1.DeleteUserResponse], error)
 	// MoveUser Moves a user to another account in the same domain.
 	MoveUser(context.Context, *connect.Request[v1.MoveUserRequest]) (*connect.Response[v1.MoveUserResponse], error)
 	// DisableUser Disables a user account
 	DisableUser(context.Context, *connect.Request[v1.DisableUserRequest]) (*connect.Response[v1.DisableUserResponse], error)
+	// UpdateUser Updates a user account
+	UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error)
+	// GetUser Find user account by API key
+	GetUser(context.Context, *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error)
+	// DeleteUser Deletes a user for an account
+	DeleteUser(context.Context, *connect.Request[v1.DeleteUserRequest]) (*connect.Response[v1.DeleteUserResponse], error)
 	// GetUserKeys This command allows the user to query the seceret and API keys for the account
 	GetUserKeys(context.Context, *connect.Request[v1.GetUserKeysRequest]) (*connect.Response[v1.GetUserKeysResponse], error)
 	// EnableUser Enables a user account
 	EnableUser(context.Context, *connect.Request[v1.EnableUserRequest]) (*connect.Response[v1.EnableUserResponse], error)
+	// ListUsers Lists user accounts
+	ListUsers(context.Context, *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error)
+	// CreateUser Creates a user for an account that already exists
+	CreateUser(context.Context, *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error)
 	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
 	Register(context.Context, *connect.Request[v1.RegisterRequest]) (*connect.Response[v1.RegisterResponse], error)
 	// LockUser Locks a user account
 	LockUser(context.Context, *connect.Request[v1.LockUserRequest]) (*connect.Response[v1.LockUserResponse], error)
-	// UpdateUser Updates a user account
-	UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error)
-	// CreateUser Creates a user for an account that already exists
-	CreateUser(context.Context, *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error)
 }
 
 // NewUserServiceClient constructs a client for the cloudstack.management.user.v1.UserService
@@ -94,10 +94,22 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	userServiceMethods := v1.File_cloudstack_management_user_v1_user_gen_proto.Services().ByName("UserService").Methods()
 	return &userServiceClient{
-		listUsers: connect.NewClient[v1.ListUsersRequest, v1.ListUsersResponse](
+		moveUser: connect.NewClient[v1.MoveUserRequest, v1.MoveUserResponse](
 			httpClient,
-			baseURL+UserServiceListUsersProcedure,
-			connect.WithSchema(userServiceMethods.ByName("ListUsers")),
+			baseURL+UserServiceMoveUserProcedure,
+			connect.WithSchema(userServiceMethods.ByName("MoveUser")),
+			connect.WithClientOptions(opts...),
+		),
+		disableUser: connect.NewClient[v1.DisableUserRequest, v1.DisableUserResponse](
+			httpClient,
+			baseURL+UserServiceDisableUserProcedure,
+			connect.WithSchema(userServiceMethods.ByName("DisableUser")),
+			connect.WithClientOptions(opts...),
+		),
+		updateUser: connect.NewClient[v1.UpdateUserRequest, v1.UpdateUserResponse](
+			httpClient,
+			baseURL+UserServiceUpdateUserProcedure,
+			connect.WithSchema(userServiceMethods.ByName("UpdateUser")),
 			connect.WithClientOptions(opts...),
 		),
 		getUser: connect.NewClient[v1.GetUserRequest, v1.GetUserResponse](
@@ -112,18 +124,6 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("DeleteUser")),
 			connect.WithClientOptions(opts...),
 		),
-		moveUser: connect.NewClient[v1.MoveUserRequest, v1.MoveUserResponse](
-			httpClient,
-			baseURL+UserServiceMoveUserProcedure,
-			connect.WithSchema(userServiceMethods.ByName("MoveUser")),
-			connect.WithClientOptions(opts...),
-		),
-		disableUser: connect.NewClient[v1.DisableUserRequest, v1.DisableUserResponse](
-			httpClient,
-			baseURL+UserServiceDisableUserProcedure,
-			connect.WithSchema(userServiceMethods.ByName("DisableUser")),
-			connect.WithClientOptions(opts...),
-		),
 		getUserKeys: connect.NewClient[v1.GetUserKeysRequest, v1.GetUserKeysResponse](
 			httpClient,
 			baseURL+UserServiceGetUserKeysProcedure,
@@ -134,6 +134,18 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+UserServiceEnableUserProcedure,
 			connect.WithSchema(userServiceMethods.ByName("EnableUser")),
+			connect.WithClientOptions(opts...),
+		),
+		listUsers: connect.NewClient[v1.ListUsersRequest, v1.ListUsersResponse](
+			httpClient,
+			baseURL+UserServiceListUsersProcedure,
+			connect.WithSchema(userServiceMethods.ByName("ListUsers")),
+			connect.WithClientOptions(opts...),
+		),
+		createUser: connect.NewClient[v1.CreateUserRequest, v1.CreateUserResponse](
+			httpClient,
+			baseURL+UserServiceCreateUserProcedure,
+			connect.WithSchema(userServiceMethods.ByName("CreateUser")),
 			connect.WithClientOptions(opts...),
 		),
 		register: connect.NewClient[v1.RegisterRequest, v1.RegisterResponse](
@@ -148,49 +160,22 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("LockUser")),
 			connect.WithClientOptions(opts...),
 		),
-		updateUser: connect.NewClient[v1.UpdateUserRequest, v1.UpdateUserResponse](
-			httpClient,
-			baseURL+UserServiceUpdateUserProcedure,
-			connect.WithSchema(userServiceMethods.ByName("UpdateUser")),
-			connect.WithClientOptions(opts...),
-		),
-		createUser: connect.NewClient[v1.CreateUserRequest, v1.CreateUserResponse](
-			httpClient,
-			baseURL+UserServiceCreateUserProcedure,
-			connect.WithSchema(userServiceMethods.ByName("CreateUser")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // userServiceClient implements UserServiceClient.
 type userServiceClient struct {
-	listUsers   *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
-	getUser     *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
-	deleteUser  *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
 	moveUser    *connect.Client[v1.MoveUserRequest, v1.MoveUserResponse]
 	disableUser *connect.Client[v1.DisableUserRequest, v1.DisableUserResponse]
+	updateUser  *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
+	getUser     *connect.Client[v1.GetUserRequest, v1.GetUserResponse]
+	deleteUser  *connect.Client[v1.DeleteUserRequest, v1.DeleteUserResponse]
 	getUserKeys *connect.Client[v1.GetUserKeysRequest, v1.GetUserKeysResponse]
 	enableUser  *connect.Client[v1.EnableUserRequest, v1.EnableUserResponse]
+	listUsers   *connect.Client[v1.ListUsersRequest, v1.ListUsersResponse]
+	createUser  *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
 	register    *connect.Client[v1.RegisterRequest, v1.RegisterResponse]
 	lockUser    *connect.Client[v1.LockUserRequest, v1.LockUserResponse]
-	updateUser  *connect.Client[v1.UpdateUserRequest, v1.UpdateUserResponse]
-	createUser  *connect.Client[v1.CreateUserRequest, v1.CreateUserResponse]
-}
-
-// ListUsers calls cloudstack.management.user.v1.UserService.ListUsers.
-func (c *userServiceClient) ListUsers(ctx context.Context, req *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error) {
-	return c.listUsers.CallUnary(ctx, req)
-}
-
-// GetUser calls cloudstack.management.user.v1.UserService.GetUser.
-func (c *userServiceClient) GetUser(ctx context.Context, req *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error) {
-	return c.getUser.CallUnary(ctx, req)
-}
-
-// DeleteUser calls cloudstack.management.user.v1.UserService.DeleteUser.
-func (c *userServiceClient) DeleteUser(ctx context.Context, req *connect.Request[v1.DeleteUserRequest]) (*connect.Response[v1.DeleteUserResponse], error) {
-	return c.deleteUser.CallUnary(ctx, req)
 }
 
 // MoveUser calls cloudstack.management.user.v1.UserService.MoveUser.
@@ -203,6 +188,21 @@ func (c *userServiceClient) DisableUser(ctx context.Context, req *connect.Reques
 	return c.disableUser.CallUnary(ctx, req)
 }
 
+// UpdateUser calls cloudstack.management.user.v1.UserService.UpdateUser.
+func (c *userServiceClient) UpdateUser(ctx context.Context, req *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error) {
+	return c.updateUser.CallUnary(ctx, req)
+}
+
+// GetUser calls cloudstack.management.user.v1.UserService.GetUser.
+func (c *userServiceClient) GetUser(ctx context.Context, req *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error) {
+	return c.getUser.CallUnary(ctx, req)
+}
+
+// DeleteUser calls cloudstack.management.user.v1.UserService.DeleteUser.
+func (c *userServiceClient) DeleteUser(ctx context.Context, req *connect.Request[v1.DeleteUserRequest]) (*connect.Response[v1.DeleteUserResponse], error) {
+	return c.deleteUser.CallUnary(ctx, req)
+}
+
 // GetUserKeys calls cloudstack.management.user.v1.UserService.GetUserKeys.
 func (c *userServiceClient) GetUserKeys(ctx context.Context, req *connect.Request[v1.GetUserKeysRequest]) (*connect.Response[v1.GetUserKeysResponse], error) {
 	return c.getUserKeys.CallUnary(ctx, req)
@@ -211,6 +211,16 @@ func (c *userServiceClient) GetUserKeys(ctx context.Context, req *connect.Reques
 // EnableUser calls cloudstack.management.user.v1.UserService.EnableUser.
 func (c *userServiceClient) EnableUser(ctx context.Context, req *connect.Request[v1.EnableUserRequest]) (*connect.Response[v1.EnableUserResponse], error) {
 	return c.enableUser.CallUnary(ctx, req)
+}
+
+// ListUsers calls cloudstack.management.user.v1.UserService.ListUsers.
+func (c *userServiceClient) ListUsers(ctx context.Context, req *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error) {
+	return c.listUsers.CallUnary(ctx, req)
+}
+
+// CreateUser calls cloudstack.management.user.v1.UserService.CreateUser.
+func (c *userServiceClient) CreateUser(ctx context.Context, req *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error) {
+	return c.createUser.CallUnary(ctx, req)
 }
 
 // Register calls cloudstack.management.user.v1.UserService.Register.
@@ -223,40 +233,30 @@ func (c *userServiceClient) LockUser(ctx context.Context, req *connect.Request[v
 	return c.lockUser.CallUnary(ctx, req)
 }
 
-// UpdateUser calls cloudstack.management.user.v1.UserService.UpdateUser.
-func (c *userServiceClient) UpdateUser(ctx context.Context, req *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error) {
-	return c.updateUser.CallUnary(ctx, req)
-}
-
-// CreateUser calls cloudstack.management.user.v1.UserService.CreateUser.
-func (c *userServiceClient) CreateUser(ctx context.Context, req *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error) {
-	return c.createUser.CallUnary(ctx, req)
-}
-
 // UserServiceHandler is an implementation of the cloudstack.management.user.v1.UserService service.
 type UserServiceHandler interface {
-	// ListUsers Lists user accounts
-	ListUsers(context.Context, *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error)
-	// GetUser Find user account by API key
-	GetUser(context.Context, *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error)
-	// DeleteUser Deletes a user for an account
-	DeleteUser(context.Context, *connect.Request[v1.DeleteUserRequest]) (*connect.Response[v1.DeleteUserResponse], error)
 	// MoveUser Moves a user to another account in the same domain.
 	MoveUser(context.Context, *connect.Request[v1.MoveUserRequest]) (*connect.Response[v1.MoveUserResponse], error)
 	// DisableUser Disables a user account
 	DisableUser(context.Context, *connect.Request[v1.DisableUserRequest]) (*connect.Response[v1.DisableUserResponse], error)
+	// UpdateUser Updates a user account
+	UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error)
+	// GetUser Find user account by API key
+	GetUser(context.Context, *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error)
+	// DeleteUser Deletes a user for an account
+	DeleteUser(context.Context, *connect.Request[v1.DeleteUserRequest]) (*connect.Response[v1.DeleteUserResponse], error)
 	// GetUserKeys This command allows the user to query the seceret and API keys for the account
 	GetUserKeys(context.Context, *connect.Request[v1.GetUserKeysRequest]) (*connect.Response[v1.GetUserKeysResponse], error)
 	// EnableUser Enables a user account
 	EnableUser(context.Context, *connect.Request[v1.EnableUserRequest]) (*connect.Response[v1.EnableUserResponse], error)
+	// ListUsers Lists user accounts
+	ListUsers(context.Context, *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error)
+	// CreateUser Creates a user for an account that already exists
+	CreateUser(context.Context, *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error)
 	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
 	Register(context.Context, *connect.Request[v1.RegisterRequest]) (*connect.Response[v1.RegisterResponse], error)
 	// LockUser Locks a user account
 	LockUser(context.Context, *connect.Request[v1.LockUserRequest]) (*connect.Response[v1.LockUserResponse], error)
-	// UpdateUser Updates a user account
-	UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error)
-	// CreateUser Creates a user for an account that already exists
-	CreateUser(context.Context, *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error)
 }
 
 // NewUserServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -266,10 +266,22 @@ type UserServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	userServiceMethods := v1.File_cloudstack_management_user_v1_user_gen_proto.Services().ByName("UserService").Methods()
-	userServiceListUsersHandler := connect.NewUnaryHandler(
-		UserServiceListUsersProcedure,
-		svc.ListUsers,
-		connect.WithSchema(userServiceMethods.ByName("ListUsers")),
+	userServiceMoveUserHandler := connect.NewUnaryHandler(
+		UserServiceMoveUserProcedure,
+		svc.MoveUser,
+		connect.WithSchema(userServiceMethods.ByName("MoveUser")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceDisableUserHandler := connect.NewUnaryHandler(
+		UserServiceDisableUserProcedure,
+		svc.DisableUser,
+		connect.WithSchema(userServiceMethods.ByName("DisableUser")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceUpdateUserHandler := connect.NewUnaryHandler(
+		UserServiceUpdateUserProcedure,
+		svc.UpdateUser,
+		connect.WithSchema(userServiceMethods.ByName("UpdateUser")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceGetUserHandler := connect.NewUnaryHandler(
@@ -284,18 +296,6 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(userServiceMethods.ByName("DeleteUser")),
 		connect.WithHandlerOptions(opts...),
 	)
-	userServiceMoveUserHandler := connect.NewUnaryHandler(
-		UserServiceMoveUserProcedure,
-		svc.MoveUser,
-		connect.WithSchema(userServiceMethods.ByName("MoveUser")),
-		connect.WithHandlerOptions(opts...),
-	)
-	userServiceDisableUserHandler := connect.NewUnaryHandler(
-		UserServiceDisableUserProcedure,
-		svc.DisableUser,
-		connect.WithSchema(userServiceMethods.ByName("DisableUser")),
-		connect.WithHandlerOptions(opts...),
-	)
 	userServiceGetUserKeysHandler := connect.NewUnaryHandler(
 		UserServiceGetUserKeysProcedure,
 		svc.GetUserKeys,
@@ -306,6 +306,18 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		UserServiceEnableUserProcedure,
 		svc.EnableUser,
 		connect.WithSchema(userServiceMethods.ByName("EnableUser")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceListUsersHandler := connect.NewUnaryHandler(
+		UserServiceListUsersProcedure,
+		svc.ListUsers,
+		connect.WithSchema(userServiceMethods.ByName("ListUsers")),
+		connect.WithHandlerOptions(opts...),
+	)
+	userServiceCreateUserHandler := connect.NewUnaryHandler(
+		UserServiceCreateUserProcedure,
+		svc.CreateUser,
+		connect.WithSchema(userServiceMethods.ByName("CreateUser")),
 		connect.WithHandlerOptions(opts...),
 	)
 	userServiceRegisterHandler := connect.NewUnaryHandler(
@@ -320,42 +332,30 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(userServiceMethods.ByName("LockUser")),
 		connect.WithHandlerOptions(opts...),
 	)
-	userServiceUpdateUserHandler := connect.NewUnaryHandler(
-		UserServiceUpdateUserProcedure,
-		svc.UpdateUser,
-		connect.WithSchema(userServiceMethods.ByName("UpdateUser")),
-		connect.WithHandlerOptions(opts...),
-	)
-	userServiceCreateUserHandler := connect.NewUnaryHandler(
-		UserServiceCreateUserProcedure,
-		svc.CreateUser,
-		connect.WithSchema(userServiceMethods.ByName("CreateUser")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cloudstack.management.user.v1.UserService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case UserServiceListUsersProcedure:
-			userServiceListUsersHandler.ServeHTTP(w, r)
-		case UserServiceGetUserProcedure:
-			userServiceGetUserHandler.ServeHTTP(w, r)
-		case UserServiceDeleteUserProcedure:
-			userServiceDeleteUserHandler.ServeHTTP(w, r)
 		case UserServiceMoveUserProcedure:
 			userServiceMoveUserHandler.ServeHTTP(w, r)
 		case UserServiceDisableUserProcedure:
 			userServiceDisableUserHandler.ServeHTTP(w, r)
+		case UserServiceUpdateUserProcedure:
+			userServiceUpdateUserHandler.ServeHTTP(w, r)
+		case UserServiceGetUserProcedure:
+			userServiceGetUserHandler.ServeHTTP(w, r)
+		case UserServiceDeleteUserProcedure:
+			userServiceDeleteUserHandler.ServeHTTP(w, r)
 		case UserServiceGetUserKeysProcedure:
 			userServiceGetUserKeysHandler.ServeHTTP(w, r)
 		case UserServiceEnableUserProcedure:
 			userServiceEnableUserHandler.ServeHTTP(w, r)
+		case UserServiceListUsersProcedure:
+			userServiceListUsersHandler.ServeHTTP(w, r)
+		case UserServiceCreateUserProcedure:
+			userServiceCreateUserHandler.ServeHTTP(w, r)
 		case UserServiceRegisterProcedure:
 			userServiceRegisterHandler.ServeHTTP(w, r)
 		case UserServiceLockUserProcedure:
 			userServiceLockUserHandler.ServeHTTP(w, r)
-		case UserServiceUpdateUserProcedure:
-			userServiceUpdateUserHandler.ServeHTTP(w, r)
-		case UserServiceCreateUserProcedure:
-			userServiceCreateUserHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -365,8 +365,16 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 // UnimplementedUserServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedUserServiceHandler struct{}
 
-func (UnimplementedUserServiceHandler) ListUsers(context.Context, *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.ListUsers is not implemented"))
+func (UnimplementedUserServiceHandler) MoveUser(context.Context, *connect.Request[v1.MoveUserRequest]) (*connect.Response[v1.MoveUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.MoveUser is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) DisableUser(context.Context, *connect.Request[v1.DisableUserRequest]) (*connect.Response[v1.DisableUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.DisableUser is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.UpdateUser is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) GetUser(context.Context, *connect.Request[v1.GetUserRequest]) (*connect.Response[v1.GetUserResponse], error) {
@@ -377,14 +385,6 @@ func (UnimplementedUserServiceHandler) DeleteUser(context.Context, *connect.Requ
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.DeleteUser is not implemented"))
 }
 
-func (UnimplementedUserServiceHandler) MoveUser(context.Context, *connect.Request[v1.MoveUserRequest]) (*connect.Response[v1.MoveUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.MoveUser is not implemented"))
-}
-
-func (UnimplementedUserServiceHandler) DisableUser(context.Context, *connect.Request[v1.DisableUserRequest]) (*connect.Response[v1.DisableUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.DisableUser is not implemented"))
-}
-
 func (UnimplementedUserServiceHandler) GetUserKeys(context.Context, *connect.Request[v1.GetUserKeysRequest]) (*connect.Response[v1.GetUserKeysResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.GetUserKeys is not implemented"))
 }
@@ -393,18 +393,18 @@ func (UnimplementedUserServiceHandler) EnableUser(context.Context, *connect.Requ
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.EnableUser is not implemented"))
 }
 
+func (UnimplementedUserServiceHandler) ListUsers(context.Context, *connect.Request[v1.ListUsersRequest]) (*connect.Response[v1.ListUsersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.ListUsers is not implemented"))
+}
+
+func (UnimplementedUserServiceHandler) CreateUser(context.Context, *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.CreateUser is not implemented"))
+}
+
 func (UnimplementedUserServiceHandler) Register(context.Context, *connect.Request[v1.RegisterRequest]) (*connect.Response[v1.RegisterResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.Register is not implemented"))
 }
 
 func (UnimplementedUserServiceHandler) LockUser(context.Context, *connect.Request[v1.LockUserRequest]) (*connect.Response[v1.LockUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.LockUser is not implemented"))
-}
-
-func (UnimplementedUserServiceHandler) UpdateUser(context.Context, *connect.Request[v1.UpdateUserRequest]) (*connect.Response[v1.UpdateUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.UpdateUser is not implemented"))
-}
-
-func (UnimplementedUserServiceHandler) CreateUser(context.Context, *connect.Request[v1.CreateUserRequest]) (*connect.Response[v1.CreateUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.user.v1.UserService.CreateUser is not implemented"))
 }

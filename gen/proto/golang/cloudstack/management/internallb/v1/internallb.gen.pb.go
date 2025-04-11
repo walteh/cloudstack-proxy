@@ -24,6 +24,247 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ConfigureInternalLoadBalancerElementRequest represents the parameters for configures an internal load balancer element.
+type ConfigureInternalLoadBalancerElementRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the internal lb provider
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Enables/Disables the Internal Load Balancer element
+	Enabled *bool `protobuf:"varint,2,opt,name=enabled" json:"enabled,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) Reset() {
+	*x = ConfigureInternalLoadBalancerElementRequest{}
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigureInternalLoadBalancerElementRequest) ProtoMessage() {}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigureInternalLoadBalancerElementRequest.ProtoReflect.Descriptor instead.
+func (*ConfigureInternalLoadBalancerElementRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ConfigureInternalLoadBalancerElementRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ConfigureInternalLoadBalancerElementResponse represents the response from configures an internal load balancer element.
+type ConfigureInternalLoadBalancerElementResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigureInternalLoadBalancerElementResponse) Reset() {
+	*x = ConfigureInternalLoadBalancerElementResponse{}
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigureInternalLoadBalancerElementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigureInternalLoadBalancerElementResponse) ProtoMessage() {}
+
+func (x *ConfigureInternalLoadBalancerElementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigureInternalLoadBalancerElementResponse.ProtoReflect.Descriptor instead.
+func (*ConfigureInternalLoadBalancerElementResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ConfigureInternalLoadBalancerElementResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateInternalLoadBalancerElementRequest represents the parameters for create an internal load balancer element.
+type CreateInternalLoadBalancerElementRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the network service provider ID of the internal load balancer element
+	NspId *int64 `protobuf:"varint,1,opt,name=nsp_id,json=nspId" json:"nsp_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateInternalLoadBalancerElementRequest) Reset() {
+	*x = CreateInternalLoadBalancerElementRequest{}
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateInternalLoadBalancerElementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateInternalLoadBalancerElementRequest) ProtoMessage() {}
+
+func (x *CreateInternalLoadBalancerElementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateInternalLoadBalancerElementRequest.ProtoReflect.Descriptor instead.
+func (*CreateInternalLoadBalancerElementRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateInternalLoadBalancerElementRequest) GetNspId() int64 {
+	if x != nil && x.NspId != nil {
+		return *x.NspId
+	}
+	return 0
+}
+
+func (x *CreateInternalLoadBalancerElementRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateInternalLoadBalancerElementRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateInternalLoadBalancerElementRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateInternalLoadBalancerElementResponse represents the response from create an internal load balancer element.
+type CreateInternalLoadBalancerElementResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateInternalLoadBalancerElementResponse) Reset() {
+	*x = CreateInternalLoadBalancerElementResponse{}
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateInternalLoadBalancerElementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateInternalLoadBalancerElementResponse) ProtoMessage() {}
+
+func (x *CreateInternalLoadBalancerElementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateInternalLoadBalancerElementResponse.ProtoReflect.Descriptor instead.
+func (*CreateInternalLoadBalancerElementResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreateInternalLoadBalancerElementResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ListInternalLoadBalancerElementsRequest represents the parameters for lists all available internal load balancer elements.
 type ListInternalLoadBalancerElementsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -44,7 +285,7 @@ type ListInternalLoadBalancerElementsRequest struct {
 
 func (x *ListInternalLoadBalancerElementsRequest) Reset() {
 	*x = ListInternalLoadBalancerElementsRequest{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -56,7 +297,7 @@ func (x *ListInternalLoadBalancerElementsRequest) String() string {
 func (*ListInternalLoadBalancerElementsRequest) ProtoMessage() {}
 
 func (x *ListInternalLoadBalancerElementsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,7 +310,7 @@ func (x *ListInternalLoadBalancerElementsRequest) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use ListInternalLoadBalancerElementsRequest.ProtoReflect.Descriptor instead.
 func (*ListInternalLoadBalancerElementsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListInternalLoadBalancerElementsRequest) GetId() int64 {
@@ -134,7 +375,7 @@ type ListInternalLoadBalancerElementsResponse struct {
 
 func (x *ListInternalLoadBalancerElementsResponse) Reset() {
 	*x = ListInternalLoadBalancerElementsResponse{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -146,7 +387,7 @@ func (x *ListInternalLoadBalancerElementsResponse) String() string {
 func (*ListInternalLoadBalancerElementsResponse) ProtoMessage() {}
 
 func (x *ListInternalLoadBalancerElementsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +400,7 @@ func (x *ListInternalLoadBalancerElementsResponse) ProtoReflect() protoreflect.M
 
 // Deprecated: Use ListInternalLoadBalancerElementsResponse.ProtoReflect.Descriptor instead.
 func (*ListInternalLoadBalancerElementsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListInternalLoadBalancerElementsResponse) GetItems() []*InternalLoadBalancerElement {
@@ -220,7 +461,7 @@ type ListInternalLBVMsRequest struct {
 
 func (x *ListInternalLBVMsRequest) Reset() {
 	*x = ListInternalLBVMsRequest{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -232,7 +473,7 @@ func (x *ListInternalLBVMsRequest) String() string {
 func (*ListInternalLBVMsRequest) ProtoMessage() {}
 
 func (x *ListInternalLBVMsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -245,7 +486,7 @@ func (x *ListInternalLBVMsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInternalLBVMsRequest.ProtoReflect.Descriptor instead.
 func (*ListInternalLBVMsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListInternalLBVMsRequest) GetHostId() int64 {
@@ -394,7 +635,7 @@ type ListInternalLBVMsResponse struct {
 
 func (x *ListInternalLBVMsResponse) Reset() {
 	*x = ListInternalLBVMsResponse{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -406,7 +647,7 @@ func (x *ListInternalLBVMsResponse) String() string {
 func (*ListInternalLBVMsResponse) ProtoMessage() {}
 
 func (x *ListInternalLBVMsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -419,7 +660,7 @@ func (x *ListInternalLBVMsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInternalLBVMsResponse.ProtoReflect.Descriptor instead.
 func (*ListInternalLBVMsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListInternalLBVMsResponse) GetItems() []*DomainRouter {
@@ -436,131 +677,6 @@ func (x *ListInternalLBVMsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ConfigureInternalLoadBalancerElementRequest represents the parameters for configures an internal load balancer element.
-type ConfigureInternalLoadBalancerElementRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the internal lb provider
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Enables/Disables the Internal Load Balancer element
-	Enabled *bool `protobuf:"varint,2,opt,name=enabled" json:"enabled,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) Reset() {
-	*x = ConfigureInternalLoadBalancerElementRequest{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ConfigureInternalLoadBalancerElementRequest) ProtoMessage() {}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ConfigureInternalLoadBalancerElementRequest.ProtoReflect.Descriptor instead.
-func (*ConfigureInternalLoadBalancerElementRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) GetEnabled() bool {
-	if x != nil && x.Enabled != nil {
-		return *x.Enabled
-	}
-	return false
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ConfigureInternalLoadBalancerElementRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ConfigureInternalLoadBalancerElementResponse represents the response from configures an internal load balancer element.
-type ConfigureInternalLoadBalancerElementResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ConfigureInternalLoadBalancerElementResponse) Reset() {
-	*x = ConfigureInternalLoadBalancerElementResponse{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ConfigureInternalLoadBalancerElementResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ConfigureInternalLoadBalancerElementResponse) ProtoMessage() {}
-
-func (x *ConfigureInternalLoadBalancerElementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ConfigureInternalLoadBalancerElementResponse.ProtoReflect.Descriptor instead.
-func (*ConfigureInternalLoadBalancerElementResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ConfigureInternalLoadBalancerElementResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // StartInternalLBVMRequest represents the parameters for starts an existing internal lb vm.
 type StartInternalLBVMRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -575,7 +691,7 @@ type StartInternalLBVMRequest struct {
 
 func (x *StartInternalLBVMRequest) Reset() {
 	*x = StartInternalLBVMRequest{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -587,7 +703,7 @@ func (x *StartInternalLBVMRequest) String() string {
 func (*StartInternalLBVMRequest) ProtoMessage() {}
 
 func (x *StartInternalLBVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -600,7 +716,7 @@ func (x *StartInternalLBVMRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartInternalLBVMRequest.ProtoReflect.Descriptor instead.
 func (*StartInternalLBVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *StartInternalLBVMRequest) GetId() int64 {
@@ -642,7 +758,7 @@ type StartInternalLBVMResponse struct {
 
 func (x *StartInternalLBVMResponse) Reset() {
 	*x = StartInternalLBVMResponse{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -654,7 +770,7 @@ func (x *StartInternalLBVMResponse) String() string {
 func (*StartInternalLBVMResponse) ProtoMessage() {}
 
 func (x *StartInternalLBVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -667,7 +783,7 @@ func (x *StartInternalLBVMResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartInternalLBVMResponse.ProtoReflect.Descriptor instead.
 func (*StartInternalLBVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *StartInternalLBVMResponse) GetResult() *Result {
@@ -693,7 +809,7 @@ type StopInternalLBVMRequest struct {
 
 func (x *StopInternalLBVMRequest) Reset() {
 	*x = StopInternalLBVMRequest{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -705,7 +821,7 @@ func (x *StopInternalLBVMRequest) String() string {
 func (*StopInternalLBVMRequest) ProtoMessage() {}
 
 func (x *StopInternalLBVMRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -718,7 +834,7 @@ func (x *StopInternalLBVMRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopInternalLBVMRequest.ProtoReflect.Descriptor instead.
 func (*StopInternalLBVMRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *StopInternalLBVMRequest) GetId() int64 {
@@ -767,7 +883,7 @@ type StopInternalLBVMResponse struct {
 
 func (x *StopInternalLBVMResponse) Reset() {
 	*x = StopInternalLBVMResponse{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -779,7 +895,7 @@ func (x *StopInternalLBVMResponse) String() string {
 func (*StopInternalLBVMResponse) ProtoMessage() {}
 
 func (x *StopInternalLBVMResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -792,126 +908,10 @@ func (x *StopInternalLBVMResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopInternalLBVMResponse.ProtoReflect.Descriptor instead.
 func (*StopInternalLBVMResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *StopInternalLBVMResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateInternalLoadBalancerElementRequest represents the parameters for create an internal load balancer element.
-type CreateInternalLoadBalancerElementRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the network service provider ID of the internal load balancer element
-	NspId *int64 `protobuf:"varint,1,opt,name=nsp_id,json=nspId" json:"nsp_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateInternalLoadBalancerElementRequest) Reset() {
-	*x = CreateInternalLoadBalancerElementRequest{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateInternalLoadBalancerElementRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateInternalLoadBalancerElementRequest) ProtoMessage() {}
-
-func (x *CreateInternalLoadBalancerElementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateInternalLoadBalancerElementRequest.ProtoReflect.Descriptor instead.
-func (*CreateInternalLoadBalancerElementRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *CreateInternalLoadBalancerElementRequest) GetNspId() int64 {
-	if x != nil && x.NspId != nil {
-		return *x.NspId
-	}
-	return 0
-}
-
-func (x *CreateInternalLoadBalancerElementRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateInternalLoadBalancerElementRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateInternalLoadBalancerElementRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateInternalLoadBalancerElementResponse represents the response from create an internal load balancer element.
-type CreateInternalLoadBalancerElementResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateInternalLoadBalancerElementResponse) Reset() {
-	*x = CreateInternalLoadBalancerElementResponse{}
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateInternalLoadBalancerElementResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateInternalLoadBalancerElementResponse) ProtoMessage() {}
-
-func (x *CreateInternalLoadBalancerElementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateInternalLoadBalancerElementResponse.ProtoReflect.Descriptor instead.
-func (*CreateInternalLoadBalancerElementResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *CreateInternalLoadBalancerElementResponse) GetResult() *Result {
+func (x *StopInternalLBVMResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1368,7 +1368,22 @@ var File_cloudstack_management_internallb_v1_internallb_gen_proto protoreflect.F
 
 const file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDesc = "" +
 	"\n" +
-	"8cloudstack/management/internallb/v1/internallb.gen.proto\x12#cloudstack.management.internallb.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe1\x01\n" +
+	"8cloudstack/management/internallb/v1/internallb.gen.proto\x12#cloudstack.management.internallb.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe9\x01\n" +
+	"+ConfigureInternalLoadBalancerElementRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\aenabled\x18\x02 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\aenabled\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"s\n" +
+	",ConfigureInternalLoadBalancerElementResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.internallb.v1.ResultR\x06result\"\xc6\x01\n" +
+	"(CreateInternalLoadBalancerElementRequest\x12\x1d\n" +
+	"\x06nsp_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nspId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"p\n" +
+	")CreateInternalLoadBalancerElementResponse\x12C\n" +
+	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.internallb.v1.ResultR\x06result\"\xe1\x01\n" +
 	"'ListInternalLoadBalancerElementsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
 	"\x06nsp_id\x18\x02 \x01(\x03R\x05nspId\x12\x1f\n" +
@@ -1410,15 +1425,7 @@ const file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDesc = ""
 	"\x19ListInternalLBVMsResponse\x12G\n" +
 	"\x05items\x18\x01 \x03(\v21.cloudstack.management.internallb.v1.DomainRouterR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xe9\x01\n" +
-	"+ConfigureInternalLoadBalancerElementRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\aenabled\x18\x02 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\aenabled\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"s\n" +
-	",ConfigureInternalLoadBalancerElementResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.internallb.v1.ResultR\x06result\"\xaf\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xaf\x01\n" +
 	"\x18StartInternalLBVMRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
@@ -1433,13 +1440,6 @@ const file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDesc = ""
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"_\n" +
 	"\x18StopInternalLBVMResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.internallb.v1.ResultR\x06result\"\xc6\x01\n" +
-	"(CreateInternalLoadBalancerElementRequest\x12\x1d\n" +
-	"\x06nsp_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nspId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"p\n" +
-	")CreateInternalLoadBalancerElementResponse\x12C\n" +
 	"\x06result\x18\x01 \x01(\v2+.cloudstack.management.internallb.v1.ResultR\x06result\"\xaa\x01\n" +
 	"\x1bInternalLoadBalancerElement\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1482,13 +1482,13 @@ const file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDesc = ""
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb8\b\n" +
-	"\x11InternallbService\x12\xc1\x01\n" +
+	"\x11InternallbService\x12\xcd\x01\n" +
+	"$ConfigureInternalLoadBalancerElement\x12P.cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementRequest\x1aQ.cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse\"\x00\x12\xc4\x01\n" +
+	"!CreateInternalLoadBalancerElement\x12M.cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementRequest\x1aN.cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse\"\x00\x12\xc1\x01\n" +
 	" ListInternalLoadBalancerElements\x12L.cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsRequest\x1aM.cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse\"\x00\x12\x94\x01\n" +
-	"\x11ListInternalLBVMs\x12=.cloudstack.management.internallb.v1.ListInternalLBVMsRequest\x1a>.cloudstack.management.internallb.v1.ListInternalLBVMsResponse\"\x00\x12\xcd\x01\n" +
-	"$ConfigureInternalLoadBalancerElement\x12P.cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementRequest\x1aQ.cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse\"\x00\x12\x94\x01\n" +
+	"\x11ListInternalLBVMs\x12=.cloudstack.management.internallb.v1.ListInternalLBVMsRequest\x1a>.cloudstack.management.internallb.v1.ListInternalLBVMsResponse\"\x00\x12\x94\x01\n" +
 	"\x11StartInternalLBVM\x12=.cloudstack.management.internallb.v1.StartInternalLBVMRequest\x1a>.cloudstack.management.internallb.v1.StartInternalLBVMResponse\"\x00\x12\x91\x01\n" +
-	"\x10StopInternalLBVM\x12<.cloudstack.management.internallb.v1.StopInternalLBVMRequest\x1a=.cloudstack.management.internallb.v1.StopInternalLBVMResponse\"\x00\x12\xc4\x01\n" +
-	"!CreateInternalLoadBalancerElement\x12M.cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementRequest\x1aN.cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xd2\x02\n" +
+	"\x10StopInternalLBVM\x12<.cloudstack.management.internallb.v1.StopInternalLBVMRequest\x1a=.cloudstack.management.internallb.v1.StopInternalLBVMResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xd2\x02\n" +
 	"'com.cloudstack.management.internallb.v1B\x12InternallbGenProtoP\x01Zdgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/internallb/v1;internallbv1\xa2\x02\x03CMI\xaa\x02#Cloudstack.Management.Internallb.V1\xca\x02#Cloudstack\\Management\\Internallb\\V1\xe2\x02/Cloudstack\\Management\\Internallb\\V1\\GPBMetadata\xea\x02&Cloudstack::Management::Internallb::V1b\beditionsp\xe8\a"
 
 var (
@@ -1505,18 +1505,18 @@ func file_cloudstack_management_internallb_v1_internallb_gen_proto_rawDescGZIP()
 
 var file_cloudstack_management_internallb_v1_internallb_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_cloudstack_management_internallb_v1_internallb_gen_proto_goTypes = []any{
-	(*ListInternalLoadBalancerElementsRequest)(nil),      // 0: cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsRequest
-	(*ListInternalLoadBalancerElementsResponse)(nil),     // 1: cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse
-	(*ListInternalLBVMsRequest)(nil),                     // 2: cloudstack.management.internallb.v1.ListInternalLBVMsRequest
-	(*ListInternalLBVMsResponse)(nil),                    // 3: cloudstack.management.internallb.v1.ListInternalLBVMsResponse
-	(*ConfigureInternalLoadBalancerElementRequest)(nil),  // 4: cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementRequest
-	(*ConfigureInternalLoadBalancerElementResponse)(nil), // 5: cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse
-	(*StartInternalLBVMRequest)(nil),                     // 6: cloudstack.management.internallb.v1.StartInternalLBVMRequest
-	(*StartInternalLBVMResponse)(nil),                    // 7: cloudstack.management.internallb.v1.StartInternalLBVMResponse
-	(*StopInternalLBVMRequest)(nil),                      // 8: cloudstack.management.internallb.v1.StopInternalLBVMRequest
-	(*StopInternalLBVMResponse)(nil),                     // 9: cloudstack.management.internallb.v1.StopInternalLBVMResponse
-	(*CreateInternalLoadBalancerElementRequest)(nil),     // 10: cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementRequest
-	(*CreateInternalLoadBalancerElementResponse)(nil),    // 11: cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse
+	(*ConfigureInternalLoadBalancerElementRequest)(nil),  // 0: cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementRequest
+	(*ConfigureInternalLoadBalancerElementResponse)(nil), // 1: cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse
+	(*CreateInternalLoadBalancerElementRequest)(nil),     // 2: cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementRequest
+	(*CreateInternalLoadBalancerElementResponse)(nil),    // 3: cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse
+	(*ListInternalLoadBalancerElementsRequest)(nil),      // 4: cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsRequest
+	(*ListInternalLoadBalancerElementsResponse)(nil),     // 5: cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse
+	(*ListInternalLBVMsRequest)(nil),                     // 6: cloudstack.management.internallb.v1.ListInternalLBVMsRequest
+	(*ListInternalLBVMsResponse)(nil),                    // 7: cloudstack.management.internallb.v1.ListInternalLBVMsResponse
+	(*StartInternalLBVMRequest)(nil),                     // 8: cloudstack.management.internallb.v1.StartInternalLBVMRequest
+	(*StartInternalLBVMResponse)(nil),                    // 9: cloudstack.management.internallb.v1.StartInternalLBVMResponse
+	(*StopInternalLBVMRequest)(nil),                      // 10: cloudstack.management.internallb.v1.StopInternalLBVMRequest
+	(*StopInternalLBVMResponse)(nil),                     // 11: cloudstack.management.internallb.v1.StopInternalLBVMResponse
 	(*InternalLoadBalancerElement)(nil),                  // 12: cloudstack.management.internallb.v1.InternalLoadBalancerElement
 	(*DomainRouter)(nil),                                 // 13: cloudstack.management.internallb.v1.DomainRouter
 	(*Success)(nil),                                      // 14: cloudstack.management.internallb.v1.Success
@@ -1525,25 +1525,25 @@ var file_cloudstack_management_internallb_v1_internallb_gen_proto_goTypes = []an
 	nil,                                                  // 17: cloudstack.management.internallb.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_internallb_v1_internallb_gen_proto_depIdxs = []int32{
-	12, // 0: cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse.items:type_name -> cloudstack.management.internallb.v1.InternalLoadBalancerElement
-	13, // 1: cloudstack.management.internallb.v1.ListInternalLBVMsResponse.items:type_name -> cloudstack.management.internallb.v1.DomainRouter
-	16, // 2: cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse.result:type_name -> cloudstack.management.internallb.v1.Result
-	16, // 3: cloudstack.management.internallb.v1.StartInternalLBVMResponse.result:type_name -> cloudstack.management.internallb.v1.Result
-	16, // 4: cloudstack.management.internallb.v1.StopInternalLBVMResponse.result:type_name -> cloudstack.management.internallb.v1.Result
-	16, // 5: cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse.result:type_name -> cloudstack.management.internallb.v1.Result
+	16, // 0: cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse.result:type_name -> cloudstack.management.internallb.v1.Result
+	16, // 1: cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse.result:type_name -> cloudstack.management.internallb.v1.Result
+	12, // 2: cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse.items:type_name -> cloudstack.management.internallb.v1.InternalLoadBalancerElement
+	13, // 3: cloudstack.management.internallb.v1.ListInternalLBVMsResponse.items:type_name -> cloudstack.management.internallb.v1.DomainRouter
+	16, // 4: cloudstack.management.internallb.v1.StartInternalLBVMResponse.result:type_name -> cloudstack.management.internallb.v1.Result
+	16, // 5: cloudstack.management.internallb.v1.StopInternalLBVMResponse.result:type_name -> cloudstack.management.internallb.v1.Result
 	17, // 6: cloudstack.management.internallb.v1.Item.details:type_name -> cloudstack.management.internallb.v1.Item.DetailsEntry
-	0,  // 7: cloudstack.management.internallb.v1.InternallbService.ListInternalLoadBalancerElements:input_type -> cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsRequest
-	2,  // 8: cloudstack.management.internallb.v1.InternallbService.ListInternalLBVMs:input_type -> cloudstack.management.internallb.v1.ListInternalLBVMsRequest
-	4,  // 9: cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement:input_type -> cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementRequest
-	6,  // 10: cloudstack.management.internallb.v1.InternallbService.StartInternalLBVM:input_type -> cloudstack.management.internallb.v1.StartInternalLBVMRequest
-	8,  // 11: cloudstack.management.internallb.v1.InternallbService.StopInternalLBVM:input_type -> cloudstack.management.internallb.v1.StopInternalLBVMRequest
-	10, // 12: cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement:input_type -> cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementRequest
-	1,  // 13: cloudstack.management.internallb.v1.InternallbService.ListInternalLoadBalancerElements:output_type -> cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse
-	3,  // 14: cloudstack.management.internallb.v1.InternallbService.ListInternalLBVMs:output_type -> cloudstack.management.internallb.v1.ListInternalLBVMsResponse
-	5,  // 15: cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement:output_type -> cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse
-	7,  // 16: cloudstack.management.internallb.v1.InternallbService.StartInternalLBVM:output_type -> cloudstack.management.internallb.v1.StartInternalLBVMResponse
-	9,  // 17: cloudstack.management.internallb.v1.InternallbService.StopInternalLBVM:output_type -> cloudstack.management.internallb.v1.StopInternalLBVMResponse
-	11, // 18: cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement:output_type -> cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse
+	0,  // 7: cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement:input_type -> cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementRequest
+	2,  // 8: cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement:input_type -> cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementRequest
+	4,  // 9: cloudstack.management.internallb.v1.InternallbService.ListInternalLoadBalancerElements:input_type -> cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsRequest
+	6,  // 10: cloudstack.management.internallb.v1.InternallbService.ListInternalLBVMs:input_type -> cloudstack.management.internallb.v1.ListInternalLBVMsRequest
+	8,  // 11: cloudstack.management.internallb.v1.InternallbService.StartInternalLBVM:input_type -> cloudstack.management.internallb.v1.StartInternalLBVMRequest
+	10, // 12: cloudstack.management.internallb.v1.InternallbService.StopInternalLBVM:input_type -> cloudstack.management.internallb.v1.StopInternalLBVMRequest
+	1,  // 13: cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement:output_type -> cloudstack.management.internallb.v1.ConfigureInternalLoadBalancerElementResponse
+	3,  // 14: cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement:output_type -> cloudstack.management.internallb.v1.CreateInternalLoadBalancerElementResponse
+	5,  // 15: cloudstack.management.internallb.v1.InternallbService.ListInternalLoadBalancerElements:output_type -> cloudstack.management.internallb.v1.ListInternalLoadBalancerElementsResponse
+	7,  // 16: cloudstack.management.internallb.v1.InternallbService.ListInternalLBVMs:output_type -> cloudstack.management.internallb.v1.ListInternalLBVMsResponse
+	9,  // 17: cloudstack.management.internallb.v1.InternallbService.StartInternalLBVM:output_type -> cloudstack.management.internallb.v1.StartInternalLBVMResponse
+	11, // 18: cloudstack.management.internallb.v1.InternallbService.StopInternalLBVM:output_type -> cloudstack.management.internallb.v1.StopInternalLBVMResponse
 	13, // [13:19] is the sub-list for method output_type
 	7,  // [7:13] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name

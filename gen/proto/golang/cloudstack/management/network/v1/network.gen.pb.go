@@ -24,6 +24,67 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ProtocolType represents the possible values for the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+type ProtocolType int32
+
+const (
+	// Default unspecified value
+	ProtocolType_PROTOCOL_TYPE_UNSPECIFIED ProtocolType = 0
+	// TCP value
+	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 1
+	// UDP value
+	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 2
+	// ICMP value
+	ProtocolType_PROTOCOL_TYPE_ICMP ProtocolType = 3
+	// ALL value
+	ProtocolType_PROTOCOL_TYPE_ALL ProtocolType = 4
+)
+
+// Enum value maps for ProtocolType.
+var (
+	ProtocolType_name = map[int32]string{
+		0: "PROTOCOL_TYPE_UNSPECIFIED",
+		1: "PROTOCOL_TYPE_TCP",
+		2: "PROTOCOL_TYPE_UDP",
+		3: "PROTOCOL_TYPE_ICMP",
+		4: "PROTOCOL_TYPE_ALL",
+	}
+	ProtocolType_value = map[string]int32{
+		"PROTOCOL_TYPE_UNSPECIFIED": 0,
+		"PROTOCOL_TYPE_TCP":         1,
+		"PROTOCOL_TYPE_UDP":         2,
+		"PROTOCOL_TYPE_ICMP":        3,
+		"PROTOCOL_TYPE_ALL":         4,
+	}
+)
+
+func (x ProtocolType) Enum() *ProtocolType {
+	p := new(ProtocolType)
+	*p = x
+	return p
+}
+
+func (x ProtocolType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProtocolType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_network_v1_network_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ProtocolType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_network_v1_network_gen_proto_enumTypes[0]
+}
+
+func (x ProtocolType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProtocolType.Descriptor instead.
+func (ProtocolType) EnumDescriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{0}
+}
+
 // DedicateIpv4SubnetForZoneRequest represents the parameters for dedicates an existing ipv4 subnet for a zone to an account or a domain.
 type DedicateIpv4SubnetForZoneRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -167,70 +228,38 @@ func (x *DedicateIpv4SubnetForZoneResponse) GetResult() *Result {
 	return nil
 }
 
-// ListNetworkOfferingsRequest represents the parameters for lists all available network offerings.
-type ListNetworkOfferingsRequest struct {
+// DeleteManagementNetworkIpRangeRequest represents the parameters for deletes a management network ip range. this action is only allowed when no ips in this range are allocated.
+type DeleteManagementNetworkIpRangeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// list network offerings by ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list network offerings by name
-	NetworkOfferingName *string `protobuf:"bytes,2,opt,name=network_offering_name,json=networkOfferingName" json:"network_offering_name,omitempty"`
-	// list network offerings by display text
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// list by traffic type
-	TrafficType *string `protobuf:"bytes,4,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// true if need to list only default network offerings. Default value is false
-	IsDefault *bool `protobuf:"varint,5,opt,name=is_default,json=isDefault" json:"is_default,omitempty"`
-	// the tags for the network offering.
-	SpecifyVlan *bool `protobuf:"varint,6,opt,name=specify_vlan,json=specifyVlan" json:"specify_vlan,omitempty"`
-	// the availability of network offering. Default value is required
-	Availability *string `protobuf:"bytes,7,opt,name=availability" json:"availability,omitempty"`
-	// list network offerings available for network creation in specific domain
-	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// list network offerings available for network creation in specific zone
-	ZoneId *int64 `protobuf:"varint,9,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list network offerings by state
-	State *string `protobuf:"bytes,10,opt,name=state" json:"state,omitempty"`
-	// the ID of the network. Pass this in if you want to see the available network offering that a network can be changed to.
-	NetworkId *int64 `protobuf:"varint,11,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// list network offerings by guest type: shared or isolated
-	GuestIpType *string `protobuf:"bytes,12,opt,name=guest_ip_type,json=guestIpType" json:"guest_ip_type,omitempty"`
-	// list network offerings supporting certain services
-	SupportedServices []string `protobuf:"bytes,13,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
-	// true if need to list only netwok offerings where source NAT is supported, false otherwise
-	SourceNatSupported *bool `protobuf:"varint,14,opt,name=source_nat_supported,json=sourceNatSupported" json:"source_nat_supported,omitempty"`
-	// true if need to list only network offerings which support specifying ip ranges
-	SpecifyIpRanges *bool `protobuf:"varint,15,opt,name=specify_ip_ranges,json=specifyIpRanges" json:"specify_ip_ranges,omitempty"`
-	// list network offerings by tags
-	Tags *string `protobuf:"bytes,16,opt,name=tags" json:"tags,omitempty"`
-	// true if offering has tags specified
-	IsTagged *bool `protobuf:"varint,17,opt,name=is_tagged,json=isTagged" json:"is_tagged,omitempty"`
-	// the network offering can be used only for network creation inside the VPC
-	ForVpc *bool `protobuf:"varint,18,opt,name=for_vpc,json=forVpc" json:"for_vpc,omitempty"`
-	// the routing mode for the network offering. Supported types are: Static or Dynamic.
-	RoutingMode *string `protobuf:"bytes,19,opt,name=routing_mode,json=routingMode" json:"routing_mode,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,20,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,21,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,22,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,23,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// UUID of POD, where the IP range belongs to.
+	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// The starting IP address.
+	StartIp *string `protobuf:"bytes,2,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
+	// The ending IP address.
+	EndIp *string `protobuf:"bytes,3,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
+	// The vlan id the ip range sits on
+	Vlan *string `protobuf:"bytes,4,opt,name=vlan" json:"vlan,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListNetworkOfferingsRequest) Reset() {
-	*x = ListNetworkOfferingsRequest{}
+func (x *DeleteManagementNetworkIpRangeRequest) Reset() {
+	*x = DeleteManagementNetworkIpRangeRequest{}
 	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListNetworkOfferingsRequest) String() string {
+func (x *DeleteManagementNetworkIpRangeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListNetworkOfferingsRequest) ProtoMessage() {}
+func (*DeleteManagementNetworkIpRangeRequest) ProtoMessage() {}
 
-func (x *ListNetworkOfferingsRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteManagementNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -242,516 +271,62 @@ func (x *ListNetworkOfferingsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListNetworkOfferingsRequest.ProtoReflect.Descriptor instead.
-func (*ListNetworkOfferingsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteManagementNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*DeleteManagementNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListNetworkOfferingsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *DeleteManagementNetworkIpRangeRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
 	}
 	return 0
 }
 
-func (x *ListNetworkOfferingsRequest) GetNetworkOfferingName() string {
-	if x != nil && x.NetworkOfferingName != nil {
-		return *x.NetworkOfferingName
+func (x *DeleteManagementNetworkIpRangeRequest) GetStartIp() string {
+	if x != nil && x.StartIp != nil {
+		return *x.StartIp
 	}
 	return ""
 }
 
-func (x *ListNetworkOfferingsRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
+func (x *DeleteManagementNetworkIpRangeRequest) GetEndIp() string {
+	if x != nil && x.EndIp != nil {
+		return *x.EndIp
 	}
 	return ""
 }
 
-func (x *ListNetworkOfferingsRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
+func (x *DeleteManagementNetworkIpRangeRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
 	}
 	return ""
 }
 
-func (x *ListNetworkOfferingsRequest) GetIsDefault() bool {
-	if x != nil && x.IsDefault != nil {
-		return *x.IsDefault
-	}
-	return false
-}
-
-func (x *ListNetworkOfferingsRequest) GetSpecifyVlan() bool {
-	if x != nil && x.SpecifyVlan != nil {
-		return *x.SpecifyVlan
-	}
-	return false
-}
-
-func (x *ListNetworkOfferingsRequest) GetAvailability() string {
-	if x != nil && x.Availability != nil {
-		return *x.Availability
-	}
-	return ""
-}
-
-func (x *ListNetworkOfferingsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListNetworkOfferingsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListNetworkOfferingsRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListNetworkOfferingsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListNetworkOfferingsRequest) GetGuestIpType() string {
-	if x != nil && x.GuestIpType != nil {
-		return *x.GuestIpType
-	}
-	return ""
-}
-
-func (x *ListNetworkOfferingsRequest) GetSupportedServices() []string {
-	if x != nil {
-		return x.SupportedServices
-	}
-	return nil
-}
-
-func (x *ListNetworkOfferingsRequest) GetSourceNatSupported() bool {
-	if x != nil && x.SourceNatSupported != nil {
-		return *x.SourceNatSupported
-	}
-	return false
-}
-
-func (x *ListNetworkOfferingsRequest) GetSpecifyIpRanges() bool {
-	if x != nil && x.SpecifyIpRanges != nil {
-		return *x.SpecifyIpRanges
-	}
-	return false
-}
-
-func (x *ListNetworkOfferingsRequest) GetTags() string {
-	if x != nil && x.Tags != nil {
-		return *x.Tags
-	}
-	return ""
-}
-
-func (x *ListNetworkOfferingsRequest) GetIsTagged() bool {
-	if x != nil && x.IsTagged != nil {
-		return *x.IsTagged
-	}
-	return false
-}
-
-func (x *ListNetworkOfferingsRequest) GetForVpc() bool {
-	if x != nil && x.ForVpc != nil {
-		return *x.ForVpc
-	}
-	return false
-}
-
-func (x *ListNetworkOfferingsRequest) GetRoutingMode() string {
-	if x != nil && x.RoutingMode != nil {
-		return *x.RoutingMode
-	}
-	return ""
-}
-
-func (x *ListNetworkOfferingsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListNetworkOfferingsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListNetworkOfferingsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListNetworkOfferingsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListNetworkOfferingsResponse represents the response from lists all available network offerings.
-type ListNetworkOfferingsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of NetworkOfferings
-	Items []*NetworkOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of NetworkOfferings
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworkOfferingsResponse) Reset() {
-	*x = ListNetworkOfferingsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworkOfferingsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworkOfferingsResponse) ProtoMessage() {}
-
-func (x *ListNetworkOfferingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworkOfferingsResponse.ProtoReflect.Descriptor instead.
-func (*ListNetworkOfferingsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListNetworkOfferingsResponse) GetItems() []*NetworkOffering {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListNetworkOfferingsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ResetNetworkPermissionsRequest represents the parameters for resets network permissions.
-type ResetNetworkPermissionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the network ID
-	NetworkId *int64 `protobuf:"varint,1,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetNetworkPermissionsRequest) Reset() {
-	*x = ResetNetworkPermissionsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetNetworkPermissionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetNetworkPermissionsRequest) ProtoMessage() {}
-
-func (x *ResetNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
-func (*ResetNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ResetNetworkPermissionsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ResetNetworkPermissionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ResetNetworkPermissionsResponse represents the response from resets network permissions.
-type ResetNetworkPermissionsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ResetNetworkPermissionsResponse) Reset() {
-	*x = ResetNetworkPermissionsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ResetNetworkPermissionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ResetNetworkPermissionsResponse) ProtoMessage() {}
-
-func (x *ResetNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ResetNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
-func (*ResetNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ResetNetworkPermissionsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateNetworkACLItemRequest represents the parameters for updates acl item with specified id
-type UpdateNetworkACLItemRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network ACL item
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	Protocol *string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
-	// the starting port of ACL
-	PublicStartPort *int32 `protobuf:"varint,3,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
-	// the ending port of ACL
-	PublicEndPort *int32 `protobuf:"varint,4,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
-	// the cidr list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
-	Cidrlist []string `protobuf:"bytes,5,rep,name=cidrlist" json:"cidrlist,omitempty"`
-	// type of the ICMP message being sent
-	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
-	// error code for this ICMP message
-	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
-	// the traffic type for the ACL, can be Ingress or Egress, defaulted to Ingress if not specified
-	TrafficType *string `protobuf:"bytes,8,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// The network of the vm the ACL will be created for
-	Number *int32 `protobuf:"varint,9,opt,name=number" json:"number,omitempty"`
-	// scl entry action, allow or deny
-	Action *string `protobuf:"bytes,10,opt,name=action" json:"action,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,11,opt,name=display" json:"display,omitempty"`
-	// A description indicating why the ACL rule is required.
-	Reason *string `protobuf:"bytes,12,opt,name=reason" json:"reason,omitempty"`
-	// Indicates if the ACL rule is to be updated partially (merging the parameters sent with current configuration) or completely (disconsidering all of the current configurations). The default value is 'true'.
-	PartialUpgrade *bool `protobuf:"varint,13,opt,name=partial_upgrade,json=partialUpgrade" json:"partial_upgrade,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,14,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,15,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,16,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,17,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkACLItemRequest) Reset() {
-	*x = UpdateNetworkACLItemRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkACLItemRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkACLItemRequest) ProtoMessage() {}
-
-func (x *UpdateNetworkACLItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkACLItemRequest.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkACLItemRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UpdateNetworkACLItemRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLItemRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLItemRequest) GetPublicStartPort() int32 {
-	if x != nil && x.PublicStartPort != nil {
-		return *x.PublicStartPort
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLItemRequest) GetPublicEndPort() int32 {
-	if x != nil && x.PublicEndPort != nil {
-		return *x.PublicEndPort
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLItemRequest) GetCidrlist() []string {
-	if x != nil {
-		return x.Cidrlist
-	}
-	return nil
-}
-
-func (x *UpdateNetworkACLItemRequest) GetIcmpType() int32 {
-	if x != nil && x.IcmpType != nil {
-		return *x.IcmpType
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLItemRequest) GetIcmpCode() int32 {
-	if x != nil && x.IcmpCode != nil {
-		return *x.IcmpCode
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLItemRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLItemRequest) GetNumber() int32 {
-	if x != nil && x.Number != nil {
-		return *x.Number
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLItemRequest) GetAction() string {
-	if x != nil && x.Action != nil {
-		return *x.Action
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLItemRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateNetworkACLItemRequest) GetReason() string {
-	if x != nil && x.Reason != nil {
-		return *x.Reason
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLItemRequest) GetPartialUpgrade() bool {
-	if x != nil && x.PartialUpgrade != nil {
-		return *x.PartialUpgrade
-	}
-	return false
-}
-
-func (x *UpdateNetworkACLItemRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLItemRequest) GetStartEventId() int64 {
+func (x *DeleteManagementNetworkIpRangeRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateNetworkACLItemRequest) GetInjectedJobId() string {
+func (x *DeleteManagementNetworkIpRangeRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateNetworkACLItemRequest) GetResponseType() string {
+func (x *DeleteManagementNetworkIpRangeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateNetworkACLItemResponse represents the response from updates acl item with specified id
-type UpdateNetworkACLItemResponse struct {
+// DeleteManagementNetworkIpRangeResponse represents the response from deletes a management network ip range. this action is only allowed when no ips in this range are allocated.
+type DeleteManagementNetworkIpRangeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -759,20 +334,324 @@ type UpdateNetworkACLItemResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateNetworkACLItemResponse) Reset() {
-	*x = UpdateNetworkACLItemResponse{}
+func (x *DeleteManagementNetworkIpRangeResponse) Reset() {
+	*x = DeleteManagementNetworkIpRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteManagementNetworkIpRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteManagementNetworkIpRangeResponse) ProtoMessage() {}
+
+func (x *DeleteManagementNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteManagementNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*DeleteManagementNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteManagementNetworkIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListDedicatedGuestVlanRangesRequest represents the parameters for lists dedicated guest vlan ranges
+type ListDedicatedGuestVlanRangesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list dedicated guest vlan ranges by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the account with which the guest VLAN range is associated. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who will own the guest VLAN range
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the domain ID with which the guest VLAN range is associated.  If used with the account parameter, returns all guest VLAN ranges for that account in the specified domain.
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the dedicated guest vlan range
+	GuestVlanRange *string `protobuf:"bytes,5,opt,name=guest_vlan_range,json=guestVlanRange" json:"guest_vlan_range,omitempty"`
+	// physical network id of the guest VLAN range
+	PhysicalNetworkId *int64 `protobuf:"varint,6,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// zone of the guest VLAN range
+	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) Reset() {
+	*x = ListDedicatedGuestVlanRangesRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDedicatedGuestVlanRangesRequest) ProtoMessage() {}
+
+func (x *ListDedicatedGuestVlanRangesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDedicatedGuestVlanRangesRequest.ProtoReflect.Descriptor instead.
+func (*ListDedicatedGuestVlanRangesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetGuestVlanRange() string {
+	if x != nil && x.GuestVlanRange != nil {
+		return *x.GuestVlanRange
+	}
+	return ""
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListDedicatedGuestVlanRangesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListDedicatedGuestVlanRangesResponse represents the response from lists dedicated guest vlan ranges
+type ListDedicatedGuestVlanRangesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of GuestVlanRanges
+	Items []*GuestVlanRange `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of GuestVlanRanges
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDedicatedGuestVlanRangesResponse) Reset() {
+	*x = ListDedicatedGuestVlanRangesResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDedicatedGuestVlanRangesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDedicatedGuestVlanRangesResponse) ProtoMessage() {}
+
+func (x *ListDedicatedGuestVlanRangesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDedicatedGuestVlanRangesResponse.ProtoReflect.Descriptor instead.
+func (*ListDedicatedGuestVlanRangesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListDedicatedGuestVlanRangesResponse) GetItems() []*GuestVlanRange {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListDedicatedGuestVlanRangesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// DeleteIpv4SubnetForZoneRequest represents the parameters for deletes an existing ipv4 subnet for a zone.
+type DeleteIpv4SubnetForZoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the guest network IPv4 subnet
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteIpv4SubnetForZoneRequest) Reset() {
+	*x = DeleteIpv4SubnetForZoneRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteIpv4SubnetForZoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteIpv4SubnetForZoneRequest) ProtoMessage() {}
+
+func (x *DeleteIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
+func (*DeleteIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteIpv4SubnetForZoneRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteIpv4SubnetForZoneRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteIpv4SubnetForZoneRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteIpv4SubnetForZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteIpv4SubnetForZoneResponse represents the response from deletes an existing ipv4 subnet for a zone.
+type DeleteIpv4SubnetForZoneResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteIpv4SubnetForZoneResponse) Reset() {
+	*x = DeleteIpv4SubnetForZoneResponse{}
 	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateNetworkACLItemResponse) String() string {
+func (x *DeleteIpv4SubnetForZoneResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateNetworkACLItemResponse) ProtoMessage() {}
+func (*DeleteIpv4SubnetForZoneResponse) ProtoMessage() {}
 
-func (x *UpdateNetworkACLItemResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -784,12 +663,1177 @@ func (x *UpdateNetworkACLItemResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateNetworkACLItemResponse.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkACLItemResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
+func (*DeleteIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *UpdateNetworkACLItemResponse) GetResult() *Result {
+func (x *DeleteIpv4SubnetForZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteNetworkACLListRequest represents the parameters for deletes a network acl
+type DeleteNetworkACLListRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the network ACL
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkACLListRequest) Reset() {
+	*x = DeleteNetworkACLListRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkACLListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkACLListRequest) ProtoMessage() {}
+
+func (x *DeleteNetworkACLListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkACLListRequest.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkACLListRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteNetworkACLListRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteNetworkACLListRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteNetworkACLListRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteNetworkACLListRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteNetworkACLListResponse represents the response from deletes a network acl
+type DeleteNetworkACLListResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkACLListResponse) Reset() {
+	*x = DeleteNetworkACLListResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkACLListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkACLListResponse) ProtoMessage() {}
+
+func (x *DeleteNetworkACLListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkACLListResponse.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkACLListResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DeleteNetworkACLListResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ReleaseDedicatedGuestVlanRangeRequest represents the parameters for releases a dedicated guest vlan range to the system
+type ReleaseDedicatedGuestVlanRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the dedicated guest vlan range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) Reset() {
+	*x = ReleaseDedicatedGuestVlanRangeRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReleaseDedicatedGuestVlanRangeRequest) ProtoMessage() {}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReleaseDedicatedGuestVlanRangeRequest.ProtoReflect.Descriptor instead.
+func (*ReleaseDedicatedGuestVlanRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ReleaseDedicatedGuestVlanRangeResponse represents the response from releases a dedicated guest vlan range to the system
+type ReleaseDedicatedGuestVlanRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeResponse) Reset() {
+	*x = ReleaseDedicatedGuestVlanRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReleaseDedicatedGuestVlanRangeResponse) ProtoMessage() {}
+
+func (x *ReleaseDedicatedGuestVlanRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReleaseDedicatedGuestVlanRangeResponse.ProtoReflect.Descriptor instead.
+func (*ReleaseDedicatedGuestVlanRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ReleaseDedicatedGuestVlanRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeletePhysicalNetworkRequest represents the parameters for deletes a physical network.
+type DeletePhysicalNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the Physical network
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePhysicalNetworkRequest) Reset() {
+	*x = DeletePhysicalNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePhysicalNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePhysicalNetworkRequest) ProtoMessage() {}
+
+func (x *DeletePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePhysicalNetworkRequest.ProtoReflect.Descriptor instead.
+func (*DeletePhysicalNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DeletePhysicalNetworkRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeletePhysicalNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeletePhysicalNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeletePhysicalNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeletePhysicalNetworkResponse represents the response from deletes a physical network.
+type DeletePhysicalNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePhysicalNetworkResponse) Reset() {
+	*x = DeletePhysicalNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePhysicalNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePhysicalNetworkResponse) ProtoMessage() {}
+
+func (x *DeletePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePhysicalNetworkResponse.ProtoReflect.Descriptor instead.
+func (*DeletePhysicalNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DeletePhysicalNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateIpv4SubnetForZoneRequest represents the parameters for updates an existing ipv4 subnet for a zone.
+type UpdateIpv4SubnetForZoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the guest network IPv4 subnet
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The new CIDR of the IPv4 subnet.
+	Subnet *string `protobuf:"bytes,2,opt,name=subnet" json:"subnet,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) Reset() {
+	*x = UpdateIpv4SubnetForZoneRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateIpv4SubnetForZoneRequest) ProtoMessage() {}
+
+func (x *UpdateIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
+func (*UpdateIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) GetSubnet() string {
+	if x != nil && x.Subnet != nil {
+		return *x.Subnet
+	}
+	return ""
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateIpv4SubnetForZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateIpv4SubnetForZoneResponse represents the response from updates an existing ipv4 subnet for a zone.
+type UpdateIpv4SubnetForZoneResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateIpv4SubnetForZoneResponse) Reset() {
+	*x = UpdateIpv4SubnetForZoneResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateIpv4SubnetForZoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateIpv4SubnetForZoneResponse) ProtoMessage() {}
+
+func (x *UpdateIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
+func (*UpdateIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdateIpv4SubnetForZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListNetworkIsolationMethodsRequest represents the parameters for lists supported methods of network isolation
+type ListNetworkIsolationMethodsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkIsolationMethodsRequest) Reset() {
+	*x = ListNetworkIsolationMethodsRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkIsolationMethodsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkIsolationMethodsRequest) ProtoMessage() {}
+
+func (x *ListNetworkIsolationMethodsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkIsolationMethodsRequest.ProtoReflect.Descriptor instead.
+func (*ListNetworkIsolationMethodsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ListNetworkIsolationMethodsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListNetworkIsolationMethodsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListNetworkIsolationMethodsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListNetworkIsolationMethodsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListNetworkIsolationMethodsResponse represents the response from lists supported methods of network isolation
+type ListNetworkIsolationMethodsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of IsolationMethods
+	Items []*IsolationMethod `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of IsolationMethods
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkIsolationMethodsResponse) Reset() {
+	*x = ListNetworkIsolationMethodsResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkIsolationMethodsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkIsolationMethodsResponse) ProtoMessage() {}
+
+func (x *ListNetworkIsolationMethodsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkIsolationMethodsResponse.ProtoReflect.Descriptor instead.
+func (*ListNetworkIsolationMethodsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ListNetworkIsolationMethodsResponse) GetItems() []*IsolationMethod {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListNetworkIsolationMethodsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// CreatePhysicalNetworkRequest represents the parameters for creates a physical network
+type CreatePhysicalNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the Zone ID for the physical network
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the VLAN for the physical network
+	Vlan *string `protobuf:"bytes,2,opt,name=vlan" json:"vlan,omitempty"`
+	// the speed for the physical network[1G/10G]
+	Speed *string `protobuf:"bytes,3,opt,name=speed" json:"speed,omitempty"`
+	// domain ID of the account owning a physical network
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the broadcast domain range for the physical network[Pod or Zone]. In Acton release it can be Zone only in Advance zone, and Pod in Basic
+	BroadcastDomainRange *string `protobuf:"bytes,5,opt,name=broadcast_domain_range,json=broadcastDomainRange" json:"broadcast_domain_range,omitempty"`
+	// Tag the physical network
+	Tags []string `protobuf:"bytes,6,rep,name=tags" json:"tags,omitempty"`
+	// the isolation method for the physical network[VLAN/L3/GRE]
+	IsolationMethods []string `protobuf:"bytes,7,rep,name=isolation_methods,json=isolationMethods" json:"isolation_methods,omitempty"`
+	// the name of the physical network
+	NetworkName *string `protobuf:"bytes,8,opt,name=network_name,json=networkName" json:"network_name,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePhysicalNetworkRequest) Reset() {
+	*x = CreatePhysicalNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePhysicalNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePhysicalNetworkRequest) ProtoMessage() {}
+
+func (x *CreatePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePhysicalNetworkRequest.ProtoReflect.Descriptor instead.
+func (*CreatePhysicalNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CreatePhysicalNetworkRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreatePhysicalNetworkRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *CreatePhysicalNetworkRequest) GetSpeed() string {
+	if x != nil && x.Speed != nil {
+		return *x.Speed
+	}
+	return ""
+}
+
+func (x *CreatePhysicalNetworkRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreatePhysicalNetworkRequest) GetBroadcastDomainRange() string {
+	if x != nil && x.BroadcastDomainRange != nil {
+		return *x.BroadcastDomainRange
+	}
+	return ""
+}
+
+func (x *CreatePhysicalNetworkRequest) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *CreatePhysicalNetworkRequest) GetIsolationMethods() []string {
+	if x != nil {
+		return x.IsolationMethods
+	}
+	return nil
+}
+
+func (x *CreatePhysicalNetworkRequest) GetNetworkName() string {
+	if x != nil && x.NetworkName != nil {
+		return *x.NetworkName
+	}
+	return ""
+}
+
+func (x *CreatePhysicalNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreatePhysicalNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreatePhysicalNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreatePhysicalNetworkResponse represents the response from creates a physical network
+type CreatePhysicalNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePhysicalNetworkResponse) Reset() {
+	*x = CreatePhysicalNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePhysicalNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePhysicalNetworkResponse) ProtoMessage() {}
+
+func (x *CreatePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePhysicalNetworkResponse.ProtoReflect.Descriptor instead.
+func (*CreatePhysicalNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *CreatePhysicalNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListNetworkProtocolsRequest represents the parameters for lists details of network protocols
+type ListNetworkProtocolsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The option of network protocols. Supported values are: protocolnumber, icmptype.
+	Option *string `protobuf:"bytes,1,opt,name=option" json:"option,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkProtocolsRequest) Reset() {
+	*x = ListNetworkProtocolsRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkProtocolsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkProtocolsRequest) ProtoMessage() {}
+
+func (x *ListNetworkProtocolsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkProtocolsRequest.ProtoReflect.Descriptor instead.
+func (*ListNetworkProtocolsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ListNetworkProtocolsRequest) GetOption() string {
+	if x != nil && x.Option != nil {
+		return *x.Option
+	}
+	return ""
+}
+
+func (x *ListNetworkProtocolsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListNetworkProtocolsResponse represents the response from lists details of network protocols
+type ListNetworkProtocolsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of NetworkProtocols
+	Items []*NetworkProtocol `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of NetworkProtocols
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkProtocolsResponse) Reset() {
+	*x = ListNetworkProtocolsResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkProtocolsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkProtocolsResponse) ProtoMessage() {}
+
+func (x *ListNetworkProtocolsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkProtocolsResponse.ProtoReflect.Descriptor instead.
+func (*ListNetworkProtocolsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ListNetworkProtocolsResponse) GetItems() []*NetworkProtocol {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListNetworkProtocolsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// CreateNetworkACLListRequest represents the parameters for creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
+type CreateNetworkACLListRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the network ACL list
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// Description of the network ACL list
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// ID of the VPC associated with this network ACL list
+	VpcId *int64 `protobuf:"varint,3,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// an optional field, whether to the display the list to the end user or not
+	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateNetworkACLListRequest) Reset() {
+	*x = CreateNetworkACLListRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateNetworkACLListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateNetworkACLListRequest) ProtoMessage() {}
+
+func (x *CreateNetworkACLListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateNetworkACLListRequest.ProtoReflect.Descriptor instead.
+func (*CreateNetworkACLListRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *CreateNetworkACLListRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLListRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLListRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLListRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateNetworkACLListRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLListRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLListRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateNetworkACLListResponse represents the response from creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
+type CreateNetworkACLListResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateNetworkACLListResponse) Reset() {
+	*x = CreateNetworkACLListResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateNetworkACLListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateNetworkACLListResponse) ProtoMessage() {}
+
+func (x *CreateNetworkACLListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateNetworkACLListResponse.ProtoReflect.Descriptor instead.
+func (*CreateNetworkACLListResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *CreateNetworkACLListResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DedicateGuestVlanRangeRequest represents the parameters for dedicates a guest vlan range to an account
+type DedicateGuestVlanRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// guest vlan range to be dedicated
+	Vlan *string `protobuf:"bytes,1,opt,name=vlan" json:"vlan,omitempty"`
+	// account who will own the VLAN
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who will own the VLAN
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// domain ID of the account owning a VLAN
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// physical network ID of the vlan
+	PhysicalNetworkId *int64 `protobuf:"varint,5,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DedicateGuestVlanRangeRequest) Reset() {
+	*x = DedicateGuestVlanRangeRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DedicateGuestVlanRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DedicateGuestVlanRangeRequest) ProtoMessage() {}
+
+func (x *DedicateGuestVlanRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DedicateGuestVlanRangeRequest.ProtoReflect.Descriptor instead.
+func (*DedicateGuestVlanRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *DedicateGuestVlanRangeRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *DedicateGuestVlanRangeRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DedicateGuestVlanRangeRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DedicateGuestVlanRangeRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DedicateGuestVlanRangeRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *DedicateGuestVlanRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DedicateGuestVlanRangeResponse represents the response from dedicates a guest vlan range to an account
+type DedicateGuestVlanRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DedicateGuestVlanRangeResponse) Reset() {
+	*x = DedicateGuestVlanRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DedicateGuestVlanRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DedicateGuestVlanRangeResponse) ProtoMessage() {}
+
+func (x *DedicateGuestVlanRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DedicateGuestVlanRangeResponse.ProtoReflect.Descriptor instead.
+func (*DedicateGuestVlanRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *DedicateGuestVlanRangeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -810,7 +1854,7 @@ type DeleteNetworkACLRequest struct {
 
 func (x *DeleteNetworkACLRequest) Reset() {
 	*x = DeleteNetworkACLRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -822,7 +1866,7 @@ func (x *DeleteNetworkACLRequest) String() string {
 func (*DeleteNetworkACLRequest) ProtoMessage() {}
 
 func (x *DeleteNetworkACLRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -835,7 +1879,7 @@ func (x *DeleteNetworkACLRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteNetworkACLRequest.ProtoReflect.Descriptor instead.
 func (*DeleteNetworkACLRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DeleteNetworkACLRequest) GetId() int64 {
@@ -877,7 +1921,7 @@ type DeleteNetworkACLResponse struct {
 
 func (x *DeleteNetworkACLResponse) Reset() {
 	*x = DeleteNetworkACLResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -889,7 +1933,7 @@ func (x *DeleteNetworkACLResponse) String() string {
 func (*DeleteNetworkACLResponse) ProtoMessage() {}
 
 func (x *DeleteNetworkACLResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -902,7 +1946,7 @@ func (x *DeleteNetworkACLResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteNetworkACLResponse.ProtoReflect.Descriptor instead.
 func (*DeleteNetworkACLResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *DeleteNetworkACLResponse) GetResult() *Result {
@@ -910,1081 +1954,6 @@ func (x *DeleteNetworkACLResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// RestartNetworkRequest represents the parameters for restarts the network; includes 1) restarting network elements - virtual routers, dhcp servers 2) reapplying all public ips 3) reapplying loadbalancing/portforwarding rules
-type RestartNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the network to restart.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// If cleanup old network elements
-	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
-	// Turn the network into a network with redundant routers.
-	MakeRedundant *bool `protobuf:"varint,3,opt,name=make_redundant,json=makeRedundant" json:"make_redundant,omitempty"`
-	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
-	LivePatch *bool `protobuf:"varint,4,opt,name=live_patch,json=livePatch" json:"live_patch,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestartNetworkRequest) Reset() {
-	*x = RestartNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestartNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestartNetworkRequest) ProtoMessage() {}
-
-func (x *RestartNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestartNetworkRequest.ProtoReflect.Descriptor instead.
-func (*RestartNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *RestartNetworkRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RestartNetworkRequest) GetCleanup() bool {
-	if x != nil && x.Cleanup != nil {
-		return *x.Cleanup
-	}
-	return false
-}
-
-func (x *RestartNetworkRequest) GetMakeRedundant() bool {
-	if x != nil && x.MakeRedundant != nil {
-		return *x.MakeRedundant
-	}
-	return false
-}
-
-func (x *RestartNetworkRequest) GetLivePatch() bool {
-	if x != nil && x.LivePatch != nil {
-		return *x.LivePatch
-	}
-	return false
-}
-
-func (x *RestartNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestartNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestartNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestartNetworkResponse represents the response from restarts the network; includes 1) restarting network elements - virtual routers, dhcp servers 2) reapplying all public ips 3) reapplying loadbalancing/portforwarding rules
-type RestartNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestartNetworkResponse) Reset() {
-	*x = RestartNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestartNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestartNetworkResponse) ProtoMessage() {}
-
-func (x *RestartNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestartNetworkResponse.ProtoReflect.Descriptor instead.
-func (*RestartNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *RestartNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateIpv4SubnetForZoneRequest represents the parameters for creates a ipv4 subnet for a zone.
-type CreateIpv4SubnetForZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the zone which the IPv4 subnet belongs to.
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// The CIDR of the IPv4 subnet.
-	Subnet *string `protobuf:"bytes,2,opt,name=subnet" json:"subnet,omitempty"`
-	// account who will own the IPv4 subnet
-	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who will own the IPv4 subnet
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// domain ID of the account owning the IPv4 subnet
-	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) Reset() {
-	*x = CreateIpv4SubnetForZoneRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpv4SubnetForZoneRequest) ProtoMessage() {}
-
-func (x *CreateIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
-func (*CreateIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetSubnet() string {
-	if x != nil && x.Subnet != nil {
-		return *x.Subnet
-	}
-	return ""
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateIpv4SubnetForZoneRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateIpv4SubnetForZoneResponse represents the response from creates a ipv4 subnet for a zone.
-type CreateIpv4SubnetForZoneResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpv4SubnetForZoneResponse) Reset() {
-	*x = CreateIpv4SubnetForZoneResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpv4SubnetForZoneResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpv4SubnetForZoneResponse) ProtoMessage() {}
-
-func (x *CreateIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
-func (*CreateIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *CreateIpv4SubnetForZoneResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddNetworkDeviceRequest represents the parameters for adds a network device of one of the following types: externaldhcp, externalfirewall, externalloadbalancer, pxeserver
-type AddNetworkDeviceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network device type, now supports ExternalDhcp, PxeServer, NetscalerMPXLoadBalancer, NetscalerVPXLoadBalancer, NetscalerSDXLoadBalancer, F5BigIpLoadBalancer, JuniperSRXFirewall, PaloAltoFirewall
-	Type *string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
-	// parameters for network device
-	ParamList map[string]string `protobuf:"bytes,2,rep,name=param_list,json=paramList" json:"param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddNetworkDeviceRequest) Reset() {
-	*x = AddNetworkDeviceRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddNetworkDeviceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddNetworkDeviceRequest) ProtoMessage() {}
-
-func (x *AddNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddNetworkDeviceRequest.ProtoReflect.Descriptor instead.
-func (*AddNetworkDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *AddNetworkDeviceRequest) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return ""
-}
-
-func (x *AddNetworkDeviceRequest) GetParamList() map[string]string {
-	if x != nil {
-		return x.ParamList
-	}
-	return nil
-}
-
-func (x *AddNetworkDeviceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddNetworkDeviceResponse represents the response from adds a network device of one of the following types: externaldhcp, externalfirewall, externalloadbalancer, pxeserver
-type AddNetworkDeviceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddNetworkDeviceResponse) Reset() {
-	*x = AddNetworkDeviceResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddNetworkDeviceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddNetworkDeviceResponse) ProtoMessage() {}
-
-func (x *AddNetworkDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddNetworkDeviceResponse.ProtoReflect.Descriptor instead.
-func (*AddNetworkDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *AddNetworkDeviceResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateNetworkACLListRequest represents the parameters for updates network acl list
-type UpdateNetworkACLListRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network ACL
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the list to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// Name of the network ACL list
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// Description of the network ACL list
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,5,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkACLListRequest) Reset() {
-	*x = UpdateNetworkACLListRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkACLListRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkACLListRequest) ProtoMessage() {}
-
-func (x *UpdateNetworkACLListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkACLListRequest.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkACLListRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *UpdateNetworkACLListRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLListRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateNetworkACLListRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLListRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLListRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLListRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateNetworkACLListRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateNetworkACLListRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateNetworkACLListResponse represents the response from updates network acl list
-type UpdateNetworkACLListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkACLListResponse) Reset() {
-	*x = UpdateNetworkACLListResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkACLListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkACLListResponse) ProtoMessage() {}
-
-func (x *UpdateNetworkACLListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkACLListResponse.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkACLListResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *UpdateNetworkACLListResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateNetworkACLRequest represents the parameters for creates a acl rule in the given network (the network has to belong to vpc)
-type CreateNetworkACLRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
-	// the starting port of ACL
-	PublicStartPort *int32 `protobuf:"varint,2,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
-	// the ending port of ACL
-	PublicEndPort *int32 `protobuf:"varint,3,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
-	// the CIDR list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
-	Cidrlist []string `protobuf:"bytes,4,rep,name=cidrlist" json:"cidrlist,omitempty"`
-	// type of the ICMP message being sent
-	IcmpType *int32 `protobuf:"varint,5,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
-	// error code for this ICMP message
-	IcmpCode *int32 `protobuf:"varint,6,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
-	// The network of the VM the ACL will be created for
-	NetworkId *int64 `protobuf:"varint,7,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// The network of the VM the ACL will be created for
-	AclId *int64 `protobuf:"varint,8,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
-	// the traffic type for the ACL,can be ingress or egress, defaulted to ingress if not specified
-	TrafficType *string `protobuf:"bytes,9,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// The number of the ACL item, its ordering
-	Number *int32 `protobuf:"varint,10,opt,name=number" json:"number,omitempty"`
-	// scl entry action, allow or deny
-	Action *string `protobuf:"bytes,11,opt,name=action" json:"action,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,12,opt,name=display" json:"display,omitempty"`
-	// A description indicating why the ACL rule is required.
-	Reason *string `protobuf:"bytes,13,opt,name=reason" json:"reason,omitempty"`
-	StartEventId *int64 `protobuf:"varint,14,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,15,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,16,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkACLRequest) Reset() {
-	*x = CreateNetworkACLRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkACLRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkACLRequest) ProtoMessage() {}
-
-func (x *CreateNetworkACLRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkACLRequest.ProtoReflect.Descriptor instead.
-func (*CreateNetworkACLRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *CreateNetworkACLRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLRequest) GetPublicStartPort() int32 {
-	if x != nil && x.PublicStartPort != nil {
-		return *x.PublicStartPort
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetPublicEndPort() int32 {
-	if x != nil && x.PublicEndPort != nil {
-		return *x.PublicEndPort
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetCidrlist() []string {
-	if x != nil {
-		return x.Cidrlist
-	}
-	return nil
-}
-
-func (x *CreateNetworkACLRequest) GetIcmpType() int32 {
-	if x != nil && x.IcmpType != nil {
-		return *x.IcmpType
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetIcmpCode() int32 {
-	if x != nil && x.IcmpCode != nil {
-		return *x.IcmpCode
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetAclId() int64 {
-	if x != nil && x.AclId != nil {
-		return *x.AclId
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLRequest) GetNumber() int32 {
-	if x != nil && x.Number != nil {
-		return *x.Number
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetAction() string {
-	if x != nil && x.Action != nil {
-		return *x.Action
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateNetworkACLRequest) GetReason() string {
-	if x != nil && x.Reason != nil {
-		return *x.Reason
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateNetworkACLResponse represents the response from creates a acl rule in the given network (the network has to belong to vpc)
-type CreateNetworkACLResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkACLResponse) Reset() {
-	*x = CreateNetworkACLResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkACLResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkACLResponse) ProtoMessage() {}
-
-func (x *CreateNetworkACLResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkACLResponse.ProtoReflect.Descriptor instead.
-func (*CreateNetworkACLResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *CreateNetworkACLResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdatePodManagementNetworkIpRangeRequest represents the parameters for updates a management network ip range. only allowed when no ips are allocated.
-type UpdatePodManagementNetworkIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of POD, where the IP range belongs to.
-	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// The current starting IP address.
-	CurrentStartIp *string `protobuf:"bytes,2,opt,name=current_start_ip,json=currentStartIp" json:"current_start_ip,omitempty"`
-	// The current ending IP address.
-	CurrentEndIp *string `protobuf:"bytes,3,opt,name=current_end_ip,json=currentEndIp" json:"current_end_ip,omitempty"`
-	// The new starting IP address.
-	NewStartIp *string `protobuf:"bytes,4,opt,name=new_start_ip,json=newStartIp" json:"new_start_ip,omitempty"`
-	// The new ending IP address.
-	NewEndIp *string `protobuf:"bytes,5,opt,name=new_end_ip,json=newEndIp" json:"new_end_ip,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) Reset() {
-	*x = UpdatePodManagementNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdatePodManagementNetworkIpRangeRequest) ProtoMessage() {}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdatePodManagementNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*UpdatePodManagementNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetCurrentStartIp() string {
-	if x != nil && x.CurrentStartIp != nil {
-		return *x.CurrentStartIp
-	}
-	return ""
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetCurrentEndIp() string {
-	if x != nil && x.CurrentEndIp != nil {
-		return *x.CurrentEndIp
-	}
-	return ""
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetNewStartIp() string {
-	if x != nil && x.NewStartIp != nil {
-		return *x.NewStartIp
-	}
-	return ""
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetNewEndIp() string {
-	if x != nil && x.NewEndIp != nil {
-		return *x.NewEndIp
-	}
-	return ""
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdatePodManagementNetworkIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdatePodManagementNetworkIpRangeResponse represents the response from updates a management network ip range. only allowed when no ips are allocated.
-type UpdatePodManagementNetworkIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdatePodManagementNetworkIpRangeResponse) Reset() {
-	*x = UpdatePodManagementNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdatePodManagementNetworkIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdatePodManagementNetworkIpRangeResponse) ProtoMessage() {}
-
-func (x *UpdatePodManagementNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdatePodManagementNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*UpdatePodManagementNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *UpdatePodManagementNetworkIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListGuestNetworkIpv6PrefixesRequest represents the parameters for lists guest network ipv6 prefixes
-type ListGuestNetworkIpv6PrefixesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the IPv6 prefix.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// UUID of zone to which the IPv6 prefix belongs to.
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) Reset() {
-	*x = ListGuestNetworkIpv6PrefixesRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListGuestNetworkIpv6PrefixesRequest) ProtoMessage() {}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListGuestNetworkIpv6PrefixesRequest.ProtoReflect.Descriptor instead.
-func (*ListGuestNetworkIpv6PrefixesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListGuestNetworkIpv6PrefixesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListGuestNetworkIpv6PrefixesResponse represents the response from lists guest network ipv6 prefixes
-type ListGuestNetworkIpv6PrefixesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of DataCenterGuestIpv6Prefixs
-	Items []*DataCenterGuestIpv6Prefix `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of DataCenterGuestIpv6Prefixs
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListGuestNetworkIpv6PrefixesResponse) Reset() {
-	*x = ListGuestNetworkIpv6PrefixesResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListGuestNetworkIpv6PrefixesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListGuestNetworkIpv6PrefixesResponse) ProtoMessage() {}
-
-func (x *ListGuestNetworkIpv6PrefixesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListGuestNetworkIpv6PrefixesResponse.ProtoReflect.Descriptor instead.
-func (*ListGuestNetworkIpv6PrefixesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *ListGuestNetworkIpv6PrefixesResponse) GetItems() []*DataCenterGuestIpv6Prefix {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListGuestNetworkIpv6PrefixesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // UpdateNetworkCmdByAdminRequest represents the parameters for updates a network
@@ -2037,7 +2006,7 @@ type UpdateNetworkCmdByAdminRequest struct {
 
 func (x *UpdateNetworkCmdByAdminRequest) Reset() {
 	*x = UpdateNetworkCmdByAdminRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2049,7 +2018,7 @@ func (x *UpdateNetworkCmdByAdminRequest) String() string {
 func (*UpdateNetworkCmdByAdminRequest) ProtoMessage() {}
 
 func (x *UpdateNetworkCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2062,7 +2031,7 @@ func (x *UpdateNetworkCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNetworkCmdByAdminRequest.ProtoReflect.Descriptor instead.
 func (*UpdateNetworkCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{24}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateNetworkCmdByAdminRequest) GetHideIpAddressUsage() bool {
@@ -2230,7 +2199,7 @@ type UpdateNetworkCmdByAdminResponse struct {
 
 func (x *UpdateNetworkCmdByAdminResponse) Reset() {
 	*x = UpdateNetworkCmdByAdminResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2242,7 +2211,7 @@ func (x *UpdateNetworkCmdByAdminResponse) String() string {
 func (*UpdateNetworkCmdByAdminResponse) ProtoMessage() {}
 
 func (x *UpdateNetworkCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2255,135 +2224,10 @@ func (x *UpdateNetworkCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNetworkCmdByAdminResponse.ProtoReflect.Descriptor instead.
 func (*UpdateNetworkCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *UpdateNetworkCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateGuestNetworkIpv6PrefixRequest represents the parameters for creates a guest network ipv6 prefix.
-type CreateGuestNetworkIpv6PrefixRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of zone to which the IPv6 prefix belongs to.
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// The /56 or higher IPv6 CIDR for network prefix.
-	Prefix *string `protobuf:"bytes,2,opt,name=prefix" json:"prefix,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) Reset() {
-	*x = CreateGuestNetworkIpv6PrefixRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateGuestNetworkIpv6PrefixRequest) ProtoMessage() {}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateGuestNetworkIpv6PrefixRequest.ProtoReflect.Descriptor instead.
-func (*CreateGuestNetworkIpv6PrefixRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) GetPrefix() string {
-	if x != nil && x.Prefix != nil {
-		return *x.Prefix
-	}
-	return ""
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateGuestNetworkIpv6PrefixRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateGuestNetworkIpv6PrefixResponse represents the response from creates a guest network ipv6 prefix.
-type CreateGuestNetworkIpv6PrefixResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateGuestNetworkIpv6PrefixResponse) Reset() {
-	*x = CreateGuestNetworkIpv6PrefixResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateGuestNetworkIpv6PrefixResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateGuestNetworkIpv6PrefixResponse) ProtoMessage() {}
-
-func (x *CreateGuestNetworkIpv6PrefixResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateGuestNetworkIpv6PrefixResponse.ProtoReflect.Descriptor instead.
-func (*CreateGuestNetworkIpv6PrefixResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *CreateGuestNetworkIpv6PrefixResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2410,7 +2254,7 @@ type ListStorageNetworkIpRangeRequest struct {
 
 func (x *ListStorageNetworkIpRangeRequest) Reset() {
 	*x = ListStorageNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2422,7 +2266,7 @@ func (x *ListStorageNetworkIpRangeRequest) String() string {
 func (*ListStorageNetworkIpRangeRequest) ProtoMessage() {}
 
 func (x *ListStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2435,7 +2279,7 @@ func (x *ListStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStorageNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
 func (*ListStorageNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ListStorageNetworkIpRangeRequest) GetRangeId() int64 {
@@ -2500,7 +2344,7 @@ type ListStorageNetworkIpRangeResponse struct {
 
 func (x *ListStorageNetworkIpRangeResponse) Reset() {
 	*x = ListStorageNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2512,7 +2356,7 @@ func (x *ListStorageNetworkIpRangeResponse) String() string {
 func (*ListStorageNetworkIpRangeResponse) ProtoMessage() {}
 
 func (x *ListStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2525,7 +2369,7 @@ func (x *ListStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ListStorageNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
 func (*ListStorageNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{29}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListStorageNetworkIpRangeResponse) GetItems() []*StorageNetworkIpRange {
@@ -2542,688 +2386,15 @@ func (x *ListStorageNetworkIpRangeResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ListPhysicalNetworksRequest represents the parameters for lists physical networks
-type ListPhysicalNetworksRequest struct {
+// MigrateNetworkRequest represents the parameters for moves a network to another physical network
+type MigrateNetworkRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// list physical network by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the Zone ID for the physical network
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// search by name
-	NetworkName *string `protobuf:"bytes,3,opt,name=network_name,json=networkName" json:"network_name,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPhysicalNetworksRequest) Reset() {
-	*x = ListPhysicalNetworksRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPhysicalNetworksRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPhysicalNetworksRequest) ProtoMessage() {}
-
-func (x *ListPhysicalNetworksRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPhysicalNetworksRequest.ProtoReflect.Descriptor instead.
-func (*ListPhysicalNetworksRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *ListPhysicalNetworksRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListPhysicalNetworksRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListPhysicalNetworksRequest) GetNetworkName() string {
-	if x != nil && x.NetworkName != nil {
-		return *x.NetworkName
-	}
-	return ""
-}
-
-func (x *ListPhysicalNetworksRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListPhysicalNetworksRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListPhysicalNetworksRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListPhysicalNetworksRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListPhysicalNetworksResponse represents the response from lists physical networks
-type ListPhysicalNetworksResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of PhysicalNetworks
-	Items []*PhysicalNetwork `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of PhysicalNetworks
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPhysicalNetworksResponse) Reset() {
-	*x = ListPhysicalNetworksResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPhysicalNetworksResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPhysicalNetworksResponse) ProtoMessage() {}
-
-func (x *ListPhysicalNetworksResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPhysicalNetworksResponse.ProtoReflect.Descriptor instead.
-func (*ListPhysicalNetworksResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *ListPhysicalNetworksResponse) GetItems() []*PhysicalNetwork {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListPhysicalNetworksResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateNetworkRequest represents the parameters for updates a network
-type UpdateNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
 	// the ID of the network
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the new name for the network
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// the new display text for the network
-	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// network domain
-	NetworkDomain *string `protobuf:"bytes,5,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
-	// Force update even if CIDR type is different
-	ChangeCidr *bool `protobuf:"varint,6,opt,name=change_cidr,json=changeCidr" json:"change_cidr,omitempty"`
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
 	// network offering ID
-	NetworkOfferingId *int64 `protobuf:"varint,7,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
-	// CIDR for guest VMs, CloudStack allocates IPs to guest VMs only from this CIDR
-	GuestVmCidr *string `protobuf:"bytes,8,opt,name=guest_vm_cidr,json=guestVmCidr" json:"guest_vm_cidr,omitempty"`
-	// if true, we will update the routers one after the other. applicable only for redundant router based networks using virtual router as provider
-	UpdateInSequence *bool `protobuf:"varint,9,opt,name=update_in_sequence,json=updateInSequence" json:"update_in_sequence,omitempty"`
-	// an optional field, whether to the display the network to the end user or not.
-	DisplayNetwork *bool `protobuf:"varint,10,opt,name=display_network,json=displayNetwork" json:"display_network,omitempty"`
-	// Setting this to true will cause a forced network update,
-	Forced *bool `protobuf:"varint,11,opt,name=forced" json:"forced,omitempty"`
-	// MTU to be configured on the network VR's public facing interfaces
-	PublicMtu *int32 `protobuf:"varint,12,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
-	// MTU to be configured on the network VR's public facing interfaces
-	PrivateMtu *int32 `protobuf:"varint,13,opt,name=private_mtu,json=privateMtu" json:"private_mtu,omitempty"`
-	// the first IPv4 DNS for the network. Empty string will update the first IPv4 DNS with the value from the zone
-	Ip4Dns1 *string `protobuf:"bytes,14,opt,name=ip4_dns1,json=ip4Dns1" json:"ip4_dns1,omitempty"`
-	// the second IPv4 DNS for the network. Empty string will update the second IPv4 DNS with the value from the zone
-	Ip4Dns2 *string `protobuf:"bytes,15,opt,name=ip4_dns2,json=ip4Dns2" json:"ip4_dns2,omitempty"`
-	// the first IPv6 DNS for the network. Empty string will update the first IPv6 DNS with the value from the zone
-	Ip6Dns1 *string `protobuf:"bytes,16,opt,name=ip6_dns1,json=ip6Dns1" json:"ip6_dns1,omitempty"`
-	// the second IPv6 DNS for the network. Empty string will update the second IPv6 DNS with the value from the zone
-	Ip6Dns2 *string `protobuf:"bytes,17,opt,name=ip6_dns2,json=ip6Dns2" json:"ip6_dns2,omitempty"`
-	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this network
-	SourceNatIP *string `protobuf:"bytes,18,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,19,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,20,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,21,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,22,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkRequest) Reset() {
-	*x = UpdateNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[32]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkRequest) ProtoMessage() {}
-
-func (x *UpdateNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[32]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkRequest.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *UpdateNetworkRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *UpdateNetworkRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateNetworkRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetNetworkDomain() string {
-	if x != nil && x.NetworkDomain != nil {
-		return *x.NetworkDomain
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetChangeCidr() bool {
-	if x != nil && x.ChangeCidr != nil {
-		return *x.ChangeCidr
-	}
-	return false
-}
-
-func (x *UpdateNetworkRequest) GetNetworkOfferingId() int64 {
-	if x != nil && x.NetworkOfferingId != nil {
-		return *x.NetworkOfferingId
-	}
-	return 0
-}
-
-func (x *UpdateNetworkRequest) GetGuestVmCidr() string {
-	if x != nil && x.GuestVmCidr != nil {
-		return *x.GuestVmCidr
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetUpdateInSequence() bool {
-	if x != nil && x.UpdateInSequence != nil {
-		return *x.UpdateInSequence
-	}
-	return false
-}
-
-func (x *UpdateNetworkRequest) GetDisplayNetwork() bool {
-	if x != nil && x.DisplayNetwork != nil {
-		return *x.DisplayNetwork
-	}
-	return false
-}
-
-func (x *UpdateNetworkRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *UpdateNetworkRequest) GetPublicMtu() int32 {
-	if x != nil && x.PublicMtu != nil {
-		return *x.PublicMtu
-	}
-	return 0
-}
-
-func (x *UpdateNetworkRequest) GetPrivateMtu() int32 {
-	if x != nil && x.PrivateMtu != nil {
-		return *x.PrivateMtu
-	}
-	return 0
-}
-
-func (x *UpdateNetworkRequest) GetIp4Dns1() string {
-	if x != nil && x.Ip4Dns1 != nil {
-		return *x.Ip4Dns1
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetIp4Dns2() string {
-	if x != nil && x.Ip4Dns2 != nil {
-		return *x.Ip4Dns2
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetIp6Dns1() string {
-	if x != nil && x.Ip6Dns1 != nil {
-		return *x.Ip6Dns1
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetIp6Dns2() string {
-	if x != nil && x.Ip6Dns2 != nil {
-		return *x.Ip6Dns2
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetSourceNatIP() string {
-	if x != nil && x.SourceNatIP != nil {
-		return *x.SourceNatIP
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateNetworkResponse represents the response from updates a network
-type UpdateNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkResponse) Reset() {
-	*x = UpdateNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[33]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkResponse) ProtoMessage() {}
-
-func (x *UpdateNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[33]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkResponse.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *UpdateNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateNetworkPermissionsRequest represents the parameters for updates network permissions.
-type CreateNetworkPermissionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// a comma delimited list of accounts within owner's domain. If specified, "op" parameter has to be passed in.
-	AccountNames []string `protobuf:"bytes,1,rep,name=account_names,json=accountNames" json:"account_names,omitempty"`
-	// a comma delimited list of account IDs within owner's domain. If specified, "op" parameter has to be passed in.
-	AccountIds []string `protobuf:"bytes,2,rep,name=account_ids,json=accountIds" json:"account_ids,omitempty"`
-	// the network ID
-	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
-	ProjectIds []string `protobuf:"bytes,4,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkPermissionsRequest) Reset() {
-	*x = CreateNetworkPermissionsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkPermissionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkPermissionsRequest) ProtoMessage() {}
-
-func (x *CreateNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
-func (*CreateNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *CreateNetworkPermissionsRequest) GetAccountNames() []string {
-	if x != nil {
-		return x.AccountNames
-	}
-	return nil
-}
-
-func (x *CreateNetworkPermissionsRequest) GetAccountIds() []string {
-	if x != nil {
-		return x.AccountIds
-	}
-	return nil
-}
-
-func (x *CreateNetworkPermissionsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *CreateNetworkPermissionsRequest) GetProjectIds() []string {
-	if x != nil {
-		return x.ProjectIds
-	}
-	return nil
-}
-
-func (x *CreateNetworkPermissionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateNetworkPermissionsResponse represents the response from updates network permissions.
-type CreateNetworkPermissionsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkPermissionsResponse) Reset() {
-	*x = CreateNetworkPermissionsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkPermissionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkPermissionsResponse) ProtoMessage() {}
-
-func (x *CreateNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
-func (*CreateNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *CreateNetworkPermissionsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteIpv4SubnetForGuestNetworkRequest represents the parameters for deletes an existing ipv4 subnet for guest network.
-type DeleteIpv4SubnetForGuestNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the guest network IPv4 subnet
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) Reset() {
-	*x = DeleteIpv4SubnetForGuestNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteIpv4SubnetForGuestNetworkRequest) ProtoMessage() {}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteIpv4SubnetForGuestNetworkRequest.ProtoReflect.Descriptor instead.
-func (*DeleteIpv4SubnetForGuestNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{36}
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteIpv4SubnetForGuestNetworkResponse represents the response from deletes an existing ipv4 subnet for guest network.
-type DeleteIpv4SubnetForGuestNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkResponse) Reset() {
-	*x = DeleteIpv4SubnetForGuestNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteIpv4SubnetForGuestNetworkResponse) ProtoMessage() {}
-
-func (x *DeleteIpv4SubnetForGuestNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteIpv4SubnetForGuestNetworkResponse.ProtoReflect.Descriptor instead.
-func (*DeleteIpv4SubnetForGuestNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{37}
-}
-
-func (x *DeleteIpv4SubnetForGuestNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ReplaceNetworkACLListRequest represents the parameters for replaces acl associated with a network or private gateway
-type ReplaceNetworkACLListRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network ACL
-	AclId *int64 `protobuf:"varint,1,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
-	// the ID of the network
-	NetworkId *int64 `protobuf:"varint,2,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// the ID of the private gateway
-	PrivateGatewayId *int64 `protobuf:"varint,3,opt,name=private_gateway_id,json=privateGatewayId" json:"private_gateway_id,omitempty"`
+	NetworkOfferingId *int64 `protobuf:"varint,2,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
+	// true if previous network migration cmd failed
+	Resume *bool `protobuf:"varint,3,opt,name=resume" json:"resume,omitempty"`
 	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -3231,21 +2402,21 @@ type ReplaceNetworkACLListRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReplaceNetworkACLListRequest) Reset() {
-	*x = ReplaceNetworkACLListRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[38]
+func (x *MigrateNetworkRequest) Reset() {
+	*x = MigrateNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReplaceNetworkACLListRequest) String() string {
+func (x *MigrateNetworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReplaceNetworkACLListRequest) ProtoMessage() {}
+func (*MigrateNetworkRequest) ProtoMessage() {}
 
-func (x *ReplaceNetworkACLListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[38]
+func (x *MigrateNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3256,171 +2427,55 @@ func (x *ReplaceNetworkACLListRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReplaceNetworkACLListRequest.ProtoReflect.Descriptor instead.
-func (*ReplaceNetworkACLListRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{38}
+// Deprecated: Use MigrateNetworkRequest.ProtoReflect.Descriptor instead.
+func (*MigrateNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{32}
 }
 
-func (x *ReplaceNetworkACLListRequest) GetAclId() int64 {
-	if x != nil && x.AclId != nil {
-		return *x.AclId
-	}
-	return 0
-}
-
-func (x *ReplaceNetworkACLListRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ReplaceNetworkACLListRequest) GetPrivateGatewayId() int64 {
-	if x != nil && x.PrivateGatewayId != nil {
-		return *x.PrivateGatewayId
-	}
-	return 0
-}
-
-func (x *ReplaceNetworkACLListRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ReplaceNetworkACLListRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ReplaceNetworkACLListRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ReplaceNetworkACLListResponse represents the response from replaces acl associated with a network or private gateway
-type ReplaceNetworkACLListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReplaceNetworkACLListResponse) Reset() {
-	*x = ReplaceNetworkACLListResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReplaceNetworkACLListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReplaceNetworkACLListResponse) ProtoMessage() {}
-
-func (x *ReplaceNetworkACLListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReplaceNetworkACLListResponse.ProtoReflect.Descriptor instead.
-func (*ReplaceNetworkACLListResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{39}
-}
-
-func (x *ReplaceNetworkACLListResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeletePhysicalNetworkRequest represents the parameters for deletes a physical network.
-type DeletePhysicalNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the Physical network
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePhysicalNetworkRequest) Reset() {
-	*x = DeletePhysicalNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePhysicalNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePhysicalNetworkRequest) ProtoMessage() {}
-
-func (x *DeletePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePhysicalNetworkRequest.ProtoReflect.Descriptor instead.
-func (*DeletePhysicalNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{40}
-}
-
-func (x *DeletePhysicalNetworkRequest) GetId() int64 {
+func (x *MigrateNetworkRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeletePhysicalNetworkRequest) GetStartEventId() int64 {
+func (x *MigrateNetworkRequest) GetNetworkOfferingId() int64 {
+	if x != nil && x.NetworkOfferingId != nil {
+		return *x.NetworkOfferingId
+	}
+	return 0
+}
+
+func (x *MigrateNetworkRequest) GetResume() bool {
+	if x != nil && x.Resume != nil {
+		return *x.Resume
+	}
+	return false
+}
+
+func (x *MigrateNetworkRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeletePhysicalNetworkRequest) GetInjectedJobId() string {
+func (x *MigrateNetworkRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeletePhysicalNetworkRequest) GetResponseType() string {
+func (x *MigrateNetworkRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeletePhysicalNetworkResponse represents the response from deletes a physical network.
-type DeletePhysicalNetworkResponse struct {
+// MigrateNetworkResponse represents the response from moves a network to another physical network
+type MigrateNetworkResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3428,21 +2483,21 @@ type DeletePhysicalNetworkResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeletePhysicalNetworkResponse) Reset() {
-	*x = DeletePhysicalNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[41]
+func (x *MigrateNetworkResponse) Reset() {
+	*x = MigrateNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeletePhysicalNetworkResponse) String() string {
+func (x *MigrateNetworkResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeletePhysicalNetworkResponse) ProtoMessage() {}
+func (*MigrateNetworkResponse) ProtoMessage() {}
 
-func (x *DeletePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[41]
+func (x *MigrateNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3453,49 +2508,53 @@ func (x *DeletePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeletePhysicalNetworkResponse.ProtoReflect.Descriptor instead.
-func (*DeletePhysicalNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{41}
+// Deprecated: Use MigrateNetworkResponse.ProtoReflect.Descriptor instead.
+func (*MigrateNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *DeletePhysicalNetworkResponse) GetResult() *Result {
+func (x *MigrateNetworkResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// ListNetworkDeviceRequest represents the parameters for list network devices
-type ListNetworkDeviceRequest struct {
+// UpdatePodManagementNetworkIpRangeRequest represents the parameters for updates a management network ip range. only allowed when no ips are allocated.
+type UpdatePodManagementNetworkIpRangeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network device type, now supports ExternalDhcp, PxeServer, NetscalerMPXLoadBalancer, NetscalerVPXLoadBalancer, NetscalerSDXLoadBalancer, F5BigIpLoadBalancer, JuniperSRXFirewall, PaloAltoFirewall
-	Type *string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
-	// parameters for network device
-	ParamList map[string]string `protobuf:"bytes,2,rep,name=param_list,json=paramList" json:"param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// UUID of POD, where the IP range belongs to.
+	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// The current starting IP address.
+	CurrentStartIp *string `protobuf:"bytes,2,opt,name=current_start_ip,json=currentStartIp" json:"current_start_ip,omitempty"`
+	// The current ending IP address.
+	CurrentEndIp *string `protobuf:"bytes,3,opt,name=current_end_ip,json=currentEndIp" json:"current_end_ip,omitempty"`
+	// The new starting IP address.
+	NewStartIp *string `protobuf:"bytes,4,opt,name=new_start_ip,json=newStartIp" json:"new_start_ip,omitempty"`
+	// The new ending IP address.
+	NewEndIp *string `protobuf:"bytes,5,opt,name=new_end_ip,json=newEndIp" json:"new_end_ip,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListNetworkDeviceRequest) Reset() {
-	*x = ListNetworkDeviceRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[42]
+func (x *UpdatePodManagementNetworkIpRangeRequest) Reset() {
+	*x = UpdatePodManagementNetworkIpRangeRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListNetworkDeviceRequest) String() string {
+func (x *UpdatePodManagementNetworkIpRangeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListNetworkDeviceRequest) ProtoMessage() {}
+func (*UpdatePodManagementNetworkIpRangeRequest) ProtoMessage() {}
 
-func (x *ListNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[42]
+func (x *UpdatePodManagementNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3506,191 +2565,69 @@ func (x *ListNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListNetworkDeviceRequest.ProtoReflect.Descriptor instead.
-func (*ListNetworkDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{42}
+// Deprecated: Use UpdatePodManagementNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePodManagementNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *ListNetworkDeviceRequest) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return ""
-}
-
-func (x *ListNetworkDeviceRequest) GetParamList() map[string]string {
-	if x != nil {
-		return x.ParamList
-	}
-	return nil
-}
-
-func (x *ListNetworkDeviceRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListNetworkDeviceRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
 	}
 	return 0
 }
 
-func (x *ListNetworkDeviceRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetCurrentStartIp() string {
+	if x != nil && x.CurrentStartIp != nil {
+		return *x.CurrentStartIp
+	}
+	return ""
+}
+
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetCurrentEndIp() string {
+	if x != nil && x.CurrentEndIp != nil {
+		return *x.CurrentEndIp
+	}
+	return ""
+}
+
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetNewStartIp() string {
+	if x != nil && x.NewStartIp != nil {
+		return *x.NewStartIp
+	}
+	return ""
+}
+
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetNewEndIp() string {
+	if x != nil && x.NewEndIp != nil {
+		return *x.NewEndIp
+	}
+	return ""
+}
+
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ListNetworkDeviceRequest) GetResponseType() string {
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdatePodManagementNetworkIpRangeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListNetworkDeviceResponse represents the response from list network devices
-type ListNetworkDeviceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of NetworkDevices
-	Items []*NetworkDevice `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of NetworkDevices
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworkDeviceResponse) Reset() {
-	*x = ListNetworkDeviceResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[43]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworkDeviceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworkDeviceResponse) ProtoMessage() {}
-
-func (x *ListNetworkDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[43]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworkDeviceResponse.ProtoReflect.Descriptor instead.
-func (*ListNetworkDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{43}
-}
-
-func (x *ListNetworkDeviceResponse) GetItems() []*NetworkDevice {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListNetworkDeviceResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// RemoveNetworkPermissionsRequest represents the parameters for removes network permissions.
-type RemoveNetworkPermissionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// a comma delimited list of accounts within owner's domain. If specified, "op" parameter has to be passed in.
-	AccountNames []string `protobuf:"bytes,1,rep,name=account_names,json=accountNames" json:"account_names,omitempty"`
-	// a comma delimited list of account IDs within owner's domain. If specified, "op" parameter has to be passed in.
-	AccountIds []string `protobuf:"bytes,2,rep,name=account_ids,json=accountIds" json:"account_ids,omitempty"`
-	// the network ID
-	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
-	ProjectIds []string `protobuf:"bytes,4,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveNetworkPermissionsRequest) Reset() {
-	*x = RemoveNetworkPermissionsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[44]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveNetworkPermissionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveNetworkPermissionsRequest) ProtoMessage() {}
-
-func (x *RemoveNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[44]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
-func (*RemoveNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{44}
-}
-
-func (x *RemoveNetworkPermissionsRequest) GetAccountNames() []string {
-	if x != nil {
-		return x.AccountNames
-	}
-	return nil
-}
-
-func (x *RemoveNetworkPermissionsRequest) GetAccountIds() []string {
-	if x != nil {
-		return x.AccountIds
-	}
-	return nil
-}
-
-func (x *RemoveNetworkPermissionsRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *RemoveNetworkPermissionsRequest) GetProjectIds() []string {
-	if x != nil {
-		return x.ProjectIds
-	}
-	return nil
-}
-
-func (x *RemoveNetworkPermissionsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveNetworkPermissionsResponse represents the response from removes network permissions.
-type RemoveNetworkPermissionsResponse struct {
+// UpdatePodManagementNetworkIpRangeResponse represents the response from updates a management network ip range. only allowed when no ips are allocated.
+type UpdatePodManagementNetworkIpRangeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3698,21 +2635,21 @@ type RemoveNetworkPermissionsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveNetworkPermissionsResponse) Reset() {
-	*x = RemoveNetworkPermissionsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[45]
+func (x *UpdatePodManagementNetworkIpRangeResponse) Reset() {
+	*x = UpdatePodManagementNetworkIpRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveNetworkPermissionsResponse) String() string {
+func (x *UpdatePodManagementNetworkIpRangeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveNetworkPermissionsResponse) ProtoMessage() {}
+func (*UpdatePodManagementNetworkIpRangeResponse) ProtoMessage() {}
 
-func (x *RemoveNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[45]
+func (x *UpdatePodManagementNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3723,12 +2660,12 @@ func (x *RemoveNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
-func (*RemoveNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{45}
+// Deprecated: Use UpdatePodManagementNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*UpdatePodManagementNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *RemoveNetworkPermissionsResponse) GetResult() *Result {
+func (x *UpdatePodManagementNetworkIpRangeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -3749,7 +2686,7 @@ type ReleaseDedicatedIpv4SubnetForZoneRequest struct {
 
 func (x *ReleaseDedicatedIpv4SubnetForZoneRequest) Reset() {
 	*x = ReleaseDedicatedIpv4SubnetForZoneRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[46]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3761,7 +2698,7 @@ func (x *ReleaseDedicatedIpv4SubnetForZoneRequest) String() string {
 func (*ReleaseDedicatedIpv4SubnetForZoneRequest) ProtoMessage() {}
 
 func (x *ReleaseDedicatedIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[46]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3774,7 +2711,7 @@ func (x *ReleaseDedicatedIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use ReleaseDedicatedIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
 func (*ReleaseDedicatedIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{46}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ReleaseDedicatedIpv4SubnetForZoneRequest) GetId() int64 {
@@ -3816,7 +2753,7 @@ type ReleaseDedicatedIpv4SubnetForZoneResponse struct {
 
 func (x *ReleaseDedicatedIpv4SubnetForZoneResponse) Reset() {
 	*x = ReleaseDedicatedIpv4SubnetForZoneResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[47]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3828,7 +2765,7 @@ func (x *ReleaseDedicatedIpv4SubnetForZoneResponse) String() string {
 func (*ReleaseDedicatedIpv4SubnetForZoneResponse) ProtoMessage() {}
 
 func (x *ReleaseDedicatedIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[47]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3841,7 +2778,7 @@ func (x *ReleaseDedicatedIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use ReleaseDedicatedIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
 func (*ReleaseDedicatedIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{47}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ReleaseDedicatedIpv4SubnetForZoneResponse) GetResult() *Result {
@@ -3849,6 +2786,1181 @@ func (x *ReleaseDedicatedIpv4SubnetForZoneResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// AddNetworkDeviceRequest represents the parameters for adds a network device of one of the following types: externaldhcp, externalfirewall, externalloadbalancer, pxeserver
+type AddNetworkDeviceRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Network device type, now supports ExternalDhcp, PxeServer, NetscalerMPXLoadBalancer, NetscalerVPXLoadBalancer, NetscalerSDXLoadBalancer, F5BigIpLoadBalancer, JuniperSRXFirewall, PaloAltoFirewall
+	Type *string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
+	// parameters for network device
+	ParamList map[string]string `protobuf:"bytes,2,rep,name=param_list,json=paramList" json:"param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddNetworkDeviceRequest) Reset() {
+	*x = AddNetworkDeviceRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddNetworkDeviceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddNetworkDeviceRequest) ProtoMessage() {}
+
+func (x *AddNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddNetworkDeviceRequest.ProtoReflect.Descriptor instead.
+func (*AddNetworkDeviceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *AddNetworkDeviceRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
+}
+
+func (x *AddNetworkDeviceRequest) GetParamList() map[string]string {
+	if x != nil {
+		return x.ParamList
+	}
+	return nil
+}
+
+func (x *AddNetworkDeviceRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddNetworkDeviceResponse represents the response from adds a network device of one of the following types: externaldhcp, externalfirewall, externalloadbalancer, pxeserver
+type AddNetworkDeviceResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddNetworkDeviceResponse) Reset() {
+	*x = AddNetworkDeviceResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddNetworkDeviceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddNetworkDeviceResponse) ProtoMessage() {}
+
+func (x *AddNetworkDeviceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddNetworkDeviceResponse.ProtoReflect.Descriptor instead.
+func (*AddNetworkDeviceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *AddNetworkDeviceResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteNetworkOfferingRequest represents the parameters for deletes a network offering.
+type DeleteNetworkOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the network offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkOfferingRequest) Reset() {
+	*x = DeleteNetworkOfferingRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkOfferingRequest) ProtoMessage() {}
+
+func (x *DeleteNetworkOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkOfferingRequest.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *DeleteNetworkOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteNetworkOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteNetworkOfferingResponse represents the response from deletes a network offering.
+type DeleteNetworkOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkOfferingResponse) Reset() {
+	*x = DeleteNetworkOfferingResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkOfferingResponse) ProtoMessage() {}
+
+func (x *DeleteNetworkOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkOfferingResponse.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *DeleteNetworkOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdatePhysicalNetworkRequest represents the parameters for updates a physical network
+type UpdatePhysicalNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// physical network id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the speed for the physical network[1G/10G]
+	Speed *string `protobuf:"bytes,2,opt,name=speed" json:"speed,omitempty"`
+	// Tag the physical network
+	Tags []string `protobuf:"bytes,3,rep,name=tags" json:"tags,omitempty"`
+	// Enabled/Disabled
+	State *string `protobuf:"bytes,4,opt,name=state" json:"state,omitempty"`
+	// the VLAN for the physical network
+	Vlan *string `protobuf:"bytes,5,opt,name=vlan" json:"vlan,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdatePhysicalNetworkRequest) Reset() {
+	*x = UpdatePhysicalNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePhysicalNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePhysicalNetworkRequest) ProtoMessage() {}
+
+func (x *UpdatePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePhysicalNetworkRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePhysicalNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetSpeed() string {
+	if x != nil && x.Speed != nil {
+		return *x.Speed
+	}
+	return ""
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdatePhysicalNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdatePhysicalNetworkResponse represents the response from updates a physical network
+type UpdatePhysicalNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdatePhysicalNetworkResponse) Reset() {
+	*x = UpdatePhysicalNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePhysicalNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePhysicalNetworkResponse) ProtoMessage() {}
+
+func (x *UpdatePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePhysicalNetworkResponse.ProtoReflect.Descriptor instead.
+func (*UpdatePhysicalNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *UpdatePhysicalNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateManagementNetworkIpRangeRequest represents the parameters for creates a management network ip range.
+type CreateManagementNetworkIpRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of POD, where the IP range belongs to.
+	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// The gateway for the management network.
+	Gateway *string `protobuf:"bytes,2,opt,name=gateway" json:"gateway,omitempty"`
+	// The netmask for the management network.
+	Netmask *string `protobuf:"bytes,3,opt,name=netmask" json:"netmask,omitempty"`
+	// The starting IP address.
+	StartIp *string `protobuf:"bytes,4,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
+	// The ending IP address.
+	EndIp *string `protobuf:"bytes,5,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
+	// Specify if range is dedicated for CPVM and SSVM.
+	ForSystemVms *bool `protobuf:"varint,6,opt,name=for_system_vms,json=forSystemVms" json:"for_system_vms,omitempty"`
+	// Optional. The vlan id the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan
+	Vlan *string `protobuf:"bytes,7,opt,name=vlan" json:"vlan,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) Reset() {
+	*x = CreateManagementNetworkIpRangeRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateManagementNetworkIpRangeRequest) ProtoMessage() {}
+
+func (x *CreateManagementNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateManagementNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*CreateManagementNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetGateway() string {
+	if x != nil && x.Gateway != nil {
+		return *x.Gateway
+	}
+	return ""
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
+	}
+	return ""
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetStartIp() string {
+	if x != nil && x.StartIp != nil {
+		return *x.StartIp
+	}
+	return ""
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetEndIp() string {
+	if x != nil && x.EndIp != nil {
+		return *x.EndIp
+	}
+	return ""
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetForSystemVms() bool {
+	if x != nil && x.ForSystemVms != nil {
+		return *x.ForSystemVms
+	}
+	return false
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateManagementNetworkIpRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateManagementNetworkIpRangeResponse represents the response from creates a management network ip range.
+type CreateManagementNetworkIpRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateManagementNetworkIpRangeResponse) Reset() {
+	*x = CreateManagementNetworkIpRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateManagementNetworkIpRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateManagementNetworkIpRangeResponse) ProtoMessage() {}
+
+func (x *CreateManagementNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateManagementNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*CreateManagementNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *CreateManagementNetworkIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteNetworkRequest represents the parameters for deletes a network
+type DeleteNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the network
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Force delete a network. Network will be marked as 'Destroy' even when commands to shutdown and cleanup to the backend fails.
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkRequest) Reset() {
+	*x = DeleteNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkRequest) ProtoMessage() {}
+
+func (x *DeleteNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkRequest.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *DeleteNetworkRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteNetworkRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DeleteNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteNetworkResponse represents the response from deletes a network
+type DeleteNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkResponse) Reset() {
+	*x = DeleteNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkResponse) ProtoMessage() {}
+
+func (x *DeleteNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkResponse.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *DeleteNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListNetworkServiceProvidersRequest represents the parameters for lists network serviceproviders for a given physical network.
+type ListNetworkServiceProvidersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the Physical Network ID
+	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// list providers by name
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// list providers by state
+	State *string `protobuf:"bytes,3,opt,name=state" json:"state,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkServiceProvidersRequest) Reset() {
+	*x = ListNetworkServiceProvidersRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkServiceProvidersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkServiceProvidersRequest) ProtoMessage() {}
+
+func (x *ListNetworkServiceProvidersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkServiceProvidersRequest.ProtoReflect.Descriptor instead.
+func (*ListNetworkServiceProvidersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListNetworkServiceProvidersRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListNetworkServiceProvidersResponse represents the response from lists network serviceproviders for a given physical network.
+type ListNetworkServiceProvidersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Providers
+	Items []*Provider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Providers
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkServiceProvidersResponse) Reset() {
+	*x = ListNetworkServiceProvidersResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkServiceProvidersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkServiceProvidersResponse) ProtoMessage() {}
+
+func (x *ListNetworkServiceProvidersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkServiceProvidersResponse.ProtoReflect.Descriptor instead.
+func (*ListNetworkServiceProvidersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *ListNetworkServiceProvidersResponse) GetItems() []*Provider {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListNetworkServiceProvidersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// CreateNetworkACLRequest represents the parameters for creates a acl rule in the given network (the network has to belong to vpc)
+type CreateNetworkACLRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
+	// the starting port of ACL
+	PublicStartPort *int32 `protobuf:"varint,2,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
+	// the ending port of ACL
+	PublicEndPort *int32 `protobuf:"varint,3,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
+	// the CIDR list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
+	Cidrlist []string `protobuf:"bytes,4,rep,name=cidrlist" json:"cidrlist,omitempty"`
+	// type of the ICMP message being sent
+	IcmpType *int32 `protobuf:"varint,5,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
+	// error code for this ICMP message
+	IcmpCode *int32 `protobuf:"varint,6,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
+	// The network of the VM the ACL will be created for
+	NetworkId *int64 `protobuf:"varint,7,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// The network of the VM the ACL will be created for
+	AclId *int64 `protobuf:"varint,8,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
+	// the traffic type for the ACL,can be ingress or egress, defaulted to ingress if not specified
+	TrafficType *string `protobuf:"bytes,9,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// The number of the ACL item, its ordering
+	Number *int32 `protobuf:"varint,10,opt,name=number" json:"number,omitempty"`
+	// scl entry action, allow or deny
+	Action *string `protobuf:"bytes,11,opt,name=action" json:"action,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,12,opt,name=display" json:"display,omitempty"`
+	// A description indicating why the ACL rule is required.
+	Reason *string `protobuf:"bytes,13,opt,name=reason" json:"reason,omitempty"`
+	StartEventId *int64 `protobuf:"varint,14,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,15,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,16,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateNetworkACLRequest) Reset() {
+	*x = CreateNetworkACLRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateNetworkACLRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateNetworkACLRequest) ProtoMessage() {}
+
+func (x *CreateNetworkACLRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateNetworkACLRequest.ProtoReflect.Descriptor instead.
+func (*CreateNetworkACLRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *CreateNetworkACLRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLRequest) GetPublicStartPort() int32 {
+	if x != nil && x.PublicStartPort != nil {
+		return *x.PublicStartPort
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetPublicEndPort() int32 {
+	if x != nil && x.PublicEndPort != nil {
+		return *x.PublicEndPort
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetCidrlist() []string {
+	if x != nil {
+		return x.Cidrlist
+	}
+	return nil
+}
+
+func (x *CreateNetworkACLRequest) GetIcmpType() int32 {
+	if x != nil && x.IcmpType != nil {
+		return *x.IcmpType
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetIcmpCode() int32 {
+	if x != nil && x.IcmpCode != nil {
+		return *x.IcmpCode
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetAclId() int64 {
+	if x != nil && x.AclId != nil {
+		return *x.AclId
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLRequest) GetNumber() int32 {
+	if x != nil && x.Number != nil {
+		return *x.Number
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetAction() string {
+	if x != nil && x.Action != nil {
+		return *x.Action
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateNetworkACLRequest) GetReason() string {
+	if x != nil && x.Reason != nil {
+		return *x.Reason
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateNetworkACLRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateNetworkACLRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateNetworkACLResponse represents the response from creates a acl rule in the given network (the network has to belong to vpc)
+type CreateNetworkACLResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateNetworkACLResponse) Reset() {
+	*x = CreateNetworkACLResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateNetworkACLResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateNetworkACLResponse) ProtoMessage() {}
+
+func (x *CreateNetworkACLResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateNetworkACLResponse.ProtoReflect.Descriptor instead.
+func (*CreateNetworkACLResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *CreateNetworkACLResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListSupportedNetworkServicesRequest represents the parameters for lists all network services provided by cloudstack or for the given provider.
+type ListSupportedNetworkServicesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// network service provider name
+	ProviderName *string `protobuf:"bytes,1,opt,name=provider_name,json=providerName" json:"provider_name,omitempty"`
+	// network service name to list providers and capabilities of
+	ServiceName *string `protobuf:"bytes,2,opt,name=service_name,json=serviceName" json:"service_name,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSupportedNetworkServicesRequest) Reset() {
+	*x = ListSupportedNetworkServicesRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSupportedNetworkServicesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSupportedNetworkServicesRequest) ProtoMessage() {}
+
+func (x *ListSupportedNetworkServicesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSupportedNetworkServicesRequest.ProtoReflect.Descriptor instead.
+func (*ListSupportedNetworkServicesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *ListSupportedNetworkServicesRequest) GetProviderName() string {
+	if x != nil && x.ProviderName != nil {
+		return *x.ProviderName
+	}
+	return ""
+}
+
+func (x *ListSupportedNetworkServicesRequest) GetServiceName() string {
+	if x != nil && x.ServiceName != nil {
+		return *x.ServiceName
+	}
+	return ""
+}
+
+func (x *ListSupportedNetworkServicesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListSupportedNetworkServicesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListSupportedNetworkServicesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListSupportedNetworkServicesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListSupportedNetworkServicesResponse represents the response from lists all network services provided by cloudstack or for the given provider.
+type ListSupportedNetworkServicesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Services
+	Items []*Service `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Services
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSupportedNetworkServicesResponse) Reset() {
+	*x = ListSupportedNetworkServicesResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSupportedNetworkServicesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSupportedNetworkServicesResponse) ProtoMessage() {}
+
+func (x *ListSupportedNetworkServicesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSupportedNetworkServicesResponse.ProtoReflect.Descriptor instead.
+func (*ListSupportedNetworkServicesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *ListSupportedNetworkServicesResponse) GetItems() []*Service {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListSupportedNetworkServicesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListNetworkACLListsRequest represents the parameters for lists all network acls
@@ -3885,7 +3997,7 @@ type ListNetworkACLListsRequest struct {
 
 func (x *ListNetworkACLListsRequest) Reset() {
 	*x = ListNetworkACLListsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[48]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3897,7 +4009,7 @@ func (x *ListNetworkACLListsRequest) String() string {
 func (*ListNetworkACLListsRequest) ProtoMessage() {}
 
 func (x *ListNetworkACLListsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[48]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3910,7 +4022,7 @@ func (x *ListNetworkACLListsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNetworkACLListsRequest.ProtoReflect.Descriptor instead.
 func (*ListNetworkACLListsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{48}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *ListNetworkACLListsRequest) GetId() int64 {
@@ -4024,7 +4136,7 @@ type ListNetworkACLListsResponse struct {
 
 func (x *ListNetworkACLListsResponse) Reset() {
 	*x = ListNetworkACLListsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[49]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4036,7 +4148,7 @@ func (x *ListNetworkACLListsResponse) String() string {
 func (*ListNetworkACLListsResponse) ProtoMessage() {}
 
 func (x *ListNetworkACLListsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[49]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4049,7 +4161,7 @@ func (x *ListNetworkACLListsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNetworkACLListsResponse.ProtoReflect.Descriptor instead.
 func (*ListNetworkACLListsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{49}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *ListNetworkACLListsResponse) GetItems() []*NetworkACL {
@@ -4060,1098 +4172,6 @@ func (x *ListNetworkACLListsResponse) GetItems() []*NetworkACL {
 }
 
 func (x *ListNetworkACLListsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteManagementNetworkIpRangeRequest represents the parameters for deletes a management network ip range. this action is only allowed when no ips in this range are allocated.
-type DeleteManagementNetworkIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of POD, where the IP range belongs to.
-	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// The starting IP address.
-	StartIp *string `protobuf:"bytes,2,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// The ending IP address.
-	EndIp *string `protobuf:"bytes,3,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// The vlan id the ip range sits on
-	Vlan *string `protobuf:"bytes,4,opt,name=vlan" json:"vlan,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) Reset() {
-	*x = DeleteManagementNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[50]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteManagementNetworkIpRangeRequest) ProtoMessage() {}
-
-func (x *DeleteManagementNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[50]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteManagementNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*DeleteManagementNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{50}
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteManagementNetworkIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteManagementNetworkIpRangeResponse represents the response from deletes a management network ip range. this action is only allowed when no ips in this range are allocated.
-type DeleteManagementNetworkIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteManagementNetworkIpRangeResponse) Reset() {
-	*x = DeleteManagementNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[51]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteManagementNetworkIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteManagementNetworkIpRangeResponse) ProtoMessage() {}
-
-func (x *DeleteManagementNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[51]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteManagementNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*DeleteManagementNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{51}
-}
-
-func (x *DeleteManagementNetworkIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteGuestNetworkIpv6PrefixRequest represents the parameters for deletes an existing guest network ipv6 prefix.
-type DeleteGuestNetworkIpv6PrefixRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the guest network IPv6 prefix
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) Reset() {
-	*x = DeleteGuestNetworkIpv6PrefixRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[52]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteGuestNetworkIpv6PrefixRequest) ProtoMessage() {}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[52]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteGuestNetworkIpv6PrefixRequest.ProtoReflect.Descriptor instead.
-func (*DeleteGuestNetworkIpv6PrefixRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{52}
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteGuestNetworkIpv6PrefixResponse represents the response from deletes an existing guest network ipv6 prefix.
-type DeleteGuestNetworkIpv6PrefixResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixResponse) Reset() {
-	*x = DeleteGuestNetworkIpv6PrefixResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[53]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteGuestNetworkIpv6PrefixResponse) ProtoMessage() {}
-
-func (x *DeleteGuestNetworkIpv6PrefixResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[53]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteGuestNetworkIpv6PrefixResponse.ProtoReflect.Descriptor instead.
-func (*DeleteGuestNetworkIpv6PrefixResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{53}
-}
-
-func (x *DeleteGuestNetworkIpv6PrefixResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// MigrateNetworkRequest represents the parameters for moves a network to another physical network
-type MigrateNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// network offering ID
-	NetworkOfferingId *int64 `protobuf:"varint,2,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
-	// true if previous network migration cmd failed
-	Resume *bool `protobuf:"varint,3,opt,name=resume" json:"resume,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateNetworkRequest) Reset() {
-	*x = MigrateNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[54]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateNetworkRequest) ProtoMessage() {}
-
-func (x *MigrateNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[54]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateNetworkRequest.ProtoReflect.Descriptor instead.
-func (*MigrateNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{54}
-}
-
-func (x *MigrateNetworkRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *MigrateNetworkRequest) GetNetworkOfferingId() int64 {
-	if x != nil && x.NetworkOfferingId != nil {
-		return *x.NetworkOfferingId
-	}
-	return 0
-}
-
-func (x *MigrateNetworkRequest) GetResume() bool {
-	if x != nil && x.Resume != nil {
-		return *x.Resume
-	}
-	return false
-}
-
-func (x *MigrateNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MigrateNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MigrateNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// MigrateNetworkResponse represents the response from moves a network to another physical network
-type MigrateNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateNetworkResponse) Reset() {
-	*x = MigrateNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[55]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateNetworkResponse) ProtoMessage() {}
-
-func (x *MigrateNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[55]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateNetworkResponse.ProtoReflect.Descriptor instead.
-func (*MigrateNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{55}
-}
-
-func (x *MigrateNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DedicateGuestVlanRangeRequest represents the parameters for dedicates a guest vlan range to an account
-type DedicateGuestVlanRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// guest vlan range to be dedicated
-	Vlan *string `protobuf:"bytes,1,opt,name=vlan" json:"vlan,omitempty"`
-	// account who will own the VLAN
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who will own the VLAN
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// domain ID of the account owning a VLAN
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// physical network ID of the vlan
-	PhysicalNetworkId *int64 `protobuf:"varint,5,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DedicateGuestVlanRangeRequest) Reset() {
-	*x = DedicateGuestVlanRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[56]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DedicateGuestVlanRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DedicateGuestVlanRangeRequest) ProtoMessage() {}
-
-func (x *DedicateGuestVlanRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[56]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DedicateGuestVlanRangeRequest.ProtoReflect.Descriptor instead.
-func (*DedicateGuestVlanRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{56}
-}
-
-func (x *DedicateGuestVlanRangeRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *DedicateGuestVlanRangeRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DedicateGuestVlanRangeRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DedicateGuestVlanRangeRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DedicateGuestVlanRangeRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *DedicateGuestVlanRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DedicateGuestVlanRangeResponse represents the response from dedicates a guest vlan range to an account
-type DedicateGuestVlanRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DedicateGuestVlanRangeResponse) Reset() {
-	*x = DedicateGuestVlanRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[57]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DedicateGuestVlanRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DedicateGuestVlanRangeResponse) ProtoMessage() {}
-
-func (x *DedicateGuestVlanRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[57]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DedicateGuestVlanRangeResponse.ProtoReflect.Descriptor instead.
-func (*DedicateGuestVlanRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{57}
-}
-
-func (x *DedicateGuestVlanRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateStorageNetworkIpRangeRequest represents the parameters for update a storage network ip range, only allowed when no ips in this range have been allocated.
-type UpdateStorageNetworkIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of storage network ip range
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the beginning IP address
-	StartIp *string `protobuf:"bytes,2,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// the ending IP address
-	EndIp *string `protobuf:"bytes,3,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// Optional. the vlan the ip range sits on
-	Vlan *int32 `protobuf:"varint,4,opt,name=vlan" json:"vlan,omitempty"`
-	// the netmask for storage network
-	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) Reset() {
-	*x = UpdateStorageNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[58]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateStorageNetworkIpRangeRequest) ProtoMessage() {}
-
-func (x *UpdateStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[58]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateStorageNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*UpdateStorageNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{58}
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetVlan() int32 {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return 0
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateStorageNetworkIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateStorageNetworkIpRangeResponse represents the response from update a storage network ip range, only allowed when no ips in this range have been allocated.
-type UpdateStorageNetworkIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateStorageNetworkIpRangeResponse) Reset() {
-	*x = UpdateStorageNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[59]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateStorageNetworkIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateStorageNetworkIpRangeResponse) ProtoMessage() {}
-
-func (x *UpdateStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[59]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateStorageNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*UpdateStorageNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{59}
-}
-
-func (x *UpdateStorageNetworkIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteNetworkServiceProviderRequest represents the parameters for deletes a network service provider.
-type DeleteNetworkServiceProviderRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network service provider
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkServiceProviderRequest) Reset() {
-	*x = DeleteNetworkServiceProviderRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[60]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkServiceProviderRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkServiceProviderRequest) ProtoMessage() {}
-
-func (x *DeleteNetworkServiceProviderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[60]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkServiceProviderRequest.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkServiceProviderRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{60}
-}
-
-func (x *DeleteNetworkServiceProviderRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteNetworkServiceProviderRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteNetworkServiceProviderRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteNetworkServiceProviderRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteNetworkServiceProviderResponse represents the response from deletes a network service provider.
-type DeleteNetworkServiceProviderResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkServiceProviderResponse) Reset() {
-	*x = DeleteNetworkServiceProviderResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[61]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkServiceProviderResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkServiceProviderResponse) ProtoMessage() {}
-
-func (x *DeleteNetworkServiceProviderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[61]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkServiceProviderResponse.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkServiceProviderResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{61}
-}
-
-func (x *DeleteNetworkServiceProviderResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// MigrateVPCRequest represents the parameters for moves a vpc to another physical network
-type MigrateVPCRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the vpc
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// vpc offering ID
-	VpcOfferingId *int64 `protobuf:"varint,2,opt,name=vpc_offering_id,json=vpcOfferingId" json:"vpc_offering_id,omitempty"`
-	// network offering ids for each network in the vpc. Example: tierNetworkOfferings[0].networkId=networkId1&tierNetworkOfferings[0].networkOfferingId=newNetworkofferingId1&tierNetworkOfferings[1].networkId=networkId2&tierNetworkOfferings[1].networkOfferingId=newNetworkofferingId2
-	TierNetworkOfferings map[string]string `protobuf:"bytes,3,rep,name=tier_network_offerings,json=tierNetworkOfferings" json:"tier_network_offerings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// true if previous network migration cmd failed
-	Resume *bool `protobuf:"varint,4,opt,name=resume" json:"resume,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateVPCRequest) Reset() {
-	*x = MigrateVPCRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[62]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateVPCRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateVPCRequest) ProtoMessage() {}
-
-func (x *MigrateVPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[62]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateVPCRequest.ProtoReflect.Descriptor instead.
-func (*MigrateVPCRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{62}
-}
-
-func (x *MigrateVPCRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *MigrateVPCRequest) GetVpcOfferingId() int64 {
-	if x != nil && x.VpcOfferingId != nil {
-		return *x.VpcOfferingId
-	}
-	return 0
-}
-
-func (x *MigrateVPCRequest) GetTierNetworkOfferings() map[string]string {
-	if x != nil {
-		return x.TierNetworkOfferings
-	}
-	return nil
-}
-
-func (x *MigrateVPCRequest) GetResume() bool {
-	if x != nil && x.Resume != nil {
-		return *x.Resume
-	}
-	return false
-}
-
-func (x *MigrateVPCRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MigrateVPCRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MigrateVPCRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// MigrateVPCResponse represents the response from moves a vpc to another physical network
-type MigrateVPCResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MigrateVPCResponse) Reset() {
-	*x = MigrateVPCResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[63]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MigrateVPCResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MigrateVPCResponse) ProtoMessage() {}
-
-func (x *MigrateVPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[63]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MigrateVPCResponse.ProtoReflect.Descriptor instead.
-func (*MigrateVPCResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{63}
-}
-
-func (x *MigrateVPCResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListNetworkServiceProvidersRequest represents the parameters for lists network serviceproviders for a given physical network.
-type ListNetworkServiceProvidersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Physical Network ID
-	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// list providers by name
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// list providers by state
-	State *string `protobuf:"bytes,3,opt,name=state" json:"state,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworkServiceProvidersRequest) Reset() {
-	*x = ListNetworkServiceProvidersRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[64]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworkServiceProvidersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworkServiceProvidersRequest) ProtoMessage() {}
-
-func (x *ListNetworkServiceProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[64]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworkServiceProvidersRequest.ProtoReflect.Descriptor instead.
-func (*ListNetworkServiceProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{64}
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListNetworkServiceProvidersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListNetworkServiceProvidersResponse represents the response from lists network serviceproviders for a given physical network.
-type ListNetworkServiceProvidersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Providers
-	Items []*Provider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Providers
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworkServiceProvidersResponse) Reset() {
-	*x = ListNetworkServiceProvidersResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[65]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworkServiceProvidersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworkServiceProvidersResponse) ProtoMessage() {}
-
-func (x *ListNetworkServiceProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[65]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworkServiceProvidersResponse.ProtoReflect.Descriptor instead.
-func (*ListNetworkServiceProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{65}
-}
-
-func (x *ListNetworkServiceProvidersResponse) GetItems() []*Provider {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListNetworkServiceProvidersResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
@@ -5184,7 +4204,7 @@ type ListIpv4SubnetsForZoneRequest struct {
 
 func (x *ListIpv4SubnetsForZoneRequest) Reset() {
 	*x = ListIpv4SubnetsForZoneRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[66]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5196,7 +4216,7 @@ func (x *ListIpv4SubnetsForZoneRequest) String() string {
 func (*ListIpv4SubnetsForZoneRequest) ProtoMessage() {}
 
 func (x *ListIpv4SubnetsForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[66]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5209,7 +4229,7 @@ func (x *ListIpv4SubnetsForZoneRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListIpv4SubnetsForZoneRequest.ProtoReflect.Descriptor instead.
 func (*ListIpv4SubnetsForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{66}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *ListIpv4SubnetsForZoneRequest) GetId() int64 {
@@ -5295,7 +4315,7 @@ type ListIpv4SubnetsForZoneResponse struct {
 
 func (x *ListIpv4SubnetsForZoneResponse) Reset() {
 	*x = ListIpv4SubnetsForZoneResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[67]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5307,7 +4327,7 @@ func (x *ListIpv4SubnetsForZoneResponse) String() string {
 func (*ListIpv4SubnetsForZoneResponse) ProtoMessage() {}
 
 func (x *ListIpv4SubnetsForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[67]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5320,7 +4340,7 @@ func (x *ListIpv4SubnetsForZoneResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListIpv4SubnetsForZoneResponse.ProtoReflect.Descriptor instead.
 func (*ListIpv4SubnetsForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{67}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *ListIpv4SubnetsForZoneResponse) GetItems() []*DataCenterIpv4Subnet {
@@ -5337,352 +4357,37 @@ func (x *ListIpv4SubnetsForZoneResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// DeleteNetworkRequest represents the parameters for deletes a network
-type DeleteNetworkRequest struct {
+// ListNetworkDeviceRequest represents the parameters for list network devices
+type ListNetworkDeviceRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force delete a network. Network will be marked as 'Destroy' even when commands to shutdown and cleanup to the backend fails.
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkRequest) Reset() {
-	*x = DeleteNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[68]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkRequest) ProtoMessage() {}
-
-func (x *DeleteNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[68]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkRequest.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{68}
-}
-
-func (x *DeleteNetworkRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteNetworkRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DeleteNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteNetworkResponse represents the response from deletes a network
-type DeleteNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkResponse) Reset() {
-	*x = DeleteNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[69]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkResponse) ProtoMessage() {}
-
-func (x *DeleteNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[69]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkResponse.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{69}
-}
-
-func (x *DeleteNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateNetworkOfferingRequest represents the parameters for updates a network offering.
-type UpdateNetworkOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the network offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name of the network offering
-	NetworkOfferingName *string `protobuf:"bytes,2,opt,name=network_offering_name,json=networkOfferingName" json:"network_offering_name,omitempty"`
-	// the display text of the network offering
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the availability of network offering. The value is Required makes this network offering default for Guest Virtual Networks. Only one network offering can have the value Required
-	Availability *string `protobuf:"bytes,4,opt,name=availability" json:"availability,omitempty"`
-	// sort key of the network offering, integer
-	SortKey *int32 `protobuf:"varint,5,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
-	// update state for the network offering
-	State *string `protobuf:"bytes,6,opt,name=state" json:"state,omitempty"`
-	// if true keepalive will be turned on in the loadbalancer. At the time of writing this has only an effect on haproxy; the mode http and httpclose options are unset in the haproxy conf file.
-	KeepAliveEnabled *bool `protobuf:"varint,7,opt,name=keep_alive_enabled,json=keepAliveEnabled" json:"keep_alive_enabled,omitempty"`
-	// maximum number of concurrent connections supported by the network offering
-	MaxConnections *int32 `protobuf:"varint,8,opt,name=max_connections,json=maxConnections" json:"max_connections,omitempty"`
-	// the tags for the network offering.
-	Tags *string `protobuf:"bytes,9,opt,name=tags" json:"tags,omitempty"`
-	// the ID of the containing domain(s) as comma separated string, public for public offerings
-	DomainIds *string `protobuf:"bytes,10,opt,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
-	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
-	ZoneIds *string `protobuf:"bytes,11,opt,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkOfferingRequest) Reset() {
-	*x = UpdateNetworkOfferingRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[70]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkOfferingRequest) ProtoMessage() {}
-
-func (x *UpdateNetworkOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[70]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkOfferingRequest.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{70}
-}
-
-func (x *UpdateNetworkOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateNetworkOfferingRequest) GetNetworkOfferingName() string {
-	if x != nil && x.NetworkOfferingName != nil {
-		return *x.NetworkOfferingName
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetAvailability() string {
-	if x != nil && x.Availability != nil {
-		return *x.Availability
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetSortKey() int32 {
-	if x != nil && x.SortKey != nil {
-		return *x.SortKey
-	}
-	return 0
-}
-
-func (x *UpdateNetworkOfferingRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetKeepAliveEnabled() bool {
-	if x != nil && x.KeepAliveEnabled != nil {
-		return *x.KeepAliveEnabled
-	}
-	return false
-}
-
-func (x *UpdateNetworkOfferingRequest) GetMaxConnections() int32 {
-	if x != nil && x.MaxConnections != nil {
-		return *x.MaxConnections
-	}
-	return 0
-}
-
-func (x *UpdateNetworkOfferingRequest) GetTags() string {
-	if x != nil && x.Tags != nil {
-		return *x.Tags
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetDomainIds() string {
-	if x != nil && x.DomainIds != nil {
-		return *x.DomainIds
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetZoneIds() string {
-	if x != nil && x.ZoneIds != nil {
-		return *x.ZoneIds
-	}
-	return ""
-}
-
-func (x *UpdateNetworkOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateNetworkOfferingResponse represents the response from updates a network offering.
-type UpdateNetworkOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateNetworkOfferingResponse) Reset() {
-	*x = UpdateNetworkOfferingResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[71]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateNetworkOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateNetworkOfferingResponse) ProtoMessage() {}
-
-func (x *UpdateNetworkOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[71]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateNetworkOfferingResponse.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{71}
-}
-
-func (x *UpdateNetworkOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateIpv4SubnetForGuestNetworkRequest represents the parameters for creates a ipv4 subnet for guest networks.
-type CreateIpv4SubnetForGuestNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The zone Ipv4 subnet which the IPv4 subnet belongs to.
-	ParentId *int64 `protobuf:"varint,1,opt,name=parent_id,json=parentId" json:"parent_id,omitempty"`
-	// The CIDR of this Ipv4 subnet.
-	Subnet *string `protobuf:"bytes,2,opt,name=subnet" json:"subnet,omitempty"`
-	// the CIDR size of IPv4 network. This is mutually exclusive with subnet.
-	CidrSize *int32 `protobuf:"varint,3,opt,name=cidr_size,json=cidrSize" json:"cidr_size,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	// Network device type, now supports ExternalDhcp, PxeServer, NetscalerMPXLoadBalancer, NetscalerVPXLoadBalancer, NetscalerSDXLoadBalancer, F5BigIpLoadBalancer, JuniperSRXFirewall, PaloAltoFirewall
+	Type *string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
+	// parameters for network device
+	ParamList map[string]string `protobuf:"bytes,2,rep,name=param_list,json=paramList" json:"param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateIpv4SubnetForGuestNetworkRequest) Reset() {
-	*x = CreateIpv4SubnetForGuestNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[72]
+func (x *ListNetworkDeviceRequest) Reset() {
+	*x = ListNetworkDeviceRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateIpv4SubnetForGuestNetworkRequest) String() string {
+func (x *ListNetworkDeviceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateIpv4SubnetForGuestNetworkRequest) ProtoMessage() {}
+func (*ListNetworkDeviceRequest) ProtoMessage() {}
 
-func (x *CreateIpv4SubnetForGuestNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[72]
+func (x *ListNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5693,195 +4398,79 @@ func (x *CreateIpv4SubnetForGuestNetworkRequest) ProtoReflect() protoreflect.Mes
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateIpv4SubnetForGuestNetworkRequest.ProtoReflect.Descriptor instead.
-func (*CreateIpv4SubnetForGuestNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{72}
+// Deprecated: Use ListNetworkDeviceRequest.ProtoReflect.Descriptor instead.
+func (*ListNetworkDeviceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{58}
 }
 
-func (x *CreateIpv4SubnetForGuestNetworkRequest) GetParentId() int64 {
-	if x != nil && x.ParentId != nil {
-		return *x.ParentId
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkRequest) GetSubnet() string {
-	if x != nil && x.Subnet != nil {
-		return *x.Subnet
+func (x *ListNetworkDeviceRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
 	}
 	return ""
 }
 
-func (x *CreateIpv4SubnetForGuestNetworkRequest) GetCidrSize() int32 {
-	if x != nil && x.CidrSize != nil {
-		return *x.CidrSize
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateIpv4SubnetForGuestNetworkResponse represents the response from creates a ipv4 subnet for guest networks.
-type CreateIpv4SubnetForGuestNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkResponse) Reset() {
-	*x = CreateIpv4SubnetForGuestNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[73]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpv4SubnetForGuestNetworkResponse) ProtoMessage() {}
-
-func (x *CreateIpv4SubnetForGuestNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[73]
+func (x *ListNetworkDeviceRequest) GetParamList() map[string]string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpv4SubnetForGuestNetworkResponse.ProtoReflect.Descriptor instead.
-func (*CreateIpv4SubnetForGuestNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{73}
-}
-
-func (x *CreateIpv4SubnetForGuestNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
+		return x.ParamList
 	}
 	return nil
 }
 
-// ListNetworkIsolationMethodsRequest represents the parameters for lists supported methods of network isolation
-type ListNetworkIsolationMethodsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworkIsolationMethodsRequest) Reset() {
-	*x = ListNetworkIsolationMethodsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[74]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworkIsolationMethodsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworkIsolationMethodsRequest) ProtoMessage() {}
-
-func (x *ListNetworkIsolationMethodsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[74]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworkIsolationMethodsRequest.ProtoReflect.Descriptor instead.
-func (*ListNetworkIsolationMethodsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{74}
-}
-
-func (x *ListNetworkIsolationMethodsRequest) GetKeyword() string {
+func (x *ListNetworkDeviceRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListNetworkIsolationMethodsRequest) GetPage() int32 {
+func (x *ListNetworkDeviceRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListNetworkIsolationMethodsRequest) GetPageSize() int32 {
+func (x *ListNetworkDeviceRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListNetworkIsolationMethodsRequest) GetResponseType() string {
+func (x *ListNetworkDeviceRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListNetworkIsolationMethodsResponse represents the response from lists supported methods of network isolation
-type ListNetworkIsolationMethodsResponse struct {
+// ListNetworkDeviceResponse represents the response from list network devices
+type ListNetworkDeviceResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of IsolationMethods
-	Items []*IsolationMethod `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of IsolationMethods
+	// The list of NetworkDevices
+	Items []*NetworkDevice `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of NetworkDevices
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListNetworkIsolationMethodsResponse) Reset() {
-	*x = ListNetworkIsolationMethodsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[75]
+func (x *ListNetworkDeviceResponse) Reset() {
+	*x = ListNetworkDeviceResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListNetworkIsolationMethodsResponse) String() string {
+func (x *ListNetworkDeviceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListNetworkIsolationMethodsResponse) ProtoMessage() {}
+func (*ListNetworkDeviceResponse) ProtoMessage() {}
 
-func (x *ListNetworkIsolationMethodsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[75]
+func (x *ListNetworkDeviceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5892,521 +4481,19 @@ func (x *ListNetworkIsolationMethodsResponse) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListNetworkIsolationMethodsResponse.ProtoReflect.Descriptor instead.
-func (*ListNetworkIsolationMethodsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{75}
+// Deprecated: Use ListNetworkDeviceResponse.ProtoReflect.Descriptor instead.
+func (*ListNetworkDeviceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{59}
 }
 
-func (x *ListNetworkIsolationMethodsResponse) GetItems() []*IsolationMethod {
+func (x *ListNetworkDeviceResponse) GetItems() []*NetworkDevice {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListNetworkIsolationMethodsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// AddNetworkServiceProviderRequest represents the parameters for adds a network serviceprovider to a physical network
-type AddNetworkServiceProviderRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Physical Network ID to add the provider to
-	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// the destination Physical Network ID to bridge to
-	DestinationPhysicalNetworkId *int64 `protobuf:"varint,2,opt,name=destination_physical_network_id,json=destinationPhysicalNetworkId" json:"destination_physical_network_id,omitempty"`
-	// the name for the physical network service provider
-	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	// the list of services to be enabled for this physical network service provider
-	EnabledServices []string `protobuf:"bytes,4,rep,name=enabled_services,json=enabledServices" json:"enabled_services,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddNetworkServiceProviderRequest) Reset() {
-	*x = AddNetworkServiceProviderRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[76]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddNetworkServiceProviderRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddNetworkServiceProviderRequest) ProtoMessage() {}
-
-func (x *AddNetworkServiceProviderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[76]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddNetworkServiceProviderRequest.ProtoReflect.Descriptor instead.
-func (*AddNetworkServiceProviderRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{76}
-}
-
-func (x *AddNetworkServiceProviderRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *AddNetworkServiceProviderRequest) GetDestinationPhysicalNetworkId() int64 {
-	if x != nil && x.DestinationPhysicalNetworkId != nil {
-		return *x.DestinationPhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *AddNetworkServiceProviderRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *AddNetworkServiceProviderRequest) GetEnabledServices() []string {
-	if x != nil {
-		return x.EnabledServices
-	}
-	return nil
-}
-
-func (x *AddNetworkServiceProviderRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddNetworkServiceProviderRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddNetworkServiceProviderRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddNetworkServiceProviderResponse represents the response from adds a network serviceprovider to a physical network
-type AddNetworkServiceProviderResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddNetworkServiceProviderResponse) Reset() {
-	*x = AddNetworkServiceProviderResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[77]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddNetworkServiceProviderResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddNetworkServiceProviderResponse) ProtoMessage() {}
-
-func (x *AddNetworkServiceProviderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[77]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddNetworkServiceProviderResponse.ProtoReflect.Descriptor instead.
-func (*AddNetworkServiceProviderResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{77}
-}
-
-func (x *AddNetworkServiceProviderResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListNetworksRequest represents the parameters for lists all available networks.
-type ListNetworksRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// list networks by ID
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the zone ID of the network
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the type of the network. Supported values are: isolated, l2, shared and all
-	GuestIpType *string `protobuf:"bytes,4,opt,name=guest_ip_type,json=guestIpType" json:"guest_ip_type,omitempty"`
-	// true if network is system, false otherwise
-	IsSystem *bool `protobuf:"varint,5,opt,name=is_system,json=isSystem" json:"is_system,omitempty"`
-	// list networks by ACL (access control list) type. Supported values are account and domain
-	AclType *string `protobuf:"bytes,6,opt,name=acl_type,json=aclType" json:"acl_type,omitempty"`
-	// type of the traffic
-	TrafficType *string `protobuf:"bytes,7,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// list networks by physical network id
-	PhysicalNetworkId *int64 `protobuf:"varint,8,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// list networks supporting certain services
-	SupportedServices []string `protobuf:"bytes,9,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
-	// list networks by restartRequired
-	RestartRequired *bool `protobuf:"varint,10,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
-	// true if need to list only networks which support specifying IP ranges
-	SpecifyIpRanges *bool `protobuf:"varint,11,opt,name=specify_ip_ranges,json=specifyIpRanges" json:"specify_ip_ranges,omitempty"`
-	// List networks by VPC
-	VpcId *int64 `protobuf:"varint,12,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// list networks available for VM deployment
-	CanUseForDeploy *bool `protobuf:"varint,13,opt,name=can_use_for_deploy,json=canUseForDeploy" json:"can_use_for_deploy,omitempty"`
-	// the network belongs to VPC
-	ForVpc *bool `protobuf:"varint,14,opt,name=for_vpc,json=forVpc" json:"for_vpc,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,15,opt,name=display" json:"display,omitempty"`
-	// list networks by network offering ID
-	NetworkOfferingId *int64 `protobuf:"varint,16,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
-	// List networks by associated networks. Only available if create a Shared network.
-	AssociatedNetworkId *int64 `protobuf:"varint,17,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
-	// flag to display the resource icon for networks
-	ShowIcon *bool `protobuf:"varint,18,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// possible values are "account", "domain", "accountdomain","shared", and "all". Default value is "all".* account : account networks that have been registered for or created by the calling user. * domain : domain networks that have been registered for or created by the calling user. * accountdomain : account and domain networks that have been registered for or created by the calling user. * shared : networks that have been granted to the calling user by another user. * all : all networks (account, domain and shared).
-	NetworkFilter *string `protobuf:"bytes,19,opt,name=network_filter,json=networkFilter" json:"network_filter,omitempty"`
-	// makes the API's response contains only the resource count
-	RetrieveOnlyResourceCount *bool `protobuf:"varint,20,opt,name=retrieve_only_resource_count,json=retrieveOnlyResourceCount" json:"retrieve_only_resource_count,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,21,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,22,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,23,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,24,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,25,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,26,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,27,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,28,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,29,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,30,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworksRequest) Reset() {
-	*x = ListNetworksRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[78]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworksRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworksRequest) ProtoMessage() {}
-
-func (x *ListNetworksRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[78]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworksRequest.ProtoReflect.Descriptor instead.
-func (*ListNetworksRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{78}
-}
-
-func (x *ListNetworksRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetGuestIpType() string {
-	if x != nil && x.GuestIpType != nil {
-		return *x.GuestIpType
-	}
-	return ""
-}
-
-func (x *ListNetworksRequest) GetIsSystem() bool {
-	if x != nil && x.IsSystem != nil {
-		return *x.IsSystem
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetAclType() string {
-	if x != nil && x.AclType != nil {
-		return *x.AclType
-	}
-	return ""
-}
-
-func (x *ListNetworksRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
-	}
-	return ""
-}
-
-func (x *ListNetworksRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetSupportedServices() []string {
-	if x != nil {
-		return x.SupportedServices
-	}
-	return nil
-}
-
-func (x *ListNetworksRequest) GetRestartRequired() bool {
-	if x != nil && x.RestartRequired != nil {
-		return *x.RestartRequired
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetSpecifyIpRanges() bool {
-	if x != nil && x.SpecifyIpRanges != nil {
-		return *x.SpecifyIpRanges
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetCanUseForDeploy() bool {
-	if x != nil && x.CanUseForDeploy != nil {
-		return *x.CanUseForDeploy
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetForVpc() bool {
-	if x != nil && x.ForVpc != nil {
-		return *x.ForVpc
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetNetworkOfferingId() int64 {
-	if x != nil && x.NetworkOfferingId != nil {
-		return *x.NetworkOfferingId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetAssociatedNetworkId() int64 {
-	if x != nil && x.AssociatedNetworkId != nil {
-		return *x.AssociatedNetworkId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetNetworkFilter() string {
-	if x != nil && x.NetworkFilter != nil {
-		return *x.NetworkFilter
-	}
-	return ""
-}
-
-func (x *ListNetworksRequest) GetRetrieveOnlyResourceCount() bool {
-	if x != nil && x.RetrieveOnlyResourceCount != nil {
-		return *x.RetrieveOnlyResourceCount
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListNetworksRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListNetworksRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListNetworksRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListNetworksRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListNetworksRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListNetworksResponse represents the response from lists all available networks.
-type ListNetworksResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Networks
-	Items []*Network `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Networks
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListNetworksResponse) Reset() {
-	*x = ListNetworksResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[79]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListNetworksResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListNetworksResponse) ProtoMessage() {}
-
-func (x *ListNetworksResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[79]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListNetworksResponse.ProtoReflect.Descriptor instead.
-func (*ListNetworksResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{79}
-}
-
-func (x *ListNetworksResponse) GetItems() []*Network {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListNetworksResponse) GetTotalCount() int32 {
+func (x *ListNetworkDeviceResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
@@ -6453,7 +4540,7 @@ type ListNetworkACLsRequest struct {
 
 func (x *ListNetworkACLsRequest) Reset() {
 	*x = ListNetworkACLsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[80]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6465,7 +4552,7 @@ func (x *ListNetworkACLsRequest) String() string {
 func (*ListNetworkACLsRequest) ProtoMessage() {}
 
 func (x *ListNetworkACLsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[80]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6478,7 +4565,7 @@ func (x *ListNetworkACLsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNetworkACLsRequest.ProtoReflect.Descriptor instead.
 func (*ListNetworkACLsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{80}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *ListNetworkACLsRequest) GetId() int64 {
@@ -6613,7 +4700,7 @@ type ListNetworkACLsResponse struct {
 
 func (x *ListNetworkACLsResponse) Reset() {
 	*x = ListNetworkACLsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[81]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6625,7 +4712,7 @@ func (x *ListNetworkACLsResponse) String() string {
 func (*ListNetworkACLsResponse) ProtoMessage() {}
 
 func (x *ListNetworkACLsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[81]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6638,7 +4725,7 @@ func (x *ListNetworkACLsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNetworkACLsResponse.ProtoReflect.Descriptor instead.
 func (*ListNetworkACLsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{81}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *ListNetworkACLsResponse) GetItems() []*NetworkACLItem {
@@ -6655,332 +4742,19 @@ func (x *ListNetworkACLsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateManagementNetworkIpRangeRequest represents the parameters for creates a management network ip range.
-type CreateManagementNetworkIpRangeRequest struct {
+// UpdateNetworkACLListRequest represents the parameters for updates network acl list
+type UpdateNetworkACLListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of POD, where the IP range belongs to.
-	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// The gateway for the management network.
-	Gateway *string `protobuf:"bytes,2,opt,name=gateway" json:"gateway,omitempty"`
-	// The netmask for the management network.
-	Netmask *string `protobuf:"bytes,3,opt,name=netmask" json:"netmask,omitempty"`
-	// The starting IP address.
-	StartIp *string `protobuf:"bytes,4,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// The ending IP address.
-	EndIp *string `protobuf:"bytes,5,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// Specify if range is dedicated for CPVM and SSVM.
-	ForSystemVms *bool `protobuf:"varint,6,opt,name=for_system_vms,json=forSystemVms" json:"for_system_vms,omitempty"`
-	// Optional. The vlan id the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan
-	Vlan *string `protobuf:"bytes,7,opt,name=vlan" json:"vlan,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) Reset() {
-	*x = CreateManagementNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[82]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateManagementNetworkIpRangeRequest) ProtoMessage() {}
-
-func (x *CreateManagementNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[82]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateManagementNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*CreateManagementNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{82}
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
-	}
-	return ""
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetForSystemVms() bool {
-	if x != nil && x.ForSystemVms != nil {
-		return *x.ForSystemVms
-	}
-	return false
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateManagementNetworkIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateManagementNetworkIpRangeResponse represents the response from creates a management network ip range.
-type CreateManagementNetworkIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateManagementNetworkIpRangeResponse) Reset() {
-	*x = CreateManagementNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[83]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateManagementNetworkIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateManagementNetworkIpRangeResponse) ProtoMessage() {}
-
-func (x *CreateManagementNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[83]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateManagementNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*CreateManagementNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{83}
-}
-
-func (x *CreateManagementNetworkIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListSupportedNetworkServicesRequest represents the parameters for lists all network services provided by cloudstack or for the given provider.
-type ListSupportedNetworkServicesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// network service provider name
-	ProviderName *string `protobuf:"bytes,1,opt,name=provider_name,json=providerName" json:"provider_name,omitempty"`
-	// network service name to list providers and capabilities of
-	ServiceName *string `protobuf:"bytes,2,opt,name=service_name,json=serviceName" json:"service_name,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSupportedNetworkServicesRequest) Reset() {
-	*x = ListSupportedNetworkServicesRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[84]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSupportedNetworkServicesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSupportedNetworkServicesRequest) ProtoMessage() {}
-
-func (x *ListSupportedNetworkServicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[84]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSupportedNetworkServicesRequest.ProtoReflect.Descriptor instead.
-func (*ListSupportedNetworkServicesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{84}
-}
-
-func (x *ListSupportedNetworkServicesRequest) GetProviderName() string {
-	if x != nil && x.ProviderName != nil {
-		return *x.ProviderName
-	}
-	return ""
-}
-
-func (x *ListSupportedNetworkServicesRequest) GetServiceName() string {
-	if x != nil && x.ServiceName != nil {
-		return *x.ServiceName
-	}
-	return ""
-}
-
-func (x *ListSupportedNetworkServicesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListSupportedNetworkServicesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListSupportedNetworkServicesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListSupportedNetworkServicesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListSupportedNetworkServicesResponse represents the response from lists all network services provided by cloudstack or for the given provider.
-type ListSupportedNetworkServicesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Services
-	Items []*Service `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Services
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSupportedNetworkServicesResponse) Reset() {
-	*x = ListSupportedNetworkServicesResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[85]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSupportedNetworkServicesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSupportedNetworkServicesResponse) ProtoMessage() {}
-
-func (x *ListSupportedNetworkServicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[85]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSupportedNetworkServicesResponse.ProtoReflect.Descriptor instead.
-func (*ListSupportedNetworkServicesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{85}
-}
-
-func (x *ListSupportedNetworkServicesResponse) GetItems() []*Service {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListSupportedNetworkServicesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdatePhysicalNetworkRequest represents the parameters for updates a physical network
-type UpdatePhysicalNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// physical network id
+	// the ID of the network ACL
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the speed for the physical network[1G/10G]
-	Speed *string `protobuf:"bytes,2,opt,name=speed" json:"speed,omitempty"`
-	// Tag the physical network
-	Tags []string `protobuf:"bytes,3,rep,name=tags" json:"tags,omitempty"`
-	// Enabled/Disabled
-	State *string `protobuf:"bytes,4,opt,name=state" json:"state,omitempty"`
-	// the VLAN for the physical network
-	Vlan *string `protobuf:"bytes,5,opt,name=vlan" json:"vlan,omitempty"`
+	// an optional field, whether to the display the list to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// Name of the network ACL list
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// Description of the network ACL list
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,5,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -6988,21 +4762,21 @@ type UpdatePhysicalNetworkRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdatePhysicalNetworkRequest) Reset() {
-	*x = UpdatePhysicalNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[86]
+func (x *UpdateNetworkACLListRequest) Reset() {
+	*x = UpdateNetworkACLListRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdatePhysicalNetworkRequest) String() string {
+func (x *UpdateNetworkACLListRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdatePhysicalNetworkRequest) ProtoMessage() {}
+func (*UpdateNetworkACLListRequest) ProtoMessage() {}
 
-func (x *UpdatePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[86]
+func (x *UpdateNetworkACLListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7013,682 +4787,69 @@ func (x *UpdatePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdatePhysicalNetworkRequest.ProtoReflect.Descriptor instead.
-func (*UpdatePhysicalNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{86}
+// Deprecated: Use UpdateNetworkACLListRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkACLListRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{62}
 }
 
-func (x *UpdatePhysicalNetworkRequest) GetId() int64 {
+func (x *UpdateNetworkACLListRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdatePhysicalNetworkRequest) GetSpeed() string {
-	if x != nil && x.Speed != nil {
-		return *x.Speed
-	}
-	return ""
-}
-
-func (x *UpdatePhysicalNetworkRequest) GetTags() []string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *UpdatePhysicalNetworkRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *UpdatePhysicalNetworkRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *UpdatePhysicalNetworkRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdatePhysicalNetworkRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdatePhysicalNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdatePhysicalNetworkResponse represents the response from updates a physical network
-type UpdatePhysicalNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdatePhysicalNetworkResponse) Reset() {
-	*x = UpdatePhysicalNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[87]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdatePhysicalNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdatePhysicalNetworkResponse) ProtoMessage() {}
-
-func (x *UpdatePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[87]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdatePhysicalNetworkResponse.ProtoReflect.Descriptor instead.
-func (*UpdatePhysicalNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{87}
-}
-
-func (x *UpdatePhysicalNetworkResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateNetworkACLListRequest represents the parameters for creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
-type CreateNetworkACLListRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the network ACL list
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// Description of the network ACL list
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// ID of the VPC associated with this network ACL list
-	VpcId *int64 `protobuf:"varint,3,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// an optional field, whether to the display the list to the end user or not
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkACLListRequest) Reset() {
-	*x = CreateNetworkACLListRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[88]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkACLListRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkACLListRequest) ProtoMessage() {}
-
-func (x *CreateNetworkACLListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[88]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkACLListRequest.ProtoReflect.Descriptor instead.
-func (*CreateNetworkACLListRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{88}
-}
-
-func (x *CreateNetworkACLListRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLListRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLListRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLListRequest) GetDisplay() bool {
+func (x *UpdateNetworkACLListRequest) GetDisplay() bool {
 	if x != nil && x.Display != nil {
 		return *x.Display
 	}
 	return false
 }
 
-func (x *CreateNetworkACLListRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateNetworkACLListRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateNetworkACLListRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateNetworkACLListResponse represents the response from creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
-type CreateNetworkACLListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkACLListResponse) Reset() {
-	*x = CreateNetworkACLListResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[89]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkACLListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkACLListResponse) ProtoMessage() {}
-
-func (x *CreateNetworkACLListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[89]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkACLListResponse.ProtoReflect.Descriptor instead.
-func (*CreateNetworkACLListResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{89}
-}
-
-func (x *CreateNetworkACLListResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateNetworkCmdByAdminRequest represents the parameters for creates a network
-type CreateNetworkCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID or VID of the network
-	Vlan *string `protobuf:"bytes,1,opt,name=vlan" json:"vlan,omitempty"`
-	// when true bypasses VLAN id/range overlap check during network creation for shared and L2 networks
-	BypassVlanOverlapCheck *bool `protobuf:"varint,2,opt,name=bypass_vlan_overlap_check,json=bypassVlanOverlapCheck" json:"bypass_vlan_overlap_check,omitempty"`
-	// when true ip address usage for the network will not be exported by the listUsageRecords API
-	HideIpAddressUsage *bool `protobuf:"varint,3,opt,name=hide_ip_address_usage,json=hideIpAddressUsage" json:"hide_ip_address_usage,omitempty"`
-	// IPV4 address to be assigned to a router in a shared network
-	RouterIp *string `protobuf:"bytes,4,opt,name=router_ip,json=routerIp" json:"router_ip,omitempty"`
-	// IPV6 address to be assigned to a router in a shared network
-	RouterIpv6 *string `protobuf:"bytes,5,opt,name=router_ipv6,json=routerIpv6" json:"router_ipv6,omitempty"`
-	// Ids of the Bgp Peer for the network
-	BgpPeerIds []string `protobuf:"bytes,6,rep,name=bgp_peer_ids,json=bgpPeerIds" json:"bgp_peer_ids,omitempty"`
-	// the name of the network
-	Name *string `protobuf:"bytes,7,opt,name=name" json:"name,omitempty"`
-	// the display text of the network
-	DisplayText *string `protobuf:"bytes,8,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the network offering ID
-	NetworkOfferingId *int64 `protobuf:"varint,9,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
-	// the zone ID for the network
-	ZoneId *int64 `protobuf:"varint,10,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the physical network ID the network belongs to
-	PhysicalNetworkId *int64 `protobuf:"varint,11,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC
-	Gateway *string `protobuf:"bytes,12,opt,name=gateway" json:"gateway,omitempty"`
-	// the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC
-	Netmask *string `protobuf:"bytes,13,opt,name=netmask" json:"netmask,omitempty"`
-	// the beginning IP address in the network IP range
-	StartIp *string `protobuf:"bytes,14,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// the ending IP address in the network IP range. If not specified, will be defaulted to startIP
-	EndIp *string `protobuf:"bytes,15,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// the isolated private VLAN for this network
-	IsolatedPvlan *string `protobuf:"bytes,16,opt,name=isolated_pvlan,json=isolatedPvlan" json:"isolated_pvlan,omitempty"`
-	// the isolated private VLAN type for this network
-	IsolatedPvlanType *string `protobuf:"bytes,17,opt,name=isolated_pvlan_type,json=isolatedPvlanType" json:"isolated_pvlan_type,omitempty"`
-	// network domain
-	NetworkDomain *string `protobuf:"bytes,18,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
-	// Access control type; supported values are account and domain. In 3.0 all shared networks should have aclType=Domain, and all isolated networks - Account. Account means that only the account owner can use the network, domain - all accounts in the domain can use the network
-	AclType *string `protobuf:"bytes,19,opt,name=acl_type,json=aclType" json:"acl_type,omitempty"`
-	// Account that will own the network. Account should be under the selected domain
-	AccountName *string `protobuf:"bytes,20,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional project for the network
-	ProjectId *int64 `protobuf:"varint,21,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// domain ID of the account owning a network. If the account is not specified, but the acltype is Account or not specified, the network will be automatically assigned to the caller account and domain. To create a network under the domain without linking it to any account, make sure to include acltype=Domain parameter in the api call. If account is not specified, but acltype is Domain, the network will be created for the specified domain.
-	DomainId *int64 `protobuf:"varint,22,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// Defines whether to allow subdomains to use networks dedicated to their parent domain(s). Should be used with aclType=Domain, defaulted to allow.subdomain.network.access global config if not specified
-	SubdomainAccess *bool `protobuf:"varint,23,opt,name=subdomain_access,json=subdomainAccess" json:"subdomain_access,omitempty"`
-	// the VPC network belongs to
-	VpcId *int64 `protobuf:"varint,24,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// Tungsten-Fabric virtual router the network belongs to
-	TungstenVirtualRouterUuid *string `protobuf:"bytes,25,opt,name=tungsten_virtual_router_uuid,json=tungstenVirtualRouterUuid" json:"tungsten_virtual_router_uuid,omitempty"`
-	// the beginning IPv6 address in the IPv6 network range
-	StartIpv6 *string `protobuf:"bytes,26,opt,name=start_ipv6,json=startIpv6" json:"start_ipv6,omitempty"`
-	// the ending IPv6 address in the IPv6 network range
-	EndIpv6 *string `protobuf:"bytes,27,opt,name=end_ipv6,json=endIpv6" json:"end_ipv6,omitempty"`
-	// the gateway of the IPv6 network. Required for Shared networks
-	Ip6Gateway *string `protobuf:"bytes,28,opt,name=ip6_gateway,json=ip6Gateway" json:"ip6_gateway,omitempty"`
-	// the CIDR of IPv6 network, must be at least /64
-	Ip6Cidr *string `protobuf:"bytes,29,opt,name=ip6_cidr,json=ip6Cidr" json:"ip6_cidr,omitempty"`
-	// ID of the network in an external system.
-	ExternalId *string `protobuf:"bytes,30,opt,name=external_id,json=externalId" json:"external_id,omitempty"`
-	// an optional field, whether to the display the network to the end user or not.
-	DisplayNetwork *bool `protobuf:"varint,31,opt,name=display_network,json=displayNetwork" json:"display_network,omitempty"`
-	// Network ACL ID associated for the network
-	AclId *int64 `protobuf:"varint,32,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
-	// The network this network is associated to. only available if create a Shared network
-	AssociatedNetworkId *int64 `protobuf:"varint,33,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
-	// MTU to be configured on the network VR's public facing interfaces
-	PublicMtu *int32 `protobuf:"varint,34,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
-	// MTU to be configured on the network VR's private interface(s)
-	PrivateMtu *int32 `protobuf:"varint,35,opt,name=private_mtu,json=privateMtu" json:"private_mtu,omitempty"`
-	// the first IPv4 DNS for the network
-	Ip4Dns1 *string `protobuf:"bytes,36,opt,name=ip4_dns1,json=ip4Dns1" json:"ip4_dns1,omitempty"`
-	// the second IPv4 DNS for the network
-	Ip4Dns2 *string `protobuf:"bytes,37,opt,name=ip4_dns2,json=ip4Dns2" json:"ip4_dns2,omitempty"`
-	// the first IPv6 DNS for the network
-	Ip6Dns1 *string `protobuf:"bytes,38,opt,name=ip6_dns1,json=ip6Dns1" json:"ip6_dns1,omitempty"`
-	// the second IPv6 DNS for the network
-	Ip6Dns2 *string `protobuf:"bytes,39,opt,name=ip6_dns2,json=ip6Dns2" json:"ip6_dns2,omitempty"`
-	// IPV4 address to be assigned to the public interface of the network router. This address will be used as source NAT address for the network.
-	// If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
-	SourceNatIP *string `protobuf:"bytes,40,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
-	// the CIDR size of IPv4 network. For regular users, this is required for isolated networks with ROUTED mode.
-	CidrSize *int32 `protobuf:"varint,41,opt,name=cidr_size,json=cidrSize" json:"cidr_size,omitempty"`
-	// the AS Number of the network
-	AsNumber *int64 `protobuf:"varint,42,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
-	ResponseType  *string `protobuf:"bytes,43,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNetworkCmdByAdminRequest) Reset() {
-	*x = CreateNetworkCmdByAdminRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[90]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNetworkCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNetworkCmdByAdminRequest) ProtoMessage() {}
-
-func (x *CreateNetworkCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[90]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNetworkCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*CreateNetworkCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{90}
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetBypassVlanOverlapCheck() bool {
-	if x != nil && x.BypassVlanOverlapCheck != nil {
-		return *x.BypassVlanOverlapCheck
-	}
-	return false
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetHideIpAddressUsage() bool {
-	if x != nil && x.HideIpAddressUsage != nil {
-		return *x.HideIpAddressUsage
-	}
-	return false
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetRouterIp() string {
-	if x != nil && x.RouterIp != nil {
-		return *x.RouterIp
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetRouterIpv6() string {
-	if x != nil && x.RouterIpv6 != nil {
-		return *x.RouterIpv6
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetBgpPeerIds() []string {
-	if x != nil {
-		return x.BgpPeerIds
-	}
-	return nil
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetName() string {
+func (x *UpdateNetworkACLListRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *CreateNetworkCmdByAdminRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
+func (x *UpdateNetworkACLListRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
 
-func (x *CreateNetworkCmdByAdminRequest) GetNetworkOfferingId() int64 {
-	if x != nil && x.NetworkOfferingId != nil {
-		return *x.NetworkOfferingId
+func (x *UpdateNetworkACLListRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateNetworkACLListRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CreateNetworkCmdByAdminRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
+func (x *UpdateNetworkACLListRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreateNetworkCmdByAdminRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIsolatedPvlan() string {
-	if x != nil && x.IsolatedPvlan != nil {
-		return *x.IsolatedPvlan
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIsolatedPvlanType() string {
-	if x != nil && x.IsolatedPvlanType != nil {
-		return *x.IsolatedPvlanType
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetNetworkDomain() string {
-	if x != nil && x.NetworkDomain != nil {
-		return *x.NetworkDomain
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetAclType() string {
-	if x != nil && x.AclType != nil {
-		return *x.AclType
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetSubdomainAccess() bool {
-	if x != nil && x.SubdomainAccess != nil {
-		return *x.SubdomainAccess
-	}
-	return false
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetTungstenVirtualRouterUuid() string {
-	if x != nil && x.TungstenVirtualRouterUuid != nil {
-		return *x.TungstenVirtualRouterUuid
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetStartIpv6() string {
-	if x != nil && x.StartIpv6 != nil {
-		return *x.StartIpv6
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetEndIpv6() string {
-	if x != nil && x.EndIpv6 != nil {
-		return *x.EndIpv6
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIp6Gateway() string {
-	if x != nil && x.Ip6Gateway != nil {
-		return *x.Ip6Gateway
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIp6Cidr() string {
-	if x != nil && x.Ip6Cidr != nil {
-		return *x.Ip6Cidr
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetExternalId() string {
-	if x != nil && x.ExternalId != nil {
-		return *x.ExternalId
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetDisplayNetwork() bool {
-	if x != nil && x.DisplayNetwork != nil {
-		return *x.DisplayNetwork
-	}
-	return false
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetAclId() int64 {
-	if x != nil && x.AclId != nil {
-		return *x.AclId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetAssociatedNetworkId() int64 {
-	if x != nil && x.AssociatedNetworkId != nil {
-		return *x.AssociatedNetworkId
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetPublicMtu() int32 {
-	if x != nil && x.PublicMtu != nil {
-		return *x.PublicMtu
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetPrivateMtu() int32 {
-	if x != nil && x.PrivateMtu != nil {
-		return *x.PrivateMtu
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIp4Dns1() string {
-	if x != nil && x.Ip4Dns1 != nil {
-		return *x.Ip4Dns1
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIp4Dns2() string {
-	if x != nil && x.Ip4Dns2 != nil {
-		return *x.Ip4Dns2
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIp6Dns1() string {
-	if x != nil && x.Ip6Dns1 != nil {
-		return *x.Ip6Dns1
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetIp6Dns2() string {
-	if x != nil && x.Ip6Dns2 != nil {
-		return *x.Ip6Dns2
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetSourceNatIP() string {
-	if x != nil && x.SourceNatIP != nil {
-		return *x.SourceNatIP
-	}
-	return ""
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetCidrSize() int32 {
-	if x != nil && x.CidrSize != nil {
-		return *x.CidrSize
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetAsNumber() int64 {
-	if x != nil && x.AsNumber != nil {
-		return *x.AsNumber
-	}
-	return 0
-}
-
-func (x *CreateNetworkCmdByAdminRequest) GetResponseType() string {
+func (x *UpdateNetworkACLListRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateNetworkCmdByAdminResponse represents the response from creates a network
-type CreateNetworkCmdByAdminResponse struct {
+// UpdateNetworkACLListResponse represents the response from updates network acl list
+type UpdateNetworkACLListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -7696,21 +4857,21 @@ type CreateNetworkCmdByAdminResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateNetworkCmdByAdminResponse) Reset() {
-	*x = CreateNetworkCmdByAdminResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[91]
+func (x *UpdateNetworkACLListResponse) Reset() {
+	*x = UpdateNetworkACLListResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateNetworkCmdByAdminResponse) String() string {
+func (x *UpdateNetworkACLListResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateNetworkCmdByAdminResponse) ProtoMessage() {}
+func (*UpdateNetworkACLListResponse) ProtoMessage() {}
 
-func (x *CreateNetworkCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[91]
+func (x *UpdateNetworkACLListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7721,12 +4882,137 @@ func (x *CreateNetworkCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateNetworkCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*CreateNetworkCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{91}
+// Deprecated: Use UpdateNetworkACLListResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkACLListResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{63}
 }
 
-func (x *CreateNetworkCmdByAdminResponse) GetResult() *Result {
+func (x *UpdateNetworkACLListResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateGuestNetworkIpv6PrefixRequest represents the parameters for creates a guest network ipv6 prefix.
+type CreateGuestNetworkIpv6PrefixRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of zone to which the IPv6 prefix belongs to.
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// The /56 or higher IPv6 CIDR for network prefix.
+	Prefix *string `protobuf:"bytes,2,opt,name=prefix" json:"prefix,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) Reset() {
+	*x = CreateGuestNetworkIpv6PrefixRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateGuestNetworkIpv6PrefixRequest) ProtoMessage() {}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateGuestNetworkIpv6PrefixRequest.ProtoReflect.Descriptor instead.
+func (*CreateGuestNetworkIpv6PrefixRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) GetPrefix() string {
+	if x != nil && x.Prefix != nil {
+		return *x.Prefix
+	}
+	return ""
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateGuestNetworkIpv6PrefixRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateGuestNetworkIpv6PrefixResponse represents the response from creates a guest network ipv6 prefix.
+type CreateGuestNetworkIpv6PrefixResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateGuestNetworkIpv6PrefixResponse) Reset() {
+	*x = CreateGuestNetworkIpv6PrefixResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateGuestNetworkIpv6PrefixResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateGuestNetworkIpv6PrefixResponse) ProtoMessage() {}
+
+func (x *CreateGuestNetworkIpv6PrefixResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateGuestNetworkIpv6PrefixResponse.ProtoReflect.Descriptor instead.
+func (*CreateGuestNetworkIpv6PrefixResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *CreateGuestNetworkIpv6PrefixResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -7747,7 +5033,7 @@ type DeleteStorageNetworkIpRangeRequest struct {
 
 func (x *DeleteStorageNetworkIpRangeRequest) Reset() {
 	*x = DeleteStorageNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[92]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7759,7 +5045,7 @@ func (x *DeleteStorageNetworkIpRangeRequest) String() string {
 func (*DeleteStorageNetworkIpRangeRequest) ProtoMessage() {}
 
 func (x *DeleteStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[92]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7772,7 +5058,7 @@ func (x *DeleteStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use DeleteStorageNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
 func (*DeleteStorageNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{92}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *DeleteStorageNetworkIpRangeRequest) GetId() int64 {
@@ -7814,7 +5100,7 @@ type DeleteStorageNetworkIpRangeResponse struct {
 
 func (x *DeleteStorageNetworkIpRangeResponse) Reset() {
 	*x = DeleteStorageNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[93]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7826,7 +5112,7 @@ func (x *DeleteStorageNetworkIpRangeResponse) String() string {
 func (*DeleteStorageNetworkIpRangeResponse) ProtoMessage() {}
 
 func (x *DeleteStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[93]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7839,126 +5125,10 @@ func (x *DeleteStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use DeleteStorageNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
 func (*DeleteStorageNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{93}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *DeleteStorageNetworkIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteIpv4SubnetForZoneRequest represents the parameters for deletes an existing ipv4 subnet for a zone.
-type DeleteIpv4SubnetForZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the guest network IPv4 subnet
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteIpv4SubnetForZoneRequest) Reset() {
-	*x = DeleteIpv4SubnetForZoneRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[94]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteIpv4SubnetForZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteIpv4SubnetForZoneRequest) ProtoMessage() {}
-
-func (x *DeleteIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[94]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
-func (*DeleteIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{94}
-}
-
-func (x *DeleteIpv4SubnetForZoneRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteIpv4SubnetForZoneRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteIpv4SubnetForZoneRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteIpv4SubnetForZoneRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteIpv4SubnetForZoneResponse represents the response from deletes an existing ipv4 subnet for a zone.
-type DeleteIpv4SubnetForZoneResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteIpv4SubnetForZoneResponse) Reset() {
-	*x = DeleteIpv4SubnetForZoneResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[95]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteIpv4SubnetForZoneResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteIpv4SubnetForZoneResponse) ProtoMessage() {}
-
-func (x *DeleteIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[95]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
-func (*DeleteIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{95}
-}
-
-func (x *DeleteIpv4SubnetForZoneResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -7977,7 +5147,7 @@ type ListNetworkPermissionsRequest struct {
 
 func (x *ListNetworkPermissionsRequest) Reset() {
 	*x = ListNetworkPermissionsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[96]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7989,7 +5159,7 @@ func (x *ListNetworkPermissionsRequest) String() string {
 func (*ListNetworkPermissionsRequest) ProtoMessage() {}
 
 func (x *ListNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[96]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8002,7 +5172,7 @@ func (x *ListNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{96}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *ListNetworkPermissionsRequest) GetNetworkId() int64 {
@@ -8032,7 +5202,7 @@ type ListNetworkPermissionsResponse struct {
 
 func (x *ListNetworkPermissionsResponse) Reset() {
 	*x = ListNetworkPermissionsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[97]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8044,7 +5214,7 @@ func (x *ListNetworkPermissionsResponse) String() string {
 func (*ListNetworkPermissionsResponse) ProtoMessage() {}
 
 func (x *ListNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[97]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8057,7 +5227,7 @@ func (x *ListNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{97}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *ListNetworkPermissionsResponse) GetItems() []*NetworkPermissions {
@@ -8074,47 +5244,37 @@ func (x *ListNetworkPermissionsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ListDedicatedGuestVlanRangesRequest represents the parameters for lists dedicated guest vlan ranges
-type ListDedicatedGuestVlanRangesRequest struct {
+// ListGuestNetworkIpv6PrefixesRequest represents the parameters for lists guest network ipv6 prefixes
+type ListGuestNetworkIpv6PrefixesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// list dedicated guest vlan ranges by id
+	// UUID of the IPv6 prefix.
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the account with which the guest VLAN range is associated. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who will own the guest VLAN range
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// the domain ID with which the guest VLAN range is associated.  If used with the account parameter, returns all guest VLAN ranges for that account in the specified domain.
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the dedicated guest vlan range
-	GuestVlanRange *string `protobuf:"bytes,5,opt,name=guest_vlan_range,json=guestVlanRange" json:"guest_vlan_range,omitempty"`
-	// physical network id of the guest VLAN range
-	PhysicalNetworkId *int64 `protobuf:"varint,6,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// zone of the guest VLAN range
-	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// UUID of zone to which the IPv6 prefix belongs to.
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
 	// List by keyword
-	Keyword *string `protobuf:"bytes,8,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,9,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,10,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) Reset() {
-	*x = ListDedicatedGuestVlanRangesRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[98]
+func (x *ListGuestNetworkIpv6PrefixesRequest) Reset() {
+	*x = ListGuestNetworkIpv6PrefixesRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) String() string {
+func (x *ListGuestNetworkIpv6PrefixesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListDedicatedGuestVlanRangesRequest) ProtoMessage() {}
+func (*ListGuestNetworkIpv6PrefixesRequest) ProtoMessage() {}
 
-func (x *ListDedicatedGuestVlanRangesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[98]
+func (x *ListGuestNetworkIpv6PrefixesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8125,114 +5285,79 @@ func (x *ListDedicatedGuestVlanRangesRequest) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListDedicatedGuestVlanRangesRequest.ProtoReflect.Descriptor instead.
-func (*ListDedicatedGuestVlanRangesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{98}
+// Deprecated: Use ListGuestNetworkIpv6PrefixesRequest.ProtoReflect.Descriptor instead.
+func (*ListGuestNetworkIpv6PrefixesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{70}
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) GetId() int64 {
+func (x *ListGuestNetworkIpv6PrefixesRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListDedicatedGuestVlanRangesRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListDedicatedGuestVlanRangesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListDedicatedGuestVlanRangesRequest) GetGuestVlanRange() string {
-	if x != nil && x.GuestVlanRange != nil {
-		return *x.GuestVlanRange
-	}
-	return ""
-}
-
-func (x *ListDedicatedGuestVlanRangesRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *ListDedicatedGuestVlanRangesRequest) GetZoneId() int64 {
+func (x *ListGuestNetworkIpv6PrefixesRequest) GetZoneId() int64 {
 	if x != nil && x.ZoneId != nil {
 		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) GetKeyword() string {
+func (x *ListGuestNetworkIpv6PrefixesRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) GetPage() int32 {
+func (x *ListGuestNetworkIpv6PrefixesRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) GetPageSize() int32 {
+func (x *ListGuestNetworkIpv6PrefixesRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListDedicatedGuestVlanRangesRequest) GetResponseType() string {
+func (x *ListGuestNetworkIpv6PrefixesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListDedicatedGuestVlanRangesResponse represents the response from lists dedicated guest vlan ranges
-type ListDedicatedGuestVlanRangesResponse struct {
+// ListGuestNetworkIpv6PrefixesResponse represents the response from lists guest network ipv6 prefixes
+type ListGuestNetworkIpv6PrefixesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of GuestVlanRanges
-	Items []*GuestVlanRange `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of GuestVlanRanges
+	// The list of DataCenterGuestIpv6Prefixs
+	Items []*DataCenterGuestIpv6Prefix `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of DataCenterGuestIpv6Prefixs
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListDedicatedGuestVlanRangesResponse) Reset() {
-	*x = ListDedicatedGuestVlanRangesResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[99]
+func (x *ListGuestNetworkIpv6PrefixesResponse) Reset() {
+	*x = ListGuestNetworkIpv6PrefixesResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListDedicatedGuestVlanRangesResponse) String() string {
+func (x *ListGuestNetworkIpv6PrefixesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListDedicatedGuestVlanRangesResponse) ProtoMessage() {}
+func (*ListGuestNetworkIpv6PrefixesResponse) ProtoMessage() {}
 
-func (x *ListDedicatedGuestVlanRangesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[99]
+func (x *ListGuestNetworkIpv6PrefixesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8243,239 +5368,23 @@ func (x *ListDedicatedGuestVlanRangesResponse) ProtoReflect() protoreflect.Messa
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListDedicatedGuestVlanRangesResponse.ProtoReflect.Descriptor instead.
-func (*ListDedicatedGuestVlanRangesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{99}
+// Deprecated: Use ListGuestNetworkIpv6PrefixesResponse.ProtoReflect.Descriptor instead.
+func (*ListGuestNetworkIpv6PrefixesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{71}
 }
 
-func (x *ListDedicatedGuestVlanRangesResponse) GetItems() []*GuestVlanRange {
+func (x *ListGuestNetworkIpv6PrefixesResponse) GetItems() []*DataCenterGuestIpv6Prefix {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListDedicatedGuestVlanRangesResponse) GetTotalCount() int32 {
+func (x *ListGuestNetworkIpv6PrefixesResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// DeleteNetworkACLListRequest represents the parameters for deletes a network acl
-type DeleteNetworkACLListRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network ACL
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkACLListRequest) Reset() {
-	*x = DeleteNetworkACLListRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[100]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkACLListRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkACLListRequest) ProtoMessage() {}
-
-func (x *DeleteNetworkACLListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[100]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkACLListRequest.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkACLListRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{100}
-}
-
-func (x *DeleteNetworkACLListRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteNetworkACLListRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteNetworkACLListRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteNetworkACLListRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteNetworkACLListResponse represents the response from deletes a network acl
-type DeleteNetworkACLListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkACLListResponse) Reset() {
-	*x = DeleteNetworkACLListResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[101]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkACLListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkACLListResponse) ProtoMessage() {}
-
-func (x *DeleteNetworkACLListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[101]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkACLListResponse.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkACLListResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{101}
-}
-
-func (x *DeleteNetworkACLListResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteNetworkOfferingRequest represents the parameters for deletes a network offering.
-type DeleteNetworkOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the network offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkOfferingRequest) Reset() {
-	*x = DeleteNetworkOfferingRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[102]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkOfferingRequest) ProtoMessage() {}
-
-func (x *DeleteNetworkOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[102]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkOfferingRequest.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{102}
-}
-
-func (x *DeleteNetworkOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteNetworkOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteNetworkOfferingResponse represents the response from deletes a network offering.
-type DeleteNetworkOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkOfferingResponse) Reset() {
-	*x = DeleteNetworkOfferingResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[103]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkOfferingResponse) ProtoMessage() {}
-
-func (x *DeleteNetworkOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[103]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkOfferingResponse.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{103}
-}
-
-func (x *DeleteNetworkOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // MoveNetworkAclItemRequest represents the parameters for move an acl rule to a position bettwen two other acl rules of the same acl network list
@@ -8500,7 +5409,7 @@ type MoveNetworkAclItemRequest struct {
 
 func (x *MoveNetworkAclItemRequest) Reset() {
 	*x = MoveNetworkAclItemRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[104]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8512,7 +5421,7 @@ func (x *MoveNetworkAclItemRequest) String() string {
 func (*MoveNetworkAclItemRequest) ProtoMessage() {}
 
 func (x *MoveNetworkAclItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[104]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8525,7 +5434,7 @@ func (x *MoveNetworkAclItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MoveNetworkAclItemRequest.ProtoReflect.Descriptor instead.
 func (*MoveNetworkAclItemRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{104}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *MoveNetworkAclItemRequest) GetUuidRuleBeingMoved() string {
@@ -8595,7 +5504,7 @@ type MoveNetworkAclItemResponse struct {
 
 func (x *MoveNetworkAclItemResponse) Reset() {
 	*x = MoveNetworkAclItemResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[105]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8607,7 +5516,7 @@ func (x *MoveNetworkAclItemResponse) String() string {
 func (*MoveNetworkAclItemResponse) ProtoMessage() {}
 
 func (x *MoveNetworkAclItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[105]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8620,7 +5529,7 @@ func (x *MoveNetworkAclItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MoveNetworkAclItemResponse.ProtoReflect.Descriptor instead.
 func (*MoveNetworkAclItemResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{105}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *MoveNetworkAclItemResponse) GetResult() *Result {
@@ -8630,43 +5539,39 @@ func (x *MoveNetworkAclItemResponse) GetResult() *Result {
 	return nil
 }
 
-// ListGuestVlansRequest represents the parameters for lists all guest vlans
-type ListGuestVlansRequest struct {
+// AddNetworkServiceProviderRequest represents the parameters for adds a network serviceprovider to a physical network
+type AddNetworkServiceProviderRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// list guest vlan by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list guest vlan by zone
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list guest vlan by physical network
-	PhysicalNetworkId *int64 `protobuf:"varint,3,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// list guest vlan by vnet
-	Vnet *string `protobuf:"bytes,4,opt,name=vnet" json:"vnet,omitempty"`
-	// limits search results to allocated guest vlan. false by default.
-	AllocatedOnly *bool `protobuf:"varint,5,opt,name=allocated_only,json=allocatedOnly" json:"allocated_only,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,6,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,7,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,8,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the Physical Network ID to add the provider to
+	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// the destination Physical Network ID to bridge to
+	DestinationPhysicalNetworkId *int64 `protobuf:"varint,2,opt,name=destination_physical_network_id,json=destinationPhysicalNetworkId" json:"destination_physical_network_id,omitempty"`
+	// the name for the physical network service provider
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// the list of services to be enabled for this physical network service provider
+	EnabledServices []string `protobuf:"bytes,4,rep,name=enabled_services,json=enabledServices" json:"enabled_services,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGuestVlansRequest) Reset() {
-	*x = ListGuestVlansRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[106]
+func (x *AddNetworkServiceProviderRequest) Reset() {
+	*x = AddNetworkServiceProviderRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGuestVlansRequest) String() string {
+func (x *AddNetworkServiceProviderRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGuestVlansRequest) ProtoMessage() {}
+func (*AddNetworkServiceProviderRequest) ProtoMessage() {}
 
-func (x *ListGuestVlansRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[106]
+func (x *AddNetworkServiceProviderRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8677,210 +5582,62 @@ func (x *ListGuestVlansRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGuestVlansRequest.ProtoReflect.Descriptor instead.
-func (*ListGuestVlansRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{106}
+// Deprecated: Use AddNetworkServiceProviderRequest.ProtoReflect.Descriptor instead.
+func (*AddNetworkServiceProviderRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{74}
 }
 
-func (x *ListGuestVlansRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListGuestVlansRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListGuestVlansRequest) GetPhysicalNetworkId() int64 {
+func (x *AddNetworkServiceProviderRequest) GetPhysicalNetworkId() int64 {
 	if x != nil && x.PhysicalNetworkId != nil {
 		return *x.PhysicalNetworkId
 	}
 	return 0
 }
 
-func (x *ListGuestVlansRequest) GetVnet() string {
-	if x != nil && x.Vnet != nil {
-		return *x.Vnet
-	}
-	return ""
-}
-
-func (x *ListGuestVlansRequest) GetAllocatedOnly() bool {
-	if x != nil && x.AllocatedOnly != nil {
-		return *x.AllocatedOnly
-	}
-	return false
-}
-
-func (x *ListGuestVlansRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListGuestVlansRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
+func (x *AddNetworkServiceProviderRequest) GetDestinationPhysicalNetworkId() int64 {
+	if x != nil && x.DestinationPhysicalNetworkId != nil {
+		return *x.DestinationPhysicalNetworkId
 	}
 	return 0
 }
 
-func (x *ListGuestVlansRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListGuestVlansRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *AddNetworkServiceProviderRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-// ListGuestVlansResponse represents the response from lists all guest vlans
-type ListGuestVlansResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of GuestVlans
-	Items []*GuestVlan `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of GuestVlans
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListGuestVlansResponse) Reset() {
-	*x = ListGuestVlansResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[107]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListGuestVlansResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListGuestVlansResponse) ProtoMessage() {}
-
-func (x *ListGuestVlansResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[107]
+func (x *AddNetworkServiceProviderRequest) GetEnabledServices() []string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListGuestVlansResponse.ProtoReflect.Descriptor instead.
-func (*ListGuestVlansResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{107}
-}
-
-func (x *ListGuestVlansResponse) GetItems() []*GuestVlan {
-	if x != nil {
-		return x.Items
+		return x.EnabledServices
 	}
 	return nil
 }
 
-func (x *ListGuestVlansResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UpdateIpv4SubnetForZoneRequest represents the parameters for updates an existing ipv4 subnet for a zone.
-type UpdateIpv4SubnetForZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the guest network IPv4 subnet
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The new CIDR of the IPv4 subnet.
-	Subnet *string `protobuf:"bytes,2,opt,name=subnet" json:"subnet,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateIpv4SubnetForZoneRequest) Reset() {
-	*x = UpdateIpv4SubnetForZoneRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[108]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateIpv4SubnetForZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateIpv4SubnetForZoneRequest) ProtoMessage() {}
-
-func (x *UpdateIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[108]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
-func (*UpdateIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{108}
-}
-
-func (x *UpdateIpv4SubnetForZoneRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateIpv4SubnetForZoneRequest) GetSubnet() string {
-	if x != nil && x.Subnet != nil {
-		return *x.Subnet
-	}
-	return ""
-}
-
-func (x *UpdateIpv4SubnetForZoneRequest) GetStartEventId() int64 {
+func (x *AddNetworkServiceProviderRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateIpv4SubnetForZoneRequest) GetInjectedJobId() string {
+func (x *AddNetworkServiceProviderRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateIpv4SubnetForZoneRequest) GetResponseType() string {
+func (x *AddNetworkServiceProviderRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateIpv4SubnetForZoneResponse represents the response from updates an existing ipv4 subnet for a zone.
-type UpdateIpv4SubnetForZoneResponse struct {
+// AddNetworkServiceProviderResponse represents the response from adds a network serviceprovider to a physical network
+type AddNetworkServiceProviderResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -8888,21 +5645,21 @@ type UpdateIpv4SubnetForZoneResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateIpv4SubnetForZoneResponse) Reset() {
-	*x = UpdateIpv4SubnetForZoneResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[109]
+func (x *AddNetworkServiceProviderResponse) Reset() {
+	*x = AddNetworkServiceProviderResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateIpv4SubnetForZoneResponse) String() string {
+func (x *AddNetworkServiceProviderResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateIpv4SubnetForZoneResponse) ProtoMessage() {}
+func (*AddNetworkServiceProviderResponse) ProtoMessage() {}
 
-func (x *UpdateIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[109]
+func (x *AddNetworkServiceProviderResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8913,59 +5670,45 @@ func (x *UpdateIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
-func (*UpdateIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{109}
+// Deprecated: Use AddNetworkServiceProviderResponse.ProtoReflect.Descriptor instead.
+func (*AddNetworkServiceProviderResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{75}
 }
 
-func (x *UpdateIpv4SubnetForZoneResponse) GetResult() *Result {
+func (x *AddNetworkServiceProviderResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// CreatePhysicalNetworkRequest represents the parameters for creates a physical network
-type CreatePhysicalNetworkRequest struct {
+// DeleteIpv4SubnetForGuestNetworkRequest represents the parameters for deletes an existing ipv4 subnet for guest network.
+type DeleteIpv4SubnetForGuestNetworkRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Zone ID for the physical network
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the VLAN for the physical network
-	Vlan *string `protobuf:"bytes,2,opt,name=vlan" json:"vlan,omitempty"`
-	// the speed for the physical network[1G/10G]
-	Speed *string `protobuf:"bytes,3,opt,name=speed" json:"speed,omitempty"`
-	// domain ID of the account owning a physical network
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the broadcast domain range for the physical network[Pod or Zone]. In Acton release it can be Zone only in Advance zone, and Pod in Basic
-	BroadcastDomainRange *string `protobuf:"bytes,5,opt,name=broadcast_domain_range,json=broadcastDomainRange" json:"broadcast_domain_range,omitempty"`
-	// Tag the physical network
-	Tags []string `protobuf:"bytes,6,rep,name=tags" json:"tags,omitempty"`
-	// the isolation method for the physical network[VLAN/L3/GRE]
-	IsolationMethods []string `protobuf:"bytes,7,rep,name=isolation_methods,json=isolationMethods" json:"isolation_methods,omitempty"`
-	// the name of the physical network
-	NetworkName *string `protobuf:"bytes,8,opt,name=network_name,json=networkName" json:"network_name,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Id of the guest network IPv4 subnet
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreatePhysicalNetworkRequest) Reset() {
-	*x = CreatePhysicalNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[110]
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) Reset() {
+	*x = DeleteIpv4SubnetForGuestNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreatePhysicalNetworkRequest) String() string {
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePhysicalNetworkRequest) ProtoMessage() {}
+func (*DeleteIpv4SubnetForGuestNetworkRequest) ProtoMessage() {}
 
-func (x *CreatePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[110]
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8976,90 +5719,41 @@ func (x *CreatePhysicalNetworkRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePhysicalNetworkRequest.ProtoReflect.Descriptor instead.
-func (*CreatePhysicalNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{110}
+// Deprecated: Use DeleteIpv4SubnetForGuestNetworkRequest.ProtoReflect.Descriptor instead.
+func (*DeleteIpv4SubnetForGuestNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{76}
 }
 
-func (x *CreatePhysicalNetworkRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *CreatePhysicalNetworkRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *CreatePhysicalNetworkRequest) GetSpeed() string {
-	if x != nil && x.Speed != nil {
-		return *x.Speed
-	}
-	return ""
-}
-
-func (x *CreatePhysicalNetworkRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreatePhysicalNetworkRequest) GetBroadcastDomainRange() string {
-	if x != nil && x.BroadcastDomainRange != nil {
-		return *x.BroadcastDomainRange
-	}
-	return ""
-}
-
-func (x *CreatePhysicalNetworkRequest) GetTags() []string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *CreatePhysicalNetworkRequest) GetIsolationMethods() []string {
-	if x != nil {
-		return x.IsolationMethods
-	}
-	return nil
-}
-
-func (x *CreatePhysicalNetworkRequest) GetNetworkName() string {
-	if x != nil && x.NetworkName != nil {
-		return *x.NetworkName
-	}
-	return ""
-}
-
-func (x *CreatePhysicalNetworkRequest) GetStartEventId() int64 {
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CreatePhysicalNetworkRequest) GetInjectedJobId() string {
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreatePhysicalNetworkRequest) GetResponseType() string {
+func (x *DeleteIpv4SubnetForGuestNetworkRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreatePhysicalNetworkResponse represents the response from creates a physical network
-type CreatePhysicalNetworkResponse struct {
+// DeleteIpv4SubnetForGuestNetworkResponse represents the response from deletes an existing ipv4 subnet for guest network.
+type DeleteIpv4SubnetForGuestNetworkResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -9067,21 +5761,21 @@ type CreatePhysicalNetworkResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreatePhysicalNetworkResponse) Reset() {
-	*x = CreatePhysicalNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[111]
+func (x *DeleteIpv4SubnetForGuestNetworkResponse) Reset() {
+	*x = DeleteIpv4SubnetForGuestNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreatePhysicalNetworkResponse) String() string {
+func (x *DeleteIpv4SubnetForGuestNetworkResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePhysicalNetworkResponse) ProtoMessage() {}
+func (*DeleteIpv4SubnetForGuestNetworkResponse) ProtoMessage() {}
 
-func (x *CreatePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[111]
+func (x *DeleteIpv4SubnetForGuestNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9092,12 +5786,139 @@ func (x *CreatePhysicalNetworkResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePhysicalNetworkResponse.ProtoReflect.Descriptor instead.
-func (*CreatePhysicalNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{111}
+// Deprecated: Use DeleteIpv4SubnetForGuestNetworkResponse.ProtoReflect.Descriptor instead.
+func (*DeleteIpv4SubnetForGuestNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{77}
 }
 
-func (x *CreatePhysicalNetworkResponse) GetResult() *Result {
+func (x *DeleteIpv4SubnetForGuestNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveNetworkPermissionsRequest represents the parameters for removes network permissions.
+type RemoveNetworkPermissionsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// a comma delimited list of accounts within owner's domain. If specified, "op" parameter has to be passed in.
+	AccountNames []string `protobuf:"bytes,1,rep,name=account_names,json=accountNames" json:"account_names,omitempty"`
+	// a comma delimited list of account IDs within owner's domain. If specified, "op" parameter has to be passed in.
+	AccountIds []string `protobuf:"bytes,2,rep,name=account_ids,json=accountIds" json:"account_ids,omitempty"`
+	// the network ID
+	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
+	ProjectIds []string `protobuf:"bytes,4,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveNetworkPermissionsRequest) Reset() {
+	*x = RemoveNetworkPermissionsRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[78]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveNetworkPermissionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveNetworkPermissionsRequest) ProtoMessage() {}
+
+func (x *RemoveNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[78]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
+func (*RemoveNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{78}
+}
+
+func (x *RemoveNetworkPermissionsRequest) GetAccountNames() []string {
+	if x != nil {
+		return x.AccountNames
+	}
+	return nil
+}
+
+func (x *RemoveNetworkPermissionsRequest) GetAccountIds() []string {
+	if x != nil {
+		return x.AccountIds
+	}
+	return nil
+}
+
+func (x *RemoveNetworkPermissionsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *RemoveNetworkPermissionsRequest) GetProjectIds() []string {
+	if x != nil {
+		return x.ProjectIds
+	}
+	return nil
+}
+
+func (x *RemoveNetworkPermissionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveNetworkPermissionsResponse represents the response from removes network permissions.
+type RemoveNetworkPermissionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveNetworkPermissionsResponse) Reset() {
+	*x = RemoveNetworkPermissionsResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[79]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveNetworkPermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveNetworkPermissionsResponse) ProtoMessage() {}
+
+func (x *RemoveNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[79]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
+func (*RemoveNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{79}
+}
+
+func (x *RemoveNetworkPermissionsResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -9176,7 +5997,7 @@ type CreateNetworkOfferingRequest struct {
 
 func (x *CreateNetworkOfferingRequest) Reset() {
 	*x = CreateNetworkOfferingRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[112]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9188,7 +6009,7 @@ func (x *CreateNetworkOfferingRequest) String() string {
 func (*CreateNetworkOfferingRequest) ProtoMessage() {}
 
 func (x *CreateNetworkOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[112]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9201,7 +6022,7 @@ func (x *CreateNetworkOfferingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNetworkOfferingRequest.ProtoReflect.Descriptor instead.
 func (*CreateNetworkOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{112}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *CreateNetworkOfferingRequest) GetNetworkOfferingName() string {
@@ -9439,7 +6260,7 @@ type CreateNetworkOfferingResponse struct {
 
 func (x *CreateNetworkOfferingResponse) Reset() {
 	*x = CreateNetworkOfferingResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[113]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9451,7 +6272,7 @@ func (x *CreateNetworkOfferingResponse) String() string {
 func (*CreateNetworkOfferingResponse) ProtoMessage() {}
 
 func (x *CreateNetworkOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[113]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9464,7 +6285,7 @@ func (x *CreateNetworkOfferingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNetworkOfferingResponse.ProtoReflect.Descriptor instead.
 func (*CreateNetworkOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{113}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *CreateNetworkOfferingResponse) GetResult() *Result {
@@ -9474,37 +6295,59 @@ func (x *CreateNetworkOfferingResponse) GetResult() *Result {
 	return nil
 }
 
-// UpdateNetworkServiceProviderRequest represents the parameters for updates a network serviceprovider of a physical network
-type UpdateNetworkServiceProviderRequest struct {
+// UpdateNetworkACLItemRequest represents the parameters for updates acl item with specified id
+type UpdateNetworkACLItemRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Enabled/Disabled/Shutdown the physical network service provider
-	State *string `protobuf:"bytes,1,opt,name=state" json:"state,omitempty"`
-	// network service provider id
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the list of services to be enabled for this physical network service provider
-	EnabledServices []string `protobuf:"bytes,3,rep,name=enabled_services,json=enabledServices" json:"enabled_services,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the ID of the network ACL item
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	Protocol *string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
+	// the starting port of ACL
+	PublicStartPort *int32 `protobuf:"varint,3,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
+	// the ending port of ACL
+	PublicEndPort *int32 `protobuf:"varint,4,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
+	// the cidr list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
+	Cidrlist []string `protobuf:"bytes,5,rep,name=cidrlist" json:"cidrlist,omitempty"`
+	// type of the ICMP message being sent
+	IcmpType *int32 `protobuf:"varint,6,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
+	// error code for this ICMP message
+	IcmpCode *int32 `protobuf:"varint,7,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
+	// the traffic type for the ACL, can be Ingress or Egress, defaulted to Ingress if not specified
+	TrafficType *string `protobuf:"bytes,8,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// The network of the vm the ACL will be created for
+	Number *int32 `protobuf:"varint,9,opt,name=number" json:"number,omitempty"`
+	// scl entry action, allow or deny
+	Action *string `protobuf:"bytes,10,opt,name=action" json:"action,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,11,opt,name=display" json:"display,omitempty"`
+	// A description indicating why the ACL rule is required.
+	Reason *string `protobuf:"bytes,12,opt,name=reason" json:"reason,omitempty"`
+	// Indicates if the ACL rule is to be updated partially (merging the parameters sent with current configuration) or completely (disconsidering all of the current configurations). The default value is 'true'.
+	PartialUpgrade *bool `protobuf:"varint,13,opt,name=partial_upgrade,json=partialUpgrade" json:"partial_upgrade,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,14,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,15,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,16,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,17,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateNetworkServiceProviderRequest) Reset() {
-	*x = UpdateNetworkServiceProviderRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[114]
+func (x *UpdateNetworkACLItemRequest) Reset() {
+	*x = UpdateNetworkACLItemRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateNetworkServiceProviderRequest) String() string {
+func (x *UpdateNetworkACLItemRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateNetworkServiceProviderRequest) ProtoMessage() {}
+func (*UpdateNetworkACLItemRequest) ProtoMessage() {}
 
-func (x *UpdateNetworkServiceProviderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[114]
+func (x *UpdateNetworkACLItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9515,55 +6358,132 @@ func (x *UpdateNetworkServiceProviderRequest) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateNetworkServiceProviderRequest.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkServiceProviderRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{114}
+// Deprecated: Use UpdateNetworkACLItemRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkACLItemRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{82}
 }
 
-func (x *UpdateNetworkServiceProviderRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *UpdateNetworkServiceProviderRequest) GetId() int64 {
+func (x *UpdateNetworkACLItemRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateNetworkServiceProviderRequest) GetEnabledServices() []string {
+func (x *UpdateNetworkACLItemRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *UpdateNetworkACLItemRequest) GetPublicStartPort() int32 {
+	if x != nil && x.PublicStartPort != nil {
+		return *x.PublicStartPort
+	}
+	return 0
+}
+
+func (x *UpdateNetworkACLItemRequest) GetPublicEndPort() int32 {
+	if x != nil && x.PublicEndPort != nil {
+		return *x.PublicEndPort
+	}
+	return 0
+}
+
+func (x *UpdateNetworkACLItemRequest) GetCidrlist() []string {
 	if x != nil {
-		return x.EnabledServices
+		return x.Cidrlist
 	}
 	return nil
 }
 
-func (x *UpdateNetworkServiceProviderRequest) GetStartEventId() int64 {
+func (x *UpdateNetworkACLItemRequest) GetIcmpType() int32 {
+	if x != nil && x.IcmpType != nil {
+		return *x.IcmpType
+	}
+	return 0
+}
+
+func (x *UpdateNetworkACLItemRequest) GetIcmpCode() int32 {
+	if x != nil && x.IcmpCode != nil {
+		return *x.IcmpCode
+	}
+	return 0
+}
+
+func (x *UpdateNetworkACLItemRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
+	}
+	return ""
+}
+
+func (x *UpdateNetworkACLItemRequest) GetNumber() int32 {
+	if x != nil && x.Number != nil {
+		return *x.Number
+	}
+	return 0
+}
+
+func (x *UpdateNetworkACLItemRequest) GetAction() string {
+	if x != nil && x.Action != nil {
+		return *x.Action
+	}
+	return ""
+}
+
+func (x *UpdateNetworkACLItemRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateNetworkACLItemRequest) GetReason() string {
+	if x != nil && x.Reason != nil {
+		return *x.Reason
+	}
+	return ""
+}
+
+func (x *UpdateNetworkACLItemRequest) GetPartialUpgrade() bool {
+	if x != nil && x.PartialUpgrade != nil {
+		return *x.PartialUpgrade
+	}
+	return false
+}
+
+func (x *UpdateNetworkACLItemRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateNetworkACLItemRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateNetworkServiceProviderRequest) GetInjectedJobId() string {
+func (x *UpdateNetworkACLItemRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateNetworkServiceProviderRequest) GetResponseType() string {
+func (x *UpdateNetworkACLItemRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateNetworkServiceProviderResponse represents the response from updates a network serviceprovider of a physical network
-type UpdateNetworkServiceProviderResponse struct {
+// UpdateNetworkACLItemResponse represents the response from updates acl item with specified id
+type UpdateNetworkACLItemResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -9571,21 +6491,21 @@ type UpdateNetworkServiceProviderResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateNetworkServiceProviderResponse) Reset() {
-	*x = UpdateNetworkServiceProviderResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[115]
+func (x *UpdateNetworkACLItemResponse) Reset() {
+	*x = UpdateNetworkACLItemResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateNetworkServiceProviderResponse) String() string {
+func (x *UpdateNetworkACLItemResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateNetworkServiceProviderResponse) ProtoMessage() {}
+func (*UpdateNetworkACLItemResponse) ProtoMessage() {}
 
-func (x *UpdateNetworkServiceProviderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[115]
+func (x *UpdateNetworkACLItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9596,452 +6516,12 @@ func (x *UpdateNetworkServiceProviderResponse) ProtoReflect() protoreflect.Messa
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateNetworkServiceProviderResponse.ProtoReflect.Descriptor instead.
-func (*UpdateNetworkServiceProviderResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{115}
+// Deprecated: Use UpdateNetworkACLItemResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkACLItemResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{83}
 }
 
-func (x *UpdateNetworkServiceProviderResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CreateStorageNetworkIpRangeRequest represents the parameters for creates a storage network ip range.
-type CreateStorageNetworkIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of pod where the ip range belongs to
-	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// the beginning IP address
-	StartIp *string `protobuf:"bytes,2,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// the ending IP address
-	EndIp *string `protobuf:"bytes,3,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// Optional. The vlan the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan. This is mainly for Vmware as other hypervisors can directly retrieve bridge from physical network traffic type table
-	Vlan *int32 `protobuf:"varint,4,opt,name=vlan" json:"vlan,omitempty"`
-	// the netmask for storage network
-	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
-	// the gateway for storage network
-	Gateway *string `protobuf:"bytes,6,opt,name=gateway" json:"gateway,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) Reset() {
-	*x = CreateStorageNetworkIpRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[116]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateStorageNetworkIpRangeRequest) ProtoMessage() {}
-
-func (x *CreateStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[116]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateStorageNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*CreateStorageNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{116}
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetVlan() int32 {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return 0
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
-	}
-	return ""
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateStorageNetworkIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateStorageNetworkIpRangeResponse represents the response from creates a storage network ip range.
-type CreateStorageNetworkIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateStorageNetworkIpRangeResponse) Reset() {
-	*x = CreateStorageNetworkIpRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[117]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateStorageNetworkIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateStorageNetworkIpRangeResponse) ProtoMessage() {}
-
-func (x *CreateStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[117]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateStorageNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*CreateStorageNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{117}
-}
-
-func (x *CreateStorageNetworkIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListIpv4SubnetsForGuestNetworkRequest represents the parameters for lists ipv4 subnets for guest networks.
-type ListIpv4SubnetsForGuestNetworkRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the IPv4 subnet for guest network.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// UUID of zone Ipv4 subnet which the IPv4 subnet belongs to.
-	ParentId *int64 `protobuf:"varint,2,opt,name=parent_id,json=parentId" json:"parent_id,omitempty"`
-	// The CIDR of the Ipv4 subnet.
-	Subnet *string `protobuf:"bytes,3,opt,name=subnet" json:"subnet,omitempty"`
-	// UUID of zone to which the IPv4 subnet belongs to.
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// UUID of network to which the IPv4 subnet is associated to.
-	NetworkId *int64 `protobuf:"varint,5,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// UUID of VPC to which the IPv4 subnet is associated to.
-	VpcId *int64 `protobuf:"varint,6,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,7,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,8,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,9,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) Reset() {
-	*x = ListIpv4SubnetsForGuestNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[118]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIpv4SubnetsForGuestNetworkRequest) ProtoMessage() {}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[118]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIpv4SubnetsForGuestNetworkRequest.ProtoReflect.Descriptor instead.
-func (*ListIpv4SubnetsForGuestNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{118}
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetParentId() int64 {
-	if x != nil && x.ParentId != nil {
-		return *x.ParentId
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetSubnet() string {
-	if x != nil && x.Subnet != nil {
-		return *x.Subnet
-	}
-	return ""
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetVpcId() int64 {
-	if x != nil && x.VpcId != nil {
-		return *x.VpcId
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListIpv4SubnetsForGuestNetworkResponse represents the response from lists ipv4 subnets for guest networks.
-type ListIpv4SubnetsForGuestNetworkResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Ipv4SubnetForGuestNetworks
-	Items []*Ipv4SubnetForGuestNetwork `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Ipv4SubnetForGuestNetworks
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkResponse) Reset() {
-	*x = ListIpv4SubnetsForGuestNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[119]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIpv4SubnetsForGuestNetworkResponse) ProtoMessage() {}
-
-func (x *ListIpv4SubnetsForGuestNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[119]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIpv4SubnetsForGuestNetworkResponse.ProtoReflect.Descriptor instead.
-func (*ListIpv4SubnetsForGuestNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{119}
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkResponse) GetItems() []*Ipv4SubnetForGuestNetwork {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListIpv4SubnetsForGuestNetworkResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteNetworkDeviceRequest represents the parameters for deletes network device.
-type DeleteNetworkDeviceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of network device to delete
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkDeviceRequest) Reset() {
-	*x = DeleteNetworkDeviceRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[120]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkDeviceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkDeviceRequest) ProtoMessage() {}
-
-func (x *DeleteNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[120]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkDeviceRequest.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{120}
-}
-
-func (x *DeleteNetworkDeviceRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteNetworkDeviceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteNetworkDeviceResponse represents the response from deletes network device.
-type DeleteNetworkDeviceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteNetworkDeviceResponse) Reset() {
-	*x = DeleteNetworkDeviceResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[121]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteNetworkDeviceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteNetworkDeviceResponse) ProtoMessage() {}
-
-func (x *DeleteNetworkDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[121]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteNetworkDeviceResponse.ProtoReflect.Descriptor instead.
-func (*DeleteNetworkDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{121}
-}
-
-func (x *DeleteNetworkDeviceResponse) GetResult() *Result {
+func (x *UpdateNetworkACLItemResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -10133,7 +6613,7 @@ type CreateNetworkRequest struct {
 
 func (x *CreateNetworkRequest) Reset() {
 	*x = CreateNetworkRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[122]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10145,7 +6625,7 @@ func (x *CreateNetworkRequest) String() string {
 func (*CreateNetworkRequest) ProtoMessage() {}
 
 func (x *CreateNetworkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[122]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10158,7 +6638,7 @@ func (x *CreateNetworkRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNetworkRequest.ProtoReflect.Descriptor instead.
 func (*CreateNetworkRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{122}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *CreateNetworkRequest) GetRunAsAdmin() bool {
@@ -10438,7 +6918,7 @@ type CreateNetworkResponse struct {
 
 func (x *CreateNetworkResponse) Reset() {
 	*x = CreateNetworkResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[123]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10450,7 +6930,7 @@ func (x *CreateNetworkResponse) String() string {
 func (*CreateNetworkResponse) ProtoMessage() {}
 
 func (x *CreateNetworkResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[123]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10463,7 +6943,7 @@ func (x *CreateNetworkResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNetworkResponse.ProtoReflect.Descriptor instead.
 func (*CreateNetworkResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{123}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *CreateNetworkResponse) GetResult() *Result {
@@ -10473,10 +6953,10 @@ func (x *CreateNetworkResponse) GetResult() *Result {
 	return nil
 }
 
-// ReleaseDedicatedGuestVlanRangeRequest represents the parameters for releases a dedicated guest vlan range to the system
-type ReleaseDedicatedGuestVlanRangeRequest struct {
+// DeleteNetworkServiceProviderRequest represents the parameters for deletes a network service provider.
+type DeleteNetworkServiceProviderRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the dedicated guest vlan range
+	// the ID of the network service provider
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
@@ -10485,21 +6965,21 @@ type ReleaseDedicatedGuestVlanRangeRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) Reset() {
-	*x = ReleaseDedicatedGuestVlanRangeRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[124]
+func (x *DeleteNetworkServiceProviderRequest) Reset() {
+	*x = DeleteNetworkServiceProviderRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) String() string {
+func (x *DeleteNetworkServiceProviderRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReleaseDedicatedGuestVlanRangeRequest) ProtoMessage() {}
+func (*DeleteNetworkServiceProviderRequest) ProtoMessage() {}
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[124]
+func (x *DeleteNetworkServiceProviderRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10510,41 +6990,41 @@ func (x *ReleaseDedicatedGuestVlanRangeRequest) ProtoReflect() protoreflect.Mess
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReleaseDedicatedGuestVlanRangeRequest.ProtoReflect.Descriptor instead.
-func (*ReleaseDedicatedGuestVlanRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{124}
+// Deprecated: Use DeleteNetworkServiceProviderRequest.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkServiceProviderRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{86}
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) GetId() int64 {
+func (x *DeleteNetworkServiceProviderRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) GetStartEventId() int64 {
+func (x *DeleteNetworkServiceProviderRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) GetInjectedJobId() string {
+func (x *DeleteNetworkServiceProviderRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeRequest) GetResponseType() string {
+func (x *DeleteNetworkServiceProviderRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ReleaseDedicatedGuestVlanRangeResponse represents the response from releases a dedicated guest vlan range to the system
-type ReleaseDedicatedGuestVlanRangeResponse struct {
+// DeleteNetworkServiceProviderResponse represents the response from deletes a network service provider.
+type DeleteNetworkServiceProviderResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -10552,21 +7032,21 @@ type ReleaseDedicatedGuestVlanRangeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeResponse) Reset() {
-	*x = ReleaseDedicatedGuestVlanRangeResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[125]
+func (x *DeleteNetworkServiceProviderResponse) Reset() {
+	*x = DeleteNetworkServiceProviderResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeResponse) String() string {
+func (x *DeleteNetworkServiceProviderResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReleaseDedicatedGuestVlanRangeResponse) ProtoMessage() {}
+func (*DeleteNetworkServiceProviderResponse) ProtoMessage() {}
 
-func (x *ReleaseDedicatedGuestVlanRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[125]
+func (x *DeleteNetworkServiceProviderResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10577,43 +7057,63 @@ func (x *ReleaseDedicatedGuestVlanRangeResponse) ProtoReflect() protoreflect.Mes
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReleaseDedicatedGuestVlanRangeResponse.ProtoReflect.Descriptor instead.
-func (*ReleaseDedicatedGuestVlanRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{125}
+// Deprecated: Use DeleteNetworkServiceProviderResponse.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkServiceProviderResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{87}
 }
 
-func (x *ReleaseDedicatedGuestVlanRangeResponse) GetResult() *Result {
+func (x *DeleteNetworkServiceProviderResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// ListNetworkProtocolsRequest represents the parameters for lists details of network protocols
-type ListNetworkProtocolsRequest struct {
+// UpdateNetworkOfferingRequest represents the parameters for updates a network offering.
+type UpdateNetworkOfferingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The option of network protocols. Supported values are: protocolnumber, icmptype.
-	Option *string `protobuf:"bytes,1,opt,name=option" json:"option,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the id of the network offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the name of the network offering
+	NetworkOfferingName *string `protobuf:"bytes,2,opt,name=network_offering_name,json=networkOfferingName" json:"network_offering_name,omitempty"`
+	// the display text of the network offering
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the availability of network offering. The value is Required makes this network offering default for Guest Virtual Networks. Only one network offering can have the value Required
+	Availability *string `protobuf:"bytes,4,opt,name=availability" json:"availability,omitempty"`
+	// sort key of the network offering, integer
+	SortKey *int32 `protobuf:"varint,5,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
+	// update state for the network offering
+	State *string `protobuf:"bytes,6,opt,name=state" json:"state,omitempty"`
+	// if true keepalive will be turned on in the loadbalancer. At the time of writing this has only an effect on haproxy; the mode http and httpclose options are unset in the haproxy conf file.
+	KeepAliveEnabled *bool `protobuf:"varint,7,opt,name=keep_alive_enabled,json=keepAliveEnabled" json:"keep_alive_enabled,omitempty"`
+	// maximum number of concurrent connections supported by the network offering
+	MaxConnections *int32 `protobuf:"varint,8,opt,name=max_connections,json=maxConnections" json:"max_connections,omitempty"`
+	// the tags for the network offering.
+	Tags *string `protobuf:"bytes,9,opt,name=tags" json:"tags,omitempty"`
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	DomainIds *string `protobuf:"bytes,10,opt,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	ZoneIds *string `protobuf:"bytes,11,opt,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListNetworkProtocolsRequest) Reset() {
-	*x = ListNetworkProtocolsRequest{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[126]
+func (x *UpdateNetworkOfferingRequest) Reset() {
+	*x = UpdateNetworkOfferingRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListNetworkProtocolsRequest) String() string {
+func (x *UpdateNetworkOfferingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListNetworkProtocolsRequest) ProtoMessage() {}
+func (*UpdateNetworkOfferingRequest) ProtoMessage() {}
 
-func (x *ListNetworkProtocolsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[126]
+func (x *UpdateNetworkOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10624,51 +7124,119 @@ func (x *ListNetworkProtocolsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListNetworkProtocolsRequest.ProtoReflect.Descriptor instead.
-func (*ListNetworkProtocolsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{126}
+// Deprecated: Use UpdateNetworkOfferingRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{88}
 }
 
-func (x *ListNetworkProtocolsRequest) GetOption() string {
-	if x != nil && x.Option != nil {
-		return *x.Option
+func (x *UpdateNetworkOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateNetworkOfferingRequest) GetNetworkOfferingName() string {
+	if x != nil && x.NetworkOfferingName != nil {
+		return *x.NetworkOfferingName
 	}
 	return ""
 }
 
-func (x *ListNetworkProtocolsRequest) GetResponseType() string {
+func (x *UpdateNetworkOfferingRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *UpdateNetworkOfferingRequest) GetAvailability() string {
+	if x != nil && x.Availability != nil {
+		return *x.Availability
+	}
+	return ""
+}
+
+func (x *UpdateNetworkOfferingRequest) GetSortKey() int32 {
+	if x != nil && x.SortKey != nil {
+		return *x.SortKey
+	}
+	return 0
+}
+
+func (x *UpdateNetworkOfferingRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *UpdateNetworkOfferingRequest) GetKeepAliveEnabled() bool {
+	if x != nil && x.KeepAliveEnabled != nil {
+		return *x.KeepAliveEnabled
+	}
+	return false
+}
+
+func (x *UpdateNetworkOfferingRequest) GetMaxConnections() int32 {
+	if x != nil && x.MaxConnections != nil {
+		return *x.MaxConnections
+	}
+	return 0
+}
+
+func (x *UpdateNetworkOfferingRequest) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
+func (x *UpdateNetworkOfferingRequest) GetDomainIds() string {
+	if x != nil && x.DomainIds != nil {
+		return *x.DomainIds
+	}
+	return ""
+}
+
+func (x *UpdateNetworkOfferingRequest) GetZoneIds() string {
+	if x != nil && x.ZoneIds != nil {
+		return *x.ZoneIds
+	}
+	return ""
+}
+
+func (x *UpdateNetworkOfferingRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListNetworkProtocolsResponse represents the response from lists details of network protocols
-type ListNetworkProtocolsResponse struct {
+// UpdateNetworkOfferingResponse represents the response from updates a network offering.
+type UpdateNetworkOfferingResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of NetworkProtocols
-	Items []*NetworkProtocol `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of NetworkProtocols
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListNetworkProtocolsResponse) Reset() {
-	*x = ListNetworkProtocolsResponse{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[127]
+func (x *UpdateNetworkOfferingResponse) Reset() {
+	*x = UpdateNetworkOfferingResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListNetworkProtocolsResponse) String() string {
+func (x *UpdateNetworkOfferingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListNetworkProtocolsResponse) ProtoMessage() {}
+func (*UpdateNetworkOfferingResponse) ProtoMessage() {}
 
-func (x *ListNetworkProtocolsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[127]
+func (x *UpdateNetworkOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10679,57 +7247,681 @@ func (x *ListNetworkProtocolsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListNetworkProtocolsResponse.ProtoReflect.Descriptor instead.
-func (*ListNetworkProtocolsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{127}
+// Deprecated: Use UpdateNetworkOfferingResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{89}
 }
 
-func (x *ListNetworkProtocolsResponse) GetItems() []*NetworkProtocol {
+func (x *UpdateNetworkOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateIpv4SubnetForGuestNetworkRequest represents the parameters for creates a ipv4 subnet for guest networks.
+type CreateIpv4SubnetForGuestNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The zone Ipv4 subnet which the IPv4 subnet belongs to.
+	ParentId *int64 `protobuf:"varint,1,opt,name=parent_id,json=parentId" json:"parent_id,omitempty"`
+	// The CIDR of this Ipv4 subnet.
+	Subnet *string `protobuf:"bytes,2,opt,name=subnet" json:"subnet,omitempty"`
+	// the CIDR size of IPv4 network. This is mutually exclusive with subnet.
+	CidrSize *int32 `protobuf:"varint,3,opt,name=cidr_size,json=cidrSize" json:"cidr_size,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) Reset() {
+	*x = CreateIpv4SubnetForGuestNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[90]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateIpv4SubnetForGuestNetworkRequest) ProtoMessage() {}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[90]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateIpv4SubnetForGuestNetworkRequest.ProtoReflect.Descriptor instead.
+func (*CreateIpv4SubnetForGuestNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{90}
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) GetParentId() int64 {
+	if x != nil && x.ParentId != nil {
+		return *x.ParentId
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) GetSubnet() string {
+	if x != nil && x.Subnet != nil {
+		return *x.Subnet
+	}
+	return ""
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) GetCidrSize() int32 {
+	if x != nil && x.CidrSize != nil {
+		return *x.CidrSize
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateIpv4SubnetForGuestNetworkResponse represents the response from creates a ipv4 subnet for guest networks.
+type CreateIpv4SubnetForGuestNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkResponse) Reset() {
+	*x = CreateIpv4SubnetForGuestNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[91]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateIpv4SubnetForGuestNetworkResponse) ProtoMessage() {}
+
+func (x *CreateIpv4SubnetForGuestNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[91]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateIpv4SubnetForGuestNetworkResponse.ProtoReflect.Descriptor instead.
+func (*CreateIpv4SubnetForGuestNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{91}
+}
+
+func (x *CreateIpv4SubnetForGuestNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ResetNetworkPermissionsRequest represents the parameters for resets network permissions.
+type ResetNetworkPermissionsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the network ID
+	NetworkId *int64 `protobuf:"varint,1,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetNetworkPermissionsRequest) Reset() {
+	*x = ResetNetworkPermissionsRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[92]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetNetworkPermissionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetNetworkPermissionsRequest) ProtoMessage() {}
+
+func (x *ResetNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[92]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
+func (*ResetNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{92}
+}
+
+func (x *ResetNetworkPermissionsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ResetNetworkPermissionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ResetNetworkPermissionsResponse represents the response from resets network permissions.
+type ResetNetworkPermissionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResetNetworkPermissionsResponse) Reset() {
+	*x = ResetNetworkPermissionsResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[93]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResetNetworkPermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetNetworkPermissionsResponse) ProtoMessage() {}
+
+func (x *ResetNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[93]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
+func (*ResetNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{93}
+}
+
+func (x *ResetNetworkPermissionsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteNetworkDeviceRequest represents the parameters for deletes network device.
+type DeleteNetworkDeviceRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of network device to delete
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkDeviceRequest) Reset() {
+	*x = DeleteNetworkDeviceRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[94]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkDeviceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkDeviceRequest) ProtoMessage() {}
+
+func (x *DeleteNetworkDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[94]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkDeviceRequest.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkDeviceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{94}
+}
+
+func (x *DeleteNetworkDeviceRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteNetworkDeviceRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteNetworkDeviceResponse represents the response from deletes network device.
+type DeleteNetworkDeviceResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteNetworkDeviceResponse) Reset() {
+	*x = DeleteNetworkDeviceResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[95]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteNetworkDeviceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNetworkDeviceResponse) ProtoMessage() {}
+
+func (x *DeleteNetworkDeviceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[95]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNetworkDeviceResponse.ProtoReflect.Descriptor instead.
+func (*DeleteNetworkDeviceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{95}
+}
+
+func (x *DeleteNetworkDeviceResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListNetworkOfferingsRequest represents the parameters for lists all available network offerings.
+type ListNetworkOfferingsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list network offerings by ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list network offerings by name
+	NetworkOfferingName *string `protobuf:"bytes,2,opt,name=network_offering_name,json=networkOfferingName" json:"network_offering_name,omitempty"`
+	// list network offerings by display text
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// list by traffic type
+	TrafficType *string `protobuf:"bytes,4,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// true if need to list only default network offerings. Default value is false
+	IsDefault *bool `protobuf:"varint,5,opt,name=is_default,json=isDefault" json:"is_default,omitempty"`
+	// the tags for the network offering.
+	SpecifyVlan *bool `protobuf:"varint,6,opt,name=specify_vlan,json=specifyVlan" json:"specify_vlan,omitempty"`
+	// the availability of network offering. Default value is required
+	Availability *string `protobuf:"bytes,7,opt,name=availability" json:"availability,omitempty"`
+	// list network offerings available for network creation in specific domain
+	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// list network offerings available for network creation in specific zone
+	ZoneId *int64 `protobuf:"varint,9,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list network offerings by state
+	State *string `protobuf:"bytes,10,opt,name=state" json:"state,omitempty"`
+	// the ID of the network. Pass this in if you want to see the available network offering that a network can be changed to.
+	NetworkId *int64 `protobuf:"varint,11,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// list network offerings by guest type: shared or isolated
+	GuestIpType *string `protobuf:"bytes,12,opt,name=guest_ip_type,json=guestIpType" json:"guest_ip_type,omitempty"`
+	// list network offerings supporting certain services
+	SupportedServices []string `protobuf:"bytes,13,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
+	// true if need to list only netwok offerings where source NAT is supported, false otherwise
+	SourceNatSupported *bool `protobuf:"varint,14,opt,name=source_nat_supported,json=sourceNatSupported" json:"source_nat_supported,omitempty"`
+	// true if need to list only network offerings which support specifying ip ranges
+	SpecifyIpRanges *bool `protobuf:"varint,15,opt,name=specify_ip_ranges,json=specifyIpRanges" json:"specify_ip_ranges,omitempty"`
+	// list network offerings by tags
+	Tags *string `protobuf:"bytes,16,opt,name=tags" json:"tags,omitempty"`
+	// true if offering has tags specified
+	IsTagged *bool `protobuf:"varint,17,opt,name=is_tagged,json=isTagged" json:"is_tagged,omitempty"`
+	// the network offering can be used only for network creation inside the VPC
+	ForVpc *bool `protobuf:"varint,18,opt,name=for_vpc,json=forVpc" json:"for_vpc,omitempty"`
+	// the routing mode for the network offering. Supported types are: Static or Dynamic.
+	RoutingMode *string `protobuf:"bytes,19,opt,name=routing_mode,json=routingMode" json:"routing_mode,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,20,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,21,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,22,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,23,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkOfferingsRequest) Reset() {
+	*x = ListNetworkOfferingsRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[96]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkOfferingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkOfferingsRequest) ProtoMessage() {}
+
+func (x *ListNetworkOfferingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[96]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkOfferingsRequest.ProtoReflect.Descriptor instead.
+func (*ListNetworkOfferingsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{96}
+}
+
+func (x *ListNetworkOfferingsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListNetworkOfferingsRequest) GetNetworkOfferingName() string {
+	if x != nil && x.NetworkOfferingName != nil {
+		return *x.NetworkOfferingName
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetIsDefault() bool {
+	if x != nil && x.IsDefault != nil {
+		return *x.IsDefault
+	}
+	return false
+}
+
+func (x *ListNetworkOfferingsRequest) GetSpecifyVlan() bool {
+	if x != nil && x.SpecifyVlan != nil {
+		return *x.SpecifyVlan
+	}
+	return false
+}
+
+func (x *ListNetworkOfferingsRequest) GetAvailability() string {
+	if x != nil && x.Availability != nil {
+		return *x.Availability
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListNetworkOfferingsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListNetworkOfferingsRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListNetworkOfferingsRequest) GetGuestIpType() string {
+	if x != nil && x.GuestIpType != nil {
+		return *x.GuestIpType
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetSupportedServices() []string {
+	if x != nil {
+		return x.SupportedServices
+	}
+	return nil
+}
+
+func (x *ListNetworkOfferingsRequest) GetSourceNatSupported() bool {
+	if x != nil && x.SourceNatSupported != nil {
+		return *x.SourceNatSupported
+	}
+	return false
+}
+
+func (x *ListNetworkOfferingsRequest) GetSpecifyIpRanges() bool {
+	if x != nil && x.SpecifyIpRanges != nil {
+		return *x.SpecifyIpRanges
+	}
+	return false
+}
+
+func (x *ListNetworkOfferingsRequest) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetIsTagged() bool {
+	if x != nil && x.IsTagged != nil {
+		return *x.IsTagged
+	}
+	return false
+}
+
+func (x *ListNetworkOfferingsRequest) GetForVpc() bool {
+	if x != nil && x.ForVpc != nil {
+		return *x.ForVpc
+	}
+	return false
+}
+
+func (x *ListNetworkOfferingsRequest) GetRoutingMode() string {
+	if x != nil && x.RoutingMode != nil {
+		return *x.RoutingMode
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListNetworkOfferingsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListNetworkOfferingsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListNetworkOfferingsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListNetworkOfferingsResponse represents the response from lists all available network offerings.
+type ListNetworkOfferingsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of NetworkOfferings
+	Items []*NetworkOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of NetworkOfferings
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNetworkOfferingsResponse) Reset() {
+	*x = ListNetworkOfferingsResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[97]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNetworkOfferingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNetworkOfferingsResponse) ProtoMessage() {}
+
+func (x *ListNetworkOfferingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[97]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNetworkOfferingsResponse.ProtoReflect.Descriptor instead.
+func (*ListNetworkOfferingsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{97}
+}
+
+func (x *ListNetworkOfferingsResponse) GetItems() []*NetworkOffering {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListNetworkProtocolsResponse) GetTotalCount() int32 {
+func (x *ListNetworkOfferingsResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
 }
 
-// NetworkOffering represents a NetworkOffering Item
-type NetworkOffering struct {
+// RestartNetworkRequest represents the parameters for restarts the network; includes 1) restarting network elements - virtual routers, dhcp servers 2) reapplying all public ips 3) reapplying loadbalancing/portforwarding rules
+type RestartNetworkRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the NetworkOffering
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the NetworkOffering
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the NetworkOffering
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the NetworkOffering
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The ID of the network to restart.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// If cleanup old network elements
+	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
+	// Turn the network into a network with redundant routers.
+	MakeRedundant *bool `protobuf:"varint,3,opt,name=make_redundant,json=makeRedundant" json:"make_redundant,omitempty"`
+	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
+	LivePatch *bool `protobuf:"varint,4,opt,name=live_patch,json=livePatch" json:"live_patch,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NetworkOffering) Reset() {
-	*x = NetworkOffering{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[128]
+func (x *RestartNetworkRequest) Reset() {
+	*x = RestartNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NetworkOffering) String() string {
+func (x *RestartNetworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NetworkOffering) ProtoMessage() {}
+func (*RestartNetworkRequest) ProtoMessage() {}
 
-func (x *NetworkOffering) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[128]
+func (x *RestartNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10740,78 +7932,84 @@ func (x *NetworkOffering) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NetworkOffering.ProtoReflect.Descriptor instead.
-func (*NetworkOffering) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{128}
+// Deprecated: Use RestartNetworkRequest.ProtoReflect.Descriptor instead.
+func (*RestartNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{98}
 }
 
-func (x *NetworkOffering) GetId() string {
+func (x *RestartNetworkRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *NetworkOffering) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *RestartNetworkRequest) GetCleanup() bool {
+	if x != nil && x.Cleanup != nil {
+		return *x.Cleanup
+	}
+	return false
+}
+
+func (x *RestartNetworkRequest) GetMakeRedundant() bool {
+	if x != nil && x.MakeRedundant != nil {
+		return *x.MakeRedundant
+	}
+	return false
+}
+
+func (x *RestartNetworkRequest) GetLivePatch() bool {
+	if x != nil && x.LivePatch != nil {
+		return *x.LivePatch
+	}
+	return false
+}
+
+func (x *RestartNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RestartNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *NetworkOffering) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *RestartNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *NetworkOffering) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *NetworkOffering) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// DataCenterGuestIpv6Prefix represents a DataCenterGuestIpv6Prefix Item
-type DataCenterGuestIpv6Prefix struct {
+// RestartNetworkResponse represents the response from restarts the network; includes 1) restarting network elements - virtual routers, dhcp servers 2) reapplying all public ips 3) reapplying loadbalancing/portforwarding rules
+type RestartNetworkResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the DataCenterGuestIpv6Prefix
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the DataCenterGuestIpv6Prefix
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the DataCenterGuestIpv6Prefix
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the DataCenterGuestIpv6Prefix
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DataCenterGuestIpv6Prefix) Reset() {
-	*x = DataCenterGuestIpv6Prefix{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[129]
+func (x *RestartNetworkResponse) Reset() {
+	*x = RestartNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DataCenterGuestIpv6Prefix) String() string {
+func (x *RestartNetworkResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DataCenterGuestIpv6Prefix) ProtoMessage() {}
+func (*RestartNetworkResponse) ProtoMessage() {}
 
-func (x *DataCenterGuestIpv6Prefix) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[129]
+func (x *RestartNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10822,78 +8020,45 @@ func (x *DataCenterGuestIpv6Prefix) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DataCenterGuestIpv6Prefix.ProtoReflect.Descriptor instead.
-func (*DataCenterGuestIpv6Prefix) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{129}
+// Deprecated: Use RestartNetworkResponse.ProtoReflect.Descriptor instead.
+func (*RestartNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{99}
 }
 
-func (x *DataCenterGuestIpv6Prefix) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *RestartNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
+	return nil
 }
 
-func (x *DataCenterGuestIpv6Prefix) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *DataCenterGuestIpv6Prefix) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *DataCenterGuestIpv6Prefix) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *DataCenterGuestIpv6Prefix) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// StorageNetworkIpRange represents a StorageNetworkIpRange Item
-type StorageNetworkIpRange struct {
+// DeleteGuestNetworkIpv6PrefixRequest represents the parameters for deletes an existing guest network ipv6 prefix.
+type DeleteGuestNetworkIpv6PrefixRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the StorageNetworkIpRange
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the StorageNetworkIpRange
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the StorageNetworkIpRange
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the StorageNetworkIpRange
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// Id of the guest network IPv6 prefix
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StorageNetworkIpRange) Reset() {
-	*x = StorageNetworkIpRange{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[130]
+func (x *DeleteGuestNetworkIpv6PrefixRequest) Reset() {
+	*x = DeleteGuestNetworkIpv6PrefixRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[100]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StorageNetworkIpRange) String() string {
+func (x *DeleteGuestNetworkIpv6PrefixRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StorageNetworkIpRange) ProtoMessage() {}
+func (*DeleteGuestNetworkIpv6PrefixRequest) ProtoMessage() {}
 
-func (x *StorageNetworkIpRange) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[130]
+func (x *DeleteGuestNetworkIpv6PrefixRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[100]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10904,78 +8069,63 @@ func (x *StorageNetworkIpRange) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StorageNetworkIpRange.ProtoReflect.Descriptor instead.
-func (*StorageNetworkIpRange) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{130}
+// Deprecated: Use DeleteGuestNetworkIpv6PrefixRequest.ProtoReflect.Descriptor instead.
+func (*DeleteGuestNetworkIpv6PrefixRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{100}
 }
 
-func (x *StorageNetworkIpRange) GetId() string {
+func (x *DeleteGuestNetworkIpv6PrefixRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *StorageNetworkIpRange) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *DeleteGuestNetworkIpv6PrefixRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteGuestNetworkIpv6PrefixRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *StorageNetworkIpRange) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *DeleteGuestNetworkIpv6PrefixRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *StorageNetworkIpRange) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *StorageNetworkIpRange) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// PhysicalNetwork represents a PhysicalNetwork Item
-type PhysicalNetwork struct {
+// DeleteGuestNetworkIpv6PrefixResponse represents the response from deletes an existing guest network ipv6 prefix.
+type DeleteGuestNetworkIpv6PrefixResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the PhysicalNetwork
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the PhysicalNetwork
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the PhysicalNetwork
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the PhysicalNetwork
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PhysicalNetwork) Reset() {
-	*x = PhysicalNetwork{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[131]
+func (x *DeleteGuestNetworkIpv6PrefixResponse) Reset() {
+	*x = DeleteGuestNetworkIpv6PrefixResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[101]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PhysicalNetwork) String() string {
+func (x *DeleteGuestNetworkIpv6PrefixResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PhysicalNetwork) ProtoMessage() {}
+func (*DeleteGuestNetworkIpv6PrefixResponse) ProtoMessage() {}
 
-func (x *PhysicalNetwork) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[131]
+func (x *DeleteGuestNetworkIpv6PrefixResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[101]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10986,78 +8136,53 @@ func (x *PhysicalNetwork) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PhysicalNetwork.ProtoReflect.Descriptor instead.
-func (*PhysicalNetwork) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{131}
+// Deprecated: Use DeleteGuestNetworkIpv6PrefixResponse.ProtoReflect.Descriptor instead.
+func (*DeleteGuestNetworkIpv6PrefixResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{101}
 }
 
-func (x *PhysicalNetwork) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *DeleteGuestNetworkIpv6PrefixResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
+	return nil
 }
 
-func (x *PhysicalNetwork) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *PhysicalNetwork) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *PhysicalNetwork) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *PhysicalNetwork) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// NetworkDevice represents a NetworkDevice Item
-type NetworkDevice struct {
+// CreateIpv4SubnetForZoneRequest represents the parameters for creates a ipv4 subnet for a zone.
+type CreateIpv4SubnetForZoneRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the NetworkDevice
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the NetworkDevice
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the NetworkDevice
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the NetworkDevice
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// UUID of the zone which the IPv4 subnet belongs to.
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// The CIDR of the IPv4 subnet.
+	Subnet *string `protobuf:"bytes,2,opt,name=subnet" json:"subnet,omitempty"`
+	// account who will own the IPv4 subnet
+	AccountName *string `protobuf:"bytes,3,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who will own the IPv4 subnet
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// domain ID of the account owning the IPv4 subnet
+	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NetworkDevice) Reset() {
-	*x = NetworkDevice{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[132]
+func (x *CreateIpv4SubnetForZoneRequest) Reset() {
+	*x = CreateIpv4SubnetForZoneRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[102]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NetworkDevice) String() string {
+func (x *CreateIpv4SubnetForZoneRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NetworkDevice) ProtoMessage() {}
+func (*CreateIpv4SubnetForZoneRequest) ProtoMessage() {}
 
-func (x *NetworkDevice) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[132]
+func (x *CreateIpv4SubnetForZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[102]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11068,78 +8193,91 @@ func (x *NetworkDevice) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NetworkDevice.ProtoReflect.Descriptor instead.
-func (*NetworkDevice) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{132}
+// Deprecated: Use CreateIpv4SubnetForZoneRequest.ProtoReflect.Descriptor instead.
+func (*CreateIpv4SubnetForZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{102}
 }
 
-func (x *NetworkDevice) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateIpv4SubnetForZoneRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForZoneRequest) GetSubnet() string {
+	if x != nil && x.Subnet != nil {
+		return *x.Subnet
 	}
 	return ""
 }
 
-func (x *NetworkDevice) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *CreateIpv4SubnetForZoneRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *NetworkDevice) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *CreateIpv4SubnetForZoneRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForZoneRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForZoneRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateIpv4SubnetForZoneRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *NetworkDevice) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *CreateIpv4SubnetForZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *NetworkDevice) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// NetworkACL represents a NetworkACL Item
-type NetworkACL struct {
+// CreateIpv4SubnetForZoneResponse represents the response from creates a ipv4 subnet for a zone.
+type CreateIpv4SubnetForZoneResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the NetworkACL
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the NetworkACL
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the NetworkACL
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the NetworkACL
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NetworkACL) Reset() {
-	*x = NetworkACL{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[133]
+func (x *CreateIpv4SubnetForZoneResponse) Reset() {
+	*x = CreateIpv4SubnetForZoneResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[103]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NetworkACL) String() string {
+func (x *CreateIpv4SubnetForZoneResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NetworkACL) ProtoMessage() {}
+func (*CreateIpv4SubnetForZoneResponse) ProtoMessage() {}
 
-func (x *NetworkACL) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[133]
+func (x *CreateIpv4SubnetForZoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[103]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11150,78 +8288,53 @@ func (x *NetworkACL) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NetworkACL.ProtoReflect.Descriptor instead.
-func (*NetworkACL) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{133}
+// Deprecated: Use CreateIpv4SubnetForZoneResponse.ProtoReflect.Descriptor instead.
+func (*CreateIpv4SubnetForZoneResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{103}
 }
 
-func (x *NetworkACL) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateIpv4SubnetForZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
+	return nil
 }
 
-func (x *NetworkACL) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *NetworkACL) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *NetworkACL) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *NetworkACL) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// Provider represents a Provider Item
-type Provider struct {
+// UpdateStorageNetworkIpRangeRequest represents the parameters for update a storage network ip range, only allowed when no ips in this range have been allocated.
+type UpdateStorageNetworkIpRangeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Provider
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Provider
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Provider
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Provider
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// UUID of storage network ip range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the beginning IP address
+	StartIp *string `protobuf:"bytes,2,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
+	// the ending IP address
+	EndIp *string `protobuf:"bytes,3,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
+	// Optional. the vlan the ip range sits on
+	Vlan *int32 `protobuf:"varint,4,opt,name=vlan" json:"vlan,omitempty"`
+	// the netmask for storage network
+	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Provider) Reset() {
-	*x = Provider{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[134]
+func (x *UpdateStorageNetworkIpRangeRequest) Reset() {
+	*x = UpdateStorageNetworkIpRangeRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[104]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Provider) String() string {
+func (x *UpdateStorageNetworkIpRangeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Provider) ProtoMessage() {}
+func (*UpdateStorageNetworkIpRangeRequest) ProtoMessage() {}
 
-func (x *Provider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[134]
+func (x *UpdateStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[104]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11232,78 +8345,91 @@ func (x *Provider) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Provider.ProtoReflect.Descriptor instead.
-func (*Provider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{134}
+// Deprecated: Use UpdateStorageNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*UpdateStorageNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{104}
 }
 
-func (x *Provider) GetId() string {
+func (x *UpdateStorageNetworkIpRangeRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *Provider) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *UpdateStorageNetworkIpRangeRequest) GetStartIp() string {
+	if x != nil && x.StartIp != nil {
+		return *x.StartIp
 	}
 	return ""
 }
 
-func (x *Provider) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *UpdateStorageNetworkIpRangeRequest) GetEndIp() string {
+	if x != nil && x.EndIp != nil {
+		return *x.EndIp
 	}
 	return ""
 }
 
-func (x *Provider) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *UpdateStorageNetworkIpRangeRequest) GetVlan() int32 {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return 0
+}
+
+func (x *UpdateStorageNetworkIpRangeRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
 	}
 	return ""
 }
 
-func (x *Provider) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *UpdateStorageNetworkIpRangeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateStorageNetworkIpRangeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-// DataCenterIpv4Subnet represents a DataCenterIpv4Subnet Item
-type DataCenterIpv4Subnet struct {
+func (x *UpdateStorageNetworkIpRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateStorageNetworkIpRangeResponse represents the response from update a storage network ip range, only allowed when no ips in this range have been allocated.
+type UpdateStorageNetworkIpRangeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the DataCenterIpv4Subnet
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the DataCenterIpv4Subnet
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the DataCenterIpv4Subnet
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the DataCenterIpv4Subnet
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DataCenterIpv4Subnet) Reset() {
-	*x = DataCenterIpv4Subnet{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[135]
+func (x *UpdateStorageNetworkIpRangeResponse) Reset() {
+	*x = UpdateStorageNetworkIpRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DataCenterIpv4Subnet) String() string {
+func (x *UpdateStorageNetworkIpRangeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DataCenterIpv4Subnet) ProtoMessage() {}
+func (*UpdateStorageNetworkIpRangeResponse) ProtoMessage() {}
 
-func (x *DataCenterIpv4Subnet) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[135]
+func (x *UpdateStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11314,78 +8440,97 @@ func (x *DataCenterIpv4Subnet) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DataCenterIpv4Subnet.ProtoReflect.Descriptor instead.
-func (*DataCenterIpv4Subnet) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{135}
+// Deprecated: Use UpdateStorageNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*UpdateStorageNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{105}
 }
 
-func (x *DataCenterIpv4Subnet) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *UpdateStorageNetworkIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
+	return nil
 }
 
-func (x *DataCenterIpv4Subnet) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *DataCenterIpv4Subnet) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *DataCenterIpv4Subnet) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *DataCenterIpv4Subnet) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// IsolationMethod represents a IsolationMethod Item
-type IsolationMethod struct {
+// ListNetworksRequest represents the parameters for lists all available networks.
+type ListNetworksRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the IsolationMethod
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the IsolationMethod
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the IsolationMethod
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the IsolationMethod
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// list networks by ID
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the zone ID of the network
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the type of the network. Supported values are: isolated, l2, shared and all
+	GuestIpType *string `protobuf:"bytes,4,opt,name=guest_ip_type,json=guestIpType" json:"guest_ip_type,omitempty"`
+	// true if network is system, false otherwise
+	IsSystem *bool `protobuf:"varint,5,opt,name=is_system,json=isSystem" json:"is_system,omitempty"`
+	// list networks by ACL (access control list) type. Supported values are account and domain
+	AclType *string `protobuf:"bytes,6,opt,name=acl_type,json=aclType" json:"acl_type,omitempty"`
+	// type of the traffic
+	TrafficType *string `protobuf:"bytes,7,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// list networks by physical network id
+	PhysicalNetworkId *int64 `protobuf:"varint,8,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// list networks supporting certain services
+	SupportedServices []string `protobuf:"bytes,9,rep,name=supported_services,json=supportedServices" json:"supported_services,omitempty"`
+	// list networks by restartRequired
+	RestartRequired *bool `protobuf:"varint,10,opt,name=restart_required,json=restartRequired" json:"restart_required,omitempty"`
+	// true if need to list only networks which support specifying IP ranges
+	SpecifyIpRanges *bool `protobuf:"varint,11,opt,name=specify_ip_ranges,json=specifyIpRanges" json:"specify_ip_ranges,omitempty"`
+	// List networks by VPC
+	VpcId *int64 `protobuf:"varint,12,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// list networks available for VM deployment
+	CanUseForDeploy *bool `protobuf:"varint,13,opt,name=can_use_for_deploy,json=canUseForDeploy" json:"can_use_for_deploy,omitempty"`
+	// the network belongs to VPC
+	ForVpc *bool `protobuf:"varint,14,opt,name=for_vpc,json=forVpc" json:"for_vpc,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,15,opt,name=display" json:"display,omitempty"`
+	// list networks by network offering ID
+	NetworkOfferingId *int64 `protobuf:"varint,16,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
+	// List networks by associated networks. Only available if create a Shared network.
+	AssociatedNetworkId *int64 `protobuf:"varint,17,opt,name=associated_network_id,json=associatedNetworkId" json:"associated_network_id,omitempty"`
+	// flag to display the resource icon for networks
+	ShowIcon *bool `protobuf:"varint,18,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// possible values are "account", "domain", "accountdomain","shared", and "all". Default value is "all".* account : account networks that have been registered for or created by the calling user. * domain : domain networks that have been registered for or created by the calling user. * accountdomain : account and domain networks that have been registered for or created by the calling user. * shared : networks that have been granted to the calling user by another user. * all : all networks (account, domain and shared).
+	NetworkFilter *string `protobuf:"bytes,19,opt,name=network_filter,json=networkFilter" json:"network_filter,omitempty"`
+	// makes the API's response contains only the resource count
+	RetrieveOnlyResourceCount *bool `protobuf:"varint,20,opt,name=retrieve_only_resource_count,json=retrieveOnlyResourceCount" json:"retrieve_only_resource_count,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,21,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,22,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,23,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,24,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,25,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,26,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,27,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,28,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,29,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,30,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IsolationMethod) Reset() {
-	*x = IsolationMethod{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[136]
+func (x *ListNetworksRequest) Reset() {
+	*x = ListNetworksRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *IsolationMethod) String() string {
+func (x *ListNetworksRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*IsolationMethod) ProtoMessage() {}
+func (*ListNetworksRequest) ProtoMessage() {}
 
-func (x *IsolationMethod) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[136]
+func (x *ListNetworksRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11396,78 +8541,247 @@ func (x *IsolationMethod) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use IsolationMethod.ProtoReflect.Descriptor instead.
-func (*IsolationMethod) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{136}
+// Deprecated: Use ListNetworksRequest.ProtoReflect.Descriptor instead.
+func (*ListNetworksRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{106}
 }
 
-func (x *IsolationMethod) GetId() string {
+func (x *ListNetworksRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *IsolationMethod) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ListNetworksRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetGuestIpType() string {
+	if x != nil && x.GuestIpType != nil {
+		return *x.GuestIpType
 	}
 	return ""
 }
 
-func (x *IsolationMethod) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *ListNetworksRequest) GetIsSystem() bool {
+	if x != nil && x.IsSystem != nil {
+		return *x.IsSystem
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetAclType() string {
+	if x != nil && x.AclType != nil {
+		return *x.AclType
 	}
 	return ""
 }
 
-func (x *IsolationMethod) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *ListNetworksRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
 	}
 	return ""
 }
 
-func (x *IsolationMethod) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *ListNetworksRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetSupportedServices() []string {
+	if x != nil {
+		return x.SupportedServices
+	}
+	return nil
+}
+
+func (x *ListNetworksRequest) GetRestartRequired() bool {
+	if x != nil && x.RestartRequired != nil {
+		return *x.RestartRequired
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetSpecifyIpRanges() bool {
+	if x != nil && x.SpecifyIpRanges != nil {
+		return *x.SpecifyIpRanges
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetCanUseForDeploy() bool {
+	if x != nil && x.CanUseForDeploy != nil {
+		return *x.CanUseForDeploy
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetForVpc() bool {
+	if x != nil && x.ForVpc != nil {
+		return *x.ForVpc
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetNetworkOfferingId() int64 {
+	if x != nil && x.NetworkOfferingId != nil {
+		return *x.NetworkOfferingId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetAssociatedNetworkId() int64 {
+	if x != nil && x.AssociatedNetworkId != nil {
+		return *x.AssociatedNetworkId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetNetworkFilter() string {
+	if x != nil && x.NetworkFilter != nil {
+		return *x.NetworkFilter
 	}
 	return ""
 }
 
-// Network represents a Network Item
-type Network struct {
+func (x *ListNetworksRequest) GetRetrieveOnlyResourceCount() bool {
+	if x != nil && x.RetrieveOnlyResourceCount != nil {
+		return *x.RetrieveOnlyResourceCount
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListNetworksRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListNetworksRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListNetworksRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListNetworksRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListNetworksRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListNetworksResponse represents the response from lists all available networks.
+type ListNetworksResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Network
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Network
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Network
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Network
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The list of Networks
+	Items []*Network `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Networks
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Network) Reset() {
-	*x = Network{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[137]
+func (x *ListNetworksResponse) Reset() {
+	*x = ListNetworksResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Network) String() string {
+func (x *ListNetworksResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Network) ProtoMessage() {}
+func (*ListNetworksResponse) ProtoMessage() {}
 
-func (x *Network) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[137]
+func (x *ListNetworksResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11478,78 +8792,56 @@ func (x *Network) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Network.ProtoReflect.Descriptor instead.
-func (*Network) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{137}
+// Deprecated: Use ListNetworksResponse.ProtoReflect.Descriptor instead.
+func (*ListNetworksResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{107}
 }
 
-func (x *Network) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *ListNetworksResponse) GetItems() []*Network {
+	if x != nil {
+		return x.Items
 	}
-	return ""
+	return nil
 }
 
-func (x *Network) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ListNetworksResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
 	}
-	return ""
+	return 0
 }
 
-func (x *Network) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Network) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Network) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// NetworkACLItem represents a NetworkACLItem Item
-type NetworkACLItem struct {
+// ReplaceNetworkACLListRequest represents the parameters for replaces acl associated with a network or private gateway
+type ReplaceNetworkACLListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the NetworkACLItem
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the NetworkACLItem
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the NetworkACLItem
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the NetworkACLItem
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// the ID of the network ACL
+	AclId *int64 `protobuf:"varint,1,opt,name=acl_id,json=aclId" json:"acl_id,omitempty"`
+	// the ID of the network
+	NetworkId *int64 `protobuf:"varint,2,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// the ID of the private gateway
+	PrivateGatewayId *int64 `protobuf:"varint,3,opt,name=private_gateway_id,json=privateGatewayId" json:"private_gateway_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NetworkACLItem) Reset() {
-	*x = NetworkACLItem{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[138]
+func (x *ReplaceNetworkACLListRequest) Reset() {
+	*x = ReplaceNetworkACLListRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NetworkACLItem) String() string {
+func (x *ReplaceNetworkACLListRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NetworkACLItem) ProtoMessage() {}
+func (*ReplaceNetworkACLListRequest) ProtoMessage() {}
 
-func (x *NetworkACLItem) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[138]
+func (x *ReplaceNetworkACLListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11560,78 +8852,77 @@ func (x *NetworkACLItem) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NetworkACLItem.ProtoReflect.Descriptor instead.
-func (*NetworkACLItem) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{138}
+// Deprecated: Use ReplaceNetworkACLListRequest.ProtoReflect.Descriptor instead.
+func (*ReplaceNetworkACLListRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{108}
 }
 
-func (x *NetworkACLItem) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *ReplaceNetworkACLListRequest) GetAclId() int64 {
+	if x != nil && x.AclId != nil {
+		return *x.AclId
+	}
+	return 0
+}
+
+func (x *ReplaceNetworkACLListRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ReplaceNetworkACLListRequest) GetPrivateGatewayId() int64 {
+	if x != nil && x.PrivateGatewayId != nil {
+		return *x.PrivateGatewayId
+	}
+	return 0
+}
+
+func (x *ReplaceNetworkACLListRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ReplaceNetworkACLListRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *NetworkACLItem) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *ReplaceNetworkACLListRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *NetworkACLItem) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *NetworkACLItem) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *NetworkACLItem) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// Service represents a Service Item
-type Service struct {
+// ReplaceNetworkACLListResponse represents the response from replaces acl associated with a network or private gateway
+type ReplaceNetworkACLListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Service
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Service
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Service
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Service
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Service) Reset() {
-	*x = Service{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[139]
+func (x *ReplaceNetworkACLListResponse) Reset() {
+	*x = ReplaceNetworkACLListResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Service) String() string {
+func (x *ReplaceNetworkACLListResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Service) ProtoMessage() {}
+func (*ReplaceNetworkACLListResponse) ProtoMessage() {}
 
-func (x *Service) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[139]
+func (x *ReplaceNetworkACLListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11642,78 +8933,49 @@ func (x *Service) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Service.ProtoReflect.Descriptor instead.
-func (*Service) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{139}
+// Deprecated: Use ReplaceNetworkACLListResponse.ProtoReflect.Descriptor instead.
+func (*ReplaceNetworkACLListResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{109}
 }
 
-func (x *Service) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *ReplaceNetworkACLListResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
 	}
-	return ""
+	return nil
 }
 
-func (x *Service) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Service) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Service) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Service) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// NetworkPermissions represents a NetworkPermissions Item
-type NetworkPermissions struct {
+// CreateNetworkPermissionsRequest represents the parameters for updates network permissions.
+type CreateNetworkPermissionsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the NetworkPermissions
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the NetworkPermissions
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the NetworkPermissions
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the NetworkPermissions
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// a comma delimited list of accounts within owner's domain. If specified, "op" parameter has to be passed in.
+	AccountNames []string `protobuf:"bytes,1,rep,name=account_names,json=accountNames" json:"account_names,omitempty"`
+	// a comma delimited list of account IDs within owner's domain. If specified, "op" parameter has to be passed in.
+	AccountIds []string `protobuf:"bytes,2,rep,name=account_ids,json=accountIds" json:"account_ids,omitempty"`
+	// the network ID
+	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
+	ProjectIds []string `protobuf:"bytes,4,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NetworkPermissions) Reset() {
-	*x = NetworkPermissions{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[140]
+func (x *CreateNetworkPermissionsRequest) Reset() {
+	*x = CreateNetworkPermissionsRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NetworkPermissions) String() string {
+func (x *CreateNetworkPermissionsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NetworkPermissions) ProtoMessage() {}
+func (*CreateNetworkPermissionsRequest) ProtoMessage() {}
 
-func (x *NetworkPermissions) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[140]
+func (x *CreateNetworkPermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11724,44 +8986,1307 @@ func (x *NetworkPermissions) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NetworkPermissions.ProtoReflect.Descriptor instead.
-func (*NetworkPermissions) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{140}
+// Deprecated: Use CreateNetworkPermissionsRequest.ProtoReflect.Descriptor instead.
+func (*CreateNetworkPermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{110}
 }
 
-func (x *NetworkPermissions) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateNetworkPermissionsRequest) GetAccountNames() []string {
+	if x != nil {
+		return x.AccountNames
+	}
+	return nil
+}
+
+func (x *CreateNetworkPermissionsRequest) GetAccountIds() []string {
+	if x != nil {
+		return x.AccountIds
+	}
+	return nil
+}
+
+func (x *CreateNetworkPermissionsRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *CreateNetworkPermissionsRequest) GetProjectIds() []string {
+	if x != nil {
+		return x.ProjectIds
+	}
+	return nil
+}
+
+func (x *CreateNetworkPermissionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *NetworkPermissions) GetName() string {
+// CreateNetworkPermissionsResponse represents the response from updates network permissions.
+type CreateNetworkPermissionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateNetworkPermissionsResponse) Reset() {
+	*x = CreateNetworkPermissionsResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[111]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateNetworkPermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateNetworkPermissionsResponse) ProtoMessage() {}
+
+func (x *CreateNetworkPermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[111]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateNetworkPermissionsResponse.ProtoReflect.Descriptor instead.
+func (*CreateNetworkPermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{111}
+}
+
+func (x *CreateNetworkPermissionsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListGuestVlansRequest represents the parameters for lists all guest vlans
+type ListGuestVlansRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list guest vlan by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list guest vlan by zone
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list guest vlan by physical network
+	PhysicalNetworkId *int64 `protobuf:"varint,3,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// list guest vlan by vnet
+	Vnet *string `protobuf:"bytes,4,opt,name=vnet" json:"vnet,omitempty"`
+	// limits search results to allocated guest vlan. false by default.
+	AllocatedOnly *bool `protobuf:"varint,5,opt,name=allocated_only,json=allocatedOnly" json:"allocated_only,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,6,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,7,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,8,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGuestVlansRequest) Reset() {
+	*x = ListGuestVlansRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[112]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGuestVlansRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGuestVlansRequest) ProtoMessage() {}
+
+func (x *ListGuestVlansRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[112]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGuestVlansRequest.ProtoReflect.Descriptor instead.
+func (*ListGuestVlansRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{112}
+}
+
+func (x *ListGuestVlansRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListGuestVlansRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListGuestVlansRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *ListGuestVlansRequest) GetVnet() string {
+	if x != nil && x.Vnet != nil {
+		return *x.Vnet
+	}
+	return ""
+}
+
+func (x *ListGuestVlansRequest) GetAllocatedOnly() bool {
+	if x != nil && x.AllocatedOnly != nil {
+		return *x.AllocatedOnly
+	}
+	return false
+}
+
+func (x *ListGuestVlansRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListGuestVlansRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListGuestVlansRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListGuestVlansRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListGuestVlansResponse represents the response from lists all guest vlans
+type ListGuestVlansResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of GuestVlans
+	Items []*GuestVlan `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of GuestVlans
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGuestVlansResponse) Reset() {
+	*x = ListGuestVlansResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[113]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGuestVlansResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGuestVlansResponse) ProtoMessage() {}
+
+func (x *ListGuestVlansResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[113]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGuestVlansResponse.ProtoReflect.Descriptor instead.
+func (*ListGuestVlansResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{113}
+}
+
+func (x *ListGuestVlansResponse) GetItems() []*GuestVlan {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListGuestVlansResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// CreateStorageNetworkIpRangeRequest represents the parameters for creates a storage network ip range.
+type CreateStorageNetworkIpRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of pod where the ip range belongs to
+	PodId *int64 `protobuf:"varint,1,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// the beginning IP address
+	StartIp *string `protobuf:"bytes,2,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
+	// the ending IP address
+	EndIp *string `protobuf:"bytes,3,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
+	// Optional. The vlan the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan. This is mainly for Vmware as other hypervisors can directly retrieve bridge from physical network traffic type table
+	Vlan *int32 `protobuf:"varint,4,opt,name=vlan" json:"vlan,omitempty"`
+	// the netmask for storage network
+	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
+	// the gateway for storage network
+	Gateway *string `protobuf:"bytes,6,opt,name=gateway" json:"gateway,omitempty"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) Reset() {
+	*x = CreateStorageNetworkIpRangeRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[114]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateStorageNetworkIpRangeRequest) ProtoMessage() {}
+
+func (x *CreateStorageNetworkIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[114]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateStorageNetworkIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*CreateStorageNetworkIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{114}
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetStartIp() string {
+	if x != nil && x.StartIp != nil {
+		return *x.StartIp
+	}
+	return ""
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetEndIp() string {
+	if x != nil && x.EndIp != nil {
+		return *x.EndIp
+	}
+	return ""
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetVlan() int32 {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return 0
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
+	}
+	return ""
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetGateway() string {
+	if x != nil && x.Gateway != nil {
+		return *x.Gateway
+	}
+	return ""
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateStorageNetworkIpRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateStorageNetworkIpRangeResponse represents the response from creates a storage network ip range.
+type CreateStorageNetworkIpRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateStorageNetworkIpRangeResponse) Reset() {
+	*x = CreateStorageNetworkIpRangeResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[115]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateStorageNetworkIpRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateStorageNetworkIpRangeResponse) ProtoMessage() {}
+
+func (x *CreateStorageNetworkIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[115]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateStorageNetworkIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*CreateStorageNetworkIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{115}
+}
+
+func (x *CreateStorageNetworkIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateNetworkRequest represents the parameters for updates a network
+type UpdateNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the ID of the network
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the new name for the network
+	Name *string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	// the new display text for the network
+	DisplayText *string `protobuf:"bytes,4,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// network domain
+	NetworkDomain *string `protobuf:"bytes,5,opt,name=network_domain,json=networkDomain" json:"network_domain,omitempty"`
+	// Force update even if CIDR type is different
+	ChangeCidr *bool `protobuf:"varint,6,opt,name=change_cidr,json=changeCidr" json:"change_cidr,omitempty"`
+	// network offering ID
+	NetworkOfferingId *int64 `protobuf:"varint,7,opt,name=network_offering_id,json=networkOfferingId" json:"network_offering_id,omitempty"`
+	// CIDR for guest VMs, CloudStack allocates IPs to guest VMs only from this CIDR
+	GuestVmCidr *string `protobuf:"bytes,8,opt,name=guest_vm_cidr,json=guestVmCidr" json:"guest_vm_cidr,omitempty"`
+	// if true, we will update the routers one after the other. applicable only for redundant router based networks using virtual router as provider
+	UpdateInSequence *bool `protobuf:"varint,9,opt,name=update_in_sequence,json=updateInSequence" json:"update_in_sequence,omitempty"`
+	// an optional field, whether to the display the network to the end user or not.
+	DisplayNetwork *bool `protobuf:"varint,10,opt,name=display_network,json=displayNetwork" json:"display_network,omitempty"`
+	// Setting this to true will cause a forced network update,
+	Forced *bool `protobuf:"varint,11,opt,name=forced" json:"forced,omitempty"`
+	// MTU to be configured on the network VR's public facing interfaces
+	PublicMtu *int32 `protobuf:"varint,12,opt,name=public_mtu,json=publicMtu" json:"public_mtu,omitempty"`
+	// MTU to be configured on the network VR's public facing interfaces
+	PrivateMtu *int32 `protobuf:"varint,13,opt,name=private_mtu,json=privateMtu" json:"private_mtu,omitempty"`
+	// the first IPv4 DNS for the network. Empty string will update the first IPv4 DNS with the value from the zone
+	Ip4Dns1 *string `protobuf:"bytes,14,opt,name=ip4_dns1,json=ip4Dns1" json:"ip4_dns1,omitempty"`
+	// the second IPv4 DNS for the network. Empty string will update the second IPv4 DNS with the value from the zone
+	Ip4Dns2 *string `protobuf:"bytes,15,opt,name=ip4_dns2,json=ip4Dns2" json:"ip4_dns2,omitempty"`
+	// the first IPv6 DNS for the network. Empty string will update the first IPv6 DNS with the value from the zone
+	Ip6Dns1 *string `protobuf:"bytes,16,opt,name=ip6_dns1,json=ip6Dns1" json:"ip6_dns1,omitempty"`
+	// the second IPv6 DNS for the network. Empty string will update the second IPv6 DNS with the value from the zone
+	Ip6Dns2 *string `protobuf:"bytes,17,opt,name=ip6_dns2,json=ip6Dns2" json:"ip6_dns2,omitempty"`
+	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this network
+	SourceNatIP *string `protobuf:"bytes,18,opt,name=source_nat_i_p,json=sourceNatIP" json:"source_nat_i_p,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,19,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,20,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,21,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,22,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateNetworkRequest) Reset() {
+	*x = UpdateNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[116]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNetworkRequest) ProtoMessage() {}
+
+func (x *UpdateNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[116]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNetworkRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{116}
+}
+
+func (x *UpdateNetworkRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *UpdateNetworkRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateNetworkRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *NetworkPermissions) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *UpdateNetworkRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
 	}
 	return ""
 }
 
-func (x *NetworkPermissions) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *UpdateNetworkRequest) GetNetworkDomain() string {
+	if x != nil && x.NetworkDomain != nil {
+		return *x.NetworkDomain
 	}
 	return ""
 }
 
-func (x *NetworkPermissions) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *UpdateNetworkRequest) GetChangeCidr() bool {
+	if x != nil && x.ChangeCidr != nil {
+		return *x.ChangeCidr
+	}
+	return false
+}
+
+func (x *UpdateNetworkRequest) GetNetworkOfferingId() int64 {
+	if x != nil && x.NetworkOfferingId != nil {
+		return *x.NetworkOfferingId
+	}
+	return 0
+}
+
+func (x *UpdateNetworkRequest) GetGuestVmCidr() string {
+	if x != nil && x.GuestVmCidr != nil {
+		return *x.GuestVmCidr
 	}
 	return ""
+}
+
+func (x *UpdateNetworkRequest) GetUpdateInSequence() bool {
+	if x != nil && x.UpdateInSequence != nil {
+		return *x.UpdateInSequence
+	}
+	return false
+}
+
+func (x *UpdateNetworkRequest) GetDisplayNetwork() bool {
+	if x != nil && x.DisplayNetwork != nil {
+		return *x.DisplayNetwork
+	}
+	return false
+}
+
+func (x *UpdateNetworkRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *UpdateNetworkRequest) GetPublicMtu() int32 {
+	if x != nil && x.PublicMtu != nil {
+		return *x.PublicMtu
+	}
+	return 0
+}
+
+func (x *UpdateNetworkRequest) GetPrivateMtu() int32 {
+	if x != nil && x.PrivateMtu != nil {
+		return *x.PrivateMtu
+	}
+	return 0
+}
+
+func (x *UpdateNetworkRequest) GetIp4Dns1() string {
+	if x != nil && x.Ip4Dns1 != nil {
+		return *x.Ip4Dns1
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetIp4Dns2() string {
+	if x != nil && x.Ip4Dns2 != nil {
+		return *x.Ip4Dns2
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetIp6Dns1() string {
+	if x != nil && x.Ip6Dns1 != nil {
+		return *x.Ip6Dns1
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetIp6Dns2() string {
+	if x != nil && x.Ip6Dns2 != nil {
+		return *x.Ip6Dns2
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetSourceNatIP() string {
+	if x != nil && x.SourceNatIP != nil {
+		return *x.SourceNatIP
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateNetworkRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateNetworkResponse represents the response from updates a network
+type UpdateNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateNetworkResponse) Reset() {
+	*x = UpdateNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[117]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNetworkResponse) ProtoMessage() {}
+
+func (x *UpdateNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[117]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNetworkResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{117}
+}
+
+func (x *UpdateNetworkResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// MigrateVPCRequest represents the parameters for moves a vpc to another physical network
+type MigrateVPCRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the vpc
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// vpc offering ID
+	VpcOfferingId *int64 `protobuf:"varint,2,opt,name=vpc_offering_id,json=vpcOfferingId" json:"vpc_offering_id,omitempty"`
+	// network offering ids for each network in the vpc. Example: tierNetworkOfferings[0].networkId=networkId1&tierNetworkOfferings[0].networkOfferingId=newNetworkofferingId1&tierNetworkOfferings[1].networkId=networkId2&tierNetworkOfferings[1].networkOfferingId=newNetworkofferingId2
+	TierNetworkOfferings map[string]string `protobuf:"bytes,3,rep,name=tier_network_offerings,json=tierNetworkOfferings" json:"tier_network_offerings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// true if previous network migration cmd failed
+	Resume *bool `protobuf:"varint,4,opt,name=resume" json:"resume,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVPCRequest) Reset() {
+	*x = MigrateVPCRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[118]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVPCRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVPCRequest) ProtoMessage() {}
+
+func (x *MigrateVPCRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[118]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVPCRequest.ProtoReflect.Descriptor instead.
+func (*MigrateVPCRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{118}
+}
+
+func (x *MigrateVPCRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *MigrateVPCRequest) GetVpcOfferingId() int64 {
+	if x != nil && x.VpcOfferingId != nil {
+		return *x.VpcOfferingId
+	}
+	return 0
+}
+
+func (x *MigrateVPCRequest) GetTierNetworkOfferings() map[string]string {
+	if x != nil {
+		return x.TierNetworkOfferings
+	}
+	return nil
+}
+
+func (x *MigrateVPCRequest) GetResume() bool {
+	if x != nil && x.Resume != nil {
+		return *x.Resume
+	}
+	return false
+}
+
+func (x *MigrateVPCRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MigrateVPCRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *MigrateVPCRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MigrateVPCResponse represents the response from moves a vpc to another physical network
+type MigrateVPCResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MigrateVPCResponse) Reset() {
+	*x = MigrateVPCResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[119]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MigrateVPCResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MigrateVPCResponse) ProtoMessage() {}
+
+func (x *MigrateVPCResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[119]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MigrateVPCResponse.ProtoReflect.Descriptor instead.
+func (*MigrateVPCResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{119}
+}
+
+func (x *MigrateVPCResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListPhysicalNetworksRequest represents the parameters for lists physical networks
+type ListPhysicalNetworksRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list physical network by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the Zone ID for the physical network
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// search by name
+	NetworkName *string `protobuf:"bytes,3,opt,name=network_name,json=networkName" json:"network_name,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPhysicalNetworksRequest) Reset() {
+	*x = ListPhysicalNetworksRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[120]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPhysicalNetworksRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPhysicalNetworksRequest) ProtoMessage() {}
+
+func (x *ListPhysicalNetworksRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[120]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPhysicalNetworksRequest.ProtoReflect.Descriptor instead.
+func (*ListPhysicalNetworksRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{120}
+}
+
+func (x *ListPhysicalNetworksRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListPhysicalNetworksRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListPhysicalNetworksRequest) GetNetworkName() string {
+	if x != nil && x.NetworkName != nil {
+		return *x.NetworkName
+	}
+	return ""
+}
+
+func (x *ListPhysicalNetworksRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListPhysicalNetworksRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListPhysicalNetworksRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListPhysicalNetworksRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListPhysicalNetworksResponse represents the response from lists physical networks
+type ListPhysicalNetworksResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of PhysicalNetworks
+	Items []*PhysicalNetwork `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of PhysicalNetworks
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPhysicalNetworksResponse) Reset() {
+	*x = ListPhysicalNetworksResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[121]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPhysicalNetworksResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPhysicalNetworksResponse) ProtoMessage() {}
+
+func (x *ListPhysicalNetworksResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[121]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPhysicalNetworksResponse.ProtoReflect.Descriptor instead.
+func (*ListPhysicalNetworksResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{121}
+}
+
+func (x *ListPhysicalNetworksResponse) GetItems() []*PhysicalNetwork {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListPhysicalNetworksResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListIpv4SubnetsForGuestNetworkRequest represents the parameters for lists ipv4 subnets for guest networks.
+type ListIpv4SubnetsForGuestNetworkRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the IPv4 subnet for guest network.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// UUID of zone Ipv4 subnet which the IPv4 subnet belongs to.
+	ParentId *int64 `protobuf:"varint,2,opt,name=parent_id,json=parentId" json:"parent_id,omitempty"`
+	// The CIDR of the Ipv4 subnet.
+	Subnet *string `protobuf:"bytes,3,opt,name=subnet" json:"subnet,omitempty"`
+	// UUID of zone to which the IPv4 subnet belongs to.
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// UUID of network to which the IPv4 subnet is associated to.
+	NetworkId *int64 `protobuf:"varint,5,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// UUID of VPC to which the IPv4 subnet is associated to.
+	VpcId *int64 `protobuf:"varint,6,opt,name=vpc_id,json=vpcId" json:"vpc_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,7,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,8,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,9,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) Reset() {
+	*x = ListIpv4SubnetsForGuestNetworkRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[122]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIpv4SubnetsForGuestNetworkRequest) ProtoMessage() {}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[122]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIpv4SubnetsForGuestNetworkRequest.ProtoReflect.Descriptor instead.
+func (*ListIpv4SubnetsForGuestNetworkRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{122}
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetParentId() int64 {
+	if x != nil && x.ParentId != nil {
+		return *x.ParentId
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetSubnet() string {
+	if x != nil && x.Subnet != nil {
+		return *x.Subnet
+	}
+	return ""
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetVpcId() int64 {
+	if x != nil && x.VpcId != nil {
+		return *x.VpcId
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListIpv4SubnetsForGuestNetworkResponse represents the response from lists ipv4 subnets for guest networks.
+type ListIpv4SubnetsForGuestNetworkResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Ipv4SubnetForGuestNetworks
+	Items []*Ipv4SubnetForGuestNetwork `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Ipv4SubnetForGuestNetworks
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkResponse) Reset() {
+	*x = ListIpv4SubnetsForGuestNetworkResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[123]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIpv4SubnetsForGuestNetworkResponse) ProtoMessage() {}
+
+func (x *ListIpv4SubnetsForGuestNetworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[123]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIpv4SubnetsForGuestNetworkResponse.ProtoReflect.Descriptor instead.
+func (*ListIpv4SubnetsForGuestNetworkResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{123}
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkResponse) GetItems() []*Ipv4SubnetForGuestNetwork {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListIpv4SubnetsForGuestNetworkResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateNetworkServiceProviderRequest represents the parameters for updates a network serviceprovider of a physical network
+type UpdateNetworkServiceProviderRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Enabled/Disabled/Shutdown the physical network service provider
+	State *string `protobuf:"bytes,1,opt,name=state" json:"state,omitempty"`
+	// network service provider id
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the list of services to be enabled for this physical network service provider
+	EnabledServices []string `protobuf:"bytes,3,rep,name=enabled_services,json=enabledServices" json:"enabled_services,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateNetworkServiceProviderRequest) Reset() {
+	*x = UpdateNetworkServiceProviderRequest{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[124]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNetworkServiceProviderRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNetworkServiceProviderRequest) ProtoMessage() {}
+
+func (x *UpdateNetworkServiceProviderRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[124]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNetworkServiceProviderRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkServiceProviderRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{124}
+}
+
+func (x *UpdateNetworkServiceProviderRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *UpdateNetworkServiceProviderRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateNetworkServiceProviderRequest) GetEnabledServices() []string {
+	if x != nil {
+		return x.EnabledServices
+	}
+	return nil
+}
+
+func (x *UpdateNetworkServiceProviderRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateNetworkServiceProviderRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateNetworkServiceProviderRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateNetworkServiceProviderResponse represents the response from updates a network serviceprovider of a physical network
+type UpdateNetworkServiceProviderResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateNetworkServiceProviderResponse) Reset() {
+	*x = UpdateNetworkServiceProviderResponse{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[125]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNetworkServiceProviderResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNetworkServiceProviderResponse) ProtoMessage() {}
+
+func (x *UpdateNetworkServiceProviderResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[125]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNetworkServiceProviderResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNetworkServiceProviderResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{125}
+}
+
+func (x *UpdateNetworkServiceProviderResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // GuestVlanRange represents a GuestVlanRange Item
@@ -11783,7 +10308,7 @@ type GuestVlanRange struct {
 
 func (x *GuestVlanRange) Reset() {
 	*x = GuestVlanRange{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[141]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11795,7 +10320,7 @@ func (x *GuestVlanRange) String() string {
 func (*GuestVlanRange) ProtoMessage() {}
 
 func (x *GuestVlanRange) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[141]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11808,7 +10333,7 @@ func (x *GuestVlanRange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuestVlanRange.ProtoReflect.Descriptor instead.
 func (*GuestVlanRange) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{141}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{126}
 }
 
 func (x *GuestVlanRange) GetId() string {
@@ -11846,16 +10371,16 @@ func (x *GuestVlanRange) GetCreated() string {
 	return ""
 }
 
-// GuestVlan represents a GuestVlan Item
-type GuestVlan struct {
+// IsolationMethod represents a IsolationMethod Item
+type IsolationMethod struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the GuestVlan
+	// The ID of the IsolationMethod
 	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the GuestVlan
+	// The name of the IsolationMethod
 	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the GuestVlan
+	// The display name of the IsolationMethod
 	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the GuestVlan
+	// The description of the IsolationMethod
 	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
 	// The date this entity was created
 	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
@@ -11863,21 +10388,21 @@ type GuestVlan struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GuestVlan) Reset() {
-	*x = GuestVlan{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[142]
+func (x *IsolationMethod) Reset() {
+	*x = IsolationMethod{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[127]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GuestVlan) String() string {
+func (x *IsolationMethod) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GuestVlan) ProtoMessage() {}
+func (*IsolationMethod) ProtoMessage() {}
 
-func (x *GuestVlan) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[142]
+func (x *IsolationMethod) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[127]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11888,122 +10413,40 @@ func (x *GuestVlan) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GuestVlan.ProtoReflect.Descriptor instead.
-func (*GuestVlan) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{142}
+// Deprecated: Use IsolationMethod.ProtoReflect.Descriptor instead.
+func (*IsolationMethod) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{127}
 }
 
-func (x *GuestVlan) GetId() string {
+func (x *IsolationMethod) GetId() string {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return ""
 }
 
-func (x *GuestVlan) GetName() string {
+func (x *IsolationMethod) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *GuestVlan) GetDisplayName() string {
+func (x *IsolationMethod) GetDisplayName() string {
 	if x != nil && x.DisplayName != nil {
 		return *x.DisplayName
 	}
 	return ""
 }
 
-func (x *GuestVlan) GetDescription() string {
+func (x *IsolationMethod) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *GuestVlan) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// Ipv4SubnetForGuestNetwork represents a Ipv4SubnetForGuestNetwork Item
-type Ipv4SubnetForGuestNetwork struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Ipv4SubnetForGuestNetwork
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Ipv4SubnetForGuestNetwork
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Ipv4SubnetForGuestNetwork
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Ipv4SubnetForGuestNetwork
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Ipv4SubnetForGuestNetwork) Reset() {
-	*x = Ipv4SubnetForGuestNetwork{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[143]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Ipv4SubnetForGuestNetwork) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Ipv4SubnetForGuestNetwork) ProtoMessage() {}
-
-func (x *Ipv4SubnetForGuestNetwork) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[143]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Ipv4SubnetForGuestNetwork.ProtoReflect.Descriptor instead.
-func (*Ipv4SubnetForGuestNetwork) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{143}
-}
-
-func (x *Ipv4SubnetForGuestNetwork) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Ipv4SubnetForGuestNetwork) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Ipv4SubnetForGuestNetwork) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Ipv4SubnetForGuestNetwork) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Ipv4SubnetForGuestNetwork) GetCreated() string {
+func (x *IsolationMethod) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -12029,7 +10472,7 @@ type NetworkProtocol struct {
 
 func (x *NetworkProtocol) Reset() {
 	*x = NetworkProtocol{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[144]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12041,7 +10484,7 @@ func (x *NetworkProtocol) String() string {
 func (*NetworkProtocol) ProtoMessage() {}
 
 func (x *NetworkProtocol) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[144]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12054,7 +10497,7 @@ func (x *NetworkProtocol) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkProtocol.ProtoReflect.Descriptor instead.
 func (*NetworkProtocol) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{144}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{128}
 }
 
 func (x *NetworkProtocol) GetId() string {
@@ -12092,6 +10535,1154 @@ func (x *NetworkProtocol) GetCreated() string {
 	return ""
 }
 
+// StorageNetworkIpRange represents a StorageNetworkIpRange Item
+type StorageNetworkIpRange struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the StorageNetworkIpRange
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the StorageNetworkIpRange
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the StorageNetworkIpRange
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the StorageNetworkIpRange
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StorageNetworkIpRange) Reset() {
+	*x = StorageNetworkIpRange{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[129]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StorageNetworkIpRange) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StorageNetworkIpRange) ProtoMessage() {}
+
+func (x *StorageNetworkIpRange) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[129]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StorageNetworkIpRange.ProtoReflect.Descriptor instead.
+func (*StorageNetworkIpRange) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{129}
+}
+
+func (x *StorageNetworkIpRange) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *StorageNetworkIpRange) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *StorageNetworkIpRange) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *StorageNetworkIpRange) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *StorageNetworkIpRange) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Provider represents a Provider Item
+type Provider struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Provider
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Provider
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Provider
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Provider
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Provider) Reset() {
+	*x = Provider{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[130]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Provider) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Provider) ProtoMessage() {}
+
+func (x *Provider) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[130]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Provider.ProtoReflect.Descriptor instead.
+func (*Provider) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{130}
+}
+
+func (x *Provider) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Provider) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Provider) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Provider) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Provider) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Service represents a Service Item
+type Service struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Service
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Service
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Service
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Service
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Service) Reset() {
+	*x = Service{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[131]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Service) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Service) ProtoMessage() {}
+
+func (x *Service) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[131]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Service.ProtoReflect.Descriptor instead.
+func (*Service) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{131}
+}
+
+func (x *Service) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Service) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Service) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Service) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Service) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// NetworkACL represents a NetworkACL Item
+type NetworkACL struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the NetworkACL
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the NetworkACL
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the NetworkACL
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the NetworkACL
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkACL) Reset() {
+	*x = NetworkACL{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[132]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkACL) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkACL) ProtoMessage() {}
+
+func (x *NetworkACL) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[132]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkACL.ProtoReflect.Descriptor instead.
+func (*NetworkACL) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{132}
+}
+
+func (x *NetworkACL) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *NetworkACL) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *NetworkACL) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *NetworkACL) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *NetworkACL) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// DataCenterIpv4Subnet represents a DataCenterIpv4Subnet Item
+type DataCenterIpv4Subnet struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the DataCenterIpv4Subnet
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the DataCenterIpv4Subnet
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the DataCenterIpv4Subnet
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the DataCenterIpv4Subnet
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DataCenterIpv4Subnet) Reset() {
+	*x = DataCenterIpv4Subnet{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[133]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DataCenterIpv4Subnet) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DataCenterIpv4Subnet) ProtoMessage() {}
+
+func (x *DataCenterIpv4Subnet) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[133]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DataCenterIpv4Subnet.ProtoReflect.Descriptor instead.
+func (*DataCenterIpv4Subnet) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{133}
+}
+
+func (x *DataCenterIpv4Subnet) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *DataCenterIpv4Subnet) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DataCenterIpv4Subnet) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *DataCenterIpv4Subnet) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *DataCenterIpv4Subnet) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// NetworkDevice represents a NetworkDevice Item
+type NetworkDevice struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the NetworkDevice
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the NetworkDevice
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the NetworkDevice
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the NetworkDevice
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkDevice) Reset() {
+	*x = NetworkDevice{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[134]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkDevice) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkDevice) ProtoMessage() {}
+
+func (x *NetworkDevice) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[134]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkDevice.ProtoReflect.Descriptor instead.
+func (*NetworkDevice) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{134}
+}
+
+func (x *NetworkDevice) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *NetworkDevice) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *NetworkDevice) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *NetworkDevice) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *NetworkDevice) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// NetworkACLItem represents a NetworkACLItem Item
+type NetworkACLItem struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the NetworkACLItem
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the NetworkACLItem
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the NetworkACLItem
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the NetworkACLItem
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkACLItem) Reset() {
+	*x = NetworkACLItem{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[135]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkACLItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkACLItem) ProtoMessage() {}
+
+func (x *NetworkACLItem) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[135]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkACLItem.ProtoReflect.Descriptor instead.
+func (*NetworkACLItem) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{135}
+}
+
+func (x *NetworkACLItem) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *NetworkACLItem) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *NetworkACLItem) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *NetworkACLItem) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *NetworkACLItem) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// NetworkPermissions represents a NetworkPermissions Item
+type NetworkPermissions struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the NetworkPermissions
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the NetworkPermissions
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the NetworkPermissions
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the NetworkPermissions
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkPermissions) Reset() {
+	*x = NetworkPermissions{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[136]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkPermissions) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkPermissions) ProtoMessage() {}
+
+func (x *NetworkPermissions) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[136]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkPermissions.ProtoReflect.Descriptor instead.
+func (*NetworkPermissions) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{136}
+}
+
+func (x *NetworkPermissions) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *NetworkPermissions) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *NetworkPermissions) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *NetworkPermissions) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *NetworkPermissions) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// DataCenterGuestIpv6Prefix represents a DataCenterGuestIpv6Prefix Item
+type DataCenterGuestIpv6Prefix struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the DataCenterGuestIpv6Prefix
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the DataCenterGuestIpv6Prefix
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the DataCenterGuestIpv6Prefix
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the DataCenterGuestIpv6Prefix
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DataCenterGuestIpv6Prefix) Reset() {
+	*x = DataCenterGuestIpv6Prefix{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[137]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DataCenterGuestIpv6Prefix) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DataCenterGuestIpv6Prefix) ProtoMessage() {}
+
+func (x *DataCenterGuestIpv6Prefix) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[137]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DataCenterGuestIpv6Prefix.ProtoReflect.Descriptor instead.
+func (*DataCenterGuestIpv6Prefix) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{137}
+}
+
+func (x *DataCenterGuestIpv6Prefix) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *DataCenterGuestIpv6Prefix) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DataCenterGuestIpv6Prefix) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *DataCenterGuestIpv6Prefix) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *DataCenterGuestIpv6Prefix) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// NetworkOffering represents a NetworkOffering Item
+type NetworkOffering struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the NetworkOffering
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the NetworkOffering
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the NetworkOffering
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the NetworkOffering
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkOffering) Reset() {
+	*x = NetworkOffering{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[138]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkOffering) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkOffering) ProtoMessage() {}
+
+func (x *NetworkOffering) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[138]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkOffering.ProtoReflect.Descriptor instead.
+func (*NetworkOffering) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{138}
+}
+
+func (x *NetworkOffering) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *NetworkOffering) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *NetworkOffering) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *NetworkOffering) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *NetworkOffering) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Network represents a Network Item
+type Network struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Network
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Network
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Network
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Network
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Network) Reset() {
+	*x = Network{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[139]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Network) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Network) ProtoMessage() {}
+
+func (x *Network) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[139]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Network.ProtoReflect.Descriptor instead.
+func (*Network) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{139}
+}
+
+func (x *Network) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Network) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Network) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Network) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Network) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// GuestVlan represents a GuestVlan Item
+type GuestVlan struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the GuestVlan
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the GuestVlan
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the GuestVlan
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the GuestVlan
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuestVlan) Reset() {
+	*x = GuestVlan{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[140]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuestVlan) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuestVlan) ProtoMessage() {}
+
+func (x *GuestVlan) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[140]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuestVlan.ProtoReflect.Descriptor instead.
+func (*GuestVlan) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{140}
+}
+
+func (x *GuestVlan) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *GuestVlan) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *GuestVlan) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *GuestVlan) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *GuestVlan) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// PhysicalNetwork represents a PhysicalNetwork Item
+type PhysicalNetwork struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the PhysicalNetwork
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the PhysicalNetwork
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the PhysicalNetwork
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the PhysicalNetwork
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysicalNetwork) Reset() {
+	*x = PhysicalNetwork{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[141]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysicalNetwork) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysicalNetwork) ProtoMessage() {}
+
+func (x *PhysicalNetwork) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[141]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysicalNetwork.ProtoReflect.Descriptor instead.
+func (*PhysicalNetwork) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{141}
+}
+
+func (x *PhysicalNetwork) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *PhysicalNetwork) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *PhysicalNetwork) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *PhysicalNetwork) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *PhysicalNetwork) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Ipv4SubnetForGuestNetwork represents a Ipv4SubnetForGuestNetwork Item
+type Ipv4SubnetForGuestNetwork struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Ipv4SubnetForGuestNetwork
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Ipv4SubnetForGuestNetwork
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Ipv4SubnetForGuestNetwork
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Ipv4SubnetForGuestNetwork
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Ipv4SubnetForGuestNetwork) Reset() {
+	*x = Ipv4SubnetForGuestNetwork{}
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[142]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Ipv4SubnetForGuestNetwork) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Ipv4SubnetForGuestNetwork) ProtoMessage() {}
+
+func (x *Ipv4SubnetForGuestNetwork) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[142]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Ipv4SubnetForGuestNetwork.ProtoReflect.Descriptor instead.
+func (*Ipv4SubnetForGuestNetwork) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{142}
+}
+
+func (x *Ipv4SubnetForGuestNetwork) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *Ipv4SubnetForGuestNetwork) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *Ipv4SubnetForGuestNetwork) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *Ipv4SubnetForGuestNetwork) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *Ipv4SubnetForGuestNetwork) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
 // Success represents a Success Operation Response
 type Success struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -12105,7 +11696,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[145]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[143]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12117,7 +11708,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[145]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[143]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12130,7 +11721,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{145}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{143}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -12180,7 +11771,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[146]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[144]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12192,7 +11783,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[146]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[144]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12205,7 +11796,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{146}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{144}
 }
 
 func (x *Item) GetId() string {
@@ -12311,7 +11902,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[147]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[145]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12323,7 +11914,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[147]
+	mi := &file_cloudstack_management_network_v1_network_gen_proto_msgTypes[145]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12336,7 +11927,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{147}
+	return file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP(), []int{145}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -12389,65 +11980,127 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\a \x01(\tR\fresponseType\"e\n" +
 	"!DedicateIpv4SubnetForZoneResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc5\x06\n" +
-	"\x1bListNetworkOfferingsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12>\n" +
-	"\x15network_offering_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x13networkOfferingName\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12!\n" +
-	"\ftraffic_type\x18\x04 \x01(\tR\vtrafficType\x12$\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa9\x02\n" +
+	"%DeleteManagementNetworkIpRangeRequest\x12\x1d\n" +
+	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12%\n" +
+	"\bstart_ip\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\astartIp\x12!\n" +
+	"\x06end_ip\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\x05endIp\x12\x1a\n" +
+	"\x04vlan\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04vlan\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"j\n" +
+	"&DeleteManagementNetworkIpRangeResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf7\x03\n" +
+	"#ListDedicatedGuestVlanRangesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\xa0\x01\n" +
+	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
 	"\n" +
-	"is_default\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\tisDefault\x12(\n" +
-	"\fspecify_vlan\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\vspecifyVlan\x12\"\n" +
-	"\favailability\x18\a \x01(\tR\favailability\x12\x1b\n" +
-	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12\x17\n" +
-	"\azone_id\x18\t \x01(\x03R\x06zoneId\x12\x14\n" +
-	"\x05state\x18\n" +
-	" \x01(\tR\x05state\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\v \x01(\x03R\tnetworkId\x12+\n" +
-	"\rguest_ip_type\x18\f \x01(\tB\a\xbaH\x04r\x02x\x01R\vguestIpType\x12-\n" +
-	"\x12supported_services\x18\r \x03(\tR\x11supportedServices\x127\n" +
-	"\x14source_nat_supported\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x12sourceNatSupported\x121\n" +
-	"\x11specify_ip_ranges\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fspecifyIpRanges\x12\x12\n" +
-	"\x04tags\x18\x10 \x01(\tR\x04tags\x12\"\n" +
-	"\tis_tagged\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisTagged\x12\x1e\n" +
-	"\afor_vpc\x18\x12 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forVpc\x12!\n" +
-	"\frouting_mode\x18\x13 \x01(\tR\vroutingMode\x12\x18\n" +
-	"\akeyword\x18\x14 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x15 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x16 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\"\x8f\x01\n" +
-	"\x1cListNetworkOfferingsResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.NetworkOfferingR\x05items\x12\x1f\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12(\n" +
+	"\x10guest_vlan_range\x18\x05 \x01(\tR\x0eguestVlanRange\x12.\n" +
+	"\x13physical_network_id\x18\x06 \x01(\x03R\x11physicalNetworkId\x12\x17\n" +
+	"\azone_id\x18\a \x01(\x03R\x06zoneId\x12\x18\n" +
+	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\n" +
+	" \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x96\x01\n" +
+	"$ListDedicatedGuestVlanRangesResponse\x12F\n" +
+	"\x05items\x18\x01 \x03(\v20.cloudstack.management.network.v1.GuestVlanRangeR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"l\n" +
-	"\x1eResetNetworkPermissionsRequest\x12%\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x01\n" +
+	"\x1eDeleteIpv4SubnetForZoneRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
+	"\x1fDeleteIpv4SubnetForZoneResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xb2\x01\n" +
+	"\x1bDeleteNetworkACLListRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"`\n" +
+	"\x1cDeleteNetworkACLListResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbc\x01\n" +
+	"%ReleaseDedicatedGuestVlanRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"j\n" +
+	"&ReleaseDedicatedGuestVlanRangeResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xb3\x01\n" +
+	"\x1cDeletePhysicalNetworkRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"a\n" +
+	"\x1dDeletePhysicalNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xd5\x01\n" +
+	"\x1eUpdateIpv4SubnetForZoneRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
+	"\x06subnet\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06subnet\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"c\n" +
+	"\x1fUpdateIpv4SubnetForZoneResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x94\x01\n" +
+	"\"ListNetworkIsolationMethodsRequest\x12\x18\n" +
+	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\x96\x01\n" +
+	"#ListNetworkIsolationMethodsResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.IsolationMethodR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xac\x03\n" +
+	"\x1cCreatePhysicalNetworkRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x12\n" +
+	"\x04vlan\x18\x02 \x01(\tR\x04vlan\x12\x14\n" +
+	"\x05speed\x18\x03 \x01(\tR\x05speed\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x124\n" +
+	"\x16broadcast_domain_range\x18\x05 \x01(\tR\x14broadcastDomainRange\x12\x12\n" +
+	"\x04tags\x18\x06 \x03(\tR\x04tags\x12+\n" +
+	"\x11isolation_methods\x18\a \x03(\tR\x10isolationMethods\x120\n" +
+	"\fnetwork_name\x18\b \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\vnetworkName\x12$\n" +
+	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"a\n" +
+	"\x1dCreatePhysicalNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"b\n" +
+	"\x1bListNetworkProtocolsRequest\x12\x1e\n" +
+	"\x06option\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06option\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x8f\x01\n" +
+	"\x1cListNetworkProtocolsResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.NetworkProtocolR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa3\x02\n" +
+	"\x1bCreateNetworkACLListRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x15\n" +
+	"\x06vpc_id\x18\x03 \x01(\x03R\x05vpcId\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"`\n" +
+	"\x1cCreateNetworkACLListResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf7\x01\n" +
+	"\x1dDedicateGuestVlanRangeRequest\x12\x1a\n" +
+	"\x04vlan\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04vlan\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
 	"\n" +
-	"network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"c\n" +
-	"\x1fResetNetworkPermissionsResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf5\x04\n" +
-	"\x1bUpdateNetworkACLItemRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
-	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x127\n" +
-	"\x11public_start_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
-	"\x0fpublic_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
-	"\bcidrlist\x18\x05 \x03(\tR\bcidrlist\x12\x1b\n" +
-	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
-	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12!\n" +
-	"\ftraffic_type\x18\b \x01(\tR\vtrafficType\x12\x16\n" +
-	"\x06number\x18\t \x01(\x05R\x06number\x12\x16\n" +
-	"\x06action\x18\n" +
-	" \x01(\tR\x06action\x12\x1f\n" +
-	"\adisplay\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x16\n" +
-	"\x06reason\x18\f \x01(\tR\x06reason\x12.\n" +
-	"\x0fpartial_upgrade\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epartialUpgrade\x12%\n" +
-	"\tcustom_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x0f \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x10 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\"`\n" +
-	"\x1cUpdateNetworkACLItemResponse\x12@\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x126\n" +
+	"\x13physical_network_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"b\n" +
+	"\x1eDedicateGuestVlanRangeResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xae\x01\n" +
 	"\x17DeleteNetworkACLRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -12455,100 +12108,7 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\\\n" +
 	"\x18DeleteNetworkACLResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa1\x02\n" +
-	"\x15RestartNetworkRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12,\n" +
-	"\x0emake_redundant\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\rmakeRedundant\x12$\n" +
-	"\n" +
-	"live_patch\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tlivePatch\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Z\n" +
-	"\x16RestartNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbd\x02\n" +
-	"\x1eCreateIpv4SubnetForZoneRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1e\n" +
-	"\x06subnet\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06subnet\x12!\n" +
-	"\faccount_name\x18\x03 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
-	"\x1fCreateIpv4SubnetForZoneResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf9\x01\n" +
-	"\x17AddNetworkDeviceRequest\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\tR\x04type\x12g\n" +
-	"\n" +
-	"param_list\x18\x02 \x03(\v2H.cloudstack.management.network.v1.AddNetworkDeviceRequest.ParamListEntryR\tparamList\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\x1a<\n" +
-	"\x0eParamListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\\\n" +
-	"\x18AddNetworkDeviceResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc8\x02\n" +
-	"\x1bUpdateNetworkACLListRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1e\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12,\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12%\n" +
-	"\tcustom_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"`\n" +
-	"\x1cUpdateNetworkACLListResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc0\x04\n" +
-	"\x17CreateNetworkACLRequest\x12\"\n" +
-	"\bprotocol\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
-	"\x11public_start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
-	"\x0fpublic_end_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
-	"\bcidrlist\x18\x04 \x03(\tR\bcidrlist\x12\x1b\n" +
-	"\ticmp_type\x18\x05 \x01(\x05R\bicmpType\x12\x1b\n" +
-	"\ticmp_code\x18\x06 \x01(\x05R\bicmpCode\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\a \x01(\x03R\tnetworkId\x12\x15\n" +
-	"\x06acl_id\x18\b \x01(\x03R\x05aclId\x12!\n" +
-	"\ftraffic_type\x18\t \x01(\tR\vtrafficType\x12\x16\n" +
-	"\x06number\x18\n" +
-	" \x01(\x05R\x06number\x12\x16\n" +
-	"\x06action\x18\v \x01(\tR\x06action\x12\x1f\n" +
-	"\adisplay\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x16\n" +
-	"\x06reason\x18\r \x01(\tR\x06reason\x12$\n" +
-	"\x0estart_event_id\x18\x0e \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x0f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\"\\\n" +
-	"\x18CreateNetworkACLResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x80\x03\n" +
-	"(UpdatePodManagementNetworkIpRangeRequest\x12\x1d\n" +
-	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x124\n" +
-	"\x10current_start_ip\x18\x02 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\x0ecurrentStartIp\x120\n" +
-	"\x0ecurrent_end_ip\x18\x03 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\fcurrentEndIp\x12)\n" +
-	"\fnew_start_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
-	"newStartIp\x12%\n" +
-	"\n" +
-	"new_end_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\bnewEndIp\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"m\n" +
-	")UpdatePodManagementNetworkIpRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbe\x01\n" +
-	"#ListGuestNetworkIpv6PrefixesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\xa1\x01\n" +
-	"$ListGuestNetworkIpv6PrefixesResponse\x12Q\n" +
-	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.network.v1.DataCenterGuestIpv6PrefixR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xec\x06\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xec\x06\n" +
 	"\x1eUpdateNetworkCmdByAdminRequest\x128\n" +
 	"\x15hide_ip_address_usage\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\x12hideIpAddressUsage\x12\x16\n" +
 	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
@@ -12578,14 +12138,6 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x15 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x16 \x01(\tR\fresponseType\"c\n" +
 	"\x1fUpdateNetworkCmdByAdminResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xe3\x01\n" +
-	"#CreateGuestNetworkIpv6PrefixRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1e\n" +
-	"\x06prefix\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06prefix\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
-	"$CreateGuestNetworkIpv6PrefixResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xdd\x01\n" +
 	" ListStorageNetworkIpRangeRequest\x12\x19\n" +
 	"\brange_id\x18\x01 \x01(\x03R\arangeId\x12\x15\n" +
@@ -12598,111 +12150,30 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"!ListStorageNetworkIpRangeResponse\x12M\n" +
 	"\x05items\x18\x01 \x03(\v27.cloudstack.management.network.v1.StorageNetworkIpRangeR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xe5\x01\n" +
-	"\x1bListPhysicalNetworksRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12-\n" +
-	"\fnetwork_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vnetworkName\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x8f\x01\n" +
-	"\x1cListPhysicalNetworksResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.PhysicalNetworkR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xca\x06\n" +
-	"\x14UpdateNetworkRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\fdisplay_text\x18\x04 \x01(\tR\vdisplayText\x12%\n" +
-	"\x0enetwork_domain\x18\x05 \x01(\tR\rnetworkDomain\x12&\n" +
-	"\vchange_cidr\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"changeCidr\x12.\n" +
-	"\x13network_offering_id\x18\a \x01(\x03R\x11networkOfferingId\x12\"\n" +
-	"\rguest_vm_cidr\x18\b \x01(\tR\vguestVmCidr\x123\n" +
-	"\x12update_in_sequence\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x10updateInSequence\x12.\n" +
-	"\x0fdisplay_network\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edisplayNetwork\x12\x1d\n" +
-	"\x06forced\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\x1d\n" +
-	"\n" +
-	"public_mtu\x18\f \x01(\x05R\tpublicMtu\x12\x1f\n" +
-	"\vprivate_mtu\x18\r \x01(\x05R\n" +
-	"privateMtu\x12\x19\n" +
-	"\bip4_dns1\x18\x0e \x01(\tR\aip4Dns1\x12\x19\n" +
-	"\bip4_dns2\x18\x0f \x01(\tR\aip4Dns2\x12\"\n" +
-	"\bip6_dns1\x18\x10 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns1\x12\"\n" +
-	"\bip6_dns2\x18\x11 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns2\x12,\n" +
-	"\x0esource_nat_i_p\x18\x12 \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12%\n" +
-	"\tcustom_id\x18\x13 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x14 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x15 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x16 \x01(\tR\fresponseType\"Y\n" +
-	"\x15UpdateNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xd4\x01\n" +
-	"\x1fCreateNetworkPermissionsRequest\x12#\n" +
-	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x1f\n" +
-	"\vaccount_ids\x18\x02 \x03(\tR\n" +
-	"accountIds\x12%\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12\x1f\n" +
-	"\vproject_ids\x18\x04 \x03(\tR\n" +
-	"projectIds\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	" CreateNetworkPermissionsResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbd\x01\n" +
-	"&DeleteIpv4SubnetForGuestNetworkRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
-	"'DeleteIpv4SubnetForGuestNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x87\x02\n" +
-	"\x1cReplaceNetworkACLListRequest\x12\x1d\n" +
-	"\x06acl_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05aclId\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x02 \x01(\x03R\tnetworkId\x12,\n" +
-	"\x12private_gateway_id\x18\x03 \x01(\x03R\x10privateGatewayId\x12$\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x83\x02\n" +
+	"\x15MigrateNetworkRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
+	"\x13network_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11networkOfferingId\x12\x1d\n" +
+	"\x06resume\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06resume\x12$\n" +
 	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"a\n" +
-	"\x1dReplaceNetworkACLListResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xb3\x01\n" +
-	"\x1cDeletePhysicalNetworkRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"a\n" +
-	"\x1dDeletePhysicalNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc6\x02\n" +
-	"\x18ListNetworkDeviceRequest\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\tR\x04type\x12h\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Z\n" +
+	"\x16MigrateNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x80\x03\n" +
+	"(UpdatePodManagementNetworkIpRangeRequest\x12\x1d\n" +
+	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x124\n" +
+	"\x10current_start_ip\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\x0ecurrentStartIp\x120\n" +
+	"\x0ecurrent_end_ip\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\fcurrentEndIp\x12)\n" +
+	"\fnew_start_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
+	"newStartIp\x12%\n" +
 	"\n" +
-	"param_list\x18\x02 \x03(\v2I.cloudstack.management.network.v1.ListNetworkDeviceRequest.ParamListEntryR\tparamList\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a<\n" +
-	"\x0eParamListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8a\x01\n" +
-	"\x19ListNetworkDeviceResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.network.v1.NetworkDeviceR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xd4\x01\n" +
-	"\x1fRemoveNetworkPermissionsRequest\x12#\n" +
-	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x1f\n" +
-	"\vaccount_ids\x18\x02 \x03(\tR\n" +
-	"accountIds\x12%\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12\x1f\n" +
-	"\vproject_ids\x18\x04 \x03(\tR\n" +
-	"projectIds\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	" RemoveNetworkPermissionsResponse\x12@\n" +
+	"new_end_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\bnewEndIp\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"m\n" +
+	")UpdatePodManagementNetworkIpRangeResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbf\x01\n" +
 	"(ReleaseDedicatedIpv4SubnetForZoneRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -12710,7 +12181,102 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"m\n" +
 	")ReleaseDedicatedIpv4SubnetForZoneResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xb9\x04\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf9\x01\n" +
+	"\x17AddNetworkDeviceRequest\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\tR\x04type\x12g\n" +
+	"\n" +
+	"param_list\x18\x02 \x03(\v2H.cloudstack.management.network.v1.AddNetworkDeviceRequest.ParamListEntryR\tparamList\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\x1a<\n" +
+	"\x0eParamListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\\\n" +
+	"\x18AddNetworkDeviceResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"[\n" +
+	"\x1cDeleteNetworkOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"a\n" +
+	"\x1dDeleteNetworkOfferingResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x87\x02\n" +
+	"\x1cUpdatePhysicalNetworkRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x14\n" +
+	"\x05speed\x18\x02 \x01(\tR\x05speed\x12\x12\n" +
+	"\x04tags\x18\x03 \x03(\tR\x04tags\x12\x14\n" +
+	"\x05state\x18\x04 \x01(\tR\x05state\x12\x12\n" +
+	"\x04vlan\x18\x05 \x01(\tR\x04vlan\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"a\n" +
+	"\x1dUpdatePhysicalNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x93\x03\n" +
+	"%CreateManagementNetworkIpRangeRequest\x12\x1d\n" +
+	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12$\n" +
+	"\agateway\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\agateway\x12 \n" +
+	"\anetmask\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\anetmask\x12%\n" +
+	"\bstart_ip\x18\x04 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\astartIp\x12\x1e\n" +
+	"\x06end_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12+\n" +
+	"\x0efor_system_vms\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\fforSystemVms\x12\x12\n" +
+	"\x04vlan\x18\a \x01(\tR\x04vlan\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"j\n" +
+	"&CreateManagementNetworkIpRangeResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xca\x01\n" +
+	"\x14DeleteNetworkRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
+	"\x15DeleteNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xfa\x01\n" +
+	"\"ListNetworkServiceProvidersRequest\x12.\n" +
+	"\x13physical_network_id\x18\x01 \x01(\x03R\x11physicalNetworkId\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x14\n" +
+	"\x05state\x18\x03 \x01(\tR\x05state\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x8f\x01\n" +
+	"#ListNetworkServiceProvidersResponse\x12@\n" +
+	"\x05items\x18\x01 \x03(\v2*.cloudstack.management.network.v1.ProviderR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc0\x04\n" +
+	"\x17CreateNetworkACLRequest\x12\"\n" +
+	"\bprotocol\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
+	"\x11public_start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
+	"\x0fpublic_end_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
+	"\bcidrlist\x18\x04 \x03(\tR\bcidrlist\x12\x1b\n" +
+	"\ticmp_type\x18\x05 \x01(\x05R\bicmpType\x12\x1b\n" +
+	"\ticmp_code\x18\x06 \x01(\x05R\bicmpCode\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\a \x01(\x03R\tnetworkId\x12\x15\n" +
+	"\x06acl_id\x18\b \x01(\x03R\x05aclId\x12!\n" +
+	"\ftraffic_type\x18\t \x01(\tR\vtrafficType\x12\x16\n" +
+	"\x06number\x18\n" +
+	" \x01(\x05R\x06number\x12\x16\n" +
+	"\x06action\x18\v \x01(\tR\x06action\x12\x1f\n" +
+	"\adisplay\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x16\n" +
+	"\x06reason\x18\r \x01(\tR\x06reason\x12$\n" +
+	"\x0estart_event_id\x18\x0e \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x0f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\"\\\n" +
+	"\x18CreateNetworkACLResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xe7\x01\n" +
+	"#ListSupportedNetworkServicesRequest\x12-\n" +
+	"\rprovider_name\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fproviderName\x12!\n" +
+	"\fservice_name\x18\x02 \x01(\tR\vserviceName\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8f\x01\n" +
+	"$ListSupportedNetworkServicesResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.network.v1.ServiceR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb9\x04\n" +
 	"\x1aListNetworkACLListsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
 	"\n" +
@@ -12734,88 +12300,6 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x1bListNetworkACLListsResponse\x12B\n" +
 	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.network.v1.NetworkACLR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xa9\x02\n" +
-	"%DeleteManagementNetworkIpRangeRequest\x12\x1d\n" +
-	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12%\n" +
-	"\bstart_ip\x18\x02 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\astartIp\x12!\n" +
-	"\x06end_ip\x18\x03 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\x05endIp\x12\x1a\n" +
-	"\x04vlan\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04vlan\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"j\n" +
-	"&DeleteManagementNetworkIpRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xba\x01\n" +
-	"#DeleteGuestNetworkIpv6PrefixRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"h\n" +
-	"$DeleteGuestNetworkIpv6PrefixResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x83\x02\n" +
-	"\x15MigrateNetworkRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
-	"\x13network_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11networkOfferingId\x12\x1d\n" +
-	"\x06resume\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06resume\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Z\n" +
-	"\x16MigrateNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf7\x01\n" +
-	"\x1dDedicateGuestVlanRangeRequest\x12\x1a\n" +
-	"\x04vlan\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04vlan\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x126\n" +
-	"\x13physical_network_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"b\n" +
-	"\x1eDedicateGuestVlanRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xab\x02\n" +
-	"\"UpdateStorageNetworkIpRangeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\"\n" +
-	"\bstart_ip\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
-	"\x06end_ip\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12\x12\n" +
-	"\x04vlan\x18\x04 \x01(\x05R\x04vlan\x12\x18\n" +
-	"\anetmask\x18\x05 \x01(\tR\anetmask\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"g\n" +
-	"#UpdateStorageNetworkIpRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xba\x01\n" +
-	"#DeleteNetworkServiceProviderRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"h\n" +
-	"$DeleteNetworkServiceProviderResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc6\x03\n" +
-	"\x11MigrateVPCRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
-	"\x0fvpc_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rvpcOfferingId\x12\x83\x01\n" +
-	"\x16tier_network_offerings\x18\x03 \x03(\v2M.cloudstack.management.network.v1.MigrateVPCRequest.TierNetworkOfferingsEntryR\x14tierNetworkOfferings\x12\x1d\n" +
-	"\x06resume\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06resume\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\x1aG\n" +
-	"\x19TierNetworkOfferingsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"V\n" +
-	"\x12MigrateVPCResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xfa\x01\n" +
-	"\"ListNetworkServiceProvidersRequest\x12.\n" +
-	"\x13physical_network_id\x18\x01 \x01(\x03R\x11physicalNetworkId\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x14\n" +
-	"\x05state\x18\x03 \x01(\tR\x05state\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x8f\x01\n" +
-	"#ListNetworkServiceProvidersResponse\x12@\n" +
-	"\x05items\x18\x01 \x03(\v2*.cloudstack.management.network.v1.ProviderR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xaf\x03\n" +
 	"\x1dListIpv4SubnetsForZoneRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
@@ -12834,103 +12318,20 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x1eListIpv4SubnetsForZoneResponse\x12L\n" +
 	"\x05items\x18\x01 \x03(\v26.cloudstack.management.network.v1.DataCenterIpv4SubnetR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xca\x01\n" +
-	"\x14DeleteNetworkRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
-	"\x15DeleteNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xcb\x03\n" +
-	"\x1cUpdateNetworkOfferingRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12>\n" +
-	"\x15network_offering_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x13networkOfferingName\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\"\n" +
-	"\favailability\x18\x04 \x01(\tR\favailability\x12\x19\n" +
-	"\bsort_key\x18\x05 \x01(\x05R\asortKey\x12\x14\n" +
-	"\x05state\x18\x06 \x01(\tR\x05state\x123\n" +
-	"\x12keep_alive_enabled\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x10keepAliveEnabled\x12'\n" +
-	"\x0fmax_connections\x18\b \x01(\x05R\x0emaxConnections\x12\x12\n" +
-	"\x04tags\x18\t \x01(\tR\x04tags\x12'\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc6\x02\n" +
+	"\x18ListNetworkDeviceRequest\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\tR\x04type\x12h\n" +
 	"\n" +
-	"domain_ids\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tdomainIds\x12#\n" +
-	"\bzone_ids\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\azoneIds\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"a\n" +
-	"\x1dUpdateNetworkOfferingResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xff\x01\n" +
-	"&CreateIpv4SubnetForGuestNetworkRequest\x12#\n" +
-	"\tparent_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bparentId\x12\x16\n" +
-	"\x06subnet\x18\x02 \x01(\tR\x06subnet\x12\x1b\n" +
-	"\tcidr_size\x18\x03 \x01(\x05R\bcidrSize\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"k\n" +
-	"'CreateIpv4SubnetForGuestNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x94\x01\n" +
-	"\"ListNetworkIsolationMethodsRequest\x12\x18\n" +
-	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\x96\x01\n" +
-	"#ListNetworkIsolationMethodsResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.IsolationMethodR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xec\x02\n" +
-	" AddNetworkServiceProviderRequest\x126\n" +
-	"\x13physical_network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12E\n" +
-	"\x1fdestination_physical_network_id\x18\x02 \x01(\x03R\x1cdestinationPhysicalNetworkId\x12!\n" +
-	"\x04name\x18\x03 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12)\n" +
-	"\x10enabled_services\x18\x04 \x03(\tR\x0fenabledServices\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"e\n" +
-	"!AddNetworkServiceProviderResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xd1\n" +
-	"\n" +
-	"\x13ListNetworksRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x17\n" +
-	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\"\n" +
-	"\rguest_ip_type\x18\x04 \x01(\tR\vguestIpType\x12\"\n" +
-	"\tis_system\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisSystem\x12\x19\n" +
-	"\bacl_type\x18\x06 \x01(\tR\aaclType\x12!\n" +
-	"\ftraffic_type\x18\a \x01(\tR\vtrafficType\x12.\n" +
-	"\x13physical_network_id\x18\b \x01(\x03R\x11physicalNetworkId\x12-\n" +
-	"\x12supported_services\x18\t \x03(\tR\x11supportedServices\x120\n" +
-	"\x10restart_required\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0frestartRequired\x121\n" +
-	"\x11specify_ip_ranges\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fspecifyIpRanges\x12\x15\n" +
-	"\x06vpc_id\x18\f \x01(\x03R\x05vpcId\x122\n" +
-	"\x12can_use_for_deploy\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fcanUseForDeploy\x12\x1e\n" +
-	"\afor_vpc\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forVpc\x12\x1f\n" +
-	"\adisplay\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12.\n" +
-	"\x13network_offering_id\x18\x10 \x01(\x03R\x11networkOfferingId\x122\n" +
-	"\x15associated_network_id\x18\x11 \x01(\x03R\x13associatedNetworkId\x12\"\n" +
-	"\tshow_icon\x18\x12 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12%\n" +
-	"\x0enetwork_filter\x18\x13 \x01(\tR\rnetworkFilter\x12F\n" +
-	"\x1cretrieve_only_resource_count\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\x19retrieveOnlyResourceCount\x12S\n" +
-	"\x04tags\x18\x15 \x03(\v2?.cloudstack.management.network.v1.ListNetworksRequest.TagsEntryR\x04tags\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x16 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\x17 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\x18 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\x19 \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\x1a \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\x1b \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x1c \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x1d \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x1e \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
+	"param_list\x18\x02 \x03(\v2I.cloudstack.management.network.v1.ListNetworkDeviceRequest.ParamListEntryR\tparamList\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a<\n" +
+	"\x0eParamListEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x7f\n" +
-	"\x14ListNetworksResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.network.v1.NetworkR\x05items\x12\x1f\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8a\x01\n" +
+	"\x19ListNetworkDeviceResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.network.v1.NetworkDeviceR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xfd\x05\n" +
 	"\x16ListNetworkACLsRequest\x12\x0e\n" +
@@ -12961,112 +12362,27 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x17ListNetworkACLsResponse\x12F\n" +
 	"\x05items\x18\x01 \x03(\v20.cloudstack.management.network.v1.NetworkACLItemR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x93\x03\n" +
-	"%CreateManagementNetworkIpRangeRequest\x12\x1d\n" +
-	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12$\n" +
-	"\agateway\x18\x02 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\agateway\x12 \n" +
-	"\anetmask\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\anetmask\x12%\n" +
-	"\bstart_ip\x18\x04 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\astartIp\x12\x1e\n" +
-	"\x06end_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12+\n" +
-	"\x0efor_system_vms\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\fforSystemVms\x12\x12\n" +
-	"\x04vlan\x18\a \x01(\tR\x04vlan\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"j\n" +
-	"&CreateManagementNetworkIpRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xe7\x01\n" +
-	"#ListSupportedNetworkServicesRequest\x12-\n" +
-	"\rprovider_name\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fproviderName\x12!\n" +
-	"\fservice_name\x18\x02 \x01(\tR\vserviceName\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8f\x01\n" +
-	"$ListSupportedNetworkServicesResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.network.v1.ServiceR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x87\x02\n" +
-	"\x1cUpdatePhysicalNetworkRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x14\n" +
-	"\x05speed\x18\x02 \x01(\tR\x05speed\x12\x12\n" +
-	"\x04tags\x18\x03 \x03(\tR\x04tags\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\tR\x05state\x12\x12\n" +
-	"\x04vlan\x18\x05 \x01(\tR\x04vlan\x12$\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc8\x02\n" +
+	"\x1bUpdateNetworkACLListRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1e\n" +
+	"\x04name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12,\n" +
+	"\vdescription\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12%\n" +
+	"\tcustom_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
 	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"a\n" +
-	"\x1dUpdatePhysicalNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa3\x02\n" +
-	"\x1bCreateNetworkACLListRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x15\n" +
-	"\x06vpc_id\x18\x03 \x01(\x03R\x05vpcId\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"`\n" +
-	"\x1cCreateNetworkACLListResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x8d\r\n" +
-	"\x1eCreateNetworkCmdByAdminRequest\x12\x12\n" +
-	"\x04vlan\x18\x01 \x01(\tR\x04vlan\x12@\n" +
-	"\x19bypass_vlan_overlap_check\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x16bypassVlanOverlapCheck\x128\n" +
-	"\x15hide_ip_address_usage\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x12hideIpAddressUsage\x12$\n" +
-	"\trouter_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\brouterIp\x12)\n" +
-	"\vrouter_ipv6\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\n" +
-	"routerIpv6\x12 \n" +
-	"\fbgp_peer_ids\x18\x06 \x03(\tR\n" +
-	"bgpPeerIds\x12!\n" +
-	"\x04name\x18\a \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\fdisplay_text\x18\b \x01(\tR\vdisplayText\x126\n" +
-	"\x13network_offering_id\x18\t \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11networkOfferingId\x12\x1f\n" +
-	"\azone_id\x18\n" +
-	" \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12.\n" +
-	"\x13physical_network_id\x18\v \x01(\x03R\x11physicalNetworkId\x12!\n" +
-	"\agateway\x18\f \x01(\tB\a\xbaH\x04r\x02x\x01R\agateway\x12\x18\n" +
-	"\anetmask\x18\r \x01(\tR\anetmask\x12\"\n" +
-	"\bstart_ip\x18\x0e \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
-	"\x06end_ip\x18\x0f \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12%\n" +
-	"\x0eisolated_pvlan\x18\x10 \x01(\tR\risolatedPvlan\x12.\n" +
-	"\x13isolated_pvlan_type\x18\x11 \x01(\tR\x11isolatedPvlanType\x12%\n" +
-	"\x0enetwork_domain\x18\x12 \x01(\tR\rnetworkDomain\x12\x19\n" +
-	"\bacl_type\x18\x13 \x01(\tR\aaclType\x12!\n" +
-	"\faccount_name\x18\x14 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x15 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x16 \x01(\x03R\bdomainId\x120\n" +
-	"\x10subdomain_access\x18\x17 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fsubdomainAccess\x12\x15\n" +
-	"\x06vpc_id\x18\x18 \x01(\x03R\x05vpcId\x12I\n" +
-	"\x1ctungsten_virtual_router_uuid\x18\x19 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x19tungstenVirtualRouterUuid\x12'\n" +
-	"\n" +
-	"start_ipv6\x18\x1a \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\tstartIpv6\x12#\n" +
-	"\bend_ipv6\x18\x1b \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\aendIpv6\x12(\n" +
-	"\vip6_gateway\x18\x1c \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
-	"ip6Gateway\x12#\n" +
-	"\bip6_cidr\x18\x1d \x01(\tB\b\xbaH\x05r\x03\xf0\x01\x01R\aip6Cidr\x12)\n" +
-	"\vexternal_id\x18\x1e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\n" +
-	"externalId\x12.\n" +
-	"\x0fdisplay_network\x18\x1f \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edisplayNetwork\x12\x15\n" +
-	"\x06acl_id\x18  \x01(\x03R\x05aclId\x122\n" +
-	"\x15associated_network_id\x18! \x01(\x03R\x13associatedNetworkId\x12\x1d\n" +
-	"\n" +
-	"public_mtu\x18\" \x01(\x05R\tpublicMtu\x12\x1f\n" +
-	"\vprivate_mtu\x18# \x01(\x05R\n" +
-	"privateMtu\x12\x19\n" +
-	"\bip4_dns1\x18$ \x01(\tR\aip4Dns1\x12\x19\n" +
-	"\bip4_dns2\x18% \x01(\tR\aip4Dns2\x12\"\n" +
-	"\bip6_dns1\x18& \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns1\x12\"\n" +
-	"\bip6_dns2\x18' \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns2\x12,\n" +
-	"\x0esource_nat_i_p\x18( \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12\x1b\n" +
-	"\tcidr_size\x18) \x01(\x05R\bcidrSize\x12\x1b\n" +
-	"\tas_number\x18* \x01(\x03R\basNumber\x12#\n" +
-	"\rresponse_type\x18+ \x01(\tR\fresponseType\"c\n" +
-	"\x1fCreateNetworkCmdByAdminResponse\x12@\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"`\n" +
+	"\x1cUpdateNetworkACLListResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xe3\x01\n" +
+	"#CreateGuestNetworkIpv6PrefixRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1e\n" +
+	"\x06prefix\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06prefix\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
+	"$CreateGuestNetworkIpv6PrefixResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xb9\x01\n" +
 	"\"DeleteStorageNetworkIpRangeRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -13074,13 +12390,6 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"g\n" +
 	"#DeleteStorageNetworkIpRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xb5\x01\n" +
-	"\x1eDeleteIpv4SubnetForZoneRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
-	"\x1fDeleteIpv4SubnetForZoneResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"k\n" +
 	"\x1dListNetworkPermissionsRequest\x12%\n" +
 	"\n" +
@@ -13089,38 +12398,18 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x1eListNetworkPermissionsResponse\x12J\n" +
 	"\x05items\x18\x01 \x03(\v24.cloudstack.management.network.v1.NetworkPermissionsR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xf7\x03\n" +
-	"#ListDedicatedGuestVlanRangesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\xa0\x01\n" +
-	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12(\n" +
-	"\x10guest_vlan_range\x18\x05 \x01(\tR\x0eguestVlanRange\x12.\n" +
-	"\x13physical_network_id\x18\x06 \x01(\x03R\x11physicalNetworkId\x12\x17\n" +
-	"\azone_id\x18\a \x01(\x03R\x06zoneId\x12\x18\n" +
-	"\akeyword\x18\b \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\t \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\n" +
-	" \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"\x96\x01\n" +
-	"$ListDedicatedGuestVlanRangesResponse\x12F\n" +
-	"\x05items\x18\x01 \x03(\v20.cloudstack.management.network.v1.GuestVlanRangeR\x05items\x12\x1f\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xbe\x01\n" +
+	"#ListGuestNetworkIpv6PrefixesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\xa1\x01\n" +
+	"$ListGuestNetworkIpv6PrefixesResponse\x12Q\n" +
+	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.network.v1.DataCenterGuestIpv6PrefixR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb2\x01\n" +
-	"\x1bDeleteNetworkACLListRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"`\n" +
-	"\x1cDeleteNetworkACLListResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"[\n" +
-	"\x1cDeleteNetworkOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"a\n" +
-	"\x1dDeleteNetworkOfferingResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa7\x03\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa7\x03\n" +
 	"\x19MoveNetworkAclItemRequest\x12>\n" +
 	"\x15uuid_rule_being_moved\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\x12uuidRuleBeingMoved\x12=\n" +
 	"\x16previous_acl_rule_uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x13previousAclRuleUuid\x125\n" +
@@ -13131,44 +12420,35 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\b \x01(\tR\fresponseType\"^\n" +
 	"\x1aMoveNetworkAclItemResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa2\x02\n" +
-	"\x15ListGuestVlansRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12.\n" +
-	"\x13physical_network_id\x18\x03 \x01(\x03R\x11physicalNetworkId\x12\x12\n" +
-	"\x04vnet\x18\x04 \x01(\tR\x04vnet\x12,\n" +
-	"\x0eallocated_only\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\rallocatedOnly\x12\x18\n" +
-	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x83\x01\n" +
-	"\x16ListGuestVlansResponse\x12A\n" +
-	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.network.v1.GuestVlanR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xd5\x01\n" +
-	"\x1eUpdateIpv4SubnetForZoneRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
-	"\x06subnet\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06subnet\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"c\n" +
-	"\x1fUpdateIpv4SubnetForZoneResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xac\x03\n" +
-	"\x1cCreatePhysicalNetworkRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x12\n" +
-	"\x04vlan\x18\x02 \x01(\tR\x04vlan\x12\x14\n" +
-	"\x05speed\x18\x03 \x01(\tR\x05speed\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x124\n" +
-	"\x16broadcast_domain_range\x18\x05 \x01(\tR\x14broadcastDomainRange\x12\x12\n" +
-	"\x04tags\x18\x06 \x03(\tR\x04tags\x12+\n" +
-	"\x11isolation_methods\x18\a \x03(\tR\x10isolationMethods\x120\n" +
-	"\fnetwork_name\x18\b \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\vnetworkName\x12$\n" +
-	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"a\n" +
-	"\x1dCreatePhysicalNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xec\x02\n" +
+	" AddNetworkServiceProviderRequest\x126\n" +
+	"\x13physical_network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12E\n" +
+	"\x1fdestination_physical_network_id\x18\x02 \x01(\x03R\x1cdestinationPhysicalNetworkId\x12!\n" +
+	"\x04name\x18\x03 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12)\n" +
+	"\x10enabled_services\x18\x04 \x03(\tR\x0fenabledServices\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"e\n" +
+	"!AddNetworkServiceProviderResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbd\x01\n" +
+	"&DeleteIpv4SubnetForGuestNetworkRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
+	"'DeleteIpv4SubnetForGuestNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xd4\x01\n" +
+	"\x1fRemoveNetworkPermissionsRequest\x12#\n" +
+	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x1f\n" +
+	"\vaccount_ids\x18\x02 \x03(\tR\n" +
+	"accountIds\x12%\n" +
+	"\n" +
+	"network_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12\x1f\n" +
+	"\vproject_ids\x18\x04 \x03(\tR\n" +
+	"projectIds\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	" RemoveNetworkPermissionsResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xdf\x0e\n" +
 	"\x1cCreateNetworkOfferingRequest\x12A\n" +
 	"\x15network_offering_name\x18\x01 \x01(\tB\r\xbaH\n" +
@@ -13217,51 +12497,27 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"a\n" +
 	"\x1dCreateNetworkOfferingResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xfb\x01\n" +
-	"#UpdateNetworkServiceProviderRequest\x12\x14\n" +
-	"\x05state\x18\x01 \x01(\tR\x05state\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12)\n" +
-	"\x10enabled_services\x18\x03 \x03(\tR\x0fenabledServices\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"h\n" +
-	"$UpdateNetworkServiceProviderResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xe3\x02\n" +
-	"\"CreateStorageNetworkIpRangeRequest\x12\x1d\n" +
-	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12%\n" +
-	"\bstart_ip\x18\x02 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\astartIp\x12\x1e\n" +
-	"\x06end_ip\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12\x12\n" +
-	"\x04vlan\x18\x04 \x01(\x05R\x04vlan\x12 \n" +
-	"\anetmask\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\anetmask\x12$\n" +
-	"\agateway\x18\x06 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02x\x01R\agateway\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"g\n" +
-	"#CreateStorageNetworkIpRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xab\x02\n" +
-	"%ListIpv4SubnetsForGuestNetworkRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
-	"\tparent_id\x18\x02 \x01(\x03R\bparentId\x12\x16\n" +
-	"\x06subnet\x18\x03 \x01(\tR\x06subnet\x12\x17\n" +
-	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x05 \x01(\x03R\tnetworkId\x12\x15\n" +
-	"\x06vpc_id\x18\x06 \x01(\x03R\x05vpcId\x12\x18\n" +
-	"\akeyword\x18\a \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\b \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\t \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"\xa3\x01\n" +
-	"&ListIpv4SubnetsForGuestNetworkResponse\x12Q\n" +
-	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.network.v1.Ipv4SubnetForGuestNetworkR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"Y\n" +
-	"\x1aDeleteNetworkDeviceRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
-	"\x1bDeleteNetworkDeviceResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xf5\x04\n" +
+	"\x1bUpdateNetworkACLItemRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1a\n" +
+	"\bprotocol\x18\x02 \x01(\tR\bprotocol\x127\n" +
+	"\x11public_start_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
+	"\x0fpublic_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
+	"\bcidrlist\x18\x05 \x03(\tR\bcidrlist\x12\x1b\n" +
+	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
+	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12!\n" +
+	"\ftraffic_type\x18\b \x01(\tR\vtrafficType\x12\x16\n" +
+	"\x06number\x18\t \x01(\x05R\x06number\x12\x16\n" +
+	"\x06action\x18\n" +
+	" \x01(\tR\x06action\x12\x1f\n" +
+	"\adisplay\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x16\n" +
+	"\x06reason\x18\f \x01(\tR\x06reason\x12.\n" +
+	"\x0fpartial_upgrade\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epartialUpgrade\x12%\n" +
+	"\tcustom_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x0f \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x10 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\"`\n" +
+	"\x1cUpdateNetworkACLItemResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa2\v\n" +
 	"\x14CreateNetworkRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -13312,28 +12568,313 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\tas_number\x18% \x01(\x03R\basNumber\x12#\n" +
 	"\rresponse_type\x18& \x01(\tR\fresponseType\"Y\n" +
 	"\x15CreateNetworkResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbc\x01\n" +
-	"%ReleaseDedicatedGuestVlanRangeRequest\x12\x16\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xba\x01\n" +
+	"#DeleteNetworkServiceProviderRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"j\n" +
-	"&ReleaseDedicatedGuestVlanRangeResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"b\n" +
-	"\x1bListNetworkProtocolsRequest\x12\x1e\n" +
-	"\x06option\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06option\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x8f\x01\n" +
-	"\x1cListNetworkProtocolsResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.NetworkProtocolR\x05items\x12\x1f\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"h\n" +
+	"$DeleteNetworkServiceProviderResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xcb\x03\n" +
+	"\x1cUpdateNetworkOfferingRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12>\n" +
+	"\x15network_offering_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x13networkOfferingName\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\"\n" +
+	"\favailability\x18\x04 \x01(\tR\favailability\x12\x19\n" +
+	"\bsort_key\x18\x05 \x01(\x05R\asortKey\x12\x14\n" +
+	"\x05state\x18\x06 \x01(\tR\x05state\x123\n" +
+	"\x12keep_alive_enabled\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x10keepAliveEnabled\x12'\n" +
+	"\x0fmax_connections\x18\b \x01(\x05R\x0emaxConnections\x12\x12\n" +
+	"\x04tags\x18\t \x01(\tR\x04tags\x12'\n" +
+	"\n" +
+	"domain_ids\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tdomainIds\x12#\n" +
+	"\bzone_ids\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\azoneIds\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"a\n" +
+	"\x1dUpdateNetworkOfferingResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xff\x01\n" +
+	"&CreateIpv4SubnetForGuestNetworkRequest\x12#\n" +
+	"\tparent_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bparentId\x12\x16\n" +
+	"\x06subnet\x18\x02 \x01(\tR\x06subnet\x12\x1b\n" +
+	"\tcidr_size\x18\x03 \x01(\x05R\bcidrSize\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"k\n" +
+	"'CreateIpv4SubnetForGuestNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"l\n" +
+	"\x1eResetNetworkPermissionsRequest\x12%\n" +
+	"\n" +
+	"network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"c\n" +
+	"\x1fResetNetworkPermissionsResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"Y\n" +
+	"\x1aDeleteNetworkDeviceRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
+	"\x1bDeleteNetworkDeviceResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc5\x06\n" +
+	"\x1bListNetworkOfferingsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12>\n" +
+	"\x15network_offering_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x13networkOfferingName\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12!\n" +
+	"\ftraffic_type\x18\x04 \x01(\tR\vtrafficType\x12$\n" +
+	"\n" +
+	"is_default\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\tisDefault\x12(\n" +
+	"\fspecify_vlan\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\vspecifyVlan\x12\"\n" +
+	"\favailability\x18\a \x01(\tR\favailability\x12\x1b\n" +
+	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12\x17\n" +
+	"\azone_id\x18\t \x01(\x03R\x06zoneId\x12\x14\n" +
+	"\x05state\x18\n" +
+	" \x01(\tR\x05state\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\v \x01(\x03R\tnetworkId\x12+\n" +
+	"\rguest_ip_type\x18\f \x01(\tB\a\xbaH\x04r\x02x\x01R\vguestIpType\x12-\n" +
+	"\x12supported_services\x18\r \x03(\tR\x11supportedServices\x127\n" +
+	"\x14source_nat_supported\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x12sourceNatSupported\x121\n" +
+	"\x11specify_ip_ranges\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fspecifyIpRanges\x12\x12\n" +
+	"\x04tags\x18\x10 \x01(\tR\x04tags\x12\"\n" +
+	"\tis_tagged\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisTagged\x12\x1e\n" +
+	"\afor_vpc\x18\x12 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forVpc\x12!\n" +
+	"\frouting_mode\x18\x13 \x01(\tR\vroutingMode\x12\x18\n" +
+	"\akeyword\x18\x14 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x15 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x16 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\"\x8f\x01\n" +
+	"\x1cListNetworkOfferingsResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.NetworkOfferingR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9e\x01\n" +
-	"\x0fNetworkOffering\x12\x18\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa1\x02\n" +
+	"\x15RestartNetworkRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12,\n" +
+	"\x0emake_redundant\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\rmakeRedundant\x12$\n" +
+	"\n" +
+	"live_patch\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tlivePatch\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Z\n" +
+	"\x16RestartNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xba\x01\n" +
+	"#DeleteGuestNetworkIpv6PrefixRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"h\n" +
+	"$DeleteGuestNetworkIpv6PrefixResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xbd\x02\n" +
+	"\x1eCreateIpv4SubnetForZoneRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1e\n" +
+	"\x06subnet\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06subnet\x12!\n" +
+	"\faccount_name\x18\x03 \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
+	"\x1fCreateIpv4SubnetForZoneResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xab\x02\n" +
+	"\"UpdateStorageNetworkIpRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\"\n" +
+	"\bstart_ip\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
+	"\x06end_ip\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12\x12\n" +
+	"\x04vlan\x18\x04 \x01(\x05R\x04vlan\x12\x18\n" +
+	"\anetmask\x18\x05 \x01(\tR\anetmask\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"g\n" +
+	"#UpdateStorageNetworkIpRangeResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xd1\n" +
+	"\n" +
+	"\x13ListNetworksRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x17\n" +
+	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\"\n" +
+	"\rguest_ip_type\x18\x04 \x01(\tR\vguestIpType\x12\"\n" +
+	"\tis_system\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\bisSystem\x12\x19\n" +
+	"\bacl_type\x18\x06 \x01(\tR\aaclType\x12!\n" +
+	"\ftraffic_type\x18\a \x01(\tR\vtrafficType\x12.\n" +
+	"\x13physical_network_id\x18\b \x01(\x03R\x11physicalNetworkId\x12-\n" +
+	"\x12supported_services\x18\t \x03(\tR\x11supportedServices\x120\n" +
+	"\x10restart_required\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0frestartRequired\x121\n" +
+	"\x11specify_ip_ranges\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fspecifyIpRanges\x12\x15\n" +
+	"\x06vpc_id\x18\f \x01(\x03R\x05vpcId\x122\n" +
+	"\x12can_use_for_deploy\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fcanUseForDeploy\x12\x1e\n" +
+	"\afor_vpc\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forVpc\x12\x1f\n" +
+	"\adisplay\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12.\n" +
+	"\x13network_offering_id\x18\x10 \x01(\x03R\x11networkOfferingId\x122\n" +
+	"\x15associated_network_id\x18\x11 \x01(\x03R\x13associatedNetworkId\x12\"\n" +
+	"\tshow_icon\x18\x12 \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12%\n" +
+	"\x0enetwork_filter\x18\x13 \x01(\tR\rnetworkFilter\x12F\n" +
+	"\x1cretrieve_only_resource_count\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\x19retrieveOnlyResourceCount\x12S\n" +
+	"\x04tags\x18\x15 \x03(\v2?.cloudstack.management.network.v1.ListNetworksRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x16 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\x17 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\x18 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\x19 \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\x1a \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\x1b \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x1c \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x1d \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x1e \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x7f\n" +
+	"\x14ListNetworksResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.network.v1.NetworkR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x87\x02\n" +
+	"\x1cReplaceNetworkACLListRequest\x12\x1d\n" +
+	"\x06acl_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05aclId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x02 \x01(\x03R\tnetworkId\x12,\n" +
+	"\x12private_gateway_id\x18\x03 \x01(\x03R\x10privateGatewayId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"a\n" +
+	"\x1dReplaceNetworkACLListResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xd4\x01\n" +
+	"\x1fCreateNetworkPermissionsRequest\x12#\n" +
+	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x1f\n" +
+	"\vaccount_ids\x18\x02 \x03(\tR\n" +
+	"accountIds\x12%\n" +
+	"\n" +
+	"network_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12\x1f\n" +
+	"\vproject_ids\x18\x04 \x03(\tR\n" +
+	"projectIds\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	" CreateNetworkPermissionsResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xa2\x02\n" +
+	"\x15ListGuestVlansRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12.\n" +
+	"\x13physical_network_id\x18\x03 \x01(\x03R\x11physicalNetworkId\x12\x12\n" +
+	"\x04vnet\x18\x04 \x01(\tR\x04vnet\x12,\n" +
+	"\x0eallocated_only\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\rallocatedOnly\x12\x18\n" +
+	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\a \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\b \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"\x83\x01\n" +
+	"\x16ListGuestVlansResponse\x12A\n" +
+	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.network.v1.GuestVlanR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe3\x02\n" +
+	"\"CreateStorageNetworkIpRangeRequest\x12\x1d\n" +
+	"\x06pod_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12%\n" +
+	"\bstart_ip\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\astartIp\x12\x1e\n" +
+	"\x06end_ip\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12\x12\n" +
+	"\x04vlan\x18\x04 \x01(\x05R\x04vlan\x12 \n" +
+	"\anetmask\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\anetmask\x12$\n" +
+	"\agateway\x18\x06 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02x\x01R\agateway\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"g\n" +
+	"#CreateStorageNetworkIpRangeResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xca\x06\n" +
+	"\x14UpdateNetworkRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
+	"\x04name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\fdisplay_text\x18\x04 \x01(\tR\vdisplayText\x12%\n" +
+	"\x0enetwork_domain\x18\x05 \x01(\tR\rnetworkDomain\x12&\n" +
+	"\vchange_cidr\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"changeCidr\x12.\n" +
+	"\x13network_offering_id\x18\a \x01(\x03R\x11networkOfferingId\x12\"\n" +
+	"\rguest_vm_cidr\x18\b \x01(\tR\vguestVmCidr\x123\n" +
+	"\x12update_in_sequence\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x10updateInSequence\x12.\n" +
+	"\x0fdisplay_network\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edisplayNetwork\x12\x1d\n" +
+	"\x06forced\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12\x1d\n" +
+	"\n" +
+	"public_mtu\x18\f \x01(\x05R\tpublicMtu\x12\x1f\n" +
+	"\vprivate_mtu\x18\r \x01(\x05R\n" +
+	"privateMtu\x12\x19\n" +
+	"\bip4_dns1\x18\x0e \x01(\tR\aip4Dns1\x12\x19\n" +
+	"\bip4_dns2\x18\x0f \x01(\tR\aip4Dns2\x12\"\n" +
+	"\bip6_dns1\x18\x10 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns1\x12\"\n" +
+	"\bip6_dns2\x18\x11 \x01(\tB\a\xbaH\x04r\x02x\x01R\aip6Dns2\x12,\n" +
+	"\x0esource_nat_i_p\x18\x12 \x01(\tB\a\xbaH\x04r\x02x\x01R\vsourceNatIP\x12%\n" +
+	"\tcustom_id\x18\x13 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x14 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x15 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x16 \x01(\tR\fresponseType\"Y\n" +
+	"\x15UpdateNetworkResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xc6\x03\n" +
+	"\x11MigrateVPCRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
+	"\x0fvpc_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rvpcOfferingId\x12\x83\x01\n" +
+	"\x16tier_network_offerings\x18\x03 \x03(\v2M.cloudstack.management.network.v1.MigrateVPCRequest.TierNetworkOfferingsEntryR\x14tierNetworkOfferings\x12\x1d\n" +
+	"\x06resume\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06resume\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\x1aG\n" +
+	"\x19TierNetworkOfferingsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"V\n" +
+	"\x12MigrateVPCResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\xe5\x01\n" +
+	"\x1bListPhysicalNetworksRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12-\n" +
+	"\fnetwork_name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vnetworkName\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x8f\x01\n" +
+	"\x1cListPhysicalNetworksResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.network.v1.PhysicalNetworkR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xab\x02\n" +
+	"%ListIpv4SubnetsForGuestNetworkRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
+	"\tparent_id\x18\x02 \x01(\x03R\bparentId\x12\x16\n" +
+	"\x06subnet\x18\x03 \x01(\tR\x06subnet\x12\x17\n" +
+	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x05 \x01(\x03R\tnetworkId\x12\x15\n" +
+	"\x06vpc_id\x18\x06 \x01(\x03R\x05vpcId\x12\x18\n" +
+	"\akeyword\x18\a \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\b \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\t \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"\xa3\x01\n" +
+	"&ListIpv4SubnetsForGuestNetworkResponse\x12Q\n" +
+	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.network.v1.Ipv4SubnetForGuestNetworkR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xfb\x01\n" +
+	"#UpdateNetworkServiceProviderRequest\x12\x14\n" +
+	"\x05state\x18\x01 \x01(\tR\x05state\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12)\n" +
+	"\x10enabled_services\x18\x03 \x03(\tR\x0fenabledServices\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"h\n" +
+	"$UpdateNetworkServiceProviderResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.network.v1.ResultR\x06result\"\x9d\x01\n" +
+	"\x0eGuestVlanRange\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa8\x01\n" +
-	"\x19DataCenterGuestIpv6Prefix\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
+	"\x0fIsolationMethod\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
+	"\x0fNetworkProtocol\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -13344,14 +12885,14 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
-	"\x0fPhysicalNetwork\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
+	"\bProvider\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
-	"\rNetworkDevice\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x96\x01\n" +
+	"\aService\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -13363,26 +12904,14 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
-	"\bProvider\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\xa3\x01\n" +
 	"\x14DataCenterIpv4Subnet\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
-	"\x0fIsolationMethod\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x96\x01\n" +
-	"\aNetwork\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
+	"\rNetworkDevice\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -13393,20 +12922,26 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x96\x01\n" +
-	"\aService\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\xa1\x01\n" +
 	"\x12NetworkPermissions\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
-	"\x0eGuestVlanRange\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\xa8\x01\n" +
+	"\x19DataCenterGuestIpv6Prefix\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
+	"\x0fNetworkOffering\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x96\x01\n" +
+	"\aNetwork\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -13417,14 +12952,14 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa8\x01\n" +
-	"\x19Ipv4SubnetForGuestNetwork\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
+	"\x0fPhysicalNetwork\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9e\x01\n" +
-	"\x0fNetworkProtocol\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\xa8\x01\n" +
+	"\x19Ipv4SubnetForGuestNetwork\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -13458,73 +12993,78 @@ const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xf1P\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*\x8a\x01\n" +
+	"\fProtocolType\x12\x1d\n" +
+	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x02\x12\x16\n" +
+	"\x12PROTOCOL_TYPE_ICMP\x10\x03\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_ALL\x10\x042\xceO\n" +
 	"\x0eNetworkService\x12\xa6\x01\n" +
-	"\x19DedicateIpv4SubnetForZone\x12B.cloudstack.management.network.v1.DedicateIpv4SubnetForZoneRequest\x1aC.cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse\"\x00\x12\x97\x01\n" +
-	"\x14ListNetworkOfferings\x12=.cloudstack.management.network.v1.ListNetworkOfferingsRequest\x1a>.cloudstack.management.network.v1.ListNetworkOfferingsResponse\"\x00\x12\xa0\x01\n" +
-	"\x17ResetNetworkPermissions\x12@.cloudstack.management.network.v1.ResetNetworkPermissionsRequest\x1aA.cloudstack.management.network.v1.ResetNetworkPermissionsResponse\"\x00\x12\x97\x01\n" +
-	"\x14UpdateNetworkACLItem\x12=.cloudstack.management.network.v1.UpdateNetworkACLItemRequest\x1a>.cloudstack.management.network.v1.UpdateNetworkACLItemResponse\"\x00\x12\x8b\x01\n" +
-	"\x10DeleteNetworkACL\x129.cloudstack.management.network.v1.DeleteNetworkACLRequest\x1a:.cloudstack.management.network.v1.DeleteNetworkACLResponse\"\x00\x12\x85\x01\n" +
-	"\x0eRestartNetwork\x127.cloudstack.management.network.v1.RestartNetworkRequest\x1a8.cloudstack.management.network.v1.RestartNetworkResponse\"\x00\x12\xa0\x01\n" +
-	"\x17CreateIpv4SubnetForZone\x12@.cloudstack.management.network.v1.CreateIpv4SubnetForZoneRequest\x1aA.cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse\"\x00\x12\x8b\x01\n" +
-	"\x10AddNetworkDevice\x129.cloudstack.management.network.v1.AddNetworkDeviceRequest\x1a:.cloudstack.management.network.v1.AddNetworkDeviceResponse\"\x00\x12\x97\x01\n" +
-	"\x14UpdateNetworkACLList\x12=.cloudstack.management.network.v1.UpdateNetworkACLListRequest\x1a>.cloudstack.management.network.v1.UpdateNetworkACLListResponse\"\x00\x12\x8b\x01\n" +
-	"\x10CreateNetworkACL\x129.cloudstack.management.network.v1.CreateNetworkACLRequest\x1a:.cloudstack.management.network.v1.CreateNetworkACLResponse\"\x00\x12\xbe\x01\n" +
-	"!UpdatePodManagementNetworkIpRange\x12J.cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeRequest\x1aK.cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cListGuestNetworkIpv6Prefixes\x12E.cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesRequest\x1aF.cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse\"\x00\x12\xa0\x01\n" +
-	"\x17UpdateNetworkCmdByAdmin\x12@.cloudstack.management.network.v1.UpdateNetworkCmdByAdminRequest\x1aA.cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cCreateGuestNetworkIpv6Prefix\x12E.cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixRequest\x1aF.cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse\"\x00\x12\xa6\x01\n" +
-	"\x19ListStorageNetworkIpRange\x12B.cloudstack.management.network.v1.ListStorageNetworkIpRangeRequest\x1aC.cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse\"\x00\x12\x97\x01\n" +
-	"\x14ListPhysicalNetworks\x12=.cloudstack.management.network.v1.ListPhysicalNetworksRequest\x1a>.cloudstack.management.network.v1.ListPhysicalNetworksResponse\"\x00\x12\x88\x01\n" +
-	"\rUpdateNetwork\x126.cloudstack.management.network.v1.UpdateNetworkRequest\x1a7.cloudstack.management.network.v1.UpdateNetworkResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa3\x01\n" +
-	"\x18CreateNetworkPermissions\x12A.cloudstack.management.network.v1.CreateNetworkPermissionsRequest\x1aB.cloudstack.management.network.v1.CreateNetworkPermissionsResponse\"\x00\x12\xb8\x01\n" +
-	"\x1fDeleteIpv4SubnetForGuestNetwork\x12H.cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkRequest\x1aI.cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse\"\x00\x12\x9a\x01\n" +
-	"\x15ReplaceNetworkACLList\x12>.cloudstack.management.network.v1.ReplaceNetworkACLListRequest\x1a?.cloudstack.management.network.v1.ReplaceNetworkACLListResponse\"\x00\x12\x9a\x01\n" +
-	"\x15DeletePhysicalNetwork\x12>.cloudstack.management.network.v1.DeletePhysicalNetworkRequest\x1a?.cloudstack.management.network.v1.DeletePhysicalNetworkResponse\"\x00\x12\x8e\x01\n" +
-	"\x11ListNetworkDevice\x12:.cloudstack.management.network.v1.ListNetworkDeviceRequest\x1a;.cloudstack.management.network.v1.ListNetworkDeviceResponse\"\x00\x12\xa3\x01\n" +
-	"\x18RemoveNetworkPermissions\x12A.cloudstack.management.network.v1.RemoveNetworkPermissionsRequest\x1aB.cloudstack.management.network.v1.RemoveNetworkPermissionsResponse\"\x00\x12\xbe\x01\n" +
-	"!ReleaseDedicatedIpv4SubnetForZone\x12J.cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneRequest\x1aK.cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse\"\x00\x12\x94\x01\n" +
-	"\x13ListNetworkACLLists\x12<.cloudstack.management.network.v1.ListNetworkACLListsRequest\x1a=.cloudstack.management.network.v1.ListNetworkACLListsResponse\"\x00\x12\xb5\x01\n" +
+	"\x19DedicateIpv4SubnetForZone\x12B.cloudstack.management.network.v1.DedicateIpv4SubnetForZoneRequest\x1aC.cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse\"\x00\x12\xb5\x01\n" +
 	"\x1eDeleteManagementNetworkIpRange\x12G.cloudstack.management.network.v1.DeleteManagementNetworkIpRangeRequest\x1aH.cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cDeleteGuestNetworkIpv6Prefix\x12E.cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixRequest\x1aF.cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse\"\x00\x12\x85\x01\n" +
-	"\x0eMigrateNetwork\x127.cloudstack.management.network.v1.MigrateNetworkRequest\x1a8.cloudstack.management.network.v1.MigrateNetworkResponse\"\x00\x12\x9d\x01\n" +
-	"\x16DedicateGuestVlanRange\x12?.cloudstack.management.network.v1.DedicateGuestVlanRangeRequest\x1a@.cloudstack.management.network.v1.DedicateGuestVlanRangeResponse\"\x00\x12\xac\x01\n" +
-	"\x1bUpdateStorageNetworkIpRange\x12D.cloudstack.management.network.v1.UpdateStorageNetworkIpRangeRequest\x1aE.cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cDeleteNetworkServiceProvider\x12E.cloudstack.management.network.v1.DeleteNetworkServiceProviderRequest\x1aF.cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse\"\x00\x12y\n" +
-	"\n" +
-	"MigrateVPC\x123.cloudstack.management.network.v1.MigrateVPCRequest\x1a4.cloudstack.management.network.v1.MigrateVPCResponse\"\x00\x12\xac\x01\n" +
-	"\x1bListNetworkServiceProviders\x12D.cloudstack.management.network.v1.ListNetworkServiceProvidersRequest\x1aE.cloudstack.management.network.v1.ListNetworkServiceProvidersResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ListIpv4SubnetsForZone\x12?.cloudstack.management.network.v1.ListIpv4SubnetsForZoneRequest\x1a@.cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse\"\x00\x12\x82\x01\n" +
-	"\rDeleteNetwork\x126.cloudstack.management.network.v1.DeleteNetworkRequest\x1a7.cloudstack.management.network.v1.DeleteNetworkResponse\"\x00\x12\x9a\x01\n" +
-	"\x15UpdateNetworkOffering\x12>.cloudstack.management.network.v1.UpdateNetworkOfferingRequest\x1a?.cloudstack.management.network.v1.UpdateNetworkOfferingResponse\"\x00\x12\xb8\x01\n" +
-	"\x1fCreateIpv4SubnetForGuestNetwork\x12H.cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkRequest\x1aI.cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse\"\x00\x12\xac\x01\n" +
-	"\x1bListNetworkIsolationMethods\x12D.cloudstack.management.network.v1.ListNetworkIsolationMethodsRequest\x1aE.cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse\"\x00\x12\xa6\x01\n" +
-	"\x19AddNetworkServiceProvider\x12B.cloudstack.management.network.v1.AddNetworkServiceProviderRequest\x1aC.cloudstack.management.network.v1.AddNetworkServiceProviderResponse\"\x00\x12\x85\x01\n" +
-	"\fListNetworks\x125.cloudstack.management.network.v1.ListNetworksRequest\x1a6.cloudstack.management.network.v1.ListNetworksResponse\"\x06\xc2>\x03\xc0>\x01\x12\x88\x01\n" +
-	"\x0fListNetworkACLs\x128.cloudstack.management.network.v1.ListNetworkACLsRequest\x1a9.cloudstack.management.network.v1.ListNetworkACLsResponse\"\x00\x12\xb5\x01\n" +
-	"\x1eCreateManagementNetworkIpRange\x12G.cloudstack.management.network.v1.CreateManagementNetworkIpRangeRequest\x1aH.cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cListSupportedNetworkServices\x12E.cloudstack.management.network.v1.ListSupportedNetworkServicesRequest\x1aF.cloudstack.management.network.v1.ListSupportedNetworkServicesResponse\"\x00\x12\x9a\x01\n" +
-	"\x15UpdatePhysicalNetwork\x12>.cloudstack.management.network.v1.UpdatePhysicalNetworkRequest\x1a?.cloudstack.management.network.v1.UpdatePhysicalNetworkResponse\"\x00\x12\x97\x01\n" +
-	"\x14CreateNetworkACLList\x12=.cloudstack.management.network.v1.CreateNetworkACLListRequest\x1a>.cloudstack.management.network.v1.CreateNetworkACLListResponse\"\x00\x12\xa0\x01\n" +
-	"\x17CreateNetworkCmdByAdmin\x12@.cloudstack.management.network.v1.CreateNetworkCmdByAdminRequest\x1aA.cloudstack.management.network.v1.CreateNetworkCmdByAdminResponse\"\x00\x12\xac\x01\n" +
-	"\x1bDeleteStorageNetworkIpRange\x12D.cloudstack.management.network.v1.DeleteStorageNetworkIpRangeRequest\x1aE.cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse\"\x00\x12\xa0\x01\n" +
-	"\x17DeleteIpv4SubnetForZone\x12@.cloudstack.management.network.v1.DeleteIpv4SubnetForZoneRequest\x1aA.cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse\"\x00\x12\x9d\x01\n" +
+	"\x1cListDedicatedGuestVlanRanges\x12E.cloudstack.management.network.v1.ListDedicatedGuestVlanRangesRequest\x1aF.cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse\"\x00\x12\xa0\x01\n" +
+	"\x17DeleteIpv4SubnetForZone\x12@.cloudstack.management.network.v1.DeleteIpv4SubnetForZoneRequest\x1aA.cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse\"\x00\x12\x97\x01\n" +
+	"\x14DeleteNetworkACLList\x12=.cloudstack.management.network.v1.DeleteNetworkACLListRequest\x1a>.cloudstack.management.network.v1.DeleteNetworkACLListResponse\"\x00\x12\xb5\x01\n" +
+	"\x1eReleaseDedicatedGuestVlanRange\x12G.cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeRequest\x1aH.cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse\"\x00\x12\x9a\x01\n" +
+	"\x15DeletePhysicalNetwork\x12>.cloudstack.management.network.v1.DeletePhysicalNetworkRequest\x1a?.cloudstack.management.network.v1.DeletePhysicalNetworkResponse\"\x00\x12\xa0\x01\n" +
+	"\x17UpdateIpv4SubnetForZone\x12@.cloudstack.management.network.v1.UpdateIpv4SubnetForZoneRequest\x1aA.cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse\"\x00\x12\xac\x01\n" +
+	"\x1bListNetworkIsolationMethods\x12D.cloudstack.management.network.v1.ListNetworkIsolationMethodsRequest\x1aE.cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse\"\x00\x12\x9a\x01\n" +
+	"\x15CreatePhysicalNetwork\x12>.cloudstack.management.network.v1.CreatePhysicalNetworkRequest\x1a?.cloudstack.management.network.v1.CreatePhysicalNetworkResponse\"\x00\x12\x97\x01\n" +
+	"\x14ListNetworkProtocols\x12=.cloudstack.management.network.v1.ListNetworkProtocolsRequest\x1a>.cloudstack.management.network.v1.ListNetworkProtocolsResponse\"\x00\x12\x97\x01\n" +
+	"\x14CreateNetworkACLList\x12=.cloudstack.management.network.v1.CreateNetworkACLListRequest\x1a>.cloudstack.management.network.v1.CreateNetworkACLListResponse\"\x00\x12\x9d\x01\n" +
+	"\x16DedicateGuestVlanRange\x12?.cloudstack.management.network.v1.DedicateGuestVlanRangeRequest\x1a@.cloudstack.management.network.v1.DedicateGuestVlanRangeResponse\"\x00\x12\x8b\x01\n" +
+	"\x10DeleteNetworkACL\x129.cloudstack.management.network.v1.DeleteNetworkACLRequest\x1a:.cloudstack.management.network.v1.DeleteNetworkACLResponse\"\x00\x12\xa0\x01\n" +
+	"\x17UpdateNetworkCmdByAdmin\x12@.cloudstack.management.network.v1.UpdateNetworkCmdByAdminRequest\x1aA.cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse\"\x00\x12\xa6\x01\n" +
+	"\x19ListStorageNetworkIpRange\x12B.cloudstack.management.network.v1.ListStorageNetworkIpRangeRequest\x1aC.cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse\"\x00\x12\x85\x01\n" +
+	"\x0eMigrateNetwork\x127.cloudstack.management.network.v1.MigrateNetworkRequest\x1a8.cloudstack.management.network.v1.MigrateNetworkResponse\"\x00\x12\xbe\x01\n" +
+	"!UpdatePodManagementNetworkIpRange\x12J.cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeRequest\x1aK.cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse\"\x00\x12\xbe\x01\n" +
+	"!ReleaseDedicatedIpv4SubnetForZone\x12J.cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneRequest\x1aK.cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse\"\x00\x12\x8b\x01\n" +
+	"\x10AddNetworkDevice\x129.cloudstack.management.network.v1.AddNetworkDeviceRequest\x1a:.cloudstack.management.network.v1.AddNetworkDeviceResponse\"\x00\x12\x9a\x01\n" +
+	"\x15DeleteNetworkOffering\x12>.cloudstack.management.network.v1.DeleteNetworkOfferingRequest\x1a?.cloudstack.management.network.v1.DeleteNetworkOfferingResponse\"\x00\x12\x9a\x01\n" +
+	"\x15UpdatePhysicalNetwork\x12>.cloudstack.management.network.v1.UpdatePhysicalNetworkRequest\x1a?.cloudstack.management.network.v1.UpdatePhysicalNetworkResponse\"\x00\x12\xb5\x01\n" +
+	"\x1eCreateManagementNetworkIpRange\x12G.cloudstack.management.network.v1.CreateManagementNetworkIpRangeRequest\x1aH.cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse\"\x00\x12\x82\x01\n" +
+	"\rDeleteNetwork\x126.cloudstack.management.network.v1.DeleteNetworkRequest\x1a7.cloudstack.management.network.v1.DeleteNetworkResponse\"\x00\x12\xac\x01\n" +
+	"\x1bListNetworkServiceProviders\x12D.cloudstack.management.network.v1.ListNetworkServiceProvidersRequest\x1aE.cloudstack.management.network.v1.ListNetworkServiceProvidersResponse\"\x00\x12\x8b\x01\n" +
+	"\x10CreateNetworkACL\x129.cloudstack.management.network.v1.CreateNetworkACLRequest\x1a:.cloudstack.management.network.v1.CreateNetworkACLResponse\"\x00\x12\xaf\x01\n" +
+	"\x1cListSupportedNetworkServices\x12E.cloudstack.management.network.v1.ListSupportedNetworkServicesRequest\x1aF.cloudstack.management.network.v1.ListSupportedNetworkServicesResponse\"\x00\x12\x94\x01\n" +
+	"\x13ListNetworkACLLists\x12<.cloudstack.management.network.v1.ListNetworkACLListsRequest\x1a=.cloudstack.management.network.v1.ListNetworkACLListsResponse\"\x00\x12\x9d\x01\n" +
+	"\x16ListIpv4SubnetsForZone\x12?.cloudstack.management.network.v1.ListIpv4SubnetsForZoneRequest\x1a@.cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse\"\x00\x12\x8e\x01\n" +
+	"\x11ListNetworkDevice\x12:.cloudstack.management.network.v1.ListNetworkDeviceRequest\x1a;.cloudstack.management.network.v1.ListNetworkDeviceResponse\"\x00\x12\x88\x01\n" +
+	"\x0fListNetworkACLs\x128.cloudstack.management.network.v1.ListNetworkACLsRequest\x1a9.cloudstack.management.network.v1.ListNetworkACLsResponse\"\x00\x12\x97\x01\n" +
+	"\x14UpdateNetworkACLList\x12=.cloudstack.management.network.v1.UpdateNetworkACLListRequest\x1a>.cloudstack.management.network.v1.UpdateNetworkACLListResponse\"\x00\x12\xaf\x01\n" +
+	"\x1cCreateGuestNetworkIpv6Prefix\x12E.cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixRequest\x1aF.cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse\"\x00\x12\xac\x01\n" +
+	"\x1bDeleteStorageNetworkIpRange\x12D.cloudstack.management.network.v1.DeleteStorageNetworkIpRangeRequest\x1aE.cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse\"\x00\x12\x9d\x01\n" +
 	"\x16ListNetworkPermissions\x12?.cloudstack.management.network.v1.ListNetworkPermissionsRequest\x1a@.cloudstack.management.network.v1.ListNetworkPermissionsResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cListDedicatedGuestVlanRanges\x12E.cloudstack.management.network.v1.ListDedicatedGuestVlanRangesRequest\x1aF.cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse\"\x00\x12\x97\x01\n" +
-	"\x14DeleteNetworkACLList\x12=.cloudstack.management.network.v1.DeleteNetworkACLListRequest\x1a>.cloudstack.management.network.v1.DeleteNetworkACLListResponse\"\x00\x12\x9a\x01\n" +
-	"\x15DeleteNetworkOffering\x12>.cloudstack.management.network.v1.DeleteNetworkOfferingRequest\x1a?.cloudstack.management.network.v1.DeleteNetworkOfferingResponse\"\x00\x12\x91\x01\n" +
-	"\x12MoveNetworkAclItem\x12;.cloudstack.management.network.v1.MoveNetworkAclItemRequest\x1a<.cloudstack.management.network.v1.MoveNetworkAclItemResponse\"\x00\x12\x85\x01\n" +
-	"\x0eListGuestVlans\x127.cloudstack.management.network.v1.ListGuestVlansRequest\x1a8.cloudstack.management.network.v1.ListGuestVlansResponse\"\x00\x12\xa0\x01\n" +
-	"\x17UpdateIpv4SubnetForZone\x12@.cloudstack.management.network.v1.UpdateIpv4SubnetForZoneRequest\x1aA.cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse\"\x00\x12\x9a\x01\n" +
-	"\x15CreatePhysicalNetwork\x12>.cloudstack.management.network.v1.CreatePhysicalNetworkRequest\x1a?.cloudstack.management.network.v1.CreatePhysicalNetworkResponse\"\x00\x12\x9a\x01\n" +
-	"\x15CreateNetworkOffering\x12>.cloudstack.management.network.v1.CreateNetworkOfferingRequest\x1a?.cloudstack.management.network.v1.CreateNetworkOfferingResponse\"\x00\x12\xaf\x01\n" +
-	"\x1cUpdateNetworkServiceProvider\x12E.cloudstack.management.network.v1.UpdateNetworkServiceProviderRequest\x1aF.cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse\"\x00\x12\xac\x01\n" +
-	"\x1bCreateStorageNetworkIpRange\x12D.cloudstack.management.network.v1.CreateStorageNetworkIpRangeRequest\x1aE.cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse\"\x00\x12\xb5\x01\n" +
-	"\x1eListIpv4SubnetsForGuestNetwork\x12G.cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkRequest\x1aH.cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse\"\x00\x12\x94\x01\n" +
-	"\x13DeleteNetworkDevice\x12<.cloudstack.management.network.v1.DeleteNetworkDeviceRequest\x1a=.cloudstack.management.network.v1.DeleteNetworkDeviceResponse\"\x00\x12\x88\x01\n" +
-	"\rCreateNetwork\x126.cloudstack.management.network.v1.CreateNetworkRequest\x1a7.cloudstack.management.network.v1.CreateNetworkResponse\"\x06\xc2>\x03\xc0>\x01\x12\xb5\x01\n" +
-	"\x1eReleaseDedicatedGuestVlanRange\x12G.cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeRequest\x1aH.cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse\"\x00\x12\x97\x01\n" +
-	"\x14ListNetworkProtocols\x12=.cloudstack.management.network.v1.ListNetworkProtocolsRequest\x1a>.cloudstack.management.network.v1.ListNetworkProtocolsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
+	"\x1cListGuestNetworkIpv6Prefixes\x12E.cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesRequest\x1aF.cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse\"\x00\x12\x91\x01\n" +
+	"\x12MoveNetworkAclItem\x12;.cloudstack.management.network.v1.MoveNetworkAclItemRequest\x1a<.cloudstack.management.network.v1.MoveNetworkAclItemResponse\"\x00\x12\xa6\x01\n" +
+	"\x19AddNetworkServiceProvider\x12B.cloudstack.management.network.v1.AddNetworkServiceProviderRequest\x1aC.cloudstack.management.network.v1.AddNetworkServiceProviderResponse\"\x00\x12\xb8\x01\n" +
+	"\x1fDeleteIpv4SubnetForGuestNetwork\x12H.cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkRequest\x1aI.cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse\"\x00\x12\xa3\x01\n" +
+	"\x18RemoveNetworkPermissions\x12A.cloudstack.management.network.v1.RemoveNetworkPermissionsRequest\x1aB.cloudstack.management.network.v1.RemoveNetworkPermissionsResponse\"\x00\x12\x9a\x01\n" +
+	"\x15CreateNetworkOffering\x12>.cloudstack.management.network.v1.CreateNetworkOfferingRequest\x1a?.cloudstack.management.network.v1.CreateNetworkOfferingResponse\"\x00\x12\x97\x01\n" +
+	"\x14UpdateNetworkACLItem\x12=.cloudstack.management.network.v1.UpdateNetworkACLItemRequest\x1a>.cloudstack.management.network.v1.UpdateNetworkACLItemResponse\"\x00\x12\x88\x01\n" +
+	"\rCreateNetwork\x126.cloudstack.management.network.v1.CreateNetworkRequest\x1a7.cloudstack.management.network.v1.CreateNetworkResponse\"\x06\xc2>\x03\xc0>\x01\x12\xaf\x01\n" +
+	"\x1cDeleteNetworkServiceProvider\x12E.cloudstack.management.network.v1.DeleteNetworkServiceProviderRequest\x1aF.cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse\"\x00\x12\x9a\x01\n" +
+	"\x15UpdateNetworkOffering\x12>.cloudstack.management.network.v1.UpdateNetworkOfferingRequest\x1a?.cloudstack.management.network.v1.UpdateNetworkOfferingResponse\"\x00\x12\xb8\x01\n" +
+	"\x1fCreateIpv4SubnetForGuestNetwork\x12H.cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkRequest\x1aI.cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse\"\x00\x12\xa0\x01\n" +
+	"\x17ResetNetworkPermissions\x12@.cloudstack.management.network.v1.ResetNetworkPermissionsRequest\x1aA.cloudstack.management.network.v1.ResetNetworkPermissionsResponse\"\x00\x12\x94\x01\n" +
+	"\x13DeleteNetworkDevice\x12<.cloudstack.management.network.v1.DeleteNetworkDeviceRequest\x1a=.cloudstack.management.network.v1.DeleteNetworkDeviceResponse\"\x00\x12\x97\x01\n" +
+	"\x14ListNetworkOfferings\x12=.cloudstack.management.network.v1.ListNetworkOfferingsRequest\x1a>.cloudstack.management.network.v1.ListNetworkOfferingsResponse\"\x00\x12\x85\x01\n" +
+	"\x0eRestartNetwork\x127.cloudstack.management.network.v1.RestartNetworkRequest\x1a8.cloudstack.management.network.v1.RestartNetworkResponse\"\x00\x12\xaf\x01\n" +
+	"\x1cDeleteGuestNetworkIpv6Prefix\x12E.cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixRequest\x1aF.cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse\"\x00\x12\xa0\x01\n" +
+	"\x17CreateIpv4SubnetForZone\x12@.cloudstack.management.network.v1.CreateIpv4SubnetForZoneRequest\x1aA.cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse\"\x00\x12\xac\x01\n" +
+	"\x1bUpdateStorageNetworkIpRange\x12D.cloudstack.management.network.v1.UpdateStorageNetworkIpRangeRequest\x1aE.cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse\"\x00\x12\x85\x01\n" +
+	"\fListNetworks\x125.cloudstack.management.network.v1.ListNetworksRequest\x1a6.cloudstack.management.network.v1.ListNetworksResponse\"\x06\xc2>\x03\xc0>\x01\x12\x9a\x01\n" +
+	"\x15ReplaceNetworkACLList\x12>.cloudstack.management.network.v1.ReplaceNetworkACLListRequest\x1a?.cloudstack.management.network.v1.ReplaceNetworkACLListResponse\"\x00\x12\xa3\x01\n" +
+	"\x18CreateNetworkPermissions\x12A.cloudstack.management.network.v1.CreateNetworkPermissionsRequest\x1aB.cloudstack.management.network.v1.CreateNetworkPermissionsResponse\"\x00\x12\x85\x01\n" +
+	"\x0eListGuestVlans\x127.cloudstack.management.network.v1.ListGuestVlansRequest\x1a8.cloudstack.management.network.v1.ListGuestVlansResponse\"\x00\x12\xac\x01\n" +
+	"\x1bCreateStorageNetworkIpRange\x12D.cloudstack.management.network.v1.CreateStorageNetworkIpRangeRequest\x1aE.cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse\"\x00\x12\x88\x01\n" +
+	"\rUpdateNetwork\x126.cloudstack.management.network.v1.UpdateNetworkRequest\x1a7.cloudstack.management.network.v1.UpdateNetworkResponse\"\x06\xc2>\x03\xc0>\x01\x12y\n" +
+	"\n" +
+	"MigrateVPC\x123.cloudstack.management.network.v1.MigrateVPCRequest\x1a4.cloudstack.management.network.v1.MigrateVPCResponse\"\x00\x12\x97\x01\n" +
+	"\x14ListPhysicalNetworks\x12=.cloudstack.management.network.v1.ListPhysicalNetworksRequest\x1a>.cloudstack.management.network.v1.ListPhysicalNetworksResponse\"\x00\x12\xb5\x01\n" +
+	"\x1eListIpv4SubnetsForGuestNetwork\x12G.cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkRequest\x1aH.cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse\"\x00\x12\xaf\x01\n" +
+	"\x1cUpdateNetworkServiceProvider\x12E.cloudstack.management.network.v1.UpdateNetworkServiceProviderRequest\x1aF.cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
 	"$com.cloudstack.management.network.v1B\x0fNetworkGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/network/v1;networkv1\xa2\x02\x03CMN\xaa\x02 Cloudstack.Management.Network.V1\xca\x02 Cloudstack\\Management\\Network\\V1\xe2\x02,Cloudstack\\Management\\Network\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Network::V1b\beditionsp\xe8\a"
 
 var (
@@ -13539,373 +13079,370 @@ func file_cloudstack_management_network_v1_network_gen_proto_rawDescGZIP() []byt
 	return file_cloudstack_management_network_v1_network_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_network_v1_network_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 157)
+var file_cloudstack_management_network_v1_network_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_cloudstack_management_network_v1_network_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 155)
 var file_cloudstack_management_network_v1_network_gen_proto_goTypes = []any{
-	(*DedicateIpv4SubnetForZoneRequest)(nil),          // 0: cloudstack.management.network.v1.DedicateIpv4SubnetForZoneRequest
-	(*DedicateIpv4SubnetForZoneResponse)(nil),         // 1: cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse
-	(*ListNetworkOfferingsRequest)(nil),               // 2: cloudstack.management.network.v1.ListNetworkOfferingsRequest
-	(*ListNetworkOfferingsResponse)(nil),              // 3: cloudstack.management.network.v1.ListNetworkOfferingsResponse
-	(*ResetNetworkPermissionsRequest)(nil),            // 4: cloudstack.management.network.v1.ResetNetworkPermissionsRequest
-	(*ResetNetworkPermissionsResponse)(nil),           // 5: cloudstack.management.network.v1.ResetNetworkPermissionsResponse
-	(*UpdateNetworkACLItemRequest)(nil),               // 6: cloudstack.management.network.v1.UpdateNetworkACLItemRequest
-	(*UpdateNetworkACLItemResponse)(nil),              // 7: cloudstack.management.network.v1.UpdateNetworkACLItemResponse
-	(*DeleteNetworkACLRequest)(nil),                   // 8: cloudstack.management.network.v1.DeleteNetworkACLRequest
-	(*DeleteNetworkACLResponse)(nil),                  // 9: cloudstack.management.network.v1.DeleteNetworkACLResponse
-	(*RestartNetworkRequest)(nil),                     // 10: cloudstack.management.network.v1.RestartNetworkRequest
-	(*RestartNetworkResponse)(nil),                    // 11: cloudstack.management.network.v1.RestartNetworkResponse
-	(*CreateIpv4SubnetForZoneRequest)(nil),            // 12: cloudstack.management.network.v1.CreateIpv4SubnetForZoneRequest
-	(*CreateIpv4SubnetForZoneResponse)(nil),           // 13: cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse
-	(*AddNetworkDeviceRequest)(nil),                   // 14: cloudstack.management.network.v1.AddNetworkDeviceRequest
-	(*AddNetworkDeviceResponse)(nil),                  // 15: cloudstack.management.network.v1.AddNetworkDeviceResponse
-	(*UpdateNetworkACLListRequest)(nil),               // 16: cloudstack.management.network.v1.UpdateNetworkACLListRequest
-	(*UpdateNetworkACLListResponse)(nil),              // 17: cloudstack.management.network.v1.UpdateNetworkACLListResponse
-	(*CreateNetworkACLRequest)(nil),                   // 18: cloudstack.management.network.v1.CreateNetworkACLRequest
-	(*CreateNetworkACLResponse)(nil),                  // 19: cloudstack.management.network.v1.CreateNetworkACLResponse
-	(*UpdatePodManagementNetworkIpRangeRequest)(nil),  // 20: cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeRequest
-	(*UpdatePodManagementNetworkIpRangeResponse)(nil), // 21: cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse
-	(*ListGuestNetworkIpv6PrefixesRequest)(nil),       // 22: cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesRequest
-	(*ListGuestNetworkIpv6PrefixesResponse)(nil),      // 23: cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse
-	(*UpdateNetworkCmdByAdminRequest)(nil),            // 24: cloudstack.management.network.v1.UpdateNetworkCmdByAdminRequest
-	(*UpdateNetworkCmdByAdminResponse)(nil),           // 25: cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse
-	(*CreateGuestNetworkIpv6PrefixRequest)(nil),       // 26: cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixRequest
-	(*CreateGuestNetworkIpv6PrefixResponse)(nil),      // 27: cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse
-	(*ListStorageNetworkIpRangeRequest)(nil),          // 28: cloudstack.management.network.v1.ListStorageNetworkIpRangeRequest
-	(*ListStorageNetworkIpRangeResponse)(nil),         // 29: cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse
-	(*ListPhysicalNetworksRequest)(nil),               // 30: cloudstack.management.network.v1.ListPhysicalNetworksRequest
-	(*ListPhysicalNetworksResponse)(nil),              // 31: cloudstack.management.network.v1.ListPhysicalNetworksResponse
-	(*UpdateNetworkRequest)(nil),                      // 32: cloudstack.management.network.v1.UpdateNetworkRequest
-	(*UpdateNetworkResponse)(nil),                     // 33: cloudstack.management.network.v1.UpdateNetworkResponse
-	(*CreateNetworkPermissionsRequest)(nil),           // 34: cloudstack.management.network.v1.CreateNetworkPermissionsRequest
-	(*CreateNetworkPermissionsResponse)(nil),          // 35: cloudstack.management.network.v1.CreateNetworkPermissionsResponse
-	(*DeleteIpv4SubnetForGuestNetworkRequest)(nil),    // 36: cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkRequest
-	(*DeleteIpv4SubnetForGuestNetworkResponse)(nil),   // 37: cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse
-	(*ReplaceNetworkACLListRequest)(nil),              // 38: cloudstack.management.network.v1.ReplaceNetworkACLListRequest
-	(*ReplaceNetworkACLListResponse)(nil),             // 39: cloudstack.management.network.v1.ReplaceNetworkACLListResponse
-	(*DeletePhysicalNetworkRequest)(nil),              // 40: cloudstack.management.network.v1.DeletePhysicalNetworkRequest
-	(*DeletePhysicalNetworkResponse)(nil),             // 41: cloudstack.management.network.v1.DeletePhysicalNetworkResponse
-	(*ListNetworkDeviceRequest)(nil),                  // 42: cloudstack.management.network.v1.ListNetworkDeviceRequest
-	(*ListNetworkDeviceResponse)(nil),                 // 43: cloudstack.management.network.v1.ListNetworkDeviceResponse
-	(*RemoveNetworkPermissionsRequest)(nil),           // 44: cloudstack.management.network.v1.RemoveNetworkPermissionsRequest
-	(*RemoveNetworkPermissionsResponse)(nil),          // 45: cloudstack.management.network.v1.RemoveNetworkPermissionsResponse
-	(*ReleaseDedicatedIpv4SubnetForZoneRequest)(nil),  // 46: cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneRequest
-	(*ReleaseDedicatedIpv4SubnetForZoneResponse)(nil), // 47: cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse
-	(*ListNetworkACLListsRequest)(nil),                // 48: cloudstack.management.network.v1.ListNetworkACLListsRequest
-	(*ListNetworkACLListsResponse)(nil),               // 49: cloudstack.management.network.v1.ListNetworkACLListsResponse
-	(*DeleteManagementNetworkIpRangeRequest)(nil),     // 50: cloudstack.management.network.v1.DeleteManagementNetworkIpRangeRequest
-	(*DeleteManagementNetworkIpRangeResponse)(nil),    // 51: cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse
-	(*DeleteGuestNetworkIpv6PrefixRequest)(nil),       // 52: cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixRequest
-	(*DeleteGuestNetworkIpv6PrefixResponse)(nil),      // 53: cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse
-	(*MigrateNetworkRequest)(nil),                     // 54: cloudstack.management.network.v1.MigrateNetworkRequest
-	(*MigrateNetworkResponse)(nil),                    // 55: cloudstack.management.network.v1.MigrateNetworkResponse
-	(*DedicateGuestVlanRangeRequest)(nil),             // 56: cloudstack.management.network.v1.DedicateGuestVlanRangeRequest
-	(*DedicateGuestVlanRangeResponse)(nil),            // 57: cloudstack.management.network.v1.DedicateGuestVlanRangeResponse
-	(*UpdateStorageNetworkIpRangeRequest)(nil),        // 58: cloudstack.management.network.v1.UpdateStorageNetworkIpRangeRequest
-	(*UpdateStorageNetworkIpRangeResponse)(nil),       // 59: cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse
-	(*DeleteNetworkServiceProviderRequest)(nil),       // 60: cloudstack.management.network.v1.DeleteNetworkServiceProviderRequest
-	(*DeleteNetworkServiceProviderResponse)(nil),      // 61: cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse
-	(*MigrateVPCRequest)(nil),                         // 62: cloudstack.management.network.v1.MigrateVPCRequest
-	(*MigrateVPCResponse)(nil),                        // 63: cloudstack.management.network.v1.MigrateVPCResponse
-	(*ListNetworkServiceProvidersRequest)(nil),        // 64: cloudstack.management.network.v1.ListNetworkServiceProvidersRequest
-	(*ListNetworkServiceProvidersResponse)(nil),       // 65: cloudstack.management.network.v1.ListNetworkServiceProvidersResponse
-	(*ListIpv4SubnetsForZoneRequest)(nil),             // 66: cloudstack.management.network.v1.ListIpv4SubnetsForZoneRequest
-	(*ListIpv4SubnetsForZoneResponse)(nil),            // 67: cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse
-	(*DeleteNetworkRequest)(nil),                      // 68: cloudstack.management.network.v1.DeleteNetworkRequest
-	(*DeleteNetworkResponse)(nil),                     // 69: cloudstack.management.network.v1.DeleteNetworkResponse
-	(*UpdateNetworkOfferingRequest)(nil),              // 70: cloudstack.management.network.v1.UpdateNetworkOfferingRequest
-	(*UpdateNetworkOfferingResponse)(nil),             // 71: cloudstack.management.network.v1.UpdateNetworkOfferingResponse
-	(*CreateIpv4SubnetForGuestNetworkRequest)(nil),    // 72: cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkRequest
-	(*CreateIpv4SubnetForGuestNetworkResponse)(nil),   // 73: cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse
-	(*ListNetworkIsolationMethodsRequest)(nil),        // 74: cloudstack.management.network.v1.ListNetworkIsolationMethodsRequest
-	(*ListNetworkIsolationMethodsResponse)(nil),       // 75: cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse
-	(*AddNetworkServiceProviderRequest)(nil),          // 76: cloudstack.management.network.v1.AddNetworkServiceProviderRequest
-	(*AddNetworkServiceProviderResponse)(nil),         // 77: cloudstack.management.network.v1.AddNetworkServiceProviderResponse
-	(*ListNetworksRequest)(nil),                       // 78: cloudstack.management.network.v1.ListNetworksRequest
-	(*ListNetworksResponse)(nil),                      // 79: cloudstack.management.network.v1.ListNetworksResponse
-	(*ListNetworkACLsRequest)(nil),                    // 80: cloudstack.management.network.v1.ListNetworkACLsRequest
-	(*ListNetworkACLsResponse)(nil),                   // 81: cloudstack.management.network.v1.ListNetworkACLsResponse
-	(*CreateManagementNetworkIpRangeRequest)(nil),     // 82: cloudstack.management.network.v1.CreateManagementNetworkIpRangeRequest
-	(*CreateManagementNetworkIpRangeResponse)(nil),    // 83: cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse
-	(*ListSupportedNetworkServicesRequest)(nil),       // 84: cloudstack.management.network.v1.ListSupportedNetworkServicesRequest
-	(*ListSupportedNetworkServicesResponse)(nil),      // 85: cloudstack.management.network.v1.ListSupportedNetworkServicesResponse
-	(*UpdatePhysicalNetworkRequest)(nil),              // 86: cloudstack.management.network.v1.UpdatePhysicalNetworkRequest
-	(*UpdatePhysicalNetworkResponse)(nil),             // 87: cloudstack.management.network.v1.UpdatePhysicalNetworkResponse
-	(*CreateNetworkACLListRequest)(nil),               // 88: cloudstack.management.network.v1.CreateNetworkACLListRequest
-	(*CreateNetworkACLListResponse)(nil),              // 89: cloudstack.management.network.v1.CreateNetworkACLListResponse
-	(*CreateNetworkCmdByAdminRequest)(nil),            // 90: cloudstack.management.network.v1.CreateNetworkCmdByAdminRequest
-	(*CreateNetworkCmdByAdminResponse)(nil),           // 91: cloudstack.management.network.v1.CreateNetworkCmdByAdminResponse
-	(*DeleteStorageNetworkIpRangeRequest)(nil),        // 92: cloudstack.management.network.v1.DeleteStorageNetworkIpRangeRequest
-	(*DeleteStorageNetworkIpRangeResponse)(nil),       // 93: cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse
-	(*DeleteIpv4SubnetForZoneRequest)(nil),            // 94: cloudstack.management.network.v1.DeleteIpv4SubnetForZoneRequest
-	(*DeleteIpv4SubnetForZoneResponse)(nil),           // 95: cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse
-	(*ListNetworkPermissionsRequest)(nil),             // 96: cloudstack.management.network.v1.ListNetworkPermissionsRequest
-	(*ListNetworkPermissionsResponse)(nil),            // 97: cloudstack.management.network.v1.ListNetworkPermissionsResponse
-	(*ListDedicatedGuestVlanRangesRequest)(nil),       // 98: cloudstack.management.network.v1.ListDedicatedGuestVlanRangesRequest
-	(*ListDedicatedGuestVlanRangesResponse)(nil),      // 99: cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse
-	(*DeleteNetworkACLListRequest)(nil),               // 100: cloudstack.management.network.v1.DeleteNetworkACLListRequest
-	(*DeleteNetworkACLListResponse)(nil),              // 101: cloudstack.management.network.v1.DeleteNetworkACLListResponse
-	(*DeleteNetworkOfferingRequest)(nil),              // 102: cloudstack.management.network.v1.DeleteNetworkOfferingRequest
-	(*DeleteNetworkOfferingResponse)(nil),             // 103: cloudstack.management.network.v1.DeleteNetworkOfferingResponse
-	(*MoveNetworkAclItemRequest)(nil),                 // 104: cloudstack.management.network.v1.MoveNetworkAclItemRequest
-	(*MoveNetworkAclItemResponse)(nil),                // 105: cloudstack.management.network.v1.MoveNetworkAclItemResponse
-	(*ListGuestVlansRequest)(nil),                     // 106: cloudstack.management.network.v1.ListGuestVlansRequest
-	(*ListGuestVlansResponse)(nil),                    // 107: cloudstack.management.network.v1.ListGuestVlansResponse
-	(*UpdateIpv4SubnetForZoneRequest)(nil),            // 108: cloudstack.management.network.v1.UpdateIpv4SubnetForZoneRequest
-	(*UpdateIpv4SubnetForZoneResponse)(nil),           // 109: cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse
-	(*CreatePhysicalNetworkRequest)(nil),              // 110: cloudstack.management.network.v1.CreatePhysicalNetworkRequest
-	(*CreatePhysicalNetworkResponse)(nil),             // 111: cloudstack.management.network.v1.CreatePhysicalNetworkResponse
-	(*CreateNetworkOfferingRequest)(nil),              // 112: cloudstack.management.network.v1.CreateNetworkOfferingRequest
-	(*CreateNetworkOfferingResponse)(nil),             // 113: cloudstack.management.network.v1.CreateNetworkOfferingResponse
-	(*UpdateNetworkServiceProviderRequest)(nil),       // 114: cloudstack.management.network.v1.UpdateNetworkServiceProviderRequest
-	(*UpdateNetworkServiceProviderResponse)(nil),      // 115: cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse
-	(*CreateStorageNetworkIpRangeRequest)(nil),        // 116: cloudstack.management.network.v1.CreateStorageNetworkIpRangeRequest
-	(*CreateStorageNetworkIpRangeResponse)(nil),       // 117: cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse
-	(*ListIpv4SubnetsForGuestNetworkRequest)(nil),     // 118: cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkRequest
-	(*ListIpv4SubnetsForGuestNetworkResponse)(nil),    // 119: cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse
-	(*DeleteNetworkDeviceRequest)(nil),                // 120: cloudstack.management.network.v1.DeleteNetworkDeviceRequest
-	(*DeleteNetworkDeviceResponse)(nil),               // 121: cloudstack.management.network.v1.DeleteNetworkDeviceResponse
-	(*CreateNetworkRequest)(nil),                      // 122: cloudstack.management.network.v1.CreateNetworkRequest
-	(*CreateNetworkResponse)(nil),                     // 123: cloudstack.management.network.v1.CreateNetworkResponse
-	(*ReleaseDedicatedGuestVlanRangeRequest)(nil),     // 124: cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeRequest
-	(*ReleaseDedicatedGuestVlanRangeResponse)(nil),    // 125: cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse
-	(*ListNetworkProtocolsRequest)(nil),               // 126: cloudstack.management.network.v1.ListNetworkProtocolsRequest
-	(*ListNetworkProtocolsResponse)(nil),              // 127: cloudstack.management.network.v1.ListNetworkProtocolsResponse
-	(*NetworkOffering)(nil),                           // 128: cloudstack.management.network.v1.NetworkOffering
-	(*DataCenterGuestIpv6Prefix)(nil),                 // 129: cloudstack.management.network.v1.DataCenterGuestIpv6Prefix
+	(ProtocolType)(0),                                 // 0: cloudstack.management.network.v1.ProtocolType
+	(*DedicateIpv4SubnetForZoneRequest)(nil),          // 1: cloudstack.management.network.v1.DedicateIpv4SubnetForZoneRequest
+	(*DedicateIpv4SubnetForZoneResponse)(nil),         // 2: cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse
+	(*DeleteManagementNetworkIpRangeRequest)(nil),     // 3: cloudstack.management.network.v1.DeleteManagementNetworkIpRangeRequest
+	(*DeleteManagementNetworkIpRangeResponse)(nil),    // 4: cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse
+	(*ListDedicatedGuestVlanRangesRequest)(nil),       // 5: cloudstack.management.network.v1.ListDedicatedGuestVlanRangesRequest
+	(*ListDedicatedGuestVlanRangesResponse)(nil),      // 6: cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse
+	(*DeleteIpv4SubnetForZoneRequest)(nil),            // 7: cloudstack.management.network.v1.DeleteIpv4SubnetForZoneRequest
+	(*DeleteIpv4SubnetForZoneResponse)(nil),           // 8: cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse
+	(*DeleteNetworkACLListRequest)(nil),               // 9: cloudstack.management.network.v1.DeleteNetworkACLListRequest
+	(*DeleteNetworkACLListResponse)(nil),              // 10: cloudstack.management.network.v1.DeleteNetworkACLListResponse
+	(*ReleaseDedicatedGuestVlanRangeRequest)(nil),     // 11: cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeRequest
+	(*ReleaseDedicatedGuestVlanRangeResponse)(nil),    // 12: cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse
+	(*DeletePhysicalNetworkRequest)(nil),              // 13: cloudstack.management.network.v1.DeletePhysicalNetworkRequest
+	(*DeletePhysicalNetworkResponse)(nil),             // 14: cloudstack.management.network.v1.DeletePhysicalNetworkResponse
+	(*UpdateIpv4SubnetForZoneRequest)(nil),            // 15: cloudstack.management.network.v1.UpdateIpv4SubnetForZoneRequest
+	(*UpdateIpv4SubnetForZoneResponse)(nil),           // 16: cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse
+	(*ListNetworkIsolationMethodsRequest)(nil),        // 17: cloudstack.management.network.v1.ListNetworkIsolationMethodsRequest
+	(*ListNetworkIsolationMethodsResponse)(nil),       // 18: cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse
+	(*CreatePhysicalNetworkRequest)(nil),              // 19: cloudstack.management.network.v1.CreatePhysicalNetworkRequest
+	(*CreatePhysicalNetworkResponse)(nil),             // 20: cloudstack.management.network.v1.CreatePhysicalNetworkResponse
+	(*ListNetworkProtocolsRequest)(nil),               // 21: cloudstack.management.network.v1.ListNetworkProtocolsRequest
+	(*ListNetworkProtocolsResponse)(nil),              // 22: cloudstack.management.network.v1.ListNetworkProtocolsResponse
+	(*CreateNetworkACLListRequest)(nil),               // 23: cloudstack.management.network.v1.CreateNetworkACLListRequest
+	(*CreateNetworkACLListResponse)(nil),              // 24: cloudstack.management.network.v1.CreateNetworkACLListResponse
+	(*DedicateGuestVlanRangeRequest)(nil),             // 25: cloudstack.management.network.v1.DedicateGuestVlanRangeRequest
+	(*DedicateGuestVlanRangeResponse)(nil),            // 26: cloudstack.management.network.v1.DedicateGuestVlanRangeResponse
+	(*DeleteNetworkACLRequest)(nil),                   // 27: cloudstack.management.network.v1.DeleteNetworkACLRequest
+	(*DeleteNetworkACLResponse)(nil),                  // 28: cloudstack.management.network.v1.DeleteNetworkACLResponse
+	(*UpdateNetworkCmdByAdminRequest)(nil),            // 29: cloudstack.management.network.v1.UpdateNetworkCmdByAdminRequest
+	(*UpdateNetworkCmdByAdminResponse)(nil),           // 30: cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse
+	(*ListStorageNetworkIpRangeRequest)(nil),          // 31: cloudstack.management.network.v1.ListStorageNetworkIpRangeRequest
+	(*ListStorageNetworkIpRangeResponse)(nil),         // 32: cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse
+	(*MigrateNetworkRequest)(nil),                     // 33: cloudstack.management.network.v1.MigrateNetworkRequest
+	(*MigrateNetworkResponse)(nil),                    // 34: cloudstack.management.network.v1.MigrateNetworkResponse
+	(*UpdatePodManagementNetworkIpRangeRequest)(nil),  // 35: cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeRequest
+	(*UpdatePodManagementNetworkIpRangeResponse)(nil), // 36: cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse
+	(*ReleaseDedicatedIpv4SubnetForZoneRequest)(nil),  // 37: cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneRequest
+	(*ReleaseDedicatedIpv4SubnetForZoneResponse)(nil), // 38: cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse
+	(*AddNetworkDeviceRequest)(nil),                   // 39: cloudstack.management.network.v1.AddNetworkDeviceRequest
+	(*AddNetworkDeviceResponse)(nil),                  // 40: cloudstack.management.network.v1.AddNetworkDeviceResponse
+	(*DeleteNetworkOfferingRequest)(nil),              // 41: cloudstack.management.network.v1.DeleteNetworkOfferingRequest
+	(*DeleteNetworkOfferingResponse)(nil),             // 42: cloudstack.management.network.v1.DeleteNetworkOfferingResponse
+	(*UpdatePhysicalNetworkRequest)(nil),              // 43: cloudstack.management.network.v1.UpdatePhysicalNetworkRequest
+	(*UpdatePhysicalNetworkResponse)(nil),             // 44: cloudstack.management.network.v1.UpdatePhysicalNetworkResponse
+	(*CreateManagementNetworkIpRangeRequest)(nil),     // 45: cloudstack.management.network.v1.CreateManagementNetworkIpRangeRequest
+	(*CreateManagementNetworkIpRangeResponse)(nil),    // 46: cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse
+	(*DeleteNetworkRequest)(nil),                      // 47: cloudstack.management.network.v1.DeleteNetworkRequest
+	(*DeleteNetworkResponse)(nil),                     // 48: cloudstack.management.network.v1.DeleteNetworkResponse
+	(*ListNetworkServiceProvidersRequest)(nil),        // 49: cloudstack.management.network.v1.ListNetworkServiceProvidersRequest
+	(*ListNetworkServiceProvidersResponse)(nil),       // 50: cloudstack.management.network.v1.ListNetworkServiceProvidersResponse
+	(*CreateNetworkACLRequest)(nil),                   // 51: cloudstack.management.network.v1.CreateNetworkACLRequest
+	(*CreateNetworkACLResponse)(nil),                  // 52: cloudstack.management.network.v1.CreateNetworkACLResponse
+	(*ListSupportedNetworkServicesRequest)(nil),       // 53: cloudstack.management.network.v1.ListSupportedNetworkServicesRequest
+	(*ListSupportedNetworkServicesResponse)(nil),      // 54: cloudstack.management.network.v1.ListSupportedNetworkServicesResponse
+	(*ListNetworkACLListsRequest)(nil),                // 55: cloudstack.management.network.v1.ListNetworkACLListsRequest
+	(*ListNetworkACLListsResponse)(nil),               // 56: cloudstack.management.network.v1.ListNetworkACLListsResponse
+	(*ListIpv4SubnetsForZoneRequest)(nil),             // 57: cloudstack.management.network.v1.ListIpv4SubnetsForZoneRequest
+	(*ListIpv4SubnetsForZoneResponse)(nil),            // 58: cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse
+	(*ListNetworkDeviceRequest)(nil),                  // 59: cloudstack.management.network.v1.ListNetworkDeviceRequest
+	(*ListNetworkDeviceResponse)(nil),                 // 60: cloudstack.management.network.v1.ListNetworkDeviceResponse
+	(*ListNetworkACLsRequest)(nil),                    // 61: cloudstack.management.network.v1.ListNetworkACLsRequest
+	(*ListNetworkACLsResponse)(nil),                   // 62: cloudstack.management.network.v1.ListNetworkACLsResponse
+	(*UpdateNetworkACLListRequest)(nil),               // 63: cloudstack.management.network.v1.UpdateNetworkACLListRequest
+	(*UpdateNetworkACLListResponse)(nil),              // 64: cloudstack.management.network.v1.UpdateNetworkACLListResponse
+	(*CreateGuestNetworkIpv6PrefixRequest)(nil),       // 65: cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixRequest
+	(*CreateGuestNetworkIpv6PrefixResponse)(nil),      // 66: cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse
+	(*DeleteStorageNetworkIpRangeRequest)(nil),        // 67: cloudstack.management.network.v1.DeleteStorageNetworkIpRangeRequest
+	(*DeleteStorageNetworkIpRangeResponse)(nil),       // 68: cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse
+	(*ListNetworkPermissionsRequest)(nil),             // 69: cloudstack.management.network.v1.ListNetworkPermissionsRequest
+	(*ListNetworkPermissionsResponse)(nil),            // 70: cloudstack.management.network.v1.ListNetworkPermissionsResponse
+	(*ListGuestNetworkIpv6PrefixesRequest)(nil),       // 71: cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesRequest
+	(*ListGuestNetworkIpv6PrefixesResponse)(nil),      // 72: cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse
+	(*MoveNetworkAclItemRequest)(nil),                 // 73: cloudstack.management.network.v1.MoveNetworkAclItemRequest
+	(*MoveNetworkAclItemResponse)(nil),                // 74: cloudstack.management.network.v1.MoveNetworkAclItemResponse
+	(*AddNetworkServiceProviderRequest)(nil),          // 75: cloudstack.management.network.v1.AddNetworkServiceProviderRequest
+	(*AddNetworkServiceProviderResponse)(nil),         // 76: cloudstack.management.network.v1.AddNetworkServiceProviderResponse
+	(*DeleteIpv4SubnetForGuestNetworkRequest)(nil),    // 77: cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkRequest
+	(*DeleteIpv4SubnetForGuestNetworkResponse)(nil),   // 78: cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse
+	(*RemoveNetworkPermissionsRequest)(nil),           // 79: cloudstack.management.network.v1.RemoveNetworkPermissionsRequest
+	(*RemoveNetworkPermissionsResponse)(nil),          // 80: cloudstack.management.network.v1.RemoveNetworkPermissionsResponse
+	(*CreateNetworkOfferingRequest)(nil),              // 81: cloudstack.management.network.v1.CreateNetworkOfferingRequest
+	(*CreateNetworkOfferingResponse)(nil),             // 82: cloudstack.management.network.v1.CreateNetworkOfferingResponse
+	(*UpdateNetworkACLItemRequest)(nil),               // 83: cloudstack.management.network.v1.UpdateNetworkACLItemRequest
+	(*UpdateNetworkACLItemResponse)(nil),              // 84: cloudstack.management.network.v1.UpdateNetworkACLItemResponse
+	(*CreateNetworkRequest)(nil),                      // 85: cloudstack.management.network.v1.CreateNetworkRequest
+	(*CreateNetworkResponse)(nil),                     // 86: cloudstack.management.network.v1.CreateNetworkResponse
+	(*DeleteNetworkServiceProviderRequest)(nil),       // 87: cloudstack.management.network.v1.DeleteNetworkServiceProviderRequest
+	(*DeleteNetworkServiceProviderResponse)(nil),      // 88: cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse
+	(*UpdateNetworkOfferingRequest)(nil),              // 89: cloudstack.management.network.v1.UpdateNetworkOfferingRequest
+	(*UpdateNetworkOfferingResponse)(nil),             // 90: cloudstack.management.network.v1.UpdateNetworkOfferingResponse
+	(*CreateIpv4SubnetForGuestNetworkRequest)(nil),    // 91: cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkRequest
+	(*CreateIpv4SubnetForGuestNetworkResponse)(nil),   // 92: cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse
+	(*ResetNetworkPermissionsRequest)(nil),            // 93: cloudstack.management.network.v1.ResetNetworkPermissionsRequest
+	(*ResetNetworkPermissionsResponse)(nil),           // 94: cloudstack.management.network.v1.ResetNetworkPermissionsResponse
+	(*DeleteNetworkDeviceRequest)(nil),                // 95: cloudstack.management.network.v1.DeleteNetworkDeviceRequest
+	(*DeleteNetworkDeviceResponse)(nil),               // 96: cloudstack.management.network.v1.DeleteNetworkDeviceResponse
+	(*ListNetworkOfferingsRequest)(nil),               // 97: cloudstack.management.network.v1.ListNetworkOfferingsRequest
+	(*ListNetworkOfferingsResponse)(nil),              // 98: cloudstack.management.network.v1.ListNetworkOfferingsResponse
+	(*RestartNetworkRequest)(nil),                     // 99: cloudstack.management.network.v1.RestartNetworkRequest
+	(*RestartNetworkResponse)(nil),                    // 100: cloudstack.management.network.v1.RestartNetworkResponse
+	(*DeleteGuestNetworkIpv6PrefixRequest)(nil),       // 101: cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixRequest
+	(*DeleteGuestNetworkIpv6PrefixResponse)(nil),      // 102: cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse
+	(*CreateIpv4SubnetForZoneRequest)(nil),            // 103: cloudstack.management.network.v1.CreateIpv4SubnetForZoneRequest
+	(*CreateIpv4SubnetForZoneResponse)(nil),           // 104: cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse
+	(*UpdateStorageNetworkIpRangeRequest)(nil),        // 105: cloudstack.management.network.v1.UpdateStorageNetworkIpRangeRequest
+	(*UpdateStorageNetworkIpRangeResponse)(nil),       // 106: cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse
+	(*ListNetworksRequest)(nil),                       // 107: cloudstack.management.network.v1.ListNetworksRequest
+	(*ListNetworksResponse)(nil),                      // 108: cloudstack.management.network.v1.ListNetworksResponse
+	(*ReplaceNetworkACLListRequest)(nil),              // 109: cloudstack.management.network.v1.ReplaceNetworkACLListRequest
+	(*ReplaceNetworkACLListResponse)(nil),             // 110: cloudstack.management.network.v1.ReplaceNetworkACLListResponse
+	(*CreateNetworkPermissionsRequest)(nil),           // 111: cloudstack.management.network.v1.CreateNetworkPermissionsRequest
+	(*CreateNetworkPermissionsResponse)(nil),          // 112: cloudstack.management.network.v1.CreateNetworkPermissionsResponse
+	(*ListGuestVlansRequest)(nil),                     // 113: cloudstack.management.network.v1.ListGuestVlansRequest
+	(*ListGuestVlansResponse)(nil),                    // 114: cloudstack.management.network.v1.ListGuestVlansResponse
+	(*CreateStorageNetworkIpRangeRequest)(nil),        // 115: cloudstack.management.network.v1.CreateStorageNetworkIpRangeRequest
+	(*CreateStorageNetworkIpRangeResponse)(nil),       // 116: cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse
+	(*UpdateNetworkRequest)(nil),                      // 117: cloudstack.management.network.v1.UpdateNetworkRequest
+	(*UpdateNetworkResponse)(nil),                     // 118: cloudstack.management.network.v1.UpdateNetworkResponse
+	(*MigrateVPCRequest)(nil),                         // 119: cloudstack.management.network.v1.MigrateVPCRequest
+	(*MigrateVPCResponse)(nil),                        // 120: cloudstack.management.network.v1.MigrateVPCResponse
+	(*ListPhysicalNetworksRequest)(nil),               // 121: cloudstack.management.network.v1.ListPhysicalNetworksRequest
+	(*ListPhysicalNetworksResponse)(nil),              // 122: cloudstack.management.network.v1.ListPhysicalNetworksResponse
+	(*ListIpv4SubnetsForGuestNetworkRequest)(nil),     // 123: cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkRequest
+	(*ListIpv4SubnetsForGuestNetworkResponse)(nil),    // 124: cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse
+	(*UpdateNetworkServiceProviderRequest)(nil),       // 125: cloudstack.management.network.v1.UpdateNetworkServiceProviderRequest
+	(*UpdateNetworkServiceProviderResponse)(nil),      // 126: cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse
+	(*GuestVlanRange)(nil),                            // 127: cloudstack.management.network.v1.GuestVlanRange
+	(*IsolationMethod)(nil),                           // 128: cloudstack.management.network.v1.IsolationMethod
+	(*NetworkProtocol)(nil),                           // 129: cloudstack.management.network.v1.NetworkProtocol
 	(*StorageNetworkIpRange)(nil),                     // 130: cloudstack.management.network.v1.StorageNetworkIpRange
-	(*PhysicalNetwork)(nil),                           // 131: cloudstack.management.network.v1.PhysicalNetwork
-	(*NetworkDevice)(nil),                             // 132: cloudstack.management.network.v1.NetworkDevice
+	(*Provider)(nil),                                  // 131: cloudstack.management.network.v1.Provider
+	(*Service)(nil),                                   // 132: cloudstack.management.network.v1.Service
 	(*NetworkACL)(nil),                                // 133: cloudstack.management.network.v1.NetworkACL
-	(*Provider)(nil),                                  // 134: cloudstack.management.network.v1.Provider
-	(*DataCenterIpv4Subnet)(nil),                      // 135: cloudstack.management.network.v1.DataCenterIpv4Subnet
-	(*IsolationMethod)(nil),                           // 136: cloudstack.management.network.v1.IsolationMethod
-	(*Network)(nil),                                   // 137: cloudstack.management.network.v1.Network
-	(*NetworkACLItem)(nil),                            // 138: cloudstack.management.network.v1.NetworkACLItem
-	(*Service)(nil),                                   // 139: cloudstack.management.network.v1.Service
-	(*NetworkPermissions)(nil),                        // 140: cloudstack.management.network.v1.NetworkPermissions
-	(*GuestVlanRange)(nil),                            // 141: cloudstack.management.network.v1.GuestVlanRange
-	(*GuestVlan)(nil),                                 // 142: cloudstack.management.network.v1.GuestVlan
+	(*DataCenterIpv4Subnet)(nil),                      // 134: cloudstack.management.network.v1.DataCenterIpv4Subnet
+	(*NetworkDevice)(nil),                             // 135: cloudstack.management.network.v1.NetworkDevice
+	(*NetworkACLItem)(nil),                            // 136: cloudstack.management.network.v1.NetworkACLItem
+	(*NetworkPermissions)(nil),                        // 137: cloudstack.management.network.v1.NetworkPermissions
+	(*DataCenterGuestIpv6Prefix)(nil),                 // 138: cloudstack.management.network.v1.DataCenterGuestIpv6Prefix
+	(*NetworkOffering)(nil),                           // 139: cloudstack.management.network.v1.NetworkOffering
+	(*Network)(nil),                                   // 140: cloudstack.management.network.v1.Network
+	(*GuestVlan)(nil),                                 // 141: cloudstack.management.network.v1.GuestVlan
+	(*PhysicalNetwork)(nil),                           // 142: cloudstack.management.network.v1.PhysicalNetwork
 	(*Ipv4SubnetForGuestNetwork)(nil),                 // 143: cloudstack.management.network.v1.Ipv4SubnetForGuestNetwork
-	(*NetworkProtocol)(nil),                           // 144: cloudstack.management.network.v1.NetworkProtocol
-	(*Success)(nil),                                   // 145: cloudstack.management.network.v1.Success
-	(*Item)(nil),                                      // 146: cloudstack.management.network.v1.Item
-	(*Result)(nil),                                    // 147: cloudstack.management.network.v1.Result
-	nil,                                               // 148: cloudstack.management.network.v1.AddNetworkDeviceRequest.ParamListEntry
-	nil,                                               // 149: cloudstack.management.network.v1.ListNetworkDeviceRequest.ParamListEntry
-	nil,                                               // 150: cloudstack.management.network.v1.MigrateVPCRequest.TierNetworkOfferingsEntry
-	nil,                                               // 151: cloudstack.management.network.v1.ListNetworksRequest.TagsEntry
-	nil,                                               // 152: cloudstack.management.network.v1.ListNetworkACLsRequest.TagsEntry
-	nil,                                               // 153: cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceProviderListEntry
-	nil,                                               // 154: cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceCapabilitystListEntry
-	nil,                                               // 155: cloudstack.management.network.v1.CreateNetworkOfferingRequest.DetailsEntry
-	nil,                                               // 156: cloudstack.management.network.v1.Item.DetailsEntry
+	(*Success)(nil),                                   // 144: cloudstack.management.network.v1.Success
+	(*Item)(nil),                                      // 145: cloudstack.management.network.v1.Item
+	(*Result)(nil),                                    // 146: cloudstack.management.network.v1.Result
+	nil,                                               // 147: cloudstack.management.network.v1.AddNetworkDeviceRequest.ParamListEntry
+	nil,                                               // 148: cloudstack.management.network.v1.ListNetworkDeviceRequest.ParamListEntry
+	nil,                                               // 149: cloudstack.management.network.v1.ListNetworkACLsRequest.TagsEntry
+	nil,                                               // 150: cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceProviderListEntry
+	nil,                                               // 151: cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceCapabilitystListEntry
+	nil,                                               // 152: cloudstack.management.network.v1.CreateNetworkOfferingRequest.DetailsEntry
+	nil,                                               // 153: cloudstack.management.network.v1.ListNetworksRequest.TagsEntry
+	nil,                                               // 154: cloudstack.management.network.v1.MigrateVPCRequest.TierNetworkOfferingsEntry
+	nil,                                               // 155: cloudstack.management.network.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_network_v1_network_gen_proto_depIdxs = []int32{
-	147, // 0: cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
-	128, // 1: cloudstack.management.network.v1.ListNetworkOfferingsResponse.items:type_name -> cloudstack.management.network.v1.NetworkOffering
-	147, // 2: cloudstack.management.network.v1.ResetNetworkPermissionsResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 3: cloudstack.management.network.v1.UpdateNetworkACLItemResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 4: cloudstack.management.network.v1.DeleteNetworkACLResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 5: cloudstack.management.network.v1.RestartNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 6: cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
-	148, // 7: cloudstack.management.network.v1.AddNetworkDeviceRequest.param_list:type_name -> cloudstack.management.network.v1.AddNetworkDeviceRequest.ParamListEntry
-	147, // 8: cloudstack.management.network.v1.AddNetworkDeviceResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 9: cloudstack.management.network.v1.UpdateNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 10: cloudstack.management.network.v1.CreateNetworkACLResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 11: cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	129, // 12: cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse.items:type_name -> cloudstack.management.network.v1.DataCenterGuestIpv6Prefix
-	147, // 13: cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 14: cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 0: cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 1: cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	127, // 2: cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse.items:type_name -> cloudstack.management.network.v1.GuestVlanRange
+	146, // 3: cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 4: cloudstack.management.network.v1.DeleteNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 5: cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 6: cloudstack.management.network.v1.DeletePhysicalNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 7: cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
+	128, // 8: cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse.items:type_name -> cloudstack.management.network.v1.IsolationMethod
+	146, // 9: cloudstack.management.network.v1.CreatePhysicalNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	129, // 10: cloudstack.management.network.v1.ListNetworkProtocolsResponse.items:type_name -> cloudstack.management.network.v1.NetworkProtocol
+	146, // 11: cloudstack.management.network.v1.CreateNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 12: cloudstack.management.network.v1.DedicateGuestVlanRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 13: cloudstack.management.network.v1.DeleteNetworkACLResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 14: cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse.result:type_name -> cloudstack.management.network.v1.Result
 	130, // 15: cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse.items:type_name -> cloudstack.management.network.v1.StorageNetworkIpRange
-	131, // 16: cloudstack.management.network.v1.ListPhysicalNetworksResponse.items:type_name -> cloudstack.management.network.v1.PhysicalNetwork
-	147, // 17: cloudstack.management.network.v1.UpdateNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 18: cloudstack.management.network.v1.CreateNetworkPermissionsResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 19: cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 20: cloudstack.management.network.v1.ReplaceNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 21: cloudstack.management.network.v1.DeletePhysicalNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	149, // 22: cloudstack.management.network.v1.ListNetworkDeviceRequest.param_list:type_name -> cloudstack.management.network.v1.ListNetworkDeviceRequest.ParamListEntry
-	132, // 23: cloudstack.management.network.v1.ListNetworkDeviceResponse.items:type_name -> cloudstack.management.network.v1.NetworkDevice
-	147, // 24: cloudstack.management.network.v1.RemoveNetworkPermissionsResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 25: cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
-	133, // 26: cloudstack.management.network.v1.ListNetworkACLListsResponse.items:type_name -> cloudstack.management.network.v1.NetworkACL
-	147, // 27: cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 28: cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 29: cloudstack.management.network.v1.MigrateNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 30: cloudstack.management.network.v1.DedicateGuestVlanRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 31: cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 32: cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse.result:type_name -> cloudstack.management.network.v1.Result
-	150, // 33: cloudstack.management.network.v1.MigrateVPCRequest.tier_network_offerings:type_name -> cloudstack.management.network.v1.MigrateVPCRequest.TierNetworkOfferingsEntry
-	147, // 34: cloudstack.management.network.v1.MigrateVPCResponse.result:type_name -> cloudstack.management.network.v1.Result
-	134, // 35: cloudstack.management.network.v1.ListNetworkServiceProvidersResponse.items:type_name -> cloudstack.management.network.v1.Provider
-	135, // 36: cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse.items:type_name -> cloudstack.management.network.v1.DataCenterIpv4Subnet
-	147, // 37: cloudstack.management.network.v1.DeleteNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 38: cloudstack.management.network.v1.UpdateNetworkOfferingResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 39: cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	136, // 40: cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse.items:type_name -> cloudstack.management.network.v1.IsolationMethod
-	147, // 41: cloudstack.management.network.v1.AddNetworkServiceProviderResponse.result:type_name -> cloudstack.management.network.v1.Result
-	151, // 42: cloudstack.management.network.v1.ListNetworksRequest.tags:type_name -> cloudstack.management.network.v1.ListNetworksRequest.TagsEntry
-	137, // 43: cloudstack.management.network.v1.ListNetworksResponse.items:type_name -> cloudstack.management.network.v1.Network
-	152, // 44: cloudstack.management.network.v1.ListNetworkACLsRequest.tags:type_name -> cloudstack.management.network.v1.ListNetworkACLsRequest.TagsEntry
-	138, // 45: cloudstack.management.network.v1.ListNetworkACLsResponse.items:type_name -> cloudstack.management.network.v1.NetworkACLItem
-	147, // 46: cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	139, // 47: cloudstack.management.network.v1.ListSupportedNetworkServicesResponse.items:type_name -> cloudstack.management.network.v1.Service
-	147, // 48: cloudstack.management.network.v1.UpdatePhysicalNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 49: cloudstack.management.network.v1.CreateNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 50: cloudstack.management.network.v1.CreateNetworkCmdByAdminResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 51: cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 52: cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
-	140, // 53: cloudstack.management.network.v1.ListNetworkPermissionsResponse.items:type_name -> cloudstack.management.network.v1.NetworkPermissions
-	141, // 54: cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse.items:type_name -> cloudstack.management.network.v1.GuestVlanRange
-	147, // 55: cloudstack.management.network.v1.DeleteNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 56: cloudstack.management.network.v1.DeleteNetworkOfferingResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 57: cloudstack.management.network.v1.MoveNetworkAclItemResponse.result:type_name -> cloudstack.management.network.v1.Result
-	142, // 58: cloudstack.management.network.v1.ListGuestVlansResponse.items:type_name -> cloudstack.management.network.v1.GuestVlan
-	147, // 59: cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 60: cloudstack.management.network.v1.CreatePhysicalNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	153, // 61: cloudstack.management.network.v1.CreateNetworkOfferingRequest.service_provider_list:type_name -> cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceProviderListEntry
-	154, // 62: cloudstack.management.network.v1.CreateNetworkOfferingRequest.service_capabilityst_list:type_name -> cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceCapabilitystListEntry
-	155, // 63: cloudstack.management.network.v1.CreateNetworkOfferingRequest.details:type_name -> cloudstack.management.network.v1.CreateNetworkOfferingRequest.DetailsEntry
-	147, // 64: cloudstack.management.network.v1.CreateNetworkOfferingResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 65: cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 66: cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	143, // 67: cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse.items:type_name -> cloudstack.management.network.v1.Ipv4SubnetForGuestNetwork
-	147, // 68: cloudstack.management.network.v1.DeleteNetworkDeviceResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 69: cloudstack.management.network.v1.CreateNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
-	147, // 70: cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
-	144, // 71: cloudstack.management.network.v1.ListNetworkProtocolsResponse.items:type_name -> cloudstack.management.network.v1.NetworkProtocol
-	156, // 72: cloudstack.management.network.v1.Item.details:type_name -> cloudstack.management.network.v1.Item.DetailsEntry
-	0,   // 73: cloudstack.management.network.v1.NetworkService.DedicateIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.DedicateIpv4SubnetForZoneRequest
-	2,   // 74: cloudstack.management.network.v1.NetworkService.ListNetworkOfferings:input_type -> cloudstack.management.network.v1.ListNetworkOfferingsRequest
-	4,   // 75: cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions:input_type -> cloudstack.management.network.v1.ResetNetworkPermissionsRequest
-	6,   // 76: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem:input_type -> cloudstack.management.network.v1.UpdateNetworkACLItemRequest
-	8,   // 77: cloudstack.management.network.v1.NetworkService.DeleteNetworkACL:input_type -> cloudstack.management.network.v1.DeleteNetworkACLRequest
-	10,  // 78: cloudstack.management.network.v1.NetworkService.RestartNetwork:input_type -> cloudstack.management.network.v1.RestartNetworkRequest
-	12,  // 79: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.CreateIpv4SubnetForZoneRequest
-	14,  // 80: cloudstack.management.network.v1.NetworkService.AddNetworkDevice:input_type -> cloudstack.management.network.v1.AddNetworkDeviceRequest
-	16,  // 81: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList:input_type -> cloudstack.management.network.v1.UpdateNetworkACLListRequest
-	18,  // 82: cloudstack.management.network.v1.NetworkService.CreateNetworkACL:input_type -> cloudstack.management.network.v1.CreateNetworkACLRequest
-	20,  // 83: cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange:input_type -> cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeRequest
-	22,  // 84: cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes:input_type -> cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesRequest
-	24,  // 85: cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin:input_type -> cloudstack.management.network.v1.UpdateNetworkCmdByAdminRequest
-	26,  // 86: cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix:input_type -> cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixRequest
-	28,  // 87: cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.ListStorageNetworkIpRangeRequest
-	30,  // 88: cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks:input_type -> cloudstack.management.network.v1.ListPhysicalNetworksRequest
-	32,  // 89: cloudstack.management.network.v1.NetworkService.UpdateNetwork:input_type -> cloudstack.management.network.v1.UpdateNetworkRequest
-	34,  // 90: cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions:input_type -> cloudstack.management.network.v1.CreateNetworkPermissionsRequest
-	36,  // 91: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork:input_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkRequest
-	38,  // 92: cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList:input_type -> cloudstack.management.network.v1.ReplaceNetworkACLListRequest
-	40,  // 93: cloudstack.management.network.v1.NetworkService.DeletePhysicalNetwork:input_type -> cloudstack.management.network.v1.DeletePhysicalNetworkRequest
-	42,  // 94: cloudstack.management.network.v1.NetworkService.ListNetworkDevice:input_type -> cloudstack.management.network.v1.ListNetworkDeviceRequest
-	44,  // 95: cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions:input_type -> cloudstack.management.network.v1.RemoveNetworkPermissionsRequest
-	46,  // 96: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneRequest
-	48,  // 97: cloudstack.management.network.v1.NetworkService.ListNetworkACLLists:input_type -> cloudstack.management.network.v1.ListNetworkACLListsRequest
-	50,  // 98: cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange:input_type -> cloudstack.management.network.v1.DeleteManagementNetworkIpRangeRequest
-	52,  // 99: cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix:input_type -> cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixRequest
-	54,  // 100: cloudstack.management.network.v1.NetworkService.MigrateNetwork:input_type -> cloudstack.management.network.v1.MigrateNetworkRequest
-	56,  // 101: cloudstack.management.network.v1.NetworkService.DedicateGuestVlanRange:input_type -> cloudstack.management.network.v1.DedicateGuestVlanRangeRequest
-	58,  // 102: cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.UpdateStorageNetworkIpRangeRequest
-	60,  // 103: cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider:input_type -> cloudstack.management.network.v1.DeleteNetworkServiceProviderRequest
-	62,  // 104: cloudstack.management.network.v1.NetworkService.MigrateVPC:input_type -> cloudstack.management.network.v1.MigrateVPCRequest
-	64,  // 105: cloudstack.management.network.v1.NetworkService.ListNetworkServiceProviders:input_type -> cloudstack.management.network.v1.ListNetworkServiceProvidersRequest
-	66,  // 106: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForZone:input_type -> cloudstack.management.network.v1.ListIpv4SubnetsForZoneRequest
-	68,  // 107: cloudstack.management.network.v1.NetworkService.DeleteNetwork:input_type -> cloudstack.management.network.v1.DeleteNetworkRequest
-	70,  // 108: cloudstack.management.network.v1.NetworkService.UpdateNetworkOffering:input_type -> cloudstack.management.network.v1.UpdateNetworkOfferingRequest
-	72,  // 109: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForGuestNetwork:input_type -> cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkRequest
-	74,  // 110: cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods:input_type -> cloudstack.management.network.v1.ListNetworkIsolationMethodsRequest
-	76,  // 111: cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider:input_type -> cloudstack.management.network.v1.AddNetworkServiceProviderRequest
-	78,  // 112: cloudstack.management.network.v1.NetworkService.ListNetworks:input_type -> cloudstack.management.network.v1.ListNetworksRequest
-	80,  // 113: cloudstack.management.network.v1.NetworkService.ListNetworkACLs:input_type -> cloudstack.management.network.v1.ListNetworkACLsRequest
-	82,  // 114: cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange:input_type -> cloudstack.management.network.v1.CreateManagementNetworkIpRangeRequest
-	84,  // 115: cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices:input_type -> cloudstack.management.network.v1.ListSupportedNetworkServicesRequest
-	86,  // 116: cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork:input_type -> cloudstack.management.network.v1.UpdatePhysicalNetworkRequest
-	88,  // 117: cloudstack.management.network.v1.NetworkService.CreateNetworkACLList:input_type -> cloudstack.management.network.v1.CreateNetworkACLListRequest
-	90,  // 118: cloudstack.management.network.v1.NetworkService.CreateNetworkCmdByAdmin:input_type -> cloudstack.management.network.v1.CreateNetworkCmdByAdminRequest
-	92,  // 119: cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.DeleteStorageNetworkIpRangeRequest
-	94,  // 120: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForZoneRequest
-	96,  // 121: cloudstack.management.network.v1.NetworkService.ListNetworkPermissions:input_type -> cloudstack.management.network.v1.ListNetworkPermissionsRequest
-	98,  // 122: cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges:input_type -> cloudstack.management.network.v1.ListDedicatedGuestVlanRangesRequest
-	100, // 123: cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList:input_type -> cloudstack.management.network.v1.DeleteNetworkACLListRequest
-	102, // 124: cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering:input_type -> cloudstack.management.network.v1.DeleteNetworkOfferingRequest
-	104, // 125: cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem:input_type -> cloudstack.management.network.v1.MoveNetworkAclItemRequest
-	106, // 126: cloudstack.management.network.v1.NetworkService.ListGuestVlans:input_type -> cloudstack.management.network.v1.ListGuestVlansRequest
-	108, // 127: cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.UpdateIpv4SubnetForZoneRequest
-	110, // 128: cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork:input_type -> cloudstack.management.network.v1.CreatePhysicalNetworkRequest
-	112, // 129: cloudstack.management.network.v1.NetworkService.CreateNetworkOffering:input_type -> cloudstack.management.network.v1.CreateNetworkOfferingRequest
-	114, // 130: cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider:input_type -> cloudstack.management.network.v1.UpdateNetworkServiceProviderRequest
-	116, // 131: cloudstack.management.network.v1.NetworkService.CreateStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.CreateStorageNetworkIpRangeRequest
-	118, // 132: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork:input_type -> cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkRequest
-	120, // 133: cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice:input_type -> cloudstack.management.network.v1.DeleteNetworkDeviceRequest
-	122, // 134: cloudstack.management.network.v1.NetworkService.CreateNetwork:input_type -> cloudstack.management.network.v1.CreateNetworkRequest
-	124, // 135: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange:input_type -> cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeRequest
-	126, // 136: cloudstack.management.network.v1.NetworkService.ListNetworkProtocols:input_type -> cloudstack.management.network.v1.ListNetworkProtocolsRequest
-	1,   // 137: cloudstack.management.network.v1.NetworkService.DedicateIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse
-	3,   // 138: cloudstack.management.network.v1.NetworkService.ListNetworkOfferings:output_type -> cloudstack.management.network.v1.ListNetworkOfferingsResponse
-	5,   // 139: cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions:output_type -> cloudstack.management.network.v1.ResetNetworkPermissionsResponse
-	7,   // 140: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem:output_type -> cloudstack.management.network.v1.UpdateNetworkACLItemResponse
-	9,   // 141: cloudstack.management.network.v1.NetworkService.DeleteNetworkACL:output_type -> cloudstack.management.network.v1.DeleteNetworkACLResponse
-	11,  // 142: cloudstack.management.network.v1.NetworkService.RestartNetwork:output_type -> cloudstack.management.network.v1.RestartNetworkResponse
-	13,  // 143: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse
-	15,  // 144: cloudstack.management.network.v1.NetworkService.AddNetworkDevice:output_type -> cloudstack.management.network.v1.AddNetworkDeviceResponse
-	17,  // 145: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList:output_type -> cloudstack.management.network.v1.UpdateNetworkACLListResponse
-	19,  // 146: cloudstack.management.network.v1.NetworkService.CreateNetworkACL:output_type -> cloudstack.management.network.v1.CreateNetworkACLResponse
-	21,  // 147: cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange:output_type -> cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse
-	23,  // 148: cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes:output_type -> cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse
-	25,  // 149: cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin:output_type -> cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse
-	27,  // 150: cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix:output_type -> cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse
-	29,  // 151: cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse
-	31,  // 152: cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks:output_type -> cloudstack.management.network.v1.ListPhysicalNetworksResponse
-	33,  // 153: cloudstack.management.network.v1.NetworkService.UpdateNetwork:output_type -> cloudstack.management.network.v1.UpdateNetworkResponse
-	35,  // 154: cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions:output_type -> cloudstack.management.network.v1.CreateNetworkPermissionsResponse
-	37,  // 155: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork:output_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse
-	39,  // 156: cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList:output_type -> cloudstack.management.network.v1.ReplaceNetworkACLListResponse
-	41,  // 157: cloudstack.management.network.v1.NetworkService.DeletePhysicalNetwork:output_type -> cloudstack.management.network.v1.DeletePhysicalNetworkResponse
-	43,  // 158: cloudstack.management.network.v1.NetworkService.ListNetworkDevice:output_type -> cloudstack.management.network.v1.ListNetworkDeviceResponse
-	45,  // 159: cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions:output_type -> cloudstack.management.network.v1.RemoveNetworkPermissionsResponse
-	47,  // 160: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse
-	49,  // 161: cloudstack.management.network.v1.NetworkService.ListNetworkACLLists:output_type -> cloudstack.management.network.v1.ListNetworkACLListsResponse
-	51,  // 162: cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange:output_type -> cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse
-	53,  // 163: cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix:output_type -> cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse
-	55,  // 164: cloudstack.management.network.v1.NetworkService.MigrateNetwork:output_type -> cloudstack.management.network.v1.MigrateNetworkResponse
-	57,  // 165: cloudstack.management.network.v1.NetworkService.DedicateGuestVlanRange:output_type -> cloudstack.management.network.v1.DedicateGuestVlanRangeResponse
-	59,  // 166: cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse
-	61,  // 167: cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider:output_type -> cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse
-	63,  // 168: cloudstack.management.network.v1.NetworkService.MigrateVPC:output_type -> cloudstack.management.network.v1.MigrateVPCResponse
-	65,  // 169: cloudstack.management.network.v1.NetworkService.ListNetworkServiceProviders:output_type -> cloudstack.management.network.v1.ListNetworkServiceProvidersResponse
-	67,  // 170: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForZone:output_type -> cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse
-	69,  // 171: cloudstack.management.network.v1.NetworkService.DeleteNetwork:output_type -> cloudstack.management.network.v1.DeleteNetworkResponse
-	71,  // 172: cloudstack.management.network.v1.NetworkService.UpdateNetworkOffering:output_type -> cloudstack.management.network.v1.UpdateNetworkOfferingResponse
-	73,  // 173: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForGuestNetwork:output_type -> cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse
-	75,  // 174: cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods:output_type -> cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse
-	77,  // 175: cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider:output_type -> cloudstack.management.network.v1.AddNetworkServiceProviderResponse
-	79,  // 176: cloudstack.management.network.v1.NetworkService.ListNetworks:output_type -> cloudstack.management.network.v1.ListNetworksResponse
-	81,  // 177: cloudstack.management.network.v1.NetworkService.ListNetworkACLs:output_type -> cloudstack.management.network.v1.ListNetworkACLsResponse
-	83,  // 178: cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange:output_type -> cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse
-	85,  // 179: cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices:output_type -> cloudstack.management.network.v1.ListSupportedNetworkServicesResponse
-	87,  // 180: cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork:output_type -> cloudstack.management.network.v1.UpdatePhysicalNetworkResponse
-	89,  // 181: cloudstack.management.network.v1.NetworkService.CreateNetworkACLList:output_type -> cloudstack.management.network.v1.CreateNetworkACLListResponse
-	91,  // 182: cloudstack.management.network.v1.NetworkService.CreateNetworkCmdByAdmin:output_type -> cloudstack.management.network.v1.CreateNetworkCmdByAdminResponse
-	93,  // 183: cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse
-	95,  // 184: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse
-	97,  // 185: cloudstack.management.network.v1.NetworkService.ListNetworkPermissions:output_type -> cloudstack.management.network.v1.ListNetworkPermissionsResponse
-	99,  // 186: cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges:output_type -> cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse
-	101, // 187: cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList:output_type -> cloudstack.management.network.v1.DeleteNetworkACLListResponse
-	103, // 188: cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering:output_type -> cloudstack.management.network.v1.DeleteNetworkOfferingResponse
-	105, // 189: cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem:output_type -> cloudstack.management.network.v1.MoveNetworkAclItemResponse
-	107, // 190: cloudstack.management.network.v1.NetworkService.ListGuestVlans:output_type -> cloudstack.management.network.v1.ListGuestVlansResponse
-	109, // 191: cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse
-	111, // 192: cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork:output_type -> cloudstack.management.network.v1.CreatePhysicalNetworkResponse
-	113, // 193: cloudstack.management.network.v1.NetworkService.CreateNetworkOffering:output_type -> cloudstack.management.network.v1.CreateNetworkOfferingResponse
-	115, // 194: cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider:output_type -> cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse
-	117, // 195: cloudstack.management.network.v1.NetworkService.CreateStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse
-	119, // 196: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork:output_type -> cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse
-	121, // 197: cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice:output_type -> cloudstack.management.network.v1.DeleteNetworkDeviceResponse
-	123, // 198: cloudstack.management.network.v1.NetworkService.CreateNetwork:output_type -> cloudstack.management.network.v1.CreateNetworkResponse
-	125, // 199: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange:output_type -> cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse
-	127, // 200: cloudstack.management.network.v1.NetworkService.ListNetworkProtocols:output_type -> cloudstack.management.network.v1.ListNetworkProtocolsResponse
-	137, // [137:201] is the sub-list for method output_type
-	73,  // [73:137] is the sub-list for method input_type
-	73,  // [73:73] is the sub-list for extension type_name
-	73,  // [73:73] is the sub-list for extension extendee
-	0,   // [0:73] is the sub-list for field type_name
+	146, // 16: cloudstack.management.network.v1.MigrateNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 17: cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 18: cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
+	147, // 19: cloudstack.management.network.v1.AddNetworkDeviceRequest.param_list:type_name -> cloudstack.management.network.v1.AddNetworkDeviceRequest.ParamListEntry
+	146, // 20: cloudstack.management.network.v1.AddNetworkDeviceResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 21: cloudstack.management.network.v1.DeleteNetworkOfferingResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 22: cloudstack.management.network.v1.UpdatePhysicalNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 23: cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 24: cloudstack.management.network.v1.DeleteNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	131, // 25: cloudstack.management.network.v1.ListNetworkServiceProvidersResponse.items:type_name -> cloudstack.management.network.v1.Provider
+	146, // 26: cloudstack.management.network.v1.CreateNetworkACLResponse.result:type_name -> cloudstack.management.network.v1.Result
+	132, // 27: cloudstack.management.network.v1.ListSupportedNetworkServicesResponse.items:type_name -> cloudstack.management.network.v1.Service
+	133, // 28: cloudstack.management.network.v1.ListNetworkACLListsResponse.items:type_name -> cloudstack.management.network.v1.NetworkACL
+	134, // 29: cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse.items:type_name -> cloudstack.management.network.v1.DataCenterIpv4Subnet
+	148, // 30: cloudstack.management.network.v1.ListNetworkDeviceRequest.param_list:type_name -> cloudstack.management.network.v1.ListNetworkDeviceRequest.ParamListEntry
+	135, // 31: cloudstack.management.network.v1.ListNetworkDeviceResponse.items:type_name -> cloudstack.management.network.v1.NetworkDevice
+	149, // 32: cloudstack.management.network.v1.ListNetworkACLsRequest.tags:type_name -> cloudstack.management.network.v1.ListNetworkACLsRequest.TagsEntry
+	136, // 33: cloudstack.management.network.v1.ListNetworkACLsResponse.items:type_name -> cloudstack.management.network.v1.NetworkACLItem
+	146, // 34: cloudstack.management.network.v1.UpdateNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 35: cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 36: cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	137, // 37: cloudstack.management.network.v1.ListNetworkPermissionsResponse.items:type_name -> cloudstack.management.network.v1.NetworkPermissions
+	138, // 38: cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse.items:type_name -> cloudstack.management.network.v1.DataCenterGuestIpv6Prefix
+	146, // 39: cloudstack.management.network.v1.MoveNetworkAclItemResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 40: cloudstack.management.network.v1.AddNetworkServiceProviderResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 41: cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 42: cloudstack.management.network.v1.RemoveNetworkPermissionsResponse.result:type_name -> cloudstack.management.network.v1.Result
+	150, // 43: cloudstack.management.network.v1.CreateNetworkOfferingRequest.service_provider_list:type_name -> cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceProviderListEntry
+	151, // 44: cloudstack.management.network.v1.CreateNetworkOfferingRequest.service_capabilityst_list:type_name -> cloudstack.management.network.v1.CreateNetworkOfferingRequest.ServiceCapabilitystListEntry
+	152, // 45: cloudstack.management.network.v1.CreateNetworkOfferingRequest.details:type_name -> cloudstack.management.network.v1.CreateNetworkOfferingRequest.DetailsEntry
+	146, // 46: cloudstack.management.network.v1.CreateNetworkOfferingResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 47: cloudstack.management.network.v1.UpdateNetworkACLItemResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 48: cloudstack.management.network.v1.CreateNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 49: cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 50: cloudstack.management.network.v1.UpdateNetworkOfferingResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 51: cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 52: cloudstack.management.network.v1.ResetNetworkPermissionsResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 53: cloudstack.management.network.v1.DeleteNetworkDeviceResponse.result:type_name -> cloudstack.management.network.v1.Result
+	139, // 54: cloudstack.management.network.v1.ListNetworkOfferingsResponse.items:type_name -> cloudstack.management.network.v1.NetworkOffering
+	146, // 55: cloudstack.management.network.v1.RestartNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 56: cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 57: cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 58: cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	153, // 59: cloudstack.management.network.v1.ListNetworksRequest.tags:type_name -> cloudstack.management.network.v1.ListNetworksRequest.TagsEntry
+	140, // 60: cloudstack.management.network.v1.ListNetworksResponse.items:type_name -> cloudstack.management.network.v1.Network
+	146, // 61: cloudstack.management.network.v1.ReplaceNetworkACLListResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 62: cloudstack.management.network.v1.CreateNetworkPermissionsResponse.result:type_name -> cloudstack.management.network.v1.Result
+	141, // 63: cloudstack.management.network.v1.ListGuestVlansResponse.items:type_name -> cloudstack.management.network.v1.GuestVlan
+	146, // 64: cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse.result:type_name -> cloudstack.management.network.v1.Result
+	146, // 65: cloudstack.management.network.v1.UpdateNetworkResponse.result:type_name -> cloudstack.management.network.v1.Result
+	154, // 66: cloudstack.management.network.v1.MigrateVPCRequest.tier_network_offerings:type_name -> cloudstack.management.network.v1.MigrateVPCRequest.TierNetworkOfferingsEntry
+	146, // 67: cloudstack.management.network.v1.MigrateVPCResponse.result:type_name -> cloudstack.management.network.v1.Result
+	142, // 68: cloudstack.management.network.v1.ListPhysicalNetworksResponse.items:type_name -> cloudstack.management.network.v1.PhysicalNetwork
+	143, // 69: cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse.items:type_name -> cloudstack.management.network.v1.Ipv4SubnetForGuestNetwork
+	146, // 70: cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse.result:type_name -> cloudstack.management.network.v1.Result
+	155, // 71: cloudstack.management.network.v1.Item.details:type_name -> cloudstack.management.network.v1.Item.DetailsEntry
+	1,   // 72: cloudstack.management.network.v1.NetworkService.DedicateIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.DedicateIpv4SubnetForZoneRequest
+	3,   // 73: cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange:input_type -> cloudstack.management.network.v1.DeleteManagementNetworkIpRangeRequest
+	5,   // 74: cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges:input_type -> cloudstack.management.network.v1.ListDedicatedGuestVlanRangesRequest
+	7,   // 75: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForZoneRequest
+	9,   // 76: cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList:input_type -> cloudstack.management.network.v1.DeleteNetworkACLListRequest
+	11,  // 77: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange:input_type -> cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeRequest
+	13,  // 78: cloudstack.management.network.v1.NetworkService.DeletePhysicalNetwork:input_type -> cloudstack.management.network.v1.DeletePhysicalNetworkRequest
+	15,  // 79: cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.UpdateIpv4SubnetForZoneRequest
+	17,  // 80: cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods:input_type -> cloudstack.management.network.v1.ListNetworkIsolationMethodsRequest
+	19,  // 81: cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork:input_type -> cloudstack.management.network.v1.CreatePhysicalNetworkRequest
+	21,  // 82: cloudstack.management.network.v1.NetworkService.ListNetworkProtocols:input_type -> cloudstack.management.network.v1.ListNetworkProtocolsRequest
+	23,  // 83: cloudstack.management.network.v1.NetworkService.CreateNetworkACLList:input_type -> cloudstack.management.network.v1.CreateNetworkACLListRequest
+	25,  // 84: cloudstack.management.network.v1.NetworkService.DedicateGuestVlanRange:input_type -> cloudstack.management.network.v1.DedicateGuestVlanRangeRequest
+	27,  // 85: cloudstack.management.network.v1.NetworkService.DeleteNetworkACL:input_type -> cloudstack.management.network.v1.DeleteNetworkACLRequest
+	29,  // 86: cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin:input_type -> cloudstack.management.network.v1.UpdateNetworkCmdByAdminRequest
+	31,  // 87: cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.ListStorageNetworkIpRangeRequest
+	33,  // 88: cloudstack.management.network.v1.NetworkService.MigrateNetwork:input_type -> cloudstack.management.network.v1.MigrateNetworkRequest
+	35,  // 89: cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange:input_type -> cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeRequest
+	37,  // 90: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneRequest
+	39,  // 91: cloudstack.management.network.v1.NetworkService.AddNetworkDevice:input_type -> cloudstack.management.network.v1.AddNetworkDeviceRequest
+	41,  // 92: cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering:input_type -> cloudstack.management.network.v1.DeleteNetworkOfferingRequest
+	43,  // 93: cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork:input_type -> cloudstack.management.network.v1.UpdatePhysicalNetworkRequest
+	45,  // 94: cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange:input_type -> cloudstack.management.network.v1.CreateManagementNetworkIpRangeRequest
+	47,  // 95: cloudstack.management.network.v1.NetworkService.DeleteNetwork:input_type -> cloudstack.management.network.v1.DeleteNetworkRequest
+	49,  // 96: cloudstack.management.network.v1.NetworkService.ListNetworkServiceProviders:input_type -> cloudstack.management.network.v1.ListNetworkServiceProvidersRequest
+	51,  // 97: cloudstack.management.network.v1.NetworkService.CreateNetworkACL:input_type -> cloudstack.management.network.v1.CreateNetworkACLRequest
+	53,  // 98: cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices:input_type -> cloudstack.management.network.v1.ListSupportedNetworkServicesRequest
+	55,  // 99: cloudstack.management.network.v1.NetworkService.ListNetworkACLLists:input_type -> cloudstack.management.network.v1.ListNetworkACLListsRequest
+	57,  // 100: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForZone:input_type -> cloudstack.management.network.v1.ListIpv4SubnetsForZoneRequest
+	59,  // 101: cloudstack.management.network.v1.NetworkService.ListNetworkDevice:input_type -> cloudstack.management.network.v1.ListNetworkDeviceRequest
+	61,  // 102: cloudstack.management.network.v1.NetworkService.ListNetworkACLs:input_type -> cloudstack.management.network.v1.ListNetworkACLsRequest
+	63,  // 103: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList:input_type -> cloudstack.management.network.v1.UpdateNetworkACLListRequest
+	65,  // 104: cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix:input_type -> cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixRequest
+	67,  // 105: cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.DeleteStorageNetworkIpRangeRequest
+	69,  // 106: cloudstack.management.network.v1.NetworkService.ListNetworkPermissions:input_type -> cloudstack.management.network.v1.ListNetworkPermissionsRequest
+	71,  // 107: cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes:input_type -> cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesRequest
+	73,  // 108: cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem:input_type -> cloudstack.management.network.v1.MoveNetworkAclItemRequest
+	75,  // 109: cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider:input_type -> cloudstack.management.network.v1.AddNetworkServiceProviderRequest
+	77,  // 110: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork:input_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkRequest
+	79,  // 111: cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions:input_type -> cloudstack.management.network.v1.RemoveNetworkPermissionsRequest
+	81,  // 112: cloudstack.management.network.v1.NetworkService.CreateNetworkOffering:input_type -> cloudstack.management.network.v1.CreateNetworkOfferingRequest
+	83,  // 113: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem:input_type -> cloudstack.management.network.v1.UpdateNetworkACLItemRequest
+	85,  // 114: cloudstack.management.network.v1.NetworkService.CreateNetwork:input_type -> cloudstack.management.network.v1.CreateNetworkRequest
+	87,  // 115: cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider:input_type -> cloudstack.management.network.v1.DeleteNetworkServiceProviderRequest
+	89,  // 116: cloudstack.management.network.v1.NetworkService.UpdateNetworkOffering:input_type -> cloudstack.management.network.v1.UpdateNetworkOfferingRequest
+	91,  // 117: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForGuestNetwork:input_type -> cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkRequest
+	93,  // 118: cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions:input_type -> cloudstack.management.network.v1.ResetNetworkPermissionsRequest
+	95,  // 119: cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice:input_type -> cloudstack.management.network.v1.DeleteNetworkDeviceRequest
+	97,  // 120: cloudstack.management.network.v1.NetworkService.ListNetworkOfferings:input_type -> cloudstack.management.network.v1.ListNetworkOfferingsRequest
+	99,  // 121: cloudstack.management.network.v1.NetworkService.RestartNetwork:input_type -> cloudstack.management.network.v1.RestartNetworkRequest
+	101, // 122: cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix:input_type -> cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixRequest
+	103, // 123: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone:input_type -> cloudstack.management.network.v1.CreateIpv4SubnetForZoneRequest
+	105, // 124: cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.UpdateStorageNetworkIpRangeRequest
+	107, // 125: cloudstack.management.network.v1.NetworkService.ListNetworks:input_type -> cloudstack.management.network.v1.ListNetworksRequest
+	109, // 126: cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList:input_type -> cloudstack.management.network.v1.ReplaceNetworkACLListRequest
+	111, // 127: cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions:input_type -> cloudstack.management.network.v1.CreateNetworkPermissionsRequest
+	113, // 128: cloudstack.management.network.v1.NetworkService.ListGuestVlans:input_type -> cloudstack.management.network.v1.ListGuestVlansRequest
+	115, // 129: cloudstack.management.network.v1.NetworkService.CreateStorageNetworkIpRange:input_type -> cloudstack.management.network.v1.CreateStorageNetworkIpRangeRequest
+	117, // 130: cloudstack.management.network.v1.NetworkService.UpdateNetwork:input_type -> cloudstack.management.network.v1.UpdateNetworkRequest
+	119, // 131: cloudstack.management.network.v1.NetworkService.MigrateVPC:input_type -> cloudstack.management.network.v1.MigrateVPCRequest
+	121, // 132: cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks:input_type -> cloudstack.management.network.v1.ListPhysicalNetworksRequest
+	123, // 133: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork:input_type -> cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkRequest
+	125, // 134: cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider:input_type -> cloudstack.management.network.v1.UpdateNetworkServiceProviderRequest
+	2,   // 135: cloudstack.management.network.v1.NetworkService.DedicateIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.DedicateIpv4SubnetForZoneResponse
+	4,   // 136: cloudstack.management.network.v1.NetworkService.DeleteManagementNetworkIpRange:output_type -> cloudstack.management.network.v1.DeleteManagementNetworkIpRangeResponse
+	6,   // 137: cloudstack.management.network.v1.NetworkService.ListDedicatedGuestVlanRanges:output_type -> cloudstack.management.network.v1.ListDedicatedGuestVlanRangesResponse
+	8,   // 138: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForZoneResponse
+	10,  // 139: cloudstack.management.network.v1.NetworkService.DeleteNetworkACLList:output_type -> cloudstack.management.network.v1.DeleteNetworkACLListResponse
+	12,  // 140: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedGuestVlanRange:output_type -> cloudstack.management.network.v1.ReleaseDedicatedGuestVlanRangeResponse
+	14,  // 141: cloudstack.management.network.v1.NetworkService.DeletePhysicalNetwork:output_type -> cloudstack.management.network.v1.DeletePhysicalNetworkResponse
+	16,  // 142: cloudstack.management.network.v1.NetworkService.UpdateIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.UpdateIpv4SubnetForZoneResponse
+	18,  // 143: cloudstack.management.network.v1.NetworkService.ListNetworkIsolationMethods:output_type -> cloudstack.management.network.v1.ListNetworkIsolationMethodsResponse
+	20,  // 144: cloudstack.management.network.v1.NetworkService.CreatePhysicalNetwork:output_type -> cloudstack.management.network.v1.CreatePhysicalNetworkResponse
+	22,  // 145: cloudstack.management.network.v1.NetworkService.ListNetworkProtocols:output_type -> cloudstack.management.network.v1.ListNetworkProtocolsResponse
+	24,  // 146: cloudstack.management.network.v1.NetworkService.CreateNetworkACLList:output_type -> cloudstack.management.network.v1.CreateNetworkACLListResponse
+	26,  // 147: cloudstack.management.network.v1.NetworkService.DedicateGuestVlanRange:output_type -> cloudstack.management.network.v1.DedicateGuestVlanRangeResponse
+	28,  // 148: cloudstack.management.network.v1.NetworkService.DeleteNetworkACL:output_type -> cloudstack.management.network.v1.DeleteNetworkACLResponse
+	30,  // 149: cloudstack.management.network.v1.NetworkService.UpdateNetworkCmdByAdmin:output_type -> cloudstack.management.network.v1.UpdateNetworkCmdByAdminResponse
+	32,  // 150: cloudstack.management.network.v1.NetworkService.ListStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.ListStorageNetworkIpRangeResponse
+	34,  // 151: cloudstack.management.network.v1.NetworkService.MigrateNetwork:output_type -> cloudstack.management.network.v1.MigrateNetworkResponse
+	36,  // 152: cloudstack.management.network.v1.NetworkService.UpdatePodManagementNetworkIpRange:output_type -> cloudstack.management.network.v1.UpdatePodManagementNetworkIpRangeResponse
+	38,  // 153: cloudstack.management.network.v1.NetworkService.ReleaseDedicatedIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.ReleaseDedicatedIpv4SubnetForZoneResponse
+	40,  // 154: cloudstack.management.network.v1.NetworkService.AddNetworkDevice:output_type -> cloudstack.management.network.v1.AddNetworkDeviceResponse
+	42,  // 155: cloudstack.management.network.v1.NetworkService.DeleteNetworkOffering:output_type -> cloudstack.management.network.v1.DeleteNetworkOfferingResponse
+	44,  // 156: cloudstack.management.network.v1.NetworkService.UpdatePhysicalNetwork:output_type -> cloudstack.management.network.v1.UpdatePhysicalNetworkResponse
+	46,  // 157: cloudstack.management.network.v1.NetworkService.CreateManagementNetworkIpRange:output_type -> cloudstack.management.network.v1.CreateManagementNetworkIpRangeResponse
+	48,  // 158: cloudstack.management.network.v1.NetworkService.DeleteNetwork:output_type -> cloudstack.management.network.v1.DeleteNetworkResponse
+	50,  // 159: cloudstack.management.network.v1.NetworkService.ListNetworkServiceProviders:output_type -> cloudstack.management.network.v1.ListNetworkServiceProvidersResponse
+	52,  // 160: cloudstack.management.network.v1.NetworkService.CreateNetworkACL:output_type -> cloudstack.management.network.v1.CreateNetworkACLResponse
+	54,  // 161: cloudstack.management.network.v1.NetworkService.ListSupportedNetworkServices:output_type -> cloudstack.management.network.v1.ListSupportedNetworkServicesResponse
+	56,  // 162: cloudstack.management.network.v1.NetworkService.ListNetworkACLLists:output_type -> cloudstack.management.network.v1.ListNetworkACLListsResponse
+	58,  // 163: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForZone:output_type -> cloudstack.management.network.v1.ListIpv4SubnetsForZoneResponse
+	60,  // 164: cloudstack.management.network.v1.NetworkService.ListNetworkDevice:output_type -> cloudstack.management.network.v1.ListNetworkDeviceResponse
+	62,  // 165: cloudstack.management.network.v1.NetworkService.ListNetworkACLs:output_type -> cloudstack.management.network.v1.ListNetworkACLsResponse
+	64,  // 166: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLList:output_type -> cloudstack.management.network.v1.UpdateNetworkACLListResponse
+	66,  // 167: cloudstack.management.network.v1.NetworkService.CreateGuestNetworkIpv6Prefix:output_type -> cloudstack.management.network.v1.CreateGuestNetworkIpv6PrefixResponse
+	68,  // 168: cloudstack.management.network.v1.NetworkService.DeleteStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.DeleteStorageNetworkIpRangeResponse
+	70,  // 169: cloudstack.management.network.v1.NetworkService.ListNetworkPermissions:output_type -> cloudstack.management.network.v1.ListNetworkPermissionsResponse
+	72,  // 170: cloudstack.management.network.v1.NetworkService.ListGuestNetworkIpv6Prefixes:output_type -> cloudstack.management.network.v1.ListGuestNetworkIpv6PrefixesResponse
+	74,  // 171: cloudstack.management.network.v1.NetworkService.MoveNetworkAclItem:output_type -> cloudstack.management.network.v1.MoveNetworkAclItemResponse
+	76,  // 172: cloudstack.management.network.v1.NetworkService.AddNetworkServiceProvider:output_type -> cloudstack.management.network.v1.AddNetworkServiceProviderResponse
+	78,  // 173: cloudstack.management.network.v1.NetworkService.DeleteIpv4SubnetForGuestNetwork:output_type -> cloudstack.management.network.v1.DeleteIpv4SubnetForGuestNetworkResponse
+	80,  // 174: cloudstack.management.network.v1.NetworkService.RemoveNetworkPermissions:output_type -> cloudstack.management.network.v1.RemoveNetworkPermissionsResponse
+	82,  // 175: cloudstack.management.network.v1.NetworkService.CreateNetworkOffering:output_type -> cloudstack.management.network.v1.CreateNetworkOfferingResponse
+	84,  // 176: cloudstack.management.network.v1.NetworkService.UpdateNetworkACLItem:output_type -> cloudstack.management.network.v1.UpdateNetworkACLItemResponse
+	86,  // 177: cloudstack.management.network.v1.NetworkService.CreateNetwork:output_type -> cloudstack.management.network.v1.CreateNetworkResponse
+	88,  // 178: cloudstack.management.network.v1.NetworkService.DeleteNetworkServiceProvider:output_type -> cloudstack.management.network.v1.DeleteNetworkServiceProviderResponse
+	90,  // 179: cloudstack.management.network.v1.NetworkService.UpdateNetworkOffering:output_type -> cloudstack.management.network.v1.UpdateNetworkOfferingResponse
+	92,  // 180: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForGuestNetwork:output_type -> cloudstack.management.network.v1.CreateIpv4SubnetForGuestNetworkResponse
+	94,  // 181: cloudstack.management.network.v1.NetworkService.ResetNetworkPermissions:output_type -> cloudstack.management.network.v1.ResetNetworkPermissionsResponse
+	96,  // 182: cloudstack.management.network.v1.NetworkService.DeleteNetworkDevice:output_type -> cloudstack.management.network.v1.DeleteNetworkDeviceResponse
+	98,  // 183: cloudstack.management.network.v1.NetworkService.ListNetworkOfferings:output_type -> cloudstack.management.network.v1.ListNetworkOfferingsResponse
+	100, // 184: cloudstack.management.network.v1.NetworkService.RestartNetwork:output_type -> cloudstack.management.network.v1.RestartNetworkResponse
+	102, // 185: cloudstack.management.network.v1.NetworkService.DeleteGuestNetworkIpv6Prefix:output_type -> cloudstack.management.network.v1.DeleteGuestNetworkIpv6PrefixResponse
+	104, // 186: cloudstack.management.network.v1.NetworkService.CreateIpv4SubnetForZone:output_type -> cloudstack.management.network.v1.CreateIpv4SubnetForZoneResponse
+	106, // 187: cloudstack.management.network.v1.NetworkService.UpdateStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.UpdateStorageNetworkIpRangeResponse
+	108, // 188: cloudstack.management.network.v1.NetworkService.ListNetworks:output_type -> cloudstack.management.network.v1.ListNetworksResponse
+	110, // 189: cloudstack.management.network.v1.NetworkService.ReplaceNetworkACLList:output_type -> cloudstack.management.network.v1.ReplaceNetworkACLListResponse
+	112, // 190: cloudstack.management.network.v1.NetworkService.CreateNetworkPermissions:output_type -> cloudstack.management.network.v1.CreateNetworkPermissionsResponse
+	114, // 191: cloudstack.management.network.v1.NetworkService.ListGuestVlans:output_type -> cloudstack.management.network.v1.ListGuestVlansResponse
+	116, // 192: cloudstack.management.network.v1.NetworkService.CreateStorageNetworkIpRange:output_type -> cloudstack.management.network.v1.CreateStorageNetworkIpRangeResponse
+	118, // 193: cloudstack.management.network.v1.NetworkService.UpdateNetwork:output_type -> cloudstack.management.network.v1.UpdateNetworkResponse
+	120, // 194: cloudstack.management.network.v1.NetworkService.MigrateVPC:output_type -> cloudstack.management.network.v1.MigrateVPCResponse
+	122, // 195: cloudstack.management.network.v1.NetworkService.ListPhysicalNetworks:output_type -> cloudstack.management.network.v1.ListPhysicalNetworksResponse
+	124, // 196: cloudstack.management.network.v1.NetworkService.ListIpv4SubnetsForGuestNetwork:output_type -> cloudstack.management.network.v1.ListIpv4SubnetsForGuestNetworkResponse
+	126, // 197: cloudstack.management.network.v1.NetworkService.UpdateNetworkServiceProvider:output_type -> cloudstack.management.network.v1.UpdateNetworkServiceProviderResponse
+	135, // [135:198] is the sub-list for method output_type
+	72,  // [72:135] is the sub-list for method input_type
+	72,  // [72:72] is the sub-list for extension type_name
+	72,  // [72:72] is the sub-list for extension extendee
+	0,   // [0:72] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_network_v1_network_gen_proto_init() }
@@ -13918,13 +13455,14 @@ func file_cloudstack_management_network_v1_network_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_network_v1_network_gen_proto_rawDesc), len(file_cloudstack_management_network_v1_network_gen_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   157,
+			NumEnums:      1,
+			NumMessages:   155,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_network_v1_network_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_network_v1_network_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_network_v1_network_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_network_v1_network_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_network_v1_network_gen_proto = out.File

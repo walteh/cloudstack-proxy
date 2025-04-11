@@ -33,41 +33,41 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// InternallbServiceConfigureInternalLoadBalancerElementProcedure is the fully-qualified name of the
+	// InternallbService's ConfigureInternalLoadBalancerElement RPC.
+	InternallbServiceConfigureInternalLoadBalancerElementProcedure = "/cloudstack.management.internallb.v1.InternallbService/ConfigureInternalLoadBalancerElement"
+	// InternallbServiceCreateInternalLoadBalancerElementProcedure is the fully-qualified name of the
+	// InternallbService's CreateInternalLoadBalancerElement RPC.
+	InternallbServiceCreateInternalLoadBalancerElementProcedure = "/cloudstack.management.internallb.v1.InternallbService/CreateInternalLoadBalancerElement"
 	// InternallbServiceListInternalLoadBalancerElementsProcedure is the fully-qualified name of the
 	// InternallbService's ListInternalLoadBalancerElements RPC.
 	InternallbServiceListInternalLoadBalancerElementsProcedure = "/cloudstack.management.internallb.v1.InternallbService/ListInternalLoadBalancerElements"
 	// InternallbServiceListInternalLBVMsProcedure is the fully-qualified name of the
 	// InternallbService's ListInternalLBVMs RPC.
 	InternallbServiceListInternalLBVMsProcedure = "/cloudstack.management.internallb.v1.InternallbService/ListInternalLBVMs"
-	// InternallbServiceConfigureInternalLoadBalancerElementProcedure is the fully-qualified name of the
-	// InternallbService's ConfigureInternalLoadBalancerElement RPC.
-	InternallbServiceConfigureInternalLoadBalancerElementProcedure = "/cloudstack.management.internallb.v1.InternallbService/ConfigureInternalLoadBalancerElement"
 	// InternallbServiceStartInternalLBVMProcedure is the fully-qualified name of the
 	// InternallbService's StartInternalLBVM RPC.
 	InternallbServiceStartInternalLBVMProcedure = "/cloudstack.management.internallb.v1.InternallbService/StartInternalLBVM"
 	// InternallbServiceStopInternalLBVMProcedure is the fully-qualified name of the InternallbService's
 	// StopInternalLBVM RPC.
 	InternallbServiceStopInternalLBVMProcedure = "/cloudstack.management.internallb.v1.InternallbService/StopInternalLBVM"
-	// InternallbServiceCreateInternalLoadBalancerElementProcedure is the fully-qualified name of the
-	// InternallbService's CreateInternalLoadBalancerElement RPC.
-	InternallbServiceCreateInternalLoadBalancerElementProcedure = "/cloudstack.management.internallb.v1.InternallbService/CreateInternalLoadBalancerElement"
 )
 
 // InternallbServiceClient is a client for the cloudstack.management.internallb.v1.InternallbService
 // service.
 type InternallbServiceClient interface {
+	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
+	ConfigureInternalLoadBalancerElement(context.Context, *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error)
+	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
+	CreateInternalLoadBalancerElement(context.Context, *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error)
 	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
 	ListInternalLoadBalancerElements(context.Context, *connect.Request[v1.ListInternalLoadBalancerElementsRequest]) (*connect.Response[v1.ListInternalLoadBalancerElementsResponse], error)
 	// ListInternalLBVMs List internal LB VMs.
 	ListInternalLBVMs(context.Context, *connect.Request[v1.ListInternalLBVMsRequest]) (*connect.Response[v1.ListInternalLBVMsResponse], error)
-	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
-	ConfigureInternalLoadBalancerElement(context.Context, *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error)
 	// StartInternalLBVM Starts an existing internal lb vm.
 	StartInternalLBVM(context.Context, *connect.Request[v1.StartInternalLBVMRequest]) (*connect.Response[v1.StartInternalLBVMResponse], error)
 	// StopInternalLBVM Stops an Internal LB vm.
 	StopInternalLBVM(context.Context, *connect.Request[v1.StopInternalLBVMRequest]) (*connect.Response[v1.StopInternalLBVMResponse], error)
-	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
-	CreateInternalLoadBalancerElement(context.Context, *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error)
 }
 
 // NewInternallbServiceClient constructs a client for the
@@ -82,6 +82,18 @@ func NewInternallbServiceClient(httpClient connect.HTTPClient, baseURL string, o
 	baseURL = strings.TrimRight(baseURL, "/")
 	internallbServiceMethods := v1.File_cloudstack_management_internallb_v1_internallb_gen_proto.Services().ByName("InternallbService").Methods()
 	return &internallbServiceClient{
+		configureInternalLoadBalancerElement: connect.NewClient[v1.ConfigureInternalLoadBalancerElementRequest, v1.ConfigureInternalLoadBalancerElementResponse](
+			httpClient,
+			baseURL+InternallbServiceConfigureInternalLoadBalancerElementProcedure,
+			connect.WithSchema(internallbServiceMethods.ByName("ConfigureInternalLoadBalancerElement")),
+			connect.WithClientOptions(opts...),
+		),
+		createInternalLoadBalancerElement: connect.NewClient[v1.CreateInternalLoadBalancerElementRequest, v1.CreateInternalLoadBalancerElementResponse](
+			httpClient,
+			baseURL+InternallbServiceCreateInternalLoadBalancerElementProcedure,
+			connect.WithSchema(internallbServiceMethods.ByName("CreateInternalLoadBalancerElement")),
+			connect.WithClientOptions(opts...),
+		),
 		listInternalLoadBalancerElements: connect.NewClient[v1.ListInternalLoadBalancerElementsRequest, v1.ListInternalLoadBalancerElementsResponse](
 			httpClient,
 			baseURL+InternallbServiceListInternalLoadBalancerElementsProcedure,
@@ -92,12 +104,6 @@ func NewInternallbServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			httpClient,
 			baseURL+InternallbServiceListInternalLBVMsProcedure,
 			connect.WithSchema(internallbServiceMethods.ByName("ListInternalLBVMs")),
-			connect.WithClientOptions(opts...),
-		),
-		configureInternalLoadBalancerElement: connect.NewClient[v1.ConfigureInternalLoadBalancerElementRequest, v1.ConfigureInternalLoadBalancerElementResponse](
-			httpClient,
-			baseURL+InternallbServiceConfigureInternalLoadBalancerElementProcedure,
-			connect.WithSchema(internallbServiceMethods.ByName("ConfigureInternalLoadBalancerElement")),
 			connect.WithClientOptions(opts...),
 		),
 		startInternalLBVM: connect.NewClient[v1.StartInternalLBVMRequest, v1.StartInternalLBVMResponse](
@@ -112,23 +118,29 @@ func NewInternallbServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(internallbServiceMethods.ByName("StopInternalLBVM")),
 			connect.WithClientOptions(opts...),
 		),
-		createInternalLoadBalancerElement: connect.NewClient[v1.CreateInternalLoadBalancerElementRequest, v1.CreateInternalLoadBalancerElementResponse](
-			httpClient,
-			baseURL+InternallbServiceCreateInternalLoadBalancerElementProcedure,
-			connect.WithSchema(internallbServiceMethods.ByName("CreateInternalLoadBalancerElement")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // internallbServiceClient implements InternallbServiceClient.
 type internallbServiceClient struct {
+	configureInternalLoadBalancerElement *connect.Client[v1.ConfigureInternalLoadBalancerElementRequest, v1.ConfigureInternalLoadBalancerElementResponse]
+	createInternalLoadBalancerElement    *connect.Client[v1.CreateInternalLoadBalancerElementRequest, v1.CreateInternalLoadBalancerElementResponse]
 	listInternalLoadBalancerElements     *connect.Client[v1.ListInternalLoadBalancerElementsRequest, v1.ListInternalLoadBalancerElementsResponse]
 	listInternalLBVMs                    *connect.Client[v1.ListInternalLBVMsRequest, v1.ListInternalLBVMsResponse]
-	configureInternalLoadBalancerElement *connect.Client[v1.ConfigureInternalLoadBalancerElementRequest, v1.ConfigureInternalLoadBalancerElementResponse]
 	startInternalLBVM                    *connect.Client[v1.StartInternalLBVMRequest, v1.StartInternalLBVMResponse]
 	stopInternalLBVM                     *connect.Client[v1.StopInternalLBVMRequest, v1.StopInternalLBVMResponse]
-	createInternalLoadBalancerElement    *connect.Client[v1.CreateInternalLoadBalancerElementRequest, v1.CreateInternalLoadBalancerElementResponse]
+}
+
+// ConfigureInternalLoadBalancerElement calls
+// cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement.
+func (c *internallbServiceClient) ConfigureInternalLoadBalancerElement(ctx context.Context, req *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error) {
+	return c.configureInternalLoadBalancerElement.CallUnary(ctx, req)
+}
+
+// CreateInternalLoadBalancerElement calls
+// cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement.
+func (c *internallbServiceClient) CreateInternalLoadBalancerElement(ctx context.Context, req *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error) {
+	return c.createInternalLoadBalancerElement.CallUnary(ctx, req)
 }
 
 // ListInternalLoadBalancerElements calls
@@ -142,12 +154,6 @@ func (c *internallbServiceClient) ListInternalLBVMs(ctx context.Context, req *co
 	return c.listInternalLBVMs.CallUnary(ctx, req)
 }
 
-// ConfigureInternalLoadBalancerElement calls
-// cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement.
-func (c *internallbServiceClient) ConfigureInternalLoadBalancerElement(ctx context.Context, req *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error) {
-	return c.configureInternalLoadBalancerElement.CallUnary(ctx, req)
-}
-
 // StartInternalLBVM calls cloudstack.management.internallb.v1.InternallbService.StartInternalLBVM.
 func (c *internallbServiceClient) StartInternalLBVM(ctx context.Context, req *connect.Request[v1.StartInternalLBVMRequest]) (*connect.Response[v1.StartInternalLBVMResponse], error) {
 	return c.startInternalLBVM.CallUnary(ctx, req)
@@ -158,27 +164,21 @@ func (c *internallbServiceClient) StopInternalLBVM(ctx context.Context, req *con
 	return c.stopInternalLBVM.CallUnary(ctx, req)
 }
 
-// CreateInternalLoadBalancerElement calls
-// cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement.
-func (c *internallbServiceClient) CreateInternalLoadBalancerElement(ctx context.Context, req *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error) {
-	return c.createInternalLoadBalancerElement.CallUnary(ctx, req)
-}
-
 // InternallbServiceHandler is an implementation of the
 // cloudstack.management.internallb.v1.InternallbService service.
 type InternallbServiceHandler interface {
+	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
+	ConfigureInternalLoadBalancerElement(context.Context, *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error)
+	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
+	CreateInternalLoadBalancerElement(context.Context, *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error)
 	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
 	ListInternalLoadBalancerElements(context.Context, *connect.Request[v1.ListInternalLoadBalancerElementsRequest]) (*connect.Response[v1.ListInternalLoadBalancerElementsResponse], error)
 	// ListInternalLBVMs List internal LB VMs.
 	ListInternalLBVMs(context.Context, *connect.Request[v1.ListInternalLBVMsRequest]) (*connect.Response[v1.ListInternalLBVMsResponse], error)
-	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
-	ConfigureInternalLoadBalancerElement(context.Context, *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error)
 	// StartInternalLBVM Starts an existing internal lb vm.
 	StartInternalLBVM(context.Context, *connect.Request[v1.StartInternalLBVMRequest]) (*connect.Response[v1.StartInternalLBVMResponse], error)
 	// StopInternalLBVM Stops an Internal LB vm.
 	StopInternalLBVM(context.Context, *connect.Request[v1.StopInternalLBVMRequest]) (*connect.Response[v1.StopInternalLBVMResponse], error)
-	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
-	CreateInternalLoadBalancerElement(context.Context, *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error)
 }
 
 // NewInternallbServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -188,6 +188,18 @@ type InternallbServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewInternallbServiceHandler(svc InternallbServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	internallbServiceMethods := v1.File_cloudstack_management_internallb_v1_internallb_gen_proto.Services().ByName("InternallbService").Methods()
+	internallbServiceConfigureInternalLoadBalancerElementHandler := connect.NewUnaryHandler(
+		InternallbServiceConfigureInternalLoadBalancerElementProcedure,
+		svc.ConfigureInternalLoadBalancerElement,
+		connect.WithSchema(internallbServiceMethods.ByName("ConfigureInternalLoadBalancerElement")),
+		connect.WithHandlerOptions(opts...),
+	)
+	internallbServiceCreateInternalLoadBalancerElementHandler := connect.NewUnaryHandler(
+		InternallbServiceCreateInternalLoadBalancerElementProcedure,
+		svc.CreateInternalLoadBalancerElement,
+		connect.WithSchema(internallbServiceMethods.ByName("CreateInternalLoadBalancerElement")),
+		connect.WithHandlerOptions(opts...),
+	)
 	internallbServiceListInternalLoadBalancerElementsHandler := connect.NewUnaryHandler(
 		InternallbServiceListInternalLoadBalancerElementsProcedure,
 		svc.ListInternalLoadBalancerElements,
@@ -198,12 +210,6 @@ func NewInternallbServiceHandler(svc InternallbServiceHandler, opts ...connect.H
 		InternallbServiceListInternalLBVMsProcedure,
 		svc.ListInternalLBVMs,
 		connect.WithSchema(internallbServiceMethods.ByName("ListInternalLBVMs")),
-		connect.WithHandlerOptions(opts...),
-	)
-	internallbServiceConfigureInternalLoadBalancerElementHandler := connect.NewUnaryHandler(
-		InternallbServiceConfigureInternalLoadBalancerElementProcedure,
-		svc.ConfigureInternalLoadBalancerElement,
-		connect.WithSchema(internallbServiceMethods.ByName("ConfigureInternalLoadBalancerElement")),
 		connect.WithHandlerOptions(opts...),
 	)
 	internallbServiceStartInternalLBVMHandler := connect.NewUnaryHandler(
@@ -218,26 +224,20 @@ func NewInternallbServiceHandler(svc InternallbServiceHandler, opts ...connect.H
 		connect.WithSchema(internallbServiceMethods.ByName("StopInternalLBVM")),
 		connect.WithHandlerOptions(opts...),
 	)
-	internallbServiceCreateInternalLoadBalancerElementHandler := connect.NewUnaryHandler(
-		InternallbServiceCreateInternalLoadBalancerElementProcedure,
-		svc.CreateInternalLoadBalancerElement,
-		connect.WithSchema(internallbServiceMethods.ByName("CreateInternalLoadBalancerElement")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cloudstack.management.internallb.v1.InternallbService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case InternallbServiceConfigureInternalLoadBalancerElementProcedure:
+			internallbServiceConfigureInternalLoadBalancerElementHandler.ServeHTTP(w, r)
+		case InternallbServiceCreateInternalLoadBalancerElementProcedure:
+			internallbServiceCreateInternalLoadBalancerElementHandler.ServeHTTP(w, r)
 		case InternallbServiceListInternalLoadBalancerElementsProcedure:
 			internallbServiceListInternalLoadBalancerElementsHandler.ServeHTTP(w, r)
 		case InternallbServiceListInternalLBVMsProcedure:
 			internallbServiceListInternalLBVMsHandler.ServeHTTP(w, r)
-		case InternallbServiceConfigureInternalLoadBalancerElementProcedure:
-			internallbServiceConfigureInternalLoadBalancerElementHandler.ServeHTTP(w, r)
 		case InternallbServiceStartInternalLBVMProcedure:
 			internallbServiceStartInternalLBVMHandler.ServeHTTP(w, r)
 		case InternallbServiceStopInternalLBVMProcedure:
 			internallbServiceStopInternalLBVMHandler.ServeHTTP(w, r)
-		case InternallbServiceCreateInternalLoadBalancerElementProcedure:
-			internallbServiceCreateInternalLoadBalancerElementHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -247,6 +247,14 @@ func NewInternallbServiceHandler(svc InternallbServiceHandler, opts ...connect.H
 // UnimplementedInternallbServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedInternallbServiceHandler struct{}
 
+func (UnimplementedInternallbServiceHandler) ConfigureInternalLoadBalancerElement(context.Context, *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement is not implemented"))
+}
+
+func (UnimplementedInternallbServiceHandler) CreateInternalLoadBalancerElement(context.Context, *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement is not implemented"))
+}
+
 func (UnimplementedInternallbServiceHandler) ListInternalLoadBalancerElements(context.Context, *connect.Request[v1.ListInternalLoadBalancerElementsRequest]) (*connect.Response[v1.ListInternalLoadBalancerElementsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.ListInternalLoadBalancerElements is not implemented"))
 }
@@ -255,18 +263,10 @@ func (UnimplementedInternallbServiceHandler) ListInternalLBVMs(context.Context, 
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.ListInternalLBVMs is not implemented"))
 }
 
-func (UnimplementedInternallbServiceHandler) ConfigureInternalLoadBalancerElement(context.Context, *connect.Request[v1.ConfigureInternalLoadBalancerElementRequest]) (*connect.Response[v1.ConfigureInternalLoadBalancerElementResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.ConfigureInternalLoadBalancerElement is not implemented"))
-}
-
 func (UnimplementedInternallbServiceHandler) StartInternalLBVM(context.Context, *connect.Request[v1.StartInternalLBVMRequest]) (*connect.Response[v1.StartInternalLBVMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.StartInternalLBVM is not implemented"))
 }
 
 func (UnimplementedInternallbServiceHandler) StopInternalLBVM(context.Context, *connect.Request[v1.StopInternalLBVMRequest]) (*connect.Response[v1.StopInternalLBVMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.StopInternalLBVM is not implemented"))
-}
-
-func (UnimplementedInternallbServiceHandler) CreateInternalLoadBalancerElement(context.Context, *connect.Request[v1.CreateInternalLoadBalancerElementRequest]) (*connect.Response[v1.CreateInternalLoadBalancerElementResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.internallb.v1.InternallbService.CreateInternalLoadBalancerElement is not implemented"))
 }

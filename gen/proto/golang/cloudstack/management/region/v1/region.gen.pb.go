@@ -24,34 +24,32 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// AddRegionRequest represents the parameters for adds a region
-type AddRegionRequest struct {
+// DeletePortableIpRangeRequest represents the parameters for deletes a range of portable public ip's associated with a region
+type DeletePortableIpRangeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the Region
-	Id *int32 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Name of the region
-	RegionName *string `protobuf:"bytes,2,opt,name=region_name,json=regionName" json:"region_name,omitempty"`
-	// Region service endpoint
-	EndPoint *string `protobuf:"bytes,3,opt,name=end_point,json=endPoint" json:"end_point,omitempty"`
+	// Id of the portable ip range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddRegionRequest) Reset() {
-	*x = AddRegionRequest{}
+func (x *DeletePortableIpRangeRequest) Reset() {
+	*x = DeletePortableIpRangeRequest{}
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddRegionRequest) String() string {
+func (x *DeletePortableIpRangeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddRegionRequest) ProtoMessage() {}
+func (*DeletePortableIpRangeRequest) ProtoMessage() {}
 
-func (x *AddRegionRequest) ProtoReflect() protoreflect.Message {
+func (x *DeletePortableIpRangeRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -63,41 +61,41 @@ func (x *AddRegionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddRegionRequest.ProtoReflect.Descriptor instead.
-func (*AddRegionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeletePortableIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*DeletePortableIpRangeRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AddRegionRequest) GetId() int32 {
+func (x *DeletePortableIpRangeRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *AddRegionRequest) GetRegionName() string {
-	if x != nil && x.RegionName != nil {
-		return *x.RegionName
+func (x *DeletePortableIpRangeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeletePortableIpRangeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *AddRegionRequest) GetEndPoint() string {
-	if x != nil && x.EndPoint != nil {
-		return *x.EndPoint
-	}
-	return ""
-}
-
-func (x *AddRegionRequest) GetResponseType() string {
+func (x *DeletePortableIpRangeRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// AddRegionResponse represents the response from adds a region
-type AddRegionResponse struct {
+// DeletePortableIpRangeResponse represents the response from deletes a range of portable public ip's associated with a region
+type DeletePortableIpRangeResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -105,20 +103,20 @@ type AddRegionResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddRegionResponse) Reset() {
-	*x = AddRegionResponse{}
+func (x *DeletePortableIpRangeResponse) Reset() {
+	*x = DeletePortableIpRangeResponse{}
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddRegionResponse) String() string {
+func (x *DeletePortableIpRangeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddRegionResponse) ProtoMessage() {}
+func (*DeletePortableIpRangeResponse) ProtoMessage() {}
 
-func (x *AddRegionResponse) ProtoReflect() protoreflect.Message {
+func (x *DeletePortableIpRangeResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -130,12 +128,112 @@ func (x *AddRegionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddRegionResponse.ProtoReflect.Descriptor instead.
-func (*AddRegionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeletePortableIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*DeletePortableIpRangeResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *AddRegionResponse) GetResult() *Result {
+func (x *DeletePortableIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveRegionRequest represents the parameters for removes specified region
+type RemoveRegionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the region to delete
+	Id *int32 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveRegionRequest) Reset() {
+	*x = RemoveRegionRequest{}
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveRegionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveRegionRequest) ProtoMessage() {}
+
+func (x *RemoveRegionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveRegionRequest.ProtoReflect.Descriptor instead.
+func (*RemoveRegionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RemoveRegionRequest) GetId() int32 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RemoveRegionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveRegionResponse represents the response from removes specified region
+type RemoveRegionResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveRegionResponse) Reset() {
+	*x = RemoveRegionResponse{}
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveRegionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveRegionResponse) ProtoMessage() {}
+
+func (x *RemoveRegionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveRegionResponse.ProtoReflect.Descriptor instead.
+func (*RemoveRegionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *RemoveRegionResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -166,7 +264,7 @@ type CreatePortableIpRangeRequest struct {
 
 func (x *CreatePortableIpRangeRequest) Reset() {
 	*x = CreatePortableIpRangeRequest{}
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -178,7 +276,7 @@ func (x *CreatePortableIpRangeRequest) String() string {
 func (*CreatePortableIpRangeRequest) ProtoMessage() {}
 
 func (x *CreatePortableIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -191,7 +289,7 @@ func (x *CreatePortableIpRangeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePortableIpRangeRequest.ProtoReflect.Descriptor instead.
 func (*CreatePortableIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreatePortableIpRangeRequest) GetRegionId() int32 {
@@ -268,7 +366,7 @@ type CreatePortableIpRangeResponse struct {
 
 func (x *CreatePortableIpRangeResponse) Reset() {
 	*x = CreatePortableIpRangeResponse{}
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -280,7 +378,7 @@ func (x *CreatePortableIpRangeResponse) String() string {
 func (*CreatePortableIpRangeResponse) ProtoMessage() {}
 
 func (x *CreatePortableIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -293,7 +391,7 @@ func (x *CreatePortableIpRangeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePortableIpRangeResponse.ProtoReflect.Descriptor instead.
 func (*CreatePortableIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreatePortableIpRangeResponse) GetResult() *Result {
@@ -301,149 +399,6 @@ func (x *CreatePortableIpRangeResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// ListPortableIpRangesRequest represents the parameters for list portable ip ranges
-type ListPortableIpRangesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of a Region
-	RegionId *int32 `protobuf:"varint,1,opt,name=region_id,json=regionId" json:"region_id,omitempty"`
-	// Id of the portable ip range
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPortableIpRangesRequest) Reset() {
-	*x = ListPortableIpRangesRequest{}
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPortableIpRangesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPortableIpRangesRequest) ProtoMessage() {}
-
-func (x *ListPortableIpRangesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPortableIpRangesRequest.ProtoReflect.Descriptor instead.
-func (*ListPortableIpRangesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ListPortableIpRangesRequest) GetRegionId() int32 {
-	if x != nil && x.RegionId != nil {
-		return *x.RegionId
-	}
-	return 0
-}
-
-func (x *ListPortableIpRangesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListPortableIpRangesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListPortableIpRangesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListPortableIpRangesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListPortableIpRangesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListPortableIpRangesResponse represents the response from list portable ip ranges
-type ListPortableIpRangesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of PortableIpRanges
-	Items []*PortableIpRange `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of PortableIpRanges
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPortableIpRangesResponse) Reset() {
-	*x = ListPortableIpRangesResponse{}
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPortableIpRangesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPortableIpRangesResponse) ProtoMessage() {}
-
-func (x *ListPortableIpRangesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPortableIpRangesResponse.ProtoReflect.Descriptor instead.
-func (*ListPortableIpRangesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ListPortableIpRangesResponse) GetItems() []*PortableIpRange {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListPortableIpRangesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // UpdateRegionRequest represents the parameters for updates a region
@@ -564,146 +519,177 @@ func (x *UpdateRegionResponse) GetResult() *Result {
 	return nil
 }
 
-// DeletePortableIpRangeRequest represents the parameters for deletes a range of portable public ip's associated with a region
-type DeletePortableIpRangeRequest struct {
+// ListPortableIpRangesRequest represents the parameters for list portable ip ranges
+type ListPortableIpRangesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of a Region
+	RegionId *int32 `protobuf:"varint,1,opt,name=region_id,json=regionId" json:"region_id,omitempty"`
 	// Id of the portable ip range
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPortableIpRangesRequest) Reset() {
+	*x = ListPortableIpRangesRequest{}
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPortableIpRangesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPortableIpRangesRequest) ProtoMessage() {}
+
+func (x *ListPortableIpRangesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPortableIpRangesRequest.ProtoReflect.Descriptor instead.
+func (*ListPortableIpRangesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListPortableIpRangesRequest) GetRegionId() int32 {
+	if x != nil && x.RegionId != nil {
+		return *x.RegionId
+	}
+	return 0
+}
+
+func (x *ListPortableIpRangesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListPortableIpRangesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListPortableIpRangesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListPortableIpRangesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListPortableIpRangesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListPortableIpRangesResponse represents the response from list portable ip ranges
+type ListPortableIpRangesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of PortableIpRanges
+	Items []*PortableIpRange `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of PortableIpRanges
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPortableIpRangesResponse) Reset() {
+	*x = ListPortableIpRangesResponse{}
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPortableIpRangesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPortableIpRangesResponse) ProtoMessage() {}
+
+func (x *ListPortableIpRangesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPortableIpRangesResponse.ProtoReflect.Descriptor instead.
+func (*ListPortableIpRangesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListPortableIpRangesResponse) GetItems() []*PortableIpRange {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListPortableIpRangesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// AddRegionRequest represents the parameters for adds a region
+type AddRegionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the Region
+	Id *int32 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Name of the region
+	RegionName *string `protobuf:"bytes,2,opt,name=region_name,json=regionName" json:"region_name,omitempty"`
+	// Region service endpoint
+	EndPoint *string `protobuf:"bytes,3,opt,name=end_point,json=endPoint" json:"end_point,omitempty"`
 	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeletePortableIpRangeRequest) Reset() {
-	*x = DeletePortableIpRangeRequest{}
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePortableIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePortableIpRangeRequest) ProtoMessage() {}
-
-func (x *DeletePortableIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePortableIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*DeletePortableIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DeletePortableIpRangeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeletePortableIpRangeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeletePortableIpRangeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeletePortableIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeletePortableIpRangeResponse represents the response from deletes a range of portable public ip's associated with a region
-type DeletePortableIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePortableIpRangeResponse) Reset() {
-	*x = DeletePortableIpRangeResponse{}
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePortableIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePortableIpRangeResponse) ProtoMessage() {}
-
-func (x *DeletePortableIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePortableIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*DeletePortableIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *DeletePortableIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveRegionRequest represents the parameters for removes specified region
-type RemoveRegionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the region to delete
-	Id *int32 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveRegionRequest) Reset() {
-	*x = RemoveRegionRequest{}
+func (x *AddRegionRequest) Reset() {
+	*x = AddRegionRequest{}
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveRegionRequest) String() string {
+func (x *AddRegionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveRegionRequest) ProtoMessage() {}
+func (*AddRegionRequest) ProtoMessage() {}
 
-func (x *RemoveRegionRequest) ProtoReflect() protoreflect.Message {
+func (x *AddRegionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -715,27 +701,41 @@ func (x *RemoveRegionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveRegionRequest.ProtoReflect.Descriptor instead.
-func (*RemoveRegionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddRegionRequest.ProtoReflect.Descriptor instead.
+func (*AddRegionRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *RemoveRegionRequest) GetId() int32 {
+func (x *AddRegionRequest) GetId() int32 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *RemoveRegionRequest) GetResponseType() string {
+func (x *AddRegionRequest) GetRegionName() string {
+	if x != nil && x.RegionName != nil {
+		return *x.RegionName
+	}
+	return ""
+}
+
+func (x *AddRegionRequest) GetEndPoint() string {
+	if x != nil && x.EndPoint != nil {
+		return *x.EndPoint
+	}
+	return ""
+}
+
+func (x *AddRegionRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RemoveRegionResponse represents the response from removes specified region
-type RemoveRegionResponse struct {
+// AddRegionResponse represents the response from adds a region
+type AddRegionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -743,20 +743,20 @@ type RemoveRegionResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveRegionResponse) Reset() {
-	*x = RemoveRegionResponse{}
+func (x *AddRegionResponse) Reset() {
+	*x = AddRegionResponse{}
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveRegionResponse) String() string {
+func (x *AddRegionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveRegionResponse) ProtoMessage() {}
+func (*AddRegionResponse) ProtoMessage() {}
 
-func (x *RemoveRegionResponse) ProtoReflect() protoreflect.Message {
+func (x *AddRegionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_region_v1_region_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -768,12 +768,12 @@ func (x *RemoveRegionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveRegionResponse.ProtoReflect.Descriptor instead.
-func (*RemoveRegionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddRegionResponse.ProtoReflect.Descriptor instead.
+func (*AddRegionResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *RemoveRegionResponse) GetResult() *Result {
+func (x *AddRegionResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1373,15 +1373,18 @@ var File_cloudstack_management_region_v1_region_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_region_v1_region_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/region/v1/region.gen.proto\x12\x1fcloudstack.management.region.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xa4\x01\n" +
-	"\x10AddRegionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
-	"\vregion_name\x18\x02 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\n" +
-	"regionName\x12#\n" +
-	"\tend_point\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bendPoint\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"T\n" +
-	"\x11AddRegionResponse\x12?\n" +
+	"0cloudstack/management/region/v1/region.gen.proto\x12\x1fcloudstack.management.region.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb3\x01\n" +
+	"\x1cDeletePortableIpRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"`\n" +
+	"\x1dDeletePortableIpRangeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"R\n" +
+	"\x13RemoveRegionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"W\n" +
+	"\x14RemoveRegionResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"\xe6\x02\n" +
 	"\x1cCreatePortableIpRangeRequest\x12#\n" +
 	"\tregion_id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\bregionId\x12%\n" +
@@ -1397,6 +1400,15 @@ const file_cloudstack_management_region_v1_region_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\t \x01(\tR\fresponseType\"`\n" +
 	"\x1dCreatePortableIpRangeResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"\x9c\x01\n" +
+	"\x13UpdateRegionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12+\n" +
+	"\vregion_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
+	"regionName\x12\x1b\n" +
+	"\tend_point\x18\x03 \x01(\tR\bendPoint\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
+	"\x14UpdateRegionResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"\xba\x01\n" +
 	"\x1bListPortableIpRangesRequest\x12\x1b\n" +
 	"\tregion_id\x18\x01 \x01(\x05R\bregionId\x12\x0e\n" +
@@ -1408,27 +1420,15 @@ const file_cloudstack_management_region_v1_region_gen_proto_rawDesc = "" +
 	"\x1cListPortableIpRangesResponse\x12F\n" +
 	"\x05items\x18\x01 \x03(\v20.cloudstack.management.region.v1.PortableIpRangeR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9c\x01\n" +
-	"\x13UpdateRegionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12+\n" +
-	"\vregion_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\n" +
-	"regionName\x12\x1b\n" +
-	"\tend_point\x18\x03 \x01(\tR\bendPoint\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
-	"\x14UpdateRegionResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"\xb3\x01\n" +
-	"\x1cDeletePortableIpRangeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"`\n" +
-	"\x1dDeletePortableIpRangeResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"R\n" +
-	"\x13RemoveRegionRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"W\n" +
-	"\x14RemoveRegionResponse\x12?\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa4\x01\n" +
+	"\x10AddRegionRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
+	"\vregion_name\x18\x02 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\n" +
+	"regionName\x12#\n" +
+	"\tend_point\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bendPoint\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"T\n" +
+	"\x11AddRegionResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.region.v1.ResultR\x06result\"\xb4\x01\n" +
 	"\x12ListRegionsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1e\n" +
@@ -1483,13 +1483,13 @@ const file_cloudstack_management_region_v1_region_gen_proto_rawDesc = "" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd5\a\n" +
-	"\rRegionService\x12t\n" +
-	"\tAddRegion\x121.cloudstack.management.region.v1.AddRegionRequest\x1a2.cloudstack.management.region.v1.AddRegionResponse\"\x00\x12\x98\x01\n" +
-	"\x15CreatePortableIpRange\x12=.cloudstack.management.region.v1.CreatePortableIpRangeRequest\x1a>.cloudstack.management.region.v1.CreatePortableIpRangeResponse\"\x00\x12\x95\x01\n" +
-	"\x14ListPortableIpRanges\x12<.cloudstack.management.region.v1.ListPortableIpRangesRequest\x1a=.cloudstack.management.region.v1.ListPortableIpRangesResponse\"\x00\x12}\n" +
-	"\fUpdateRegion\x124.cloudstack.management.region.v1.UpdateRegionRequest\x1a5.cloudstack.management.region.v1.UpdateRegionResponse\"\x00\x12\x98\x01\n" +
+	"\rRegionService\x12\x98\x01\n" +
 	"\x15DeletePortableIpRange\x12=.cloudstack.management.region.v1.DeletePortableIpRangeRequest\x1a>.cloudstack.management.region.v1.DeletePortableIpRangeResponse\"\x00\x12}\n" +
-	"\fRemoveRegion\x124.cloudstack.management.region.v1.RemoveRegionRequest\x1a5.cloudstack.management.region.v1.RemoveRegionResponse\"\x00\x12z\n" +
+	"\fRemoveRegion\x124.cloudstack.management.region.v1.RemoveRegionRequest\x1a5.cloudstack.management.region.v1.RemoveRegionResponse\"\x00\x12\x98\x01\n" +
+	"\x15CreatePortableIpRange\x12=.cloudstack.management.region.v1.CreatePortableIpRangeRequest\x1a>.cloudstack.management.region.v1.CreatePortableIpRangeResponse\"\x00\x12}\n" +
+	"\fUpdateRegion\x124.cloudstack.management.region.v1.UpdateRegionRequest\x1a5.cloudstack.management.region.v1.UpdateRegionResponse\"\x00\x12\x95\x01\n" +
+	"\x14ListPortableIpRanges\x12<.cloudstack.management.region.v1.ListPortableIpRangesRequest\x1a=.cloudstack.management.region.v1.ListPortableIpRangesResponse\"\x00\x12t\n" +
+	"\tAddRegion\x121.cloudstack.management.region.v1.AddRegionRequest\x1a2.cloudstack.management.region.v1.AddRegionResponse\"\x00\x12z\n" +
 	"\vListRegions\x123.cloudstack.management.region.v1.ListRegionsRequest\x1a4.cloudstack.management.region.v1.ListRegionsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.region.v1B\x0eRegionGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/region/v1;regionv1\xa2\x02\x03CMR\xaa\x02\x1fCloudstack.Management.Region.V1\xca\x02\x1fCloudstack\\Management\\Region\\V1\xe2\x02+Cloudstack\\Management\\Region\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Region::V1b\beditionsp\xe8\a"
 
@@ -1507,18 +1507,18 @@ func file_cloudstack_management_region_v1_region_gen_proto_rawDescGZIP() []byte 
 
 var file_cloudstack_management_region_v1_region_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_cloudstack_management_region_v1_region_gen_proto_goTypes = []any{
-	(*AddRegionRequest)(nil),              // 0: cloudstack.management.region.v1.AddRegionRequest
-	(*AddRegionResponse)(nil),             // 1: cloudstack.management.region.v1.AddRegionResponse
-	(*CreatePortableIpRangeRequest)(nil),  // 2: cloudstack.management.region.v1.CreatePortableIpRangeRequest
-	(*CreatePortableIpRangeResponse)(nil), // 3: cloudstack.management.region.v1.CreatePortableIpRangeResponse
-	(*ListPortableIpRangesRequest)(nil),   // 4: cloudstack.management.region.v1.ListPortableIpRangesRequest
-	(*ListPortableIpRangesResponse)(nil),  // 5: cloudstack.management.region.v1.ListPortableIpRangesResponse
+	(*DeletePortableIpRangeRequest)(nil),  // 0: cloudstack.management.region.v1.DeletePortableIpRangeRequest
+	(*DeletePortableIpRangeResponse)(nil), // 1: cloudstack.management.region.v1.DeletePortableIpRangeResponse
+	(*RemoveRegionRequest)(nil),           // 2: cloudstack.management.region.v1.RemoveRegionRequest
+	(*RemoveRegionResponse)(nil),          // 3: cloudstack.management.region.v1.RemoveRegionResponse
+	(*CreatePortableIpRangeRequest)(nil),  // 4: cloudstack.management.region.v1.CreatePortableIpRangeRequest
+	(*CreatePortableIpRangeResponse)(nil), // 5: cloudstack.management.region.v1.CreatePortableIpRangeResponse
 	(*UpdateRegionRequest)(nil),           // 6: cloudstack.management.region.v1.UpdateRegionRequest
 	(*UpdateRegionResponse)(nil),          // 7: cloudstack.management.region.v1.UpdateRegionResponse
-	(*DeletePortableIpRangeRequest)(nil),  // 8: cloudstack.management.region.v1.DeletePortableIpRangeRequest
-	(*DeletePortableIpRangeResponse)(nil), // 9: cloudstack.management.region.v1.DeletePortableIpRangeResponse
-	(*RemoveRegionRequest)(nil),           // 10: cloudstack.management.region.v1.RemoveRegionRequest
-	(*RemoveRegionResponse)(nil),          // 11: cloudstack.management.region.v1.RemoveRegionResponse
+	(*ListPortableIpRangesRequest)(nil),   // 8: cloudstack.management.region.v1.ListPortableIpRangesRequest
+	(*ListPortableIpRangesResponse)(nil),  // 9: cloudstack.management.region.v1.ListPortableIpRangesResponse
+	(*AddRegionRequest)(nil),              // 10: cloudstack.management.region.v1.AddRegionRequest
+	(*AddRegionResponse)(nil),             // 11: cloudstack.management.region.v1.AddRegionResponse
 	(*ListRegionsRequest)(nil),            // 12: cloudstack.management.region.v1.ListRegionsRequest
 	(*ListRegionsResponse)(nil),           // 13: cloudstack.management.region.v1.ListRegionsResponse
 	(*PortableIpRange)(nil),               // 14: cloudstack.management.region.v1.PortableIpRange
@@ -1529,27 +1529,27 @@ var file_cloudstack_management_region_v1_region_gen_proto_goTypes = []any{
 	nil,                                   // 19: cloudstack.management.region.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_region_v1_region_gen_proto_depIdxs = []int32{
-	18, // 0: cloudstack.management.region.v1.AddRegionResponse.result:type_name -> cloudstack.management.region.v1.Result
-	18, // 1: cloudstack.management.region.v1.CreatePortableIpRangeResponse.result:type_name -> cloudstack.management.region.v1.Result
-	14, // 2: cloudstack.management.region.v1.ListPortableIpRangesResponse.items:type_name -> cloudstack.management.region.v1.PortableIpRange
+	18, // 0: cloudstack.management.region.v1.DeletePortableIpRangeResponse.result:type_name -> cloudstack.management.region.v1.Result
+	18, // 1: cloudstack.management.region.v1.RemoveRegionResponse.result:type_name -> cloudstack.management.region.v1.Result
+	18, // 2: cloudstack.management.region.v1.CreatePortableIpRangeResponse.result:type_name -> cloudstack.management.region.v1.Result
 	18, // 3: cloudstack.management.region.v1.UpdateRegionResponse.result:type_name -> cloudstack.management.region.v1.Result
-	18, // 4: cloudstack.management.region.v1.DeletePortableIpRangeResponse.result:type_name -> cloudstack.management.region.v1.Result
-	18, // 5: cloudstack.management.region.v1.RemoveRegionResponse.result:type_name -> cloudstack.management.region.v1.Result
+	14, // 4: cloudstack.management.region.v1.ListPortableIpRangesResponse.items:type_name -> cloudstack.management.region.v1.PortableIpRange
+	18, // 5: cloudstack.management.region.v1.AddRegionResponse.result:type_name -> cloudstack.management.region.v1.Result
 	15, // 6: cloudstack.management.region.v1.ListRegionsResponse.items:type_name -> cloudstack.management.region.v1.Region
 	19, // 7: cloudstack.management.region.v1.Item.details:type_name -> cloudstack.management.region.v1.Item.DetailsEntry
-	0,  // 8: cloudstack.management.region.v1.RegionService.AddRegion:input_type -> cloudstack.management.region.v1.AddRegionRequest
-	2,  // 9: cloudstack.management.region.v1.RegionService.CreatePortableIpRange:input_type -> cloudstack.management.region.v1.CreatePortableIpRangeRequest
-	4,  // 10: cloudstack.management.region.v1.RegionService.ListPortableIpRanges:input_type -> cloudstack.management.region.v1.ListPortableIpRangesRequest
+	0,  // 8: cloudstack.management.region.v1.RegionService.DeletePortableIpRange:input_type -> cloudstack.management.region.v1.DeletePortableIpRangeRequest
+	2,  // 9: cloudstack.management.region.v1.RegionService.RemoveRegion:input_type -> cloudstack.management.region.v1.RemoveRegionRequest
+	4,  // 10: cloudstack.management.region.v1.RegionService.CreatePortableIpRange:input_type -> cloudstack.management.region.v1.CreatePortableIpRangeRequest
 	6,  // 11: cloudstack.management.region.v1.RegionService.UpdateRegion:input_type -> cloudstack.management.region.v1.UpdateRegionRequest
-	8,  // 12: cloudstack.management.region.v1.RegionService.DeletePortableIpRange:input_type -> cloudstack.management.region.v1.DeletePortableIpRangeRequest
-	10, // 13: cloudstack.management.region.v1.RegionService.RemoveRegion:input_type -> cloudstack.management.region.v1.RemoveRegionRequest
+	8,  // 12: cloudstack.management.region.v1.RegionService.ListPortableIpRanges:input_type -> cloudstack.management.region.v1.ListPortableIpRangesRequest
+	10, // 13: cloudstack.management.region.v1.RegionService.AddRegion:input_type -> cloudstack.management.region.v1.AddRegionRequest
 	12, // 14: cloudstack.management.region.v1.RegionService.ListRegions:input_type -> cloudstack.management.region.v1.ListRegionsRequest
-	1,  // 15: cloudstack.management.region.v1.RegionService.AddRegion:output_type -> cloudstack.management.region.v1.AddRegionResponse
-	3,  // 16: cloudstack.management.region.v1.RegionService.CreatePortableIpRange:output_type -> cloudstack.management.region.v1.CreatePortableIpRangeResponse
-	5,  // 17: cloudstack.management.region.v1.RegionService.ListPortableIpRanges:output_type -> cloudstack.management.region.v1.ListPortableIpRangesResponse
+	1,  // 15: cloudstack.management.region.v1.RegionService.DeletePortableIpRange:output_type -> cloudstack.management.region.v1.DeletePortableIpRangeResponse
+	3,  // 16: cloudstack.management.region.v1.RegionService.RemoveRegion:output_type -> cloudstack.management.region.v1.RemoveRegionResponse
+	5,  // 17: cloudstack.management.region.v1.RegionService.CreatePortableIpRange:output_type -> cloudstack.management.region.v1.CreatePortableIpRangeResponse
 	7,  // 18: cloudstack.management.region.v1.RegionService.UpdateRegion:output_type -> cloudstack.management.region.v1.UpdateRegionResponse
-	9,  // 19: cloudstack.management.region.v1.RegionService.DeletePortableIpRange:output_type -> cloudstack.management.region.v1.DeletePortableIpRangeResponse
-	11, // 20: cloudstack.management.region.v1.RegionService.RemoveRegion:output_type -> cloudstack.management.region.v1.RemoveRegionResponse
+	9,  // 19: cloudstack.management.region.v1.RegionService.ListPortableIpRanges:output_type -> cloudstack.management.region.v1.ListPortableIpRangesResponse
+	11, // 20: cloudstack.management.region.v1.RegionService.AddRegion:output_type -> cloudstack.management.region.v1.AddRegionResponse
 	13, // 21: cloudstack.management.region.v1.RegionService.ListRegions:output_type -> cloudstack.management.region.v1.ListRegionsResponse
 	15, // [15:22] is the sub-list for method output_type
 	8,  // [8:15] is the sub-list for method input_type

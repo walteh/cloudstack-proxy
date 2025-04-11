@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BgpService_ChangeBgpPeersForVpc_FullMethodName     = "/cloudstack.management.network.bgp.v1.BgpService/ChangeBgpPeersForVpc"
-	BgpService_DeleteBgpPeer_FullMethodName            = "/cloudstack.management.network.bgp.v1.BgpService/DeleteBgpPeer"
-	BgpService_UpdateBgpPeer_FullMethodName            = "/cloudstack.management.network.bgp.v1.BgpService/UpdateBgpPeer"
-	BgpService_ChangeBgpPeersForNetwork_FullMethodName = "/cloudstack.management.network.bgp.v1.BgpService/ChangeBgpPeersForNetwork"
 	BgpService_DedicateBgpPeer_FullMethodName          = "/cloudstack.management.network.bgp.v1.BgpService/DedicateBgpPeer"
-	BgpService_ReleaseDedicatedBgpPeer_FullMethodName  = "/cloudstack.management.network.bgp.v1.BgpService/ReleaseDedicatedBgpPeer"
-	BgpService_CreateBgpPeer_FullMethodName            = "/cloudstack.management.network.bgp.v1.BgpService/CreateBgpPeer"
 	BgpService_ListBgpPeers_FullMethodName             = "/cloudstack.management.network.bgp.v1.BgpService/ListBgpPeers"
+	BgpService_ChangeBgpPeersForNetwork_FullMethodName = "/cloudstack.management.network.bgp.v1.BgpService/ChangeBgpPeersForNetwork"
+	BgpService_UpdateBgpPeer_FullMethodName            = "/cloudstack.management.network.bgp.v1.BgpService/UpdateBgpPeer"
+	BgpService_DeleteBgpPeer_FullMethodName            = "/cloudstack.management.network.bgp.v1.BgpService/DeleteBgpPeer"
+	BgpService_ReleaseDedicatedBgpPeer_FullMethodName  = "/cloudstack.management.network.bgp.v1.BgpService/ReleaseDedicatedBgpPeer"
+	BgpService_ChangeBgpPeersForVpc_FullMethodName     = "/cloudstack.management.network.bgp.v1.BgpService/ChangeBgpPeersForVpc"
+	BgpService_CreateBgpPeer_FullMethodName            = "/cloudstack.management.network.bgp.v1.BgpService/CreateBgpPeer"
 )
 
 // BgpServiceClient is the client API for BgpService service.
@@ -35,22 +35,22 @@ const (
 //
 // BgpService provides operations for managing Network.Bgps
 type BgpServiceClient interface {
-	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
-	ChangeBgpPeersForVpc(ctx context.Context, in *ChangeBgpPeersForVpcRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForVpcResponse, error)
-	// DeleteBgpPeer Deletes an existing Bgp Peer.
-	DeleteBgpPeer(ctx context.Context, in *DeleteBgpPeerRequest, opts ...grpc.CallOption) (*DeleteBgpPeerResponse, error)
-	// UpdateBgpPeer Updates an existing Bgp Peer.
-	UpdateBgpPeer(ctx context.Context, in *UpdateBgpPeerRequest, opts ...grpc.CallOption) (*UpdateBgpPeerResponse, error)
-	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
-	ChangeBgpPeersForNetwork(ctx context.Context, in *ChangeBgpPeersForNetworkRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForNetworkResponse, error)
 	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
 	DedicateBgpPeer(ctx context.Context, in *DedicateBgpPeerRequest, opts ...grpc.CallOption) (*DedicateBgpPeerResponse, error)
-	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
-	ReleaseDedicatedBgpPeer(ctx context.Context, in *ReleaseDedicatedBgpPeerRequest, opts ...grpc.CallOption) (*ReleaseDedicatedBgpPeerResponse, error)
-	// CreateBgpPeer Creates a Bgp Peer for a zone.
-	CreateBgpPeer(ctx context.Context, in *CreateBgpPeerRequest, opts ...grpc.CallOption) (*CreateBgpPeerResponse, error)
 	// ListBgpPeers Lists Bgp Peers.
 	ListBgpPeers(ctx context.Context, in *ListBgpPeersRequest, opts ...grpc.CallOption) (*ListBgpPeersResponse, error)
+	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
+	ChangeBgpPeersForNetwork(ctx context.Context, in *ChangeBgpPeersForNetworkRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForNetworkResponse, error)
+	// UpdateBgpPeer Updates an existing Bgp Peer.
+	UpdateBgpPeer(ctx context.Context, in *UpdateBgpPeerRequest, opts ...grpc.CallOption) (*UpdateBgpPeerResponse, error)
+	// DeleteBgpPeer Deletes an existing Bgp Peer.
+	DeleteBgpPeer(ctx context.Context, in *DeleteBgpPeerRequest, opts ...grpc.CallOption) (*DeleteBgpPeerResponse, error)
+	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
+	ReleaseDedicatedBgpPeer(ctx context.Context, in *ReleaseDedicatedBgpPeerRequest, opts ...grpc.CallOption) (*ReleaseDedicatedBgpPeerResponse, error)
+	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
+	ChangeBgpPeersForVpc(ctx context.Context, in *ChangeBgpPeersForVpcRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForVpcResponse, error)
+	// CreateBgpPeer Creates a Bgp Peer for a zone.
+	CreateBgpPeer(ctx context.Context, in *CreateBgpPeerRequest, opts ...grpc.CallOption) (*CreateBgpPeerResponse, error)
 }
 
 type bgpServiceClient struct {
@@ -61,70 +61,10 @@ func NewBgpServiceClient(cc grpc.ClientConnInterface) BgpServiceClient {
 	return &bgpServiceClient{cc}
 }
 
-func (c *bgpServiceClient) ChangeBgpPeersForVpc(ctx context.Context, in *ChangeBgpPeersForVpcRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForVpcResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeBgpPeersForVpcResponse)
-	err := c.cc.Invoke(ctx, BgpService_ChangeBgpPeersForVpc_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) DeleteBgpPeer(ctx context.Context, in *DeleteBgpPeerRequest, opts ...grpc.CallOption) (*DeleteBgpPeerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteBgpPeerResponse)
-	err := c.cc.Invoke(ctx, BgpService_DeleteBgpPeer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) UpdateBgpPeer(ctx context.Context, in *UpdateBgpPeerRequest, opts ...grpc.CallOption) (*UpdateBgpPeerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateBgpPeerResponse)
-	err := c.cc.Invoke(ctx, BgpService_UpdateBgpPeer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) ChangeBgpPeersForNetwork(ctx context.Context, in *ChangeBgpPeersForNetworkRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForNetworkResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeBgpPeersForNetworkResponse)
-	err := c.cc.Invoke(ctx, BgpService_ChangeBgpPeersForNetwork_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *bgpServiceClient) DedicateBgpPeer(ctx context.Context, in *DedicateBgpPeerRequest, opts ...grpc.CallOption) (*DedicateBgpPeerResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DedicateBgpPeerResponse)
 	err := c.cc.Invoke(ctx, BgpService_DedicateBgpPeer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) ReleaseDedicatedBgpPeer(ctx context.Context, in *ReleaseDedicatedBgpPeerRequest, opts ...grpc.CallOption) (*ReleaseDedicatedBgpPeerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleaseDedicatedBgpPeerResponse)
-	err := c.cc.Invoke(ctx, BgpService_ReleaseDedicatedBgpPeer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) CreateBgpPeer(ctx context.Context, in *CreateBgpPeerRequest, opts ...grpc.CallOption) (*CreateBgpPeerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateBgpPeerResponse)
-	err := c.cc.Invoke(ctx, BgpService_CreateBgpPeer_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -141,28 +81,88 @@ func (c *bgpServiceClient) ListBgpPeers(ctx context.Context, in *ListBgpPeersReq
 	return out, nil
 }
 
+func (c *bgpServiceClient) ChangeBgpPeersForNetwork(ctx context.Context, in *ChangeBgpPeersForNetworkRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForNetworkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeBgpPeersForNetworkResponse)
+	err := c.cc.Invoke(ctx, BgpService_ChangeBgpPeersForNetwork_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) UpdateBgpPeer(ctx context.Context, in *UpdateBgpPeerRequest, opts ...grpc.CallOption) (*UpdateBgpPeerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateBgpPeerResponse)
+	err := c.cc.Invoke(ctx, BgpService_UpdateBgpPeer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) DeleteBgpPeer(ctx context.Context, in *DeleteBgpPeerRequest, opts ...grpc.CallOption) (*DeleteBgpPeerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteBgpPeerResponse)
+	err := c.cc.Invoke(ctx, BgpService_DeleteBgpPeer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) ReleaseDedicatedBgpPeer(ctx context.Context, in *ReleaseDedicatedBgpPeerRequest, opts ...grpc.CallOption) (*ReleaseDedicatedBgpPeerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReleaseDedicatedBgpPeerResponse)
+	err := c.cc.Invoke(ctx, BgpService_ReleaseDedicatedBgpPeer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) ChangeBgpPeersForVpc(ctx context.Context, in *ChangeBgpPeersForVpcRequest, opts ...grpc.CallOption) (*ChangeBgpPeersForVpcResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeBgpPeersForVpcResponse)
+	err := c.cc.Invoke(ctx, BgpService_ChangeBgpPeersForVpc_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) CreateBgpPeer(ctx context.Context, in *CreateBgpPeerRequest, opts ...grpc.CallOption) (*CreateBgpPeerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateBgpPeerResponse)
+	err := c.cc.Invoke(ctx, BgpService_CreateBgpPeer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BgpServiceServer is the server API for BgpService service.
 // All implementations must embed UnimplementedBgpServiceServer
 // for forward compatibility.
 //
 // BgpService provides operations for managing Network.Bgps
 type BgpServiceServer interface {
-	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
-	ChangeBgpPeersForVpc(context.Context, *ChangeBgpPeersForVpcRequest) (*ChangeBgpPeersForVpcResponse, error)
-	// DeleteBgpPeer Deletes an existing Bgp Peer.
-	DeleteBgpPeer(context.Context, *DeleteBgpPeerRequest) (*DeleteBgpPeerResponse, error)
-	// UpdateBgpPeer Updates an existing Bgp Peer.
-	UpdateBgpPeer(context.Context, *UpdateBgpPeerRequest) (*UpdateBgpPeerResponse, error)
-	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
-	ChangeBgpPeersForNetwork(context.Context, *ChangeBgpPeersForNetworkRequest) (*ChangeBgpPeersForNetworkResponse, error)
 	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
 	DedicateBgpPeer(context.Context, *DedicateBgpPeerRequest) (*DedicateBgpPeerResponse, error)
-	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
-	ReleaseDedicatedBgpPeer(context.Context, *ReleaseDedicatedBgpPeerRequest) (*ReleaseDedicatedBgpPeerResponse, error)
-	// CreateBgpPeer Creates a Bgp Peer for a zone.
-	CreateBgpPeer(context.Context, *CreateBgpPeerRequest) (*CreateBgpPeerResponse, error)
 	// ListBgpPeers Lists Bgp Peers.
 	ListBgpPeers(context.Context, *ListBgpPeersRequest) (*ListBgpPeersResponse, error)
+	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
+	ChangeBgpPeersForNetwork(context.Context, *ChangeBgpPeersForNetworkRequest) (*ChangeBgpPeersForNetworkResponse, error)
+	// UpdateBgpPeer Updates an existing Bgp Peer.
+	UpdateBgpPeer(context.Context, *UpdateBgpPeerRequest) (*UpdateBgpPeerResponse, error)
+	// DeleteBgpPeer Deletes an existing Bgp Peer.
+	DeleteBgpPeer(context.Context, *DeleteBgpPeerRequest) (*DeleteBgpPeerResponse, error)
+	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
+	ReleaseDedicatedBgpPeer(context.Context, *ReleaseDedicatedBgpPeerRequest) (*ReleaseDedicatedBgpPeerResponse, error)
+	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
+	ChangeBgpPeersForVpc(context.Context, *ChangeBgpPeersForVpcRequest) (*ChangeBgpPeersForVpcResponse, error)
+	// CreateBgpPeer Creates a Bgp Peer for a zone.
+	CreateBgpPeer(context.Context, *CreateBgpPeerRequest) (*CreateBgpPeerResponse, error)
 	mustEmbedUnimplementedBgpServiceServer()
 }
 
@@ -173,29 +173,29 @@ type BgpServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedBgpServiceServer struct{}
 
-func (UnimplementedBgpServiceServer) ChangeBgpPeersForVpc(context.Context, *ChangeBgpPeersForVpcRequest) (*ChangeBgpPeersForVpcResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeBgpPeersForVpc not implemented")
+func (UnimplementedBgpServiceServer) DedicateBgpPeer(context.Context, *DedicateBgpPeerRequest) (*DedicateBgpPeerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DedicateBgpPeer not implemented")
 }
-func (UnimplementedBgpServiceServer) DeleteBgpPeer(context.Context, *DeleteBgpPeerRequest) (*DeleteBgpPeerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteBgpPeer not implemented")
-}
-func (UnimplementedBgpServiceServer) UpdateBgpPeer(context.Context, *UpdateBgpPeerRequest) (*UpdateBgpPeerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateBgpPeer not implemented")
+func (UnimplementedBgpServiceServer) ListBgpPeers(context.Context, *ListBgpPeersRequest) (*ListBgpPeersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBgpPeers not implemented")
 }
 func (UnimplementedBgpServiceServer) ChangeBgpPeersForNetwork(context.Context, *ChangeBgpPeersForNetworkRequest) (*ChangeBgpPeersForNetworkResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeBgpPeersForNetwork not implemented")
 }
-func (UnimplementedBgpServiceServer) DedicateBgpPeer(context.Context, *DedicateBgpPeerRequest) (*DedicateBgpPeerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DedicateBgpPeer not implemented")
+func (UnimplementedBgpServiceServer) UpdateBgpPeer(context.Context, *UpdateBgpPeerRequest) (*UpdateBgpPeerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBgpPeer not implemented")
+}
+func (UnimplementedBgpServiceServer) DeleteBgpPeer(context.Context, *DeleteBgpPeerRequest) (*DeleteBgpPeerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBgpPeer not implemented")
 }
 func (UnimplementedBgpServiceServer) ReleaseDedicatedBgpPeer(context.Context, *ReleaseDedicatedBgpPeerRequest) (*ReleaseDedicatedBgpPeerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReleaseDedicatedBgpPeer not implemented")
 }
+func (UnimplementedBgpServiceServer) ChangeBgpPeersForVpc(context.Context, *ChangeBgpPeersForVpcRequest) (*ChangeBgpPeersForVpcResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeBgpPeersForVpc not implemented")
+}
 func (UnimplementedBgpServiceServer) CreateBgpPeer(context.Context, *CreateBgpPeerRequest) (*CreateBgpPeerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBgpPeer not implemented")
-}
-func (UnimplementedBgpServiceServer) ListBgpPeers(context.Context, *ListBgpPeersRequest) (*ListBgpPeersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListBgpPeers not implemented")
 }
 func (UnimplementedBgpServiceServer) mustEmbedUnimplementedBgpServiceServer() {}
 func (UnimplementedBgpServiceServer) testEmbeddedByValue()                    {}
@@ -218,78 +218,6 @@ func RegisterBgpServiceServer(s grpc.ServiceRegistrar, srv BgpServiceServer) {
 	s.RegisterService(&BgpService_ServiceDesc, srv)
 }
 
-func _BgpService_ChangeBgpPeersForVpc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeBgpPeersForVpcRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).ChangeBgpPeersForVpc(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_ChangeBgpPeersForVpc_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).ChangeBgpPeersForVpc(ctx, req.(*ChangeBgpPeersForVpcRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_DeleteBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteBgpPeerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).DeleteBgpPeer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_DeleteBgpPeer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).DeleteBgpPeer(ctx, req.(*DeleteBgpPeerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_UpdateBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateBgpPeerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).UpdateBgpPeer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_UpdateBgpPeer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).UpdateBgpPeer(ctx, req.(*UpdateBgpPeerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_ChangeBgpPeersForNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeBgpPeersForNetworkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).ChangeBgpPeersForNetwork(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_ChangeBgpPeersForNetwork_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).ChangeBgpPeersForNetwork(ctx, req.(*ChangeBgpPeersForNetworkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _BgpService_DedicateBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DedicateBgpPeerRequest)
 	if err := dec(in); err != nil {
@@ -304,42 +232,6 @@ func _BgpService_DedicateBgpPeer_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BgpServiceServer).DedicateBgpPeer(ctx, req.(*DedicateBgpPeerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_ReleaseDedicatedBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleaseDedicatedBgpPeerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).ReleaseDedicatedBgpPeer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_ReleaseDedicatedBgpPeer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).ReleaseDedicatedBgpPeer(ctx, req.(*ReleaseDedicatedBgpPeerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_CreateBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateBgpPeerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).CreateBgpPeer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_CreateBgpPeer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).CreateBgpPeer(ctx, req.(*CreateBgpPeerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -362,6 +254,114 @@ func _BgpService_ListBgpPeers_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BgpService_ChangeBgpPeersForNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeBgpPeersForNetworkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).ChangeBgpPeersForNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_ChangeBgpPeersForNetwork_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).ChangeBgpPeersForNetwork(ctx, req.(*ChangeBgpPeersForNetworkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_UpdateBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBgpPeerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).UpdateBgpPeer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_UpdateBgpPeer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).UpdateBgpPeer(ctx, req.(*UpdateBgpPeerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_DeleteBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBgpPeerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).DeleteBgpPeer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_DeleteBgpPeer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).DeleteBgpPeer(ctx, req.(*DeleteBgpPeerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_ReleaseDedicatedBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleaseDedicatedBgpPeerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).ReleaseDedicatedBgpPeer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_ReleaseDedicatedBgpPeer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).ReleaseDedicatedBgpPeer(ctx, req.(*ReleaseDedicatedBgpPeerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_ChangeBgpPeersForVpc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeBgpPeersForVpcRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).ChangeBgpPeersForVpc(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_ChangeBgpPeersForVpc_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).ChangeBgpPeersForVpc(ctx, req.(*ChangeBgpPeersForVpcRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_CreateBgpPeer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBgpPeerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).CreateBgpPeer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_CreateBgpPeer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).CreateBgpPeer(ctx, req.(*CreateBgpPeerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BgpService_ServiceDesc is the grpc.ServiceDesc for BgpService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -370,36 +370,36 @@ var BgpService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BgpServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ChangeBgpPeersForVpc",
-			Handler:    _BgpService_ChangeBgpPeersForVpc_Handler,
+			MethodName: "DedicateBgpPeer",
+			Handler:    _BgpService_DedicateBgpPeer_Handler,
 		},
 		{
-			MethodName: "DeleteBgpPeer",
-			Handler:    _BgpService_DeleteBgpPeer_Handler,
-		},
-		{
-			MethodName: "UpdateBgpPeer",
-			Handler:    _BgpService_UpdateBgpPeer_Handler,
+			MethodName: "ListBgpPeers",
+			Handler:    _BgpService_ListBgpPeers_Handler,
 		},
 		{
 			MethodName: "ChangeBgpPeersForNetwork",
 			Handler:    _BgpService_ChangeBgpPeersForNetwork_Handler,
 		},
 		{
-			MethodName: "DedicateBgpPeer",
-			Handler:    _BgpService_DedicateBgpPeer_Handler,
+			MethodName: "UpdateBgpPeer",
+			Handler:    _BgpService_UpdateBgpPeer_Handler,
+		},
+		{
+			MethodName: "DeleteBgpPeer",
+			Handler:    _BgpService_DeleteBgpPeer_Handler,
 		},
 		{
 			MethodName: "ReleaseDedicatedBgpPeer",
 			Handler:    _BgpService_ReleaseDedicatedBgpPeer_Handler,
 		},
 		{
-			MethodName: "CreateBgpPeer",
-			Handler:    _BgpService_CreateBgpPeer_Handler,
+			MethodName: "ChangeBgpPeersForVpc",
+			Handler:    _BgpService_ChangeBgpPeersForVpc_Handler,
 		},
 		{
-			MethodName: "ListBgpPeers",
-			Handler:    _BgpService_ListBgpPeers_Handler,
+			MethodName: "CreateBgpPeer",
+			Handler:    _BgpService_CreateBgpPeer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

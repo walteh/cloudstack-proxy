@@ -10,53 +10,66 @@ import "google/protobuf/descriptor.proto";
 service RegionService {
 	option (annotations.service).scope = Scope_USER;
 
-	// AddRegion Adds a Region
-	rpc AddRegion(AddRegionRequest) returns (AddRegionResponse) {}
-
-	// CreatePortableIpRange adds a range of portable public IP's to a region
-	rpc CreatePortableIpRange(CreatePortableIpRangeRequest) returns (CreatePortableIpRangeResponse) {}
-
-	// ListPortableIpRanges list portable IP ranges
-	rpc ListPortableIpRanges(ListPortableIpRangesRequest) returns (ListPortableIpRangesResponse) {}
-
-	// UpdateRegion Updates a region
-	rpc UpdateRegion(UpdateRegionRequest) returns (UpdateRegionResponse) {}
-
 	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
 	rpc DeletePortableIpRange(DeletePortableIpRangeRequest) returns (DeletePortableIpRangeResponse) {}
 
 	// RemoveRegion Removes specified region
 	rpc RemoveRegion(RemoveRegionRequest) returns (RemoveRegionResponse) {}
 
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	rpc CreatePortableIpRange(CreatePortableIpRangeRequest) returns (CreatePortableIpRangeResponse) {}
+
+	// UpdateRegion Updates a region
+	rpc UpdateRegion(UpdateRegionRequest) returns (UpdateRegionResponse) {}
+
+	// ListPortableIpRanges list portable IP ranges
+	rpc ListPortableIpRanges(ListPortableIpRangesRequest) returns (ListPortableIpRangesResponse) {}
+
+	// AddRegion Adds a Region
+	rpc AddRegion(AddRegionRequest) returns (AddRegionResponse) {}
+
 	// ListRegions Lists Regions
 	rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {}
 }
 
-// AddRegionRequest represents the parameters for adds a region
-message AddRegionRequest {
-	// Id of the Region
-	int32 id = 1 [
+// DeletePortableIpRangeRequest represents the parameters for deletes a range of portable public ip's associated with a region
+message DeletePortableIpRangeRequest {
+	// Id of the portable ip range
+	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// Name of the region
-	string region_name = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
+	//
+	int64 start_event_id = 2;
 
-	// Region service endpoint
-	string end_point = 3 [
-		(validate.field).required = true
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
 	];
 
 	//
 	string response_type = 4;
 }
 
-// AddRegionResponse represents the response from adds a region
-message AddRegionResponse {
+// DeletePortableIpRangeResponse represents the response from deletes a range of portable public ip's associated with a region
+message DeletePortableIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveRegionRequest represents the parameters for removes specified region
+message RemoveRegionRequest {
+	// ID of the region to delete
+	int32 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveRegionResponse represents the response from removes specified region
+message RemoveRegionResponse {
 	// The Result
 	Result result = 1;
 }
@@ -112,6 +125,32 @@ message CreatePortableIpRangeResponse {
 	Result result = 1;
 }
 
+// UpdateRegionRequest represents the parameters for updates a region
+message UpdateRegionRequest {
+	// Id of region to update
+	int32 id = 1 [
+		(validate.field).required = true
+	];
+
+	// updates region with this name
+	string region_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// updates region with this end point
+	string end_point = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpdateRegionResponse represents the response from updates a region
+message UpdateRegionResponse {
+	// The Result
+	Result result = 1;
+}
+
 // ListPortableIpRangesRequest represents the parameters for list portable ip ranges
 message ListPortableIpRangesRequest {
 	// Id of a Region
@@ -143,70 +182,31 @@ message ListPortableIpRangesResponse {
 	int32 total_count = 2;
 }
 
-// UpdateRegionRequest represents the parameters for updates a region
-message UpdateRegionRequest {
-	// Id of region to update
+// AddRegionRequest represents the parameters for adds a region
+message AddRegionRequest {
+	// Id of the Region
 	int32 id = 1 [
 		(validate.field).required = true
 	];
 
-	// updates region with this name
+	// Name of the region
 	string region_name = 2 [
+		(validate.field).required       = true,
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// updates region with this end point
-	string end_point = 3;
-
-	//
-	string response_type = 4;
-}
-
-// UpdateRegionResponse represents the response from updates a region
-message UpdateRegionResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeletePortableIpRangeRequest represents the parameters for deletes a range of portable public ip's associated with a region
-message DeletePortableIpRangeRequest {
-	// Id of the portable ip range
-	int64 id = 1 [
+	// Region service endpoint
+	string end_point = 3 [
 		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
 	];
 
 	//
 	string response_type = 4;
 }
 
-// DeletePortableIpRangeResponse represents the response from deletes a range of portable public ip's associated with a region
-message DeletePortableIpRangeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveRegionRequest represents the parameters for removes specified region
-message RemoveRegionRequest {
-	// ID of the region to delete
-	int32 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RemoveRegionResponse represents the response from removes specified region
-message RemoveRegionResponse {
+// AddRegionResponse represents the response from adds a region
+message AddRegionResponse {
 	// The Result
 	Result result = 1;
 }

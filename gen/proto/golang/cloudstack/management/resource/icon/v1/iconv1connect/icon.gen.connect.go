@@ -33,25 +33,25 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// IconServiceDeleteResourceIconProcedure is the fully-qualified name of the IconService's
-	// DeleteResourceIcon RPC.
-	IconServiceDeleteResourceIconProcedure = "/cloudstack.management.resource.icon.v1.IconService/DeleteResourceIcon"
-	// IconServiceUploadResourceIconProcedure is the fully-qualified name of the IconService's
-	// UploadResourceIcon RPC.
-	IconServiceUploadResourceIconProcedure = "/cloudstack.management.resource.icon.v1.IconService/UploadResourceIcon"
 	// IconServiceListResourceIconProcedure is the fully-qualified name of the IconService's
 	// ListResourceIcon RPC.
 	IconServiceListResourceIconProcedure = "/cloudstack.management.resource.icon.v1.IconService/ListResourceIcon"
+	// IconServiceUploadResourceIconProcedure is the fully-qualified name of the IconService's
+	// UploadResourceIcon RPC.
+	IconServiceUploadResourceIconProcedure = "/cloudstack.management.resource.icon.v1.IconService/UploadResourceIcon"
+	// IconServiceDeleteResourceIconProcedure is the fully-qualified name of the IconService's
+	// DeleteResourceIcon RPC.
+	IconServiceDeleteResourceIconProcedure = "/cloudstack.management.resource.icon.v1.IconService/DeleteResourceIcon"
 )
 
 // IconServiceClient is a client for the cloudstack.management.resource.icon.v1.IconService service.
 type IconServiceClient interface {
-	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
-	DeleteResourceIcon(context.Context, *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error)
-	// UploadResourceIcon Uploads an icon for the specified resource(s)
-	UploadResourceIcon(context.Context, *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error)
 	// ListResourceIcon Lists the resource icon for the specified resource(s)
 	ListResourceIcon(context.Context, *connect.Request[v1.ListResourceIconRequest]) (*connect.Response[v1.ListResourceIconResponse], error)
+	// UploadResourceIcon Uploads an icon for the specified resource(s)
+	UploadResourceIcon(context.Context, *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error)
+	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
+	DeleteResourceIcon(context.Context, *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error)
 }
 
 // NewIconServiceClient constructs a client for the
@@ -66,10 +66,10 @@ func NewIconServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	iconServiceMethods := v1.File_cloudstack_management_resource_icon_v1_icon_gen_proto.Services().ByName("IconService").Methods()
 	return &iconServiceClient{
-		deleteResourceIcon: connect.NewClient[v1.DeleteResourceIconRequest, v1.DeleteResourceIconResponse](
+		listResourceIcon: connect.NewClient[v1.ListResourceIconRequest, v1.ListResourceIconResponse](
 			httpClient,
-			baseURL+IconServiceDeleteResourceIconProcedure,
-			connect.WithSchema(iconServiceMethods.ByName("DeleteResourceIcon")),
+			baseURL+IconServiceListResourceIconProcedure,
+			connect.WithSchema(iconServiceMethods.ByName("ListResourceIcon")),
 			connect.WithClientOptions(opts...),
 		),
 		uploadResourceIcon: connect.NewClient[v1.UploadResourceIconRequest, v1.UploadResourceIconResponse](
@@ -78,10 +78,10 @@ func NewIconServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(iconServiceMethods.ByName("UploadResourceIcon")),
 			connect.WithClientOptions(opts...),
 		),
-		listResourceIcon: connect.NewClient[v1.ListResourceIconRequest, v1.ListResourceIconResponse](
+		deleteResourceIcon: connect.NewClient[v1.DeleteResourceIconRequest, v1.DeleteResourceIconResponse](
 			httpClient,
-			baseURL+IconServiceListResourceIconProcedure,
-			connect.WithSchema(iconServiceMethods.ByName("ListResourceIcon")),
+			baseURL+IconServiceDeleteResourceIconProcedure,
+			connect.WithSchema(iconServiceMethods.ByName("DeleteResourceIcon")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -89,19 +89,9 @@ func NewIconServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // iconServiceClient implements IconServiceClient.
 type iconServiceClient struct {
-	deleteResourceIcon *connect.Client[v1.DeleteResourceIconRequest, v1.DeleteResourceIconResponse]
-	uploadResourceIcon *connect.Client[v1.UploadResourceIconRequest, v1.UploadResourceIconResponse]
 	listResourceIcon   *connect.Client[v1.ListResourceIconRequest, v1.ListResourceIconResponse]
-}
-
-// DeleteResourceIcon calls cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon.
-func (c *iconServiceClient) DeleteResourceIcon(ctx context.Context, req *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error) {
-	return c.deleteResourceIcon.CallUnary(ctx, req)
-}
-
-// UploadResourceIcon calls cloudstack.management.resource.icon.v1.IconService.UploadResourceIcon.
-func (c *iconServiceClient) UploadResourceIcon(ctx context.Context, req *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error) {
-	return c.uploadResourceIcon.CallUnary(ctx, req)
+	uploadResourceIcon *connect.Client[v1.UploadResourceIconRequest, v1.UploadResourceIconResponse]
+	deleteResourceIcon *connect.Client[v1.DeleteResourceIconRequest, v1.DeleteResourceIconResponse]
 }
 
 // ListResourceIcon calls cloudstack.management.resource.icon.v1.IconService.ListResourceIcon.
@@ -109,15 +99,25 @@ func (c *iconServiceClient) ListResourceIcon(ctx context.Context, req *connect.R
 	return c.listResourceIcon.CallUnary(ctx, req)
 }
 
+// UploadResourceIcon calls cloudstack.management.resource.icon.v1.IconService.UploadResourceIcon.
+func (c *iconServiceClient) UploadResourceIcon(ctx context.Context, req *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error) {
+	return c.uploadResourceIcon.CallUnary(ctx, req)
+}
+
+// DeleteResourceIcon calls cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon.
+func (c *iconServiceClient) DeleteResourceIcon(ctx context.Context, req *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error) {
+	return c.deleteResourceIcon.CallUnary(ctx, req)
+}
+
 // IconServiceHandler is an implementation of the cloudstack.management.resource.icon.v1.IconService
 // service.
 type IconServiceHandler interface {
-	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
-	DeleteResourceIcon(context.Context, *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error)
-	// UploadResourceIcon Uploads an icon for the specified resource(s)
-	UploadResourceIcon(context.Context, *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error)
 	// ListResourceIcon Lists the resource icon for the specified resource(s)
 	ListResourceIcon(context.Context, *connect.Request[v1.ListResourceIconRequest]) (*connect.Response[v1.ListResourceIconResponse], error)
+	// UploadResourceIcon Uploads an icon for the specified resource(s)
+	UploadResourceIcon(context.Context, *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error)
+	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
+	DeleteResourceIcon(context.Context, *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error)
 }
 
 // NewIconServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -127,10 +127,10 @@ type IconServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIconServiceHandler(svc IconServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	iconServiceMethods := v1.File_cloudstack_management_resource_icon_v1_icon_gen_proto.Services().ByName("IconService").Methods()
-	iconServiceDeleteResourceIconHandler := connect.NewUnaryHandler(
-		IconServiceDeleteResourceIconProcedure,
-		svc.DeleteResourceIcon,
-		connect.WithSchema(iconServiceMethods.ByName("DeleteResourceIcon")),
+	iconServiceListResourceIconHandler := connect.NewUnaryHandler(
+		IconServiceListResourceIconProcedure,
+		svc.ListResourceIcon,
+		connect.WithSchema(iconServiceMethods.ByName("ListResourceIcon")),
 		connect.WithHandlerOptions(opts...),
 	)
 	iconServiceUploadResourceIconHandler := connect.NewUnaryHandler(
@@ -139,20 +139,20 @@ func NewIconServiceHandler(svc IconServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(iconServiceMethods.ByName("UploadResourceIcon")),
 		connect.WithHandlerOptions(opts...),
 	)
-	iconServiceListResourceIconHandler := connect.NewUnaryHandler(
-		IconServiceListResourceIconProcedure,
-		svc.ListResourceIcon,
-		connect.WithSchema(iconServiceMethods.ByName("ListResourceIcon")),
+	iconServiceDeleteResourceIconHandler := connect.NewUnaryHandler(
+		IconServiceDeleteResourceIconProcedure,
+		svc.DeleteResourceIcon,
+		connect.WithSchema(iconServiceMethods.ByName("DeleteResourceIcon")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.resource.icon.v1.IconService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case IconServiceDeleteResourceIconProcedure:
-			iconServiceDeleteResourceIconHandler.ServeHTTP(w, r)
-		case IconServiceUploadResourceIconProcedure:
-			iconServiceUploadResourceIconHandler.ServeHTTP(w, r)
 		case IconServiceListResourceIconProcedure:
 			iconServiceListResourceIconHandler.ServeHTTP(w, r)
+		case IconServiceUploadResourceIconProcedure:
+			iconServiceUploadResourceIconHandler.ServeHTTP(w, r)
+		case IconServiceDeleteResourceIconProcedure:
+			iconServiceDeleteResourceIconHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -162,14 +162,14 @@ func NewIconServiceHandler(svc IconServiceHandler, opts ...connect.HandlerOption
 // UnimplementedIconServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIconServiceHandler struct{}
 
-func (UnimplementedIconServiceHandler) DeleteResourceIcon(context.Context, *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon is not implemented"))
+func (UnimplementedIconServiceHandler) ListResourceIcon(context.Context, *connect.Request[v1.ListResourceIconRequest]) (*connect.Response[v1.ListResourceIconResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.icon.v1.IconService.ListResourceIcon is not implemented"))
 }
 
 func (UnimplementedIconServiceHandler) UploadResourceIcon(context.Context, *connect.Request[v1.UploadResourceIconRequest]) (*connect.Response[v1.UploadResourceIconResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.icon.v1.IconService.UploadResourceIcon is not implemented"))
 }
 
-func (UnimplementedIconServiceHandler) ListResourceIcon(context.Context, *connect.Request[v1.ListResourceIconRequest]) (*connect.Response[v1.ListResourceIconResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.icon.v1.IconService.ListResourceIcon is not implemented"))
+func (UnimplementedIconServiceHandler) DeleteResourceIcon(context.Context, *connect.Request[v1.DeleteResourceIconRequest]) (*connect.Response[v1.DeleteResourceIconResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.resource.icon.v1.IconService.DeleteResourceIcon is not implemented"))
 }

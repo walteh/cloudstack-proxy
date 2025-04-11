@@ -10,17 +10,57 @@ import "google/protobuf/descriptor.proto";
 service VmgroupService {
 	option (annotations.service).scope = Scope_USER;
 
-	// CreateVMGroup Creates a vm group
-	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {}
-
-	// ListVMGroups Lists vm groups
-	rpc ListVMGroups(ListVMGroupsRequest) returns (ListVMGroupsResponse) {}
-
 	// DeleteVMGroup Deletes a vm group
 	rpc DeleteVMGroup(DeleteVMGroupRequest) returns (DeleteVMGroupResponse) {}
 
 	// UpdateVMGroup Updates a vm group
 	rpc UpdateVMGroup(UpdateVMGroupRequest) returns (UpdateVMGroupResponse) {}
+
+	// CreateVMGroup Creates a vm group
+	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {}
+
+	// ListVMGroups Lists vm groups
+	rpc ListVMGroups(ListVMGroupsRequest) returns (ListVMGroupsResponse) {}
+}
+
+// DeleteVMGroupRequest represents the parameters for deletes a vm group
+message DeleteVMGroupRequest {
+	// the ID of the instance group
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteVMGroupResponse represents the response from deletes a vm group
+message DeleteVMGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVMGroupRequest represents the parameters for updates a vm group
+message UpdateVMGroupRequest {
+	// Instance group ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// new instance group name
+	string group_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 3;
+}
+
+// UpdateVMGroupResponse represents the response from updates a vm group
+message UpdateVMGroupResponse {
+	// The Result
+	Result result = 1;
 }
 
 // CreateVMGroupRequest represents the parameters for creates a vm group
@@ -108,46 +148,6 @@ message ListVMGroupsResponse {
 
 	// The total count of InstanceGroups
 	int32 total_count = 2;
-}
-
-// DeleteVMGroupRequest represents the parameters for deletes a vm group
-message DeleteVMGroupRequest {
-	// the ID of the instance group
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteVMGroupResponse represents the response from deletes a vm group
-message DeleteVMGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateVMGroupRequest represents the parameters for updates a vm group
-message UpdateVMGroupRequest {
-	// Instance group ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// new instance group name
-	string group_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	string response_type = 3;
-}
-
-// UpdateVMGroupResponse represents the response from updates a vm group
-message UpdateVMGroupResponse {
-	// The Result
-	Result result = 1;
 }
 
 // InstanceGroup represents a InstanceGroup Item

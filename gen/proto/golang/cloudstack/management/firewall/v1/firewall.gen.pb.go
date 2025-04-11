@@ -24,8 +24,65 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteFirewallRuleRequest represents the parameters for deletes a firewall rule
-type DeleteFirewallRuleRequest struct {
+// ProtocolType represents the possible values for the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
+type ProtocolType int32
+
+const (
+	// Default unspecified value
+	ProtocolType_PROTOCOL_TYPE_UNSPECIFIED ProtocolType = 0
+	// TCP value
+	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 1
+	// UDP value
+	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 2
+	// ICMP value
+	ProtocolType_PROTOCOL_TYPE_ICMP ProtocolType = 3
+)
+
+// Enum value maps for ProtocolType.
+var (
+	ProtocolType_name = map[int32]string{
+		0: "PROTOCOL_TYPE_UNSPECIFIED",
+		1: "PROTOCOL_TYPE_TCP",
+		2: "PROTOCOL_TYPE_UDP",
+		3: "PROTOCOL_TYPE_ICMP",
+	}
+	ProtocolType_value = map[string]int32{
+		"PROTOCOL_TYPE_UNSPECIFIED": 0,
+		"PROTOCOL_TYPE_TCP":         1,
+		"PROTOCOL_TYPE_UDP":         2,
+		"PROTOCOL_TYPE_ICMP":        3,
+	}
+)
+
+func (x ProtocolType) Enum() *ProtocolType {
+	p := new(ProtocolType)
+	*p = x
+	return p
+}
+
+func (x ProtocolType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ProtocolType) Descriptor() protoreflect.EnumDescriptor {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_enumTypes[0].Descriptor()
+}
+
+func (ProtocolType) Type() protoreflect.EnumType {
+	return &file_cloudstack_management_firewall_v1_firewall_gen_proto_enumTypes[0]
+}
+
+func (x ProtocolType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ProtocolType.Descriptor instead.
+func (ProtocolType) EnumDescriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{0}
+}
+
+// DeleteEgressFirewallRuleRequest represents the parameters for deletes an egress firewall rule
+type DeleteEgressFirewallRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the ID of the firewall rule
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
@@ -36,20 +93,20 @@ type DeleteFirewallRuleRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteFirewallRuleRequest) Reset() {
-	*x = DeleteFirewallRuleRequest{}
+func (x *DeleteEgressFirewallRuleRequest) Reset() {
+	*x = DeleteEgressFirewallRuleRequest{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteFirewallRuleRequest) String() string {
+func (x *DeleteEgressFirewallRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteFirewallRuleRequest) ProtoMessage() {}
+func (*DeleteEgressFirewallRuleRequest) ProtoMessage() {}
 
-func (x *DeleteFirewallRuleRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteEgressFirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,41 +118,41 @@ func (x *DeleteFirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteFirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteFirewallRuleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteEgressFirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteEgressFirewallRuleRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *DeleteFirewallRuleRequest) GetId() int64 {
+func (x *DeleteEgressFirewallRuleRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteFirewallRuleRequest) GetStartEventId() int64 {
+func (x *DeleteEgressFirewallRuleRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeleteFirewallRuleRequest) GetInjectedJobId() string {
+func (x *DeleteEgressFirewallRuleRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteFirewallRuleRequest) GetResponseType() string {
+func (x *DeleteEgressFirewallRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteFirewallRuleResponse represents the response from deletes a firewall rule
-type DeleteFirewallRuleResponse struct {
+// DeleteEgressFirewallRuleResponse represents the response from deletes an egress firewall rule
+type DeleteEgressFirewallRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -103,20 +160,20 @@ type DeleteFirewallRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteFirewallRuleResponse) Reset() {
-	*x = DeleteFirewallRuleResponse{}
+func (x *DeleteEgressFirewallRuleResponse) Reset() {
+	*x = DeleteEgressFirewallRuleResponse{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteFirewallRuleResponse) String() string {
+func (x *DeleteEgressFirewallRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteFirewallRuleResponse) ProtoMessage() {}
+func (*DeleteEgressFirewallRuleResponse) ProtoMessage() {}
 
-func (x *DeleteFirewallRuleResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteEgressFirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -128,231 +185,16 @@ func (x *DeleteFirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteFirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteFirewallRuleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteEgressFirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteEgressFirewallRuleResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *DeleteFirewallRuleResponse) GetResult() *Result {
+func (x *DeleteEgressFirewallRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
-}
-
-// ListPortForwardingRulesRequest represents the parameters for lists all port forwarding rules for an ip address.
-type ListPortForwardingRulesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Lists rule with the specified ID.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the ID of IP address of the port forwarding services
-	IpAddressId *int64 `protobuf:"varint,2,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
-	// list port forwarding rules for certain network
-	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,5,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPortForwardingRulesRequest) Reset() {
-	*x = ListPortForwardingRulesRequest{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPortForwardingRulesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPortForwardingRulesRequest) ProtoMessage() {}
-
-func (x *ListPortForwardingRulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPortForwardingRulesRequest.ProtoReflect.Descriptor instead.
-func (*ListPortForwardingRulesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListPortForwardingRulesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetIpAddressId() int64 {
-	if x != nil && x.IpAddressId != nil {
-		return *x.IpAddressId
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListPortForwardingRulesRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListPortForwardingRulesRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListPortForwardingRulesRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListPortForwardingRulesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListPortForwardingRulesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListPortForwardingRulesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListPortForwardingRulesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListPortForwardingRulesResponse represents the response from lists all port forwarding rules for an ip address.
-type ListPortForwardingRulesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of FirewallRules
-	Items []*FirewallRule `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of FirewallRules
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListPortForwardingRulesResponse) Reset() {
-	*x = ListPortForwardingRulesResponse{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListPortForwardingRulesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListPortForwardingRulesResponse) ProtoMessage() {}
-
-func (x *ListPortForwardingRulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListPortForwardingRulesResponse.ProtoReflect.Descriptor instead.
-func (*ListPortForwardingRulesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListPortForwardingRulesResponse) GetItems() []*FirewallRule {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListPortForwardingRulesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // CreateEgressFirewallRuleRequest represents the parameters for creates a egress firewall rule for a given network
@@ -387,7 +229,7 @@ type CreateEgressFirewallRuleRequest struct {
 
 func (x *CreateEgressFirewallRuleRequest) Reset() {
 	*x = CreateEgressFirewallRuleRequest{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -399,7 +241,7 @@ func (x *CreateEgressFirewallRuleRequest) String() string {
 func (*CreateEgressFirewallRuleRequest) ProtoMessage() {}
 
 func (x *CreateEgressFirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +254,7 @@ func (x *CreateEgressFirewallRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateEgressFirewallRuleRequest.ProtoReflect.Descriptor instead.
 func (*CreateEgressFirewallRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateEgressFirewallRuleRequest) GetNetworkId() int64 {
@@ -517,7 +359,7 @@ type CreateEgressFirewallRuleResponse struct {
 
 func (x *CreateEgressFirewallRuleResponse) Reset() {
 	*x = CreateEgressFirewallRuleResponse{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -529,7 +371,7 @@ func (x *CreateEgressFirewallRuleResponse) String() string {
 func (*CreateEgressFirewallRuleResponse) ProtoMessage() {}
 
 func (x *CreateEgressFirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -542,7 +384,7 @@ func (x *CreateEgressFirewallRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateEgressFirewallRuleResponse.ProtoReflect.Descriptor instead.
 func (*CreateEgressFirewallRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateEgressFirewallRuleResponse) GetResult() *Result {
@@ -552,153 +394,47 @@ func (x *CreateEgressFirewallRuleResponse) GetResult() *Result {
 	return nil
 }
 
-// DeletePortForwardingRuleRequest represents the parameters for deletes a port forwarding rule
-type DeletePortForwardingRuleRequest struct {
+// UpdatePortForwardingRuleRequest represents the parameters for updates a port forwarding rule. only the private port and the virtual machine can be updated.
+type UpdatePortForwardingRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the ID of the port forwarding rule
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePortForwardingRuleRequest) Reset() {
-	*x = DeletePortForwardingRuleRequest{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePortForwardingRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePortForwardingRuleRequest) ProtoMessage() {}
-
-func (x *DeletePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePortForwardingRuleRequest.ProtoReflect.Descriptor instead.
-func (*DeletePortForwardingRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeletePortForwardingRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeletePortForwardingRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeletePortForwardingRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeletePortForwardingRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeletePortForwardingRuleResponse represents the response from deletes a port forwarding rule
-type DeletePortForwardingRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeletePortForwardingRuleResponse) Reset() {
-	*x = DeletePortForwardingRuleResponse{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeletePortForwardingRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePortForwardingRuleResponse) ProtoMessage() {}
-
-func (x *DeletePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePortForwardingRuleResponse.ProtoReflect.Descriptor instead.
-func (*DeletePortForwardingRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DeletePortForwardingRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateFirewallRuleRequest represents the parameters for updates firewall rule
-type UpdateFirewallRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the firewall rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the private start port of the port forwarding rule
+	PrivatePort *int32 `protobuf:"varint,2,opt,name=private_port,json=privatePort" json:"private_port,omitempty"`
+	// the private end port of the port forwarding rule
+	PrivateEndPort *int32 `protobuf:"varint,3,opt,name=private_end_port,json=privateEndPort" json:"private_end_port,omitempty"`
+	// the ID of the virtual machine for the port forwarding rule
+	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// VM guest nic Secondary ip address for the port forwarding rule
+	VmGuestIp *string `protobuf:"bytes,5,opt,name=vm_guest_ip,json=vmGuestIp" json:"vm_guest_ip,omitempty"`
 	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
+	// the source CIDR list to allow traffic from; all other CIDRs will be blocked. Multiple entries must be separated by a single comma character (,). This param will be used only for VPC tiers. By default, all CIDRs are allowed.
+	SourceCidrList []string `protobuf:"bytes,7,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	CustomId *string `protobuf:"bytes,8,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateFirewallRuleRequest) Reset() {
-	*x = UpdateFirewallRuleRequest{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[8]
+func (x *UpdatePortForwardingRuleRequest) Reset() {
+	*x = UpdatePortForwardingRuleRequest{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateFirewallRuleRequest) String() string {
+func (x *UpdatePortForwardingRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateFirewallRuleRequest) ProtoMessage() {}
+func (*UpdatePortForwardingRuleRequest) ProtoMessage() {}
 
-func (x *UpdateFirewallRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[8]
+func (x *UpdatePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -709,55 +445,90 @@ func (x *UpdateFirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateFirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateFirewallRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{8}
+// Deprecated: Use UpdatePortForwardingRuleRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePortForwardingRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateFirewallRuleRequest) GetId() int64 {
+func (x *UpdatePortForwardingRuleRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateFirewallRuleRequest) GetDisplay() bool {
+func (x *UpdatePortForwardingRuleRequest) GetPrivatePort() int32 {
+	if x != nil && x.PrivatePort != nil {
+		return *x.PrivatePort
+	}
+	return 0
+}
+
+func (x *UpdatePortForwardingRuleRequest) GetPrivateEndPort() int32 {
+	if x != nil && x.PrivateEndPort != nil {
+		return *x.PrivateEndPort
+	}
+	return 0
+}
+
+func (x *UpdatePortForwardingRuleRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *UpdatePortForwardingRuleRequest) GetVmGuestIp() string {
+	if x != nil && x.VmGuestIp != nil {
+		return *x.VmGuestIp
+	}
+	return ""
+}
+
+func (x *UpdatePortForwardingRuleRequest) GetDisplay() bool {
 	if x != nil && x.Display != nil {
 		return *x.Display
 	}
 	return false
 }
 
-func (x *UpdateFirewallRuleRequest) GetCustomId() string {
+func (x *UpdatePortForwardingRuleRequest) GetSourceCidrList() []string {
+	if x != nil {
+		return x.SourceCidrList
+	}
+	return nil
+}
+
+func (x *UpdatePortForwardingRuleRequest) GetCustomId() string {
 	if x != nil && x.CustomId != nil {
 		return *x.CustomId
 	}
 	return ""
 }
 
-func (x *UpdateFirewallRuleRequest) GetStartEventId() int64 {
+func (x *UpdatePortForwardingRuleRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateFirewallRuleRequest) GetInjectedJobId() string {
+func (x *UpdatePortForwardingRuleRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateFirewallRuleRequest) GetResponseType() string {
+func (x *UpdatePortForwardingRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateFirewallRuleResponse represents the response from updates firewall rule
-type UpdateFirewallRuleResponse struct {
+// UpdatePortForwardingRuleResponse represents the response from updates a port forwarding rule. only the private port and the virtual machine can be updated.
+type UpdatePortForwardingRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -765,21 +536,21 @@ type UpdateFirewallRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateFirewallRuleResponse) Reset() {
-	*x = UpdateFirewallRuleResponse{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[9]
+func (x *UpdatePortForwardingRuleResponse) Reset() {
+	*x = UpdatePortForwardingRuleResponse{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateFirewallRuleResponse) String() string {
+func (x *UpdatePortForwardingRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateFirewallRuleResponse) ProtoMessage() {}
+func (*UpdatePortForwardingRuleResponse) ProtoMessage() {}
 
-func (x *UpdateFirewallRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[9]
+func (x *UpdatePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -790,12 +561,12 @@ func (x *UpdateFirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateFirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateFirewallRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{9}
+// Deprecated: Use UpdatePortForwardingRuleResponse.ProtoReflect.Descriptor instead.
+func (*UpdatePortForwardingRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateFirewallRuleResponse) GetResult() *Result {
+func (x *UpdatePortForwardingRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -836,7 +607,7 @@ type ListFirewallRulesRequest struct {
 
 func (x *ListFirewallRulesRequest) Reset() {
 	*x = ListFirewallRulesRequest{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -848,7 +619,7 @@ func (x *ListFirewallRulesRequest) String() string {
 func (*ListFirewallRulesRequest) ProtoMessage() {}
 
 func (x *ListFirewallRulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -861,7 +632,7 @@ func (x *ListFirewallRulesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFirewallRulesRequest.ProtoReflect.Descriptor instead.
 func (*ListFirewallRulesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListFirewallRulesRequest) GetId() int64 {
@@ -975,7 +746,7 @@ type ListFirewallRulesResponse struct {
 
 func (x *ListFirewallRulesResponse) Reset() {
 	*x = ListFirewallRulesResponse{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -987,7 +758,7 @@ func (x *ListFirewallRulesResponse) String() string {
 func (*ListFirewallRulesResponse) ProtoMessage() {}
 
 func (x *ListFirewallRulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1000,7 +771,7 @@ func (x *ListFirewallRulesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListFirewallRulesResponse.ProtoReflect.Descriptor instead.
 func (*ListFirewallRulesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListFirewallRulesResponse) GetItems() []*Firewall {
@@ -1015,6 +786,337 @@ func (x *ListFirewallRulesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// CreatePortForwardingRuleRequest represents the parameters for creates a port forwarding rule
+type CreatePortForwardingRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the IP address id of the port forwarding rule
+	IpAddressId *int64 `protobuf:"varint,1,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
+	// the starting port of port forwarding rule's private port range
+	PrivateStartPort *int32 `protobuf:"varint,2,opt,name=private_start_port,json=privateStartPort" json:"private_start_port,omitempty"`
+	// the protocol for the port forwarding rule. Valid values are TCP or UDP.
+	Protocol *string `protobuf:"bytes,3,opt,name=protocol" json:"protocol,omitempty"`
+	// the ending port of port forwarding rule's private port range
+	PrivateEndPort *int32 `protobuf:"varint,4,opt,name=private_end_port,json=privateEndPort" json:"private_end_port,omitempty"`
+	// the starting port of port forwarding rule's public port range
+	PublicStartPort *int32 `protobuf:"varint,5,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
+	// the ending port of port forwarding rule's private port range
+	PublicEndPort *int32 `protobuf:"varint,6,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
+	// the ID of the virtual machine for the port forwarding rule
+	VirtualMachineId *int64 `protobuf:"varint,7,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// the source CIDR list to allow traffic from; all other CIDRs will be blocked. Multiple entries must be separated by a single comma character (,). This param will be used only for VPC tiers. By default, all CIDRs are allowed.
+	SourceCidrList []string `protobuf:"bytes,8,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
+	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. If not specified 1) defaulted to false when PF rule is being created for VPC guest network 2) in all other cases defaulted to true
+	OpenFirewall *bool `protobuf:"varint,9,opt,name=open_firewall,json=openFirewall" json:"open_firewall,omitempty"`
+	// the network of the virtual machine the port forwarding rule will be created for. Required when public IP address is not associated with any guest network yet (VPC case).
+	NetworkId *int64 `protobuf:"varint,10,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// VM guest nic secondary IP address for the port forwarding rule
+	VmSecondaryIp *string `protobuf:"bytes,11,opt,name=vm_secondary_ip,json=vmSecondaryIp" json:"vm_secondary_ip,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,12,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,13,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,14,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePortForwardingRuleRequest) Reset() {
+	*x = CreatePortForwardingRuleRequest{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePortForwardingRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePortForwardingRuleRequest) ProtoMessage() {}
+
+func (x *CreatePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePortForwardingRuleRequest.ProtoReflect.Descriptor instead.
+func (*CreatePortForwardingRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *CreatePortForwardingRuleRequest) GetIpAddressId() int64 {
+	if x != nil && x.IpAddressId != nil {
+		return *x.IpAddressId
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetPrivateStartPort() int32 {
+	if x != nil && x.PrivateStartPort != nil {
+		return *x.PrivateStartPort
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *CreatePortForwardingRuleRequest) GetPrivateEndPort() int32 {
+	if x != nil && x.PrivateEndPort != nil {
+		return *x.PrivateEndPort
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetPublicStartPort() int32 {
+	if x != nil && x.PublicStartPort != nil {
+		return *x.PublicStartPort
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetPublicEndPort() int32 {
+	if x != nil && x.PublicEndPort != nil {
+		return *x.PublicEndPort
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetSourceCidrList() []string {
+	if x != nil {
+		return x.SourceCidrList
+	}
+	return nil
+}
+
+func (x *CreatePortForwardingRuleRequest) GetOpenFirewall() bool {
+	if x != nil && x.OpenFirewall != nil {
+		return *x.OpenFirewall
+	}
+	return false
+}
+
+func (x *CreatePortForwardingRuleRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetVmSecondaryIp() string {
+	if x != nil && x.VmSecondaryIp != nil {
+		return *x.VmSecondaryIp
+	}
+	return ""
+}
+
+func (x *CreatePortForwardingRuleRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreatePortForwardingRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreatePortForwardingRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreatePortForwardingRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreatePortForwardingRuleResponse represents the response from creates a port forwarding rule
+type CreatePortForwardingRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePortForwardingRuleResponse) Reset() {
+	*x = CreatePortForwardingRuleResponse{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePortForwardingRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePortForwardingRuleResponse) ProtoMessage() {}
+
+func (x *CreatePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePortForwardingRuleResponse.ProtoReflect.Descriptor instead.
+func (*CreatePortForwardingRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CreatePortForwardingRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteFirewallRuleRequest represents the parameters for deletes a firewall rule
+type DeleteFirewallRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the firewall rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteFirewallRuleRequest) Reset() {
+	*x = DeleteFirewallRuleRequest{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteFirewallRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFirewallRuleRequest) ProtoMessage() {}
+
+func (x *DeleteFirewallRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteFirewallRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteFirewallRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteFirewallRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteFirewallRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteFirewallRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteFirewallRuleResponse represents the response from deletes a firewall rule
+type DeleteFirewallRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteFirewallRuleResponse) Reset() {
+	*x = DeleteFirewallRuleResponse{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteFirewallRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFirewallRuleResponse) ProtoMessage() {}
+
+func (x *DeleteFirewallRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteFirewallRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteFirewallRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // UpdateEgressFirewallRuleRequest represents the parameters for updates egress firewall rule
@@ -1151,15 +1253,15 @@ func (x *UpdateEgressFirewallRuleResponse) GetResult() *Result {
 	return nil
 }
 
-// ListEgressFirewallRulesRequest represents the parameters for lists all egress firewall rules for network id.
-type ListEgressFirewallRulesRequest struct {
+// ListPortForwardingRulesRequest represents the parameters for lists all port forwarding rules for an ip address.
+type ListPortForwardingRulesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Lists rule with the specified ID.
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the network ID for the egress firewall services
-	NetworkId *int64 `protobuf:"varint,2,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// the ID of IP address of the firewall services
-	IpAddressId *int64 `protobuf:"varint,3,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
+	// the ID of IP address of the port forwarding services
+	IpAddressId *int64 `protobuf:"varint,2,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
+	// list port forwarding rules for certain network
+	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
 	// list resources by display flag; only ROOT admin is eligible to pass this parameter
 	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
 	// List resources by tags (key/value pairs)
@@ -1183,20 +1285,20 @@ type ListEgressFirewallRulesRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListEgressFirewallRulesRequest) Reset() {
-	*x = ListEgressFirewallRulesRequest{}
+func (x *ListPortForwardingRulesRequest) Reset() {
+	*x = ListPortForwardingRulesRequest{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListEgressFirewallRulesRequest) String() string {
+func (x *ListPortForwardingRulesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListEgressFirewallRulesRequest) ProtoMessage() {}
+func (*ListPortForwardingRulesRequest) ProtoMessage() {}
 
-func (x *ListEgressFirewallRulesRequest) ProtoReflect() protoreflect.Message {
+func (x *ListPortForwardingRulesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1208,134 +1310,134 @@ func (x *ListEgressFirewallRulesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListEgressFirewallRulesRequest.ProtoReflect.Descriptor instead.
-func (*ListEgressFirewallRulesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListPortForwardingRulesRequest.ProtoReflect.Descriptor instead.
+func (*ListPortForwardingRulesRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *ListEgressFirewallRulesRequest) GetId() int64 {
+func (x *ListPortForwardingRulesRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ListEgressFirewallRulesRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListEgressFirewallRulesRequest) GetIpAddressId() int64 {
+func (x *ListPortForwardingRulesRequest) GetIpAddressId() int64 {
 	if x != nil && x.IpAddressId != nil {
 		return *x.IpAddressId
 	}
 	return 0
 }
 
-func (x *ListEgressFirewallRulesRequest) GetDisplay() bool {
+func (x *ListPortForwardingRulesRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListPortForwardingRulesRequest) GetDisplay() bool {
 	if x != nil && x.Display != nil {
 		return *x.Display
 	}
 	return false
 }
 
-func (x *ListEgressFirewallRulesRequest) GetTags() map[string]string {
+func (x *ListPortForwardingRulesRequest) GetTags() map[string]string {
 	if x != nil {
 		return x.Tags
 	}
 	return nil
 }
 
-func (x *ListEgressFirewallRulesRequest) GetProjectId() int64 {
+func (x *ListPortForwardingRulesRequest) GetProjectId() int64 {
 	if x != nil && x.ProjectId != nil {
 		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *ListEgressFirewallRulesRequest) GetAccountName() string {
+func (x *ListPortForwardingRulesRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *ListEgressFirewallRulesRequest) GetListAll() bool {
+func (x *ListPortForwardingRulesRequest) GetListAll() bool {
 	if x != nil && x.ListAll != nil {
 		return *x.ListAll
 	}
 	return false
 }
 
-func (x *ListEgressFirewallRulesRequest) GetDomainId() int64 {
+func (x *ListPortForwardingRulesRequest) GetDomainId() int64 {
 	if x != nil && x.DomainId != nil {
 		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *ListEgressFirewallRulesRequest) GetRecursive() bool {
+func (x *ListPortForwardingRulesRequest) GetRecursive() bool {
 	if x != nil && x.Recursive != nil {
 		return *x.Recursive
 	}
 	return false
 }
 
-func (x *ListEgressFirewallRulesRequest) GetKeyword() string {
+func (x *ListPortForwardingRulesRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListEgressFirewallRulesRequest) GetPage() int32 {
+func (x *ListPortForwardingRulesRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListEgressFirewallRulesRequest) GetPageSize() int32 {
+func (x *ListPortForwardingRulesRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListEgressFirewallRulesRequest) GetResponseType() string {
+func (x *ListPortForwardingRulesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListEgressFirewallRulesResponse represents the response from lists all egress firewall rules for network id.
-type ListEgressFirewallRulesResponse struct {
+// ListPortForwardingRulesResponse represents the response from lists all port forwarding rules for an ip address.
+type ListPortForwardingRulesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Firewalls
-	Items []*Firewall `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Firewalls
+	// The list of FirewallRules
+	Items []*FirewallRule `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of FirewallRules
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListEgressFirewallRulesResponse) Reset() {
-	*x = ListEgressFirewallRulesResponse{}
+func (x *ListPortForwardingRulesResponse) Reset() {
+	*x = ListPortForwardingRulesResponse{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListEgressFirewallRulesResponse) String() string {
+func (x *ListPortForwardingRulesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListEgressFirewallRulesResponse) ProtoMessage() {}
+func (*ListPortForwardingRulesResponse) ProtoMessage() {}
 
-func (x *ListEgressFirewallRulesResponse) ProtoReflect() protoreflect.Message {
+func (x *ListPortForwardingRulesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1347,51 +1449,55 @@ func (x *ListEgressFirewallRulesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListEgressFirewallRulesResponse.ProtoReflect.Descriptor instead.
-func (*ListEgressFirewallRulesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListPortForwardingRulesResponse.ProtoReflect.Descriptor instead.
+func (*ListPortForwardingRulesResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ListEgressFirewallRulesResponse) GetItems() []*Firewall {
+func (x *ListPortForwardingRulesResponse) GetItems() []*FirewallRule {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListEgressFirewallRulesResponse) GetTotalCount() int32 {
+func (x *ListPortForwardingRulesResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
 }
 
-// DeleteEgressFirewallRuleRequest represents the parameters for deletes an egress firewall rule
-type DeleteEgressFirewallRuleRequest struct {
+// UpdateFirewallRuleRequest represents the parameters for updates firewall rule
+type UpdateFirewallRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the ID of the firewall rule
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteEgressFirewallRuleRequest) Reset() {
-	*x = DeleteEgressFirewallRuleRequest{}
+func (x *UpdateFirewallRuleRequest) Reset() {
+	*x = UpdateFirewallRuleRequest{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteEgressFirewallRuleRequest) String() string {
+func (x *UpdateFirewallRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteEgressFirewallRuleRequest) ProtoMessage() {}
+func (*UpdateFirewallRuleRequest) ProtoMessage() {}
 
-func (x *DeleteEgressFirewallRuleRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateFirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1403,41 +1509,55 @@ func (x *DeleteEgressFirewallRuleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteEgressFirewallRuleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteEgressFirewallRuleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateFirewallRuleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateFirewallRuleRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *DeleteEgressFirewallRuleRequest) GetId() int64 {
+func (x *UpdateFirewallRuleRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteEgressFirewallRuleRequest) GetStartEventId() int64 {
+func (x *UpdateFirewallRuleRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateFirewallRuleRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateFirewallRuleRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeleteEgressFirewallRuleRequest) GetInjectedJobId() string {
+func (x *UpdateFirewallRuleRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteEgressFirewallRuleRequest) GetResponseType() string {
+func (x *UpdateFirewallRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteEgressFirewallRuleResponse represents the response from deletes an egress firewall rule
-type DeleteEgressFirewallRuleResponse struct {
+// UpdateFirewallRuleResponse represents the response from updates firewall rule
+type UpdateFirewallRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1445,20 +1565,20 @@ type DeleteEgressFirewallRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteEgressFirewallRuleResponse) Reset() {
-	*x = DeleteEgressFirewallRuleResponse{}
+func (x *UpdateFirewallRuleResponse) Reset() {
+	*x = UpdateFirewallRuleResponse{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteEgressFirewallRuleResponse) String() string {
+func (x *UpdateFirewallRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteEgressFirewallRuleResponse) ProtoMessage() {}
+func (*UpdateFirewallRuleResponse) ProtoMessage() {}
 
-func (x *DeleteEgressFirewallRuleResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateFirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1470,12 +1590,12 @@ func (x *DeleteEgressFirewallRuleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteEgressFirewallRuleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteEgressFirewallRuleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateFirewallRuleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateFirewallRuleResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *DeleteEgressFirewallRuleResponse) GetResult() *Result {
+func (x *UpdateFirewallRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1670,54 +1790,52 @@ func (x *CreateFirewallRuleResponse) GetResult() *Result {
 	return nil
 }
 
-// CreatePortForwardingRuleRequest represents the parameters for creates a port forwarding rule
-type CreatePortForwardingRuleRequest struct {
+// ListEgressFirewallRulesRequest represents the parameters for lists all egress firewall rules for network id.
+type ListEgressFirewallRulesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the IP address id of the port forwarding rule
-	IpAddressId *int64 `protobuf:"varint,1,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
-	// the starting port of port forwarding rule's private port range
-	PrivateStartPort *int32 `protobuf:"varint,2,opt,name=private_start_port,json=privateStartPort" json:"private_start_port,omitempty"`
-	// the protocol for the port forwarding rule. Valid values are TCP or UDP.
-	Protocol *string `protobuf:"bytes,3,opt,name=protocol" json:"protocol,omitempty"`
-	// the ending port of port forwarding rule's private port range
-	PrivateEndPort *int32 `protobuf:"varint,4,opt,name=private_end_port,json=privateEndPort" json:"private_end_port,omitempty"`
-	// the starting port of port forwarding rule's public port range
-	PublicStartPort *int32 `protobuf:"varint,5,opt,name=public_start_port,json=publicStartPort" json:"public_start_port,omitempty"`
-	// the ending port of port forwarding rule's private port range
-	PublicEndPort *int32 `protobuf:"varint,6,opt,name=public_end_port,json=publicEndPort" json:"public_end_port,omitempty"`
-	// the ID of the virtual machine for the port forwarding rule
-	VirtualMachineId *int64 `protobuf:"varint,7,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// the source CIDR list to allow traffic from; all other CIDRs will be blocked. Multiple entries must be separated by a single comma character (,). This param will be used only for VPC tiers. By default, all CIDRs are allowed.
-	SourceCidrList []string `protobuf:"bytes,8,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
-	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. If not specified 1) defaulted to false when PF rule is being created for VPC guest network 2) in all other cases defaulted to true
-	OpenFirewall *bool `protobuf:"varint,9,opt,name=open_firewall,json=openFirewall" json:"open_firewall,omitempty"`
-	// the network of the virtual machine the port forwarding rule will be created for. Required when public IP address is not associated with any guest network yet (VPC case).
-	NetworkId *int64 `protobuf:"varint,10,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// VM guest nic secondary IP address for the port forwarding rule
-	VmSecondaryIp *string `protobuf:"bytes,11,opt,name=vm_secondary_ip,json=vmSecondaryIp" json:"vm_secondary_ip,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,12,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,13,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,14,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Lists rule with the specified ID.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the network ID for the egress firewall services
+	NetworkId *int64 `protobuf:"varint,2,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// the ID of IP address of the firewall services
+	IpAddressId *int64 `protobuf:"varint,3,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,4,opt,name=display" json:"display,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,5,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,7,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,8,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,9,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,10,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreatePortForwardingRuleRequest) Reset() {
-	*x = CreatePortForwardingRuleRequest{}
+func (x *ListEgressFirewallRulesRequest) Reset() {
+	*x = ListEgressFirewallRulesRequest{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreatePortForwardingRuleRequest) String() string {
+func (x *ListEgressFirewallRulesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePortForwardingRuleRequest) ProtoMessage() {}
+func (*ListEgressFirewallRulesRequest) ProtoMessage() {}
 
-func (x *CreatePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
+func (x *ListEgressFirewallRulesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1729,139 +1847,134 @@ func (x *CreatePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePortForwardingRuleRequest.ProtoReflect.Descriptor instead.
-func (*CreatePortForwardingRuleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListEgressFirewallRulesRequest.ProtoReflect.Descriptor instead.
+func (*ListEgressFirewallRulesRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *CreatePortForwardingRuleRequest) GetIpAddressId() int64 {
-	if x != nil && x.IpAddressId != nil {
-		return *x.IpAddressId
+func (x *ListEgressFirewallRulesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *CreatePortForwardingRuleRequest) GetPrivateStartPort() int32 {
-	if x != nil && x.PrivateStartPort != nil {
-		return *x.PrivateStartPort
-	}
-	return 0
-}
-
-func (x *CreatePortForwardingRuleRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
-	}
-	return ""
-}
-
-func (x *CreatePortForwardingRuleRequest) GetPrivateEndPort() int32 {
-	if x != nil && x.PrivateEndPort != nil {
-		return *x.PrivateEndPort
-	}
-	return 0
-}
-
-func (x *CreatePortForwardingRuleRequest) GetPublicStartPort() int32 {
-	if x != nil && x.PublicStartPort != nil {
-		return *x.PublicStartPort
-	}
-	return 0
-}
-
-func (x *CreatePortForwardingRuleRequest) GetPublicEndPort() int32 {
-	if x != nil && x.PublicEndPort != nil {
-		return *x.PublicEndPort
-	}
-	return 0
-}
-
-func (x *CreatePortForwardingRuleRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *CreatePortForwardingRuleRequest) GetSourceCidrList() []string {
-	if x != nil {
-		return x.SourceCidrList
-	}
-	return nil
-}
-
-func (x *CreatePortForwardingRuleRequest) GetOpenFirewall() bool {
-	if x != nil && x.OpenFirewall != nil {
-		return *x.OpenFirewall
-	}
-	return false
-}
-
-func (x *CreatePortForwardingRuleRequest) GetNetworkId() int64 {
+func (x *ListEgressFirewallRulesRequest) GetNetworkId() int64 {
 	if x != nil && x.NetworkId != nil {
 		return *x.NetworkId
 	}
 	return 0
 }
 
-func (x *CreatePortForwardingRuleRequest) GetVmSecondaryIp() string {
-	if x != nil && x.VmSecondaryIp != nil {
-		return *x.VmSecondaryIp
+func (x *ListEgressFirewallRulesRequest) GetIpAddressId() int64 {
+	if x != nil && x.IpAddressId != nil {
+		return *x.IpAddressId
 	}
-	return ""
+	return 0
 }
 
-func (x *CreatePortForwardingRuleRequest) GetDisplay() bool {
+func (x *ListEgressFirewallRulesRequest) GetDisplay() bool {
 	if x != nil && x.Display != nil {
 		return *x.Display
 	}
 	return false
 }
 
-func (x *CreatePortForwardingRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
+func (x *ListEgressFirewallRulesRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListEgressFirewallRulesRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
 	}
 	return 0
 }
 
-func (x *CreatePortForwardingRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *ListEgressFirewallRulesRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *CreatePortForwardingRuleRequest) GetResponseType() string {
+func (x *ListEgressFirewallRulesRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListEgressFirewallRulesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListEgressFirewallRulesRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListEgressFirewallRulesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListEgressFirewallRulesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListEgressFirewallRulesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListEgressFirewallRulesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreatePortForwardingRuleResponse represents the response from creates a port forwarding rule
-type CreatePortForwardingRuleResponse struct {
+// ListEgressFirewallRulesResponse represents the response from lists all egress firewall rules for network id.
+type ListEgressFirewallRulesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of Firewalls
+	Items []*Firewall `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Firewalls
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreatePortForwardingRuleResponse) Reset() {
-	*x = CreatePortForwardingRuleResponse{}
+func (x *ListEgressFirewallRulesResponse) Reset() {
+	*x = ListEgressFirewallRulesResponse{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreatePortForwardingRuleResponse) String() string {
+func (x *ListEgressFirewallRulesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePortForwardingRuleResponse) ProtoMessage() {}
+func (*ListEgressFirewallRulesResponse) ProtoMessage() {}
 
-func (x *CreatePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
+func (x *ListEgressFirewallRulesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1873,58 +1986,51 @@ func (x *CreatePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePortForwardingRuleResponse.ProtoReflect.Descriptor instead.
-func (*CreatePortForwardingRuleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListEgressFirewallRulesResponse.ProtoReflect.Descriptor instead.
+func (*ListEgressFirewallRulesResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *CreatePortForwardingRuleResponse) GetResult() *Result {
+func (x *ListEgressFirewallRulesResponse) GetItems() []*Firewall {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
 }
 
-// UpdatePortForwardingRuleRequest represents the parameters for updates a port forwarding rule. only the private port and the virtual machine can be updated.
-type UpdatePortForwardingRuleRequest struct {
+func (x *ListEgressFirewallRulesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// DeletePortForwardingRuleRequest represents the parameters for deletes a port forwarding rule
+type DeletePortForwardingRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the ID of the port forwarding rule
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the private start port of the port forwarding rule
-	PrivatePort *int32 `protobuf:"varint,2,opt,name=private_port,json=privatePort" json:"private_port,omitempty"`
-	// the private end port of the port forwarding rule
-	PrivateEndPort *int32 `protobuf:"varint,3,opt,name=private_end_port,json=privateEndPort" json:"private_end_port,omitempty"`
-	// the ID of the virtual machine for the port forwarding rule
-	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// VM guest nic Secondary ip address for the port forwarding rule
-	VmGuestIp *string `protobuf:"bytes,5,opt,name=vm_guest_ip,json=vmGuestIp" json:"vm_guest_ip,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
-	// the source CIDR list to allow traffic from; all other CIDRs will be blocked. Multiple entries must be separated by a single comma character (,). This param will be used only for VPC tiers. By default, all CIDRs are allowed.
-	SourceCidrList []string `protobuf:"bytes,7,rep,name=source_cidr_list,json=sourceCidrList" json:"source_cidr_list,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,8,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdatePortForwardingRuleRequest) Reset() {
-	*x = UpdatePortForwardingRuleRequest{}
+func (x *DeletePortForwardingRuleRequest) Reset() {
+	*x = DeletePortForwardingRuleRequest{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdatePortForwardingRuleRequest) String() string {
+func (x *DeletePortForwardingRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdatePortForwardingRuleRequest) ProtoMessage() {}
+func (*DeletePortForwardingRuleRequest) ProtoMessage() {}
 
-func (x *UpdatePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
+func (x *DeletePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1936,90 +2042,41 @@ func (x *UpdatePortForwardingRuleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdatePortForwardingRuleRequest.ProtoReflect.Descriptor instead.
-func (*UpdatePortForwardingRuleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeletePortForwardingRuleRequest.ProtoReflect.Descriptor instead.
+func (*DeletePortForwardingRuleRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *UpdatePortForwardingRuleRequest) GetId() int64 {
+func (x *DeletePortForwardingRuleRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdatePortForwardingRuleRequest) GetPrivatePort() int32 {
-	if x != nil && x.PrivatePort != nil {
-		return *x.PrivatePort
-	}
-	return 0
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetPrivateEndPort() int32 {
-	if x != nil && x.PrivateEndPort != nil {
-		return *x.PrivateEndPort
-	}
-	return 0
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetVmGuestIp() string {
-	if x != nil && x.VmGuestIp != nil {
-		return *x.VmGuestIp
-	}
-	return ""
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetSourceCidrList() []string {
-	if x != nil {
-		return x.SourceCidrList
-	}
-	return nil
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdatePortForwardingRuleRequest) GetStartEventId() int64 {
+func (x *DeletePortForwardingRuleRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdatePortForwardingRuleRequest) GetInjectedJobId() string {
+func (x *DeletePortForwardingRuleRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdatePortForwardingRuleRequest) GetResponseType() string {
+func (x *DeletePortForwardingRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdatePortForwardingRuleResponse represents the response from updates a port forwarding rule. only the private port and the virtual machine can be updated.
-type UpdatePortForwardingRuleResponse struct {
+// DeletePortForwardingRuleResponse represents the response from deletes a port forwarding rule
+type DeletePortForwardingRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -2027,20 +2084,20 @@ type UpdatePortForwardingRuleResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdatePortForwardingRuleResponse) Reset() {
-	*x = UpdatePortForwardingRuleResponse{}
+func (x *DeletePortForwardingRuleResponse) Reset() {
+	*x = DeletePortForwardingRuleResponse{}
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdatePortForwardingRuleResponse) String() string {
+func (x *DeletePortForwardingRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdatePortForwardingRuleResponse) ProtoMessage() {}
+func (*DeletePortForwardingRuleResponse) ProtoMessage() {}
 
-func (x *UpdatePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
+func (x *DeletePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2052,98 +2109,16 @@ func (x *UpdatePortForwardingRuleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdatePortForwardingRuleResponse.ProtoReflect.Descriptor instead.
-func (*UpdatePortForwardingRuleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeletePortForwardingRuleResponse.ProtoReflect.Descriptor instead.
+func (*DeletePortForwardingRuleResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{23}
 }
 
-func (x *UpdatePortForwardingRuleResponse) GetResult() *Result {
+func (x *DeletePortForwardingRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
-}
-
-// FirewallRule represents a FirewallRule Item
-type FirewallRule struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the FirewallRule
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the FirewallRule
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the FirewallRule
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the FirewallRule
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FirewallRule) Reset() {
-	*x = FirewallRule{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FirewallRule) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FirewallRule) ProtoMessage() {}
-
-func (x *FirewallRule) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FirewallRule.ProtoReflect.Descriptor instead.
-func (*FirewallRule) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *FirewallRule) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *FirewallRule) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *FirewallRule) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *FirewallRule) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *FirewallRule) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
 }
 
 // Firewall represents a Firewall Item
@@ -2165,7 +2140,7 @@ type Firewall struct {
 
 func (x *Firewall) Reset() {
 	*x = Firewall{}
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2177,7 +2152,7 @@ func (x *Firewall) String() string {
 func (*Firewall) ProtoMessage() {}
 
 func (x *Firewall) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2190,7 +2165,7 @@ func (x *Firewall) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Firewall.ProtoReflect.Descriptor instead.
 func (*Firewall) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Firewall) GetId() string {
@@ -2222,6 +2197,88 @@ func (x *Firewall) GetDescription() string {
 }
 
 func (x *Firewall) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// FirewallRule represents a FirewallRule Item
+type FirewallRule struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the FirewallRule
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the FirewallRule
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the FirewallRule
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the FirewallRule
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FirewallRule) Reset() {
+	*x = FirewallRule{}
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FirewallRule) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FirewallRule) ProtoMessage() {}
+
+func (x *FirewallRule) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FirewallRule.ProtoReflect.Descriptor instead.
+func (*FirewallRule) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *FirewallRule) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *FirewallRule) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *FirewallRule) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *FirewallRule) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *FirewallRule) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -2514,40 +2571,14 @@ var File_cloudstack_management_firewall_v1_firewall_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/firewall/v1/firewall.gen.proto\x12!cloudstack.management.firewall.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb0\x01\n" +
-	"\x19DeleteFirewallRuleRequest\x12\x16\n" +
+	"4cloudstack/management/firewall/v1/firewall.gen.proto\x12!cloudstack.management.firewall.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb6\x01\n" +
+	"\x1fDeleteEgressFirewallRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
-	"\x1aDeleteFirewallRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xc4\x05\n" +
-	"\x1eListPortForwardingRulesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\"\n" +
-	"\rip_address_id\x18\x02 \x01(\x03R\vipAddressId\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12\x1f\n" +
-	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12_\n" +
-	"\x04tags\x18\x05 \x03(\v2K.cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.TagsEntryR\x04tags\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x90\x01\n" +
-	"\x1fListPortForwardingRulesResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.firewall.v1.FirewallRuleR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x88\x04\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"e\n" +
+	" DeleteEgressFirewallRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\x88\x04\n" +
 	"\x1fCreateEgressFirewallRuleRequest\x12%\n" +
 	"\n" +
 	"network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12\"\n" +
@@ -2565,22 +2596,21 @@ const file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\r \x01(\tR\fresponseType\"e\n" +
 	" CreateEgressFirewallRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xb6\x01\n" +
-	"\x1fDeletePortForwardingRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"e\n" +
-	" DeletePortForwardingRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xf8\x01\n" +
-	"\x19UpdateFirewallRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
-	"\x1aUpdateFirewallRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xe6\x03\n" +
+	"\x1fUpdatePortForwardingRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
+	"\fprivate_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\vprivatePort\x125\n" +
+	"\x10private_end_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0eprivateEndPort\x12,\n" +
+	"\x12virtual_machine_id\x18\x04 \x01(\x03R\x10virtualMachineId\x12'\n" +
+	"\vvm_guest_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\tvmGuestIp\x12\x1f\n" +
+	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12(\n" +
+	"\x10source_cidr_list\x18\a \x03(\tR\x0esourceCidrList\x12%\n" +
+	"\tcustom_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"e\n" +
+	" UpdatePortForwardingRuleResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xb8\x05\n" +
 	"\x18ListFirewallRulesRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\"\n" +
@@ -2607,7 +2637,34 @@ const file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc = "" +
 	"\x19ListFirewallRulesResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.firewall.v1.FirewallR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xfe\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xd1\x05\n" +
+	"\x1fCreatePortForwardingRuleRequest\x12*\n" +
+	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12<\n" +
+	"\x12private_start_port\x18\x02 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\x10privateStartPort\x12\"\n" +
+	"\bprotocol\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x125\n" +
+	"\x10private_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0eprivateEndPort\x12:\n" +
+	"\x11public_start_port\x18\x05 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
+	"\x0fpublic_end_port\x18\x06 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x124\n" +
+	"\x12virtual_machine_id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12(\n" +
+	"\x10source_cidr_list\x18\b \x03(\tR\x0esourceCidrList\x12*\n" +
+	"\ropen_firewall\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\fopenFirewall\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\n" +
+	" \x01(\x03R\tnetworkId\x12/\n" +
+	"\x0fvm_secondary_ip\x18\v \x01(\tB\a\xbaH\x04r\x02x\x01R\rvmSecondaryIp\x12\x1f\n" +
+	"\adisplay\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\r \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\"e\n" +
+	" CreatePortForwardingRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xb0\x01\n" +
+	"\x19DeleteFirewallRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
+	"\x1aDeleteFirewallRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xfe\x01\n" +
 	"\x1fUpdateEgressFirewallRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
 	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
@@ -2616,6 +2673,57 @@ const file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"e\n" +
 	" UpdateEgressFirewallRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xc4\x05\n" +
+	"\x1eListPortForwardingRulesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\"\n" +
+	"\rip_address_id\x18\x02 \x01(\x03R\vipAddressId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12\x1f\n" +
+	"\adisplay\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12_\n" +
+	"\x04tags\x18\x05 \x03(\v2K.cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\a \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\t \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x90\x01\n" +
+	"\x1fListPortForwardingRulesResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.firewall.v1.FirewallRuleR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf8\x01\n" +
+	"\x19UpdateFirewallRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"_\n" +
+	"\x1aUpdateFirewallRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xe1\x03\n" +
+	"\x19CreateFirewallRuleRequest\x12*\n" +
+	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12\"\n" +
+	"\bprotocol\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
+	"\x11public_start_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
+	"\x0fpublic_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
+	"\bcidrlist\x18\x05 \x03(\tR\bcidrlist\x12\x1b\n" +
+	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
+	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12\x12\n" +
+	"\x04type\x18\b \x01(\tR\x04type\x12\x1f\n" +
+	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\n" +
+	" \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"_\n" +
+	"\x1aCreateFirewallRuleResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xc4\x05\n" +
 	"\x1eListEgressFirewallRulesRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
@@ -2643,71 +2751,20 @@ const file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc = "" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.firewall.v1.FirewallR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xb6\x01\n" +
-	"\x1fDeleteEgressFirewallRuleRequest\x12\x16\n" +
+	"\x1fDeletePortForwardingRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"e\n" +
-	" DeleteEgressFirewallRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xe1\x03\n" +
-	"\x19CreateFirewallRuleRequest\x12*\n" +
-	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12\"\n" +
-	"\bprotocol\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
-	"\x11public_start_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
-	"\x0fpublic_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x12\x1a\n" +
-	"\bcidrlist\x18\x05 \x03(\tR\bcidrlist\x12\x1b\n" +
-	"\ticmp_type\x18\x06 \x01(\x05R\bicmpType\x12\x1b\n" +
-	"\ticmp_code\x18\a \x01(\x05R\bicmpCode\x12\x12\n" +
-	"\x04type\x18\b \x01(\tR\x04type\x12\x1f\n" +
-	"\adisplay\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\n" +
-	" \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"_\n" +
-	"\x1aCreateFirewallRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xd1\x05\n" +
-	"\x1fCreatePortForwardingRuleRequest\x12*\n" +
-	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12<\n" +
-	"\x12private_start_port\x18\x02 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\x10privateStartPort\x12\"\n" +
-	"\bprotocol\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x125\n" +
-	"\x10private_end_port\x18\x04 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0eprivateEndPort\x12:\n" +
-	"\x11public_start_port\x18\x05 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +
-	"\x0fpublic_end_port\x18\x06 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\rpublicEndPort\x124\n" +
-	"\x12virtual_machine_id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12(\n" +
-	"\x10source_cidr_list\x18\b \x03(\tR\x0esourceCidrList\x12*\n" +
-	"\ropen_firewall\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\fopenFirewall\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\n" +
-	" \x01(\x03R\tnetworkId\x12/\n" +
-	"\x0fvm_secondary_ip\x18\v \x01(\tB\a\xbaH\x04r\x02x\x01R\rvmSecondaryIp\x12\x1f\n" +
-	"\adisplay\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\r \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\"e\n" +
-	" CreatePortForwardingRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\xe6\x03\n" +
-	"\x1fUpdatePortForwardingRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
-	"\fprivate_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\vprivatePort\x125\n" +
-	"\x10private_end_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0eprivateEndPort\x12,\n" +
-	"\x12virtual_machine_id\x18\x04 \x01(\x03R\x10virtualMachineId\x12'\n" +
-	"\vvm_guest_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\tvmGuestIp\x12\x1f\n" +
-	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12(\n" +
-	"\x10source_cidr_list\x18\a \x03(\tR\x0esourceCidrList\x12%\n" +
-	"\tcustom_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"e\n" +
-	" UpdatePortForwardingRuleResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\x9b\x01\n" +
-	"\fFirewallRule\x12\x18\n" +
+	" DeletePortForwardingRuleResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.firewall.v1.ResultR\x06result\"\x97\x01\n" +
+	"\bFirewall\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
-	"\bFirewall\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9b\x01\n" +
+	"\fFirewallRule\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2741,20 +2798,25 @@ const file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc = "" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa8\x0f\n" +
-	"\x0fFirewallService\x12\x93\x01\n" +
-	"\x12DeleteFirewallRule\x12<.cloudstack.management.firewall.v1.DeleteFirewallRuleRequest\x1a=.cloudstack.management.firewall.v1.DeleteFirewallRuleResponse\"\x00\x12\xa2\x01\n" +
-	"\x17ListPortForwardingRules\x12A.cloudstack.management.firewall.v1.ListPortForwardingRulesRequest\x1aB.cloudstack.management.firewall.v1.ListPortForwardingRulesResponse\"\x00\x12\xa5\x01\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus*s\n" +
+	"\fProtocolType\x12\x1d\n" +
+	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x02\x12\x16\n" +
+	"\x12PROTOCOL_TYPE_ICMP\x10\x032\xa8\x0f\n" +
+	"\x0fFirewallService\x12\xa5\x01\n" +
+	"\x18DeleteEgressFirewallRule\x12B.cloudstack.management.firewall.v1.DeleteEgressFirewallRuleRequest\x1aC.cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse\"\x00\x12\xa5\x01\n" +
 	"\x18CreateEgressFirewallRule\x12B.cloudstack.management.firewall.v1.CreateEgressFirewallRuleRequest\x1aC.cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse\"\x00\x12\xa5\x01\n" +
-	"\x18DeletePortForwardingRule\x12B.cloudstack.management.firewall.v1.DeletePortForwardingRuleRequest\x1aC.cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse\"\x00\x12\x93\x01\n" +
-	"\x12UpdateFirewallRule\x12<.cloudstack.management.firewall.v1.UpdateFirewallRuleRequest\x1a=.cloudstack.management.firewall.v1.UpdateFirewallRuleResponse\"\x00\x12\x90\x01\n" +
+	"\x18UpdatePortForwardingRule\x12B.cloudstack.management.firewall.v1.UpdatePortForwardingRuleRequest\x1aC.cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse\"\x00\x12\x90\x01\n" +
 	"\x11ListFirewallRules\x12;.cloudstack.management.firewall.v1.ListFirewallRulesRequest\x1a<.cloudstack.management.firewall.v1.ListFirewallRulesResponse\"\x00\x12\xa5\x01\n" +
+	"\x18CreatePortForwardingRule\x12B.cloudstack.management.firewall.v1.CreatePortForwardingRuleRequest\x1aC.cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse\"\x00\x12\x93\x01\n" +
+	"\x12DeleteFirewallRule\x12<.cloudstack.management.firewall.v1.DeleteFirewallRuleRequest\x1a=.cloudstack.management.firewall.v1.DeleteFirewallRuleResponse\"\x00\x12\xa5\x01\n" +
 	"\x18UpdateEgressFirewallRule\x12B.cloudstack.management.firewall.v1.UpdateEgressFirewallRuleRequest\x1aC.cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse\"\x00\x12\xa2\x01\n" +
+	"\x17ListPortForwardingRules\x12A.cloudstack.management.firewall.v1.ListPortForwardingRulesRequest\x1aB.cloudstack.management.firewall.v1.ListPortForwardingRulesResponse\"\x00\x12\x93\x01\n" +
+	"\x12UpdateFirewallRule\x12<.cloudstack.management.firewall.v1.UpdateFirewallRuleRequest\x1a=.cloudstack.management.firewall.v1.UpdateFirewallRuleResponse\"\x00\x12\x93\x01\n" +
+	"\x12CreateFirewallRule\x12<.cloudstack.management.firewall.v1.CreateFirewallRuleRequest\x1a=.cloudstack.management.firewall.v1.CreateFirewallRuleResponse\"\x00\x12\xa2\x01\n" +
 	"\x17ListEgressFirewallRules\x12A.cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest\x1aB.cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse\"\x00\x12\xa5\x01\n" +
-	"\x18DeleteEgressFirewallRule\x12B.cloudstack.management.firewall.v1.DeleteEgressFirewallRuleRequest\x1aC.cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse\"\x00\x12\x93\x01\n" +
-	"\x12CreateFirewallRule\x12<.cloudstack.management.firewall.v1.CreateFirewallRuleRequest\x1a=.cloudstack.management.firewall.v1.CreateFirewallRuleResponse\"\x00\x12\xa5\x01\n" +
-	"\x18CreatePortForwardingRule\x12B.cloudstack.management.firewall.v1.CreatePortForwardingRuleRequest\x1aC.cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse\"\x00\x12\xa5\x01\n" +
-	"\x18UpdatePortForwardingRule\x12B.cloudstack.management.firewall.v1.UpdatePortForwardingRuleRequest\x1aC.cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
+	"\x18DeletePortForwardingRule\x12B.cloudstack.management.firewall.v1.DeletePortForwardingRuleRequest\x1aC.cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
 	"%com.cloudstack.management.firewall.v1B\x10FirewallGenProtoP\x01Z`github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/firewall/v1;firewallv1\xa2\x02\x03CMF\xaa\x02!Cloudstack.Management.Firewall.V1\xca\x02!Cloudstack\\Management\\Firewall\\V1\xe2\x02-Cloudstack\\Management\\Firewall\\V1\\GPBMetadata\xea\x02$Cloudstack::Management::Firewall::V1b\beditionsp\xe8\a"
 
 var (
@@ -2769,83 +2831,85 @@ func file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescGZIP() []b
 	return file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDescData
 }
 
+var file_cloudstack_management_firewall_v1_firewall_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_cloudstack_management_firewall_v1_firewall_gen_proto_goTypes = []any{
-	(*DeleteFirewallRuleRequest)(nil),        // 0: cloudstack.management.firewall.v1.DeleteFirewallRuleRequest
-	(*DeleteFirewallRuleResponse)(nil),       // 1: cloudstack.management.firewall.v1.DeleteFirewallRuleResponse
-	(*ListPortForwardingRulesRequest)(nil),   // 2: cloudstack.management.firewall.v1.ListPortForwardingRulesRequest
-	(*ListPortForwardingRulesResponse)(nil),  // 3: cloudstack.management.firewall.v1.ListPortForwardingRulesResponse
-	(*CreateEgressFirewallRuleRequest)(nil),  // 4: cloudstack.management.firewall.v1.CreateEgressFirewallRuleRequest
-	(*CreateEgressFirewallRuleResponse)(nil), // 5: cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse
-	(*DeletePortForwardingRuleRequest)(nil),  // 6: cloudstack.management.firewall.v1.DeletePortForwardingRuleRequest
-	(*DeletePortForwardingRuleResponse)(nil), // 7: cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse
-	(*UpdateFirewallRuleRequest)(nil),        // 8: cloudstack.management.firewall.v1.UpdateFirewallRuleRequest
-	(*UpdateFirewallRuleResponse)(nil),       // 9: cloudstack.management.firewall.v1.UpdateFirewallRuleResponse
-	(*ListFirewallRulesRequest)(nil),         // 10: cloudstack.management.firewall.v1.ListFirewallRulesRequest
-	(*ListFirewallRulesResponse)(nil),        // 11: cloudstack.management.firewall.v1.ListFirewallRulesResponse
-	(*UpdateEgressFirewallRuleRequest)(nil),  // 12: cloudstack.management.firewall.v1.UpdateEgressFirewallRuleRequest
-	(*UpdateEgressFirewallRuleResponse)(nil), // 13: cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse
-	(*ListEgressFirewallRulesRequest)(nil),   // 14: cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest
-	(*ListEgressFirewallRulesResponse)(nil),  // 15: cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse
-	(*DeleteEgressFirewallRuleRequest)(nil),  // 16: cloudstack.management.firewall.v1.DeleteEgressFirewallRuleRequest
-	(*DeleteEgressFirewallRuleResponse)(nil), // 17: cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse
-	(*CreateFirewallRuleRequest)(nil),        // 18: cloudstack.management.firewall.v1.CreateFirewallRuleRequest
-	(*CreateFirewallRuleResponse)(nil),       // 19: cloudstack.management.firewall.v1.CreateFirewallRuleResponse
-	(*CreatePortForwardingRuleRequest)(nil),  // 20: cloudstack.management.firewall.v1.CreatePortForwardingRuleRequest
-	(*CreatePortForwardingRuleResponse)(nil), // 21: cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse
-	(*UpdatePortForwardingRuleRequest)(nil),  // 22: cloudstack.management.firewall.v1.UpdatePortForwardingRuleRequest
-	(*UpdatePortForwardingRuleResponse)(nil), // 23: cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse
-	(*FirewallRule)(nil),                     // 24: cloudstack.management.firewall.v1.FirewallRule
+	(ProtocolType)(0),                        // 0: cloudstack.management.firewall.v1.ProtocolType
+	(*DeleteEgressFirewallRuleRequest)(nil),  // 1: cloudstack.management.firewall.v1.DeleteEgressFirewallRuleRequest
+	(*DeleteEgressFirewallRuleResponse)(nil), // 2: cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse
+	(*CreateEgressFirewallRuleRequest)(nil),  // 3: cloudstack.management.firewall.v1.CreateEgressFirewallRuleRequest
+	(*CreateEgressFirewallRuleResponse)(nil), // 4: cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse
+	(*UpdatePortForwardingRuleRequest)(nil),  // 5: cloudstack.management.firewall.v1.UpdatePortForwardingRuleRequest
+	(*UpdatePortForwardingRuleResponse)(nil), // 6: cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse
+	(*ListFirewallRulesRequest)(nil),         // 7: cloudstack.management.firewall.v1.ListFirewallRulesRequest
+	(*ListFirewallRulesResponse)(nil),        // 8: cloudstack.management.firewall.v1.ListFirewallRulesResponse
+	(*CreatePortForwardingRuleRequest)(nil),  // 9: cloudstack.management.firewall.v1.CreatePortForwardingRuleRequest
+	(*CreatePortForwardingRuleResponse)(nil), // 10: cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse
+	(*DeleteFirewallRuleRequest)(nil),        // 11: cloudstack.management.firewall.v1.DeleteFirewallRuleRequest
+	(*DeleteFirewallRuleResponse)(nil),       // 12: cloudstack.management.firewall.v1.DeleteFirewallRuleResponse
+	(*UpdateEgressFirewallRuleRequest)(nil),  // 13: cloudstack.management.firewall.v1.UpdateEgressFirewallRuleRequest
+	(*UpdateEgressFirewallRuleResponse)(nil), // 14: cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse
+	(*ListPortForwardingRulesRequest)(nil),   // 15: cloudstack.management.firewall.v1.ListPortForwardingRulesRequest
+	(*ListPortForwardingRulesResponse)(nil),  // 16: cloudstack.management.firewall.v1.ListPortForwardingRulesResponse
+	(*UpdateFirewallRuleRequest)(nil),        // 17: cloudstack.management.firewall.v1.UpdateFirewallRuleRequest
+	(*UpdateFirewallRuleResponse)(nil),       // 18: cloudstack.management.firewall.v1.UpdateFirewallRuleResponse
+	(*CreateFirewallRuleRequest)(nil),        // 19: cloudstack.management.firewall.v1.CreateFirewallRuleRequest
+	(*CreateFirewallRuleResponse)(nil),       // 20: cloudstack.management.firewall.v1.CreateFirewallRuleResponse
+	(*ListEgressFirewallRulesRequest)(nil),   // 21: cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest
+	(*ListEgressFirewallRulesResponse)(nil),  // 22: cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse
+	(*DeletePortForwardingRuleRequest)(nil),  // 23: cloudstack.management.firewall.v1.DeletePortForwardingRuleRequest
+	(*DeletePortForwardingRuleResponse)(nil), // 24: cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse
 	(*Firewall)(nil),                         // 25: cloudstack.management.firewall.v1.Firewall
-	(*Success)(nil),                          // 26: cloudstack.management.firewall.v1.Success
-	(*Item)(nil),                             // 27: cloudstack.management.firewall.v1.Item
-	(*Result)(nil),                           // 28: cloudstack.management.firewall.v1.Result
-	nil,                                      // 29: cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.TagsEntry
+	(*FirewallRule)(nil),                     // 26: cloudstack.management.firewall.v1.FirewallRule
+	(*Success)(nil),                          // 27: cloudstack.management.firewall.v1.Success
+	(*Item)(nil),                             // 28: cloudstack.management.firewall.v1.Item
+	(*Result)(nil),                           // 29: cloudstack.management.firewall.v1.Result
 	nil,                                      // 30: cloudstack.management.firewall.v1.ListFirewallRulesRequest.TagsEntry
-	nil,                                      // 31: cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest.TagsEntry
-	nil,                                      // 32: cloudstack.management.firewall.v1.Item.DetailsEntry
+	nil,                                      // 31: cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.TagsEntry
+	nil,                                      // 32: cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest.TagsEntry
+	nil,                                      // 33: cloudstack.management.firewall.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_firewall_v1_firewall_gen_proto_depIdxs = []int32{
-	28, // 0: cloudstack.management.firewall.v1.DeleteFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	29, // 1: cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.tags:type_name -> cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.TagsEntry
-	24, // 2: cloudstack.management.firewall.v1.ListPortForwardingRulesResponse.items:type_name -> cloudstack.management.firewall.v1.FirewallRule
-	28, // 3: cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	28, // 4: cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	28, // 5: cloudstack.management.firewall.v1.UpdateFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	30, // 6: cloudstack.management.firewall.v1.ListFirewallRulesRequest.tags:type_name -> cloudstack.management.firewall.v1.ListFirewallRulesRequest.TagsEntry
-	25, // 7: cloudstack.management.firewall.v1.ListFirewallRulesResponse.items:type_name -> cloudstack.management.firewall.v1.Firewall
-	28, // 8: cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	31, // 9: cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest.tags:type_name -> cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest.TagsEntry
-	25, // 10: cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse.items:type_name -> cloudstack.management.firewall.v1.Firewall
-	28, // 11: cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	28, // 12: cloudstack.management.firewall.v1.CreateFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	28, // 13: cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	28, // 14: cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
-	32, // 15: cloudstack.management.firewall.v1.Item.details:type_name -> cloudstack.management.firewall.v1.Item.DetailsEntry
-	0,  // 16: cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule:input_type -> cloudstack.management.firewall.v1.DeleteFirewallRuleRequest
-	2,  // 17: cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules:input_type -> cloudstack.management.firewall.v1.ListPortForwardingRulesRequest
-	4,  // 18: cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule:input_type -> cloudstack.management.firewall.v1.CreateEgressFirewallRuleRequest
-	6,  // 19: cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule:input_type -> cloudstack.management.firewall.v1.DeletePortForwardingRuleRequest
-	8,  // 20: cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule:input_type -> cloudstack.management.firewall.v1.UpdateFirewallRuleRequest
-	10, // 21: cloudstack.management.firewall.v1.FirewallService.ListFirewallRules:input_type -> cloudstack.management.firewall.v1.ListFirewallRulesRequest
-	12, // 22: cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule:input_type -> cloudstack.management.firewall.v1.UpdateEgressFirewallRuleRequest
-	14, // 23: cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules:input_type -> cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest
-	16, // 24: cloudstack.management.firewall.v1.FirewallService.DeleteEgressFirewallRule:input_type -> cloudstack.management.firewall.v1.DeleteEgressFirewallRuleRequest
-	18, // 25: cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule:input_type -> cloudstack.management.firewall.v1.CreateFirewallRuleRequest
-	20, // 26: cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule:input_type -> cloudstack.management.firewall.v1.CreatePortForwardingRuleRequest
-	22, // 27: cloudstack.management.firewall.v1.FirewallService.UpdatePortForwardingRule:input_type -> cloudstack.management.firewall.v1.UpdatePortForwardingRuleRequest
-	1,  // 28: cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule:output_type -> cloudstack.management.firewall.v1.DeleteFirewallRuleResponse
-	3,  // 29: cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules:output_type -> cloudstack.management.firewall.v1.ListPortForwardingRulesResponse
-	5,  // 30: cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule:output_type -> cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse
-	7,  // 31: cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule:output_type -> cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse
-	9,  // 32: cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule:output_type -> cloudstack.management.firewall.v1.UpdateFirewallRuleResponse
-	11, // 33: cloudstack.management.firewall.v1.FirewallService.ListFirewallRules:output_type -> cloudstack.management.firewall.v1.ListFirewallRulesResponse
-	13, // 34: cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule:output_type -> cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse
-	15, // 35: cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules:output_type -> cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse
-	17, // 36: cloudstack.management.firewall.v1.FirewallService.DeleteEgressFirewallRule:output_type -> cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse
-	19, // 37: cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule:output_type -> cloudstack.management.firewall.v1.CreateFirewallRuleResponse
-	21, // 38: cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule:output_type -> cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse
-	23, // 39: cloudstack.management.firewall.v1.FirewallService.UpdatePortForwardingRule:output_type -> cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse
+	29, // 0: cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	29, // 1: cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	29, // 2: cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	30, // 3: cloudstack.management.firewall.v1.ListFirewallRulesRequest.tags:type_name -> cloudstack.management.firewall.v1.ListFirewallRulesRequest.TagsEntry
+	25, // 4: cloudstack.management.firewall.v1.ListFirewallRulesResponse.items:type_name -> cloudstack.management.firewall.v1.Firewall
+	29, // 5: cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	29, // 6: cloudstack.management.firewall.v1.DeleteFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	29, // 7: cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	31, // 8: cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.tags:type_name -> cloudstack.management.firewall.v1.ListPortForwardingRulesRequest.TagsEntry
+	26, // 9: cloudstack.management.firewall.v1.ListPortForwardingRulesResponse.items:type_name -> cloudstack.management.firewall.v1.FirewallRule
+	29, // 10: cloudstack.management.firewall.v1.UpdateFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	29, // 11: cloudstack.management.firewall.v1.CreateFirewallRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	32, // 12: cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest.tags:type_name -> cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest.TagsEntry
+	25, // 13: cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse.items:type_name -> cloudstack.management.firewall.v1.Firewall
+	29, // 14: cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse.result:type_name -> cloudstack.management.firewall.v1.Result
+	33, // 15: cloudstack.management.firewall.v1.Item.details:type_name -> cloudstack.management.firewall.v1.Item.DetailsEntry
+	1,  // 16: cloudstack.management.firewall.v1.FirewallService.DeleteEgressFirewallRule:input_type -> cloudstack.management.firewall.v1.DeleteEgressFirewallRuleRequest
+	3,  // 17: cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule:input_type -> cloudstack.management.firewall.v1.CreateEgressFirewallRuleRequest
+	5,  // 18: cloudstack.management.firewall.v1.FirewallService.UpdatePortForwardingRule:input_type -> cloudstack.management.firewall.v1.UpdatePortForwardingRuleRequest
+	7,  // 19: cloudstack.management.firewall.v1.FirewallService.ListFirewallRules:input_type -> cloudstack.management.firewall.v1.ListFirewallRulesRequest
+	9,  // 20: cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule:input_type -> cloudstack.management.firewall.v1.CreatePortForwardingRuleRequest
+	11, // 21: cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule:input_type -> cloudstack.management.firewall.v1.DeleteFirewallRuleRequest
+	13, // 22: cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule:input_type -> cloudstack.management.firewall.v1.UpdateEgressFirewallRuleRequest
+	15, // 23: cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules:input_type -> cloudstack.management.firewall.v1.ListPortForwardingRulesRequest
+	17, // 24: cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule:input_type -> cloudstack.management.firewall.v1.UpdateFirewallRuleRequest
+	19, // 25: cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule:input_type -> cloudstack.management.firewall.v1.CreateFirewallRuleRequest
+	21, // 26: cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules:input_type -> cloudstack.management.firewall.v1.ListEgressFirewallRulesRequest
+	23, // 27: cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule:input_type -> cloudstack.management.firewall.v1.DeletePortForwardingRuleRequest
+	2,  // 28: cloudstack.management.firewall.v1.FirewallService.DeleteEgressFirewallRule:output_type -> cloudstack.management.firewall.v1.DeleteEgressFirewallRuleResponse
+	4,  // 29: cloudstack.management.firewall.v1.FirewallService.CreateEgressFirewallRule:output_type -> cloudstack.management.firewall.v1.CreateEgressFirewallRuleResponse
+	6,  // 30: cloudstack.management.firewall.v1.FirewallService.UpdatePortForwardingRule:output_type -> cloudstack.management.firewall.v1.UpdatePortForwardingRuleResponse
+	8,  // 31: cloudstack.management.firewall.v1.FirewallService.ListFirewallRules:output_type -> cloudstack.management.firewall.v1.ListFirewallRulesResponse
+	10, // 32: cloudstack.management.firewall.v1.FirewallService.CreatePortForwardingRule:output_type -> cloudstack.management.firewall.v1.CreatePortForwardingRuleResponse
+	12, // 33: cloudstack.management.firewall.v1.FirewallService.DeleteFirewallRule:output_type -> cloudstack.management.firewall.v1.DeleteFirewallRuleResponse
+	14, // 34: cloudstack.management.firewall.v1.FirewallService.UpdateEgressFirewallRule:output_type -> cloudstack.management.firewall.v1.UpdateEgressFirewallRuleResponse
+	16, // 35: cloudstack.management.firewall.v1.FirewallService.ListPortForwardingRules:output_type -> cloudstack.management.firewall.v1.ListPortForwardingRulesResponse
+	18, // 36: cloudstack.management.firewall.v1.FirewallService.UpdateFirewallRule:output_type -> cloudstack.management.firewall.v1.UpdateFirewallRuleResponse
+	20, // 37: cloudstack.management.firewall.v1.FirewallService.CreateFirewallRule:output_type -> cloudstack.management.firewall.v1.CreateFirewallRuleResponse
+	22, // 38: cloudstack.management.firewall.v1.FirewallService.ListEgressFirewallRules:output_type -> cloudstack.management.firewall.v1.ListEgressFirewallRulesResponse
+	24, // 39: cloudstack.management.firewall.v1.FirewallService.DeletePortForwardingRule:output_type -> cloudstack.management.firewall.v1.DeletePortForwardingRuleResponse
 	28, // [28:40] is the sub-list for method output_type
 	16, // [16:28] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
@@ -2863,13 +2927,14 @@ func file_cloudstack_management_firewall_v1_firewall_gen_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc), len(file_cloudstack_management_firewall_v1_firewall_gen_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_cloudstack_management_firewall_v1_firewall_gen_proto_goTypes,
 		DependencyIndexes: file_cloudstack_management_firewall_v1_firewall_gen_proto_depIdxs,
+		EnumInfos:         file_cloudstack_management_firewall_v1_firewall_gen_proto_enumTypes,
 		MessageInfos:      file_cloudstack_management_firewall_v1_firewall_gen_proto_msgTypes,
 	}.Build()
 	File_cloudstack_management_firewall_v1_firewall_gen_proto = out.File

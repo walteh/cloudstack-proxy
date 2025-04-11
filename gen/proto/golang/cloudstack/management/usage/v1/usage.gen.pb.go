@@ -24,11 +24,526 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ListTrafficMonitorsRequest represents the parameters for list traffic monitor hosts.
-type ListTrafficMonitorsRequest struct {
+// AddTrafficTypeRequest represents the parameters for adds traffic type to a physical network
+type AddTrafficTypeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// zone Id
+	// the Physical Network ID
+	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// the trafficType to be added to the physical network
+	TrafficType *string `protobuf:"bytes,2,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
+	// The network name label of the physical device dedicated to this traffic on a XenServer host
+	XenLabel *string `protobuf:"bytes,3,opt,name=xen_label,json=xenLabel" json:"xen_label,omitempty"`
+	// The network name label of the physical device dedicated to this traffic on a KVM host
+	KvmLabel *string `protobuf:"bytes,4,opt,name=kvm_label,json=kvmLabel" json:"kvm_label,omitempty"`
+	// The network name label of the physical device dedicated to this traffic on a VMware host
+	VmwareLabel *string `protobuf:"bytes,5,opt,name=vmware_label,json=vmwareLabel" json:"vmware_label,omitempty"`
+	// The network name label of the physical device dedicated to this traffic on a Hyperv host
+	HypervLabel *string `protobuf:"bytes,6,opt,name=hyperv_label,json=hypervLabel" json:"hyperv_label,omitempty"`
+	// The network name of the physical device dedicated to this traffic on an OVM3 host
+	Ovm3Label *string `protobuf:"bytes,7,opt,name=ovm3_label,json=ovm3Label" json:"ovm3_label,omitempty"`
+	// The VLAN id to be used for Management traffic by VMware host
+	Vlan *string `protobuf:"bytes,8,opt,name=vlan" json:"vlan,omitempty"`
+	// Used if physical network has multiple isolation types and traffic type is public. Choose which isolation method. Valid options currently 'vlan' or 'vxlan', defaults to 'vlan'.
+	IsolationMethod *string `protobuf:"bytes,9,opt,name=isolation_method,json=isolationMethod" json:"isolation_method,omitempty"`
+	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddTrafficTypeRequest) Reset() {
+	*x = AddTrafficTypeRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddTrafficTypeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTrafficTypeRequest) ProtoMessage() {}
+
+func (x *AddTrafficTypeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTrafficTypeRequest.ProtoReflect.Descriptor instead.
+func (*AddTrafficTypeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AddTrafficTypeRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *AddTrafficTypeRequest) GetTrafficType() string {
+	if x != nil && x.TrafficType != nil {
+		return *x.TrafficType
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetXenLabel() string {
+	if x != nil && x.XenLabel != nil {
+		return *x.XenLabel
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetKvmLabel() string {
+	if x != nil && x.KvmLabel != nil {
+		return *x.KvmLabel
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetVmwareLabel() string {
+	if x != nil && x.VmwareLabel != nil {
+		return *x.VmwareLabel
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetHypervLabel() string {
+	if x != nil && x.HypervLabel != nil {
+		return *x.HypervLabel
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetOvm3Label() string {
+	if x != nil && x.Ovm3Label != nil {
+		return *x.Ovm3Label
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetIsolationMethod() string {
+	if x != nil && x.IsolationMethod != nil {
+		return *x.IsolationMethod
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddTrafficTypeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddTrafficTypeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddTrafficTypeResponse represents the response from adds traffic type to a physical network
+type AddTrafficTypeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddTrafficTypeResponse) Reset() {
+	*x = AddTrafficTypeResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddTrafficTypeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTrafficTypeResponse) ProtoMessage() {}
+
+func (x *AddTrafficTypeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTrafficTypeResponse.ProtoReflect.Descriptor instead.
+func (*AddTrafficTypeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AddTrafficTypeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddTrafficMonitorRequest represents the parameters for adds traffic monitor host for direct network usage
+type AddTrafficMonitorRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Zone in which to add the external firewall appliance.
 	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// URL of the traffic monitor Host
+	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
+	// Traffic going into the listed zones will be metered
+	InclZones *string `protobuf:"bytes,3,opt,name=incl_zones,json=inclZones" json:"incl_zones,omitempty"`
+	// Traffic going into the listed zones will not be metered
+	ExclZones *string `protobuf:"bytes,4,opt,name=excl_zones,json=exclZones" json:"excl_zones,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddTrafficMonitorRequest) Reset() {
+	*x = AddTrafficMonitorRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddTrafficMonitorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTrafficMonitorRequest) ProtoMessage() {}
+
+func (x *AddTrafficMonitorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTrafficMonitorRequest.ProtoReflect.Descriptor instead.
+func (*AddTrafficMonitorRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddTrafficMonitorRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *AddTrafficMonitorRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *AddTrafficMonitorRequest) GetInclZones() string {
+	if x != nil && x.InclZones != nil {
+		return *x.InclZones
+	}
+	return ""
+}
+
+func (x *AddTrafficMonitorRequest) GetExclZones() string {
+	if x != nil && x.ExclZones != nil {
+		return *x.ExclZones
+	}
+	return ""
+}
+
+func (x *AddTrafficMonitorRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddTrafficMonitorResponse represents the response from adds traffic monitor host for direct network usage
+type AddTrafficMonitorResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddTrafficMonitorResponse) Reset() {
+	*x = AddTrafficMonitorResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddTrafficMonitorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTrafficMonitorResponse) ProtoMessage() {}
+
+func (x *AddTrafficMonitorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTrafficMonitorResponse.ProtoReflect.Descriptor instead.
+func (*AddTrafficMonitorResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AddTrafficMonitorResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveRawUsageRecordsRequest represents the parameters for safely removes raw records from cloud_usage table
+type RemoveRawUsageRecordsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Specify the number of days (greater than zero) to remove records that are older than those number of days from today. For example, specifying 10 would result in removing all the records created before 10 days from today
+	Interval *int32 `protobuf:"varint,1,opt,name=interval" json:"interval,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveRawUsageRecordsRequest) Reset() {
+	*x = RemoveRawUsageRecordsRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveRawUsageRecordsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveRawUsageRecordsRequest) ProtoMessage() {}
+
+func (x *RemoveRawUsageRecordsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveRawUsageRecordsRequest.ProtoReflect.Descriptor instead.
+func (*RemoveRawUsageRecordsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RemoveRawUsageRecordsRequest) GetInterval() int32 {
+	if x != nil && x.Interval != nil {
+		return *x.Interval
+	}
+	return 0
+}
+
+func (x *RemoveRawUsageRecordsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveRawUsageRecordsResponse represents the response from safely removes raw records from cloud_usage table
+type RemoveRawUsageRecordsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveRawUsageRecordsResponse) Reset() {
+	*x = RemoveRawUsageRecordsResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveRawUsageRecordsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveRawUsageRecordsResponse) ProtoMessage() {}
+
+func (x *RemoveRawUsageRecordsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveRawUsageRecordsResponse.ProtoReflect.Descriptor instead.
+func (*RemoveRawUsageRecordsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RemoveRawUsageRecordsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListUsageTypesRequest represents the parameters for list usage types
+type ListUsageTypesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	ResponseType  *string `protobuf:"bytes,1,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUsageTypesRequest) Reset() {
+	*x = ListUsageTypesRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUsageTypesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUsageTypesRequest) ProtoMessage() {}
+
+func (x *ListUsageTypesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUsageTypesRequest.ProtoReflect.Descriptor instead.
+func (*ListUsageTypesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListUsageTypesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListUsageTypesResponse represents the response from list usage types
+type ListUsageTypesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of UsageTypes
+	Items []*UsageType `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of UsageTypes
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUsageTypesResponse) Reset() {
+	*x = ListUsageTypesResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUsageTypesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUsageTypesResponse) ProtoMessage() {}
+
+func (x *ListUsageTypesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUsageTypesResponse.ProtoReflect.Descriptor instead.
+func (*ListUsageTypesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListUsageTypesResponse) GetItems() []*UsageType {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListUsageTypesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListTrafficTypesRequest represents the parameters for lists traffic types of a given physical network.
+type ListTrafficTypesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the Physical Network ID
+	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
 	// List by keyword
 	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
 	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
@@ -38,21 +553,21 @@ type ListTrafficMonitorsRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListTrafficMonitorsRequest) Reset() {
-	*x = ListTrafficMonitorsRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[0]
+func (x *ListTrafficTypesRequest) Reset() {
+	*x = ListTrafficTypesRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListTrafficMonitorsRequest) String() string {
+func (x *ListTrafficTypesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListTrafficMonitorsRequest) ProtoMessage() {}
+func (*ListTrafficTypesRequest) ProtoMessage() {}
 
-func (x *ListTrafficMonitorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[0]
+func (x *ListTrafficTypesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,72 +578,72 @@ func (x *ListTrafficMonitorsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListTrafficMonitorsRequest.ProtoReflect.Descriptor instead.
-func (*ListTrafficMonitorsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use ListTrafficTypesRequest.ProtoReflect.Descriptor instead.
+func (*ListTrafficTypesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ListTrafficMonitorsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
+func (x *ListTrafficTypesRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
 	}
 	return 0
 }
 
-func (x *ListTrafficMonitorsRequest) GetKeyword() string {
+func (x *ListTrafficTypesRequest) GetKeyword() string {
 	if x != nil && x.Keyword != nil {
 		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ListTrafficMonitorsRequest) GetPage() int32 {
+func (x *ListTrafficTypesRequest) GetPage() int32 {
 	if x != nil && x.Page != nil {
 		return *x.Page
 	}
 	return 0
 }
 
-func (x *ListTrafficMonitorsRequest) GetPageSize() int32 {
+func (x *ListTrafficTypesRequest) GetPageSize() int32 {
 	if x != nil && x.PageSize != nil {
 		return *x.PageSize
 	}
 	return 0
 }
 
-func (x *ListTrafficMonitorsRequest) GetResponseType() string {
+func (x *ListTrafficTypesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListTrafficMonitorsResponse represents the response from list traffic monitor hosts.
-type ListTrafficMonitorsResponse struct {
+// ListTrafficTypesResponse represents the response from lists traffic types of a given physical network.
+type ListTrafficTypesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of TrafficMonitors
-	Items []*TrafficMonitor `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of TrafficMonitors
+	// The list of Providers
+	Items []*Provider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Providers
 	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListTrafficMonitorsResponse) Reset() {
-	*x = ListTrafficMonitorsResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[1]
+func (x *ListTrafficTypesResponse) Reset() {
+	*x = ListTrafficTypesResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListTrafficMonitorsResponse) String() string {
+func (x *ListTrafficTypesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListTrafficMonitorsResponse) ProtoMessage() {}
+func (*ListTrafficTypesResponse) ProtoMessage() {}
 
-func (x *ListTrafficMonitorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[1]
+func (x *ListTrafficTypesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,123 +654,23 @@ func (x *ListTrafficMonitorsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListTrafficMonitorsResponse.ProtoReflect.Descriptor instead.
-func (*ListTrafficMonitorsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use ListTrafficTypesResponse.ProtoReflect.Descriptor instead.
+func (*ListTrafficTypesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *ListTrafficMonitorsResponse) GetItems() []*TrafficMonitor {
+func (x *ListTrafficTypesResponse) GetItems() []*Provider {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *ListTrafficMonitorsResponse) GetTotalCount() int32 {
+func (x *ListTrafficTypesResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// DeleteTrafficMonitorRequest represents the parameters for deletes an traffic monitor host.
-type DeleteTrafficMonitorRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the Traffic Monitor Host.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTrafficMonitorRequest) Reset() {
-	*x = DeleteTrafficMonitorRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTrafficMonitorRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTrafficMonitorRequest) ProtoMessage() {}
-
-func (x *DeleteTrafficMonitorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTrafficMonitorRequest.ProtoReflect.Descriptor instead.
-func (*DeleteTrafficMonitorRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DeleteTrafficMonitorRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteTrafficMonitorRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteTrafficMonitorResponse represents the response from deletes an traffic monitor host.
-type DeleteTrafficMonitorResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTrafficMonitorResponse) Reset() {
-	*x = DeleteTrafficMonitorResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTrafficMonitorResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTrafficMonitorResponse) ProtoMessage() {}
-
-func (x *DeleteTrafficMonitorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTrafficMonitorResponse.ProtoReflect.Descriptor instead.
-func (*DeleteTrafficMonitorResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DeleteTrafficMonitorResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // UpdateTrafficTypeRequest represents the parameters for updates traffic type of a physical network
@@ -282,7 +697,7 @@ type UpdateTrafficTypeRequest struct {
 
 func (x *UpdateTrafficTypeRequest) Reset() {
 	*x = UpdateTrafficTypeRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -294,7 +709,7 @@ func (x *UpdateTrafficTypeRequest) String() string {
 func (*UpdateTrafficTypeRequest) ProtoMessage() {}
 
 func (x *UpdateTrafficTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -307,7 +722,7 @@ func (x *UpdateTrafficTypeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTrafficTypeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTrafficTypeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdateTrafficTypeRequest) GetId() int64 {
@@ -384,7 +799,7 @@ type UpdateTrafficTypeResponse struct {
 
 func (x *UpdateTrafficTypeResponse) Reset() {
 	*x = UpdateTrafficTypeResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -396,7 +811,7 @@ func (x *UpdateTrafficTypeResponse) String() string {
 func (*UpdateTrafficTypeResponse) ProtoMessage() {}
 
 func (x *UpdateTrafficTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -409,7 +824,7 @@ func (x *UpdateTrafficTypeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTrafficTypeResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTrafficTypeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *UpdateTrafficTypeResponse) GetResult() *Result {
@@ -417,6 +832,474 @@ func (x *UpdateTrafficTypeResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// DeleteTrafficMonitorRequest represents the parameters for deletes an traffic monitor host.
+type DeleteTrafficMonitorRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the Traffic Monitor Host.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTrafficMonitorRequest) Reset() {
+	*x = DeleteTrafficMonitorRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTrafficMonitorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTrafficMonitorRequest) ProtoMessage() {}
+
+func (x *DeleteTrafficMonitorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTrafficMonitorRequest.ProtoReflect.Descriptor instead.
+func (*DeleteTrafficMonitorRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DeleteTrafficMonitorRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteTrafficMonitorRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteTrafficMonitorResponse represents the response from deletes an traffic monitor host.
+type DeleteTrafficMonitorResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTrafficMonitorResponse) Reset() {
+	*x = DeleteTrafficMonitorResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTrafficMonitorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTrafficMonitorResponse) ProtoMessage() {}
+
+func (x *DeleteTrafficMonitorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTrafficMonitorResponse.ProtoReflect.Descriptor instead.
+func (*DeleteTrafficMonitorResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DeleteTrafficMonitorResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// GenerateUsageRecordsRequest represents the parameters for generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+type GenerateUsageRecordsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List events for the specified domain.
+	DomainId *int64 `protobuf:"varint,1,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// End date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-03.
+	EndDate *string `protobuf:"bytes,2,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
+	// Start date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-01.
+	StartDate *string `protobuf:"bytes,3,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GenerateUsageRecordsRequest) Reset() {
+	*x = GenerateUsageRecordsRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GenerateUsageRecordsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GenerateUsageRecordsRequest) ProtoMessage() {}
+
+func (x *GenerateUsageRecordsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GenerateUsageRecordsRequest.ProtoReflect.Descriptor instead.
+func (*GenerateUsageRecordsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GenerateUsageRecordsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *GenerateUsageRecordsRequest) GetEndDate() string {
+	if x != nil && x.EndDate != nil {
+		return *x.EndDate
+	}
+	return ""
+}
+
+func (x *GenerateUsageRecordsRequest) GetStartDate() string {
+	if x != nil && x.StartDate != nil {
+		return *x.StartDate
+	}
+	return ""
+}
+
+func (x *GenerateUsageRecordsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GenerateUsageRecordsResponse represents the response from generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+type GenerateUsageRecordsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GenerateUsageRecordsResponse) Reset() {
+	*x = GenerateUsageRecordsResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GenerateUsageRecordsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GenerateUsageRecordsResponse) ProtoMessage() {}
+
+func (x *GenerateUsageRecordsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GenerateUsageRecordsResponse.ProtoReflect.Descriptor instead.
+func (*GenerateUsageRecordsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GenerateUsageRecordsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteTrafficTypeRequest represents the parameters for deletes traffic type of a physical network
+type DeleteTrafficTypeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// traffic type id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTrafficTypeRequest) Reset() {
+	*x = DeleteTrafficTypeRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTrafficTypeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTrafficTypeRequest) ProtoMessage() {}
+
+func (x *DeleteTrafficTypeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTrafficTypeRequest.ProtoReflect.Descriptor instead.
+func (*DeleteTrafficTypeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *DeleteTrafficTypeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteTrafficTypeRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteTrafficTypeRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteTrafficTypeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteTrafficTypeResponse represents the response from deletes traffic type of a physical network
+type DeleteTrafficTypeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTrafficTypeResponse) Reset() {
+	*x = DeleteTrafficTypeResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTrafficTypeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTrafficTypeResponse) ProtoMessage() {}
+
+func (x *DeleteTrafficTypeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTrafficTypeResponse.ProtoReflect.Descriptor instead.
+func (*DeleteTrafficTypeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *DeleteTrafficTypeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListTrafficMonitorsRequest represents the parameters for list traffic monitor hosts.
+type ListTrafficMonitorsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// zone Id
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTrafficMonitorsRequest) Reset() {
+	*x = ListTrafficMonitorsRequest{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTrafficMonitorsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTrafficMonitorsRequest) ProtoMessage() {}
+
+func (x *ListTrafficMonitorsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTrafficMonitorsRequest.ProtoReflect.Descriptor instead.
+func (*ListTrafficMonitorsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *ListTrafficMonitorsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListTrafficMonitorsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListTrafficMonitorsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListTrafficMonitorsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListTrafficMonitorsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListTrafficMonitorsResponse represents the response from list traffic monitor hosts.
+type ListTrafficMonitorsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of TrafficMonitors
+	Items []*TrafficMonitor `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of TrafficMonitors
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTrafficMonitorsResponse) Reset() {
+	*x = ListTrafficMonitorsResponse{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTrafficMonitorsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTrafficMonitorsResponse) ProtoMessage() {}
+
+func (x *ListTrafficMonitorsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTrafficMonitorsResponse.ProtoReflect.Descriptor instead.
+func (*ListTrafficMonitorsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *ListTrafficMonitorsResponse) GetItems() []*TrafficMonitor {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListTrafficMonitorsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListUsageRecordsRequest represents the parameters for lists usage records for accounts
@@ -455,7 +1338,7 @@ type ListUsageRecordsRequest struct {
 
 func (x *ListUsageRecordsRequest) Reset() {
 	*x = ListUsageRecordsRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -467,7 +1350,7 @@ func (x *ListUsageRecordsRequest) String() string {
 func (*ListUsageRecordsRequest) ProtoMessage() {}
 
 func (x *ListUsageRecordsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -480,7 +1363,7 @@ func (x *ListUsageRecordsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsageRecordsRequest.ProtoReflect.Descriptor instead.
 func (*ListUsageRecordsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListUsageRecordsRequest) GetAccountName() string {
@@ -601,7 +1484,7 @@ type ListUsageRecordsResponse struct {
 
 func (x *ListUsageRecordsResponse) Reset() {
 	*x = ListUsageRecordsResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -613,7 +1496,7 @@ func (x *ListUsageRecordsResponse) String() string {
 func (*ListUsageRecordsResponse) ProtoMessage() {}
 
 func (x *ListUsageRecordsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -626,7 +1509,7 @@ func (x *ListUsageRecordsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsageRecordsResponse.ProtoReflect.Descriptor instead.
 func (*ListUsageRecordsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListUsageRecordsResponse) GetItems() []*UsageRecord {
@@ -641,437 +1524,6 @@ func (x *ListUsageRecordsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// AddTrafficMonitorRequest represents the parameters for adds traffic monitor host for direct network usage
-type AddTrafficMonitorRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Zone in which to add the external firewall appliance.
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// URL of the traffic monitor Host
-	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
-	// Traffic going into the listed zones will be metered
-	InclZones *string `protobuf:"bytes,3,opt,name=incl_zones,json=inclZones" json:"incl_zones,omitempty"`
-	// Traffic going into the listed zones will not be metered
-	ExclZones *string `protobuf:"bytes,4,opt,name=excl_zones,json=exclZones" json:"excl_zones,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddTrafficMonitorRequest) Reset() {
-	*x = AddTrafficMonitorRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddTrafficMonitorRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddTrafficMonitorRequest) ProtoMessage() {}
-
-func (x *AddTrafficMonitorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddTrafficMonitorRequest.ProtoReflect.Descriptor instead.
-func (*AddTrafficMonitorRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *AddTrafficMonitorRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *AddTrafficMonitorRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *AddTrafficMonitorRequest) GetInclZones() string {
-	if x != nil && x.InclZones != nil {
-		return *x.InclZones
-	}
-	return ""
-}
-
-func (x *AddTrafficMonitorRequest) GetExclZones() string {
-	if x != nil && x.ExclZones != nil {
-		return *x.ExclZones
-	}
-	return ""
-}
-
-func (x *AddTrafficMonitorRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddTrafficMonitorResponse represents the response from adds traffic monitor host for direct network usage
-type AddTrafficMonitorResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddTrafficMonitorResponse) Reset() {
-	*x = AddTrafficMonitorResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddTrafficMonitorResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddTrafficMonitorResponse) ProtoMessage() {}
-
-func (x *AddTrafficMonitorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddTrafficMonitorResponse.ProtoReflect.Descriptor instead.
-func (*AddTrafficMonitorResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *AddTrafficMonitorResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteTrafficTypeRequest represents the parameters for deletes traffic type of a physical network
-type DeleteTrafficTypeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// traffic type id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTrafficTypeRequest) Reset() {
-	*x = DeleteTrafficTypeRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTrafficTypeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTrafficTypeRequest) ProtoMessage() {}
-
-func (x *DeleteTrafficTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTrafficTypeRequest.ProtoReflect.Descriptor instead.
-func (*DeleteTrafficTypeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *DeleteTrafficTypeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteTrafficTypeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteTrafficTypeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteTrafficTypeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteTrafficTypeResponse represents the response from deletes traffic type of a physical network
-type DeleteTrafficTypeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTrafficTypeResponse) Reset() {
-	*x = DeleteTrafficTypeResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTrafficTypeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTrafficTypeResponse) ProtoMessage() {}
-
-func (x *DeleteTrafficTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTrafficTypeResponse.ProtoReflect.Descriptor instead.
-func (*DeleteTrafficTypeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *DeleteTrafficTypeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddTrafficTypeRequest represents the parameters for adds traffic type to a physical network
-type AddTrafficTypeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Physical Network ID
-	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// the trafficType to be added to the physical network
-	TrafficType *string `protobuf:"bytes,2,opt,name=traffic_type,json=trafficType" json:"traffic_type,omitempty"`
-	// The network name label of the physical device dedicated to this traffic on a XenServer host
-	XenLabel *string `protobuf:"bytes,3,opt,name=xen_label,json=xenLabel" json:"xen_label,omitempty"`
-	// The network name label of the physical device dedicated to this traffic on a KVM host
-	KvmLabel *string `protobuf:"bytes,4,opt,name=kvm_label,json=kvmLabel" json:"kvm_label,omitempty"`
-	// The network name label of the physical device dedicated to this traffic on a VMware host
-	VmwareLabel *string `protobuf:"bytes,5,opt,name=vmware_label,json=vmwareLabel" json:"vmware_label,omitempty"`
-	// The network name label of the physical device dedicated to this traffic on a Hyperv host
-	HypervLabel *string `protobuf:"bytes,6,opt,name=hyperv_label,json=hypervLabel" json:"hyperv_label,omitempty"`
-	// The network name of the physical device dedicated to this traffic on an OVM3 host
-	Ovm3Label *string `protobuf:"bytes,7,opt,name=ovm3_label,json=ovm3Label" json:"ovm3_label,omitempty"`
-	// The VLAN id to be used for Management traffic by VMware host
-	Vlan *string `protobuf:"bytes,8,opt,name=vlan" json:"vlan,omitempty"`
-	// Used if physical network has multiple isolation types and traffic type is public. Choose which isolation method. Valid options currently 'vlan' or 'vxlan', defaults to 'vlan'.
-	IsolationMethod *string `protobuf:"bytes,9,opt,name=isolation_method,json=isolationMethod" json:"isolation_method,omitempty"`
-	StartEventId *int64 `protobuf:"varint,10,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,11,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddTrafficTypeRequest) Reset() {
-	*x = AddTrafficTypeRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddTrafficTypeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddTrafficTypeRequest) ProtoMessage() {}
-
-func (x *AddTrafficTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddTrafficTypeRequest.ProtoReflect.Descriptor instead.
-func (*AddTrafficTypeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *AddTrafficTypeRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *AddTrafficTypeRequest) GetTrafficType() string {
-	if x != nil && x.TrafficType != nil {
-		return *x.TrafficType
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetXenLabel() string {
-	if x != nil && x.XenLabel != nil {
-		return *x.XenLabel
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetKvmLabel() string {
-	if x != nil && x.KvmLabel != nil {
-		return *x.KvmLabel
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetVmwareLabel() string {
-	if x != nil && x.VmwareLabel != nil {
-		return *x.VmwareLabel
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetHypervLabel() string {
-	if x != nil && x.HypervLabel != nil {
-		return *x.HypervLabel
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetOvm3Label() string {
-	if x != nil && x.Ovm3Label != nil {
-		return *x.Ovm3Label
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetIsolationMethod() string {
-	if x != nil && x.IsolationMethod != nil {
-		return *x.IsolationMethod
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddTrafficTypeRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddTrafficTypeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddTrafficTypeResponse represents the response from adds traffic type to a physical network
-type AddTrafficTypeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddTrafficTypeResponse) Reset() {
-	*x = AddTrafficTypeResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddTrafficTypeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddTrafficTypeResponse) ProtoMessage() {}
-
-func (x *AddTrafficTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddTrafficTypeResponse.ProtoReflect.Descriptor instead.
-func (*AddTrafficTypeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *AddTrafficTypeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListTrafficTypeImplementorsRequest represents the parameters for lists implementors of implementor of a network traffic type or implementors of all network traffic types
@@ -1090,7 +1542,7 @@ type ListTrafficTypeImplementorsRequest struct {
 
 func (x *ListTrafficTypeImplementorsRequest) Reset() {
 	*x = ListTrafficTypeImplementorsRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1102,7 +1554,7 @@ func (x *ListTrafficTypeImplementorsRequest) String() string {
 func (*ListTrafficTypeImplementorsRequest) ProtoMessage() {}
 
 func (x *ListTrafficTypeImplementorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1115,7 +1567,7 @@ func (x *ListTrafficTypeImplementorsRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ListTrafficTypeImplementorsRequest.ProtoReflect.Descriptor instead.
 func (*ListTrafficTypeImplementorsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListTrafficTypeImplementorsRequest) GetTrafficType() string {
@@ -1166,7 +1618,7 @@ type ListTrafficTypeImplementorsResponse struct {
 
 func (x *ListTrafficTypeImplementorsResponse) Reset() {
 	*x = ListTrafficTypeImplementorsResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1178,7 +1630,7 @@ func (x *ListTrafficTypeImplementorsResponse) String() string {
 func (*ListTrafficTypeImplementorsResponse) ProtoMessage() {}
 
 func (x *ListTrafficTypeImplementorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1191,7 +1643,7 @@ func (x *ListTrafficTypeImplementorsResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ListTrafficTypeImplementorsResponse.ProtoReflect.Descriptor instead.
 func (*ListTrafficTypeImplementorsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListTrafficTypeImplementorsResponse) GetItems() []*TrafficTypeImplementor {
@@ -1208,31 +1660,38 @@ func (x *ListTrafficTypeImplementorsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// RemoveRawUsageRecordsRequest represents the parameters for safely removes raw records from cloud_usage table
-type RemoveRawUsageRecordsRequest struct {
+// UsageType represents a UsageType Item
+type UsageType struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Specify the number of days (greater than zero) to remove records that are older than those number of days from today. For example, specifying 10 would result in removing all the records created before 10 days from today
-	Interval *int32 `protobuf:"varint,1,opt,name=interval" json:"interval,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The ID of the UsageType
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the UsageType
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the UsageType
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the UsageType
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveRawUsageRecordsRequest) Reset() {
-	*x = RemoveRawUsageRecordsRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[16]
+func (x *UsageType) Reset() {
+	*x = UsageType{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveRawUsageRecordsRequest) String() string {
+func (x *UsageType) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveRawUsageRecordsRequest) ProtoMessage() {}
+func (*UsageType) ProtoMessage() {}
 
-func (x *RemoveRawUsageRecordsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[16]
+func (x *UsageType) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1243,176 +1702,78 @@ func (x *RemoveRawUsageRecordsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveRawUsageRecordsRequest.ProtoReflect.Descriptor instead.
-func (*RemoveRawUsageRecordsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{16}
+// Deprecated: Use UsageType.ProtoReflect.Descriptor instead.
+func (*UsageType) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *RemoveRawUsageRecordsRequest) GetInterval() int32 {
-	if x != nil && x.Interval != nil {
-		return *x.Interval
-	}
-	return 0
-}
-
-func (x *RemoveRawUsageRecordsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *UsageType) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return ""
 }
 
-// RemoveRawUsageRecordsResponse represents the response from safely removes raw records from cloud_usage table
-type RemoveRawUsageRecordsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveRawUsageRecordsResponse) Reset() {
-	*x = RemoveRawUsageRecordsResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveRawUsageRecordsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveRawUsageRecordsResponse) ProtoMessage() {}
-
-func (x *RemoveRawUsageRecordsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveRawUsageRecordsResponse.ProtoReflect.Descriptor instead.
-func (*RemoveRawUsageRecordsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *RemoveRawUsageRecordsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListTrafficTypesRequest represents the parameters for lists traffic types of a given physical network.
-type ListTrafficTypesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the Physical Network ID
-	PhysicalNetworkId *int64 `protobuf:"varint,1,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListTrafficTypesRequest) Reset() {
-	*x = ListTrafficTypesRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListTrafficTypesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListTrafficTypesRequest) ProtoMessage() {}
-
-func (x *ListTrafficTypesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListTrafficTypesRequest.ProtoReflect.Descriptor instead.
-func (*ListTrafficTypesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *ListTrafficTypesRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *ListTrafficTypesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *UsageType) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-func (x *ListTrafficTypesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListTrafficTypesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListTrafficTypesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *UsageType) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
 	}
 	return ""
 }
 
-// ListTrafficTypesResponse represents the response from lists traffic types of a given physical network.
-type ListTrafficTypesResponse struct {
+func (x *UsageType) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UsageType) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// Provider represents a Provider Item
+type Provider struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Providers
-	Items []*Provider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Providers
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The ID of the Provider
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the Provider
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the Provider
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the Provider
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListTrafficTypesResponse) Reset() {
-	*x = ListTrafficTypesResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[19]
+func (x *Provider) Reset() {
+	*x = Provider{}
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListTrafficTypesResponse) String() string {
+func (x *Provider) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListTrafficTypesResponse) ProtoMessage() {}
+func (*Provider) ProtoMessage() {}
 
-func (x *ListTrafficTypesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[19]
+func (x *Provider) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1423,241 +1784,44 @@ func (x *ListTrafficTypesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListTrafficTypesResponse.ProtoReflect.Descriptor instead.
-func (*ListTrafficTypesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{19}
+// Deprecated: Use Provider.ProtoReflect.Descriptor instead.
+func (*Provider) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *ListTrafficTypesResponse) GetItems() []*Provider {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListTrafficTypesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// GenerateUsageRecordsRequest represents the parameters for generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-type GenerateUsageRecordsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List events for the specified domain.
-	DomainId *int64 `protobuf:"varint,1,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// End date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-03.
-	EndDate *string `protobuf:"bytes,2,opt,name=end_date,json=endDate" json:"end_date,omitempty"`
-	// Start date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-01.
-	StartDate *string `protobuf:"bytes,3,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GenerateUsageRecordsRequest) Reset() {
-	*x = GenerateUsageRecordsRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GenerateUsageRecordsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GenerateUsageRecordsRequest) ProtoMessage() {}
-
-func (x *GenerateUsageRecordsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GenerateUsageRecordsRequest.ProtoReflect.Descriptor instead.
-func (*GenerateUsageRecordsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *GenerateUsageRecordsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *GenerateUsageRecordsRequest) GetEndDate() string {
-	if x != nil && x.EndDate != nil {
-		return *x.EndDate
+func (x *Provider) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return ""
 }
 
-func (x *GenerateUsageRecordsRequest) GetStartDate() string {
-	if x != nil && x.StartDate != nil {
-		return *x.StartDate
+func (x *Provider) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-func (x *GenerateUsageRecordsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *Provider) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
 	}
 	return ""
 }
 
-// GenerateUsageRecordsResponse represents the response from generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-type GenerateUsageRecordsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GenerateUsageRecordsResponse) Reset() {
-	*x = GenerateUsageRecordsResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GenerateUsageRecordsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GenerateUsageRecordsResponse) ProtoMessage() {}
-
-func (x *GenerateUsageRecordsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GenerateUsageRecordsResponse.ProtoReflect.Descriptor instead.
-func (*GenerateUsageRecordsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *GenerateUsageRecordsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListUsageTypesRequest represents the parameters for list usage types
-type ListUsageTypesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	ResponseType  *string `protobuf:"bytes,1,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListUsageTypesRequest) Reset() {
-	*x = ListUsageTypesRequest{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListUsageTypesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListUsageTypesRequest) ProtoMessage() {}
-
-func (x *ListUsageTypesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListUsageTypesRequest.ProtoReflect.Descriptor instead.
-func (*ListUsageTypesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *ListUsageTypesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *Provider) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
 
-// ListUsageTypesResponse represents the response from list usage types
-type ListUsageTypesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of UsageTypes
-	Items []*UsageType `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of UsageTypes
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListUsageTypesResponse) Reset() {
-	*x = ListUsageTypesResponse{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListUsageTypesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListUsageTypesResponse) ProtoMessage() {}
-
-func (x *ListUsageTypesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+func (x *Provider) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
 	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListUsageTypesResponse.ProtoReflect.Descriptor instead.
-func (*ListUsageTypesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *ListUsageTypesResponse) GetItems() []*UsageType {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListUsageTypesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
+	return ""
 }
 
 // TrafficMonitor represents a TrafficMonitor Item
@@ -1679,7 +1843,7 @@ type TrafficMonitor struct {
 
 func (x *TrafficMonitor) Reset() {
 	*x = TrafficMonitor{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1691,7 +1855,7 @@ func (x *TrafficMonitor) String() string {
 func (*TrafficMonitor) ProtoMessage() {}
 
 func (x *TrafficMonitor) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1704,7 +1868,7 @@ func (x *TrafficMonitor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrafficMonitor.ProtoReflect.Descriptor instead.
 func (*TrafficMonitor) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{24}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *TrafficMonitor) GetId() string {
@@ -1761,7 +1925,7 @@ type UsageRecord struct {
 
 func (x *UsageRecord) Reset() {
 	*x = UsageRecord{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1773,7 +1937,7 @@ func (x *UsageRecord) String() string {
 func (*UsageRecord) ProtoMessage() {}
 
 func (x *UsageRecord) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1786,7 +1950,7 @@ func (x *UsageRecord) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UsageRecord.ProtoReflect.Descriptor instead.
 func (*UsageRecord) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *UsageRecord) GetId() string {
@@ -1843,7 +2007,7 @@ type TrafficTypeImplementor struct {
 
 func (x *TrafficTypeImplementor) Reset() {
 	*x = TrafficTypeImplementor{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1855,7 +2019,7 @@ func (x *TrafficTypeImplementor) String() string {
 func (*TrafficTypeImplementor) ProtoMessage() {}
 
 func (x *TrafficTypeImplementor) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1868,7 +2032,7 @@ func (x *TrafficTypeImplementor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrafficTypeImplementor.ProtoReflect.Descriptor instead.
 func (*TrafficTypeImplementor) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{26}
+	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *TrafficTypeImplementor) GetId() string {
@@ -1900,170 +2064,6 @@ func (x *TrafficTypeImplementor) GetDescription() string {
 }
 
 func (x *TrafficTypeImplementor) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// Provider represents a Provider Item
-type Provider struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Provider
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the Provider
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the Provider
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the Provider
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Provider) Reset() {
-	*x = Provider{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Provider) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Provider) ProtoMessage() {}
-
-func (x *Provider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Provider.ProtoReflect.Descriptor instead.
-func (*Provider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *Provider) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Provider) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Provider) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Provider) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Provider) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// UsageType represents a UsageType Item
-type UsageType struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the UsageType
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the UsageType
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the UsageType
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the UsageType
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UsageType) Reset() {
-	*x = UsageType{}
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UsageType) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UsageType) ProtoMessage() {}
-
-func (x *UsageType) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UsageType.ProtoReflect.Descriptor instead.
-func (*UsageType) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *UsageType) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *UsageType) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UsageType) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *UsageType) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *UsageType) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -2356,22 +2356,55 @@ var File_cloudstack_management_usage_v1_usage_gen_proto protoreflect.FileDescrip
 
 const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"\n" +
-	".cloudstack/management/usage/v1/usage.gen.proto\x12\x1ecloudstack.management.usage.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xad\x01\n" +
-	"\x1aListTrafficMonitorsRequest\x12\x1f\n" +
+	".cloudstack/management/usage/v1/usage.gen.proto\x12\x1ecloudstack.management.usage.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd5\x03\n" +
+	"\x15AddTrafficTypeRequest\x126\n" +
+	"\x13physical_network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12)\n" +
+	"\ftraffic_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vtrafficType\x12\x1b\n" +
+	"\txen_label\x18\x03 \x01(\tR\bxenLabel\x12\x1b\n" +
+	"\tkvm_label\x18\x04 \x01(\tR\bkvmLabel\x12!\n" +
+	"\fvmware_label\x18\x05 \x01(\tR\vvmwareLabel\x12!\n" +
+	"\fhyperv_label\x18\x06 \x01(\tR\vhypervLabel\x12\x1d\n" +
+	"\n" +
+	"ovm3_label\x18\a \x01(\tR\tovm3Label\x12\x12\n" +
+	"\x04vlan\x18\b \x01(\tR\x04vlan\x12)\n" +
+	"\x10isolation_method\x18\t \x01(\tR\x0fisolationMethod\x12$\n" +
+	"\x0estart_event_id\x18\n" +
+	" \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\f \x01(\tR\fresponseType\"X\n" +
+	"\x16AddTrafficTypeResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xb8\x01\n" +
+	"\x18AddTrafficMonitorRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x18\n" +
+	"\x03url\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x1d\n" +
+	"\n" +
+	"incl_zones\x18\x03 \x01(\tR\tinclZones\x12\x1d\n" +
+	"\n" +
+	"excl_zones\x18\x04 \x01(\tR\texclZones\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
+	"\x19AddTrafficMonitorResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"g\n" +
+	"\x1cRemoveRawUsageRecordsRequest\x12\"\n" +
+	"\binterval\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\binterval\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
+	"\x1dRemoveRawUsageRecordsResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"<\n" +
+	"\x15ListUsageTypesRequest\x12#\n" +
+	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x81\x01\n" +
+	"\x16ListUsageTypesResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.usage.v1.UsageTypeR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc1\x01\n" +
+	"\x17ListTrafficTypesRequest\x126\n" +
+	"\x13physical_network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12\x18\n" +
 	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x8b\x01\n" +
-	"\x1bListTrafficMonitorsResponse\x12D\n" +
-	"\x05items\x18\x01 \x03(\v2..cloudstack.management.usage.v1.TrafficMonitorR\x05items\x12\x1f\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x82\x01\n" +
+	"\x18ListTrafficTypesResponse\x12>\n" +
+	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.usage.v1.ProviderR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"Z\n" +
-	"\x1bDeleteTrafficMonitorRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"^\n" +
-	"\x1cDeleteTrafficMonitorResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xce\x02\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xce\x02\n" +
 	"\x18UpdateTrafficTypeRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1b\n" +
 	"\txen_label\x18\x02 \x01(\tR\bxenLabel\x12\x1b\n" +
@@ -2384,7 +2417,37 @@ const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\t \x01(\tR\fresponseType\"[\n" +
 	"\x19UpdateTrafficTypeResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\x8a\x04\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"Z\n" +
+	"\x1bDeleteTrafficMonitorRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"^\n" +
+	"\x1cDeleteTrafficMonitorResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\x99\x01\n" +
+	"\x1bGenerateUsageRecordsRequest\x12\x1b\n" +
+	"\tdomain_id\x18\x01 \x01(\x03R\bdomainId\x12\x19\n" +
+	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +
+	"\n" +
+	"start_date\x18\x03 \x01(\tR\tstartDate\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
+	"\x1cGenerateUsageRecordsResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xaf\x01\n" +
+	"\x18DeleteTrafficTypeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
+	"\x19DeleteTrafficTypeResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xad\x01\n" +
+	"\x1aListTrafficMonitorsRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x8b\x01\n" +
+	"\x1bListTrafficMonitorsResponse\x12D\n" +
+	"\x05items\x18\x01 \x03(\v2..cloudstack.management.usage.v1.TrafficMonitorR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8a\x04\n" +
 	"\x17ListUsageRecordsRequest\x12!\n" +
 	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
 	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12!\n" +
@@ -2410,41 +2473,7 @@ const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"\x18ListUsageRecordsResponse\x12A\n" +
 	"\x05items\x18\x01 \x03(\v2+.cloudstack.management.usage.v1.UsageRecordR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb8\x01\n" +
-	"\x18AddTrafficMonitorRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x18\n" +
-	"\x03url\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x1d\n" +
-	"\n" +
-	"incl_zones\x18\x03 \x01(\tR\tinclZones\x12\x1d\n" +
-	"\n" +
-	"excl_zones\x18\x04 \x01(\tR\texclZones\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
-	"\x19AddTrafficMonitorResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xaf\x01\n" +
-	"\x18DeleteTrafficTypeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
-	"\x19DeleteTrafficTypeResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xd5\x03\n" +
-	"\x15AddTrafficTypeRequest\x126\n" +
-	"\x13physical_network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12)\n" +
-	"\ftraffic_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vtrafficType\x12\x1b\n" +
-	"\txen_label\x18\x03 \x01(\tR\bxenLabel\x12\x1b\n" +
-	"\tkvm_label\x18\x04 \x01(\tR\bkvmLabel\x12!\n" +
-	"\fvmware_label\x18\x05 \x01(\tR\vvmwareLabel\x12!\n" +
-	"\fhyperv_label\x18\x06 \x01(\tR\vhypervLabel\x12\x1d\n" +
-	"\n" +
-	"ovm3_label\x18\a \x01(\tR\tovm3Label\x12\x12\n" +
-	"\x04vlan\x18\b \x01(\tR\x04vlan\x12)\n" +
-	"\x10isolation_method\x18\t \x01(\tR\x0fisolationMethod\x12$\n" +
-	"\x0estart_event_id\x18\n" +
-	" \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\f \x01(\tR\fresponseType\"X\n" +
-	"\x16AddTrafficTypeResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xb7\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb7\x01\n" +
 	"\"ListTrafficTypeImplementorsRequest\x12!\n" +
 	"\ftraffic_type\x18\x01 \x01(\tR\vtrafficType\x12\x18\n" +
 	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
@@ -2454,36 +2483,19 @@ const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"#ListTrafficTypeImplementorsResponse\x12L\n" +
 	"\x05items\x18\x01 \x03(\v26.cloudstack.management.usage.v1.TrafficTypeImplementorR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"g\n" +
-	"\x1cRemoveRawUsageRecordsRequest\x12\"\n" +
-	"\binterval\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\binterval\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
-	"\x1dRemoveRawUsageRecordsResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"\xc1\x01\n" +
-	"\x17ListTrafficTypesRequest\x126\n" +
-	"\x13physical_network_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11physicalNetworkId\x12\x18\n" +
-	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x82\x01\n" +
-	"\x18ListTrafficTypesResponse\x12>\n" +
-	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.usage.v1.ProviderR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x99\x01\n" +
-	"\x1bGenerateUsageRecordsRequest\x12\x1b\n" +
-	"\tdomain_id\x18\x01 \x01(\x03R\bdomainId\x12\x19\n" +
-	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +
-	"\n" +
-	"start_date\x18\x03 \x01(\tR\tstartDate\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
-	"\x1cGenerateUsageRecordsResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.usage.v1.ResultR\x06result\"<\n" +
-	"\x15ListUsageTypesRequest\x12#\n" +
-	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x81\x01\n" +
-	"\x16ListUsageTypesResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.usage.v1.UsageTypeR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9d\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x98\x01\n" +
+	"\tUsageType\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
+	"\bProvider\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
 	"\x0eTrafficMonitor\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -2497,18 +2509,6 @@ const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\xa5\x01\n" +
 	"\x16TrafficTypeImplementor\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
-	"\bProvider\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x98\x01\n" +
-	"\tUsageType\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2543,19 +2543,19 @@ const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus2\xdc\r\n" +
-	"\fUsageService\x12\x90\x01\n" +
-	"\x13ListTrafficMonitors\x12:.cloudstack.management.usage.v1.ListTrafficMonitorsRequest\x1a;.cloudstack.management.usage.v1.ListTrafficMonitorsResponse\"\x00\x12\x93\x01\n" +
-	"\x14DeleteTrafficMonitor\x12;.cloudstack.management.usage.v1.DeleteTrafficMonitorRequest\x1a<.cloudstack.management.usage.v1.DeleteTrafficMonitorResponse\"\x00\x12\x8a\x01\n" +
-	"\x11UpdateTrafficType\x128.cloudstack.management.usage.v1.UpdateTrafficTypeRequest\x1a9.cloudstack.management.usage.v1.UpdateTrafficTypeResponse\"\x00\x12\x87\x01\n" +
-	"\x10ListUsageRecords\x127.cloudstack.management.usage.v1.ListUsageRecordsRequest\x1a8.cloudstack.management.usage.v1.ListUsageRecordsResponse\"\x00\x12\x8a\x01\n" +
-	"\x11AddTrafficMonitor\x128.cloudstack.management.usage.v1.AddTrafficMonitorRequest\x1a9.cloudstack.management.usage.v1.AddTrafficMonitorResponse\"\x00\x12\x8a\x01\n" +
-	"\x11DeleteTrafficType\x128.cloudstack.management.usage.v1.DeleteTrafficTypeRequest\x1a9.cloudstack.management.usage.v1.DeleteTrafficTypeResponse\"\x00\x12\x81\x01\n" +
-	"\x0eAddTrafficType\x125.cloudstack.management.usage.v1.AddTrafficTypeRequest\x1a6.cloudstack.management.usage.v1.AddTrafficTypeResponse\"\x00\x12\xa8\x01\n" +
-	"\x1bListTrafficTypeImplementors\x12B.cloudstack.management.usage.v1.ListTrafficTypeImplementorsRequest\x1aC.cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse\"\x00\x12\x96\x01\n" +
-	"\x15RemoveRawUsageRecords\x12<.cloudstack.management.usage.v1.RemoveRawUsageRecordsRequest\x1a=.cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse\"\x00\x12\x87\x01\n" +
-	"\x10ListTrafficTypes\x127.cloudstack.management.usage.v1.ListTrafficTypesRequest\x1a8.cloudstack.management.usage.v1.ListTrafficTypesResponse\"\x00\x12\x93\x01\n" +
-	"\x14GenerateUsageRecords\x12;.cloudstack.management.usage.v1.GenerateUsageRecordsRequest\x1a<.cloudstack.management.usage.v1.GenerateUsageRecordsResponse\"\x00\x12\x81\x01\n" +
-	"\x0eListUsageTypes\x125.cloudstack.management.usage.v1.ListUsageTypesRequest\x1a6.cloudstack.management.usage.v1.ListUsageTypesResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xaa\x02\n" +
+	"\fUsageService\x12\x81\x01\n" +
+	"\x0eAddTrafficType\x125.cloudstack.management.usage.v1.AddTrafficTypeRequest\x1a6.cloudstack.management.usage.v1.AddTrafficTypeResponse\"\x00\x12\x8a\x01\n" +
+	"\x11AddTrafficMonitor\x128.cloudstack.management.usage.v1.AddTrafficMonitorRequest\x1a9.cloudstack.management.usage.v1.AddTrafficMonitorResponse\"\x00\x12\x96\x01\n" +
+	"\x15RemoveRawUsageRecords\x12<.cloudstack.management.usage.v1.RemoveRawUsageRecordsRequest\x1a=.cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse\"\x00\x12\x81\x01\n" +
+	"\x0eListUsageTypes\x125.cloudstack.management.usage.v1.ListUsageTypesRequest\x1a6.cloudstack.management.usage.v1.ListUsageTypesResponse\"\x00\x12\x87\x01\n" +
+	"\x10ListTrafficTypes\x127.cloudstack.management.usage.v1.ListTrafficTypesRequest\x1a8.cloudstack.management.usage.v1.ListTrafficTypesResponse\"\x00\x12\x8a\x01\n" +
+	"\x11UpdateTrafficType\x128.cloudstack.management.usage.v1.UpdateTrafficTypeRequest\x1a9.cloudstack.management.usage.v1.UpdateTrafficTypeResponse\"\x00\x12\x93\x01\n" +
+	"\x14DeleteTrafficMonitor\x12;.cloudstack.management.usage.v1.DeleteTrafficMonitorRequest\x1a<.cloudstack.management.usage.v1.DeleteTrafficMonitorResponse\"\x00\x12\x93\x01\n" +
+	"\x14GenerateUsageRecords\x12;.cloudstack.management.usage.v1.GenerateUsageRecordsRequest\x1a<.cloudstack.management.usage.v1.GenerateUsageRecordsResponse\"\x00\x12\x8a\x01\n" +
+	"\x11DeleteTrafficType\x128.cloudstack.management.usage.v1.DeleteTrafficTypeRequest\x1a9.cloudstack.management.usage.v1.DeleteTrafficTypeResponse\"\x00\x12\x90\x01\n" +
+	"\x13ListTrafficMonitors\x12:.cloudstack.management.usage.v1.ListTrafficMonitorsRequest\x1a;.cloudstack.management.usage.v1.ListTrafficMonitorsResponse\"\x00\x12\x87\x01\n" +
+	"\x10ListUsageRecords\x127.cloudstack.management.usage.v1.ListUsageRecordsRequest\x1a8.cloudstack.management.usage.v1.ListUsageRecordsResponse\"\x00\x12\xa8\x01\n" +
+	"\x1bListTrafficTypeImplementors\x12B.cloudstack.management.usage.v1.ListTrafficTypeImplementorsRequest\x1aC.cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xaa\x02\n" +
 	"\"com.cloudstack.management.usage.v1B\rUsageGenProtoP\x01ZZgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/usage/v1;usagev1\xa2\x02\x03CMU\xaa\x02\x1eCloudstack.Management.Usage.V1\xca\x02\x1eCloudstack\\Management\\Usage\\V1\xe2\x02*Cloudstack\\Management\\Usage\\V1\\GPBMetadata\xea\x02!Cloudstack::Management::Usage::V1b\beditionsp\xe8\a"
 
 var (
@@ -2572,78 +2572,78 @@ func file_cloudstack_management_usage_v1_usage_gen_proto_rawDescGZIP() []byte {
 
 var file_cloudstack_management_usage_v1_usage_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_cloudstack_management_usage_v1_usage_gen_proto_goTypes = []any{
-	(*ListTrafficMonitorsRequest)(nil),          // 0: cloudstack.management.usage.v1.ListTrafficMonitorsRequest
-	(*ListTrafficMonitorsResponse)(nil),         // 1: cloudstack.management.usage.v1.ListTrafficMonitorsResponse
-	(*DeleteTrafficMonitorRequest)(nil),         // 2: cloudstack.management.usage.v1.DeleteTrafficMonitorRequest
-	(*DeleteTrafficMonitorResponse)(nil),        // 3: cloudstack.management.usage.v1.DeleteTrafficMonitorResponse
-	(*UpdateTrafficTypeRequest)(nil),            // 4: cloudstack.management.usage.v1.UpdateTrafficTypeRequest
-	(*UpdateTrafficTypeResponse)(nil),           // 5: cloudstack.management.usage.v1.UpdateTrafficTypeResponse
-	(*ListUsageRecordsRequest)(nil),             // 6: cloudstack.management.usage.v1.ListUsageRecordsRequest
-	(*ListUsageRecordsResponse)(nil),            // 7: cloudstack.management.usage.v1.ListUsageRecordsResponse
-	(*AddTrafficMonitorRequest)(nil),            // 8: cloudstack.management.usage.v1.AddTrafficMonitorRequest
-	(*AddTrafficMonitorResponse)(nil),           // 9: cloudstack.management.usage.v1.AddTrafficMonitorResponse
-	(*DeleteTrafficTypeRequest)(nil),            // 10: cloudstack.management.usage.v1.DeleteTrafficTypeRequest
-	(*DeleteTrafficTypeResponse)(nil),           // 11: cloudstack.management.usage.v1.DeleteTrafficTypeResponse
-	(*AddTrafficTypeRequest)(nil),               // 12: cloudstack.management.usage.v1.AddTrafficTypeRequest
-	(*AddTrafficTypeResponse)(nil),              // 13: cloudstack.management.usage.v1.AddTrafficTypeResponse
-	(*ListTrafficTypeImplementorsRequest)(nil),  // 14: cloudstack.management.usage.v1.ListTrafficTypeImplementorsRequest
-	(*ListTrafficTypeImplementorsResponse)(nil), // 15: cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse
-	(*RemoveRawUsageRecordsRequest)(nil),        // 16: cloudstack.management.usage.v1.RemoveRawUsageRecordsRequest
-	(*RemoveRawUsageRecordsResponse)(nil),       // 17: cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse
-	(*ListTrafficTypesRequest)(nil),             // 18: cloudstack.management.usage.v1.ListTrafficTypesRequest
-	(*ListTrafficTypesResponse)(nil),            // 19: cloudstack.management.usage.v1.ListTrafficTypesResponse
-	(*GenerateUsageRecordsRequest)(nil),         // 20: cloudstack.management.usage.v1.GenerateUsageRecordsRequest
-	(*GenerateUsageRecordsResponse)(nil),        // 21: cloudstack.management.usage.v1.GenerateUsageRecordsResponse
-	(*ListUsageTypesRequest)(nil),               // 22: cloudstack.management.usage.v1.ListUsageTypesRequest
-	(*ListUsageTypesResponse)(nil),              // 23: cloudstack.management.usage.v1.ListUsageTypesResponse
-	(*TrafficMonitor)(nil),                      // 24: cloudstack.management.usage.v1.TrafficMonitor
-	(*UsageRecord)(nil),                         // 25: cloudstack.management.usage.v1.UsageRecord
-	(*TrafficTypeImplementor)(nil),              // 26: cloudstack.management.usage.v1.TrafficTypeImplementor
-	(*Provider)(nil),                            // 27: cloudstack.management.usage.v1.Provider
-	(*UsageType)(nil),                           // 28: cloudstack.management.usage.v1.UsageType
+	(*AddTrafficTypeRequest)(nil),               // 0: cloudstack.management.usage.v1.AddTrafficTypeRequest
+	(*AddTrafficTypeResponse)(nil),              // 1: cloudstack.management.usage.v1.AddTrafficTypeResponse
+	(*AddTrafficMonitorRequest)(nil),            // 2: cloudstack.management.usage.v1.AddTrafficMonitorRequest
+	(*AddTrafficMonitorResponse)(nil),           // 3: cloudstack.management.usage.v1.AddTrafficMonitorResponse
+	(*RemoveRawUsageRecordsRequest)(nil),        // 4: cloudstack.management.usage.v1.RemoveRawUsageRecordsRequest
+	(*RemoveRawUsageRecordsResponse)(nil),       // 5: cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse
+	(*ListUsageTypesRequest)(nil),               // 6: cloudstack.management.usage.v1.ListUsageTypesRequest
+	(*ListUsageTypesResponse)(nil),              // 7: cloudstack.management.usage.v1.ListUsageTypesResponse
+	(*ListTrafficTypesRequest)(nil),             // 8: cloudstack.management.usage.v1.ListTrafficTypesRequest
+	(*ListTrafficTypesResponse)(nil),            // 9: cloudstack.management.usage.v1.ListTrafficTypesResponse
+	(*UpdateTrafficTypeRequest)(nil),            // 10: cloudstack.management.usage.v1.UpdateTrafficTypeRequest
+	(*UpdateTrafficTypeResponse)(nil),           // 11: cloudstack.management.usage.v1.UpdateTrafficTypeResponse
+	(*DeleteTrafficMonitorRequest)(nil),         // 12: cloudstack.management.usage.v1.DeleteTrafficMonitorRequest
+	(*DeleteTrafficMonitorResponse)(nil),        // 13: cloudstack.management.usage.v1.DeleteTrafficMonitorResponse
+	(*GenerateUsageRecordsRequest)(nil),         // 14: cloudstack.management.usage.v1.GenerateUsageRecordsRequest
+	(*GenerateUsageRecordsResponse)(nil),        // 15: cloudstack.management.usage.v1.GenerateUsageRecordsResponse
+	(*DeleteTrafficTypeRequest)(nil),            // 16: cloudstack.management.usage.v1.DeleteTrafficTypeRequest
+	(*DeleteTrafficTypeResponse)(nil),           // 17: cloudstack.management.usage.v1.DeleteTrafficTypeResponse
+	(*ListTrafficMonitorsRequest)(nil),          // 18: cloudstack.management.usage.v1.ListTrafficMonitorsRequest
+	(*ListTrafficMonitorsResponse)(nil),         // 19: cloudstack.management.usage.v1.ListTrafficMonitorsResponse
+	(*ListUsageRecordsRequest)(nil),             // 20: cloudstack.management.usage.v1.ListUsageRecordsRequest
+	(*ListUsageRecordsResponse)(nil),            // 21: cloudstack.management.usage.v1.ListUsageRecordsResponse
+	(*ListTrafficTypeImplementorsRequest)(nil),  // 22: cloudstack.management.usage.v1.ListTrafficTypeImplementorsRequest
+	(*ListTrafficTypeImplementorsResponse)(nil), // 23: cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse
+	(*UsageType)(nil),                           // 24: cloudstack.management.usage.v1.UsageType
+	(*Provider)(nil),                            // 25: cloudstack.management.usage.v1.Provider
+	(*TrafficMonitor)(nil),                      // 26: cloudstack.management.usage.v1.TrafficMonitor
+	(*UsageRecord)(nil),                         // 27: cloudstack.management.usage.v1.UsageRecord
+	(*TrafficTypeImplementor)(nil),              // 28: cloudstack.management.usage.v1.TrafficTypeImplementor
 	(*Success)(nil),                             // 29: cloudstack.management.usage.v1.Success
 	(*Item)(nil),                                // 30: cloudstack.management.usage.v1.Item
 	(*Result)(nil),                              // 31: cloudstack.management.usage.v1.Result
 	nil,                                         // 32: cloudstack.management.usage.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_usage_v1_usage_gen_proto_depIdxs = []int32{
-	24, // 0: cloudstack.management.usage.v1.ListTrafficMonitorsResponse.items:type_name -> cloudstack.management.usage.v1.TrafficMonitor
-	31, // 1: cloudstack.management.usage.v1.DeleteTrafficMonitorResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	31, // 2: cloudstack.management.usage.v1.UpdateTrafficTypeResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	25, // 3: cloudstack.management.usage.v1.ListUsageRecordsResponse.items:type_name -> cloudstack.management.usage.v1.UsageRecord
-	31, // 4: cloudstack.management.usage.v1.AddTrafficMonitorResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	31, // 5: cloudstack.management.usage.v1.DeleteTrafficTypeResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	31, // 6: cloudstack.management.usage.v1.AddTrafficTypeResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	26, // 7: cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse.items:type_name -> cloudstack.management.usage.v1.TrafficTypeImplementor
-	31, // 8: cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	27, // 9: cloudstack.management.usage.v1.ListTrafficTypesResponse.items:type_name -> cloudstack.management.usage.v1.Provider
-	31, // 10: cloudstack.management.usage.v1.GenerateUsageRecordsResponse.result:type_name -> cloudstack.management.usage.v1.Result
-	28, // 11: cloudstack.management.usage.v1.ListUsageTypesResponse.items:type_name -> cloudstack.management.usage.v1.UsageType
+	31, // 0: cloudstack.management.usage.v1.AddTrafficTypeResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	31, // 1: cloudstack.management.usage.v1.AddTrafficMonitorResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	31, // 2: cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	24, // 3: cloudstack.management.usage.v1.ListUsageTypesResponse.items:type_name -> cloudstack.management.usage.v1.UsageType
+	25, // 4: cloudstack.management.usage.v1.ListTrafficTypesResponse.items:type_name -> cloudstack.management.usage.v1.Provider
+	31, // 5: cloudstack.management.usage.v1.UpdateTrafficTypeResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	31, // 6: cloudstack.management.usage.v1.DeleteTrafficMonitorResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	31, // 7: cloudstack.management.usage.v1.GenerateUsageRecordsResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	31, // 8: cloudstack.management.usage.v1.DeleteTrafficTypeResponse.result:type_name -> cloudstack.management.usage.v1.Result
+	26, // 9: cloudstack.management.usage.v1.ListTrafficMonitorsResponse.items:type_name -> cloudstack.management.usage.v1.TrafficMonitor
+	27, // 10: cloudstack.management.usage.v1.ListUsageRecordsResponse.items:type_name -> cloudstack.management.usage.v1.UsageRecord
+	28, // 11: cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse.items:type_name -> cloudstack.management.usage.v1.TrafficTypeImplementor
 	32, // 12: cloudstack.management.usage.v1.Item.details:type_name -> cloudstack.management.usage.v1.Item.DetailsEntry
-	0,  // 13: cloudstack.management.usage.v1.UsageService.ListTrafficMonitors:input_type -> cloudstack.management.usage.v1.ListTrafficMonitorsRequest
-	2,  // 14: cloudstack.management.usage.v1.UsageService.DeleteTrafficMonitor:input_type -> cloudstack.management.usage.v1.DeleteTrafficMonitorRequest
-	4,  // 15: cloudstack.management.usage.v1.UsageService.UpdateTrafficType:input_type -> cloudstack.management.usage.v1.UpdateTrafficTypeRequest
-	6,  // 16: cloudstack.management.usage.v1.UsageService.ListUsageRecords:input_type -> cloudstack.management.usage.v1.ListUsageRecordsRequest
-	8,  // 17: cloudstack.management.usage.v1.UsageService.AddTrafficMonitor:input_type -> cloudstack.management.usage.v1.AddTrafficMonitorRequest
-	10, // 18: cloudstack.management.usage.v1.UsageService.DeleteTrafficType:input_type -> cloudstack.management.usage.v1.DeleteTrafficTypeRequest
-	12, // 19: cloudstack.management.usage.v1.UsageService.AddTrafficType:input_type -> cloudstack.management.usage.v1.AddTrafficTypeRequest
-	14, // 20: cloudstack.management.usage.v1.UsageService.ListTrafficTypeImplementors:input_type -> cloudstack.management.usage.v1.ListTrafficTypeImplementorsRequest
-	16, // 21: cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords:input_type -> cloudstack.management.usage.v1.RemoveRawUsageRecordsRequest
-	18, // 22: cloudstack.management.usage.v1.UsageService.ListTrafficTypes:input_type -> cloudstack.management.usage.v1.ListTrafficTypesRequest
-	20, // 23: cloudstack.management.usage.v1.UsageService.GenerateUsageRecords:input_type -> cloudstack.management.usage.v1.GenerateUsageRecordsRequest
-	22, // 24: cloudstack.management.usage.v1.UsageService.ListUsageTypes:input_type -> cloudstack.management.usage.v1.ListUsageTypesRequest
-	1,  // 25: cloudstack.management.usage.v1.UsageService.ListTrafficMonitors:output_type -> cloudstack.management.usage.v1.ListTrafficMonitorsResponse
-	3,  // 26: cloudstack.management.usage.v1.UsageService.DeleteTrafficMonitor:output_type -> cloudstack.management.usage.v1.DeleteTrafficMonitorResponse
-	5,  // 27: cloudstack.management.usage.v1.UsageService.UpdateTrafficType:output_type -> cloudstack.management.usage.v1.UpdateTrafficTypeResponse
-	7,  // 28: cloudstack.management.usage.v1.UsageService.ListUsageRecords:output_type -> cloudstack.management.usage.v1.ListUsageRecordsResponse
-	9,  // 29: cloudstack.management.usage.v1.UsageService.AddTrafficMonitor:output_type -> cloudstack.management.usage.v1.AddTrafficMonitorResponse
-	11, // 30: cloudstack.management.usage.v1.UsageService.DeleteTrafficType:output_type -> cloudstack.management.usage.v1.DeleteTrafficTypeResponse
-	13, // 31: cloudstack.management.usage.v1.UsageService.AddTrafficType:output_type -> cloudstack.management.usage.v1.AddTrafficTypeResponse
-	15, // 32: cloudstack.management.usage.v1.UsageService.ListTrafficTypeImplementors:output_type -> cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse
-	17, // 33: cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords:output_type -> cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse
-	19, // 34: cloudstack.management.usage.v1.UsageService.ListTrafficTypes:output_type -> cloudstack.management.usage.v1.ListTrafficTypesResponse
-	21, // 35: cloudstack.management.usage.v1.UsageService.GenerateUsageRecords:output_type -> cloudstack.management.usage.v1.GenerateUsageRecordsResponse
-	23, // 36: cloudstack.management.usage.v1.UsageService.ListUsageTypes:output_type -> cloudstack.management.usage.v1.ListUsageTypesResponse
+	0,  // 13: cloudstack.management.usage.v1.UsageService.AddTrafficType:input_type -> cloudstack.management.usage.v1.AddTrafficTypeRequest
+	2,  // 14: cloudstack.management.usage.v1.UsageService.AddTrafficMonitor:input_type -> cloudstack.management.usage.v1.AddTrafficMonitorRequest
+	4,  // 15: cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords:input_type -> cloudstack.management.usage.v1.RemoveRawUsageRecordsRequest
+	6,  // 16: cloudstack.management.usage.v1.UsageService.ListUsageTypes:input_type -> cloudstack.management.usage.v1.ListUsageTypesRequest
+	8,  // 17: cloudstack.management.usage.v1.UsageService.ListTrafficTypes:input_type -> cloudstack.management.usage.v1.ListTrafficTypesRequest
+	10, // 18: cloudstack.management.usage.v1.UsageService.UpdateTrafficType:input_type -> cloudstack.management.usage.v1.UpdateTrafficTypeRequest
+	12, // 19: cloudstack.management.usage.v1.UsageService.DeleteTrafficMonitor:input_type -> cloudstack.management.usage.v1.DeleteTrafficMonitorRequest
+	14, // 20: cloudstack.management.usage.v1.UsageService.GenerateUsageRecords:input_type -> cloudstack.management.usage.v1.GenerateUsageRecordsRequest
+	16, // 21: cloudstack.management.usage.v1.UsageService.DeleteTrafficType:input_type -> cloudstack.management.usage.v1.DeleteTrafficTypeRequest
+	18, // 22: cloudstack.management.usage.v1.UsageService.ListTrafficMonitors:input_type -> cloudstack.management.usage.v1.ListTrafficMonitorsRequest
+	20, // 23: cloudstack.management.usage.v1.UsageService.ListUsageRecords:input_type -> cloudstack.management.usage.v1.ListUsageRecordsRequest
+	22, // 24: cloudstack.management.usage.v1.UsageService.ListTrafficTypeImplementors:input_type -> cloudstack.management.usage.v1.ListTrafficTypeImplementorsRequest
+	1,  // 25: cloudstack.management.usage.v1.UsageService.AddTrafficType:output_type -> cloudstack.management.usage.v1.AddTrafficTypeResponse
+	3,  // 26: cloudstack.management.usage.v1.UsageService.AddTrafficMonitor:output_type -> cloudstack.management.usage.v1.AddTrafficMonitorResponse
+	5,  // 27: cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords:output_type -> cloudstack.management.usage.v1.RemoveRawUsageRecordsResponse
+	7,  // 28: cloudstack.management.usage.v1.UsageService.ListUsageTypes:output_type -> cloudstack.management.usage.v1.ListUsageTypesResponse
+	9,  // 29: cloudstack.management.usage.v1.UsageService.ListTrafficTypes:output_type -> cloudstack.management.usage.v1.ListTrafficTypesResponse
+	11, // 30: cloudstack.management.usage.v1.UsageService.UpdateTrafficType:output_type -> cloudstack.management.usage.v1.UpdateTrafficTypeResponse
+	13, // 31: cloudstack.management.usage.v1.UsageService.DeleteTrafficMonitor:output_type -> cloudstack.management.usage.v1.DeleteTrafficMonitorResponse
+	15, // 32: cloudstack.management.usage.v1.UsageService.GenerateUsageRecords:output_type -> cloudstack.management.usage.v1.GenerateUsageRecordsResponse
+	17, // 33: cloudstack.management.usage.v1.UsageService.DeleteTrafficType:output_type -> cloudstack.management.usage.v1.DeleteTrafficTypeResponse
+	19, // 34: cloudstack.management.usage.v1.UsageService.ListTrafficMonitors:output_type -> cloudstack.management.usage.v1.ListTrafficMonitorsResponse
+	21, // 35: cloudstack.management.usage.v1.UsageService.ListUsageRecords:output_type -> cloudstack.management.usage.v1.ListUsageRecordsResponse
+	23, // 36: cloudstack.management.usage.v1.UsageService.ListTrafficTypeImplementors:output_type -> cloudstack.management.usage.v1.ListTrafficTypeImplementorsResponse
 	25, // [25:37] is the sub-list for method output_type
 	13, // [13:25] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name

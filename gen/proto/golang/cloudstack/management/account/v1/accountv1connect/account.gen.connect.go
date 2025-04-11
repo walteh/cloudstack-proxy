@@ -33,75 +33,70 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// AccountServiceUpdateAccountProcedure is the fully-qualified name of the AccountService's
+	// UpdateAccount RPC.
+	AccountServiceUpdateAccountProcedure = "/cloudstack.management.account.v1.AccountService/UpdateAccount"
+	// AccountServiceListProjectAccountsProcedure is the fully-qualified name of the AccountService's
+	// ListProjectAccounts RPC.
+	AccountServiceListProjectAccountsProcedure = "/cloudstack.management.account.v1.AccountService/ListProjectAccounts"
+	// AccountServiceDeleteUserFromProjectProcedure is the fully-qualified name of the AccountService's
+	// DeleteUserFromProject RPC.
+	AccountServiceDeleteUserFromProjectProcedure = "/cloudstack.management.account.v1.AccountService/DeleteUserFromProject"
+	// AccountServiceEnableAccountProcedure is the fully-qualified name of the AccountService's
+	// EnableAccount RPC.
+	AccountServiceEnableAccountProcedure = "/cloudstack.management.account.v1.AccountService/EnableAccount"
+	// AccountServiceDisableAccountProcedure is the fully-qualified name of the AccountService's
+	// DisableAccount RPC.
+	AccountServiceDisableAccountProcedure = "/cloudstack.management.account.v1.AccountService/DisableAccount"
 	// AccountServiceDeleteAccountProcedure is the fully-qualified name of the AccountService's
 	// DeleteAccount RPC.
 	AccountServiceDeleteAccountProcedure = "/cloudstack.management.account.v1.AccountService/DeleteAccount"
 	// AccountServiceAddUserToProjectProcedure is the fully-qualified name of the AccountService's
 	// AddUserToProject RPC.
 	AccountServiceAddUserToProjectProcedure = "/cloudstack.management.account.v1.AccountService/AddUserToProject"
-	// AccountServiceDeleteAccountFromProjectProcedure is the fully-qualified name of the
-	// AccountService's DeleteAccountFromProject RPC.
-	AccountServiceDeleteAccountFromProjectProcedure = "/cloudstack.management.account.v1.AccountService/DeleteAccountFromProject"
-	// AccountServiceUpdateAccountProcedure is the fully-qualified name of the AccountService's
-	// UpdateAccount RPC.
-	AccountServiceUpdateAccountProcedure = "/cloudstack.management.account.v1.AccountService/UpdateAccount"
-	// AccountServiceEnableAccountProcedure is the fully-qualified name of the AccountService's
-	// EnableAccount RPC.
-	AccountServiceEnableAccountProcedure = "/cloudstack.management.account.v1.AccountService/EnableAccount"
-	// AccountServiceListAccountsCmdByAdminProcedure is the fully-qualified name of the AccountService's
-	// ListAccountsCmdByAdmin RPC.
-	AccountServiceListAccountsCmdByAdminProcedure = "/cloudstack.management.account.v1.AccountService/ListAccountsCmdByAdmin"
-	// AccountServiceDisableAccountProcedure is the fully-qualified name of the AccountService's
-	// DisableAccount RPC.
-	AccountServiceDisableAccountProcedure = "/cloudstack.management.account.v1.AccountService/DisableAccount"
-	// AccountServiceLockAccountProcedure is the fully-qualified name of the AccountService's
-	// LockAccount RPC.
-	AccountServiceLockAccountProcedure = "/cloudstack.management.account.v1.AccountService/LockAccount"
-	// AccountServiceDeleteUserFromProjectProcedure is the fully-qualified name of the AccountService's
-	// DeleteUserFromProject RPC.
-	AccountServiceDeleteUserFromProjectProcedure = "/cloudstack.management.account.v1.AccountService/DeleteUserFromProject"
-	// AccountServiceListProjectAccountsProcedure is the fully-qualified name of the AccountService's
-	// ListProjectAccounts RPC.
-	AccountServiceListProjectAccountsProcedure = "/cloudstack.management.account.v1.AccountService/ListProjectAccounts"
-	// AccountServiceCreateAccountProcedure is the fully-qualified name of the AccountService's
-	// CreateAccount RPC.
-	AccountServiceCreateAccountProcedure = "/cloudstack.management.account.v1.AccountService/CreateAccount"
-	// AccountServiceListAccountsProcedure is the fully-qualified name of the AccountService's
-	// ListAccounts RPC.
-	AccountServiceListAccountsProcedure = "/cloudstack.management.account.v1.AccountService/ListAccounts"
 	// AccountServiceAddAccountToProjectProcedure is the fully-qualified name of the AccountService's
 	// AddAccountToProject RPC.
 	AccountServiceAddAccountToProjectProcedure = "/cloudstack.management.account.v1.AccountService/AddAccountToProject"
+	// AccountServiceLockAccountProcedure is the fully-qualified name of the AccountService's
+	// LockAccount RPC.
+	AccountServiceLockAccountProcedure = "/cloudstack.management.account.v1.AccountService/LockAccount"
+	// AccountServiceListAccountsProcedure is the fully-qualified name of the AccountService's
+	// ListAccounts RPC.
+	AccountServiceListAccountsProcedure = "/cloudstack.management.account.v1.AccountService/ListAccounts"
+	// AccountServiceDeleteAccountFromProjectProcedure is the fully-qualified name of the
+	// AccountService's DeleteAccountFromProject RPC.
+	AccountServiceDeleteAccountFromProjectProcedure = "/cloudstack.management.account.v1.AccountService/DeleteAccountFromProject"
+	// AccountServiceCreateAccountProcedure is the fully-qualified name of the AccountService's
+	// CreateAccount RPC.
+	AccountServiceCreateAccountProcedure = "/cloudstack.management.account.v1.AccountService/CreateAccount"
 )
 
 // AccountServiceClient is a client for the cloudstack.management.account.v1.AccountService service.
 type AccountServiceClient interface {
+	// UpdateAccount Updates account information for the authenticated user
+	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
+	// ListProjectAccounts Lists project's accounts
+	ListProjectAccounts(context.Context, *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error)
+	// DeleteUserFromProject Deletes user from the project
+	DeleteUserFromProject(context.Context, *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error)
+	// EnableAccount Enables an account
+	EnableAccount(context.Context, *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error)
+	// DisableAccount Disables an account
+	DisableAccount(context.Context, *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error)
 	// DeleteAccount Deletes a account, and all users associated with this account
 	DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)
 	// AddUserToProject Adds user to a project
 	AddUserToProject(context.Context, *connect.Request[v1.AddUserToProjectRequest]) (*connect.Response[v1.AddUserToProjectResponse], error)
-	// DeleteAccountFromProject Deletes account from the project
-	DeleteAccountFromProject(context.Context, *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error)
-	// UpdateAccount Updates account information for the authenticated user
-	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
-	// EnableAccount Enables an account
-	EnableAccount(context.Context, *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error)
-	// ListAccountsCmdByAdmin Lists accounts and provides detailed account information for listed accounts
-	ListAccountsCmdByAdmin(context.Context, *connect.Request[v1.ListAccountsCmdByAdminRequest]) (*connect.Response[v1.ListAccountsCmdByAdminResponse], error)
-	// DisableAccount Disables an account
-	DisableAccount(context.Context, *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error)
-	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
-	LockAccount(context.Context, *connect.Request[v1.LockAccountRequest]) (*connect.Response[v1.LockAccountResponse], error)
-	// DeleteUserFromProject Deletes user from the project
-	DeleteUserFromProject(context.Context, *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error)
-	// ListProjectAccounts Lists project's accounts
-	ListProjectAccounts(context.Context, *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error)
-	// CreateAccount Creates an account
-	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
-	// ListAccounts Lists accounts and provides detailed account information for listed accounts
-	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
 	// AddAccountToProject Adds account to a project
 	AddAccountToProject(context.Context, *connect.Request[v1.AddAccountToProjectRequest]) (*connect.Response[v1.AddAccountToProjectResponse], error)
+	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
+	LockAccount(context.Context, *connect.Request[v1.LockAccountRequest]) (*connect.Response[v1.LockAccountResponse], error)
+	// ListAccounts Lists accounts and provides detailed account information for listed accounts
+	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
+	// DeleteAccountFromProject Deletes account from the project
+	DeleteAccountFromProject(context.Context, *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error)
+	// CreateAccount Creates an account
+	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
 }
 
 // NewAccountServiceClient constructs a client for the
@@ -116,6 +111,36 @@ func NewAccountServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	accountServiceMethods := v1.File_cloudstack_management_account_v1_account_gen_proto.Services().ByName("AccountService").Methods()
 	return &accountServiceClient{
+		updateAccount: connect.NewClient[v1.UpdateAccountRequest, v1.UpdateAccountResponse](
+			httpClient,
+			baseURL+AccountServiceUpdateAccountProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("UpdateAccount")),
+			connect.WithClientOptions(opts...),
+		),
+		listProjectAccounts: connect.NewClient[v1.ListProjectAccountsRequest, v1.ListProjectAccountsResponse](
+			httpClient,
+			baseURL+AccountServiceListProjectAccountsProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("ListProjectAccounts")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteUserFromProject: connect.NewClient[v1.DeleteUserFromProjectRequest, v1.DeleteUserFromProjectResponse](
+			httpClient,
+			baseURL+AccountServiceDeleteUserFromProjectProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("DeleteUserFromProject")),
+			connect.WithClientOptions(opts...),
+		),
+		enableAccount: connect.NewClient[v1.EnableAccountRequest, v1.EnableAccountResponse](
+			httpClient,
+			baseURL+AccountServiceEnableAccountProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("EnableAccount")),
+			connect.WithClientOptions(opts...),
+		),
+		disableAccount: connect.NewClient[v1.DisableAccountRequest, v1.DisableAccountResponse](
+			httpClient,
+			baseURL+AccountServiceDisableAccountProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("DisableAccount")),
+			connect.WithClientOptions(opts...),
+		),
 		deleteAccount: connect.NewClient[v1.DeleteAccountRequest, v1.DeleteAccountResponse](
 			httpClient,
 			baseURL+AccountServiceDeleteAccountProcedure,
@@ -128,34 +153,10 @@ func NewAccountServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(accountServiceMethods.ByName("AddUserToProject")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteAccountFromProject: connect.NewClient[v1.DeleteAccountFromProjectRequest, v1.DeleteAccountFromProjectResponse](
+		addAccountToProject: connect.NewClient[v1.AddAccountToProjectRequest, v1.AddAccountToProjectResponse](
 			httpClient,
-			baseURL+AccountServiceDeleteAccountFromProjectProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("DeleteAccountFromProject")),
-			connect.WithClientOptions(opts...),
-		),
-		updateAccount: connect.NewClient[v1.UpdateAccountRequest, v1.UpdateAccountResponse](
-			httpClient,
-			baseURL+AccountServiceUpdateAccountProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("UpdateAccount")),
-			connect.WithClientOptions(opts...),
-		),
-		enableAccount: connect.NewClient[v1.EnableAccountRequest, v1.EnableAccountResponse](
-			httpClient,
-			baseURL+AccountServiceEnableAccountProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("EnableAccount")),
-			connect.WithClientOptions(opts...),
-		),
-		listAccountsCmdByAdmin: connect.NewClient[v1.ListAccountsCmdByAdminRequest, v1.ListAccountsCmdByAdminResponse](
-			httpClient,
-			baseURL+AccountServiceListAccountsCmdByAdminProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("ListAccountsCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		disableAccount: connect.NewClient[v1.DisableAccountRequest, v1.DisableAccountResponse](
-			httpClient,
-			baseURL+AccountServiceDisableAccountProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("DisableAccount")),
+			baseURL+AccountServiceAddAccountToProjectProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("AddAccountToProject")),
 			connect.WithClientOptions(opts...),
 		),
 		lockAccount: connect.NewClient[v1.LockAccountRequest, v1.LockAccountResponse](
@@ -164,16 +165,16 @@ func NewAccountServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(accountServiceMethods.ByName("LockAccount")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteUserFromProject: connect.NewClient[v1.DeleteUserFromProjectRequest, v1.DeleteUserFromProjectResponse](
+		listAccounts: connect.NewClient[v1.ListAccountsRequest, v1.ListAccountsResponse](
 			httpClient,
-			baseURL+AccountServiceDeleteUserFromProjectProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("DeleteUserFromProject")),
+			baseURL+AccountServiceListAccountsProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("ListAccounts")),
 			connect.WithClientOptions(opts...),
 		),
-		listProjectAccounts: connect.NewClient[v1.ListProjectAccountsRequest, v1.ListProjectAccountsResponse](
+		deleteAccountFromProject: connect.NewClient[v1.DeleteAccountFromProjectRequest, v1.DeleteAccountFromProjectResponse](
 			httpClient,
-			baseURL+AccountServiceListProjectAccountsProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("ListProjectAccounts")),
+			baseURL+AccountServiceDeleteAccountFromProjectProcedure,
+			connect.WithSchema(accountServiceMethods.ByName("DeleteAccountFromProject")),
 			connect.WithClientOptions(opts...),
 		),
 		createAccount: connect.NewClient[v1.CreateAccountRequest, v1.CreateAccountResponse](
@@ -182,36 +183,49 @@ func NewAccountServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(accountServiceMethods.ByName("CreateAccount")),
 			connect.WithClientOptions(opts...),
 		),
-		listAccounts: connect.NewClient[v1.ListAccountsRequest, v1.ListAccountsResponse](
-			httpClient,
-			baseURL+AccountServiceListAccountsProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("ListAccounts")),
-			connect.WithClientOptions(opts...),
-		),
-		addAccountToProject: connect.NewClient[v1.AddAccountToProjectRequest, v1.AddAccountToProjectResponse](
-			httpClient,
-			baseURL+AccountServiceAddAccountToProjectProcedure,
-			connect.WithSchema(accountServiceMethods.ByName("AddAccountToProject")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // accountServiceClient implements AccountServiceClient.
 type accountServiceClient struct {
+	updateAccount            *connect.Client[v1.UpdateAccountRequest, v1.UpdateAccountResponse]
+	listProjectAccounts      *connect.Client[v1.ListProjectAccountsRequest, v1.ListProjectAccountsResponse]
+	deleteUserFromProject    *connect.Client[v1.DeleteUserFromProjectRequest, v1.DeleteUserFromProjectResponse]
+	enableAccount            *connect.Client[v1.EnableAccountRequest, v1.EnableAccountResponse]
+	disableAccount           *connect.Client[v1.DisableAccountRequest, v1.DisableAccountResponse]
 	deleteAccount            *connect.Client[v1.DeleteAccountRequest, v1.DeleteAccountResponse]
 	addUserToProject         *connect.Client[v1.AddUserToProjectRequest, v1.AddUserToProjectResponse]
-	deleteAccountFromProject *connect.Client[v1.DeleteAccountFromProjectRequest, v1.DeleteAccountFromProjectResponse]
-	updateAccount            *connect.Client[v1.UpdateAccountRequest, v1.UpdateAccountResponse]
-	enableAccount            *connect.Client[v1.EnableAccountRequest, v1.EnableAccountResponse]
-	listAccountsCmdByAdmin   *connect.Client[v1.ListAccountsCmdByAdminRequest, v1.ListAccountsCmdByAdminResponse]
-	disableAccount           *connect.Client[v1.DisableAccountRequest, v1.DisableAccountResponse]
-	lockAccount              *connect.Client[v1.LockAccountRequest, v1.LockAccountResponse]
-	deleteUserFromProject    *connect.Client[v1.DeleteUserFromProjectRequest, v1.DeleteUserFromProjectResponse]
-	listProjectAccounts      *connect.Client[v1.ListProjectAccountsRequest, v1.ListProjectAccountsResponse]
-	createAccount            *connect.Client[v1.CreateAccountRequest, v1.CreateAccountResponse]
-	listAccounts             *connect.Client[v1.ListAccountsRequest, v1.ListAccountsResponse]
 	addAccountToProject      *connect.Client[v1.AddAccountToProjectRequest, v1.AddAccountToProjectResponse]
+	lockAccount              *connect.Client[v1.LockAccountRequest, v1.LockAccountResponse]
+	listAccounts             *connect.Client[v1.ListAccountsRequest, v1.ListAccountsResponse]
+	deleteAccountFromProject *connect.Client[v1.DeleteAccountFromProjectRequest, v1.DeleteAccountFromProjectResponse]
+	createAccount            *connect.Client[v1.CreateAccountRequest, v1.CreateAccountResponse]
+}
+
+// UpdateAccount calls cloudstack.management.account.v1.AccountService.UpdateAccount.
+func (c *accountServiceClient) UpdateAccount(ctx context.Context, req *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
+	return c.updateAccount.CallUnary(ctx, req)
+}
+
+// ListProjectAccounts calls cloudstack.management.account.v1.AccountService.ListProjectAccounts.
+func (c *accountServiceClient) ListProjectAccounts(ctx context.Context, req *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error) {
+	return c.listProjectAccounts.CallUnary(ctx, req)
+}
+
+// DeleteUserFromProject calls
+// cloudstack.management.account.v1.AccountService.DeleteUserFromProject.
+func (c *accountServiceClient) DeleteUserFromProject(ctx context.Context, req *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error) {
+	return c.deleteUserFromProject.CallUnary(ctx, req)
+}
+
+// EnableAccount calls cloudstack.management.account.v1.AccountService.EnableAccount.
+func (c *accountServiceClient) EnableAccount(ctx context.Context, req *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error) {
+	return c.enableAccount.CallUnary(ctx, req)
+}
+
+// DisableAccount calls cloudstack.management.account.v1.AccountService.DisableAccount.
+func (c *accountServiceClient) DisableAccount(ctx context.Context, req *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error) {
+	return c.disableAccount.CallUnary(ctx, req)
 }
 
 // DeleteAccount calls cloudstack.management.account.v1.AccountService.DeleteAccount.
@@ -224,31 +238,9 @@ func (c *accountServiceClient) AddUserToProject(ctx context.Context, req *connec
 	return c.addUserToProject.CallUnary(ctx, req)
 }
 
-// DeleteAccountFromProject calls
-// cloudstack.management.account.v1.AccountService.DeleteAccountFromProject.
-func (c *accountServiceClient) DeleteAccountFromProject(ctx context.Context, req *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error) {
-	return c.deleteAccountFromProject.CallUnary(ctx, req)
-}
-
-// UpdateAccount calls cloudstack.management.account.v1.AccountService.UpdateAccount.
-func (c *accountServiceClient) UpdateAccount(ctx context.Context, req *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
-	return c.updateAccount.CallUnary(ctx, req)
-}
-
-// EnableAccount calls cloudstack.management.account.v1.AccountService.EnableAccount.
-func (c *accountServiceClient) EnableAccount(ctx context.Context, req *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error) {
-	return c.enableAccount.CallUnary(ctx, req)
-}
-
-// ListAccountsCmdByAdmin calls
-// cloudstack.management.account.v1.AccountService.ListAccountsCmdByAdmin.
-func (c *accountServiceClient) ListAccountsCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListAccountsCmdByAdminRequest]) (*connect.Response[v1.ListAccountsCmdByAdminResponse], error) {
-	return c.listAccountsCmdByAdmin.CallUnary(ctx, req)
-}
-
-// DisableAccount calls cloudstack.management.account.v1.AccountService.DisableAccount.
-func (c *accountServiceClient) DisableAccount(ctx context.Context, req *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error) {
-	return c.disableAccount.CallUnary(ctx, req)
+// AddAccountToProject calls cloudstack.management.account.v1.AccountService.AddAccountToProject.
+func (c *accountServiceClient) AddAccountToProject(ctx context.Context, req *connect.Request[v1.AddAccountToProjectRequest]) (*connect.Response[v1.AddAccountToProjectResponse], error) {
+	return c.addAccountToProject.CallUnary(ctx, req)
 }
 
 // LockAccount calls cloudstack.management.account.v1.AccountService.LockAccount.
@@ -256,15 +248,15 @@ func (c *accountServiceClient) LockAccount(ctx context.Context, req *connect.Req
 	return c.lockAccount.CallUnary(ctx, req)
 }
 
-// DeleteUserFromProject calls
-// cloudstack.management.account.v1.AccountService.DeleteUserFromProject.
-func (c *accountServiceClient) DeleteUserFromProject(ctx context.Context, req *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error) {
-	return c.deleteUserFromProject.CallUnary(ctx, req)
+// ListAccounts calls cloudstack.management.account.v1.AccountService.ListAccounts.
+func (c *accountServiceClient) ListAccounts(ctx context.Context, req *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {
+	return c.listAccounts.CallUnary(ctx, req)
 }
 
-// ListProjectAccounts calls cloudstack.management.account.v1.AccountService.ListProjectAccounts.
-func (c *accountServiceClient) ListProjectAccounts(ctx context.Context, req *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error) {
-	return c.listProjectAccounts.CallUnary(ctx, req)
+// DeleteAccountFromProject calls
+// cloudstack.management.account.v1.AccountService.DeleteAccountFromProject.
+func (c *accountServiceClient) DeleteAccountFromProject(ctx context.Context, req *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error) {
+	return c.deleteAccountFromProject.CallUnary(ctx, req)
 }
 
 // CreateAccount calls cloudstack.management.account.v1.AccountService.CreateAccount.
@@ -272,45 +264,33 @@ func (c *accountServiceClient) CreateAccount(ctx context.Context, req *connect.R
 	return c.createAccount.CallUnary(ctx, req)
 }
 
-// ListAccounts calls cloudstack.management.account.v1.AccountService.ListAccounts.
-func (c *accountServiceClient) ListAccounts(ctx context.Context, req *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {
-	return c.listAccounts.CallUnary(ctx, req)
-}
-
-// AddAccountToProject calls cloudstack.management.account.v1.AccountService.AddAccountToProject.
-func (c *accountServiceClient) AddAccountToProject(ctx context.Context, req *connect.Request[v1.AddAccountToProjectRequest]) (*connect.Response[v1.AddAccountToProjectResponse], error) {
-	return c.addAccountToProject.CallUnary(ctx, req)
-}
-
 // AccountServiceHandler is an implementation of the cloudstack.management.account.v1.AccountService
 // service.
 type AccountServiceHandler interface {
+	// UpdateAccount Updates account information for the authenticated user
+	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
+	// ListProjectAccounts Lists project's accounts
+	ListProjectAccounts(context.Context, *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error)
+	// DeleteUserFromProject Deletes user from the project
+	DeleteUserFromProject(context.Context, *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error)
+	// EnableAccount Enables an account
+	EnableAccount(context.Context, *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error)
+	// DisableAccount Disables an account
+	DisableAccount(context.Context, *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error)
 	// DeleteAccount Deletes a account, and all users associated with this account
 	DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error)
 	// AddUserToProject Adds user to a project
 	AddUserToProject(context.Context, *connect.Request[v1.AddUserToProjectRequest]) (*connect.Response[v1.AddUserToProjectResponse], error)
-	// DeleteAccountFromProject Deletes account from the project
-	DeleteAccountFromProject(context.Context, *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error)
-	// UpdateAccount Updates account information for the authenticated user
-	UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error)
-	// EnableAccount Enables an account
-	EnableAccount(context.Context, *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error)
-	// ListAccountsCmdByAdmin Lists accounts and provides detailed account information for listed accounts
-	ListAccountsCmdByAdmin(context.Context, *connect.Request[v1.ListAccountsCmdByAdminRequest]) (*connect.Response[v1.ListAccountsCmdByAdminResponse], error)
-	// DisableAccount Disables an account
-	DisableAccount(context.Context, *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error)
-	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
-	LockAccount(context.Context, *connect.Request[v1.LockAccountRequest]) (*connect.Response[v1.LockAccountResponse], error)
-	// DeleteUserFromProject Deletes user from the project
-	DeleteUserFromProject(context.Context, *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error)
-	// ListProjectAccounts Lists project's accounts
-	ListProjectAccounts(context.Context, *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error)
-	// CreateAccount Creates an account
-	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
-	// ListAccounts Lists accounts and provides detailed account information for listed accounts
-	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
 	// AddAccountToProject Adds account to a project
 	AddAccountToProject(context.Context, *connect.Request[v1.AddAccountToProjectRequest]) (*connect.Response[v1.AddAccountToProjectResponse], error)
+	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
+	LockAccount(context.Context, *connect.Request[v1.LockAccountRequest]) (*connect.Response[v1.LockAccountResponse], error)
+	// ListAccounts Lists accounts and provides detailed account information for listed accounts
+	ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error)
+	// DeleteAccountFromProject Deletes account from the project
+	DeleteAccountFromProject(context.Context, *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error)
+	// CreateAccount Creates an account
+	CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error)
 }
 
 // NewAccountServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -320,6 +300,36 @@ type AccountServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAccountServiceHandler(svc AccountServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	accountServiceMethods := v1.File_cloudstack_management_account_v1_account_gen_proto.Services().ByName("AccountService").Methods()
+	accountServiceUpdateAccountHandler := connect.NewUnaryHandler(
+		AccountServiceUpdateAccountProcedure,
+		svc.UpdateAccount,
+		connect.WithSchema(accountServiceMethods.ByName("UpdateAccount")),
+		connect.WithHandlerOptions(opts...),
+	)
+	accountServiceListProjectAccountsHandler := connect.NewUnaryHandler(
+		AccountServiceListProjectAccountsProcedure,
+		svc.ListProjectAccounts,
+		connect.WithSchema(accountServiceMethods.ByName("ListProjectAccounts")),
+		connect.WithHandlerOptions(opts...),
+	)
+	accountServiceDeleteUserFromProjectHandler := connect.NewUnaryHandler(
+		AccountServiceDeleteUserFromProjectProcedure,
+		svc.DeleteUserFromProject,
+		connect.WithSchema(accountServiceMethods.ByName("DeleteUserFromProject")),
+		connect.WithHandlerOptions(opts...),
+	)
+	accountServiceEnableAccountHandler := connect.NewUnaryHandler(
+		AccountServiceEnableAccountProcedure,
+		svc.EnableAccount,
+		connect.WithSchema(accountServiceMethods.ByName("EnableAccount")),
+		connect.WithHandlerOptions(opts...),
+	)
+	accountServiceDisableAccountHandler := connect.NewUnaryHandler(
+		AccountServiceDisableAccountProcedure,
+		svc.DisableAccount,
+		connect.WithSchema(accountServiceMethods.ByName("DisableAccount")),
+		connect.WithHandlerOptions(opts...),
+	)
 	accountServiceDeleteAccountHandler := connect.NewUnaryHandler(
 		AccountServiceDeleteAccountProcedure,
 		svc.DeleteAccount,
@@ -332,34 +342,10 @@ func NewAccountServiceHandler(svc AccountServiceHandler, opts ...connect.Handler
 		connect.WithSchema(accountServiceMethods.ByName("AddUserToProject")),
 		connect.WithHandlerOptions(opts...),
 	)
-	accountServiceDeleteAccountFromProjectHandler := connect.NewUnaryHandler(
-		AccountServiceDeleteAccountFromProjectProcedure,
-		svc.DeleteAccountFromProject,
-		connect.WithSchema(accountServiceMethods.ByName("DeleteAccountFromProject")),
-		connect.WithHandlerOptions(opts...),
-	)
-	accountServiceUpdateAccountHandler := connect.NewUnaryHandler(
-		AccountServiceUpdateAccountProcedure,
-		svc.UpdateAccount,
-		connect.WithSchema(accountServiceMethods.ByName("UpdateAccount")),
-		connect.WithHandlerOptions(opts...),
-	)
-	accountServiceEnableAccountHandler := connect.NewUnaryHandler(
-		AccountServiceEnableAccountProcedure,
-		svc.EnableAccount,
-		connect.WithSchema(accountServiceMethods.ByName("EnableAccount")),
-		connect.WithHandlerOptions(opts...),
-	)
-	accountServiceListAccountsCmdByAdminHandler := connect.NewUnaryHandler(
-		AccountServiceListAccountsCmdByAdminProcedure,
-		svc.ListAccountsCmdByAdmin,
-		connect.WithSchema(accountServiceMethods.ByName("ListAccountsCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	accountServiceDisableAccountHandler := connect.NewUnaryHandler(
-		AccountServiceDisableAccountProcedure,
-		svc.DisableAccount,
-		connect.WithSchema(accountServiceMethods.ByName("DisableAccount")),
+	accountServiceAddAccountToProjectHandler := connect.NewUnaryHandler(
+		AccountServiceAddAccountToProjectProcedure,
+		svc.AddAccountToProject,
+		connect.WithSchema(accountServiceMethods.ByName("AddAccountToProject")),
 		connect.WithHandlerOptions(opts...),
 	)
 	accountServiceLockAccountHandler := connect.NewUnaryHandler(
@@ -368,16 +354,16 @@ func NewAccountServiceHandler(svc AccountServiceHandler, opts ...connect.Handler
 		connect.WithSchema(accountServiceMethods.ByName("LockAccount")),
 		connect.WithHandlerOptions(opts...),
 	)
-	accountServiceDeleteUserFromProjectHandler := connect.NewUnaryHandler(
-		AccountServiceDeleteUserFromProjectProcedure,
-		svc.DeleteUserFromProject,
-		connect.WithSchema(accountServiceMethods.ByName("DeleteUserFromProject")),
+	accountServiceListAccountsHandler := connect.NewUnaryHandler(
+		AccountServiceListAccountsProcedure,
+		svc.ListAccounts,
+		connect.WithSchema(accountServiceMethods.ByName("ListAccounts")),
 		connect.WithHandlerOptions(opts...),
 	)
-	accountServiceListProjectAccountsHandler := connect.NewUnaryHandler(
-		AccountServiceListProjectAccountsProcedure,
-		svc.ListProjectAccounts,
-		connect.WithSchema(accountServiceMethods.ByName("ListProjectAccounts")),
+	accountServiceDeleteAccountFromProjectHandler := connect.NewUnaryHandler(
+		AccountServiceDeleteAccountFromProjectProcedure,
+		svc.DeleteAccountFromProject,
+		connect.WithSchema(accountServiceMethods.ByName("DeleteAccountFromProject")),
 		connect.WithHandlerOptions(opts...),
 	)
 	accountServiceCreateAccountHandler := connect.NewUnaryHandler(
@@ -386,46 +372,32 @@ func NewAccountServiceHandler(svc AccountServiceHandler, opts ...connect.Handler
 		connect.WithSchema(accountServiceMethods.ByName("CreateAccount")),
 		connect.WithHandlerOptions(opts...),
 	)
-	accountServiceListAccountsHandler := connect.NewUnaryHandler(
-		AccountServiceListAccountsProcedure,
-		svc.ListAccounts,
-		connect.WithSchema(accountServiceMethods.ByName("ListAccounts")),
-		connect.WithHandlerOptions(opts...),
-	)
-	accountServiceAddAccountToProjectHandler := connect.NewUnaryHandler(
-		AccountServiceAddAccountToProjectProcedure,
-		svc.AddAccountToProject,
-		connect.WithSchema(accountServiceMethods.ByName("AddAccountToProject")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cloudstack.management.account.v1.AccountService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case AccountServiceUpdateAccountProcedure:
+			accountServiceUpdateAccountHandler.ServeHTTP(w, r)
+		case AccountServiceListProjectAccountsProcedure:
+			accountServiceListProjectAccountsHandler.ServeHTTP(w, r)
+		case AccountServiceDeleteUserFromProjectProcedure:
+			accountServiceDeleteUserFromProjectHandler.ServeHTTP(w, r)
+		case AccountServiceEnableAccountProcedure:
+			accountServiceEnableAccountHandler.ServeHTTP(w, r)
+		case AccountServiceDisableAccountProcedure:
+			accountServiceDisableAccountHandler.ServeHTTP(w, r)
 		case AccountServiceDeleteAccountProcedure:
 			accountServiceDeleteAccountHandler.ServeHTTP(w, r)
 		case AccountServiceAddUserToProjectProcedure:
 			accountServiceAddUserToProjectHandler.ServeHTTP(w, r)
-		case AccountServiceDeleteAccountFromProjectProcedure:
-			accountServiceDeleteAccountFromProjectHandler.ServeHTTP(w, r)
-		case AccountServiceUpdateAccountProcedure:
-			accountServiceUpdateAccountHandler.ServeHTTP(w, r)
-		case AccountServiceEnableAccountProcedure:
-			accountServiceEnableAccountHandler.ServeHTTP(w, r)
-		case AccountServiceListAccountsCmdByAdminProcedure:
-			accountServiceListAccountsCmdByAdminHandler.ServeHTTP(w, r)
-		case AccountServiceDisableAccountProcedure:
-			accountServiceDisableAccountHandler.ServeHTTP(w, r)
-		case AccountServiceLockAccountProcedure:
-			accountServiceLockAccountHandler.ServeHTTP(w, r)
-		case AccountServiceDeleteUserFromProjectProcedure:
-			accountServiceDeleteUserFromProjectHandler.ServeHTTP(w, r)
-		case AccountServiceListProjectAccountsProcedure:
-			accountServiceListProjectAccountsHandler.ServeHTTP(w, r)
-		case AccountServiceCreateAccountProcedure:
-			accountServiceCreateAccountHandler.ServeHTTP(w, r)
-		case AccountServiceListAccountsProcedure:
-			accountServiceListAccountsHandler.ServeHTTP(w, r)
 		case AccountServiceAddAccountToProjectProcedure:
 			accountServiceAddAccountToProjectHandler.ServeHTTP(w, r)
+		case AccountServiceLockAccountProcedure:
+			accountServiceLockAccountHandler.ServeHTTP(w, r)
+		case AccountServiceListAccountsProcedure:
+			accountServiceListAccountsHandler.ServeHTTP(w, r)
+		case AccountServiceDeleteAccountFromProjectProcedure:
+			accountServiceDeleteAccountFromProjectHandler.ServeHTTP(w, r)
+		case AccountServiceCreateAccountProcedure:
+			accountServiceCreateAccountHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -435,6 +407,26 @@ func NewAccountServiceHandler(svc AccountServiceHandler, opts ...connect.Handler
 // UnimplementedAccountServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAccountServiceHandler struct{}
 
+func (UnimplementedAccountServiceHandler) UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.UpdateAccount is not implemented"))
+}
+
+func (UnimplementedAccountServiceHandler) ListProjectAccounts(context.Context, *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.ListProjectAccounts is not implemented"))
+}
+
+func (UnimplementedAccountServiceHandler) DeleteUserFromProject(context.Context, *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DeleteUserFromProject is not implemented"))
+}
+
+func (UnimplementedAccountServiceHandler) EnableAccount(context.Context, *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.EnableAccount is not implemented"))
+}
+
+func (UnimplementedAccountServiceHandler) DisableAccount(context.Context, *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DisableAccount is not implemented"))
+}
+
 func (UnimplementedAccountServiceHandler) DeleteAccount(context.Context, *connect.Request[v1.DeleteAccountRequest]) (*connect.Response[v1.DeleteAccountResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DeleteAccount is not implemented"))
 }
@@ -443,46 +435,22 @@ func (UnimplementedAccountServiceHandler) AddUserToProject(context.Context, *con
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.AddUserToProject is not implemented"))
 }
 
-func (UnimplementedAccountServiceHandler) DeleteAccountFromProject(context.Context, *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DeleteAccountFromProject is not implemented"))
-}
-
-func (UnimplementedAccountServiceHandler) UpdateAccount(context.Context, *connect.Request[v1.UpdateAccountRequest]) (*connect.Response[v1.UpdateAccountResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.UpdateAccount is not implemented"))
-}
-
-func (UnimplementedAccountServiceHandler) EnableAccount(context.Context, *connect.Request[v1.EnableAccountRequest]) (*connect.Response[v1.EnableAccountResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.EnableAccount is not implemented"))
-}
-
-func (UnimplementedAccountServiceHandler) ListAccountsCmdByAdmin(context.Context, *connect.Request[v1.ListAccountsCmdByAdminRequest]) (*connect.Response[v1.ListAccountsCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.ListAccountsCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedAccountServiceHandler) DisableAccount(context.Context, *connect.Request[v1.DisableAccountRequest]) (*connect.Response[v1.DisableAccountResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DisableAccount is not implemented"))
+func (UnimplementedAccountServiceHandler) AddAccountToProject(context.Context, *connect.Request[v1.AddAccountToProjectRequest]) (*connect.Response[v1.AddAccountToProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.AddAccountToProject is not implemented"))
 }
 
 func (UnimplementedAccountServiceHandler) LockAccount(context.Context, *connect.Request[v1.LockAccountRequest]) (*connect.Response[v1.LockAccountResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.LockAccount is not implemented"))
 }
 
-func (UnimplementedAccountServiceHandler) DeleteUserFromProject(context.Context, *connect.Request[v1.DeleteUserFromProjectRequest]) (*connect.Response[v1.DeleteUserFromProjectResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DeleteUserFromProject is not implemented"))
-}
-
-func (UnimplementedAccountServiceHandler) ListProjectAccounts(context.Context, *connect.Request[v1.ListProjectAccountsRequest]) (*connect.Response[v1.ListProjectAccountsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.ListProjectAccounts is not implemented"))
-}
-
-func (UnimplementedAccountServiceHandler) CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.CreateAccount is not implemented"))
-}
-
 func (UnimplementedAccountServiceHandler) ListAccounts(context.Context, *connect.Request[v1.ListAccountsRequest]) (*connect.Response[v1.ListAccountsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.ListAccounts is not implemented"))
 }
 
-func (UnimplementedAccountServiceHandler) AddAccountToProject(context.Context, *connect.Request[v1.AddAccountToProjectRequest]) (*connect.Response[v1.AddAccountToProjectResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.AddAccountToProject is not implemented"))
+func (UnimplementedAccountServiceHandler) DeleteAccountFromProject(context.Context, *connect.Request[v1.DeleteAccountFromProjectRequest]) (*connect.Response[v1.DeleteAccountFromProjectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.DeleteAccountFromProject is not implemented"))
+}
+
+func (UnimplementedAccountServiceHandler) CreateAccount(context.Context, *connect.Request[v1.CreateAccountRequest]) (*connect.Response[v1.CreateAccountResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.account.v1.AccountService.CreateAccount is not implemented"))
 }
