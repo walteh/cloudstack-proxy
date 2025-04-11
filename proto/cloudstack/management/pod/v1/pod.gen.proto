@@ -1,0 +1,268 @@
+edition = "2023";
+
+package cloudstack.management.pod.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// PodService provides operations for managing Pods
+service PodService {
+	option (annotations.service).scope = Scope_ADMIN;
+
+	// UpdatePod Updates a Pod.
+	rpc UpdatePod(UpdatePodRequest) returns (UpdatePodResponse) {}
+
+	// ListPodsBy Lists all Pods.
+	rpc ListPodsBy(ListPodsByRequest) returns (ListPodsByResponse) {}
+
+	// DeletePod Deletes a Pod.
+	rpc DeletePod(DeletePodRequest) returns (DeletePodResponse) {}
+
+	// CreatePod Creates a new Pod.
+	rpc CreatePod(CreatePodRequest) returns (CreatePodResponse) {}
+}
+
+// UpdatePodRequest represents the parameters for updates a pod.
+message UpdatePodRequest {
+	// the ID of the Pod
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the name of the Pod
+	string pod_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the starting IP address for the Pod
+	string start_ip = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address for the Pod
+	string end_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the Pod
+	string netmask = 5;
+
+	// the gateway for the Pod
+	string gateway = 6 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Allocation state of this cluster for allocation of new resources
+	string allocation_state = 7;
+
+	//
+	string response_type = 8;
+}
+
+// UpdatePodResponse represents the response from updates a pod.
+message UpdatePodResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListPodsByRequest represents the parameters for lists all pods.
+message ListPodsByRequest {
+	// list Pods by ID
+	int64 id = 1;
+
+	// list Pods by name
+	string pod_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list Pods by Zone ID
+	int64 zone_id = 3;
+
+	// list pods by allocation state
+	string allocation_state = 4;
+
+	// flag to display the capacity of the pods
+	bool show_capacities = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 6;
+
+	//
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
+}
+
+// ListPodsByResponse represents the response from lists all pods.
+message ListPodsByResponse {
+	option (validate.message).disabled = false;
+	// The list of Pods
+	repeated Pod items = 1;
+
+	// The total count of Pods
+	int32 total_count = 2;
+}
+
+// DeletePodRequest represents the parameters for deletes a pod.
+message DeletePodRequest {
+	// the ID of the Pod
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeletePodResponse represents the response from deletes a pod.
+message DeletePodResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreatePodRequest represents the parameters for creates a new pod.
+message CreatePodRequest {
+	// the name of the Pod
+	string pod_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the Zone ID in which the Pod will be created
+	int64 zone_id = 2 [
+		(validate.field).required = true
+	];
+
+	// the starting IP address for the Pod
+	string start_ip = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address for the Pod
+	string end_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask for the Pod
+	string netmask = 5;
+
+	// the gateway for the Pod
+	string gateway = 6 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Allocation state of this Pod for allocation of new resources
+	string allocation_state = 7;
+
+	//
+	string response_type = 8;
+}
+
+// CreatePodResponse represents the response from creates a new pod.
+message CreatePodResponse {
+	// The Result
+	Result result = 1;
+}
+
+// Pod represents a Pod Item
+message Pod {
+	// The ID of the Pod
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Pod
+	string name = 2;
+	// The display name of the Pod
+	string display_name = 3;
+	// The description of the Pod
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

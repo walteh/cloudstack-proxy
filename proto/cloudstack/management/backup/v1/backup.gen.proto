@@ -1,0 +1,736 @@
+edition = "2023";
+
+package cloudstack.management.backup.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// BackupService provides operations for managing Backups
+service BackupService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListBackupSchedule List backup schedule of a VM
+	rpc ListBackupSchedule(ListBackupScheduleRequest) returns (ListBackupScheduleResponse) {}
+
+	// ImportBackupOffering Imports a backup offering using a backup provider
+	rpc ImportBackupOffering(ImportBackupOfferingRequest) returns (ImportBackupOfferingResponse) {}
+
+	// DeleteBackupOffering Deletes a backup offering
+	rpc DeleteBackupOffering(DeleteBackupOfferingRequest) returns (DeleteBackupOfferingResponse) {}
+
+	// DeleteBackupSchedule Deletes the backup schedule of a VM
+	rpc DeleteBackupSchedule(DeleteBackupScheduleRequest) returns (DeleteBackupScheduleResponse) {}
+
+	// AssignVirtualMachineToBackupOffering Assigns a VM to a backup offering
+	rpc AssignVirtualMachineToBackupOffering(AssignVirtualMachineToBackupOfferingRequest) returns (AssignVirtualMachineToBackupOfferingResponse) {}
+
+	// CreateBackupSchedule Creates a user-defined VM backup schedule
+	rpc CreateBackupSchedule(CreateBackupScheduleRequest) returns (CreateBackupScheduleResponse) {}
+
+	// ListBackups Lists VM backups
+	rpc ListBackups(ListBackupsRequest) returns (ListBackupsResponse) {}
+
+	// ListBackupProviders Lists Backup and Recovery providers
+	rpc ListBackupProviders(ListBackupProvidersRequest) returns (ListBackupProvidersResponse) {}
+
+	// ListBackupProviderOfferings Lists external backup offerings of the provider
+	rpc ListBackupProviderOfferings(ListBackupProviderOfferingsRequest) returns (ListBackupProviderOfferingsResponse) {}
+
+	// RestoreBackup Restores an existing stopped or deleted VM using a VM backup
+	rpc RestoreBackup(RestoreBackupRequest) returns (RestoreBackupResponse) {}
+
+	// UpdateBackupSchedule Updates a user-defined VM backup schedule
+	rpc UpdateBackupSchedule(UpdateBackupScheduleRequest) returns (UpdateBackupScheduleResponse) {}
+
+	// DeleteBackup Delete VM backup
+	rpc DeleteBackup(DeleteBackupRequest) returns (DeleteBackupResponse) {}
+
+	// UpdateBackupOffering Updates a backup offering.
+	rpc UpdateBackupOffering(UpdateBackupOfferingRequest) returns (UpdateBackupOfferingResponse) {}
+
+	// RemoveVirtualMachineFromBackupOffering Removes a VM from any existing backup offering
+	rpc RemoveVirtualMachineFromBackupOffering(RemoveVirtualMachineFromBackupOfferingRequest) returns (RemoveVirtualMachineFromBackupOfferingResponse) {}
+
+	// RestoreVolumeFromBackupAndAttachToVM Restore and attach a backed up volume to VM
+	rpc RestoreVolumeFromBackupAndAttachToVM(RestoreVolumeFromBackupAndAttachToVMRequest) returns (RestoreVolumeFromBackupAndAttachToVMResponse) {}
+
+	// CreateBackup Create VM backup
+	rpc CreateBackup(CreateBackupRequest) returns (CreateBackupResponse) {}
+
+	// ListBackupOfferings Lists backup offerings
+	rpc ListBackupOfferings(ListBackupOfferingsRequest) returns (ListBackupOfferingsResponse) {}
+}
+
+// ListBackupScheduleRequest represents the parameters for list backup schedule of a vm
+message ListBackupScheduleRequest {
+	// ID of the VM
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListBackupScheduleResponse represents the response from list backup schedule of a vm
+message ListBackupScheduleResponse {
+	option (validate.message).disabled = false;
+	// The list of BackupSchedules
+	repeated BackupSchedule items = 1;
+
+	// The total count of BackupSchedules
+	int32 total_count = 2;
+}
+
+// ImportBackupOfferingRequest represents the parameters for imports a backup offering using a backup provider
+message ImportBackupOfferingRequest {
+	// the name of the backup offering
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the description of the backup offering
+	string description = 2 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// The backup offering ID (from backup provider side)
+	string external_id = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// The zone ID
+	int64 zone_id = 4 [
+		(validate.field).required = true
+	];
+
+	// Whether users are allowed to create adhoc backups and backup schedules
+	bool user_driven_backups = 5 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// ImportBackupOfferingResponse represents the response from imports a backup offering using a backup provider
+message ImportBackupOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteBackupOfferingRequest represents the parameters for deletes a backup offering
+message DeleteBackupOfferingRequest {
+	// ID of the backup offering
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteBackupOfferingResponse represents the response from deletes a backup offering
+message DeleteBackupOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteBackupScheduleRequest represents the parameters for deletes the backup schedule of a vm
+message DeleteBackupScheduleRequest {
+	// ID of the VM
+	int64 vm_id = 1;
+
+	// ID of the schedule
+	int64 id = 2;
+
+	//
+	string response_type = 3;
+}
+
+// DeleteBackupScheduleResponse represents the response from deletes the backup schedule of a vm
+message DeleteBackupScheduleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AssignVirtualMachineToBackupOfferingRequest represents the parameters for assigns a vm to a backup offering
+message AssignVirtualMachineToBackupOfferingRequest {
+	// ID of the virtual machine
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of the backup offering
+	int64 offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// AssignVirtualMachineToBackupOfferingResponse represents the response from assigns a vm to a backup offering
+message AssignVirtualMachineToBackupOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateBackupScheduleRequest represents the parameters for creates a user-defined vm backup schedule
+message CreateBackupScheduleRequest {
+	// ID of the VM for which schedule is to be defined
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+	string interval_type = 2 [
+		(validate.field).required = true
+	];
+
+	// custom backup schedule, the format is:for HOURLY MM*, for DAILY MM:HH*, for WEEKLY MM:HH:DD (1-7)*, for MONTHLY MM:HH:DD (1-28)
+	string schedule = 3 [
+		(validate.field).required = true
+	];
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	string timezone = 4 [
+		(validate.field).required = true
+	];
+
+	// maximum number of backups to retain
+	int32 max_backups = 5;
+
+	//
+	string response_type = 6;
+}
+
+// CreateBackupScheduleResponse represents the response from creates a user-defined vm backup schedule
+message CreateBackupScheduleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListBackupsRequest represents the parameters for lists vm backups
+message ListBackupsRequest {
+	// id of the backup
+	int64 id = 1;
+
+	// id of the VM
+	int64 vm_id = 2;
+
+	// list backups by zone id
+	int64 zone_id = 3;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 4;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 5 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 7;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListBackupsResponse represents the response from lists vm backups
+message ListBackupsResponse {
+	option (validate.message).disabled = false;
+	// The list of Backups
+	repeated Backup items = 1;
+
+	// The total count of Backups
+	int32 total_count = 2;
+}
+
+// ListBackupProvidersRequest represents the parameters for lists backup and recovery providers
+message ListBackupProvidersRequest {
+	// List Backup and Recovery provider by name
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListBackupProvidersResponse represents the response from lists backup and recovery providers
+message ListBackupProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of BackupProviders
+	repeated BackupProvider items = 1;
+
+	// The total count of BackupProviders
+	int32 total_count = 2;
+}
+
+// ListBackupProviderOfferingsRequest represents the parameters for lists external backup offerings of the provider
+message ListBackupProviderOfferingsRequest {
+	// The zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListBackupProviderOfferingsResponse represents the response from lists external backup offerings of the provider
+message ListBackupProviderOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of BackupOfferings
+	repeated BackupOffering items = 1;
+
+	// The total count of BackupOfferings
+	int32 total_count = 2;
+}
+
+// RestoreBackupRequest represents the parameters for restores an existing stopped or deleted vm using a vm backup
+message RestoreBackupRequest {
+	// ID of the backup
+	int64 backup_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RestoreBackupResponse represents the response from restores an existing stopped or deleted vm using a vm backup
+message RestoreBackupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateBackupScheduleRequest represents the parameters for updates a user-defined vm backup schedule
+message UpdateBackupScheduleRequest {
+	// ID of the VM for which schedule is to be defined
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+	string interval_type = 2 [
+		(validate.field).required = true
+	];
+
+	// custom backup schedule, the format is:for HOURLY MM*, for DAILY MM:HH*, for WEEKLY MM:HH:DD (1-7)*, for MONTHLY MM:HH:DD (1-28)
+	string schedule = 3 [
+		(validate.field).required = true
+	];
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
+	string timezone = 4 [
+		(validate.field).required = true
+	];
+
+	// maximum number of backups to retain
+	int32 max_backups = 5;
+
+	//
+	string response_type = 6;
+}
+
+// UpdateBackupScheduleResponse represents the response from updates a user-defined vm backup schedule
+message UpdateBackupScheduleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteBackupRequest represents the parameters for delete vm backup
+message DeleteBackupRequest {
+	// id of the VM backup
+	int64 backup_id = 1 [
+		(validate.field).required = true
+	];
+
+	// force the deletion of backup which removes the entire backup chain but keep VM in Backup Offering
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteBackupResponse represents the response from delete vm backup
+message DeleteBackupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateBackupOfferingRequest represents the parameters for updates a backup offering.
+message UpdateBackupOfferingRequest {
+	// The ID of the Backup Offering to be updated
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The description of the Backup Offering to be updated
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// The name of the Backup Offering to be updated
+	string name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Whether to allow user driven backups or not
+	bool allow_user_driven_backups = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 5;
+}
+
+// UpdateBackupOfferingResponse represents the response from updates a backup offering.
+message UpdateBackupOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveVirtualMachineFromBackupOfferingRequest represents the parameters for removes a vm from any existing backup offering
+message RemoveVirtualMachineFromBackupOfferingRequest {
+	// ID of the virtual machine
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Whether to force remove VM from the backup offering that may also delete VM backups.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RemoveVirtualMachineFromBackupOfferingResponse represents the response from removes a vm from any existing backup offering
+message RemoveVirtualMachineFromBackupOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RestoreVolumeFromBackupAndAttachToVMRequest represents the parameters for restore and attach a backed up volume to vm
+message RestoreVolumeFromBackupAndAttachToVMRequest {
+	// ID of the VM backup
+	int64 backup_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of the volume backed up
+	string volume_uuid = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// id of the VM where to attach the restored volume
+	int64 vm_id = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// RestoreVolumeFromBackupAndAttachToVMResponse represents the response from restore and attach a backed up volume to vm
+message RestoreVolumeFromBackupAndAttachToVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateBackupRequest represents the parameters for create vm backup
+message CreateBackupRequest {
+	// ID of the VM
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// backup schedule ID of the VM, if this is null, it indicates that it is a manual backup.
+	int64 schedule_id = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateBackupResponse represents the response from create vm backup
+message CreateBackupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListBackupOfferingsRequest represents the parameters for lists backup offerings
+message ListBackupOfferingsRequest {
+	// The backup offering ID
+	int64 offering_id = 1;
+
+	// The zone ID
+	int64 zone_id = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListBackupOfferingsResponse represents the response from lists backup offerings
+message ListBackupOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of BackupOfferings
+	repeated BackupOffering items = 1;
+
+	// The total count of BackupOfferings
+	int32 total_count = 2;
+}
+
+// BackupSchedule represents a BackupSchedule Item
+message BackupSchedule {
+	// The ID of the BackupSchedule
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the BackupSchedule
+	string name = 2;
+	// The display name of the BackupSchedule
+	string display_name = 3;
+	// The description of the BackupSchedule
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Backup represents a Backup Item
+message Backup {
+	// The ID of the Backup
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Backup
+	string name = 2;
+	// The display name of the Backup
+	string display_name = 3;
+	// The description of the Backup
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// BackupProvider represents a BackupProvider Item
+message BackupProvider {
+	// The ID of the BackupProvider
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the BackupProvider
+	string name = 2;
+	// The display name of the BackupProvider
+	string display_name = 3;
+	// The description of the BackupProvider
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// BackupOffering represents a BackupOffering Item
+message BackupOffering {
+	// The ID of the BackupOffering
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the BackupOffering
+	string name = 2;
+	// The display name of the BackupOffering
+	string display_name = 3;
+	// The description of the BackupOffering
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

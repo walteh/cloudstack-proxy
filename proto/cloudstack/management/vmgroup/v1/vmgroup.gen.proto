@@ -1,0 +1,244 @@
+edition = "2023";
+
+package cloudstack.management.vmgroup.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// VmgroupService provides operations for managing Vmgroups
+service VmgroupService {
+	option (annotations.service).scope = Scope_USER;
+
+	// CreateVMGroup Creates a vm group
+	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {}
+
+	// ListVMGroups Lists vm groups
+	rpc ListVMGroups(ListVMGroupsRequest) returns (ListVMGroupsResponse) {}
+
+	// DeleteVMGroup Deletes a vm group
+	rpc DeleteVMGroup(DeleteVMGroupRequest) returns (DeleteVMGroupResponse) {}
+
+	// UpdateVMGroup Updates a vm group
+	rpc UpdateVMGroup(UpdateVMGroupRequest) returns (UpdateVMGroupResponse) {}
+}
+
+// CreateVMGroupRequest represents the parameters for creates a vm group
+message CreateVMGroupRequest {
+	// the name of the instance group
+	string group_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the account of the instance group. The account parameter must be used with the domainId parameter.
+	string account_name = 2;
+
+	// the domain ID of account owning the instance group
+	int64 domain_id = 3;
+
+	// The project of the instance group
+	int64 project_id = 4;
+
+	//
+	string response_type = 5;
+}
+
+// CreateVMGroupResponse represents the response from creates a vm group
+message CreateVMGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVMGroupsRequest represents the parameters for lists vm groups
+message ListVMGroupsRequest {
+	// list instance groups by ID
+	int64 id = 1;
+
+	// list instance groups by name
+	string group_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 3;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 4 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 6;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 8;
+
+	//
+	int32 page = 9;
+
+	//
+	int32 page_size = 10;
+
+	//
+	string response_type = 11;
+}
+
+// ListVMGroupsResponse represents the response from lists vm groups
+message ListVMGroupsResponse {
+	option (validate.message).disabled = false;
+	// The list of InstanceGroups
+	repeated InstanceGroup items = 1;
+
+	// The total count of InstanceGroups
+	int32 total_count = 2;
+}
+
+// DeleteVMGroupRequest represents the parameters for deletes a vm group
+message DeleteVMGroupRequest {
+	// the ID of the instance group
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteVMGroupResponse represents the response from deletes a vm group
+message DeleteVMGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVMGroupRequest represents the parameters for updates a vm group
+message UpdateVMGroupRequest {
+	// Instance group ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// new instance group name
+	string group_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 3;
+}
+
+// UpdateVMGroupResponse represents the response from updates a vm group
+message UpdateVMGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// InstanceGroup represents a InstanceGroup Item
+message InstanceGroup {
+	// The ID of the InstanceGroup
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the InstanceGroup
+	string name = 2;
+	// The display name of the InstanceGroup
+	string display_name = 3;
+	// The description of the InstanceGroup
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

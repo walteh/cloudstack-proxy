@@ -1,0 +1,383 @@
+edition = "2023";
+
+package cloudstack.management.domain.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// DomainService provides operations for managing Domains
+service DomainService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListDomainsCmdByAdmin Lists domains and provides detailed information for listed domains
+	rpc ListDomainsCmdByAdmin(ListDomainsCmdByAdminRequest) returns (ListDomainsCmdByAdminResponse) {}
+
+	// DeleteDomain Deletes a specified domain
+	rpc DeleteDomain(DeleteDomainRequest) returns (DeleteDomainResponse) {}
+
+	// MoveDomain Moves a domain and its children to a new parent domain.
+	rpc MoveDomain(MoveDomainRequest) returns (MoveDomainResponse) {}
+
+	// CreateDomain Creates a domain
+	rpc CreateDomain(CreateDomainRequest) returns (CreateDomainResponse) {}
+
+	// ListDomains Lists domains and provides detailed information for listed domains
+	rpc ListDomains(ListDomainsRequest) returns (ListDomainsResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ListDomainChildren Lists all children domains belonging to a specified domain
+	rpc ListDomainChildren(ListDomainChildrenRequest) returns (ListDomainChildrenResponse) {}
+
+	// UpdateDomain Updates a domain with a new name
+	rpc UpdateDomain(UpdateDomainRequest) returns (UpdateDomainResponse) {}
+}
+
+// ListDomainsCmdByAdminRequest represents the parameters for lists domains and provides detailed information for listed domains
+message ListDomainsCmdByAdminRequest {
+	// List domain by domain ID.
+	int64 id = 1;
+
+	// List domains by domain level.
+	int32 level = 2;
+
+	// List domain by domain name.
+	string domain_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
+	bool list_all = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// comma separated list of domain details requested, value can be a list of [ all, resource, min]
+	repeated string view_details = 5;
+
+	// flag to display the resource icon for domains
+	bool show_icon = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Tag for resource type to return usage
+	string tag = 7;
+
+	// List by keyword
+	string keyword = 8;
+
+	//
+	int32 page = 9;
+
+	//
+	int32 page_size = 10;
+
+	//
+	string response_type = 11;
+}
+
+// ListDomainsCmdByAdminResponse represents the response from lists domains and provides detailed information for listed domains
+message ListDomainsCmdByAdminResponse {
+	option (validate.message).disabled = false;
+	// The list of Domains
+	repeated Domain items = 1;
+
+	// The total count of Domains
+	int32 total_count = 2;
+}
+
+// DeleteDomainRequest represents the parameters for deletes a specified domain
+message DeleteDomainRequest {
+	// ID of domain to delete
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// true if all domain resources (child domains, accounts) have to be cleaned up, false otherwise
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteDomainResponse represents the response from deletes a specified domain
+message DeleteDomainResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
+message MoveDomainRequest {
+	// The ID of the domain to be moved.
+	int64 domain_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the new parent domain of the domain to be moved.
+	int64 parent_domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
+message MoveDomainResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateDomainRequest represents the parameters for creates a domain
+message CreateDomainRequest {
+	// creates domain with this name
+	string domain_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// assigns new domain a parent domain by domain ID of the parent.  If no parent domain is specified, the ROOT domain is assumed.
+	int64 parent_domain_id = 2;
+
+	// Network domain for networks in the domain
+	string network_domain = 3;
+
+	// Domain UUID, required for adding domain from another Region
+	string domain_u_u_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateDomainResponse represents the response from creates a domain
+message CreateDomainResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListDomainsRequest represents the parameters for lists domains and provides detailed information for listed domains
+message ListDomainsRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// List domain by domain ID.
+	int64 id = 2;
+	// List domains by domain level.
+	int32 level = 3;
+	// List domain by domain name.
+	string domain_name = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
+	bool list_all = 5 [
+		features.field_presence = EXPLICIT
+	];
+	// comma separated list of domain details requested, value can be a list of [ all, resource, min]
+	repeated string view_details = 6;
+	// flag to display the resource icon for domains
+	bool show_icon = 7 [
+		features.field_presence = EXPLICIT
+	];
+	// Tag for resource type to return usage
+	string tag = 8;
+	// List by keyword
+	string keyword = 9;
+	//
+	int32 page = 10;
+	//
+	int32 page_size = 11;
+	//
+	string response_type = 12;
+}
+
+// ListDomainsResponse represents the response from lists domains and provides detailed information for listed domains
+message ListDomainsResponse {
+	option (validate.message).disabled = false;
+	// The list of Domains
+	repeated Domain items = 1;
+
+	// The total count of Domains
+	int32 total_count = 2;
+}
+
+// ListDomainChildrenRequest represents the parameters for lists all children domains belonging to a specified domain
+message ListDomainChildrenRequest {
+	// list children domain by parent domain ID.
+	int64 id = 1;
+
+	// list children domains by name
+	string domain_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// to return the entire tree, use the value "true". To return the first level children, use the value "false".
+	bool recursive = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
+	bool list_all = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// flag to display the resource icon for domains
+	bool show_icon = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 6;
+
+	//
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
+}
+
+// ListDomainChildrenResponse represents the response from lists all children domains belonging to a specified domain
+message ListDomainChildrenResponse {
+	option (validate.message).disabled = false;
+	// The list of Domains
+	repeated Domain items = 1;
+
+	// The total count of Domains
+	int32 total_count = 2;
+}
+
+// UpdateDomainRequest represents the parameters for updates a domain with a new name
+message UpdateDomainRequest {
+	// ID of domain to update
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// updates domain with this name
+	string domain_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Network domain for the domain's networks; empty string will update domainName with NULL value
+	string network_domain = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpdateDomainResponse represents the response from updates a domain with a new name
+message UpdateDomainResponse {
+	// The Result
+	Result result = 1;
+}
+
+// Domain represents a Domain Item
+message Domain {
+	// The ID of the Domain
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Domain
+	string name = 2;
+	// The display name of the Domain
+	string display_name = 3;
+	// The description of the Domain
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

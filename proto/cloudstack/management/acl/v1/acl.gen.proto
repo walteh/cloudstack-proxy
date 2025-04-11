@@ -1,0 +1,456 @@
+edition = "2023";
+
+package cloudstack.management.acl.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// AclService provides operations for managing Acls
+service AclService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListRolePermissions Lists role permissions
+	rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse) {}
+
+	// EnableRole Enables a role
+	rpc EnableRole(EnableRoleRequest) returns (EnableRoleResponse) {}
+
+	// DeleteRole Deletes a role
+	rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse) {}
+
+	// UpdateRolePermission Updates a role permission order
+	rpc UpdateRolePermission(UpdateRolePermissionRequest) returns (UpdateRolePermissionResponse) {}
+
+	// DeleteRolePermission Deletes a role permission
+	rpc DeleteRolePermission(DeleteRolePermissionRequest) returns (DeleteRolePermissionResponse) {}
+
+	// ImportRole Imports a role based on provided map of rule permissions
+	rpc ImportRole(ImportRoleRequest) returns (ImportRoleResponse) {}
+
+	// UpdateRole Updates a role
+	rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {}
+
+	// CreateRolePermission Adds an API permission to a role
+	rpc CreateRolePermission(CreateRolePermissionRequest) returns (CreateRolePermissionResponse) {}
+
+	// CreateRole Creates a role
+	rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse) {}
+
+	// ListRoles Lists dynamic roles in CloudStack
+	rpc ListRoles(ListRolesRequest) returns (ListRolesResponse) {}
+
+	// DisableRole Disables a role
+	rpc DisableRole(DisableRoleRequest) returns (DisableRoleResponse) {}
+}
+
+// ListRolePermissionsRequest represents the parameters for lists role permissions
+message ListRolePermissionsRequest {
+	// ID of the role
+	int64 role_id = 1;
+
+	//
+	string response_type = 2;
+}
+
+// ListRolePermissionsResponse represents the response from lists role permissions
+message ListRolePermissionsResponse {
+	option (validate.message).disabled = false;
+	// The list of RolePermissions
+	repeated RolePermission items = 1;
+
+	// The total count of RolePermissions
+	int32 total_count = 2;
+}
+
+// EnableRoleRequest represents the parameters for enables a role
+message EnableRoleRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// EnableRoleResponse represents the response from enables a role
+message EnableRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteRoleRequest represents the parameters for deletes a role
+message DeleteRoleRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteRoleResponse represents the response from deletes a role
+message DeleteRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateRolePermissionRequest represents the parameters for updates a role permission order
+message UpdateRolePermissionRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The parent role permission uuid, use 0 to move this rule at the top of the list
+	repeated string rule_permission_order = 2;
+
+	// Role permission rule id
+	int64 rule_id = 3;
+
+	// Rule permission, can be: allow or deny
+	string rule_permission = 4;
+
+	//
+	string response_type = 5;
+}
+
+// UpdateRolePermissionResponse represents the response from updates a role permission order
+message UpdateRolePermissionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteRolePermissionRequest represents the parameters for deletes a role permission
+message DeleteRolePermissionRequest {
+	// ID of the role permission
+	int64 role_permission_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteRolePermissionResponse represents the response from deletes a role permission
+message DeleteRolePermissionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ImportRoleRequest represents the parameters for imports a role based on provided map of rule permissions
+message ImportRoleRequest {
+	// Creates a role with this unique name
+	string role_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Rules param list, rule and permission is must. Example: rules[0].rule=create*&rules[0].permission=allow&rules[0].description=create%20rule&rules[1].rule=list*&rules[1].permission=allow&rules[1].description=listing
+	map<string, string> rules = 2 [
+		(validate.field).required = true
+	];
+
+	// Force create a role with the same name. This overrides the role type, description and rule permissions for the existing role. Default is false.
+	bool forced = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Indicates whether the role will be visible to all users (public) or only to root admins (private). If this parameter is not specified during the creation of the role its value will be defaulted to true (public).
+	bool public_role = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
+	string role_type = 5;
+
+	// The description of the role
+	string role_description = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 7;
+}
+
+// ImportRoleResponse represents the response from imports a role based on provided map of rule permissions
+message ImportRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateRoleRequest represents the parameters for updates a role
+message UpdateRoleRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	// creates a role with this unique name
+	string role_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// The description of the role
+	string role_description = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// Indicates whether the role will be visible to all users (public) or only to root admins (private).
+	bool public_role = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
+	string role_type = 5;
+
+	//
+	string response_type = 6;
+}
+
+// UpdateRoleResponse represents the response from updates a role
+message UpdateRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateRolePermissionRequest represents the parameters for adds an api permission to a role
+message CreateRolePermissionRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The API name or wildcard rule such as list*
+	string rule = 2 [
+		(validate.field).required = true
+	];
+
+	// The rule permission, allow or deny. Default: deny.
+	string permission = 3 [
+		(validate.field).required = true
+	];
+
+	// The description of the role permission
+	string description = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateRolePermissionResponse represents the response from adds an api permission to a role
+message CreateRolePermissionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateRoleRequest represents the parameters for creates a role
+message CreateRoleRequest {
+	// Creates a role with this unique name
+	string role_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// ID of the role to be cloned from. Either roleid or type must be passed in
+	int64 role_id = 2;
+
+	// Indicates whether the role will be visible to all users (public) or only to root admins (private). Default is true.
+	bool public_role = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
+	string role_type = 4;
+
+	// The description of the role
+	string role_description = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateRoleResponse represents the response from creates a role
+message CreateRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListRolesRequest represents the parameters for lists dynamic roles in cloudstack
+message ListRolesRequest {
+	// List role by role ID.
+	int64 id = 1;
+
+	// List role by role name.
+	string role_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List role by role type, valid options are: Admin, ResourceAdmin, DomainAdmin, User.
+	string role_type = 3;
+
+	// List role by role type status, valid options are: enabled, disabled
+	string role_state = 4;
+
+	// List by keyword
+	string keyword = 5;
+
+	//
+	int32 page = 6;
+
+	//
+	int32 page_size = 7;
+
+	//
+	string response_type = 8;
+}
+
+// ListRolesResponse represents the response from lists dynamic roles in cloudstack
+message ListRolesResponse {
+	option (validate.message).disabled = false;
+	// The list of Roles
+	repeated Role items = 1;
+
+	// The total count of Roles
+	int32 total_count = 2;
+}
+
+// DisableRoleRequest represents the parameters for disables a role
+message DisableRoleRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DisableRoleResponse represents the response from disables a role
+message DisableRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RolePermission represents a RolePermission Item
+message RolePermission {
+	// The ID of the RolePermission
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the RolePermission
+	string name = 2;
+	// The display name of the RolePermission
+	string display_name = 3;
+	// The description of the RolePermission
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Role represents a Role Item
+message Role {
+	// The ID of the Role
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Role
+	string name = 2;
+	// The display name of the Role
+	string display_name = 3;
+	// The description of the Role
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

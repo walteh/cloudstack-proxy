@@ -1,0 +1,380 @@
+edition = "2023";
+
+package cloudstack.management.zone.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// ZoneService provides operations for managing Zones
+service ZoneService {
+	option (annotations.service).scope = Scope_USER;
+
+	// UpdateZone Updates a Zone.
+	rpc UpdateZone(UpdateZoneRequest) returns (UpdateZoneResponse) {}
+
+	// MarkDefaultZoneForAccount Marks a default zone for this account
+	rpc MarkDefaultZoneForAccount(MarkDefaultZoneForAccountRequest) returns (MarkDefaultZoneForAccountResponse) {}
+
+	// CreateZone Creates a Zone.
+	rpc CreateZone(CreateZoneRequest) returns (CreateZoneResponse) {}
+
+	// DeleteZone Deletes a Zone.
+	rpc DeleteZone(DeleteZoneRequest) returns (DeleteZoneResponse) {}
+
+	// ListZones Lists zones
+	rpc ListZones(ListZonesRequest) returns (ListZonesResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+}
+
+// UpdateZoneRequest represents the parameters for updates a zone.
+message UpdateZoneRequest {
+	// the first DNS for the Zone
+	string dns1 = 1;
+
+	// the second DNS for the Zone
+	string dns2 = 2;
+
+	// the first DNS for IPv6 network in the Zone
+	string ip6_dns1 = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the second DNS for IPv6 network in the Zone
+	string ip6_dns2 = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the guest CIDR address for the Zone
+	string guest_cidr_address = 5;
+
+	// the ID of the Zone
+	int64 id = 6 [
+		(validate.field).required = true
+	];
+
+	// the first internal DNS for the Zone
+	string internal_dns1 = 7;
+
+	// the second internal DNS for the Zone
+	string internal_dns2 = 8;
+
+	// the name of the Zone
+	string zone_name = 9 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// updates a private zone to public if set, but not vice-versa
+	bool is_public = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Allocation state of this cluster for allocation of new resources
+	string allocation_state = 11;
+
+	// the details for the Zone
+	map<string, string> details = 12;
+
+	// the dhcp Provider for the Zone
+	string dhcp_provider = 13 [
+		(validate.field).string.uuid = true
+	];
+
+	// Network domain name for the networks in the zone; empty string will update domain with NULL value
+	string domain = 14;
+
+	// the dns search order list
+	repeated string dns_search_order = 15;
+
+	// true if local storage offering enabled, false otherwise
+	bool local_storage_enabled = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// sort key of the zone, integer
+	int32 sort_key = 17;
+
+	//
+	string response_type = 18;
+}
+
+// UpdateZoneResponse represents the response from updates a zone.
+message UpdateZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MarkDefaultZoneForAccountRequest represents the parameters for marks a default zone for this account
+message MarkDefaultZoneForAccountRequest {
+	// Name of the account that is to be marked.
+	string account_name = 1 [
+		(validate.field).required = true
+	];
+
+	// Marks the account that belongs to the specified domain.
+	int64 domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	// The Zone ID with which the account is to be marked.
+	int64 default_zone_id = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// MarkDefaultZoneForAccountResponse represents the response from marks a default zone for this account
+message MarkDefaultZoneForAccountResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateZoneRequest represents the parameters for creates a zone.
+message CreateZoneRequest {
+	// the first DNS for the Zone
+	string dns1 = 1 [
+		(validate.field).required = true
+	];
+
+	// the second DNS for the Zone
+	string dns2 = 2;
+
+	// the first DNS for IPv6 network in the Zone
+	string ip6_dns1 = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the second DNS for IPv6 network in the Zone
+	string ip6_dns2 = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the guest CIDR address for the Zone
+	string guest_cidr_address = 5;
+
+	// the first internal DNS for the Zone
+	string internal_dns1 = 6 [
+		(validate.field).required = true
+	];
+
+	// the second internal DNS for the Zone
+	string internal_dns2 = 7;
+
+	// the name of the Zone
+	string zone_name = 8 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Network domain name for the networks in the zone
+	string domain = 9;
+
+	// the ID of the containing domain, null for public zones
+	int64 domain_id = 10;
+
+	// network type of the zone, can be Basic or Advanced
+	string network_type = 11 [
+		(validate.field).required = true
+	];
+
+	// Allocation state of this Zone for allocation of new resources
+	string allocation_state = 12;
+
+	// true if network is security group enabled, false otherwise
+	bool securitygroupenabled = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if local storage offering enabled, false otherwise
+	bool local_storage_enabled = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the zone is an edge zone, false otherwise
+	bool is_edge = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 16;
+}
+
+// CreateZoneResponse represents the response from creates a zone.
+message CreateZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteZoneRequest represents the parameters for deletes a zone.
+message DeleteZoneRequest {
+	// the ID of the Zone
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteZoneResponse represents the response from deletes a zone.
+message DeleteZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListZonesRequest represents the parameters for lists zones
+message ListZonesRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the ID of the zone
+	int64 id = 2;
+	// the IDs of the zones, mutually exclusive with id
+	repeated string ids = 3;
+	// true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false.
+	bool available = 4 [
+		features.field_presence = EXPLICIT
+	];
+	// the ID of the domain associated with the zone
+	int64 domain_id = 5;
+	// the name of the zone
+	string name = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// the network type of the zone that the virtual machine belongs to
+	string network_type = 7;
+	// flag to display the capacity of the zones
+	bool show_capacities = 8 [
+		features.field_presence = EXPLICIT
+	];
+	// List zones by resource tags (key/value pairs)
+	map<string, string> tags = 9;
+	// flag to display the resource image for the zones
+	bool show_icon = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 11;
+	//
+	int32 page = 12;
+	//
+	int32 page_size = 13;
+	//
+	string response_type = 14;
+}
+
+// ListZonesResponse represents the response from lists zones
+message ListZonesResponse {
+	option (validate.message).disabled = false;
+	// The list of Zones
+	repeated Zone items = 1;
+
+	// The total count of Zones
+	int32 total_count = 2;
+}
+
+// Zone represents a Zone Item
+message Zone {
+	// The ID of the Zone
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Zone
+	string name = 2;
+	// The display name of the Zone
+	string display_name = 3;
+	// The description of the Zone
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

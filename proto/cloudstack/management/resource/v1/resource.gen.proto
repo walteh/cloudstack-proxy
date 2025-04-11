@@ -1,0 +1,700 @@
+edition = "2023";
+
+package cloudstack.management.resource.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// ResourceService provides operations for managing Resources
+service ResourceService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListResourceLimits Lists resource limits.
+	rpc ListResourceLimits(ListResourceLimitsRequest) returns (ListResourceLimitsResponse) {}
+
+	// UpdateResourceCount Recalculate and update resource count for an account or domain. This also executes some cleanup tasks before calculating resource counts.
+	rpc UpdateResourceCount(UpdateResourceCountRequest) returns (UpdateResourceCountResponse) {}
+
+	// StartRollingMaintenance Start rolling maintenance
+	rpc StartRollingMaintenance(StartRollingMaintenanceRequest) returns (StartRollingMaintenanceResponse) {}
+
+	// ListAlerts Lists all alerts.
+	rpc ListAlerts(ListAlertsRequest) returns (ListAlertsResponse) {}
+
+	// UpdateResourceLimit Updates resource limits for an account or domain.
+	rpc UpdateResourceLimit(UpdateResourceLimitRequest) returns (UpdateResourceLimitResponse) {}
+
+	// ListDetailOptions Lists all possible details and their options for a resource type such as a VM or a template
+	rpc ListDetailOptions(ListDetailOptionsRequest) returns (ListDetailOptionsResponse) {}
+
+	// DeleteAlerts Delete one or more alerts.
+	rpc DeleteAlerts(DeleteAlertsRequest) returns (DeleteAlertsResponse) {}
+
+	// ListCapacity Lists all the system wide capacities.
+	rpc ListCapacity(ListCapacityRequest) returns (ListCapacityResponse) {}
+
+	// ListHypervisors List hypervisors
+	rpc ListHypervisors(ListHypervisorsRequest) returns (ListHypervisorsResponse) {}
+
+	// CleanVMReservations Cleanups VM reservations in the database.
+	rpc CleanVMReservations(CleanVMReservationsRequest) returns (CleanVMReservationsResponse) {}
+
+	// UploadCustomCertificate Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself.
+	rpc UploadCustomCertificate(UploadCustomCertificateRequest) returns (UploadCustomCertificateResponse) {}
+
+	// GetCloudIdentifier Retrieves a cloud identifier.
+	rpc GetCloudIdentifier(GetCloudIdentifierRequest) returns (GetCloudIdentifierResponse) {}
+
+	// ArchiveAlerts Archive one or more alerts.
+	rpc ArchiveAlerts(ArchiveAlertsRequest) returns (ArchiveAlertsResponse) {}
+
+	// PurgeExpungedResources Purge expunged resources
+	rpc PurgeExpungedResources(PurgeExpungedResourcesRequest) returns (PurgeExpungedResourcesResponse) {}
+
+	// ListAlertTypes Lists all alerts types
+	rpc ListAlertTypes(ListAlertTypesRequest) returns (ListAlertTypesResponse) {}
+}
+
+// ListResourceLimitsRequest represents the parameters for lists resource limits.
+message ListResourceLimitsRequest {
+	// Lists resource limits by ID.
+	int64 id = 1;
+
+	// Type of resource. Values are 0, 1, 2, 3, 4, 6, 7, 8, 9, 10 and 11. 0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses an account can own. 2 - Volume. Number of disk volumes an account can own. 3 - Snapshot. Number of snapshots an account can own. 4 - Template. Number of templates an account can register/create. 5 - Project. Number of projects an account can own. 6 - Network. Number of networks an account can own. 7 - VPC. Number of VPC an account can own. 8 - CPU. Number of CPU an account can allocate for their resources. 9 - Memory. Amount of RAM an account can allocate for their resources. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+	int32 resource_type = 2;
+
+	// Type of resource (wins over resourceType if both are provided). Values are: user_vm - Instance. Number of instances a user can create. public_ip - IP. Number of public IP addresses an account can own. volume - Volume. Number of disk volumes an account can own. snapshot - Snapshot. Number of snapshots an account can own. template - Template. Number of templates an account can register/create. project - Project. Number of projects an account can own. network - Network. Number of networks an account can own. vpc - VPC. Number of VPC an account can own. cpu - CPU. Number of CPU an account can allocate for their resources. memory - Memory. Amount of RAM an account can allocate for their resources. primary_storage - PrimaryStorage. Total primary storage space (in GiB) a user can use. secondary_storage - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+	string resource_type_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Tag for the resource type
+	string tag = 4;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 5;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 6 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 8;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 10;
+
+	//
+	int32 page = 11;
+
+	//
+	int32 page_size = 12;
+
+	//
+	string response_type = 13;
+}
+
+// ListResourceLimitsResponse represents the response from lists resource limits.
+message ListResourceLimitsResponse {
+	option (validate.message).disabled = false;
+	// The list of ResourceLimits
+	repeated ResourceLimit items = 1;
+
+	// The total count of ResourceLimits
+	int32 total_count = 2;
+}
+
+// UpdateResourceCountRequest represents the parameters for recalculate and update resource count for an account or domain. this also executes some cleanup tasks before calculating resource counts.
+message UpdateResourceCountRequest {
+	// Update resource count for a specified account. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If account parameter specified then updates resource counts for a specified account in this domain else update resource counts for all accounts & child domains in specified domain.
+	int64 domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	// Type of resource to update. If specifies valid values are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11. If not specified will update all resource counts0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects that a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+	int32 resource_type = 3;
+
+	// Update resource limits for project
+	int64 project_id = 4;
+
+	// Tag for the resource type
+	string tag = 5;
+
+	//
+	string response_type = 6;
+}
+
+// UpdateResourceCountResponse represents the response from recalculate and update resource count for an account or domain. this also executes some cleanup tasks before calculating resource counts.
+message UpdateResourceCountResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StartRollingMaintenanceRequest represents the parameters for start rolling maintenance
+message StartRollingMaintenanceRequest {
+	// the IDs of the pods to start maintenance on
+	repeated string pod_ids = 1;
+
+	// the IDs of the clusters to start maintenance on
+	repeated string cluster_ids = 2;
+
+	// the IDs of the zones to start maintenance on
+	repeated string zone_ids = 3;
+
+	// the IDs of the hosts to start maintenance on
+	repeated string host_ids = 4;
+
+	// if rolling mechanism should continue in case of an error
+	bool forced = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the command to execute while hosts are on maintenance
+	string payload = 6;
+
+	// optional operation timeout (in seconds) that overrides the global timeout setting
+	int32 timeout = 7;
+
+	//
+	int64 start_event_id = 8;
+
+	//
+	string injected_job_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 10;
+}
+
+// StartRollingMaintenanceResponse represents the response from start rolling maintenance
+message StartRollingMaintenanceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListAlertsRequest represents the parameters for lists all alerts.
+message ListAlertsRequest {
+	// the ID of the alert
+	int64 id = 1;
+
+	// list by alert type
+	string type = 2;
+
+	// list by alert name
+	string name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListAlertsResponse represents the response from lists all alerts.
+message ListAlertsResponse {
+	option (validate.message).disabled = false;
+	// The list of Alerts
+	repeated Alert items = 1;
+
+	// The total count of Alerts
+	int32 total_count = 2;
+}
+
+// UpdateResourceLimitRequest represents the parameters for updates resource limits for an account or domain.
+message UpdateResourceLimitRequest {
+	// Update resource for a specified account. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// Update resource limits for all accounts in specified domain. If used with the account parameter, updates resource limits for a specified account in specified domain.
+	int64 domain_id = 2;
+
+	// Update resource limits for project
+	int64 project_id = 3;
+
+	//   Maximum resource limit.
+	int64 max = 4;
+
+	// Type of resource to update. Values are 0, 1, 2, 3, 4, 6, 7, 8, 9, 10 and 11. 0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
+	int32 resource_type = 5 [
+		(validate.field).required = true
+	];
+
+	// Tag for the resource type
+	string tag = 6;
+
+	//
+	string response_type = 7;
+}
+
+// UpdateResourceLimitResponse represents the response from updates resource limits for an account or domain.
+message UpdateResourceLimitResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListDetailOptionsRequest represents the parameters for lists all possible details and their options for a resource type such as a vm or a template
+message ListDetailOptionsRequest {
+	// the resource type such as UserVm, Template etc.
+	string resource_type = 1 [
+		(validate.field).required = true
+	];
+
+	// the UUID of the resource (optional)
+	string resource_id = 2 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// ListDetailOptionsResponse represents the response from lists all possible details and their options for a resource type such as a vm or a template
+message ListDetailOptionsResponse {
+	option (validate.message).disabled = false;
+	// The list of DetailOptionss
+	repeated DetailOptions items = 1;
+
+	// The total count of DetailOptionss
+	int32 total_count = 2;
+}
+
+// DeleteAlertsRequest represents the parameters for delete one or more alerts.
+message DeleteAlertsRequest {
+	// the IDs of the alerts
+	repeated string ids = 1;
+
+	// end date range to delete alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string end_date = 2;
+
+	// start date range to delete alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string start_date = 3;
+
+	// delete by alert type
+	string type = 4;
+
+	//
+	string response_type = 5;
+}
+
+// DeleteAlertsResponse represents the response from delete one or more alerts.
+message DeleteAlertsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListCapacityRequest represents the parameters for lists all the system wide capacities.
+message ListCapacityRequest {
+	// lists capacity by the Zone ID
+	int64 zone_id = 1;
+
+	// lists capacity by the Pod ID
+	int64 pod_id = 2;
+
+	// lists capacity by the Cluster ID
+	int64 cluster_id = 3;
+
+	// recalculate capacities and fetch the latest
+	bool fetch_latest = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// lists capacity by type* CAPACITY_TYPE_MEMORY = 0* CAPACITY_TYPE_CPU = 1* CAPACITY_TYPE_STORAGE = 2* CAPACITY_TYPE_STORAGE_ALLOCATED = 3* CAPACITY_TYPE_VIRTUAL_NETWORK_PUBLIC_IP = 4* CAPACITY_TYPE_PRIVATE_IP = 5* CAPACITY_TYPE_SECONDARY_STORAGE = 6* CAPACITY_TYPE_VLAN = 7* CAPACITY_TYPE_DIRECT_ATTACHED_PUBLIC_IP = 8* CAPACITY_TYPE_LOCAL_STORAGE = 9* CAPACITY_TYPE_GPU = 19* CAPACITY_TYPE_CPU_CORE = 90.
+	int32 type = 5;
+
+	// Sort the results. Available values: Usage
+	string sort_by = 6;
+
+	// Tag for the resource type
+	string tag = 7;
+
+	// List by keyword
+	string keyword = 8;
+
+	//
+	int32 page = 9;
+
+	//
+	int32 page_size = 10;
+
+	//
+	string response_type = 11;
+}
+
+// ListCapacityResponse represents the response from lists all the system wide capacities.
+message ListCapacityResponse {
+	option (validate.message).disabled = false;
+	// The list of Capacitys
+	repeated Capacity items = 1;
+
+	// The total count of Capacitys
+	int32 total_count = 2;
+}
+
+// ListHypervisorsRequest represents the parameters for list hypervisors
+message ListHypervisorsRequest {
+	// the zone id for listing hypervisors.
+	int64 zone_id = 1;
+
+	//
+	string response_type = 2;
+}
+
+// ListHypervisorsResponse represents the response from list hypervisors
+message ListHypervisorsResponse {
+	option (validate.message).disabled = false;
+	// The list of Hypervisors
+	repeated Hypervisor items = 1;
+
+	// The total count of Hypervisors
+	int32 total_count = 2;
+}
+
+// CleanVMReservationsRequest represents the parameters for cleanups vm reservations in the database.
+message CleanVMReservationsRequest {
+	//
+	int64 start_event_id = 1;
+
+	//
+	string injected_job_id = 2 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// CleanVMReservationsResponse represents the response from cleanups vm reservations in the database.
+message CleanVMReservationsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UploadCustomCertificateRequest represents the parameters for uploads a custom certificate for the console proxy vms to use for ssl. can be used to upload a single certificate signed by a known ca. can also be used, through multiple calls, to upload a chain of certificates from ca to the custom certificate itself.
+message UploadCustomCertificateRequest {
+	// The certificate to be uploaded.
+	string certificate = 1 [
+		(validate.field).required = true
+	];
+
+	// An integer providing the location in a chain that the certificate will hold. Usually, this can be left empty. When creating a chain, the top level certificate should have an ID of 1, with each step in the chain incrementing by one. Example, CA with id = 1, Intermediate CA with id = 2, Site certificate with ID = 3
+	int32 index = 2;
+
+	// A name / alias for the certificate.
+	string alias = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// The private key for the attached certificate.
+	string private_key = 4;
+
+	// DNS domain suffix that the certificate is granted for.
+	string domain_suffix = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UploadCustomCertificateResponse represents the response from uploads a custom certificate for the console proxy vms to use for ssl. can be used to upload a single certificate signed by a known ca. can also be used, through multiple calls, to upload a chain of certificates from ca to the custom certificate itself.
+message UploadCustomCertificateResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetCloudIdentifierRequest represents the parameters for retrieves a cloud identifier.
+message GetCloudIdentifierRequest {
+	// the user ID for the cloud identifier
+	int64 userid = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// GetCloudIdentifierResponse represents the response from retrieves a cloud identifier.
+message GetCloudIdentifierResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ArchiveAlertsRequest represents the parameters for archive one or more alerts.
+message ArchiveAlertsRequest {
+	// the IDs of the alerts
+	repeated string ids = 1;
+
+	// end date range to archive alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string end_date = 2;
+
+	// start date range to archive alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string start_date = 3;
+
+	// archive by alert type
+	string type = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ArchiveAlertsResponse represents the response from archive one or more alerts.
+message ArchiveAlertsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// PurgeExpungedResourcesRequest represents the parameters for purge expunged resources
+message PurgeExpungedResourcesRequest {
+	// The type of the resource which need to be purged. Supported types: VirtualMachine
+	string resource_type = 1;
+
+	// The size of batch used during purging
+	int64 batch_size = 2;
+
+	// The start date range of the expunged resources used for purging (use format "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss")
+	string start_date = 3;
+
+	// The end date range of the expunged resources used for purging (use format "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss")
+	string end_date = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// PurgeExpungedResourcesResponse represents the response from purge expunged resources
+message PurgeExpungedResourcesResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListAlertTypesRequest represents the parameters for lists all alerts types
+message ListAlertTypesRequest {
+	//
+	string response_type = 1;
+}
+
+// ListAlertTypesResponse represents the response from lists all alerts types
+message ListAlertTypesResponse {
+	option (validate.message).disabled = false;
+	// The list of Alerts
+	repeated Alert items = 1;
+
+	// The total count of Alerts
+	int32 total_count = 2;
+}
+
+// ResourceLimit represents a ResourceLimit Item
+message ResourceLimit {
+	// The ID of the ResourceLimit
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ResourceLimit
+	string name = 2;
+	// The display name of the ResourceLimit
+	string display_name = 3;
+	// The description of the ResourceLimit
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Alert represents a Alert Item
+message Alert {
+	// The ID of the Alert
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Alert
+	string name = 2;
+	// The display name of the Alert
+	string display_name = 3;
+	// The description of the Alert
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// DetailOptions represents a DetailOptions Item
+message DetailOptions {
+	// The ID of the DetailOptions
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the DetailOptions
+	string name = 2;
+	// The display name of the DetailOptions
+	string display_name = 3;
+	// The description of the DetailOptions
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Capacity represents a Capacity Item
+message Capacity {
+	// The ID of the Capacity
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Capacity
+	string name = 2;
+	// The display name of the Capacity
+	string display_name = 3;
+	// The description of the Capacity
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Hypervisor represents a Hypervisor Item
+message Hypervisor {
+	// The ID of the Hypervisor
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Hypervisor
+	string name = 2;
+	// The display name of the Hypervisor
+	string display_name = 3;
+	// The description of the Hypervisor
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

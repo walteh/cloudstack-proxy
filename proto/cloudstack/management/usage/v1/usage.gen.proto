@@ -1,0 +1,578 @@
+edition = "2023";
+
+package cloudstack.management.usage.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// UsageService provides operations for managing Usages
+service UsageService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListTrafficMonitors List traffic monitor Hosts.
+	rpc ListTrafficMonitors(ListTrafficMonitorsRequest) returns (ListTrafficMonitorsResponse) {}
+
+	// DeleteTrafficMonitor Deletes an traffic monitor host.
+	rpc DeleteTrafficMonitor(DeleteTrafficMonitorRequest) returns (DeleteTrafficMonitorResponse) {}
+
+	// UpdateTrafficType Updates traffic type of a physical network
+	rpc UpdateTrafficType(UpdateTrafficTypeRequest) returns (UpdateTrafficTypeResponse) {}
+
+	// ListUsageRecords Lists usage records for accounts
+	rpc ListUsageRecords(ListUsageRecordsRequest) returns (ListUsageRecordsResponse) {}
+
+	// AddTrafficMonitor Adds Traffic Monitor Host for Direct Network Usage
+	rpc AddTrafficMonitor(AddTrafficMonitorRequest) returns (AddTrafficMonitorResponse) {}
+
+	// DeleteTrafficType Deletes traffic type of a physical network
+	rpc DeleteTrafficType(DeleteTrafficTypeRequest) returns (DeleteTrafficTypeResponse) {}
+
+	// AddTrafficType Adds traffic type to a physical network
+	rpc AddTrafficType(AddTrafficTypeRequest) returns (AddTrafficTypeResponse) {}
+
+	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
+	rpc ListTrafficTypeImplementors(ListTrafficTypeImplementorsRequest) returns (ListTrafficTypeImplementorsResponse) {}
+
+	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
+	rpc RemoveRawUsageRecords(RemoveRawUsageRecordsRequest) returns (RemoveRawUsageRecordsResponse) {}
+
+	// ListTrafficTypes Lists traffic types of a given physical network.
+	rpc ListTrafficTypes(ListTrafficTypesRequest) returns (ListTrafficTypesResponse) {}
+
+	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+	rpc GenerateUsageRecords(GenerateUsageRecordsRequest) returns (GenerateUsageRecordsResponse) {}
+
+	// ListUsageTypes List Usage Types
+	rpc ListUsageTypes(ListUsageTypesRequest) returns (ListUsageTypesResponse) {}
+}
+
+// ListTrafficMonitorsRequest represents the parameters for list traffic monitor hosts.
+message ListTrafficMonitorsRequest {
+	// zone Id
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListTrafficMonitorsResponse represents the response from list traffic monitor hosts.
+message ListTrafficMonitorsResponse {
+	option (validate.message).disabled = false;
+	// The list of TrafficMonitors
+	repeated TrafficMonitor items = 1;
+
+	// The total count of TrafficMonitors
+	int32 total_count = 2;
+}
+
+// DeleteTrafficMonitorRequest represents the parameters for deletes an traffic monitor host.
+message DeleteTrafficMonitorRequest {
+	// Id of the Traffic Monitor Host.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteTrafficMonitorResponse represents the response from deletes an traffic monitor host.
+message DeleteTrafficMonitorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateTrafficTypeRequest represents the parameters for updates traffic type of a physical network
+message UpdateTrafficTypeRequest {
+	// traffic type id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The network name label of the physical device dedicated to this traffic on a XenServer host
+	string xen_label = 2;
+
+	// The network name label of the physical device dedicated to this traffic on a KVM host
+	string kvm_label = 3;
+
+	// The network name label of the physical device dedicated to this traffic on a VMware host
+	string vmware_label = 4;
+
+	// The network name label of the physical device dedicated to this traffic on a Hyperv host
+	string hyperv_label = 5;
+
+	// The network name of the physical device dedicated to this traffic on an OVM3 host
+	string ovm3_label = 6;
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// UpdateTrafficTypeResponse represents the response from updates traffic type of a physical network
+message UpdateTrafficTypeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListUsageRecordsRequest represents the parameters for lists usage records for accounts
+message ListUsageRecordsRequest {
+	// List usage records for the specified user.
+	string account_name = 1;
+
+	// List usage records for the specified domain.
+	int64 domain_id = 2;
+
+	// End date range for usage record query. The recommended format is "yyyy-MM-dd'T'HH:mm:ssZ" (e.g.: "2023-01-01T12:00:00+0100"); however, the following formats are also accepted: "yyyy-MM-dd HH:mm:ss" (e.g.: "2023-01-01 12:00:00") and "yyyy-MM-dd" (e.g.: "2023-01-01" - if the time is not added, it will be interpreted as "23:59:59"). If the recommended format is not used, the date will be considered in the server timezone.
+	string end_date = 3 [
+		(validate.field).required = true
+	];
+
+	// Start date range for usage record query. The recommended format is "yyyy-MM-dd'T'HH:mm:ssZ" (e.g.: "2023-01-01T12:00:00+0100"); however, the following formats are also accepted: "yyyy-MM-dd HH:mm:ss" (e.g.: "2023-01-01 12:00:00") and "yyyy-MM-dd" (e.g.: "2023-01-01" - if the time is not added, it will be interpreted as "00:00:00"). If the recommended format is not used, the date will be considered in the server timezone.
+	string start_date = 4 [
+		(validate.field).required = true
+	];
+
+	// List usage records for the specified account
+	int64 account_id = 5;
+
+	// List usage records for specified project
+	int64 project_id = 6;
+
+	// List usage records for the specified usage type
+	int64 usage_type = 7;
+
+	// List usage records for the specified usage UUID. Can be used only together with TYPE parameter.
+	string usage_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// Flag to enable display of Tags for a resource
+	bool include_tags = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Flag to enable description rendered in old format which uses internal database IDs instead of UUIDs. False by default.
+	bool old_format = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Specify if usage records should be fetched recursively per domain. If an account id is passed, records will be limited to that account.
+	bool recursive = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 12;
+
+	//
+	int32 page = 13;
+
+	//
+	int32 page_size = 14;
+
+	//
+	string response_type = 15;
+}
+
+// ListUsageRecordsResponse represents the response from lists usage records for accounts
+message ListUsageRecordsResponse {
+	option (validate.message).disabled = false;
+	// The list of UsageRecords
+	repeated UsageRecord items = 1;
+
+	// The total count of UsageRecords
+	int32 total_count = 2;
+}
+
+// AddTrafficMonitorRequest represents the parameters for adds traffic monitor host for direct network usage
+message AddTrafficMonitorRequest {
+	// Zone in which to add the external firewall appliance.
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// URL of the traffic monitor Host
+	string url = 2 [
+		(validate.field).required = true
+	];
+
+	// Traffic going into the listed zones will be metered
+	string incl_zones = 3;
+
+	// Traffic going into the listed zones will not be metered
+	string excl_zones = 4;
+
+	//
+	string response_type = 5;
+}
+
+// AddTrafficMonitorResponse represents the response from adds traffic monitor host for direct network usage
+message AddTrafficMonitorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteTrafficTypeRequest represents the parameters for deletes traffic type of a physical network
+message DeleteTrafficTypeRequest {
+	// traffic type id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteTrafficTypeResponse represents the response from deletes traffic type of a physical network
+message DeleteTrafficTypeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddTrafficTypeRequest represents the parameters for adds traffic type to a physical network
+message AddTrafficTypeRequest {
+	// the Physical Network ID
+	int64 physical_network_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the trafficType to be added to the physical network
+	string traffic_type = 2 [
+		(validate.field).required = true
+	];
+
+	// The network name label of the physical device dedicated to this traffic on a XenServer host
+	string xen_label = 3;
+
+	// The network name label of the physical device dedicated to this traffic on a KVM host
+	string kvm_label = 4;
+
+	// The network name label of the physical device dedicated to this traffic on a VMware host
+	string vmware_label = 5;
+
+	// The network name label of the physical device dedicated to this traffic on a Hyperv host
+	string hyperv_label = 6;
+
+	// The network name of the physical device dedicated to this traffic on an OVM3 host
+	string ovm3_label = 7;
+
+	// The VLAN id to be used for Management traffic by VMware host
+	string vlan = 8;
+
+	// Used if physical network has multiple isolation types and traffic type is public. Choose which isolation method. Valid options currently 'vlan' or 'vxlan', defaults to 'vlan'.
+	string isolation_method = 9;
+
+	//
+	int64 start_event_id = 10;
+
+	//
+	string injected_job_id = 11 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 12;
+}
+
+// AddTrafficTypeResponse represents the response from adds traffic type to a physical network
+message AddTrafficTypeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListTrafficTypeImplementorsRequest represents the parameters for lists implementors of implementor of a network traffic type or implementors of all network traffic types
+message ListTrafficTypeImplementorsRequest {
+	// Optional. The network traffic type, if specified, return its implementor. Otherwise, return all traffic types with their implementor
+	string traffic_type = 1;
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListTrafficTypeImplementorsResponse represents the response from lists implementors of implementor of a network traffic type or implementors of all network traffic types
+message ListTrafficTypeImplementorsResponse {
+	option (validate.message).disabled = false;
+	// The list of TrafficTypeImplementors
+	repeated TrafficTypeImplementor items = 1;
+
+	// The total count of TrafficTypeImplementors
+	int32 total_count = 2;
+}
+
+// RemoveRawUsageRecordsRequest represents the parameters for safely removes raw records from cloud_usage table
+message RemoveRawUsageRecordsRequest {
+	// Specify the number of days (greater than zero) to remove records that are older than those number of days from today. For example, specifying 10 would result in removing all the records created before 10 days from today
+	int32 interval = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveRawUsageRecordsResponse represents the response from safely removes raw records from cloud_usage table
+message RemoveRawUsageRecordsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListTrafficTypesRequest represents the parameters for lists traffic types of a given physical network.
+message ListTrafficTypesRequest {
+	// the Physical Network ID
+	int64 physical_network_id = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListTrafficTypesResponse represents the response from lists traffic types of a given physical network.
+message ListTrafficTypesResponse {
+	option (validate.message).disabled = false;
+	// The list of Providers
+	repeated Provider items = 1;
+
+	// The total count of Providers
+	int32 total_count = 2;
+}
+
+// GenerateUsageRecordsRequest represents the parameters for generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+message GenerateUsageRecordsRequest {
+	// List events for the specified domain.
+	int64 domain_id = 1;
+
+	// End date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-03.
+	string end_date = 2;
+
+	// Start date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-01.
+	string start_date = 3;
+
+	//
+	string response_type = 4;
+}
+
+// GenerateUsageRecordsResponse represents the response from generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+message GenerateUsageRecordsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListUsageTypesRequest represents the parameters for list usage types
+message ListUsageTypesRequest {
+	//
+	string response_type = 1;
+}
+
+// ListUsageTypesResponse represents the response from list usage types
+message ListUsageTypesResponse {
+	option (validate.message).disabled = false;
+	// The list of UsageTypes
+	repeated UsageType items = 1;
+
+	// The total count of UsageTypes
+	int32 total_count = 2;
+}
+
+// TrafficMonitor represents a TrafficMonitor Item
+message TrafficMonitor {
+	// The ID of the TrafficMonitor
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the TrafficMonitor
+	string name = 2;
+	// The display name of the TrafficMonitor
+	string display_name = 3;
+	// The description of the TrafficMonitor
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// UsageRecord represents a UsageRecord Item
+message UsageRecord {
+	// The ID of the UsageRecord
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the UsageRecord
+	string name = 2;
+	// The display name of the UsageRecord
+	string display_name = 3;
+	// The description of the UsageRecord
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// TrafficTypeImplementor represents a TrafficTypeImplementor Item
+message TrafficTypeImplementor {
+	// The ID of the TrafficTypeImplementor
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the TrafficTypeImplementor
+	string name = 2;
+	// The display name of the TrafficTypeImplementor
+	string display_name = 3;
+	// The description of the TrafficTypeImplementor
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Provider represents a Provider Item
+message Provider {
+	// The ID of the Provider
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Provider
+	string name = 2;
+	// The display name of the Provider
+	string display_name = 3;
+	// The description of the Provider
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// UsageType represents a UsageType Item
+message UsageType {
+	// The ID of the UsageType
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the UsageType
+	string name = 2;
+	// The display name of the UsageType
+	string display_name = 3;
+	// The description of the UsageType
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

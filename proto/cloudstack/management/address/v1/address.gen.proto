@@ -1,0 +1,538 @@
+edition = "2023";
+
+package cloudstack.management.address.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// AddressService provides operations for managing Addresss
+service AddressService {
+	option (annotations.service).scope = Scope_USER;
+
+	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
+	rpc AssociateIPAddr(AssociateIPAddrRequest) returns (AssociateIPAddrResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ReserveIPAddr Reserve a public IP to an account.
+	rpc ReserveIPAddr(ReserveIPAddrRequest) returns (ReserveIPAddrResponse) {}
+
+	// ListPublicIpAddresses Lists all public IP addresses
+	rpc ListPublicIpAddresses(ListPublicIpAddressesRequest) returns (ListPublicIpAddressesResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
+	rpc RemoveQuarantinedIp(RemoveQuarantinedIpRequest) returns (RemoveQuarantinedIpResponse) {}
+
+	// AcquirePodIpCmdByAdmin Allocates IP addresses in respective Pod of a Zone
+	rpc AcquirePodIpCmdByAdmin(AcquirePodIpCmdByAdminRequest) returns (AcquirePodIpCmdByAdminResponse) {}
+
+	// UpdateIPAddr Updates an IP address
+	rpc UpdateIPAddr(UpdateIPAddrRequest) returns (UpdateIPAddrResponse) {}
+
+	// DisassociateIPAddr Disassociates an IP address from the account.
+	rpc DisassociateIPAddr(DisassociateIPAddrRequest) returns (DisassociateIPAddrResponse) {}
+
+	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
+	rpc UpdateQuarantinedIp(UpdateQuarantinedIpRequest) returns (UpdateQuarantinedIpResponse) {}
+
+	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
+	rpc ReleasePodIpCmdByAdmin(ReleasePodIpCmdByAdminRequest) returns (ReleasePodIpCmdByAdminResponse) {}
+
+	// ListQuarantinedIps List public IP addresses in quarantine.
+	rpc ListQuarantinedIps(ListQuarantinedIpsRequest) returns (ListQuarantinedIpsResponse) {}
+
+	// ReleaseIPAddr Releases an IP address from the account.
+	rpc ReleaseIPAddr(ReleaseIPAddrRequest) returns (ReleaseIPAddrResponse) {}
+}
+
+// AssociateIPAddrRequest represents the parameters for acquires and associates a public ip to an account. either of the parameters are required, i.e. either zoneid, or networkid, or vpcid
+message AssociateIPAddrRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the account to associate with this IP address
+	string account_name = 2;
+	// the ID of the domain to associate with this IP address
+	int64 domain_id = 3;
+	// the ID of the availability zone you want to acquire an public IP address from
+	int64 zone_id = 4;
+	// The network this IP address should be associated to.
+	int64 network_id = 5;
+	// Deploy VM for the project
+	int64 project_id = 6;
+	// the VPC you want the IP address to be associated with
+	int64 vpc_id = 7;
+	// should be set to true if public IP is required to be transferable across zones, if not specified defaults to false
+	bool is_portable = 8 [
+		features.field_presence = EXPLICIT
+	];
+	// region ID from where portable IP is to be associated.
+	int32 region_id = 9;
+	// an optional field, whether to the display the IP to the end user or not
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// IP Address to be associated
+	string ip_address = 11 [
+		(validate.field).string.ipv4 = true
+	];
+	//
+	int64 start_event_id = 12;
+	//
+	string injected_job_id = 13 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 14;
+}
+
+// AssociateIPAddrResponse represents the response from acquires and associates a public ip to an account. either of the parameters are required, i.e. either zoneid, or networkid, or vpcid
+message AssociateIPAddrResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ReserveIPAddrRequest represents the parameters for reserve a public ip to an account.
+message ReserveIPAddrRequest {
+	// the account to reserve with this IP address
+	string account_name = 1;
+
+	// the ID of the domain to reserve with this IP address
+	int64 domain_id = 2;
+
+	// the ID of the project to reserve with this IP address
+	int64 project_id = 3;
+
+	// an optional field, whether to the display the IP to the end user or not
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the public IP address to reserve
+	int64 id = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ReserveIPAddrResponse represents the response from reserve a public ip to an account.
+message ReserveIPAddrResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListPublicIpAddressesRequest represents the parameters for lists all public ip addresses
+message ListPublicIpAddressesRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// limits search results to allocated public IP addresses
+	bool allocated_only = 2 [
+		features.field_presence = EXPLICIT
+	];
+	// lists all public IP addresses by state
+	string state = 3;
+	// the virtual network for the IP address
+	bool for_virtual_network = 4 [
+		features.field_presence = EXPLICIT
+	];
+	// lists IP address by ID
+	int64 id = 5;
+	// lists the specified IP address
+	string ip_address = 6 [
+		(validate.field).string.ipv4 = true
+	];
+	// lists all public IP addresses by VLAN ID
+	int64 vlan_id = 7;
+	// lists all public IP addresses by zone ID
+	int64 zone_id = 8;
+	// list only IPs used for load balancing
+	bool for_load_balancing = 9 [
+		features.field_presence = EXPLICIT
+	];
+	// lists all public IP addresses by physical network ID
+	int64 physical_network_id = 10;
+	// lists all public IP addresses associated to the network specified
+	int64 associated_network_id = 11;
+	// lists all public IP addresses by source network ID
+	int64 network_id = 12;
+	// list only source NAT IP addresses
+	bool is_source_nat = 13 [
+		features.field_presence = EXPLICIT
+	];
+	// list only static NAT IP addresses
+	bool is_static_nat = 14 [
+		features.field_presence = EXPLICIT
+	];
+	// List IPs belonging to the VPC
+	int64 vpc_id = 15;
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 16 [
+		features.field_presence = EXPLICIT
+	];
+	// true if range is dedicated for system VMs
+	bool for_system_v_ms = 17 [
+		features.field_presence = EXPLICIT
+	];
+	// makes the API's response contains only the resource count
+	bool retrieve_only_resource_count = 18 [
+		features.field_presence = EXPLICIT
+	];
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 19;
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 20;
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 21 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 22 [
+		features.field_presence = EXPLICIT
+	];
+	// list only resources belonging to the domain specified
+	int64 domain_id = 23;
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 24 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 25;
+	//
+	int32 page = 26;
+	//
+	int32 page_size = 27;
+	//
+	string response_type = 28;
+}
+
+// ListPublicIpAddressesResponse represents the response from lists all public ip addresses
+message ListPublicIpAddressesResponse {
+	option (validate.message).disabled = false;
+	// The list of IPAddresss
+	repeated IPAddress items = 1;
+
+	// The total count of IPAddresss
+	int32 total_count = 2;
+}
+
+// RemoveQuarantinedIpRequest represents the parameters for removes a public ip address from quarantine. only ips in active quarantine can be removed.
+message RemoveQuarantinedIpRequest {
+	// The ID of the public IP address in active quarantine. Either the IP address is informed, or the ID of the IP address in quarantine.
+	int64 id = 1;
+
+	// The public IP address in active quarantine. Either the IP address is informed, or the ID of the IP address in quarantine.
+	string ip_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The reason for removing the public IP address from quarantine prematurely.
+	string removal_reason = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RemoveQuarantinedIpResponse represents the response from removes a public ip address from quarantine. only ips in active quarantine can be removed.
+message RemoveQuarantinedIpResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AcquirePodIpCmdByAdminRequest represents the parameters for allocates ip addresses in respective pod of a zone
+message AcquirePodIpCmdByAdminRequest {
+	// the ID of the zone
+	string zone_id = 1 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// Pod ID
+	string pod_id = 2 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// AcquirePodIpCmdByAdminResponse represents the response from allocates ip addresses in respective pod of a zone
+message AcquirePodIpCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateIPAddrRequest represents the parameters for updates an ip address
+message UpdateIPAddrRequest {
+	// the ID of the public IP address to update
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the IP to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateIPAddrResponse represents the response from updates an ip address
+message UpdateIPAddrResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisassociateIPAddrRequest represents the parameters for disassociates an ip address from the account.
+message DisassociateIPAddrRequest {
+	// the ID of the public IP address to disassociate. Mutually exclusive with the ipaddress parameter
+	int64 id = 1;
+
+	// IP Address to be disassociated. Mutually exclusive with the id parameter
+	string ip_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DisassociateIPAddrResponse represents the response from disassociates an ip address from the account.
+message DisassociateIPAddrResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateQuarantinedIpRequest represents the parameters for updates the quarantine end date for the given public ip address.
+message UpdateQuarantinedIpRequest {
+	// The ID of the public IP address in active quarantine.
+	int64 id = 1;
+
+	// The public IP address in active quarantine. Either the IP address is informed, or the ID of the IP address in quarantine.
+	string ip_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The date when the quarantine will no longer be active.
+	string end_date = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// UpdateQuarantinedIpResponse represents the response from updates the quarantine end date for the given public ip address.
+message UpdateQuarantinedIpResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ReleasePodIpCmdByAdminRequest represents the parameters for releases a pod ip back to the pod
+message ReleasePodIpCmdByAdminRequest {
+	// UUID of the Pod IP
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ReleasePodIpCmdByAdminResponse represents the response from releases a pod ip back to the pod
+message ReleasePodIpCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListQuarantinedIpsRequest represents the parameters for list public ip addresses in quarantine.
+message ListQuarantinedIpsRequest {
+	// Show IPs removed from quarantine.
+	bool show_removed = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Show IPs that are no longer in quarantine.
+	bool show_inactive = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListQuarantinedIpsResponse represents the response from list public ip addresses in quarantine.
+message ListQuarantinedIpsResponse {
+	option (validate.message).disabled = false;
+	// The list of IpQuarantines
+	repeated IpQuarantine items = 1;
+
+	// The total count of IpQuarantines
+	int32 total_count = 2;
+}
+
+// ReleaseIPAddrRequest represents the parameters for releases an ip address from the account.
+message ReleaseIPAddrRequest {
+	// the ID of the public IP address to release
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ReleaseIPAddrResponse represents the response from releases an ip address from the account.
+message ReleaseIPAddrResponse {
+	// The Result
+	Result result = 1;
+}
+
+// IPAddress represents a IPAddress Item
+message IPAddress {
+	// The ID of the IPAddress
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the IPAddress
+	string name = 2;
+	// The display name of the IPAddress
+	string display_name = 3;
+	// The description of the IPAddress
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// IpQuarantine represents a IpQuarantine Item
+message IpQuarantine {
+	// The ID of the IpQuarantine
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the IpQuarantine
+	string name = 2;
+	// The display name of the IpQuarantine
+	string display_name = 3;
+	// The description of the IpQuarantine
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

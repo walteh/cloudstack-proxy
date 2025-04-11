@@ -1,0 +1,189 @@
+edition = "2023";
+
+package cloudstack.management.resource.icon.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// IconService provides operations for managing Resource.Icons
+service IconService {
+	option (annotations.service).scope = Scope_USER;
+
+	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
+	rpc DeleteResourceIcon(DeleteResourceIconRequest) returns (DeleteResourceIconResponse) {}
+
+	// UploadResourceIcon Uploads an icon for the specified resource(s)
+	rpc UploadResourceIcon(UploadResourceIconRequest) returns (UploadResourceIconResponse) {}
+
+	// ListResourceIcon Lists the resource icon for the specified resource(s)
+	rpc ListResourceIcon(ListResourceIconRequest) returns (ListResourceIconResponse) {}
+}
+
+// DeleteResourceIconRequest represents the parameters for deletes the resource icon from the specified resource(s)
+message DeleteResourceIconRequest {
+	// list of resources to upload the icon/image for
+	repeated string resource_ids = 1 [
+		(validate.field).required = true
+	];
+
+	// type of the resource
+	string resource_type = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// DeleteResourceIconResponse represents the response from deletes the resource icon from the specified resource(s)
+message DeleteResourceIconResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UploadResourceIconRequest represents the parameters for uploads an icon for the specified resource(s)
+message UploadResourceIconRequest {
+	// list of resources to upload the icon/image for
+	repeated string resource_ids = 1 [
+		(validate.field).required = true
+	];
+
+	// type of the resource
+	string resource_type = 2 [
+		(validate.field).required = true
+	];
+
+	// Base64 string representation of the resource icon/image
+	string image = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// UploadResourceIconResponse represents the response from uploads an icon for the specified resource(s)
+message UploadResourceIconResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListResourceIconRequest represents the parameters for lists the resource icon for the specified resource(s)
+message ListResourceIconRequest {
+	// list of resources to upload the icon/image for
+	repeated string resource_ids = 1 [
+		(validate.field).required = true
+	];
+
+	// type of the resource
+	string resource_type = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// ListResourceIconResponse represents the response from lists the resource icon for the specified resource(s)
+message ListResourceIconResponse {
+	option (validate.message).disabled = false;
+	// The list of ResourceIcons
+	repeated ResourceIcon items = 1;
+
+	// The total count of ResourceIcons
+	int32 total_count = 2;
+}
+
+// ResourceIcon represents a ResourceIcon Item
+message ResourceIcon {
+	// The ID of the ResourceIcon
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ResourceIcon
+	string name = 2;
+	// The display name of the ResourceIcon
+	string display_name = 3;
+	// The description of the ResourceIcon
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

@@ -1,0 +1,355 @@
+edition = "2023";
+
+package cloudstack.management.region.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// RegionService provides operations for managing Regions
+service RegionService {
+	option (annotations.service).scope = Scope_USER;
+
+	// AddRegion Adds a Region
+	rpc AddRegion(AddRegionRequest) returns (AddRegionResponse) {}
+
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	rpc CreatePortableIpRange(CreatePortableIpRangeRequest) returns (CreatePortableIpRangeResponse) {}
+
+	// ListPortableIpRanges list portable IP ranges
+	rpc ListPortableIpRanges(ListPortableIpRangesRequest) returns (ListPortableIpRangesResponse) {}
+
+	// UpdateRegion Updates a region
+	rpc UpdateRegion(UpdateRegionRequest) returns (UpdateRegionResponse) {}
+
+	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
+	rpc DeletePortableIpRange(DeletePortableIpRangeRequest) returns (DeletePortableIpRangeResponse) {}
+
+	// RemoveRegion Removes specified region
+	rpc RemoveRegion(RemoveRegionRequest) returns (RemoveRegionResponse) {}
+
+	// ListRegions Lists Regions
+	rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {}
+}
+
+// AddRegionRequest represents the parameters for adds a region
+message AddRegionRequest {
+	// Id of the Region
+	int32 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Name of the region
+	string region_name = 2 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Region service endpoint
+	string end_point = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// AddRegionResponse represents the response from adds a region
+message AddRegionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreatePortableIpRangeRequest represents the parameters for adds a range of portable public ip's to a region
+message CreatePortableIpRangeRequest {
+	// Id of the Region
+	int32 region_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the beginning IP address in the portable IP range
+	string start_ip = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address in the portable IP range
+	string end_ip = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the gateway for the portable IP range
+	string gateway = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the portable IP range
+	string netmask = 5 [
+		(validate.field).required = true
+	];
+
+	// VLAN id, if not specified defaulted to untagged
+	string vlan = 6;
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreatePortableIpRangeResponse represents the response from adds a range of portable public ip's to a region
+message CreatePortableIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListPortableIpRangesRequest represents the parameters for list portable ip ranges
+message ListPortableIpRangesRequest {
+	// Id of a Region
+	int32 region_id = 1;
+
+	// Id of the portable ip range
+	int64 id = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListPortableIpRangesResponse represents the response from list portable ip ranges
+message ListPortableIpRangesResponse {
+	option (validate.message).disabled = false;
+	// The list of PortableIpRanges
+	repeated PortableIpRange items = 1;
+
+	// The total count of PortableIpRanges
+	int32 total_count = 2;
+}
+
+// UpdateRegionRequest represents the parameters for updates a region
+message UpdateRegionRequest {
+	// Id of region to update
+	int32 id = 1 [
+		(validate.field).required = true
+	];
+
+	// updates region with this name
+	string region_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// updates region with this end point
+	string end_point = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpdateRegionResponse represents the response from updates a region
+message UpdateRegionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeletePortableIpRangeRequest represents the parameters for deletes a range of portable public ip's associated with a region
+message DeletePortableIpRangeRequest {
+	// Id of the portable ip range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeletePortableIpRangeResponse represents the response from deletes a range of portable public ip's associated with a region
+message DeletePortableIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveRegionRequest represents the parameters for removes specified region
+message RemoveRegionRequest {
+	// ID of the region to delete
+	int32 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveRegionResponse represents the response from removes specified region
+message RemoveRegionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListRegionsRequest represents the parameters for lists regions
+message ListRegionsRequest {
+	// List Region by region ID.
+	int32 id = 1;
+
+	// List Region by region name.
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListRegionsResponse represents the response from lists regions
+message ListRegionsResponse {
+	option (validate.message).disabled = false;
+	// The list of Regions
+	repeated Region items = 1;
+
+	// The total count of Regions
+	int32 total_count = 2;
+}
+
+// PortableIpRange represents a PortableIpRange Item
+message PortableIpRange {
+	// The ID of the PortableIpRange
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the PortableIpRange
+	string name = 2;
+	// The display name of the PortableIpRange
+	string display_name = 3;
+	// The description of the PortableIpRange
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Region represents a Region Item
+message Region {
+	// The ID of the Region
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Region
+	string name = 2;
+	// The display name of the Region
+	string display_name = 3;
+	// The description of the Region
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

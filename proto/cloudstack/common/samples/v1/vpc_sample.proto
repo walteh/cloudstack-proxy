@@ -132,13 +132,13 @@ message ListVPCsRequest {
 
 	// The page number to list
 	int32 page = 10 [
-		(annotations.default)     = {value: "1"},
+		default                   = 1,
 		(validate.field).required = false
 	];
 
 	// The page size
 	int32 page_size = 11 [
-		(annotations.default)     = {value: "10"},
+		default                   = 10,
 		(validate.field).required = false
 	];
 }

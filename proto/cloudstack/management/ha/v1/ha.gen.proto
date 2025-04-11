@@ -1,0 +1,353 @@
+edition = "2023";
+
+package cloudstack.management.ha.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// HaService provides operations for managing Has
+service HaService {
+	option (annotations.service).scope = Scope_USER;
+
+	// DisableHAForCluster Disables HA cluster-wide
+	rpc DisableHAForCluster(DisableHAForClusterRequest) returns (DisableHAForClusterResponse) {}
+
+	// ListHostHAProviders Lists HA providers
+	rpc ListHostHAProviders(ListHostHAProvidersRequest) returns (ListHostHAProvidersResponse) {}
+
+	// EnableHAForCluster Enables HA cluster-wide
+	rpc EnableHAForCluster(EnableHAForClusterRequest) returns (EnableHAForClusterResponse) {}
+
+	// ListHostHAResources Lists host HA resources
+	rpc ListHostHAResources(ListHostHAResourcesRequest) returns (ListHostHAResourcesResponse) {}
+
+	// DisableHAForZone Disables HA for a zone
+	rpc DisableHAForZone(DisableHAForZoneRequest) returns (DisableHAForZoneResponse) {}
+
+	// EnableHAForHost Enables HA for a host
+	rpc EnableHAForHost(EnableHAForHostRequest) returns (EnableHAForHostResponse) {}
+
+	// EnableHAForZone Enables HA for a zone
+	rpc EnableHAForZone(EnableHAForZoneRequest) returns (EnableHAForZoneResponse) {}
+
+	// ConfigureHAForHost Configures HA for a host
+	rpc ConfigureHAForHost(ConfigureHAForHostRequest) returns (ConfigureHAForHostResponse) {}
+
+	// DisableHAForHost Disables HA for a host
+	rpc DisableHAForHost(DisableHAForHostRequest) returns (DisableHAForHostResponse) {}
+}
+
+// DisableHAForClusterRequest represents the parameters for disables ha cluster-wide
+message DisableHAForClusterRequest {
+	// ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForClusterResponse represents the response from disables ha cluster-wide
+message DisableHAForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListHostHAProvidersRequest represents the parameters for lists ha providers
+message ListHostHAProvidersRequest {
+	// Hypervisor type of the resource
+	string hypervisor_type = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListHostHAProvidersResponse represents the response from lists ha providers
+message ListHostHAProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of HostHAs
+	repeated HostHA items = 1;
+
+	// The total count of HostHAs
+	int32 total_count = 2;
+}
+
+// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
+message EnableHAForClusterRequest {
+	// ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableHAForClusterResponse represents the response from enables ha cluster-wide
+message EnableHAForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListHostHAResourcesRequest represents the parameters for lists host ha resources
+message ListHostHAResourcesRequest {
+	// List by host ID
+	int64 host_id = 1;
+
+	//
+	string response_type = 2;
+}
+
+// ListHostHAResourcesResponse represents the response from lists host ha resources
+message ListHostHAResourcesResponse {
+	option (validate.message).disabled = false;
+	// The list of HostHAs
+	repeated HostHA items = 1;
+
+	// The total count of HostHAs
+	int32 total_count = 2;
+}
+
+// DisableHAForZoneRequest represents the parameters for disables ha for a zone
+message DisableHAForZoneRequest {
+	// ID of the zone
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForZoneResponse represents the response from disables ha for a zone
+message DisableHAForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableHAForHostRequest represents the parameters for enables ha for a host
+message EnableHAForHostRequest {
+	// ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableHAForHostResponse represents the response from enables ha for a host
+message EnableHAForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableHAForZoneRequest represents the parameters for enables ha for a zone
+message EnableHAForZoneRequest {
+	// ID of the zone
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableHAForZoneResponse represents the response from enables ha for a zone
+message EnableHAForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ConfigureHAForHostRequest represents the parameters for configures ha for a host
+message ConfigureHAForHostRequest {
+	// ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	// HA provider
+	string ha_provider = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ConfigureHAForHostResponse represents the response from configures ha for a host
+message ConfigureHAForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableHAForHostRequest represents the parameters for disables ha for a host
+message DisableHAForHostRequest {
+	// ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForHostResponse represents the response from disables ha for a host
+message DisableHAForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// HostHA represents a HostHA Item
+message HostHA {
+	// The ID of the HostHA
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the HostHA
+	string name = 2;
+	// The display name of the HostHA
+	string display_name = 3;
+	// The description of the HostHA
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

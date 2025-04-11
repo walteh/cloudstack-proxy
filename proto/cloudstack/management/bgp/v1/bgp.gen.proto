@@ -1,0 +1,281 @@
+edition = "2023";
+
+package cloudstack.management.bgp.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// BgpService provides operations for managing Bgps
+service BgpService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListASNumbers List Autonomous Systems Numbers
+	rpc ListASNumbers(ListASNumbersRequest) returns (ListASNumbersResponse) {}
+
+	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
+	rpc CreateASNRange(CreateASNRangeRequest) returns (CreateASNRangeResponse) {}
+
+	// ListASNRanges List Autonomous Systems Number Ranges
+	rpc ListASNRanges(ListASNRangesRequest) returns (ListASNRangesResponse) {}
+
+	// ReleaseASNumber Releases an AS Number back to the pool
+	rpc ReleaseASNumber(ReleaseASNumberRequest) returns (ReleaseASNumberResponse) {}
+
+	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
+	rpc DeleteASNRange(DeleteASNRangeRequest) returns (DeleteASNRangeResponse) {}
+}
+
+// ListASNumbersRequest represents the parameters for list autonomous systems numbers
+message ListASNumbersRequest {
+	// the zone ID
+	int64 zone_id = 1;
+
+	// the AS Number range ID
+	int64 as_number_range_id = 2;
+
+	// AS number
+	int32 as_number = 3;
+
+	// to indicate if the AS number is allocated to any network
+	bool allocated = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the network id
+	int64 network_id = 5;
+
+	// the vpc id
+	int64 vpc_id = 6;
+
+	// account name
+	string account = 7;
+
+	// domain id
+	int64 domain_id = 8;
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListASNumbersResponse represents the response from list autonomous systems numbers
+message ListASNumbersResponse {
+	option (validate.message).disabled = false;
+	// The list of ASNumbers
+	repeated ASNumber items = 1;
+
+	// The total count of ASNumbers
+	int32 total_count = 2;
+}
+
+// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
+message CreateASNRangeRequest {
+	// the zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the start AS Number
+	int64 start_a_s_number = 2 [
+		(validate.field).required = true
+	];
+
+	// the end AS Number
+	int64 end_a_s_number = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
+message CreateASNRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListASNRangesRequest represents the parameters for list autonomous systems number ranges
+message ListASNRangesRequest {
+	// the zone ID
+	int64 zone_id = 1;
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListASNRangesResponse represents the response from list autonomous systems number ranges
+message ListASNRangesResponse {
+	option (validate.message).disabled = false;
+	// The list of ASNRanges
+	repeated ASNRange items = 1;
+
+	// The total count of ASNRanges
+	int32 total_count = 2;
+}
+
+// ReleaseASNumberRequest represents the parameters for releases an as number back to the pool
+message ReleaseASNumberRequest {
+	// the zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the AS Number to be released
+	int64 as_number = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// ReleaseASNumberResponse represents the response from releases an as number back to the pool
+message ReleaseASNumberResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
+message DeleteASNRangeRequest {
+	// ID of the AS range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
+message DeleteASNRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ASNumber represents a ASNumber Item
+message ASNumber {
+	// The ID of the ASNumber
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ASNumber
+	string name = 2;
+	// The display name of the ASNumber
+	string display_name = 3;
+	// The description of the ASNumber
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ASNRange represents a ASNRange Item
+message ASNRange {
+	// The ID of the ASNRange
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ASNRange
+	string name = 2;
+	// The display name of the ASNRange
+	string display_name = 3;
+	// The description of the ASNRange
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

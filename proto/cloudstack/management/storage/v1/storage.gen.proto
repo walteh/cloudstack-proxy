@@ -1,0 +1,1279 @@
+edition = "2023";
+
+package cloudstack.management.storage.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// StorageService provides operations for managing Storages
+service StorageService {
+	option (annotations.service).scope = Scope_ADMIN;
+
+	// UpdateObjectStoragePool Updates object storage pool
+	rpc UpdateObjectStoragePool(UpdateObjectStoragePoolRequest) returns (UpdateObjectStoragePoolResponse) {}
+
+	// UpdateStorageCapabilities Syncs capabilities of storage pools
+	rpc UpdateStorageCapabilities(UpdateStorageCapabilitiesRequest) returns (UpdateStorageCapabilitiesResponse) {}
+
+	// DeleteObjectStoragePool Deletes an Object Storage Pool
+	rpc DeleteObjectStoragePool(DeleteObjectStoragePoolRequest) returns (DeleteObjectStoragePoolResponse) {}
+
+	// AddImageStore Adds backup image store.
+	rpc AddImageStore(AddImageStoreRequest) returns (AddImageStoreResponse) {}
+
+	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
+	rpc ChangeStoragePoolScope(ChangeStoragePoolScopeRequest) returns (ChangeStoragePoolScopeResponse) {}
+
+	// DeleteSecondaryStagingStore Deletes a secondary staging store .
+	rpc DeleteSecondaryStagingStore(DeleteSecondaryStagingStoreRequest) returns (DeleteSecondaryStagingStoreResponse) {}
+
+	// ListStorageTags Lists storage tags
+	rpc ListStorageTags(ListStorageTagsRequest) returns (ListStorageTagsResponse) {}
+
+	// DeleteImageStore Deletes an image store or Secondary Storage.
+	rpc DeleteImageStore(DeleteImageStoreRequest) returns (DeleteImageStoreResponse) {}
+
+	// ListStorageProviders Lists storage providers.
+	rpc ListStorageProviders(ListStorageProvidersRequest) returns (ListStorageProvidersResponse) {}
+
+	// AddImageStoreS3CMD Adds S3 Image Store
+	rpc AddImageStoreS3CMD(AddImageStoreS3CMDRequest) returns (AddImageStoreS3CMDResponse) {}
+
+	// UpdateImageStore Updates image store read-only status
+	rpc UpdateImageStore(UpdateImageStoreRequest) returns (UpdateImageStoreResponse) {}
+
+	// DeletePool Deletes a storage pool.
+	rpc DeletePool(DeletePoolRequest) returns (DeletePoolResponse) {}
+
+	// CreateStoragePool Creates a storage pool.
+	rpc CreateStoragePool(CreateStoragePoolRequest) returns (CreateStoragePoolResponse) {}
+
+	// ListImageStores Lists image stores.
+	rpc ListImageStores(ListImageStoresRequest) returns (ListImageStoresResponse) {}
+
+	// ListSecondaryStagingStores Lists secondary staging stores.
+	rpc ListSecondaryStagingStores(ListSecondaryStagingStoresRequest) returns (ListSecondaryStagingStoresResponse) {}
+
+	// UpdateStoragePool Updates a storage pool.
+	rpc UpdateStoragePool(UpdateStoragePoolRequest) returns (UpdateStoragePoolResponse) {}
+
+	// ListObjectStoragePools Lists object storage pools.
+	rpc ListObjectStoragePools(ListObjectStoragePoolsRequest) returns (ListObjectStoragePoolsResponse) {}
+
+	// ListImageStoreObjects Lists objects at specified path on an image store.
+	rpc ListImageStoreObjects(ListImageStoreObjectsRequest) returns (ListImageStoreObjectsResponse) {}
+
+	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
+	rpc ListStoragePoolObjects(ListStoragePoolObjectsRequest) returns (ListStoragePoolObjectsResponse) {}
+
+	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
+	rpc MigrateResourcesToAnotherSecondaryStorage(MigrateResourcesToAnotherSecondaryStorageRequest) returns (MigrateResourcesToAnotherSecondaryStorageResponse) {}
+
+	// AddObjectStoragePool Adds a object storage pool
+	rpc AddObjectStoragePool(AddObjectStoragePoolRequest) returns (AddObjectStoragePoolResponse) {}
+
+	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
+	rpc UpdateCloudToUseObjectStore(UpdateCloudToUseObjectStoreRequest) returns (UpdateCloudToUseObjectStoreResponse) {}
+
+	// DownloadImageStoreObject Download object at a specified path on an image store.
+	rpc DownloadImageStoreObject(DownloadImageStoreObjectRequest) returns (DownloadImageStoreObjectResponse) {}
+
+	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
+	rpc MigrateSecondaryStorageData(MigrateSecondaryStorageDataRequest) returns (MigrateSecondaryStorageDataResponse) {}
+
+	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
+	rpc PreparePrimaryStorageForMaintenance(PreparePrimaryStorageForMaintenanceRequest) returns (PreparePrimaryStorageForMaintenanceResponse) {}
+
+	// FindStoragePoolsForMigration Lists storage pools available for migration of a volume.
+	rpc FindStoragePoolsForMigration(FindStoragePoolsForMigrationRequest) returns (FindStoragePoolsForMigrationResponse) {}
+
+	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
+	rpc CancelPrimaryStorageMaintenance(CancelPrimaryStorageMaintenanceRequest) returns (CancelPrimaryStorageMaintenanceResponse) {}
+
+	// CreateSecondaryStagingStore create secondary staging store.
+	rpc CreateSecondaryStagingStore(CreateSecondaryStagingStoreRequest) returns (CreateSecondaryStagingStoreResponse) {}
+
+	// ListStoragePools Lists storage pools.
+	rpc ListStoragePools(ListStoragePoolsRequest) returns (ListStoragePoolsResponse) {}
+
+	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
+	rpc SyncStoragePool(SyncStoragePoolRequest) returns (SyncStoragePoolResponse) {}
+}
+
+// UpdateObjectStoragePoolRequest represents the parameters for updates object storage pool
+message UpdateObjectStoragePoolRequest {
+	// Object Store ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the name for the object store
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the url for the object store
+	string url = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpdateObjectStoragePoolResponse represents the response from updates object storage pool
+message UpdateObjectStoragePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateStorageCapabilitiesRequest represents the parameters for syncs capabilities of storage pools
+message UpdateStorageCapabilitiesRequest {
+	// Storage pool id
+	int64 pool_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// UpdateStorageCapabilitiesResponse represents the response from syncs capabilities of storage pools
+message UpdateStorageCapabilitiesResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteObjectStoragePoolRequest represents the parameters for deletes an object storage pool
+message DeleteObjectStoragePoolRequest {
+	// The Object Storage ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteObjectStoragePoolResponse represents the response from deletes an object storage pool
+message DeleteObjectStoragePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddImageStoreRequest represents the parameters for adds backup image store.
+message AddImageStoreRequest {
+	// the name for the image store
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the URL for the image store
+	string url = 2;
+
+	// the Zone ID for the image store
+	int64 zone_id = 3;
+
+	// the image store provider name
+	string provider_name = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// the details for the image store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
+	map<string, string> details = 5;
+
+	//
+	string response_type = 6;
+}
+
+// AddImageStoreResponse represents the response from adds backup image store.
+message AddImageStoreResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ChangeStoragePoolScopeRequest represents the parameters for changes the scope of a storage pool when the pool is in disabled state.this feature is officially tested and supported for hypervisors: kvm and vmware, protocols: nfs and ceph, and storage provider: defaultprimary. there might be extra steps involved to make this work for other hypervisors and storage options.
+message ChangeStoragePoolScopeRequest {
+	// the Id of the storage pool
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the scope of the storage: cluster or zone
+	string scope = 2 [
+		(validate.field).required = true
+	];
+
+	// the Id of the cluster to use if scope is being set to Cluster
+	int64 cluster_id = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ChangeStoragePoolScopeResponse represents the response from changes the scope of a storage pool when the pool is in disabled state.this feature is officially tested and supported for hypervisors: kvm and vmware, protocols: nfs and ceph, and storage provider: defaultprimary. there might be extra steps involved to make this work for other hypervisors and storage options.
+message ChangeStoragePoolScopeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSecondaryStagingStoreRequest represents the parameters for deletes a secondary staging store .
+message DeleteSecondaryStagingStoreRequest {
+	// the staging store ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteSecondaryStagingStoreResponse represents the response from deletes a secondary staging store .
+message DeleteSecondaryStagingStoreResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListStorageTagsRequest represents the parameters for lists storage tags
+message ListStorageTagsRequest {
+	// List by keyword
+	string keyword = 1;
+
+	//
+	int32 page = 2;
+
+	//
+	int32 page_size = 3;
+
+	//
+	string response_type = 4;
+}
+
+// ListStorageTagsResponse represents the response from lists storage tags
+message ListStorageTagsResponse {
+	option (validate.message).disabled = false;
+	// The list of StorageTags
+	repeated StorageTag items = 1;
+
+	// The total count of StorageTags
+	int32 total_count = 2;
+}
+
+// DeleteImageStoreRequest represents the parameters for deletes an image store or secondary storage.
+message DeleteImageStoreRequest {
+	// The image store ID or Secondary Storage ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteImageStoreResponse represents the response from deletes an image store or secondary storage.
+message DeleteImageStoreResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListStorageProvidersRequest represents the parameters for lists storage providers.
+message ListStorageProvidersRequest {
+	// the type of storage provider: either primary or image
+	string type = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListStorageProvidersResponse represents the response from lists storage providers.
+message ListStorageProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of StorageProviders
+	repeated StorageProvider items = 1;
+
+	// The total count of StorageProviders
+	int32 total_count = 2;
+}
+
+// AddImageStoreS3CMDRequest represents the parameters for adds s3 image store
+message AddImageStoreS3CMDRequest {
+	// S3 access key
+	string access_key = 1 [
+		(validate.field).required = true
+	];
+
+	// S3 secret key
+	string secret_key = 2 [
+		(validate.field).required = true
+	];
+
+	// S3 endpoint
+	string end_point = 3 [
+		(validate.field).required = true
+	];
+
+	// Name of the storage bucket
+	string bucket_name = 4 [
+		(validate.field).required = true
+	];
+
+	// Signer Algorithm to use, either S3SignerType or AWSS3V4SignerType
+	string signer = 5;
+
+	// Use HTTPS instead of HTTP
+	bool https_flag = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Connection timeout (milliseconds)
+	int32 connection_timeout = 7;
+
+	// Maximum number of times to retry on error
+	int32 max_error_retry = 8;
+
+	// Socket timeout (milliseconds)
+	int32 socket_timeout = 9;
+
+	// Connection TTL (milliseconds)
+	int32 connection_ttl = 10;
+
+	// Whether TCP keep-alive is used
+	bool use_t_c_p_keep_alive = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 12;
+}
+
+// AddImageStoreS3CMDResponse represents the response from adds s3 image store
+message AddImageStoreS3CMDResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateImageStoreRequest represents the parameters for updates image store read-only status
+message UpdateImageStoreRequest {
+	// Image Store UUID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The new name for the Image Store.
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// If set to true, it designates the corresponding image store to read-only, hence not considering them during storage migration
+	bool readonly = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	/*
+	 * The number of bytes CloudStack can use on this image storage.
+	 * NOTE: this will be overwritten by the StatsCollector as soon as there is a SSVM to query the storage.
+	 */
+	int64 capacity_bytes = 4;
+
+	//
+	string response_type = 5;
+}
+
+// UpdateImageStoreResponse represents the response from updates image store read-only status
+message UpdateImageStoreResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeletePoolRequest represents the parameters for deletes a storage pool.
+message DeletePoolRequest {
+	// Storage pool id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force destroy storage pool (force expunge volumes in Destroyed state as a part of pool removal)
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 3;
+}
+
+// DeletePoolResponse represents the response from deletes a storage pool.
+message DeletePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateStoragePoolRequest represents the parameters for creates a storage pool.
+message CreateStoragePoolRequest {
+	// the cluster ID for the storage pool
+	int64 cluster_id = 1;
+
+	// the details for the storage pool
+	map<string, string> details = 2;
+
+	// the name for the storage pool
+	string storage_pool_name = 3 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the Pod ID for the storage pool
+	int64 pod_id = 4;
+
+	// the tags for the storage pool
+	string tags = 5;
+
+	// the URL of the storage pool
+	string url = 6 [
+		(validate.field).required = true
+	];
+
+	// the Zone ID for the storage pool
+	int64 zone_id = 7 [
+		(validate.field).required = true
+	];
+
+	// the storage provider name
+	string storage_provider_name = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// the scope of the storage: cluster or zone
+	string scope = 9;
+
+	// whether the storage should be managed by CloudStack
+	bool managed = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// IOPS CloudStack can provision from this storage pool
+	int64 capacity_iops = 11;
+
+	// bytes CloudStack can provision from this storage pool
+	int64 capacity_bytes = 12;
+
+	// hypervisor type of the hosts in zone that will be attached to this storage pool. KVM, VMware supported as of now.
+	string hypervisor = 13;
+
+	// Whether the informed tag is a JS interpretable rule or not.
+	bool is_tag_a_rule = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 15;
+}
+
+// CreateStoragePoolResponse represents the response from creates a storage pool.
+message CreateStoragePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListImageStoresRequest represents the parameters for lists image stores.
+message ListImageStoresRequest {
+	// the name of the image store
+	string store_name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the image store protocol
+	string protocol = 2;
+
+	// the image store provider
+	string provider = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// the Zone ID for the image store
+	int64 zone_id = 4;
+
+	// the ID of the storage pool
+	int64 id = 5;
+
+	// read-only status of the image store
+	bool readonly = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 7;
+
+	//
+	int32 page = 8;
+
+	//
+	int32 page_size = 9;
+
+	//
+	string response_type = 10;
+}
+
+// ListImageStoresResponse represents the response from lists image stores.
+message ListImageStoresResponse {
+	option (validate.message).disabled = false;
+	// The list of ImageStores
+	repeated ImageStore items = 1;
+
+	// The total count of ImageStores
+	int32 total_count = 2;
+}
+
+// ListSecondaryStagingStoresRequest represents the parameters for lists secondary staging stores.
+message ListSecondaryStagingStoresRequest {
+	// the name of the staging store
+	string store_name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the staging store protocol
+	string protocol = 2;
+
+	// the staging store provider
+	string provider = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// the Zone ID for the staging store
+	int64 zone_id = 4;
+
+	// the ID of the staging store
+	int64 id = 5;
+
+	// List by keyword
+	string keyword = 6;
+
+	//
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
+}
+
+// ListSecondaryStagingStoresResponse represents the response from lists secondary staging stores.
+message ListSecondaryStagingStoresResponse {
+	option (validate.message).disabled = false;
+	// The list of ImageStores
+	repeated ImageStore items = 1;
+
+	// The total count of ImageStores
+	int32 total_count = 2;
+}
+
+// UpdateStoragePoolRequest represents the parameters for updates a storage pool.
+message UpdateStoragePoolRequest {
+	// the Id of the storage pool
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Change the name of the storage pool
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// comma-separated list of tags for the storage pool
+	repeated string tags = 3;
+
+	// IOPS CloudStack can provision from this storage pool
+	int64 capacity_iops = 4;
+
+	// bytes CloudStack can provision from this storage pool
+	int64 capacity_bytes = 5;
+
+	// false to disable the pool for allocation of new volumes, true to enable it back.
+	bool enabled = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the details for the storage pool
+	map<string, string> details = 7;
+
+	// the URL of the storage pool
+	string url = 8;
+
+	// Whether the informed tag is a JS interpretable rule or not.
+	bool is_tag_a_rule = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 10;
+}
+
+// UpdateStoragePoolResponse represents the response from updates a storage pool.
+message UpdateStoragePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListObjectStoragePoolsRequest represents the parameters for lists object storage pools.
+message ListObjectStoragePoolsRequest {
+	// the name of the object store
+	string store_name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the object store provider
+	string provider = 2 [
+		(validate.field).string.uuid = true
+	];
+
+	// the ID of the storage pool
+	int64 id = 3;
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListObjectStoragePoolsResponse represents the response from lists object storage pools.
+message ListObjectStoragePoolsResponse {
+	option (validate.message).disabled = false;
+	// The list of ObjectStores
+	repeated ObjectStore items = 1;
+
+	// The total count of ObjectStores
+	int32 total_count = 2;
+}
+
+// ListImageStoreObjectsRequest represents the parameters for lists objects at specified path on an image store.
+message ListImageStoreObjectsRequest {
+	// id of the image store
+	int64 store_id = 1 [
+		(validate.field).required = true
+	];
+
+	// path to list on image store
+	string path = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListImageStoreObjectsResponse represents the response from lists objects at specified path on an image store.
+message ListImageStoreObjectsResponse {
+	option (validate.message).disabled = false;
+	// The list of DataStoreObjects
+	repeated DataStoreObject items = 1;
+
+	// The total count of DataStoreObjects
+	int32 total_count = 2;
+}
+
+// ListStoragePoolObjectsRequest represents the parameters for lists objects at specified path on a storage pool.
+message ListStoragePoolObjectsRequest {
+	// id of the storage pool
+	int64 store_id = 1 [
+		(validate.field).required = true
+	];
+
+	// path to list on storage pool
+	string path = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListStoragePoolObjectsResponse represents the response from lists objects at specified path on a storage pool.
+message ListStoragePoolObjectsResponse {
+	option (validate.message).disabled = false;
+	// The list of DataStoreObjects
+	repeated DataStoreObject items = 1;
+
+	// The total count of DataStoreObjects
+	int32 total_count = 2;
+}
+
+// MigrateResourcesToAnotherSecondaryStorageRequest represents the parameters for migrates resources from one secondary storage to destination image store
+message MigrateResourcesToAnotherSecondaryStorageRequest {
+	// id of the image store from where the data is to be migrated
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// id of the destination secondary storage pool to which the resources are to be migrated
+	int64 dest_store_id = 2 [
+		(validate.field).required = true
+	];
+
+	// id(s) of the templates to be migrated
+	repeated string template_id_list = 3;
+
+	// id(s) of the snapshots to be migrated
+	repeated string snapshot_id_list = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// MigrateResourcesToAnotherSecondaryStorageResponse represents the response from migrates resources from one secondary storage to destination image store
+message MigrateResourcesToAnotherSecondaryStorageResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddObjectStoragePoolRequest represents the parameters for adds a object storage pool
+message AddObjectStoragePoolRequest {
+	// the name for the object store
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the URL for the object store
+	string url = 2 [
+		(validate.field).required = true
+	];
+
+	// the object store provider name
+	string provider_name = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// the details for the object store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
+	map<string, string> details = 4;
+
+	// the tags for the storage pool
+	string tags = 5;
+
+	//
+	string response_type = 6;
+}
+
+// AddObjectStoragePoolResponse represents the response from adds a object storage pool
+message AddObjectStoragePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateCloudToUseObjectStoreRequest represents the parameters for migrate current nfs secondary storages to use object store.
+message UpdateCloudToUseObjectStoreRequest {
+	// the name for the image store
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the URL for the image store
+	string url = 2;
+
+	// the image store provider name
+	string provider_name = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// the details for the image store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
+	map<string, string> details = 4;
+
+	//
+	string response_type = 5;
+}
+
+// UpdateCloudToUseObjectStoreResponse represents the response from migrate current nfs secondary storages to use object store.
+message UpdateCloudToUseObjectStoreResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DownloadImageStoreObjectRequest represents the parameters for download object at a specified path on an image store.
+message DownloadImageStoreObjectRequest {
+	// id of the image store
+	int64 store_id = 1 [
+		(validate.field).required = true
+	];
+
+	// path to download on image store
+	string path = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DownloadImageStoreObjectResponse represents the response from download object at a specified path on an image store.
+message DownloadImageStoreObjectResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateSecondaryStorageDataRequest represents the parameters for migrates data objects from one secondary storage to destination image store(s)
+message MigrateSecondaryStorageDataRequest {
+	// id of the image store from where the data is to be migrated
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// id(s) of the destination secondary storage pool(s) to which the templates are to be migrated
+	repeated string migrate_to = 2 [
+		(validate.field).required = true
+	];
+
+	// Balance: if you want data to be distributed evenly among the destination stores, Complete: If you want to migrate the entire data from source image store to the destination store(s). Default: Complete
+	string migration_type = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// MigrateSecondaryStorageDataResponse represents the response from migrates data objects from one secondary storage to destination image store(s)
+message MigrateSecondaryStorageDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// PreparePrimaryStorageForMaintenanceRequest represents the parameters for puts storage pool into maintenance state
+message PreparePrimaryStorageForMaintenanceRequest {
+	// Primary storage ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// PreparePrimaryStorageForMaintenanceResponse represents the response from puts storage pool into maintenance state
+message PreparePrimaryStorageForMaintenanceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// FindStoragePoolsForMigrationRequest represents the parameters for lists storage pools available for migration of a volume.
+message FindStoragePoolsForMigrationRequest {
+	// the ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// FindStoragePoolsForMigrationResponse represents the response from lists storage pools available for migration of a volume.
+message FindStoragePoolsForMigrationResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CancelPrimaryStorageMaintenanceRequest represents the parameters for cancels maintenance for primary storage
+message CancelPrimaryStorageMaintenanceRequest {
+	// the primary storage ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CancelPrimaryStorageMaintenanceResponse represents the response from cancels maintenance for primary storage
+message CancelPrimaryStorageMaintenanceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateSecondaryStagingStoreRequest represents the parameters for create secondary staging store.
+message CreateSecondaryStagingStoreRequest {
+	// the URL for the staging store
+	string url = 1 [
+		(validate.field).required = true
+	];
+
+	// the Zone ID for the staging store
+	int64 zone_id = 2;
+
+	// the details for the staging store
+	map<string, string> details = 3;
+
+	// the scope of the staging store: zone only for now
+	string scope = 4;
+
+	// the staging store provider name
+	string provider_name = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateSecondaryStagingStoreResponse represents the response from create secondary staging store.
+message CreateSecondaryStagingStoreResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListStoragePoolsRequest represents the parameters for lists storage pools.
+message ListStoragePoolsRequest {
+	// list storage pools belongig to the specific cluster
+	int64 cluster_id = 1;
+
+	// the IP address for the storage pool
+	string ip_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the name of the storage pool
+	string storage_pool_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the storage pool path
+	string path = 4;
+
+	// the Pod ID for the storage pool
+	int64 pod_id = 5;
+
+	// the Zone ID for the storage pool
+	int64 zone_id = 6;
+
+	// the ID of the storage pool
+	int64 id = 7;
+
+	// the scope of the storage pool
+	string scope = 8;
+
+	// the status of the storage pool
+	string status = 9;
+
+	// host ID of the storage pools
+	int64 host_id = 10;
+
+	// If true, lists the custom stats of the storage pool
+	bool custom_stats = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 12;
+
+	//
+	int32 page = 13;
+
+	//
+	int32 page_size = 14;
+
+	//
+	string response_type = 15;
+}
+
+// ListStoragePoolsResponse represents the response from lists storage pools.
+message ListStoragePoolsResponse {
+	option (validate.message).disabled = false;
+	// The list of StoragePools
+	repeated StoragePool items = 1;
+
+	// The total count of StoragePools
+	int32 total_count = 2;
+}
+
+// SyncStoragePoolRequest represents the parameters for sync storage pool with management server (currently supported for datastore cluster in vmware and syncs the datastores in it)
+message SyncStoragePoolRequest {
+	// Storage pool id
+	int64 pool_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// SyncStoragePoolResponse represents the response from sync storage pool with management server (currently supported for datastore cluster in vmware and syncs the datastores in it)
+message SyncStoragePoolResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StorageTag represents a StorageTag Item
+message StorageTag {
+	// The ID of the StorageTag
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the StorageTag
+	string name = 2;
+	// The display name of the StorageTag
+	string display_name = 3;
+	// The description of the StorageTag
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// StorageProvider represents a StorageProvider Item
+message StorageProvider {
+	// The ID of the StorageProvider
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the StorageProvider
+	string name = 2;
+	// The display name of the StorageProvider
+	string display_name = 3;
+	// The description of the StorageProvider
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ImageStore represents a ImageStore Item
+message ImageStore {
+	// The ID of the ImageStore
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ImageStore
+	string name = 2;
+	// The display name of the ImageStore
+	string display_name = 3;
+	// The description of the ImageStore
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ObjectStore represents a ObjectStore Item
+message ObjectStore {
+	// The ID of the ObjectStore
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ObjectStore
+	string name = 2;
+	// The display name of the ObjectStore
+	string display_name = 3;
+	// The description of the ObjectStore
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// DataStoreObject represents a DataStoreObject Item
+message DataStoreObject {
+	// The ID of the DataStoreObject
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the DataStoreObject
+	string name = 2;
+	// The display name of the DataStoreObject
+	string display_name = 3;
+	// The description of the DataStoreObject
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// StoragePool represents a StoragePool Item
+message StoragePool {
+	// The ID of the StoragePool
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the StoragePool
+	string name = 2;
+	// The display name of the StoragePool
+	string display_name = 3;
+	// The description of the StoragePool
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

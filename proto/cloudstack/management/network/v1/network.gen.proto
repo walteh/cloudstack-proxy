@@ -1,0 +1,3449 @@
+edition = "2023";
+
+package cloudstack.management.network.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// NetworkService provides operations for managing Networks
+service NetworkService {
+	option (annotations.service).scope = Scope_USER;
+
+	// DedicateIpv4SubnetForZone Dedicates an existing IPv4 subnet for a zone to an account or a domain.
+	rpc DedicateIpv4SubnetForZone(DedicateIpv4SubnetForZoneRequest) returns (DedicateIpv4SubnetForZoneResponse) {}
+
+	// ListNetworkOfferings Lists all available network offerings.
+	rpc ListNetworkOfferings(ListNetworkOfferingsRequest) returns (ListNetworkOfferingsResponse) {}
+
+	// ResetNetworkPermissions Resets network permissions.
+	rpc ResetNetworkPermissions(ResetNetworkPermissionsRequest) returns (ResetNetworkPermissionsResponse) {}
+
+	// UpdateNetworkACLItem Updates ACL item with specified ID
+	rpc UpdateNetworkACLItem(UpdateNetworkACLItemRequest) returns (UpdateNetworkACLItemResponse) {}
+
+	// DeleteNetworkACL Deletes a network ACL
+	rpc DeleteNetworkACL(DeleteNetworkACLRequest) returns (DeleteNetworkACLResponse) {}
+
+	// RestartNetwork Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
+	rpc RestartNetwork(RestartNetworkRequest) returns (RestartNetworkResponse) {}
+
+	// CreateIpv4SubnetForZone Creates a IPv4 subnet for a zone.
+	rpc CreateIpv4SubnetForZone(CreateIpv4SubnetForZoneRequest) returns (CreateIpv4SubnetForZoneResponse) {}
+
+	// AddNetworkDevice Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
+	rpc AddNetworkDevice(AddNetworkDeviceRequest) returns (AddNetworkDeviceResponse) {}
+
+	// UpdateNetworkACLList Updates network ACL list
+	rpc UpdateNetworkACLList(UpdateNetworkACLListRequest) returns (UpdateNetworkACLListResponse) {}
+
+	// CreateNetworkACL Creates a ACL rule in the given network (the network has to belong to VPC)
+	rpc CreateNetworkACL(CreateNetworkACLRequest) returns (CreateNetworkACLResponse) {}
+
+	// UpdatePodManagementNetworkIpRange Updates a management network IP range. Only allowed when no IPs are allocated.
+	rpc UpdatePodManagementNetworkIpRange(UpdatePodManagementNetworkIpRangeRequest) returns (UpdatePodManagementNetworkIpRangeResponse) {}
+
+	// ListGuestNetworkIpv6Prefixes Lists guest network IPv6 prefixes
+	rpc ListGuestNetworkIpv6Prefixes(ListGuestNetworkIpv6PrefixesRequest) returns (ListGuestNetworkIpv6PrefixesResponse) {}
+
+	// UpdateNetworkCmdByAdmin Updates a network
+	rpc UpdateNetworkCmdByAdmin(UpdateNetworkCmdByAdminRequest) returns (UpdateNetworkCmdByAdminResponse) {}
+
+	// CreateGuestNetworkIpv6Prefix Creates a guest network IPv6 prefix.
+	rpc CreateGuestNetworkIpv6Prefix(CreateGuestNetworkIpv6PrefixRequest) returns (CreateGuestNetworkIpv6PrefixResponse) {}
+
+	// ListStorageNetworkIpRange List a storage network IP range.
+	rpc ListStorageNetworkIpRange(ListStorageNetworkIpRangeRequest) returns (ListStorageNetworkIpRangeResponse) {}
+
+	// ListPhysicalNetworks Lists physical networks
+	rpc ListPhysicalNetworks(ListPhysicalNetworksRequest) returns (ListPhysicalNetworksResponse) {}
+
+	// UpdateNetwork Updates a network
+	rpc UpdateNetwork(UpdateNetworkRequest) returns (UpdateNetworkResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// CreateNetworkPermissions Updates network permissions.
+	rpc CreateNetworkPermissions(CreateNetworkPermissionsRequest) returns (CreateNetworkPermissionsResponse) {}
+
+	// DeleteIpv4SubnetForGuestNetwork Deletes an existing IPv4 subnet for guest network.
+	rpc DeleteIpv4SubnetForGuestNetwork(DeleteIpv4SubnetForGuestNetworkRequest) returns (DeleteIpv4SubnetForGuestNetworkResponse) {}
+
+	// ReplaceNetworkACLList Replaces ACL associated with a network or private gateway
+	rpc ReplaceNetworkACLList(ReplaceNetworkACLListRequest) returns (ReplaceNetworkACLListResponse) {}
+
+	// DeletePhysicalNetwork Deletes a Physical Network.
+	rpc DeletePhysicalNetwork(DeletePhysicalNetworkRequest) returns (DeletePhysicalNetworkResponse) {}
+
+	// ListNetworkDevice List network devices
+	rpc ListNetworkDevice(ListNetworkDeviceRequest) returns (ListNetworkDeviceResponse) {}
+
+	// RemoveNetworkPermissions Removes network permissions.
+	rpc RemoveNetworkPermissions(RemoveNetworkPermissionsRequest) returns (RemoveNetworkPermissionsResponse) {}
+
+	// ReleaseDedicatedIpv4SubnetForZone Releases an existing dedicated IPv4 subnet for a zone.
+	rpc ReleaseDedicatedIpv4SubnetForZone(ReleaseDedicatedIpv4SubnetForZoneRequest) returns (ReleaseDedicatedIpv4SubnetForZoneResponse) {}
+
+	// ListNetworkACLLists Lists all network ACLs
+	rpc ListNetworkACLLists(ListNetworkACLListsRequest) returns (ListNetworkACLListsResponse) {}
+
+	// DeleteManagementNetworkIpRange Deletes a management network IP range. This action is only allowed when no IPs in this range are allocated.
+	rpc DeleteManagementNetworkIpRange(DeleteManagementNetworkIpRangeRequest) returns (DeleteManagementNetworkIpRangeResponse) {}
+
+	// DeleteGuestNetworkIpv6Prefix Deletes an existing guest network IPv6 prefix.
+	rpc DeleteGuestNetworkIpv6Prefix(DeleteGuestNetworkIpv6PrefixRequest) returns (DeleteGuestNetworkIpv6PrefixResponse) {}
+
+	// MigrateNetwork moves a network to another physical network
+	rpc MigrateNetwork(MigrateNetworkRequest) returns (MigrateNetworkResponse) {}
+
+	// DedicateGuestVlanRange Dedicates a guest vlan range to an account
+	rpc DedicateGuestVlanRange(DedicateGuestVlanRangeRequest) returns (DedicateGuestVlanRangeResponse) {}
+
+	// UpdateStorageNetworkIpRange Update a Storage network IP range, only allowed when no IPs in this range have been allocated.
+	rpc UpdateStorageNetworkIpRange(UpdateStorageNetworkIpRangeRequest) returns (UpdateStorageNetworkIpRangeResponse) {}
+
+	// DeleteNetworkServiceProvider Deletes a Network Service Provider.
+	rpc DeleteNetworkServiceProvider(DeleteNetworkServiceProviderRequest) returns (DeleteNetworkServiceProviderResponse) {}
+
+	// MigrateVPC moves a vpc to another physical network
+	rpc MigrateVPC(MigrateVPCRequest) returns (MigrateVPCResponse) {}
+
+	// ListNetworkServiceProviders Lists network serviceproviders for a given physical network.
+	rpc ListNetworkServiceProviders(ListNetworkServiceProvidersRequest) returns (ListNetworkServiceProvidersResponse) {}
+
+	// ListIpv4SubnetsForZone Lists IPv4 subnets for zone.
+	rpc ListIpv4SubnetsForZone(ListIpv4SubnetsForZoneRequest) returns (ListIpv4SubnetsForZoneResponse) {}
+
+	// DeleteNetwork Deletes a network
+	rpc DeleteNetwork(DeleteNetworkRequest) returns (DeleteNetworkResponse) {}
+
+	// UpdateNetworkOffering Updates a network offering.
+	rpc UpdateNetworkOffering(UpdateNetworkOfferingRequest) returns (UpdateNetworkOfferingResponse) {}
+
+	// CreateIpv4SubnetForGuestNetwork Creates a IPv4 subnet for guest networks.
+	rpc CreateIpv4SubnetForGuestNetwork(CreateIpv4SubnetForGuestNetworkRequest) returns (CreateIpv4SubnetForGuestNetworkResponse) {}
+
+	// ListNetworkIsolationMethods Lists supported methods of network isolation
+	rpc ListNetworkIsolationMethods(ListNetworkIsolationMethodsRequest) returns (ListNetworkIsolationMethodsResponse) {}
+
+	// AddNetworkServiceProvider Adds a network serviceProvider to a physical network
+	rpc AddNetworkServiceProvider(AddNetworkServiceProviderRequest) returns (AddNetworkServiceProviderResponse) {}
+
+	// ListNetworks Lists all available networks.
+	rpc ListNetworks(ListNetworksRequest) returns (ListNetworksResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ListNetworkACLs Lists all network ACL items
+	rpc ListNetworkACLs(ListNetworkACLsRequest) returns (ListNetworkACLsResponse) {}
+
+	// CreateManagementNetworkIpRange Creates a Management network IP range.
+	rpc CreateManagementNetworkIpRange(CreateManagementNetworkIpRangeRequest) returns (CreateManagementNetworkIpRangeResponse) {}
+
+	// ListSupportedNetworkServices Lists all network services provided by CloudStack or for the given Provider.
+	rpc ListSupportedNetworkServices(ListSupportedNetworkServicesRequest) returns (ListSupportedNetworkServicesResponse) {}
+
+	// UpdatePhysicalNetwork Updates a physical network
+	rpc UpdatePhysicalNetwork(UpdatePhysicalNetworkRequest) returns (UpdatePhysicalNetworkResponse) {}
+
+	// CreateNetworkACLList Creates a network ACL. If no VPC is given, then it creates a global ACL that can be used by everyone.
+	rpc CreateNetworkACLList(CreateNetworkACLListRequest) returns (CreateNetworkACLListResponse) {}
+
+	// CreateNetworkCmdByAdmin Creates a network
+	rpc CreateNetworkCmdByAdmin(CreateNetworkCmdByAdminRequest) returns (CreateNetworkCmdByAdminResponse) {}
+
+	// DeleteStorageNetworkIpRange Deletes a storage network IP Range.
+	rpc DeleteStorageNetworkIpRange(DeleteStorageNetworkIpRangeRequest) returns (DeleteStorageNetworkIpRangeResponse) {}
+
+	// DeleteIpv4SubnetForZone Deletes an existing IPv4 subnet for a zone.
+	rpc DeleteIpv4SubnetForZone(DeleteIpv4SubnetForZoneRequest) returns (DeleteIpv4SubnetForZoneResponse) {}
+
+	// ListNetworkPermissions List network visibility and all accounts that have permissions to view this network.
+	rpc ListNetworkPermissions(ListNetworkPermissionsRequest) returns (ListNetworkPermissionsResponse) {}
+
+	// ListDedicatedGuestVlanRanges Lists dedicated guest vlan ranges
+	rpc ListDedicatedGuestVlanRanges(ListDedicatedGuestVlanRangesRequest) returns (ListDedicatedGuestVlanRangesResponse) {}
+
+	// DeleteNetworkACLList Deletes a network ACL
+	rpc DeleteNetworkACLList(DeleteNetworkACLListRequest) returns (DeleteNetworkACLListResponse) {}
+
+	// DeleteNetworkOffering Deletes a network offering.
+	rpc DeleteNetworkOffering(DeleteNetworkOfferingRequest) returns (DeleteNetworkOfferingResponse) {}
+
+	// MoveNetworkAclItem Move an ACL rule to a position bettwen two other ACL rules of the same ACL network list
+	rpc MoveNetworkAclItem(MoveNetworkAclItemRequest) returns (MoveNetworkAclItemResponse) {}
+
+	// ListGuestVlans Lists all guest vlans
+	rpc ListGuestVlans(ListGuestVlansRequest) returns (ListGuestVlansResponse) {}
+
+	// UpdateIpv4SubnetForZone Updates an existing IPv4 subnet for a zone.
+	rpc UpdateIpv4SubnetForZone(UpdateIpv4SubnetForZoneRequest) returns (UpdateIpv4SubnetForZoneResponse) {}
+
+	// CreatePhysicalNetwork Creates a physical network
+	rpc CreatePhysicalNetwork(CreatePhysicalNetworkRequest) returns (CreatePhysicalNetworkResponse) {}
+
+	// CreateNetworkOffering Creates a network offering.
+	rpc CreateNetworkOffering(CreateNetworkOfferingRequest) returns (CreateNetworkOfferingResponse) {}
+
+	// UpdateNetworkServiceProvider Updates a network serviceProvider of a physical network
+	rpc UpdateNetworkServiceProvider(UpdateNetworkServiceProviderRequest) returns (UpdateNetworkServiceProviderResponse) {}
+
+	// CreateStorageNetworkIpRange Creates a Storage network IP range.
+	rpc CreateStorageNetworkIpRange(CreateStorageNetworkIpRangeRequest) returns (CreateStorageNetworkIpRangeResponse) {}
+
+	// ListIpv4SubnetsForGuestNetwork Lists IPv4 subnets for guest networks.
+	rpc ListIpv4SubnetsForGuestNetwork(ListIpv4SubnetsForGuestNetworkRequest) returns (ListIpv4SubnetsForGuestNetworkResponse) {}
+
+	// DeleteNetworkDevice Deletes network device.
+	rpc DeleteNetworkDevice(DeleteNetworkDeviceRequest) returns (DeleteNetworkDeviceResponse) {}
+
+	// CreateNetwork Creates a network
+	rpc CreateNetwork(CreateNetworkRequest) returns (CreateNetworkResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ReleaseDedicatedGuestVlanRange Releases a dedicated guest vlan range to the system
+	rpc ReleaseDedicatedGuestVlanRange(ReleaseDedicatedGuestVlanRangeRequest) returns (ReleaseDedicatedGuestVlanRangeResponse) {}
+
+	// ListNetworkProtocols Lists details of network protocols
+	rpc ListNetworkProtocols(ListNetworkProtocolsRequest) returns (ListNetworkProtocolsResponse) {}
+}
+
+// DedicateIpv4SubnetForZoneRequest represents the parameters for dedicates an existing ipv4 subnet for a zone to an account or a domain.
+message DedicateIpv4SubnetForZoneRequest {
+	// Id of the guest network IPv4 subnet
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// account who will own the IPv4 subnet
+	string account_name = 2;
+
+	// project who will own the IPv4 subnet
+	int64 project_id = 3;
+
+	// domain ID of the account owning the IPv4 subnet
+	int64 domain_id = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// DedicateIpv4SubnetForZoneResponse represents the response from dedicates an existing ipv4 subnet for a zone to an account or a domain.
+message DedicateIpv4SubnetForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkOfferingsRequest represents the parameters for lists all available network offerings.
+message ListNetworkOfferingsRequest {
+	// list network offerings by ID
+	int64 id = 1;
+
+	// list network offerings by name
+	string network_offering_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list network offerings by display text
+	string display_text = 3;
+
+	// list by traffic type
+	string traffic_type = 4;
+
+	// true if need to list only default network offerings. Default value is false
+	bool is_default = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the tags for the network offering.
+	bool specify_vlan = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the availability of network offering. Default value is required
+	string availability = 7;
+
+	// list network offerings available for network creation in specific domain
+	int64 domain_id = 8;
+
+	// list network offerings available for network creation in specific zone
+	int64 zone_id = 9;
+
+	// list network offerings by state
+	string state = 10;
+
+	// the ID of the network. Pass this in if you want to see the available network offering that a network can be changed to.
+	int64 network_id = 11;
+
+	// list network offerings by guest type: shared or isolated
+	string guest_ip_type = 12 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// list network offerings supporting certain services
+	repeated string supported_services = 13;
+
+	// true if need to list only netwok offerings where source NAT is supported, false otherwise
+	bool source_nat_supported = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if need to list only network offerings which support specifying ip ranges
+	bool specify_ip_ranges = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list network offerings by tags
+	string tags = 16;
+
+	// true if offering has tags specified
+	bool is_tagged = 17 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the network offering can be used only for network creation inside the VPC
+	bool for_vpc = 18 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the routing mode for the network offering. Supported types are: Static or Dynamic.
+	string routing_mode = 19;
+
+	// List by keyword
+	string keyword = 20;
+
+	//
+	int32 page = 21;
+
+	//
+	int32 page_size = 22;
+
+	//
+	string response_type = 23;
+}
+
+// ListNetworkOfferingsResponse represents the response from lists all available network offerings.
+message ListNetworkOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of NetworkOfferings
+	repeated NetworkOffering items = 1;
+
+	// The total count of NetworkOfferings
+	int32 total_count = 2;
+}
+
+// ResetNetworkPermissionsRequest represents the parameters for resets network permissions.
+message ResetNetworkPermissionsRequest {
+	// the network ID
+	int64 network_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ResetNetworkPermissionsResponse represents the response from resets network permissions.
+message ResetNetworkPermissionsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateNetworkACLItemRequest represents the parameters for updates acl item with specified id
+message UpdateNetworkACLItemRequest {
+	// the ID of the network ACL item
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	string protocol = 2;
+
+	// the starting port of ACL
+	int32 public_start_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of ACL
+	int32 public_end_port = 4 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the cidr list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
+	repeated string cidrlist = 5;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 6;
+
+	// error code for this ICMP message
+	int32 icmp_code = 7;
+
+	// the traffic type for the ACL, can be Ingress or Egress, defaulted to Ingress if not specified
+	string traffic_type = 8;
+
+	// The network of the vm the ACL will be created for
+	int32 number = 9;
+
+	// scl entry action, allow or deny
+	string action = 10;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// A description indicating why the ACL rule is required.
+	string reason = 12;
+
+	// Indicates if the ACL rule is to be updated partially (merging the parameters sent with current configuration) or completely (disconsidering all of the current configurations). The default value is 'true'.
+	bool partial_upgrade = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 14 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 15;
+
+	//
+	string injected_job_id = 16 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 17;
+}
+
+// UpdateNetworkACLItemResponse represents the response from updates acl item with specified id
+message UpdateNetworkACLItemResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteNetworkACLRequest represents the parameters for deletes a network acl
+message DeleteNetworkACLRequest {
+	// the ID of the network ACL
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteNetworkACLResponse represents the response from deletes a network acl
+message DeleteNetworkACLResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RestartNetworkRequest represents the parameters for restarts the network; includes 1) restarting network elements - virtual routers, dhcp servers 2) reapplying all public ips 3) reapplying loadbalancing/portforwarding rules
+message RestartNetworkRequest {
+	// The ID of the network to restart.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// If cleanup old network elements
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Turn the network into a network with redundant routers.
+	bool make_redundant = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
+	bool live_patch = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// RestartNetworkResponse represents the response from restarts the network; includes 1) restarting network elements - virtual routers, dhcp servers 2) reapplying all public ips 3) reapplying loadbalancing/portforwarding rules
+message RestartNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateIpv4SubnetForZoneRequest represents the parameters for creates a ipv4 subnet for a zone.
+message CreateIpv4SubnetForZoneRequest {
+	// UUID of the zone which the IPv4 subnet belongs to.
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The CIDR of the IPv4 subnet.
+	string subnet = 2 [
+		(validate.field).required = true
+	];
+
+	// account who will own the IPv4 subnet
+	string account_name = 3;
+
+	// project who will own the IPv4 subnet
+	int64 project_id = 4;
+
+	// domain ID of the account owning the IPv4 subnet
+	int64 domain_id = 5;
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// CreateIpv4SubnetForZoneResponse represents the response from creates a ipv4 subnet for a zone.
+message CreateIpv4SubnetForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddNetworkDeviceRequest represents the parameters for adds a network device of one of the following types: externaldhcp, externalfirewall, externalloadbalancer, pxeserver
+message AddNetworkDeviceRequest {
+	// Network device type, now supports ExternalDhcp, PxeServer, NetscalerMPXLoadBalancer, NetscalerVPXLoadBalancer, NetscalerSDXLoadBalancer, F5BigIpLoadBalancer, JuniperSRXFirewall, PaloAltoFirewall
+	string type = 1;
+
+	// parameters for network device
+	map<string, string> param_list = 2;
+
+	//
+	string response_type = 3;
+}
+
+// AddNetworkDeviceResponse represents the response from adds a network device of one of the following types: externaldhcp, externalfirewall, externalloadbalancer, pxeserver
+message AddNetworkDeviceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateNetworkACLListRequest represents the parameters for updates network acl list
+message UpdateNetworkACLListRequest {
+	// the ID of the network ACL
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the list to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Name of the network ACL list
+	string name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Description of the network ACL list
+	string description = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpdateNetworkACLListResponse represents the response from updates network acl list
+message UpdateNetworkACLListResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkACLRequest represents the parameters for creates a acl rule in the given network (the network has to belong to vpc)
+message CreateNetworkACLRequest {
+	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	string protocol = 1 [
+		(validate.field).required = true
+	];
+
+	// the starting port of ACL
+	int32 public_start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of ACL
+	int32 public_end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the CIDR list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
+	repeated string cidrlist = 4;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 5;
+
+	// error code for this ICMP message
+	int32 icmp_code = 6;
+
+	// The network of the VM the ACL will be created for
+	int64 network_id = 7;
+
+	// The network of the VM the ACL will be created for
+	int64 acl_id = 8;
+
+	// the traffic type for the ACL,can be ingress or egress, defaulted to ingress if not specified
+	string traffic_type = 9;
+
+	// The number of the ACL item, its ordering
+	int32 number = 10;
+
+	// scl entry action, allow or deny
+	string action = 11;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// A description indicating why the ACL rule is required.
+	string reason = 13;
+
+	//
+	int64 start_event_id = 14;
+
+	//
+	string injected_job_id = 15 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 16;
+}
+
+// CreateNetworkACLResponse represents the response from creates a acl rule in the given network (the network has to belong to vpc)
+message CreateNetworkACLResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdatePodManagementNetworkIpRangeRequest represents the parameters for updates a management network ip range. only allowed when no ips are allocated.
+message UpdatePodManagementNetworkIpRangeRequest {
+	// UUID of POD, where the IP range belongs to.
+	int64 pod_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The current starting IP address.
+	string current_start_ip = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The current ending IP address.
+	string current_end_ip = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The new starting IP address.
+	string new_start_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The new ending IP address.
+	string new_end_ip = 5 [
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpdatePodManagementNetworkIpRangeResponse represents the response from updates a management network ip range. only allowed when no ips are allocated.
+message UpdatePodManagementNetworkIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListGuestNetworkIpv6PrefixesRequest represents the parameters for lists guest network ipv6 prefixes
+message ListGuestNetworkIpv6PrefixesRequest {
+	// UUID of the IPv6 prefix.
+	int64 id = 1;
+
+	// UUID of zone to which the IPv6 prefix belongs to.
+	int64 zone_id = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListGuestNetworkIpv6PrefixesResponse represents the response from lists guest network ipv6 prefixes
+message ListGuestNetworkIpv6PrefixesResponse {
+	option (validate.message).disabled = false;
+	// The list of DataCenterGuestIpv6Prefixs
+	repeated DataCenterGuestIpv6Prefix items = 1;
+
+	// The total count of DataCenterGuestIpv6Prefixs
+	int32 total_count = 2;
+}
+
+// UpdateNetworkCmdByAdminRequest represents the parameters for updates a network
+message UpdateNetworkCmdByAdminRequest {
+	// when true ip address usage for the network will not be exported by the listUsageRecords API
+	bool hide_ip_address_usage = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the network
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	// the new name for the network
+	string name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the new display text for the network
+	string display_text = 4;
+
+	// network domain
+	string network_domain = 5;
+
+	// Force update even if CIDR type is different
+	bool change_cidr = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// network offering ID
+	int64 network_offering_id = 7;
+
+	// CIDR for guest VMs, CloudStack allocates IPs to guest VMs only from this CIDR
+	string guest_vm_cidr = 8;
+
+	// if true, we will update the routers one after the other. applicable only for redundant router based networks using virtual router as provider
+	bool update_in_sequence = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, whether to the display the network to the end user or not.
+	bool display_network = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Setting this to true will cause a forced network update,
+	bool forced = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 12;
+
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 private_mtu = 13;
+
+	// the first IPv4 DNS for the network. Empty string will update the first IPv4 DNS with the value from the zone
+	string ip4_dns1 = 14;
+
+	// the second IPv4 DNS for the network. Empty string will update the second IPv4 DNS with the value from the zone
+	string ip4_dns2 = 15;
+
+	// the first IPv6 DNS for the network. Empty string will update the first IPv6 DNS with the value from the zone
+	string ip6_dns1 = 16 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the second IPv6 DNS for the network. Empty string will update the second IPv6 DNS with the value from the zone
+	string ip6_dns2 = 17 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this network
+	string source_nat_i_p = 18 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 19 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 20;
+
+	//
+	string injected_job_id = 21 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 22;
+}
+
+// UpdateNetworkCmdByAdminResponse represents the response from updates a network
+message UpdateNetworkCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateGuestNetworkIpv6PrefixRequest represents the parameters for creates a guest network ipv6 prefix.
+message CreateGuestNetworkIpv6PrefixRequest {
+	// UUID of zone to which the IPv6 prefix belongs to.
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The /56 or higher IPv6 CIDR for network prefix.
+	string prefix = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateGuestNetworkIpv6PrefixResponse represents the response from creates a guest network ipv6 prefix.
+message CreateGuestNetworkIpv6PrefixResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListStorageNetworkIpRangeRequest represents the parameters for list a storage network ip range.
+message ListStorageNetworkIpRangeRequest {
+	// optional parameter. Storaget network IP range uuid, if specicied, using it to search the range.
+	int64 range_id = 1;
+
+	// optional parameter. Pod uuid, if specicied and range uuid is absent, using it to search the range.
+	int64 pod_id = 2;
+
+	// optional parameter. Zone uuid, if specicied and both pod uuid and range uuid are absent, using it to search the range.
+	int64 zone_id = 3;
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListStorageNetworkIpRangeResponse represents the response from list a storage network ip range.
+message ListStorageNetworkIpRangeResponse {
+	option (validate.message).disabled = false;
+	// The list of StorageNetworkIpRanges
+	repeated StorageNetworkIpRange items = 1;
+
+	// The total count of StorageNetworkIpRanges
+	int32 total_count = 2;
+}
+
+// ListPhysicalNetworksRequest represents the parameters for lists physical networks
+message ListPhysicalNetworksRequest {
+	// list physical network by id
+	int64 id = 1;
+
+	// the Zone ID for the physical network
+	int64 zone_id = 2;
+
+	// search by name
+	string network_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListPhysicalNetworksResponse represents the response from lists physical networks
+message ListPhysicalNetworksResponse {
+	option (validate.message).disabled = false;
+	// The list of PhysicalNetworks
+	repeated PhysicalNetwork items = 1;
+
+	// The total count of PhysicalNetworks
+	int32 total_count = 2;
+}
+
+// UpdateNetworkRequest represents the parameters for updates a network
+message UpdateNetworkRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the ID of the network
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// the new name for the network
+	string name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// the new display text for the network
+	string display_text = 4;
+	// network domain
+	string network_domain = 5;
+	// Force update even if CIDR type is different
+	bool change_cidr = 6 [
+		features.field_presence = EXPLICIT
+	];
+	// network offering ID
+	int64 network_offering_id = 7;
+	// CIDR for guest VMs, CloudStack allocates IPs to guest VMs only from this CIDR
+	string guest_vm_cidr = 8;
+	// if true, we will update the routers one after the other. applicable only for redundant router based networks using virtual router as provider
+	bool update_in_sequence = 9 [
+		features.field_presence = EXPLICIT
+	];
+	// an optional field, whether to the display the network to the end user or not.
+	bool display_network = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// Setting this to true will cause a forced network update,
+	bool forced = 11 [
+		features.field_presence = EXPLICIT
+	];
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 12;
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 private_mtu = 13;
+	// the first IPv4 DNS for the network. Empty string will update the first IPv4 DNS with the value from the zone
+	string ip4_dns1 = 14;
+	// the second IPv4 DNS for the network. Empty string will update the second IPv4 DNS with the value from the zone
+	string ip4_dns2 = 15;
+	// the first IPv6 DNS for the network. Empty string will update the first IPv6 DNS with the value from the zone
+	string ip6_dns1 = 16 [
+		(validate.field).string.ipv4 = true
+	];
+	// the second IPv6 DNS for the network. Empty string will update the second IPv6 DNS with the value from the zone
+	string ip6_dns2 = 17 [
+		(validate.field).string.ipv4 = true
+	];
+	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this network
+	string source_nat_i_p = 18 [
+		(validate.field).string.ipv4 = true
+	];
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 19 [
+		(validate.field).string.uuid = true
+	];
+	//
+	int64 start_event_id = 20;
+	//
+	string injected_job_id = 21 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 22;
+}
+
+// UpdateNetworkResponse represents the response from updates a network
+message UpdateNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkPermissionsRequest represents the parameters for updates network permissions.
+message CreateNetworkPermissionsRequest {
+	// a comma delimited list of accounts within owner's domain. If specified, "op" parameter has to be passed in.
+	repeated string account_names = 1;
+
+	// a comma delimited list of account IDs within owner's domain. If specified, "op" parameter has to be passed in.
+	repeated string account_ids = 2;
+
+	// the network ID
+	int64 network_id = 3 [
+		(validate.field).required = true
+	];
+
+	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
+	repeated string project_ids = 4;
+
+	//
+	string response_type = 5;
+}
+
+// CreateNetworkPermissionsResponse represents the response from updates network permissions.
+message CreateNetworkPermissionsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteIpv4SubnetForGuestNetworkRequest represents the parameters for deletes an existing ipv4 subnet for guest network.
+message DeleteIpv4SubnetForGuestNetworkRequest {
+	// Id of the guest network IPv4 subnet
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteIpv4SubnetForGuestNetworkResponse represents the response from deletes an existing ipv4 subnet for guest network.
+message DeleteIpv4SubnetForGuestNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ReplaceNetworkACLListRequest represents the parameters for replaces acl associated with a network or private gateway
+message ReplaceNetworkACLListRequest {
+	// the ID of the network ACL
+	int64 acl_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the ID of the network
+	int64 network_id = 2;
+
+	// the ID of the private gateway
+	int64 private_gateway_id = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ReplaceNetworkACLListResponse represents the response from replaces acl associated with a network or private gateway
+message ReplaceNetworkACLListResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeletePhysicalNetworkRequest represents the parameters for deletes a physical network.
+message DeletePhysicalNetworkRequest {
+	// the ID of the Physical network
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeletePhysicalNetworkResponse represents the response from deletes a physical network.
+message DeletePhysicalNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkDeviceRequest represents the parameters for list network devices
+message ListNetworkDeviceRequest {
+	// Network device type, now supports ExternalDhcp, PxeServer, NetscalerMPXLoadBalancer, NetscalerVPXLoadBalancer, NetscalerSDXLoadBalancer, F5BigIpLoadBalancer, JuniperSRXFirewall, PaloAltoFirewall
+	string type = 1;
+
+	// parameters for network device
+	map<string, string> param_list = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListNetworkDeviceResponse represents the response from list network devices
+message ListNetworkDeviceResponse {
+	option (validate.message).disabled = false;
+	// The list of NetworkDevices
+	repeated NetworkDevice items = 1;
+
+	// The total count of NetworkDevices
+	int32 total_count = 2;
+}
+
+// RemoveNetworkPermissionsRequest represents the parameters for removes network permissions.
+message RemoveNetworkPermissionsRequest {
+	// a comma delimited list of accounts within owner's domain. If specified, "op" parameter has to be passed in.
+	repeated string account_names = 1;
+
+	// a comma delimited list of account IDs within owner's domain. If specified, "op" parameter has to be passed in.
+	repeated string account_ids = 2;
+
+	// the network ID
+	int64 network_id = 3 [
+		(validate.field).required = true
+	];
+
+	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
+	repeated string project_ids = 4;
+
+	//
+	string response_type = 5;
+}
+
+// RemoveNetworkPermissionsResponse represents the response from removes network permissions.
+message RemoveNetworkPermissionsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ReleaseDedicatedIpv4SubnetForZoneRequest represents the parameters for releases an existing dedicated ipv4 subnet for a zone.
+message ReleaseDedicatedIpv4SubnetForZoneRequest {
+	// Id of the guest network IPv4 subnet
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// ReleaseDedicatedIpv4SubnetForZoneResponse represents the response from releases an existing dedicated ipv4 subnet for a zone.
+message ReleaseDedicatedIpv4SubnetForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkACLListsRequest represents the parameters for lists all network acls
+message ListNetworkACLListsRequest {
+	// Lists network ACL with the specified ID.
+	int64 id = 1;
+
+	// list network ACLs by network ID
+	int64 network_id = 2;
+
+	// list network ACLs by VPC ID
+	int64 vpc_id = 3;
+
+	// list network ACLs by specified name
+	string name = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListNetworkACLListsResponse represents the response from lists all network acls
+message ListNetworkACLListsResponse {
+	option (validate.message).disabled = false;
+	// The list of NetworkACLs
+	repeated NetworkACL items = 1;
+
+	// The total count of NetworkACLs
+	int32 total_count = 2;
+}
+
+// DeleteManagementNetworkIpRangeRequest represents the parameters for deletes a management network ip range. this action is only allowed when no ips in this range are allocated.
+message DeleteManagementNetworkIpRangeRequest {
+	// UUID of POD, where the IP range belongs to.
+	int64 pod_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The starting IP address.
+	string start_ip = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The ending IP address.
+	string end_ip = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The vlan id the ip range sits on
+	string vlan = 4 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// DeleteManagementNetworkIpRangeResponse represents the response from deletes a management network ip range. this action is only allowed when no ips in this range are allocated.
+message DeleteManagementNetworkIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteGuestNetworkIpv6PrefixRequest represents the parameters for deletes an existing guest network ipv6 prefix.
+message DeleteGuestNetworkIpv6PrefixRequest {
+	// Id of the guest network IPv6 prefix
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteGuestNetworkIpv6PrefixResponse represents the response from deletes an existing guest network ipv6 prefix.
+message DeleteGuestNetworkIpv6PrefixResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateNetworkRequest represents the parameters for moves a network to another physical network
+message MigrateNetworkRequest {
+	// the ID of the network
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// network offering ID
+	int64 network_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// true if previous network migration cmd failed
+	bool resume = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// MigrateNetworkResponse represents the response from moves a network to another physical network
+message MigrateNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DedicateGuestVlanRangeRequest represents the parameters for dedicates a guest vlan range to an account
+message DedicateGuestVlanRangeRequest {
+	// guest vlan range to be dedicated
+	string vlan = 1 [
+		(validate.field).required = true
+	];
+
+	// account who will own the VLAN
+	string account_name = 2;
+
+	// project who will own the VLAN
+	int64 project_id = 3;
+
+	// domain ID of the account owning a VLAN
+	int64 domain_id = 4;
+
+	// physical network ID of the vlan
+	int64 physical_network_id = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// DedicateGuestVlanRangeResponse represents the response from dedicates a guest vlan range to an account
+message DedicateGuestVlanRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateStorageNetworkIpRangeRequest represents the parameters for update a storage network ip range, only allowed when no ips in this range have been allocated.
+message UpdateStorageNetworkIpRangeRequest {
+	// UUID of storage network ip range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the beginning IP address
+	string start_ip = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address
+	string end_ip = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Optional. the vlan the ip range sits on
+	int32 vlan = 4;
+
+	// the netmask for storage network
+	string netmask = 5;
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpdateStorageNetworkIpRangeResponse represents the response from update a storage network ip range, only allowed when no ips in this range have been allocated.
+message UpdateStorageNetworkIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteNetworkServiceProviderRequest represents the parameters for deletes a network service provider.
+message DeleteNetworkServiceProviderRequest {
+	// the ID of the network service provider
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteNetworkServiceProviderResponse represents the response from deletes a network service provider.
+message DeleteNetworkServiceProviderResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateVPCRequest represents the parameters for moves a vpc to another physical network
+message MigrateVPCRequest {
+	// the ID of the vpc
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// vpc offering ID
+	int64 vpc_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// network offering ids for each network in the vpc. Example: tierNetworkOfferings[0].networkId=networkId1&tierNetworkOfferings[0].networkOfferingId=newNetworkofferingId1&tierNetworkOfferings[1].networkId=networkId2&tierNetworkOfferings[1].networkOfferingId=newNetworkofferingId2
+	map<string, string> tier_network_offerings = 3;
+
+	// true if previous network migration cmd failed
+	bool resume = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// MigrateVPCResponse represents the response from moves a vpc to another physical network
+message MigrateVPCResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkServiceProvidersRequest represents the parameters for lists network serviceproviders for a given physical network.
+message ListNetworkServiceProvidersRequest {
+	// the Physical Network ID
+	int64 physical_network_id = 1;
+
+	// list providers by name
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list providers by state
+	string state = 3;
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListNetworkServiceProvidersResponse represents the response from lists network serviceproviders for a given physical network.
+message ListNetworkServiceProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of Providers
+	repeated Provider items = 1;
+
+	// The total count of Providers
+	int32 total_count = 2;
+}
+
+// ListIpv4SubnetsForZoneRequest represents the parameters for lists ipv4 subnets for zone.
+message ListIpv4SubnetsForZoneRequest {
+	// UUID of the IPv4 subnet.
+	int64 id = 1;
+
+	// UUID of zone to which the IPv4 subnet belongs to.
+	int64 zone_id = 2;
+
+	// CIDR of the IPv4 subnet.
+	string subnet = 3;
+
+	// the account which the IPv4 subnet is dedicated to. Must be used with the domainId parameter.
+	string account_name = 4 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// project who which the IPv4 subnet is dedicated to
+	int64 project_id = 5;
+
+	// the domain ID which the IPv4 subnet is dedicated to.
+	int64 domain_id = 6;
+
+	// List by keyword
+	string keyword = 7;
+
+	//
+	int32 page = 8;
+
+	//
+	int32 page_size = 9;
+
+	//
+	string response_type = 10;
+}
+
+// ListIpv4SubnetsForZoneResponse represents the response from lists ipv4 subnets for zone.
+message ListIpv4SubnetsForZoneResponse {
+	option (validate.message).disabled = false;
+	// The list of DataCenterIpv4Subnets
+	repeated DataCenterIpv4Subnet items = 1;
+
+	// The total count of DataCenterIpv4Subnets
+	int32 total_count = 2;
+}
+
+// DeleteNetworkRequest represents the parameters for deletes a network
+message DeleteNetworkRequest {
+	// the ID of the network
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force delete a network. Network will be marked as 'Destroy' even when commands to shutdown and cleanup to the backend fails.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteNetworkResponse represents the response from deletes a network
+message DeleteNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateNetworkOfferingRequest represents the parameters for updates a network offering.
+message UpdateNetworkOfferingRequest {
+	// the id of the network offering
+	int64 id = 1;
+
+	// the name of the network offering
+	string network_offering_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the display text of the network offering
+	string display_text = 3;
+
+	// the availability of network offering. The value is Required makes this network offering default for Guest Virtual Networks. Only one network offering can have the value Required
+	string availability = 4;
+
+	// sort key of the network offering, integer
+	int32 sort_key = 5;
+
+	// update state for the network offering
+	string state = 6;
+
+	// if true keepalive will be turned on in the loadbalancer. At the time of writing this has only an effect on haproxy; the mode http and httpclose options are unset in the haproxy conf file.
+	bool keep_alive_enabled = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// maximum number of concurrent connections supported by the network offering
+	int32 max_connections = 8;
+
+	// the tags for the network offering.
+	string tags = 9;
+
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	string domain_ids = 10 [
+		(validate.field).string.uuid = true
+	];
+
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	string zone_ids = 11 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 12;
+}
+
+// UpdateNetworkOfferingResponse represents the response from updates a network offering.
+message UpdateNetworkOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateIpv4SubnetForGuestNetworkRequest represents the parameters for creates a ipv4 subnet for guest networks.
+message CreateIpv4SubnetForGuestNetworkRequest {
+	// The zone Ipv4 subnet which the IPv4 subnet belongs to.
+	int64 parent_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The CIDR of this Ipv4 subnet.
+	string subnet = 2;
+
+	// the CIDR size of IPv4 network. This is mutually exclusive with subnet.
+	int32 cidr_size = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateIpv4SubnetForGuestNetworkResponse represents the response from creates a ipv4 subnet for guest networks.
+message CreateIpv4SubnetForGuestNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkIsolationMethodsRequest represents the parameters for lists supported methods of network isolation
+message ListNetworkIsolationMethodsRequest {
+	// List by keyword
+	string keyword = 1;
+
+	//
+	int32 page = 2;
+
+	//
+	int32 page_size = 3;
+
+	//
+	string response_type = 4;
+}
+
+// ListNetworkIsolationMethodsResponse represents the response from lists supported methods of network isolation
+message ListNetworkIsolationMethodsResponse {
+	option (validate.message).disabled = false;
+	// The list of IsolationMethods
+	repeated IsolationMethod items = 1;
+
+	// The total count of IsolationMethods
+	int32 total_count = 2;
+}
+
+// AddNetworkServiceProviderRequest represents the parameters for adds a network serviceprovider to a physical network
+message AddNetworkServiceProviderRequest {
+	// the Physical Network ID to add the provider to
+	int64 physical_network_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the destination Physical Network ID to bridge to
+	int64 destination_physical_network_id = 2;
+
+	// the name for the physical network service provider
+	string name = 3 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the list of services to be enabled for this physical network service provider
+	repeated string enabled_services = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// AddNetworkServiceProviderResponse represents the response from adds a network serviceprovider to a physical network
+message AddNetworkServiceProviderResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworksRequest represents the parameters for lists all available networks.
+message ListNetworksRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// list networks by ID
+	int64 id = 2;
+	// the zone ID of the network
+	int64 zone_id = 3;
+	// the type of the network. Supported values are: isolated, l2, shared and all
+	string guest_ip_type = 4;
+	// true if network is system, false otherwise
+	bool is_system = 5 [
+		features.field_presence = EXPLICIT
+	];
+	// list networks by ACL (access control list) type. Supported values are account and domain
+	string acl_type = 6;
+	// type of the traffic
+	string traffic_type = 7;
+	// list networks by physical network id
+	int64 physical_network_id = 8;
+	// list networks supporting certain services
+	repeated string supported_services = 9;
+	// list networks by restartRequired
+	bool restart_required = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// true if need to list only networks which support specifying IP ranges
+	bool specify_ip_ranges = 11 [
+		features.field_presence = EXPLICIT
+	];
+	// List networks by VPC
+	int64 vpc_id = 12;
+	// list networks available for VM deployment
+	bool can_use_for_deploy = 13 [
+		features.field_presence = EXPLICIT
+	];
+	// the network belongs to VPC
+	bool for_vpc = 14 [
+		features.field_presence = EXPLICIT
+	];
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 15 [
+		features.field_presence = EXPLICIT
+	];
+	// list networks by network offering ID
+	int64 network_offering_id = 16;
+	// List networks by associated networks. Only available if create a Shared network.
+	int64 associated_network_id = 17;
+	// flag to display the resource icon for networks
+	bool show_icon = 18 [
+		features.field_presence = EXPLICIT
+	];
+	// possible values are "account", "domain", "accountdomain","shared", and "all". Default value is "all".* account : account networks that have been registered for or created by the calling user. * domain : domain networks that have been registered for or created by the calling user. * accountdomain : account and domain networks that have been registered for or created by the calling user. * shared : networks that have been granted to the calling user by another user. * all : all networks (account, domain and shared).
+	string network_filter = 19;
+	// makes the API's response contains only the resource count
+	bool retrieve_only_resource_count = 20 [
+		features.field_presence = EXPLICIT
+	];
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 21;
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 22;
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 23 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 24 [
+		features.field_presence = EXPLICIT
+	];
+	// list only resources belonging to the domain specified
+	int64 domain_id = 25;
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 26 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 27;
+	//
+	int32 page = 28;
+	//
+	int32 page_size = 29;
+	//
+	string response_type = 30;
+}
+
+// ListNetworksResponse represents the response from lists all available networks.
+message ListNetworksResponse {
+	option (validate.message).disabled = false;
+	// The list of Networks
+	repeated Network items = 1;
+
+	// The total count of Networks
+	int32 total_count = 2;
+}
+
+// ListNetworkACLsRequest represents the parameters for lists all network acl items
+message ListNetworkACLsRequest {
+	// Lists network ACL Item with the specified ID
+	int64 id = 1;
+
+	// list network ACL items by network ID
+	int64 network_id = 2;
+
+	// list network ACL items by traffic type - ingress or egress
+	string traffic_type = 3;
+
+	// list network ACL items by ACL ID
+	int64 acl_id = 4;
+
+	// list network ACL items by protocol
+	string protocol = 5;
+
+	// list network ACL items by action
+	string action = 6;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 8;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 9;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 10 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 12;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 14;
+
+	//
+	int32 page = 15;
+
+	//
+	int32 page_size = 16;
+
+	//
+	string response_type = 17;
+}
+
+// ListNetworkACLsResponse represents the response from lists all network acl items
+message ListNetworkACLsResponse {
+	option (validate.message).disabled = false;
+	// The list of NetworkACLItems
+	repeated NetworkACLItem items = 1;
+
+	// The total count of NetworkACLItems
+	int32 total_count = 2;
+}
+
+// CreateManagementNetworkIpRangeRequest represents the parameters for creates a management network ip range.
+message CreateManagementNetworkIpRangeRequest {
+	// UUID of POD, where the IP range belongs to.
+	int64 pod_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The gateway for the management network.
+	string gateway = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The netmask for the management network.
+	string netmask = 3 [
+		(validate.field).required = true
+	];
+
+	// The starting IP address.
+	string start_ip = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The ending IP address.
+	string end_ip = 5 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Specify if range is dedicated for CPVM and SSVM.
+	bool for_system_vms = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Optional. The vlan id the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan
+	string vlan = 7;
+
+	//
+	int64 start_event_id = 8;
+
+	//
+	string injected_job_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 10;
+}
+
+// CreateManagementNetworkIpRangeResponse represents the response from creates a management network ip range.
+message CreateManagementNetworkIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSupportedNetworkServicesRequest represents the parameters for lists all network services provided by cloudstack or for the given provider.
+message ListSupportedNetworkServicesRequest {
+	// network service provider name
+	string provider_name = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// network service name to list providers and capabilities of
+	string service_name = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListSupportedNetworkServicesResponse represents the response from lists all network services provided by cloudstack or for the given provider.
+message ListSupportedNetworkServicesResponse {
+	option (validate.message).disabled = false;
+	// The list of Services
+	repeated Service items = 1;
+
+	// The total count of Services
+	int32 total_count = 2;
+}
+
+// UpdatePhysicalNetworkRequest represents the parameters for updates a physical network
+message UpdatePhysicalNetworkRequest {
+	// physical network id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the speed for the physical network[1G/10G]
+	string speed = 2;
+
+	// Tag the physical network
+	repeated string tags = 3;
+
+	// Enabled/Disabled
+	string state = 4;
+
+	// the VLAN for the physical network
+	string vlan = 5;
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpdatePhysicalNetworkResponse represents the response from updates a physical network
+message UpdatePhysicalNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkACLListRequest represents the parameters for creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
+message CreateNetworkACLListRequest {
+	// Name of the network ACL list
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Description of the network ACL list
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// ID of the VPC associated with this network ACL list
+	int64 vpc_id = 3;
+
+	// an optional field, whether to the display the list to the end user or not
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// CreateNetworkACLListResponse represents the response from creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
+message CreateNetworkACLListResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkCmdByAdminRequest represents the parameters for creates a network
+message CreateNetworkCmdByAdminRequest {
+	// the ID or VID of the network
+	string vlan = 1;
+
+	// when true bypasses VLAN id/range overlap check during network creation for shared and L2 networks
+	bool bypass_vlan_overlap_check = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// when true ip address usage for the network will not be exported by the listUsageRecords API
+	bool hide_ip_address_usage = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// IPV4 address to be assigned to a router in a shared network
+	string router_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// IPV6 address to be assigned to a router in a shared network
+	string router_ipv6 = 5 [
+		(validate.field).string.ipv6 = true
+	];
+
+	// Ids of the Bgp Peer for the network
+	repeated string bgp_peer_ids = 6;
+
+	// the name of the network
+	string name = 7 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the display text of the network
+	string display_text = 8;
+
+	// the network offering ID
+	int64 network_offering_id = 9 [
+		(validate.field).required = true
+	];
+
+	// the zone ID for the network
+	int64 zone_id = 10 [
+		(validate.field).required = true
+	];
+
+	// the physical network ID the network belongs to
+	int64 physical_network_id = 11;
+
+	// the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC
+	string gateway = 12 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC
+	string netmask = 13;
+
+	// the beginning IP address in the network IP range
+	string start_ip = 14 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address in the network IP range. If not specified, will be defaulted to startIP
+	string end_ip = 15 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the isolated private VLAN for this network
+	string isolated_pvlan = 16;
+
+	// the isolated private VLAN type for this network
+	string isolated_pvlan_type = 17;
+
+	// network domain
+	string network_domain = 18;
+
+	// Access control type; supported values are account and domain. In 3.0 all shared networks should have aclType=Domain, and all isolated networks - Account. Account means that only the account owner can use the network, domain - all accounts in the domain can use the network
+	string acl_type = 19;
+
+	// Account that will own the network. Account should be under the selected domain
+	string account_name = 20;
+
+	// an optional project for the network
+	int64 project_id = 21;
+
+	// domain ID of the account owning a network. If the account is not specified, but the acltype is Account or not specified, the network will be automatically assigned to the caller account and domain. To create a network under the domain without linking it to any account, make sure to include acltype=Domain parameter in the api call. If account is not specified, but acltype is Domain, the network will be created for the specified domain.
+	int64 domain_id = 22;
+
+	// Defines whether to allow subdomains to use networks dedicated to their parent domain(s). Should be used with aclType=Domain, defaulted to allow.subdomain.network.access global config if not specified
+	bool subdomain_access = 23 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the VPC network belongs to
+	int64 vpc_id = 24;
+
+	// Tungsten-Fabric virtual router the network belongs to
+	string tungsten_virtual_router_uuid = 25 [
+		(validate.field).string.uuid = true
+	];
+
+	// the beginning IPv6 address in the IPv6 network range
+	string start_ipv6 = 26 [
+		(validate.field).string.ipv6 = true
+	];
+
+	// the ending IPv6 address in the IPv6 network range
+	string end_ipv6 = 27 [
+		(validate.field).string.ipv6 = true
+	];
+
+	// the gateway of the IPv6 network. Required for Shared networks
+	string ip6_gateway = 28 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the CIDR of IPv6 network, must be at least /64
+	string ip6_cidr = 29 [
+		(validate.field).string.ipv4_prefix = true
+	];
+
+	// ID of the network in an external system.
+	string external_id = 30 [
+		(validate.field).string.uuid = true
+	];
+
+	// an optional field, whether to the display the network to the end user or not.
+	bool display_network = 31 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Network ACL ID associated for the network
+	int64 acl_id = 32;
+
+	// The network this network is associated to. only available if create a Shared network
+	int64 associated_network_id = 33;
+
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 34;
+
+	// MTU to be configured on the network VR's private interface(s)
+	int32 private_mtu = 35;
+
+	// the first IPv4 DNS for the network
+	string ip4_dns1 = 36;
+
+	// the second IPv4 DNS for the network
+	string ip4_dns2 = 37;
+
+	// the first IPv6 DNS for the network
+	string ip6_dns1 = 38 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the second IPv6 DNS for the network
+	string ip6_dns2 = 39 [
+		(validate.field).string.ipv4 = true
+	];
+
+	/*
+	 * IPV4 address to be assigned to the public interface of the network router. This address will be used as source NAT address for the network.
+	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
+	 */
+	string source_nat_i_p = 40 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the CIDR size of IPv4 network. For regular users, this is required for isolated networks with ROUTED mode.
+	int32 cidr_size = 41;
+
+	// the AS Number of the network
+	int64 as_number = 42;
+
+	//
+	string response_type = 43;
+}
+
+// CreateNetworkCmdByAdminResponse represents the response from creates a network
+message CreateNetworkCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteStorageNetworkIpRangeRequest represents the parameters for deletes a storage network ip range.
+message DeleteStorageNetworkIpRangeRequest {
+	// the uuid of the storage network ip range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteStorageNetworkIpRangeResponse represents the response from deletes a storage network ip range.
+message DeleteStorageNetworkIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteIpv4SubnetForZoneRequest represents the parameters for deletes an existing ipv4 subnet for a zone.
+message DeleteIpv4SubnetForZoneRequest {
+	// Id of the guest network IPv4 subnet
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteIpv4SubnetForZoneResponse represents the response from deletes an existing ipv4 subnet for a zone.
+message DeleteIpv4SubnetForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkPermissionsRequest represents the parameters for list network visibility and all accounts that have permissions to view this network.
+message ListNetworkPermissionsRequest {
+	// Lists network permission by network ID
+	int64 network_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListNetworkPermissionsResponse represents the response from list network visibility and all accounts that have permissions to view this network.
+message ListNetworkPermissionsResponse {
+	option (validate.message).disabled = false;
+	// The list of NetworkPermissionss
+	repeated NetworkPermissions items = 1;
+
+	// The total count of NetworkPermissionss
+	int32 total_count = 2;
+}
+
+// ListDedicatedGuestVlanRangesRequest represents the parameters for lists dedicated guest vlan ranges
+message ListDedicatedGuestVlanRangesRequest {
+	// list dedicated guest vlan ranges by id
+	int64 id = 1;
+
+	// the account with which the guest VLAN range is associated. Must be used with the domainId parameter.
+	string account_name = 2 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// project who will own the guest VLAN range
+	int64 project_id = 3;
+
+	// the domain ID with which the guest VLAN range is associated.  If used with the account parameter, returns all guest VLAN ranges for that account in the specified domain.
+	int64 domain_id = 4;
+
+	// the dedicated guest vlan range
+	string guest_vlan_range = 5;
+
+	// physical network id of the guest VLAN range
+	int64 physical_network_id = 6;
+
+	// zone of the guest VLAN range
+	int64 zone_id = 7;
+
+	// List by keyword
+	string keyword = 8;
+
+	//
+	int32 page = 9;
+
+	//
+	int32 page_size = 10;
+
+	//
+	string response_type = 11;
+}
+
+// ListDedicatedGuestVlanRangesResponse represents the response from lists dedicated guest vlan ranges
+message ListDedicatedGuestVlanRangesResponse {
+	option (validate.message).disabled = false;
+	// The list of GuestVlanRanges
+	repeated GuestVlanRange items = 1;
+
+	// The total count of GuestVlanRanges
+	int32 total_count = 2;
+}
+
+// DeleteNetworkACLListRequest represents the parameters for deletes a network acl
+message DeleteNetworkACLListRequest {
+	// the ID of the network ACL
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteNetworkACLListResponse represents the response from deletes a network acl
+message DeleteNetworkACLListResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteNetworkOfferingRequest represents the parameters for deletes a network offering.
+message DeleteNetworkOfferingRequest {
+	// the ID of the network offering
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteNetworkOfferingResponse represents the response from deletes a network offering.
+message DeleteNetworkOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MoveNetworkAclItemRequest represents the parameters for move an acl rule to a position bettwen two other acl rules of the same acl network list
+message MoveNetworkAclItemRequest {
+	// The ID of the network ACL rule that is being moved to a new position.
+	string uuid_rule_being_moved = 1 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// The ID of the first rule that is right before the new position where the rule being moved is going to be placed. This value can be 'NULL' if the rule is being moved to the first position of the network ACL list.
+	string previous_acl_rule_uuid = 2 [
+		(validate.field).string.uuid = true
+	];
+
+	// The ID of the rule that is right after the new position where the rule being moved is going to be placed. This value can be 'NULL' if the rule is being moved to the last position of the network ACL list.
+	string next_acl_rule_uuid = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// Md5 hash used to check the consistency of the ACL rule list before applying the ACL rule move. This check is useful to manage concurrency problems that may happen when multiple users are editing the same ACL rule listing. The parameter is not required. Therefore, if the user does not send it, they assume the risk of moving ACL rules without checking the consistency of the access control list before executing the move. We use MD5 hash function on a String that is composed of all UUIDs of the ACL rules in concatenated in their respective order (order defined via 'number' field).
+	string acl_consistency_hash = 4;
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// MoveNetworkAclItemResponse represents the response from move an acl rule to a position bettwen two other acl rules of the same acl network list
+message MoveNetworkAclItemResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListGuestVlansRequest represents the parameters for lists all guest vlans
+message ListGuestVlansRequest {
+	// list guest vlan by id
+	int64 id = 1;
+
+	// list guest vlan by zone
+	int64 zone_id = 2;
+
+	// list guest vlan by physical network
+	int64 physical_network_id = 3;
+
+	// list guest vlan by vnet
+	string vnet = 4;
+
+	// limits search results to allocated guest vlan. false by default.
+	bool allocated_only = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 6;
+
+	//
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
+}
+
+// ListGuestVlansResponse represents the response from lists all guest vlans
+message ListGuestVlansResponse {
+	option (validate.message).disabled = false;
+	// The list of GuestVlans
+	repeated GuestVlan items = 1;
+
+	// The total count of GuestVlans
+	int32 total_count = 2;
+}
+
+// UpdateIpv4SubnetForZoneRequest represents the parameters for updates an existing ipv4 subnet for a zone.
+message UpdateIpv4SubnetForZoneRequest {
+	// Id of the guest network IPv4 subnet
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The new CIDR of the IPv4 subnet.
+	string subnet = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// UpdateIpv4SubnetForZoneResponse represents the response from updates an existing ipv4 subnet for a zone.
+message UpdateIpv4SubnetForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreatePhysicalNetworkRequest represents the parameters for creates a physical network
+message CreatePhysicalNetworkRequest {
+	// the Zone ID for the physical network
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the VLAN for the physical network
+	string vlan = 2;
+
+	// the speed for the physical network[1G/10G]
+	string speed = 3;
+
+	// domain ID of the account owning a physical network
+	int64 domain_id = 4;
+
+	// the broadcast domain range for the physical network[Pod or Zone]. In Acton release it can be Zone only in Advance zone, and Pod in Basic
+	string broadcast_domain_range = 5;
+
+	// Tag the physical network
+	repeated string tags = 6;
+
+	// the isolation method for the physical network[VLAN/L3/GRE]
+	repeated string isolation_methods = 7;
+
+	// the name of the physical network
+	string network_name = 8 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	int64 start_event_id = 9;
+
+	//
+	string injected_job_id = 10 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 11;
+}
+
+// CreatePhysicalNetworkResponse represents the response from creates a physical network
+message CreatePhysicalNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkOfferingRequest represents the parameters for creates a network offering.
+message CreateNetworkOfferingRequest {
+	// the name of the network offering
+	string network_offering_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the display text of the network offering, defaults to the value of 'name'.
+	string display_text = 2;
+
+	// the traffic type for the network offering. Supported type in current release is GUEST only
+	string traffictype = 3 [
+		(validate.field).required = true
+	];
+
+	// the tags for the network offering.
+	string tags = 4;
+
+	// true if network offering supports vlans
+	bool specify_vlan = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the availability of network offering. The default value is Optional.  Another value is Required, which will make it as the default network offering for new networks
+	string availability = 6;
+
+	// data transfer rate in megabits per second allowed
+	int32 network_rate = 7;
+
+	// true if the network offering is IP conserve mode enabled
+	bool conserve_mode = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the service offering ID used by virtual router provider
+	int64 service_offering_id = 9;
+
+	// guest type of the network offering: Shared or Isolated
+	string guest_iptype = 10 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The internet protocol of network offering. Options are ipv4 and dualstack. Default is ipv4. dualstack will create a network offering that supports both IPv4 and IPv6
+	string internet_protocol = 11;
+
+	// services supported by the network offering
+	repeated string supported_services = 12;
+
+	// provider to service mapping. If not specified, the provider for the service will be mapped to the default provider on the physical network
+	map<string, string> service_provider_list = 13;
+
+	// desired service capabilities as part of network offering
+	map<string, string> service_capabilityst_list = 14;
+
+	// true if network offering supports specifying ip ranges; defaulted to false if not specified
+	bool specify_ip_ranges = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if network offering supports persistent networks; defaulted to false if not specified
+	bool is_persistent = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if network offering is meant to be used for VPC, false otherwise.
+	bool for_vpc = 17 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if network offering is meant to be used for NSX, false otherwise.
+	bool for_nsx = 18 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if network offering for NSX network offering supports Load balancer service.
+	bool nsx_supports_lb_service = 19 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if network offering for NSX network offering supports Internal Load balancer service.
+	bool nsx_supports_internal_lb_service = 20 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Indicates the mode with which the network will operate. Valid option: NATTED or ROUTED
+	string network_mode = 21;
+
+	// true if network offering is meant to be used for Tungsten-Fabric, false otherwise.
+	bool for_tungsten = 22 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Network offering details in key/value pairs. Supported keys are internallbprovider/publiclbprovider with service provider as a value, and promiscuousmode/macaddresschanges/forgedtransmits with true/false as value to accept/reject the security settings if available for a nic/portgroup
+	map<string, string> details = 23;
+
+	// true if guest network default egress policy is allow; false if default egress policy is deny
+	bool egress_default_policy = 24 [
+		features.field_presence = EXPLICIT
+	];
+
+	// if true keepalive will be turned on in the loadbalancer. At the time of writing this has only an effect on haproxy; the mode http and httpclose options are unset in the haproxy conf file.
+	bool keep_alive_enabled = 25 [
+		features.field_presence = EXPLICIT
+	];
+
+	// maximum number of concurrent connections supported by the network offering
+	int32 max_connections = 26;
+
+	// the ID of the containing domain(s), null for public offerings
+	repeated string domain_ids = 27;
+
+	// the ID of the containing zone(s), null for public offerings
+	repeated string zone_ids = 28;
+
+	// set to true if the offering is to be enabled during creation. Default is false
+	bool enable = 29 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if network offering supports choosing AS number
+	bool specify_as_number = 30 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the routing mode for the network offering. Supported types are: Static or Dynamic.
+	string routing_mode = 31;
+
+	//
+	string response_type = 32;
+}
+
+// CreateNetworkOfferingResponse represents the response from creates a network offering.
+message CreateNetworkOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateNetworkServiceProviderRequest represents the parameters for updates a network serviceprovider of a physical network
+message UpdateNetworkServiceProviderRequest {
+	// Enabled/Disabled/Shutdown the physical network service provider
+	string state = 1;
+
+	// network service provider id
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	// the list of services to be enabled for this physical network service provider
+	repeated string enabled_services = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateNetworkServiceProviderResponse represents the response from updates a network serviceprovider of a physical network
+message UpdateNetworkServiceProviderResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateStorageNetworkIpRangeRequest represents the parameters for creates a storage network ip range.
+message CreateStorageNetworkIpRangeRequest {
+	// UUID of pod where the ip range belongs to
+	int64 pod_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the beginning IP address
+	string start_ip = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address
+	string end_ip = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Optional. The vlan the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan. This is mainly for Vmware as other hypervisors can directly retrieve bridge from physical network traffic type table
+	int32 vlan = 4;
+
+	// the netmask for storage network
+	string netmask = 5 [
+		(validate.field).required = true
+	];
+
+	// the gateway for storage network
+	string gateway = 6 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreateStorageNetworkIpRangeResponse represents the response from creates a storage network ip range.
+message CreateStorageNetworkIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListIpv4SubnetsForGuestNetworkRequest represents the parameters for lists ipv4 subnets for guest networks.
+message ListIpv4SubnetsForGuestNetworkRequest {
+	// UUID of the IPv4 subnet for guest network.
+	int64 id = 1;
+
+	// UUID of zone Ipv4 subnet which the IPv4 subnet belongs to.
+	int64 parent_id = 2;
+
+	// The CIDR of the Ipv4 subnet.
+	string subnet = 3;
+
+	// UUID of zone to which the IPv4 subnet belongs to.
+	int64 zone_id = 4;
+
+	// UUID of network to which the IPv4 subnet is associated to.
+	int64 network_id = 5;
+
+	// UUID of VPC to which the IPv4 subnet is associated to.
+	int64 vpc_id = 6;
+
+	// List by keyword
+	string keyword = 7;
+
+	//
+	int32 page = 8;
+
+	//
+	int32 page_size = 9;
+
+	//
+	string response_type = 10;
+}
+
+// ListIpv4SubnetsForGuestNetworkResponse represents the response from lists ipv4 subnets for guest networks.
+message ListIpv4SubnetsForGuestNetworkResponse {
+	option (validate.message).disabled = false;
+	// The list of Ipv4SubnetForGuestNetworks
+	repeated Ipv4SubnetForGuestNetwork items = 1;
+
+	// The total count of Ipv4SubnetForGuestNetworks
+	int32 total_count = 2;
+}
+
+// DeleteNetworkDeviceRequest represents the parameters for deletes network device.
+message DeleteNetworkDeviceRequest {
+	// Id of network device to delete
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteNetworkDeviceResponse represents the response from deletes network device.
+message DeleteNetworkDeviceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkRequest represents the parameters for creates a network
+message CreateNetworkRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the name of the network
+	string name = 2 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// the display text of the network
+	string display_text = 3;
+	// the network offering ID
+	int64 network_offering_id = 4 [
+		(validate.field).required = true
+	];
+	// the zone ID for the network
+	int64 zone_id = 5 [
+		(validate.field).required = true
+	];
+	// the physical network ID the network belongs to
+	int64 physical_network_id = 6;
+	// the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC
+	string gateway = 7 [
+		(validate.field).string.ipv4 = true
+	];
+	// the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC
+	string netmask = 8;
+	// the beginning IP address in the network IP range
+	string start_ip = 9 [
+		(validate.field).string.ipv4 = true
+	];
+	// the ending IP address in the network IP range. If not specified, will be defaulted to startIP
+	string end_ip = 10 [
+		(validate.field).string.ipv4 = true
+	];
+	// the isolated private VLAN for this network
+	string isolated_pvlan = 11;
+	// the isolated private VLAN type for this network
+	string isolated_pvlan_type = 12;
+	// network domain
+	string network_domain = 13;
+	// Access control type; supported values are account and domain. In 3.0 all shared networks should have aclType=Domain, and all isolated networks - Account. Account means that only the account owner can use the network, domain - all accounts in the domain can use the network
+	string acl_type = 14;
+	// Account that will own the network. Account should be under the selected domain
+	string account_name = 15;
+	// an optional project for the network
+	int64 project_id = 16;
+	// domain ID of the account owning a network. If the account is not specified, but the acltype is Account or not specified, the network will be automatically assigned to the caller account and domain. To create a network under the domain without linking it to any account, make sure to include acltype=Domain parameter in the api call. If account is not specified, but acltype is Domain, the network will be created for the specified domain.
+	int64 domain_id = 17;
+	// Defines whether to allow subdomains to use networks dedicated to their parent domain(s). Should be used with aclType=Domain, defaulted to allow.subdomain.network.access global config if not specified
+	bool subdomain_access = 18 [
+		features.field_presence = EXPLICIT
+	];
+	// the VPC network belongs to
+	int64 vpc_id = 19;
+	// Tungsten-Fabric virtual router the network belongs to
+	string tungsten_virtual_router_uuid = 20 [
+		(validate.field).string.uuid = true
+	];
+	// the beginning IPv6 address in the IPv6 network range
+	string start_ipv6 = 21 [
+		(validate.field).string.ipv6 = true
+	];
+	// the ending IPv6 address in the IPv6 network range
+	string end_ipv6 = 22 [
+		(validate.field).string.ipv6 = true
+	];
+	// the gateway of the IPv6 network. Required for Shared networks
+	string ip6_gateway = 23 [
+		(validate.field).string.ipv4 = true
+	];
+	// the CIDR of IPv6 network, must be at least /64
+	string ip6_cidr = 24 [
+		(validate.field).string.ipv4_prefix = true
+	];
+	// ID of the network in an external system.
+	string external_id = 25 [
+		(validate.field).string.uuid = true
+	];
+	// an optional field, whether to the display the network to the end user or not.
+	bool display_network = 26 [
+		features.field_presence = EXPLICIT
+	];
+	// Network ACL ID associated for the network
+	int64 acl_id = 27;
+	// The network this network is associated to. only available if create a Shared network
+	int64 associated_network_id = 28;
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 29;
+	// MTU to be configured on the network VR's private interface(s)
+	int32 private_mtu = 30;
+	// the first IPv4 DNS for the network
+	string ip4_dns1 = 31;
+	// the second IPv4 DNS for the network
+	string ip4_dns2 = 32;
+	// the first IPv6 DNS for the network
+	string ip6_dns1 = 33 [
+		(validate.field).string.ipv4 = true
+	];
+	// the second IPv6 DNS for the network
+	string ip6_dns2 = 34 [
+		(validate.field).string.ipv4 = true
+	];
+	/*
+	 * IPV4 address to be assigned to the public interface of the network router. This address will be used as source NAT address for the network.
+	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
+	 */
+	string source_nat_i_p = 35 [
+		(validate.field).string.ipv4 = true
+	];
+	// the CIDR size of IPv4 network. For regular users, this is required for isolated networks with ROUTED mode.
+	int32 cidr_size = 36;
+	// the AS Number of the network
+	int64 as_number = 37;
+	//
+	string response_type = 38;
+}
+
+// CreateNetworkResponse represents the response from creates a network
+message CreateNetworkResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ReleaseDedicatedGuestVlanRangeRequest represents the parameters for releases a dedicated guest vlan range to the system
+message ReleaseDedicatedGuestVlanRangeRequest {
+	// the ID of the dedicated guest vlan range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// ReleaseDedicatedGuestVlanRangeResponse represents the response from releases a dedicated guest vlan range to the system
+message ReleaseDedicatedGuestVlanRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListNetworkProtocolsRequest represents the parameters for lists details of network protocols
+message ListNetworkProtocolsRequest {
+	// The option of network protocols. Supported values are: protocolnumber, icmptype.
+	string option = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListNetworkProtocolsResponse represents the response from lists details of network protocols
+message ListNetworkProtocolsResponse {
+	option (validate.message).disabled = false;
+	// The list of NetworkProtocols
+	repeated NetworkProtocol items = 1;
+
+	// The total count of NetworkProtocols
+	int32 total_count = 2;
+}
+
+// NetworkOffering represents a NetworkOffering Item
+message NetworkOffering {
+	// The ID of the NetworkOffering
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the NetworkOffering
+	string name = 2;
+	// The display name of the NetworkOffering
+	string display_name = 3;
+	// The description of the NetworkOffering
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// DataCenterGuestIpv6Prefix represents a DataCenterGuestIpv6Prefix Item
+message DataCenterGuestIpv6Prefix {
+	// The ID of the DataCenterGuestIpv6Prefix
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the DataCenterGuestIpv6Prefix
+	string name = 2;
+	// The display name of the DataCenterGuestIpv6Prefix
+	string display_name = 3;
+	// The description of the DataCenterGuestIpv6Prefix
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// StorageNetworkIpRange represents a StorageNetworkIpRange Item
+message StorageNetworkIpRange {
+	// The ID of the StorageNetworkIpRange
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the StorageNetworkIpRange
+	string name = 2;
+	// The display name of the StorageNetworkIpRange
+	string display_name = 3;
+	// The description of the StorageNetworkIpRange
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// PhysicalNetwork represents a PhysicalNetwork Item
+message PhysicalNetwork {
+	// The ID of the PhysicalNetwork
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the PhysicalNetwork
+	string name = 2;
+	// The display name of the PhysicalNetwork
+	string display_name = 3;
+	// The description of the PhysicalNetwork
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// NetworkDevice represents a NetworkDevice Item
+message NetworkDevice {
+	// The ID of the NetworkDevice
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the NetworkDevice
+	string name = 2;
+	// The display name of the NetworkDevice
+	string display_name = 3;
+	// The description of the NetworkDevice
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// NetworkACL represents a NetworkACL Item
+message NetworkACL {
+	// The ID of the NetworkACL
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the NetworkACL
+	string name = 2;
+	// The display name of the NetworkACL
+	string display_name = 3;
+	// The description of the NetworkACL
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Provider represents a Provider Item
+message Provider {
+	// The ID of the Provider
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Provider
+	string name = 2;
+	// The display name of the Provider
+	string display_name = 3;
+	// The description of the Provider
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// DataCenterIpv4Subnet represents a DataCenterIpv4Subnet Item
+message DataCenterIpv4Subnet {
+	// The ID of the DataCenterIpv4Subnet
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the DataCenterIpv4Subnet
+	string name = 2;
+	// The display name of the DataCenterIpv4Subnet
+	string display_name = 3;
+	// The description of the DataCenterIpv4Subnet
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// IsolationMethod represents a IsolationMethod Item
+message IsolationMethod {
+	// The ID of the IsolationMethod
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the IsolationMethod
+	string name = 2;
+	// The display name of the IsolationMethod
+	string display_name = 3;
+	// The description of the IsolationMethod
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Network represents a Network Item
+message Network {
+	// The ID of the Network
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Network
+	string name = 2;
+	// The display name of the Network
+	string display_name = 3;
+	// The description of the Network
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// NetworkACLItem represents a NetworkACLItem Item
+message NetworkACLItem {
+	// The ID of the NetworkACLItem
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the NetworkACLItem
+	string name = 2;
+	// The display name of the NetworkACLItem
+	string display_name = 3;
+	// The description of the NetworkACLItem
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Service represents a Service Item
+message Service {
+	// The ID of the Service
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Service
+	string name = 2;
+	// The display name of the Service
+	string display_name = 3;
+	// The description of the Service
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// NetworkPermissions represents a NetworkPermissions Item
+message NetworkPermissions {
+	// The ID of the NetworkPermissions
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the NetworkPermissions
+	string name = 2;
+	// The display name of the NetworkPermissions
+	string display_name = 3;
+	// The description of the NetworkPermissions
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// GuestVlanRange represents a GuestVlanRange Item
+message GuestVlanRange {
+	// The ID of the GuestVlanRange
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the GuestVlanRange
+	string name = 2;
+	// The display name of the GuestVlanRange
+	string display_name = 3;
+	// The description of the GuestVlanRange
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// GuestVlan represents a GuestVlan Item
+message GuestVlan {
+	// The ID of the GuestVlan
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the GuestVlan
+	string name = 2;
+	// The display name of the GuestVlan
+	string display_name = 3;
+	// The description of the GuestVlan
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Ipv4SubnetForGuestNetwork represents a Ipv4SubnetForGuestNetwork Item
+message Ipv4SubnetForGuestNetwork {
+	// The ID of the Ipv4SubnetForGuestNetwork
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Ipv4SubnetForGuestNetwork
+	string name = 2;
+	// The display name of the Ipv4SubnetForGuestNetwork
+	string display_name = 3;
+	// The description of the Ipv4SubnetForGuestNetwork
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// NetworkProtocol represents a NetworkProtocol Item
+message NetworkProtocol {
+	// The ID of the NetworkProtocol
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the NetworkProtocol
+	string name = 2;
+	// The display name of the NetworkProtocol
+	string display_name = 3;
+	// The description of the NetworkProtocol
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

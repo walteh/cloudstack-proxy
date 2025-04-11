@@ -1,0 +1,314 @@
+edition = "2023";
+
+package cloudstack.management.vmsnapshot.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// VmsnapshotService provides operations for managing Vmsnapshots
+service VmsnapshotService {
+	option (annotations.service).scope = Scope_USER;
+
+	// CreateVMSnapshot Creates snapshot for a vm.
+	rpc CreateVMSnapshot(CreateVMSnapshotRequest) returns (CreateVMSnapshotResponse) {}
+
+	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
+	rpc RevertToVMSnapshotCmdByAdmin(RevertToVMSnapshotCmdByAdminRequest) returns (RevertToVMSnapshotCmdByAdminResponse) {}
+
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {}
+
+	// RevertToVMSnapshot Revert VM from a vmsnapshot.
+	rpc RevertToVMSnapshot(RevertToVMSnapshotRequest) returns (RevertToVMSnapshotResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	rpc ListVMSnapshot(ListVMSnapshotRequest) returns (ListVMSnapshotResponse) {}
+}
+
+// CreateVMSnapshotRequest represents the parameters for creates snapshot for a vm.
+message CreateVMSnapshotRequest {
+	// The ID of the vm
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The description of the snapshot
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// The display name of the snapshot
+	string display_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// snapshot memory if true
+	bool snapshot_memory = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// quiesce vm if true
+	bool quiescevm = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// CreateVMSnapshotResponse represents the response from creates snapshot for a vm.
+message CreateVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
+message RevertToVMSnapshotCmdByAdminRequest {
+	// The ID of the vm snapshot
+	int64 vm_snap_shot_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
+message RevertToVMSnapshotCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
+message DeleteVMSnapshotRequest {
+	// The ID of the VM snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
+message DeleteVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
+message RevertToVMSnapshotRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the vm snapshot
+	int64 vm_snap_shot_id = 2 [
+		(validate.field).required = true
+	];
+	//
+	int64 start_event_id = 3;
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 5;
+}
+
+// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
+message RevertToVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVMSnapshotRequest represents the parameters for list virtual machine snapshot by conditions
+message ListVMSnapshotRequest {
+	// The ID of the VM snapshot
+	int64 id = 1;
+
+	// the IDs of the vm snapshots, mutually exclusive with vmsnapshotid
+	repeated string ids = 2;
+
+	// state of the virtual machine snapshot
+	string state = 3;
+
+	// the ID of the vm
+	int64 vm_id = 4;
+
+	// lists snapshot by snapshot name or display name
+	string vm_snapshot_name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 6;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 7;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 8 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 10;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 12;
+
+	//
+	int32 page = 13;
+
+	//
+	int32 page_size = 14;
+
+	//
+	string response_type = 15;
+}
+
+// ListVMSnapshotResponse represents the response from list virtual machine snapshot by conditions
+message ListVMSnapshotResponse {
+	option (validate.message).disabled = false;
+	// The list of VMSnapshots
+	repeated VMSnapshot items = 1;
+
+	// The total count of VMSnapshots
+	int32 total_count = 2;
+}
+
+// VMSnapshot represents a VMSnapshot Item
+message VMSnapshot {
+	// The ID of the VMSnapshot
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the VMSnapshot
+	string name = 2;
+	// The display name of the VMSnapshot
+	string display_name = 3;
+	// The description of the VMSnapshot
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

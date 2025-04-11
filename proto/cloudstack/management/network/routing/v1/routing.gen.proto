@@ -1,0 +1,306 @@
+edition = "2023";
+
+package cloudstack.management.network.routing.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// RoutingService provides operations for managing Network.Routings
+service RoutingService {
+	option (annotations.service).scope = Scope_USER;
+
+	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
+	rpc CreateRoutingFirewallRule(CreateRoutingFirewallRuleRequest) returns (CreateRoutingFirewallRuleResponse) {}
+
+	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
+	rpc UpdateRoutingFirewallRule(UpdateRoutingFirewallRuleRequest) returns (UpdateRoutingFirewallRuleResponse) {}
+
+	// DeleteRoutingFirewallRule Deletes a routing firewall rule
+	rpc DeleteRoutingFirewallRule(DeleteRoutingFirewallRuleRequest) returns (DeleteRoutingFirewallRuleResponse) {}
+
+	// ListRoutingFirewallRules Lists all Routing firewall rules
+	rpc ListRoutingFirewallRules(ListRoutingFirewallRulesRequest) returns (ListRoutingFirewallRulesResponse) {}
+}
+
+// CreateRoutingFirewallRuleRequest represents the parameters for creates a routing firewall rule in the given network in routed mode
+message CreateRoutingFirewallRuleRequest {
+	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	string protocol = 1 [
+		(validate.field).required = true
+	];
+
+	// the starting port of firewall rule
+	int32 public_start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of firewall rule
+	int32 public_end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
+	repeated string source_cidr_list = 4;
+
+	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
+	repeated string destination_cidrlist = 5;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 6;
+
+	// error code for this ICMP message
+	int32 icmp_code = 7;
+
+	// The network of the VM the firewall rule will be created for
+	int64 network_id = 8 [
+		(validate.field).required = true
+	];
+
+	// the traffic type for the Routing firewall rule, can be ingress or egress, defaulted to ingress if not specified
+	string traffic_type = 9;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateRoutingFirewallRuleResponse represents the response from creates a routing firewall rule in the given network in routed mode
+message CreateRoutingFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateRoutingFirewallRuleRequest represents the parameters for updates routing firewall rule with specified id
+message UpdateRoutingFirewallRuleRequest {
+	// the ID of the Routing firewall rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the Routing firewall rule to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateRoutingFirewallRuleResponse represents the response from updates routing firewall rule with specified id
+message UpdateRoutingFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteRoutingFirewallRuleRequest represents the parameters for deletes a routing firewall rule
+message DeleteRoutingFirewallRuleRequest {
+	// the ID of the Routing firewall rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteRoutingFirewallRuleResponse represents the response from deletes a routing firewall rule
+message DeleteRoutingFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListRoutingFirewallRulesRequest represents the parameters for lists all routing firewall rules
+message ListRoutingFirewallRulesRequest {
+	// Lists Routing firewall rule with the specified ID
+	int64 id = 1;
+
+	// list Routing firewall rules by network ID
+	int64 network_id = 2;
+
+	// list Routing firewall rules by traffic type - ingress or egress
+	string traffic_type = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListRoutingFirewallRulesResponse represents the response from lists all routing firewall rules
+message ListRoutingFirewallRulesResponse {
+	option (validate.message).disabled = false;
+	// The list of FirewallRules
+	repeated FirewallRule items = 1;
+
+	// The total count of FirewallRules
+	int32 total_count = 2;
+}
+
+// FirewallRule represents a FirewallRule Item
+message FirewallRule {
+	// The ID of the FirewallRule
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the FirewallRule
+	string name = 2;
+	// The display name of the FirewallRule
+	string display_name = 3;
+	// The description of the FirewallRule
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

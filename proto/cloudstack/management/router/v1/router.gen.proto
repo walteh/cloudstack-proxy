@@ -1,0 +1,622 @@
+edition = "2023";
+
+package cloudstack.management.router.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// RouterService provides operations for managing Routers
+service RouterService {
+	option (annotations.service).scope = Scope_USER;
+
+	// StopRouter Stops a router.
+	rpc StopRouter(StopRouterRequest) returns (StopRouterResponse) {}
+
+	// GetRouterHealthCheckResults Starts a router.
+	rpc GetRouterHealthCheckResults(GetRouterHealthCheckResultsRequest) returns (GetRouterHealthCheckResultsResponse) {}
+
+	// UpgradeRouterTemplate Upgrades router to use newer template
+	rpc UpgradeRouterTemplate(UpgradeRouterTemplateRequest) returns (UpgradeRouterTemplateResponse) {}
+
+	// ConfigureOvsElement Configures an ovs element.
+	rpc ConfigureOvsElement(ConfigureOvsElementRequest) returns (ConfigureOvsElementResponse) {}
+
+	// CreateVirtualRouterElement Create a virtual router element.
+	rpc CreateVirtualRouterElement(CreateVirtualRouterElementRequest) returns (CreateVirtualRouterElementResponse) {}
+
+	// StartRouter Starts a router.
+	rpc StartRouter(StartRouterRequest) returns (StartRouterResponse) {}
+
+	// ListRouters List routers.
+	rpc ListRouters(ListRoutersRequest) returns (ListRoutersResponse) {}
+
+	// DestroyRouter Destroys a router.
+	rpc DestroyRouter(DestroyRouterRequest) returns (DestroyRouterResponse) {}
+
+	// RebootRouter Starts a router.
+	rpc RebootRouter(RebootRouterRequest) returns (RebootRouterResponse) {}
+
+	// ListOvsElements Lists all available ovs elements.
+	rpc ListOvsElements(ListOvsElementsRequest) returns (ListOvsElementsResponse) {}
+
+	// UpgradeRouter Upgrades domain router to a new service offering
+	rpc UpgradeRouter(UpgradeRouterRequest) returns (UpgradeRouterResponse) {}
+
+	// ListVirtualRouterElements Lists all available virtual router elements.
+	rpc ListVirtualRouterElements(ListVirtualRouterElementsRequest) returns (ListVirtualRouterElementsResponse) {}
+
+	// ConfigureVirtualRouterElement Configures a virtual router element.
+	rpc ConfigureVirtualRouterElement(ConfigureVirtualRouterElementRequest) returns (ConfigureVirtualRouterElementResponse) {}
+}
+
+// StopRouterRequest represents the parameters for stops a router.
+message StopRouterRequest {
+	// the ID of the router
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// StopRouterResponse represents the response from stops a router.
+message StopRouterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetRouterHealthCheckResultsRequest represents the parameters for starts a router.
+message GetRouterHealthCheckResultsRequest {
+	// the ID of the router
+	int64 router_id = 1 [
+		(validate.field).required = true
+	];
+
+	// if true is passed for this parameter, health checks are performed on the fly. Else last performed checks data is fetched
+	bool perform_fresh_checks = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 3;
+}
+
+// GetRouterHealthCheckResultsResponse represents the response from starts a router.
+message GetRouterHealthCheckResultsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpgradeRouterTemplateRequest represents the parameters for upgrades router to use newer template
+message UpgradeRouterTemplateRequest {
+	// upgrades router with the specified Id
+	int64 id = 1;
+
+	// upgrades all routers within the specified cluster
+	int64 cluster_id = 2;
+
+	// upgrades all routers within the specified pod
+	int64 pod_id = 3;
+
+	// upgrades all routers within the specified zone
+	int64 zone_id = 4;
+
+	// upgrades all routers owned by the specified account
+	string account = 5;
+
+	// upgrades all routers owned by the specified domain
+	int64 domain_id = 6;
+
+	//
+	string response_type = 7;
+}
+
+// UpgradeRouterTemplateResponse represents the response from upgrades router to use newer template
+message UpgradeRouterTemplateResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ConfigureOvsElementRequest represents the parameters for configures an ovs element.
+message ConfigureOvsElementRequest {
+	// the ID of the ovs provider
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Enabled/Disabled the service provider
+	bool enabled = 2 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ConfigureOvsElementResponse represents the response from configures an ovs element.
+message ConfigureOvsElementResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVirtualRouterElementRequest represents the parameters for create a virtual router element.
+message CreateVirtualRouterElementRequest {
+	// the network service provider ID of the virtual router element
+	int64 nsp_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The provider type. Supported types are VirtualRouter (default) and VPCVirtualRouter
+	string provider_type = 2 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateVirtualRouterElementResponse represents the response from create a virtual router element.
+message CreateVirtualRouterElementResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StartRouterRequest represents the parameters for starts a router.
+message StartRouterRequest {
+	// the ID of the router
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// StartRouterResponse represents the response from starts a router.
+message StartRouterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListRoutersRequest represents the parameters for list routers.
+message ListRoutersRequest {
+	// the host ID of the router
+	int64 host_id = 1;
+
+	// the ID of the disk router
+	int64 id = 2;
+
+	// the name of the router
+	string router_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the Pod ID of the router
+	int64 pod_id = 4;
+
+	// the state of the router
+	string state = 5;
+
+	// the Zone ID of the router
+	int64 zone_id = 6;
+
+	// the cluster ID of the router
+	int64 cluster_id = 7;
+
+	// list by network id
+	int64 network_id = 8;
+
+	// List networks by VPC
+	int64 vpc_id = 9;
+
+	// if true is passed for this parameter, list only VPC routers
+	bool for_vpc = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list virtual router elements by version
+	string version = 11;
+
+	// if this parameter is passed, list only routers by health check results
+	bool health_check_failed = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// if true is passed for this parameter, also fetch last executed health check results for the router. Default is false
+	bool fetch_health_check_results = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 14;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 15 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 17;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 18 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 19;
+
+	//
+	int32 page = 20;
+
+	//
+	int32 page_size = 21;
+
+	//
+	string response_type = 22;
+}
+
+// ListRoutersResponse represents the response from list routers.
+message ListRoutersResponse {
+	option (validate.message).disabled = false;
+	// The list of DomainRouters
+	repeated DomainRouter items = 1;
+
+	// The total count of DomainRouters
+	int32 total_count = 2;
+}
+
+// DestroyRouterRequest represents the parameters for destroys a router.
+message DestroyRouterRequest {
+	// the ID of the router
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DestroyRouterResponse represents the response from destroys a router.
+message DestroyRouterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RebootRouterRequest represents the parameters for starts a router.
+message RebootRouterRequest {
+	// the ID of the router
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force reboot the router (Router is force Stopped and then Started)
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RebootRouterResponse represents the response from starts a router.
+message RebootRouterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListOvsElementsRequest represents the parameters for lists all available ovs elements.
+message ListOvsElementsRequest {
+	// list ovs elements by id
+	int64 id = 1;
+
+	// list ovs elements by network service provider id
+	int64 nsp_id = 2;
+
+	// list network offerings by enabled state
+	bool enabled = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListOvsElementsResponse represents the response from lists all available ovs elements.
+message ListOvsElementsResponse {
+	option (validate.message).disabled = false;
+	// The list of OvsProviders
+	repeated OvsProvider items = 1;
+
+	// The total count of OvsProviders
+	int32 total_count = 2;
+}
+
+// UpgradeRouterRequest represents the parameters for upgrades domain router to a new service offering
+message UpgradeRouterRequest {
+	// The ID of the router
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering ID to apply to the domain router
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// UpgradeRouterResponse represents the response from upgrades domain router to a new service offering
+message UpgradeRouterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVirtualRouterElementsRequest represents the parameters for lists all available virtual router elements.
+message ListVirtualRouterElementsRequest {
+	// list virtual router elements by id
+	int64 id = 1;
+
+	// list virtual router elements by network service provider id
+	int64 nsp_id = 2;
+
+	// list network offerings by enabled state
+	bool enabled = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListVirtualRouterElementsResponse represents the response from lists all available virtual router elements.
+message ListVirtualRouterElementsResponse {
+	option (validate.message).disabled = false;
+	// The list of VirtualRouterProviders
+	repeated VirtualRouterProvider items = 1;
+
+	// The total count of VirtualRouterProviders
+	int32 total_count = 2;
+}
+
+// ConfigureVirtualRouterElementRequest represents the parameters for configures a virtual router element.
+message ConfigureVirtualRouterElementRequest {
+	// the ID of the virtual router provider
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Enabled/Disabled the service provider
+	bool enabled = 2 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ConfigureVirtualRouterElementResponse represents the response from configures a virtual router element.
+message ConfigureVirtualRouterElementResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DomainRouter represents a DomainRouter Item
+message DomainRouter {
+	// The ID of the DomainRouter
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the DomainRouter
+	string name = 2;
+	// The display name of the DomainRouter
+	string display_name = 3;
+	// The description of the DomainRouter
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// OvsProvider represents a OvsProvider Item
+message OvsProvider {
+	// The ID of the OvsProvider
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the OvsProvider
+	string name = 2;
+	// The display name of the OvsProvider
+	string display_name = 3;
+	// The description of the OvsProvider
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// VirtualRouterProvider represents a VirtualRouterProvider Item
+message VirtualRouterProvider {
+	// The ID of the VirtualRouterProvider
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the VirtualRouterProvider
+	string name = 2;
+	// The display name of the VirtualRouterProvider
+	string display_name = 3;
+	// The description of the VirtualRouterProvider
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

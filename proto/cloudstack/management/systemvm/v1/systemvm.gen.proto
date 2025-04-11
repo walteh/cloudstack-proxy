@@ -1,0 +1,416 @@
+edition = "2023";
+
+package cloudstack.management.systemvm.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// SystemvmService provides operations for managing Systemvms
+service SystemvmService {
+	option (annotations.service).scope = Scope_USER;
+
+	// StartSystemVM Starts a system virtual machine.
+	rpc StartSystemVM(StartSystemVMRequest) returns (StartSystemVMResponse) {}
+
+	// ListSystemVMs List system virtual machines.
+	rpc ListSystemVMs(ListSystemVMsRequest) returns (ListSystemVMsResponse) {}
+
+	// StopSystemVm Stops a system VM.
+	rpc StopSystemVm(StopSystemVmRequest) returns (StopSystemVmResponse) {}
+
+	// DestroySystemVm Destroys a system virtual machine.
+	rpc DestroySystemVm(DestroySystemVmRequest) returns (DestroySystemVmResponse) {}
+
+	// RebootSystemVm Reboots a system VM.
+	rpc RebootSystemVm(RebootSystemVmRequest) returns (RebootSystemVmResponse) {}
+
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	rpc UpgradeSystemVM(UpgradeSystemVMRequest) returns (UpgradeSystemVMResponse) {}
+
+	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
+	rpc PatchSystemVM(PatchSystemVMRequest) returns (PatchSystemVMResponse) {}
+
+	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	rpc ScaleSystemVM(ScaleSystemVMRequest) returns (ScaleSystemVMResponse) {}
+
+	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
+	rpc MigrateSystemVM(MigrateSystemVMRequest) returns (MigrateSystemVMResponse) {}
+}
+
+// StartSystemVMRequest represents the parameters for starts a system virtual machine.
+message StartSystemVMRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// StartSystemVMResponse represents the response from starts a system virtual machine.
+message StartSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSystemVMsRequest represents the parameters for list system virtual machines.
+message ListSystemVMsRequest {
+	// the host ID of the system VM
+	int64 host_id = 1;
+
+	// the ID of the system VM
+	int64 id = 2;
+
+	// the name of the system VM
+	string system_vm_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the Pod ID of the system VM
+	int64 pod_id = 4;
+
+	// the state of the system VM
+	string state = 5;
+
+	// the system VM type. Possible types are "consoleproxy" and "secondarystoragevm".
+	string system_vm_type = 6;
+
+	// the Zone ID of the system VM
+	int64 zone_id = 7;
+
+	// the storage ID where vm's volumes belong to
+	int64 storage_id = 8;
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListSystemVMsResponse represents the response from list system virtual machines.
+message ListSystemVMsResponse {
+	option (validate.message).disabled = false;
+	// The list of SystemVms
+	repeated SystemVm items = 1;
+
+	// The total count of SystemVms
+	int32 total_count = 2;
+}
+
+// StopSystemVmRequest represents the parameters for stops a system vm.
+message StopSystemVmRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// StopSystemVmResponse represents the response from stops a system vm.
+message StopSystemVmResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
+message DestroySystemVmRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DestroySystemVmResponse represents the response from destroys a system virtual machine.
+message DestroySystemVmResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RebootSystemVmRequest represents the parameters for reboots a system vm.
+message RebootSystemVmRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force reboot the system VM (System VM is Stopped and then Started)
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RebootSystemVmResponse represents the response from reboots a system vm.
+message RebootSystemVmResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message UpgradeSystemVMRequest {
+	// The ID of the system vm
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering ID to apply to the system vm
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message UpgradeSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// PatchSystemVMRequest represents the parameters for attempts to live patch systemvms - cpvm, ssvm
+message PatchSystemVMRequest {
+	// patches systemVM - CPVM/SSVM with the specified ID
+	int64 id = 1;
+
+	// If true, initiates copy of scripts and restart of the agent, even if the scripts version matches.To be used with ID parameter only
+	bool force = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// PatchSystemVMResponse represents the response from attempts to live patch systemvms - cpvm, ssvm
+message PatchSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ScaleSystemVMRequest represents the parameters for scale the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message ScaleSystemVMRequest {
+	// The ID of the system vm
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering ID to apply to the system vm
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ScaleSystemVMResponse represents the response from scale the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message ScaleSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MigrateSystemVMRequest represents the parameters for attempts migration of a system virtual machine to the host specified.
+message MigrateSystemVMRequest {
+	// destination Host ID to migrate VM to
+	int64 host_id = 1;
+
+	// the ID of the virtual machine
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+
+	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
+	int64 storage_id = 3;
+
+	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
+	bool auto_select = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// MigrateSystemVMResponse represents the response from attempts migration of a system virtual machine to the host specified.
+message MigrateSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// SystemVm represents a SystemVm Item
+message SystemVm {
+	// The ID of the SystemVm
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the SystemVm
+	string name = 2;
+	// The display name of the SystemVm
+	string display_name = 3;
+	// The description of the SystemVm
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

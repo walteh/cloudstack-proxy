@@ -1,0 +1,147 @@
+edition = "2023";
+
+package cloudstack.management.management.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// ManagementService provides operations for managing Managements
+service ManagementService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListMgmts Lists management servers.
+	rpc ListMgmts(ListMgmtsRequest) returns (ListMgmtsResponse) {}
+}
+
+// ListMgmtsRequest represents the parameters for lists management servers.
+message ListMgmtsRequest {
+	// the id of the management server
+	int64 id = 1;
+
+	// the name of the management server
+	string host_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Whether to return the management server peers or not. By default, the management server peers will not be returned.
+	bool peers = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListMgmtsResponse represents the response from lists management servers.
+message ListMgmtsResponse {
+	option (validate.message).disabled = false;
+	// The list of ManagementServers
+	repeated ManagementServer items = 1;
+
+	// The total count of ManagementServers
+	int32 total_count = 2;
+}
+
+// ManagementServer represents a ManagementServer Item
+message ManagementServer {
+	// The ID of the ManagementServer
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ManagementServer
+	string name = 2;
+	// The display name of the ManagementServer
+	string display_name = 3;
+	// The description of the ManagementServer
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

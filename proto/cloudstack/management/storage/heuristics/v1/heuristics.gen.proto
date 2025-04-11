@@ -1,0 +1,235 @@
+edition = "2023";
+
+package cloudstack.management.storage.heuristics.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// HeuristicsService provides operations for managing Storage.Heuristicss
+service HeuristicsService {
+	option (annotations.service).scope = Scope_USER;
+
+	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
+	rpc RemoveSecondaryStorageSelector(RemoveSecondaryStorageSelectorRequest) returns (RemoveSecondaryStorageSelectorResponse) {}
+
+	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
+	rpc CreateSecondaryStorageSelector(CreateSecondaryStorageSelectorRequest) returns (CreateSecondaryStorageSelectorResponse) {}
+
+	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
+	rpc UpdateSecondaryStorageSelector(UpdateSecondaryStorageSelectorRequest) returns (UpdateSecondaryStorageSelectorResponse) {}
+
+	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
+	rpc ListSecondaryStorageSelectors(ListSecondaryStorageSelectorsRequest) returns (ListSecondaryStorageSelectorsResponse) {}
+}
+
+// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
+message RemoveSecondaryStorageSelectorRequest {
+	// The unique identifier of the secondary storage selector to be removed.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
+message RemoveSecondaryStorageSelectorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateSecondaryStorageSelectorRequest represents the parameters for creates a secondary storage selector, described by the heuristic rule.
+message CreateSecondaryStorageSelectorRequest {
+	// The name identifying the heuristic rule.
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// The description of the heuristic rule.
+	string description = 2 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// The zone in which the heuristic rule will be applied.
+	int64 zone_id = 3 [
+		(validate.field).required = true
+	];
+
+	// The resource type directed to a specific secondary storage by the selector. Valid options are: ISO, SNAPSHOT, TEMPLATE and VOLUME.
+	string type = 4 [
+		(validate.field).required = true
+	];
+
+	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
+	string heuristic_rule = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateSecondaryStorageSelectorResponse represents the response from creates a secondary storage selector, described by the heuristic rule.
+message CreateSecondaryStorageSelectorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateSecondaryStorageSelectorRequest represents the parameters for updates an existing secondary storage selector.
+message UpdateSecondaryStorageSelectorRequest {
+	// The unique identifier of the secondary storage selector.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
+	string heuristic_rule = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// UpdateSecondaryStorageSelectorResponse represents the response from updates an existing secondary storage selector.
+message UpdateSecondaryStorageSelectorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSecondaryStorageSelectorsRequest represents the parameters for lists the secondary storage selectors and their rules.
+message ListSecondaryStorageSelectorsRequest {
+	// The zone ID to be used in the search filter.
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Whether to filter the selectors by type and, if so, which one. Valid options are: ISO, SNAPSHOT, TEMPLATE and VOLUME.
+	string type = 2;
+
+	// Show removed heuristics.
+	bool show_removed = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListSecondaryStorageSelectorsResponse represents the response from lists the secondary storage selectors and their rules.
+message ListSecondaryStorageSelectorsResponse {
+	option (validate.message).disabled = false;
+	// The list of SecondaryStorageHeuristicss
+	repeated SecondaryStorageHeuristics items = 1;
+
+	// The total count of SecondaryStorageHeuristicss
+	int32 total_count = 2;
+}
+
+// SecondaryStorageHeuristics represents a SecondaryStorageHeuristics Item
+message SecondaryStorageHeuristics {
+	// The ID of the SecondaryStorageHeuristics
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the SecondaryStorageHeuristics
+	string name = 2;
+	// The display name of the SecondaryStorageHeuristics
+	string display_name = 3;
+	// The description of the SecondaryStorageHeuristics
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

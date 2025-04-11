@@ -1,0 +1,305 @@
+edition = "2023";
+
+package cloudstack.management.bucket.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// BucketService provides operations for managing Buckets
+service BucketService {
+	option (annotations.service).scope = Scope_USER;
+
+	// ListBuckets Lists all Buckets.
+	rpc ListBuckets(ListBucketsRequest) returns (ListBucketsResponse) {}
+
+	// DeleteBucket Deletes an empty Bucket.
+	rpc DeleteBucket(DeleteBucketRequest) returns (DeleteBucketResponse) {}
+
+	// UpdateBucket Updates Bucket properties
+	rpc UpdateBucket(UpdateBucketRequest) returns (UpdateBucketResponse) {}
+
+	// CreateBucket Creates a bucket in the specified object storage pool.
+	rpc CreateBucket(CreateBucketRequest) returns (CreateBucketResponse) {}
+}
+
+// ListBucketsRequest represents the parameters for lists all buckets.
+message ListBucketsRequest {
+	// the ID of the bucket
+	int64 id = 1;
+
+	// the IDs of the Buckets, mutually exclusive with id
+	repeated string ids = 2;
+
+	// the name of the bucket
+	string bucket_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the object storage pool, available to ROOT admin only
+	int64 object_storage_id = 4;
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListBucketsResponse represents the response from lists all buckets.
+message ListBucketsResponse {
+	option (validate.message).disabled = false;
+	// The list of Buckets
+	repeated Bucket items = 1;
+
+	// The total count of Buckets
+	int32 total_count = 2;
+}
+
+// DeleteBucketRequest represents the parameters for deletes an empty bucket.
+message DeleteBucketRequest {
+	// The ID of the Bucket
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteBucketResponse represents the response from deletes an empty bucket.
+message DeleteBucketResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateBucketRequest represents the parameters for updates bucket properties
+message UpdateBucketRequest {
+	// The ID of the Bucket
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Enable/Disable Bucket Versioning
+	bool versioning = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Enable/Disable Bucket encryption
+	bool encryption = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Bucket Access Policy
+	string policy = 4;
+
+	// Bucket Quota in GiB
+	int32 quota = 5;
+
+	//
+	string response_type = 6;
+}
+
+// UpdateBucketResponse represents the response from updates bucket properties
+message UpdateBucketResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateBucketRequest represents the parameters for creates a bucket in the specified object storage pool.
+message CreateBucketRequest {
+	// the account associated with the bucket. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// the project associated with the bucket. Mutually exclusive with account parameter
+	int64 project_id = 2;
+
+	// the domain ID associated with the bucket. If used with the account parameter returns the bucket associated with the account for the specified domain.
+	int64 domain_id = 3;
+
+	// the name of the bucket
+	string bucket_name = 4 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Id of the Object Storage Pool where bucket is created
+	int64 object_storage_pool_id = 5 [
+		(validate.field).required = true
+	];
+
+	// Bucket Quota in GiB
+	int32 quota = 6 [
+		(validate.field).required = true
+	];
+
+	// Enable bucket encryption
+	bool encryption = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Enable bucket versioning
+	bool versioning = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Enable object locking in bucket
+	bool object_locking = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The Bucket access policy
+	string policy = 10;
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateBucketResponse represents the response from creates a bucket in the specified object storage pool.
+message CreateBucketResponse {
+	// The Result
+	Result result = 1;
+}
+
+// Bucket represents a Bucket Item
+message Bucket {
+	// The ID of the Bucket
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Bucket
+	string name = 2;
+	// The display name of the Bucket
+	string display_name = 3;
+	// The description of the Bucket
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

@@ -1,0 +1,821 @@
+edition = "2023";
+
+package cloudstack.management.offering.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// OfferingService provides operations for managing Offerings
+service OfferingService {
+	option (annotations.service).scope = Scope_USER;
+
+	// DeleteServiceOffering Deletes a service offering.
+	rpc DeleteServiceOffering(DeleteServiceOfferingRequest) returns (DeleteServiceOfferingResponse) {}
+
+	// IsAccountAllowedToCreateOfferingsWithTags Return true if the specified account is allowed to create offerings with tags.
+	rpc IsAccountAllowedToCreateOfferingsWithTags(IsAccountAllowedToCreateOfferingsWithTagsRequest) returns (IsAccountAllowedToCreateOfferingsWithTagsResponse) {}
+
+	// UpdateDiskOffering Updates a disk offering.
+	rpc UpdateDiskOffering(UpdateDiskOfferingRequest) returns (UpdateDiskOfferingResponse) {}
+
+	// CreateDiskOffering Creates a disk offering.
+	rpc CreateDiskOffering(CreateDiskOfferingRequest) returns (CreateDiskOfferingResponse) {}
+
+	// CreateServiceOffering Creates a service offering.
+	rpc CreateServiceOffering(CreateServiceOfferingRequest) returns (CreateServiceOfferingResponse) {}
+
+	// ListDiskOfferings Lists all available disk offerings.
+	rpc ListDiskOfferings(ListDiskOfferingsRequest) returns (ListDiskOfferingsResponse) {}
+
+	// DeleteDiskOffering Updates a disk offering.
+	rpc DeleteDiskOffering(DeleteDiskOfferingRequest) returns (DeleteDiskOfferingResponse) {}
+
+	// ListServiceOfferings Lists all available service offerings.
+	rpc ListServiceOfferings(ListServiceOfferingsRequest) returns (ListServiceOfferingsResponse) {}
+
+	// UpdateServiceOffering Updates a service offering.
+	rpc UpdateServiceOffering(UpdateServiceOfferingRequest) returns (UpdateServiceOfferingResponse) {}
+}
+
+// DeleteServiceOfferingRequest represents the parameters for deletes a service offering.
+message DeleteServiceOfferingRequest {
+	// the ID of the service offering
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteServiceOfferingResponse represents the response from deletes a service offering.
+message DeleteServiceOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// IsAccountAllowedToCreateOfferingsWithTagsRequest represents the parameters for return true if the specified account is allowed to create offerings with tags.
+message IsAccountAllowedToCreateOfferingsWithTagsRequest {
+	// Account UUID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// IsAccountAllowedToCreateOfferingsWithTagsResponse represents the response from return true if the specified account is allowed to create offerings with tags.
+message IsAccountAllowedToCreateOfferingsWithTagsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateDiskOfferingRequest represents the parameters for updates a disk offering.
+message UpdateDiskOfferingRequest {
+	// updates alternate display text of the disk offering with this value
+	string display_text = 1;
+
+	// ID of the disk offering
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	// updates name of the disk offering with this value
+	string disk_offering_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// sort key of the disk offering, integer
+	int32 sort_key = 4;
+
+	// an optional field, whether to display the offering to the end user or not.
+	bool display_offering = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	string domain_ids = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	string zone_ids = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	// comma-separated list of tags for the disk offering, tags should match with existing storage pool tags
+	string tags = 8;
+
+	// bytes read rate of the disk offering
+	int64 bytes_read_rate = 9;
+
+	// burst bytes read rate of the disk offering
+	int64 bytes_read_rate_max = 10;
+
+	// length (in seconds) of the burst
+	int64 bytes_read_rate_max_length = 11;
+
+	// bytes write rate of the disk offering
+	int64 bytes_write_rate = 12;
+
+	// burst bytes write rate of the disk offering
+	int64 bytes_write_rate_max = 13;
+
+	// length (in seconds) of the burst
+	int64 bytes_write_rate_max_length = 14;
+
+	// io requests read rate of the disk offering
+	int64 iops_read_rate = 15;
+
+	// burst requests read rate of the disk offering
+	int64 iops_read_rate_max = 16;
+
+	// length (in seconds) of the burst
+	int64 iops_read_rate_max_length = 17;
+
+	// io requests write rate of the disk offering
+	int64 iops_write_rate = 18;
+
+	// burst io requests write rate of the disk offering
+	int64 iops_write_rate_max = 19;
+
+	// length (in seconds) of the burst
+	int64 iops_write_rate_max_length = 20;
+
+	// the cache mode to use for this disk offering
+	string cache_mode = 21;
+
+	// state of the disk offering
+	string disk_offering_state = 22;
+
+	//
+	string response_type = 23;
+}
+
+// UpdateDiskOfferingResponse represents the response from updates a disk offering.
+message UpdateDiskOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateDiskOfferingRequest represents the parameters for creates a disk offering.
+message CreateDiskOfferingRequest {
+	// size of the disk offering in GB (1GB = 1,073,741,824 bytes)
+	int64 disk_size = 1;
+
+	// An alternate display text of the disk offering, defaults to 'name'.
+	string display_text = 2;
+
+	// name of the disk offering
+	string offering_name = 3 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// tags for the disk offering
+	string tags = 4;
+
+	// whether disk offering size is custom or not
+	bool customized = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the containing domain(s), null for public offerings
+	repeated string domain_ids = 6;
+
+	// the ID of the containing zone(s), null for public offerings
+	repeated string zone_ids = 7;
+
+	// the storage type of the disk offering. Values are local and shared.
+	string storage_type = 8;
+
+	// provisioning type used to create volumes. Valid values are thin, sparse, fat.
+	string provisioning_type = 9;
+
+	// an optional field, whether to display the offering to the end user or not.
+	bool display_offering = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// bytes read rate of the disk offering
+	int64 bytes_read_rate = 11;
+
+	// burst bytes read rate of the disk offering
+	int64 bytes_read_rate_max = 12;
+
+	// length (in seconds) of the burst
+	int64 bytes_read_rate_max_length = 13;
+
+	// bytes write rate of the disk offering
+	int64 bytes_write_rate = 14;
+
+	// burst bytes write rate of the disk offering
+	int64 bytes_write_rate_max = 15;
+
+	// length (in seconds) of the burst
+	int64 bytes_write_rate_max_length = 16;
+
+	// io requests read rate of the disk offering
+	int64 iops_read_rate = 17;
+
+	// burst requests read rate of the disk offering
+	int64 iops_read_rate_max = 18;
+
+	// length (in seconds) of the burst
+	int64 iops_read_rate_max_length = 19;
+
+	// io requests write rate of the disk offering
+	int64 iops_write_rate = 20;
+
+	// burst io requests write rate of the disk offering
+	int64 iops_write_rate_max = 21;
+
+	// length (in seconds) of the burst
+	int64 iops_write_rate_max_length = 22;
+
+	// whether disk offering iops is custom or not
+	bool customized_iops = 23 [
+		features.field_presence = EXPLICIT
+	];
+
+	// min iops of the disk offering
+	int64 min_iops = 24;
+
+	// max iops of the disk offering
+	int64 max_iops = 25;
+
+	// Hypervisor snapshot reserve space as a percent of a volume (for managed storage using Xen or VMware)
+	int32 hypervisor_snapshot_reserve = 26;
+
+	// the cache mode to use for this disk offering. none, writeback or writethrough
+	string cache_mode = 27;
+
+	// Name of the storage policy defined at vCenter, this is applicable only for VMware
+	int64 storage_policy = 28;
+
+	// To allow or disallow the resize operation on the disks created from this disk offering, if the flag is true then resize is not allowed
+	bool disk_size_strictness = 29 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Volumes using this offering should be encrypted
+	bool encrypt = 30 [
+		features.field_presence = EXPLICIT
+	];
+
+	// details to specify disk offering parameters
+	map<string, string> details = 31;
+
+	//
+	string response_type = 32;
+}
+
+// CreateDiskOfferingResponse represents the response from creates a disk offering.
+message CreateDiskOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateServiceOfferingRequest represents the parameters for creates a service offering.
+message CreateServiceOfferingRequest {
+	// the CPU number of the service offering
+	int32 cpu_number = 1;
+
+	/*
+	 * For VMware and Xen based hypervisors this is the CPU speed of the service offering in MHz.
+	 * For the KVM hypervisor, the values of the parameters cpuSpeed and cpuNumber will be used to calculate the `shares` value. This value is used by the KVM hypervisor to calculate how much time the VM will have access to the host's CPU. The `shares` value does not have a unit, and its purpose is being a weight value for the host to compare between its guest VMs. For more information, see https://libvirt.org/formatdomain.html#cpu-tuning.
+	 */
+	int32 cpu_speed = 2;
+
+	// The display text of the service offering, defaults to 'name'.
+	string display_text = 3;
+
+	// provisioning type used to create volumes. Valid values are thin, sparse, fat.
+	string provisioning_type = 4;
+
+	// the total memory of the service offering in MB
+	int32 memory = 5;
+
+	// the name of the service offering
+	string service_offering_name = 6 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the HA for the service offering
+	bool offer_ha = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// restrict the CPU usage to committed service offering
+	bool limit_cpu_use = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the virtual machine needs to be volatile so that on every reboot of VM, original root disk is dettached then destroyed and a fresh root disk is created and attached to VM
+	bool is_volatile = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the storage type of the service offering. Values are local and shared.
+	string storage_type = 10;
+
+	// the tags for this service offering.
+	string tags = 11;
+
+	// the ID of the containing domain(s), null for public offerings
+	repeated string domain_ids = 12;
+
+	// the ID of the containing zone(s), null for public offerings
+	repeated string zone_ids = 13;
+
+	// the host tag for this service offering.
+	string host_tag = 14;
+
+	// is this a system vm offering
+	bool is_system = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the system VM type. Possible types are "domainrouter", "consoleproxy" and "secondarystoragevm".
+	string system_vm_type = 16;
+
+	// data transfer rate in megabits per second allowed. Supported only for non-System offering and system offerings having "domainrouter" systemvmtype
+	int32 network_rate = 17;
+
+	// The deployment planner heuristics used to deploy a VM of this offering. If null, value of global config vm.deployment.planner is used
+	string deployment_planner = 18;
+
+	// details for planner, used to store specific parameters
+	map<string, string> details = 19;
+
+	// the Root disk size in GB.
+	int64 root_disk_size = 20;
+
+	// bytes read rate of the disk offering
+	int64 bytes_read_rate = 21;
+
+	// burst bytes read rate of the disk offering
+	int64 bytes_read_rate_max = 22;
+
+	// length (in seconds) of the burst
+	int64 bytes_read_rate_max_length = 23;
+
+	// bytes write rate of the disk offering
+	int64 bytes_write_rate = 24;
+
+	// burst bytes write rate of the disk offering
+	int64 bytes_write_rate_max = 25;
+
+	// length (in seconds) of the burst
+	int64 bytes_write_rate_max_length = 26;
+
+	// io requests read rate of the disk offering
+	int64 iops_read_rate = 27;
+
+	// burst requests read rate of the disk offering
+	int64 iops_read_rate_max = 28;
+
+	// length (in seconds) of the burst
+	int64 iops_read_rate_max_length = 29;
+
+	// io requests write rate of the disk offering
+	int64 iops_write_rate = 30;
+
+	// burst io requests write rate of the disk offering
+	int64 iops_write_rate_max = 31;
+
+	// length (in seconds) of the burst
+	int64 iops_write_rate_max_length = 32;
+
+	// whether compute offering iops is custom or not
+	bool customized_iops = 33 [
+		features.field_presence = EXPLICIT
+	];
+
+	// min iops of the compute offering
+	int64 min_iops = 34;
+
+	// max iops of the compute offering
+	int64 max_iops = 35;
+
+	// Hypervisor snapshot reserve space as a percent of a volume (for managed storage using Xen or VMware)
+	int32 hypervisor_snapshot_reserve = 36;
+
+	// the cache mode to use for this disk offering. none, writeback or writethrough
+	string cache_mode = 37;
+
+	// Whether service offering size is custom or not
+	bool customized = 38 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The maximum number of CPUs to be set with Custom Computer Offering
+	int32 max_c_p_u = 39;
+
+	// The minimum number of CPUs to be set with Custom Computer Offering
+	int32 min_c_p_u = 40;
+
+	// The maximum memory size of the custom service offering in MB
+	int32 max_memory = 41;
+
+	// The minimum memory size of the custom service offering in MB
+	int32 min_memory = 42;
+
+	// Name of the storage policy defined at vCenter, this is applicable only for VMware
+	int64 storage_policy = 43;
+
+	// true if virtual machine needs to be dynamically scalable of cpu or memory
+	bool is_dynamic_scaling_enabled = 44 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the disk offering to which service offering should be mapped
+	int64 disk_offering_id = 45;
+
+	// True/False to indicate the strictness of the disk offering association with the compute offering. When set to true, override of disk offering is not allowed when VM is deployed and change disk offering is not allowed for the ROOT disk after the VM is deployed
+	bool disk_offering_strictness = 46 [
+		features.field_presence = EXPLICIT
+	];
+
+	// VMs using this offering require root volume encryption
+	bool encrypt_root = 47 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Whether to cleanup instance and its associated resource from database upon expunge of the instance
+	bool purge_resources = 48 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 49;
+}
+
+// CreateServiceOfferingResponse represents the response from creates a service offering.
+message CreateServiceOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListDiskOfferingsRequest represents the parameters for lists all available disk offerings.
+message ListDiskOfferingsRequest {
+	// ID of the disk offering
+	int64 id = 1;
+
+	// name of the disk offering
+	string disk_offering_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// id of zone disk offering is associated with
+	int64 zone_id = 3;
+
+	// The ID of the volume, tags of the volume are used to filter the offerings
+	int64 volume_id = 4;
+
+	// The ID of the storage pool, tags of the storage pool are used to filter the offerings
+	int64 storage_pool_id = 5;
+
+	// listed offerings support disk encryption
+	bool encrypt = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the storage type of the service offering. Values are local and shared.
+	string storage_type = 7;
+
+	// Filter by state of the disk offering. Defaults to 'Active'. If set to 'all' shows both Active & Inactive offerings.
+	string disk_offering_state = 8;
+
+	// The ID of a virtual machine. Pass this in if you want to see the suitable disk offering that can be used to create and add a disk to the virtual machine. Suitability is returned with suitableforvirtualmachine flag in the response
+	int64 virtual_machine_id = 9;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 10;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 11 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 13;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 15;
+
+	//
+	int32 page = 16;
+
+	//
+	int32 page_size = 17;
+
+	//
+	string response_type = 18;
+}
+
+// ListDiskOfferingsResponse represents the response from lists all available disk offerings.
+message ListDiskOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of DiskOfferings
+	repeated DiskOffering items = 1;
+
+	// The total count of DiskOfferings
+	int32 total_count = 2;
+}
+
+// DeleteDiskOfferingRequest represents the parameters for updates a disk offering.
+message DeleteDiskOfferingRequest {
+	// ID of the disk offering
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteDiskOfferingResponse represents the response from updates a disk offering.
+message DeleteDiskOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListServiceOfferingsRequest represents the parameters for lists all available service offerings.
+message ListServiceOfferingsRequest {
+	// ID of the service offering
+	int64 id = 1;
+
+	// name of the service offering
+	string service_offering_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the virtual machine. Pass this in if you want to see the available service offering that a virtual machine can be changed to.
+	int64 virtual_machine_id = 3;
+
+	// is this a system vm offering
+	bool is_system = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the system VM type. Possible types are "consoleproxy", "secondarystoragevm" or "domainrouter".
+	string system_vm_type = 5;
+
+	// id of zone disk offering is associated with
+	int64 zone_id = 6;
+
+	// the CPU number that listed offerings must support
+	int32 cpu_number = 7;
+
+	// the RAM memory that listed offering must support
+	int32 memory = 8;
+
+	// the CPU speed that listed offerings must support
+	int32 cpu_speed = 9;
+
+	// listed offerings support root disk encryption
+	bool encrypt_root = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the storage type of the service offering. Values are local and shared.
+	string storage_type = 11;
+
+	// Filter by state of the service offering. Defaults to 'Active'. If set to 'all' shows both Active & Inactive offerings.
+	string service_offering_state = 12;
+
+	// The ID of the template that listed offerings must support
+	int64 template_id = 13;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 14;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 15 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 17;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 18 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 19;
+
+	//
+	int32 page = 20;
+
+	//
+	int32 page_size = 21;
+
+	//
+	string response_type = 22;
+}
+
+// ListServiceOfferingsResponse represents the response from lists all available service offerings.
+message ListServiceOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of ServiceOfferings
+	repeated ServiceOffering items = 1;
+
+	// The total count of ServiceOfferings
+	int32 total_count = 2;
+}
+
+// UpdateServiceOfferingRequest represents the parameters for updates a service offering.
+message UpdateServiceOfferingRequest {
+	// the ID of the service offering to be updated
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the display text of the service offering to be updated
+	string display_text = 2;
+
+	// the name of the service offering to be updated
+	string service_offering_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// sort key of the service offering, integer
+	int32 sort_key = 4;
+
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	string domain_ids = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	string zone_ids = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// comma-separated list of tags for the service offering, tags should match with existing storage pool tags
+	string storage_tags = 7;
+
+	// the host tag for this service offering.
+	string host_tags = 8;
+
+	// state of the service offering
+	string service_offering_state = 9;
+
+	// Whether to cleanup VM and its associated resource upon expunge
+	bool purge_resources = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 11;
+}
+
+// UpdateServiceOfferingResponse represents the response from updates a service offering.
+message UpdateServiceOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DiskOffering represents a DiskOffering Item
+message DiskOffering {
+	// The ID of the DiskOffering
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the DiskOffering
+	string name = 2;
+	// The display name of the DiskOffering
+	string display_name = 3;
+	// The description of the DiskOffering
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ServiceOffering represents a ServiceOffering Item
+message ServiceOffering {
+	// The ID of the ServiceOffering
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ServiceOffering
+	string name = 2;
+	// The display name of the ServiceOffering
+	string display_name = 3;
+	// The description of the ServiceOffering
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}

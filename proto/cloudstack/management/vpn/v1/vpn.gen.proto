@@ -1,0 +1,1142 @@
+edition = "2023";
+
+package cloudstack.management.vpn.v1;
+
+import "cloudstack/annotations/annotations.proto";
+import "cloudstack/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+// VpnService provides operations for managing Vpns
+service VpnService {
+	option (annotations.service).scope = Scope_USER;
+
+	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
+	rpc DeleteVpnCustomerGateway(DeleteVpnCustomerGatewayRequest) returns (DeleteVpnCustomerGatewayResponse) {}
+
+	// CreateVpnConnection Create site to site vpn connection
+	rpc CreateVpnConnection(CreateVpnConnectionRequest) returns (CreateVpnConnectionResponse) {}
+
+	// ListVpnUsers Lists vpn users
+	rpc ListVpnUsers(ListVpnUsersRequest) returns (ListVpnUsersResponse) {}
+
+	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
+	rpc UpdateVpnCustomerGateway(UpdateVpnCustomerGatewayRequest) returns (UpdateVpnCustomerGatewayResponse) {}
+
+	// DeleteVpnConnection Delete site to site vpn connection
+	rpc DeleteVpnConnection(DeleteVpnConnectionRequest) returns (DeleteVpnConnectionResponse) {}
+
+	// ListVpnConnections Lists site to site vpn connection gateways
+	rpc ListVpnConnections(ListVpnConnectionsRequest) returns (ListVpnConnectionsResponse) {}
+
+	// UpdateRemoteAccessVpn Updates remote access vpn
+	rpc UpdateRemoteAccessVpn(UpdateRemoteAccessVpnRequest) returns (UpdateRemoteAccessVpnResponse) {}
+
+	// RemoveVpnUser Removes vpn user
+	rpc RemoveVpnUser(RemoveVpnUserRequest) returns (RemoveVpnUserResponse) {}
+
+	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
+	rpc CreateRemoteAccessVpn(CreateRemoteAccessVpnRequest) returns (CreateRemoteAccessVpnResponse) {}
+
+	// ListRemoteAccessVpns Lists remote access vpns
+	rpc ListRemoteAccessVpns(ListRemoteAccessVpnsRequest) returns (ListRemoteAccessVpnsResponse) {}
+
+	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
+	rpc CreateVpnCustomerGateway(CreateVpnCustomerGatewayRequest) returns (CreateVpnCustomerGatewayResponse) {}
+
+	// ResetVpnConnection Reset site to site vpn connection
+	rpc ResetVpnConnection(ResetVpnConnectionRequest) returns (ResetVpnConnectionResponse) {}
+
+	// DeleteVpnGateway Delete site to site vpn gateway
+	rpc DeleteVpnGateway(DeleteVpnGatewayRequest) returns (DeleteVpnGatewayResponse) {}
+
+	// ListVpnCustomerGateways Lists site to site vpn customer gateways
+	rpc ListVpnCustomerGateways(ListVpnCustomerGatewaysRequest) returns (ListVpnCustomerGatewaysResponse) {}
+
+	// ListVpnGateways Lists site 2 site vpn gateways
+	rpc ListVpnGateways(ListVpnGatewaysRequest) returns (ListVpnGatewaysResponse) {}
+
+	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
+	rpc DeleteRemoteAccessVpn(DeleteRemoteAccessVpnRequest) returns (DeleteRemoteAccessVpnResponse) {}
+
+	// UpdateVpnConnection Updates site to site vpn connection
+	rpc UpdateVpnConnection(UpdateVpnConnectionRequest) returns (UpdateVpnConnectionResponse) {}
+
+	// CreateVpnGateway Creates site to site vpn local gateway
+	rpc CreateVpnGateway(CreateVpnGatewayRequest) returns (CreateVpnGatewayResponse) {}
+
+	// AddVpnUser Adds vpn users
+	rpc AddVpnUser(AddVpnUserRequest) returns (AddVpnUserResponse) {}
+
+	// UpdateVpnGateway Updates site to site vpn local gateway
+	rpc UpdateVpnGateway(UpdateVpnGatewayRequest) returns (UpdateVpnGatewayResponse) {}
+}
+
+// DeleteVpnCustomerGatewayRequest represents the parameters for delete site to site vpn customer gateway
+message DeleteVpnCustomerGatewayRequest {
+	// id of customer gateway
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVpnCustomerGatewayResponse represents the response from delete site to site vpn customer gateway
+message DeleteVpnCustomerGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVpnConnectionRequest represents the parameters for create site to site vpn connection
+message CreateVpnConnectionRequest {
+	// id of the vpn gateway
+	int64 vpn_gateway_id = 1 [
+		(validate.field).required = true
+	];
+
+	// id of the customer gateway
+	int64 customer_gateway_id = 2 [
+		(validate.field).required = true
+	];
+
+	// connection is passive or not
+	bool passive = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, whether to the display the vpn to the end user or not
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// CreateVpnConnectionResponse represents the response from create site to site vpn connection
+message CreateVpnConnectionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVpnUsersRequest represents the parameters for lists vpn users
+message ListVpnUsersRequest {
+	// The uuid of the Vpn user
+	int64 id = 1;
+
+	// the username of the vpn user.
+	string user_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 3;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 4 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 6;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 8;
+
+	//
+	int32 page = 9;
+
+	//
+	int32 page_size = 10;
+
+	//
+	string response_type = 11;
+}
+
+// ListVpnUsersResponse represents the response from lists vpn users
+message ListVpnUsersResponse {
+	option (validate.message).disabled = false;
+	// The list of VpnUserss
+	repeated VpnUsers items = 1;
+
+	// The total count of VpnUserss
+	int32 total_count = 2;
+}
+
+// UpdateVpnCustomerGatewayRequest represents the parameters for update site to site vpn customer gateway
+message UpdateVpnCustomerGatewayRequest {
+	// id of customer gateway
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// name of this customer gateway
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// public ip address id of the customer gateway
+	string gateway_ip = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// guest cidr of the customer gateway. Multiple entries must be separated by a single comma character (,).
+	string guest_cidr_list = 4 [
+		(validate.field).required = true
+	];
+
+	// IPsec Preshared-Key of the customer gateway. Cannot contain newline or double quotes.
+	string ipsec_psk = 5 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// IKE policy of the customer gateway
+	string ike_policy = 6 [
+		(validate.field).required = true
+	];
+
+	// ESP policy of the customer gateway
+	string esp_policy = 7 [
+		(validate.field).required = true
+	];
+
+	// Lifetime of phase 1 VPN connection to the customer gateway, in seconds
+	int64 ike_lifetime = 8;
+
+	// Lifetime of phase 2 VPN connection to the customer gateway, in seconds
+	int64 esp_lifetime = 9;
+
+	// If DPD is enabled for VPN connection
+	bool dpd = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Force encapsulation for Nat Traversal
+	bool encap = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the account associated with the gateway. Must be used with the domainId parameter.
+	string account_name = 12 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// the domain ID associated with the gateway. If used with the account parameter returns the gateway associated with the account for the specified domain.
+	int64 domain_id = 13;
+
+	// For IKEv2, whether to split multiple right subnet cidrs into multiple connection statements.
+	bool split_connections = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Which IKE Version to use, one of ike (autoselect), ikev1, or ikev2.Connections marked with 'ike' will use 'ikev2' when initiating, but accept any protocol version when responding. Defaults to ike
+	string ike_version = 15;
+
+	//
+	int64 start_event_id = 16;
+
+	//
+	string injected_job_id = 17 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 18;
+}
+
+// UpdateVpnCustomerGatewayResponse represents the response from update site to site vpn customer gateway
+message UpdateVpnCustomerGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteVpnConnectionRequest represents the parameters for delete site to site vpn connection
+message DeleteVpnConnectionRequest {
+	// id of vpn connection
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVpnConnectionResponse represents the response from delete site to site vpn connection
+message DeleteVpnConnectionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVpnConnectionsRequest represents the parameters for lists site to site vpn connection gateways
+message ListVpnConnectionsRequest {
+	// id of the vpn connection
+	int64 id = 1;
+
+	// id of vpc
+	int64 vpc_id = 2;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 4;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 5 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 7;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListVpnConnectionsResponse represents the response from lists site to site vpn connection gateways
+message ListVpnConnectionsResponse {
+	option (validate.message).disabled = false;
+	// The list of Site2SiteVpnConnections
+	repeated Site2SiteVpnConnection items = 1;
+
+	// The total count of Site2SiteVpnConnections
+	int32 total_count = 2;
+}
+
+// UpdateRemoteAccessVpnRequest represents the parameters for updates remote access vpn
+message UpdateRemoteAccessVpnRequest {
+	// id of the remote access vpn
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the vpn to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateRemoteAccessVpnResponse represents the response from updates remote access vpn
+message UpdateRemoteAccessVpnResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveVpnUserRequest represents the parameters for removes vpn user
+message RemoveVpnUserRequest {
+	// username for the vpn user
+	string user_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// an optional account for the vpn user. Must be used with domainId.
+	string account_name = 2;
+
+	// remove vpn user from the project
+	int64 project_id = 3;
+
+	// an optional domainId for the vpn user. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// RemoveVpnUserResponse represents the response from removes vpn user
+message RemoveVpnUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateRemoteAccessVpnRequest represents the parameters for creates a l2tp/ipsec remote access vpn
+message CreateRemoteAccessVpnRequest {
+	// public ip address id of the vpn server
+	int64 public_ip_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the range of ip addresses to allocate to vpn clients. The first ip in the range will be taken by the vpn server
+	string ip_range = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// an optional account for the VPN. Must be used with domainId.
+	string account_name = 3;
+
+	// an optional domainId for the VPN. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 4;
+
+	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
+	bool open_firewall = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, whether to the display the vpn to the end user or not
+	bool display = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreateRemoteAccessVpnResponse represents the response from creates a l2tp/ipsec remote access vpn
+message CreateRemoteAccessVpnResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListRemoteAccessVpnsRequest represents the parameters for lists remote access vpns
+message ListRemoteAccessVpnsRequest {
+	// public ip address id of the vpn server
+	int64 public_ip_id = 1;
+
+	// Lists remote access vpn rule with the specified ID
+	int64 id = 2;
+
+	// list remote access VPNs for certain network
+	int64 network_id = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 5;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 6 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 8;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 10;
+
+	//
+	int32 page = 11;
+
+	//
+	int32 page_size = 12;
+
+	//
+	string response_type = 13;
+}
+
+// ListRemoteAccessVpnsResponse represents the response from lists remote access vpns
+message ListRemoteAccessVpnsResponse {
+	option (validate.message).disabled = false;
+	// The list of RemoteAccessVpns
+	repeated RemoteAccessVpn items = 1;
+
+	// The total count of RemoteAccessVpns
+	int32 total_count = 2;
+}
+
+// CreateVpnCustomerGatewayRequest represents the parameters for creates site to site vpn customer gateway
+message CreateVpnCustomerGatewayRequest {
+	// name of this customer gateway
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// public ip address id of the customer gateway
+	string gateway_ip = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// guest cidr list of the customer gateway. Multiple entries must be separated by a single comma character (,).
+	string peer_cidr_list = 3 [
+		(validate.field).required = true
+	];
+
+	// IPsec Preshared-Key of the customer gateway. Cannot contain newline or double quotes.
+	string ipsec_psk = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// IKE policy of the customer gateway
+	string ike_policy = 5 [
+		(validate.field).required = true
+	];
+
+	// ESP policy of the customer gateway
+	string esp_policy = 6 [
+		(validate.field).required = true
+	];
+
+	// Lifetime of phase 1 VPN connection to the customer gateway, in seconds
+	int64 ike_lifetime = 7;
+
+	// Lifetime of phase 2 VPN connection to the customer gateway, in seconds
+	int64 esp_lifetime = 8;
+
+	// If DPD is enabled for VPN connection
+	bool dpd = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Force Encapsulation for NAT traversal
+	bool encap = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the account associated with the gateway. Must be used with the domainId parameter.
+	string account_name = 11 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// the domain ID associated with the gateway. If used with the account parameter returns the gateway associated with the account for the specified domain.
+	int64 domain_id = 12;
+
+	// create site-to-site VPN customer gateway for the project
+	int64 project_id = 13;
+
+	// For IKEv2, whether to split multiple right subnet cidrs into multiple connection statements.
+	bool split_connections = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Which IKE Version to use, one of ike (autoselect), ikev1, or ikev2. Connections marked with 'ike' will use 'ikev2' when initiating, but accept any protocol version when responding. Defaults to ike
+	string ike_version = 15;
+
+	//
+	int64 start_event_id = 16;
+
+	//
+	string injected_job_id = 17 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 18;
+}
+
+// CreateVpnCustomerGatewayResponse represents the response from creates site to site vpn customer gateway
+message CreateVpnCustomerGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ResetVpnConnectionRequest represents the parameters for reset site to site vpn connection
+message ResetVpnConnectionRequest {
+	// id of vpn connection
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional account for connection. Must be used with domainId.
+	string account_name = 2;
+
+	// an optional domainId for connection. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ResetVpnConnectionResponse represents the response from reset site to site vpn connection
+message ResetVpnConnectionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteVpnGatewayRequest represents the parameters for delete site to site vpn gateway
+message DeleteVpnGatewayRequest {
+	// id of customer gateway
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVpnGatewayResponse represents the response from delete site to site vpn gateway
+message DeleteVpnGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVpnCustomerGatewaysRequest represents the parameters for lists site to site vpn customer gateways
+message ListVpnCustomerGatewaysRequest {
+	// id of the customer gateway
+	int64 id = 1;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 2;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 3 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 5;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 7;
+
+	//
+	int32 page = 8;
+
+	//
+	int32 page_size = 9;
+
+	//
+	string response_type = 10;
+}
+
+// ListVpnCustomerGatewaysResponse represents the response from lists site to site vpn customer gateways
+message ListVpnCustomerGatewaysResponse {
+	option (validate.message).disabled = false;
+	// The list of Site2SiteCustomerGateways
+	repeated Site2SiteCustomerGateway items = 1;
+
+	// The total count of Site2SiteCustomerGateways
+	int32 total_count = 2;
+}
+
+// ListVpnGatewaysRequest represents the parameters for lists site 2 site vpn gateways
+message ListVpnGatewaysRequest {
+	// id of the vpn gateway
+	int64 id = 1;
+
+	// id of vpc
+	int64 vpc_id = 2;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 4;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 5 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 7;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListVpnGatewaysResponse represents the response from lists site 2 site vpn gateways
+message ListVpnGatewaysResponse {
+	option (validate.message).disabled = false;
+	// The list of Site2SiteVpnGateways
+	repeated Site2SiteVpnGateway items = 1;
+
+	// The total count of Site2SiteVpnGateways
+	int32 total_count = 2;
+}
+
+// DeleteRemoteAccessVpnRequest represents the parameters for destroys a l2tp/ipsec remote access vpn
+message DeleteRemoteAccessVpnRequest {
+	// public ip address id of the vpn server
+	int64 public_ip_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteRemoteAccessVpnResponse represents the response from destroys a l2tp/ipsec remote access vpn
+message DeleteRemoteAccessVpnResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVpnConnectionRequest represents the parameters for updates site to site vpn connection
+message UpdateVpnConnectionRequest {
+	// id of vpn connection
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the vpn to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateVpnConnectionResponse represents the response from updates site to site vpn connection
+message UpdateVpnConnectionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVpnGatewayRequest represents the parameters for creates site to site vpn local gateway
+message CreateVpnGatewayRequest {
+	// public ip address id of the vpn gateway
+	int64 vpc_id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the vpn to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateVpnGatewayResponse represents the response from creates site to site vpn local gateway
+message CreateVpnGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddVpnUserRequest represents the parameters for adds vpn users
+message AddVpnUserRequest {
+	// username for the vpn user
+	string user_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// password for the username
+	string password = 2 [
+		(validate.field).required = true
+	];
+
+	// an optional account for the vpn user. Must be used with domainId.
+	string account_name = 3;
+
+	// add vpn user to the specific project
+	int64 project_id = 4;
+
+	// an optional domainId for the vpn user. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 5;
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// AddVpnUserResponse represents the response from adds vpn users
+message AddVpnUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVpnGatewayRequest represents the parameters for updates site to site vpn local gateway
+message UpdateVpnGatewayRequest {
+	// id of customer gateway
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the vpn to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateVpnGatewayResponse represents the response from updates site to site vpn local gateway
+message UpdateVpnGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// VpnUsers represents a VpnUsers Item
+message VpnUsers {
+	// The ID of the VpnUsers
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the VpnUsers
+	string name = 2;
+	// The display name of the VpnUsers
+	string display_name = 3;
+	// The description of the VpnUsers
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Site2SiteVpnConnection represents a Site2SiteVpnConnection Item
+message Site2SiteVpnConnection {
+	// The ID of the Site2SiteVpnConnection
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Site2SiteVpnConnection
+	string name = 2;
+	// The display name of the Site2SiteVpnConnection
+	string display_name = 3;
+	// The description of the Site2SiteVpnConnection
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// RemoteAccessVpn represents a RemoteAccessVpn Item
+message RemoteAccessVpn {
+	// The ID of the RemoteAccessVpn
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the RemoteAccessVpn
+	string name = 2;
+	// The display name of the RemoteAccessVpn
+	string display_name = 3;
+	// The description of the RemoteAccessVpn
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Site2SiteCustomerGateway represents a Site2SiteCustomerGateway Item
+message Site2SiteCustomerGateway {
+	// The ID of the Site2SiteCustomerGateway
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Site2SiteCustomerGateway
+	string name = 2;
+	// The display name of the Site2SiteCustomerGateway
+	string display_name = 3;
+	// The description of the Site2SiteCustomerGateway
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Site2SiteVpnGateway represents a Site2SiteVpnGateway Item
+message Site2SiteVpnGateway {
+	// The ID of the Site2SiteVpnGateway
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Site2SiteVpnGateway
+	string name = 2;
+	// The display name of the Site2SiteVpnGateway
+	string display_name = 3;
+	// The description of the Site2SiteVpnGateway
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Success represents a Success Operation Response
+message Success {
+	// true if operation is executed successfully
+	bool success = 1;
+	// any text associated with the success or failure
+	string display_text = 2;
+}
+
+// Item represents a generic item in a list response
+message Item {
+	// The ID of the item
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	// The name of the item
+	string name = 2;
+
+	// The display name of the item
+	string display_name = 3;
+
+	// The description of the item
+	string description = 4;
+
+	// The account ID the item belongs to
+	string account_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain ID the item belongs to
+	string domain_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	// The domain name the item belongs to
+	string domain = 7;
+
+	// The project ID the item belongs to
+	string project_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// The project name the item belongs to
+	string project = 9;
+
+	// The date the item was created
+	string created = 10;
+
+	// The state of the item
+	string state = 11;
+
+	// Additional fields returned by the API
+	map<string, string> details = 12;
+}
+
+// Result represents a generic operation result
+message Result {
+	// Whether the operation was successful
+	bool success = 1;
+
+	// Any text associated with the success or failure
+	string display_text = 2;
+
+	// The ID of the resource affected by the operation
+	string id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// The job ID for an async operation
+	string job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// The status of the job
+	string job_status = 5;
+}
