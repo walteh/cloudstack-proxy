@@ -91,11 +91,14 @@ message CreateVPCResponse {
 // ListVPCsRequest represents the parameters for listing VPCs
 message ListVPCsRequest {
 	// The ID of the VPC to list
-	string id = 1;
+	string id = 1 [
+		(validate.field).required = true
+	];
 
 	// The ID of the zone to list VPCs from
 	string zone_id = 2 [
-		(validate.field).string.uuid = true
+		(validate.field).string.uuid = true,
+		(validate.field).required    = true
 	];
 
 	// The name of the VPC to list
@@ -119,29 +122,30 @@ message ListVPCsRequest {
 
 	// Whether to filter by restart required
 	bool restart_required = 8 [
-		features.field_presence = EXPLICIT
+		(validate.field).required = false
 	];
 
 	// Whether to show resource icons
 	bool show_resource_icon = 9 [
-		features.field_presence = EXPLICIT
+		(validate.field).required = false
 	];
 
 	// The page number to list
 	int32 page = 10 [
-		(annotations.default)   = {value: "1"},
-		features.field_presence = EXPLICIT
+		(annotations.default)     = {value: "1"},
+		(validate.field).required = false
 	];
 
 	// The page size
 	int32 page_size = 11 [
-		(annotations.default)   = {value: "10"},
-		features.field_presence = EXPLICIT
+		(annotations.default)     = {value: "10"},
+		(validate.field).required = false
 	];
 }
 
 // ListVPCsResponse represents the response from listing VPCs
 message ListVPCsResponse {
+	option (validate.message).disabled = false;
 	// The list of VPCs
 	repeated VPC vpcs = 1;
 
