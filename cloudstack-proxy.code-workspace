@@ -532,11 +532,11 @@
 		//===========================================
 		// Retab Settings
 		//===========================================
-		"retab.executable": "./out/tools/retab",
+		// "retab.executable": "./out/tools/retab",
 		//===========================================
 		// YAML Settings
 		//===========================================
-		"yaml.format.enable": true,
+		"yaml.format.enable": false,
 		//===========================================
 		// Protobuf Settings
 		//===========================================
@@ -547,25 +547,7 @@
 		// Terraform Settings
 		//===========================================
 		"terraform.experimentalFeatures.validateOnSave": true,
-		"[terraform]": {
-			"editor.defaultFormatter": "walteh.retab-vscode",
-			"editor.formatOnSave": false,
-			"editor.codeActionsOnSave": {
-				"source.formatAll.terraform": "always"
-			}
-		},
-		"[terraform-vars]": {
-			"editor.defaultFormatter": "walteh.retab-vscode",
-			"editor.formatOnSave": false,
-			"editor.codeActionsOnSave": {
-				"source.formatAll.terraform": "always"
-			}
-		},
-		"[hcl]": {
-			"editor.useTabStops": true,
-			"editor.tabSize": 4,
-			"editor.defaultFormatter": "walteh.retab-vscode"
-		},
+
 		//===========================================
 		// Material Icon Theme Customization
 		//===========================================
@@ -582,9 +564,7 @@
 		"[jsonc]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
-		"[yaml]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		},
+
 		"[dotenv]": {
 			"editor.defaultFormatter": "foxundermoon.shell-format"
 		},
@@ -594,34 +574,17 @@
 		"[go]": {
 			"editor.defaultFormatter": "golang.go"
 		},
-		"[docker]": {
-			"editor.defaultFormatter": "ms-azuretools.vscode-docker"
-		},
-		"[dockerfile]": {
-			"editor.defaultFormatter": "ms-azuretools.vscode-docker"
-		},
+
 		"[ignore]": {
 			"editor.defaultFormatter": "foxundermoon.shell-format"
 		},
-		"[properties]": {
-			"editor.defaultFormatter": "foxundermoon.shell-format"
-		},
-		"[proto]": {
-			"editor.defaultFormatter": "walteh.retab-vscode"
-		},
+
 		"[typescript]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
 		"[typescriptreact]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
-		//===========================================
-		// SVG Settings
-		//===========================================
-		"svg.preview.background": "transparent",
-		"align-bicep.disallowed-language-ids": ["terraform", "go"],
-		"dockerfile-tidy.formatOnSave": true,
-		"retab.use_wasm": false,
 		"kotlin.languageServer.enabled": true,
 		"kotlin.java.home": "/Users/dub6ix/.jenv/versions/24/bin/java"
 	}
