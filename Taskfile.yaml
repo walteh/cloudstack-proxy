@@ -98,3 +98,17 @@ tasks:
         desc: generates kotlin code from cloudstack api list
         cmds:
             - cmd: mvn compile exec:java -Dexec.args="--out-dir ../../gen/cloudstack-metadata"
+
+    protogen:
+        desc: generates protobuf definitions from CloudStack API metadata
+        cmds:
+            - cmd: rm -rf tmp/proto
+            - cmd: cp -r proto tmp/proto
+            - cmd: |
+                  go run ./cmd/csp-protobuf-generator \
+                   --metadata-dir=./gen/cloudstack-metadata \
+                   --output-dir=./tmp/proto
+        sources:
+            - gen/cloudstack-metadata/*.json
+        generates:
+            - proto/cloudstack/**/*.gen.proto

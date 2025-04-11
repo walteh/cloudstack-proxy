@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -11,6 +12,12 @@ import (
 func main() {
 	fmt.Println("CloudStack Proxy - Protobuf Generator")
 
+	// Define command-line flags
+	metadataDir := flag.String("metadata-dir", "", "Directory containing CloudStack API metadata JSON files")
+	outputDirFlag := flag.String("output-dir", "", "Output directory for generated proto files (defaults to [root]/proto)")
+
+	flag.Parse()
+
 	// Get the root directory
 	rootDir, err := os.Getwd()
 	if err != nil {
@@ -18,18 +25,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Setup generator options
-	opts := protogen.Options{
-		SourceDir:      filepath.Join(rootDir, "proto"),
-		OutputDir:      filepath.Join(rootDir, "proto"),
-		OutputSuffix:   ".gen.proto",
-		RootPackage:    "cloudstack",
-		GoModule:       "github.com/walteh/cloudstack-proxy",
-		GenPackageRoot: "gen/proto",
+	outputDir := *outputDirFlag
+	if outputDir == "" {
+		outputDir = filepath.Join(rootDir, "proto")
 	}
 
 	// Create and run generator
-	generator := protogen.NewGenerator(opts)
+	generator := protogen.NewGenerator(
+		protogen.WithMetadataDir(*metadataDir),
+		protogen.WithOutputDir(outputDir),
+	)
 	err = generator.Run()
 	if err != nil {
 		fmt.Printf("Error generating protobuf files: %v\n", err)

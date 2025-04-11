@@ -1,0 +1,184 @@
+= CloudStack Proxy - Protobuf Generator
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: highlightjs
+
+== Overview
+
+The CloudStack Proxy Protobuf Generator is a tool that generates protobuf definitions for the CloudStack API. It can generate protobuf files in two ways:
+
+1. From CloudStack API metadata JSON files
+2. By processing existing protobuf files
+
+The generator follows the structure defined in the project to create service definitions, request/response messages, and other necessary components for the CloudStack Proxy API.
+
+== Installation
+
+The generator is part of the CloudStack Proxy project and can be built using Go:
+
+[source,bash]
+----
+go build -o csp-protobuf-generator ./cmd/csp-protobuf-generator
+----
+
+== Usage
+
+=== Generating from CloudStack API Metadata
+
+The primary use case is to generate protobuf files from CloudStack API metadata. This requires JSON files containing information about CloudStack commands, responses, and enums.
+
+[source,bash]
+----
+./csp-protobuf-generator --metadata-dir=./gen/cloudstack-metadata
+----
+
+This will:
+
+1. Parse the CloudStack API metadata files (command, response, and enum metadata)
+2. Generate protobuf service and message definitions based on this metadata
+3. Organize them by API category (e.g., vpc, vm, network)
+4. Write the generated files to the output directory with the specified suffix
+
+=== Processing Existing Protobuf Files
+
+You can also use the generator to process existing protobuf files:
+
+[source,bash]
+----
+./csp-protobuf-generator --source-dir=./proto
+----
+
+This will process all `.proto` files in the source directory and apply any transformations or hooks defined in the generator.
+
+== Command-Line Options
+
+The generator accepts the following command-line options:
+
+[cols="1,3,1"]
+|===
+|Option |Description |Default
+
+|`--metadata-dir`
+|Directory containing CloudStack API metadata JSON files
+|""
+
+|`--source-dir`
+|Source directory containing proto files
+|`./proto`
+
+|`--output-dir`
+|Output directory for generated proto files
+|`./proto`
+
+|`--output-suffix`
+|Suffix for generated protobuf files
+|`.gen.proto`
+
+|`--root-package`
+|Root package name for protobuf definitions
+|`cloudstack`
+
+|`--go-module`
+|Go module name
+|`github.com/walteh/cloudstack-proxy`
+
+|`--gen-package-root`
+|Root directory for generated Go packages
+|`gen/proto`
+|===
+
+== Metadata Files
+
+When generating from metadata, the following files are expected in the metadata directory:
+
+* `cloudstack-api-command-metadata.json`: Information about CloudStack API commands
+* `cloudstack-api-response-metadata.json`: Information about CloudStack API responses
+* `cloudstack-api-enum-metadata.json`: Information about CloudStack API enums
+
+== Generated Files
+
+The generator creates protobuf files with the following structure:
+
+[source]
+----
+proto/
+└── cloudstack/
+    ├── annotations/
+    │   └── annotations.proto
+    ├── validate/
+    │   └── validate.proto
+    └── [api-category]/
+        └── v1/
+            └── [api-category].gen.proto
+----
+
+For example, for the VPC API, it would create:
+
+[source]
+----
+proto/cloudstack/vpc/v1/vpc.gen.proto
+----
+
+== Integration with CloudStack Proxy
+
+The generated protobuf files are used as part of the CloudStack Proxy project to:
+
+1. Define the API structure and endpoints
+2. Generate Go code using `buf`
+3. Implement the proxy service that bridges between the modern API and CloudStack
+
+To complete the process:
+
+1. Run the protobuf generator
+2. Use `buf` to generate Go code from the protobuf definitions
+3. Implement the proxy service using the generated code
+
+== Examples
+
+=== Simple Example - Generate from Metadata
+
+[source,bash]
+----
+./csp-protobuf-generator --metadata-dir=./gen/cloudstack-metadata
+----
+
+=== Specify Output Directory
+
+[source,bash]
+----
+./csp-protobuf-generator --metadata-dir=./gen/cloudstack-metadata --output-dir=./generated-proto
+----
+
+=== Process Existing Protobuf Files
+
+[source,bash]
+----
+./csp-protobuf-generator --source-dir=./proto/custom
+----
+
+== Troubleshooting
+
+=== Common Issues
+
+* *Metadata Files Not Found*: Ensure the metadata files are in the specified directory and have the correct names.
+* *Output Directory Permission Denied*: Make sure you have write permission to the output directory.
+* *Parsing Errors*: If the metadata files are invalid or have unexpected structure, the generator may fail to parse them.
+
+=== Debugging
+
+For more detailed debugging, you can examine the generator's output to see which files it's processing and any errors that occur.
+
+== Development
+
+=== Adding Custom Hooks
+
+To add custom logic to the generated protobuf files, you can modify the `pkg/protogen/metadata/generator.go` file.
+
+=== Extending the Generator
+
+The generator is designed to be extensible. You can add support for additional features or customizations by:
+
+1. Adding options to the `Options` struct in `pkg/protogen/generator.go`
+2. Adding command-line flags in `cmd/csp-protobuf-generator/main.go`
+3. Implementing the desired functionality in the relevant package 
