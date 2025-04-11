@@ -254,6 +254,9 @@ fun extractCommandMetadata(commandClass: Class<*>): CommandMetadata? {
     // Extract inherited command information
     val inheritedParameters = extractInheritedParameters(commandClass)
     val allParameters = parameters + inheritedParameters
+
+	// make sure all parameters are unique
+	val uniqueParameters = allParameters.distinctBy { it.name }
     
     // Get additional metadata from annotations
     val aclInfo = extractACLInfo(commandClass)
@@ -285,7 +288,7 @@ fun extractCommandMetadata(commandClass: Class<*>): CommandMetadata? {
         responseObject = apiCommand.responseObject.qualifiedName ?: "",
         responseView = apiCommand.responseView.name,
         entityType = apiCommand.entityType.map { it.qualifiedName ?: "" },
-        parameters = allParameters,
+        parameters = uniqueParameters,
         superclasses = superclasses,
         isAsync = isAsync,
         aclInfo = aclInfo,

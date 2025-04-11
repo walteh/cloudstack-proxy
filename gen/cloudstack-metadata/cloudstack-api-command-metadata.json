@@ -69299,32 +69299,6 @@
 				"isCommaSeparatedList" : false
 			},
 			{
-				"name" : "description",
-				"fieldName" : "roleDescription",
-				"javaType" : "java.lang.String",
-				"commandType" : "STRING",
-				"description" : "The description of the role",
-				"required" : false,
-				"since" : "",
-				"entityType" : "kotlin.Any",
-				"validations" : [ ],
-				"authorization" : null,
-				"shouldDisplay" : true,
-				"acceptedOnAdminPort" : true,
-				"expose" : true,
-				"includeInApiDoc" : true,
-				"authorized" : [ ],
-				"collectionType" : "OBJECT",
-				"length" : 255,
-				"getterMethod" : {
-					"methodName" : "getRoleType",
-					"returnType" : "org.apache.cloudstack.acl.RoleType",
-					"returnTypeEnum" : true,
-					"isList" : false
-				},
-				"isCommaSeparatedList" : false
-			},
-			{
 				"name" : "response",
 				"fieldName" : "responseType",
 				"javaType" : "java.lang.String",

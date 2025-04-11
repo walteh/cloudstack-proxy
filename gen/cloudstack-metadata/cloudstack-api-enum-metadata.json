@@ -1664,99 +1664,99 @@
 				"name" : "Creating",
 				"ordinal" : 0,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "false",
+					"getPossibleEvents" : "[AgentConnected,Error]",
 					"lostConnection" : "false",
-					"getPossibleEvents" : "[Error, AgentConnected]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Connecting",
 				"ordinal" : 1,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "false",
+					"getPossibleEvents" : "[AgentConnected,AgentDisconnected,HostDown,ManagementServerDown,Ping,PingTimeout,Ready,ShutdownRequested,StartAgentRebalance]",
 					"lostConnection" : "false",
-					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Ping, Ready, AgentDisconnected, PingTimeout, AgentConnected, StartAgentRebalance]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Up",
 				"ordinal" : 2,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "false",
+					"getPossibleEvents" : "[AgentConnected,AgentDisconnected,HostDown,ManagementServerDown,Ping,PingTimeout,Remove,ShutdownRequested,StartAgentRebalance]",
 					"lostConnection" : "false",
-					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Ping, Remove, AgentDisconnected, PingTimeout, AgentConnected, StartAgentRebalance]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Down",
 				"ordinal" : 3,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "true",
+					"getPossibleEvents" : "[AgentConnected,AgentDisconnected,HostDown,ManagementServerDown,PingTimeout,Remove,ShutdownRequested]",
 					"lostConnection" : "true",
-					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Remove, AgentDisconnected, PingTimeout, AgentConnected]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Disconnected",
 				"ordinal" : 4,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "true",
+					"getPossibleEvents" : "[AgentConnected,AgentDisconnected,HostDown,ManagementServerDown,Ping,PingTimeout,Remove,ShutdownRequested,WaitedTooLong]",
 					"lostConnection" : "true",
-					"getPossibleEvents" : "[HostDown, ManagementServerDown, WaitedTooLong, ShutdownRequested, Ping, Remove, AgentDisconnected, PingTimeout, AgentConnected]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Alert",
 				"ordinal" : 5,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "true",
+					"getPossibleEvents" : "[AgentConnected,AgentDisconnected,HostDown,ManagementServerDown,Ping,Remove,ShutdownRequested]",
 					"lostConnection" : "true",
-					"getPossibleEvents" : "[HostDown, ManagementServerDown, ShutdownRequested, Ping, Remove, AgentDisconnected, AgentConnected]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Removed",
 				"ordinal" : 6,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "false",
+					"getPossibleEvents" : "[]",
 					"lostConnection" : "true",
-					"getPossibleEvents" : "[]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Error",
 				"ordinal" : 7,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "false",
+					"getPossibleEvents" : "[AgentConnected]",
 					"lostConnection" : "true",
-					"getPossibleEvents" : "[AgentConnected]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Rebalancing",
 				"ordinal" : 8,
 				"extras" : {
-					"updateManagementServer" : "true",
 					"checkManagementServer" : "false",
+					"getPossibleEvents" : "[AgentConnected,AgentDisconnected,ManagementServerDown,RebalanceCompleted,RebalanceFailed,ShutdownRequested]",
 					"lostConnection" : "true",
-					"getPossibleEvents" : "[RebalanceFailed, ManagementServerDown, ShutdownRequested, RebalanceCompleted, AgentDisconnected, AgentConnected]"
+					"updateManagementServer" : "true"
 				}
 			},
 			{
 				"name" : "Unknown",
 				"ordinal" : 9,
 				"extras" : {
-					"updateManagementServer" : "false",
 					"checkManagementServer" : "false",
-					"lostConnection" : "false"
+					"lostConnection" : "false",
+					"updateManagementServer" : "false"
 				}
 			}
 		]
@@ -1772,120 +1772,120 @@
 				"name" : "AgentConnected",
 				"ordinal" : 0,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Agent connected"
+					"getDescription" : "Agent connected",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "PingTimeout",
 				"ordinal" : 1,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Agent is behind on ping"
+					"getDescription" : "Agent is behind on ping",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "ShutdownRequested",
 				"ordinal" : 2,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Shutdown requested by the agent"
+					"getDescription" : "Shutdown requested by the agent",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "AgentDisconnected",
 				"ordinal" : 3,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Agent disconnected"
+					"getDescription" : "Agent disconnected",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "HostDown",
 				"ordinal" : 4,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Host is found to be down by the investigator"
+					"getDescription" : "Host is found to be down by the investigator",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "Ping",
 				"ordinal" : 5,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Ping is received from the host"
+					"getDescription" : "Ping is received from the host",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "ManagementServerDown",
 				"ordinal" : 6,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Management Server that the agent is connected is going down"
+					"getDescription" : "Management Server that the agent is connected is going down",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "WaitedTooLong",
 				"ordinal" : 7,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Waited too long from the agent to reconnect on its own.  Time to do HA"
+					"getDescription" : "Waited too long from the agent to reconnect on its own.  Time to do HA",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "Remove",
 				"ordinal" : 8,
 				"extras" : {
-					"isUserRequest" : "true",
-					"getDescription" : "Host is removed"
+					"getDescription" : "Host is removed",
+					"isUserRequest" : "true"
 				}
 			},
 			{
 				"name" : "Ready",
 				"ordinal" : 9,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Host is ready for commands"
+					"getDescription" : "Host is ready for commands",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "RequestAgentRebalance",
 				"ordinal" : 10,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Request rebalance for the certain host"
+					"getDescription" : "Request rebalance for the certain host",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "StartAgentRebalance",
 				"ordinal" : 11,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Start rebalance for the certain host"
+					"getDescription" : "Start rebalance for the certain host",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "RebalanceCompleted",
 				"ordinal" : 12,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Host is rebalanced successfully"
+					"getDescription" : "Host is rebalanced successfully",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "RebalanceFailed",
 				"ordinal" : 13,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "Failed to rebalance the host"
+					"getDescription" : "Failed to rebalance the host",
+					"isUserRequest" : "false"
 				}
 			},
 			{
 				"name" : "Error",
 				"ordinal" : 14,
 				"extras" : {
-					"isUserRequest" : "false",
-					"getDescription" : "An internal error happened"
+					"getDescription" : "An internal error happened",
+					"isUserRequest" : "false"
 				}
 			}
 		]
@@ -2229,16 +2229,16 @@
 				"name" : "Vlan",
 				"ordinal" : 1,
 				"extras" : {
-					"type" : "class java.lang.Integer",
-					"scheme" : "vlan"
+					"scheme" : "vlan",
+					"type" : "class java.lang.Integer"
 				}
 			},
 			{
 				"name" : "Vswitch",
 				"ordinal" : 2,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "vs"
+					"scheme" : "vs",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
@@ -2250,56 +2250,56 @@
 				"name" : "Vnet",
 				"ordinal" : 4,
 				"extras" : {
-					"type" : "class java.lang.Long",
-					"scheme" : "vnet"
+					"scheme" : "vnet",
+					"type" : "class java.lang.Long"
 				}
 			},
 			{
 				"name" : "Storage",
 				"ordinal" : 5,
 				"extras" : {
-					"type" : "class java.lang.Integer",
-					"scheme" : "storage"
+					"scheme" : "storage",
+					"type" : "class java.lang.Integer"
 				}
 			},
 			{
 				"name" : "Lswitch",
 				"ordinal" : 6,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "lswitch"
+					"scheme" : "lswitch",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
 				"name" : "Mido",
 				"ordinal" : 7,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "mido"
+					"scheme" : "mido",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
 				"name" : "Pvlan",
 				"ordinal" : 8,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "pvlan"
+					"scheme" : "pvlan",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
 				"name" : "Vxlan",
 				"ordinal" : 9,
 				"extras" : {
-					"type" : "class java.lang.Long",
-					"scheme" : "vxlan"
+					"scheme" : "vxlan",
+					"type" : "class java.lang.Long"
 				}
 			},
 			{
 				"name" : "Vcs",
 				"ordinal" : 10,
 				"extras" : {
-					"type" : "class java.lang.Integer",
-					"scheme" : "vcs"
+					"scheme" : "vcs",
+					"type" : "class java.lang.Integer"
 				}
 			},
 			{
@@ -2311,24 +2311,24 @@
 				"name" : "OpenDaylight",
 				"ordinal" : 12,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "opendaylight"
+					"scheme" : "opendaylight",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
 				"name" : "TUNGSTEN",
 				"ordinal" : 13,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "tf"
+					"scheme" : "tf",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
 				"name" : "NSX",
 				"ordinal" : 14,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "nsx"
+					"scheme" : "nsx",
+					"type" : "class java.lang.String"
 				}
 			}
 		]
@@ -2368,24 +2368,24 @@
 				"name" : "Ec2",
 				"ordinal" : 1,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "ec2"
+					"scheme" : "ec2",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
 				"name" : "Vlan",
 				"ordinal" : 2,
 				"extras" : {
-					"type" : "class java.lang.Integer",
-					"scheme" : "vlan"
+					"scheme" : "vlan",
+					"type" : "class java.lang.Integer"
 				}
 			},
 			{
 				"name" : "Vswitch",
 				"ordinal" : 3,
 				"extras" : {
-					"type" : "class java.lang.String",
-					"scheme" : "vs"
+					"scheme" : "vs",
+					"type" : "class java.lang.String"
 				}
 			},
 			{
@@ -2397,8 +2397,8 @@
 				"name" : "Vnet",
 				"ordinal" : 5,
 				"extras" : {
-					"type" : "class java.lang.Long",
-					"scheme" : "vnet"
+					"scheme" : "vnet",
+					"type" : "class java.lang.Long"
 				}
 			}
 		]
@@ -3956,49 +3956,49 @@
 				"name" : "Creating",
 				"ordinal" : 0,
 				"extras" : {
-					"getPossibleEvents" : "[Error, InternalCreated]"
+					"getPossibleEvents" : "[Error,InternalCreated]"
 				}
 			},
 			{
 				"name" : "Enabled",
 				"ordinal" : 1,
 				"extras" : {
-					"getPossibleEvents" : "[Enable, InternalEnterMaintenance, Disable, AdminAskMaintenance, DeclareHostDegraded, DeleteHost, InternalCreated]"
+					"getPossibleEvents" : "[AdminAskMaintenance,DeclareHostDegraded,DeleteHost,Disable,Enable,InternalCreated,InternalEnterMaintenance]"
 				}
 			},
 			{
 				"name" : "Disabled",
 				"ordinal" : 2,
 				"extras" : {
-					"getPossibleEvents" : "[Enable, Disable, DeclareHostDegraded, DeleteHost, InternalCreated]"
+					"getPossibleEvents" : "[DeclareHostDegraded,DeleteHost,Disable,Enable,InternalCreated]"
 				}
 			},
 			{
 				"name" : "ErrorInPrepareForMaintenance",
 				"ordinal" : 3,
 				"extras" : {
-					"getPossibleEvents" : "[InternalEnterMaintenance, UnableToMaintain, AdminCancelMaintenance, Disable, UnableToMigrate, DeleteHost, ErrorsCorrected, InternalCreated]"
+					"getPossibleEvents" : "[AdminCancelMaintenance,DeleteHost,Disable,ErrorsCorrected,InternalCreated,InternalEnterMaintenance,UnableToMaintain,UnableToMigrate]"
 				}
 			},
 			{
 				"name" : "PrepareForMaintenance",
 				"ordinal" : 4,
 				"extras" : {
-					"getPossibleEvents" : "[InternalEnterMaintenance, UnableToMaintain, AdminCancelMaintenance, UnableToMigrate, InternalCreated]"
+					"getPossibleEvents" : "[AdminCancelMaintenance,InternalCreated,InternalEnterMaintenance,UnableToMaintain,UnableToMigrate]"
 				}
 			},
 			{
 				"name" : "ErrorInMaintenance",
 				"ordinal" : 5,
 				"extras" : {
-					"getPossibleEvents" : "[AdminCancelMaintenance, Disable, AdminAskMaintenance, DeleteHost, InternalCreated]"
+					"getPossibleEvents" : "[AdminAskMaintenance,AdminCancelMaintenance,DeleteHost,Disable,InternalCreated]"
 				}
 			},
 			{
 				"name" : "Maintenance",
 				"ordinal" : 6,
 				"extras" : {
-					"getPossibleEvents" : "[AdminCancelMaintenance, DeleteHost, DeclareHostDegraded, InternalCreated]"
+					"getPossibleEvents" : "[AdminCancelMaintenance,DeclareHostDegraded,DeleteHost,InternalCreated]"
 				}
 			},
 			{
@@ -4012,7 +4012,7 @@
 				"name" : "Degraded",
 				"ordinal" : 8,
 				"extras" : {
-					"getPossibleEvents" : "[AdminAskMaintenance, DeleteHost, EnableDegradedHost]"
+					"getPossibleEvents" : "[AdminAskMaintenance,DeleteHost,EnableDegradedHost]"
 				}
 			}
 		]
@@ -4206,387 +4206,387 @@
 				"name" : "UserVm",
 				"ordinal" : 0,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Template",
 				"ordinal" : 1,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "VnfTemplate",
 				"ordinal" : 2,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "ISO",
 				"ordinal" : 3,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Volume",
 				"ordinal" : 4,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Snapshot",
 				"ordinal" : 5,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Backup",
 				"ordinal" : 6,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Network",
 				"ordinal" : 7,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "DomainRouter",
 				"ordinal" : 8,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "Nic",
 				"ordinal" : 9,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "LoadBalancer",
 				"ordinal" : 10,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "PortForwardingRule",
 				"ordinal" : 11,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "FirewallRule",
 				"ordinal" : 12,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "SecurityGroup",
 				"ordinal" : 13,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "SecurityGroupRule",
 				"ordinal" : 14,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "PublicIpAddress",
 				"ordinal" : 15,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Project",
 				"ordinal" : 16,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Account",
 				"ordinal" : 17,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Vpc",
 				"ordinal" : 18,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "NetworkACL",
 				"ordinal" : 19,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "StaticRoute",
 				"ordinal" : 20,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "VMSnapshot",
 				"ordinal" : 21,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "RemoteAccessVpn",
 				"ordinal" : 22,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Zone",
 				"ordinal" : 23,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "ServiceOffering",
 				"ordinal" : 24,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "Storage",
 				"ordinal" : 25,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "PrivateGateway",
 				"ordinal" : 26,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "NetworkACLList",
 				"ordinal" : 27,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "VpnGateway",
 				"ordinal" : 28,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "CustomerGateway",
 				"ordinal" : 29,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "VpnConnection",
 				"ordinal" : 30,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "User",
 				"ordinal" : 31,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "DiskOffering",
 				"ordinal" : 32,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "AutoScaleVmProfile",
 				"ordinal" : 33,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "AutoScaleVmGroup",
 				"ordinal" : 34,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "LBStickinessPolicy",
 				"ordinal" : 35,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "LBHealthCheckPolicy",
 				"ordinal" : 36,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "SnapshotPolicy",
 				"ordinal" : 37,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "GuestOs",
 				"ordinal" : 38,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "NetworkOffering",
 				"ordinal" : 39,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "true"
+					"resourceMetadataSupport" : "true",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "VpcOffering",
 				"ordinal" : 40,
 				"extras" : {
-					"resourceTagsSupport" : "true",
 					"resourceIconSupport" : "false",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "true"
 				}
 			},
 			{
 				"name" : "Domain",
 				"ordinal" : 41,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "false"
 				}
 			},
 			{
 				"name" : "ObjectStore",
 				"ordinal" : 42,
 				"extras" : {
-					"resourceTagsSupport" : "false",
 					"resourceIconSupport" : "true",
-					"resourceMetadataSupport" : "false"
+					"resourceMetadataSupport" : "false",
+					"resourceTagsSupport" : "false"
 				}
 			}
 		]
@@ -5006,8 +5006,8 @@
 				"ordinal" : 0,
 				"extras" : {
 					"getFileExtension" : "qcow2",
-					"supportThinProvisioning" : "true",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "true",
 					"supportsSparse" : "true"
 				}
 			},
@@ -5016,8 +5016,8 @@
 				"ordinal" : 1,
 				"extras" : {
 					"getFileExtension" : "raw",
-					"supportThinProvisioning" : "false",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "false",
 					"supportsSparse" : "false"
 				}
 			},
@@ -5026,8 +5026,8 @@
 				"ordinal" : 2,
 				"extras" : {
 					"getFileExtension" : "vhd",
-					"supportThinProvisioning" : "true",
 					"supportSnapshot" : "true",
+					"supportThinProvisioning" : "true",
 					"supportsSparse" : "true"
 				}
 			},
@@ -5036,8 +5036,8 @@
 				"ordinal" : 3,
 				"extras" : {
 					"getFileExtension" : "iso",
-					"supportThinProvisioning" : "false",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "false",
 					"supportsSparse" : "false"
 				}
 			},
@@ -5046,8 +5046,8 @@
 				"ordinal" : 4,
 				"extras" : {
 					"getFileExtension" : "ova",
-					"supportThinProvisioning" : "true",
 					"supportSnapshot" : "true",
+					"supportThinProvisioning" : "true",
 					"supportsSparse" : "true"
 				}
 			},
@@ -5056,8 +5056,8 @@
 				"ordinal" : 5,
 				"extras" : {
 					"getFileExtension" : "vhdx",
-					"supportThinProvisioning" : "true",
 					"supportSnapshot" : "true",
+					"supportThinProvisioning" : "true",
 					"supportsSparse" : "true"
 				}
 			},
@@ -5065,8 +5065,8 @@
 				"name" : "BAREMETAL",
 				"ordinal" : 6,
 				"extras" : {
-					"supportThinProvisioning" : "false",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "false",
 					"supportsSparse" : "false"
 				}
 			},
@@ -5075,8 +5075,8 @@
 				"ordinal" : 7,
 				"extras" : {
 					"getFileExtension" : "vmdk",
-					"supportThinProvisioning" : "true",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "true",
 					"supportsSparse" : "true"
 				}
 			},
@@ -5085,8 +5085,8 @@
 				"ordinal" : 8,
 				"extras" : {
 					"getFileExtension" : "vdi",
-					"supportThinProvisioning" : "true",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "true",
 					"supportsSparse" : "true"
 				}
 			},
@@ -5095,8 +5095,8 @@
 				"ordinal" : 9,
 				"extras" : {
 					"getFileExtension" : "tar",
-					"supportThinProvisioning" : "false",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "false",
 					"supportsSparse" : "false"
 				}
 			},
@@ -5105,8 +5105,8 @@
 				"ordinal" : 10,
 				"extras" : {
 					"getFileExtension" : "zip",
-					"supportThinProvisioning" : "false",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "false",
 					"supportsSparse" : "false"
 				}
 			},
@@ -5115,8 +5115,8 @@
 				"ordinal" : 11,
 				"extras" : {
 					"getFileExtension" : "dir",
-					"supportThinProvisioning" : "false",
 					"supportSnapshot" : "false",
+					"supportThinProvisioning" : "false",
 					"supportsSparse" : "false"
 				}
 			}
@@ -5157,210 +5157,210 @@
 				"name" : "Filesystem",
 				"ordinal" : 0,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "true",
 					"encryptionSupportMode" : "Hypervisor",
-					"isShared" : "false"
+					"isShared" : "false",
+					"supportsEncryption" : "true",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "NetworkFilesystem",
 				"ordinal" : 1,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "true",
 					"encryptionSupportMode" : "Hypervisor",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "true",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "IscsiLUN",
 				"ordinal" : 2,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "Iscsi",
 				"ordinal" : 3,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "ISO",
 				"ordinal" : 4,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "false"
+					"isShared" : "false",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "LVM",
 				"ordinal" : 5,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "false"
+					"isShared" : "false",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "CLVM",
 				"ordinal" : 6,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "RBD",
 				"ordinal" : 7,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "SharedMountPoint",
 				"ordinal" : 8,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "true",
 					"encryptionSupportMode" : "Hypervisor",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "true",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "VMFS",
 				"ordinal" : 9,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "PreSetup",
 				"ordinal" : 10,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "EXT",
 				"ordinal" : 11,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "false"
+					"isShared" : "false",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "OCFS2",
 				"ordinal" : 12,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "SMB",
 				"ordinal" : 13,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "Gluster",
 				"ordinal" : 14,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "PowerFlex",
 				"ordinal" : 15,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "true",
 					"encryptionSupportMode" : "Hypervisor",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "true",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "ManagedNFS",
 				"ordinal" : 16,
 				"extras" : {
-					"supportsOverProvisioning" : "false",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "false"
 				}
 			},
 			{
 				"name" : "Linstor",
 				"ordinal" : 17,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "true",
 					"encryptionSupportMode" : "Storage",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "true",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "DatastoreCluster",
 				"ordinal" : 18,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "StorPool",
 				"ordinal" : 19,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "true",
 					"encryptionSupportMode" : "Hypervisor",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "true",
+					"supportsOverProvisioning" : "true"
 				}
 			},
 			{
 				"name" : "FiberChannel",
 				"ordinal" : 20,
 				"extras" : {
-					"supportsOverProvisioning" : "true",
-					"supportsEncryption" : "false",
 					"encryptionSupportMode" : "Unsupported",
-					"isShared" : "true"
+					"isShared" : "true",
+					"supportsEncryption" : "false",
+					"supportsOverProvisioning" : "true"
 				}
 			}
 		]
@@ -5838,160 +5838,160 @@
 				"name" : "Allocated",
 				"ordinal" : 0,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The volume is allocated but has not been created yet."
+					"getDescription" : "The volume is allocated but has not been created yet.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Creating",
 				"ordinal" : 1,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume is being created.  getPoolId() should reflect the pool where it is being created."
+					"getDescription" : "The volume is being created.  getPoolId() should reflect the pool where it is being created.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Ready",
 				"ordinal" : 2,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The volume is ready to be used."
+					"getDescription" : "The volume is ready to be used.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Migrating",
 				"ordinal" : 3,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume is migrating to other storage pool"
+					"getDescription" : "The volume is migrating to other storage pool",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Snapshotting",
 				"ordinal" : 4,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "There is a snapshot created on this volume, not backed up to secondary storage yet"
+					"getDescription" : "There is a snapshot created on this volume, not backed up to secondary storage yet",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "RevertSnapshotting",
 				"ordinal" : 5,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "There is a snapshot created on this volume, the volume is being reverting from snapshot"
+					"getDescription" : "There is a snapshot created on this volume, the volume is being reverting from snapshot",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Resizing",
 				"ordinal" : 6,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume is being resized"
+					"getDescription" : "The volume is being resized",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Expunging",
 				"ordinal" : 7,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume is being expunging"
+					"getDescription" : "The volume is being expunging",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Expunged",
 				"ordinal" : 8,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The volume has been expunged, and can no longer be recovered"
+					"getDescription" : "The volume has been expunged, and can no longer be recovered",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Destroy",
 				"ordinal" : 9,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The volume is destroyed, and can be recovered."
+					"getDescription" : "The volume is destroyed, and can be recovered.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Destroying",
 				"ordinal" : 10,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The volume is destroying, and can't be recovered."
+					"getDescription" : "The volume is destroying, and can't be recovered.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "UploadOp",
 				"ordinal" : 11,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume upload operation is in progress or in short the volume is on secondary storage"
+					"getDescription" : "The volume upload operation is in progress or in short the volume is on secondary storage",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Copying",
 				"ordinal" : 12,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "Volume is copying from image store to primary, in case it's an uploaded volume"
+					"getDescription" : "Volume is copying from image store to primary, in case it's an uploaded volume",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Uploaded",
 				"ordinal" : 13,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "Volume is uploaded"
+					"getDescription" : "Volume is uploaded",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "NotUploaded",
 				"ordinal" : 14,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume entry is just created in DB, not yet uploaded"
+					"getDescription" : "The volume entry is just created in DB, not yet uploaded",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "UploadInProgress",
 				"ordinal" : 15,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "Volume upload is in progress"
+					"getDescription" : "Volume upload is in progress",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "UploadError",
 				"ordinal" : 16,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "Volume upload encountered some error"
+					"getDescription" : "Volume upload encountered some error",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "UploadAbandoned",
 				"ordinal" : 17,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "Volume upload is abandoned since the upload was never initiated within a specified time"
+					"getDescription" : "Volume upload is abandoned since the upload was never initiated within a specified time",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Attaching",
 				"ordinal" : 18,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume is attaching to a VM from Ready state."
+					"getDescription" : "The volume is attaching to a VM from Ready state.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Restoring",
 				"ordinal" : 19,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The volume is being restored from backup."
+					"getDescription" : "The volume is being restored from backup.",
+					"isTransitional" : "true"
 				}
 			}
 		]
@@ -7952,44 +7952,44 @@
 				"name" : "Allocated",
 				"ordinal" : 0,
 				"extras" : {
-					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
+					"getDescription" : "Resource is allocated but not reserved",
 					"getPossibleEvents" : "[ReservationRequested]",
-					"getDescription" : "Resource is allocated but not reserved"
+					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\n"
 				}
 			},
 			{
 				"name" : "Reserving",
 				"ordinal" : 1,
 				"extras" : {
-					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
-					"getPossibleEvents" : "[CancelRequested, OperationFailed, OperationCompleted]",
-					"getDescription" : "Resource is being reserved right now"
+					"getDescription" : "Resource is being reserved right now",
+					"getPossibleEvents" : "[CancelRequested,OperationCompleted,OperationFailed]",
+					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\n"
 				}
 			},
 			{
 				"name" : "Reserved",
 				"ordinal" : 2,
 				"extras" : {
-					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
+					"getDescription" : "Resource has been reserved.",
 					"getPossibleEvents" : "[ReleaseRequested]",
-					"getDescription" : "Resource has been reserved."
+					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\n"
 				}
 			},
 			{
 				"name" : "Releasing",
 				"ordinal" : 3,
 				"extras" : {
-					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
-					"getPossibleEvents" : "[OperationFailed, OperationCompleted]",
-					"getDescription" : "Resource is being released"
+					"getDescription" : "Resource is being released",
+					"getPossibleEvents" : "[OperationCompleted,OperationFailed]",
+					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\n"
 				}
 			},
 			{
 				"name" : "Deallocating",
 				"ordinal" : 4,
 				"extras" : {
-					"getStateMachine" : "State: Initial\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\n",
-					"getDescription" : "Resource is being deallocated"
+					"getDescription" : "Resource is being deallocated",
+					"getStateMachine" : "State: Initial\nState: Reserving\n  --> Event: CancelRequested               ----> State: Allocated\n  --> Event: OperationFailed               ----> State: Allocated\n  --> Event: OperationCompleted            ----> State: Reserved\nState: Reserved\n  --> Event: ReleaseRequested              ----> State: Releasing\nState: Releasing\n  --> Event: OperationFailed               ----> State: Reserved\n  --> Event: OperationCompleted            ----> State: Allocated\nState: Allocated\n  --> Event: ReservationRequested          ----> State: Reserving\n"
 				}
 			}
 		]
@@ -8196,88 +8196,88 @@
 				"name" : "Starting",
 				"ordinal" : 0,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "VM is being started.  At this state, you should find host id filled which means it's being started on that host."
+					"getDescription" : "VM is being started.  At this state, you should find host id filled which means it's being started on that host.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Running",
 				"ordinal" : 1,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "VM is running.  host id has the host that it is running on."
+					"getDescription" : "VM is running.  host id has the host that it is running on.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Stopping",
 				"ordinal" : 2,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "VM is being stopped.  host id has the host that it is being stopped on."
+					"getDescription" : "VM is being stopped.  host id has the host that it is being stopped on.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Stopped",
 				"ordinal" : 3,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "VM is stopped.  host id should be null."
+					"getDescription" : "VM is stopped.  host id should be null.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Destroyed",
 				"ordinal" : 4,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "VM is marked for destroy."
+					"getDescription" : "VM is marked for destroy.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Expunging",
 				"ordinal" : 5,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "VM is being   expunged."
+					"getDescription" : "VM is being   expunged.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Migrating",
 				"ordinal" : 6,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "VM is being migrated.  host id holds to from host"
+					"getDescription" : "VM is being migrated.  host id holds to from host",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Error",
 				"ordinal" : 7,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "VM is in error"
+					"getDescription" : "VM is in error",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Unknown",
 				"ordinal" : 8,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "VM state is unknown."
+					"getDescription" : "VM state is unknown.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Shutdown",
 				"ordinal" : 9,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "VM state is shutdown from inside"
+					"getDescription" : "VM state is shutdown from inside",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Restoring",
 				"ordinal" : 10,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "VM is being restored from backup"
+					"getDescription" : "VM is being restored from backup",
+					"isTransitional" : "true"
 				}
 			}
 		]
@@ -10708,7 +10708,7 @@
 				"name" : "On",
 				"ordinal" : 0,
 				"extras" : {
-					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), AuthError(Authentication error happened), Disabled(Out-of-band management disabled), On(Chassis Power is On)]",
+					"getPossibleEvents" : "[AuthError(Authentication error happened),Disabled(Out-of-band management disabled),Off(Chassis Power is Off),On(Chassis Power is On),Unknown(An unknown error happened)]",
 					"toEvent" : "On(Chassis Power is On)"
 				}
 			},
@@ -10716,7 +10716,7 @@
 				"name" : "Off",
 				"ordinal" : 1,
 				"extras" : {
-					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), AuthError(Authentication error happened), Disabled(Out-of-band management disabled), On(Chassis Power is On)]",
+					"getPossibleEvents" : "[AuthError(Authentication error happened),Disabled(Out-of-band management disabled),Off(Chassis Power is Off),On(Chassis Power is On),Unknown(An unknown error happened)]",
 					"toEvent" : "Off(Chassis Power is Off)"
 				}
 			},
@@ -10724,7 +10724,7 @@
 				"name" : "Unknown",
 				"ordinal" : 2,
 				"extras" : {
-					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), Disabled(Out-of-band management disabled), On(Chassis Power is On)]",
+					"getPossibleEvents" : "[Disabled(Out-of-band management disabled),Off(Chassis Power is Off),On(Chassis Power is On),Unknown(An unknown error happened)]",
 					"toEvent" : "Unknown(An unknown error happened)"
 				}
 			},
@@ -10732,7 +10732,7 @@
 				"name" : "Disabled",
 				"ordinal" : 3,
 				"extras" : {
-					"getPossibleEvents" : "[Unknown(An unknown error happened), Off(Chassis Power is Off), AuthError(Authentication error happened), On(Chassis Power is On)]",
+					"getPossibleEvents" : "[AuthError(Authentication error happened),Off(Chassis Power is Off),On(Chassis Power is On),Unknown(An unknown error happened)]",
 					"toEvent" : "Disabled(Out-of-band management disabled)"
 				}
 			}
@@ -10749,48 +10749,48 @@
 				"name" : "On",
 				"ordinal" : 0,
 				"extras" : {
-					"getServerId" : "222771719561754",
-					"getDescription" : "Chassis Power is On"
+					"getDescription" : "Chassis Power is On",
+					"getServerId" : "222771719561754"
 				}
 			},
 			{
 				"name" : "Off",
 				"ordinal" : 1,
 				"extras" : {
-					"getServerId" : "222771719561754",
-					"getDescription" : "Chassis Power is Off"
+					"getDescription" : "Chassis Power is Off",
+					"getServerId" : "222771719561754"
 				}
 			},
 			{
 				"name" : "AuthError",
 				"ordinal" : 2,
 				"extras" : {
-					"getServerId" : "222771719561754",
-					"getDescription" : "Authentication error happened"
+					"getDescription" : "Authentication error happened",
+					"getServerId" : "222771719561754"
 				}
 			},
 			{
 				"name" : "Unknown",
 				"ordinal" : 3,
 				"extras" : {
-					"getServerId" : "222771719561754",
-					"getDescription" : "An unknown error happened"
+					"getDescription" : "An unknown error happened",
+					"getServerId" : "222771719561754"
 				}
 			},
 			{
 				"name" : "Enabled",
 				"ordinal" : 4,
 				"extras" : {
-					"getServerId" : "222771719561754",
-					"getDescription" : "Out-of-band management enabled"
+					"getDescription" : "Out-of-band management enabled",
+					"getServerId" : "222771719561754"
 				}
 			},
 			{
 				"name" : "Disabled",
 				"ordinal" : 5,
 				"extras" : {
-					"getServerId" : "222771719561754",
-					"getDescription" : "Out-of-band management disabled"
+					"getDescription" : "Out-of-band management disabled",
+					"getServerId" : "222771719561754"
 				}
 			}
 		]
@@ -10998,72 +10998,72 @@
 				"name" : "Allocated",
 				"ordinal" : 0,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The shared filesystem is allocated in db but hasn't been created or started yet."
+					"getDescription" : "The shared filesystem is allocated in db but hasn't been created or started yet.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Ready",
 				"ordinal" : 1,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The shared filesystem is ready to use."
+					"getDescription" : "The shared filesystem is ready to use.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Stopping",
 				"ordinal" : 2,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The shared filesystem is being stopped"
+					"getDescription" : "The shared filesystem is being stopped",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Stopped",
 				"ordinal" : 3,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The shared filesystem is in stopped state. It can not be used but the data is still there."
+					"getDescription" : "The shared filesystem is in stopped state. It can not be used but the data is still there.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Starting",
 				"ordinal" : 4,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The shared filesystem is being started."
+					"getDescription" : "The shared filesystem is being started.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Destroyed",
 				"ordinal" : 5,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The shared filesystem is destroyed."
+					"getDescription" : "The shared filesystem is destroyed.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Expunging",
 				"ordinal" : 6,
 				"extras" : {
-					"isTransitional" : "true",
-					"getDescription" : "The shared filesystem is being expunged."
+					"getDescription" : "The shared filesystem is being expunged.",
+					"isTransitional" : "true"
 				}
 			},
 			{
 				"name" : "Expunged",
 				"ordinal" : 7,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The shared filesystem has been expunged."
+					"getDescription" : "The shared filesystem has been expunged.",
+					"isTransitional" : "false"
 				}
 			},
 			{
 				"name" : "Error",
 				"ordinal" : 8,
 				"extras" : {
-					"isTransitional" : "false",
-					"getDescription" : "The shared filesystem is in error state."
+					"getDescription" : "The shared filesystem is in error state.",
+					"isTransitional" : "false"
 				}
 			}
 		]

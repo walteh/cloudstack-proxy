@@ -165,11 +165,23 @@ object EnumExtractor {
         val valueMetadata = enumValues.map { enumValue ->
             // Extract extra info from the enum constant if available
             val extraInfo = extractUsefulExtraInfo(enumValue, enumClass)
+
+			// if there is .getPossibleEvents on the extra stuff, sort it
+			if (extraInfo.containsKey("getPossibleEvents")) {
+				val extraEvents = extraInfo["getPossibleEvents"]?.removePrefix("[")?.removeSuffix("]")?.split(",")?.map { it.trim() }?.sorted()
+				extraInfo["getPossibleEvents"] = "[${extraEvents?.joinToString(",")}]"
+			}
+
+			// create a new map with the extra info sorted by key
+			val sortedExtraInfo = extraInfo.entries.sortedBy { it.key }
+
+			// convert the list to a map
+			val sortedExtraInfoMap = sortedExtraInfo.map { it.key to it.value }.toMap()
             
             EnumValueMetadata(
                 name = enumValue.name,
                 ordinal = enumValue.ordinal,
-                extras = extraInfo
+                extras = sortedExtraInfoMap
             )
         }
         
@@ -187,8 +199,8 @@ object EnumExtractor {
      * Extract useful information from an enum constant through reflection
      * Filters out common methods and focuses on valuable extras
      */
-    private fun extractUsefulExtraInfo(enumValue: Enum<*>, enumClass: Class<out Enum<*>>): Map<String, String> {
-        val extraInfo = LinkedHashMap<String, String>()
+    private fun extractUsefulExtraInfo(enumValue: Enum<*>, enumClass: Class<out Enum<*>>): MutableMap<String, String> {
+        val extraInfo = mutableMapOf<String, String>()
         
         // Get all declared methods in the enum class
         val declaredMethods = enumClass.declaredMethods
