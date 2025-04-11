@@ -13,6 +13,8 @@ type Options struct {
 	metadataDir string
 	// OutputDir is the directory where generated files will be written
 	outputDir string
+	// Format is whether to format the generated files
+	format bool
 }
 
 // Generator handles the generation of protobuf files
@@ -53,7 +55,7 @@ func (g *Generator) generateFromMetadata() error {
 	}
 
 	// Create a proto generator
-	protoGen := metadata.NewProtoGenerator(meta, filepath.Dir(g.opts.outputDir))
+	protoGen := metadata.NewProtoGenerator(meta, filepath.Dir(g.opts.outputDir), g.opts.format)
 
 	// Generate the protobuf files
 	if err := protoGen.GenerateProto(); err != nil {

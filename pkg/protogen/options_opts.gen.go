@@ -32,6 +32,14 @@ func WithOutputDir(opt string) OptOptionsSetter {
 	}
 }
 
+// Format is whether to format the generated files
+func WithFormat(opt bool) OptOptionsSetter {
+	return func(o *Options) {
+		o.format = opt
+
+	}
+}
+
 func (o *Options) Validate() error {
 	return nil
 }

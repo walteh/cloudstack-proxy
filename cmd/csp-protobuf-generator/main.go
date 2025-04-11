@@ -15,7 +15,7 @@ func main() {
 	// Define command-line flags
 	metadataDir := flag.String("metadata-dir", "", "Directory containing CloudStack API metadata JSON files")
 	outputDirFlag := flag.String("output-dir", "", "Output directory for generated proto files (defaults to [root]/proto)")
-
+	formatFlag := flag.Bool("format", true, "Whether to format the generated proto files")
 	flag.Parse()
 
 	// Get the root directory
@@ -34,6 +34,7 @@ func main() {
 	generator := protogen.NewGenerator(
 		protogen.WithMetadataDir(*metadataDir),
 		protogen.WithOutputDir(outputDir),
+		protogen.WithFormat(*formatFlag),
 	)
 	err = generator.Run()
 	if err != nil {

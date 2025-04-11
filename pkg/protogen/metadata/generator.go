@@ -19,13 +19,15 @@ import (
 type ProtoGenerator struct {
 	Metadata *Metadata
 	RootDir  string
+	format   bool
 }
 
 // NewProtoGenerator creates a new protobuf generator
-func NewProtoGenerator(metadata *Metadata, rootDir string) *ProtoGenerator {
+func NewProtoGenerator(metadata *Metadata, rootDir string, format bool) *ProtoGenerator {
 	return &ProtoGenerator{
 		Metadata: metadata,
 		RootDir:  rootDir,
+		format:   format,
 	}
 }
 
@@ -296,6 +298,19 @@ message {{ .MessageName }} {
 }
 {{ end }}
 
+{{ range .Enums }}
+// {{ .Name }} represents the possible values for {{ .Description }}
+enum {{ $x := .Name }}{{ $x }} {
+	// Default unspecified value
+	{{ $x | toSnakeCase | toAllCaps }}_UNSPECIFIED = 0;
+	
+{{- range $index, $value := .Values }}
+	// {{ $value.Description }}
+	{{ $x | toSnakeCase | toAllCaps }}_{{ $value.Name }} = {{ add $index 1 }};
+{{- end }}
+}
+{{ end }}
+
 // Item represents a generic item in a list response
 message Item {
 	// The ID of the item
@@ -560,13 +575,17 @@ message Result {
 		templateResponses = append(templateResponses, successResponse)
 	}
 
-	// Prepare template data
+	// Extract the enums we need for this service
+	enums := g.identifyEnumsForService(commands, responses, packagePath)
+
+	// Create a map for the template data
 	templateData := map[string]interface{}{
 		"Category":    category,
 		"ServiceName": serviceName,
 		"Commands":    templateCommands,
 		"Responses":   templateResponses,
 		"PackagePath": packagePath,
+		"Enums":       enums,
 	}
 
 	// Create template with functions
@@ -581,6 +600,12 @@ message Result {
 		},
 		"toSnakeCase": func(s string) string {
 			return toSnakeCase(s)
+		},
+		"toAllCaps": func(s string) string {
+			return strings.ToUpper(s)
+		},
+		"snakeAllCaps": func(s string) string {
+			return snakeAllCaps(s)
 		},
 		"plural": func(s string) string {
 			return pluralize(s)
@@ -666,7 +691,7 @@ message Result {
 	reader := buf.Bytes()
 
 	////// formating logic //////
-	if true {
+	if g.format {
 		// we will enable this later
 		ctx := context.Background()
 
@@ -770,6 +795,26 @@ func pluralize(s string) string {
 
 // javaTypeToProto converts a Java type to a protobuf type
 func javaTypeToProto(javaType string) string {
+	// First, check if the javaType refers to a known enum from the CloudStack API
+	// Check if this is a Java enum type by looking for class names that are commonly used for enums
+	if strings.HasPrefix(javaType, "com.cloud.") ||
+		strings.HasPrefix(javaType, "org.apache.cloudstack.") {
+		// Extract the simple name of the enum class
+		parts := strings.Split(javaType, ".")
+		enumSimpleName := parts[len(parts)-1]
+
+		// If it's an enum type from the CloudStack API, use it directly
+		if strings.Contains(enumSimpleName, "Type") ||
+			strings.Contains(enumSimpleName, "State") ||
+			strings.Contains(enumSimpleName, "Status") ||
+			strings.Contains(enumSimpleName, "Scope") ||
+			strings.Contains(enumSimpleName, "Mode") ||
+			strings.Contains(enumSimpleName, "Level") {
+			return enumSimpleName
+		}
+	}
+
+	// If not an enum, use the standard type mapping
 	switch {
 	case javaType == "java.lang.String":
 		return "string"

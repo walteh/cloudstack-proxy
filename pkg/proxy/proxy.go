@@ -8,8 +8,8 @@ import (
 
 	// "connectrpc.com/connect"
 	"connectrpc.com/connect"
-	corev1 "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/core/v1"
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/core/v1/corev1connect"
+	corev1 "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/common/core/v1"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/common/core/v1/corev1connect"
 )
 
 // Proxy is the main CloudStack proxy that implements all services
