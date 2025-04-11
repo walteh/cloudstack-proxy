@@ -1,12 +1,18 @@
 package metadata
 
 import (
+	"bytes"
+	"context"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"strings"
 	"text/template"
 	"unicode"
+
+	"github.com/walteh/retab/v2/pkg/format"
+	"github.com/walteh/retab/v2/pkg/format/protofmt"
 )
 
 // ProtoGenerator generates protobuf definitions from CloudStack API metadata
@@ -42,14 +48,48 @@ func (g *ProtoGenerator) generateCategoryProto(category string, commandNames []s
 		return nil
 	}
 
+	// Handle multi-part category names (e.g., "region.ha.gslb")
+	// Convert dots to directory separators for proper package structure
+	var dirPath string
+	var packagePath string
+
+	if strings.Contains(category, ".") {
+		// Split category by dots for directory structure
+		parts := strings.Split(category, ".")
+
+		// Use parts for directory structure - join with / for filesystem path
+		dirPath = strings.Join(parts, "/")
+
+		// Use same parts for package path - keep dots for protobuf package name
+		packagePath = strings.Join(parts, ".")
+	} else {
+		dirPath = category
+		packagePath = category
+	}
+
 	// Create the category directory if it doesn't exist
-	categoryDir := filepath.Join(g.RootDir, "proto", "cloudstack", "management", category, "v1")
+	categoryDir := filepath.Join(g.RootDir, "proto", "cloudstack", "management", dirPath, "v1")
 	if err := os.MkdirAll(categoryDir, 0755); err != nil {
 		return fmt.Errorf("error creating directory: %w", err)
 	}
 
-	// Service name for this category (e.g., "VPCService" for vpc)
-	serviceName := strings.ToUpper(category[:1]) + category[1:] + "Service"
+	// Determine the base filename - use the last part of the category
+	baseFilename := category
+	if strings.Contains(category, ".") {
+		parts := strings.Split(category, ".")
+		baseFilename = parts[len(parts)-1] // Just use the last part of the category
+	}
+
+	// Service name for this category
+	// For multi-part categories, use just the last part
+	serviceName := ""
+	if strings.Contains(category, ".") {
+		parts := strings.Split(category, ".")
+		lastPart := parts[len(parts)-1]
+		serviceName = strings.ToUpper(lastPart[:1]) + lastPart[1:] + "Service"
+	} else {
+		serviceName = strings.ToUpper(category[:1]) + category[1:] + "Service"
+	}
 
 	// Track admin variants to avoid duplicates
 	adminVariants := make(map[string]string) // Maps base command to admin command
@@ -152,8 +192,10 @@ func (g *ProtoGenerator) generateCategoryProto(category string, commandNames []s
 	}
 
 	// Generate the protobuf file
-	protoPath := filepath.Join(categoryDir, category+".gen.proto")
-	return g.writeProtoFile(protoPath, serviceName, serviceCommands, serviceResponses)
+	protoPath := filepath.Join(categoryDir, baseFilename+".gen.proto")
+
+	// Use packagePath instead of category for package name
+	return g.writeProtoFile(protoPath, serviceName, serviceCommands, serviceResponses, packagePath)
 }
 
 // isAdminVariant determines if a command is an admin variant
@@ -176,28 +218,28 @@ func getBaseCommandName(name string) string {
 }
 
 // writeProtoFile writes a protobuf file with the given service and message definitions
-func (g *ProtoGenerator) writeProtoFile(filePath, serviceName string, commands []CommandMetadata, responses []ResponseMetadata) error {
+func (g *ProtoGenerator) writeProtoFile(filePath, serviceName string, commands []CommandMetadata, responses []ResponseMetadata, packagePath string) error {
 	// Template for the protobuf file
 	const protoTmpl = `edition = "2023";
 
-package cloudstack.management.{{ .Category }}.v1;
+package cloudstack.management.{{ .PackagePath }}.v1;
 
 import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 import "cloudstack/annotations/annotations.proto";
 
-// {{ .ServiceName }} provides operations for managing {{ .Category | title }}s
+// {{ .ServiceName }} provides operations for managing {{ .PackagePath | title }}s
 service {{ .ServiceName }} {
 {{- if hasAdminService . }}
-	option (cloudstack.annotations.Enum.scope) = Scope_ADMIN;
+	option (annotations.service).scope = Scope_ADMIN;
 {{- else }}
-	option (cloudstack.annotations.Enum.scope) = Scope_USER;
+	option (annotations.service).scope = Scope_USER;
 {{- end }}
 {{- range .Commands }}
-	// {{ .SimpleName }} {{ .Description }}
+	{{ formatDescription (printf "%s %s" .SimpleName .Description) }}
 	rpc {{ .SimpleName }}({{ .SimpleName }}Request) returns ({{ .SimpleName }}Response) {
 	{{- if .HasAdminVariant }}
-		option (cloudstack.annotations.Enum.scope) = Scope_ADMIN;
+		option (annotations.method).scope = Scope_ADMIN;
 	{{- end }}
 	}
 {{- end }}
@@ -211,14 +253,14 @@ message {{ .SimpleName }}Request {
 	bool run_as_admin = 1;
 
 {{- range $index, $param := .Parameters }}
-	// {{ $param.Description }}
+	{{ formatDescription $param.Description }}
 	{{ javaTypeToProto $param.JavaType }} {{ $param.FieldName | toSnakeCase }} = {{ add $index 2 }}{{ getValidationRules $param $.Parameters }};
 {{- end }}
 {{- else }}
 {{- range $index, $param := .Parameters }}
-	// {{ $param.Description }}
+	{{ formatDescription $param.Description }}
 	{{ javaTypeToProto $param.JavaType }} {{ $param.FieldName | toSnakeCase }} = {{ add $index 1 }}{{ getValidationRules $param $.Parameters }};
-{{- end }}
+{{ end }}
 {{- end }}
 }
 
@@ -248,7 +290,7 @@ message {{ .SimpleName }}Response {
 // {{ .MessageName }} represents a {{ .Description | title }}
 message {{ .MessageName }} {
 {{- range $index, $field := .Fields }}
-	// {{ $field.Description }}
+	{{ formatDescription $field.Description }}
 	{{ javaTypeToProto $field.JavaType }} {{ $field.FieldName | toSnakeCase }} = {{ add $index 1 }}{{ getFieldValidation $field }};
 {{- end }}
 }
@@ -524,6 +566,7 @@ message Result {
 		"ServiceName": serviceName,
 		"Commands":    templateCommands,
 		"Responses":   templateResponses,
+		"PackagePath": packagePath,
 	}
 
 	// Create template with functions
@@ -550,6 +593,9 @@ message Result {
 		},
 		"getFieldValidation": func(field ResponseFieldMetadata) string {
 			return getFieldValidation(field)
+		},
+		"formatDescription": func(description string) string {
+			return formatDescription(description)
 		},
 		"hasAdminVariant": func(cmd interface{}) bool {
 			if m, ok := cmd.(map[string]interface{}); ok {
@@ -611,23 +657,63 @@ message Result {
 		return fmt.Errorf("error parsing template: %w", err)
 	}
 
-	// Create the file
-	file, err := os.Create(filePath)
-	if err != nil {
-		return fmt.Errorf("error creating file: %w", err)
-	}
-	defer file.Close()
+	buf := new(bytes.Buffer)
 
 	// Execute the template
-	if err := parsed.Execute(file, templateData); err != nil {
+	if err := parsed.Execute(buf, templateData); err != nil {
 		return fmt.Errorf("error executing template: %w", err)
+	}
+	reader := buf.Bytes()
+
+	////// formating logic //////
+	if true {
+		// we will enable this later
+		ctx := context.Background()
+
+		cfg := format.NewDefaultConfigurationProvider()
+		gcfg, err := cfg.GetConfigurationForFileType(ctx, "proto")
+		if err != nil {
+			return fmt.Errorf("error getting global configuration: %w", err)
+		}
+
+		dart, err := protofmt.NewFormatter().Format(ctx, gcfg, bytes.NewReader(reader))
+		if err != nil {
+			return fmt.Errorf("error formatting file: %w", err)
+		}
+
+		reader, err = io.ReadAll(dart)
+		if err != nil {
+			return fmt.Errorf("error reading formatted file: %w", err)
+		}
+	}
+	////// formating logic //////
+
+	err = os.WriteFile(filePath, reader, 0644)
+	if err != nil {
+		return fmt.Errorf("error writing file: %w", err)
 	}
 
 	fmt.Printf("Generated protobuf file: %s\n", filePath)
+
 	return nil
 }
 
 // Helper functions for the template
+
+// formatDescription formats a description string into a proper proto comment,
+// using multi-line comment format if the description contains newlines
+func formatDescription(description string) string {
+	if strings.Contains(description, "\n") {
+		// Format as multi-line comment
+		lines := strings.Split(description, "\n")
+		for i, line := range lines {
+			lines[i] = strings.TrimSpace(line)
+		}
+		return "/*\n\t * " + strings.Join(lines, "\n\t * ") + "\n\t */"
+	}
+	// Single line comment
+	return "// " + description
+}
 
 // getResponseDescription returns a description for a response type
 func getResponseDescription(name string) string {
