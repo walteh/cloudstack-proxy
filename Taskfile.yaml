@@ -7,25 +7,33 @@ vars:
         sh: find . -type f -name '*.schema.json'
     GO_ROOT_PKG:
         sh: cat go.mod | grep -oE '^module[^\S]+' | cut -d' ' -f2
-
     GO_COMMAND: ./go
 
 env:
     COMPOSE_BAKE: true
+    GOPROXY: 'https://proxy.golang.org'
+    GOSUMDB: sum.golang.org
+    GOPRIVATE: github.com/walteh
 
 tasks:
-    go-mod-tidy:
-        env: {GOPROXY: 'https://proxy.golang.org', GOSUMDB: sum.golang.org, GOPRIVATE: github.com/walteh}
+    go:tidy:
         cmds:
           - for: {var: GO_MODULES}
             cmd: cd {{.ITEM}} && go mod tidy -e
 
-    go-mod-upgrade:
+    go:upgrade:
         run: once
-        env: {GOPROXY: 'https://proxy.golang.org', GOSUMDB: sum.golang.org, GOPRIVATE: github.com/walteh}
         cmds:
           - ./go tool go-mod-upgrade --force
           - task: go-mod-tidy
+
+    go:update:
+        requires: {vars: [CLI_ARGS]}
+        cmds:
+          - task: go:tidy
+          - for: {var: GO_MODULES}
+            cmd: cd {{.ITEM}} && go get -u {{.CLI_ARGS}}
+          - task: go:tidy
 
     options:
         desc: generates options for structs with '//go:opts' comment
