@@ -26,6 +26,11 @@ service VolumeService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
+	rpc AttachVolumeCmdByAdmin(AttachVolumeCmdByAdminRequest) returns (AttachVolumeCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
 	rpc ChangeOfferingForVolume(ChangeOfferingForVolumeRequest) returns (ChangeOfferingForVolumeResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -42,6 +47,11 @@ service VolumeService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	rpc CreateVolumeCmdByAdmin(CreateVolumeCmdByAdminRequest) returns (CreateVolumeCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// DeleteVolume Deletes a detached disk volume.
 	rpc DeleteVolume(DeleteVolumeRequest) returns (DeleteVolumeResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -50,6 +60,11 @@ service VolumeService {
 	// DestroyVolume Destroys a Volume.
 	rpc DestroyVolume(DestroyVolumeRequest) returns (DestroyVolumeResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DestroyVolumeCmdByAdmin Destroys a Volume.
+	rpc DestroyVolumeCmdByAdmin(DestroyVolumeCmdByAdminRequest) returns (DestroyVolumeCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -117,6 +132,11 @@ service VolumeService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
+	rpc RecoverVolumeCmdByAdmin(RecoverVolumeCmdByAdminRequest) returns (RecoverVolumeCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// RemoveResourceDetail Removes detail for the Resource.
 	rpc RemoveResourceDetail(RemoveResourceDetailRequest) returns (RemoveResourceDetailResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -144,9 +164,19 @@ service VolumeService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// UpdateVolumeCmdByAdmin Updates the volume.
+	rpc UpdateVolumeCmdByAdmin(UpdateVolumeCmdByAdminRequest) returns (UpdateVolumeCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// UploadVolume Uploads a data disk.
 	rpc UploadVolume(UploadVolumeRequest) returns (UploadVolumeResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UploadVolumeCmdByAdmin Uploads a data disk.
+	rpc UploadVolumeCmdByAdmin(UploadVolumeCmdByAdminRequest) returns (UploadVolumeCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
@@ -241,6 +271,39 @@ message AttachVolumeRequest {
 
 // AttachVolumeResponse represents the response from attaches a disk volume to a virtual machine.
 message AttachVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AttachVolumeCmdByAdminRequest represents the parameters for attaches a disk volume to a virtual machine.
+message AttachVolumeCmdByAdminRequest {
+	// The ID of the device to map the volume to the guest OS. If no deviceID is informed, the next available deviceID will be chosen. Use 0 when volume needs to be attached as ROOT.<br>When using a linux operating system and the hypervisor XenServer, the devices IDs will be mapped as follows:<ul><li>0 maps to /dev/xvda;</li><li>1 maps to /dev/xvdb;</li><li>2 maps /dev/xvdc and so on.</li></ul>Please refer to the docs of your hypervisor for the correct mapping of the deviceID and the actual logical disk structure.
+	int64 device_id = 1;
+
+	// the ID of the disk volume
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	//     the ID of the virtual machine
+	int64 virtual_machine_id = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// AttachVolumeCmdByAdminResponse represents the response from attaches a disk volume to a virtual machine.
+message AttachVolumeCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -381,6 +444,78 @@ message CreateVolumeResponse {
 	Result result = 1;
 }
 
+// CreateVolumeCmdByAdminRequest represents the parameters for creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+message CreateVolumeCmdByAdminRequest {
+	// the account associated with the disk volume. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// the project associated with the volume. Mutually exclusive with account parameter
+	int64 project_id = 2;
+
+	// the domain ID associated with the disk offering. If used with the account parameter returns the disk volume associated with the account for the specified domain.If account is NOT provided then the volume will be assigned to the caller account and domain.
+	int64 domain_id = 3;
+
+	// the ID of the disk offering. Either diskOfferingId or snapshotId must be passed in.
+	int64 disk_offering_id = 4;
+
+	// the name of the disk volume
+	string volume_name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Arbitrary volume size
+	int64 size = 6;
+
+	// min iops
+	int64 min_iops = 7;
+
+	// max iops
+	int64 max_iops = 8;
+
+	// the snapshot ID for the disk volume. Either diskOfferingId or snapshotId must be passed in.
+	int64 snapshot_id = 9;
+
+	// the ID of the availability zone
+	int64 zone_id = 10;
+
+	// an optional field, whether to display the volume to the end user or not.
+	bool display_volume = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the virtual machine; to be used with snapshot Id, VM to which the volume gets attached after creation
+	int64 virtual_machine_id = 12;
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 13 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 14;
+
+	//
+	string injected_job_id = 15 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 16;
+}
+
+// CreateVolumeCmdByAdminResponse represents the response from creates a disk volume from a disk offering. this disk volume must still be attached to a virtual machine to make use of it.
+message CreateVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
 // DeleteVolumeRequest represents the parameters for deletes a detached disk volume.
 message DeleteVolumeRequest {
 	// The ID of the disk volume
@@ -422,6 +557,36 @@ message DestroyVolumeRequest {
 
 // DestroyVolumeResponse represents the response from destroys a volume.
 message DestroyVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DestroyVolumeCmdByAdminRequest represents the parameters for destroys a volume.
+message DestroyVolumeCmdByAdminRequest {
+	// The ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// If true is passed, the volume is expunged immediately. False by default.
+	bool expunge = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DestroyVolumeCmdByAdminResponse represents the response from destroys a volume.
+message DestroyVolumeCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -1027,6 +1192,23 @@ message RecoverVolumeResponse {
 	Result result = 1;
 }
 
+// RecoverVolumeCmdByAdminRequest represents the parameters for recovers a destroy volume.
+message RecoverVolumeCmdByAdminRequest {
+	// The ID of the volume
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RecoverVolumeCmdByAdminResponse represents the response from recovers a destroy volume.
+message RecoverVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
 // RemoveResourceDetailRequest represents the parameters for removes detail for the resource.
 message RemoveResourceDetailRequest {
 	// Delete details matching key/value pairs
@@ -1220,6 +1402,62 @@ message UpdateVolumeResponse {
 	Result result = 1;
 }
 
+// UpdateVolumeCmdByAdminRequest represents the parameters for updates the volume.
+message UpdateVolumeCmdByAdminRequest {
+	// the ID of the disk volume
+	int64 id = 1;
+
+	// The path of the volume
+	string path = 2;
+
+	// The chain info of the volume
+	string chain_info = 3;
+
+	// Destination storage pool UUID for the volume
+	int64 storage_id = 4;
+
+	// The state of the volume
+	string state = 5;
+
+	// an optional field, whether to the display the volume to the end user or not.
+	bool display_volume = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// new name of the volume
+	string name = 7 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
+	bool delete_protection = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 10;
+
+	//
+	string injected_job_id = 11 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 12;
+}
+
+// UpdateVolumeCmdByAdminResponse represents the response from updates the volume.
+message UpdateVolumeCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
 // UploadVolumeRequest represents the parameters for uploads a data disk.
 message UploadVolumeRequest {
 	// Whether to run this operation as an administrator
@@ -1275,6 +1513,75 @@ message UploadVolumeRequest {
 
 // UploadVolumeResponse represents the response from uploads a data disk.
 message UploadVolumeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UploadVolumeCmdByAdminRequest represents the parameters for uploads a data disk.
+message UploadVolumeCmdByAdminRequest {
+	// the format for the volume. Possible values include QCOW2, OVA, and VHD.
+	string format = 1 [
+		(validate.field).required = true
+	];
+
+	// the name of the volume
+	string volume_name = 2 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the URL of where the volume is hosted. Possible URL include http:// and https://
+	string url = 3 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone the volume is to be hosted on
+	int64 zone_id = 4 [
+		(validate.field).required = true
+	];
+
+	// an optional domainId. If the account parameter is used, domainId must also be used. If account is NOT provided then volume will be assigned to the caller account and domain.
+	int64 domain_id = 5;
+
+	// an optional accountName. Must be used with domainId.
+	string account_name = 6;
+
+	/*
+	 * the checksum value of this volume. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	 */
+	string checksum = 7;
+
+	// Image store uuid
+	string image_store_uuid = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	// Upload volume for the project
+	int64 project_id = 9;
+
+	// the ID of the disk offering. This must be a custom sized offering since during uploadVolume volume size is unknown.
+	int64 disk_offering_id = 10;
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// UploadVolumeCmdByAdminResponse represents the response from uploads a data disk.
+message UploadVolumeCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }

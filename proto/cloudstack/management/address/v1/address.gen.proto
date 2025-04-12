@@ -21,6 +21,11 @@ service AddressService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
+	rpc AssociateIPAddrCmdByAdmin(AssociateIPAddrCmdByAdminRequest) returns (AssociateIPAddrCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// DisassociateIPAddr Disassociates an IP address from the account.
 	rpc DisassociateIPAddr(DisassociateIPAddrRequest) returns (DisassociateIPAddrResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -29,6 +34,11 @@ service AddressService {
 	// ListPublicIpAddresses Lists all public IP addresses
 	rpc ListPublicIpAddresses(ListPublicIpAddressesRequest) returns (ListPublicIpAddressesResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListPublicIpAddressesCmdByAdmin Lists all public ip addresses
+	rpc ListPublicIpAddressesCmdByAdmin(ListPublicIpAddressesCmdByAdminRequest) returns (ListPublicIpAddressesCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -133,6 +143,62 @@ message AssociateIPAddrRequest {
 
 // AssociateIPAddrResponse represents the response from acquires and associates a public ip to an account. either of the parameters are required, i.e. either zoneid, or networkid, or vpcid
 message AssociateIPAddrResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AssociateIPAddrCmdByAdminRequest represents the parameters for acquires and associates a public ip to an account.
+message AssociateIPAddrCmdByAdminRequest {
+	// the account to associate with this IP address
+	string account_name = 1;
+
+	// the ID of the domain to associate with this IP address
+	int64 domain_id = 2;
+
+	// the ID of the availability zone you want to acquire an public IP address from
+	int64 zone_id = 3;
+
+	// The network this IP address should be associated to.
+	int64 network_id = 4;
+
+	// Deploy VM for the project
+	int64 project_id = 5;
+
+	// the VPC you want the IP address to be associated with
+	int64 vpc_id = 6;
+
+	// should be set to true if public IP is required to be transferable across zones, if not specified defaults to false
+	bool is_portable = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// region ID from where portable IP is to be associated.
+	int32 region_id = 8;
+
+	// an optional field, whether to the display the IP to the end user or not
+	bool display = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// IP Address to be associated
+	string ip_address = 10 [
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// AssociateIPAddrCmdByAdminResponse represents the response from acquires and associates a public ip to an account.
+message AssociateIPAddrCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -255,6 +321,128 @@ message ListPublicIpAddressesRequest {
 
 // ListPublicIpAddressesResponse represents the response from lists all public ip addresses
 message ListPublicIpAddressesResponse {
+	option (validate.message).disabled = false;
+	// The list of IPAddresss
+	repeated IPAddress items = 1;
+
+	// The total count of IPAddresss
+	int32 total_count = 2;
+}
+
+// ListPublicIpAddressesCmdByAdminRequest represents the parameters for lists all public ip addresses
+message ListPublicIpAddressesCmdByAdminRequest {
+	// limits search results to allocated public IP addresses
+	bool allocated_only = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// lists all public IP addresses by state
+	string state = 2;
+
+	// the virtual network for the IP address
+	bool for_virtual_network = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// lists IP address by ID
+	int64 id = 4;
+
+	// lists the specified IP address
+	string ip_address = 5 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// lists all public IP addresses by VLAN ID
+	int64 vlan_id = 6;
+
+	// lists all public IP addresses by zone ID
+	int64 zone_id = 7;
+
+	// list only IPs used for load balancing
+	bool for_load_balancing = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// lists all public IP addresses by physical network ID
+	int64 physical_network_id = 9;
+
+	// lists all public IP addresses associated to the network specified
+	int64 associated_network_id = 10;
+
+	// lists all public IP addresses by source network ID
+	int64 network_id = 11;
+
+	// list only source NAT IP addresses
+	bool is_source_nat = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only static NAT IP addresses
+	bool is_static_nat = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List IPs belonging to the VPC
+	int64 vpc_id = 14;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if range is dedicated for system VMs
+	bool for_system_v_ms = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// makes the API's response contains only the resource count
+	bool retrieve_only_resource_count = 17 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 18;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 19;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 20 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 21 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 22;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 23 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 24;
+
+	//
+	int32 page = 25;
+
+	//
+	int32 page_size = 26;
+
+	//
+	string response_type = 27;
+}
+
+// ListPublicIpAddressesCmdByAdminResponse represents the response from lists all public ip addresses
+message ListPublicIpAddressesCmdByAdminResponse {
 	option (validate.message).disabled = false;
 	// The list of IPAddresss
 	repeated IPAddress items = 1;

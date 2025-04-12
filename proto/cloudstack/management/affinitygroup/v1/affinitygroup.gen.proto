@@ -35,6 +35,11 @@ service AffinitygroupService {
 		option (annotations.method).scope = SCOPE_ADMIN;
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// UpdateVMAffinityGroupCmdByAdmin Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	rpc UpdateVMAffinityGroupCmdByAdmin(UpdateVMAffinityGroupCmdByAdminRequest) returns (UpdateVMAffinityGroupCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreateAffinityGroupRequest represents the parameters for creates an affinity/anti-affinity group
@@ -236,6 +241,37 @@ message UpdateVMAffinityGroupRequest {
 
 // UpdateVMAffinityGroupResponse represents the response from updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
 message UpdateVMAffinityGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateVMAffinityGroupCmdByAdminRequest represents the parameters for updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
+message UpdateVMAffinityGroupCmdByAdminRequest {
+	// The ID of the virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	repeated string affinity_group_id_list = 2;
+
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	repeated string affinity_group_name_list = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateVMAffinityGroupCmdByAdminResponse represents the response from updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
+message UpdateVMAffinityGroupCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }

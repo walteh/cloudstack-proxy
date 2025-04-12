@@ -56,6 +56,11 @@ service AccountService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListAccountsCmdByAdmin Lists accounts and provides detailed account information for listed accounts
+	rpc ListAccountsCmdByAdmin(ListAccountsCmdByAdminRequest) returns (ListAccountsCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// ListProjectAccounts Lists project's accounts
 	rpc ListProjectAccounts(ListProjectAccountsRequest) returns (ListProjectAccountsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -416,6 +421,78 @@ message ListAccountsRequest {
 
 // ListAccountsResponse represents the response from lists accounts and provides detailed account information for listed accounts
 message ListAccountsResponse {
+	option (validate.message).disabled = false;
+	// The list of Accounts
+	repeated Account items = 1;
+
+	// The total count of Accounts
+	int32 total_count = 2;
+}
+
+// ListAccountsCmdByAdminRequest represents the parameters for lists accounts and provides detailed account information for listed accounts
+message ListAccountsCmdByAdminRequest {
+	// list accounts by account type. Valid account types are 1 (admin), 2 (domain-admin), and 0 (user).
+	int32 account_type = 1;
+
+	// list account by account ID
+	int64 id = 2;
+
+	// list accounts by cleanuprequired attribute (values are true or false)
+	bool cleanup_required_ = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list account by account name
+	string search_name = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// list accounts by state. Valid states are enabled, disabled, and locked.
+	string state = 5;
+
+	// comma separated list of account details requested, value can be a list of [ all, resource, min]
+	repeated string view_details = 6;
+
+	// List accounts by the Api key access value
+	string api_key_access = 7;
+
+	// flag to display the resource icon for accounts
+	bool show_icon = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Tag for resource type to return usage
+	string tag = 9;
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 11;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 13;
+
+	//
+	int32 page = 14;
+
+	//
+	int32 page_size = 15;
+
+	//
+	string response_type = 16;
+}
+
+// ListAccountsCmdByAdminResponse represents the response from lists accounts and provides detailed account information for listed accounts
+message ListAccountsCmdByAdminResponse {
 	option (validate.message).disabled = false;
 	// The list of Accounts
 	repeated Account items = 1;

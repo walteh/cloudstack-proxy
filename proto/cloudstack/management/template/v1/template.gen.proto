@@ -27,6 +27,11 @@ service TemplateService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	rpc CreateTemplateCmdByAdmin(CreateTemplateCmdByAdminRequest) returns (CreateTemplateCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
 	rpc DeleteTemplate(DeleteTemplateRequest) returns (DeleteTemplateResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -53,9 +58,19 @@ service TemplateService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
+	rpc ListTemplatePermissionsCmdByAdmin(ListTemplatePermissionsCmdByAdminRequest) returns (ListTemplatePermissionsCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// ListTemplates List all public, private, and privileged templates.
 	rpc ListTemplates(ListTemplatesRequest) returns (ListTemplatesResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListTemplatesCmdByAdmin List all public, private, and privileged templates.
+	rpc ListTemplatesCmdByAdmin(ListTemplatesCmdByAdminRequest) returns (ListTemplatesCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -89,6 +104,11 @@ service TemplateService {
 	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
 	rpc RegisterVnfTemplate(RegisterVnfTemplateRequest) returns (RegisterVnfTemplateResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RegisterVnfTemplateCmdByAdmin Registers an existing VNF template into the CloudStack cloud.
+	rpc RegisterVnfTemplateCmdByAdmin(RegisterVnfTemplateCmdByAdminRequest) returns (RegisterVnfTemplateCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -258,6 +278,104 @@ message CreateTemplateRequest {
 
 // CreateTemplateResponse represents the response from creates a template of a virtual machine. the virtual machine must be in a stopped state. a template created from this command is automatically designated as a private template visible to the account that created it.
 message CreateTemplateResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateTemplateCmdByAdminRequest represents the parameters for creates a template of a virtual machine. the virtual machine must be in a stopped state. a template created from this command is automatically designated as a private template visible to the account that created it.
+message CreateTemplateCmdByAdminRequest {
+	// 32 or 64 bit
+	int32 bits = 1;
+
+	// The display text of the template, defaults to the 'name'.
+	string display_text = 2;
+
+	// true if this template is a featured template, false otherwise
+	bool featured = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if this template is a public template, false otherwise
+	bool public_template = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the name of the template
+	string template_name = 5 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the OS Type that best represents the OS of this template.
+	int64 os_type_id = 6 [
+		(validate.field).required = true
+	];
+
+	// true if the template supports the password reset feature; default is false
+	bool password_enabled = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template supports the sshkey upload feature; default is false
+	bool ssh_key_enabled = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template requires HVM, false otherwise
+	bool requires_hvm = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the snapshot the template is being created from. Either this parameter, or volumeId has to be passed in
+	int64 snapshot_id = 10;
+
+	// the ID of the disk volume the template is being created from. Either this parameter, or snapshotId has to be passed in
+	int64 volume_id = 11;
+
+	// Optional, VM ID. If this presents, it is going to create a baremetal template for VM this ID refers to. This is only for VM whose hypervisor type is BareMetal
+	int64 vm_id = 12;
+
+	// Optional, only for baremetal hypervisor. The directory name where template stored on CIFS server
+	string url = 13;
+
+	// the tag for this template.
+	string template_tag = 14;
+
+	// Template details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	map<string, string> details = 15;
+
+	// true if template contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	bool is_dynamically_scalable = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// create template for the project
+	int64 project_id = 17;
+
+	// the zone for the template. Can be specified with snapshot only
+	int64 zone_id = 18;
+
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 19;
+
+	// an optional accountName. Must be used with domainId.
+	string account_name = 20;
+
+	//
+	int64 start_event_id = 21;
+
+	//
+	string injected_job_id = 22 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 23;
+}
+
+// CreateTemplateCmdByAdminResponse represents the response from creates a template of a virtual machine. the virtual machine must be in a stopped state. a template created from this command is automatically designated as a private template visible to the account that created it.
+message CreateTemplateCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -512,6 +630,27 @@ message ListTemplatePermissionsResponse {
 	int32 total_count = 2;
 }
 
+// ListTemplatePermissionsCmdByAdminRequest represents the parameters for list template visibility and all accounts that have permissions to view this template.
+message ListTemplatePermissionsCmdByAdminRequest {
+	// the template ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListTemplatePermissionsCmdByAdminResponse represents the response from list template visibility and all accounts that have permissions to view this template.
+message ListTemplatePermissionsCmdByAdminResponse {
+	option (validate.message).disabled = false;
+	// The list of TemplatePermissionss
+	repeated TemplatePermissions items = 1;
+
+	// The total count of TemplatePermissionss
+	int32 total_count = 2;
+}
+
 // ListTemplatesRequest represents the parameters for list all public, private, and privileged templates.
 message ListTemplatesRequest {
 	// Whether to run this operation as an administrator
@@ -591,6 +730,120 @@ message ListTemplatesRequest {
 
 // ListTemplatesResponse represents the response from list all public, private, and privileged templates.
 message ListTemplatesResponse {
+	option (validate.message).disabled = false;
+	// The list of Templates
+	repeated Template items = 1;
+
+	// The total count of Templates
+	int32 total_count = 2;
+}
+
+// ListTemplatesCmdByAdminRequest represents the parameters for list all public, private, and privileged templates.
+message ListTemplatesCmdByAdminRequest {
+	// ID of the image or image cache store
+	int64 image_store_id = 1;
+
+	// ID of the storage pool
+	int64 storage_pool_id = 2;
+
+	// the hypervisor for which to restrict the search
+	string hypervisor = 3;
+
+	// the template ID
+	int64 id = 4;
+
+	// the IDs of the templates, mutually exclusive with id
+	repeated string ids = 5;
+
+	// the template name
+	string template_name = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
+	string template_filter = 7 [
+		(validate.field).required = true
+	];
+
+	// list templates by zoneId
+	int64 zone_id = 8;
+
+	// show removed templates as well
+	bool show_removed = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// If set to true, list only unique templates across zones
+	bool show_unique = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list datadisk templates by parent template id
+	int64 parent_template_id = 11;
+
+	// comma separated list of template details requested, value can be a list of [ all, min]
+	repeated string view_details = 12;
+
+	// the type of the template
+	string template_type = 13;
+
+	// flag to list VNF templates or not; true if need to list VNF templates, false otherwise.
+	bool is_vnf = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the CPU arch of the template. Valid options are: x86_64, aarch64
+	string arch = 15;
+
+	// flag to display the resource image for the templates
+	bool show_icon = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 17;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 18;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 19 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 20 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 21;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 22 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 23;
+
+	//
+	int32 page = 24;
+
+	//
+	int32 page_size = 25;
+
+	//
+	string response_type = 26;
+}
+
+// ListTemplatesCmdByAdminResponse represents the response from list all public, private, and privileged templates.
+message ListTemplatesCmdByAdminResponse {
 	option (validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
@@ -1159,6 +1412,142 @@ message RegisterVnfTemplateRequest {
 
 // RegisterVnfTemplateResponse represents the response from registers an existing vnf template into the cloudstack cloud.
 message RegisterVnfTemplateResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RegisterVnfTemplateCmdByAdminRequest represents the parameters for registers an existing vnf template into the cloudstack cloud.
+message RegisterVnfTemplateCmdByAdminRequest {
+	// VNF nics in key/value pairs using format vnfnics[i].keyname=keyvalue.  Example: vnfnics[0].deviceid=0&&vnfnics[0].name=FirstNIC&&vnfnics[0].required=true&&vnfnics[1].deviceid=1&&vnfnics[1].name=SecondNIC
+	map<string, string> vnf_nics = 1;
+
+	// VNF details in key/value pairs using format vnfdetails[i].keyname=keyvalue. Example: vnfdetails[0].vendor=xxx&&vnfdetails[0].version=2.0
+	map<string, string> vnf_details = 2;
+
+	// 32 or 64 bits support. 64 by default
+	int32 bits = 3;
+
+	// The display text of the template, defaults to 'name'.
+	string display_text = 4;
+
+	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
+	string format = 5 [
+		(validate.field).required = true
+	];
+
+	// the target hypervisor for the template
+	string hypervisor = 6 [
+		(validate.field).required = true
+	];
+
+	// true if this template is a featured template, false otherwise
+	bool featured = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template is available to all accounts; default is true
+	bool public_template = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the name of the template
+	string template_name = 9 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
+	int64 os_type_id = 10;
+
+	// true if the template supports the password reset feature; default is false
+	bool password_enabled = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template supports the sshkey upload feature; default is false
+	bool ssh_key_enabled = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template or its derivatives are extractable; default is false
+	bool extractable = 13 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if this template requires HVM
+	bool requires_hvm = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the URL of where the template is hosted. Possible URL include http:// and https://
+	string url = 15 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone the template is to be hosted on
+	int64 zone_id = 16;
+
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 17;
+
+	// an optional accountName. Must be used with domainId.
+	string account_name = 18;
+
+	/*
+	 * the checksum value of this template. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	 */
+	string checksum = 19;
+
+	// the tag for this template.
+	string template_tag = 20;
+
+	// Register template for the project
+	int64 project_id = 21;
+
+	// Template details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	map<string, string> details = 22;
+
+	// true if template contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	bool is_dynamically_scalable = 23 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template type is routing i.e., if template is used to deploy router
+	bool is_routing_type = 24 [
+		features.field_presence = EXPLICIT
+	];
+
+	// A list of zone ids where the template will be hosted. Use this parameter if the template needs to be registered to multiple zones in one go. Use zoneid if the template needs to be registered to only one zone.Passing only -1 to this will cause the template to be registered as a cross zone template and will be copied to all zones.
+	repeated string zone_ids = 25;
+
+	// true if template should bypass Secondary Storage and be downloaded to Primary Storage on deployment
+	bool direct_download = 26 [
+		features.field_presence = EXPLICIT
+	];
+
+	// (VMware only) true if VM deployments should preserve all the configurations defined for this template
+	bool deploy_as_is = 27 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the type of the template. Valid options are: USER/VNF (for all users) and SYSTEM/ROUTING/BUILTIN (for admins only).
+	string template_type = 28;
+
+	// the CPU arch of the template. Valid options are: x86_64, aarch64
+	string arch = 29;
+
+	//
+	string response_type = 30;
+}
+
+// RegisterVnfTemplateCmdByAdminResponse represents the response from registers an existing vnf template into the cloudstack cloud.
+message RegisterVnfTemplateCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }

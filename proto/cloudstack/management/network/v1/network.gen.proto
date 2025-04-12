@@ -56,6 +56,11 @@ service NetworkService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// CreateNetworkCmdByAdmin Creates a network
+	rpc CreateNetworkCmdByAdmin(CreateNetworkCmdByAdminRequest) returns (CreateNetworkCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// CreateNetworkOffering Creates a network offering.
 	rpc CreateNetworkOffering(CreateNetworkOfferingRequest) returns (CreateNetworkOfferingResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -776,6 +781,191 @@ message CreateNetworkACLListRequest {
 
 // CreateNetworkACLListResponse represents the response from creates a network acl. if no vpc is given, then it creates a global acl that can be used by everyone.
 message CreateNetworkACLListResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateNetworkCmdByAdminRequest represents the parameters for creates a network
+message CreateNetworkCmdByAdminRequest {
+	// the ID or VID of the network
+	string vlan = 1;
+
+	// when true bypasses VLAN id/range overlap check during network creation for shared and L2 networks
+	bool bypass_vlan_overlap_check = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// when true ip address usage for the network will not be exported by the listUsageRecords API
+	bool hide_ip_address_usage = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// IPV4 address to be assigned to a router in a shared network
+	string router_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// IPV6 address to be assigned to a router in a shared network
+	string router_ipv6 = 5 [
+		(validate.field).string.ipv6 = true
+	];
+
+	// Ids of the Bgp Peer for the network
+	repeated string bgp_peer_ids = 6;
+
+	// the name of the network
+	string name = 7 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the display text of the network
+	string display_text = 8;
+
+	// the network offering ID
+	int64 network_offering_id = 9 [
+		(validate.field).required = true
+	];
+
+	// the zone ID for the network
+	int64 zone_id = 10 [
+		(validate.field).required = true
+	];
+
+	// the physical network ID the network belongs to
+	int64 physical_network_id = 11;
+
+	// the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC
+	string gateway = 12 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC
+	string netmask = 13;
+
+	// the beginning IP address in the network IP range
+	string start_ip = 14 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address in the network IP range. If not specified, will be defaulted to startIP
+	string end_ip = 15 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the isolated private VLAN for this network
+	string isolated_pvlan = 16;
+
+	// the isolated private VLAN type for this network
+	string isolated_pvlan_type = 17;
+
+	// network domain
+	string network_domain = 18;
+
+	// Access control type; supported values are account and domain. In 3.0 all shared networks should have aclType=Domain, and all isolated networks - Account. Account means that only the account owner can use the network, domain - all accounts in the domain can use the network
+	string acl_type = 19;
+
+	// Account that will own the network. Account should be under the selected domain
+	string account_name = 20;
+
+	// an optional project for the network
+	int64 project_id = 21;
+
+	// domain ID of the account owning a network. If the account is not specified, but the acltype is Account or not specified, the network will be automatically assigned to the caller account and domain. To create a network under the domain without linking it to any account, make sure to include acltype=Domain parameter in the api call. If account is not specified, but acltype is Domain, the network will be created for the specified domain.
+	int64 domain_id = 22;
+
+	// Defines whether to allow subdomains to use networks dedicated to their parent domain(s). Should be used with aclType=Domain, defaulted to allow.subdomain.network.access global config if not specified
+	bool subdomain_access = 23 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the VPC network belongs to
+	int64 vpc_id = 24;
+
+	// Tungsten-Fabric virtual router the network belongs to
+	string tungsten_virtual_router_uuid = 25 [
+		(validate.field).string.uuid = true
+	];
+
+	// the beginning IPv6 address in the IPv6 network range
+	string start_ipv6 = 26 [
+		(validate.field).string.ipv6 = true
+	];
+
+	// the ending IPv6 address in the IPv6 network range
+	string end_ipv6 = 27 [
+		(validate.field).string.ipv6 = true
+	];
+
+	// the gateway of the IPv6 network. Required for Shared networks
+	string ip6_gateway = 28 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the CIDR of IPv6 network, must be at least /64
+	string ip6_cidr = 29 [
+		(validate.field).string.ipv4_prefix = true
+	];
+
+	// ID of the network in an external system.
+	string external_id = 30 [
+		(validate.field).string.uuid = true
+	];
+
+	// an optional field, whether to the display the network to the end user or not.
+	bool display_network = 31 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Network ACL ID associated for the network
+	int64 acl_id = 32;
+
+	// The network this network is associated to. only available if create a Shared network
+	int64 associated_network_id = 33;
+
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 34;
+
+	// MTU to be configured on the network VR's private interface(s)
+	int32 private_mtu = 35;
+
+	// the first IPv4 DNS for the network
+	string ip4_dns1 = 36;
+
+	// the second IPv4 DNS for the network
+	string ip4_dns2 = 37;
+
+	// the first IPv6 DNS for the network
+	string ip6_dns1 = 38 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the second IPv6 DNS for the network
+	string ip6_dns2 = 39 [
+		(validate.field).string.ipv4 = true
+	];
+
+	/*
+	 * IPV4 address to be assigned to the public interface of the network router. This address will be used as source NAT address for the network.
+	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
+	 */
+	string source_nat_i_p = 40 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the CIDR size of IPv4 network. For regular users, this is required for isolated networks with ROUTED mode.
+	int32 cidr_size = 41;
+
+	// the AS Number of the network
+	int64 as_number = 42;
+
+	//
+	string response_type = 43;
+}
+
+// CreateNetworkCmdByAdminResponse represents the response from creates a network
+message CreateNetworkCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }

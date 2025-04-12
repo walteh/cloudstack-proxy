@@ -141,6 +141,11 @@ service VmService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListVnfAppliancesCmdByAdmin List VNF appliance owned by the account.
+	rpc ListVnfAppliancesCmdByAdmin(ListVnfAppliancesCmdByAdminRequest) returns (ListVnfAppliancesCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
 	rpc MigrateVM(MigrateVMRequest) returns (MigrateVMResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -211,9 +216,19 @@ service VmService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ResetVMUserDataCmdAdmin Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	rpc ResetVMUserDataCmdAdmin(ResetVMUserDataCmdAdminRequest) returns (ResetVMUserDataCmdAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// RestoreVM Restore a VM to original template/ISO or new template/ISO
 	rpc RestoreVM(RestoreVMRequest) returns (RestoreVMResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RestoreVMCmdByAdmin Restore a VM to original template/ISO or new template/ISO
+	rpc RestoreVMCmdByAdmin(RestoreVMCmdByAdminRequest) returns (RestoreVMCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -242,6 +257,11 @@ service VmService {
 	// StopVM Stops a virtual machine.
 	rpc StopVM(StopVMRequest) returns (StopVMResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// StopVMCmdByAdmin Stops a virtual machine.
+	rpc StopVMCmdByAdmin(StopVMCmdByAdminRequest) returns (StopVMCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -285,6 +305,11 @@ service VmService {
 	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
 	rpc UpgradeVM(UpgradeVMRequest) returns (UpgradeVMResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpgradeVMCmdByAdmin (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	rpc UpgradeVMCmdByAdmin(UpgradeVMCmdByAdminRequest) returns (UpgradeVMCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
@@ -2207,6 +2232,162 @@ message ListVnfAppliancesResponse {
 	int32 total_count = 2;
 }
 
+// ListVnfAppliancesCmdByAdminRequest represents the parameters for list vnf appliance owned by the account.
+message ListVnfAppliancesCmdByAdminRequest {
+	// the group ID
+	int64 group_id = 1;
+
+	// the ID of the virtual machine
+	int64 id = 2;
+
+	// the IDs of the virtual machines, mutually exclusive with id
+	repeated string ids = 3;
+
+	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
+	string name = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
+	string state = 5;
+
+	// the availability zone ID
+	int64 zone_id = 6;
+
+	// list by network type; true if need to list vms using Virtual Network, false otherwise
+	bool for_virtual_network = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list by network id
+	int64 network_id = 8;
+
+	// the target hypervisor for the template
+	string hypervisor = 9;
+
+	// comma separated list of vm details requested, value can be a list of [all, group, nics, stats, secgrp, tmpl, servoff, diskoff, backoff, iso, volume, min, affgrp]. When no parameters are passed, all the details are returned if list.vm.default.details.stats is true (default), otherwise when list.vm.default.details.stats is false the API response will exclude the stats details.
+	repeated string view_details = 10;
+
+	// list vms by template
+	int64 template_id = 11;
+
+	// list vms by iso
+	int64 iso_id = 12;
+
+	// list vms by vpc
+	int64 vpc_id = 13;
+
+	// list vms by affinity group
+	int64 affinity_group_id = 14;
+
+	// list vms by ssh keypair name
+	string keypair = 15;
+
+	// list by the service offering
+	int64 service_off_id = 16;
+
+	// list by the backup offering
+	int64 backup_off_id = 17;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 18 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the user ID that created the VM and is under the account that owns the VM
+	int64 user_id = 19;
+
+	// the security group ID
+	int64 security_group_id = 20;
+
+	// list by the High Availability offering; true if filtering VMs with HA enabled; false for VMs with HA disabled
+	bool ha_enabled = 21 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of AutoScaling VM Group
+	int64 auto_scale_vm_group_id = 22;
+
+	// flag to display the resource icon for VMs
+	bool show_icon = 23 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Accumulates the VM metrics data instead of returning only the most recent data collected. The default behavior is set by the global configuration vm.stats.increment.metrics.
+	bool accumulate = 24 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Whether to return the VMs' user data or not. By default, user data will not be returned.
+	bool show_user_data = 25 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the instances by userdata
+	int64 userdata_id = 26;
+
+	// flag to list vms created from VNF templates (as known as VNF appliances) or not; true if need to list VNF appliances, false otherwise.
+	bool is_vnf = 27 [
+		features.field_presence = EXPLICIT
+	];
+
+	// makes the API's response contains only the resource count
+	bool retrieve_only_resource_count = 28 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 29;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 30;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 31 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 32 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 33;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 34 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 35;
+
+	//
+	int32 page = 36;
+
+	//
+	int32 page_size = 37;
+
+	//
+	string response_type = 38;
+}
+
+// ListVnfAppliancesCmdByAdminResponse represents the response from list vnf appliance owned by the account.
+message ListVnfAppliancesCmdByAdminResponse {
+	option (validate.message).disabled = false;
+	// The list of UserVms
+	repeated UserVm items = 1;
+
+	// The total count of UserVms
+	int32 total_count = 2;
+}
+
 // MigrateVMRequest represents the parameters for attempts migration of a vm to a different host or root volume of the vm to a different storage pool
 message MigrateVMRequest {
 	// Destination Host ID to migrate VM to.
@@ -2604,6 +2785,41 @@ message ResetVMUserDataResponse {
 	Result result = 1;
 }
 
+// ResetVMUserDataCmdAdminRequest represents the parameters for resets the userdata for virtual machine. the virtual machine must be in a "stopped" state. [async]
+message ResetVMUserDataCmdAdminRequest {
+	// The ID of the virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 2;
+
+	// the ID of the userdata
+	int64 userdata_id = 3;
+
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> userdata_details = 4;
+
+	// an optional account for the virtual machine. Must be used with domainId.
+	string account_name = 5;
+
+	// an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 6;
+
+	// an optional project for the virtual machine
+	int64 project_id = 7;
+
+	//
+	string response_type = 8;
+}
+
+// ResetVMUserDataCmdAdminResponse represents the response from resets the userdata for virtual machine. the virtual machine must be in a "stopped" state. [async]
+message ResetVMUserDataCmdAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
 // RestoreVMRequest represents the parameters for restore a vm to original template/iso or new template/iso
 message RestoreVMRequest {
 	// Whether to run this operation as an administrator
@@ -2636,6 +2852,48 @@ message RestoreVMRequest {
 
 // RestoreVMResponse represents the response from restore a vm to original template/iso or new template/iso
 message RestoreVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RestoreVMCmdByAdminRequest represents the parameters for restore a vm to original template/iso or new template/iso
+message RestoreVMCmdByAdminRequest {
+	// Virtual Machine ID
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
+	int64 template_id = 2;
+
+	// Override root volume's diskoffering.
+	int64 root_disk_offering_id = 3;
+
+	// Override root volume's size (in GB). Analogous to details[0].rootdisksize, which takes precedence over this parameter if both are provided
+	int64 root_disk_size = 4;
+
+	// used to specify the custom parameters
+	map<string, string> details = 5;
+
+	// Optional field to expunge old root volume after restore.
+	bool expunge_root_disk = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// RestoreVMCmdByAdminResponse represents the response from restore a vm to original template/iso or new template/iso
+message RestoreVMCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -2842,6 +3100,36 @@ message StopVMRequest {
 
 // StopVMResponse represents the response from stops a virtual machine.
 message StopVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StopVMCmdByAdminRequest represents the parameters for stops a virtual machine.
+message StopVMCmdByAdminRequest {
+	// The ID of the virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// StopVMCmdByAdminResponse represents the response from stops a virtual machine.
+message StopVMCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -3203,6 +3491,47 @@ message UpgradeVMRequest {
 
 // UpgradeVMResponse represents the response from (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
 message UpgradeVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpgradeVMCmdByAdminRequest represents the parameters for (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
+message UpgradeVMCmdByAdminRequest {
+	// The ID of the virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering ID to apply to the virtual machine
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 3;
+
+	// New minimum number of IOPS for the custom disk offering
+	int64 min_iops = 4;
+
+	// New maximum number of IOPS for the custom disk offering
+	int64 max_iops = 5;
+
+	// Flag for automatic migration of the root volume with new compute offering whenever migration is required to apply the offering
+	bool auto_migrate = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Verify OK to Shrink
+	bool shrink_ok = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpgradeVMCmdByAdminResponse represents the response from (this api is deprecated, use scalevirtualmachine api)changes the service offering for a virtual machine. the virtual machine must be in a "stopped" state for this command to take effect.
+message UpgradeVMCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }

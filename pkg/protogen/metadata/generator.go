@@ -106,7 +106,7 @@ func (g *ProtoGenerator) generateCategoryProto(category string, commandNames []s
 		}
 
 		simpleName := cmd.SimpleName
-		if strings.HasSuffix(simpleName, "CmdByAdmin") {
+		if strings.HasSuffix(simpleName, "ByAdmin") {
 			// Extract base command name (without "CmdByAdmin")
 			baseCmd := strings.TrimSuffix(simpleName, "ByAdmin")
 			adminVariants[baseCmd] = simpleName
@@ -204,20 +204,22 @@ func (g *ProtoGenerator) generateCategoryProto(category string, commandNames []s
 
 // isAdminVariant determines if a command is an admin variant
 func isAdminVariant(name string) bool {
-	return strings.HasSuffix(name, "CmdByAdmin") ||
-		strings.HasSuffix(name, "AsAdmin") ||
-		(strings.HasSuffix(name, "Admin") && !strings.HasSuffix(name, "ByAdmin"))
+	// return strings.HasSuffix(name, "ByAdmin") ||
+	//
+	//	strings.HasSuffix(name, "AsAdmin") ||
+	//	(strings.HasSuffix(name, "Admin") && !strings.HasSuffix(name, "ByAdmin"))
+	return false
 }
 
 // getBaseCommandName extracts the base command name from an admin variant
 func getBaseCommandName(name string) string {
-	if strings.HasSuffix(name, "CmdByAdmin") {
-		return strings.TrimSuffix(name, "ByAdmin")
-	} else if strings.HasSuffix(name, "AsAdmin") {
-		return strings.TrimSuffix(name, "AsAdmin")
-	} else if strings.HasSuffix(name, "Admin") && !strings.HasSuffix(name, "ByAdmin") {
-		return strings.TrimSuffix(name, "Admin")
-	}
+	// 	if strings.HasSuffix(name, "ByAdmin") {
+	// 		return strings.TrimSuffix(name, "ByAdmin")
+	// 	} else if strings.HasSuffix(name, "AsAdmin") {
+	// 		return strings.TrimSuffix(name, "AsAdmin")
+	// 	} else if strings.HasSuffix(name, "Admin") && !strings.HasSuffix(name, "ByAdmin") {
+	// 		return strings.TrimSuffix(name, "Admin")
+	// 	}
 	return name
 }
 

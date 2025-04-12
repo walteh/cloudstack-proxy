@@ -86,6 +86,11 @@ service LoadbalancerService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListLoadBalancerRuleInstancesCmdByAdmin List all virtual machine instances that are assigned to a load balancer rule.
+	rpc ListLoadBalancerRuleInstancesCmdByAdmin(ListLoadBalancerRuleInstancesCmdByAdminRequest) returns (ListLoadBalancerRuleInstancesCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// ListLoadBalancerRules Lists load balancer rules.
 	rpc ListLoadBalancerRules(ListLoadBalancerRulesRequest) returns (ListLoadBalancerRulesResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -761,6 +766,46 @@ message ListLoadBalancerRuleInstancesRequest {
 
 // ListLoadBalancerRuleInstancesResponse represents the response from list all virtual machine instances that are assigned to a load balancer rule.
 message ListLoadBalancerRuleInstancesResponse {
+	option (validate.message).disabled = false;
+	// The list of LoadBalancerRuleVmMaps
+	repeated LoadBalancerRuleVmMap items = 1;
+
+	// The total count of LoadBalancerRuleVmMaps
+	int32 total_count = 2;
+}
+
+// ListLoadBalancerRuleInstancesCmdByAdminRequest represents the parameters for list all virtual machine instances that are assigned to a load balancer rule.
+message ListLoadBalancerRuleInstancesCmdByAdminRequest {
+	// true if listing all virtual machines currently applied to the load balancer rule; default is true
+	bool applied = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the load balancer rule
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	// true if load balancer rule VM IP information to be included; default is false
+	bool is_list_lb_vmip = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListLoadBalancerRuleInstancesCmdByAdminResponse represents the response from list all virtual machine instances that are assigned to a load balancer rule.
+message ListLoadBalancerRuleInstancesCmdByAdminResponse {
 	option (validate.message).disabled = false;
 	// The list of LoadBalancerRuleVmMaps
 	repeated LoadBalancerRuleVmMap items = 1;

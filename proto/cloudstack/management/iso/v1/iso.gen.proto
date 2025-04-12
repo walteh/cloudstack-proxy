@@ -27,6 +27,11 @@ service IsoService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
+	rpc CopyIsoCmdByAdmin(CopyIsoCmdByAdminRequest) returns (CopyIsoCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// DeleteIso Deletes an ISO file.
 	rpc DeleteIso(DeleteIsoRequest) returns (DeleteIsoResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -59,6 +64,11 @@ service IsoService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
+	rpc ListIsoPermissionsCmdByAdmin(ListIsoPermissionsCmdByAdminRequest) returns (ListIsoPermissionsCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// ListIsos Lists all available ISO files.
 	rpc ListIsos(ListIsosRequest) returns (ListIsosResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
@@ -76,9 +86,19 @@ service IsoService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// RegisterIsoCmdByAdmin Registers an existing ISO into the CloudStack Cloud.
+	rpc RegisterIsoCmdByAdmin(RegisterIsoCmdByAdminRequest) returns (RegisterIsoCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// UpdateIso Updates an ISO file.
 	rpc UpdateIso(UpdateIsoRequest) returns (UpdateIsoResponse) {
 		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateIsoCmdByAdmin Updates an ISO file.
+	rpc UpdateIsoCmdByAdmin(UpdateIsoCmdByAdminRequest) returns (UpdateIsoCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -181,6 +201,40 @@ message CopyIsoRequest {
 
 // CopyIsoResponse represents the response from copies an iso from one zone to another.
 message CopyIsoResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CopyIsoCmdByAdminRequest represents the parameters for copies an iso from one zone to another.
+message CopyIsoCmdByAdminRequest {
+	// ID of the zone the template is being copied to.
+	int64 dest_zone_id = 1;
+
+	// Template ID.
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
+	int64 source_zone_id = 3;
+
+	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	repeated string dest_zone_ids = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// CopyIsoCmdByAdminResponse represents the response from copies an iso from one zone to another.
+message CopyIsoCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -395,6 +449,27 @@ message ListIsoPermissionsRequest {
 
 // ListIsoPermissionsResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
 message ListIsoPermissionsResponse {
+	option (validate.message).disabled = false;
+	// The list of TemplatePermissionss
+	repeated TemplatePermissions items = 1;
+
+	// The total count of TemplatePermissionss
+	int32 total_count = 2;
+}
+
+// ListIsoPermissionsCmdByAdminRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
+message ListIsoPermissionsCmdByAdminRequest {
+	// the template ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListIsoPermissionsCmdByAdminResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
+message ListIsoPermissionsCmdByAdminResponse {
 	option (validate.message).disabled = false;
 	// The list of TemplatePermissionss
 	repeated TemplatePermissions items = 1;
@@ -679,6 +754,103 @@ message RegisterIsoResponse {
 	Result result = 1;
 }
 
+// RegisterIsoCmdByAdminRequest represents the parameters for registers an existing iso into the cloudstack cloud.
+message RegisterIsoCmdByAdminRequest {
+	// true if this ISO is bootable. If not passed explicitly its assumed to be true
+	bool bootable = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the display text of the ISO, defaults to the 'name'
+	string display_text = 2;
+
+	// true if you want this ISO to be featured
+	bool featured = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if you want to register the ISO to be publicly available to all users, false otherwise.
+	bool public_iso = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the ISO or its derivatives are extractable; default is false
+	bool extractable = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the name of the ISO
+	string iso_name = 6 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
+	int64 os_type_id = 7;
+
+	// the URL to where the ISO is currently being hosted
+	string url = 8 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone you wish to register the ISO to.
+	int64 zone_id = 9 [
+		(validate.field).required = true
+	];
+
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 10;
+
+	// an optional account name. Must be used with domainId.
+	string account_name = 11;
+
+	/*
+	 * the checksum value of this ISO. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	 */
+	string checksum = 12;
+
+	// Register ISO for the project
+	int64 project_id = 13;
+
+	// Image store UUID
+	string image_store_uuid = 14 [
+		(validate.field).string.uuid = true
+	];
+
+	// true if ISO contains XS/VMWare tools inorder to support dynamic scaling of VM CPU/memory
+	bool is_dynamically_scalable = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if ISO should bypass Secondary Storage and be downloaded to Primary Storage on deployment
+	bool direct_download = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if password reset feature is supported; default is false
+	bool password_enabled = 17 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the CPU arch of the ISO. Valid options are: x86_64, aarch64
+	string arch = 18;
+
+	//
+	string response_type = 19;
+}
+
+// RegisterIsoCmdByAdminResponse represents the response from registers an existing iso into the cloudstack cloud.
+message RegisterIsoCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
 // UpdateIsoRequest represents the parameters for updates an iso file.
 message UpdateIsoRequest {
 	// Whether to run this operation as an administrator
@@ -738,6 +910,82 @@ message UpdateIsoRequest {
 
 // UpdateIsoResponse represents the response from updates an iso file.
 message UpdateIsoResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateIsoCmdByAdminRequest represents the parameters for updates an iso file.
+message UpdateIsoCmdByAdminRequest {
+	// true if image is bootable, false otherwise; available only for updateIso API
+	bool bootable = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template requires HVM, false otherwise; available only for updateTemplate API
+	bool requires_hvm = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the display text of the image
+	string display_text = 3;
+
+	// the ID of the image file
+	int64 id = 4 [
+		(validate.field).required = true
+	];
+
+	// the name of the image file
+	string template_name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the OS type that best represents the OS of this image.
+	int64 os_type_id = 6;
+
+	// the format for the image
+	string format = 7;
+
+	// true if the image supports the password reset feature; default is false
+	bool password_enabled = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template supports the sshkey upload feature; default is false
+	bool ssh_key_enabled = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// sort key of the template, integer
+	int32 sort_key = 10;
+
+	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	bool is_dynamically_scalable = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template type is routing i.e., if template is used to deploy router
+	bool is_routing_type = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	map<string, string> details = 13;
+
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	bool cleanup_details = 14 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
+	string arch = 15;
+
+	//
+	string response_type = 16;
+}
+
+// UpdateIsoCmdByAdminResponse represents the response from updates an iso file.
+message UpdateIsoCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }
